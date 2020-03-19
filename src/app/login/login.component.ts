@@ -37,7 +37,14 @@ export class LoginComponent implements OnInit {
 
     // convenience getter for easy access to form fields
     get f() { return this.loginForm.controls; }
+    private checkErrors(data: any):boolean {
+        if(data == null || data.errors == null || data.errors.length === 0) {
+            return false;
+        }
 
+        this.error = data.errors[0].message;
+        return true;
+    }
     onSubmit() {
         this.submitted = true;
 
@@ -51,7 +58,11 @@ export class LoginComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 data => {
-                    this.router.navigate([this.returnUrl]);
+                    if(!this.checkErrors(data)) {
+                        this.router.navigate([this.returnUrl]);
+                    } else {
+                        this.loading = false;
+                    }
                 },
                 error => {
                     this.error = error;
