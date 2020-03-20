@@ -15,8 +15,8 @@ export class AppComponent {
         this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
     }
 
-    logout() {
-        this.gatewayService.logout();
-        this.router.navigate(['/login']);
-    }
+    // logout() {
+    //     this.gatewayService.logout();
+    //     this.router.navigate(['/login']);
+    // }
 }
