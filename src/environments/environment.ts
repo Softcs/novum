@@ -5,7 +5,7 @@
 export const environment = {
     production: false,
     // apiUrl: 'https://ws.seidoit.pl'
-    apiUrl: 'http://localhost:5000'
+    apiUrl: 'https://ws.seidoit.pl'
 };
 
 /*
