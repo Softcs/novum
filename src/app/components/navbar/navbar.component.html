@@ -1,15 +1,23 @@
-<mat-menu #appMenu="matMenu">
-  <button mat-menu-item routerLink="/">Home</button>
-  <button mat-menu-item routerLink="/dict">Dict</button>
-  <button mat-menu-item (click)="logout()">Logout</button>
-</mat-menu>
-
-<!-- <button mat-icon-button [matMenuTriggerFor]="appMenu" *ngIf="currentUser">
-  <mat-icon>menu</mat-icon>
-</button> -->
-
-<button mat-raised-button color="red" [matMenuTriggerFor]="appMenu" *ngIf="currentUser"><mat-icon>menu</mat-icon></button>
-
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-raised-button color="primary" [matMenuTriggerFor]="appMenu" *ngIf="currentUser"><mat-icon>menu</mat-icon></button>
+    <mat-menu #appMenu="matMenu">
+      <button mat-menu-item class="button-menu" routerLink="/">Home</button>
+      <button mat-menu-item class="button-menu" routerLink="/dict">Dict</button>
+      <button mat-menu-item class="button-menu" (click)="logout()">Logout</button>
+    </mat-menu>
+  <!-- <button mat-icon-button [matMenuTriggerFor]="appMenu" *ngIf="currentUser">
+    <mat-icon>menu</mat-icon>
+  </button> -->
+  <!-- <h1>NOVUM</h1> -->
+  <span class="menu-spacer"></span>
+  <div *ngIf="currentUser">
+    <a class="top-menu" mat-button [routerLink]="'/'">Home</a>
+    <a class="top-menu" mat-button [routerLink]="'/dict'">Słownik</a>
+    <a class="top-menu" mat-button (click)="logout()">Logout</a>
+  </div>
+  </mat-toolbar-row>
+</mat-toolbar>
 <!-- <nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
   <div class="navbar-nav">
       <a class="nav-item nav-link" routerLink="/">Home</a>

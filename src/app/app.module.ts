@@ -16,10 +16,7 @@ import { DictContainerComponent } from './components/dict-container/dict-contain
 import { DataSourceContainerComponent } from './components/data-source-container/data-source-container.component';
 import { RailConfigurationsComponent } from './containers/dictionaries/sitRailConfigurations';;
 import { NavbarComponent } from './components/navbar/navbar.component'
-import { MatSliderModule } from '@angular/material';
-import { MatButtonModule } from '@angular/material';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatIconModule } from '@angular/material/icon';
+import { MatSliderModule, MatButtonModule, MatToolbarModule, MatMenuModule, MatIconModule, MatSidenavModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -32,7 +29,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         MatButtonModule,
         MatMenuModule,
         MatIconModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        MatToolbarModule,
+        MatSidenavModule
     ],
     declarations: [
         AppComponent,
