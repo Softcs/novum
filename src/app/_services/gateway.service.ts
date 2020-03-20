@@ -51,9 +51,11 @@ export class GatewayService {
         return opr;
     }
     executeOperation(opr: Operation) {
-        return this.http.post<any>(`${environment.apiUrl}/api/json/gateway/rail`, opr)
+        const listOfOprs = [];
+        listOfOprs.push(opr);
+
+        return this.http.post<any>(`${environment.apiUrl}/api/json/gateway/rail`, listOfOprs)
             .pipe(map(railResponse => {
-                console.log("railResponse", railResponse);
                 return railResponse;
             }));
     }
