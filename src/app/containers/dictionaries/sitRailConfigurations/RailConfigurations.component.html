@@ -1,3 +1,14 @@
 ﻿<div class="col-md-6 offset-md-3 mt-5">
-    <app-dict-container ident="sitRailConfigurations"></app-dict-container>
+        <h2>{{caption}}</h2>
+        <div> aaaa</div>
+        <ul>
+            <li *ngFor="let row of getRecords('sitRailConfigurationsDS')">
+                {{row.OperationIdent}}
+            </li>
+        </ul>
+        <ul>
+            <li *ngFor="let row of getRecords('sitFnUsersDS')">
+                {{row.UserLogin}}
+            </li>
+        </ul>
 </div>
