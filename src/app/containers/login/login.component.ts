@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
-import { AuthenticationService } from '@app/_services';
+import { GatewayService } from '@app/_services';
 
 @Component({ templateUrl: 'login.component.html', styleUrls: ['login.component.scss']})
 export class LoginComponent implements OnInit {
@@ -17,10 +17,10 @@ export class LoginComponent implements OnInit {
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,
         private router: Router,
-        private authenticationService: AuthenticationService
+        private gatewayService: GatewayService
     ) {
         // redirect to home if already logged in
-        if (this.authenticationService.currentUserValue) {
+        if (this.gatewayService.currentUserValue) {
             this.router.navigate(['/']);
         }
     }
@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
         }
 
         this.loading = true;
-        this.authenticationService.login(this.f.username.value, this.f.password.value)
+        this.gatewayService.login(this.f.username.value, this.f.password.value)
             .pipe(first())
             .subscribe(
                 data => {

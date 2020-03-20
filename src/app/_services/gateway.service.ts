@@ -4,10 +4,10 @@ import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { environment } from '@environments/environment';
-import { User } from '@app/_models';
+import { User, Operation } from '@app/_models';
 
 @Injectable({ providedIn: 'root' })
-export class AuthenticationService {
+export class GatewayService {
     private currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
     public lastAuthBasic: string;
@@ -42,5 +42,19 @@ export class AuthenticationService {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');
         this.currentUserSubject.next(null);
+    }
+
+    operationGetDictInfo(ident: string): Operation {
+        const opr: Operation = new  Operation();
+        opr.ident = ident;
+        opr.oprType = 1;
+        return opr;
+    }
+    executeOperation(opr: Operation) {
+        return this.http.post<any>(`${environment.apiUrl}/api/json/gateway/rail`, opr)
+            .pipe(map(railResponse => {
+                console.log("railResponse", railResponse);
+                return railResponse;
+            }));
     }
 }

@@ -1,2 +1,2 @@
-﻿export * from './authentication.service';
+﻿export * from './gateway.service';
 export * from './user.service';

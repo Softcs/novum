@@ -10,8 +10,10 @@ import { AppComponent } from './app.component';
 import { appRoutingModule } from './app.routing';
 
 import { BasicAuthInterceptor, ErrorInterceptor } from './_helpers';
-import { HomeComponent } from './home';
-import { LoginComponent } from './login';
+import { HomeComponent } from './containers/home';
+import { LoginComponent } from './containers/login';;
+import { DictContainerComponent } from './components/dict-container/dict-container.component';
+import { RailConfigurationsComponent } from './containers/dictionaries/sitRailConfigurations';
 
 @NgModule({
     imports: [
@@ -23,7 +25,9 @@ import { LoginComponent } from './login';
     declarations: [
         AppComponent,
         HomeComponent,
-        LoginComponent
+        LoginComponent,
+        RailConfigurationsComponent,
+        DictContainerComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
