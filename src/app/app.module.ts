@@ -13,7 +13,9 @@ import { BasicAuthInterceptor, ErrorInterceptor } from './_helpers';
 import { HomeComponent } from './containers/home';
 import { LoginComponent } from './containers/login';;
 import { DictContainerComponent } from './components/dict-container/dict-container.component';
-import { RailConfigurationsComponent } from './containers/dictionaries/sitRailConfigurations';
+import { RailConfigurationsComponent } from './containers/dictionaries/sitRailConfigurations';;
+import { NavbarComponent } from './components/navbar/navbar.component'
+
 
 @NgModule({
     imports: [
@@ -27,7 +29,8 @@ import { RailConfigurationsComponent } from './containers/dictionaries/sitRailCo
         HomeComponent,
         LoginComponent,
         RailConfigurationsComponent,
-        DictContainerComponent
+        DictContainerComponent,
+        NavbarComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
