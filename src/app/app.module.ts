@@ -15,14 +15,23 @@ import { LoginComponent } from './containers/login';;
 import { DictContainerComponent } from './components/dict-container/dict-container.component';
 import { RailConfigurationsComponent } from './containers/dictionaries/sitRailConfigurations';;
 import { NavbarComponent } from './components/navbar/navbar.component'
-
+import { MatSliderModule } from '@angular/material';
+import { MatButtonModule } from '@angular/material';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
     imports: [
         BrowserModule,
         ReactiveFormsModule,
         HttpClientModule,
-        appRoutingModule
+        appRoutingModule,
+        MatSliderModule,
+        MatButtonModule,
+        MatMenuModule,
+        MatIconModule,
+        BrowserAnimationsModule
     ],
     declarations: [
         AppComponent,
