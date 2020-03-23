@@ -1,6 +1,6 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" class="toolbar">
   <mat-toolbar-row>
-    <button mat-raised-button color="primary" [matMenuTriggerFor]="appMenu" *ngIf="currentUser"><mat-icon>menu</mat-icon></button>
+    <button mat-flat-button color="primary" [matMenuTriggerFor]="appMenu" *ngIf="currentUser"><mat-icon>menu</mat-icon></button>
     <mat-menu #appMenu="matMenu">
       <button mat-menu-item class="button-menu" routerLink="/">Home</button>
       <button mat-menu-item class="button-menu" routerLink="/dict">Dict</button>

@@ -1,6 +1,71 @@
-.data-table{
-  display: flex;
-  flex-direction: column;
-  width: 95%;
-  margin: 20px auto;
+
+.grid{
+  //display: flex;
+  //flex-direction: column;
+  width: 100%;
+  margin-top: 5px;
+  //height: 400px;
+}
+
+.toolbar{
+  min-height: 40px;
+  height: 40px;
+  margin-bottom: 2px;
+  //background-color: #63666A;
+}
+.table-header{
+  font-size: 11px;
+  height: 30px;
+  color: black;
+  width: 100%;
+}
+
+.table-row{
+  height: 30px;
+  width: 100%;
+}
+
+.mat-header-cell {
+  //display:flex;
+  //justify-content:flex-end;
+  //font-size: 15px;
+  font-weight: bold;
+  //background-color: #D0D0CE;
+ }
+
+.mat-cell{
+  font-size: 11px;
+  //border-right: 1px solid lightgray;
+  padding-left: 5px;
+  padding-bottom: 5px;
+}
+
+.mat-column-ClientGuid {
+  flex: 0 0 25%;
+  //font-size: 10px;
+  min-width: 260px;
+}
+
+.mat-column-Data {
+  flex: 0 0 25%;
+  //font-size: 10px;
+  max-width: 250px;
+}
+
+// .mat-column-IsActive {
+//   display: flex;
+//   align-items: center;
+// }
+
+.filter{
+  margin-right: 20px;
+  font-size: 12px;
+}
+
+.icon {
+  color: black;
+}
+
+button:focus {
+  outline: none;
 }

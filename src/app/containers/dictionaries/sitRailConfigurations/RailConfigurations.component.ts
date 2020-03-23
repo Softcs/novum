@@ -46,9 +46,12 @@ export class RailConfigurationsComponent extends DictContainerComponent implemen
       //this.dataSource.sort = this.sort;
       // this.sort.direction = 'desc';
   }
-  ngAfterViewInit (){
 
+  applyFilter(event: Event){
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+
   onClick(){
     const rows = this.getRecords('sitRailConfigurationsDS');
 

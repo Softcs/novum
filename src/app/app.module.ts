@@ -14,11 +14,12 @@ import { HomeComponent } from './containers/home';
 import { LoginComponent } from './containers/login';;
 import { DictContainerComponent } from './components/dict-container/dict-container.component';
 import { DataSourceContainerComponent } from './components/data-source-container/data-source-container.component';
-import { RailConfigurationsComponent } from './containers/dictionaries/sitRailConfigurations';;
-import { NavbarComponent } from './components/navbar/navbar.component'
-import { MatSliderModule, MatButtonModule, MatToolbarModule, MatMenuModule, MatIconModule, MatSidenavModule, MatTableModule, MatSortModule, MatInputModule, MatPaginatorModule } from '@angular/material';
+import { RailConfigurationsComponent } from './containers/dictionaries/sitRailConfigurations';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { MatSliderModule, MatButtonModule, MatToolbarModule, MatMenuModule, MatIconModule, MatSidenavModule, MatTableModule, MatSortModule, MatInputModule, MatPaginatorModule, MatCheckboxModule, MatListModule, MatCardModule} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';;
 import { MaterialTestComponent } from './containers/dictionaries/material-test/material-test.component'
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     imports: [
@@ -36,7 +37,11 @@ import { MaterialTestComponent } from './containers/dictionaries/material-test/m
         MatTableModule,
         MatSortModule,
         MatInputModule,
-        MatPaginatorModule
+        MatPaginatorModule,
+        MatCheckboxModule,
+        MatListModule,
+        MatCardModule,
+        FormsModule
     ],
     declarations: [
         AppComponent,

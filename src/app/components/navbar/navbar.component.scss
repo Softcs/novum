@@ -5,7 +5,18 @@
 }
 
 .top-menu{
-  background-color: #63666A;
-  color: white;
-  font-weight: bold;
+  //background-color: #ff8719;// #63666A;
+  color: black;//#63666A;
+  //font-weight: bold;
 }
+
+.toolbar{
+  min-height: 40px;
+  height: 40px;
+}
+
+
+
+button:focus {
+    outline: none;
+  }
