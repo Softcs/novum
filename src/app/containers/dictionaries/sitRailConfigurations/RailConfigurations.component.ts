@@ -29,7 +29,7 @@ import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 })
 export class RailConfigurationsComponent extends DictContainerComponent implements OnInit {
   displayedColumns: string[] = ['RailConfigurationId', 'CompanyId', 'ClientGuid', 'UserId', 'OperationIdent', 'Data','IsActive','Timeout','TransformProcedure','ConvertFunctionForParams'];
-  dataSource = MatTableDataSource;
+  dataSource: MatTableDataSource<any>;
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
@@ -50,7 +50,11 @@ export class RailConfigurationsComponent extends DictContainerComponent implemen
 
   }
   onClick(){
-    this.dataSource = this.getRecords('sitRailConfigurationsDS')
+    const rows = this.getRecords('sitRailConfigurationsDS');
+
+    this.dataSource = new MatTableDataSource(rows);
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
 
   }
 
