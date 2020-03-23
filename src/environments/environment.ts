@@ -4,8 +4,8 @@
 
 export const environment = {
     production: false,
-     apiUrl: 'https://ws.seidoit.pl'
-    //apiUrl: 'https://test.seidoit.pl'
+    // apiUrl: 'https://ws.seidoit.pl'
+    apiUrl: 'https://test.seidoit.pl'
 };
 
 /*

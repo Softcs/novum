@@ -16,8 +16,9 @@ import { DictContainerComponent } from './components/dict-container/dict-contain
 import { DataSourceContainerComponent } from './components/data-source-container/data-source-container.component';
 import { RailConfigurationsComponent } from './containers/dictionaries/sitRailConfigurations';;
 import { NavbarComponent } from './components/navbar/navbar.component'
-import { MatSliderModule, MatButtonModule, MatToolbarModule, MatMenuModule, MatIconModule, MatSidenavModule } from '@angular/material';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSliderModule, MatButtonModule, MatToolbarModule, MatMenuModule, MatIconModule, MatSidenavModule, MatTableModule, MatSortModule, MatInputModule, MatPaginatorModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';;
+import { MaterialTestComponent } from './containers/dictionaries/material-test/material-test.component'
 
 @NgModule({
     imports: [
@@ -31,7 +32,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         MatIconModule,
         BrowserAnimationsModule,
         MatToolbarModule,
-        MatSidenavModule
+        MatSidenavModule,
+        MatTableModule,
+        MatSortModule,
+        MatInputModule,
+        MatPaginatorModule
     ],
     declarations: [
         AppComponent,
@@ -41,6 +46,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         DictContainerComponent,
         DataSourceContainerComponent,
         NavbarComponent
+,
+        MaterialTestComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
