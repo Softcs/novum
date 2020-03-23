@@ -1,13 +1,10 @@
 <div>
-<h2>{{caption}}</h2>
-<p>dict-container works! {{ident}} </p>
-<button (click)="loadData()">Load</button>
+    <h2>{{caption}}</h2>
+    <ng-content>
+
+    </ng-content>
+    <button (click)="loadData()">Load</button>
 
 
-<ul>
-    <li *ngFor="let row of rows">
-            {{row.OperationIdent}}
-    </li>
-</ul>
 
 </div>

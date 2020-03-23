@@ -1,55 +1,63 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { GatewayService } from '@app/_services';
+import { Component, OnInit, Input, Directive, ContentChildren,
+  QueryList, ViewChild, ViewChildren, ElementRef, ContentChild, HostListener, ComponentFactoryResolver } from '@angular/core';
+
+import { GatewayService } from '../../_services/gateway.service';
 import { first } from 'rxjs/operators';
 import { Operation } from '@app/_models';
+import { MatTable } from '@angular/material';
+import { JsonPipe } from '@angular/common';
+
+
 
 @Component({
   selector: 'app-data-source-container',
-  // templateUrl: './data-source-container.component.html',
-  template: '<ng-container></ng-container>',
+  templateUrl: './data-source-container.component.html',
+  // template: '<ng-container></ng-container>',
   styleUrls: ['./data-source-container.component.scss']
 })
+@Directive({
+  selector: 'sitSetDataSource',
+})
+export class sitSetDataSourceDirective {
+  constructor(private el: ElementRef) {
+
+  }
+  @Input() dataSource;
+  @Input("let-context") context;
+}
+
+
+
+@Directive({ selector: 'app-data-source-container' })
 export class DataSourceContainerComponent implements OnInit {
+  @ContentChildren('sitSetDataSource', { descendants:true}) datasSourcesInterface: QueryList<sitSetDataSourceDirective>;
+  @ViewChildren(sitSetDataSourceDirective) dd: QueryList<sitSetDataSourceDirective>;
+
   @Input() ident: string;
-  @Input() dictIdent: string;
-  dictInfo: any;
-  dataSourcesResponse: any;
   dataSource: any;
-  rows: any;
 
   constructor(private gatewayService: GatewayService) { }
-  get records(): any {
-    if (this.rows) {
-      return this.rows;
-    }
+  public rows: any[];
 
-    return [];
-  }
   ngOnInit() {
-    this.loadData();
-  }
-  parseRows() {
-    if (!this.dataSourcesResponse) {
-      this.rows = null;
-    }
-    this.dataSource = this.dataSourcesResponse.filter( item => item.ident === this.ident)[0];
-    this.rows = this.dataSource ? JSON.parse(this.dataSource.rows) : null;
-  }
-  loadData() {
 
-    const oprDictInfo: Operation = this.gatewayService.operationGetDictInfo(this.dictIdent);
-    this.gatewayService.executeOperation(oprDictInfo)
-      .pipe(first())
-      .subscribe(
-        data => {
-          if (data.length === 1) {
-            this.dictInfo = data[0].dictInfo;
-            this.dataSourcesResponse = data[0].dataSourcesResponse;
-            this.parseRows();
-          }
-        },
-        error => {
-          console.log("error", error);
-        });
   }
+  ngAfterContentInit() {
+
+  }
+  ngAfterViewInit() {
+
+  }
+  public setDataSource(dataSource: any) {
+    this.dataSource = dataSource;
+    this.rows = this.dataSource ? JSON.parse(this.dataSource.rows) : [];
+    this.datasSourcesInterface.forEach(element => {
+        console.log("element", element);
+        element.dataSource = this.rows;
+        element.context = this.rows;
+    });
+
+  }
+
 }
+
