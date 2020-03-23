@@ -41,9 +41,9 @@ export class RailConfigurationsComponent extends DictContainerComponent implemen
 
   ngOnInit() {
       super.ngOnInit();
-      //this.dataSource = this.getRecords('sitRailConfigurationsDS')
+      this.dataSource = this.getRecords('sitRailConfigurationsDS')
 
-      this.dataSource.sort = this.sort;
+      //this.dataSource.sort = this.sort;
       // this.sort.direction = 'desc';
   }
   ngAfterViewInit (){
