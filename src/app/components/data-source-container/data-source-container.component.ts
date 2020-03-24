@@ -4,8 +4,9 @@ import { Component, OnInit, Input, Directive, ContentChildren,
 import { GatewayService } from '../../_services/gateway.service';
 import { first } from 'rxjs/operators';
 import { Operation } from '@app/_models';
-import { MatTable } from '@angular/material';
+import { MatTable, MatTableDataSource } from '@angular/material';
 import { JsonPipe } from '@angular/common';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 
 
@@ -20,10 +21,13 @@ import { JsonPipe } from '@angular/common';
 })
 export class sitSetDataSourceDirective {
   constructor(private el: ElementRef) {
-
   }
   @Input() dataSource;
-  @Input("let-context") context;
+  @Input() context;
+}
+
+interface LooseObject {
+  [key: string]: any;
 }
 
 
@@ -35,9 +39,9 @@ export class DataSourceContainerComponent implements OnInit {
 
   @Input() ident: string;
   dataSource: any;
-
+  obj: LooseObject = {};
   constructor(private gatewayService: GatewayService) { }
-  public rows: any[];
+  public rows: MatTableDataSource<any>;
 
   ngOnInit() {
 
@@ -50,12 +54,14 @@ export class DataSourceContainerComponent implements OnInit {
   }
   public setDataSource(dataSource: any) {
     this.dataSource = dataSource;
-    this.rows = this.dataSource ? JSON.parse(this.dataSource.rows) : [];
+    this.rows = new MatTableDataSource(this.dataSource ? JSON.parse(this.dataSource.rows) : []);
     this.datasSourcesInterface.forEach(element => {
-        console.log("element", element);
         element.dataSource = this.rows;
         element.context = this.rows;
+
     });
+  }
+  public deleteData() {
 
   }
 
