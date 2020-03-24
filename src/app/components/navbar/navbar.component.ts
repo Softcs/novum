@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { GatewayService } from '@app/_services';
 import { User } from '@app/_models';
-
+import { UserService } from '@app/_services';
 
 @Component({
   selector: 'navbar',

@@ -13,25 +13,14 @@ import { BasicAuthInterceptor, ErrorInterceptor } from './_helpers';
 import { HomeComponent } from './containers/home';
 import { LoginComponent } from './containers/login';;
 import { DictContainerComponent } from './components/dict-container/dict-container.component';
-<<<<<<< HEAD
-import { DataSourceContainerComponent } from './components/data-source-container/data-source-container.component';
-import { RailConfigurationsComponent } from './containers/dictionaries/sitRailConfigurations';
-import { NavbarComponent } from './components/navbar/navbar.component';
 import { MatSliderModule, MatButtonModule, MatToolbarModule, MatMenuModule, MatIconModule, MatSidenavModule, MatTableModule, MatSortModule, MatInputModule, MatPaginatorModule, MatCheckboxModule, MatListModule, MatCardModule} from '@angular/material';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';;
-import { MaterialTestComponent } from './containers/dictionaries/material-test/material-test.component'
 import { FormsModule } from '@angular/forms';
-=======
 import { DataSourceContainerComponent, sitSetDataSourceDirective } from './components/data-source-container/data-source-container.component';
 import { RailConfigurationsComponent } from './containers/dictionaries/sitRailConfigurations';;
 import { NavbarComponent } from './components/navbar/navbar.component'
-import { MatSliderModule, MatButtonModule, MatToolbarModule, MatMenuModule, MatIconModule, MatSidenavModule,
-        MatTableModule, MatSortModule, MatInputModule, MatPaginatorModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialTestComponent } from './containers/dictionaries/material-test/material-test.component';
 import { testDict } from './containers/dictionaries/testDict';
->>>>>>> dev
-
 @NgModule({
     imports: [
         BrowserModule,

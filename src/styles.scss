@@ -22,8 +22,13 @@ a { cursor: pointer }
 body {
   background-color: #FF8F1C;
   color: #63666A;
+  margin: 0;
 }
 
+.toolbar{
+  max-height: 30px;
+  height: 30px;
+}
 $mat-myapp-primary: (
   50 : #fff2e4,
   100 : #ffddbb,

@@ -1,3 +1,11 @@
+.fill-remaining-space{
+  flex: 1 1 auto;
+}
+
+.toolbar{
+  min-height: 40px;
+  height: 40px;
+}
 .button-menu{
   //background-color: #FF8F1C;
   color: #63666A;
@@ -8,11 +16,6 @@
   //background-color: #ff8719;// #63666A;
   color: black;//#63666A;
   //font-weight: bold;
-}
-
-.toolbar{
-  min-height: 40px;
-  height: 40px;
 }
 
 
