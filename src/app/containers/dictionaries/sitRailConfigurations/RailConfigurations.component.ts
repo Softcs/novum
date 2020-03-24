@@ -3,7 +3,6 @@
 
 import { GatewayService } from '@app/_services';
 import { DictContainerComponent } from '../../../components/dict-container';
-import { DataSourceContainerComponent } from '../../../components/data-source-container';
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 
 // export interface PeriodicElement {
@@ -41,7 +40,7 @@ export class RailConfigurationsComponent extends DictContainerComponent implemen
 
   ngOnInit() {
       super.ngOnInit();
-      this.dataSource = this.getRecords('sitRailConfigurationsDS')
+      this.dataSource = this.getRows('sitRailConfigurationsDS')
 
       //this.dataSource.sort = this.sort;
       // this.sort.direction = 'desc';
@@ -53,7 +52,7 @@ export class RailConfigurationsComponent extends DictContainerComponent implemen
   }
 
   onClick(){
-    const rows = this.getRecords('sitRailConfigurationsDS');
+    const rows = this.getRows('sitRailConfigurationsDS');
 
     this.dataSource = new MatTableDataSource(rows);
     this.dataSource.sort = this.sort;

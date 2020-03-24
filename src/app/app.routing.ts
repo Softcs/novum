@@ -4,6 +4,7 @@ import { HomeComponent } from './containers/home';
 import { LoginComponent } from './containers/login';
 import { RailConfigurationsComponent } from './containers/dictionaries/sitRailConfigurations';
 import { MaterialTestComponent } from './containers/dictionaries/material-test';
+import { testDict } from './containers/dictionaries/testDict';
 import { AuthGuard } from './_helpers';
 
 const routes: Routes = [
@@ -11,6 +12,8 @@ const routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'dict', component: RailConfigurationsComponent, canActivate: [AuthGuard]},
     { path: 'material-test', component: MaterialTestComponent, canActivate: [AuthGuard]},
+    { path: 'test', component: testDict, canActivate: [AuthGuard] },
+
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
 ];
