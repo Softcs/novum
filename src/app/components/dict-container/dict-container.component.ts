@@ -31,6 +31,7 @@ export class DictContainerComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
+          console.log("DATA", data);
           if (data.length === 1) {
             this.dictInfo = data[0].dictInfo;
             this.dataSourcesResponse = data[0].dataSourcesResponse;
@@ -38,7 +39,7 @@ export class DictContainerComponent implements OnInit {
           }
         },
         error => {
-          console.log("error", error);
+          console.error("error", error);
         });
   }
 
@@ -47,7 +48,7 @@ export class DictContainerComponent implements OnInit {
   }
   public getDataSource(ident: string): any {
     if (!this.dataSourcesResponse) {
-      console.error(`Nie znaleziono zrodla: [${ident}]`);
+      console.error(`Nie znaleziono źrodla danych: [${ident}]`);
       return;
     }
     const dataSource = this.dataSourcesResponse.filter(item => item.ident === ident)[0];
