@@ -9,13 +9,6 @@ import { JsonPipe } from '@angular/common';
 import { Observable, BehaviorSubject } from 'rxjs';
 
 
-
-@Component({
-  selector: 'app-data-source-container',
-  templateUrl: './data-source-container.component.html',
-  // template: '<ng-container></ng-container>',
-  styleUrls: ['./data-source-container.component.scss']
-})
 @Directive({
   selector: 'sitSetDataSource',
 })
@@ -31,7 +24,12 @@ interface LooseObject {
 }
 
 
-
+@Component({
+  selector: 'app-data-source-container',
+  templateUrl: './data-source-container.component.html',
+  // template: '<ng-container></ng-container>',
+  styleUrls: ['./data-source-container.component.scss']
+})
 @Directive({ selector: 'app-data-source-container' })
 export class DataSourceContainerComponent implements OnInit {
   @ContentChildren('sitSetDataSource', { descendants:true}) datasSourcesInterface: QueryList<sitSetDataSourceDirective>;
@@ -40,6 +38,7 @@ export class DataSourceContainerComponent implements OnInit {
 
   @Input() ident: string;
   dataSource: any;
+
   obj: LooseObject = {};
   constructor(private gatewayService: GatewayService) { }
   public rows: MatTableDataSource<any>;
@@ -55,7 +54,7 @@ export class DataSourceContainerComponent implements OnInit {
   }
   public setDataSource(dataSource: any) {
     this.dataSource = dataSource;
-    this.rows = new MatTableDataSource(this.dataSource ? JSON.parse(this.dataSource.rows) : []);
+    this.rows = new MatTableDataSource(this.dataSource && this.dataSource.rows ? JSON.parse(this.dataSource.rows) : []);
     this.rows.sort = this.sort;
     this.rows.paginator = this.paginator;
     this.datasSourcesInterface.forEach(element => {
@@ -65,6 +64,9 @@ export class DataSourceContainerComponent implements OnInit {
   }
   public deleteData() {
 
+  }
+  get errors() {
+    return this.dataSource != null ? this.dataSource.errors : null;
   }
 
 }
