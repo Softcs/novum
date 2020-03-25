@@ -92,6 +92,9 @@ mat-footer-cell{
   font-weight: bold;
 }
 
+.mat-row:nth-child(odd){
+  background-color:$background-color;
+  }
 
 button:focus {
   outline: none;
