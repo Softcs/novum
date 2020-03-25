@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sitRozrachunkiInsertGT.component.scss']
 })
 export class SitRozrachunkiInsertGTComponent implements OnInit {
-  displayedColumns: string[] = ['adr_Nazwa'];
+  displayedColumns: string[] = ['adr_Nazwa','nzf_NumerPelny','nzf_Data','nzf_TerminPlatnosci','DniSpoznienia','naleznosc','zobowiazanie'];
 
   constructor() { }
 

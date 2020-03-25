@@ -5,13 +5,52 @@
 
       <mat-table matSort #sitSetDataSource class="mat-elevation-z8">
 
-      <ng-container matColumnDef="adr_Nazwa">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"> Kontrahent </th>
-      <td mat-cell *matCellDef="let element" class="table-row"> {{element.adr_Nazwa}} </td>
-      </ng-container>
+        <ng-container matColumnDef="adr_Nazwa">
+          <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"> Kontrahent </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.adr_Nazwa}} </mat-cell>
+          <mat-footer-cell *matFooterCellDef> Suma </mat-footer-cell>
+        </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true" class="table-header"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="table-row"></tr>
+        <ng-container matColumnDef="nzf_NumerPelny">
+          <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"> Rozrachunek </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.nzf_NumerPelny}} </mat-cell>
+          <mat-footer-cell *matFooterCellDef>  </mat-footer-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="nzf_Data">
+          <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"> Data </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.nzf_Data  | date:'yyyy-MM-dd'}} </mat-cell>
+          <mat-footer-cell *matFooterCellDef>  </mat-footer-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="nzf_TerminPlatnosci">
+          <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"> Termin płatności </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.nzf_TerminPlatnosci  | date:'yyyy-MM-dd'}} </mat-cell>
+          <mat-footer-cell *matFooterCellDef>  </mat-footer-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="DniSpoznienia">
+          <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"> Dni </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.DniSpoznienia}} </mat-cell>
+          <mat-footer-cell *matFooterCellDef>  </mat-footer-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="naleznosc">
+          <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"> Należność w PLN </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.naleznosc | number : "1.2-2" }} </mat-cell>
+          <mat-footer-cell *matFooterCellDef>  </mat-footer-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="zobowiazanie">
+          <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"> Zobowiązanie w PLN </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.zobowiazanie |  number : "1.2-2" }} </mat-cell>
+          <mat-footer-cell *matFooterCellDef>  </mat-footer-cell>
+        </ng-container>
+
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;" ></mat-row>
+        <mat-footer-row *matFooterRowDef="displayedColumns"></mat-footer-row>
 
     </mat-table>
   <mat-paginator [pageSizeOptions]="[20, 50, 100]" showFirstLastButtons></mat-paginator>
@@ -20,4 +59,3 @@
 </app-dict-container>
 
 </div>
-<div>aaa</div>
