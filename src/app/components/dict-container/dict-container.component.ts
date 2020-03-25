@@ -46,6 +46,10 @@ export class DictContainerComponent implements OnInit {
     return this.dictInfo ? this.dictInfo.caption : null;
   }
   public getDataSource(ident: string): any {
+    if (!this.dataSourcesResponse) {
+      console.error(`Nie znaleziono zrodla: [${ident}]`);
+      return;
+    }
     const dataSource = this.dataSourcesResponse.filter(item => item.ident === ident)[0];
     return dataSource;
   }
