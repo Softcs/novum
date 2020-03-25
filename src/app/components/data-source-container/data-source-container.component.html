@@ -1,12 +1,12 @@
-<ng-template ngIf="errors">
+<ng-container *ngIf="errors">
     <h4>Błędy:</h4>
     <ul>
         <li *ngFor="let error of errors">
             {{error.message}}
         </li>
     </ul>
+</ng-container>
 
-</ng-template>
 <ng-content>
 
 </ng-content>
