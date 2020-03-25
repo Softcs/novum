@@ -6,6 +6,8 @@ import { RailConfigurationsComponent } from './containers/dictionaries/sitRailCo
 import { MaterialTestComponent } from './containers/dictionaries/material-test';
 import { testDict } from './containers/dictionaries/testDict';
 import { AuthGuard } from './_helpers';
+import { SideMenuComponent } from './components/side-menu'
+import { SitRozrachunkiInsertGTComponent } from './containers/dictionaries/sitRozrachunkiInsertGT/sitRozrachunkiInsertGT.component';
 
 const routes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -13,6 +15,7 @@ const routes: Routes = [
     { path: 'dict', component: RailConfigurationsComponent, canActivate: [AuthGuard]},
     { path: 'material-test', component: MaterialTestComponent, canActivate: [AuthGuard]},
     { path: 'test', component: testDict, canActivate: [AuthGuard] },
+    { path: 'rozrachunki', component: SitRozrachunkiInsertGTComponent, canActivate: [AuthGuard] },
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }

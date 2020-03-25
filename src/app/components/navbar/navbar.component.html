@@ -1,43 +1,10 @@
-<mat-toolbar color="primary" class="toolbar">
+<mat-toolbar color="primary" class="toolbar" *ngIf="currentUser">
   <mat-toolbar-row  class="toolbar">
-    <button mat-flat-button color="primary" [matMenuTriggerFor]="appMenu" *ngIf="currentUser"><mat-icon>menu</mat-icon></button>
-
-    <mat-menu #appMenu="matMenu">
-      <button mat-menu-item class="button-menu" routerLink="/">Home</button>
-
-      <button mat-menu-item [matMenuTriggerFor]="dict">Słowniki</button>
-      <mat-menu #dict="matMenu">
-        <button mat-menu-item class="button-menu" routerLink="/dict">Konfiguracja Rail</button>
-        <button mat-menu-item class="button-menu" routerLink="/test">Test datasource</button>
-        <button mat-menu-item class="button-menu" routerLink="/material-test">Material test</button>
-      </mat-menu>
-
-      <button mat-menu-item class="button-menu" (click)="logout()">Logout</button>
-    </mat-menu>
     <span class="fill-remaining-space"></span>
-    <span *ngIf="currentUser">Login:{{currentUser}}</span>
+    <span>{{ currentUser.username }}</span>
     <a mat-button (click)="logout()" *ngIf="currentUser"><mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon">power_settings_new</mat-icon></a>
 
-    <!-- <button mat-icon-button [matMenuTriggerFor]="appMenu" *ngIf="currentUser">
-    <mat-icon>menu</mat-icon>
-  </button> -->
-  <!-- <h1>NOVUM</h1> -->
-  <!-- <span class="menu-spacer"></span>
-  <div *ngIf="currentUser">
-    <a class="top-menu" mat-button [routerLink]="'/'">Home</a>
-    <a class="top-menu" mat-button [routerLink]="'/dict'">Słownik</a>
-    <a class="top-menu" mat-button [routerLink]="'/material-test'">Material test</a>
-    <a class="top-menu" mat-button (click)="logout()">Logout</a>
-  </div> -->
   </mat-toolbar-row>
 </mat-toolbar>
 
 
-
-<!-- <nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
-  <div class="navbar-nav">
-      <a class="nav-item nav-link" routerLink="/">Home</a>
-      <a class="nav-item nav-link" (click)="logout()">Logout</a>
-      <a class="nav-item nav-link" routerLink="/dict">Dict</a>
-  </div>
-</nav> -->

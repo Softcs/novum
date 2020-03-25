@@ -21,6 +21,10 @@ import { NavbarComponent } from './components/navbar/navbar.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialTestComponent } from './containers/dictionaries/material-test/material-test.component';
 import { testDict } from './containers/dictionaries/testDict';
+import { SideMenuComponent } from './components/side-menu/side-menu.component';
+import { LayoutModule } from '@angular/cdk/layout';;
+import { SitRozrachunkiInsertGTComponent } from './containers/dictionaries/sitRozrachunkiInsertGT/sitRozrachunkiInsertGT.component'
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -41,7 +45,8 @@ import { testDict } from './containers/dictionaries/testDict';
         MatCheckboxModule,
         MatListModule,
         MatCardModule,
-        FormsModule
+        FormsModule,
+        LayoutModule
     ],
     declarations: [
         AppComponent,
@@ -53,8 +58,10 @@ import { testDict } from './containers/dictionaries/testDict';
         testDict,
         NavbarComponent,
         MaterialTestComponent,
-        //
-        sitSetDataSourceDirective
+        sitSetDataSourceDirective,
+        SideMenuComponent
+,
+        SitRozrachunkiInsertGTComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },

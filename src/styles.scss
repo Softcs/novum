@@ -5,10 +5,20 @@
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
 
+.sidenav {
+  padding: 20px;
+}
+
+.toolbar{
+  min-height: 40px;
+  height: 40px;
+}
+
 .container{
   //display: flex;
   //flex-direction: column;
   width: 100%;
+  height: 100%;
   max-width: 1900px;
   padding-right: 5px;
   padding-left: 5px;
@@ -17,33 +27,55 @@
   //min-width: 1200px;
 }
 
+.main-content {
+  width: 100%;
+  min-height: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+}
+
 a { cursor: pointer }
 
-body {
-  background-color: #FF8F1C;
-  color: #63666A;
-  margin: 0;
+html,body {
+  height: 100%;
 }
 
-.toolbar{
-  max-height: 30px;
-  height: 30px;
+body {
+  background-color: #e1e1e1;
+  color: #63666A;
+  margin: 0;
+  min-height: 100%;
 }
+
+.fill-remaining-space{
+  flex: 1 1 auto;
+}
+
+.table-header{
+  background-color: #fee7c5;
+}
+
+.table-row{
+  background-color: white;
+}
+
 $mat-myapp-primary: (
-  50 : #fff2e4,
-  100 : #ffddbb,
-  200 : #ffc78e,
-  300 : #ccbeaf,
-  400 : #ffa03e,
-  500 : #ff8f1c,
-  600 : #ff8719,
-  700 : #ff7c14,
-  800 : #ff7211,
-  900 : #ff6009,
+  50 : #fff6e8,
+  100 : #fee7c5,
+  200 : #fed89f,
+  300 : #fec878,
+  400 : #fdbc5b,
+  500 : #fdb03e,
+  600 : #fda938,
+  700 : #fca030,
+  800 : #fc9728,
+  900 : #fc871b,
   A100 : #ffffff,
-  A200 : #fff8f5,
-  A400 : #ffd5c2,
-  A700 : #ffc3a8,
+  A200 : #fffdfc,
+  A400 : #ffe1c9,
+  A700 : #ffd3af,
   contrast: (
       50 : #000000,
       100 : #000000,
@@ -58,7 +90,38 @@ $mat-myapp-primary: (
       A100 : #000000,
       A200 : #000000,
       A400 : #000000,
-      A700 : #000000
+      A700 : #000000,
+//seido
+  // 50 : #fff2e4,
+  // 100 : #ffddbb,
+  // 200 : #ffc78e,
+  // 300 : #ccbeaf,
+  // 400 : #ffa03e,
+  // 500 : #ff8f1c,
+  // 600 : #ff8719,
+  // 700 : #ff7c14,
+  // 800 : #ff7211,
+  // 900 : #ff6009,
+  // A100 : #ffffff,
+  // A200 : #fff8f5,
+  // A400 : #ffd5c2,
+  // A700 : #ffc3a8,
+  // contrast: (
+  //     50 : #000000,
+  //     100 : #000000,
+  //     200 : #000000,
+  //     300 : #000000,
+  //     400 : #000000,
+  //     500 : #000000,
+  //     600 : #000000,
+  //     700 : #000000,
+  //     800 : #000000,
+  //     900 : #000000,
+  //     A100 : #000000,
+  //     A200 : #000000,
+  //     A400 : #000000,
+  //     A700 : #000000
+
   // 50 : #eceded,
   // 100 : #d0d1d2,
   // 200 : #b1b3b5,
@@ -92,35 +155,64 @@ $mat-myapp-primary: (
 );
 
 $mat-myapp-accent: (
-  50 : #f9f9f9,
-  100 : #f1f1f0,
-  200 : #e8e8e7,
-  300 : #dededd,
-  400 : #d7d7d5,
-  500 : #d0d0ce,
-  600 : #cbcbc9,
-  700 : #c4c4c2,
-  800 : #bebebc,
-  900 : #b3b3b0,
-  A100 : #ffffff,
-  A200 : #ffffff,
-  A400 : #ffffff,
-  A700 : #ffffea,
+  50 : #e1e1e1,
+  100 : #b5b5b5,
+  200 : #848484,
+  300 : #535353,
+  400 : #2e2e2e,
+  500 : #090909,
+  600 : #080808,
+  700 : #060606,
+  800 : #050505,
+  900 : #020202,
+  A100 : #a6a6a6,
+  A200 : #8c8c8c,
+  A400 : #737373,
+  A700 : #666666,
   contrast: (
       50 : #000000,
       100 : #000000,
       200 : #000000,
-      300 : #000000,
-      400 : #000000,
-      500 : #000000,
-      600 : #000000,
-      700 : #000000,
-      800 : #000000,
-      900 : #000000,
+      300 : #ffffff,
+      400 : #ffffff,
+      500 : #ffffff,
+      600 : #ffffff,
+      700 : #ffffff,
+      800 : #ffffff,
+      900 : #ffffff,
       A100 : #000000,
       A200 : #000000,
-      A400 : #000000,
-      A700 : #000000,
+      A400 : #ffffff,
+      A700 : #ffffff,
+  // 50 : #f9f9f9,
+  // 100 : #f1f1f0,
+  // 200 : #e8e8e7,
+  // 300 : #dededd,
+  // 400 : #d7d7d5,
+  // 500 : #d0d0ce,
+  // 600 : #cbcbc9,
+  // 700 : #c4c4c2,
+  // 800 : #bebebc,
+  // 900 : #b3b3b0,
+  // A100 : #ffffff,
+  // A200 : #ffffff,
+  // A400 : #ffffff,
+  // A700 : #ffffea,
+  // contrast: (
+  //     50 : #000000,
+  //     100 : #000000,
+  //     200 : #000000,
+  //     300 : #000000,
+  //     400 : #000000,
+  //     500 : #000000,
+  //     600 : #000000,
+  //     700 : #000000,
+  //     800 : #000000,
+  //     900 : #000000,
+  //     A100 : #000000,
+  //     A200 : #000000,
+  //     A400 : #000000,
+  //     A700 : #000000,
   )
 );
 
