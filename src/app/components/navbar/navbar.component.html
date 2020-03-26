@@ -1,8 +1,13 @@
 <div style="display: flex; flex-direction: row; width: 100%">
   <span class="fill-space"></span>
-  <div style="display: flex; flex-direction: row; ">
+  <div style="display: flex; flex-direction: row; background-color: #659ee5; margin: 2px 2px 2px 0px; padding: 0px 20px 0px 20px; justify-content: center;">
     <span style="font-size: 14px; padding-right: 5px;"><B>Login:</B> {{ currentUser.username }}</span>
-    <span class="fill-space"></span>
-    <a mat-button (click)="logout()" *ngIf="currentUser"><mat-icon aria-hidden="false" aria-label="Example user verified icon">power_settings_new</mat-icon></a>
+
+    <!-- 400 : #83b3eb,
+    500 : #6da6e8,
+    600 : #659ee5, -->
+  </div>
+  <div style="display: flex; flex-direction: row; background-color: #659ee5; margin: 2px 2px 2px 0px; justify-content: center;">
+      <a mat-button (click)="logout()" *ngIf="currentUser"><mat-icon aria-hidden="false" aria-label="Example user verified icon">power_settings_new</mat-icon></a>
   </div>
 </div>
