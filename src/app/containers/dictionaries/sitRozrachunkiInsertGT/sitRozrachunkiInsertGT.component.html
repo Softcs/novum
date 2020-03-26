@@ -1,9 +1,11 @@
 <div class="data-table">
   <app-dict-container ident="sitRozrachunkiInsertGT">
     <app-data-source-container ident="sitRozrachunkiInsertGT">
-      <div class="data-table">
-        <mat-paginator [pageSizeOptions]="[20, 50, 100]" showFirstLastButtons ></mat-paginator>
+      <mat-form-field>
 
+        <input matInput (keyup)="applyFilter($event,this)" placeholder="Filtr">
+      </mat-form-field>
+      <div class="data-table">
         <mat-table matSort #sitSetDataSource class="mat-elevation-z1">
           <ng-container matColumnDef="adr_Nazwa">
             <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"> Kontrahent </mat-header-cell>
@@ -52,6 +54,8 @@
           <mat-row *matRowDef="let row; columns: displayedColumns;" ></mat-row>
           <mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></mat-footer-row>
         </mat-table>
+        <mat-paginator [pageSizeOptions]="[20, 50, 100]" showFirstLastButtons ></mat-paginator>
+
         </div>
     </app-data-source-container>
   </app-dict-container>
