@@ -3,7 +3,7 @@
   <app-data-source-container ident="sitRailConfigurationsDS">
     <div class="data-table">
 
-        <mat-table  matSort class="mat-elevation-z8">
+        <mat-table  matSort #sitSetDataSource class="mat-elevation-z8">
           <ng-container matColumnDef="OperationIdent">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> OperationIdent </th>
             <td mat-cell *matCellDef="let element"> {{element.OperationIdent}} </td>

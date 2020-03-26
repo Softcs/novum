@@ -3,7 +3,7 @@
     <app-data-source-container ident="sitRailConfigurationsDS">
       <mat-form-field>
 
-        <input matInput #sitSetDataSource (keyup)="applyFilter($event,this)" placeholder="Filtr">
+        <input matInput (keyup)="applyFilter($event,this)" placeholder="Filtr">
       </mat-form-field>
 
       <div class="data-table">
