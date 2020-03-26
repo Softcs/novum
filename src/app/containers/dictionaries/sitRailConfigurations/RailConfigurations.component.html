@@ -12,67 +12,67 @@
         </mat-toolbar-row>
       </mat-toolbar> -->
 
-      <mat-table matSort #sitSetDataSource class="mat-elevation-z8">
+          <mat-table matSort #sitSetDataSource class="mat-elevation-z1">
 
-      <ng-container matColumnDef="RailConfigurationId">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Id </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.RailConfigurationId}} </mat-cell>
-      </ng-container>
+          <ng-container matColumnDef="RailConfigurationId">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Id </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.RailConfigurationId}} </mat-cell>
+          </ng-container>
 
-      <ng-container matColumnDef="CompanyId" >
-      <mat-header-cell *matHeaderCellDef mat-sort-header>  CompanyId </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.CompanyId}} </mat-cell>
-      </ng-container>
+          <ng-container matColumnDef="CompanyId" >
+          <mat-header-cell *matHeaderCellDef mat-sort-header>  CompanyId </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.CompanyId}} </mat-cell>
+          </ng-container>
 
-      <ng-container matColumnDef="ClientGuid">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> ClientGuid </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.ClientGuid}} </mat-cell>
-      </ng-container>
+          <ng-container matColumnDef="ClientGuid">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> ClientGuid </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.ClientGuid}} </mat-cell>
+          </ng-container>
 
-      <ng-container matColumnDef="UserId">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> UserId </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.UserId}} </mat-cell>
-      </ng-container>
+          <ng-container matColumnDef="UserId">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> UserId </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.UserId}} </mat-cell>
+          </ng-container>
 
-      <ng-container matColumnDef="OperationIdent">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> OperationIdent </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.OperationIdent}} </mat-cell>
-      </ng-container>
+          <ng-container matColumnDef="OperationIdent">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> OperationIdent </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.OperationIdent}} </mat-cell>
+          </ng-container>
 
-      <ng-container matColumnDef="Data">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Data </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.Data}} </mat-cell>
-      </ng-container>
+          <ng-container matColumnDef="Data">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Data </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.Data}} </mat-cell>
+          </ng-container>
 
-      <ng-container matColumnDef="IsActive">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> IsActive </mat-header-cell>
-      <mat-cell *matCellDef="let element">
-        <mat-checkbox [(ngModel)]="element.IsActive" disabled="true"></mat-checkbox>
-      </mat-cell>
-      </ng-container>
+          <ng-container matColumnDef="IsActive">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> IsActive </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <mat-checkbox [(ngModel)]="element.IsActive" disabled="true"></mat-checkbox>
+          </mat-cell>
+          </ng-container>
 
-      <ng-container matColumnDef="Timeout">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Timeout </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.Timeout}} </mat-cell>
-      </ng-container>
+          <ng-container matColumnDef="Timeout">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> Timeout </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.Timeout}} </mat-cell>
+          </ng-container>
 
-      <ng-container matColumnDef="TransformProcedure">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> TransformProcedure </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.TransformProcedure}} </mat-cell>
-      </ng-container>
+          <ng-container matColumnDef="TransformProcedure">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> TransformProcedure </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.TransformProcedure}} </mat-cell>
+          </ng-container>
 
-      <ng-container matColumnDef="ConvertFunctionForParams">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> ConvertFunctionForParams </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.ConvertFunctionForParams}} </mat-cell>
-      </ng-container>
+          <ng-container matColumnDef="ConvertFunctionForParams">
+          <mat-header-cell *matHeaderCellDef mat-sort-header> ConvertFunctionForParams </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.ConvertFunctionForParams}} </mat-cell>
+          </ng-container>
 
-      <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+          <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 
-    </mat-table>
-  <mat-paginator [pageSizeOptions]="[20, 50, 100]" showFirstLastButtons></mat-paginator>
-</div>
-</app-data-source-container>
-</app-dict-container>
+        </mat-table>
 
+        <mat-paginator [pageSizeOptions]="[20, 50, 100]" showFirstLastButtons ></mat-paginator>
+      </div>
+    </app-data-source-container>
+  </app-dict-container>
 </div>

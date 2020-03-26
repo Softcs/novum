@@ -1,10 +1,8 @@
-<mat-toolbar color="primary" class="toolbar" *ngIf="currentUser">
-  <mat-toolbar-row  class="toolbar">
-    <span class="fill-remaining-space"></span>
-    <span>{{ currentUser.username }}</span>
-    <a mat-button (click)="logout()" *ngIf="currentUser"><mat-icon class="example-icon" aria-hidden="false" aria-label="Example user verified icon">power_settings_new</mat-icon></a>
-
-  </mat-toolbar-row>
-</mat-toolbar>
-
-
+<div style="display: flex; flex-direction: row; width: 100%">
+  <span class="fill-space"></span>
+  <div style="display: flex; flex-direction: row; ">
+    <span style="font-size: 14px; padding-right: 5px;"><B>Login:</B> {{ currentUser.username }}</span>
+    <span class="fill-space"></span>
+    <a mat-button (click)="logout()" *ngIf="currentUser"><mat-icon aria-hidden="false" aria-label="Example user verified icon">power_settings_new</mat-icon></a>
+  </div>
+</div>

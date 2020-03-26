@@ -1,20 +1,9 @@
-
-.button-menu{
-  //background-color: #FF8F1C;
-  color: #63666A;
-  font-weight: normal;
-}
-
-.top-menu{
-  //background-color: #ff8719;// #63666A;
-  color: black;//#63666A;
-  //font-weight: bold;
-}
-
-
-
 button:focus {
     outline: none;
   }
 
+
+  .fill-space{
+    flex: 1 1 auto;
+  }
 
