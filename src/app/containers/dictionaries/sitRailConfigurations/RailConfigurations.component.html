@@ -1,8 +1,12 @@
 ﻿<div class="data-table">
   <app-dict-container ident="sitRailConfigurations">
     <app-data-source-container ident="sitRailConfigurationsDS">
-      <div class="data-table">
+      <mat-form-field>
 
+        <input matInput #sitSetDataSource (keyup)="applyFilter($event,this)" placeholder="Filtr">
+      </mat-form-field>
+
+      <div class="data-table">
       <!-- <mat-toolbar class="toolbar">
         <mat-toolbar-row>
           <mat-form-field class="filter">

@@ -1,10 +1,11 @@
-﻿import { Component, OnInit, ViewChild } from '@angular/core';
+﻿import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 
 import { GatewayService } from '@app/_services';
 import { DictContainerComponent } from '../../../components/dict-container';
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
-
+import * as $ from 'jquery';
+import { sitSetDataSourceDirective, DataSourceContainerComponent } from '@app/components/data-source-container';
 
 @Component({
     templateUrl: 'RailConfigurations.component.html',
@@ -15,6 +16,7 @@ export class RailConfigurationsComponent implements OnInit {
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  @ViewChild(DataSourceContainerComponent, { static: true }) dataSourceContainer: DataSourceContainerComponent;
 
   constructor(gatewayService: GatewayService) {
       // super(gatewayService);
@@ -29,9 +31,9 @@ export class RailConfigurationsComponent implements OnInit {
       // this.sort.direction = 'desc';
   }
 
-  applyFilter(event: Event){
-    // const filterValue = (event.target as HTMLInputElement).value;
-    // this.dataSource.filter = filterValue.trim().toLowerCase();
+  applyFilter(event: Event,obj:any){
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSourceContainer.rows.filter = filterValue.trim().toLowerCase();
   }
 
   onClick(){
