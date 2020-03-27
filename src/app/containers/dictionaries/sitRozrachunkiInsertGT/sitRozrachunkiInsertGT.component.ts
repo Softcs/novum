@@ -23,8 +23,10 @@ export class SitRozrachunkiInsertGTComponent implements OnInit {
   applyFilter(event: Event,obj:any){
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSourceContainer.rows.filter = filterValue.trim().toLowerCase();
+    console.log(this.getSumNaleznosc());
   }
   getSumNaleznosc(){
-    return this.dataSourceContainer.rows.map(t => t.naleznosc).reduce((acc, value) => acc + value, 0);
+    //console.log("this.dataSourceContainer.rows", this.dataSourceContainer.rows)    ;
+    return this.dataSourceContainer.rows.data.reduce((summ, v) => summ += v.naleznosc == null ? 0 : parseInt(v.naleznosc), 0) ;
   }
 }
