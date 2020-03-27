@@ -1,3 +1,5 @@
+import { map } from 'rxjs/operators';
+import { element } from 'protractor';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { sitSetDataSourceDirective, DataSourceContainerComponent } from '@app/components/data-source-container';
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
@@ -9,6 +11,7 @@ import * as $ from 'jquery';
 })
 export class SitRozrachunkiInsertGTComponent implements OnInit {
   displayedColumns: string[] = ['adr_Nazwa','nzf_NumerPelny','nzf_Data','nzf_TerminPlatnosci','DniSpoznienia','naleznosc','zobowiazanie'];
+  SumNaleznosc: number;
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
@@ -20,5 +23,8 @@ export class SitRozrachunkiInsertGTComponent implements OnInit {
   applyFilter(event: Event,obj:any){
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSourceContainer.rows.filter = filterValue.trim().toLowerCase();
+  }
+  getSumNaleznosc(){
+    return this.dataSourceContainer.rows.map(t => t.naleznosc).reduce((acc, value) => acc + value, 0);
   }
 }
