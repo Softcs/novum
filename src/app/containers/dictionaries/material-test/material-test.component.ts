@@ -43,4 +43,10 @@ export class MaterialTestComponent implements OnInit {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+
+  getSumWeight(){
+    return this.dataSource.data.reduce((summ,curr) => summ + curr.weight,0);
+  }
+
+
 }

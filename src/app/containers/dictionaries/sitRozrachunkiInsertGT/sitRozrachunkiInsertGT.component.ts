@@ -11,7 +11,7 @@ import * as $ from 'jquery';
 })
 export class SitRozrachunkiInsertGTComponent implements OnInit {
   displayedColumns: string[] = ['adr_Nazwa','nzf_NumerPelny','nzf_Data','nzf_TerminPlatnosci','DniSpoznienia','naleznosc','zobowiazanie'];
-  SumNaleznosc: number;
+
 
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
@@ -23,8 +23,10 @@ export class SitRozrachunkiInsertGTComponent implements OnInit {
   applyFilter(event: Event,obj:any){
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSourceContainer.rows.filter = filterValue.trim().toLowerCase();
+
   }
   getSumNaleznosc(){
-    return this.dataSourceContainer.rows.map(t => t.naleznosc).reduce((acc, value) => acc + value, 0);
+    return this.dataSourceContainer.rows.data.reduce((summ, curr) => summ + curr.naleznosc,0);
   }
+
 }

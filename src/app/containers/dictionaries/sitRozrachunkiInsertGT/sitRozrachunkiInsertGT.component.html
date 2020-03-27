@@ -40,7 +40,7 @@
           <ng-container matColumnDef="naleznosc">
             <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"> Należność w PLN </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.naleznosc | number : "1.2-2" }} </mat-cell>
-            <mat-footer-cell *matFooterCellDef>  </mat-footer-cell>
+            <mat-footer-cell *matFooterCellDef>{{getSumNaleznosc() | number : "1.2-2"}}</mat-footer-cell>
           </ng-container>
 
           <ng-container matColumnDef="zobowiazanie">
