@@ -46,7 +46,7 @@
           <ng-container matColumnDef="zobowiazanie">
             <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"> Zobowiązanie w PLN </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.zobowiazanie |  number : "1.2-2" }} </mat-cell>
-            <mat-footer-cell *matFooterCellDef>  </mat-footer-cell>
+            <mat-footer-cell *matFooterCellDef>{{getSumZobowiazanie() | number : "1.2-2"}}</mat-footer-cell>
           </ng-container>
 
 
