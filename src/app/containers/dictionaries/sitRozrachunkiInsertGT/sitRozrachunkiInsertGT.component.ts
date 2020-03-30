@@ -1,9 +1,10 @@
 import { map } from 'rxjs/operators';
 import { element } from 'protractor';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { sitSetDataSourceDirective, DataSourceContainerComponent } from '@app/components/data-source-container';
 import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 import * as $ from 'jquery';
+import * as XLSX from 'xlsx';
 @Component({
   selector: 'sitRozrachunkiInsertGT',
   templateUrl: './sitRozrachunkiInsertGT.component.html',
@@ -16,6 +17,8 @@ export class SitRozrachunkiInsertGTComponent implements OnInit {
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(DataSourceContainerComponent, { static: true }) dataSourceContainer: DataSourceContainerComponent;
+  @ViewChild('TABLE', {static: true}) table: ElementRef;
+
   constructor() { }
 
   ngOnInit() {
@@ -33,5 +36,14 @@ export class SitRozrachunkiInsertGTComponent implements OnInit {
   getSumZobowiazanie(){
     return this.dataSourceContainer.rows.data.reduce((summ, v) => summ += v.zobowiazanie == null ? 0 : parseInt(v.zobowiazanie), 0) ;
   }
+  ExportTOExcel()
+  {
+    const ws: XLSX.WorkSheet=XLSX.utils.table_to_sheet(this.table.nativeElement);
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
 
+    /* save to file */
+    XLSX.writeFile(wb, 'SheetJS.xlsx');
+
+  }
 }

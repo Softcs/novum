@@ -1,5 +1,6 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 import {MatTableDataSource, MatSort, MatPaginator} from '@angular/material';
+import * as XLSX from 'xlsx';
 
 export interface PeriodicElement {
   name: string;
@@ -29,8 +30,10 @@ export class MaterialTestComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
+
   @ViewChild(MatSort, {static: true}) sort: MatSort;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  @ViewChild('TABLE', {static: true}) table: ElementRef;
 
   constructor() { }
 
@@ -46,6 +49,17 @@ export class MaterialTestComponent implements OnInit {
 
   getSumWeight(){
     return this.dataSource.data.reduce((summ,curr) => summ + curr.weight,0);
+  }
+
+  ExportTOExcel()
+  {
+    const ws: XLSX.WorkSheet=XLSX.utils.table_to_sheet(this.table.nativeElement);
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+    /* save to file */
+    XLSX.writeFile(wb, 'SheetJS.xlsx');
+
   }
 
 

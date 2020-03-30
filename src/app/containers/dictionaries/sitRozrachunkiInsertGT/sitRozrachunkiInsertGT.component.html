@@ -1,62 +1,65 @@
-<div class="data-table">
-  <app-dict-container ident="sitRozrachunkiInsertGT">
-    <app-data-source-container ident="sitRozrachunkiInsertGT">
-      <mat-form-field>
+<div class="content">
+<mat-form-field>
+  <input matInput (keyup)="applyFilter($event,this)" placeholder="Filtr">
+</mat-form-field>
 
-        <input matInput (keyup)="applyFilter($event,this)" placeholder="Filtr">
-      </mat-form-field>
-      <div class="data-table">
-        <mat-table matSort #sitSetDataSource class="mat-elevation-z1">
-          <ng-container matColumnDef="adr_Nazwa">
-            <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"> Kontrahent </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.adr_Nazwa}} </mat-cell>
-            <mat-footer-cell *matFooterCellDef> Suma </mat-footer-cell>
-          </ng-container>
+<button mat-raised-button color="primary" (click)="ExportTOExcel()">Export as Excel</button>
 
-          <ng-container matColumnDef="nzf_NumerPelny">
-            <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"> Rozrachunek </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.nzf_NumerPelny}} </mat-cell>
-            <mat-footer-cell *matFooterCellDef>  </mat-footer-cell>
-          </ng-container>
+<app-dict-container ident="sitRozrachunkiInsertGT">
+  <app-data-source-container ident="sitRozrachunkiInsertGT">
+    <div class="data-table" class="mat-elevation-z1" #TABLE>
+      <table mat-table matSort #sitSetDataSource >
 
-          <ng-container matColumnDef="nzf_Data">
-            <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"> Data </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.nzf_Data  | date:'yyyy-MM-dd'}} </mat-cell>
-            <mat-footer-cell *matFooterCellDef>  </mat-footer-cell>
-          </ng-container>
+        <ng-container matColumnDef="adr_Nazwa">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"> Kontrahent <th>
+          <td mat-cell *matCellDef="let element"  class="table-cell"> {{element.adr_Nazwa}}<td>
+          <td mat-footer-cell *matFooterCellDef class="table-footer-cell"> Suma <td>
+        </ng-container>
 
-          <ng-container matColumnDef="nzf_TerminPlatnosci">
-            <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"> Termin płatności </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.nzf_TerminPlatnosci  | date:'yyyy-MM-dd'}} </mat-cell>
-            <mat-footer-cell *matFooterCellDef>  </mat-footer-cell>
-          </ng-container>
+        <ng-container matColumnDef="nzf_NumerPelny">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"> Rozrachunek <th>
+          <td mat-cell *matCellDef="let element" class="table-cell"> {{element.nzf_NumerPelny}} <td>
+          <td mat-footer-cell *matFooterCellDef class="table-footer-cell">  <td>
+        </ng-container>
 
-          <ng-container matColumnDef="DniSpoznienia">
-            <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"> Dni </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.DniSpoznienia}} </mat-cell>
-            <mat-footer-cell *matFooterCellDef>  </mat-footer-cell>
-          </ng-container>
+        <ng-container matColumnDef="nzf_Data">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"> Data <th>
+          <td mat-cell *matCellDef="let element" class="table-cell"> {{element.nzf_Data  | date:'yyyy-MM-dd'}} <td>
+          <td mat-footer-cell *matFooterCellDef class="table-footer-cell">  <td>
+        </ng-container>
 
-          <ng-container matColumnDef="naleznosc">
-            <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"> Należność w PLN </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.naleznosc | number : "1.2-2" }} </mat-cell>
-            <mat-footer-cell *matFooterCellDef>{{getSumNaleznosc() | number : "1.2-2"}}</mat-footer-cell>
-          </ng-container>
+        <ng-container matColumnDef="nzf_TerminPlatnosci">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"> Termin płatności <th>
+          <td mat-cell *matCellDef="let element" class="table-cell"> {{element.nzf_TerminPlatnosci  | date:'yyyy-MM-dd'}} <td>
+          <td mat-footer-cell *matFooterCellDef class="table-footer-cell">  <td>
+        </ng-container>
 
-          <ng-container matColumnDef="zobowiazanie">
-            <mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"> Zobowiązanie w PLN </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.zobowiazanie |  number : "1.2-2" }} </mat-cell>
-            <mat-footer-cell *matFooterCellDef>{{getSumZobowiazanie() | number : "1.2-2"}}</mat-footer-cell>
-          </ng-container>
+        <ng-container matColumnDef="DniSpoznienia">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"> Dni </th>
+          <td mat-cell *matCellDef="let element" class="table-cell"> {{element.DniSpoznienia}} </td>
+          <td mat-footer-cell *matFooterCellDef class="table-footer-cell">  </td>
+        </ng-container>
+
+        <ng-container matColumnDef="naleznosc">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"> Należność w PLN <th>
+          <td mat-cell *matCellDef="let element" class="table-cell"> {{element.naleznosc | number : "1.2-2" }} <td>
+          <td mat-footer-cell *matFooterCellDef class="table-footer-cell">{{getSumNaleznosc() | number : "1.2-2"}}<td>
+        </ng-container>
+
+        <ng-container matColumnDef="zobowiazanie">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"> Zobowiązanie w PLN <th>
+          <td mat-cell *matCellDef="let element" class="table-cell"> {{element.zobowiazanie |  number : "1.2-2" }} <td>
+          <td mat-footer-cell *matFooterCellDef class="table-footer-cell">{{getSumZobowiazanie() | number : "1.2-2"}}<td>
+        </ng-container>
 
 
-          <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-          <mat-row *matRowDef="let row; columns: displayedColumns;" ></mat-row>
-          <mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></mat-footer-row>
-        </mat-table>
-        <mat-paginator [pageSizeOptions]="[20, 50, 100]" showFirstLastButtons ></mat-paginator>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; " class="table-header"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="table-row"></tr>
+        <tr mat-footer-row *matFooterRowDef="displayedColumns; sticky: true" class="table-footer"></tr>
+      </table>
+      <mat-paginator [pageSizeOptions]="[20, 50, 100]" showFirstLastButtons ></mat-paginator>
 
-        </div>
-    </app-data-source-container>
-  </app-dict-container>
+      </div>
+  </app-data-source-container>
+</app-dict-container>
 </div>

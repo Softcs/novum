@@ -32,6 +32,9 @@ body {
   margin: 0px;
 }
 
+.content {
+  padding: 5px;
+}
 .sidenav {
   padding: 5px;
 }
@@ -57,15 +60,15 @@ mat-toolbar-row,mat-toolbar-single-row{
   padding: 0px 2px 0px 2px !important;
 }
 
-mat-table{
-  text-align:left;
+table {
   width: 100%;
   height: 100%;
   overflow:auto;
  }
 
- mat-header-cell, mat-header-row, .mat-header-cell-def{
-  min-height:35px !important;
+ .table-header {
+  //min-height:40px !important;
+  height: auto !important;
   font-weight:bold !important;
   font-size:12px !important;
   color: #817d8d;
@@ -74,36 +77,41 @@ mat-table{
   position: sticky;
   z-index: 1;
   background-color: $table-header-color;
-}
-mat-header-cell {
-  //border-right: 1px solid lightgray;
-  padding: 0px 5px 0px 5px !important;
-
+  padding: 5px 5px 5px 5px !important;
 }
 
-mat-cell{
-  font-size: 11px !important;
+
+.table-row {
+  height: auto !important;
   //border-right: 1px solid #e1e1e1;
-  padding: 0px 5px 0px 5px !important;
+  border-bottom: 1px solid #e9e8dd;
+  padding: 0px !important;
+
 
 }
 
-mat-footer-row, mat-row {
-  min-height: 20px !important;
+.table-cell{
+  //border: none !important;
+  font-size: 11px !important;
+  border-right: 1px solid #e9e8dd;
+  padding: 3px 5px 3px 5px !important;
 }
 
-mat-footer-row {
+
+.table-footer {
   background-color: $table-footer-color !important;
+  height: auto !important;
+  padding: 0px !important;
 }
 
-mat-footer-cell{
+.table-footer-cell {
   font-size: 12px;;
   font-weight: bold;
   //border: 1px solid #e7e7e7;
-  padding: 0px 5px 0px 5px !important;
+  padding: 3px 5px 3px 5px !important;
 }
 
-.mat-row:nth-child(odd){
+tr.mat-row:nth-child(odd){
   background-color:$background-color;
   }
 
@@ -114,7 +122,7 @@ mat-footer-cell{
   display: flex;
   flex-direction: column;
   //justify-content: stretch;
-  padding: 0px 5px 0px 5px;
+  padding: 0px;
   margin-left: 0px;
   margin-right: 0px;
 }
@@ -161,66 +169,6 @@ $mat-myapp-primary: (
       A200 : #000000,
       A400 : #000000,
       A700 : #000000,
-//seido
-  // 50 : #fff2e4,
-  // 100 : #ffddbb,
-  // 200 : #ffc78e,
-  // 300 : #ccbeaf,
-  // 400 : #ffa03e,
-  // 500 : #ff8f1c,
-  // 600 : #ff8719,
-  // 700 : #ff7c14,
-  // 800 : #ff7211,
-  // 900 : #ff6009,
-  // A100 : #ffffff,
-  // A200 : #fff8f5,
-  // A400 : #ffd5c2,
-  // A700 : #ffc3a8,
-  // contrast: (
-  //     50 : #000000,
-  //     100 : #000000,
-  //     200 : #000000,
-  //     300 : #000000,
-  //     400 : #000000,
-  //     500 : #000000,
-  //     600 : #000000,
-  //     700 : #000000,
-  //     800 : #000000,
-  //     900 : #000000,
-  //     A100 : #000000,
-  //     A200 : #000000,
-  //     A400 : #000000,
-  //     A700 : #000000
-
-  // 50 : #eceded,
-  // 100 : #d0d1d2,
-  // 200 : #b1b3b5,
-  // 300 : #929497,
-  // 400 : #7a7d80,
-  // 500 : #63666a,
-  // 600 : #5b5e62,
-  // 700 : #515357,
-  // 800 : #47494d,
-  // 900 : #35383c,
-  // A100 : #99b9f8,
-  // A200 : #6998f5,
-  // A400 : #2c72ff,
-  // A700 : #1361ff,
-  // contrast: (
-  //     50 : #000000,
-  //     100 : #000000,
-  //     200 : #000000,
-  //     300 : #000000,
-  //     400 : #ffffff,
-  //     500 : #ffffff,
-  //     600 : #ffffff,
-  //     700 : #ffffff,
-  //     800 : #ffffff,
-  //     900 : #ffffff,
-  //     A100 : #000000,
-  //     A200 : #000000,
-  //     A400 : #ffffff,
-  //     A700 : #ffffff,
     )
 );
 
@@ -254,35 +202,7 @@ $mat-myapp-accent: (
       A200 : #000000,
       A400 : #ffffff,
       A700 : #ffffff,
-  // 50 : #f9f9f9,
-  // 100 : #f1f1f0,
-  // 200 : #e8e8e7,
-  // 300 : #dededd,
-  // 400 : #d7d7d5,
-  // 500 : #d0d0ce,
-  // 600 : #cbcbc9,
-  // 700 : #c4c4c2,
-  // 800 : #bebebc,
-  // 900 : #b3b3b0,
-  // A100 : #ffffff,
-  // A200 : #ffffff,
-  // A400 : #ffffff,
-  // A700 : #ffffea,
-  // contrast: (
-  //     50 : #000000,
-  //     100 : #000000,
-  //     200 : #000000,
-  //     300 : #000000,
-  //     400 : #000000,
-  //     500 : #000000,
-  //     600 : #000000,
-  //     700 : #000000,
-  //     800 : #000000,
-  //     900 : #000000,
-  //     A100 : #000000,
-  //     A200 : #000000,
-  //     A400 : #000000,
-  //     A700 : #000000,
+
   )
 );
 
