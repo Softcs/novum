@@ -2,7 +2,9 @@ import { map } from 'rxjs/operators';
 import { element } from 'protractor';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { sitSetDataSourceDirective, DataSourceContainerComponent } from '@app/components/data-source-container';
-import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import * as $ from 'jquery';
 import * as XLSX from 'xlsx';
 @Component({

@@ -4,7 +4,9 @@ import { Component, OnInit, Input, Directive, ContentChildren,
 import { GatewayService } from '../../_services/gateway.service';
 import { first } from 'rxjs/operators';
 import { Operation } from '@app/_models';
-import { MatTable, MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { JsonPipe } from '@angular/common';
 import { Observable, BehaviorSubject } from 'rxjs';
 

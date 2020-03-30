@@ -3,7 +3,9 @@
 
 import { GatewayService } from '@app/_services';
 import { DictContainerComponent } from '../../../components/dict-container';
-import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import * as $ from 'jquery';
 import { sitSetDataSourceDirective, DataSourceContainerComponent } from '@app/components/data-source-container';
 
