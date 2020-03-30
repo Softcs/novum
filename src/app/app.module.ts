@@ -37,7 +37,9 @@ import { MaterialTestComponent } from './containers/dictionaries/material-test/m
 import { testDict } from './containers/dictionaries/testDict';
 import { SideMenuComponent } from './components/side-menu/side-menu.component';
 import { LayoutModule } from '@angular/cdk/layout';;
-import { SitRozrachunkiInsertGTComponent } from './containers/dictionaries/sitRozrachunkiInsertGT/sitRozrachunkiInsertGT.component'
+import { SitRozrachunkiInsertGTComponent } from './containers/dictionaries/sitRozrachunkiInsertGT/sitRozrachunkiInsertGT.component';
+import { AgGridTestComponent } from './containers/dictionaries/ag-grid-test/ag-grid-test.component';
+import { AgGridModule } from 'ag-grid-angular';
 
 @NgModule({
     imports: [
@@ -45,7 +47,6 @@ import { SitRozrachunkiInsertGTComponent } from './containers/dictionaries/sitRo
         ReactiveFormsModule,
         HttpClientModule,
         appRoutingModule,
-
         MatSliderModule,
         MatButtonModule,
         MatIconModule,
@@ -60,9 +61,9 @@ import { SitRozrachunkiInsertGTComponent } from './containers/dictionaries/sitRo
         MatCheckboxModule,
         MatListModule,
         MatCardModule,
-
         FormsModule,
-        LayoutModule
+        LayoutModule,
+        AgGridModule.withComponents([])
     ],
     declarations: [
         AppComponent,
@@ -75,9 +76,9 @@ import { SitRozrachunkiInsertGTComponent } from './containers/dictionaries/sitRo
         NavbarComponent,
         MaterialTestComponent,
         sitSetDataSourceDirective,
-        SideMenuComponent
-,
-        SitRozrachunkiInsertGTComponent
+        SideMenuComponent,
+        SitRozrachunkiInsertGTComponent,
+        AgGridTestComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
