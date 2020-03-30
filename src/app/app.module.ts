@@ -13,7 +13,21 @@ import { BasicAuthInterceptor, ErrorInterceptor } from './_helpers';
 import { HomeComponent } from './containers/home';
 import { LoginComponent } from './containers/login';;
 import { DictContainerComponent } from './components/dict-container/dict-container.component';
-import { MatSliderModule, MatButtonModule, MatToolbarModule, MatMenuModule, MatIconModule, MatSidenavModule, MatTableModule, MatSortModule, MatInputModule, MatPaginatorModule, MatCheckboxModule, MatListModule, MatCardModule} from '@angular/material';
+
+import { MatSliderModule} from '@angular/material/slider';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatTableModule} from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatInputModule } from '@angular/material/input';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatListModule } from '@angular/material/list';
+import { MatCardModule } from '@angular/material/card';
+
 import { FormsModule } from '@angular/forms';
 import { DataSourceContainerComponent, sitSetDataSourceDirective } from './components/data-source-container/data-source-container.component';
 import { RailConfigurationsComponent } from './containers/dictionaries/sitRailConfigurations';;
@@ -31,12 +45,13 @@ import { SitRozrachunkiInsertGTComponent } from './containers/dictionaries/sitRo
         ReactiveFormsModule,
         HttpClientModule,
         appRoutingModule,
+
         MatSliderModule,
         MatButtonModule,
-        MatMenuModule,
         MatIconModule,
         BrowserAnimationsModule,
         MatToolbarModule,
+        MatMenuModule,
         MatSidenavModule,
         MatTableModule,
         MatSortModule,
@@ -45,6 +60,7 @@ import { SitRozrachunkiInsertGTComponent } from './containers/dictionaries/sitRo
         MatCheckboxModule,
         MatListModule,
         MatCardModule,
+
         FormsModule,
         LayoutModule
     ],
