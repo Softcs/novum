@@ -9,10 +9,16 @@ import { AgGridAngular } from 'ag-grid-angular';
 })
 export class AgGridTestComponent implements OnInit {
   columnDefs = [
-    {headerName: 'Make', field: 'make', sortable: true, filter: true, checkboxSelection: true },
-    {headerName: 'Model', field: 'model', sortable: true, filter: true },
-    {headerName: 'Price', field: 'price', sortable: true, filter: true }
+    {headerName: 'Make', field: 'make', sortable: true, filter: "agTextColumnFilter",     filterParams: {
+      resetButton: true,
+      applyButton: true,
+      debounceMs: 200
+  }, checkboxSelection: true },
+    {headerName: 'Model', field: 'model', sortable: true, filter: "agTextColumnFilter" },
+    {headerName: 'Price', field: 'price', sortable: true, filter: "agNumberColumnFilter" }
   ];
+
+
 
   @ViewChild('agGrid') agGrid: AgGridAngular;
   // rowData = [
@@ -26,8 +32,8 @@ export class AgGridTestComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
-    //this.rowData = this.http.get('https://api.myjson.com/bins/15psn9');
-    this.rowData = this.http.get('https://api.myjson.com/bins/ly7d1');
+    this.rowData = this.http.get('https://api.myjson.com/bins/15psn9');
+    // this.rowData = this.http.get('https://api.myjson.com/bins/ly7d1');
   }
   getSelectedRows() {
     const selectedNodes = this.agGrid.api.getSelectedNodes();

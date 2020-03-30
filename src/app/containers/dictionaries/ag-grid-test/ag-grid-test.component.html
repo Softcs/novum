@@ -2,11 +2,12 @@
   <div class="data-table">
     <ag-grid-angular
     #agGrid
-    style="width: 500px; height: 500px;"
+    style="width: 100%; height: 100%;"
     class="ag-theme-alpine"
     [rowData]="rowData | async"
     [columnDefs]="columnDefs"
     rowSelection="multiple"
+    animateRows=true
     >
     </ag-grid-angular>
   </div>
