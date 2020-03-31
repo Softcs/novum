@@ -28,7 +28,18 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/primeicons/primeicons.css",
+              "node_modules/font-awesome/css/font-awesome.min.css",
+              "node_modules/primeng/resources/themes/rhea/theme.css",
+              "node_modules/primeng/resources/themes/luna-amber/theme.css",
+              "node_modules/primeng/resources/themes/luna-blue/theme.css",
+              "node_modules/primeng/resources/themes/luna-green/theme.css",
+              "node_modules/primeng/resources/themes/luna-pink/theme.css",
+              "node_modules/primeng/resources/themes/nova-colored/theme.css",
+              "node_modules/primeng/resources/themes/nova-dark/theme.css",
+              "node_modules/primeng/resources/themes/nova-light/theme.css"
             ],
             "scripts": []
           },
@@ -128,4 +139,5 @@
   "cli": {
     "analytics": "25a78edd-a339-4994-8eda-9cb46d24de7f"
   }
+
 }

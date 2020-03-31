@@ -1,14 +1,14 @@
 ﻿import { Routes, RouterModule } from '@angular/router';
-
 import { HomeComponent } from './containers/home';
 import { LoginComponent } from './containers/login';
 import { RailConfigurationsComponent } from './containers/dictionaries/sitRailConfigurations';
 import { MaterialTestComponent } from './containers/dictionaries/material-test';
-import { AgGridTestComponent } from './containers/dictionaries/ag-grid-test';
 import { testDict } from './containers/dictionaries/testDict';
 import { AuthGuard } from './_helpers';
 import { SideMenuComponent } from './components/side-menu'
 import { SitRozrachunkiInsertGTComponent } from './containers/dictionaries/sitRozrachunkiInsertGT/sitRozrachunkiInsertGT.component';
+import { AgGridTestComponent } from './containers/dictionaries/ag-grid-test';
+import { PrimeNgTestComponent } from './containers/dictionaries/prime-ng-test/prime-ng-test.component';
 
 const routes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -18,6 +18,7 @@ const routes: Routes = [
     { path: 'test', component: testDict, canActivate: [AuthGuard] },
     { path: 'rozrachunki', component: SitRozrachunkiInsertGTComponent, canActivate: [AuthGuard] },
     { path: 'ag-grid-test', component: AgGridTestComponent, canActivate: [AuthGuard]},
+    { path: 'prime-ng-test', component: PrimeNgTestComponent, canActivate: [AuthGuard]},
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }

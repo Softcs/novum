@@ -41,6 +41,18 @@ import { SitRozrachunkiInsertGTComponent } from './containers/dictionaries/sitRo
 import { AgGridTestComponent } from './containers/dictionaries/ag-grid-test/ag-grid-test.component';
 import { AgGridModule } from 'ag-grid-angular';
 
+import { PrimeNgTestComponent } from './containers/dictionaries/prime-ng-test/prime-ng-test.component';
+import { TableModule } from 'primeng/table';
+import { TabViewModule } from 'primeng/tabview';
+import { DropdownModule } from 'primeng/dropdown';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { SliderModule } from 'primeng/slider';
+
+// import { AccordionModule } from 'primeng/accordion';
+// import { PanelModule } from 'primeng/primeng';
+// import { ButtonModule } from 'primeng/primeng';
+// import { RadioButtonModule } from 'primeng/primeng';
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -63,7 +75,19 @@ import { AgGridModule } from 'ag-grid-angular';
         MatCardModule,
         FormsModule,
         LayoutModule,
-        AgGridModule.withComponents([])
+
+        AgGridModule.withComponents([]),
+
+        //PrimeNG
+        TableModule,
+        TabViewModule,
+        DropdownModule,
+        MultiSelectModule,
+        SliderModule
+        // AccordionModule,
+        // PanelModule,
+        // ButtonModule,
+        // RadioButtonModule
     ],
     declarations: [
         AppComponent,
@@ -78,7 +102,8 @@ import { AgGridModule } from 'ag-grid-angular';
         sitSetDataSourceDirective,
         SideMenuComponent,
         SitRozrachunkiInsertGTComponent,
-        AgGridTestComponent
+        AgGridTestComponent,
+        PrimeNgTestComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
