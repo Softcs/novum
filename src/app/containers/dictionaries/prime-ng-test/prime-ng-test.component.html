@@ -2,7 +2,7 @@
   <!-- <p-tabView>
     <p-tabPanel header="Header 1"> -->
       <div class="data-table">
-        <p-table [columns]="cols" [value]="dataSource" sortMode="multiple">
+        <p-table [columns]="cols" [value]="dataSource" sortMode="multiple" [paginator]="true" [rows]="10" [resizableColumns]="true">
           <ng-template pTemplate="caption">Nazwa tabeli
           </ng-template>
           <ng-template pTemplate="header" >
@@ -24,7 +24,7 @@
           </ng-template>
           <ng-template pTemplate="body" let-car>
             <tr>
-              <td *ngFor="let col of cols">{{car[col.field]}}</td>
+              <td *ngFor="let col of cols" class="ui-resizable-column">{{car[col.field]}}</td>
             </tr>
           </ng-template>
           <ng-template pTemplate="footer">

@@ -9,11 +9,17 @@ import { AgGridAngular } from 'ag-grid-angular';
 })
 export class AgGridTestComponent implements OnInit {
   columnDefs = [
-    {headerName: 'Make', field: 'make', sortable: true, filter: "agTextColumnFilter",     filterParams: {
-      resetButton: true,
-      applyButton: true,
-      debounceMs: 200
-  }, checkboxSelection: true },
+    { headerName: 'Make',
+      field: 'make',
+      sortable: true,
+      filter: "agTextColumnFilter",
+      filterParams: {
+        cellHeight: 50,
+        resetButton: true,
+        applyButton: true,
+        debounceMs: 200
+      },
+    checkboxSelection: true },
     {headerName: 'Model', field: 'model', sortable: true, filter: "agTextColumnFilter" },
     {headerName: 'Price', field: 'price', sortable: true, filter: "agNumberColumnFilter" }
   ];
