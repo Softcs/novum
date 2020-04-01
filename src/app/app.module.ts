@@ -47,11 +47,13 @@ import { TabViewModule } from 'primeng/tabview';
 import { DropdownModule } from 'primeng/dropdown';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { SliderModule } from 'primeng/slider';
-
 // import { AccordionModule } from 'primeng/accordion';
 // import { PanelModule } from 'primeng/primeng';
 // import { ButtonModule } from 'primeng/primeng';
 // import { RadioButtonModule } from 'primeng/primeng';
+
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { NgxDatatableTestComponent } from './containers/dictionaries/ngx-datatable-test/ngx-datatable-test.component'
 
 @NgModule({
     imports: [
@@ -83,11 +85,14 @@ import { SliderModule } from 'primeng/slider';
         TabViewModule,
         DropdownModule,
         MultiSelectModule,
-        SliderModule
+        SliderModule,
         // AccordionModule,
         // PanelModule,
         // ButtonModule,
         // RadioButtonModule
+
+        //NGX
+        NgxDatatableModule
     ],
     declarations: [
         AppComponent,
@@ -103,7 +108,8 @@ import { SliderModule } from 'primeng/slider';
         SideMenuComponent,
         SitRozrachunkiInsertGTComponent,
         AgGridTestComponent,
-        PrimeNgTestComponent
+        PrimeNgTestComponent,
+        NgxDatatableTestComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },

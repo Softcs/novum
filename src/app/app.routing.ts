@@ -9,6 +9,7 @@ import { SideMenuComponent } from './components/side-menu'
 import { SitRozrachunkiInsertGTComponent } from './containers/dictionaries/sitRozrachunkiInsertGT/sitRozrachunkiInsertGT.component';
 import { AgGridTestComponent } from './containers/dictionaries/ag-grid-test';
 import { PrimeNgTestComponent } from './containers/dictionaries/prime-ng-test/prime-ng-test.component';
+import { NgxDatatableTestComponent } from './containers/dictionaries/ngx-datatable-test/';
 
 const routes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -19,6 +20,7 @@ const routes: Routes = [
     { path: 'rozrachunki', component: SitRozrachunkiInsertGTComponent, canActivate: [AuthGuard] },
     { path: 'ag-grid-test', component: AgGridTestComponent, canActivate: [AuthGuard]},
     { path: 'prime-ng-test', component: PrimeNgTestComponent, canActivate: [AuthGuard]},
+    { path: 'ngx-datatable-test', component: NgxDatatableTestComponent, canActivate: [AuthGuard]},
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
