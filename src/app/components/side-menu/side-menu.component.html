@@ -1,13 +1,16 @@
 <div style="display: flex; flex-direction: column;">
   <button mat-flat-button class="menu-button" routerLink="/">Home</button>
   <mat-divider></mat-divider>
-  <button mat-flat-button class="menu-button" routerLink="/dict">Konfiguracja Rail</button>
+  <button mat-flat-button class="menu-button" *ngFor="let item of menu" routerLink="{{item.Link}}">{{item.Caption}}</button>
+
+  <!-- <button mat-flat-button class="menu-button" routerLink="/dict">Konfiguracja Rail</button>
   <button mat-flat-button class="menu-button" routerLink="/rozrachunki">Rozrachunki</button>
   <button mat-flat-button class="menu-button" routerLink="/test">Test datasource</button>
   <button mat-flat-button class="menu-button" routerLink="/material-test">Material test</button>
   <button mat-flat-button class="menu-button" routerLink="/ag-grid-test">ag-Grid test</button>
   <button mat-flat-button class="menu-button" routerLink="/prime-ng-test">PrimeNG test</button>
   <button mat-flat-button class="menu-button" routerLink="/ngx-datatable-test">NGX test</button>
+  <a href="https://www.seidoit.pl" target="blank"><button mat-flat-button class="menu-button">Seido IT</button></a> -->
 
   <mat-divider></mat-divider>
   <button mat-flat-button class="menu-button" (click)="logout()">Logout</button>
