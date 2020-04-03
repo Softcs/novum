@@ -19,6 +19,7 @@ export class sitSetDataSourceDirective {
   }
   @Input() dataSource;
   @Input() context;
+  @Input() rows;
 }
 
 interface LooseObject {
@@ -61,7 +62,8 @@ export class DataSourceContainerComponent implements OnInit {
     this.rows.paginator = this.paginator;
     this.datasSourcesInterface.forEach(element => {
         element.dataSource = this.rows;
-        element.context = this.rows;
+        // element.context = this.rows;
+        element.rows = this.dataSource ? this.dataSource.rows : null;
     });
   }
   public deleteData() {
