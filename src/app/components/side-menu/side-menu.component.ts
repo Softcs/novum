@@ -18,7 +18,8 @@ const MENU: MenuItem [] = [
   { MenuItemId: 4, Caption: "ag-Grid test", Link: "/ag-grid-test", Kind: "app" },
   { MenuItemId: 5, Caption: "PrimeNG test", Link: "/prime-ng-test", Kind: "app" },
   { MenuItemId: 6, Caption: "NGX test", Link: "/ngx-datatable-test", Kind: "app" },
-  { MenuItemId: 8, Caption: "Seido IT", Link: "https://www.seidoit.pl", Kind: "http" }
+  { MenuItemId: 8, Caption: "Seido IT", Link: "https://www.seidoit.pl", Kind: "http" },
+  { MenuItemId: 9, Caption: "Konfiguracja menu", Link: "/sitMenu", Kind: "app" }
 ]
 
 

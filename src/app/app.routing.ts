@@ -10,6 +10,7 @@ import { SitRozrachunkiInsertGTComponent } from './containers/dictionaries/sitRo
 import { AgGridTestComponent } from './containers/dictionaries/ag-grid-test';
 import { PrimeNgTestComponent } from './containers/dictionaries/prime-ng-test/prime-ng-test.component';
 import { NgxDatatableTestComponent } from './containers/dictionaries/ngx-datatable-test/';
+import { SitMenuComponent } from './containers/dictionaries/sitMenu/sitMenu.component';
 
 const routes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -21,6 +22,7 @@ const routes: Routes = [
     { path: 'ag-grid-test', component: AgGridTestComponent, canActivate: [AuthGuard]},
     { path: 'prime-ng-test', component: PrimeNgTestComponent, canActivate: [AuthGuard]},
     { path: 'ngx-datatable-test', component: NgxDatatableTestComponent, canActivate: [AuthGuard]},
+    { path: 'sitMenu', component: SitMenuComponent, canActivate: [AuthGuard]},
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }

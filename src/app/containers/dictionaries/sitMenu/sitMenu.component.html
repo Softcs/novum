@@ -1,0 +1,131 @@
+<div class="content">
+  <div style="display:flex; flex-direction: column; height: 100%;">
+  <div style="display:flex; flex-direction: row; height: 60vh;">
+    <div style="padding-right: 5px; display:flex; flex-direction: column; width: 50%;">
+      <div style="display:flex; flex-direction: column; height: 50%;">
+        <div class="data-table">
+          <ngx-datatable #sitMenu
+          class="material striped"
+          [rows]="rowsMenu"
+          [columnMode]="ColumnMode.force"
+          [limit]=20
+          [selected]="selected"
+          [selectionType]="SelectionType.checkbox"
+          [selectAllRowsOnPage]="false"
+          [displayCheck]="displayCheck"
+          (activate)="onActivate($event)"
+          (select)="onSelect($event)"
+          >
+          <ngx-datatable-column
+            [width]="30"
+            [sortable]="false"
+            [canAutoResize]="false"
+            [draggable]="false"
+            [resizeable]="false"
+            [headerCheckboxable]="true"
+            [checkboxable]="true"
+          >
+          </ngx-datatable-column>
+            <ngx-datatable-column prop="MenuId" name="Id"></ngx-datatable-column>
+            <ngx-datatable-column prop="Symbol" name="Symbol"></ngx-datatable-column>
+            <ngx-datatable-column prop="Caption" name="Nazwa"></ngx-datatable-column>
+          </ngx-datatable>
+        </div>
+      </div>
+
+    </div>
+    <div style="padding-right: 5px; display:flex; flex-direction: column; width: 70%;">
+      <div class="data-table">
+        <ngx-datatable #sitMenuItems
+        class="material striped"
+        [rows]="rowsMenuItems"
+        [columnMode]="ColumnMode.force"
+        [limit]=20
+        [selected]="selected"
+        [selectionType]="SelectionType.checkbox"
+        [selectAllRowsOnPage]="false"
+        [displayCheck]="displayCheck"
+        (activate)="onActivate($event)"
+        (select)="onSelect($event)"
+      >
+        <ngx-datatable-column
+          [width]="30"
+          [sortable]="false"
+          [canAutoResize]="false"
+          [draggable]="false"
+          [resizeable]="false"
+          [headerCheckboxable]="true"
+          [checkboxable]="true"
+        >
+        </ngx-datatable-column>
+          <ngx-datatable-column prop="MenuItemId" name="Id"></ngx-datatable-column>
+          <ngx-datatable-column prop="MenuId" name="MenuId"></ngx-datatable-column>
+          <ngx-datatable-column prop="Caption" name="Nazwa"></ngx-datatable-column>
+          <ngx-datatable-column prop="Kind" name="Rodzaj"></ngx-datatable-column>
+          <ngx-datatable-column prop="Link" name="Link"></ngx-datatable-column>
+        </ngx-datatable>
+      </div>
+    </div>
+  </div>
+  <div style="display:flex; flex-direction: column; height: 50%;">
+    <div class="data-table">
+      <ngx-datatable #sitAppUsers
+      class="material striped"
+      [rows]="rowsAppUsers"
+      [columnMode]="ColumnMode.force"
+      [limit]=20
+      [selected]="selected"
+      [selectionType]="SelectionType.checkbox"
+      [selectAllRowsOnPage]="false"
+      [displayCheck]="displayCheck"
+      (activate)="onActivate($event)"
+      (select)="onSelect($event)"
+      >
+        <ngx-datatable-column
+          [width]="30"
+          [sortable]="false"
+          [canAutoResize]="false"
+          [draggable]="false"
+          [resizeable]="false"
+          [headerCheckboxable]="true"
+          [checkboxable]="true"
+        >
+        </ngx-datatable-column>
+        <ngx-datatable-column prop="AppUserId" name="Id"></ngx-datatable-column>
+        <ngx-datatable-column prop="UserLogin" name="Login"></ngx-datatable-column>
+        <ngx-datatable-column prop="UserPassword" name="Hasło"></ngx-datatable-column>
+        <ngx-datatable-column prop="Name" name="Imię"></ngx-datatable-column>
+        <ngx-datatable-column prop="SurName" name="Nazwisko"></ngx-datatable-column>
+        <ngx-datatable-column prop="IsActive" name="Aktywny"></ngx-datatable-column>
+        <ngx-datatable-column prop="MenuId" name="MenuId"></ngx-datatable-column>
+      </ngx-datatable>
+    </div>
+  </div>
+
+  </div>
+</div>
+
+    <!-- <ngx-datatable-column
+      [width]="30"
+      [sortable]="false"
+      [canAutoResize]="false"
+      [draggable]="false"
+      [resizeable]="false"
+      [headerCheckboxable]="true"
+      [checkboxable]="true"
+    >
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Name"></ngx-datatable-column>
+    <ngx-datatable-column name="Gender"></ngx-datatable-column>
+    <ngx-datatable-column name="Company"></ngx-datatable-column>
+    <ngx-datatable-column name="Salary"></ngx-datatable-column> -->
+
+<!-- [selected]="selected"
+[selectionType]="SelectionType.checkbox"
+[selectAllRowsOnPage]="false"
+[displayCheck]="displayCheck"
+(activate)="onActivate($event)"
+(select)="onSelect($event)"
+[summaryRow]="true"
+summaryPosition="bottom"
+[summaryHeight]="40" -->

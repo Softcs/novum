@@ -54,6 +54,8 @@ import { SliderModule } from 'primeng/slider';
 
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { NgxDatatableTestComponent } from './containers/dictionaries/ngx-datatable-test/ngx-datatable-test.component'
+;
+import { SitMenuComponent } from './containers/dictionaries/sitMenu/sitMenu.component'
 
 @NgModule({
     imports: [
@@ -109,7 +111,8 @@ import { NgxDatatableTestComponent } from './containers/dictionaries/ngx-datatab
         SitRozrachunkiInsertGTComponent,
         AgGridTestComponent,
         PrimeNgTestComponent,
-        NgxDatatableTestComponent
+        NgxDatatableTestComponent,
+        SitMenuComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
