@@ -38,8 +38,13 @@ export class AgGridTestComponent implements OnInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.rowData = this.http.get('https://api.myjson.com/bins/15psn9');
+    //this.rowData = this.http.get('https://api.myjson.com/bins/15psn9');
     // this.rowData = this.http.get('https://api.myjson.com/bins/ly7d1');
+    this.rowData = [
+      { make: 'Toyota', model: 'Celica', price: 35000 },
+      { make: 'Ford', model: 'Mondeo', price: 32000 },
+      { make: 'Porsche', model: 'Boxter', price: 72000 }
+  ];
   }
   getSelectedRows() {
     const selectedNodes = this.agGrid.api.getSelectedNodes();

@@ -4,20 +4,21 @@ import { User } from '@app/_models';
 import { Router } from '@angular/router';
 
 export interface MenuItem {
-Id: number;
+MenuItemId: number;
 Caption: string;
+Kind: string;
 Link: string;
 }
 
 const MENU: MenuItem [] = [
-  { Id: 0, Caption: "Konfiguracja Rail", Link: "/dict" },
-  { Id: 1, Caption: "Rozrachunki", Link: "/rozrachunki" },
-  { Id: 2, Caption: "Test datasource", Link: "/test" },
-  { Id: 3, Caption: "Material test", Link: "/material-test" },
-  { Id: 4, Caption: "ag-Grid test", Link: "/ag-grid-test" },
-  { Id: 5, Caption: "PrimeNG test", Link: "/prime-ng-test" },
-  { Id: 6, Caption: "NGX test", Link: "/ngx-datatable-test" },
-  { Id: 8, Caption: "Seido IT", Link: "https://www.seidoit.pl" }
+  { MenuItemId: 0, Caption: "Konfiguracja Rail", Link: "/dict", Kind: "app" },
+  { MenuItemId: 1, Caption: "Rozrachunki", Link: "/rozrachunki", Kind: "app" },
+  { MenuItemId: 2, Caption: "Test datasource", Link: "/test", Kind: "app" },
+  { MenuItemId: 3, Caption: "Material test", Link: "/material-test", Kind: "app" },
+  { MenuItemId: 4, Caption: "ag-Grid test", Link: "/ag-grid-test", Kind: "app" },
+  { MenuItemId: 5, Caption: "PrimeNG test", Link: "/prime-ng-test", Kind: "app" },
+  { MenuItemId: 6, Caption: "NGX test", Link: "/ngx-datatable-test", Kind: "app" },
+  { MenuItemId: 8, Caption: "Seido IT", Link: "https://www.seidoit.pl", Kind: "http" }
 ]
 
 
