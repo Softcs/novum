@@ -42,9 +42,7 @@ export class SitMenuComponent implements OnInit {
     this.selected.splice(0, this.selected.length);
     this.selected.push(...selected);
   }
-  onActivate(event) {
-    // console.log('Activate Event', event);
-  }
+
   add() {
     this.selected.push(this.rowsMenu[1], this.rowsMenu[3]);
   }
@@ -59,4 +57,10 @@ export class SitMenuComponent implements OnInit {
   displayCheck(row) {
     return row.name !== 'xxx';
   }
+
+  onActivate(event) {
+    if(event.type == 'click') {
+        console.log(event.row);
+    }
+}
 }

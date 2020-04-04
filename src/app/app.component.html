@@ -1,4 +1,4 @@
-﻿<div class="container">
+﻿<div class="container-cols">
   <mat-toolbar *ngIf="currentUser">
     <mat-toolbar-row>
       <button mat-flat-button color="primary" (click)="drawer.toggle()" *ngIf="currentUser"><mat-icon>menu</mat-icon></button>
@@ -6,17 +6,12 @@
     </mat-toolbar-row>
   </mat-toolbar>
 
-  <mat-drawer-container autosize style="height: 100%;">
+  <mat-drawer-container autosize class="container-cols">
     <mat-drawer #drawer class="sidenav" mode="side" (click)="drawer.toggle()" >
       <side-menu></side-menu>
     </mat-drawer>
-
-    <div style="height:100%;">
+    <div class="container-cols">
       <router-outlet></router-outlet>
     </div>
   </mat-drawer-container>
 </div>
-<!-- <div style="display: flex; flex-direction: column;">
-  <div style="width:300px; height: 300px; background-color: red;">1</div>
-  <div style="width:300px; height: 300px; background-color: blue;">1</div>
-<div></div> -->
