@@ -57,12 +57,12 @@ export class DataSourceContainerComponent implements OnInit {
   }
   public setDataSource(dataSource: any) {
     this.dataSource = dataSource;
-    this.rows = new MatTableDataSource(this.dataSource && this.dataSource.rows ? JSON.parse(this.dataSource.rows) : []);
+    this.rows = new MatTableDataSource(this.dataSource && this.dataSource.rows ? this.dataSource.rows : []);
     this.rows.sort = this.sort;
     this.rows.paginator = this.paginator;
     this.datasSourcesInterface.forEach(element => {
         element.dataSource = this.rows;
-        element.rows = this.dataSource && this.dataSource.rows ? JSON.parse(this.dataSource.rows) : null;
+        element.rows = this.dataSource ? this.dataSource.rows : [];
     });
   }
   public deleteData() {
