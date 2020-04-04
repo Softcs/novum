@@ -203,6 +203,14 @@ button:focus {
     }
   }
 }
+.ngx-datatable.material:not(.cell-selection) .datatable-body-row:hover .datatable-row-group
+{
+  background: gray;
+}
+
+.ngx-datatable.material:not(.cell-selection) .datatable-body-row.active{
+  background: lightblue;
+}
 
 $mat-myapp-primary: (
   50 : #edf4fc,
