@@ -30,6 +30,8 @@ $table-footer-color: lightgray;
 $table-row-odd-color: white;
 $table-row-even-color: #F8F8F8;
 $table-row-hover-color: #E0E0E0;
+$table-row-selected-color: #D3D3D3;
+$table-row-selected-hover-color: #989898;
 $toolbar-color: #6da6e8;
 $toolbar-text-color: #3e7bd8;
 
@@ -211,8 +213,15 @@ button:focus {
   background: $table-row-hover-color;
 }
 
+.ngx-datatable.material:not(.cell-selection) .datatable-body-row.active:hover .datatable-row-group
+{
+  background: $table-row-selected-hover-color;
+}
+
 .ngx-datatable.material:not(.cell-selection) .datatable-body-row.active .datatable-row-group{
-  background: lightblue;
+  background: $table-row-selected-color;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
 }
 
 .ngx-datatable.material .datatable-body .datatable-body-row.datatable-row-even {
