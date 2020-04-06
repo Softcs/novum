@@ -35,7 +35,7 @@ export class RailConfigurationsComponent implements OnInit {
 
   applyFilter(event: Event,obj:any){
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSourceContainer.rows.filter = filterValue.trim().toLowerCase();
+    //this.dataSourceContainer.rows.filter = filterValue.trim().toLowerCase();
   }
 
   onClick(){

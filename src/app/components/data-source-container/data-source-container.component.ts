@@ -3,7 +3,7 @@ import { Component, OnInit, Input, Directive, ContentChildren,
 
 import { GatewayService } from '../../_services/gateway.service';
 import { first } from 'rxjs/operators';
-import { Operation } from '@app/_models';
+import { Operation, DataSourceWrapper } from '@app/_models';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
@@ -17,9 +17,8 @@ import { Observable, BehaviorSubject } from 'rxjs';
 export class sitSetDataSourceDirective {
   constructor(private el: ElementRef) {
   }
-  @Input() dataSource;
-  @Input() context;
   @Input() rows;
+  @Input() sitDataSource;
 }
 
 interface LooseObject {
@@ -40,11 +39,11 @@ export class DataSourceContainerComponent implements OnInit {
   @ContentChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   @Input() ident: string;
-  dataSource: any;
+  dataSourceWrapper: DataSourceWrapper;
 
   obj: LooseObject = {};
   constructor(private gatewayService: GatewayService) { }
-  public rows: MatTableDataSource<any>;
+
 
   ngOnInit() {
 
@@ -55,21 +54,22 @@ export class DataSourceContainerComponent implements OnInit {
   ngAfterViewInit() {
 
   }
-  public setDataSource(dataSource: any) {
-    this.dataSource = dataSource;
-    this.rows = new MatTableDataSource(this.dataSource && this.dataSource.rows ? this.dataSource.rows : []);
-    this.rows.sort = this.sort;
-    this.rows.paginator = this.paginator;
+  public SetAvtiveRow(row: any) {
+    this.dataSourceWrapper.SetAvtiveRow(row);
+  }
+  public setDataSource(dataSourceWrapper: DataSourceWrapper) {
+    this.dataSourceWrapper = dataSourceWrapper;
+    console.log("setDataSource",this);
     this.datasSourcesInterface.forEach(element => {
-        element.dataSource = this.rows;
-        element.rows = this.dataSource ? this.dataSource.rows : [];
+      element.rows = this.dataSourceWrapper.rows;
+      element.sitDataSource = this;
     });
   }
   public deleteData() {
 
   }
   get errors() {
-    return this.dataSource != null ? this.dataSource.errors : null;
+    return this.dataSourceWrapper != null ? this.dataSourceWrapper.errors : null;
   }
 
 }

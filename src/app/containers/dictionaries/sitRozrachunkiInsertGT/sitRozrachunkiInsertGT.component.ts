@@ -27,16 +27,16 @@ export class SitRozrachunkiInsertGTComponent implements OnInit {
   }
   applyFilter(event: Event,obj:any){
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSourceContainer.rows.filter = filterValue.trim().toLowerCase();
+    //this.dataSourceContainer.rows.filter = filterValue.trim().toLowerCase();
 
     console.log(this.getSumNaleznosc());
   }
   getSumNaleznosc(){
-    return this.dataSourceContainer.rows.data.reduce((summ, v) => summ += v.naleznosc == null ? 0 : parseInt(v.naleznosc), 0) ;
+    //return this.dataSourceContainer.rows.data.reduce((summ, v) => summ += v.naleznosc == null ? 0 : parseInt(v.naleznosc), 0) ;
   }
 
   getSumZobowiazanie(){
-    return this.dataSourceContainer.rows.data.reduce((summ, v) => summ += v.zobowiazanie == null ? 0 : parseInt(v.zobowiazanie), 0) ;
+    //return this.dataSourceContainer.rows.data.reduce((summ, v) => summ += v.zobowiazanie == null ? 0 : parseInt(v.zobowiazanie), 0) ;
   }
   ExportTOExcel()
   {
