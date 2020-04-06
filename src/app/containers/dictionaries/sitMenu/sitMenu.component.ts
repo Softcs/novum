@@ -23,7 +23,6 @@ export class SitMenuComponent implements OnInit {
 
   onSelectMenu({ selected }) {
     console.log('Select Event', this.menuTable);
-    this.menuTable.sitDataSource(selected);
     this.selected.splice(0, this.selected.length);
     this.selected.push(...selected);
   }
