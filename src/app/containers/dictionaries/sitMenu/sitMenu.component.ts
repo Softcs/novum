@@ -8,9 +8,13 @@ import { DatatableComponent } from '@swimlane/ngx-datatable';
   styleUrls: ['./sitMenu.component.scss']
 })
 export class SitMenuComponent implements OnInit {
-  @ViewChild('sitMenu') menuTable: DatatableComponent;
+  @ViewChild('sitMenu')
 
-  selected = [];
+  menuTable: DatatableComponent;
+
+  sitMenuSelected = [];
+  sitMenuItemsSelected = [];
+  sitAppUsersSelected = [];
   ColumnMode = ColumnMode;
   SelectionType = SelectionType;
 
@@ -18,19 +22,23 @@ export class SitMenuComponent implements OnInit {
 
   ngOnInit(): void {
 
-
   }
 
   onSelectMenu({ selected }) {
-    console.log('Select Event', this.menuTable);
-    this.selected.splice(0, this.selected.length);
-    this.selected.push(...selected);
+    console.log('Select Event', selected, this.sitMenuSelected);
+    this.sitMenuSelected.splice(0, this.sitMenuSelected.length);
+    this.sitMenuSelected.push(...selected);
   }
-  onSelect({ selected }) {
-     console.log('Select Event', selected);
 
-    this.selected.splice(0, this.selected.length);
-    this.selected.push(...selected);
+  onSelectMenuItems({ selected }) {
+    this.sitMenuItemsSelected.splice(0, this.sitMenuItemsSelected.length);
+    this.sitMenuItemsSelected.push(...selected);
+  }
+
+  onSelectAppUsers({ selected }) {
+
+    this.sitAppUsersSelected.splice(0, this.sitAppUsersSelected.length);
+    this.sitAppUsersSelected.push(...selected);
   }
 
   add() {
@@ -42,7 +50,7 @@ export class SitMenuComponent implements OnInit {
   }
 
   remove() {
-    this.selected = [];
+    this.sitMenuSelected = [];
   }
   displayCheck(row) {
     return row.name !== 'xxx';
@@ -51,7 +59,7 @@ export class SitMenuComponent implements OnInit {
   onActivate(event) {
     if(event.type == 'click') {
         console.log("a",event.row);
-      this.menuTable.sitDataSource.SetAvtiveRow(event.row);
+   //   this.menuTable.sitDataSource.SetAvtiveRow(event.row);
     }
 }
 }

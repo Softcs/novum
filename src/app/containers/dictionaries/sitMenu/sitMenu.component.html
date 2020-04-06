@@ -10,14 +10,14 @@
               class="material striped"
               [columnMode]="ColumnMode.force"
               [limit]=20
-              [selected]="selected"
-              [selectionType]="SelectionType.checkbox"
+              [selected]="sitMenuSelected"
+              [selectionType]="SelectionType.single"
               [selectAllRowsOnPage]="false"
               [displayCheck]="displayCheck"
               (activate)="onActivate($event)"
               (select)="onSelectMenu($event)"
               >
-              <ngx-datatable-column
+              <!-- <ngx-datatable-column
                 [width]="30"
                 [sortable]="false"
                 [canAutoResize]="false"
@@ -26,7 +26,7 @@
                 [headerCheckboxable]="true"
                 [checkboxable]="true"
               >
-              </ngx-datatable-column>
+              </ngx-datatable-column> -->
                 <ngx-datatable-column prop="MenuId" name="Id"></ngx-datatable-column>
                 <ngx-datatable-column prop="Symbol" name="Symbol"></ngx-datatable-column>
                 <ngx-datatable-column prop="Caption" name="Nazwa"></ngx-datatable-column>
@@ -43,14 +43,14 @@
             class="material striped"
             [columnMode]="ColumnMode.force"
             [limit]=20
-            [selected]="selected"
-            [selectionType]="SelectionType.checkbox"
+            [selected]="sitMenuItemsSelected"
+            [selectionType]="SelectionType.single"
             [selectAllRowsOnPage]="false"
             [displayCheck]="displayCheck"
-            (select)="onSelect($event)"
+            (select)="onSelectMenuItems($event)"
             (activate)="onActivate($event)"
           >
-            <ngx-datatable-column
+            <!-- <ngx-datatable-column
               [width]="30"
               [sortable]="false"
               [canAutoResize]="false"
@@ -59,7 +59,7 @@
               [headerCheckboxable]="true"
               [checkboxable]="true"
             >
-            </ngx-datatable-column>
+            </ngx-datatable-column> -->
               <ngx-datatable-column prop="MenuItemId" name="Id"></ngx-datatable-column>
               <ngx-datatable-column prop="MenuId" name="MenuId"></ngx-datatable-column>
               <ngx-datatable-column prop="Caption" name="Nazwa"></ngx-datatable-column>
@@ -77,14 +77,14 @@
         class="material striped"
         [columnMode]="ColumnMode.force"
         [limit]=20
-        [selected]="selected"
-        [selectionType]="SelectionType.checkbox"
+        [selected]="sitAppUsersSelected"
+        [selectionType]="SelectionType.single"
         [selectAllRowsOnPage]="false"
         [displayCheck]="displayCheck"
         (activate)="onActivate($event)"
-        (select)="onSelect($event)"
+        (select)="onSelectAppUsers($event)"
         >
-          <ngx-datatable-column
+          <!-- <ngx-datatable-column
             [width]="30"
             [sortable]="false"
             [canAutoResize]="false"
@@ -93,7 +93,7 @@
             [headerCheckboxable]="true"
             [checkboxable]="true"
           >
-          </ngx-datatable-column>
+          </ngx-datatable-column> -->
           <ngx-datatable-column prop="AppUserId" name="Id"></ngx-datatable-column>
           <ngx-datatable-column prop="UserLogin" name="Login"></ngx-datatable-column>
           <ngx-datatable-column prop="UserPassword" name="Hasło"></ngx-datatable-column>
