@@ -5,7 +5,10 @@
       <div style="padding-right: 5px; display:flex; flex-direction: column; width: 30%;">
         <div style="display:flex; flex-direction: column; height: 50%;">
           <app-data-source-container  ident="sitFilter" >
-            <input (keyup.enter)="onFilterKeyEnter($event)" type="text" name="searchText" #sitDSControl field="searchText">
+            <mat-form-field class="example-full-width">
+              <mat-label>Filtruj</mat-label>
+              <input matInput (keyup)="onFilterKeyEnter($event)" type="text" name="searchText" #sitDSControl field="searchText">
+            </mat-form-field>
           </app-data-source-container>
           <div class="data-table">
             <app-data-source-container  ident="sitMenu" >
@@ -40,6 +43,13 @@
 
       </div>
       <div style="padding-right: 5px; display:flex; flex-direction: column; width: 70%;">
+        <app-data-source-container  ident="sitFilter" >
+          <mat-form-field class="example-full-width">
+            <mat-label>Filtruj</mat-label>
+            <input matInput (keyup)="onFilterKeyEnter($event)" type="text" name="searchMenuItems" #sitDSControl field="searchMenuItems">
+          </mat-form-field>
+        </app-data-source-container>
+
         <div class="data-table">
           <app-data-source-container ident="sitMenuItems">
             <ngx-datatable #sitMenuItems #sitSetDataSource
