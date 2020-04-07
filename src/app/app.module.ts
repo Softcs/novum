@@ -29,7 +29,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 
 import { FormsModule } from '@angular/forms';
-import { DataSourceContainerComponent, sitSetDataSourceDirective } from './components/data-source-container/data-source-container.component';
+import { DataSourceContainerComponent, sitSetDataSourceDirective, sitDSControlDirective } from './components/data-source-container/data-source-container.component';
 import { RailConfigurationsComponent } from './containers/dictionaries/sitRailConfigurations';;
 import { NavbarComponent } from './components/navbar/navbar.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -107,6 +107,7 @@ import { SitMenuComponent } from './containers/dictionaries/sitMenu/sitMenu.comp
         NavbarComponent,
         MaterialTestComponent,
         sitSetDataSourceDirective,
+        sitDSControlDirective,
         SideMenuComponent,
         SitRozrachunkiInsertGTComponent,
         AgGridTestComponent,

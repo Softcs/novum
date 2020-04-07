@@ -20,6 +20,18 @@ export class sitSetDataSourceDirective {
   @Input() rows;
 }
 
+@Directive({
+  selector: 'sitDSControl',
+})
+export class sitDSControlDirective {
+  constructor(private el: ElementRef) {
+  }
+  @Input() name;
+  @Input() value;
+
+}
+
+
 interface LooseObject {
   [key: string]: any;
 }
@@ -33,9 +45,8 @@ interface LooseObject {
 })
 @Directive({ selector: 'app-data-source-container' })
 export class DataSourceContainerComponent implements OnInit {
-  @ContentChildren('sitSetDataSource', { descendants:true}) datasSourcesInterface: QueryList<sitSetDataSourceDirective>;
-  @ContentChild(MatSort, { static: true }) sort: MatSort;
-  @ContentChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ContentChildren('sitSetDataSource', { descendants: true}) datasSourcesInterface: QueryList<sitSetDataSourceDirective>;
+  @ContentChildren('sitDSControl', { descendants: true }) dsControlsInterface: QueryList<sitDSControlDirective>;
 
   @Input() ident: string;
   dataSourceResponseWrapper: DataSourceResponseWrapper;
@@ -58,10 +69,18 @@ export class DataSourceContainerComponent implements OnInit {
   }
   public setDataSource(dataSourceResponseWrapper: DataSourceResponseWrapper) {
     this.dataSourceResponseWrapper = dataSourceResponseWrapper;
-    console.log("setDataSource",this);
+
     this.datasSourcesInterface.forEach(element => {
       element.rows = this.dataSourceResponseWrapper.rows;
     });
+    if (this.dsControlsInterface != null) {
+        this.dsControlsInterface.forEach(element => {
+          console.log("el", element)
+              // const fieldValue = this.dataSourceResponseWrapper.activeRow["searchText"];
+              // element.value(fieldValue);
+
+        });
+     }
   }
   public deleteData() {
 

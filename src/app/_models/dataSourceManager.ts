@@ -74,9 +74,13 @@ export class DataSourceManager {
         this.dataSourcesWrapper.length = 0;
         this.dataSourceComponents.forEach(dataSourceContainer => {
             const dataSource = this.getDataSource(dataSourceContainer.ident);
-            const dataSourceResponseWrapper = new DataSourceResponseWrapper(dataSource, this);
-            this.dataSourcesWrapper.push(dataSourceResponseWrapper);
-            dataSourceContainer.setDataSource(dataSourceResponseWrapper);
+            if (dataSource != null) {
+                const dataSourceResponseWrapper = new DataSourceResponseWrapper(dataSource, this);
+                this.dataSourcesWrapper.push(dataSourceResponseWrapper);
+                dataSourceContainer.setDataSource(dataSourceResponseWrapper);
+            } else {
+                console.error('DataSource: ' + dataSourceContainer.ident + ' not found!');
+            }
         });
 
     }
