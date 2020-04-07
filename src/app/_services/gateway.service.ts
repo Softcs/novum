@@ -44,10 +44,18 @@ export class GatewayService {
         this.currentUserSubject.next(null);
     }
 
-    operationGetDictInfo(ident: string): Operation {
+    operationGetDictInfo(dictident: string): Operation {
         const opr: Operation = new  Operation();
-        opr.ident = ident;
+        opr.dictident = dictident;
         opr.oprType = 1;
+
+        return opr;
+    }
+    operationRefreshDataSources(dictident: string, dataSourcesRequest: any[]): Operation {
+        const opr: Operation = new Operation();
+        opr.dictident = dictident;
+        opr.oprType = 2;
+        opr.dataSourcesRequest = dataSourcesRequest;
         return opr;
     }
     executeOperation(opr: Operation) {

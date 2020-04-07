@@ -1,6 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ContentChild } from '@angular/core';
 import { ColumnMode, SelectionType } from '../../../../ngx/public-api';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
+import { DataSourceContainerComponent } from '@app/components/data-source-container';
+import { DictContainerComponent } from '@app/components/dict-container';
+import { DataSourceResponseWrapper } from '@app/_models';
 
 @Component({
   selector: 'sitMenu',
@@ -9,7 +12,7 @@ import { DatatableComponent } from '@swimlane/ngx-datatable';
 })
 export class SitMenuComponent implements OnInit {
   @ViewChild('sitMenu') menuTable: DatatableComponent;
-
+  @ViewChild('sitDictcontainer') dictContainer: DictContainerComponent;
   selected = [];
   ColumnMode = ColumnMode;
   SelectionType = SelectionType;
@@ -48,10 +51,18 @@ export class SitMenuComponent implements OnInit {
     return row.name !== 'xxx';
   }
 
+  onActivateMenu(event) {
+    if (event.type == 'click') {
+
+      const dataSourceResponseWrapper: DataSourceResponseWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitMenu");
+      console.log("onActivateMenu", event.row, dataSourceResponseWrapper);
+      dataSourceResponseWrapper.SetActiveRow(event.row);
+    }
+  }
   onActivate(event) {
     if(event.type == 'click') {
         console.log("a",event.row);
-      this.menuTable.sitDataSource.SetAvtiveRow(event.row);
+
     }
 }
 }

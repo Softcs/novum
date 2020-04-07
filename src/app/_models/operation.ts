@@ -1,4 +1,6 @@
 export class Operation {
-    ident: string;
+    dictident: string;
     oprType: number;
+    dataSourcesRequest: any[];
 }
+

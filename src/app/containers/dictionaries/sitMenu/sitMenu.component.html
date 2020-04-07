@@ -1,11 +1,11 @@
-<app-dict-container ident="sitMenu" class="content">
+<app-dict-container ident="sitMenu" class="content" #sitDictcontainer>
   <!-- <div class="content"> -->
     <div style="display:flex; flex-direction: column; height: 100%; min-height: 100%;">
     <div style="display:flex; flex-direction: row; height: 60%;">
       <div style="padding-right: 5px; display:flex; flex-direction: column; width: 30%;">
         <div style="display:flex; flex-direction: column; height: 50%;">
           <div class="data-table">
-            <app-data-source-container ident="sitMenu">
+            <app-data-source-container  ident="sitMenu" >
               <ngx-datatable #sitMenu #sitSetDataSource
               class="material striped"
               [columnMode]="ColumnMode.force"
@@ -14,7 +14,7 @@
               [selectionType]="SelectionType.checkbox"
               [selectAllRowsOnPage]="false"
               [displayCheck]="displayCheck"
-              (activate)="onActivate($event)"
+              (activate)="onActivateMenu($event)"
               (select)="onSelectMenu($event)"
               >
               <ngx-datatable-column

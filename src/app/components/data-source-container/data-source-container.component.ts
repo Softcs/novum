@@ -3,7 +3,7 @@ import { Component, OnInit, Input, Directive, ContentChildren,
 
 import { GatewayService } from '../../_services/gateway.service';
 import { first } from 'rxjs/operators';
-import { Operation, DataSourceWrapper } from '@app/_models';
+import { Operation, DataSourceResponseWrapper } from '@app/_models';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
@@ -18,7 +18,6 @@ export class sitSetDataSourceDirective {
   constructor(private el: ElementRef) {
   }
   @Input() rows;
-  @Input() sitDataSource;
 }
 
 interface LooseObject {
@@ -39,7 +38,7 @@ export class DataSourceContainerComponent implements OnInit {
   @ContentChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   @Input() ident: string;
-  dataSourceWrapper: DataSourceWrapper;
+  dataSourceResponseWrapper: DataSourceResponseWrapper;
 
   obj: LooseObject = {};
   constructor(private gatewayService: GatewayService) { }
@@ -54,22 +53,21 @@ export class DataSourceContainerComponent implements OnInit {
   ngAfterViewInit() {
 
   }
-  public SetAvtiveRow(row: any) {
-    this.dataSourceWrapper.SetAvtiveRow(row);
+  public SetActiveRow(row: any) {
+    this.dataSourceResponseWrapper.SetActiveRow(row);
   }
-  public setDataSource(dataSourceWrapper: DataSourceWrapper) {
-    this.dataSourceWrapper = dataSourceWrapper;
+  public setDataSource(dataSourceResponseWrapper: DataSourceResponseWrapper) {
+    this.dataSourceResponseWrapper = dataSourceResponseWrapper;
     console.log("setDataSource",this);
     this.datasSourcesInterface.forEach(element => {
-      element.rows = this.dataSourceWrapper.rows;
-      element.sitDataSource = this;
+      element.rows = this.dataSourceResponseWrapper.rows;
     });
   }
   public deleteData() {
 
   }
   get errors() {
-    return this.dataSourceWrapper != null ? this.dataSourceWrapper.errors : null;
+    return this.dataSourceResponseWrapper != null ? this.dataSourceResponseWrapper.errors : null;
   }
 
 }

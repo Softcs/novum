@@ -1,17 +1,18 @@
 import { DictInfoWrapper, DataSourceManager } from '.';
 
-export class DataSourceWrapper {
+export class DataSourceResponseWrapper {
     public ident: string;
     public rows: [any];
     public activeRow:any;
     public errors:[any];
-    constructor(private inputDataSource: any, private dataSourceManager: DataSourceManager) {
+    constructor(private inputDataSource: any, public dataSourceManager: DataSourceManager) {
         this.ident = inputDataSource.ident;
         this.rows = inputDataSource.rows;
         this.activeRow = inputDataSource.activeRow;
         this.errors = inputDataSource.errors;
     }
-    public SetAvtiveRow( row: any) {
+    public SetActiveRow( row: any) {
         this.activeRow = row;
+        this.dataSourceManager.RefreshChildren(this);
     }
 }

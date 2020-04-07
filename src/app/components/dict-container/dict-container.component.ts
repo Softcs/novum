@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewChildren, QueryList, ViewChild, ContentChildren, Directive, ElementRef } from '@angular/core';
 import { GatewayService } from '../../_services/gateway.service';
-import { Operation, DataSourceWrapper, DictInfoWrapper, DataSourceManager } from '@app/_models';
+import { Operation, DataSourceResponseWrapper, DictInfoWrapper, DataSourceManager } from '@app/_models';
 import { first } from 'rxjs/operators';
 import { DataSourceContainerComponent } from '../../components/data-source-container';
 @Component({
@@ -8,7 +8,6 @@ import { DataSourceContainerComponent } from '../../components/data-source-conta
   templateUrl: './dict-container.component.html',
   styleUrls: ['./dict-container.component.scss']
 })
-
 
 
 export class DictContainerComponent implements OnInit {
@@ -19,7 +18,7 @@ export class DictContainerComponent implements OnInit {
   private dataSourcesResponse: any;
   public DataSourceManager: DataSourceManager;
   constructor(private gatewayService: GatewayService) {
-    this.DataSourceManager = new DataSourceManager();
+    this.DataSourceManager = new DataSourceManager(gatewayService);
   }
 
   ngOnInit() {
