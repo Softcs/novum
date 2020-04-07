@@ -4,6 +4,9 @@
     <div style="display:flex; flex-direction: row; height: 60%;">
       <div style="padding-right: 5px; display:flex; flex-direction: column; width: 30%;">
         <div style="display:flex; flex-direction: column; height: 50%;">
+          <app-data-source-container  ident="sitFilter" >
+            <input type="text" name="searchText" #sitSetDataSource>
+          </app-data-source-container>
           <div class="data-table">
             <app-data-source-container  ident="sitMenu" >
               <ngx-datatable #sitMenu #sitSetDataSource
