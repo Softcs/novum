@@ -13,6 +13,7 @@ export class DataSourceResponseWrapper {
     }
     public SetActiveRow( row: any) {
         this.activeRow = row;
+        console.log("SetActiveRow",this);
         this.dataSourceManager.RefreshChildren(this);
     }
 }

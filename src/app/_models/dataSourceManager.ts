@@ -29,9 +29,8 @@ export class DataSourceManager {
         });
     }
     public RefreshChildren(dataSourceResponseWrapper: DataSourceResponseWrapper) {
+        console.log("RefreshChildren")
         const dataSourceDefinition = this.dictInfo.FindDataSource(dataSourceResponseWrapper.ident);
-        console.log("this.dictInfo", this.dictInfo);
-        console.log("this.dataSourceResponseWrapper", dataSourceResponseWrapper);
         if (dataSourceDefinition.children == null || dataSourceDefinition.children.length == 0) {
             return;
         }
