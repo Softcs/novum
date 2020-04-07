@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ContentChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ContentChild, Input } from '@angular/core';
 import { ColumnMode, SelectionType } from '../../../../ngx/public-api';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
 import { DataSourceContainerComponent } from '@app/components/data-source-container';
@@ -68,9 +68,19 @@ export class SitMenuComponent implements OnInit {
       dataSourceResponseWrapper.SetActiveRow(event.row);
     }
   }
+
+
   onActivate(event) {
     if(event.type == 'click') {
         console.log("a",event.row);
     }
-}
+  }
+
+  onFilterKeyEnter(event) {
+    const dataSourceResponseWrapper: DataSourceResponseWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitFilter");
+    console.log("onFilterKeyEnter", event.target.value,dataSourceResponseWrapper.rows);
+    dataSourceResponseWrapper.rows.splice(0, dataSourceResponseWrapper.rows.length)
+    dataSourceResponseWrapper.rows.push({ searchText: event.target.value });
+  }
+
 }
