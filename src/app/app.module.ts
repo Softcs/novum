@@ -55,14 +55,10 @@ import { SliderModule } from 'primeng/slider';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { NgxDatatableTestComponent } from './containers/dictionaries/ngx-datatable-test/ngx-datatable-test.component'
 ;
-<<<<<<< HEAD
-import { SitMenuComponent } from './containers/dictionaries/sitMenu/sitMenu.component';
 import { SitMenuListItemComponent } from './components/sit-menu-list-item/sit-menu-list-item.component';
 import { NavService } from './_services/nav.service';
-=======
 import { SitMenuComponent } from './containers/dictionaries/sitMenu/sitMenu.component'
 import { sitDSControlDirective } from './_directives';
->>>>>>> 2e7dfec77488c3b693614135ea36c03c1a4dc540
 
 @NgModule({
     imports: [
