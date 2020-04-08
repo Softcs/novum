@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewEncapsulation, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewEncapsulation, AfterViewInit, ViewChild, AfterContentInit } from '@angular/core';
 import { GatewayService } from '@app/_services';
 import { User } from '@app/_models';
 import { Router } from '@angular/router';
@@ -92,13 +92,23 @@ export class SideMenuComponent implements OnInit {
   }
 
   ngOnInit() {
-    const dataSourceResponseWrapper: DataSourceResponseWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitSideMenu");
-    // //dataSourceResponseWrapper.SetActiveRow(dataSourceResponseWrapper.activeRow);
-    // console.log(dataSourceResponseWrapper.rows);
   }
 
   ngAfterViewInit() {
     this.navService.appDrawer = this.appDrawer;
+
+  }
+
+  ngAfterContentInit() {
+    const dataSourceResponseWrapper: DataSourceResponseWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitSideMenu");
+    console.log(dataSourceResponseWrapper.rows);
+
+  }
+
+  test() {
+    const dataSourceResponseWrapper: DataSourceResponseWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitSideMenu");
+    console.log(dataSourceResponseWrapper.rows);
+
   }
 
   logout() {
