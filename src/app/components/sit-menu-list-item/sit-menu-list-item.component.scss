@@ -1,0 +1,24 @@
+//@import '../theme';
+
+:host {
+  display: block;
+  outline: none;
+
+  .mat-list-item.active {
+    background-color: gray;
+  }
+  &:hover,
+  &:focus {
+    >.mat-list-item:not(.expanded) {
+      background-color: yellow !important;
+    }
+  }
+}
+
+.mat-list-item {
+  padding: 8px 0;
+
+  .routeIcon {
+    margin-right: 20px;
+  }
+}

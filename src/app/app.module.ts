@@ -55,7 +55,9 @@ import { SliderModule } from 'primeng/slider';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { NgxDatatableTestComponent } from './containers/dictionaries/ngx-datatable-test/ngx-datatable-test.component'
 ;
-import { SitMenuComponent } from './containers/dictionaries/sitMenu/sitMenu.component'
+import { SitMenuComponent } from './containers/dictionaries/sitMenu/sitMenu.component';
+import { SitMenuListItemComponent } from './components/sit-menu-list-item/sit-menu-list-item.component';
+import { NavService } from './_services/nav.service';
 
 @NgModule({
     imports: [
@@ -113,14 +115,16 @@ import { SitMenuComponent } from './containers/dictionaries/sitMenu/sitMenu.comp
         AgGridTestComponent,
         PrimeNgTestComponent,
         NgxDatatableTestComponent,
-        SitMenuComponent
-    ],
+        SitMenuComponent,
+        SitMenuListItemComponent,
+        SitMenuListItemComponent    ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
 
         // provider used to create fake backend
-        fakeBackendProvider
+        fakeBackendProvider,
+        NavService
     ],
     bootstrap: [AppComponent]
 })

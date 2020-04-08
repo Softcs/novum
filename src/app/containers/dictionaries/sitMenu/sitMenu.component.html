@@ -1,13 +1,13 @@
-<app-dict-container ident="sitMenu" class="content" #sitDictcontainer>
-  <!-- <div class="content"> -->
+<div class="content">
+  <app-dict-container ident="sitMenu"  #sitDictcontainer class="container-cols">
     <div style="display:flex; flex-direction: column; height: 100%; min-height: 100%;">
-    <div style="display:flex; flex-direction: row; height: 60%;">
+      <div style="display:flex; flex-direction: row; height: 60%;">
       <div style="padding-right: 5px; display:flex; flex-direction: column; width: 30%;">
         <div style="display:flex; flex-direction: column; height: 50%;">
           <app-data-source-container  ident="sitFilter" >
             <mat-form-field class="example-full-width">
               <mat-label>Filtruj</mat-label>
-              <input matInput (keyup)="onFilterKeyEnter($event)" type="text" name="searchText" field="searchText"/>
+              <input matInput (keyup)="onFilterKeyEnter($event)" type="text" name="searchMenu" field="searchMenu"/>
             </mat-form-field>
           </app-data-source-container>
           <div class="data-table">
@@ -23,16 +23,6 @@
               (activate)="onActivateMenu($event)"
               (select)="onSelectMenu($event)"
               >
-              <!-- <ngx-datatable-column
-                [width]="30"
-                [sortable]="false"
-                [canAutoResize]="false"
-                [draggable]="false"
-                [resizeable]="false"
-                [headerCheckboxable]="true"
-                [checkboxable]="true"
-              >
-              </ngx-datatable-column> -->
                 <ngx-datatable-column prop="MenuId" name="Id"></ngx-datatable-column>
                 <ngx-datatable-column prop="Symbol" name="Symbol"></ngx-datatable-column>
                 <ngx-datatable-column prop="Caption" name="Nazwa"></ngx-datatable-column>
@@ -63,16 +53,6 @@
             (select)="onSelectMenuItems($event)"
             (activate)="onActivate($event)"
           >
-            <!-- <ngx-datatable-column
-              [width]="30"
-              [sortable]="false"
-              [canAutoResize]="false"
-              [draggable]="false"
-              [resizeable]="false"
-              [headerCheckboxable]="true"
-              [checkboxable]="true"
-            >
-            </ngx-datatable-column> -->
               <ngx-datatable-column prop="MenuItemId" name="Id"></ngx-datatable-column>
               <ngx-datatable-column prop="MenuId" name="MenuId"></ngx-datatable-column>
               <ngx-datatable-column prop="Caption" name="Nazwa"></ngx-datatable-column>
@@ -82,8 +62,8 @@
           </app-data-source-container>
         </div>
       </div>
-    </div>
-    <div style="display:flex; flex-direction: column; height: 40%;">
+      </div>
+      <div style="display:flex; flex-direction: column; height: 40%;">
       <div class="data-table">
         <app-data-source-container ident="sitAppUsers">
         <ngx-datatable #sitAppUsers #sitSetDataSource
@@ -97,16 +77,6 @@
         (activate)="onActivate($event)"
         (select)="onSelectAppUsers($event)"
         >
-          <!-- <ngx-datatable-column
-            [width]="30"
-            [sortable]="false"
-            [canAutoResize]="false"
-            [draggable]="false"
-            [resizeable]="false"
-            [headerCheckboxable]="true"
-            [checkboxable]="true"
-          >
-          </ngx-datatable-column> -->
           <ngx-datatable-column prop="AppUserId" name="Id"></ngx-datatable-column>
           <ngx-datatable-column prop="UserLogin" name="Login"></ngx-datatable-column>
           <ngx-datatable-column prop="UserPassword" name="Hasło"></ngx-datatable-column>
@@ -117,11 +87,10 @@
         </ngx-datatable>
         </app-data-source-container>
       </div>
+      </div>
     </div>
-
-    </div>
-  <!-- </div> -->
-</app-dict-container>
+  </app-dict-container>
+</div>
     <!-- <ngx-datatable-column
       [width]="30"
       [sortable]="false"
