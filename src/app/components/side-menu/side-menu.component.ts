@@ -46,19 +46,25 @@ export class SideMenuComponent implements OnInit {
     },
     {
       displayName: 'Konfiguracja',
-      iconName: '',
+      iconName: 'settings',
       children: [
         {
           displayName: 'Menu',
           iconName: '',
           route: 'sitMenu',
           kind: 'app'
+        },
+        {
+          displayName: 'Rail',
+          iconName: '',
+          route: 'dict',
+          kind: 'app'
         }
       ]
     },
     {
       displayName: 'Linki',
-      iconName: '',
+      iconName: 'link',
       children: [
         {
           displayName: 'Seido IT',

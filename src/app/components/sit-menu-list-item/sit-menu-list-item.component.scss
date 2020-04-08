@@ -1,24 +1,29 @@
-//@import '../theme';
+@import '../../../theme';
 
 :host {
   display: block;
   outline: none;
 
   .mat-list-item.active {
-    background-color: gray;
+    background-color: $sidenav-item-active;
+    color: $sidenav-font-color !important;
   }
   &:hover,
   &:focus {
     >.mat-list-item:not(.expanded) {
-      background-color: yellow !important;
+      background-color: $sidenav-hover-color !important;
     }
   }
 }
 
 .mat-list-item {
-  padding: 8px 0;
+  padding-bottom: 12px;
+  height: 40px;
+  color: $sidenav-font-color !important;
 
   .routeIcon {
-    margin-right: 20px;
+    margin-right: 10px;
   }
 }
+
+

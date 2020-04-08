@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import "./theme";
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 @import '~@angular/material/theming';
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
@@ -23,17 +24,6 @@
 @import '~@swimlane/ngx-datatable/themes/dark.css';
 @import '~@swimlane/ngx-datatable/assets/icons.css';
 
-
-$background-color: #fafafa;
-$table-header-color: #6da6e8;//#f5f5f5;
-$table-footer-color: lightgray;
-$table-row-odd-color: white;
-$table-row-even-color: #F8F8F8;
-$table-row-hover-color: #E0E0E0;
-$table-row-selected-color: #D3D3D3;
-$table-row-selected-hover-color: #989898;
-$toolbar-color: #6da6e8;
-$toolbar-text-color: #3e7bd8;
 
 html {
   height: 100%;
@@ -84,6 +74,7 @@ body {
 }
 .sidenav {
   padding: 5px;
+  background-color: $sidenav-background-color !important;
 }
 
 mat-toolbar{
