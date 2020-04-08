@@ -29,7 +29,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 
 import { FormsModule } from '@angular/forms';
-import { DataSourceContainerComponent, sitSetDataSourceDirective, sitDSControlDirective } from './components/data-source-container/data-source-container.component';
+import { DataSourceContainerComponent, sitSetDataSourceDirective } from './components/data-source-container/data-source-container.component';
 import { RailConfigurationsComponent } from './containers/dictionaries/sitRailConfigurations';;
 import { NavbarComponent } from './components/navbar/navbar.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -56,6 +56,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { NgxDatatableTestComponent } from './containers/dictionaries/ngx-datatable-test/ngx-datatable-test.component'
 ;
 import { SitMenuComponent } from './containers/dictionaries/sitMenu/sitMenu.component'
+import { sitDSControlDirective } from './_directives';
 
 @NgModule({
     imports: [

@@ -7,7 +7,7 @@
           <app-data-source-container  ident="sitFilter" >
             <mat-form-field class="example-full-width">
               <mat-label>Filtruj</mat-label>
-              <input matInput (keyup)="onFilterKeyEnter($event)" type="text" name="searchText" field="searchText"/>
+              <input matInput (keyup)="onFilterKeyEnter($event)" type="text" name="searchText" #sitDSControl field="searchText"/>
             </mat-form-field>
           </app-data-source-container>
           <div class="data-table">
@@ -46,7 +46,7 @@
         <app-data-source-container  ident="sitFilter" >
           <mat-form-field class="example-full-width">
             <mat-label>Filtruj</mat-label>
-            <input matInput (keyup)="onFilterKeyEnter($event)" type="text" name="searchMenuItems"  field="searchMenuItems"/>
+            <input matInput (keyup)="onFilterKeyEnter($event)" type="text" name="searchMenuItems" #sitDSControl field="searchMenuItems">
           </mat-form-field>
         </app-data-source-container>
 
