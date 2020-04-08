@@ -29,7 +29,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 
 import { FormsModule } from '@angular/forms';
-import { DataSourceContainerComponent, sitSetDataSourceDirective, sitDSControlDirective } from './components/data-source-container/data-source-container.component';
+import { DataSourceContainerComponent, sitSetDataSourceDirective } from './components/data-source-container/data-source-container.component';
 import { RailConfigurationsComponent } from './containers/dictionaries/sitRailConfigurations';;
 import { NavbarComponent } from './components/navbar/navbar.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -55,9 +55,14 @@ import { SliderModule } from 'primeng/slider';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { NgxDatatableTestComponent } from './containers/dictionaries/ngx-datatable-test/ngx-datatable-test.component'
 ;
+<<<<<<< HEAD
 import { SitMenuComponent } from './containers/dictionaries/sitMenu/sitMenu.component';
 import { SitMenuListItemComponent } from './components/sit-menu-list-item/sit-menu-list-item.component';
 import { NavService } from './_services/nav.service';
+=======
+import { SitMenuComponent } from './containers/dictionaries/sitMenu/sitMenu.component'
+import { sitDSControlDirective } from './_directives';
+>>>>>>> 2e7dfec77488c3b693614135ea36c03c1a4dc540
 
 @NgModule({
     imports: [

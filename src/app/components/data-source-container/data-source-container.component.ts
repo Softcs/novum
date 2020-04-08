@@ -9,7 +9,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { JsonPipe } from '@angular/common';
 import { Observable, BehaviorSubject } from 'rxjs';
-
+import { sitDSControlDirective } from '@app/_directives';
 
 @Directive({
   selector: 'sitSetDataSource',
@@ -18,22 +18,6 @@ export class sitSetDataSourceDirective {
   constructor(private el: ElementRef) {
   }
   @Input() rows;
-}
-
-@Directive({
-  selector: 'sitDSControl',
-})
-export class sitDSControlDirective {
-  constructor(private el: ElementRef) {
-  }
-  @Input() name;
-  @Input() value;
-
-}
-
-
-interface LooseObject {
-  [key: string]: any;
 }
 
 
@@ -46,13 +30,12 @@ interface LooseObject {
 @Directive({ selector: 'app-data-source-container' })
 export class DataSourceContainerComponent implements OnInit {
   @ContentChildren('sitSetDataSource', { descendants: true}) datasSourcesInterface: QueryList<sitSetDataSourceDirective>;
-  @ContentChildren('sitDSControl', { descendants: true }) dsControlsInterface: QueryList<sitDSControlDirective>;
+  @ContentChildren('sitDSControl', { descendants: true, read: ElementRef }) dsControlsInterface: QueryList<sitDSControlDirective>;
 
   @Input() ident: string;
   dataSourceResponseWrapper: DataSourceResponseWrapper;
 
-  obj: LooseObject = {};
-  constructor(private gatewayService: GatewayService) { }
+    constructor(private gatewayService: GatewayService) { }
 
 
   ngOnInit() {
@@ -75,7 +58,7 @@ export class DataSourceContainerComponent implements OnInit {
     });
     if (this.dsControlsInterface != null) {
         this.dsControlsInterface.forEach(element => {
-          console.log("el", element)
+          console.log("el", element);
               // const fieldValue = this.dataSourceResponseWrapper.activeRow["searchText"];
               // element.value(fieldValue);
 
@@ -90,4 +73,7 @@ export class DataSourceContainerComponent implements OnInit {
   }
 
 }
+
+
+
 
