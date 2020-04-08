@@ -13,6 +13,7 @@ import { DataSourceResponseWrapper } from '@app/_models';
 export class SitMenuComponent implements OnInit {
   @ViewChild('sitMenu') menuTable: DatatableComponent;
   @ViewChild('sitDictcontainer') dictContainer: DictContainerComponent;
+
   selected = [];
 
   sitMenuSelected = [];

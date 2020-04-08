@@ -33,11 +33,11 @@ export class SitMenuListItemComponent {
 
   onItemSelected(item: NavItem) {
     if ((!item.children || !item.children.length) && item.kind == "app") {
-      this.router.navigate([item.route]);
+      this.router.navigate([item.link]);
       this.navService.closeNav();
     }
     if ((!item.children || !item.children.length) && item.kind == "http") {
-      window.open(item.route, "_blank");
+      window.open(item.link, "_blank");
       this.navService.closeNav();
     }
 

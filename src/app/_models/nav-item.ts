@@ -1,8 +1,8 @@
 export interface NavItem {
-  displayName: string;
+  caption: string;
   disabled?: boolean;
-  iconName: string;
-  route?: string;
+  icon: string;
+  link?: string;
   kind?: string;
   children?: NavItem[];
 }
