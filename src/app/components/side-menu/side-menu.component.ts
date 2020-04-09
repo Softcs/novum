@@ -107,7 +107,11 @@ export class SideMenuComponent implements OnInit {
 
   test() {
     const dataSourceResponseWrapper: DataSourceResponseWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitSideMenu");
-    console.log(dataSourceResponseWrapper.rows);
+    const menu: NavItem = dataSourceResponseWrapper.rows[0].Menu;
+
+    console.log(menu[0],this.navItems);
+    this.navItems.slice(0,this.navItems.length);
+    this.navItems.push (...menu[0]);
 
   }
 
