@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChildren, QueryList, ViewChild, ContentChildren, Directive, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, ViewChildren, QueryList, ViewChild, ContentChildren, Directive, ElementRef, EventEmitter, Output } from '@angular/core';
 import { GatewayService } from '../../_services/gateway.service';
 import { Operation, DataSourceResponseWrapper, DictInfoWrapper, DataSourceManager } from '@app/_models';
 import { first } from 'rxjs/operators';
@@ -17,11 +17,17 @@ export class DictContainerComponent implements OnInit {
   private dictInfo: DictInfoWrapper;
   private dataSourcesResponse: any;
   public DataSourceManager: DataSourceManager;
+
+  @Output()
+  refreshAfter: EventEmitter<DataSourceManager> = new EventEmitter<DataSourceManager>();
+
   constructor(private gatewayService: GatewayService) {
     this.DataSourceManager = new DataSourceManager(gatewayService);
+
   }
 
   ngOnInit() {
+    this.DataSourceManager.refreshAfter = this.refreshAfter;
     this.loadData();
   }
   ngAfterViewInit() {

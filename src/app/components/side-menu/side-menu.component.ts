@@ -96,13 +96,18 @@ export class SideMenuComponent implements OnInit {
 
   ngAfterViewInit() {
     this.navService.appDrawer = this.appDrawer;
-    const dataSourceResponseWrapper: DataSourceResponseWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitSideMenu");
-    console.log(dataSourceResponseWrapper.rows);
+        //console.log(dataSourceResponseWrapper.rows);
 
   }
 
   ngAfterContentInit() {
 
+  }
+
+  refreshAfter(dataSourceManager) {
+    console.log("refreshAfter", event);
+    const dataSourceResponseWrapper: DataSourceResponseWrapper = dataSourceManager.getDateSourceWrapper("sitSideMenu");
+    console.log("dataSourceResponseWrapper.rows", dataSourceResponseWrapper.rows);
   }
 
   test() {

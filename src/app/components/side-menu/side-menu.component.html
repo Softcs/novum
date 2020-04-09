@@ -1,4 +1,6 @@
-<app-dict-container ident="sitSideMenu"  #sitDictcontainer>
+<app-dict-container ident="sitSideMenu"  #sitDictcontainer
+(refreshAfter) ="refreshAfter($event)"
+>
   <app-data-source-container  ident="sitSideMenu" >
     <div style="display: flex; flex-direction: column;">
       <!-- <button mat-flat-button class="menu-button" routerLink="/">Home</button>

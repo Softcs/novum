@@ -1,6 +1,6 @@
 import { DictInfoWrapper, DataSourceResponseWrapper, Operation } from '.';
 import { DataSourceContainerComponent } from '@app/components/data-source-container';
-import { QueryList } from '@angular/core';
+import { QueryList, Output, EventEmitter } from '@angular/core';
 import { GatewayService } from '@app/_services';
 import { first } from 'rxjs/operators';
 
@@ -9,6 +9,9 @@ export class DataSourceManager {
     private _dataSourceComponents: QueryList<DataSourceContainerComponent>;
     private _dataSourcesResponse: any[];
     public dataSourcesWrapper: DataSourceResponseWrapper[];
+    @Output()
+    refreshAfter: EventEmitter<DataSourceManager> = new EventEmitter<DataSourceManager>();
+
     constructor(private gatewayService: GatewayService) {
         this.dataSourcesWrapper = [];
     }
@@ -29,7 +32,6 @@ export class DataSourceManager {
         });
     }
     public RefreshChildren(dataSourceResponseWrapper: DataSourceResponseWrapper) {
-        console.log("RefreshChildren")
         const dataSourceDefinition = this.dictInfo.FindDataSource(dataSourceResponseWrapper.ident);
         if (dataSourceDefinition.children == null || dataSourceDefinition.children.length == 0) {
             return;
@@ -47,7 +49,6 @@ export class DataSourceManager {
 
         const opr: Operation = this.gatewayService.operationRefreshDataSources(this.dictInfo.ident,
             dataSourcesRequest);
-        console.log("opr", opr)
 
         this.gatewayService.executeOperation(opr)
             .pipe(first())
@@ -73,6 +74,7 @@ export class DataSourceManager {
         this.dataSourcesWrapper.length = 0;
         this.dataSourceComponents.forEach(dataSourceContainer => {
             const dataSource = this.getDataSource(dataSourceContainer.ident);
+
             if (dataSource != null) {
                 const dataSourceResponseWrapper = new DataSourceResponseWrapper(dataSource, this);
                 this.dataSourcesWrapper.push(dataSourceResponseWrapper);
@@ -81,9 +83,10 @@ export class DataSourceManager {
                 console.error('DataSource: ' + dataSourceContainer.ident + ' not found!');
             }
         });
-
+        this.refreshAfter.emit(this);
     }
     public getDateSourceWrapper(ident: string): DataSourceResponseWrapper {
+
         const dataSource = this.dataSourcesWrapper.filter(item => item.ident === ident)[0];
         return dataSource;
     }
