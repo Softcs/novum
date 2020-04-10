@@ -67,7 +67,7 @@ body {
 }
 .content {
   display: flex;
-  padding: 5px;
+  padding: 8px;
   height: 100%;
   min-height: 100%;
   width: 100%;
@@ -194,11 +194,12 @@ button:focus {
     .datatable-body-row{
       min-height: 30px;
       .datatable-body-cell{
-        padding: 2px 5px 2px 5px;
+        padding: 2px 8px 2px 8px;
         border-right: 1px solid #e9e8dd;
       }
     }
   }
+
 }
 .ngx-datatable.material:not(.cell-selection) .datatable-body-row:hover .datatable-row-group
 {
@@ -212,8 +213,7 @@ button:focus {
 
 .ngx-datatable.material:not(.cell-selection) .datatable-body-row.active .datatable-row-group{
   background: $table-row-selected-color;
-  border-top: 1px solid gray;
-  border-bottom: 1px solid gray;
+
 }
 
 .ngx-datatable.material .datatable-body .datatable-body-row.datatable-row-even {

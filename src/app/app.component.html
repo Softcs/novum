@@ -2,13 +2,13 @@
   <mat-toolbar *ngIf="currentUser">
     <mat-toolbar-row>
       <button mat-flat-button color="primary" (click)="appDrawer.toggle()" *ngIf="currentUser"><mat-icon>menu</mat-icon></button>
-      <navbar style="width: 100%"></navbar>
+      <sit-navbar style="width: 100%"></sit-navbar>
     </mat-toolbar-row>
   </mat-toolbar>
 
   <mat-drawer-container autosize class="container-cols">
     <mat-drawer #appDrawer class="sidenav" mode="side" >
-      <side-menu></side-menu>
+      <sit-side-menu></sit-side-menu>
     </mat-drawer>
     <div class="container-cols">
       <router-outlet></router-outlet>

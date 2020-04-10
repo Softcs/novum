@@ -1,0 +1,19 @@
+<sit-dict-container ident="sitSideMenu"  #sitDictcontainer
+(refreshAfter) ="refreshAfter($event)"
+>
+  <sit-data-source-container  ident="sitSideMenu" >
+    <div style="display: flex; flex-direction: column;">
+      <!-- <button mat-flat-button class="menu-button" routerLink="/">Home</button>
+      <mat-divider></mat-divider>
+
+      <div *ngFor="let item of menu" [ngSwitch]="item.Kind">
+        <button mat-flat-button class="menu-button" routerLink="{{item.Link}}" *ngSwitchCase="'app'">{{item.Caption}}</button>
+        <a href="https://www.seidoit.pl" target="blank" *ngSwitchCase="'http'"><button mat-flat-button class="menu-button">{{item.Caption}}</button></a>
+      </div> -->
+      <mat-nav-list>
+        <sit-menu-list-item *ngFor="let item of navItems" [item]="item"></sit-menu-list-item>
+      </mat-nav-list>
+
+    </div>
+  </sit-data-source-container>
+</sit-dict-container>

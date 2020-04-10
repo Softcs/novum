@@ -1,28 +1,27 @@
 ﻿import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './containers/home';
 import { LoginComponent } from './containers/login';
-import { RailConfigurationsComponent } from './containers/dictionaries/sitRailConfigurations';
-import { MaterialTestComponent } from './containers/dictionaries/material-test';
-import { testDict } from './containers/dictionaries/testDict';
+import { SitRailConfigurationsComponent } from './containers/dictionaries/sit-rail-configurations';
+import { MaterialTestComponent } from './containers/sandbox/material-test';
+import { testDict } from './containers/sandbox/testDict';
 import { AuthGuard } from './_helpers';
-import { SideMenuComponent } from './components/side-menu'
-import { SitRozrachunkiInsertGTComponent } from './containers/dictionaries/sitRozrachunkiInsertGT/sitRozrachunkiInsertGT.component';
-import { AgGridTestComponent } from './containers/dictionaries/ag-grid-test';
-import { PrimeNgTestComponent } from './containers/dictionaries/prime-ng-test/prime-ng-test.component';
-import { NgxDatatableTestComponent } from './containers/dictionaries/ngx-datatable-test/';
-import { SitMenuComponent } from './containers/dictionaries/sitMenu/sitMenu.component';
+import { AgGridTestComponent } from './containers/sandbox/ag-grid-test';
+import { PrimeNgTestComponent } from './containers/sandbox/prime-ng-test/prime-ng-test.component';
+import { NgxDatatableTestComponent } from './containers/sandbox/ngx-datatable-test';
+import { SitMenuComponent } from './containers/dictionaries/sit-menu/';
+import { SitRozrachunkiInsertGTComponent } from './containers/dictionaries/sit-rozrachunki-insert-gt/sit-rozrachunki-insert-gt.component';
 
 const routes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuard] },
     { path: 'login', component: LoginComponent },
-    { path: 'dict', component: RailConfigurationsComponent, canActivate: [AuthGuard]},
     { path: 'material-test', component: MaterialTestComponent, canActivate: [AuthGuard]},
     { path: 'test', component: testDict, canActivate: [AuthGuard] },
-    { path: 'rozrachunki', component: SitRozrachunkiInsertGTComponent, canActivate: [AuthGuard] },
     { path: 'ag-grid-test', component: AgGridTestComponent, canActivate: [AuthGuard]},
     { path: 'prime-ng-test', component: PrimeNgTestComponent, canActivate: [AuthGuard]},
     { path: 'ngx-datatable-test', component: NgxDatatableTestComponent, canActivate: [AuthGuard]},
     { path: 'sitMenu', component: SitMenuComponent, canActivate: [AuthGuard]},
+    { path: 'sitRailConfigurations', component: SitRailConfigurationsComponent, canActivate: [AuthGuard]},
+    { path: 'sitRozrachunkiInsertGT', component: SitRozrachunkiInsertGTComponent, canActivate: [AuthGuard] },
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }

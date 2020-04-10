@@ -2,6 +2,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 // used to create fake backend
 import { fakeBackendProvider } from './_helpers';
@@ -12,8 +14,9 @@ import { appRoutingModule } from './app.routing';
 import { BasicAuthInterceptor, ErrorInterceptor } from './_helpers';
 import { HomeComponent } from './containers/home';
 import { LoginComponent } from './containers/login';;
-import { DictContainerComponent } from './components/dict-container/dict-container.component';
+import { SitDictContainerComponent } from './components/sit-dict-container/sit-dict-container.component';
 
+//material
 import { MatSliderModule} from '@angular/material/slider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -28,37 +31,34 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 
-import { FormsModule } from '@angular/forms';
-import { DataSourceContainerComponent, sitSetDataSourceDirective } from './components/data-source-container/data-source-container.component';
-import { RailConfigurationsComponent } from './containers/dictionaries/sitRailConfigurations';;
-import { NavbarComponent } from './components/navbar/navbar.component'
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialTestComponent } from './containers/dictionaries/material-test/material-test.component';
-import { testDict } from './containers/dictionaries/testDict';
-import { SideMenuComponent } from './components/side-menu/side-menu.component';
+import { SitDataSourceContainerComponent, sitSetDataSourceDirective } from './components/sit-data-source-container/sit-data-source-container.component';
+import { SitNavbarComponent } from './components/sit-navbar/sit-navbar.component'
+import { MaterialTestComponent } from './containers/sandbox/material-test/material-test.component';
+import { testDict } from './containers/sandbox/testDict';
 import { LayoutModule } from '@angular/cdk/layout';;
-import { SitRozrachunkiInsertGTComponent } from './containers/dictionaries/sitRozrachunkiInsertGT/sitRozrachunkiInsertGT.component';
-import { AgGridTestComponent } from './containers/dictionaries/ag-grid-test/ag-grid-test.component';
+import { AgGridTestComponent } from './containers/sandbox/ag-grid-test/ag-grid-test.component';
 import { AgGridModule } from 'ag-grid-angular';
 
-import { PrimeNgTestComponent } from './containers/dictionaries/prime-ng-test/prime-ng-test.component';
+//primeng
+import { PrimeNgTestComponent } from './containers/sandbox/prime-ng-test/prime-ng-test.component';
 import { TableModule } from 'primeng/table';
 import { TabViewModule } from 'primeng/tabview';
 import { DropdownModule } from 'primeng/dropdown';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { SliderModule } from 'primeng/slider';
-// import { AccordionModule } from 'primeng/accordion';
-// import { PanelModule } from 'primeng/primeng';
-// import { ButtonModule } from 'primeng/primeng';
-// import { RadioButtonModule } from 'primeng/primeng';
 
+//ngx
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { NgxDatatableTestComponent } from './containers/dictionaries/ngx-datatable-test/ngx-datatable-test.component'
-;
+import { NgxDatatableTestComponent } from './containers/sandbox/ngx-datatable-test/ngx-datatable-test.component'
+
+//SIT;
 import { SitMenuListItemComponent } from './components/sit-menu-list-item/sit-menu-list-item.component';
 import { NavService } from './_services/nav.service';
-import { SitMenuComponent } from './containers/dictionaries/sitMenu/sitMenu.component'
 import { sitDSControlDirective } from './_directives';
+import { SitSideMenuComponent } from './components/sit-side-menu/';
+import { SitMenuComponent } from './containers/dictionaries/sit-menu/'
+import { SitRailConfigurationsComponent } from './containers/dictionaries/sit-rail-configurations';;
+import { SitRozrachunkiInsertGTComponent } from './containers/dictionaries/sit-rozrachunki-insert-gt/sit-rozrachunki-insert-gt.component';
 
 @NgModule({
     imports: [
@@ -103,22 +103,23 @@ import { sitDSControlDirective } from './_directives';
         AppComponent,
         HomeComponent,
         LoginComponent,
-        RailConfigurationsComponent,
-        DictContainerComponent,
-        DataSourceContainerComponent,
+        SitRailConfigurationsComponent,
+        SitDictContainerComponent,
+        SitDataSourceContainerComponent,
         testDict,
-        NavbarComponent,
+        SitNavbarComponent,
         MaterialTestComponent,
         sitSetDataSourceDirective,
         sitDSControlDirective,
-        SideMenuComponent,
+        SitSideMenuComponent,
         SitRozrachunkiInsertGTComponent,
         AgGridTestComponent,
         PrimeNgTestComponent,
         NgxDatatableTestComponent,
         SitMenuComponent,
         SitMenuListItemComponent,
-        SitMenuListItemComponent    ],
+
+      ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

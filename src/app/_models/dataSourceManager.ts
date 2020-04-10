@@ -1,12 +1,12 @@
 import { DictInfoWrapper, DataSourceResponseWrapper, Operation } from '.';
-import { DataSourceContainerComponent } from '@app/components/data-source-container';
+import { SitDataSourceContainerComponent } from '@app/components/sit-data-source-container';
 import { QueryList, Output, EventEmitter } from '@angular/core';
 import { GatewayService } from '@app/_services';
 import { first } from 'rxjs/operators';
 
 export class DataSourceManager {
     private _dictInfo: DictInfoWrapper;
-    private _dataSourceComponents: QueryList<DataSourceContainerComponent>;
+    private _dataSourceComponents: QueryList<SitDataSourceContainerComponent>;
     private _dataSourcesResponse: any[];
     public dataSourcesWrapper: DataSourceResponseWrapper[];
     @Output()
@@ -115,7 +115,7 @@ export class DataSourceManager {
     set dataSourcesResponse(dataSourcesResponse: any[]) {
         this._dataSourcesResponse = dataSourcesResponse;
     }
-    set dataSourceComponents(dataSourceComponents: QueryList<DataSourceContainerComponent>) {
+    set dataSourceComponents(dataSourceComponents: QueryList<SitDataSourceContainerComponent>) {
         this._dataSourceComponents = dataSourceComponents;
     }
     get dataSourceComponents() {

@@ -1,0 +1,73 @@
+<div class="content">
+  <sit-dict-container ident="sitRozrachunkiInsertGT"  #sitDictcontainer class="container-cols">
+    <sit-data-source-container  ident="sitFilter" >
+      <mat-form-field class="example-full-width">
+        <mat-label>Filtruj</mat-label>
+        <input matInput (keyup)="onFilterKeyEnter($event)" type="text" name="searchRozrachunki" field="searchRozrachunki"/>
+      </mat-form-field>
+    </sit-data-source-container>
+<!-- <button mat-raised-button color="primary" (click)="ExportTOExcel()">Export as Excel</button> -->
+    <div class="data-table">
+      <sit-data-source-container ident="sitRozrachunkiInsertGT">
+        <ngx-datatable #sitRozrachunkiInsertGT #sitSetDataSource
+        class="material striped"
+        [columnMode]="ColumnMode.force"
+        [limit]=50
+        [selected]="sitRozrachunkiInsertGTselected"
+        [selectionType]="SelectionType.single"
+        [selectAllRowsOnPage]="false"
+        (select)="onSelectRozrachunki($event)"
+        [summaryRow]="true"
+        summaryPosition="bottom"
+        [summaryHeight]="40"
+        >
+          <ngx-datatable-column prop="adr_Nazwa" name="Kontrahent"></ngx-datatable-column>
+          <ngx-datatable-column prop="nzf_NumerPelny" name="Rozrachunek"></ngx-datatable-column>
+          <ngx-datatable-column prop="nzf_Data" name="Data">
+            <ng-template let-column="column" ngx-datatable-header-template>
+              Data
+            </ng-template>
+            <ng-template let-value="value" ngx-datatable-cell-template>
+              {{value | date: 'yyyy-MM-dd'}}
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column prop="nzf_TerminPlatnosci">
+            <ng-template let-column="column" ngx-datatable-header-template>
+              Termin płatności
+            </ng-template>
+            <ng-template let-value="value" ngx-datatable-cell-template>
+              {{value | date: 'yyyy-MM-dd'}}
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column prop="DniSpoznienia">
+            <ng-template let-column="column" ngx-datatable-header-template>
+              Dni
+            </ng-template>
+            <ng-template let-value="value" ngx-datatable-cell-template>
+              <div style="text-align: right;">{{value | number : "1.0-0"}}</div>
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column prop="naleznosc">
+            <ng-template let-column="column" ngx-datatable-header-template>
+              Należność w PLN
+            </ng-template>
+            <ng-template let-value="value" ngx-datatable-cell-template>
+              <div style="text-align: right;">{{value | number : "1.2-2"}}</div>
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column prop="zobowiazanie">
+            <ng-template let-column="column" ngx-datatable-header-template>
+              Zobowiązanie w PLN
+            </ng-template>
+            <ng-template let-value="value" ngx-datatable-cell-template>
+              <div style="text-align: right;">{{value | number : "1.2-2"}}</div>
+            </ng-template>
+          </ngx-datatable-column>
+        </ngx-datatable>
+      </sit-data-source-container>
+    </div>
+  </sit-dict-container>
+</div>
+
+
+
