@@ -1,71 +1,36 @@
 ﻿<div class="content">
-  <mat-form-field>
-    <input matInput (keyup)="applyFilter($event,this)" placeholder="Filtr">
-  </mat-form-field>
-  <sit-dict-container ident="sitRailConfigurations">
-    <sit-data-source-container ident="sitRailConfigurationsDS">
-      <div class="data-table">
-          <table mat-table matSort #sitSetDataSource class="mat-elevation-z1">
-
-            <ng-container matColumnDef="RailConfigurationId">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"> Id </th>
-              <td mat-cell *matCellDef="let element" class="table-cell"> {{element.RailConfigurationId}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="CompanyId" >
-              <th mat-header-cell *matHeaderCellDef mat-sort-header class="table-header">  CompanyId </th>
-              <td mat-cell *matCellDef="let element" class="table-cell"> {{element.CompanyId}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="ClientGuid">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"> ClientGuid </th>
-              <td mat-cell *matCellDef="let element" class="table-cell"> {{element.ClientGuid}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="UserId">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"> UserId </th>
-              <td mat-cell *matCellDef="let element" class="table-cell"> {{element.UserId}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="OperationIdent">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"> OperationIdent </th>
-              <td mat-cell *matCellDef="let element" class="table-cell"> {{element.OperationIdent}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="Data">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"> Data </th>
-              <td mat-cell *matCellDef="let element" class="table-cell"> {{element.Data}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="IsActive">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"> IsActive </th>
-              <td mat-cell *matCellDef="let element" class="table-cell">
-                <mat-checkbox [(ngModel)]="element.IsActive" disabled="true"></mat-checkbox>
-              </td>
-            </ng-container>
-
-            <ng-container matColumnDef="Timeout">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"> Timeout </th>
-              <td mat-cell *matCellDef="let element" class="table-cell"> {{element.Timeout}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="TransformProcedure">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"> TransformProcedure </th>
-              <td mat-cell *matCellDef="let element" class="table-cell"> {{element.TransformProcedure}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="ConvertFunctionForParams">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header class="table-header"> ConvertFunctionForParams </th>
-              <td mat-cell *matCellDef="let element" class="table-cell"> {{element.ConvertFunctionForParams}} </td>
-            </ng-container>
-
-            <tr mat-header-row *matHeaderRowDef="displayedColumns;" class="table-header"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="table-row"></tr>
-
-        </table>
-
-        <mat-paginator [pageSizeOptions]="[20, 50, 100]" showFirstLastButtons ></mat-paginator>
-      </div>
+  <sit-dict-container ident="sitRailConfigurations" class="container-cols">
+    <sit-data-source-container  ident="sitFilter" >
+      <mat-form-field>
+        <mat-label>Filtruj</mat-label>
+        <input matInput (keyup)="onFilterKey($event)" type="text" name="searchRailConfigurations" field="searchRailConfigurations"/>
+      </mat-form-field>
     </sit-data-source-container>
+     <div class="data-table">
+       <sit-data-source-container ident="sitRailConfigurations">
+        <ngx-datatable #sitMenu #sitSetDataSource
+          class="material striped"
+          [columnMode]="ColumnMode.force"
+          [limit]=20
+          [selected]="sitRailConfigurationsSelected"
+          [selectionType]="SelectionType.single"
+          [selectAllRowsOnPage]="false"
+          [displayCheck]="displayCheck"
+          (activate)="onActivateRailConfigurations($event)"
+          (select)="onSelectRailConfigurations($event)"
+        >
+          <ngx-datatable-column prop="RailConfigurationId" name="Id"></ngx-datatable-column>
+          <ngx-datatable-column prop="CompanyId" name="CompanyId"></ngx-datatable-column>
+          <ngx-datatable-column prop="ClientGuid" name="ClientGuid"></ngx-datatable-column>
+          <ngx-datatable-column prop="UserId" name="UserId"></ngx-datatable-column>
+          <ngx-datatable-column prop="OperationIdent" name="OperationIdent"></ngx-datatable-column>
+          <ngx-datatable-column prop="Data" name="Data"></ngx-datatable-column>
+          <ngx-datatable-column prop="IsActive" name="IsActive"></ngx-datatable-column>
+          <ngx-datatable-column prop="Timeout" name="Timmeout"></ngx-datatable-column>
+          <ngx-datatable-column prop="TransformProcedure" name="Transform procedure"></ngx-datatable-column>
+          <ngx-datatable-column prop="ConvertFunctionForParams" name="ConvertFunctionForParams"></ngx-datatable-column>
+        </ngx-datatable>
+      </sit-data-source-container>
+    </div>
   </sit-dict-container>
 </div>

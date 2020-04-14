@@ -1,48 +1,54 @@
-﻿import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { GatewayService } from '@app/_services';
+﻿import { Component, OnInit, ViewChild } from '@angular/core';
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
-import * as $ from 'jquery';
 import { sitSetDataSourceDirective, SitDataSourceContainerComponent } from '@app/components/sit-data-source-container';
+import { ColumnMode, SelectionType } from '../../../../ngx/public-api';
+import { DataSourceResponseWrapper } from '@app/_models';
+import { DatatableComponent } from '@swimlane/ngx-datatable';
+import * as $ from 'jquery';
 
 @Component({
+    selector: 'sit-rail-configurations',
     templateUrl: 'sit-rail-configurations.component.html',
-    styleUrls: ['sit-rail-configurations.component.scss']
+    styleUrls: ['sit-rail-configurations.component.scss'],
+    host: {class: 'router-flex'}
 })
 export class SitRailConfigurationsComponent implements OnInit {
-  displayedColumns: string[] = ['RailConfigurationId', 'CompanyId', 'ClientGuid', 'UserId', 'OperationIdent', 'Data','IsActive','Timeout','TransformProcedure','ConvertFunctionForParams'];
+  @ViewChild('sit-rail-configurations') menuTable: DatatableComponent;
+  @ViewChild('sitDictcontainer') dictContainer: SitDictContainerComponent;
 
-  @ViewChild(MatSort, {static: true}) sort: MatSort;
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
-  @ViewChild(SitDataSourceContainerComponent, { static: true }) dataSourceContainer: SitDataSourceContainerComponent;
+  sitRailConfigurationsSelected = [];
+  ColumnMode = ColumnMode;
+  SelectionType = SelectionType;
 
-  constructor(gatewayService: GatewayService) {
-      // super(gatewayService);
-      // this.ident = 'sitRailConfigurations';
+  constructor() {
+
   }
 
   ngOnInit() {
-      // super.ngOnInit();
-      // this.dataSource = this.getRows('sitRailConfigurationsDS')
-
-      //this.dataSource.sort = this.sort;
-      // this.sort.direction = 'desc';
   }
 
-  applyFilter(event: Event,obj:any){
-    const filterValue = (event.target as HTMLInputElement).value;
-    //this.dataSourceContainer.rows.filter = filterValue.trim().toLowerCase();
+  displayCheck(row) {
+    return row.name !== 'xxx';
   }
 
-  onClick(){
-    // this.dataSource = new MatTableDataSource(rows);
-    // this.dataSource.sort = this.sort;
-    // this.dataSource.paginator = this.paginator;
-
+  onActivateRailConfigurations(event) {
+    if (event.type == 'click') {
+      const dataSourceResponseWrapper: DataSourceResponseWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitRailConfigurations");
+      dataSourceResponseWrapper.SetActiveRow(event.row);
+    }
   }
 
+  onSelectRailConfigurations({ selected }) {
+    console.log('Select Event', selected, this.sitRailConfigurationsSelected);
+    this.sitRailConfigurationsSelected.splice(0, this.sitRailConfigurationsSelected.length);
+    this.sitRailConfigurationsSelected.push(...selected);
+  }
 
+  onFilterKey(event:any) {
+    const dataSourceResponseWrapper: DataSourceResponseWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitFilter");
 
+    dataSourceResponseWrapper.activeRow[event.target.name] = event.target.value;
+    dataSourceResponseWrapper.SetActiveRow(dataSourceResponseWrapper.activeRow);
+
+  }
 }

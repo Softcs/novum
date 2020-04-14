@@ -5,7 +5,10 @@ import { Router } from '@angular/router';
 import { GatewayService } from './_services';
 import { User } from './_models';
 
-@Component({ selector: 'app', templateUrl: 'app.component.html' })
+@Component({
+  selector: 'app',
+  templateUrl: 'app.component.html'
+})
 export class AppComponent {
 
     @ViewChild('appDrawer') appDrawer: ElementRef;

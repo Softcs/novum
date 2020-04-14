@@ -1,38 +1,35 @@
 <div class="content">
   <sit-dict-container ident="sitMenu"  #sitDictcontainer class="container-cols">
-    <div style="display:flex; flex-direction: column; height: 100%; min-height: 100%;">
-      <div style="display:flex; flex-direction: row; height: 60%;">
-      <div style="padding-right: 5px; display:flex; flex-direction: column; width: 30%;">
-        <div style="display:flex; flex-direction: column; height: 50%;">
-          <sit-data-source-container  ident="sitFilter" >
-            <mat-form-field class="example-full-width">
-              <mat-label>Filtruj</mat-label>
-              <input matInput (keyup)="onFilterKeyEnter($event)" type="text" name="searchMenu" field="searchMenu"/>
-            </mat-form-field>
+    <div style="display:flex; flex-direction: row; padding: 0 0 10 0; height: 60%;">
+      <div class="container-left-cols">
+        <sit-data-source-container  ident="sitFilter" >
+          <mat-form-field class="example-full-width">
+            <mat-label>Filtruj</mat-label>
+            <input matInput (keyup)="onFilterKeyEnter($event)" type="text" name="searchMenu" field="searchMenu"/>
+          </mat-form-field>
+        </sit-data-source-container>
+        <div class="data-table">
+          <sit-data-source-container  ident="sitMenu" >
+            <ngx-datatable #sitMenu #sitSetDataSource
+            class="material striped"
+            [columnMode]="ColumnMode.force"
+            [limit]=20
+            [selected]="sitMenuSelected"
+            [selectionType]="SelectionType.single"
+            [selectAllRowsOnPage]="false"
+            [displayCheck]="displayCheck"
+            (activate)="onActivateMenu($event)"
+            (select)="onSelectMenu($event)"
+            >
+              <ngx-datatable-column prop="MenuId" name="Id"></ngx-datatable-column>
+              <ngx-datatable-column prop="Symbol" name="Symbol"></ngx-datatable-column>
+              <ngx-datatable-column prop="Caption" name="Nazwa"></ngx-datatable-column>
+            </ngx-datatable>
           </sit-data-source-container>
-          <div class="data-table">
-            <sit-data-source-container  ident="sitMenu" >
-              <ngx-datatable #sitMenu #sitSetDataSource
-              class="material striped"
-              [columnMode]="ColumnMode.force"
-              [limit]=20
-              [selected]="sitMenuSelected"
-              [selectionType]="SelectionType.single"
-              [selectAllRowsOnPage]="false"
-              [displayCheck]="displayCheck"
-              (activate)="onActivateMenu($event)"
-              (select)="onSelectMenu($event)"
-              >
-                <ngx-datatable-column prop="MenuId" name="Id"></ngx-datatable-column>
-                <ngx-datatable-column prop="Symbol" name="Symbol"></ngx-datatable-column>
-                <ngx-datatable-column prop="Caption" name="Nazwa"></ngx-datatable-column>
-              </ngx-datatable>
-            </sit-data-source-container>
-          </div>
         </div>
-
       </div>
-      <div style="padding-right: 5px; display:flex; flex-direction: column; width: 70%;">
+
+      <div class="container-cols">
         <sit-data-source-container  ident="sitFilter" >
           <mat-form-field class="example-full-width">
             <mat-label>Filtruj</mat-label>
@@ -62,8 +59,8 @@
           </sit-data-source-container>
         </div>
       </div>
-      </div>
-      <div style="display:flex; flex-direction: column; height: 40%;">
+    </div>
+    <div style="display:flex; flex-direction: row; height: 40%;">
       <div class="data-table">
         <sit-data-source-container ident="sitAppUsers">
         <ngx-datatable #sitAppUsers #sitSetDataSource
@@ -87,11 +84,15 @@
         </ngx-datatable>
         </sit-data-source-container>
       </div>
-      </div>
     </div>
   </sit-dict-container>
 </div>
-    <!-- <ngx-datatable-column
+
+
+
+
+
+<!-- <ngx-datatable-column
       [width]="30"
       [sortable]="false"
       [canAutoResize]="false"

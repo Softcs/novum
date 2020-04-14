@@ -8,18 +8,16 @@ import { DataSourceResponseWrapper } from '@app/_models';
 @Component({
   selector: 'sit-menu',
   templateUrl: './sit-menu.component.html',
-  styleUrls: ['./sit-menu.component.scss']
+  styleUrls: ['./sit-menu.component.scss'],
+  host: {class: 'router-flex'}
 })
 export class SitMenuComponent implements OnInit {
   @ViewChild('sit-menu') menuTable: DatatableComponent;
   @ViewChild('sitDictcontainer') dictContainer: SitDictContainerComponent;
 
-  selected = [];
-
   sitMenuSelected = [];
   sitMenuItemsSelected = [];
   sitAppUsersSelected = [];
-
   ColumnMode = ColumnMode;
   SelectionType = SelectionType;
 
