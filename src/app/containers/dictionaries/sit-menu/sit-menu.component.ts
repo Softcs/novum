@@ -4,6 +4,7 @@ import { DatatableComponent } from '@swimlane/ngx-datatable';
 import { SitDataSourceContainerComponent } from '@app/components/sit-data-source-container';
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
 import { DataSourceResponseWrapper } from '@app/_models';
+import { SitDataInputComponent } from '@app/components/controls/sit-data-input/sit-data-input.component';
 
 @Component({
   selector: 'sit-menu',

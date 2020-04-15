@@ -10,6 +10,8 @@ import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { JsonPipe } from '@angular/common';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { sitDSControlDirective } from '@app/_directives';
+import { SitDataInputComponent, sitDataInputComponentDirective } from '../controls/sit-data-input/sit-data-input.component';
+import { SitDataBaseComponent } from '../controls/sit-data-base/sit-data-base.component';
 
 @Directive({
   selector: 'sitSetDataSource',
@@ -30,7 +32,8 @@ export class sitSetDataSourceDirective {
 @Directive({ selector: 'sit-data-source-container' })
 export class SitDataSourceContainerComponent implements OnInit {
   @ContentChildren('sitSetDataSource', { descendants: true}) datasSourcesInterface: QueryList<sitSetDataSourceDirective>;
-  @ContentChildren('sitDSControl', { descendants: true, read: ElementRef }) dsControlsInterface: QueryList<sitDSControlDirective>;
+  @ContentChildren('sitControl', { descendants: true })
+  dsControlsInterface!: QueryList<SitDataBaseComponent>;
 
   @Input() ident: string;
   dataSourceResponseWrapper: DataSourceResponseWrapper;
@@ -58,9 +61,10 @@ export class SitDataSourceContainerComponent implements OnInit {
     });
     if (this.dsControlsInterface != null) {
         this.dsControlsInterface.forEach(element => {
-          console.log("el", element);
-              // const fieldValue = this.dataSourceResponseWrapper.activeRow["searchText"];
-              // element.value(fieldValue);
+          const fieldValue = this.dataSourceResponseWrapper.activeRow[element.field];
+          element.dataSourceResponseWrapper = this.dataSourceResponseWrapper;
+          element.value = fieldValue;
+          //console.log("el",fieldValue, element);
 
         });
      }

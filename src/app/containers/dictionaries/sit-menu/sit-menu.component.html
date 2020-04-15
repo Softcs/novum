@@ -7,6 +7,9 @@
             <mat-label>Filtruj</mat-label>
             <input matInput (keyup)="onFilterKeyEnter($event)" type="text" name="searchMenu" field="searchMenu"/>
           </mat-form-field>
+          <span class="example-full-width">
+            <sit-data-input #sitControl field="searchMenu" label="Filtruj"></sit-data-input>
+          </span>
         </sit-data-source-container>
         <div class="data-table">
           <sit-data-source-container  ident="sitMenu" >

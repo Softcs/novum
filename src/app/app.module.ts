@@ -58,7 +58,10 @@ import { sitDSControlDirective } from './_directives';
 import { SitSideMenuComponent } from './components/sit-side-menu/';
 import { SitMenuComponent } from './containers/dictionaries/sit-menu/'
 import { SitRailConfigurationsComponent } from './containers/dictionaries/sit-rail-configurations';;
-import { SitRozrachunkiInsertGTComponent } from './containers/dictionaries/sit-rozrachunki-insert-gt/sit-rozrachunki-insert-gt.component';
+import { SitRozrachunkiInsertGTComponent } from './containers/dictionaries/sit-rozrachunki-insert-gt/sit-rozrachunki-insert-gt.component';;
+import { SitDataInputComponent, sitDataInputComponentDirective } from './components/controls/sit-data-input/sit-data-input.component'
+;
+import { SitDataBaseComponent } from './components/controls/sit-data-base/sit-data-base.component'
 
 @NgModule({
     imports: [
@@ -110,6 +113,7 @@ import { SitRozrachunkiInsertGTComponent } from './containers/dictionaries/sit-r
         SitNavbarComponent,
         MaterialTestComponent,
         sitSetDataSourceDirective,
+        sitDataInputComponentDirective,
         sitDSControlDirective,
         SitSideMenuComponent,
         SitRozrachunkiInsertGTComponent,
@@ -118,7 +122,9 @@ import { SitRozrachunkiInsertGTComponent } from './containers/dictionaries/sit-r
         NgxDatatableTestComponent,
         SitMenuComponent,
         SitMenuListItemComponent,
-
+        SitDataInputComponent
+,
+        SitDataBaseComponent
       ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
