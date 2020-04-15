@@ -3,14 +3,9 @@
     <div style="display:flex; flex-direction: row; padding: 0 0 10 0; height: 60%;">
       <div class="container-left-cols">
         <sit-data-source-container  ident="sitFilter" >
-          <mat-form-field class="example-full-width">
-            <mat-label>Filtruj</mat-label>
-            <input matInput (keyup)="onFilterKeyEnter($event)" type="text" name="searchMenu" field="searchMenu"/>
-          </mat-form-field>
-          <span class="example-full-width">
-            <sit-data-input #sitControl field="searchMenu" label="Filtruj"></sit-data-input>
-          </span>
+          <sit-data-input #sitControl field="searchMenu" label="Filtruj"></sit-data-input>
         </sit-data-source-container>
+
         <div class="data-table">
           <sit-data-source-container  ident="sitMenu" >
             <ngx-datatable #sitMenu #sitSetDataSource
