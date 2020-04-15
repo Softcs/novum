@@ -17,7 +17,8 @@ import { DatatableComponent } from '@swimlane/ngx-datatable';
 @Component({
   selector: 'sit-rozrachunki-insert-gt',
   templateUrl: './sit-rozrachunki-insert-gt.component.html',
-  styleUrls: ['./sit-rozrachunki-insert-gt.component.scss']
+  styleUrls: ['./sit-rozrachunki-insert-gt.component.scss'],
+  host: {class: 'router-flex'}
 })
 export class SitRozrachunkiInsertGTComponent implements OnInit {
   // @ViewChild(MatSort, {static: true}) sort: MatSort;

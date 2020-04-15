@@ -85,10 +85,11 @@ body {
 
 .content {
   display: flex;
-  padding: 8px;
+  padding: 10px;
   height: 100%;
   min-height: 100%;
   width: 100%;
+  background-color: $background-color;
 }
 
 .router-flex {
@@ -105,7 +106,7 @@ body {
 mat-toolbar{
   // display: flex !important;
   // flex-direction: row !important;
-  background-color: $toolbar-color !important;
+  //background-color: $toolbar-color !important;
   min-height: 40px !important;
 }
 mat-toolbar-row{
@@ -213,7 +214,7 @@ button:focus {
 
 .ngx-datatable.material{
   //position: absolute !important;
-  height: auto !important;
+  height: 100% !important;
   top: 0;
   left: 0;
   right: 0;
@@ -225,8 +226,9 @@ button:focus {
     .datatable-header-cell{
       min-height: 40px;
       padding: 2px 5px 2px 5px;
-      color: navy;
+      color: $table-header-font-color;
       background-color:$table-header-color;
+      font-size: 13px;
     }
   }
   .datatable-body{
@@ -237,6 +239,8 @@ button:focus {
       .datatable-body-cell{
         padding: 2px 8px 2px 8px;
         border-right: 1px solid #e9e8dd;
+        font-size: 12px;
+        color: $table-cell-font-color;
       }
     }
   }
@@ -266,36 +270,37 @@ button:focus {
 }
 
 $mat-myapp-primary: (
-  50 : #edf4fc,
-  100 : #d3e4f8,
-  200 : #b6d3f4,
-  300 : #99c1ef,
-  400 : #83b3eb,
-  500 : #6da6e8,
-  600 : #659ee5,
-  700 : #5a95e2,
-  800 : #508bde,
-  900 : #3e7bd8,
-  A100 : #ffffff,
-  A200 : #f4f8ff,
-  A400 : #c1d8ff,
-  A700 : #a7c8ff,
-  contrast: (
-      50 : #000000,
-      100 : #000000,
-      200 : #000000,
-      300 : #000000,
-      400 : #000000,
-      500 : #000000,
-      600 : #000000,
-      700 : #000000,
-      800 : #000000,
-      900 : #ffffff,
-      A100 : #000000,
-      A200 : #000000,
-      A400 : #000000,
-      A700 : #000000,
-    )
+  50 : #fff2e4,
+    100 : #ffddbb,
+    200 : #ffc78e,
+    300 : #ffb160,
+    400 : #ffa03e,
+    500 : #ff8f1c,//główny
+    600 : #ff8719,
+    700 : #ff7c14,
+    800 : #ff7211,
+    900 : #ff6009,
+    A100 : #ffffff,
+    A200 : #fff8f5,
+    A400 : #ffd5c2,
+    A700 : #ffc3a8,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+
+  )
 );
 
 $mat-myapp-accent: (

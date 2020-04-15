@@ -1,5 +1,5 @@
 ﻿<div class="content">
-  <sit-dict-container ident="sitRailConfigurations" class="container-cols">
+  <sit-dict-container ident="sitRailConfigurations" #sitDictcontainer class="container-cols">
     <sit-data-source-container  ident="sitFilter" >
       <mat-form-field>
         <mat-label>Filtruj</mat-label>
@@ -12,6 +12,7 @@
           class="material striped"
           [columnMode]="ColumnMode.force"
           [limit]=20
+          [footerHeight]="50"
           [selected]="sitRailConfigurationsSelected"
           [selectionType]="SelectionType.single"
           [selectAllRowsOnPage]="false"
@@ -19,14 +20,49 @@
           (activate)="onActivateRailConfigurations($event)"
           (select)="onSelectRailConfigurations($event)"
         >
-          <ngx-datatable-column prop="RailConfigurationId" name="Id"></ngx-datatable-column>
-          <ngx-datatable-column prop="CompanyId" name="CompanyId"></ngx-datatable-column>
+          <ngx-datatable-column prop="RailConfigurationId" name="Id" [width]="50">
+            <ng-template let-value="value" ngx-datatable-cell-template>
+              <div style="text-align: right;">
+                {{value}}
+              </div>
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column prop="CompanyId" name="CompanyId" [width]="50">
+            <ng-template let-value="value" ngx-datatable-cell-template>
+              <div style="text-align: right;">
+                {{value}}
+              </div>
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column prop="CompanyIdent" name="Company Ident"></ngx-datatable-column>
           <ngx-datatable-column prop="ClientGuid" name="ClientGuid"></ngx-datatable-column>
-          <ngx-datatable-column prop="UserId" name="UserId"></ngx-datatable-column>
+          <ngx-datatable-column prop="UserId" name="UserId" [width]="50">
+            <ng-template let-value="value" ngx-datatable-cell-template>
+              <div style="text-align: right;">
+              {{value}}
+            </div>
+          </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column prop="UserLogin" name="User Login"></ngx-datatable-column>
           <ngx-datatable-column prop="OperationIdent" name="OperationIdent"></ngx-datatable-column>
-          <ngx-datatable-column prop="Data" name="Data"></ngx-datatable-column>
-          <ngx-datatable-column prop="IsActive" name="IsActive"></ngx-datatable-column>
-          <ngx-datatable-column prop="Timeout" name="Timmeout"></ngx-datatable-column>
+          <ngx-datatable-column prop="Data" name="Data">
+            <ng-template let-value="value" ngx-datatable-cell-template>
+              <div>
+              {{value.substring(0,20)}}...
+            </div>
+          </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column prop="IsActive" [width]="50">
+            <ng-template let-column="column" ngx-datatable-header-template>
+              IsActive
+            </ng-template>
+            <ng-template let-value="value" ngx-datatable-cell-template>
+              <div style="text-align: center;">
+                <input type="checkbox" id="IsActive" name="IsActive" value="value" disabled=true [checked]="value == 1">
+              </div>
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column prop="Timeout" name="Timeout"></ngx-datatable-column>
           <ngx-datatable-column prop="TransformProcedure" name="Transform procedure"></ngx-datatable-column>
           <ngx-datatable-column prop="ConvertFunctionForParams" name="ConvertFunctionForParams"></ngx-datatable-column>
         </ngx-datatable>
