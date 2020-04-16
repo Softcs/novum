@@ -2,15 +2,7 @@ import { Component, OnInit, Input, Directive, ContentChildren,
   QueryList, ViewChild, ViewChildren, ElementRef, ContentChild, HostListener, ComponentFactoryResolver } from '@angular/core';
 
 import { GatewayService } from '@app/_services/gateway.service';
-import { first } from 'rxjs/operators';
-import { Operation, DataSourceResponseWrapper } from '@app/_models';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTable, MatTableDataSource } from '@angular/material/table';
-import { JsonPipe } from '@angular/common';
-import { Observable, BehaviorSubject } from 'rxjs';
-import { sitDSControlDirective } from '@app/_directives';
-import { SitDataInputComponent, sitDataInputComponentDirective } from '../controls/sit-data-input/sit-data-input.component';
+import { DataSourceResponseWrapper } from '@app/_models';
 import { SitDataBaseComponent } from '../controls/sit-data-base/sit-data-base.component';
 
 @Directive({
@@ -64,8 +56,6 @@ export class SitDataSourceContainerComponent implements OnInit {
           const fieldValue = this.dataSourceResponseWrapper.activeRow[element.field];
           element.dataSourceResponseWrapper = this.dataSourceResponseWrapper;
           element.setValue(fieldValue);
-          //console.log("el",fieldValue, element);
-
         });
      }
   }

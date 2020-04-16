@@ -54,12 +54,12 @@ import { NgxDatatableTestComponent } from './containers/sandbox/ngx-datatable-te
 //SIT;
 import { SitMenuListItemComponent } from './components/sit-menu-list-item/sit-menu-list-item.component';
 import { NavService } from './_services/nav.service';
-import { sitDSControlDirective } from './_directives';
+import { sitDSControlDirective, sitDataInputComponentDirective } from './_directives';
 import { SitSideMenuComponent } from './components/sit-side-menu/';
 import { SitMenuComponent } from './containers/dictionaries/sit-menu/'
 import { SitRailConfigurationsComponent } from './containers/dictionaries/sit-rail-configurations';;
 import { SitRozrachunkiInsertGTComponent } from './containers/dictionaries/sit-rozrachunki-insert-gt/sit-rozrachunki-insert-gt.component';;
-import { SitDataInputComponent, sitDataInputComponentDirective } from './components/controls/sit-data-input/sit-data-input.component'
+import { SitDataInputComponent } from './components/controls/sit-data-input/sit-data-input.component'
 ;
 import { SitDataBaseComponent } from './components/controls/sit-data-base/sit-data-base.component'
 
