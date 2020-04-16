@@ -1,14 +1,16 @@
 ﻿<div class="content">
   <sit-dict-container ident="sitRailConfigurations" #sitDictcontainer class="container-cols">
-    <sit-data-source-container  ident="sitFilter" >
-      <mat-form-field>
-        <mat-label>Filtruj</mat-label>
-        <input matInput (keyup)="onFilterKey($event)" type="text" name="searchRailConfigurations" field="searchRailConfigurations"/>
-      </mat-form-field>
-    </sit-data-source-container>
-     <div class="data-table">
+    <div style="flex: 0 1 auto;">
+      <sit-data-source-container  ident="sitFilter" >
+      <span>
+        <sit-data-input #sitControl field="searchRailConfigurations" label="Filtruj"></sit-data-input>
+      </span>
+      </sit-data-source-container>
+    </div>
+    <div  style="flex: 1 1 auto;">
+      <div class="data-table">
        <sit-data-source-container ident="sitRailConfigurations">
-        <ngx-datatable #sitMenu #sitSetDataSource
+        <ngx-datatable #sitRailConfigurations #sitSetDataSource
           class="material striped"
           [columnMode]="ColumnMode.force"
           [limit]=20
@@ -20,6 +22,36 @@
           (activate)="onActivateRailConfigurations($event)"
           (select)="onSelectRailConfigurations($event)"
         >
+        <!-- Row Detail Template -->
+        <ngx-datatable-row-detail [rowHeight]="300" #myDetailRow (toggle)="onDetailToggle($event)">
+          <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
+            <div style="padding: 0px 20px 0px 20px; width:100%; height:100%;">
+              <div><h6>Data</h6></div>
+              <div><textarea name="Data" rows="13" >{{ row.Data }}</textarea></div>
+            </div>
+          </ng-template>
+        </ngx-datatable-row-detail>
+
+        <!-- Column Templates -->
+        <ngx-datatable-column
+          [width]="30"
+          [resizeable]="false"
+          [sortable]="false"
+          [draggable]="false"
+          [canAutoResize]="false"
+        >
+          <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
+            <a style="text-decoration: none;"
+              href="javascript:void(0)"
+              [class.datatable-icon-right]="!expanded"
+              [class.datatable-icon-down]="expanded"
+              title="Expand/Collapse Row"
+              (click)="toggleExpandRow(row)"
+            >
+            </a>
+          </ng-template>
+        </ngx-datatable-column>
+
           <ngx-datatable-column prop="RailConfigurationId" name="Id" [width]="50">
             <ng-template let-value="value" ngx-datatable-cell-template>
               <div style="text-align: right;">
@@ -45,13 +77,13 @@
           </ngx-datatable-column>
           <ngx-datatable-column prop="UserLogin" name="User Login"></ngx-datatable-column>
           <ngx-datatable-column prop="OperationIdent" name="OperationIdent"></ngx-datatable-column>
-          <ngx-datatable-column prop="Data" name="Data">
+          <!-- <ngx-datatable-column prop="Data" name="Data">
             <ng-template let-value="value" ngx-datatable-cell-template>
               <div>
               {{value.substring(0,20)}}...
             </div>
           </ng-template>
-          </ngx-datatable-column>
+          </ngx-datatable-column> -->
           <ngx-datatable-column prop="IsActive" [width]="50">
             <ng-template let-column="column" ngx-datatable-header-template>
               IsActive
@@ -67,6 +99,7 @@
           <ngx-datatable-column prop="ConvertFunctionForParams" name="ConvertFunctionForParams"></ngx-datatable-column>
         </ngx-datatable>
       </sit-data-source-container>
+      </div>
     </div>
   </sit-dict-container>
 </div>

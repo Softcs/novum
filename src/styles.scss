@@ -90,6 +90,7 @@ body {
   min-height: 100%;
   width: 100%;
   background-color: $background-color;
+  margin: 0px;
 }
 
 .router-flex {
@@ -187,8 +188,7 @@ tr.mat-row:nth-child(odd){
   flex-direction: column;
   //justify-content: stretch;
   padding: 0px;
-  margin-left: 0px;
-  margin-right: 0px;
+  margin: 0px;
 }
 
 .fill-space{
@@ -222,9 +222,9 @@ button:focus {
   width: 100%;
   .datatable-header{
     background-color:$table-header-color;
-    min-height: 40px;
+    min-height: 30px;
     .datatable-header-cell{
-      min-height: 40px;
+      min-height: 30px;
       padding: 2px 5px 2px 5px;
       color: $table-header-font-color;
       background-color:$table-header-color;
@@ -237,6 +237,7 @@ button:focus {
     .datatable-body-row{
       min-height: 30px;
       .datatable-body-cell{
+        min-height: 30px;
         padding: 2px 8px 2px 8px;
         border-right: 1px solid #e9e8dd;
         font-size: 12px;
