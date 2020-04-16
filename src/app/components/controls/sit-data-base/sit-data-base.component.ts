@@ -16,4 +16,7 @@ export class SitDataBaseComponent  {
   public getValue(): string{
     return null;
   }
+  public setValue(value: any) {
+    this.value = value;
+  }
 }
