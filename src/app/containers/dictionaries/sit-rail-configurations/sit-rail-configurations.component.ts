@@ -15,6 +15,7 @@ import * as $ from 'jquery';
 export class SitRailConfigurationsComponent implements OnInit {
   @ViewChild('sit-rail-configurations') menuTable: DatatableComponent;
   @ViewChild('sitDictcontainer') dictContainer: SitDictContainerComponent;
+  @ViewChild('sitRailConfigurations') table: any;
 
   sitRailConfigurationsSelected = [];
   ColumnMode = ColumnMode;
@@ -44,11 +45,13 @@ export class SitRailConfigurationsComponent implements OnInit {
     this.sitRailConfigurationsSelected.push(...selected);
   }
 
-  onFilterKey(event:any) {
-    const dataSourceResponseWrapper: DataSourceResponseWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitFilter");
+  toggleExpandRow(row) {
+    const dataSourceResponseWrapper: DataSourceResponseWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitRailConfigurations");
+    console.log('Toggled Expand Row!', row);
+    this.table.rowDetail.toggleExpandRow(row);
+  }
 
-    dataSourceResponseWrapper.activeRow[event.target.name] = event.target.value;
-    dataSourceResponseWrapper.SetActiveRow(dataSourceResponseWrapper.activeRow);
-
+  onDetailToggle(event) {
+    console.log('Detail Toggled', event);
   }
 }

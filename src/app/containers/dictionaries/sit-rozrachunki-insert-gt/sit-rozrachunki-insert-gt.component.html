@@ -2,12 +2,11 @@
     <sit-dict-container ident="sitRozrachunkiInsertGT"  #sitDictcontainer class="container-cols">
       <div style="flex: 0 1 auto;">
         <sit-data-source-container  ident="sitFilter" >
-        <mat-form-field class="example-full-width">
-          <mat-label>Filtruj</mat-label>
-          <input matInput (keyup)="onFilterKeyEnter($event)" type="text" name="searchRozrachunki" field="searchRozrachunki"/>
-        </mat-form-field>
-      </sit-data-source-container>
-    </div>
+          <span>
+            <sit-data-input #sitControl field="searchRozrachunki" label="Filtruj"></sit-data-input>
+          </span>
+        </sit-data-source-container>
+      </div>
       <!-- <button mat-raised-button color="primary" (click)="ExportTOExcel()">Export as Excel</button> -->
     <div  style="flex: 1 1 auto;">
       <div class="data-table">

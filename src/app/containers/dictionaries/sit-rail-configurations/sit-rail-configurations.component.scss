@@ -1,38 +1,11 @@
-
-.toolbar{
-  min-height: 40px;
-  height: 40px;
-  margin-bottom: 2px;
-  //background-color: #63666A;
-}
-
-
-.mat-column-ClientGuid {
-  //flex: 0 0 25%;
-  //font-size: 10px;
-  min-width: 250px;
-}
-
-// .mat-column-Data {
-//   //flex: 0 0 25%;
-//   //font-size: 10px;
-//   max-width: 250px;
-// }
-
-.mat-column-IsActive {
-  justify-content: center;
-  text-align: center;
-}
-
-.filter{
-  margin-right: 20px;
+textarea {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+  border-width: 0;
+  resize: none;
   font-size: 12px;
-}
-
-.icon {
-  color: black;
-}
-
-button:focus {
-  outline: none;
-}
+  border: 1px solid gray;
+  }

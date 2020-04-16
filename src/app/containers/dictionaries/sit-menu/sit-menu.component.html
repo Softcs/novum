@@ -3,11 +3,7 @@
     <div style="display:flex; flex-direction: row; padding: 0 0 10 0; height: 60%;">
       <div class="container-left-cols">
         <sit-data-source-container  ident="sitFilter" >
-          <mat-form-field class="example-full-width">
-            <mat-label>Filtruj</mat-label>
-            <input matInput (keyup)="onFilterKeyEnter($event)" type="text" name="searchMenu" field="searchMenu"/>
-          </mat-form-field>
-          <span class="example-full-width">
+          <span>
             <sit-data-input #sitControl field="searchMenu" label="Filtruj"></sit-data-input>
           </span>
         </sit-data-source-container>
@@ -34,10 +30,9 @@
 
       <div class="container-cols">
         <sit-data-source-container  ident="sitFilter" >
-          <mat-form-field class="example-full-width">
-            <mat-label>Filtruj</mat-label>
-            <input matInput (keyup)="onFilterKeyEnter($event)" type="text" name="searchMenuItems" #sitDSControl field="searchMenuItems">
-          </mat-form-field>
+          <span>
+            <sit-data-input #sitControl field="searchMenuItems" label="Filtruj"></sit-data-input>
+          </span>
         </sit-data-source-container>
 
         <div class="data-table">
@@ -63,28 +58,33 @@
         </div>
       </div>
     </div>
-    <div style="display:flex; flex-direction: row; height: 40%;">
+    <div style="display:flex; flex-direction: column; height: 40%;">
+      <sit-data-source-container  ident="sitFilter" >
+        <span>
+          <sit-data-input #sitControl field="searchAppUsers" label="Filtruj"></sit-data-input>
+        </span>
+      </sit-data-source-container>
       <div class="data-table">
         <sit-data-source-container ident="sitAppUsers">
-        <ngx-datatable #sitAppUsers #sitSetDataSource
-        class="material striped"
-        [columnMode]="ColumnMode.force"
-        [limit]=20
-        [selected]="sitAppUsersSelected"
-        [selectionType]="SelectionType.single"
-        [selectAllRowsOnPage]="false"
-        [displayCheck]="displayCheck"
-        (activate)="onActivate($event)"
-        (select)="onSelectAppUsers($event)"
-        >
-          <ngx-datatable-column prop="AppUserId" name="Id"></ngx-datatable-column>
-          <ngx-datatable-column prop="UserLogin" name="Login"></ngx-datatable-column>
-          <ngx-datatable-column prop="UserPassword" name="Hasło"></ngx-datatable-column>
-          <ngx-datatable-column prop="Name" name="Imię"></ngx-datatable-column>
-          <ngx-datatable-column prop="SurName" name="Nazwisko"></ngx-datatable-column>
-          <ngx-datatable-column prop="IsActive" name="Aktywny"></ngx-datatable-column>
-          <ngx-datatable-column prop="MenuId" name="MenuId"></ngx-datatable-column>
-        </ngx-datatable>
+          <ngx-datatable #sitAppUsers #sitSetDataSource
+          class="material striped"
+          [columnMode]="ColumnMode.force"
+          [limit]=20
+          [selected]="sitAppUsersSelected"
+          [selectionType]="SelectionType.single"
+          [selectAllRowsOnPage]="false"
+          [displayCheck]="displayCheck"
+          (activate)="onActivate($event)"
+          (select)="onSelectAppUsers($event)"
+          >
+            <ngx-datatable-column prop="AppUserId" name="Id"></ngx-datatable-column>
+            <ngx-datatable-column prop="UserLogin" name="Login"></ngx-datatable-column>
+            <ngx-datatable-column prop="UserPassword" name="Hasło"></ngx-datatable-column>
+            <ngx-datatable-column prop="Name" name="Imię"></ngx-datatable-column>
+            <ngx-datatable-column prop="SurName" name="Nazwisko"></ngx-datatable-column>
+            <ngx-datatable-column prop="IsActive" name="Aktywny"></ngx-datatable-column>
+            <ngx-datatable-column prop="MenuId" name="MenuId"></ngx-datatable-column>
+          </ngx-datatable>
         </sit-data-source-container>
       </div>
     </div>
