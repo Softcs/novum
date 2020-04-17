@@ -10,6 +10,6 @@
   </span>
 </a>
 <div *ngIf="expanded">
-  <sit-menu-list-item *ngFor="let child of item.children" [item]="child" [depth]="depth+1">
+  <sit-menu-list-item style="margin-bottom: 2px;" *ngFor="let child of item.children" [item]="child" [depth]="depth+1">
   </sit-menu-list-item>
 </div>

@@ -11,7 +11,7 @@
         <a href="https://www.seidoit.pl" target="blank" *ngSwitchCase="'http'"><button mat-flat-button class="menu-button">{{item.Caption}}</button></a>
       </div> -->
       <mat-nav-list>
-        <sit-menu-list-item *ngFor="let item of navItems" [item]="item"></sit-menu-list-item>
+        <sit-menu-list-item *ngFor="let item of navItems" [item]="item" style="background-color: lightgray;margin-bottom: 2px;"></sit-menu-list-item>
       </mat-nav-list>
 
     </div>
