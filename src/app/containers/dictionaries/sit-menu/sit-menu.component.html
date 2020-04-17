@@ -9,7 +9,8 @@
         </sit-data-source-container>
 
         <div class="data-table">
-          <sit-data-source-container  ident="sitMenu" >
+          <sit-data-source-container  ident="sitMenu">
+            <sit-data-input #sitControl field="Caption" label="Caption"></sit-data-input>
             <ngx-datatable #sitMenu #sitSetDataSource
             class="material striped"
             [columnMode]="ColumnMode.force"
@@ -25,6 +26,7 @@
               <ngx-datatable-column prop="Symbol" name="Symbol"></ngx-datatable-column>
               <ngx-datatable-column prop="Caption" name="Nazwa"></ngx-datatable-column>
             </ngx-datatable>
+
           </sit-data-source-container>
         </div>
       </div>

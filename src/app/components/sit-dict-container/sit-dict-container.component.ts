@@ -44,6 +44,7 @@ export class SitDictContainerComponent implements OnInit {
             this.DataSourceManager.dictInfo = this.dictInfo;
             this.DataSourceManager.dataSourceComponents = this.dataSourceComponents;
             this.DataSourceManager.dataSourcesResponse = data[0].dataSourcesResponse;
+            this.DataSourceManager.setRefreshDataSources(this.DataSourceManager.dataSourcesResponse);
             this.DataSourceManager.PropagateDataSources();
           }
         },

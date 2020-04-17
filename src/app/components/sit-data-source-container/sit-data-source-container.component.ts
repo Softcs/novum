@@ -4,16 +4,7 @@ import { Component, OnInit, Input, Directive, ContentChildren,
 import { GatewayService } from '@app/_services/gateway.service';
 import { DataSourceResponseWrapper } from '@app/_models';
 import { SitDataBaseComponent } from '../controls/sit-data-base/sit-data-base.component';
-
-@Directive({
-  selector: 'sitSetDataSource',
-})
-export class sitSetDataSourceDirective {
-  constructor(private el: ElementRef) {
-  }
-  @Input() rows;
-}
-
+import { sitSetDataSourceDirective } from '@app/_directives/sitSetDataSourceDirective';
 
 @Component({
   selector: 'sit-data-source-container',
@@ -21,7 +12,7 @@ export class sitSetDataSourceDirective {
   // template: '<ng-container></ng-container>',
   styleUrls: ['./sit-data-source-container.component.scss']
 })
-@Directive({ selector: 'sit-data-source-container' })
+
 export class SitDataSourceContainerComponent implements OnInit {
   @ContentChildren('sitSetDataSource', { descendants: true}) datasSourcesInterface: QueryList<sitSetDataSourceDirective>;
   @ContentChildren('sitControl', { descendants: true })

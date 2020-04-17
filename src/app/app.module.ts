@@ -31,7 +31,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 
-import { SitDataSourceContainerComponent, sitSetDataSourceDirective } from './components/sit-data-source-container/sit-data-source-container.component';
+import { SitDataSourceContainerComponent } from './components/sit-data-source-container/sit-data-source-container.component';
 import { SitNavbarComponent } from './components/sit-navbar/sit-navbar.component'
 import { MaterialTestComponent } from './containers/sandbox/material-test/material-test.component';
 import { testDict } from './containers/sandbox/testDict';
@@ -62,6 +62,9 @@ import { SitRozrachunkiInsertGTComponent } from './containers/dictionaries/sit-r
 import { SitDataInputComponent } from './components/controls/sit-data-input/sit-data-input.component'
 ;
 import { SitDataBaseComponent } from './components/controls/sit-data-base/sit-data-base.component'
+;
+import { SitDataTableComponent } from './components/controls/sit-data-table/sit-data-table.component'
+import { sitSetDataSourceDirective } from './_directives/sitSetDataSourceDirective';
 
 @NgModule({
     imports: [
@@ -125,6 +128,8 @@ import { SitDataBaseComponent } from './components/controls/sit-data-base/sit-da
         SitDataInputComponent
 ,
         SitDataBaseComponent
+,
+        SitDataTableComponent
       ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },

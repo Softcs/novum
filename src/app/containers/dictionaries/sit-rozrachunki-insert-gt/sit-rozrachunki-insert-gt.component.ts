@@ -1,7 +1,7 @@
 import { map } from 'rxjs/operators';
 import { element } from 'protractor';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { sitSetDataSourceDirective, SitDataSourceContainerComponent } from '@app/components/sit-data-source-container';
+import { SitDataSourceContainerComponent } from '@app/components/sit-data-source-container';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';

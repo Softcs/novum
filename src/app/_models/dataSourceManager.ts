@@ -56,28 +56,37 @@ export class DataSourceManager {
                 data => {
                     if(data.length == 1) {
                         const dataSourcesResponse = data[0].dataSourcesResponse;
-                        dataSourcesResponse.forEach(dsRespons => {
-                            this.setRefreshDataSource(dsRespons);
-                        });
-                        this.PropagateDataSources();
+                        this.setRefreshDataSources(dataSourcesResponse);
+                        let dataSetToReload = dataSourcesResponse.map(d => d.ident);
+                        this.PropagateDataSources(dataSetToReload);
                     }
                 },
                 error => {
                     console.error("error", error);
                 });
     }
-    public PropagateDataSources() {
+    public setRefreshDataSources(dataSourcesResponse) {
+        if (dataSourcesResponse == null) {
+            return;
+        }
+        dataSourcesResponse.forEach(dsRespons => {
+            this.setRefreshDataSource(dsRespons);
+        });
+    }
+    public PropagateDataSources(dataSetToReload: string[] = null) {
 
         if (!this.dataSourceComponents) {
             return;
         }
-        this.dataSourcesWrapper.length = 0;
-        this.dataSourceComponents.forEach(dataSourceContainer => {
-            const dataSource = this.getDataSource(dataSourceContainer.ident);
 
-            if (dataSource != null) {
-                const dataSourceResponseWrapper = new DataSourceResponseWrapper(dataSource, this);
-                this.dataSourcesWrapper.push(dataSourceResponseWrapper);
+        this.dataSourceComponents.forEach(dataSourceContainer => {
+            if (dataSetToReload != null && dataSetToReload.length > 0
+                && dataSetToReload.indexOf(dataSourceContainer.ident) === -1) {
+                return;
+            }
+            const dataSource = this.getDataSource(dataSourceContainer.ident);
+            const dataSourceResponseWrapper = this.getDateSourceWrapper(dataSourceContainer.ident);
+            if (dataSourceResponseWrapper != null) {
                 dataSourceContainer.setDataSource(dataSourceResponseWrapper);
             } else {
                 console.error('DataSource: ' + dataSourceContainer.ident + ' not found!');
@@ -96,6 +105,13 @@ export class DataSourceManager {
         if(index !== -1) {
             this.dataSourcesResponse[index] = newDataSource;
         }
+        let dataSourceResponseWrapper = this.getDateSourceWrapper(newDataSource.ident);
+        if (dataSourceResponseWrapper == null) {
+            dataSourceResponseWrapper = new DataSourceResponseWrapper(this);
+            this.dataSourcesWrapper.push(dataSourceResponseWrapper);
+        }
+        dataSourceResponseWrapper.setInputDataSource(newDataSource);
+
     }
     private getDataSource(ident: string): any {
         if (!this.dataSourcesResponse) {

@@ -1,6 +1,5 @@
 ﻿import { Component, OnInit, ViewChild } from '@angular/core';
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
-import { sitSetDataSourceDirective, SitDataSourceContainerComponent } from '@app/components/sit-data-source-container';
 import { ColumnMode, SelectionType } from '../../../../ngx/public-api';
 import { DataSourceResponseWrapper } from '@app/_models';
 import { DatatableComponent } from '@swimlane/ngx-datatable';

@@ -3,7 +3,7 @@ import { DataSourceResponseWrapper } from '@app/_models';
 import { ControlValueAccessor } from '@angular/forms';
 
 @Component({
-  selector: 'app-sit-data-base',
+  selector: 'sit-data-base',
   templateUrl: './sit-data-base.component.html',
   styleUrls: ['./sit-data-base.component.scss']
 })
