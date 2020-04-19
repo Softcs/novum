@@ -39,22 +39,28 @@
                   {{value | date: 'yyyy-MM-dd'}}
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column prop="DniSpoznienia" name="Dni">
+              <ngx-datatable-column prop="DniSpoznienia" name="Dni" [summaryFunc]="noop">
                 <ng-template let-value="value" ngx-datatable-cell-template>
                   <div style="text-align: right;">{{value | number : "1.0-0"}}</div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column prop="naleznosc" name="Należność w PLN">
+              <ngx-datatable-column prop="naleznosc" name="Należność w PLN" [summaryTemplate]="sumNaleznosc">
                 <ng-template let-value="value" ngx-datatable-cell-template>
                   <div style="text-align: right;">{{value | number : "1.2-2"}}</div>
                 </ng-template>
               </ngx-datatable-column>
-              <ngx-datatable-column prop="zobowiazanie" name="Zobowiązanie w PLN">
+              <ngx-datatable-column prop="zobowiazanie" name="Zobowiązanie w PLN"  [summaryTemplate]="sumZobowiazanie">
                 <ng-template let-value="value" ngx-datatable-cell-template>
                   <div style="text-align: right;">{{value | number : "1.2-2"}}</div>
                 </ng-template>
-              </ngx-datatable-column>
+                  </ngx-datatable-column>
             </ngx-datatable>
+            <ng-template #sumZobowiazanie let-row="row">
+              <div style="text-align: right;">{{calcSum('zobowiazanie') | number : "1.2-2"}}</div>
+            </ng-template>
+            <ng-template #sumNaleznosc let-row="row">
+              <div style="text-align: right;">{{calcSum('naleznosc') | number : "1.2-2"}}</div>
+            </ng-template>
           </sit-data-source-container>
         </div>
     </div>

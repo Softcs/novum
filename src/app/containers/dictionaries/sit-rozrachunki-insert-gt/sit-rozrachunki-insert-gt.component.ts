@@ -28,6 +28,7 @@ export class SitRozrachunkiInsertGTComponent implements OnInit {
   @ViewChild('sitDictcontainer') dictContainer: SitDictContainerComponent;
   @ViewChild('sit-rozrachunki-insert-gt') menuTable: DatatableComponent;
 
+
   ColumnMode = ColumnMode;
   SelectionType = SelectionType;
 
@@ -63,4 +64,11 @@ export class SitRozrachunkiInsertGTComponent implements OnInit {
     dataSourceResponseWrapper.SetActiveRow(dataSourceResponseWrapper.activeRow);
 
   }
+
+  calcSum(name) {
+    const dataSourceResponseWrapper: DataSourceResponseWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitRozrachunkiInsertGT");
+    return dataSourceResponseWrapper.rows.map(row => row[name] != null ? row[name] : 0).reduce((s,v) =>s += v,0);
+    }
+    noop() { return null; }
+
 }
