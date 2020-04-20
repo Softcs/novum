@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 // used to create fake backend
 import { fakeBackendProvider } from './_helpers';
@@ -30,6 +31,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
+
 
 import { SitDataSourceContainerComponent } from './components/sit-data-source-container/sit-data-source-container.component';
 import { SitNavbarComponent } from './components/sit-navbar/sit-navbar.component'
@@ -59,11 +62,9 @@ import { SitSideMenuComponent } from './components/sit-side-menu/';
 import { SitMenuComponent } from './containers/dictionaries/sit-menu/'
 import { SitRailConfigurationsComponent } from './containers/dictionaries/sit-rail-configurations';;
 import { SitRozrachunkiInsertGTComponent } from './containers/dictionaries/sit-rozrachunki-insert-gt/sit-rozrachunki-insert-gt.component';;
-import { SitDataInputComponent } from './components/controls/sit-data-input/sit-data-input.component'
-;
-import { SitDataBaseComponent } from './components/controls/sit-data-base/sit-data-base.component'
-;
-import { SitDataTableComponent } from './components/controls/sit-data-table/sit-data-table.component'
+import { SitDataInputComponent } from './components/controls/sit-data-input/sit-data-input.component';
+import { SitDataBaseComponent } from './components/controls/sit-data-base/sit-data-base.component';
+import { SitDataTableComponent } from './components/controls/sit-data-table/sit-data-table.component';
 import { sitSetDataSourceDirective } from './_directives/sitSetDataSourceDirective';
 
 @NgModule({
@@ -86,6 +87,8 @@ import { sitSetDataSourceDirective } from './_directives/sitSetDataSourceDirecti
         MatCheckboxModule,
         MatListModule,
         MatCardModule,
+        MatGridListModule,
+
         FormsModule,
         LayoutModule,
 
@@ -103,7 +106,9 @@ import { sitSetDataSourceDirective } from './_directives/sitSetDataSourceDirecti
         // RadioButtonModule
 
         //NGX
-        NgxDatatableModule
+        NgxDatatableModule,
+
+        FlexLayoutModule
     ],
     declarations: [
         AppComponent,
