@@ -5,6 +5,8 @@ import { map } from 'rxjs/operators';
 
 import { environment } from '@environments/environment';
 import { User, Operation } from '@app/_models';
+import * as CryptoJS from 'crypto-js';
+import { OperationCrypt } from '@app/_models/operationCrypt';
 
 @Injectable({ providedIn: 'root' })
 export class GatewayService {
@@ -61,9 +63,33 @@ export class GatewayService {
     executeOperation(opr: Operation) {
         const listOfOprs = [];
         listOfOprs.push(opr);
+        let data = JSON.stringify(listOfOprs);
+        let k = "72E93D2A56DB44C3914C811983C6C08E";
+        console.log("oprC", data)
 
-        return this.http.post<any>(`${environment.apiUrl}/api/json/gateway/rail`, listOfOprs)
+        var key = CryptoJS.enc.Utf8.parse(k);
+        var iv = CryptoJS.enc.Utf8.parse('7061737323313233');
+        var encrypted = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse(data), key,
+            {
+                keySize: 128 / 8,
+                iv: iv,
+                mode: CryptoJS.mode.CBC,
+                padding: CryptoJS.pad.Pkcs7
+            });
+
+
+
+        data = encrypted.ciphertext.toString(CryptoJS.enc.Base64);
+        let oprC = new OperationCrypt();
+        oprC.d = data;
+
+
+        return this.http.post<any>(`${environment.apiUrl}/api/json/gateway/railc`, oprC)
             .pipe(map(railResponse => {
+                var decrypted = CryptoJS.AES.decrypt(railResponse.d, key, {
+                    keySize: 128 / 8, iv: iv, mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7
+                });
+                railResponse = decrypted.toString(CryptoJS.enc.Utf8);
                 return railResponse;
             }));
     }
