@@ -61,14 +61,13 @@ export class GatewayService {
         return opr;
     }
     executeOperation(opr: Operation) {
+
         const listOfOprs = [];
         listOfOprs.push(opr);
         let data = JSON.stringify(listOfOprs);
-        let k = "72E93D2A56DB44C3914C811983C6C08E";
-        console.log("oprC", data)
-
-        var key = CryptoJS.enc.Utf8.parse(k);
-        var iv = CryptoJS.enc.Utf8.parse('7061737323313233');
+        let envK = environment.crypt.key;
+        var key = CryptoJS.enc.Utf8.parse(envK);
+        var iv = CryptoJS.enc.Utf8.parse(environment.crypt.iv);
         var encrypted = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse(data), key,
             {
                 keySize: 128 / 8,
@@ -77,12 +76,9 @@ export class GatewayService {
                 padding: CryptoJS.pad.Pkcs7
             });
 
-
-
         data = encrypted.ciphertext.toString(CryptoJS.enc.Base64);
         let oprC = new OperationCrypt();
         oprC.d = data;
-
 
         return this.http.post<any>(`${environment.apiUrl}/api/json/gateway/railc`, oprC)
             .pipe(map(railResponse => {
