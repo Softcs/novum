@@ -14,10 +14,10 @@ import { appRoutingModule } from './app.routing';
 
 import { BasicAuthInterceptor, ErrorInterceptor } from './_helpers';
 import { HomeComponent } from './containers/home';
-import { LoginComponent } from './containers/login';;
+import { LoginComponent } from './containers/login';
 import { SitDictContainerComponent } from './components/sit-dict-container/sit-dict-container.component';
 
-//material
+// material
 import { MatSliderModule} from '@angular/material/slider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -35,14 +35,14 @@ import { MatGridListModule } from '@angular/material/grid-list';
 
 
 import { SitDataSourceContainerComponent } from './components/sit-data-source-container/sit-data-source-container.component';
-import { SitNavbarComponent } from './components/sit-navbar/sit-navbar.component'
+import { SitNavbarComponent } from './components/sit-navbar/sit-navbar.component';
 import { MaterialTestComponent } from './containers/sandbox/material-test/material-test.component';
 import { testDict } from './containers/sandbox/testDict';
-import { LayoutModule } from '@angular/cdk/layout';;
+import { LayoutModule } from '@angular/cdk/layout';
 import { AgGridTestComponent } from './containers/sandbox/ag-grid-test/ag-grid-test.component';
 import { AgGridModule } from 'ag-grid-angular';
 
-//primeng
+// primeng
 import { PrimeNgTestComponent } from './containers/sandbox/prime-ng-test/prime-ng-test.component';
 import { TableModule } from 'primeng/table';
 import { TabViewModule } from 'primeng/tabview';
@@ -50,25 +50,25 @@ import { DropdownModule } from 'primeng/dropdown';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { SliderModule } from 'primeng/slider';
 
-//ngx
+// ngx
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { NgxDatatableTestComponent } from './containers/sandbox/ngx-datatable-test/ngx-datatable-test.component'
+import { NgxDatatableTestComponent } from './containers/sandbox/ngx-datatable-test/ngx-datatable-test.component';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 
-//SIT;
+// SIT;
 import { SitMenuListItemComponent } from './components/sit-menu-list-item/sit-menu-list-item.component';
 import { NavService } from './_services/nav.service';
 import { sitDSControlDirective, sitDataInputComponentDirective } from './_directives';
 import { SitSideMenuComponent } from './components/sit-side-menu/';
-import { SitMenuComponent } from './containers/dictionaries/sit-menu/'
-import { SitRailConfigurationsComponent } from './containers/dictionaries/sit-rail-configurations';;
-import { SitRozrachunkiInsertGTComponent } from './containers/dictionaries/sit-rozrachunki-insert-gt/sit-rozrachunki-insert-gt.component';;
+import { SitMenuComponent } from './containers/dictionaries/sit-menu/';
+import { SitRailConfigurationsComponent } from './containers/dictionaries/sit-rail-configurations';
+import { SitRozrachunkiInsertGTComponent } from './containers/dictionaries/sit-rozrachunki-insert-gt/sit-rozrachunki-insert-gt.component';
 import { SitDataInputComponent } from './components/controls/sit-data-input/sit-data-input.component';
 import { SitDataBaseComponent } from './components/controls/sit-data-base/sit-data-base.component';
 import { SitDataTableComponent } from './components/controls/sit-data-table/sit-data-table.component';
 import { sitSetDataSourceDirective } from './_directives/sitSetDataSourceDirective';
-import { NgxPdfTestComponent } from './containers/sandbox/ngx-pdf-test/ngx-pdf-test.component';;
-import { SitKancelariaComponent } from './containers/dictionaries/sit-kancelaria/sit-kancelaria.component'
+import { NgxPdfTestComponent } from './containers/sandbox/ngx-pdf-test/ngx-pdf-test.component';
+import { SitKancelariaComponent } from './containers/dictionaries/sit-kancelaria/sit-kancelaria.component';
 
 @NgModule({
     imports: [
@@ -97,7 +97,7 @@ import { SitKancelariaComponent } from './containers/dictionaries/sit-kancelaria
 
         AgGridModule.withComponents([]),
 
-        //PrimeNG
+        // PrimeNG
         TableModule,
         TabViewModule,
         DropdownModule,
@@ -108,7 +108,7 @@ import { SitKancelariaComponent } from './containers/dictionaries/sit-kancelaria
         // ButtonModule,
         // RadioButtonModule
 
-        //NGX
+        // NGX
         NgxDatatableModule,
         NgxExtendedPdfViewerModule,
 
@@ -137,7 +137,7 @@ import { SitKancelariaComponent } from './containers/dictionaries/sit-kancelaria
         SitDataInputComponent,
         SitDataBaseComponent,
         SitDataTableComponent,
-        NgxPdfTestComponent,
+        NgxPdfTestComponent,
         SitKancelariaComponent
       ],
     providers: [

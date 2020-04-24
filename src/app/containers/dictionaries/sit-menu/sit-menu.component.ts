@@ -46,7 +46,7 @@ export class SitMenuComponent implements OnInit {
   }
 
   add() {
-    //this.selected.push(this.rowsMenu[1], this.rowsMenu[3]);
+    // this.selected.push(this.rowsMenu[1], this.rowsMenu[3]);
   }
 
   update() {
@@ -72,11 +72,11 @@ export class SitMenuComponent implements OnInit {
 
   onActivate(event) {
     if(event.type == 'click') {
-        console.log("a",event.row);
+        console.log("a", event.row);
     }
   }
 
-  onFilterKeyEnter(event:any) {
+  onFilterKeyEnter(event: any) {
     const dataSourceResponseWrapper: DataSourceResponseWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitFilter");
     dataSourceResponseWrapper.activeRow[event.target.name] = event.target.value;
     dataSourceResponseWrapper.SetActiveRow(dataSourceResponseWrapper.activeRow);

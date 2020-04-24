@@ -1,1 +1,118 @@
-<p>sit-kancelaria works!</p>
+<sit-dict-container ident="sitKancelaria"  #sitDictcontainer class="container-cols">
+  <div class="container-rows">
+    <div class="container-cols" style="width: 40%;">
+      <div class="container-cols" style="height: 40%;">
+        <div class="content-left">
+          <div>
+            <sit-data-source-container  ident="sitFilter" >
+              <span>
+                <sit-data-input #sitControl field="searchCustomers" label="Filtruj klientów"></sit-data-input>
+              </span>
+            </sit-data-source-container>
+          </div>
+          <div>
+            <div class="data-table">
+              <sit-data-source-container  ident="sitCustomers">
+                <ngx-datatable #sitCustomers #sitSetDataSource
+                class="material striped"
+                [columnMode]="ColumnMode.force"
+                [limit]=20
+                [selected]="sitCustomersSelected"
+                [selectionType]="SelectionType.single"
+                [selectAllRowsOnPage]="false"
+                [displayCheck]="displayCheck"
+                (activate)="onActivateCustomers($event)"
+                (select)="onSelectCustomers($event)"
+                [footerHeight]="50"
+                >
+                  <ngx-datatable-column prop="CustIdent" name="Skrót"></ngx-datatable-column>
+                  <ngx-datatable-column prop="CustName" name="Nazwa"></ngx-datatable-column>
+                  <ngx-datatable-column prop="ExtIdent" name="Zew ID"></ngx-datatable-column>
+                  <ngx-datatable-column prop="Person" name="Os.fiz."></ngx-datatable-column>
+                  <ngx-datatable-column prop="VATId" name="NIP"></ngx-datatable-column>
+                </ngx-datatable>
+
+              </sit-data-source-container>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container-cols" style="height: 30%;">
+        <div class="content-left">
+          <div>
+            <sit-data-source-container  ident="sitFilter" >
+              <span>
+                <sit-data-input #sitControl field="searchAgreements" label="Filtruj umowy"></sit-data-input>
+              </span>
+            </sit-data-source-container>
+          </div>
+          <div>
+            <div class="data-table">
+              <sit-data-source-container  ident="sitAgreements">
+                <ngx-datatable #sitAgreements #sitSetDataSource
+                class="material striped"
+                [columnMode]="ColumnMode.force"
+                [limit]=20
+                [selected]="sitAgreementsSelected"
+                [selectionType]="SelectionType.single"
+                [selectAllRowsOnPage]="false"
+                [displayCheck]="displayCheck"
+                (activate)="onActivateAgreements($event)"
+                (select)="onSelectAgreements($event)"
+                [footerHeight]="50"
+                >
+                  <ngx-datatable-column prop="Desc" name="Opis"></ngx-datatable-column>
+                </ngx-datatable>
+
+              </sit-data-source-container>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container-cols" style="height: 30%;">
+        <div class="content-left">
+          <div>
+            <sit-data-source-container  ident="sitFilter" >
+              <span>
+                <sit-data-input #sitControl field="searchAttachments" label="Filtruj załączniki"></sit-data-input>
+              </span>
+            </sit-data-source-container>
+          </div>
+          <div>
+            <div class="data-table">
+              <sit-data-source-container  ident="sitAttachments">
+                <ngx-datatable #sitAttachments #sitSetDataSource
+                class="material striped"
+                [columnMode]="ColumnMode.force"
+                [limit]=20
+                [selected]="sitAgreementsSelected"
+                [selectionType]="SelectionType.single"
+                [selectAllRowsOnPage]="false"
+                [displayCheck]="displayCheck"
+                (activate)="onActivateAttachments($event)"
+                (select)="onSelectAgreements($event)"
+                [footerHeight]="50"
+                >
+                  <ngx-datatable-column prop="Desc" name="Opis"></ngx-datatable-column>
+                  <ngx-datatable-column prop="FileName" name="Nazwa pliku"></ngx-datatable-column>
+                </ngx-datatable>
+
+              </sit-data-source-container>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="container-cols" style="width: 60%;">
+      <div class="content">
+        <ngx-extended-pdf-viewer
+        [src]="Link"
+        [useBrowserLocale]="true"
+        [height]="'100%'"
+        [mobileFriendlyZoom]="zoom">
+        </ngx-extended-pdf-viewer>
+      </div>
+    </div>
+  </div>
+</sit-dict-container>
