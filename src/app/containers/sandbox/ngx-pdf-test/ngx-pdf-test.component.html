@@ -1,0 +1,18 @@
+<div class="container-cols">
+  <div class="container-rows">
+    <div class="content-left" style="width: 50%;">
+      <p>Token: {{currentUser.token}}</p>
+      <p>Link:{{Link}}</p>
+
+    </div>
+    <div class="content" style="width: 50%;">
+      <ngx-extended-pdf-viewer
+          [src]="Link"
+          [useBrowserLocale]="true"
+          [height]="'100%'"
+          [mobileFriendlyZoom]="zoom">
+      </ngx-extended-pdf-viewer>
+    </div>
+  </div>
+</div>
+

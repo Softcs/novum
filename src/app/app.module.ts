@@ -53,6 +53,7 @@ import { SliderModule } from 'primeng/slider';
 //ngx
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { NgxDatatableTestComponent } from './containers/sandbox/ngx-datatable-test/ngx-datatable-test.component'
+import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 
 //SIT;
 import { SitMenuListItemComponent } from './components/sit-menu-list-item/sit-menu-list-item.component';
@@ -66,6 +67,8 @@ import { SitDataInputComponent } from './components/controls/sit-data-input/sit-
 import { SitDataBaseComponent } from './components/controls/sit-data-base/sit-data-base.component';
 import { SitDataTableComponent } from './components/controls/sit-data-table/sit-data-table.component';
 import { sitSetDataSourceDirective } from './_directives/sitSetDataSourceDirective';
+import { NgxPdfTestComponent } from './containers/sandbox/ngx-pdf-test/ngx-pdf-test.component';;
+import { SitKancelariaComponent } from './containers/dictionaries/sit-kancelaria/sit-kancelaria.component'
 
 @NgModule({
     imports: [
@@ -107,6 +110,7 @@ import { sitSetDataSourceDirective } from './_directives/sitSetDataSourceDirecti
 
         //NGX
         NgxDatatableModule,
+        NgxExtendedPdfViewerModule,
 
         FlexLayoutModule
     ],
@@ -130,11 +134,11 @@ import { sitSetDataSourceDirective } from './_directives/sitSetDataSourceDirecti
         NgxDatatableTestComponent,
         SitMenuComponent,
         SitMenuListItemComponent,
-        SitDataInputComponent
-,
-        SitDataBaseComponent
-,
-        SitDataTableComponent
+        SitDataInputComponent,
+        SitDataBaseComponent,
+        SitDataTableComponent,
+        NgxPdfTestComponent,
+        SitKancelariaComponent
       ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
