@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Directive, ContentChildren,
-  QueryList, ViewChild, ViewChildren, ElementRef, ContentChild, HostListener, ComponentFactoryResolver } from '@angular/core';
+  QueryList, ViewChild, ViewChildren, ElementRef, ContentChild, HostListener, ComponentFactoryResolver, Output, EventEmitter } from '@angular/core';
 
 import { GatewayService } from '@app/_services/gateway.service';
 import { DataSourceResponseWrapper } from '@app/_models';
@@ -20,6 +20,8 @@ export class SitDataSourceContainerComponent implements OnInit {
 
   @Input() ident: string;
   dataSourceResponseWrapper: DataSourceResponseWrapper;
+  @Output()
+  activeRowChanged: EventEmitter<any> = new EventEmitter<any>();
 
     constructor(private gatewayService: GatewayService) { }
 
@@ -34,11 +36,11 @@ export class SitDataSourceContainerComponent implements OnInit {
 
   }
   public SetActiveRow(row: any) {
-    this.dataSourceResponseWrapper.SetActiveRow(row);
+      this.dataSourceResponseWrapper.SetActiveRow(row);
   }
   public setDataSource(dataSourceResponseWrapper: DataSourceResponseWrapper) {
     this.dataSourceResponseWrapper = dataSourceResponseWrapper;
-
+    this.dataSourceResponseWrapper.activeRowChanged = this.activeRowChanged;
     this.datasSourcesInterface.forEach(element => {
       element.rows = this.dataSourceResponseWrapper.rows;
     });

@@ -92,7 +92,13 @@ export class DataSourceManager {
                 console.error('DataSource: ' + dataSourceContainer.ident + ' not found!');
             }
         });
+        this.DataSourceAfterPropagte();
         this.refreshAfter.emit(this);
+    }
+    public DataSourceAfterPropagte() {
+        this.dataSourcesWrapper.forEach(dataSourceWrapper => {
+            dataSourceWrapper.AfterPropagte();
+        });
     }
     public getDateSourceWrapper(ident: string): DataSourceResponseWrapper {
 

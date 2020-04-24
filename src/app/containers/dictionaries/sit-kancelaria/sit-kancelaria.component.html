@@ -80,7 +80,7 @@
           </div>
           <div>
             <div class="data-table">
-              <sit-data-source-container  ident="sitAttachments">
+              <sit-data-source-container  ident="sitAttachments" (activeRowChanged)="activeRowAttachmentChanged($event)">
                 <ngx-datatable #sitAttachments #sitSetDataSource
                 class="material striped"
                 [columnMode]="ColumnMode.force"
@@ -110,7 +110,8 @@
         [src]="Link"
         [useBrowserLocale]="true"
         [height]="'100%'"
-        [mobileFriendlyZoom]="zoom">
+
+        >
         </ngx-extended-pdf-viewer>
       </div>
     </div>

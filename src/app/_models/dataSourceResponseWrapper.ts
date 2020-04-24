@@ -1,4 +1,5 @@
 import { DictInfoWrapper, DataSourceManager } from '.';
+import { Output, EventEmitter } from '@angular/core';
 
 export class DataSourceResponseWrapper {
     public ident: string;
@@ -6,17 +7,26 @@ export class DataSourceResponseWrapper {
     public activeRow:any;
     public errors:[any];
     private inputDataSource: any;
+    @Output()
+    activeRowChanged: EventEmitter<any> = new EventEmitter<any>();
+
     constructor(public dataSourceManager: DataSourceManager) {
 
     }
     public SetActiveRow( row: any) {
-        this.activeRow = row;
-        this.dataSourceManager.RefreshChildren(this);
+        if(row !== this.activeRow) {
+            this.activeRow = row;
+            this.activeRowChanged.emit(this.activeRow);
+            this.dataSourceManager.RefreshChildren(this);
+        }
     }
     public setInputDataSource(inputDataSource: any) {
         this.ident = inputDataSource.ident;
         this.rows = inputDataSource.rows;
         this.activeRow = inputDataSource.activeRow;
         this.errors = inputDataSource.errors;
+    }
+    public AfterPropagte() {
+        this.activeRowChanged.emit(this.activeRow);
     }
 }
