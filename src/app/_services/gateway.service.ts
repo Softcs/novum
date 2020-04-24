@@ -7,6 +7,7 @@ import { environment } from '@environments/environment';
 import { User, Operation } from '@app/_models';
 import * as CryptoJS from 'crypto-js';
 import { OperationCrypt } from '@app/_models/operationCrypt';
+import { LoginInfo } from '@app/_models/loginInfo';
 
 @Injectable({ providedIn: 'root' })
 export class GatewayService {
@@ -27,7 +28,7 @@ export class GatewayService {
 
     login(username: string, password: string) {
         this.lastAuthBasic = window.btoa(username + ':' + password);
-        return this.http.post<any>(`${environment.apiUrl}/api/authentication/auth`, {  })
+        return this.http.post<any>(`${environment.apiUrl}/api/authentication/auth`, null)
             .pipe(map(user => {
                 this.lastAuthBasic = user.token != null ?  window.btoa(username + ':' + password) : null;
                 if (this.lastAuthBasic) {
@@ -49,18 +50,22 @@ export class GatewayService {
     operationGetDictInfo(dictident: string): Operation {
         const opr: Operation = new  Operation();
         opr.dictident = dictident;
-        opr.oprType = 1;
+        opr.oprType = 30;
 
         return opr;
     }
     operationRefreshDataSources(dictident: string, dataSourcesRequest: any[]): Operation {
         const opr: Operation = new Operation();
         opr.dictident = dictident;
-        opr.oprType = 2;
+        opr.oprType = 40;
         opr.dataSourcesRequest = dataSourcesRequest;
         return opr;
     }
     executeOperation(opr: Operation) {
+        opr.loginInfo = new LoginInfo();
+        opr.loginInfo.username = this.currentUserValue.username;
+        opr.loginInfo.password = this.currentUserValue.password;
+        opr.loginInfo.token = this.currentUserValue.token;
 
         const listOfOprs = [];
         listOfOprs.push(opr);
