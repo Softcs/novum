@@ -6,7 +6,8 @@ import { SitDataSourceContainerComponent } from '../sit-data-source-container';
 @Component({
   selector: 'sit-dict-container',
   templateUrl: './sit-dict-container.component.html',
-  styleUrls: ['./sit-dict-container.component.scss']
+  styleUrls: ['./sit-dict-container.component.scss'],
+  host: {class: 'router-flex'}
 })
 
 

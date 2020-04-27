@@ -48,6 +48,7 @@ export class SitKancelariaComponent implements OnInit {
 
     this.sitAgreementsSelected.splice(0, this.sitAgreementsSelected.length);
     this.sitAgreementsSelected.push(...selected);
+
   }
   displayCheck(row) {
     return row.name !== 'xxx';
@@ -79,7 +80,9 @@ export class SitKancelariaComponent implements OnInit {
   activeRowAttachmentChanged(activeRow) {
     this.Link = activeRow == null
       ? "https://ws.seidoit.pl/service/attachments/get/" + "1" + "/" + "1" + "/" + "1.pdf" : // kiedy brak rekordu
-                "https://ws.seidoit.pl/service/attachments/get/" + this.currentUser.token + "/" + activeRow['GUID'] + "/" + activeRow['FileName']  }
+                "https://ws.seidoit.pl/service/attachments/get/" + this.currentUser.token + "/" + activeRow['GUID'] + "/" + activeRow['FileName']
+
+  }
 
   onFilterKeyEnter(event: any) {
     const dataSourceResponseWrapper: DataSourceResponseWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitFilter");

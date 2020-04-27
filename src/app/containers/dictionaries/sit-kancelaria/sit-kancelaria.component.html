@@ -1,22 +1,23 @@
-<sit-dict-container ident="sitKancelaria"  #sitDictcontainer class="container-cols">
+<sit-dict-container ident="sitKancelaria" #sitDictcontainer class="container-cols">
   <div class="container-rows">
-    <div class="container-cols" style="width: 40%;">
+    <div class="container-cols" style="width: 50%;">
       <div class="container-cols" style="height: 40%;">
         <div class="content-left">
-          <div>
+          <div style="height: 65px;">
             <sit-data-source-container  ident="sitFilter" >
               <span>
                 <sit-data-input #sitControl field="searchCustomers" label="Filtruj klientów"></sit-data-input>
               </span>
             </sit-data-source-container>
           </div>
-          <div>
+          <div style="flex:1 1 auto;">
             <div class="data-table">
               <sit-data-source-container  ident="sitCustomers">
                 <ngx-datatable #sitCustomers #sitSetDataSource
-                class="material striped"
+                class="material"
+                style="height: 280px;"
+                [scrollbarV] = "true"
                 [columnMode]="ColumnMode.force"
-                [limit]=20
                 [selected]="sitCustomersSelected"
                 [selectionType]="SelectionType.single"
                 [selectAllRowsOnPage]="false"
@@ -24,22 +25,34 @@
                 (activate)="onActivateCustomers($event)"
                 (select)="onSelectCustomers($event)"
                 [footerHeight]="50"
+
                 >
                   <ngx-datatable-column prop="CustIdent" name="Skrót"></ngx-datatable-column>
                   <ngx-datatable-column prop="CustName" name="Nazwa"></ngx-datatable-column>
-                  <ngx-datatable-column prop="ExtIdent" name="Zew ID"></ngx-datatable-column>
-                  <ngx-datatable-column prop="Person" name="Os.fiz."></ngx-datatable-column>
+                  <ngx-datatable-column prop="Person" name="Os.fiz." [resizeable]="false" [width]="45" [canAutoResize]="false">
+                    <ng-template let-value="value" ngx-datatable-cell-template>
+                      <div style="text-align: center;">
+                        <input type="checkbox" id="IsActive" name="Person" value="value" disabled=true [checked]="value == 1">
+                      </div>
+                    </ng-template>
+                  </ngx-datatable-column>
                   <ngx-datatable-column prop="VATId" name="NIP"></ngx-datatable-column>
+                  <ngx-datatable-column prop="Street" name="Ulica"></ngx-datatable-column>
+                  <ngx-datatable-column prop="HouseNum" name="Nr domu"></ngx-datatable-column>
+                  <ngx-datatable-column prop="City" name="Miasto"></ngx-datatable-column>
+                  <ngx-datatable-column prop="CountrySymbol" name="Kraj" [resizeable]="false" [width]="40" [canAutoResize]="false"></ngx-datatable-column>
+                  <ngx-datatable-column prop="ExtIdent" name="Zew ID"></ngx-datatable-column>
                 </ngx-datatable>
 
               </sit-data-source-container>
             </div>
+
           </div>
         </div>
       </div>
       <div class="container-cols" style="height: 30%;">
         <div class="content-left">
-          <div>
+          <div style="height: 65px;">
             <sit-data-source-container  ident="sitFilter" >
               <span>
                 <sit-data-input #sitControl field="searchAgreements" label="Filtruj umowy"></sit-data-input>
@@ -50,9 +63,10 @@
             <div class="data-table">
               <sit-data-source-container  ident="sitAgreements">
                 <ngx-datatable #sitAgreements #sitSetDataSource
-                class="material striped"
+                class="material"
+                style="height: 180px;"
                 [columnMode]="ColumnMode.force"
-                [limit]=20
+                [scrollbarV]="true"
                 [selected]="sitAgreementsSelected"
                 [selectionType]="SelectionType.single"
                 [selectAllRowsOnPage]="false"
@@ -61,7 +75,18 @@
                 (select)="onSelectAgreements($event)"
                 [footerHeight]="50"
                 >
-                  <ngx-datatable-column prop="Desc" name="Opis"></ngx-datatable-column>
+                  <ngx-datatable-column prop="AgreementDesc" name="Opis"></ngx-datatable-column>
+                  <ngx-datatable-column prop="Date" name="Data">
+                    <ng-template let-value="value" ngx-datatable-cell-template>
+                      {{value | date: 'yyyy-MM-dd'}}
+                    </ng-template>
+                  </ngx-datatable-column>
+                  <ngx-datatable-column prop="DateTo" name="Data do">
+                    <ng-template let-value="value" ngx-datatable-cell-template>
+                      {{value | date: 'yyyy-MM-dd'}}
+                    </ng-template>
+                  </ngx-datatable-column>
+
                 </ngx-datatable>
 
               </sit-data-source-container>
@@ -71,7 +96,7 @@
       </div>
       <div class="container-cols" style="height: 30%;">
         <div class="content-left">
-          <div>
+          <div style="height: 65px;">
             <sit-data-source-container  ident="sitFilter" >
               <span>
                 <sit-data-input #sitControl field="searchAttachments" label="Filtruj załączniki"></sit-data-input>
@@ -82,9 +107,10 @@
             <div class="data-table">
               <sit-data-source-container  ident="sitAttachments" (activeRowChanged)="activeRowAttachmentChanged($event)">
                 <ngx-datatable #sitAttachments #sitSetDataSource
-                class="material striped"
+                class="material"
+                style="height: 160px;"
                 [columnMode]="ColumnMode.force"
-                [limit]=20
+                [scrollbarV]="true"
                 [selected]="sitAgreementsSelected"
                 [selectionType]="SelectionType.single"
                 [selectAllRowsOnPage]="false"
@@ -93,8 +119,9 @@
                 (select)="onSelectAgreements($event)"
                 [footerHeight]="50"
                 >
-                  <ngx-datatable-column prop="Desc" name="Opis"></ngx-datatable-column>
+                  <ngx-datatable-column prop="AttachmentDesc" name="Opis"></ngx-datatable-column>
                   <ngx-datatable-column prop="FileName" name="Nazwa pliku"></ngx-datatable-column>
+                  <ngx-datatable-column prop="GUID" name="GUID"></ngx-datatable-column>
                 </ngx-datatable>
 
               </sit-data-source-container>
@@ -104,7 +131,7 @@
         </div>
       </div>
     </div>
-    <div class="container-cols" style="width: 60%;">
+    <div class="container-cols" style="width: 50%;">
       <div class="content">
         <ngx-extended-pdf-viewer
         [src]="Link"
