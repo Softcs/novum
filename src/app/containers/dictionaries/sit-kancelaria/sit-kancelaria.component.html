@@ -111,12 +111,12 @@
                 style="height: 160px;"
                 [columnMode]="ColumnMode.force"
                 [scrollbarV]="true"
-                [selected]="sitAgreementsSelected"
+                [selected]="sitAttachmentsSelected"
                 [selectionType]="SelectionType.single"
                 [selectAllRowsOnPage]="false"
                 [displayCheck]="displayCheck"
                 (activate)="onActivateAttachments($event)"
-                (select)="onSelectAgreements($event)"
+                (select)="onSelectAttachments($event)"
                 [footerHeight]="50"
                 >
                   <ngx-datatable-column prop="AttachmentDesc" name="Opis"></ngx-datatable-column>

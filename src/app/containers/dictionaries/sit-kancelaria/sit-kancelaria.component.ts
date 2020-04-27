@@ -14,7 +14,9 @@ import { User } from '@app/_models';
   host: {class: 'router-flex'}
 })
 export class SitKancelariaComponent implements OnInit {
-  @ViewChild('sit-menu') menuTable: DatatableComponent;
+  @ViewChild('sitCustomers') customersTable: DatatableComponent;
+  @ViewChild('sitAgreements') agreementsTable: DatatableComponent;
+  @ViewChild('sitAttachments') attachmentsTable: DatatableComponent;
   @ViewChild('sitDictcontainer') dictContainer: SitDictContainerComponent;
 
   currentUser: User;
@@ -45,9 +47,9 @@ export class SitKancelariaComponent implements OnInit {
   }
 
   onSelectAttachments({ selected }) {
-
-    this.sitAgreementsSelected.splice(0, this.sitAgreementsSelected.length);
-    this.sitAgreementsSelected.push(...selected);
+    // console.log('selected',selected);
+    // this.sitAttachmentsSelected.splice(0, this.sitAgreementsSelected.length);
+    // this.sitAttachmentsSelected.push(...selected);
 
   }
   displayCheck(row) {
@@ -58,7 +60,6 @@ export class SitKancelariaComponent implements OnInit {
     if (event.type == 'click') {
       const dataSourceResponseWrapper: DataSourceResponseWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitCustomers");
       dataSourceResponseWrapper.SetActiveRow(event.row);
-      // this.Link = "https://ws.seidoit.pl/service/attachments/get/"+this.currentUser.token+"/"+dataSourceResponseWrapper.activeRow['GUID']+"/"+dataSourceResponseWrapper.activeRow['FileName']
     }
   }
 
@@ -66,7 +67,6 @@ export class SitKancelariaComponent implements OnInit {
     if (event.type == 'click') {
       const dataSourceResponseWrapper: DataSourceResponseWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitAgreements");
       dataSourceResponseWrapper.SetActiveRow(event.row);
-      // this.Link = "https://ws.seidoit.pl/service/attachments/get/"+this.currentUser.token+"/"+dataSourceResponseWrapper.activeRow['GUID']+"/"+dataSourceResponseWrapper.activeRow['FileName']
     }
   }
 
@@ -74,13 +74,20 @@ export class SitKancelariaComponent implements OnInit {
     if (event.type == 'click') {
       const dataSourceResponseWrapper: DataSourceResponseWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitAttachments");
       dataSourceResponseWrapper.SetActiveRow(event.row);
-      // this.Link = "https://ws.seidoit.pl/service/attachments/get/"+this.currentUser.token+"/"+dataSourceResponseWrapper.activeRow['GUID']+"/"+dataSourceResponseWrapper.activeRow['FileName']
     }
   }
   activeRowAttachmentChanged(activeRow) {
+    console.log('activeRow',[activeRow]);
+    console.log('sitAttachmentsSelected', this.sitAttachmentsSelected);
+
+    this.sitAttachmentsSelected.splice(0, this.sitAttachmentsSelected.length);
+    this.sitAttachmentsSelected.push(...[activeRow]);
+
+    console.log('sitAttachmentsSelected',this.sitAttachmentsSelected);
+
     this.Link = activeRow == null
       ? "https://ws.seidoit.pl/service/attachments/get/" + "1" + "/" + "1" + "/" + "1.pdf" : // kiedy brak rekordu
-                "https://ws.seidoit.pl/service/attachments/get/" + this.currentUser.token + "/" + activeRow['GUID'] + "/" + activeRow['FileName']
+        "https://ws.seidoit.pl/service/attachments/get/" + this.currentUser.token + "/" + activeRow['GUID'] + "/" + activeRow['FileName']
 
   }
 
