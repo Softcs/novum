@@ -13,6 +13,10 @@ export class DataSourceResponseWrapper {
     constructor(public dataSourceManager: DataSourceManager) {
 
     }
+    public RefreshChildren() {
+        this.dataSourceManager.RefreshChildren(this);
+    }
+
     public SetActiveRow( row: any) {
         if(row !== this.activeRow) {
             this.activeRow = row;

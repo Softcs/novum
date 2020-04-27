@@ -22,7 +22,7 @@ export class SitDataInputComponent extends SitDataBaseComponent  {
   }
   _onFilterKeyEnter(event: any) {
     this.dataSourceResponseWrapper.activeRow[this.field] = this.getValue();
-    this.dataSourceResponseWrapper.SetActiveRow(this.dataSourceResponseWrapper.activeRow);
+    this.dataSourceResponseWrapper.RefreshChildren();
   }
 
 
