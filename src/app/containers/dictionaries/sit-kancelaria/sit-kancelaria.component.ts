@@ -36,10 +36,15 @@ export class SitKancelariaComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onSelectCustomers({ selected }) {
+  activeRowCustomersChanged(activeRow) {
     this.sitCustomersSelected.splice(0, this.sitCustomersSelected.length);
-    this.sitCustomersSelected.push(...selected);
+    this.sitCustomersSelected.push(...[activeRow]);
   }
+
+  // onSelectCustomers({ selected }) {
+  //   this.sitCustomersSelected.splice(0, this.sitCustomersSelected.length);
+  //   this.sitCustomersSelected.push(...selected);
+  // }
 
   onSelectAgreements({ selected }) {
     this.sitAgreementsSelected.splice(0, this.sitAgreementsSelected.length);
