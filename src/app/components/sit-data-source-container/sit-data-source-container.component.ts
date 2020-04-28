@@ -43,6 +43,7 @@ export class SitDataSourceContainerComponent implements OnInit {
     this.dataSourceResponseWrapper.activeRowChanged = this.activeRowChanged;
     this.datasSourcesInterface.forEach(element => {
       element.rows = this.dataSourceResponseWrapper.rows;
+      element.selected = [this.dataSourceResponseWrapper.activeRow];
     });
     if (this.dsControlsInterface != null) {
         this.dsControlsInterface.forEach(element => {

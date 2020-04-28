@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { ColumnMode, SelectionType } from '../../../../ngx/public-api';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
 import { SitDataSourceContainerComponent } from '@app/components/sit-data-source-container';
@@ -37,8 +37,7 @@ export class SitKancelariaComponent implements OnInit {
   }
 
   activeRowCustomersChanged(activeRow) {
-    this.sitCustomersSelected.splice(0, this.sitCustomersSelected.length);
-    this.sitCustomersSelected.push(...[activeRow]);
+    this.sitCustomersSelected = [activeRow];
   }
 
   // onSelectCustomers({ selected }) {

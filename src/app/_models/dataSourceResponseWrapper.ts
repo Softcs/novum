@@ -27,7 +27,7 @@ export class DataSourceResponseWrapper {
     public setInputDataSource(inputDataSource: any) {
         this.ident = inputDataSource.ident;
         this.rows = inputDataSource.rows;
-        this.activeRow = inputDataSource.activeRow;
+        this.activeRow = inputDataSource.rows.length > 0 ? inputDataSource.rows[0] : null;// inputDataSource.activeRow;
         this.errors = inputDataSource.errors;
     }
     public AfterPropagte() {
