@@ -1,8 +1,9 @@
 <sit-dict-container ident="sitKancelaria" #sitDictcontainer class="container-cols">
-  <div class="container-rows">
-    <div class="container-cols" style="width: 50%;">
-      <div class="container-cols" style="height: 40%;">
-        <div class="content-left">
+<div class="p-grid p-nogutter" style="height: 100%; width: 100%;">
+  <div class="p-col-7">
+    <div class="p-grid p-nogutter" style="height: 100%; width: 100%;">
+      <div class="p-col-12" style="height: 40%; width: 100%;">
+        <div class="content">
           <div style="height: 65px;">
             <sit-data-source-container  ident="sitFilter" >
               <span>
@@ -13,6 +14,7 @@
           <div style="flex:1 1 auto;">
             <div class="data-table">
               <sit-data-source-container  ident="sitCustomers" (activeRowChanged)="activeRowCustomersChanged($event)">
+
                 <ngx-datatable #sitCustomers #sitSetDataSource
                 class="material"
                 style="height: 280px;"
@@ -45,12 +47,11 @@
 
               </sit-data-source-container>
             </div>
-
           </div>
         </div>
       </div>
-      <div class="container-cols" style="height: 30%;">
-        <div class="content-left">
+      <div class="p-col-12" style="height: 30%; width: 100%;">
+        <div class="content">
           <div style="height: 65px;">
             <sit-data-source-container  ident="sitFilter" >
               <span>
@@ -61,6 +62,7 @@
           <div>
             <div class="data-table">
               <sit-data-source-container  ident="sitAgreements">
+
                 <ngx-datatable #sitAgreements #sitSetDataSource
                 class="material"
                 style="height: 180px;"
@@ -93,8 +95,8 @@
           </div>
         </div>
       </div>
-      <div class="container-cols" style="height: 30%;">
-        <div class="content-left">
+      <div class="p-col-12" style="height: 30%; width: 100%;">
+        <div class="content">
           <div style="height: 65px;">
             <sit-data-source-container  ident="sitFilter" >
               <span>
@@ -126,20 +128,20 @@
               </sit-data-source-container>
             </div>
           </div>
-
         </div>
       </div>
     </div>
-    <div class="container-cols" style="width: 50%;">
-      <div class="content">
-        <ngx-extended-pdf-viewer
-        [src]="Link"
-        [useBrowserLocale]="true"
-        [height]="'100%'"
-
-        >
-        </ngx-extended-pdf-viewer>
-      </div>
+  </div>
+  <div class="p-col-5">
+    <div class="content">
+      <ngx-extended-pdf-viewer
+      [src]="Link"
+      [useBrowserLocale]="true"
+      [height]="'100%'"
+      >
+      </ngx-extended-pdf-viewer>
     </div>
   </div>
+
+</div>
 </sit-dict-container>
