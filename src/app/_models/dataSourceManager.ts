@@ -20,7 +20,7 @@ export class DataSourceManager {
             return;
         }
         dataSourceDefinition.children.forEach(dataSource => {
-            const dataSourceDefinitionChild = this.getDataSource(dataSource.ident);
+            const dataSourceDefinitionChild = this.dictInfo.FindDataSource(dataSource.ident);
             const dsWrapper: DataSourceResponseWrapper = this.getDateSourceWrapper(dataSource.ident);
             let obj = {
                 ident: dataSource.ident,
@@ -38,9 +38,12 @@ export class DataSourceManager {
         }
 
         dataSourceDefinition.parents.forEach(dataSource => {
-            const dataSourceDefinitionParent = this.getDataSource(dataSource.ident);
+            const dataSourceDefinitionParent = this.getDataSource(dataSource);
             const dsWrapper: DataSourceResponseWrapper = this.getDateSourceWrapper(dataSource);
             if (dsWrapper == null) {
+                return;
+            }
+            if(dataSourcesRequest.find(obj => obj.ident === dsWrapper.ident) != null) {
                 return;
             }
             let obj = {
@@ -68,12 +71,12 @@ export class DataSourceManager {
 
         this.prapareDataSource4Request(dataSourceDefinition, dataSourcesRequest);
         dataSourcesRequest.forEach(dsToRefresh => {
-            const dsDefItem = this.dictInfo.FindDataSource(dsToRefresh.ident);
-            this.prapareDataSource4RequestParent(dsDefItem, dataSourcesRequest);
-        });
-
-        console.log("dataSourcesRequest", dataSourcesRequest)
-
+            if (!dsToRefresh.refresh) {
+                return;
+            }
+             const dsDefItem = this.dictInfo.FindDataSource(dsToRefresh.ident);
+             this.prapareDataSource4RequestParent(dsDefItem, dataSourcesRequest);
+         });
         const opr: Operation = this.gatewayService.operationRefreshDataSources(this.dictInfo.ident,
             dataSourcesRequest);
 
@@ -85,7 +88,6 @@ export class DataSourceManager {
                         const dataSourcesResponse = data[0].dataSourcesResponse;
                         this.setRefreshDataSources(dataSourcesResponse);
                         let dataSetToReload = dataSourcesResponse.map(d => d.ident);
-                        console.log("dataSetToReload", dataSourcesResponse)
                         this.PropagateDataSources(dataSetToReload);
                     }
                 },
@@ -144,7 +146,6 @@ export class DataSourceManager {
         let dataSourceResponseWrapper = this.getDateSourceWrapper(newDataSource.ident);
         if (dataSourceResponseWrapper == null) {
             dataSourceResponseWrapper = new DataSourceResponseWrapper(this);
-            console.log("create dataSourceResponseWrapper", dataSourceResponseWrapper)
             this.dataSourcesWrapper.push(dataSourceResponseWrapper);
         }
         dataSourceResponseWrapper.setInputDataSource(newDataSource);
