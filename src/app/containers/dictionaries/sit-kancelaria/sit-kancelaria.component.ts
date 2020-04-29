@@ -69,8 +69,8 @@ export class SitKancelariaComponent implements OnInit {
 
   onActivateAgreements(event) {
     if (event.type == 'click') {
-      const dataSourceResponseWrapper: DataSourceResponseWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitAgreements");
-      dataSourceResponseWrapper.SetActiveRow(event.row);
+       const dataSourceResponseWrapper: DataSourceResponseWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitAgreements");
+       dataSourceResponseWrapper.SetActiveRow(event.row);
     }
   }
 
