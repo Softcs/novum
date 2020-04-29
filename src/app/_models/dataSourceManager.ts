@@ -67,7 +67,11 @@ export class DataSourceManager {
         dataSourcesRequest.push(obj);
 
         this.prapareDataSource4Request(dataSourceDefinition, dataSourcesRequest);
-        this.prapareDataSource4RequestParent(dataSourceDefinition, dataSourcesRequest);
+        dataSourcesRequest.forEach(dsToRefresh => {
+            const dsDefItem = this.dictInfo.FindDataSource(dsToRefresh.ident);
+            this.prapareDataSource4RequestParent(dsDefItem, dataSourcesRequest);
+        });
+
         console.log("dataSourcesRequest", dataSourcesRequest)
 
         const opr: Operation = this.gatewayService.operationRefreshDataSources(this.dictInfo.ident,
@@ -129,7 +133,6 @@ export class DataSourceManager {
             return;
         }
         const dataSource = this.dataSourcesWrapper.filter(item => item.ident.toLowerCase() === ident.toLowerCase())[0];
-        console.log("aaaa", dataSource,this.dataSourcesWrapper, ident.toLowerCase())
         return dataSource;
     }
     private setRefreshDataSource(newDataSource: any) {

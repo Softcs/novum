@@ -21,7 +21,9 @@ export class SitDataInputComponent extends SitDataBaseComponent  {
     return this.inputElement.nativeElement.value;
   }
   _onFilterKeyEnter(event: any) {
-    this.dataSourceResponseWrapper.activeRow[this.field] = this.getValue();
+    if (this.dataSourceResponseWrapper.activeRow != null) {
+      this.dataSourceResponseWrapper.activeRow[this.field] = this.getValue();
+    }
     this.dataSourceResponseWrapper.RefreshChildren();
   }
 
