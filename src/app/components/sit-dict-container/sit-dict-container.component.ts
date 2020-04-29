@@ -41,6 +41,7 @@ export class SitDictContainerComponent implements OnInit {
       .subscribe(
         data => {
           if (data.length === 1) {
+
             this.dictInfo = new DictInfoWrapper(data[0].dictInfo);
             this.DataSourceManager.dictInfo = this.dictInfo;
             this.DataSourceManager.dataSourceComponents = this.dataSourceComponents;

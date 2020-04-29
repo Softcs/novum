@@ -91,6 +91,12 @@ export class GatewayService {
                     keySize: 128 / 8, iv: iv, mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7
                 });
                 railResponse = decrypted.toString(CryptoJS.enc.Utf8);
+                railResponse = JSON.parse(railResponse);
+                if (railResponse != null && railResponse.length > 0 && railResponse[0].Errors != null) {
+                    railResponse[0].Errors.forEach(error => {
+                        console.error(error.Message);
+                    });
+                }
                 return railResponse;
             }));
     }

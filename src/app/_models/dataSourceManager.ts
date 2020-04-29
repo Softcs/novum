@@ -84,10 +84,11 @@ export class DataSourceManager {
             .pipe(first())
             .subscribe(
                 data => {
+                    console.log("data.length", data)
                     if(data.length == 1) {
                         const dataSourcesResponse = data[0].dataSourcesResponse;
                         this.setRefreshDataSources(dataSourcesResponse);
-                        let dataSetToReload = dataSourcesResponse.map(d => d.ident);
+                        let dataSetToReload = dataSourcesResponse?.map(d => d.ident);
                         this.PropagateDataSources(dataSetToReload);
                     }
                 },
