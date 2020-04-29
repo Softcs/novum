@@ -1,7 +1,7 @@
 ﻿import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, first } from 'rxjs/operators';
 
 import { environment } from '@environments/environment';
 import { User, Operation } from '@app/_models';
@@ -27,24 +27,35 @@ export class GatewayService {
 
 
     login(username: string, password: string) {
-        this.lastAuthBasic = window.btoa(username + ':' + password);
-        return this.http.post<any>(`${environment.apiUrl}/api/authentication/auth`, null)
-            .pipe(map(user => {
-                this.lastAuthBasic = user.token != null ?  window.btoa(username + ':' + password) : null;
-                if (this.lastAuthBasic) {
-                    localStorage.setItem('currentUser', JSON.stringify(user));
-                    this.currentUserSubject.next(user);
-                } else {
-                    this.logout();
-                }
-                return user;
-            }));
+        var user = new User();
+        user.password = password;
+        user.username = username;
+        user.token = null;
+        this.currentUserSubject.next(user);
+        const oprLogin: Operation = this.operationLogin();
+        this.executeOperation(oprLogin)
+            .pipe(first())
+            .subscribe(
+                data => {
+                    if (data.length === 1) {
+
+
+                    }
+                },
+                error => {
+                    console.error("error", error);
+                });
     }
 
     logout() {
         // remove user from local storage to log user out
         localStorage.removeItem('currentUser');
         this.currentUserSubject.next(null);
+    }
+    operationLogin() {
+        const opr: Operation = new Operation();
+        opr.oprType = 10;
+        return opr;
     }
 
     operationGetDictInfo(dictident: string): Operation {
