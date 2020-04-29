@@ -81,7 +81,8 @@ body {
 
 .content {
   padding: 5px;
-  margin: 5px;
+  margin: 3px 3px 3px 3px;
+  height: calc(100% - 6px);
   background-color: $content-background-color;
 
 }
@@ -126,83 +127,17 @@ mat-toolbar-row,mat-toolbar-single-row{
   padding: 0px 2px 0px 2px !important;
 }
 
-table {
-  width: 100%;
-  height: 100%;
-  overflow:auto;
- }
-
- .table-header {
-  //min-height:40px !important;
-  height: auto !important;
-  font-weight:bold !important;
-  font-size:12px !important;
-  color: #817d8d;
-  margin-bottom:5px;
-  top: 0;
-  position: sticky;
-  z-index: 1;
-  background-color: $table-header-color;
-  padding: 5px 5px 5px 5px !important;
-}
-
-
-.table-row {
-  height: auto !important;
-  //border-right: 1px solid #e1e1e1;
-  border-bottom: 1px solid #e9e8dd;
-  padding: 0px !important;
-
-
-}
-
-.table-cell{
-  //border: none !important;
-  font-size: 11px !important;
-  border-right: 1px solid #e9e8dd;
-  padding: 3px 5px 3px 5px !important;
-}
-
-
-.table-footer {
-  background-color: $table-footer-color !important;
-  height: auto !important;
-  padding: 0px !important;
-}
-
-.table-footer-cell {
-  font-size: 12px;;
-  font-weight: bold;
-  //border: 1px solid #e7e7e7;
-  padding: 3px 5px 3px 5px !important;
-}
-
-tr.mat-row:nth-child(odd){
-  background-color:$background-color;
-  }
-
-.data-table {
-  width: 100%;
-  height: 100%;
-  padding: 0px;
-  margin: 0px;
-}
-
 .fill-space{
   flex: 1 1 auto;
 }
 
 a { cursor: pointer }
 
-
-
-
 button:focus {
   outline: none;
 }
 
-
-  .ngx-datatable.material.div.visible {
+.ngx-datatable.material.div.visible {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -211,7 +146,9 @@ button:focus {
 
 .ngx-datatable.material{
   //position: absolute !important;
-  height: 100% !important;
+  box-shadow: 1px 1px 5px 0px rgba(0,0,0,0.35);
+  //height: 100% !important;
+  //min-height: 100% !important;
   top: 0;
   left: 0;
   right: 0;
@@ -226,6 +163,7 @@ button:focus {
       color: $table-header-font-color;
       background-color:$table-header-color;
       font-size: 13px;
+      border-right: 1px solid lightgray;
     }
   }
   .datatable-body{
@@ -269,6 +207,7 @@ button:focus {
 .ngx-datatable.material .datatable-body .datatable-body-row.datatable-row-odd {
   background-color: $table-row-odd-color;
 }
+
 
 
 $mat-myapp-primary: (

@@ -25,12 +25,18 @@
             "aot": true,
             "assets": [
               "src/assets/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "node_modules/ngx-extended-pdf-viewer/assets/",
+                "output": "/assets/"
+              }
             ],
             "styles": [
               "src/styles.scss",
               "node_modules/primeng/resources/primeng.min.css",
               "node_modules/primeicons/primeicons.css",
+              "node_modules/primeflex/primeflex.css",
               "node_modules/font-awesome/css/font-awesome.min.css",
               "node_modules/primeng/resources/themes/rhea/theme.css",
               "node_modules/primeng/resources/themes/luna-amber/theme.css",
@@ -41,7 +47,10 @@
               "node_modules/primeng/resources/themes/nova-dark/theme.css",
               "node_modules/primeng/resources/themes/nova-light/theme.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/chart.js/dist/Chart.js",
+              "node_modules/hammerjs/hammer.min.js"
+            ]
           },
           "configurations": {
             "production": {

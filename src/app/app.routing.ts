@@ -1,4 +1,5 @@
-﻿import { Routes, RouterModule } from '@angular/router';
+﻿import { Component } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './containers/home';
 import { LoginComponent } from './containers/login';
 import { SitRailConfigurationsComponent } from './containers/dictionaries/sit-rail-configurations';
@@ -8,8 +9,10 @@ import { AuthGuard } from './_helpers';
 import { AgGridTestComponent } from './containers/sandbox/ag-grid-test';
 import { PrimeNgTestComponent } from './containers/sandbox/prime-ng-test/prime-ng-test.component';
 import { NgxDatatableTestComponent } from './containers/sandbox/ngx-datatable-test';
+import { NgxPdfTestComponent } from './containers/sandbox/ngx-pdf-test';
 import { SitMenuComponent } from './containers/dictionaries/sit-menu/';
 import { SitRozrachunkiInsertGTComponent } from './containers/dictionaries/sit-rozrachunki-insert-gt/sit-rozrachunki-insert-gt.component';
+import { SitKancelariaComponent } from './containers/dictionaries/sit-kancelaria/';
 
 const routes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -22,6 +25,8 @@ const routes: Routes = [
     { path: 'sitMenu', component: SitMenuComponent, canActivate: [AuthGuard]},
     { path: 'sitRailConfigurations', component: SitRailConfigurationsComponent, canActivate: [AuthGuard]},
     { path: 'sitRozrachunkiInsertGT', component: SitRozrachunkiInsertGTComponent, canActivate: [AuthGuard] },
+    { path: 'ngx-extended-pdf-viewer-test', component: NgxPdfTestComponent, canActivate: [AuthGuard] },
+    { path: 'sitKancelaria', component: SitKancelariaComponent, canActivate: [AuthGuard] },
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
