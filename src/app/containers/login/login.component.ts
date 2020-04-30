@@ -38,11 +38,11 @@ export class LoginComponent implements OnInit {
     // convenience getter for easy access to form fields
     get f() { return this.loginForm.controls; }
     private checkErrors(data: any):boolean {
-        if(data == null || data.errors == null || data.errors.length === 0) {
+        if(data == null || data.Errors == null || data.Errors.length === 0) {
             return false;
         }
 
-        this.error = data.errors[0].message;
+        this.error = data.Errors[0].Message;
         return true;
     }
     onSubmit() {
@@ -54,27 +54,23 @@ export class LoginComponent implements OnInit {
         }
 
         this.loading = true;
-        this.gatewayService.login(this.f.username.value, this.f.password.value,
-            function onAfterLogin(response) {
-                this.afterLogin(response);
-            }
-        );
-            // .pipe(first())
-            // .subscribe(
-            //     data => {
-            //         if(!this.checkErrors(data)) {
-            //             this.router.navigate([this.returnUrl]);
-            //         } else {
-            //             this.loading = false;
-            //         }
-            //     },
-            //     error => {
-            //         this.error = error;
-            //         this.loading = false;
-            //     });
-    }
-    afterLogin(response) {
-        console.log("afterLogin", this)
-        this.loading = false;
+        const oprLogin = this.gatewayService.login(this.f.username.value, this.f.password.value);
+        this.gatewayService.executeOperation(oprLogin)
+            .pipe(first())
+            .subscribe(
+                data => {
+                    if (data.length == 1) {
+                        data = data[0];
+                        if(!this.checkErrors(data)) {
+                            this.router.navigate([this.returnUrl]);
+                        } else {
+                            this.loading = false;
+                        }
+                    }
+                },
+                error => {
+                    this.error = error;
+                    this.loading = false;
+                });
     }
 }

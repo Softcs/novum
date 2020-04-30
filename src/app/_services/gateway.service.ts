@@ -26,27 +26,14 @@ export class GatewayService {
     }
 
 
-    login(username: string, password: string, onAfterLogin: any) {
+    login(username: string, password: string) {
         var user = new User();
         user.password = password;
         user.username = username;
         user.token = null;
         this.currentUserSubject.next(user);
         const oprLogin: Operation = this.operationLogin();
-        this.executeOperation(oprLogin)
-            .pipe(first())
-            .subscribe(
-                data => {
-                    if (data.length === 1) {
-                        if (onAfterLogin != null) {
-                            onAfterLogin(data[0]);
-                        }
-
-                    }
-                },
-                error => {
-                    console.error("error", error);
-                });
+        return oprLogin;
     }
 
     logout() {
@@ -76,9 +63,9 @@ export class GatewayService {
     }
     executeOperation(opr: Operation) {
         opr.loginInfo = new LoginInfo();
-        opr.loginInfo.username = this.currentUserValue.username;
-        opr.loginInfo.password = this.currentUserValue.password;
-        opr.loginInfo.token = this.currentUserValue.token;
+        opr.loginInfo.username = this.currentUserValue?.username;
+        opr.loginInfo.password = this.currentUserValue?.password;
+        opr.loginInfo.token = this.currentUserValue?.token;
 
         const listOfOprs = [];
         listOfOprs.push(opr);
