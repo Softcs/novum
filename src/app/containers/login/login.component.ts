@@ -54,19 +54,27 @@ export class LoginComponent implements OnInit {
         }
 
         this.loading = true;
-        this.gatewayService.login(this.f.username.value, this.f.password.value)
-            .pipe(first())
-            .subscribe(
-                data => {
-                    if(!this.checkErrors(data)) {
-                        this.router.navigate([this.returnUrl]);
-                    } else {
-                        this.loading = false;
-                    }
-                },
-                error => {
-                    this.error = error;
-                    this.loading = false;
-                });
+        this.gatewayService.login(this.f.username.value, this.f.password.value,
+            function onAfterLogin(response) {
+                this.afterLogin(response);
+            }
+        );
+            // .pipe(first())
+            // .subscribe(
+            //     data => {
+            //         if(!this.checkErrors(data)) {
+            //             this.router.navigate([this.returnUrl]);
+            //         } else {
+            //             this.loading = false;
+            //         }
+            //     },
+            //     error => {
+            //         this.error = error;
+            //         this.loading = false;
+            //     });
+    }
+    afterLogin(response) {
+        console.log("afterLogin", this)
+        this.loading = false;
     }
 }

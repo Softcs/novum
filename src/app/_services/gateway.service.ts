@@ -26,7 +26,7 @@ export class GatewayService {
     }
 
 
-    login(username: string, password: string) {
+    login(username: string, password: string, onAfterLogin: any) {
         var user = new User();
         user.password = password;
         user.username = username;
@@ -38,7 +38,9 @@ export class GatewayService {
             .subscribe(
                 data => {
                     if (data.length === 1) {
-
+                        if (onAfterLogin != null) {
+                            onAfterLogin(data[0]);
+                        }
 
                     }
                 },
