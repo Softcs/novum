@@ -28,7 +28,8 @@ export class LoginComponent implements OnInit {
     ngOnInit() {
         this.loginForm = this.formBuilder.group({
             username: ['', Validators.required],
-            password: ['', Validators.required]
+            password: ['', Validators.required],
+            remember: [false]
         });
 
         // get return url from route parameters or default to '/'
@@ -45,6 +46,12 @@ export class LoginComponent implements OnInit {
         this.error = data.Errors[0].Message;
         return true;
     }
+
+    saveToLocalStorage() {
+        this.gatewayService.canUseLocalStorage = this.f.remember.value;
+        this.gatewayService.saveCurrentUser();
+    }
+
     onSubmit() {
         this.submitted = true;
 
@@ -59,10 +66,12 @@ export class LoginComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 data => {
-                    if (data.length == 1) {
+                    if (data.length === 1) {
                         data = data[0];
                         if(!this.checkErrors(data)) {
+                            this.saveToLocalStorage();
                             this.router.navigate([this.returnUrl]);
+
                         } else {
                             this.loading = false;
                         }

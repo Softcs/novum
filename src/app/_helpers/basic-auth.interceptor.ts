@@ -10,14 +10,14 @@ export class BasicAuthInterceptor implements HttpInterceptor {
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         // add authorization header with basic auth credentials if available
-        const lastAuthBasic = this.gatewayService.lastAuthBasic;
-        if (lastAuthBasic) {
-            request = request.clone({
-                setHeaders: {
-                    Authorization: `Basic ${lastAuthBasic}`
-                }
-            });
-        }
+        // const lastAuthBasic = this.gatewayService.lastAuthBasic;
+        // if (lastAuthBasic) {
+        //     request = request.clone({
+        //         setHeaders: {
+        //             Authorization: `Basic ${lastAuthBasic}`
+        //         }
+        //     });
+        // }
 
         return next.handle(request);
     }
