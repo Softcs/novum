@@ -13,46 +13,92 @@ import { LoginInfo } from '@app/_models/loginInfo';
 export class GatewayService {
     private currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
-    public lastAuthBasic: string;
+    public canUseLocalStorage: boolean;
 
     constructor(private http: HttpClient) {
-        this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
+        this.currentUserSubject = new BehaviorSubject<User>(this.readCurrentUser());
         this.currentUser = this.currentUserSubject.asObservable();
-        this.lastAuthBasic = null;
     }
 
     public get currentUserValue(): User {
         return this.currentUserSubject.value;
     }
+    public removeCurrentUser() {
+        localStorage.removeItem('li');
+        sessionStorage.removeItem('li');
+        this.currentUserSubject.next(null);
+    }
+    private readCurrentUser(): User {
+        let user = sessionStorage.getItem('li');
+        if (user == null) {
+            user = localStorage.getItem('li');
+            this.canUseLocalStorage = user != null;
+        } else {
+            this.canUseLocalStorage = true;
+        }
 
+        if(user == null) {
+            return null;
+        }
+        let userO: User = JSON.parse( this.decV(user));
+        return userO;
+    }
+    private get getStorage() {
+        return this.canUseLocalStorage ? localStorage : sessionStorage;
+    }
+    public saveCurrentUser() {
+        if (this.currentUserValue == null) {
+            return;
+        }
+        if(!this.canUseLocalStorage) {
+            localStorage.removeItem('li');
+        }
 
-    login(username: string, password: string, onAfterLogin: any) {
+        let user = JSON.stringify(this.currentUserValue);
+        user = this.encV(user);
+        this.getStorage.setItem('li', user);
+    }
+    private encV(data) {
+        let envK = environment.crypt.key;
+        var key = CryptoJS.enc.Utf8.parse(envK);
+        var iv = CryptoJS.enc.Utf8.parse(environment.crypt.iv);
+        var encrypted = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse(data), key,
+            {
+                keySize: 128 / 8,
+                iv: iv,
+                mode: CryptoJS.mode.CBC,
+                padding: CryptoJS.pad.Pkcs7
+            });
+
+        data = encrypted.ciphertext.toString(CryptoJS.enc.Base64);
+        return data;
+    }
+    private decV(data) {
+        if (data == null) {
+            return null;
+        }
+        let envK = environment.crypt.key;
+        var key = CryptoJS.enc.Utf8.parse(envK);
+        var iv = CryptoJS.enc.Utf8.parse(environment.crypt.iv);
+        var decrypted = CryptoJS.AES.decrypt(data, key, {
+            keySize: 128 / 8, iv: iv, mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7
+        });
+        return decrypted.toString(CryptoJS.enc.Utf8);
+    }
+
+    login(username: string, password: string) {
         var user = new User();
         user.password = password;
         user.username = username;
         user.token = null;
         this.currentUserSubject.next(user);
         const oprLogin: Operation = this.operationLogin();
-        this.executeOperation(oprLogin)
-            .pipe(first())
-            .subscribe(
-                data => {
-                    if (data.length === 1) {
-                        if (onAfterLogin != null) {
-                            onAfterLogin(data[0]);
-                        }
-
-                    }
-                },
-                error => {
-                    console.error("error", error);
-                });
+        return oprLogin;
     }
 
     logout() {
         // remove user from local storage to log user out
-        localStorage.removeItem('currentUser');
-        this.currentUserSubject.next(null);
+        this.removeCurrentUser();
     }
     operationLogin() {
         const opr: Operation = new Operation();
@@ -76,34 +122,19 @@ export class GatewayService {
     }
     executeOperation(opr: Operation) {
         opr.loginInfo = new LoginInfo();
-        opr.loginInfo.username = this.currentUserValue.username;
-        opr.loginInfo.password = this.currentUserValue.password;
-        opr.loginInfo.token = this.currentUserValue.token;
+        opr.loginInfo.username = this.currentUserValue?.username;
+        opr.loginInfo.password = this.currentUserValue?.password;
 
         const listOfOprs = [];
         listOfOprs.push(opr);
         let data = JSON.stringify(listOfOprs);
-        let envK = environment.crypt.key;
-        var key = CryptoJS.enc.Utf8.parse(envK);
-        var iv = CryptoJS.enc.Utf8.parse(environment.crypt.iv);
-        var encrypted = CryptoJS.AES.encrypt(CryptoJS.enc.Utf8.parse(data), key,
-            {
-                keySize: 128 / 8,
-                iv: iv,
-                mode: CryptoJS.mode.CBC,
-                padding: CryptoJS.pad.Pkcs7
-            });
-
-        data = encrypted.ciphertext.toString(CryptoJS.enc.Base64);
+        data = this.encV(data);
         let oprC = new OperationCrypt();
         oprC.d = data;
 
         return this.http.post<any>(`${environment.apiUrl}/api/json/gateway/railc`, oprC)
             .pipe(map(railResponse => {
-                var decrypted = CryptoJS.AES.decrypt(railResponse.d, key, {
-                    keySize: 128 / 8, iv: iv, mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7
-                });
-                railResponse = decrypted.toString(CryptoJS.enc.Utf8);
+                railResponse = this.decV(railResponse.d);
                 railResponse = JSON.parse(railResponse);
                 if (railResponse != null && railResponse.length > 0 && railResponse[0].Errors != null) {
                     railResponse[0].Errors.forEach(error => {
