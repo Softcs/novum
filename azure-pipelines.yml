@@ -21,6 +21,6 @@ steps:
     ng build --prod
   displayName: 'npm install and build'
 
-  trigger:
-- master
-- dev
+trigger:
+    master
+    dev
