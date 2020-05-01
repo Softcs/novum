@@ -68,12 +68,16 @@ export class LoginComponent implements OnInit {
                 data => {
                     if (data.length === 1) {
                         data = data[0];
+                        console.log("login",data);
                         if(!this.checkErrors(data)) {
                             this.saveToLocalStorage();
                             this.router.navigate([this.returnUrl]);
 
                         } else {
                             this.loading = false;
+                        }
+                        if (data.forceLogout) {
+                            this.gatewayService.removeCurrentUser();
                         }
                     }
                 },

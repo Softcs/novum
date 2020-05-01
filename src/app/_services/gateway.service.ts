@@ -124,7 +124,7 @@ export class GatewayService {
         opr.loginInfo = new LoginInfo();
         opr.loginInfo.username = this.currentUserValue?.username;
         opr.loginInfo.password = this.currentUserValue?.password;
-
+        opr.loginInfo.token = this.currentUserValue?.token;
         const listOfOprs = [];
         listOfOprs.push(opr);
         let data = JSON.stringify(listOfOprs);
@@ -140,6 +140,13 @@ export class GatewayService {
                     railResponse[0].Errors.forEach(error => {
                         console.error(error.Message);
                     });
+                }
+                if (railResponse.length >0 ) {
+                    const resData = railResponse[0];
+                    this.currentUserValue.token = resData.token;
+                    if (resData.forceLogout){
+                        this.removeCurrentUser();
+                    }
                 }
                 return railResponse;
             }));

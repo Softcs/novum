@@ -10,7 +10,7 @@
 
   <mat-drawer-container autosize class="container-cols">
     <mat-drawer #appDrawer class="sidenav" mode="overlay" >
-      <sit-side-menu></sit-side-menu>
+      <sit-side-menu *ngIf="currentUser"></sit-side-menu>
     </mat-drawer>
     <div class="container-cols">
       <router-outlet></router-outlet>
