@@ -1,4 +1,4 @@
-<sit-dict-container ident="sitSideMenu"  #sitDictcontainer (refreshAfter) ="refreshAfter($event)">
+<sit-dict-container *ngIf="currentUser" ident="sitSideMenu"  #sitDictcontainer (refreshAfter) ="refreshAfter($event)">
   <div class="container-menu">
     <sit-data-source-container  ident="sitSideMenu" >
       <div style="display: flex; flex-direction: column;">
