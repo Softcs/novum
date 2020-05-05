@@ -136,10 +136,22 @@ export class GatewayService {
             .pipe(map(railResponse => {
                 railResponse = this.decV(railResponse.d);
                 railResponse = JSON.parse(railResponse);
-                if (railResponse != null && railResponse.length > 0 && railResponse[0].Errors != null) {
-                    railResponse[0].Errors.forEach(error => {
-                        console.error(error.Message);
-                    });
+                if (railResponse != null && railResponse.length > 0) {
+                    if(railResponse[0].Errors != null) {
+                        railResponse[0].Errors.forEach(error => {
+                            console.error(error.Message);
+                        });
+                    }
+                    if (railResponse[0].dataSourcesResponse != null) {
+                        railResponse[0].dataSourcesResponse.forEach(ds => {
+                            if(ds.Errors != null) {
+                                ds.Errors.forEach(error => {
+                                    console.error(error.Message);
+                                });
+                            }
+                        });
+                    }
+
                 }
                 if (railResponse.length >0 ) {
                     const resData = railResponse[0];
