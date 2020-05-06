@@ -69,6 +69,7 @@ import { SitDataTableComponent } from './components/controls/sit-data-table/sit-
 import { sitSetDataSourceDirective } from './_directives/sitSetDataSourceDirective';
 import { NgxPdfTestComponent } from './containers/sandbox/ngx-pdf-test/ngx-pdf-test.component';
 import { SitKancelariaComponent } from './containers/dictionaries/sit-kancelaria/sit-kancelaria.component';
+import { SitUserAccountComponent } from './containers/dictionaries/sit-user-account/sit-user-account.component';
 
 @NgModule({
     imports: [
@@ -138,7 +139,8 @@ import { SitKancelariaComponent } from './containers/dictionaries/sit-kancelaria
         SitDataBaseComponent,
         SitDataTableComponent,
         NgxPdfTestComponent,
-        SitKancelariaComponent
+        SitKancelariaComponent,
+        SitUserAccountComponent
       ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
