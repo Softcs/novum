@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, ViewChildren, QueryList, ViewChild, ContentChildren, Directive, ElementRef, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, ViewChildren, QueryList, ViewChild, ContentChildren, Directive, ElementRef,
+          EventEmitter, Output } from '@angular/core';
 import { GatewayService } from '../../_services/gateway.service';
 import { Operation, DataSourceResponseWrapper, DictInfoWrapper, DataSourceManager } from '@app/_models';
 import { first } from 'rxjs/operators';
@@ -57,5 +58,10 @@ export class SitDictContainerComponent implements OnInit {
 
   get caption() {
     return this.dictInfo ? this.dictInfo.caption : null;
+  }
+
+  public activeRow(ident: string) {
+    const wrapper = this.DataSourceManager.getDateSourceWrapper(ident);
+    return wrapper?.activeRow;
   }
 }

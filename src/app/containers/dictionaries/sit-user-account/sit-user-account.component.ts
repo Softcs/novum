@@ -19,10 +19,11 @@ export class SitUserAccountComponent implements OnInit {
   ngOnInit(): void {
 
   }
+  get activeRowUserAccount() {
+    return this.dictContainer?.activeRow('sitAppUserAccount');
+  }
 
   test() {
-    const dataSourceResponseWrapper: DataSourceResponseWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitAppUserAccount");
-
-    console.log('test',dataSourceResponseWrapper.activeRow.UserLogin)
+    console.log('test', this.dictContainer.activeRow('sitAppUserAccount').UserLogin)
   }
 }
