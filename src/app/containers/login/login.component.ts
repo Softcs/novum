@@ -5,7 +5,11 @@ import { first } from 'rxjs/operators';
 
 import { GatewayService } from '@app/_services';
 
-@Component({ templateUrl: 'login.component.html', styleUrls: ['login.component.scss']})
+@Component({
+  templateUrl: 'login.component.html',
+  styleUrls: ['login.component.scss'],
+  host: {class: 'router-flex'}
+})
 export class LoginComponent implements OnInit {
     loginForm: FormGroup;
     loading = false;
