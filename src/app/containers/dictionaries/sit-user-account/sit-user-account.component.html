@@ -1,30 +1,35 @@
 <sit-dict-container ident="sitAppUserAccount"  #sitDictcontainer class="container-cols">
   <sit-data-source-container  ident="sitAppUserAccount" fxFlexFill fxLayoutAlign="center center" fxLayout="column">
-    <div class="sit-form" style="width: 500px; height: 500px;">
+    <div class="sit-form" style="width: 500px; height: 350px;">
     <div class="sit-form-header" style="height: 50px;">
       Konto użytkownika
     </div>
-      <div class="sit-form-body" style="height: 450px;">
-        <mat-form-field appearance="legacy" style="width: 100%;">
-          <mat-label>Login</mat-label>
-          <input matInput value="{{ activeRowUserAccount?.UserLogin }}" readonly="true">
-        </mat-form-field>
-        <br>
-        <mat-form-field appearance="legacy" style="width: 200px; margin-right: 10px;">
-          <mat-label>Imię</mat-label>
-          <input matInput value="{{ activeRowUserAccount?.Name }}" readonly="true">
-        </mat-form-field>
+      <div class="sit-form-body" style="height: 300px;">
+        <div style="height: 240px;">
+          <mat-form-field appearance="legacy" style="width: 100%;">
+            <mat-label>Login</mat-label>
+            <input matInput value="{{ activeRowUserAccount?.UserLogin }}" readonly="true">
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="legacy" style="width: 200px; margin-right: 10px;">
+            <mat-label>Imię</mat-label>
+            <input matInput value="{{ activeRowUserAccount?.Name }}" readonly="true">
+          </mat-form-field>
 
-        <mat-form-field appearance="legacy" style="width: 273px;">
-          <mat-label>Nazwisko</mat-label>
-          <input matInput value="{{ activeRowUserAccount?.SureName }}" readonly="true">
-        </mat-form-field>
-        <br>
-        <mat-form-field appearance="legacy" style="width: 100%;">
-          <mat-label>e-mail</mat-label>
-          <input matInput value="{{ activeRowUserAccount?.email }}" readonly="true">
-        </mat-form-field>
+          <mat-form-field appearance="legacy" style="width: 273px;">
+            <mat-label>Nazwisko</mat-label>
+            <input matInput value="{{ activeRowUserAccount?.SureName }}" readonly="true">
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="legacy" style="width: 100%;">
+            <mat-label>e-mail</mat-label>
+            <input matInput value="{{ activeRowUserAccount?.email }}" readonly="true">
+          </mat-form-field>
+        </div>
+        <div>
+          <button mat-raised-button color="primary">Zmień hasło</button>
+        </div>
       </div>
-    </div>
+  </div>
   </sit-data-source-container>
 </sit-dict-container>
