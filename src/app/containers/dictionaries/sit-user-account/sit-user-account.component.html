@@ -7,8 +7,9 @@
       <div class="sit-form-body" style="height: 300px;">
         <div style="height: 240px;">
           <mat-form-field appearance="legacy" style="width: 100%;">
-            <mat-label>Login</mat-label>
+             <mat-label>Login</mat-label>
             <input matInput value="{{ activeRowUserAccount?.UserLogin }}" readonly="true">
+            <!-- <sit-data-input #sitControl field="UserLogin" label="Login" readonly="true"></sit-data-input> -->
           </mat-form-field>
           <br>
           <mat-form-field appearance="legacy" style="width: 200px; margin-right: 10px;">
@@ -27,7 +28,7 @@
           </mat-form-field>
         </div>
         <div>
-          <button mat-raised-button color="primary">Zmień hasło</button>
+          <sit-proc-button #sitControl procIdent="changePassword" color="primary" caption="Zmień hasło"></sit-proc-button>
         </div>
       </div>
   </div>
