@@ -147,6 +147,9 @@
             },
             "dev": {
               "browserTarget": "Novum:build:dev"
+            },
+            "local": {
+              "browserTarget": "Novum:build:local"
             }
           }
         },
