@@ -69,8 +69,9 @@ import { SitDataTableComponent } from './components/controls/sit-data-table/sit-
 import { sitSetDataSourceDirective } from './_directives/sitSetDataSourceDirective';
 import { NgxPdfTestComponent } from './containers/sandbox/ngx-pdf-test/ngx-pdf-test.component';
 import { SitKancelariaComponent } from './containers/dictionaries/sit-kancelaria/sit-kancelaria.component';
-import { SitUserAccountComponent } from './containers/dictionaries/sit-user-account/sit-user-account.component';;
-import { SitProcButtonComponent } from './components/controls/sit-proc-button/sit-proc-button.component'
+import { SitUserAccountComponent } from './containers/dictionaries/sit-user-account/sit-user-account.component';
+import { SitProcButtonComponent } from './components/controls/sit-proc-button/sit-proc-button.component';
+import { SitWhiteListVATComponent } from './containers/dictionaries/sit-white-list-vat/sit-white-list-vat.component'
 
 @NgModule({
     imports: [
@@ -141,9 +142,9 @@ import { SitProcButtonComponent } from './components/controls/sit-proc-button/si
         SitDataTableComponent,
         NgxPdfTestComponent,
         SitKancelariaComponent,
-        SitUserAccountComponent,
-        SitProcButtonComponent
-      ],
+        SitUserAccountComponent,
+        SitProcButtonComponent,
+        SitWhiteListVATComponent      ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
