@@ -1,3 +1,4 @@
+import { environment } from '@environments/environment';
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { ColumnMode, SelectionType } from '../../../../ngx/public-api';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
@@ -7,6 +8,7 @@ import { DataSourceResponseWrapper } from '@app/_models';
 import { SitDataInputComponent } from '@app/components/controls/sit-data-input/sit-data-input.component';
 import { GatewayService } from '@app/_services';
 import { User } from '@app/_models';
+
 @Component({
   selector: 'app-sit-kancelaria',
   templateUrl: './sit-kancelaria.component.html',
@@ -90,8 +92,8 @@ export class SitKancelariaComponent implements OnInit {
     console.log('sitAttachmentsSelected',this.sitAttachmentsSelected);
 
     this.Link = activeRow == null
-      ? "https://ws.seidoit.pl/service/attachments/get/" + "1" + "/" + "1" + "/" + "1.pdf" : // kiedy brak rekordu
-        "https://ws.seidoit.pl/service/attachments/get/" + this.currentUser.token + "/" + activeRow['GUID'] + "/" + activeRow['FileName']
+      ? environment.apiUrl+"/service/attachments/get/" + "1" + "/" + "1" + "/" + "1.pdf" : // kiedy brak rekordu
+        environment.apiUrl+"/service/attachments/get/" + this.currentUser.token + "/" + activeRow['GUID'] + "/" + activeRow['FileName']
 
   }
 
