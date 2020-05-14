@@ -1,91 +1,178 @@
-<mat-tab-group>
-  <mat-tab label="Zakup">
-    Test
-  <!-- <sit-dict-container ident="sitJPKVAT" #sitDictcontainer class="container-cols">
-    <div class="container-cols">
-    <div class="content">
-      <div style="flex: 0 1 auto;">
-        <sit-data-source-container  ident="sitFilterZakup" >
-        <span>
-          <sit-data-input #sitControl field="searchZakup" label="Filtruj"></sit-data-input>
-        </span>
-        </sit-data-source-container>
-      </div>
-      <div  style="flex: 1 1 auto;">
-        <div class="data-table">
-        <sit-data-source-container ident="sitJPKVATZakup">
-          <ngx-datatable #sitRailConfigurations #sitSetDataSource
-            class="material striped"
-            [columnMode]="ColumnMode.force"
-            style="height: 700px;"
-            [scrollbarV] = "true"
-            [footerHeight]="40"
-            [selected]="sitJPKVATZakupSelected"
-            [selectionType]="SelectionType.single"
-            [selectAllRowsOnPage]="false"
-          >
-            <ngx-datatable-column prop="Id" name="Id" [width]="80">
-              <ng-template let-value="value" ngx-datatable-cell-template>
-                <div style="text-align: right;">
-                  {{value}}
-                </div>
-              </ng-template>
-            </ngx-datatable-column>
-            <ngx-datatable-column prop="RD" name="RD" [width]="100"></ngx-datatable-column>
-            <ngx-datatable-column prop="ND" name="ND" [width]="80">
-              <ng-template let-value="value" ngx-datatable-cell-template>
-                <div style="text-align: right;">
-                {{value}}
-              </div>
-            </ng-template>
-            </ngx-datatable-column>
-            <ngx-datatable-column prop="Numer" name="Numer" [width]="200"></ngx-datatable-column>
-            <ngx-datatable-column prop="GrupaKlas" name="Gr.Klas." [width]="100"></ngx-datatable-column>
-            <ngx-datatable-column prop="SymbolSV" name="St.VAT" [width]="100"></ngx-datatable-column>
-            <ngx-datatable-column prop="Netto" name="Netto">
-              <ng-template let-value="value" ngx-datatable-cell-template>
-                <div style="text-align: right;">{{value | number : "1.2-2"}}</div>
-              </ng-template>
-            </ngx-datatable-column>
-            <ngx-datatable-column prop="Vat" name="Vat">
-              <ng-template let-value="value" ngx-datatable-cell-template>
-                <div style="text-align: right;">{{value | number : "1.2-2"}}</div>
-              </ng-template>
-            </ngx-datatable-column>
-            <ngx-datatable-column prop="Data" name="Data" [width]="120">
-              <ng-template let-value="value" ngx-datatable-cell-template>
-                {{value | date: 'yyyy-MM-dd'}}
-              </ng-template>
-            </ngx-datatable-column>
-            <ngx-datatable-column prop="DataVat" name="Data Vat" [width]="120">
-              <ng-template let-value="value" ngx-datatable-cell-template>
-                {{value | date: 'yyyy-MM-dd'}}
-              </ng-template>
-            </ngx-datatable-column>
-            <ngx-datatable-column prop="DATA_ZAKUPU" name="Data zak." [width]="120">
-              <ng-template let-value="value" ngx-datatable-cell-template>
-                {{value | date: 'yyyy-MM-dd'}}
-              </ng-template>
-            </ngx-datatable-column>
-            <ngx-datatable-column prop="DATA_WPLYWU" name="Data wpł.">
-              <ng-template let-value="value" ngx-datatable-cell-template>
-                {{value | date: 'yyyy-MM-dd'}}
-              </ng-template>
-            </ngx-datatable-column>
-            <ngx-datatable-column prop="NAZWA_WYSTAWCY" name="Nazwa"></ngx-datatable-column>
-            <ngx-datatable-column prop="ADRES_WYSTAWCY" name="Adres"></ngx-datatable-column>
-            <ngx-datatable-column prop="NR_ID_WYSTAWCY" name="NIP"></ngx-datatable-column>
-            <ngx-datatable-column prop="NumerFa" name="Nr Fakt."></ngx-datatable-column>
-            <ngx-datatable-column prop="TYP" name="Typ" [width]="100" ></ngx-datatable-column>
-            <ngx-datatable-column prop="LogoP" name="LogoP" [width]="100"></ngx-datatable-column>
-            <ngx-datatable-column prop="Logo" name="Logo" [width]="100"></ngx-datatable-column>
+  <mat-tab-group>
+    <mat-tab label="Zakup">
+      <sit-dict-container ident="sitJPKVAT" #sitDictcontainer class="container-cols">
+        <div class="container-cols">
+          <div class="content">
+            <div style="flex: 0 1 auto;">
+              <sit-data-source-container  ident="sitFilterZakup" >
+                <span>
+                  <sit-data-input #sitControl field="searchZakup" label="Filtruj"></sit-data-input>
+                </span>
+              </sit-data-source-container>
+            </div>
+          <div  style="flex: 1 1 auto;">
+            <div class="data-table">
+              <sit-data-source-container ident="sitJPKVATZakup">
+                <ngx-datatable #sitRailConfigurations #sitSetDataSource
+                  class="material striped"
+                  [columnMode]="ColumnMode.force"
+                  style="height: 700px;"
+                  [scrollbarV] = "true"
+                  [footerHeight]="40"
+                  [selected]="sitJPKVATZakupSelected"
+                  [selectionType]="SelectionType.single"
+                  [selectAllRowsOnPage]="false"
+                >
+                  <ngx-datatable-column prop="Id" name="Id" [width]="80">
+                    <ng-template let-value="value" ngx-datatable-cell-template>
+                      <div style="text-align: right;">
+                        {{value}}
+                      </div>
+                    </ng-template>
+                  </ngx-datatable-column>
+                  <ngx-datatable-column prop="RD" name="RD" [width]="100"></ngx-datatable-column>
+                  <ngx-datatable-column prop="ND" name="ND" [width]="80">
+                    <ng-template let-value="value" ngx-datatable-cell-template>
+                      <div style="text-align: right;">
+                      {{value}}
+                    </div>
+                  </ng-template>
+                  </ngx-datatable-column>
+                  <ngx-datatable-column prop="Numer" name="Numer" [width]="200"></ngx-datatable-column>
+                  <ngx-datatable-column prop="GrupaKlas" name="Gr.Klas." [width]="100"></ngx-datatable-column>
+                  <ngx-datatable-column prop="SymbolSV" name="St.VAT" [width]="100"></ngx-datatable-column>
+                  <ngx-datatable-column prop="Netto" name="Netto">
+                    <ng-template let-value="value" ngx-datatable-cell-template>
+                      <div style="text-align: right;">{{value | number : "1.2-2"}}</div>
+                    </ng-template>
+                  </ngx-datatable-column>
+                  <ngx-datatable-column prop="Vat" name="Vat">
+                    <ng-template let-value="value" ngx-datatable-cell-template>
+                      <div style="text-align: right;">{{value | number : "1.2-2"}}</div>
+                    </ng-template>
+                  </ngx-datatable-column>
+                  <ngx-datatable-column prop="Data" name="Data" [width]="120">
+                    <ng-template let-value="value" ngx-datatable-cell-template>
+                      {{value | date: 'yyyy-MM-dd'}}
+                    </ng-template>
+                  </ngx-datatable-column>
+                  <ngx-datatable-column prop="DataVat" name="Data Vat" [width]="120">
+                    <ng-template let-value="value" ngx-datatable-cell-template>
+                      {{value | date: 'yyyy-MM-dd'}}
+                    </ng-template>
+                  </ngx-datatable-column>
+                  <ngx-datatable-column prop="DATA_ZAKUPU" name="Data zak." [width]="120">
+                    <ng-template let-value="value" ngx-datatable-cell-template>
+                      {{value | date: 'yyyy-MM-dd'}}
+                    </ng-template>
+                  </ngx-datatable-column>
+                  <ngx-datatable-column prop="DATA_WPLYWU" name="Data wpł.">
+                    <ng-template let-value="value" ngx-datatable-cell-template>
+                      {{value | date: 'yyyy-MM-dd'}}
+                    </ng-template>
+                  </ngx-datatable-column>
+                  <ngx-datatable-column prop="NAZWA_WYSTAWCY" name="Nazwa"></ngx-datatable-column>
+                  <ngx-datatable-column prop="ADRES_WYSTAWCY" name="Adres"></ngx-datatable-column>
+                  <ngx-datatable-column prop="NR_ID_WYSTAWCY" name="NIP"></ngx-datatable-column>
+                  <ngx-datatable-column prop="NumerFa" name="Nr Fakt."></ngx-datatable-column>
+                  <ngx-datatable-column prop="TYP" name="Typ" [width]="100" ></ngx-datatable-column>
+                  <ngx-datatable-column prop="LogoP" name="LogoP" [width]="100"></ngx-datatable-column>
+                  <ngx-datatable-column prop="Logo" name="Logo" [width]="100"></ngx-datatable-column>
 
-          </ngx-datatable>
-        </sit-data-source-container>
+                </ngx-datatable>
+              </sit-data-source-container>
+            </div>
+          </div>
+        </div>
+      </div>
+    </sit-dict-container>
+  </mat-tab>
+  <mat-tab label="Sprzedaż">
+    <sit-dict-container ident="sitJPKVAT" #sitDictcontainer class="container-cols">
+      <div class="container-cols">
+        <div class="content">
+          <div style="flex: 0 1 auto;">
+            <sit-data-source-container  ident="sitFilterSprzedaz" >
+              <span>
+                <sit-data-input #sitControl field="searchSprzedaz" label="Filtruj"></sit-data-input>
+              </span>
+            </sit-data-source-container>
+          </div>
+        <div  style="flex: 1 1 auto;">
+          <div class="data-table">
+            <sit-data-source-container ident="sitJPKVATSprzedaz">
+              <ngx-datatable #sitRailConfigurations #sitSetDataSource
+                class="material striped"
+                [columnMode]="ColumnMode.force"
+                style="height: 700px;"
+                [scrollbarV] = "true"
+                [footerHeight]="40"
+                [selected]="sitJPKVATSprzedazSelected"
+                [selectionType]="SelectionType.single"
+                [selectAllRowsOnPage]="false"
+              >
+                <ngx-datatable-column prop="Id" name="Id" [width]="80">
+                  <ng-template let-value="value" ngx-datatable-cell-template>
+                    <div style="text-align: right;">
+                      {{value}}
+                    </div>
+                  </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column prop="RD" name="RD" [width]="100"></ngx-datatable-column>
+                <ngx-datatable-column prop="ND" name="ND" [width]="80">
+                  <ng-template let-value="value" ngx-datatable-cell-template>
+                    <div style="text-align: right;">
+                    {{value}}
+                  </div>
+                </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column prop="Numer" name="Numer" [width]="200"></ngx-datatable-column>
+                <ngx-datatable-column prop="GrupaKlas" name="Gr.Klas." [width]="100"></ngx-datatable-column>
+                <ngx-datatable-column prop="SymbolSV" name="St.VAT" [width]="100"></ngx-datatable-column>
+                <ngx-datatable-column prop="Netto" name="Netto">
+                  <ng-template let-value="value" ngx-datatable-cell-template>
+                    <div style="text-align: right;">{{value | number : "1.2-2"}}</div>
+                  </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column prop="Vat" name="Vat">
+                  <ng-template let-value="value" ngx-datatable-cell-template>
+                    <div style="text-align: right;">{{value | number : "1.2-2"}}</div>
+                  </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column prop="Data" name="Data" [width]="120">
+                  <ng-template let-value="value" ngx-datatable-cell-template>
+                    {{value | date: 'yyyy-MM-dd'}}
+                  </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column prop="DataVat" name="Data Vat" [width]="120">
+                  <ng-template let-value="value" ngx-datatable-cell-template>
+                    {{value | date: 'yyyy-MM-dd'}}
+                  </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column prop="DATA_SPRZEDAZY" name="Data zak." [width]="120">
+                  <ng-template let-value="value" ngx-datatable-cell-template>
+                    {{value | date: 'yyyy-MM-dd'}}
+                  </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column prop="DATA_WYSTAWIENIA" name="Data wpł.">
+                  <ng-template let-value="value" ngx-datatable-cell-template>
+                    {{value | date: 'yyyy-MM-dd'}}
+                  </ng-template>
+                </ngx-datatable-column>
+                <ngx-datatable-column prop="NAZWA_NABYWCY" name="Nazwa"></ngx-datatable-column>
+                <ngx-datatable-column prop="ADRES_NABYWCY" name="Adres"></ngx-datatable-column>
+                <ngx-datatable-column prop="NIP" name="NIP"></ngx-datatable-column>
+                <ngx-datatable-column prop="NumerFa" name="Nr Fakt."></ngx-datatable-column>
+                <ngx-datatable-column prop="TYP" name="Typ" [width]="100" ></ngx-datatable-column>
+                <ngx-datatable-column prop="LogoP" name="LogoP" [width]="100"></ngx-datatable-column>
+                <ngx-datatable-column prop="Logo" name="Logo" [width]="100"></ngx-datatable-column>
+
+              </ngx-datatable>
+            </sit-data-source-container>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</sit-dict-container> -->
-</mat-tab>
+  </sit-dict-container>
+  </mat-tab>
 </mat-tab-group>

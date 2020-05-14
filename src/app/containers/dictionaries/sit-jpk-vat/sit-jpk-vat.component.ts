@@ -8,7 +8,7 @@ import { DataSourceResponseWrapper } from '@app/_models';
 import { SitDataInputComponent } from '@app/components/controls/sit-data-input/sit-data-input.component';
 import { GatewayService } from '@app/_services';
 import { User } from '@app/_models';
-import { MatTabsModule } from '@angular/material/tabs';
+
 
 @Component({
   selector: 'app-sit-jpk-vat',
@@ -18,6 +18,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 export class SitJPKVatComponent implements OnInit {
 
   sitJPKVATZakupSelected = [];
+  sitJPKVATSprzedazSelected = [];
   ColumnMode = ColumnMode;
   SelectionType = SelectionType;
 
