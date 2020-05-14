@@ -1,4 +1,5 @@
-﻿import { Component } from '@angular/core';
+﻿import { SitJPKVatComponent } from './containers/dictionaries/sit-jpk-vat';
+import { Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './containers/home';
 import { LoginComponent } from './containers/login';
@@ -31,6 +32,7 @@ const routes: Routes = [
     { path: 'sitKancelaria', component: SitKancelariaComponent, canActivate: [AuthGuard] },
     { path: 'sitUserAccount', component: SitUserAccountComponent, canActivate: [AuthGuard] },
     { path: 'sitWhiteListVat', component: SitWhiteListVATComponent, canActivate: [AuthGuard] },
+    { path: 'sitJPKVAT', component: SitJPKVatComponent, canActivate: [AuthGuard] },
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
