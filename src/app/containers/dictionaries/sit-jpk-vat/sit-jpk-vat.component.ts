@@ -19,6 +19,8 @@ export class SitJPKVatComponent implements OnInit {
 
   sitJPKVATZakupSelected = [];
   sitJPKVATSprzedazSelected = [];
+  sitJPKVATZakupSumSelected = [];
+  sitJPKVATSprzedazSumSelected = [];
   ColumnMode = ColumnMode;
   SelectionType = SelectionType;
 
