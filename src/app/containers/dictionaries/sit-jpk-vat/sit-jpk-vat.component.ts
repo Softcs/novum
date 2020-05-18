@@ -16,6 +16,8 @@ import { User } from '@app/_models';
   styleUrls: ['./sit-jpk-vat.component.scss']
 })
 export class SitJPKVatComponent implements OnInit {
+  @ViewChild(SitDataSourceContainerComponent, { static: true }) dataSourceContainer: SitDataSourceContainerComponent;
+  @ViewChild('sitDictcontainer') dictContainer: SitDictContainerComponent;
 
   sitJPKVATZakupSelected = [];
   sitJPKVATSprzedazSelected = [];
@@ -29,4 +31,9 @@ export class SitJPKVatComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  calcZakupSum(name) {
+    const dataSourceResponseWrapper: DataSourceResponseWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitJPKVATZakupSum");
+    return dataSourceResponseWrapper.rows.map(row => row[name] != null ? row[name] : 0).reduce((s,v) =>s += v,0);
+    }
+    noop() { return null; }
 }
