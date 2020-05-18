@@ -1,5 +1,6 @@
-import { Component, OnInit, Input, Renderer2, ViewChild, ElementRef, AfterContentChecked, AfterViewInit, AfterContentInit } from '@angular/core';
-import { DataSourceResponseWrapper } from '@app/_models';
+import { Component, OnInit, Input, Renderer2, ViewChild, ElementRef,
+   AfterContentChecked, AfterViewInit, AfterContentInit } from '@angular/core';
+import { DataSourceResponseWrapper, Operation } from '@app/_models';
 
 @Component({
   selector: 'sit-proc-button',
@@ -8,23 +9,24 @@ import { DataSourceResponseWrapper } from '@app/_models';
 })
 export class SitProcButtonComponent implements OnInit {
   public dataSourceResponseWrapper: DataSourceResponseWrapper;
-
-  @Input() procIdent: string;
+  @Input() actionIdent: string;
   @Input() color: string;
   @Input() caption: string;
 
   @ViewChild('button') private _buttonElement: ElementRef;
 
   constructor(
-    private _renderer: Renderer2
-  ) { }
+    private _renderer: Renderer2,
+    ) {
+
+  }
 
   ngOnInit(): void {
 
   }
 
   onClick($event) {
-    console.log("Clicked", this.dataSourceResponseWrapper);
+    this.dataSourceResponseWrapper.ExecuteAction(this.actionIdent);
   }
 
   setDisabledState?(isDisabled: boolean): void {

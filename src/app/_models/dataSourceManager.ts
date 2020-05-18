@@ -12,7 +12,7 @@ export class DataSourceManager {
     @Output()
     refreshAfter: EventEmitter<DataSourceManager> = new EventEmitter<DataSourceManager>();
 
-    constructor(private gatewayService: GatewayService) {
+    constructor(public gatewayService: GatewayService) {
         this.dataSourcesWrapper = [];
     }
     private prapareDataSource4Request(dataSourceDefinition: any, dataSourcesRequest: any[]) {
@@ -22,11 +22,7 @@ export class DataSourceManager {
         dataSourceDefinition.children.forEach(dataSource => {
             const dataSourceDefinitionChild = this.dictInfo.FindDataSource(dataSource.ident);
             const dsWrapper: DataSourceResponseWrapper = this.getDateSourceWrapper(dataSource.ident);
-            let obj = {
-                ident: dataSource.ident,
-                activeRow: dsWrapper.activeRow,
-                refresh: true
-            };
+            const obj = this.getObjectForDataSourceRequest(dsWrapper, true);
             dataSourcesRequest.push(obj);
             this.prapareDataSource4Request(dataSourceDefinitionChild, dataSourcesRequest);
         });
@@ -55,6 +51,16 @@ export class DataSourceManager {
             this.prapareDataSource4RequestParent(dataSourceDefinitionParent, dataSourcesRequest);
         });
     }
+
+    private getObjectForDataSourceRequest(dataSourceResponseWrapper: DataSourceResponseWrapper, canRefresh: boolean )  {
+        const  obj = {
+            ident: dataSourceResponseWrapper.ident,
+            activeRow: dataSourceResponseWrapper.activeRow,
+            refresh: canRefresh
+        };
+        return obj;
+    }
+
     public RefreshChildren(dataSourceResponseWrapper: DataSourceResponseWrapper) {
         const dataSourceDefinition = this.dictInfo.FindDataSource(dataSourceResponseWrapper.ident);
         if (dataSourceDefinition.children == null || dataSourceDefinition.children.length == 0) {
@@ -62,11 +68,8 @@ export class DataSourceManager {
         }
         let dataSourcesRequest: any[] = [];
 
-        let obj = {
-            ident: dataSourceResponseWrapper.ident,
-            activeRow: dataSourceResponseWrapper.activeRow,
-            refresh: false
-        };
+        let obj = this.getObjectForDataSourceRequest(dataSourceResponseWrapper, false);
+
         dataSourcesRequest.push(obj);
 
         this.prapareDataSource4Request(dataSourceDefinition, dataSourcesRequest);
@@ -84,7 +87,6 @@ export class DataSourceManager {
             .pipe(first())
             .subscribe(
                 data => {
-                    console.log("data.length", data)
                     if(data.length == 1) {
                         const dataSourcesResponse = data[0].dataSourcesResponse;
                         this.setRefreshDataSources(dataSourcesResponse);
@@ -96,6 +98,36 @@ export class DataSourceManager {
                     console.error("error", error);
                 });
     }
+
+    public ExecuteAction(actionIdent: string, dataSourceIdent: string) {
+        const dictIdent = this.dictInfo?.ident;
+        const dataSourcesRequest: any[] = [];
+        const dsWrapper: DataSourceResponseWrapper = this.getDateSourceWrapper(dataSourceIdent);
+        const obj = this.getObjectForDataSourceRequest(dsWrapper, true);
+        dataSourcesRequest.push(obj);
+
+        const opr: Operation = this.gatewayService.operationExecuteAction(
+            dictIdent,
+            dataSourcesRequest,
+            actionIdent,
+            dataSourceIdent);
+
+        this.gatewayService.executeOperation(opr)
+            .pipe(first())
+            .subscribe(
+                data => {
+                    if (data.length == 1) {
+                        const dataSourcesResponse = data[0].dataSourcesResponse;
+                        // this.setRefreshDataSources(dataSourcesResponse);
+                        // let dataSetToReload = dataSourcesResponse?.map(d => d.ident);
+                        // this.PropagateDataSources(dataSetToReload);
+                    }
+                },
+                error => {
+                    console.error("error", error);
+                });
+    }
+
     public setRefreshDataSources(dataSourcesResponse) {
         if (dataSourcesResponse == null) {
             return;

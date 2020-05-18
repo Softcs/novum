@@ -1,5 +1,6 @@
-import { DictInfoWrapper, DataSourceManager } from '.';
+import { DictInfoWrapper, DataSourceManager, Operation } from '.';
 import { Output, EventEmitter } from '@angular/core';
+import { first } from 'rxjs/operators';
 
 export class DataSourceResponseWrapper {
     public ident: string;
@@ -32,5 +33,12 @@ export class DataSourceResponseWrapper {
     }
     public AfterPropagte() {
         this.activeRowChanged.emit(this.activeRow);
+    }
+    public ExecuteAction(actionIdent: string) {
+        if (this.dataSourceManager == null) {
+            console.error('ExecuteAction data source manager is undefindex!');
+            return;
+        }
+        this.dataSourceManager.ExecuteAction(actionIdent, this.ident);
     }
 }
