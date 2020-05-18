@@ -21,6 +21,8 @@ export class SitJPKVatComponent implements OnInit {
 
   sitJPKVATZakupSelected = [];
   sitJPKVATSprzedazSelected = [];
+  sitJPKVATZakupCustSelected = [];
+  sitJPKVATSprzedazCustSelected = [];
   sitJPKVATZakupSumSelected = [];
   sitJPKVATSprzedazSumSelected = [];
   ColumnMode = ColumnMode;
@@ -35,5 +37,12 @@ export class SitJPKVatComponent implements OnInit {
     const dataSourceResponseWrapper: DataSourceResponseWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitJPKVATZakupSum");
     return dataSourceResponseWrapper.rows.map(row => row[name] != null ? row[name] : 0).reduce((s,v) =>s += v,0);
     }
+
+  calcSprzedazSum(name) {
+    const dataSourceResponseWrapper: DataSourceResponseWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitJPKVATSprzedazSum");
+    return dataSourceResponseWrapper.rows.map(row => row[name] != null ? row[name] : 0).reduce((s,v) =>s += v,0);
+    }
+
     noop() { return null; }
+
 }

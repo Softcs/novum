@@ -57,7 +57,7 @@
                     style="height: 200px;"
                     [scrollbarV] = "true"
                     [footerHeight]="false"
-                    [selected]="sitJPKVATZakupSumSelected"
+                    [selected]="sitJPKVATZakupCustSelected"
                     [selectionType]="SelectionType.single"
                     [selectAllRowsOnPage]="false"
 
@@ -66,26 +66,280 @@
                     <ngx-datatable-column prop="NAZWA_WYSTAWCY" name="Nazwa"></ngx-datatable-column>
 
                   </ngx-datatable>
-                  <ng-template #sumNetto let-row="row">
-                    <div style="text-align: right;">{{calcZakupSum('Netto') | number : "1.2-2"}}</div>
-                  </ng-template>
-                  <ng-template #sumVat let-row="row">
-                    <div style="text-align: right;">{{calcZakupSum('Vat') | number : "1.2-2"}}</div>
-                  </ng-template>
-
                 </sit-data-source-container>
               </div>
             </sit-dict-container>
-
           </div>
         </div>
-        <div fxLayout="row" fxFlexFill fxLayoutGap="5px">
-          <div class="content" fxFill>
-          </div>
+        <div fxLayout="row" fxLayoutGap="5px">
+          <sit-dict-container ident="sitJPKVAT" #sitDictcontainer>
+            <div class="content">
+              <div style="flex: 0 1 auto;">
+                <sit-data-source-container ident="sitFilterZakup" >
+                  <span>
+                    <sit-data-input #sitControl field="searchZakup" label="Filtruj"></sit-data-input>
+                  </span>
+                </sit-data-source-container>
+              </div>
+              <div  style="flex: 1 1 auto;">
+                <div class="data-table">
+                  <sit-data-source-container ident="sitJPKVATZakup">
+                    <ngx-datatable #sitJPKVATZakup #sitSetDataSource
+                      class="material striped"
+                      [columnMode]="ColumnMode.force"
+                      style="height: 500px;"
+                      [scrollbarV] = "true"
+                      [footerHeight]="40"
+                      [selected]="sitJPKVATZakupSelected"
+                      [selectionType]="SelectionType.single"
+                      [selectAllRowsOnPage]="false"
+                    >
+                      <ngx-datatable-column prop="Id" name="Id" [canAutoResize]="false" [width]="45">
+                        <ng-template let-value="value" ngx-datatable-cell-template>
+                          <div style="text-align: right;">
+                            {{value}}
+                          </div>
+                        </ng-template>
+                      </ngx-datatable-column>
+                      <ngx-datatable-column prop="RD" name="RD" [canAutoResize]="false" [width]="60"></ngx-datatable-column>
+                      <ngx-datatable-column prop="ND" name="ND" [canAutoResize]="false" [width]="50">
+                        <ng-template let-value="value" ngx-datatable-cell-template>
+                          <div style="text-align: right;">
+                          {{value}}
+                        </div>
+                      </ng-template>
+                      </ngx-datatable-column>
+                      <ngx-datatable-column prop="Numer" name="Numer" [canAutoResize]="false" [width]="150"></ngx-datatable-column>
+                      <ngx-datatable-column prop="GrupaKlas" name="Gr.Klas." [canAutoResize]="false" [width]="55"></ngx-datatable-column>
+                      <ngx-datatable-column prop="SymbolSV" name="St.VAT" [canAutoResize]="false" [width]="55"></ngx-datatable-column>
+                      <ngx-datatable-column prop="Netto" name="Netto" [canAutoResize]="false" [width]="100">
+                        <ng-template let-value="value" ngx-datatable-cell-template>
+                          <div style="text-align: right;">{{value | number : "1.2-2"}}</div>
+                        </ng-template>
+                      </ngx-datatable-column>
+                      <ngx-datatable-column prop="Vat" name="Vat" [canAutoResize]="false" [width]="100">
+                        <ng-template let-value="value" ngx-datatable-cell-template>
+                          <div style="text-align: right;">{{value | number : "1.2-2"}}</div>
+                        </ng-template>
+                      </ngx-datatable-column>
+                      <ngx-datatable-column prop="Data" name="Data" [canAutoResize]="false" [width]="80">
+                        <ng-template let-value="value" ngx-datatable-cell-template>
+                          {{value | date: 'yyyy-MM-dd'}}
+                        </ng-template>
+                      </ngx-datatable-column>
+                      <ngx-datatable-column prop="DataVat" name="Data Vat" [canAutoResize]="false" [width]="80">
+                        <ng-template let-value="value" ngx-datatable-cell-template>
+                          {{value | date: 'yyyy-MM-dd'}}
+                        </ng-template>
+                      </ngx-datatable-column>
+                      <ngx-datatable-column prop="DATA_ZAKUPU" name="Data zak." [canAutoResize]="false" [width]="80">
+                        <ng-template let-value="value" ngx-datatable-cell-template>
+                          {{value | date: 'yyyy-MM-dd'}}
+                        </ng-template>
+                      </ngx-datatable-column>
+                      <ngx-datatable-column prop="DATA_WPLYWU" name="Data wpł." [canAutoResize]="false" [width]="80">
+                        <ng-template let-value="value" ngx-datatable-cell-template>
+                          {{value | date: 'yyyy-MM-dd'}}
+                        </ng-template>
+                      </ngx-datatable-column>
+                      <ngx-datatable-column prop="NAZWA_WYSTAWCY" name="Nazwa"></ngx-datatable-column>
+                      <ngx-datatable-column prop="ADRES_WYSTAWCY" name="Adres"></ngx-datatable-column>
+                      <ngx-datatable-column prop="NR_ID_WYSTAWCY" name="NIP" [canAutoResize]="false" [width]="100"></ngx-datatable-column>
+                      <ngx-datatable-column prop="NumerFa" name="Nr Fakt."></ngx-datatable-column>
+                      <ngx-datatable-column prop="TYP" name="Typ" [canAutoResize]="false" [width]="50"></ngx-datatable-column>
+                      <ngx-datatable-column prop="LogoP" name="LogoP" [canAutoResize]="false" [width]="55"></ngx-datatable-column>
+                      <ngx-datatable-column prop="Logo" name="Logo" [canAutoResize]="false" [width]="55"></ngx-datatable-column>
+
+                    </ngx-datatable>
+                  </sit-data-source-container>
+                </div>
+              </div>
+            </div>
+          </sit-dict-container>
         </div>
       </div>
     </mat-tab>
     <mat-tab label="Sprzedaż">
+      <div fxLayout="column" fxFill>
+        <div fxLayout="row" fxFlex="300px" fxLayoutGap="5px">
+          <div class="content" fxFlex="50%">
+            <sit-dict-container ident="sitJPKVAT" #sitDictcontainer>
+              <div class="data-table">
+                <sit-data-source-container ident="sitJPKVATSprzedazSum">
+                  <ngx-datatable #sitJPKVATZakupSum #sitSetDataSource
+                    class="material striped"
+                    [columnMode]="ColumnMode.force"
+                    style="height: 280px;"
+                    [scrollbarV] = "true"
+                    [footerHeight]="false"
+                    [selected]="sitJPKVATSprzedazSumSelected"
+                    [selectionType]="SelectionType.single"
+                    [selectAllRowsOnPage]="false"
+                    [summaryRow]="true"
+                    summaryPosition="bottom"
+                    [summaryHeight]="30"
+                    [sorts]="[{prop: 'Field', dir: 'asc'}]"
+
+                  >
+                  <ngx-datatable-column prop="Field" name="Pole" [canAutoResize]="false" [width]="80"></ngx-datatable-column>
+                  <ngx-datatable-column prop="Typ" name="Typ" [canAutoResize]="false" [width]="50"></ngx-datatable-column>
+                    <ngx-datatable-column prop="Desc" name="Opis" [width]="100"></ngx-datatable-column>
+                    <ngx-datatable-column prop="Netto" name="Netto" [summaryTemplate]="sumNettoS">
+                      <ng-template let-value="value" ngx-datatable-cell-template>
+                        <div style="text-align: right;">{{value | number : "1.2-2"}}</div>
+                      </ng-template>
+                    </ngx-datatable-column>
+                    <ngx-datatable-column prop="Vat" name="Vat" [summaryTemplate]="sumVat">
+                      <ng-template let-value="value" ngx-datatable-cell-template>
+                        <div style="text-align: right;">{{value | number : "1.2-2"}}</div>
+                      </ng-template>
+                    </ngx-datatable-column>
+
+                  </ngx-datatable>
+                  <ng-template #sumNettoS let-row="row">
+                    <div style="text-align: right;">{{calcSprzedazSum('Netto') | number : "1.2-2"}}</div>
+                  </ng-template>
+                  <ng-template #sumVatS let-row="row">
+                    <div style="text-align: right;">{{calcSprzedazSum('Vat') | number : "1.2-2"}}</div>
+                  </ng-template>
+                </sit-data-source-container>
+              </div>
+            </sit-dict-container>
+          </div>
+          <div class="content" fxFlex="50%">
+            <sit-dict-container ident="sitJPKVAT" #sitDictcontainer>
+              <div class="data-table">
+                <sit-data-source-container ident="sitJPKVATSprzedazCust">
+                  <ngx-datatable #sitJPKVATZakupSum #sitSetDataSource
+                    class="material striped"
+                    [columnMode]="ColumnMode.force"
+                    style="height: 280px;"
+                    [scrollbarV] = "true"
+                    [footerHeight]="false"
+                    [selected]="sitJPKVATSprzedazCustSelected"
+                    [selectionType]="SelectionType.single"
+                    [selectAllRowsOnPage]="false"
+
+                  >
+                    <ngx-datatable-column prop="NIP" name="NIP"></ngx-datatable-column>
+                    <ngx-datatable-column prop="NAZWA_NABYWCY" name="Nazwa"></ngx-datatable-column>
+
+                  </ngx-datatable>
+                </sit-data-source-container>
+              </div>
+            </sit-dict-container>
+          </div>
+        </div>
+        <div fxLayout="row" fxLayoutGap="5px">
+          <sit-dict-container ident="sitJPKVAT" #sitDictcontainer>
+            <div class="content">
+              <div style="flex: 0 1 auto;">
+                <sit-data-source-container ident="sitFilterSprzedaz" >
+                  <span>
+                    <sit-data-input #sitControl field="searchSprzedaz" label="Filtruj"></sit-data-input>
+                  </span>
+                </sit-data-source-container>
+              </div>
+              <div  style="flex: 1 1 auto;">
+                <div class="data-table">
+                  <sit-data-source-container ident="sitJPKVATSprzedaz">
+                    <ngx-datatable #sitJPKVATZakup #sitSetDataSource
+                      class="material striped"
+                      [columnMode]="ColumnMode.force"
+                      style="height: 500px;"
+                      [scrollbarV] = "true"
+                      [footerHeight]="40"
+                      [selected]="sitJPKVATSprzedazSelected"
+                      [selectionType]="SelectionType.single"
+                      [selectAllRowsOnPage]="false"
+                    >
+                      <ngx-datatable-column prop="Id" name="Id" [canAutoResize]="false" [width]="45">
+                        <ng-template let-value="value" ngx-datatable-cell-template>
+                          <div style="text-align: right;">
+                            {{value}}
+                          </div>
+                        </ng-template>
+                      </ngx-datatable-column>
+                      <ngx-datatable-column prop="RD" name="RD" [canAutoResize]="false" [width]="60"></ngx-datatable-column>
+                      <ngx-datatable-column prop="ND" name="ND" [canAutoResize]="false" [width]="50">
+                        <ng-template let-value="value" ngx-datatable-cell-template>
+                          <div style="text-align: right;">
+                          {{value}}
+                        </div>
+                      </ng-template>
+                      </ngx-datatable-column>
+                      <ngx-datatable-column prop="Numer" name="Numer" [canAutoResize]="false" [width]="150"></ngx-datatable-column>
+                      <ngx-datatable-column prop="GrupaKlas" name="Gr.Klas." [canAutoResize]="false" [width]="55"></ngx-datatable-column>
+                      <ngx-datatable-column prop="SymbolSV" name="St.VAT" [canAutoResize]="false" [width]="55"></ngx-datatable-column>
+                      <ngx-datatable-column prop="Netto" name="Netto" [canAutoResize]="false" [width]="100">
+                        <ng-template let-value="value" ngx-datatable-cell-template>
+                          <div style="text-align: right;">{{value | number : "1.2-2"}}</div>
+                        </ng-template>
+                      </ngx-datatable-column>
+                      <ngx-datatable-column prop="Vat" name="Vat" [canAutoResize]="false" [width]="100">
+                        <ng-template let-value="value" ngx-datatable-cell-template>
+                          <div style="text-align: right;">{{value | number : "1.2-2"}}</div>
+                        </ng-template>
+                      </ngx-datatable-column>
+                      <ngx-datatable-column prop="Data" name="Data" [canAutoResize]="false" [width]="80">
+                        <ng-template let-value="value" ngx-datatable-cell-template>
+                          {{value | date: 'yyyy-MM-dd'}}
+                        </ng-template>
+                      </ngx-datatable-column>
+                      <ngx-datatable-column prop="DataVat" name="Data Vat" [canAutoResize]="false" [width]="80">
+                        <ng-template let-value="value" ngx-datatable-cell-template>
+                          {{value | date: 'yyyy-MM-dd'}}
+                        </ng-template>
+                      </ngx-datatable-column>
+                      <ngx-datatable-column prop="DATA_SPRZEDAZY" name="Data sprz." [canAutoResize]="false" [width]="80">
+                        <ng-template let-value="value" ngx-datatable-cell-template>
+                          {{value | date: 'yyyy-MM-dd'}}
+                        </ng-template>
+                      </ngx-datatable-column>
+                      <ngx-datatable-column prop="DATA_WYSTAWIENIA" name="Data wyst." [canAutoResize]="false" [width]="80">
+                        <ng-template let-value="value" ngx-datatable-cell-template>
+                          {{value | date: 'yyyy-MM-dd'}}
+                        </ng-template>
+                      </ngx-datatable-column>
+                      <ngx-datatable-column prop="NAZWA_NABYWCY" name="Nazwa"></ngx-datatable-column>
+                      <ngx-datatable-column prop="ADRES_NABYWCY" name="Adres"></ngx-datatable-column>
+                      <ngx-datatable-column prop="NIP" name="NIP" [canAutoResize]="false" [width]="100"></ngx-datatable-column>
+                      <ngx-datatable-column prop="NumerFa" name="Nr Fakt."></ngx-datatable-column>
+                      <ngx-datatable-column prop="TYP" name="Typ" [canAutoResize]="false" [width]="50"></ngx-datatable-column>
+                      <ngx-datatable-column prop="LogoP" name="LogoP" [canAutoResize]="false" [width]="55"></ngx-datatable-column>
+                      <ngx-datatable-column prop="Logo" name="Logo" [canAutoResize]="false" [width]="55"></ngx-datatable-column>
+
+                    </ngx-datatable>
+                  </sit-data-source-container>
+                </div>
+              </div>
+            </div>
+          </sit-dict-container>
+        </div>
+      </div>
+
+    </mat-tab>
+    <mat-tab label="Pobierz dane">
+      <div class="container-cols">
+        <div fxFill fxLayoutAlign="center center" fxLayout="column">
+          <div class="content" fxFill style="padding: 20px;">
+            <div>
+              <mat-form-field appearance="legacy" style="width: 200px;">
+                <mat-label>Data od</mat-label>
+              <input matInput type="date">
+              </mat-form-field>
+              <br>
+              <mat-form-field appearance="legacy" style="width: 200px;">
+                <mat-label>Data do</mat-label>
+                <input matInput type="date">
+              </mat-form-field>
+            </div>
+            <div>
+              <sit-proc-button #sitControl procIdent="sitProcGetJPKData" color="primary" caption="Pobierz"></sit-proc-button>
+            </div>
+          </div>
+        </div>
+      </div>
 
     </mat-tab>
   </mat-tab-group>
