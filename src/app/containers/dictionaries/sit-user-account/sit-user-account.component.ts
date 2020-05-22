@@ -25,5 +25,8 @@ export class SitUserAccountComponent implements OnInit {
     return this.dictContainer?.activeRow('sitAppUserAccount');
   }
 
+  onKey(e) {
+    this.dictContainer.activeRow('sitAppUserAccount')[e.srcElement.id] = e.srcElement.value;
+  }
 
 }
