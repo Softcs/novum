@@ -45,4 +45,7 @@ export class SitJPKVatComponent implements OnInit {
 
     noop() { return null; }
 
+    onKey(e) {
+      this.dictContainer.activeRow('sitJPKVAT')[e.srcElement.id] = e.srcElement.value;
+    }
 }
