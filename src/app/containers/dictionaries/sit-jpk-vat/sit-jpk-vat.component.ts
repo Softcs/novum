@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, QueryList, ViewChildren } from '@angular/core';
 import { environment } from '@environments/environment';
 import { ColumnMode, SelectionType } from '../../../../ngx/public-api';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
@@ -18,6 +18,7 @@ import { User } from '@app/_models';
 export class SitJPKVatComponent implements OnInit {
   @ViewChild(SitDataSourceContainerComponent, { static: true }) dataSourceContainer: SitDataSourceContainerComponent;
   @ViewChild('sitDictcontainer') dictContainer: SitDictContainerComponent;
+  @ViewChildren('sitDictcontainer') dictContainers !: QueryList<SitDictContainerComponent>;
 
   sitJPKVATZakupSelected = [];
   sitJPKVATSprzedazSelected = [];
@@ -45,7 +46,15 @@ export class SitJPKVatComponent implements OnInit {
 
     noop() { return null; }
 
-    onKey(e) {
-      this.dictContainer.activeRow('sitJPKVAT')[e.srcElement.id] = e.srcElement.value;
+    onChange(e) {
+      //podpilame onChange zamiast onKey - bardizje ogolny
+      //kod ponizej bierze wszystkie slowniki i wszedzie wstawia do dataseta rekord. bo tak to trafiales w pierwszy
+      //jak dane sie zaciagna to procka dziala.
+      //musi byc jeden slownik do momentu jak nie wymysle lepszego szukania
+      //ale fxFlex musialme wywawalic
+      this.dictContainers.forEach(d => {
+        const dataSourceResponseWrapper: DataSourceResponseWrapper = d.DataSourceManager.getDateSourceWrapper("sitProcGetJPKData");
+        dataSourceResponseWrapper.activeRow[e.srcElement.id] = e.srcElement.value;
+      });
     }
 }
