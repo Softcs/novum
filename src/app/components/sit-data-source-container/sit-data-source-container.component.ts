@@ -23,6 +23,7 @@ export class SitDataSourceContainerComponent implements OnInit {
   @Output()
   activeRowChanged: EventEmitter<any> = new EventEmitter<any>();
 
+  private _errors: [any];
   constructor(private gatewayService: GatewayService) { }
 
   get activeRecord(): any {
@@ -41,6 +42,7 @@ export class SitDataSourceContainerComponent implements OnInit {
   public SetActiveRow(row: any) {
       this.dataSourceResponseWrapper.SetActiveRow(row);
   }
+
   public setDataSource(dataSourceResponseWrapper: DataSourceResponseWrapper) {
     this.dataSourceResponseWrapper = dataSourceResponseWrapper;
     this.dataSourceResponseWrapper.activeRowChanged = this.activeRowChanged;
@@ -55,9 +57,13 @@ export class SitDataSourceContainerComponent implements OnInit {
           element.setValue(fieldValue);
         });
      }
+    //this.errors =
   }
   public deleteData() {
 
+  }
+  set errors(value: [any]) {
+    this._errors = value;
   }
   get errors() {
     return this.dataSourceResponseWrapper != null ? this.dataSourceResponseWrapper.errors : null;
