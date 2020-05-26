@@ -13,7 +13,8 @@ import { SitDataSourceContainerComponent } from '../sit-data-source-container';
 
 
 export class SitDictContainerComponent implements OnInit {
-  @ContentChildren(SitDataSourceContainerComponent) dataSourceComponents !: QueryList<SitDataSourceContainerComponent>;
+  @ContentChildren(SitDataSourceContainerComponent, { descendants: true })
+    dataSourceComponents !: QueryList<SitDataSourceContainerComponent>;
 
   @Input() ident: string;
   private dictInfo: DictInfoWrapper;
@@ -30,10 +31,10 @@ export class SitDictContainerComponent implements OnInit {
 
   ngOnInit() {
     this.DataSourceManager.refreshAfter = this.refreshAfter;
-    this.loadData();
+
   }
   ngAfterViewInit() {
-
+    this.loadData();
   }
   loadData() {
     const oprDictInfo: Operation =  this.gatewayService.operationGetDictInfo(this.ident);
