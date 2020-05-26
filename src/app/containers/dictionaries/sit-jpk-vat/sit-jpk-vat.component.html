@@ -323,18 +323,18 @@
       <sit-dict-container ident="sitJPKVAT" #sitDictcontainer>
 
         <div class="container-cols">
-          <div>
-            <div class="content"  style="padding: 20px;">
+          <div fxFill fxLayoutAlign="center center" fxLayout="column">
+            <div class="content" fxFill style="padding: 20px;">
               <sit-data-source-container ident="sitProcGetJPKData">
                 <div>
                   <mat-form-field appearance="legacy" style="width: 200px;">
                     <mat-label>Data od</mat-label>
-                    <input matInput (change)="onChange($event)" id="DateFrom" type="date">
+                  <input matInput (keyup)="onKey($event)" id="DateFrom" type="date">
                   </mat-form-field>
                   <br>
                   <mat-form-field appearance="legacy" style="width: 200px;">
                     <mat-label>Data do</mat-label>
-                    <input matInput (change)="onChange($event)" id="DateTo" type="date">
+                    <input matInput (keyup)="onKey($event)" id="DateTo" type="date">
                   </mat-form-field>
                 </div>
               <div>
