@@ -47,14 +47,8 @@ export class SitJPKVatComponent implements OnInit {
     noop() { return null; }
 
     onChange(e) {
-      //podpilame onChange zamiast onKey - bardizje ogolny
-      //kod ponizej bierze wszystkie slowniki i wszedzie wstawia do dataseta rekord. bo tak to trafiales w pierwszy
-      //jak dane sie zaciagna to procka dziala.
-      //musi byc jeden slownik do momentu jak nie wymysle lepszego szukania
-      //ale fxFlex musialme wywawalic
-      this.dictContainers.forEach(d => {
-        const dataSourceResponseWrapper: DataSourceResponseWrapper = d.DataSourceManager.getDateSourceWrapper("sitProcGetJPKData");
-        dataSourceResponseWrapper.activeRow[e.srcElement.id] = e.srcElement.value;
-      });
+      const dataSourceResponseWrapper: DataSourceResponseWrapper =
+        this.dictContainer.DataSourceManager.getDateSourceWrapper("sitProcGetJPKData");
+      dataSourceResponseWrapper.activeRow[e.srcElement.id] = e.srcElement.value;
     }
 }
