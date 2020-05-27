@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ColumnMode, SelectionType } from '../../../../ngx/public-api';
+import * as sha512 from 'js-sha512';
 
 @Component({
   selector: 'app-ngx-datatable-test',
@@ -69,5 +70,14 @@ export class NgxDatatableTestComponent implements OnInit {
 
   displayCheck(row) {
     return row.name !== 'Ethel Price';
+  }
+
+  hash_512(){
+    let a = '20200511524277552337109018410000000129827598';
+    for (let i=0; i<1; i++){
+      a = sha512.sha512(a);
+    }
+    console.log( a);
+
   }
 }

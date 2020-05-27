@@ -23,8 +23,11 @@ export class SitDataSourceContainerComponent implements OnInit {
   @Output()
   activeRowChanged: EventEmitter<any> = new EventEmitter<any>();
 
-    constructor(private gatewayService: GatewayService) { }
+  constructor(private gatewayService: GatewayService) { }
 
+  get activeRecord(): any {
+    return this.dataSourceResponseWrapper?.activeRow;
+  }
 
   ngOnInit() {
 

@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, ViewChildren, QueryList, ViewChild, ContentChildren, Directive, ElementRef, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, ViewChildren, QueryList, ViewChild, ContentChildren, Directive, ElementRef,
+          EventEmitter, Output } from '@angular/core';
 import { GatewayService } from '../../_services/gateway.service';
 import { Operation, DataSourceResponseWrapper, DictInfoWrapper, DataSourceManager } from '@app/_models';
 import { first } from 'rxjs/operators';
@@ -12,7 +13,8 @@ import { SitDataSourceContainerComponent } from '../sit-data-source-container';
 
 
 export class SitDictContainerComponent implements OnInit {
-  @ContentChildren(SitDataSourceContainerComponent) dataSourceComponents !: QueryList<SitDataSourceContainerComponent>;
+  @ContentChildren(SitDataSourceContainerComponent, { descendants: true })
+    dataSourceComponents !: QueryList<SitDataSourceContainerComponent>;
 
   @Input() ident: string;
   private dictInfo: DictInfoWrapper;
@@ -29,10 +31,10 @@ export class SitDictContainerComponent implements OnInit {
 
   ngOnInit() {
     this.DataSourceManager.refreshAfter = this.refreshAfter;
-    this.loadData();
+
   }
   ngAfterViewInit() {
-
+    this.loadData();
   }
   loadData() {
     const oprDictInfo: Operation =  this.gatewayService.operationGetDictInfo(this.ident);
@@ -57,5 +59,10 @@ export class SitDictContainerComponent implements OnInit {
 
   get caption() {
     return this.dictInfo ? this.dictInfo.caption : null;
+  }
+
+  public activeRow(ident: string) {
+    const wrapper = this.DataSourceManager.getDateSourceWrapper(ident);
+    return wrapper?.activeRow;
   }
 }

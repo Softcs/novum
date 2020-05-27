@@ -1,4 +1,5 @@
-﻿import { Component } from '@angular/core';
+﻿import { SitJPKVatComponent } from './containers/dictionaries/sit-jpk-vat';
+import { Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './containers/home';
 import { LoginComponent } from './containers/login';
@@ -13,6 +14,8 @@ import { NgxPdfTestComponent } from './containers/sandbox/ngx-pdf-test';
 import { SitMenuComponent } from './containers/dictionaries/sit-menu/';
 import { SitRozrachunkiInsertGTComponent } from './containers/dictionaries/sit-rozrachunki-insert-gt/sit-rozrachunki-insert-gt.component';
 import { SitKancelariaComponent } from './containers/dictionaries/sit-kancelaria/';
+import { SitUserAccountComponent } from './containers/dictionaries/sit-user-account/';
+import { SitWhiteListVATComponent } from './containers/dictionaries/sit-white-list-vat/';
 
 const routes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -27,6 +30,9 @@ const routes: Routes = [
     { path: 'sitRozrachunkiInsertGT', component: SitRozrachunkiInsertGTComponent, canActivate: [AuthGuard] },
     { path: 'ngx-extended-pdf-viewer-test', component: NgxPdfTestComponent, canActivate: [AuthGuard] },
     { path: 'sitKancelaria', component: SitKancelariaComponent, canActivate: [AuthGuard] },
+    { path: 'sitUserAccount', component: SitUserAccountComponent, canActivate: [AuthGuard] },
+    { path: 'sitWhiteListVat', component: SitWhiteListVATComponent, canActivate: [AuthGuard] },
+    { path: 'sitJPKVAT', component: SitJPKVatComponent, canActivate: [AuthGuard] },
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }

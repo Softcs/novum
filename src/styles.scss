@@ -81,11 +81,12 @@ body {
 
 .content {
   padding: 5px;
-  margin: 3px 3px 3px 3px;
-  height: calc(100% - 6px);
+  //margin: 3px 3px 3px 3px;
+  //height: calc(100% - 6px);
   background-color: $content-background-color;
 
 }
+
 .content-left {
   padding: 5px;
   margin: 5px 0px 5px 5px;
@@ -94,6 +95,22 @@ body {
 
 }
 
+.sit-form {
+  box-shadow: 2px 2px 25px -9px rgba(0,0,0,0.73);;
+}
+.sit-form-header {
+  background-color: $form-header-color;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  padding: 8px;
+}
+
+.sit-form-body {
+  background-color: $form-body-color;
+  padding: 8px;
+
+}
 .router-flex {
   display: flex;
   flex: 1 1 auto;
@@ -125,6 +142,10 @@ mat-toolbar-row,mat-toolbar-single-row{
   width: 100%;
   min-width: 100%;
   padding: 0px 2px 0px 2px !important;
+}
+
+.mat-tab-body-wrapper{
+  flex-grow: 1;
 }
 
 .fill-space{

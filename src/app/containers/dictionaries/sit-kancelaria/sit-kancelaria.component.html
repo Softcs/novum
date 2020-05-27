@@ -1,179 +1,156 @@
-<sit-dict-container ident="sitKancelaria" #sitDictcontainer class="container-cols">
-<div class="p-grid p-nogutter" style="height: 100%; width: 100%;">
-  <div class="p-col-12 p-md-7" >
-    <div class="p-grid p-nogutter" style="height: 100%; width: 100%;">
-      <div class="p-col-12" style="height: 40%; width: 100%;">
-        <div class="content">
-          <div style="height: 65px;">
-            <sit-data-source-container ident="sitFilterCustomers" >
-              <span>
-                <sit-data-input #sitControl field="searchCustomers" label="Filtruj klientów"></sit-data-input>
-              </span>
-            </sit-data-source-container>
-          </div>
-          <div style="flex:1 1 auto;">
-            <div class="data-table">
-              <sit-data-source-container  ident="sitCustomers" (activeRowChanged)="activeRowCustomersChanged($event)">
+<sit-dict-container ident="sitKancelaria" #sitDictcontainer fxFlexFIll>
+  <div fxLayout="row" fxFlexFill fxLayoutGap="5px">
+    <div fxFlex="50%" fxLayout="column" fxLayoutGap="5px">
+      <div fxFlex="300px" class="content" fxLayout="column">
+        <sit-data-source-container ident="sitFilterCustomers" >
+          <span>
+            <sit-data-input #sitControl field="searchCustomers" label="Filtruj klientów"></sit-data-input>
+          </span>
+        </sit-data-source-container>
+        <div class="data-table">
+          <sit-data-source-container  ident="sitCustomers" (activeRowChanged)="activeRowCustomersChanged($event)">
+            <ngx-datatable #sitCustomers #sitSetDataSource
+            class="material"
+            style="height: 210px;"
+            [scrollbarV] = "true"
+            [columnMode]="ColumnMode.force"
+            [selected]="sitCustomersSelected"
+            [selectionType]="SelectionType.single"
+            [selectAllRowsOnPage]="false"
+            [displayCheck]="displayCheck"
+            (activate)="onActivateCustomers($event)"
+            [footerHeight]="25"
 
-                <ngx-datatable #sitCustomers #sitSetDataSource
-                class="material"
-                style="height: 210px;"
-                [scrollbarV] = "true"
-                [columnMode]="ColumnMode.force"
-                [selected]="sitCustomersSelected"
-                [selectionType]="SelectionType.single"
-                [selectAllRowsOnPage]="false"
-                [displayCheck]="displayCheck"
-                (activate)="onActivateCustomers($event)"
-                [footerHeight]="25"
-
+            >
+              <ngx-datatable-column prop="CustIdent" name="Skrót"></ngx-datatable-column>
+              <ngx-datatable-column prop="CustName" name="Nazwa"></ngx-datatable-column>
+              <ngx-datatable-column prop="Person" name="Os.fiz." [resizeable]="false" [width]="45" [canAutoResize]="false">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  <div style="text-align: center;">
+                    <input type="checkbox" id="IsActive" name="Person" value="value" disabled=true [checked]="value == 1">
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column prop="VATId" name="NIP" [width]="100" [canAutoResize]="false"></ngx-datatable-column>
+              <ngx-datatable-column prop="Street" name="Ulica">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                  <div>
+                    {{row.Street}} {{row.HouseNum}}
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column prop="City" name="Miasto"></ngx-datatable-column>
+              <ngx-datatable-column prop="CountrySymbol" name="Kraj" [resizeable]="false" [width]="40" [canAutoResize]="false"></ngx-datatable-column>
+              <ngx-datatable-column prop="ExtIdent" name="Zew ID"></ngx-datatable-column>
+              <ngx-datatable-footer>
+                <ng-template ngx-datatable-footer-template
+                  let-rowCount="rowCount"
                 >
-                  <ngx-datatable-column prop="CustIdent" name="Skrót"></ngx-datatable-column>
-                  <ngx-datatable-column prop="CustName" name="Nazwa"></ngx-datatable-column>
-                  <ngx-datatable-column prop="Person" name="Os.fiz." [resizeable]="false" [width]="45" [canAutoResize]="false">
-                    <ng-template let-value="value" ngx-datatable-cell-template>
-                      <div style="text-align: center;">
-                        <input type="checkbox" id="IsActive" name="Person" value="value" disabled=true [checked]="value == 1">
-                      </div>
-                    </ng-template>
-                  </ngx-datatable-column>
-                  <ngx-datatable-column prop="VATId" name="NIP" [width]="100" [canAutoResize]="false"></ngx-datatable-column>
-                  <ngx-datatable-column prop="Street" name="Ulica">
-                    <ng-template let-row="row" ngx-datatable-cell-template>
-                      <div>
-                        {{row.Street}} {{row.HouseNum}}
-                      </div>
-                    </ng-template>
-                  </ngx-datatable-column>
-                  <ngx-datatable-column prop="City" name="Miasto"></ngx-datatable-column>
-                  <ngx-datatable-column prop="CountrySymbol" name="Kraj" [resizeable]="false" [width]="40" [canAutoResize]="false"></ngx-datatable-column>
-                  <ngx-datatable-column prop="ExtIdent" name="Zew ID"></ngx-datatable-column>
-                  <ngx-datatable-footer>
-                    <ng-template ngx-datatable-footer-template
-                      let-rowCount="rowCount"
-                    >
-                      <div style="padding-left: 10px; height:100%; vertical-align: middle;">
-                        {{rowCount}} rekordów
-                      </div>
-                    </ng-template>
-                  </ngx-datatable-footer>
-                </ngx-datatable>
+                  <div style="padding-left: 10px; height:100%; vertical-align: middle;">
+                    {{rowCount}} rekordów
+                  </div>
+                </ng-template>
+              </ngx-datatable-footer>
+            </ngx-datatable>
 
-              </sit-data-source-container>
-            </div>
-          </div>
+          </sit-data-source-container>
         </div>
       </div>
-      <div class="p-col-12" style="height: 30%; width: 100%;">
-        <div class="content">
-          <div style="height: 65px;">
-            <sit-data-source-container ident="sitFilterAgreements" >
-              <span>
-                <sit-data-input #sitControl field="searchAgreements" label="Filtruj umowy"></sit-data-input>
-              </span>
-            </sit-data-source-container>
-          </div>
-          <div>
-            <div class="data-table">
-              <sit-data-source-container  ident="sitAgreements">
+      <div fxFlex="300px" class="content" fxLayout="column">
+        <sit-data-source-container ident="sitFilterAgreements" >
+          <span>
+            <sit-data-input #sitControl field="searchAgreements" label="Filtruj umowy"></sit-data-input>
+          </span>
+        </sit-data-source-container>
+        <div class="data-table">
+          <sit-data-source-container  ident="sitAgreements">
 
-                <ngx-datatable #sitAgreements #sitSetDataSource
-                class="material"
-                style="height: 140px;"
-                [columnMode]="ColumnMode.force"
-                [scrollbarV]="true"
-                [selected]="sitAgreementsSelected"
-                [selectionType]="SelectionType.single"
-                [selectAllRowsOnPage]="false"
-                [displayCheck]="displayCheck"
-                (activate)="onActivateAgreements($event)"
-                (select)="onSelectAgreements($event)"
-                [footerHeight]="25"
+            <ngx-datatable #sitAgreements #sitSetDataSource
+            class="material"
+            style="height: 210px;"
+            [columnMode]="ColumnMode.force"
+            [scrollbarV]="true"
+            [selected]="sitAgreementsSelected"
+            [selectionType]="SelectionType.single"
+            [selectAllRowsOnPage]="false"
+            [displayCheck]="displayCheck"
+            (activate)="onActivateAgreements($event)"
+            (select)="onSelectAgreements($event)"
+            [footerHeight]="25"
+            >
+              <ngx-datatable-column prop="AgreementDesc" name="Opis"></ngx-datatable-column>
+              <ngx-datatable-column prop="Date" name="Data">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  {{value | date: 'yyyy-MM-dd'}}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column prop="DateTo" name="Data do">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  {{value | date: 'yyyy-MM-dd'}}
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-footer>
+                <ng-template ngx-datatable-footer-template
+                  let-rowCount="rowCount"
                 >
-                  <ngx-datatable-column prop="AgreementDesc" name="Opis"></ngx-datatable-column>
-                  <ngx-datatable-column prop="Date" name="Data">
-                    <ng-template let-value="value" ngx-datatable-cell-template>
-                      {{value | date: 'yyyy-MM-dd'}}
-                    </ng-template>
-                  </ngx-datatable-column>
-                  <ngx-datatable-column prop="DateTo" name="Data do">
-                    <ng-template let-value="value" ngx-datatable-cell-template>
-                      {{value | date: 'yyyy-MM-dd'}}
-                    </ng-template>
-                  </ngx-datatable-column>
-                  <ngx-datatable-footer>
-                    <ng-template ngx-datatable-footer-template
-                      let-rowCount="rowCount"
-                    >
-                      <div style="padding-left: 10px; height:100%; vertical-align: middle;">
-                        {{rowCount}} rekordów
-                      </div>
-                    </ng-template>
-                  </ngx-datatable-footer>
+                  <div style="padding-left: 10px; height:100%; vertical-align: middle;">
+                    {{rowCount}} rekordów
+                  </div>
+                </ng-template>
+              </ngx-datatable-footer>
 
-                </ngx-datatable>
+            </ngx-datatable>
 
-              </sit-data-source-container>
-            </div>
-          </div>
+          </sit-data-source-container>
         </div>
       </div>
-      <div class="p-col-12" style="height: 30%; width: 100%;">
-        <div class="content">
-          <div style="height: 65px;">
-            <sit-data-source-container  ident="sitFilterAttachments" >
-              <span>
-                <sit-data-input #sitControl field="searchAttachments" label="Filtruj załączniki"></sit-data-input>
-              </span>
-            </sit-data-source-container>
-          </div>
-          <div>
-            <div class="data-table">
-              <sit-data-source-container  ident="sitAttachments" (activeRowChanged)="activeRowAttachmentChanged($event)">
-                <ngx-datatable #sitAttachments #sitSetDataSource
-                class="material"
-                style="height: 140px;"
-                [columnMode]="ColumnMode.force"
-                [scrollbarV]="true"
-                [selected]="sitAttachmentsSelected"
-                [selectionType]="SelectionType.single"
-                [selectAllRowsOnPage]="false"
-                [displayCheck]="displayCheck"
-                (activate)="onActivateAttachments($event)"
-                (select)="onSelectAttachments($event)"
-                [footerHeight]="25"
+      <div fxFlex class="content" fxLayout="column">
+        <sit-data-source-container  ident="sitFilterAttachments" >
+          <span>
+            <sit-data-input #sitControl field="searchAttachments" label="Filtruj załączniki"></sit-data-input>
+          </span>
+        </sit-data-source-container>
+        <div class="data-table">
+          <sit-data-source-container  ident="sitAttachments" (activeRowChanged)="activeRowAttachmentChanged($event)">
+            <ngx-datatable #sitAttachments #sitSetDataSource
+            class="material"
+            style="height: 140px;"
+            [columnMode]="ColumnMode.force"
+            [scrollbarV]="true"
+            [selected]="sitAttachmentsSelected"
+            [selectionType]="SelectionType.single"
+            [selectAllRowsOnPage]="false"
+            [displayCheck]="displayCheck"
+            (activate)="onActivateAttachments($event)"
+            (select)="onSelectAttachments($event)"
+            [footerHeight]="25"
+            >
+              <ngx-datatable-column prop="AttachmentDesc" name="Opis"></ngx-datatable-column>
+              <ngx-datatable-column prop="FileName" name="Nazwa pliku"></ngx-datatable-column>
+              <ngx-datatable-footer>
+                <ng-template ngx-datatable-footer-template
+                  let-rowCount="rowCount"
                 >
-                  <ngx-datatable-column prop="AttachmentDesc" name="Opis"></ngx-datatable-column>
-                  <ngx-datatable-column prop="FileName" name="Nazwa pliku"></ngx-datatable-column>
-                  <ngx-datatable-column prop="GUID" name="GUID"></ngx-datatable-column>
-                  <ngx-datatable-footer>
-                    <ng-template ngx-datatable-footer-template
-                      let-rowCount="rowCount"
-                    >
-                      <div style="padding-left: 10px; height:100%; vertical-align: middle;">
-                        {{rowCount}} rekordów
-                      </div>
-                    </ng-template>
-                  </ngx-datatable-footer>
-                </ngx-datatable>
+                  <div style="padding-left: 10px; height:100%; vertical-align: middle;">
+                    {{rowCount}} rekordów
+                  </div>
+                </ng-template>
+              </ngx-datatable-footer>
+            </ngx-datatable>
 
-              </sit-data-source-container>
-            </div>
-          </div>
+          </sit-data-source-container>
         </div>
       </div>
     </div>
-  </div>
-  <div class="p-col-12 p-md-5">
-    <div class="content">
+
+    <div fxFlex="50%" class="content" fxLayoutGap="5px">
       <ngx-extended-pdf-viewer
       [src]="Link"
       [useBrowserLocale]="true"
       [height]="'100%'"
       >
       </ngx-extended-pdf-viewer>
+
     </div>
   </div>
-
-</div>
 </sit-dict-container>

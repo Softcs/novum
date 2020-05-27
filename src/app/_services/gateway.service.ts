@@ -113,13 +113,23 @@ export class GatewayService {
 
         return opr;
     }
-    operationRefreshDataSources(dictident: string, dataSourcesRequest: any[]): Operation {
+    operationRefreshDataSources(dictIdent: string, dataSourcesRequest: any[]): Operation {
         const opr: Operation = new Operation();
-        opr.dictident = dictident;
+        opr.dictident = dictIdent;
         opr.oprType = 40;
         opr.dataSourcesRequest = dataSourcesRequest;
         return opr;
     }
+    operationExecuteAction(dictIdent: string, dataSourcesRequest: any[], actionIdent: string, dataSourceIdent: string) {
+        const opr: Operation = new Operation();
+        opr.dictident = dictIdent;
+        opr.oprType = 50;
+        opr.actionIdent = actionIdent;
+        opr.dataSourceIdent = dataSourceIdent;
+        opr.dataSourcesRequest = dataSourcesRequest;
+        return opr;
+    }
+
     executeOperation(opr: Operation) {
         opr.loginInfo = new LoginInfo();
         opr.loginInfo.username = this.currentUserValue?.username;

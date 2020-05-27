@@ -32,6 +32,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatTabsModule } from '@angular/material/tabs';
 
 
 import { SitDataSourceContainerComponent } from './components/sit-data-source-container/sit-data-source-container.component';
@@ -69,6 +70,10 @@ import { SitDataTableComponent } from './components/controls/sit-data-table/sit-
 import { sitSetDataSourceDirective } from './_directives/sitSetDataSourceDirective';
 import { NgxPdfTestComponent } from './containers/sandbox/ngx-pdf-test/ngx-pdf-test.component';
 import { SitKancelariaComponent } from './containers/dictionaries/sit-kancelaria/sit-kancelaria.component';
+import { SitUserAccountComponent } from './containers/dictionaries/sit-user-account/sit-user-account.component';
+import { SitProcButtonComponent } from './components/controls/sit-proc-button/sit-proc-button.component';
+import { SitWhiteListVATComponent } from './containers/dictionaries/sit-white-list-vat/sit-white-list-vat.component';
+import { SitJPKVatComponent } from './containers/dictionaries/sit-jpk-vat/sit-jpk-vat.component'
 
 @NgModule({
     imports: [
@@ -91,6 +96,7 @@ import { SitKancelariaComponent } from './containers/dictionaries/sit-kancelaria
         MatListModule,
         MatCardModule,
         MatGridListModule,
+        MatTabsModule,
 
         FormsModule,
         LayoutModule,
@@ -138,8 +144,12 @@ import { SitKancelariaComponent } from './containers/dictionaries/sit-kancelaria
         SitDataBaseComponent,
         SitDataTableComponent,
         NgxPdfTestComponent,
-        SitKancelariaComponent
-      ],
+        SitKancelariaComponent,
+        SitUserAccountComponent,
+        SitProcButtonComponent,
+        SitWhiteListVATComponent ,
+        SitJPKVatComponent
+    ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
