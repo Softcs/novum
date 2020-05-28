@@ -47,14 +47,13 @@ export class NgxDatatableTestComponent implements OnInit {
   }
 
   onSelect({ selected }) {
-    console.log('Select Event', selected, this.selected);
-
+    //console.log('Select Event', selected, this.selected);
     this.selected.splice(0, this.selected.length);
     this.selected.push(...selected);
   }
 
   onActivate(event) {
-    console.log('Activate Event', event);
+    //console.log('Activate Event', event);
   }
   add() {
     this.selected.push(this.rows[1], this.rows[3]);
@@ -77,7 +76,5 @@ export class NgxDatatableTestComponent implements OnInit {
     for (let i=0; i<1; i++){
       a = sha512.sha512(a);
     }
-    console.log( a);
-
   }
 }

@@ -1,10 +1,8 @@
 <ng-container *ngIf="errors">
-    <h4>Błędy:</h4>
-    <ul>
-        <li *ngFor="let error of errors">
-            {{error.message}}
-        </li>
-    </ul>
+    <div *ngFor="let error of errors" class="alert alert-danger mt-3 mb-3">
+        <span class="message">{{error.message}}</span>
+        <i class="material-icons" (click)="closeError(error)">close</i>
+    </div>
 </ng-container>
 
 <ng-content>

@@ -17,7 +17,6 @@ export class NgxPdfTestComponent implements OnInit {
     private gatewayService: GatewayService,
   ) {
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
-    console.log(this.currentUser);
   }
 
   ngOnInit(): void {

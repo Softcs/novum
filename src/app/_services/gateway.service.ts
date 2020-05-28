@@ -149,14 +149,14 @@ export class GatewayService {
                 if (railResponse != null && railResponse.length > 0) {
                     if(railResponse[0].Errors != null) {
                         railResponse[0].Errors.forEach(error => {
-                            console.error(error.Message);
+                            console.error(error.message);
                         });
                     }
                     if (railResponse[0].dataSourcesResponse != null) {
                         railResponse[0].dataSourcesResponse.forEach(ds => {
                             if(ds.Errors != null) {
                                 ds.Errors.forEach(error => {
-                                    console.error(error.Message);
+                                    console.error(error.message);
                                 });
                             }
                         });

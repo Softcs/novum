@@ -6,7 +6,7 @@ export class DataSourceResponseWrapper {
     public ident: string;
     public rows: [any];
     public activeRow: any;
-    public errors: [];
+    public errors: [any];
     private inputDataSource: any;
     @Output()
     activeRowChanged: EventEmitter<any> = new EventEmitter<any>();

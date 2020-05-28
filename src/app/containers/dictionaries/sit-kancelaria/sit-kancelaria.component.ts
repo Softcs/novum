@@ -83,13 +83,8 @@ export class SitKancelariaComponent implements OnInit {
     }
   }
   activeRowAttachmentChanged(activeRow) {
-    console.log('activeRow',[activeRow]);
-    console.log('sitAttachmentsSelected', this.sitAttachmentsSelected);
-
     this.sitAttachmentsSelected.splice(0, this.sitAttachmentsSelected.length);
     this.sitAttachmentsSelected.push(...[activeRow]);
-
-    console.log('sitAttachmentsSelected',this.sitAttachmentsSelected);
 
     this.Link = activeRow == null
       ? environment.apiUrl+"/service/attachments/get/" + "1" + "/" + "1" + "/" + "1.pdf" : // kiedy brak rekordu

@@ -5,6 +5,7 @@ import { GatewayService } from '@app/_services/gateway.service';
 import { DataSourceResponseWrapper } from '@app/_models';
 import { SitDataBaseComponent } from '../controls/sit-data-base/sit-data-base.component';
 import { sitSetDataSourceDirective } from '@app/_directives/sitSetDataSourceDirective';
+import { connect } from 'http2';
 
 @Component({
   selector: 'sit-data-source-container',
@@ -23,7 +24,7 @@ export class SitDataSourceContainerComponent implements OnInit {
   @Output()
   activeRowChanged: EventEmitter<any> = new EventEmitter<any>();
 
-  private _errors: [] = [];
+  private _errors: any[];
   constructor(private gatewayService: GatewayService) { }
 
   get activeRecord(): any {
@@ -42,7 +43,7 @@ export class SitDataSourceContainerComponent implements OnInit {
   public SetActiveRow(row: any) {
       this.dataSourceResponseWrapper.SetActiveRow(row);
   }
-  public setErrors(errors: []) {
+  public setErrors(errors: any[]) {
     this.errors = errors;
   }
   public setDataSource(dataSourceResponseWrapper: DataSourceResponseWrapper) {
@@ -64,12 +65,15 @@ export class SitDataSourceContainerComponent implements OnInit {
   public deleteData() {
 
   }
-  set errors(value: []) {
+  set errors(value: any[]) {
     this._errors = value;
-    console.log("value", value)
   }
-  get errors() {
+  get errors(): any[] {
     return this._errors;
+  }
+  closeError(error: any) {
+    const index = this._errors?.indexOf(error);
+    this.errors?.splice(index, 1);
   }
 
 }

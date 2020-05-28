@@ -39,18 +39,16 @@ export class SitRailConfigurationsComponent implements OnInit {
   }
 
   onSelectRailConfigurations({ selected }) {
-    console.log('Select Event', selected, this.sitRailConfigurationsSelected);
     this.sitRailConfigurationsSelected.splice(0, this.sitRailConfigurationsSelected.length);
     this.sitRailConfigurationsSelected.push(...selected);
   }
 
   toggleExpandRow(row) {
     const dataSourceResponseWrapper: DataSourceResponseWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitRailConfigurations");
-    console.log('Toggled Expand Row!', row);
     this.table.rowDetail.toggleExpandRow(row);
   }
 
   onDetailToggle(event) {
-    console.log('Detail Toggled', event);
+    //console.log('Detail Toggled', event);
   }
 }

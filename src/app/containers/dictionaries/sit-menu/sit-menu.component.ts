@@ -29,7 +29,6 @@ export class SitMenuComponent implements OnInit {
   }
 
   onSelectMenu({ selected }) {
-    console.log('Select Event', selected, this.sitMenuSelected);
     this.sitMenuSelected.splice(0, this.sitMenuSelected.length);
     this.sitMenuSelected.push(...selected);
   }
@@ -62,9 +61,7 @@ export class SitMenuComponent implements OnInit {
 
   onActivateMenu(event) {
     if (event.type == 'click') {
-
       const dataSourceResponseWrapper: DataSourceResponseWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitMenu");
-      console.log("onActivateMenu", event.row, dataSourceResponseWrapper);
       dataSourceResponseWrapper.SetActiveRow(event.row);
     }
   }
@@ -72,7 +69,7 @@ export class SitMenuComponent implements OnInit {
 
   onActivate(event) {
     if(event.type == 'click') {
-        console.log("a", event.row);
+        //console.log("a", event.row);
     }
   }
 

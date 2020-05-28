@@ -119,9 +119,7 @@ export class DataSourceManager {
                     if (data.length == 1) {
                         const dataSourcesResponse = data[0].dataSourcesResponse;
                         this.PropagateErrors(dataSourceIdent, data[0]?.Errors);
-                        // this.setRefreshDataSources(dataSourcesResponse);
-                        // let dataSetToReload = dataSourcesResponse?.map(d => d.ident);
-                        // this.PropagateDataSources(dataSetToReload);
+
                     }
                 },
                 error => {
@@ -137,7 +135,7 @@ export class DataSourceManager {
             this.setRefreshDataSource(dsRespons);
         });
     }
-    public PropagateErrors(dataSourceIdent: string, errors: []) {
+    public PropagateErrors(dataSourceIdent: string, errors: [any]) {
         if (!this.dataSourceComponents) {
             return;
         }
