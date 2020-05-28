@@ -54,14 +54,14 @@
             </ng-template>
           </ngx-datatable-column>
 
-            <ngx-datatable-column prop="RailConfigurationId" name="Id" [width]="50">
+            <ngx-datatable-column prop="sitRailConfigurationsId" name="Id" [canAutoResize]="false" [width]="50">
               <ng-template let-value="value" ngx-datatable-cell-template>
                 <div style="text-align: right;">
                   {{value}}
                 </div>
               </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column prop="CompanyId" name="CompanyId" [width]="50">
+            <ngx-datatable-column prop="sitCompaniesId" name="CompanyId" [canAutoResize]="false" [width]="80">
               <ng-template let-value="value" ngx-datatable-cell-template>
                 <div style="text-align: right;">
                   {{value}}
@@ -70,7 +70,7 @@
             </ngx-datatable-column>
             <ngx-datatable-column prop="CompanyIdent" name="Company Ident"></ngx-datatable-column>
             <ngx-datatable-column prop="ClientGuid" name="ClientGuid"></ngx-datatable-column>
-            <ngx-datatable-column prop="UserId" name="UserId" [width]="50">
+            <ngx-datatable-column prop="UserId" name="UserId" [canAutoResize]="false" [width]="50">
               <ng-template let-value="value" ngx-datatable-cell-template>
                 <div style="text-align: right;">
                 {{value}}

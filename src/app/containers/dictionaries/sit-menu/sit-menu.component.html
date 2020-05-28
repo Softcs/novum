@@ -1,107 +1,55 @@
-<!-- <sit-dict-container ident="sitMenu"  #sitDictcontainer fxLayout="columns" fxFlex="100">
-  <div fxLayout="column" fxFlex="100">
-    <div
-      fxLayout="row"
-      fxLayout.xs="column"
-      fxFlex="70"
-    >
-      <div
-        fxLayout="column"
-        fxFlex="50"
-        class="content"
-      >
-        <div>
-          <sit-data-source-container ident="sitFilter" >
-            <span>
-              <sit-data-input #sitControl field="searchMenu" label="Filtruj"></sit-data-input>
-            </span>
-          </sit-data-source-container>
-        </div>
-
-        <div>
-          <div class="data-table">
-            <sit-data-source-container  ident="sitMenu">
-              <ngx-datatable #sitMenu #sitSetDataSource
-              class="material striped"
-              [columnMode]="ColumnMode.force"
-              [limit]=20
-              [selected]="sitMenuSelected"
-              [selectionType]="SelectionType.single"
-              [selectAllRowsOnPage]="false"
-              [displayCheck]="displayCheck"
-              (activate)="onActivateMenu($event)"
-              (select)="onSelectMenu($event)"
-              [footerHeight]="50"
-              >
-                <ngx-datatable-column prop="MenuId" name="Id"></ngx-datatable-column>
-                <ngx-datatable-column prop="Symbol" name="Symbol"></ngx-datatable-column>
-                <ngx-datatable-column prop="Caption" name="Nazwa"></ngx-datatable-column>
-              </ngx-datatable>
-
-            </sit-data-source-container>
-          </div>
-        </div>
-
-      </div>
-      <div
-        fxLayout="column"
-        fxFlex="50"
-        class="content"
-      >
-        <div>
-          <sit-data-source-container  ident="sitFilter" >
-            <span>
-              <sit-data-input #sitControl field="searchMenuItems" label="Filtruj"></sit-data-input>
-            </span>
-          </sit-data-source-container>
-        </div>
-        <div>
-          <div class="data-table">
-            <sit-data-source-container ident="sitMenuItems">
-              <ngx-datatable #sitMenuItems #sitSetDataSource
-              class="material striped"
-              [columnMode]="ColumnMode.force"
-              [limit]=20
-              [selected]="sitMenuItemsSelected"
-              [selectionType]="SelectionType.single"
-              [selectAllRowsOnPage]="false"
-              [displayCheck]="displayCheck"
-              (select)="onSelectMenuItems($event)"
-              (activate)="onActivate($event)"
-              [footerHeight]="50"
-            >
-                <ngx-datatable-column prop="MenuItemId" name="Id"></ngx-datatable-column>
-                <ngx-datatable-column prop="MenuId" name="MenuId"></ngx-datatable-column>
-                <ngx-datatable-column prop="Caption" name="Nazwa"></ngx-datatable-column>
-                <ngx-datatable-column prop="Kind" name="Rodzaj"></ngx-datatable-column>
-                <ngx-datatable-column prop="Link" name="Link"></ngx-datatable-column>
-              </ngx-datatable>
-            </sit-data-source-container>
-          </div>
-        </div>
-
-      </div>
-    </div>
-    <div
-      fxLayout="column"
-      fxFlex="30"
-      class="content"
-    >
-      <div>
-        <sit-data-source-container  ident="sitFilter" >
+<sit-dict-container ident="sitMenu"  #sitDictcontainer fxFlexFill>
+  <div fxLayout="row" fxFlexFill fxLayoutGap="5px">
+    <div fxFlex="50%" fxLayout="column" fxLayoutGap="5px">
+      <div fxFlex="450px" class="content" fxLayout="column">
+        <sit-data-source-container ident="sitFilterMenu" >
           <span>
-            <sit-data-input #sitControl field="searchAppUsers" label="Filtruj"></sit-data-input>
+            <sit-data-input #sitControl field="searchMenu" label="Filtruj menu"></sit-data-input>
           </span>
         </sit-data-source-container>
+        <div class="data-table">
+          <sit-data-source-container  ident="sitMenu">
+            <ngx-datatable #sitMenu #sitSetDataSource
+            class="material striped"
+            [columnMode]="ColumnMode.force"
+            style="height: 350px;"
+            [scrollbarV] = "true"
+            [selected]="sitMenuSelected"
+            [selectionType]="SelectionType.single"
+            [selectAllRowsOnPage]="false"
+            [displayCheck]="displayCheck"
+            (activate)="onActivateMenu($event)"
+            (select)="onSelectMenu($event)"
+            [footerHeight]="50"
+            >
+              <ngx-datatable-column prop="sitMenuId" name="Id" [canAutoResize]="false" [width]="50">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  <div style="text-align: right;">
+                    {{value}}
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
+              <ngx-datatable-column prop="Symbol" name="Symbol"></ngx-datatable-column>
+              <ngx-datatable-column prop="Caption" name="Nazwa"></ngx-datatable-column>
+            </ngx-datatable>
+
+          </sit-data-source-container>
+        </div>
       </div>
-      <div>
+      <div fxFlex class="content" fxLayout="column">
+        <sit-data-source-container  ident="sitFilterAppUsers" >
+          <span>
+            <sit-data-input #sitControl field="searchAppUsers" label="Filtruj użytkowników"></sit-data-input>
+          </span>
+        </sit-data-source-container>
         <div class="data-table">
           <sit-data-source-container ident="sitAppUsers">
             <ngx-datatable #sitAppUsers #sitSetDataSource
             class="material striped"
             [columnMode]="ColumnMode.force"
-            [limit]=20
-            [selected]="sitAppUsersSelected"
+            style="height: 350px;"
+            [scrollbarV] = "true"
+              [selected]="sitAppUsersSelected"
             [selectionType]="SelectionType.single"
             [selectAllRowsOnPage]="false"
             [displayCheck]="displayCheck"
@@ -109,127 +57,70 @@
             (select)="onSelectAppUsers($event)"
             [footerHeight]="50"
             >
-              <ngx-datatable-column prop="AppUserId" name="Id"></ngx-datatable-column>
+              <ngx-datatable-column prop="sitAppUsersId" name="Id"  [canAutoResize]="false" [width]="50">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  <div style="text-align: right;">
+                    {{value}}
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
               <ngx-datatable-column prop="UserLogin" name="Login"></ngx-datatable-column>
-              <ngx-datatable-column prop="UserPassword" name="Hasło"></ngx-datatable-column>
               <ngx-datatable-column prop="Name" name="Imię"></ngx-datatable-column>
               <ngx-datatable-column prop="SurName" name="Nazwisko"></ngx-datatable-column>
-              <ngx-datatable-column prop="IsActive" name="Aktywny"></ngx-datatable-column>
-              <ngx-datatable-column prop="MenuId" name="MenuId"></ngx-datatable-column>
+              <ngx-datatable-column prop="IsActive" name="Aktywny" [resizeable]="false" [width]="60" [canAutoResize]="false">
+                <ng-template let-value="value" ngx-datatable-cell-template>
+                  <div style="text-align: center;">
+                    <input type="checkbox" id="IsActive" name="Aktywny" value="value" disabled=true [checked]="value == 1">
+                  </div>
+                </ng-template>
+              </ngx-datatable-column>
             </ngx-datatable>
           </sit-data-source-container>
         </div>
+
       </div>
-
     </div>
-  </div>
-</sit-dict-container>
--->
-
-<sit-dict-container ident="sitMenu"  #sitDictcontainer class="container-cols">
-  <div class="container-cols">
-    <div class="container-rows">
-        <div class="content-left" style="width: 50%;">
-          <div>
-            <sit-data-source-container  ident="sitFilter" >
-              <span>
-                <sit-data-input #sitControl field="searchMenu" label="Filtruj"></sit-data-input>
-              </span>
-            </sit-data-source-container>
-          </div>
-          <div>
-            <div class="data-table">
-              <sit-data-source-container  ident="sitMenu">
-                <ngx-datatable #sitMenu #sitSetDataSource
-                class="material striped"
-                [columnMode]="ColumnMode.force"
-                [limit]=20
-                [selected]="sitMenuSelected"
-                [selectionType]="SelectionType.single"
-                [selectAllRowsOnPage]="false"
-                [displayCheck]="displayCheck"
-                (activate)="onActivateMenu($event)"
-                (select)="onSelectMenu($event)"
-                [footerHeight]="50"
-                >
-                  <ngx-datatable-column prop="MenuId" name="Id"></ngx-datatable-column>
-                  <ngx-datatable-column prop="Symbol" name="Symbol"></ngx-datatable-column>
-                  <ngx-datatable-column prop="Caption" name="Nazwa"></ngx-datatable-column>
-                </ngx-datatable>
-
-              </sit-data-source-container>
-            </div>
-          </div>
-        </div>
-        <div class="content" style="width: 50%;">
-          <div>
-            <sit-data-source-container  ident="sitFilter" >
-              <span>
-                <sit-data-input #sitControl field="searchMenuItems" label="Filtruj"></sit-data-input>
-              </span>
-            </sit-data-source-container>
-          </div>
-          <div>
-            <div class="data-table">
-              <sit-data-source-container ident="sitMenuItems">
-                <ngx-datatable #sitMenuItems #sitSetDataSource
-                class="material striped"
-                [columnMode]="ColumnMode.force"
-                [limit]=20
-                [selected]="sitMenuItemsSelected"
-                [selectionType]="SelectionType.single"
-                [selectAllRowsOnPage]="false"
-                [displayCheck]="displayCheck"
-                (select)="onSelectMenuItems($event)"
-                (activate)="onActivate($event)"
-                [footerHeight]="50"
-              >
-                  <ngx-datatable-column prop="MenuItemId" name="Id"></ngx-datatable-column>
-                  <ngx-datatable-column prop="MenuId" name="MenuId"></ngx-datatable-column>
-                  <ngx-datatable-column prop="Caption" name="Nazwa"></ngx-datatable-column>
-                  <ngx-datatable-column prop="Kind" name="Rodzaj"></ngx-datatable-column>
-                  <ngx-datatable-column prop="Link" name="Link"></ngx-datatable-column>
-                </ngx-datatable>
-              </sit-data-source-container>
-            </div>
-          </div>
-        </div>
-    </div>
-  </div>
-  <div class="container-cols" style="height: 30%;">
-    <div class="content">
-      <div>
-        <sit-data-source-container  ident="sitFilter" >
-          <span>
-            <sit-data-input #sitControl field="searchAppUsers" label="Filtruj"></sit-data-input>
-          </span>
+    <div fxFlex="50%" class="content" fxLayoutGap="5px">
+      <sit-data-source-container  ident="sitFilterMenuItems" >
+        <span>
+          <sit-data-input #sitControl field="searchMenuItems" label="Filtruj pozycje"></sit-data-input>
+        </span>
+      </sit-data-source-container>
+      <div class="data-table">
+        <sit-data-source-container ident="sitMenuItems">
+          <ngx-datatable #sitMenuItems #sitSetDataSource
+          class="material striped"
+          [columnMode]="ColumnMode.force"
+          style="height: 800px;"
+          [scrollbarV] = "true"
+          [selected]="sitMenuItemsSelected"
+          [selectionType]="SelectionType.single"
+          [selectAllRowsOnPage]="false"
+          [displayCheck]="displayCheck"
+          (select)="onSelectMenuItems($event)"
+          (activate)="onActivate($event)"
+          [footerHeight]="50"
+        >
+            <ngx-datatable-column prop="sitMenuItemsId" name="Id" [canAutoResize]="false" [width]="50">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                <div style="text-align: right;">
+                  {{value}}
+                </div>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column prop="OrdId" name="Kolejność" [canAutoResize]="false" [width]="70">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                <div style="text-align: right;">
+                  {{value}}
+                </div>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column prop="Caption" name="Nazwa"></ngx-datatable-column>
+            <ngx-datatable-column prop="Kind" name="Rodzaj"></ngx-datatable-column>
+            <ngx-datatable-column prop="Link" name="Link"></ngx-datatable-column>
+            <ngx-datatable-column prop="Icon" name="Ikona"></ngx-datatable-column>
+          </ngx-datatable>
         </sit-data-source-container>
-      </div>
-      <div>
-        <div class="data-table">
-          <sit-data-source-container ident="sitAppUsers">
-            <ngx-datatable #sitAppUsers #sitSetDataSource
-            class="material striped"
-            [columnMode]="ColumnMode.force"
-            [limit]=20
-            [selected]="sitAppUsersSelected"
-            [selectionType]="SelectionType.single"
-            [selectAllRowsOnPage]="false"
-            [displayCheck]="displayCheck"
-            (activate)="onActivate($event)"
-            (select)="onSelectAppUsers($event)"
-            [footerHeight]="50"
-            >
-              <ngx-datatable-column prop="AppUserId" name="Id"></ngx-datatable-column>
-              <ngx-datatable-column prop="UserLogin" name="Login"></ngx-datatable-column>
-              <ngx-datatable-column prop="UserPassword" name="Hasło"></ngx-datatable-column>
-              <ngx-datatable-column prop="Name" name="Imię"></ngx-datatable-column>
-              <ngx-datatable-column prop="SurName" name="Nazwisko"></ngx-datatable-column>
-              <ngx-datatable-column prop="IsActive" name="Aktywny"></ngx-datatable-column>
-              <ngx-datatable-column prop="MenuId" name="MenuId"></ngx-datatable-column>
-            </ngx-datatable>
-          </sit-data-source-container>
-        </div>
       </div>
     </div>
   </div>

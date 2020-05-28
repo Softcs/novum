@@ -88,7 +88,7 @@ export class SitKancelariaComponent implements OnInit {
 
     this.Link = activeRow == null
       ? environment.apiUrl+"/service/attachments/get/" + "1" + "/" + "1" + "/" + "1.pdf" : // kiedy brak rekordu
-        environment.apiUrl+"/service/attachments/get/" + this.currentUser.token + "/" + activeRow['GUID'] + "/" + activeRow['FileName']
+        environment.apiUrl+"/service/attachments/get/" + this.currentUser.token + "/" + activeRow['sitAttachmentsG'] + "/" + activeRow['FileName']
 
   }
 
