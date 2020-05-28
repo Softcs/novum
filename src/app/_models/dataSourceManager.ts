@@ -118,7 +118,7 @@ export class DataSourceManager {
                 data => {
                     if (data.length == 1) {
                         const dataSourcesResponse = data[0].dataSourcesResponse;
-                        this.PropagateErrors(dataSourceIdent, dataSourcesResponse.errors);
+                        this.PropagateErrors(dataSourceIdent, data[0]?.Errors);
                         // this.setRefreshDataSources(dataSourcesResponse);
                         // let dataSetToReload = dataSourcesResponse?.map(d => d.ident);
                         // this.PropagateDataSources(dataSetToReload);
@@ -137,7 +137,7 @@ export class DataSourceManager {
             this.setRefreshDataSource(dsRespons);
         });
     }
-    public PropagateErrors(dataSourceIdent: string, errors: [any]) {
+    public PropagateErrors(dataSourceIdent: string, errors: []) {
         if (!this.dataSourceComponents) {
             return;
         }
@@ -145,7 +145,7 @@ export class DataSourceManager {
             if (dataSourceIdent.toLowerCase() === dataSourceContainer.ident.toLowerCase()) {
                 const dataSourceResponseWrapper = this.getDateSourceWrapper(dataSourceContainer.ident);
                 if (dataSourceResponseWrapper != null) {
-                    dataSourceContainer.errors = errors;
+                    dataSourceContainer.setErrors(errors);
                 }
             }
         });

@@ -23,7 +23,7 @@ export class SitDataSourceContainerComponent implements OnInit {
   @Output()
   activeRowChanged: EventEmitter<any> = new EventEmitter<any>();
 
-  private _errors: [any];
+  private _errors: [] = [];
   constructor(private gatewayService: GatewayService) { }
 
   get activeRecord(): any {
@@ -42,10 +42,13 @@ export class SitDataSourceContainerComponent implements OnInit {
   public SetActiveRow(row: any) {
       this.dataSourceResponseWrapper.SetActiveRow(row);
   }
-
+  public setErrors(errors: []) {
+    this.errors = errors;
+  }
   public setDataSource(dataSourceResponseWrapper: DataSourceResponseWrapper) {
     this.dataSourceResponseWrapper = dataSourceResponseWrapper;
     this.dataSourceResponseWrapper.activeRowChanged = this.activeRowChanged;
+    this.errors = dataSourceResponseWrapper.errors;
     this.datasSourcesInterface.forEach(element => {
       element.rows = this.dataSourceResponseWrapper.rows;
       element.selected = [this.dataSourceResponseWrapper.activeRow];
@@ -57,16 +60,16 @@ export class SitDataSourceContainerComponent implements OnInit {
           element.setValue(fieldValue);
         });
      }
-    //this.errors =
   }
   public deleteData() {
 
   }
-  set errors(value: [any]) {
+  set errors(value: []) {
     this._errors = value;
+    console.log("value", value)
   }
   get errors() {
-    return this.dataSourceResponseWrapper != null ? this.dataSourceResponseWrapper.errors : null;
+    return this._errors;
   }
 
 }

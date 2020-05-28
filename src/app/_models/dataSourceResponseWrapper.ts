@@ -5,8 +5,8 @@ import { first } from 'rxjs/operators';
 export class DataSourceResponseWrapper {
     public ident: string;
     public rows: [any];
-    public activeRow:any;
-    public errors:[any];
+    public activeRow: any;
+    public errors: [];
     private inputDataSource: any;
     @Output()
     activeRowChanged: EventEmitter<any> = new EventEmitter<any>();
