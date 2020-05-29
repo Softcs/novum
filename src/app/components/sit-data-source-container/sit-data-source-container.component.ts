@@ -24,7 +24,15 @@ export class SitDataSourceContainerComponent implements OnInit {
   @Output()
   activeRowChanged: EventEmitter<any> = new EventEmitter<any>();
 
+  // @HostListener('document:click', ['$event'])
+
+  clearErrors() {
+    this.errors?.splice(0,this.errors?.length);
+    console.log(this.errors)
+  }
+
   private _errors: any[];
+
   constructor(private gatewayService: GatewayService) { }
 
   get activeRecord(): any {

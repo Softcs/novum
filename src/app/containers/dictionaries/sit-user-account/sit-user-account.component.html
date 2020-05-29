@@ -1,12 +1,12 @@
 <sit-dict-container ident="sitAppUserAccount"  #sitDictcontainer class="container-cols">
   <div fxFlexFill fxLayoutAlign="center center" fxLayout="column">
-    <div class="sit-form" style="width: 500px; height: 600px;">
+    <div class="sit-form" style="width: 500px; height: 550px;">
     <div class="sit-form-header" style="height: 50px;">
       Konto użytkownika
     </div>
-    <sit-data-source-container ident="sitAppUserAccount">
-      <div ident="sitAppUserAccount" class="sit-form-body" style="height: 550px;">
-        <div style="height: 400px;">
+      <div ident="sitAppUserAccount" class="sit-form-body" style="height: 500px;">
+        <sit-data-source-container ident="sitAppUserAccount">
+          <div style="height: 400px;">
           <mat-form-field appearance="legacy" style="width: 100%;">
              <mat-label>Login</mat-label>
             <input matInput value="{{ activeRowUserAccount?.UserLogin }}" readonly="true">
@@ -45,8 +45,8 @@
         <div>
           <sit-proc-button #sitControl actionIdent="changePassword" color="primary" caption="Zmień hasło"></sit-proc-button>
         </div>
-      </div>
-    </sit-data-source-container>
+      </sit-data-source-container>
+    </div>
   </div>
 </div>
 </sit-dict-container>

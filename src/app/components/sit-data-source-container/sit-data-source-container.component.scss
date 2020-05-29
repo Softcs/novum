@@ -1,7 +1,54 @@
 @import "../../../theme";
 
-.alert {
-    i {
-        cursor: pointer;
-    }
+.mat-icon{
+    cursor: pointer;
+}
+
+.sit-msg-container {
+  position: absolute;
+  left: 20px;
+  top: 5px;
+}
+
+.sit-msg-box {
+  width: 300px;
+  border-radius: 15px;
+  background: $messagebox-background-color;
+  padding: 5px;
+  text-align: left;
+  font-family: arial;
+  position: relative;
+  box-shadow: 2px 2px 25px -9px rgba(0,0,0,0.73);
+  padding: 5px 10px 20px 10px;
+}
+
+
+.sit-msg-left:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 15px solid transparent;
+  border-right: 15px solid $messagebox-background-color;
+  border-top: 15px solid $messagebox-background-color;
+  border-bottom: 15px solid transparent;
+  left: -16px;
+  top: 0px;
+
+}
+
+.gray-icon{
+  color: #47494d;
+}
+
+.sit-msg-error{
+  color: #47494d;
+  text-align: justify;
+  width: 230px;
+  font-size: 14px;
+  white-space: pre-wrap;      /* CSS3 */
+  white-space: -moz-pre-wrap; /* Firefox */
+  white-space: -o-pre-wrap;   /* Opera 7 */
+  word-wrap: break-word;      /* IE */
+
 }
