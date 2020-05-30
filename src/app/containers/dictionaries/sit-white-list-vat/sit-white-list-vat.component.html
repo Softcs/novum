@@ -1,21 +1,22 @@
-<div class="container-cols">
+<sit-dict-container ident="sitWhiteListVat"  #sitDictcontainer class="container-cols">
   <div fxFlexFill fxLayoutAlign="center center" fxLayout="column">
-    <div class="content" style="width: 500px; height:500px;">
-      <div>
-        <mat-form-field appearance="legacy" style="width: 200px;">
-          <mat-label>NIP</mat-label>
-        <input matInput>
-        <!-- <sit-data-input #sitControl field="UserLogin" label="Login" readonly="true"></sit-data-input> -->
-        </mat-form-field>
-        <br>
-        <mat-form-field appearance="legacy" style="width: 400px; margin-right: 10px;">
-          <mat-label>Numer rachunku bankowego</mat-label>
-          <input matInput>
-        </mat-form-field>
-      </div>
-      <div>
-        <sit-proc-button #sitControl procIdent="checkVAT" color="primary" caption="Sprawdź"></sit-proc-button>
-      </div>
+    <div class="content" style="width: 500px; height:500px; padding:20px;">
+      <sit-data-source-container ident="sitJPKCheckVatNIPNRB">
+        <div>
+          <mat-form-field appearance="legacy" style="width: 100%;">
+            <mat-label>NIP</mat-label>
+            <input matInput (change)="onChange($event)" id="NIP"  value="{{ activeRow?.NIP }}" >
+          </mat-form-field>
+          <br>
+          <mat-form-field appearance="legacy" style="width: 100%;">
+            <mat-label>Numer rachunku bankowego</mat-label>
+            <input matInput (change)="onChange($event)" id="NRB"  value="{{ activeRow?.NRB }}" >
+          </mat-form-field>
+        </div>
+        <div>
+          <sit-proc-button #sitControl actionIdent="sitProcJPKCheckVatNIPNRB" color="primary" caption="Sprawdź"></sit-proc-button>
+        </div>
+      </sit-data-source-container>
     </div>
   </div>
-</div>
+</sit-dict-container>
