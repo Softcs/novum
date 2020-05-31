@@ -6,7 +6,7 @@
     </div>
       <div ident="sitAppUserAccount" class="sit-form-body" style="height: 500px;">
         <sit-data-source-container ident="sitAppUserAccount">
-          <div style="height: 400px;">
+          <div style="height: 440px;">
           <mat-form-field appearance="legacy" style="width: 100%;">
              <mat-label>Login</mat-label>
             <input matInput value="{{ activeRowUserAccount?.UserLogin }}" readonly="true">
@@ -28,16 +28,16 @@
             <input matInput value="{{ activeRowUserAccount?.email }}" readonly="true">
           </mat-form-field>
           <br>
-          <mat-form-field appearance="legacy" style="width: 100%;">
+          <mat-form-field appearance="fill" style="width: 100%;">
             <mat-label>Stare hasło</mat-label>
             <input matInput (change)="onChange($event)" id="OldPassword" type="password" value="{{ activeRowUserAccount?.OldPassword }}" >
           </mat-form-field>
           <br>
-          <mat-form-field appearance="legacy" style="width: 100%;">
+          <mat-form-field appearance="fill" style="width: 100%;">
             <mat-label>Nowe hasło</mat-label>
             <input matInput (change)="onChange($event)" id="NewPassword" type="password" value="{{ activeRowUserAccount?.NewPassword }}" >
           </mat-form-field>
-          <mat-form-field appearance="legacy" style="width: 100%;">
+          <mat-form-field appearance="fill" style="width: 100%;">
             <mat-label>Powtórz nowe hasło</mat-label>
             <input matInput (change)="onChange($event)" id="RepeatNewPassword" type="password" value="{{ activeRowUserAccount?.RepeatNewPassword }}" >
           </mat-form-field>
