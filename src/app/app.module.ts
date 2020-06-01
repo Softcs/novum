@@ -73,7 +73,8 @@ import { SitKancelariaComponent } from './containers/dictionaries/sit-kancelaria
 import { SitUserAccountComponent } from './containers/dictionaries/sit-user-account/sit-user-account.component';
 import { SitProcButtonComponent } from './components/controls/sit-proc-button/sit-proc-button.component';
 import { SitWhiteListVATComponent } from './containers/dictionaries/sit-white-list-vat/sit-white-list-vat.component';
-import { SitJPKVatComponent } from './containers/dictionaries/sit-jpk-vat/sit-jpk-vat.component'
+import { SitJPKVatComponent } from './containers/dictionaries/sit-jpk-vat/sit-jpk-vat.component';
+import { SitChangeCompanyComponent } from './containers/sit-change-company/sit-change-company.component'
 
 @NgModule({
     imports: [
@@ -148,7 +149,8 @@ import { SitJPKVatComponent } from './containers/dictionaries/sit-jpk-vat/sit-jp
         SitUserAccountComponent,
         SitProcButtonComponent,
         SitWhiteListVATComponent ,
-        SitJPKVatComponent
+        SitJPKVatComponent,
+        SitChangeCompanyComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },

@@ -16,6 +16,7 @@ import { SitRozrachunkiInsertGTComponent } from './containers/dictionaries/sit-r
 import { SitKancelariaComponent } from './containers/dictionaries/sit-kancelaria/';
 import { SitUserAccountComponent } from './containers/dictionaries/sit-user-account/';
 import { SitWhiteListVATComponent } from './containers/dictionaries/sit-white-list-vat/';
+import { SitChangeCompanyComponent } from './containers/sit-change-company'
 
 const routes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuard] },
@@ -33,6 +34,7 @@ const routes: Routes = [
     { path: 'sitUserAccount', component: SitUserAccountComponent, canActivate: [AuthGuard] },
     { path: 'sitWhiteListVat', component: SitWhiteListVATComponent, canActivate: [AuthGuard] },
     { path: 'sitJPKVAT', component: SitJPKVatComponent, canActivate: [AuthGuard] },
+    { path: 'sitChangeCompany', component: SitChangeCompanyComponent, canActivate: [AuthGuard] },
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }
