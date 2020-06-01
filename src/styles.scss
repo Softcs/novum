@@ -97,6 +97,8 @@ body {
 
 .sit-form {
   box-shadow: 2px 2px 25px -9px rgba(0,0,0,0.73);
+  border-radius: 5px;
+
 }
 .sit-form-header {
   background-color: $form-header-color;
@@ -105,10 +107,12 @@ body {
   color: white;
   padding: 8px;
   height: 40px;
+  border-radius: 5px 5px 0px 0px;
 }
 
 .sit-form-body {
   background-color: $form-body-color;
+  border-radius: 0px 0px 5px 5px;
   padding: 8px;
 
 }
