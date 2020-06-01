@@ -1,8 +1,21 @@
-<sit-dict-container ident="sitChangeCompany" #sitDictcontainer fxFlexFill fxLayout="column">
-  <sit-data-source-container ident="sitAppUserCompanies">
-    <ul>
-      <!-- <li *ngFor="let row of rowsAppUserCompanies">{{ row.CompanyIdent }}</li> -->
-    </ul>
-    <button (click)="test()">Test</button>
-  </sit-data-source-container>
+<sit-dict-container ident="sitChangeCompany" #sitDictcontainer (refreshAfter) ="refreshAfter($event)" fxFlexFill>
+  <div fxFlexFill fxLayoutAlign="center center" fxLayout="column">
+    <div class="sit-form" style="width: 500px; height: 440px;">
+      <div class="sit-form-header">Wybierz firmę</div>
+      <div ident="sitAppUserAccount" class="sit-form-body" style="height: 400px;">
+        <sit-data-source-container ident="sitAppUserCompanies">
+          <mat-nav-list>
+            <div *ngFor="let row of companies" fxLayout="column">
+              <div fxLayout="row">
+                <mat-list-item>
+                  <mat-icon matListIcon>corporate_fare</mat-icon>{{ row.CompanyDescription }}
+                </mat-list-item>
+              </div>
+              <mat-divider></mat-divider>
+            </div>
+          </mat-nav-list>
+        </sit-data-source-container>
+      </div>
+    </div>
+  </div>
 </sit-dict-container>

@@ -13,22 +13,24 @@ import { DataSourceResponseWrapper } from '@app/_models';
 export class SitChangeCompanyComponent implements OnInit {
   @ViewChild('sitDictcontainer') dictContainer: SitDictContainerComponent;
 
+  companies: any[];
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  get rowsAppUserCompanies() {
-    const dataSourceResponseWrapper: DataSourceResponseWrapper =
-      this.dictContainer.DataSourceManager.getDateSourceWrapper('sitAppUserCompanies');
-    return dataSourceResponseWrapper.rows;
+  refreshAfter(dataSourceManager) {
+    const dataSourceResponseWrapper: DataSourceResponseWrapper = dataSourceManager.getDateSourceWrapper("sitAppUserCompanies");
 
+    //this.companies.length = 0;
+    this.companies = dataSourceResponseWrapper.rows;
   }
 
   test() {
     const dataSourceResponseWrapper: DataSourceResponseWrapper =
       this.dictContainer.DataSourceManager.getDateSourceWrapper('sitAppUserCompanies');
-    console.log(dataSourceResponseWrapper.rows);
+    console.log(this.companies);
 
 
   }
