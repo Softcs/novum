@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { SitDataSourceContainerComponent } from '@app/components/sit-data-source-container';
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
 import { DataSourceResponseWrapper } from '@app/_models';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sit-change-company',
@@ -15,7 +15,9 @@ export class SitChangeCompanyComponent implements OnInit {
 
   companies: any[];
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
   }
@@ -30,6 +32,6 @@ export class SitChangeCompanyComponent implements OnInit {
   onClick(company) {
     console.log(company);
 
-
+    this.router.navigate(['/login']);
   }
 }

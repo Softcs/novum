@@ -1,16 +1,23 @@
 <div fxFlexFill fxLayout="row">
   <!-- <span style="color:#ff8f1c">NOVUM</span> -->
   <div style="display: flex; flex-direction: row; margin: 2px 2px 2px 0px; justify-content: center;">
-    <a mat-flat-button color="primary" routerLink="/" *ngIf="currentUser"><mat-icon aria-hidden="false" aria-label="Home">home</mat-icon></a>
+    <button mat-flat-button matTooltip="Strona główna" color="primary" routerLink="/" *ngIf="currentUser" style="width: 50px;">
+      <mat-icon aria-hidden="false" aria-label="Home">home</mat-icon>
+    </button>
+  </div>
+  <div style="display: flex; flex-direction: row; margin: 2px 2px 2px 0px; justify-content: center;">
+    <button mat-flat-button matTooltip="Wybierz firmę" color="primary" routerLink="/sitChangeCompany" *ngIf="currentUser">
+      <mat-icon aria-hidden="false" aria-label="Firma">corporate_fare</mat-icon>
+    </button>
   </div>
   <div style="display: flex; flex-direction: row; margin: 2px 2px 2px 0px; justify-content: center; width: 140px;">
     <img src="assets/seido_logo_orange.png" height="40">
   </div>
   <span class="fill-space"></span>
   <div style="display: flex; flex-direction: row; color: white; margin: 2px 2px 2px 0px; padding: 0px 0px 0px 0px;">
-    <span style="font-size: 14px; padding-right: 5px;"><B style="color: #C4C4C2">Login:</B><a style="text-decoration: none;" [routerLink]="['/sitUserAccount']"> {{ currentUser.username }}</a></span>
+    <span style="font-size: 14px; padding-right: 5px;"><B style="color: #C4C4C2">Login:</B><a matTooltip="Edytuj konto" style="text-decoration: none;" [routerLink]="['/sitUserAccount']"> {{ currentUser.username }}</a></span>
   </div>
   <div style="display: flex; flex-direction: row;margin: 2px 2px 2px 0px; justify-content: center;">
-      <a mat-flat-button color="primary" (click)="logout()" *ngIf="currentUser"><mat-icon aria-hidden="false" aria-label="Example user verified icon">power_settings_new</mat-icon></a>
+      <button mat-flat-button matTooltip="Wyloguj" color="primary" (click)="logout()" *ngIf="currentUser"><mat-icon aria-hidden="false" aria-label="Example user verified icon">power_settings_new</mat-icon></button>
   </div>
 </div>

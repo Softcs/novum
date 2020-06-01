@@ -33,6 +33,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 import { SitDataSourceContainerComponent } from './components/sit-data-source-container/sit-data-source-container.component';
@@ -98,6 +99,7 @@ import { SitChangeCompanyComponent } from './containers/sit-change-company/sit-c
         MatCardModule,
         MatGridListModule,
         MatTabsModule,
+        MatTooltipModule,
 
         FormsModule,
         LayoutModule,
