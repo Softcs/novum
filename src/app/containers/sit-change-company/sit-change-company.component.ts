@@ -27,10 +27,8 @@ export class SitChangeCompanyComponent implements OnInit {
     this.companies = dataSourceResponseWrapper.rows;
   }
 
-  test() {
-    const dataSourceResponseWrapper: DataSourceResponseWrapper =
-      this.dictContainer.DataSourceManager.getDateSourceWrapper('sitAppUserCompanies');
-    console.log(this.companies);
+  onClick(company) {
+    console.log(company);
 
 
   }
