@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { SitDataSourceContainerComponent } from '@app/components/sit-data-source-container';
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
-import { DataSourceResponseWrapper } from '@app/_models';
+import { DataSourceResponseWrapper, User } from '@app/_models';
 import { Router } from '@angular/router';
+import { GatewayService } from '@app/_services';
 
 @Component({
   selector: 'app-sit-change-company',
@@ -14,12 +15,16 @@ export class SitChangeCompanyComponent implements OnInit {
   @ViewChild('sitDictcontainer') dictContainer: SitDictContainerComponent;
 
   companies: any[];
-
   constructor(
-    private router: Router
-  ) { }
+    private router: Router,
+    private gatewayService: GatewayService
+  )
+  {
+
+  }
 
   ngOnInit(): void {
+    this.gatewayService.currentUserValue.connection = null;
   }
 
   refreshAfter(dataSourceManager) {
@@ -30,8 +35,8 @@ export class SitChangeCompanyComponent implements OnInit {
   }
 
   onClick(company) {
-    console.log(company);
-
+    this.gatewayService.currentUserValue.connection = company;
+    this.gatewayService.saveCurrentUser();
     this.router.navigate(['/login']);
   }
 }

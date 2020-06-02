@@ -41,6 +41,7 @@ export class GatewayService {
             return null;
         }
         let userO: User = JSON.parse( this.decV(user));
+        console.log("aaa", userO);
         return userO;
     }
     private get getStorage() {
@@ -91,6 +92,7 @@ export class GatewayService {
         user.password = password;
         user.username = username;
         user.token = null;
+        user.connection = null;
         this.currentUserSubject.next(user);
         const oprLogin: Operation = this.operationLogin();
         return oprLogin;

@@ -74,7 +74,8 @@ export class LoginComponent implements OnInit {
                         data = data[0];
                         if(!this.checkErrors(data)) {
                             this.saveToLocalStorage();
-                            this.router.navigate([this.returnUrl]);
+                            // this.router.navigate([this.returnUrl]);
+                            this.router.navigate(["/sitChangeCompany"]);
 
                         } else {
                             this.loading = false;
