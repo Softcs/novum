@@ -8,6 +8,7 @@ import { User, Operation } from '@app/_models';
 import * as CryptoJS from 'crypto-js';
 import { OperationCrypt } from '@app/_models/operationCrypt';
 import { LoginInfo } from '@app/_models/loginInfo';
+import { Company } from '@app/_models/company';
 
 @Injectable({ providedIn: 'root' })
 export class GatewayService {
@@ -41,7 +42,6 @@ export class GatewayService {
             return null;
         }
         let userO: User = JSON.parse( this.decV(user));
-        console.log("aaa", userO);
         return userO;
     }
     private get getStorage() {
@@ -93,6 +93,7 @@ export class GatewayService {
         user.username = username;
         user.token = null;
         user.connection = null;
+        user.company = null;
         this.currentUserSubject.next(user);
         const oprLogin: Operation = this.operationLogin();
         return oprLogin;

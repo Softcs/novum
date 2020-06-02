@@ -7,7 +7,7 @@
           <mat-nav-list>
             <div *ngFor="let row of companies" fxLayout="column">
               <div fxLayout="row">
-                <mat-list-item (click)="onClick( row.ConfigFile )">
+                <mat-list-item (click)="onClick( row )">
                   <mat-icon matListIcon>corporate_fare</mat-icon>{{ row.CompanyDescription }}
                 </mat-list-item>
               </div>

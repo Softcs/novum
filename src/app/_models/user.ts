@@ -1,4 +1,6 @@
-﻿export class User {
+﻿import { Company } from './company';
+
+export class User {
     id: number;
     username: string;
     password: string;
@@ -7,4 +9,5 @@
     authdata?: string;
     token?: string;
     connection?: string;
+    company: Company;
 }
