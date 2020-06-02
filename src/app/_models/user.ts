@@ -6,4 +6,5 @@
     lastName: string;
     authdata?: string;
     token?: string;
+    connection?: string;
 }

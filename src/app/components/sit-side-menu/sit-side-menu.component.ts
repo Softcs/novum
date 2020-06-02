@@ -66,8 +66,8 @@ export class SitSideMenuComponent implements OnInit {
   }
 
   refreshAfter(dataSourceManager) {
-    const dataSourceResponseWrapper: DataSourceResponseWrapper = dataSourceManager.getDateSourceWrapper("sitSideMenu");
-    const menu: NavItem [] = dataSourceResponseWrapper.rows[0].Menu;
+    const dataSourceResponseWrapper: DataSourceResponseWrapper = dataSourceManager?.getDateSourceWrapper("sitSideMenu");
+    const menu: NavItem[] = dataSourceResponseWrapper?.rows != null ? dataSourceResponseWrapper.rows[0]?.Menu : null;
 
     this.navItems.length = 0;
     this.navItems = menu;

@@ -119,7 +119,6 @@ export class DataSourceManager {
                     if (data.length == 1) {
                         const dataSourcesResponse = data[0].dataSourcesResponse;
                         this.PropagateErrors(dataSourceIdent, data[0]?.Errors);
-
                     }
                 },
                 error => {
@@ -180,8 +179,8 @@ export class DataSourceManager {
         if (ident == null) {
             return;
         }
-        const dataSource = this.dataSourcesWrapper.filter(item => item.ident.toLowerCase() === ident.toLowerCase())[0];
-        return dataSource;
+        const dataSources = this.dataSourcesWrapper.filter(item => item.ident.toLowerCase() === ident.toLowerCase());
+        return dataSources != null && dataSources.length > 0 ? dataSources[0] : null;
     }
     private setRefreshDataSource(newDataSource: any) {
         let oldDS = this.getDataSource(newDataSource.ident);

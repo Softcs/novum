@@ -135,6 +135,11 @@ export class GatewayService {
         opr.loginInfo.username = this.currentUserValue?.username;
         opr.loginInfo.password = this.currentUserValue?.password;
         opr.loginInfo.token = this.currentUserValue?.token;
+        // if (opr.oprType != 10 && this.currentUserValue != null) {
+        //     this.currentUserValue.connection = "publicat";
+        // }
+        opr.connection = this.currentUserValue?.connection;
+
         const listOfOprs = [];
         listOfOprs.push(opr);
         let data = JSON.stringify(listOfOprs);
