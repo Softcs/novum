@@ -35,7 +35,7 @@ export class GatewayService {
             user = localStorage.getItem('li');
             this.canUseLocalStorage = user != null;
         } else {
-            this.canUseLocalStorage = true;
+            this.canUseLocalStorage = false;
         }
 
         if(user == null) {
