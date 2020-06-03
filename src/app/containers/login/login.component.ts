@@ -1,9 +1,11 @@
-﻿import { Component, OnInit } from '@angular/core';
+﻿import { SitChangeCompanyComponent } from './../../containers/sit-change-company/sit-change-company.component';
+import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
 import { GatewayService } from '@app/_services';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 
 @Component({
   templateUrl: 'login.component.html',
@@ -21,7 +23,8 @@ export class LoginComponent implements OnInit {
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,
         private router: Router,
-        private gatewayService: GatewayService
+        private gatewayService: GatewayService,
+        public matDialog: MatDialog
     ) {
         // redirect to home if already logged in
         if (this.gatewayService.currentUserValue) {
@@ -75,7 +78,9 @@ export class LoginComponent implements OnInit {
                         if(!this.checkErrors(data)) {
                             this.saveToLocalStorage();
                             // this.router.navigate([this.returnUrl]);
-                            this.router.navigate(["/sitChangeCompany"]);
+                            // this.router.navigate(["/sitChangeCompany"]);
+                            this.openModalChangeCompany();
+                            this.router.navigate([this.returnUrl]);
 
                         } else {
                             this.loading = false;
@@ -89,5 +94,16 @@ export class LoginComponent implements OnInit {
                     this.error = error;
                     this.loading = false;
                 });
+    }
+
+    openModalChangeCompany() {
+      const dialogConfig = new MatDialogConfig();
+      dialogConfig.disableClose = true;
+      dialogConfig.id = "modal-component";
+      dialogConfig.hasBackdrop = true;
+      // dialogConfig.height = "440px";
+      dialogConfig.width = "500px";
+      // https://material.angular.io/components/dialog/overview
+      const modalDialog = this.matDialog.open(SitChangeCompanyComponent, dialogConfig);
     }
 }

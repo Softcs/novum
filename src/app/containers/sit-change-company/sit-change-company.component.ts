@@ -42,6 +42,7 @@ export class SitChangeCompanyComponent implements OnInit {
     this.gatewayService.saveCurrentUser();
     this.dialogRef.close();
     this.router.navigate(['/login']);
+    console.log(this.gatewayService.currentUserValue.connection = companyRow);
   }
 
   close() {
