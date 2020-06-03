@@ -1,5 +1,5 @@
 import { SitChangeCompanyComponent } from './../../containers/sit-change-company/sit-change-company.component';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 
 import { GatewayService } from '@app/_services';
@@ -10,12 +10,14 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Title } from '@angular/platform-browser';
 import { filter, map } from 'rxjs/operators';
 
+
 @Component({
   selector: 'sit-navbar',
   templateUrl: './sit-navbar.component.html',
   styleUrls: ['./sit-navbar.component.scss']
 })
 export class SitNavbarComponent implements OnInit {
+  @ViewChild('appDrawer') appDrawer: ElementRef;
   currentUser: User;
   caption: string;
   title = 'Novum'
@@ -65,6 +67,8 @@ export class SitNavbarComponent implements OnInit {
 
   openModalChangeCompany() {
     const dialogConfig = new MatDialogConfig();
+
+    this.navService.closeNav();
     // The user can't close the dialog by clicking outside its body
     dialogConfig.disableClose = false;
     dialogConfig.id = "modal-component";
@@ -73,5 +77,9 @@ export class SitNavbarComponent implements OnInit {
     dialogConfig.width = "500px";
     // https://material.angular.io/components/dialog/overview
     const modalDialog = this.matDialog.open(SitChangeCompanyComponent, dialogConfig);
+  }
+
+  closeNav() {
+    this.navService.closeNav();
   }
 }

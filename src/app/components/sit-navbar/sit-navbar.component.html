@@ -1,7 +1,7 @@
 <div fxFlexFill fxLayout="row">
   <!-- <span style="color:#ff8f1c">NOVUM</span> -->
   <div style="display: flex; flex-direction: row; margin: 2px 2px 2px 0px; justify-content: center;">
-    <button mat-flat-button matTooltip="Strona główna" color="primary" routerLink="/" *ngIf="currentUser" style="width: 50px;">
+    <button mat-flat-button matTooltip="Strona główna" color="primary"  routerLink="/" *ngIf="currentUser" style="width: 50px;">
       <mat-icon aria-hidden="false" aria-label="Home">home</mat-icon>
     </button>
   </div>
@@ -20,7 +20,7 @@
   </div>
   <div style="display: flex; flex-direction: row; color: white; margin: 2px 2px 2px 0px; padding: 3px 0px 0px 0px;">
     <span style="font-size: 14px; padding-right: 5px;"><B style="color: #C4C4C2">Login:</B>
-      <a matTooltip="Edytuj konto" style="text-decoration: none;" [routerLink]="['/sitUserAccount']"> {{ currentUser.username }}</a>
+      <a matTooltip="Edytuj konto" style="text-decoration: none;" (click)="closeNav()" [routerLink]="['/sitUserAccount']"> {{ currentUser.username }}</a>
     </span>
   </div>
   <div style="display: flex; flex-direction: row;margin: 2px 2px 2px 0px; justify-content: center;">

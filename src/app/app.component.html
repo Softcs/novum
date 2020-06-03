@@ -1,5 +1,5 @@
 ﻿<div class="container-cols">
-  <mat-toolbar *ngIf="currentUser" >
+  <mat-toolbar *ngIf="currentUser" class="toolbarTopNav">
     <mat-toolbar-row color="primary">
       <div style="display: flex; flex-direction: row; background-color: #5b5e62; color: white;margin: 2px 2px 2px 0px; justify-content: center;">
         <button mat-flat-button matTooltip="Menu" color="primary" (click)="appDrawer.toggle()" *ngIf="currentUser"><mat-icon>menu</mat-icon></button>
@@ -16,4 +16,7 @@
       <router-outlet></router-outlet>
     </div>
   </mat-drawer-container>
+  <!-- <mat-toolbar class="toolbarBottomNav">
+    <span style="color: black; font-size: 10px;">Powered by Seido IT Sp. z o.o.</span>
+  </mat-toolbar> -->
 </div>
