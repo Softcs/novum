@@ -97,22 +97,23 @@ body {
 
 .sit-form {
   box-shadow: 2px 2px 25px -9px rgba(0,0,0,0.73);
-  border-radius: 5px;
+  border-radius: 3px;
 
 }
 .sit-form-header {
   background-color: $form-header-color;
   font-size: 16px;
   font-weight: bold;
-  color: white;
+  color: #47494d;
   padding: 8px;
   height: 40px;
-  border-radius: 5px 5px 0px 0px;
+  border-radius: 3px 3px 0px 0px;
+
 }
 
 .sit-form-body {
   background-color: $form-body-color;
-  border-radius: 0px 0px 5px 5px;
+  border-radius: 0px 0px 3px 3px;
   padding: 8px;
 
 }
@@ -147,6 +148,11 @@ mat-toolbar-row,mat-toolbar-single-row{
   width: 100%;
   min-width: 100%;
   padding: 0px 2px 0px 2px !important;
+}
+
+.mat-dialog-container {
+  margin: 0px !important;
+  padding: 0px !important;
 }
 
 .mat-tab-body-wrapper{

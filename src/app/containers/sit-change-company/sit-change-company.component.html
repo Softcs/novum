@@ -1,7 +1,10 @@
 <sit-dict-container ident="sitChangeCompany" #sitDictcontainer (refreshAfter) ="refreshAfter($event)" fxFlexFill>
   <div fxFlexFill fxLayoutAlign="center center" fxLayout="column">
-    <div class="sit-form" style="width: 500px; height: 440px;">
-      <div class="sit-form-header">Wybierz firmę</div>
+    <div class="sit-form" style="width: 100%; height: 440px;">
+      <div class="sit-form-header">
+        <div>Wybierz firmę</div>
+        <div fxFlex fxLayoutAlign="end start"><mat-icon class="gray-icon" aria-hidden="false" aria-label="Close" (click)="close()">close</mat-icon></div>
+      </div>
       <div ident="sitAppUserAccount" class="sit-form-body" style="height: 400px;">
         <sit-data-source-container ident="sitAppUserCompanies">
           <mat-nav-list>

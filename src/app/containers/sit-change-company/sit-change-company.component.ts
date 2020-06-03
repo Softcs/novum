@@ -5,7 +5,7 @@ import { DataSourceResponseWrapper, User } from '@app/_models';
 import { Router } from '@angular/router';
 import { GatewayService } from '@app/_services';
 import { Company } from '@app/_models/company';
-
+import { MatDialogRef } from '@angular/material/dialog';
 @Component({
   selector: 'app-sit-change-company',
   templateUrl: './sit-change-company.component.html',
@@ -18,7 +18,8 @@ export class SitChangeCompanyComponent implements OnInit {
   companies: any[];
   constructor(
     private router: Router,
-    private gatewayService: GatewayService
+    private gatewayService: GatewayService,
+    public dialogRef: MatDialogRef<SitChangeCompanyComponent>
   )
   {
 
@@ -39,6 +40,12 @@ export class SitChangeCompanyComponent implements OnInit {
     this.gatewayService.currentUserValue.company.companyIdent = companyRow.CompanyIdent;
     this.gatewayService.currentUserValue.company.companyDescription = companyRow.CompanyDescription;
     this.gatewayService.saveCurrentUser();
+    this.dialogRef.close();
     this.router.navigate(['/login']);
   }
+
+  close() {
+    this.dialogRef.close();
+  }
+
 }
