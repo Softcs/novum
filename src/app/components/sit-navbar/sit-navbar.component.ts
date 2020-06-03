@@ -7,6 +7,7 @@ import { User } from '@app/_models';
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
 import { NavService } from '@app/_services/nav.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'sit-navbar',
@@ -21,7 +22,7 @@ export class SitNavbarComponent implements OnInit {
     private router: Router,
     private gatewayService: GatewayService,
     public navService: NavService,
-    public matDialog: MatDialog
+    public matDialog: MatDialog,
     //private dictContainerComponent: DictContainerComponent
   ) {
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);

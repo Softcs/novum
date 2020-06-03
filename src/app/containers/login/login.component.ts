@@ -6,6 +6,7 @@ import { first } from 'rxjs/operators';
 
 import { GatewayService } from '@app/_services';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   templateUrl: 'login.component.html',
@@ -24,8 +25,11 @@ export class LoginComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router,
         private gatewayService: GatewayService,
-        public matDialog: MatDialog
+        private titleService: Title,
+        public matDialog: MatDialog,
+
     ) {
+        this.titleService.setTitle( 'Novum - Logowanie' )
         // redirect to home if already logged in
         if (this.gatewayService.currentUserValue) {
             this.router.navigate(['/']);

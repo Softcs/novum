@@ -1,5 +1,6 @@
 ﻿import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
+
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
@@ -83,6 +84,7 @@ import { SitChangeCompanyComponent } from './containers/sit-change-company/sit-c
         ReactiveFormsModule,
         HttpClientModule,
         appRoutingModule,
+
         MatSliderModule,
         MatButtonModule,
         MatIconModule,
@@ -161,7 +163,8 @@ import { SitChangeCompanyComponent } from './containers/sit-change-company/sit-c
 
         // provider used to create fake backend
         fakeBackendProvider,
-        NavService
+        NavService,
+        Title
     ],
     bootstrap: [AppComponent]
 })
