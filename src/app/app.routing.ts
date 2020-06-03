@@ -19,21 +19,21 @@ import { SitWhiteListVATComponent } from './containers/dictionaries/sit-white-li
 import { SitChangeCompanyComponent } from './containers/sit-change-company';
 
 const routes: Routes = [
-    { path: '', component: HomeComponent, canActivate: [AuthGuard] },
-    { path: 'login', component: LoginComponent },
+    { path: '', component: HomeComponent, canActivate: [AuthGuard], data: {title: 'Panel główny'} },
+    { path: 'login', component: LoginComponent, data: {title: 'Logowanie'} },
     { path: 'material-test', component: MaterialTestComponent, canActivate: [AuthGuard]},
     { path: 'test', component: testDict, canActivate: [AuthGuard] },
     { path: 'ag-grid-test', component: AgGridTestComponent, canActivate: [AuthGuard]},
     { path: 'prime-ng-test', component: PrimeNgTestComponent, canActivate: [AuthGuard]},
     { path: 'ngx-datatable-test', component: NgxDatatableTestComponent, canActivate: [AuthGuard]},
-    { path: 'sitMenu', component: SitMenuComponent, canActivate: [AuthGuard]},
-    { path: 'sitRailConfigurations', component: SitRailConfigurationsComponent, canActivate: [AuthGuard]},
-    { path: 'sitRozrachunkiInsertGT', component: SitRozrachunkiInsertGTComponent, canActivate: [AuthGuard] },
+    { path: 'sitMenu', component: SitMenuComponent, canActivate: [AuthGuard], data: {title: 'Definicja Menu'}},
+    { path: 'sitRailConfigurations', component: SitRailConfigurationsComponent, canActivate: [AuthGuard], data: {title: 'Konfiguracja Rail'}},
+    { path: 'sitRozrachunkiInsertGT', component: SitRozrachunkiInsertGTComponent, canActivate: [AuthGuard], data: {title: 'Rozrachunki z InsertGT'} },
     { path: 'ngx-extended-pdf-viewer-test', component: NgxPdfTestComponent, canActivate: [AuthGuard] },
-    { path: 'sitKancelaria', component: SitKancelariaComponent, canActivate: [AuthGuard] },
-    { path: 'sitUserAccount', component: SitUserAccountComponent, canActivate: [AuthGuard] },
-    { path: 'sitWhiteListVat', component: SitWhiteListVATComponent, canActivate: [AuthGuard] },
-    { path: 'sitJPKVAT', component: SitJPKVatComponent, canActivate: [AuthGuard] },
+    { path: 'sitKancelaria', component: SitKancelariaComponent, canActivate: [AuthGuard], data: {title: 'Kancelaria'} },
+    { path: 'sitUserAccount', component: SitUserAccountComponent, canActivate: [AuthGuard], data: {title: 'Konto'} },
+    { path: 'sitWhiteListVat', component: SitWhiteListVATComponent, canActivate: [AuthGuard], data: {title: 'Biała lista VAT'} },
+    { path: 'sitJPKVAT', component: SitJPKVatComponent, canActivate: [AuthGuard], data: {title: 'JPK VAT'} },
     { path: 'sitChangeCompany', component: SitChangeCompanyComponent, canActivate: [AuthGuard] },
 
     // otherwise redirect to home

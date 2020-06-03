@@ -1,6 +1,6 @@
 import { SitChangeCompanyComponent } from './../../containers/sit-change-company/sit-change-company.component';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 
 import { GatewayService } from '@app/_services';
 import { User } from '@app/_models';
@@ -8,6 +8,7 @@ import { SitDictContainerComponent } from '@app/components/sit-dict-container';
 import { NavService } from '@app/_services/nav.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Title } from '@angular/platform-browser';
+import { filter, map } from 'rxjs/operators';
 
 @Component({
   selector: 'sit-navbar',
@@ -17,16 +18,20 @@ import { Title } from '@angular/platform-browser';
 export class SitNavbarComponent implements OnInit {
   currentUser: User;
   caption: string;
+  title = 'Novum'
 
   constructor(
     private router: Router,
     private gatewayService: GatewayService,
+    private titleService: Title,
+    private activatedRoute: ActivatedRoute,
     public navService: NavService,
     public matDialog: MatDialog,
     //private dictContainerComponent: DictContainerComponent
   ) {
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
     //this.dictContainerComponent.subscribe(x => this.caption = x);
+
   }
 
   logout() {
@@ -36,7 +41,27 @@ export class SitNavbarComponent implements OnInit {
   }
 
   ngOnInit() {
+    const appTitle = this.titleService.getTitle();
+    this.router
+      .events.pipe(
+        filter(event => event instanceof NavigationEnd),
+        map(() => {
+          let child = this.activatedRoute.firstChild;
+          while (child.firstChild) {
+            child = child.firstChild;
+          }
+          if (child.snapshot.data['title']) {
+            return child.snapshot.data['title'];
+          }
+          return appTitle;
+        })
+      ).subscribe((ttl: string) => {
+        this.titleService.setTitle(ttl);
+        this.title = this.titleService.getTitle();
+      });
+
   }
+
 
   openModalChangeCompany() {
     const dialogConfig = new MatDialogConfig();

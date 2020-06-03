@@ -7,10 +7,14 @@
   </div>
   <div style="display: flex; flex-direction: row; margin: 2px 2px 2px 0px; justify-content: center;">
     <button mat-flat-button matTooltip="Wybierz firmę" color="primary" (click)="openModalChangeCompany()"  *ngIf="currentUser">
-      <mat-icon aria-hidden="false" aria-label="Firma">corporate_fare</mat-icon><b> {{ currentUser.company?.companyDescription }}</b>
+      <mat-icon aria-hidden="false" aria-label="Firma">corporate_fare</mat-icon> {{ currentUser.company?.companyDescription }}
     </button>
   </div>
-  <span class="fill-space"></span>
+  <div class="fill-space">
+    <div fxFlex style="color: white; margin: 2px 2px 2px 0px; padding: 3px 0px 0px 0px; text-align: center;">
+      {{ title }}
+    </div>
+  </div>
   <div style="display: flex; flex-direction: row; margin: 2px 2px 2px 0px; justify-content: center; width: 140px;">
     <img src="assets/seido_logo_orange.png" height="40">
   </div>
