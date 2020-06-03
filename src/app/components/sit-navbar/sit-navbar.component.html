@@ -7,13 +7,8 @@
   </div>
   <div style="display: flex; flex-direction: row; margin: 2px 2px 2px 0px; justify-content: center;">
     <button mat-flat-button matTooltip="Wybierz firmę" color="primary" (click)="openModalChangeCompany()"  *ngIf="currentUser">
-      <mat-icon aria-hidden="false" aria-label="Firma">corporate_fare</mat-icon>
+      <mat-icon aria-hidden="false" aria-label="Firma">corporate_fare</mat-icon><b> {{ currentUser.company?.companyDescription }}</b>
     </button>
-  </div>
-  <div style="display: flex; flex-direction: row; color: white; margin: 2px 2px 2px 0px; padding: 5px 0px 0px 0px;">
-    <span style="font-size: 16px; padding-right: 5px;">
-      <b>{{ currentUser.company?.companyDescription }}</b>
-    </span>
   </div>
   <span class="fill-space"></span>
   <div style="display: flex; flex-direction: row; margin: 2px 2px 2px 0px; justify-content: center; width: 140px;">
