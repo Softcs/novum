@@ -16,7 +16,7 @@ export class DataSourceManager {
         this.dataSourcesWrapper = [];
     }
     private prapareDataSource4Request(dataSourceDefinition: any, dataSourcesRequest: any[]) {
-        if (dataSourceDefinition == null || dataSourceDefinition.children == null || dataSourceDefinition.children.length == 0) {
+        if (dataSourceDefinition == null || dataSourceDefinition.children == null || dataSourceDefinition.children.length === 0) {
             return;
         }
         dataSourceDefinition.children.forEach(dataSource => {
@@ -60,16 +60,40 @@ export class DataSourceManager {
         };
         return obj;
     }
-
-    public RefreshChildren(dataSourceResponseWrapper: DataSourceResponseWrapper) {
-        const dataSourceDefinition = this.dictInfo.FindDataSource(dataSourceResponseWrapper.ident);
-        if (dataSourceDefinition.children == null || dataSourceDefinition.children.length == 0) {
+    public Refresh(dataSourceIdents: string[]) {
+        if (dataSourceIdents == null || dataSourceIdents.length === 0 ) {
             return;
         }
-        let dataSourcesRequest: any[] = [];
 
-        let obj = this.getObjectForDataSourceRequest(dataSourceResponseWrapper, false);
+        const dataSourcesRequest: any[] = [];
+        dataSourceIdents.forEach(ident => {
+            const wrapper = this.getDateSourceWrapper(ident);
+            const dataSourceDefinition = this.dictInfo.FindDataSource(ident);
+            if(wrapper == null) {
+                return;
+            }
+            const obj = this.getObjectForDataSourceRequest(wrapper, true);
+            dataSourcesRequest.push(obj);
+            this.prapareDataSource4Request(dataSourceDefinition, dataSourcesRequest);
+        });
 
+        dataSourcesRequest.forEach(dsToRefresh => {
+            if (!dsToRefresh.refresh) {
+                return;
+            }
+            const dsDefItem = this.dictInfo.FindDataSource(dsToRefresh.ident);
+            this.prapareDataSource4RequestParent(dsDefItem, dataSourcesRequest);
+        });
+
+        this.RefreshInternall(dataSourcesRequest);
+    }
+    public RefreshChildren(dataSourceResponseWrapper: DataSourceResponseWrapper) {
+        const dataSourceDefinition = this.dictInfo.FindDataSource(dataSourceResponseWrapper.ident);
+        if (dataSourceDefinition.children == null || dataSourceDefinition.children.length === 0) {
+            return;
+        }
+        const dataSourcesRequest: any[] = [];
+        const obj = this.getObjectForDataSourceRequest(dataSourceResponseWrapper, false);
         dataSourcesRequest.push(obj);
 
         this.prapareDataSource4Request(dataSourceDefinition, dataSourcesRequest);
@@ -77,9 +101,13 @@ export class DataSourceManager {
             if (!dsToRefresh.refresh) {
                 return;
             }
-             const dsDefItem = this.dictInfo.FindDataSource(dsToRefresh.ident);
-             this.prapareDataSource4RequestParent(dsDefItem, dataSourcesRequest);
+            const dsDefItem = this.dictInfo.FindDataSource(dsToRefresh.ident);
+            this.prapareDataSource4RequestParent(dsDefItem, dataSourcesRequest);
          });
+        this.RefreshInternall(dataSourcesRequest);
+    }
+
+    private RefreshInternall(dataSourcesRequest: any[]) {
         const opr: Operation = this.gatewayService.operationRefreshDataSources(this.dictInfo.ident,
             dataSourcesRequest);
 
@@ -87,16 +115,36 @@ export class DataSourceManager {
             .pipe(first())
             .subscribe(
                 data => {
-                    if(data.length == 1) {
+                    if (data.length === 1) {
                         const dataSourcesResponse = data[0].dataSourcesResponse;
                         this.setRefreshDataSources(dataSourcesResponse);
-                        let dataSetToReload = dataSourcesResponse?.map(d => d.ident);
+                        const dataSetToReload = dataSourcesResponse?.map(d => d.ident);
                         this.PropagateDataSources(dataSetToReload);
                     }
                 },
                 error => {
                     console.error("error", error);
                 });
+    }
+    public ExecuteActionAfter(actionIdent: string, dataSourceIdent: string) {
+        const actionDefinition = this.dictInfo.FindActionDefinition(actionIdent, dataSourceIdent);
+        if (actionDefinition != null) {
+            let ds2RefreshIdents = null;
+            if (actionDefinition.dataSources2Refresh != null) {
+                ds2RefreshIdents = actionDefinition.dataSources2Refresh.map(item => item.ident.toLowerCase());
+            }
+
+            if (actionDefinition.refreshAfter) {
+                ds2RefreshIdents = ds2RefreshIdents ?? [];
+                if (ds2RefreshIdents.indexOf(dataSourceIdent.toLowerCase()) === -1) {
+                    ds2RefreshIdents.push(dataSourceIdent);
+                }
+            }
+
+            if (ds2RefreshIdents != null && ds2RefreshIdents.length > 0) {
+                this.Refresh(ds2RefreshIdents);
+            }
+        }
     }
 
     public ExecuteAction(actionIdent: string, dataSourceIdent: string) {
@@ -119,6 +167,7 @@ export class DataSourceManager {
                     if (data.length == 1) {
                         const dataSourcesResponse = data[0].dataSourcesResponse;
                         this.PropagateErrors(dataSourceIdent, data[0]?.Errors);
+                        this.ExecuteActionAfter(actionIdent, dataSourceIdent);
                     }
                 },
                 error => {

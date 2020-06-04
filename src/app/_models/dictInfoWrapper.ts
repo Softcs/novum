@@ -3,7 +3,18 @@ export class DictInfoWrapper {
 
     }
     public FindDataSource(ident: string): any {
-        return this.dictInfo.dataSources.filter(item => item.ident === ident)[0];
+        if(!ident) {
+            return null;
+        }
+        return this.dictInfo.dataSources.filter(item => item.ident.toLowerCase() === ident.toLowerCase())[0];
+    }
+    public FindActionDefinition(actionIdent: string, dataSourceIdent: string) {
+        const dataSource = this.FindDataSource(dataSourceIdent);
+
+        if (dataSource == null || dataSource.actions == null) {
+            return null;
+        }
+        return dataSource.actions.filter(item => item.ident === actionIdent)[0];
     }
     get caption() {
         return this.dictInfo.caption;
