@@ -77,6 +77,7 @@ import { SitProcButtonComponent } from './components/controls/sit-proc-button/si
 import { SitWhiteListVATComponent } from './containers/dictionaries/sit-white-list-vat/sit-white-list-vat.component';
 import { SitJPKVatComponent } from './containers/dictionaries/sit-jpk-vat/sit-jpk-vat.component';
 import { SitChangeCompanyComponent } from './containers/sit-change-company/sit-change-company.component';
+import { SitProjectsPubComponent } from './containers/dictionaries/sit-projects-pub/sit-projects-pub.component'
 
 @NgModule({
     imports: [
@@ -155,7 +156,8 @@ import { SitChangeCompanyComponent } from './containers/sit-change-company/sit-c
         SitProcButtonComponent,
         SitWhiteListVATComponent ,
         SitJPKVatComponent,
-        SitChangeCompanyComponent
+        SitChangeCompanyComponent,
+        SitProjectsPubComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
