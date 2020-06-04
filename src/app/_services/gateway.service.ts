@@ -170,8 +170,10 @@ export class GatewayService {
                 }
                 if (railResponse.length > 0 ) {
                     const resData = railResponse[0];
-                    this.currentUserValue.token = resData.token;
-                    if (resData.companyConfig && this.currentUserValue.connection == null) {
+                    if (this.currentUserValue != null) {
+                        this.currentUserValue.token = resData.token;
+                    }
+                    if (this.currentUserValue != null && resData.companyConfig && this.currentUserValue.connection == null) {
                         this.currentUserValue.company = new Company(
                                 resData.companyConfig.companyIdent,
                                 resData.companyConfig.companyDescription);
