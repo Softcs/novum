@@ -138,9 +138,6 @@ export class GatewayService {
         opr.loginInfo.username = this.currentUserValue?.username;
         opr.loginInfo.password = this.currentUserValue?.password;
         opr.loginInfo.token = this.currentUserValue?.token;
-        // if (opr.oprType != 10 && this.currentUserValue != null) {
-        //     this.currentUserValue.connection = "publicat";
-        // }
         opr.connection = this.currentUserValue?.connection;
 
         const listOfOprs = [];
@@ -171,9 +168,16 @@ export class GatewayService {
                     }
 
                 }
-                if (railResponse.length >0 ) {
+                if (railResponse.length > 0 ) {
                     const resData = railResponse[0];
                     this.currentUserValue.token = resData.token;
+                    if (resData.companyConfig && this.currentUserValue.connection == null) {
+                        this.currentUserValue.company = new Company(
+                                resData.companyConfig.companyIdent,
+                                resData.companyConfig.companyDescription);
+                        this.currentUserValue.connection = resData.companyConfig.configFile;
+                    }
+
                     if (resData.forceLogout){
                         this.removeCurrentUser();
                     }
