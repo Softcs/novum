@@ -4,7 +4,7 @@
       <div fxLayout="column" fxFill fxLayoutGap="5px">
         <div fxLayout="row" fxFlex="220px" fxLayoutGap="5px">
           <div class="content" fxFlex="50%">
-              <div class="data-table">
+              <div class="data-table" style="flex: 1 1 auto;">
                 <sit-data-source-container ident="sitJPKVATZakupSum">
                   <ngx-datatable #sitJPKVATZakupSum #sitSetDataSource
                     class="material striped"
@@ -329,6 +329,12 @@
                 <sit-proc-button #sitControl actionIdent="sitProcGetJPKData" color="primary" caption="Pobierz"></sit-proc-button>
               </div>
               </sit-data-source-container>
+              <div style="flex: 0 1 auto;">
+                <p></p>
+                <button mat-flat-button matTooltip="Odśwież" color="primary">
+                  <mat-icon aria-hidden="false" aria-label="Firma">refresh</mat-icon> Odśwież
+                </button>
+              </div>
             </div>
           </div>
         </div>
