@@ -6,6 +6,7 @@ import { first } from 'rxjs/operators';
 
 import { GatewayService } from '@app/_services';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { calcPossibleSecurityContexts } from '@angular/compiler/src/template_parser/binding_parser';
 
 
 @Component({
@@ -79,10 +80,7 @@ export class LoginComponent implements OnInit {
                         data = data[0];
                         if(!this.checkErrors(data)) {
                             this.saveToLocalStorage();
-                            // this.router.navigate([this.returnUrl]);
-                            // this.router.navigate(["/sitChangeCompany"]);
                             this.router.navigate([this.returnUrl]);
-
                         } else {
                             this.loading = false;
                         }
