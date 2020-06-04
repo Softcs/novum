@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
             return false;
         }
 
-        this.error = data.Errors[0].Message;
+        this.error = data.Errors[0].message;
         return true;
     }
 
