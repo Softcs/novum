@@ -81,7 +81,6 @@ export class LoginComponent implements OnInit {
                             this.saveToLocalStorage();
                             // this.router.navigate([this.returnUrl]);
                             // this.router.navigate(["/sitChangeCompany"]);
-                            this.openModalChangeCompany();
                             this.router.navigate([this.returnUrl]);
 
                         } else {
@@ -98,14 +97,14 @@ export class LoginComponent implements OnInit {
                 });
     }
 
-    openModalChangeCompany() {
-      const dialogConfig = new MatDialogConfig();
-      dialogConfig.disableClose = true;
-      dialogConfig.id = "modal-component";
-      dialogConfig.hasBackdrop = true;
-      // dialogConfig.height = "440px";
-      dialogConfig.width = "500px";
-      // https://material.angular.io/components/dialog/overview
-      const modalDialog = this.matDialog.open(SitChangeCompanyComponent, dialogConfig);
-    }
+    // openModalChangeCompany() {
+    //   const dialogConfig = new MatDialogConfig();
+    //   dialogConfig.disableClose = true;
+    //   dialogConfig.id = "modal-component";
+    //   dialogConfig.hasBackdrop = true;
+    //   // dialogConfig.height = "440px";
+    //   dialogConfig.width = "500px";
+    //   // https://material.angular.io/components/dialog/overview
+    //   const modalDialog = this.matDialog.open(SitChangeCompanyComponent, dialogConfig);
+    // }
 }
