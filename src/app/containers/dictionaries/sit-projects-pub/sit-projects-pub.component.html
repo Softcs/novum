@@ -1,1 +1,75 @@
-<p>sit-projects-pub works!</p>
+<sit-dict-container ident="sitProjectsPub"  #sitDictcontainer fxFlexFill>
+  <div fxLayout="row" fxFlexFill fxLayoutGap="5px">
+    <div fxLayout="column" fxFlex="30%" class="content">
+      <sit-data-source-container ident="sitFilterProjectsPub" >
+        <span>
+          <sit-data-input #sitControl field="searchProjectsPub" label="Filtruj projekty"></sit-data-input>
+        </span>
+      </sit-data-source-container>
+      <div class="data-table">
+        <sit-data-source-container  ident="sitProjectsPub" (activeRowChanged)="activeRowProjectsPubChanged($event)">
+          <ngx-datatable #sitProjectsPub #sitSetDataSource
+          class="material striped"
+          [columnMode]="ColumnMode.force"
+
+          [scrollbarV] = "false"
+          [limit]="14"
+          [selected]="sitProjectsPubSelected"
+          [selectionType]="SelectionType.single"
+          [selectAllRowsOnPage]="false"
+          [displayCheck]="displayCheck"
+          (activate)="onActivateProjectsPub($event)"
+          [rowHeight]="auto"
+          [footerHeight]="55"
+          >
+            <!-- <ngx-datatable-column prop="sitMenuId" name="Id" [canAutoResize]="false" [width]="50">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                <div style="text-align: right;">
+                  {{value}}
+                </div>
+              </ng-template>
+            </ngx-datatable-column> -->
+            <ngx-datatable-column prop="ProjectIdent" name="Projekt">
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                <div fxLayout="column">
+                  <div fxLayout="row">
+                    <div style="width: 200px;font-weight: bold;">{{row.ProjectIdent}}</div>
+                    <div>ISBN: {{row.ISBN}}</div>
+                  </div>
+                  <div style="font-size: 16px;word-wrap: break-all;">{{row.ProjectName}}</div>
+                </div>
+              </ng-template>
+            </ngx-datatable-column>
+            <!-- <ngx-datatable-column prop="ProjectName" name="Nazwa"></ngx-datatable-column>
+            <ngx-datatable-column prop="ISBN" name="ISBN"></ngx-datatable-column> -->
+
+          </ngx-datatable>
+
+        </sit-data-source-container>
+      </div>
+    </div>
+    <div fxLayout="column" fxFlex="70%" class="content">
+      <p><img src="{{Link}}"></p>
+      <p>{{ activeRowProjectsPub?.ProjectIdent }}</p>
+      <p>{{ activeRowProjectsPub?.ProjectName }}</p>
+      <p>{{ activeRowProjectsPub?.ProjectDescription }}</p>
+      <p>{{ activeRowProjectsPub?.ISBN }}</p>
+      <p>{{ activeRowProjectsPub?.EAN }}</p>
+      <p>{{ activeRowProjectsPub?.ReleaseDatePlan }}</p>
+      <p>{{ activeRowProjectsPub?.ReleaseDateAct }}</p>
+      <p>{{ activeRowProjectsPub?.MatDelivDate }}</p>
+      <p>{{ activeRowProjectsPub?.OzalidDelivDate }}</p>
+      <p>{{ activeRowProjectsPub?.PDFOrdDate }}</p>
+      <p>{{ activeRowProjectsPub?.PremiereDate }}</p>
+      <p>{{ activeRowProjectsPub?.ProjectStatus }}</p>
+      <p>{{Link}}</p>
+
+
+
+
+
+
+
+    </div>
+  </div>
+</sit-dict-container>
