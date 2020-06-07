@@ -2,9 +2,9 @@
   <div fxLayout="row" fxFlexFill fxLayoutGap="5px">
     <div fxLayout="column" fxFlex="30%" class="content">
       <sit-data-source-container ident="sitFilterProjectsPub" >
-        <span>
-          <sit-data-input #sitControl field="searchProjectsPub" label="Filtruj projekty"></sit-data-input>
-        </span>
+        <div style="width: 100%;">
+          <sit-data-input #sitControl field="searchProjectsPub" label="Filtruj projekty" style="width: 100%;"></sit-data-input>
+        </div>
       </sit-data-source-container>
       <div class="data-table">
         <sit-data-source-container  ident="sitProjectsPub" (activeRowChanged)="activeRowProjectsPubChanged($event)">
@@ -17,7 +17,6 @@
           [selected]="sitProjectsPubSelected"
           [selectionType]="SelectionType.single"
           [selectAllRowsOnPage]="false"
-          [displayCheck]="displayCheck"
           (activate)="onActivateProjectsPub($event)"
           [rowHeight]="auto"
           [footerHeight]="55"
@@ -29,14 +28,14 @@
                 </div>
               </ng-template>
             </ngx-datatable-column> -->
-            <ngx-datatable-column prop="ProjectIdent" name="Projekt">
+            <ngx-datatable-column prop="ProjectName" name="Projekt">
               <ng-template let-row="row" ngx-datatable-cell-template>
                 <div fxLayout="column">
+                  <div style="font-size: 16px;font-weight:500; text-overflow: ellipsis;overflow: hidden;">{{row.ProjectName}}</div>
                   <div fxLayout="row">
-                    <div style="width: 200px;font-weight: bold;">{{row.ProjectIdent}}</div>
+                    <div style="width: 200px;">{{row.ProjectIdent}}</div>
                     <div>ISBN: {{row.ISBN}}</div>
                   </div>
-                  <div style="font-size: 16px;word-wrap: break-all;">{{row.ProjectName}}</div>
                 </div>
               </ng-template>
             </ngx-datatable-column>
@@ -48,27 +47,36 @@
         </sit-data-source-container>
       </div>
     </div>
-    <div fxLayout="column" fxFlex="70%" class="content">
-      <p><img src="{{Link}}"></p>
-      <p>{{ activeRowProjectsPub?.ProjectIdent }}</p>
-      <p>{{ activeRowProjectsPub?.ProjectName }}</p>
-      <p>{{ activeRowProjectsPub?.ProjectDescription }}</p>
-      <p>{{ activeRowProjectsPub?.ISBN }}</p>
-      <p>{{ activeRowProjectsPub?.EAN }}</p>
-      <p>{{ activeRowProjectsPub?.ReleaseDatePlan }}</p>
-      <p>{{ activeRowProjectsPub?.ReleaseDateAct }}</p>
-      <p>{{ activeRowProjectsPub?.MatDelivDate }}</p>
-      <p>{{ activeRowProjectsPub?.OzalidDelivDate }}</p>
-      <p>{{ activeRowProjectsPub?.PDFOrdDate }}</p>
-      <p>{{ activeRowProjectsPub?.PremiereDate }}</p>
-      <p>{{ activeRowProjectsPub?.ProjectStatus }}</p>
-      <p>{{Link}}</p>
+    <div fxLayout="column" fxFlex="70%" class="content" style="padding: 10px;overflow: auto">
+      <div fxLayout="row">
+        <div class="cover"><img src="{{Link}}"></div>
+        <div fxFlex fxLayout="column" style="padding-left: 20px;">
+          <div style="font-size: 18px;font-weight: bold; height: 60px; width:100%;">{{ activeRowProjectsPub?.ProjectName }}</div>
+          <mat-divider></mat-divider>
+          <p></p>
+          <div fxLayout="row"><div class="label">Projekt:</div><div class="text">{{ activeRowProjectsPub?.ProjectIdent }}</div></div>
+          <div fxLayout="row"><div class="label">ISBN:</div><div class="text">{{ activeRowProjectsPub?.ISBN }}</div></div>
+          <div fxLayout="row"><div class="label">EAN:</div><div class="text">{{ activeRowProjectsPub?.EAN }}</div></div>
+          <div fxLayout="row"><div class="label">Autor:</div><div class="text">{{ activeRowProjectsPub?.Author }}</div></div>
+          <div fxLayout="row"><div class="label">Redaktor:</div><div class="text">{{ activeRowProjectsPub?.Editor }}</div></div>
+          <div fxLayout="row"><div class="label">Grafik:</div><div class="text">{{ activeRowProjectsPub?.GraphicDesigner }}</div></div>
+          <div fxLayout="row"><div class="label">Ilustrator:</div><div class="text">{{ activeRowProjectsPub?.Illustrator }}</div></div>
+          <div fxLayout="row"><div class="label">Tłumacz:</div><div class="text">{{ activeRowProjectsPub?.Translator }}</div></div>
+          <div fxLayout="row"><div class="label">Nakład:</div><div class="text">{{ activeRowProjectsPub?.Circulation }}</div></div>
 
+        </div>
+      </div>
+      <div>
+        <div fxLayout="row"><div class="label" style="width:200px;">Planowana data wydania</div><div class="text">{{ activeRowProjectsPub?.ReleaseDatePlan | date: 'yyyy-MM-dd'}}</div></div>
+        <div fxLayout="row"><div class="label" style="width:200px;">Rzeczywista data wydania</div><div class="text">{{ activeRowProjectsPub?.ReleaseDateAct | date: 'yyyy-MM-dd'}}</div></div>
+        <div fxLayout="row"><div class="label" style="width:200px;">Data dost. mat. do druku</div><div class="text">{{ activeRowProjectsPub?.MatDelivDate | date: 'yyyy-MM-dd'}}</div></div>
+        <div fxLayout="row"><div class="label" style="width:200px;">Data dost. ozalidów</div><div class="text">{{ activeRowProjectsPub?.OzalidDelivDate | date: 'yyyy-MM-dd'}}</div></div>
+        <div fxLayout="row"><div class="label" style="width:200px;">Data zamówienia PDF</div><div class="text">{{ activeRowProjectsPub?.PDFOrdDate | date: 'yyyy-MM-dd'}}</div></div>
+        <div fxLayout="row"><div class="label" style="width:200px;">Data premiery</div><div class="text">{{ activeRowProjectsPub?.PremiereDate | date: 'yyyy-MM-dd'}}</div></div>
+        <p>{{ activeRowProjectsPub?.ProjectDescription }}</p>
+        <p>{{ activeRowProjectsPub?.ProjectStatus }}</p>
 
-
-
-
-
+      </div>
 
     </div>
   </div>

@@ -45,11 +45,9 @@ export class SitProjectsPubComponent implements OnInit {
     // this.sitProjectsPubSelected.splice(0, this.sitProjectsPubSelected.length);
     // this.sitProjectsPubSelected.push(...[activeRow]);
 
-    this.Link = activeRow == null
-      ? environment.apiUrl+"/service/attachments/get/" + "1" + "/" + "1" + "/" + "1.jpk" : // kiedy brak rekordu
-        environment.apiUrl+"/service/attachments/get/" + this.currentUser.token + "/test/test.jpg"
-        //environment.apiUrl+"/service/attachments/get/" + this.currentUser.token + "/" + activeRow['sitProjectsG'] + "/" + activeRow['ProjectIdent']+".jpg"
-        // environment.apiUrl+"/service/attachments/get/" + this.currentUser.token + "/" + activeRow['sitAttachmentsG'] + "/" + activeRow['FileName']
+    this.Link = activeRow['sitImagesG'] == null
+      ? environment.apiUrl+"/service/attachments/get/" + this.currentUser.token + "/noimage/noimage.jpg" : // kiedy brak rekordu
+        environment.apiUrl+"/service/attachments/get/" + this.currentUser.token + "/"+activeRow['sitImagesG']+"/"+ activeRow['FileName']
 
   }
 }

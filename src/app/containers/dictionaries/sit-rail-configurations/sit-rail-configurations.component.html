@@ -14,7 +14,7 @@
           <ngx-datatable #sitRailConfigurations #sitSetDataSource
             class="material striped"
             [columnMode]="ColumnMode.force"
-            [limit]=20
+            [limit]=5
             [footerHeight]="50"
             [selected]="sitRailConfigurationsSelected"
             [selectionType]="SelectionType.single"
@@ -70,22 +70,8 @@
             </ngx-datatable-column>
             <ngx-datatable-column prop="CompanyIdent" name="Company Ident"></ngx-datatable-column>
             <ngx-datatable-column prop="ClientGuid" name="ClientGuid"></ngx-datatable-column>
-            <ngx-datatable-column prop="UserId" name="UserId" [canAutoResize]="false" [width]="50">
-              <ng-template let-value="value" ngx-datatable-cell-template>
-                <div style="text-align: right;">
-                {{value}}
-              </div>
-            </ng-template>
-            </ngx-datatable-column>
             <ngx-datatable-column prop="UserLogin" name="User Login"></ngx-datatable-column>
             <ngx-datatable-column prop="OperationIdent" name="OperationIdent"></ngx-datatable-column>
-            <!-- <ngx-datatable-column prop="Data" name="Data">
-              <ng-template let-value="value" ngx-datatable-cell-template>
-                <div>
-                {{value.substring(0,20)}}...
-              </div>
-            </ng-template>
-            </ngx-datatable-column> -->
             <ngx-datatable-column prop="IsActive" [width]="50">
               <ng-template let-column="column" ngx-datatable-header-template>
                 IsActive
@@ -100,6 +86,30 @@
             <ngx-datatable-column prop="TransformProcedure" name="Transform procedure"></ngx-datatable-column>
             <ngx-datatable-column prop="ConvertFunctionForParams" name="ConvertFunctionForParams"></ngx-datatable-column>
           </ngx-datatable>
+          <div>
+            <mat-form-field appearance="fill" style="width: 100%;">
+              <mat-label>CompanyId</mat-label>
+              <input matInput value="{{ activeRowRailConfigurations?.sitCompaniesId }}" >
+            </mat-form-field>
+            <mat-form-field appearance="fill" style="width: 100%;">
+                <mat-label>OperationIdent</mat-label>
+              <input matInput value="{{ activeRowRailConfigurations?.OperationIdent }}" >
+            </mat-form-field>
+            <mat-form-field appearance="fill" style="width: 100%;">
+              <mat-label>ClientGuid</mat-label>
+              <input matInput value="{{ activeRowRailConfigurations?.ClientGuid }}" >
+            </mat-form-field>
+            <mat-form-field appearance="fill" style="width: 100%;">
+              <mat-label>UserLogin</mat-label>
+              <input matInput value="{{ activeRowRailConfigurations?.UserLogin }}" >
+            </mat-form-field>
+            <p>
+            <mat-form-field appearance="fill" style="width: 100%;">
+              <mat-label>Data</mat-label>
+              <textarea matInput rows="20" value="{{ activeRowRailConfigurations?.Data }}" style="resize:none;"></textarea>
+            </mat-form-field>
+          </p>
+          </div>
         </sit-data-source-container>
         </div>
       </div>

@@ -51,4 +51,8 @@ export class SitRailConfigurationsComponent implements OnInit {
   onDetailToggle(event) {
     //console.log('Detail Toggled', event);
   }
+
+  get activeRowRailConfigurations() {
+    return this.dictContainer?.activeRow('sitRailConfigurations');
+  }
 }
