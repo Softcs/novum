@@ -71,20 +71,24 @@ export class LoginComponent implements OnInit {
         }
 
         this.loading = true;
-        const oprLogin = this.gatewayService.login(this.f.username.value, this.f.password.value);
+        const userName = this.f.username.value;
+        const password = this.f.password.value;
+        const oprLogin = this.gatewayService.login(userName, password);
         this.gatewayService.executeOperation(oprLogin)
             .pipe(first())
             .subscribe(
                 data => {
                     if (data.length === 1) {
-                        data = data[0];
-                        if(!this.checkErrors(data)) {
+                        const response = data[0];
+                        if (!this.checkErrors(response)) {
+                            const user = this.gatewayService.createUser(userName, password);
+                            this.gatewayService.setCurrentUser(user);
                             this.saveToLocalStorage();
                             this.router.navigate([this.returnUrl]);
                         } else {
                             this.loading = false;
                         }
-                        if (data.forceLogout) {
+                        if (response.forceLogout) {
                             this.gatewayService.removeCurrentUser();
                         }
                     }

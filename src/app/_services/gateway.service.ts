@@ -24,11 +24,18 @@ export class GatewayService {
     public get currentUserValue(): User {
         return this.currentUserSubject.value;
     }
+
     public removeCurrentUser() {
         localStorage.removeItem('li');
         sessionStorage.removeItem('li');
         this.currentUserSubject.next(null);
     }
+
+    public setCurrentUser(user: User) {
+        this.currentUserSubject.next(user);
+    }
+
+
     private readCurrentUser(): User {
         let user = sessionStorage.getItem('li');
         if (user == null) {
@@ -87,15 +94,19 @@ export class GatewayService {
         return decrypted.toString(CryptoJS.enc.Utf8);
     }
 
-    login(username: string, password: string) {
-        var user = new User();
+    createUser(username: string, password: string): User {
+        const user = new User();
         user.password = password;
         user.username = username;
         user.token = null;
         user.connection = null;
         user.company = null;
-        this.currentUserSubject.next(user);
-        const oprLogin: Operation = this.operationLogin();
+        return user;
+    }
+
+    login(username: string, password: string) {
+        const user = this.createUser(username,password);
+        const oprLogin: Operation = this.operationLogin(user);
         return oprLogin;
     }
 
@@ -103,8 +114,14 @@ export class GatewayService {
         // remove user from local storage to log user out
         this.removeCurrentUser();
     }
-    operationLogin() {
+    operationLogin(user: User) {
         const opr: Operation = new Operation();
+        if(user != null) {
+            opr.loginInfo = new LoginInfo();
+            opr.loginInfo.username = user.username;
+            opr.loginInfo.password = user.password;
+            opr.loginInfo.token = user.token;
+        }
         opr.oprType = 10;
         return opr;
     }
@@ -134,10 +151,12 @@ export class GatewayService {
     }
 
     executeOperation(opr: Operation) {
-        opr.loginInfo = new LoginInfo();
-        opr.loginInfo.username = this.currentUserValue?.username;
-        opr.loginInfo.password = this.currentUserValue?.password;
-        opr.loginInfo.token = this.currentUserValue?.token;
+        if (opr.loginInfo == null) {
+            opr.loginInfo = new LoginInfo();
+            opr.loginInfo.username = this.currentUserValue?.username;
+            opr.loginInfo.password = this.currentUserValue?.password;
+            opr.loginInfo.token = this.currentUserValue?.token;
+        }
         opr.connection = this.currentUserValue?.connection;
 
         const listOfOprs = [];
