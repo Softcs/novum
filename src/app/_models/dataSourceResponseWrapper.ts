@@ -34,11 +34,16 @@ export class DataSourceResponseWrapper {
     public AfterPropagte() {
         this.activeRowChanged.emit(this.activeRow);
     }
-    public ExecuteAction(actionIdent: string) {
+    public ExecuteAction(actionIdent: string,
+                         owner: any,
+                         executeActionCompletedCallback: Function,
+                         executeActionExceptionCallback: Function
+    ) {
         if (this.dataSourceManager == null) {
             console.error('ExecuteAction data source manager is undefindex!');
             return;
         }
-        this.dataSourceManager.ExecuteAction(actionIdent, this.ident);
+        this.dataSourceManager.ExecuteAction(actionIdent, this.ident, owner,
+            executeActionCompletedCallback, executeActionExceptionCallback);
     }
 }
