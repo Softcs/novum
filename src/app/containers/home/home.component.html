@@ -5,7 +5,7 @@ class="main-tab-group mt-2"
 <mat-tab *ngFor="let tab of tabs; let tabIndex = index">
   <ng-template mat-tab-label>
     <div fxLayout="row" fxLayoutAlign="space-between center"  style="width:100%;">
-      <div>{{ tab.title }}</div>
+      <div fxFlex style="height: 25px; text-align: center;">{{ tab.title }}</div>
       <div><i class="material-icons" (click)="removeTab(tabIndex)" *ngIf="tab.title != 'Pulpit'">close</i></div>
     </div>
   </ng-template>

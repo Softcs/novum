@@ -159,6 +159,19 @@ mat-toolbar-row,mat-toolbar-single-row{
   flex-grow: 1;
 }
 
+.mat-tab-header {
+  background-color: $content-background-color !important;
+}
+.mat-tab-label{
+  padding: 0px 5px !important;
+  height: 30px !important;
+}
+
+.mat-tab-label-content {
+  width: 100% !important;
+  height: 25px !important;
+}
+
 .fill-space{
   flex: 1 1 auto;
 }
