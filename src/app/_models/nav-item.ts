@@ -1,3 +1,4 @@
+import { Component } from '@angular/core';
 export interface NavItem {
   caption: string;
   disabled?: boolean;
@@ -5,4 +6,5 @@ export interface NavItem {
   link?: string;
   kind?: string;
   children?: NavItem[];
+
 }

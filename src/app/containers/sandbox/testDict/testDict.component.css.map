@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,WAAW,CAAA;EACT,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;EACtB,KAAK,EAAE,GAAG;EACV,MAAM,EAAE,SAAS;CAClB;;AAED,AAAA,KAAK,CAAC;EACJ,KAAK,EAAE,IAAI;EACX,YAAY,EAAE,KAAK;CACpB;;AAED,AAAA,EAAE,EAAE,EAAE,CAAC;EACL,QAAQ,EAAE,MAAM;EAChB,KAAK,EAAE,KAAK;EACZ,aAAa,EAAE,QAAQ;EACvB,WAAW,EAAE,MAAM;CACpB",
+    "sources": [
+        "testDict.component.scss"
+    ],
+    "names": [],
+    "file": "testDict.component.css"
+}

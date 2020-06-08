@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,MAAM,AAAA,MAAM,CAAC;EACX,OAAO,EAAE,IAAI;CACd;;AAED,AAAA,YAAY,CAAA;EACV,UAAU,EAAE,IAAI;CACjB",
+    "sources": [
+        "sit-side-menu.component.scss"
+    ],
+    "names": [],
+    "file": "sit-side-menu.component.css"
+}

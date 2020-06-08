@@ -1,0 +1,18 @@
+.mat-column-naleznosc, .mat-column-zobowiazanie {
+  text-align: right;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  width: 200px;
+  max-width: 200px;
+}
+
+.mat-column-DniSpoznienia {
+  text-align: right;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  width: 100px;
+  max-width: 100px;
+}
+/*# sourceMappingURL=sit-rozrachunki-insert-gt.component.css.map */

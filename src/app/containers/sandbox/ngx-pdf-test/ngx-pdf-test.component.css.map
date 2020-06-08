@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "ngx-pdf-test.component.scss"
+    ],
+    "names": [],
+    "file": "ngx-pdf-test.component.css"
+}

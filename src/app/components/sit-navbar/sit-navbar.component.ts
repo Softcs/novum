@@ -9,7 +9,8 @@ import { NavService } from '@app/_services/nav.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Title } from '@angular/platform-browser';
 import { filter, map } from 'rxjs/operators';
-
+import { TabService } from '@app/_services/tab.service';
+import { Tab } from '@app/_models/tab.model';
 
 @Component({
   selector: 'sit-navbar',
@@ -27,6 +28,7 @@ export class SitNavbarComponent implements OnInit {
     private gatewayService: GatewayService,
     private titleService: Title,
     private activatedRoute: ActivatedRoute,
+    private tabService: TabService,
     public navService: NavService,
     public matDialog: MatDialog,
     //private dictContainerComponent: DictContainerComponent

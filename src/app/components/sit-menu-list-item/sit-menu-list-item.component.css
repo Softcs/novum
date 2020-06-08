@@ -1,0 +1,24 @@
+:host {
+  display: block;
+  outline: none;
+}
+
+:host .mat-list-item.active {
+  background-color: #47494d;
+  color: #d0d1d2 !important;
+}
+
+:host:hover > .mat-list-item:not(.expanded), :host:focus > .mat-list-item:not(.expanded) {
+  background-color: #47494d !important;
+}
+
+.mat-list-item {
+  padding-bottom: 12px;
+  height: 40px;
+  color: #d0d1d2 !important;
+}
+
+.mat-list-item .routeIcon {
+  margin-right: 10px;
+}
+/*# sourceMappingURL=sit-menu-list-item.component.css.map */

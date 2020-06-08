@@ -1,0 +1,18 @@
+button:focus {
+  outline: none;
+}
+
+.fill-space {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+}
+
+a {
+  color: white;
+}
+
+a:hover {
+  color: lightgray;
+}
+/*# sourceMappingURL=sit-navbar.component.css.map */

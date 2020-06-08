@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,YAAY,CAAC;EACX,MAAM,EAAE,KAAK;EACb,QAAQ,EAAE,IAAI;EACd,gBAAgB,EAAE,OAAO;EACzB,OAAO,EAAE,QAAQ;CAClB;;AAED,AAAA,QAAQ,CAAC;EACP,MAAM,EAAE,OAAQ;CACjB",
+    "sources": [
+        "sit-change-company.component.scss"
+    ],
+    "names": [],
+    "file": "sit-change-company.component.css"
+}

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AACA,AAAA,qBAAqB,EAAC,wBAAwB,CAAA;EAC5C,UAAU,EAAE,KAAK;EACjB,eAAe,EAAE,QAAQ;EACzB,KAAK,EAAE,KAAK;EACZ,SAAS,EAAE,KAAK;CACjB;;AAED,AAAA,yBAAyB,CAAA;EACvB,UAAU,EAAE,KAAK;EACjB,eAAe,EAAE,QAAQ;EACzB,KAAK,EAAE,KAAK;EACZ,SAAS,EAAE,KAAK;CACjB",
+    "sources": [
+        "sit-rozrachunki-insert-gt.component.scss"
+    ],
+    "names": [],
+    "file": "sit-rozrachunki-insert-gt.component.css"
+}

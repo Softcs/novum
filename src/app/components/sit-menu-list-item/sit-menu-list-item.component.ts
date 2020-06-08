@@ -1,9 +1,18 @@
-import {Component, HostBinding, Input, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
-import {NavItem} from '../../_models/nav-item';
-import {NavService} from '../../_services/nav.service';
-import {animate, state, style, transition, trigger} from '@angular/animations';
-
+import { NavItem } from '@app/_models/nav-item';
+import { Component, HostBinding, Input, OnInit} from '@angular/core';
+import { Router } from '@angular/router';
+import { NavService } from '../../_services/nav.service';
+import { animate, state, style, transition, trigger } from '@angular/animations';
+import { TabService } from '@app/_services/tab.service';
+import { Tab } from '@app/_models/tab.model';
+import { SitJPKVatComponent } from '@app/containers/dictionaries/sit-jpk-vat';
+import { SitKancelariaComponent } from '@app/containers/dictionaries/sit-kancelaria/';
+import { SitMenuComponent } from '@app/containers/dictionaries/sit-menu';
+import { SitProjectsPubComponent } from '@app/containers/dictionaries/sit-projects-pub';
+import { SitRailConfigurationsComponent } from '@app/containers/dictionaries/sit-rail-configurations';
+import { SitRozrachunkiInsertGTComponent } from '@app/containers/dictionaries/sit-rozrachunki-insert-gt';
+import { SitUserAccountComponent } from '@app/containers/dictionaries/sit-user-account';
+import { SitWhiteListVATComponent } from '@app/containers/dictionaries/sit-white-list-vat';
 @Component({
   selector: 'sit-menu-list-item',
   templateUrl: './sit-menu-list-item.component.html',
@@ -24,18 +33,48 @@ export class SitMenuListItemComponent {
   @Input() item: NavItem;
   @Input() depth: number;
 
-  constructor(public navService: NavService,
-              public router: Router) {
+  classes = {
+    sitJPKVat: SitJPKVatComponent,
+    sitKancelaria: SitKancelariaComponent,
+    sitMenu: SitMenuComponent,
+    sitProjectsPub: SitProjectsPubComponent,
+    sitRailConfigurations: SitRailConfigurationsComponent,
+    sitRozrachunkiInsertGT: SitRozrachunkiInsertGTComponent,
+    sitUserAccount: SitUserAccountComponent,
+    sitWhiteListVat : SitWhiteListVATComponent
+  }
+
+  constructor(
+    public navService: NavService,
+    public router: Router,
+    private tabService: TabService
+              ) {
     if (this.depth === undefined) {
       this.depth = 0;
     }
   }
 
   onItemSelected(item: NavItem) {
+    let createNew = true;
+
     if ((!item.children || !item.children.length) && item.kind == "app") {
-      this.router.navigate([item.link]);
+      for ( let i = 0; i < this.tabService.tabs.length; i++ ) {
+        if (this.tabService.tabs[i].title === item.caption) {
+          this.tabService.tabs[i].active = true;
+          createNew = false;
+        }
+        else {
+          this.tabService.tabs[i].active = false;
+        }
+      }
+      console.log(this.tabService.tabs);
+
+      if ( createNew ) {
+        this.tabService.addTab(new Tab(this.classes[item.link], item.caption , { parent: 'AppComponent' }));
+      }
       this.navService.closeNav();
     }
+
     if ((!item.children || !item.children.length) && item.kind == "http") {
       window.open(item.link, "_blank");
       this.navService.closeNav();
@@ -45,4 +84,5 @@ export class SitMenuListItemComponent {
       this.expanded = !this.expanded;
     }
   }
+
 }

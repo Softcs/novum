@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "material-test.component.scss"
+    ],
+    "names": [],
+    "file": "material-test.component.css"
+}

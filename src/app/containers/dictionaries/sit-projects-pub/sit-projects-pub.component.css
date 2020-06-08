@@ -1,0 +1,26 @@
+img {
+  max-width: 300px;
+  height: auto;
+}
+
+div.label {
+  font-weight: 500;
+  width: 100px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+div.text {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+div.number {
+  text-align: right;
+}
+
+div.cover {
+  width: 300px;
+  height: 450px;
+}
+/*# sourceMappingURL=sit-projects-pub.component.css.map */

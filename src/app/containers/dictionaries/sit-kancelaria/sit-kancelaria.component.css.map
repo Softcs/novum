@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,GAAG,CAAA,AAAA,KAAC,EAAO,MAAM,AAAb,EAAe;EACjB,OAAO,EAAE,cAAc;CACxB",
+    "sources": [
+        "sit-kancelaria.component.scss"
+    ],
+    "names": [],
+    "file": "sit-kancelaria.component.css"
+}
