@@ -9,8 +9,10 @@ export class DataSourceManager {
     private _dataSourceComponents: QueryList<SitDataSourceContainerComponent>;
     private _dataSourcesResponse: any[];
     public dataSourcesWrapper: DataSourceResponseWrapper[];
+
     @Output()
     refreshAfter: EventEmitter<DataSourceManager> = new EventEmitter<DataSourceManager>();
+
 
     constructor(public gatewayService: GatewayService) {
         this.dataSourcesWrapper = [];
@@ -126,7 +128,7 @@ export class DataSourceManager {
                     console.error("error", error);
                 });
     }
-    public ExecuteActionAfter(actionIdent: string, dataSourceIdent: string) {
+    public ExecuteRefreshAfter(actionIdent: string, dataSourceIdent: string) {
         const actionDefinition = this.dictInfo.FindActionDefinition(actionIdent, dataSourceIdent);
         if (actionDefinition != null) {
             let ds2RefreshIdents = null;
@@ -147,7 +149,11 @@ export class DataSourceManager {
         }
     }
 
-    public ExecuteAction(actionIdent: string, dataSourceIdent: string) {
+    public ExecuteAction(actionIdent: string, dataSourceIdent: string,
+                         owner: any,
+                         executeActionCompletedCallback: Function,
+                         executeActionExceptionCallback: Function
+        ) {
         const dictIdent = this.dictInfo?.ident;
         const dataSourcesRequest: any[] = [];
         const dsWrapper: DataSourceResponseWrapper = this.getDateSourceWrapper(dataSourceIdent);
@@ -164,14 +170,32 @@ export class DataSourceManager {
             .pipe(first())
             .subscribe(
                 data => {
-                    if (data.length == 1) {
-                        const dataSourcesResponse = data[0].dataSourcesResponse;
-                        this.PropagateErrors(dataSourceIdent, data[0]?.Errors);
-                        this.ExecuteActionAfter(actionIdent, dataSourceIdent);
+                    if (data.length === 1) {
+                        const response = data[0];
+                        const wasErrors = this.PropagateErrors(dataSourceIdent, response?.Errors);
+                        if (!wasErrors) {
+                            if(executeActionCompletedCallback != null) {
+                                executeActionCompletedCallback(owner);
+                            }
+                        }
+
+                        if (response == null || !wasErrors) {
+                            this.ExecuteRefreshAfter(actionIdent, dataSourceIdent);
+                        }
+
+                        if (wasErrors) {
+                            if (executeActionExceptionCallback != null) {
+                                executeActionExceptionCallback(owner);
+                            }
+                        }
+
                     }
                 },
                 error => {
                     console.error("error", error);
+                    if (executeActionExceptionCallback != null) {
+                        executeActionExceptionCallback(owner);
+                    }
                 });
     }
 
@@ -183,7 +207,8 @@ export class DataSourceManager {
             this.setRefreshDataSource(dsRespons);
         });
     }
-    public PropagateErrors(dataSourceIdent: string, errors: [any]) {
+    public PropagateErrors(dataSourceIdent: string, errors: [any]): boolean {
+
         if (!this.dataSourceComponents) {
             return;
         }
@@ -195,6 +220,8 @@ export class DataSourceManager {
                 }
             }
         });
+
+        return errors != null && errors.length > 0;
     }
 
     public PropagateDataSources(dataSetToReload: string[] = null) {

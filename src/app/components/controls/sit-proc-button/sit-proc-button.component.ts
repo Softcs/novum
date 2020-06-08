@@ -9,6 +9,7 @@ import { DataSourceResponseWrapper, Operation } from '@app/_models';
 })
 export class SitProcButtonComponent implements OnInit {
   public dataSourceResponseWrapper: DataSourceResponseWrapper;
+  private executing = false;
   @Input() actionIdent: string;
   @Input() color: string;
   @Input() caption: string;
@@ -26,7 +27,11 @@ export class SitProcButtonComponent implements OnInit {
   }
 
   onClick($event) {
-    this.dataSourceResponseWrapper.ExecuteAction(this.actionIdent);
+    this.executing = true;
+    this.dataSourceResponseWrapper.ExecuteAction(this.actionIdent,
+                                                 this,
+                                                 this.executeActionCompletedCallback,
+                                                 this.executeActionExceptionCallback);
   }
 
   setDisabledState?(isDisabled: boolean): void {
@@ -34,6 +39,14 @@ export class SitProcButtonComponent implements OnInit {
   }
   public setValue(value: any) {
 
+  }
+
+  private executeActionCompletedCallback(self) {
+    self.executing = false;
+  }
+
+  private executeActionExceptionCallback(self) {
+    self.executing = false;
   }
 
 }
