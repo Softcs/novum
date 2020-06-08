@@ -1,3 +1,4 @@
+import { SitUserAccountComponent } from '@app/containers/dictionaries/sit-user-account';
 import { SitChangeCompanyComponent } from './../../containers/sit-change-company/sit-change-company.component';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
@@ -79,6 +80,25 @@ export class SitNavbarComponent implements OnInit {
     dialogConfig.width = "500px";
     // https://material.angular.io/components/dialog/overview
     const modalDialog = this.matDialog.open(SitChangeCompanyComponent, dialogConfig);
+  }
+
+  onClicUser() {
+    let createNew = true;
+
+    for ( let i = 0; i < this.tabService.tabs.length; i++ ) {
+      if (this.tabService.tabs[i].title === 'Konto użytkownika') {
+        this.tabService.tabs[i].active = true;
+        createNew = false;
+      }
+      else {
+        this.tabService.tabs[i].active = false;
+      }
+    }
+
+    if ( createNew ) {
+      this.tabService.addTab(new Tab( SitUserAccountComponent, 'Konto użytkownika' , { parent: 'AppComponent' }));
+    }
+    this.navService.closeNav();
   }
 
   closeNav() {

@@ -67,7 +67,6 @@ export class SitMenuListItemComponent {
           this.tabService.tabs[i].active = false;
         }
       }
-      console.log(this.tabService.tabs);
 
       if ( createNew ) {
         this.tabService.addTab(new Tab(this.classes[item.link], item.caption , { parent: 'AppComponent' }));

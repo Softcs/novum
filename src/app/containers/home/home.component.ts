@@ -9,7 +9,8 @@ import { Tab } from '@app/_models/tab.model';
 
 
 @Component({
-  templateUrl: 'home.component.html'
+  templateUrl: 'home.component.html',
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
     loading = false;
@@ -29,6 +30,7 @@ export class HomeComponent implements OnInit {
         this.tabs = tabs;
         this.selectedTab = tabs.findIndex(tab => tab.active);
         });
+
     }
 
     tabChanged(event) {

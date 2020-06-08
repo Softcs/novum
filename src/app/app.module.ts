@@ -175,6 +175,9 @@ import { SitPulpitComponent } from './containers/sit-pulpit';
         NavService,
         Title
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    entryComponents: [
+      SitPulpitComponent
+    ]
 })
 export class AppModule { }
