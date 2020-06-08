@@ -9,7 +9,7 @@ import { DataSourceResponseWrapper, Operation } from '@app/_models';
 })
 export class SitProcButtonComponent implements OnInit {
   public dataSourceResponseWrapper: DataSourceResponseWrapper;
-  private executing = false;
+  executing = false;
   @Input() actionIdent: string;
   @Input() color: string;
   @Input() caption: string;
