@@ -36,15 +36,7 @@ export class HomeComponent implements OnInit {
     }
 
     tabChanged(event) {
-      for ( let i = 0; i < this.tabService.tabs.length; i++ ) {
-        if (this.selectedTab === i) {
-          this.tabService.tabs[i].active = true;
-        }
-        else {
-          this.tabService.tabs[i].active = false;
-        }
-        console.log(this.tabService.tabs,this.tabService.tabSub)
-      }
+      this.tabService.changeTab( this.selectedTab );
       window.dispatchEvent(new Event('resize'));
     }
 
