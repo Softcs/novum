@@ -1,5 +1,8 @@
 <sit-dict-container ident="sitJPKVAT" #sitDictcontainer id="wrapper">
-  <mat-tab-group id="tab-group">
+  <mat-tab-group id="tab-group"
+    animationDuration="0ms"
+    (selectedTabChange)="tabChanged($event)">
+
     <mat-tab label="Zakup">
       <div fxLayout="column" fxFill fxLayoutGap="5px">
         <div fxLayout="row" fxFlex="220px" fxLayoutGap="5px">
@@ -72,7 +75,7 @@
         </div>
         <div fxLayout="column" fxFlex="100%" fxLayoutGap="5px">
             <div class="content">
-              <div style="flex: 0 1 auto;">
+              <div style="flex: 0 1 auto; width: 300px;">
                 <sit-data-source-container ident="sitFilterZakup" >
                   <span>
                     <sit-data-input #sitControl field="searchZakup" label="Filtruj"></sit-data-input>
@@ -85,9 +88,9 @@
                     <ngx-datatable #sitJPKVATZakup #sitSetDataSource
                       class="material striped"
                       [columnMode]="ColumnMode.force"
-                      style="height: 550px;"
+                      style="height: 520px;"
                       [scrollbarV] = "true"
-                      [footerHeight]="40"
+                      [footerHeight]="50"
                       [selected]="sitJPKVATZakupSelected"
                       [selectionType]="SelectionType.single"
                       [selectAllRowsOnPage]="false"
@@ -225,7 +228,7 @@
         </div>
         <div fxLayout="column" fxFlex="100%" fxLayoutGap="5px">
             <div class="content">
-              <div style="flex: 0 1 auto;">
+              <div style="flex: 0 1 auto; width: 300px;">
                 <sit-data-source-container ident="sitFilterSprzedaz" >
                   <span>
                     <sit-data-input #sitControl field="searchSprzedaz" label="Filtruj"></sit-data-input>
@@ -238,9 +241,9 @@
                     <ngx-datatable #sitJPKVATZakup #sitSetDataSource
                       class="material striped"
                       [columnMode]="ColumnMode.force"
-                      style="height: 450px;"
+                      style="height: 430px;"
                       [scrollbarV] = "true"
-                      [footerHeight]="40"
+                      [footerHeight]="50"
                       [selected]="sitJPKVATSprzedazSelected"
                       [selectionType]="SelectionType.single"
                       [selectAllRowsOnPage]="false"

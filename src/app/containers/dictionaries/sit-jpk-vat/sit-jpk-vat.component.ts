@@ -51,4 +51,8 @@ export class SitJPKVatComponent implements OnInit {
         this.dictContainer.DataSourceManager.getDateSourceWrapper("sitProcGetJPKData");
       dataSourceResponseWrapper.activeRow[e.srcElement.id] = e.srcElement.value;
     }
+
+    tabChanged(event) {
+      window.dispatchEvent(new Event('resize'));
+    }
 }

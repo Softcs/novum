@@ -23,6 +23,13 @@ export class TabService {
     this.tabSub.next(this.tabs);
   }
 
+  public changeTab(index: number) {
+    for (let i = 0; i < this.tabs.length; i++) {
+      if (index !== i ) { this.tabs[i].active = false; } else { this.tabs[i].active = true; }
+      this.tabSub.next(this.tabs);
+    }
+  }
+
   public addTab(tab: Tab) {
     for (let i = 0; i < this.tabs.length; i++) {
     if (this.tabs[i].active === true) {
