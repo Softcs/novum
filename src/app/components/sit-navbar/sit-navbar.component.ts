@@ -1,6 +1,6 @@
 import { SitUserAccountComponent } from '@app/containers/dictionaries/sit-user-account';
 import { SitChangeCompanyComponent } from './../../containers/sit-change-company/sit-change-company.component';
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 
 import { GatewayService } from '@app/_services';
@@ -18,11 +18,12 @@ import { Tab } from '@app/_models/tab.model';
   templateUrl: './sit-navbar.component.html',
   styleUrls: ['./sit-navbar.component.scss']
 })
-export class SitNavbarComponent implements OnInit {
+export class SitNavbarComponent implements OnInit, AfterViewInit {
   @ViewChild('appDrawer') appDrawer: ElementRef;
   currentUser: User;
   caption: string;
-  title = 'Novum'
+  title = 'Novum';
+  tabs = new Array<Tab>();
 
   constructor(
     private router: Router,
@@ -37,6 +38,15 @@ export class SitNavbarComponent implements OnInit {
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
     //this.dictContainerComponent.subscribe(x => this.caption = x);
 
+    this.tabService.tabSub.subscribe(tabs => {
+      let i = -1;
+      i = tabs.findIndex(tab => tab.active);
+      if ( i > -1 ) {
+        this.title = tabs[i].title;
+        this.titleService.setTitle(this.title);
+      }
+      });
+
   }
 
   logout() {
@@ -47,27 +57,30 @@ export class SitNavbarComponent implements OnInit {
 
   ngOnInit() {
     const appTitle = this.titleService.getTitle();
-    this.router
-      .events.pipe(
-        filter(event => event instanceof NavigationEnd),
-        map(() => {
-          let child = this.activatedRoute.firstChild;
-          while (child.firstChild) {
-            child = child.firstChild;
-          }
-          if (child.snapshot.data['title']) {
-            return child.snapshot.data['title'];
-          }
-          return appTitle;
-        })
-      ).subscribe((ttl: string) => {
-        this.titleService.setTitle(ttl);
-        this.title = this.titleService.getTitle();
-      });
+    // this.router
+    //   .events.pipe(
+    //     filter(event => event instanceof NavigationEnd),
+    //     map(() => {
+    //       let child = this.activatedRoute.firstChild;
+    //       while (child.firstChild) {
+    //         child = child.firstChild;
+    //       }
+    //       if (child.snapshot.data['title']) {
+    //         return child.snapshot.data['title'];
+    //       }
+    //       return appTitle;
+    //     })
+    //   ).subscribe((ttl: string) => {
+    //     this.titleService.setTitle(ttl);
+    //     this.title = this.titleService.getTitle();
+    //   });
 
+    this.title = this.tabService.tabs[0].title;
   }
 
+  ngAfterViewInit() {
 
+  }
   openModalChangeCompany() {
     const dialogConfig = new MatDialogConfig();
 

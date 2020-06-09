@@ -9,16 +9,21 @@ $sidenav-item-active:#47494d;
 $sidenav-font-color: #d0d1d2;
 $sidenav-hover-color: #47494d;
 
-$table-header-color: #7a7d80;
+$table-header-color: #a7a7a7;
 $table-header-font-color: white;
 $table-cell-font-color: black;
 $table-footer-color: #B3B3B0;
 $table-row-odd-color: #F9F9F9;
 $table-row-even-color: white;
 $table-row-hover-color: #D7D7D5;
-$table-row-selected-color: rgb(255, 228, 153);// #FFC78E;
-$table-row-selected-hover-color: rgb(255, 226, 146);// #FFB160;
+$table-row-selected-color: rgb(248, 228, 172);// #FFC78E;
+$table-row-selected-hover-color: rgb(245, 205, 118);// #FFB160;
 
 $form-header-color: #e0e0e0;
 $form-body-color: #F9F9F9;
+
+$tab-header-color: rgb(170, 170, 170); //kolor zakładek
+$tab-header-selected-color: rgb(189, 189, 189); //kolor aktywnej zakładki
+$tab-font-color: black;
+$tab-ink-bar-color: rgb(70, 70, 70);
 

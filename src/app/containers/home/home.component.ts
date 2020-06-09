@@ -6,11 +6,13 @@ import { UserService } from '@app/_services';
 import { Title } from '@angular/platform-browser';
 import { TabService } from '@app/_services/tab.service';
 import { Tab } from '@app/_models/tab.model';
+import { runInThisContext } from 'vm';
 
 
 @Component({
   templateUrl: 'home.component.html',
   styleUrls: ['./home.component.scss'],
+  host: {class: 'router-flex'}
 })
 export class HomeComponent implements OnInit {
     loading = false;
@@ -34,9 +36,17 @@ export class HomeComponent implements OnInit {
     }
 
     tabChanged(event) {
-      this.tabService.tabs[(this.selectedTab - 1)].active = true;
-
+      for ( let i = 0; i < this.tabService.tabs.length; i++ ) {
+        if (this.selectedTab === i) {
+          this.tabService.tabs[i].active = true;
+        }
+        else {
+          this.tabService.tabs[i].active = false;
+        }
+        console.log(this.tabService.tabs,this.tabService.tabSub)
       }
+      window.dispatchEvent(new Event('resize'));
+    }
 
     removeTab(index: number): void {
       this.tabService.removeTab(index);
