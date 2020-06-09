@@ -1,10 +1,9 @@
 <div fxFlexFill fxLayout="row">
-  <!-- <span style="color:#ff8f1c">NOVUM</span> -->
-  <div style="display: flex; flex-direction: row; margin: 2px 2px 2px 0px; justify-content: center;">
+  <!-- <div style="display: flex; flex-direction: row; margin: 2px 2px 2px 0px; justify-content: center;">
     <button mat-flat-button matTooltip="Strona główna" color="primary"  routerLink="/" *ngIf="currentUser" style="width: 50px;">
       <mat-icon aria-hidden="false" aria-label="Home">home</mat-icon>
     </button>
-  </div>
+  </div> -->
   <div style="display: flex; flex-direction: row; margin: 2px 2px 2px 0px; justify-content: center;">
     <button mat-flat-button matTooltip="Wybierz firmę" color="primary" (click)="openModalChangeCompany()"  *ngIf="currentUser">
       <mat-icon aria-hidden="false" aria-label="Firma">corporate_fare</mat-icon> {{ currentUser.company?.companyDescription }}

@@ -11,7 +11,8 @@ import { Tab } from '@app/_models/tab.model';
 
 @Component({
   selector: 'app-tab-content',
-  template: '<ng-template content-container></ng-template>'
+  templateUrl: './tab-content.component.html',
+  host: {class: 'router-flex'}
   })
   export class TabContentComponent implements OnInit {
     @Input() tab;

@@ -62,8 +62,8 @@ export class SitMenuListItemComponent {
         if (this.tabService.tabs[i].title === item.caption) {
           this.tabService.tabs[i].active = true;
           createNew = false;
-        }
-        else {
+          this.tabService.changeTab( i );
+        } else {
           this.tabService.tabs[i].active = false;
         }
       }
