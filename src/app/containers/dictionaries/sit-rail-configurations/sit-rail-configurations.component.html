@@ -1,7 +1,21 @@
 ﻿<sit-dict-container ident="sitRailConfigurations" #sitDictcontainer class="container-cols">
   <div class="container-cols" >
     <div class="content">
-      <div style="flex: 0 1 auto;">
+      <mat-toolbar>
+        <mat-toolbar-row>
+          <button mat-flat-button matTooltip="Nowy" color="primary" (click)="new()">
+            <mat-icon aria-hidden="false" aria-label="Firma">post_add</mat-icon>
+          </button>
+          <button mat-flat-button matTooltip="Edycja" color="primary" (click)="edit()">
+            <mat-icon aria-hidden="false" aria-label="Firma">edit</mat-icon>
+          </button>
+          <button mat-flat-button matTooltip="Usuń" color="primary" (click)="delete()">
+            <mat-icon aria-hidden="false" aria-label="Firma">delete</mat-icon>
+          </button>
+
+        </mat-toolbar-row>
+      </mat-toolbar>
+      <div style="flex: 0 1 auto; width: 200px;">
         <sit-data-source-container  ident="sitFilter" >
         <span>
           <sit-data-input #sitControl field="searchRailConfigurations" label="Filtruj"></sit-data-input>
@@ -86,30 +100,6 @@
             <ngx-datatable-column prop="TransformProcedure" name="Transform procedure"></ngx-datatable-column>
             <ngx-datatable-column prop="ConvertFunctionForParams" name="ConvertFunctionForParams"></ngx-datatable-column>
           </ngx-datatable>
-          <div>
-            <mat-form-field appearance="fill" style="width: 100%;">
-              <mat-label>CompanyId</mat-label>
-              <input matInput value="{{ activeRowRailConfigurations?.sitCompaniesId }}" >
-            </mat-form-field>
-            <mat-form-field appearance="fill" style="width: 100%;">
-                <mat-label>OperationIdent</mat-label>
-              <input matInput value="{{ activeRowRailConfigurations?.OperationIdent }}" >
-            </mat-form-field>
-            <mat-form-field appearance="fill" style="width: 100%;">
-              <mat-label>ClientGuid</mat-label>
-              <input matInput value="{{ activeRowRailConfigurations?.ClientGuid }}" >
-            </mat-form-field>
-            <mat-form-field appearance="fill" style="width: 100%;">
-              <mat-label>UserLogin</mat-label>
-              <input matInput value="{{ activeRowRailConfigurations?.UserLogin }}" >
-            </mat-form-field>
-            <p>
-            <mat-form-field appearance="fill" style="width: 100%;">
-              <mat-label>Data</mat-label>
-              <textarea matInput rows="20" value="{{ activeRowRailConfigurations?.Data }}" style="resize:none;"></textarea>
-            </mat-form-field>
-          </p>
-          </div>
         </sit-data-source-container>
         </div>
       </div>

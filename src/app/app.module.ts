@@ -81,6 +81,7 @@ import { SitProjectsPubComponent } from './containers/dictionaries/sit-projects-
 import { TabContentComponent } from './components/tab-content/tab-content.component';
 import { ContentContainerDirective } from './_directives/content-container.directive';
 import { SitPulpitComponent } from './containers/sit-pulpit';
+import { SitRailConfigurationsEditComponent } from './containers/dictionaries/sit-rail-configurations-edit/sit-rail-configurations-edit.component'
 
 @NgModule({
     imports: [
@@ -164,6 +165,7 @@ import { SitPulpitComponent } from './containers/sit-pulpit';
         SitProjectsPubComponent,
         TabContentComponent,
         ContentContainerDirective,
+        SitRailConfigurationsEditComponent
 
     ],
     providers: [
@@ -177,7 +179,8 @@ import { SitPulpitComponent } from './containers/sit-pulpit';
     ],
     bootstrap: [AppComponent],
     entryComponents: [
-      SitPulpitComponent
+      SitPulpitComponent,
+      SitRailConfigurationsEditComponent
     ]
 })
 export class AppModule { }

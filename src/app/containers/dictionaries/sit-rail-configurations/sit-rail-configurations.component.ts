@@ -1,9 +1,12 @@
-﻿import { Component, OnInit, ViewChild } from '@angular/core';
+﻿import { SitRailConfigurationsEditComponent } from './../sit-rail-configurations-edit/sit-rail-configurations-edit.component';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
 import { ColumnMode, SelectionType } from '../../../../ngx/public-api';
 import { DataSourceResponseWrapper } from '@app/_models';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
 import * as $ from 'jquery';
+import { TabService } from '@app/_services/tab.service';
+import { Tab } from '@app/_models/tab.model';
 
 @Component({
     selector: 'sit-rail-configurations',
@@ -20,7 +23,9 @@ export class SitRailConfigurationsComponent implements OnInit {
   ColumnMode = ColumnMode;
   SelectionType = SelectionType;
 
-  constructor() {
+  constructor(
+    private tabService: TabService,
+  ) {
 
   }
 
@@ -55,4 +60,14 @@ export class SitRailConfigurationsComponent implements OnInit {
   get activeRowRailConfigurations() {
     return this.dictContainer?.activeRow('sitRailConfigurations');
   }
+
+  edit() {
+    let createNew = true;
+
+    if ( createNew ) {
+      this.tabService.addTab(new Tab( SitRailConfigurationsEditComponent, 'Konfiguracja rail - Edycja' , { parent: 'AppComponent' }));
+    }
+
+    }
+
 }
