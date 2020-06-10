@@ -1,23 +1,25 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
 import { DataSourceResponseWrapper } from '@app/_models';
 import { ColumnMode, SelectionType } from '../../../../ngx/public-api';
 import { environment } from '@environments/environment';
 import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
+import { MatSpinner } from '@angular/material/progress-spinner';
 @Component({
   selector: 'app-sit-projects-pub',
   templateUrl: './sit-projects-pub.component.html',
   styleUrls: ['./sit-projects-pub.component.scss'],
   host: {class: 'router-flex'}
 })
-export class SitProjectsPubComponent implements OnInit {
+export class SitProjectsPubComponent implements OnInit, AfterViewInit {
   @ViewChild('sitDictcontainer') dictContainer: SitDictContainerComponent;
 
   ColumnMode = ColumnMode;
   SelectionType = SelectionType;
   Link: string;
   currentUser: User;
+  isLoading = true;
 
   sitProjectsPubSelected = [];
 
@@ -28,6 +30,12 @@ export class SitProjectsPubComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    console.log(this.isLoading)
+  }
+
+  ngAfterViewInit() {
+    this.isLoading = false;
+    console.log(this.isLoading)
   }
 
   get activeRowProjectsPub() {

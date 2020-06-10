@@ -84,9 +84,11 @@ body {
 }
 
 .sit-tab-title {
-  padding: 1px 5px;
-  height: 25px;
+  padding: 6px 5px;
+  height: 35px;
   text-align: center;
+  align-items: center;
+
 }
 
 .sit-tab-content {
@@ -124,6 +126,7 @@ body {
   border-radius: 3px;
 
 }
+
 .sit-form-header {
   background-color: $form-header-color;
   font-size: 16px;
@@ -139,8 +142,12 @@ body {
   background-color: $form-body-color;
   border-radius: 0px 0px 3px 3px;
   padding: 8px;
-
 }
+
+.sit-edit-input {
+  padding: 0px 5px;
+}
+
 .router-flex {
   display: flex;
   flex: 1 1 auto;

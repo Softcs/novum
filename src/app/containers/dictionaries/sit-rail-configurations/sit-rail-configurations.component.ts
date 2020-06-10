@@ -7,6 +7,7 @@ import { DatatableComponent } from '@swimlane/ngx-datatable';
 import * as $ from 'jquery';
 import { TabService } from '@app/_services/tab.service';
 import { Tab } from '@app/_models/tab.model';
+import { Guid } from "guid-typescript";
 
 @Component({
     selector: 'sit-rail-configurations',
@@ -61,13 +62,38 @@ export class SitRailConfigurationsComponent implements OnInit {
     return this.dictContainer?.activeRow('sitRailConfigurations');
   }
 
+  new() {
+    let newGuid = Guid.create();
+
+    this.tabService.addTab(new Tab( SitRailConfigurationsEditComponent, 'Konfiguracja Rail - Nowy' , { parent: 'AppComponent', guid: newGuid.toString() }));
+  }
+
   edit() {
-    let createNew = true;
+    const dataSourceResponseWrapper: DataSourceResponseWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitRailConfigurations");
 
-    if ( createNew ) {
-      this.tabService.addTab(new Tab( SitRailConfigurationsEditComponent, 'Konfiguracja rail - Edycja' , { parent: 'AppComponent' }));
-    }
+    this.tabService.addTab(new Tab( SitRailConfigurationsEditComponent, 'Konfiguracja Rail - Edycja' , { parent: 'AppComponent', activeRow: dataSourceResponseWrapper.activeRow,
+      guid: dataSourceResponseWrapper.activeRow['sitRailConfigurationsG'],
+      sitRailConfigurationsId: dataSourceResponseWrapper.activeRow['sitRailConfigurationsId'],
+      OperationIdent: dataSourceResponseWrapper.activeRow['OperationIdent'],
+      ClientGuid: dataSourceResponseWrapper.activeRow['ClientGuid'],
+      Data: dataSourceResponseWrapper.activeRow['Data'],
+      IsActive: dataSourceResponseWrapper.activeRow['IsActive'],
+      Timeout: dataSourceResponseWrapper.activeRow['Timeout'],
+      TransformProcedure: dataSourceResponseWrapper.activeRow['TransformProcedure'],
+      ConvertFunctionForParams: dataSourceResponseWrapper.activeRow['ConvertFunctionForParams'],
+      Source: dataSourceResponseWrapper.activeRow['Source'],
+      sitRailConfigurationsG: dataSourceResponseWrapper.activeRow['sitRailConfigurationsG'],
+      sitCompaniesId: dataSourceResponseWrapper.activeRow['sitCompaniesId'],
+      sitWSUsersId: dataSourceResponseWrapper.activeRow['sitWSUsersId'],
 
-    }
+    }));
+  }
 
+
+
+
+
+  delete(){
+
+  }
 }

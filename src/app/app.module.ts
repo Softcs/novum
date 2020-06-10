@@ -36,6 +36,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { SitDataSourceContainerComponent } from './components/sit-data-source-container/sit-data-source-container.component';
 import { SitNavbarComponent } from './components/sit-navbar/sit-navbar.component';
@@ -108,6 +109,7 @@ import { SitRailConfigurationsEditComponent } from './containers/dictionaries/si
         MatTabsModule,
         MatTooltipModule,
         MatDialogModule,
+        MatProgressSpinnerModule,
 
         FormsModule,
         LayoutModule,
@@ -165,7 +167,7 @@ import { SitRailConfigurationsEditComponent } from './containers/dictionaries/si
         SitProjectsPubComponent,
         TabContentComponent,
         ContentContainerDirective,
-        SitRailConfigurationsEditComponent
+        SitRailConfigurationsEditComponent,
 
     ],
     providers: [

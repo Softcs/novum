@@ -3,9 +3,10 @@
     <div fxLayout="column" fxFlex="30%" class="content">
       <sit-data-source-container ident="sitFilterProjectsPub" >
         <div style="width: 100%;">
-          <sit-data-input #sitControl field="searchProjectsPub" label="Filtruj projekty" style="width: 100%;"></sit-data-input>
+          <sit-data-input #sitControl id="searchProjectsPub" field="searchProjectsPub" label="Filtruj projekty" placeholder="Projekt, Nazwa, EAN" autocomplete="off" style="width: 100%;"></sit-data-input>
         </div>
       </sit-data-source-container>
+      <mat-spinner *ngIf="isLoading"></mat-spinner>
       <div class="data-table">
         <sit-data-source-container  ident="sitProjectsPub" (activeRowChanged)="activeRowProjectsPubChanged($event)">
           <ngx-datatable #sitProjectsPub #sitSetDataSource

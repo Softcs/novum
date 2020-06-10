@@ -18,7 +18,7 @@
       <div style="flex: 0 1 auto; width: 200px;">
         <sit-data-source-container  ident="sitFilter" >
         <span>
-          <sit-data-input #sitControl field="searchRailConfigurations" label="Filtruj"></sit-data-input>
+          <sit-data-input id="searchRailConfigurations" #sitControl field="searchRailConfigurations" label="Filtruj"></sit-data-input>
         </span>
         </sit-data-source-container>
       </div>
@@ -28,7 +28,7 @@
           <ngx-datatable #sitRailConfigurations #sitSetDataSource
             class="material striped"
             [columnMode]="ColumnMode.force"
-            [limit]=5
+            [limit]=20
             [footerHeight]="50"
             [selected]="sitRailConfigurationsSelected"
             [selectionType]="SelectionType.single"
@@ -68,14 +68,14 @@
             </ng-template>
           </ngx-datatable-column>
 
-            <ngx-datatable-column prop="sitRailConfigurationsId" name="Id" [canAutoResize]="false" [width]="50">
+            <ngx-datatable-column prop="sitRailConfigurationsId" name="Id" [canAutoResize]="false" [width]="40">
               <ng-template let-value="value" ngx-datatable-cell-template>
                 <div style="text-align: right;">
                   {{value}}
                 </div>
               </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column prop="sitCompaniesId" name="CompanyId" [canAutoResize]="false" [width]="80">
+            <ngx-datatable-column prop="sitCompaniesId" name="CompId" [canAutoResize]="false" [width]="55">
               <ng-template let-value="value" ngx-datatable-cell-template>
                 <div style="text-align: right;">
                   {{value}}
@@ -83,10 +83,10 @@
               </ng-template>
             </ngx-datatable-column>
             <ngx-datatable-column prop="CompanyIdent" name="Company Ident"></ngx-datatable-column>
-            <ngx-datatable-column prop="ClientGuid" name="ClientGuid"></ngx-datatable-column>
+            <ngx-datatable-column prop="ClientGuid" name="ClientGuid" [canAutoResize]="false" [width]="280"></ngx-datatable-column>
             <ngx-datatable-column prop="UserLogin" name="User Login"></ngx-datatable-column>
             <ngx-datatable-column prop="OperationIdent" name="OperationIdent"></ngx-datatable-column>
-            <ngx-datatable-column prop="IsActive" [width]="50">
+            <ngx-datatable-column prop="IsActive" [canAutoResize]="false" [width]="55">
               <ng-template let-column="column" ngx-datatable-header-template>
                 IsActive
               </ng-template>
@@ -96,9 +96,10 @@
                 </div>
               </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column prop="Timeout" name="Timeout"></ngx-datatable-column>
+            <ngx-datatable-column prop="Timeout" name="Timeout" [canAutoResize]="false" [width]="60"></ngx-datatable-column>
             <ngx-datatable-column prop="TransformProcedure" name="Transform procedure"></ngx-datatable-column>
             <ngx-datatable-column prop="ConvertFunctionForParams" name="ConvertFunctionForParams"></ngx-datatable-column>
+            <ngx-datatable-column prop="Source" name="Źródło"></ngx-datatable-column>
           </ngx-datatable>
         </sit-data-source-container>
         </div>
