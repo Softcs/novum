@@ -71,22 +71,7 @@ export class SitRailConfigurationsComponent implements OnInit {
   edit() {
     const dataSourceResponseWrapper: DataSourceResponseWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitRailConfigurations");
 
-    this.tabService.addTab(new Tab( SitRailConfigurationsEditComponent, 'Konfiguracja Rail - Edycja' , { parent: 'AppComponent', activeRow: dataSourceResponseWrapper.activeRow,
-      guid: dataSourceResponseWrapper.activeRow['sitRailConfigurationsG'],
-      sitRailConfigurationsId: dataSourceResponseWrapper.activeRow['sitRailConfigurationsId'],
-      OperationIdent: dataSourceResponseWrapper.activeRow['OperationIdent'],
-      ClientGuid: dataSourceResponseWrapper.activeRow['ClientGuid'],
-      Data: dataSourceResponseWrapper.activeRow['Data'],
-      IsActive: dataSourceResponseWrapper.activeRow['IsActive'],
-      Timeout: dataSourceResponseWrapper.activeRow['Timeout'],
-      TransformProcedure: dataSourceResponseWrapper.activeRow['TransformProcedure'],
-      ConvertFunctionForParams: dataSourceResponseWrapper.activeRow['ConvertFunctionForParams'],
-      Source: dataSourceResponseWrapper.activeRow['Source'],
-      sitRailConfigurationsG: dataSourceResponseWrapper.activeRow['sitRailConfigurationsG'],
-      sitCompaniesId: dataSourceResponseWrapper.activeRow['sitCompaniesId'],
-      sitWSUsersId: dataSourceResponseWrapper.activeRow['sitWSUsersId'],
-
-    }));
+    this.tabService.addTab(new Tab( SitRailConfigurationsEditComponent, 'Konfiguracja Rail - Edycja' , { parent: 'AppComponent', activeRow: dataSourceResponseWrapper.activeRow }));
   }
 
 

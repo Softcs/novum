@@ -1,6 +1,15 @@
 ﻿<sit-dict-container ident="sitRailConfigurations" #sitDictcontainer class="container-cols">
   <div class="container-cols" >
     <div class="content">
+
+      <div style="flex: 0 1 auto; width: 200px;">
+        <sit-data-source-container  ident="sitFilter" >
+        <span>
+          <sit-data-input id="searchRailConfigurations" #sitControl field="searchRailConfigurations" label="Filtruj"></sit-data-input>
+        </span>
+        </sit-data-source-container>
+      </div>
+      <div class="sit-proc-bar">
       <mat-toolbar>
         <mat-toolbar-row>
           <button mat-flat-button matTooltip="Nowy" color="primary" (click)="new()">
@@ -15,20 +24,16 @@
 
         </mat-toolbar-row>
       </mat-toolbar>
-      <div style="flex: 0 1 auto; width: 200px;">
-        <sit-data-source-container  ident="sitFilter" >
-        <span>
-          <sit-data-input id="searchRailConfigurations" #sitControl field="searchRailConfigurations" label="Filtruj"></sit-data-input>
-        </span>
-        </sit-data-source-container>
       </div>
       <div  style="flex: 1 1 auto;">
         <div class="data-table">
         <sit-data-source-container ident="sitRailConfigurations">
           <ngx-datatable #sitRailConfigurations #sitSetDataSource
             class="material striped"
+            style = "height:600px;"
             [columnMode]="ColumnMode.force"
             [limit]=20
+            [scrollbarV]=true
             [footerHeight]="50"
             [selected]="sitRailConfigurationsSelected"
             [selectionType]="SelectionType.single"
@@ -36,7 +41,7 @@
             [displayCheck]="displayCheck"
             (activate)="onActivateRailConfigurations($event)"
             (select)="onSelectRailConfigurations($event)"
-            [footerHeight]="50"
+
           >
           <!-- Row Detail Template -->
           <ngx-datatable-row-detail [rowHeight]="300" #myDetailRow (toggle)="onDetailToggle($event)">
