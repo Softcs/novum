@@ -1,59 +1,72 @@
 <sit-dict-container ident="sitRailConfigurations" #sitDictcontainer fxFlexFill (refreshAfter) ="refreshAfter($event)">
-  <sit-data-source-container ident="sitRailConfigurationsEdit">
-    <div class="content" fxLayout="column">
-      <div fxLayout="row">
-        <mat-form-field class="sit-edit-input" appearance="fill" style="width: 100px;">
-          <mat-label>CompId</mat-label>
-          <input matInput type="number" id="sitCompaniesId" value="{{ activeRowRailConfigurations?.sitCompaniesId }}" (change)="onChange($event.srcElement.id,$event.srcElement.value)">
-        </mat-form-field>
-        <mat-form-field class="sit-edit-input"  appearance="fill" style="width: 500px;">
-          <mat-label>GUID Rail'a</mat-label>
-          <input matInput type="text" id="ClientGuid" value="{{ activeRowRailConfigurations?.ClientGuid }}" (change)="onChange($event.srcElement.id,$event.srcElement.value)">
-        </mat-form-field>
-        <mat-form-field class="sit-edit-input" appearance="fill" style="width: 500px;">
+  <sit-data-source-container ident="sitRailConfigurationsEdit" class="content">
+    <div fxLayout="row">
+      <div fxLayout="column">
+        <div fxLayout="row">
+          <mat-form-field class="sit-edit-input" appearance="fill" style="width: 100px;">
+            <mat-label>Id firmy</mat-label>
+            <input matInput type="number" id="sitCompaniesId" value="{{ activeRowRailConfigurations?.sitCompaniesId }}" (change)="onChange($event.srcElement.id,$event.srcElement.value)">
+          </mat-form-field>
+          <mat-form-field class="sit-edit-input" appearance="fill" style="width: 300px;">
+            <mat-label>Firma</mat-label>
+            <input matInput type="number" id="CompanyIdent" value="{{ activeRowRailConfigurations?.CompanyIdent }}" (change)="onChange($event.srcElement.id,$event.srcElement.value)">
+          </mat-form-field>
+          <mat-checkbox id="IsActive" [(ngModel)]="isChecked" [checked]="activeRowRailConfigurations?.IsActive == 1" (change)="onChange($event.source.id, isChecked?1:0)">Aktywny</mat-checkbox>
+
+        </div>
+        <div fxLayout="row">
+          <mat-form-field class="sit-edit-input"  appearance="fill" style="width: 400px;">
+            <mat-label>GUID Rail'a</mat-label>
+            <input matInput type="text" id="ClientGuid" value="{{ activeRowRailConfigurations?.ClientGuid }}" (change)="onChange($event.srcElement.id,$event.srcElement.value)">
+          </mat-form-field>
+        </div>
+        <div fxLayout="row">
+          <mat-form-field class="sit-edit-input" appearance="fill" style="width: 500px;">
             <mat-label>Identyfikator operacji</mat-label>
-          <input matInput type="text" id="OperationIdent" value="{{ activeRowRailConfigurations?.OperationIdent }}" (change)="onChange($event.srcElement.id,$event.srcElement.value)">
-        </mat-form-field>
+            <input matInput type="text" id="OperationIdent" value="{{ activeRowRailConfigurations?.OperationIdent }}" (change)="onChange($event.srcElement.id,$event.srcElement.value)">
+          </mat-form-field>
+        </div>
+        <div fxLayout="row">
+          <mat-form-field class="sit-edit-input"  appearance="fill" style="width: 100px;">
+            <mat-label>User Id</mat-label>
+            <input matInput type="number" id="sitWSUsersId" value="{{ activeRowRailConfigurations?.sitWSUsersId }}" (change)="onChange($event.srcElement.id,$event.srcElement.value)">
+          </mat-form-field>
+          <mat-form-field class="sit-edit-input"  appearance="fill" style="width: 200px;">
+            <mat-label>Użytkownik</mat-label>
+            <input matInput type="text" id="UserLogin" value="{{ activeRowRailConfigurations?.UserLogin }}" (change)="onChange($event.srcElement.id,$event.srcElement.value)">
+          </mat-form-field>
+          <mat-form-field class="sit-edit-input"  appearance="fill" style="width: 100px;">
+            <mat-label>Timeout</mat-label>
+            <input matInput type="number" id="Timeout" value="{{ activeRowRailConfigurations?.Timeout }}" (change)="onChange($event.srcElement.id,$event.srcElement.value)">
+          </mat-form-field>
+          <mat-form-field class="sit-edit-input" appearance="fill" style="width: 200px;">
+            <mat-label>Źródło</mat-label>
+            <input matInput type="text" id="Source" value="{{ activeRowRailConfigurations?.Source }}" (change)="onChange($event.srcElement.id,$event.srcElement.value)">
+          </mat-form-field>
+
+        </div>
+        <div fxLayout="row">
+          <mat-form-field class="sit-edit-input" appearance="fill" style="width: 400px;">
+              <mat-label>Procedura transformująca</mat-label>
+            <input matInput type="text" id="TransformProcedure" value="{{ activeRowRailConfigurations?.TransformProcedure }}" (change)="onChange($event.srcElement.id,$event.srcElement.value)">
+          </mat-form-field>
+        </div>
+        <div fxLayout="row">
+          <mat-form-field class="sit-edit-input" appearance="fill" style="width: 400px;">
+            <mat-label>Funkcja konwertująca parametry</mat-label>
+            <input matInput type="text" id="ConvertFunctionForParams" value="{{ activeRowRailConfigurations?.ConvertFunctionForParams }}" (change)="onChange($event.srcElement.id,$event.srcElement.value)">
+          </mat-form-field>
+        </div>
       </div>
-      <div fxLayout="row">
-        <mat-form-field class="sit-edit-input"  appearance="fill" style="width: 200px;">
-          <mat-label>User Id</mat-label>
-          <input matInput type="number" id="sitWSUsersId" value="{{ activeRowRailConfigurations?.sitWSUsersId }}" (change)="onChange($event.srcElement.id,$event.srcElement.value)">
-        </mat-form-field>
-        <mat-form-field class="sit-edit-input"  appearance="fill" style="width: 200px;">
-          <mat-label>Użytkownik</mat-label>
-          <input matInput type="text" id="UserLogin" value="{{ activeRowRailConfigurations?.UserLogin }}" (change)="onChange($event.srcElement.id,$event.srcElement.value)">
-        </mat-form-field>
-        <mat-form-field class="sit-edit-input"  appearance="fill" style="width: 100px;">
-          <mat-label>Timeout</mat-label>
-          <input matInput type="number" id="Timeout" value="{{ activeRowRailConfigurations?.Timeout }}" (change)="onChange($event.srcElement.id,$event.srcElement.value)">
-        </mat-form-field>
-        <mat-checkbox id="IsActive" [(ngModel)]="isChecked" [checked]="activeRowRailConfigurations?.IsActive == 1" (change)="onChange($event.source.id, isChecked?1:0)">Aktywny</mat-checkbox>
-      </div>
-      <div fxLayout="row">
-        <mat-form-field class="sit-edit-input" appearance="fill" style="width: 350px;">
-            <mat-label>Procedura transformująca</mat-label>
-          <input matInput type="text" id="TransformProcedure" value="{{ activeRowRailConfigurations?.TransformProcedure }}" (change)="onChange($event.srcElement.id,$event.srcElement.value)">
-        </mat-form-field>
-        <mat-form-field class="sit-edit-input" appearance="fill" style="width: 350px;">
-          <mat-label>Funkcja konwertująca parametry</mat-label>
-          <input matInput type="text" id="ConvertFunctionForParams" value="{{ activeRowRailConfigurations?.ConvertFunctionForParams }}" (change)="onChange($event.srcElement.id,$event.srcElement.value)">
-        </mat-form-field>
-        <mat-form-field class="sit-edit-input" appearance="fill" style="width: 200px;">
-          <mat-label>Źródło</mat-label>
-          <input matInput type="text" id="Source" value="{{ activeRowRailConfigurations?.Source }}" (change)="onChange($event.srcElement.id,$event.srcElement.value)">
-        </mat-form-field>
-      </div>
-      <div>
+      <div fxFlex>
         <mat-form-field class="sit-edit-input"  appearance="fill" style="width: 100%;">
           <mat-label>Data</mat-label>
-          <textarea matInput id="Data" rows="20" value="{{ activeRowRailConfigurations?.Data }}" style="resize:none;" (change)="onChange($event.srcElement.id,$event.srcElement.value)"></textarea>
+          <textarea matInput id="Data" rows="40" value="{{ activeRowRailConfigurations?.Data }}" style="resize:none;" (change)="onChange($event.srcElement.id,$event.srcElement.value)"></textarea>
         </mat-form-field>
       </div>
-      <div>
+    </div>
+    <div>
         <sit-proc-button #sitControl actionIdent="save" color="primary" caption="Zapisz"></sit-proc-button>
-
-      </div>
     </div>
 
   </sit-data-source-container>
