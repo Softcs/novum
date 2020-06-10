@@ -7,21 +7,21 @@
             <mat-label>Id firmy</mat-label>
             <input matInput type="number" id="sitCompaniesId" value="{{ activeRowRailConfigurations?.sitCompaniesId }}" (change)="onChange($event.srcElement.id,$event.srcElement.value)">
           </mat-form-field>
-          <mat-form-field class="sit-edit-input" appearance="fill" style="width: 300px;">
+          <mat-form-field class="sit-edit-input" appearance="fill" style="width: 400px;">
             <mat-label>Firma</mat-label>
-            <input matInput type="number" id="CompanyIdent" value="{{ activeRowRailConfigurations?.CompanyIdent }}" (change)="onChange($event.srcElement.id,$event.srcElement.value)">
+            <input matInput type="text" id="CompanyIdent" value="{{ activeRowRailConfigurations?.CompanyIdent }}" (change)="onChange($event.srcElement.id,$event.srcElement.value)">
           </mat-form-field>
           <mat-checkbox id="IsActive" [(ngModel)]="isChecked" [checked]="activeRowRailConfigurations?.IsActive == 1" (change)="onChange($event.source.id, isChecked?1:0)">Aktywny</mat-checkbox>
 
         </div>
         <div fxLayout="row">
-          <mat-form-field class="sit-edit-input"  appearance="fill" style="width: 400px;">
+          <mat-form-field class="sit-edit-input"  appearance="fill" style="width: 100%;">
             <mat-label>GUID Rail'a</mat-label>
             <input matInput type="text" id="ClientGuid" value="{{ activeRowRailConfigurations?.ClientGuid }}" (change)="onChange($event.srcElement.id,$event.srcElement.value)">
           </mat-form-field>
         </div>
         <div fxLayout="row">
-          <mat-form-field class="sit-edit-input" appearance="fill" style="width: 500px;">
+          <mat-form-field class="sit-edit-input" appearance="fill" style="width: 100%;">
             <mat-label>Identyfikator operacji</mat-label>
             <input matInput type="text" id="OperationIdent" value="{{ activeRowRailConfigurations?.OperationIdent }}" (change)="onChange($event.srcElement.id,$event.srcElement.value)">
           </mat-form-field>
@@ -46,13 +46,13 @@
 
         </div>
         <div fxLayout="row">
-          <mat-form-field class="sit-edit-input" appearance="fill" style="width: 400px;">
+          <mat-form-field class="sit-edit-input" appearance="fill" style="width: 100%;">
               <mat-label>Procedura transformująca</mat-label>
             <input matInput type="text" id="TransformProcedure" value="{{ activeRowRailConfigurations?.TransformProcedure }}" (change)="onChange($event.srcElement.id,$event.srcElement.value)">
           </mat-form-field>
         </div>
         <div fxLayout="row">
-          <mat-form-field class="sit-edit-input" appearance="fill" style="width: 400px;">
+          <mat-form-field class="sit-edit-input" appearance="fill" style="width: 100%;">
             <mat-label>Funkcja konwertująca parametry</mat-label>
             <input matInput type="text" id="ConvertFunctionForParams" value="{{ activeRowRailConfigurations?.ConvertFunctionForParams }}" (change)="onChange($event.srcElement.id,$event.srcElement.value)">
           </mat-form-field>
