@@ -6,6 +6,7 @@ import { SitDictContainerComponent } from '@app/components/sit-dict-container';
 import { DataSourceResponseWrapper } from '@app/_models';
 import { AgFilterComponent } from 'ag-grid-angular';
 import { MatDialog } from '@angular/material/dialog';
+import { SitDialogDiscardComponent } from '@app/components/sit-dialog-discard';
 @Component({
   selector: 'app-sit-rail-configurations-edit',
   templateUrl: './sit-rail-configurations-edit.component.html',
@@ -45,13 +46,16 @@ export class SitRailConfigurationsEditComponent implements OnInit {
     //console.log(dataSourceResponseWrapper.activeRow);
   }
 
-  removeTab(index: number): void {
-    console.log(index);
-    this.tabService.removeTab(index);
-  }
 
-//   openDialog() {
-//     //this.dialog.open(DialogElementsExampleDialog);
-//   }
-// }
+  openDiscardDialog(): void {
+    const dialogRef = this.dialog.open(SitDialogDiscardComponent, {
+      width: '250px', height: '150px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.tabService.removeTab(this.tabIndex);
+      }
+    });
+  }
 }

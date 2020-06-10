@@ -82,7 +82,8 @@ import { SitProjectsPubComponent } from './containers/dictionaries/sit-projects-
 import { TabContentComponent } from './components/tab-content/tab-content.component';
 import { ContentContainerDirective } from './_directives/content-container.directive';
 import { SitPulpitComponent } from './containers/sit-pulpit';
-import { SitRailConfigurationsEditComponent } from './containers/dictionaries/sit-rail-configurations-edit/sit-rail-configurations-edit.component'
+import { SitRailConfigurationsEditComponent } from './containers/dictionaries/sit-rail-configurations-edit/sit-rail-configurations-edit.component';
+import { SitDialogDiscardComponent } from './components/sit-dialog-discard/sit-dialog-discard.component'
 
 @NgModule({
     imports: [
@@ -168,6 +169,7 @@ import { SitRailConfigurationsEditComponent } from './containers/dictionaries/si
         TabContentComponent,
         ContentContainerDirective,
         SitRailConfigurationsEditComponent,
+        SitDialogDiscardComponent
 
     ],
     providers: [
@@ -182,7 +184,8 @@ import { SitRailConfigurationsEditComponent } from './containers/dictionaries/si
     bootstrap: [AppComponent],
     entryComponents: [
       SitPulpitComponent,
-      SitRailConfigurationsEditComponent
+      SitRailConfigurationsEditComponent,
+      SitDialogDiscardComponent
     ]
 })
 export class AppModule { }
