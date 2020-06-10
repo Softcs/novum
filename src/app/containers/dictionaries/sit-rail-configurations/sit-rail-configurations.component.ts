@@ -63,9 +63,14 @@ export class SitRailConfigurationsComponent implements OnInit {
   }
 
   new() {
-    let newGuid = Guid.create();
+    const dataSourceResponseWrapper: DataSourceResponseWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitRailConfigurations");
+    const newGuid = Guid.create();
+    const row = dataSourceResponseWrapper.activeRow;
+    Object.keys(row).forEach(key => row[key] = null);
 
-    this.tabService.addTab(new Tab( SitRailConfigurationsEditComponent, 'Konfiguracja Rail - Nowy' , { parent: 'AppComponent', guid: newGuid.toString() }));
+    row['sitRailConfigurationsG'] = newGuid.toString();
+
+    this.tabService.addTab(new Tab( SitRailConfigurationsEditComponent, 'Konfiguracja Rail - Nowy' , { parent: 'AppComponent', activeRow: row }));
   }
 
   edit() {
