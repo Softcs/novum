@@ -61,12 +61,19 @@
       <div fxFlex>
         <mat-form-field class="sit-edit-input"  appearance="fill" style="width: 100%;">
           <mat-label>Data</mat-label>
-          <textarea matInput id="Data" rows="40" value="{{ activeRowRailConfigurations?.Data }}" style="resize:none;" (change)="onChange($event.srcElement.id,$event.srcElement.value)"></textarea>
+          <textarea matInput id="Data" rows="38" value="{{ activeRowRailConfigurations?.Data }}" style="resize:none;" (change)="onChange($event.srcElement.id,$event.srcElement.value)"></textarea>
         </mat-form-field>
       </div>
     </div>
-    <div>
+    <mat-divider></mat-divider>
+    <div fxLayout="row" style="width: 100%;">
+      <span style="padding: 20px">
         <sit-proc-button #sitControl actionIdent="save" color="primary" caption="Zapisz"></sit-proc-button>
+      </span>
+      <span style="width: 100px"></span>
+      <span style="padding: 20px">
+        <button mat-raised-button color="primary" (click)="removeTab(tabIndex)"  style="width: 80px;">Anuluj</button>
+      </span>
     </div>
 
   </sit-data-source-container>

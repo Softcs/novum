@@ -5,6 +5,7 @@ import { Tab } from '@app/_models/tab.model';
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
 import { DataSourceResponseWrapper } from '@app/_models';
 import { AgFilterComponent } from 'ag-grid-angular';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-sit-rail-configurations-edit',
   templateUrl: './sit-rail-configurations-edit.component.html',
@@ -12,13 +13,17 @@ import { AgFilterComponent } from 'ag-grid-angular';
 })
 export class SitRailConfigurationsEditComponent implements OnInit {
   @ViewChild('sitDictcontainer') dictContainer: SitDictContainerComponent;
+  tabIndex: number;
 
   constructor(
     private tabService: TabService,
+    public dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
     //console.log(this.tabService.tabs[this.tabService.tabs.findIndex(tab => tab.active)].tabData)
+      this.tabIndex = this.tabService.tabs.findIndex(tab => tab.active);
+    //console.log(this.selectedTab)
   }
 
   get activeRowRailConfigurations() {
@@ -40,4 +45,13 @@ export class SitRailConfigurationsEditComponent implements OnInit {
     //console.log(dataSourceResponseWrapper.activeRow);
   }
 
+  removeTab(index: number): void {
+    console.log(index);
+    this.tabService.removeTab(index);
+  }
+
+//   openDialog() {
+//     //this.dialog.open(DialogElementsExampleDialog);
+//   }
+// }
 }
