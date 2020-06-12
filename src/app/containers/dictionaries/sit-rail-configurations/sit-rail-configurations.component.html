@@ -18,9 +18,7 @@
           <button mat-flat-button matTooltip="Edycja" color="accent" (click)="edit()">
             <mat-icon aria-hidden="false" aria-label="Firma">edit</mat-icon>
           </button>
-          <button mat-flat-button matTooltip="Usuń" color="accent" (click)="delete()">
-            <mat-icon aria-hidden="false" aria-label="Firma">delete</mat-icon>
-          </button>
+          <sit-proc-button #sitControl actionIdent="del" color="primary" caption="Usuń" confirmDel="true"></sit-proc-button>
 
         </mat-toolbar-row>
       </mat-toolbar>

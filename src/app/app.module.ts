@@ -83,7 +83,9 @@ import { TabContentComponent } from './components/tab-content/tab-content.compon
 import { ContentContainerDirective } from './_directives/content-container.directive';
 import { SitPulpitComponent } from './containers/sit-pulpit';
 import { SitRailConfigurationsEditComponent } from './containers/dictionaries/sit-rail-configurations-edit/sit-rail-configurations-edit.component';
-import { SitDialogDiscardComponent } from './components/sit-dialog-discard/sit-dialog-discard.component'
+import { SitDialogDiscardComponent } from './components/sit-dialog-discard/sit-dialog-discard.component';
+import { SitDictEditFormComponent } from './components/sit-dict-edit-form/sit-dict-edit-form.component';
+import { SitDialogConfirmDelComponent } from './components/sit-dialog-confirm-del/sit-dialog-confirm-del.component'
 
 @NgModule({
     imports: [
@@ -169,7 +171,9 @@ import { SitDialogDiscardComponent } from './components/sit-dialog-discard/sit-d
         TabContentComponent,
         ContentContainerDirective,
         SitRailConfigurationsEditComponent,
-        SitDialogDiscardComponent
+        SitDialogDiscardComponent,
+        SitDictEditFormComponent,
+        SitDialogConfirmDelComponent
 
     ],
     providers: [
@@ -185,7 +189,8 @@ import { SitDialogDiscardComponent } from './components/sit-dialog-discard/sit-d
     entryComponents: [
       SitPulpitComponent,
       SitRailConfigurationsEditComponent,
-      SitDialogDiscardComponent
+      SitDialogDiscardComponent,
+      SitDialogConfirmDelComponent
     ]
 })
 export class AppModule { }

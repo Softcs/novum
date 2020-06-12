@@ -1,13 +1,12 @@
-﻿import { SitRailConfigurationsEditComponent } from './../sit-rail-configurations-edit/sit-rail-configurations-edit.component';
-import { Component, OnInit, ViewChild } from '@angular/core';
+﻿import { Component, OnInit, ViewChild } from '@angular/core';
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
 import { ColumnMode, SelectionType } from '../../../../ngx/public-api';
 import { DataSourceResponseWrapper } from '@app/_models';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
-import * as $ from 'jquery';
 import { TabService } from '@app/_services/tab.service';
 import { Tab } from '@app/_models/tab.model';
 import { Guid } from "guid-typescript";
+import { SitRailConfigurationsEditComponent } from './../sit-rail-configurations-edit/sit-rail-configurations-edit.component';
 
 @Component({
     selector: 'sit-rail-configurations',
@@ -16,7 +15,6 @@ import { Guid } from "guid-typescript";
     host: {class: 'router-flex'}
 })
 export class SitRailConfigurationsComponent implements OnInit {
-  @ViewChild('sit-rail-configurations') menuTable: DatatableComponent;
   @ViewChild('sitDictcontainer') dictContainer: SitDictContainerComponent;
   @ViewChild('sitRailConfigurations') table: any;
 
@@ -55,7 +53,7 @@ export class SitRailConfigurationsComponent implements OnInit {
   }
 
   onDetailToggle(event) {
-    //console.log('Detail Toggled', event);
+
   }
 
   get activeRowRailConfigurations() {
@@ -65,10 +63,11 @@ export class SitRailConfigurationsComponent implements OnInit {
   new() {
     const dataSourceResponseWrapper: DataSourceResponseWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitRailConfigurations");
     const newGuid = Guid.create();
-    const row = dataSourceResponseWrapper.activeRow;
+    let row = dataSourceResponseWrapper.activeRow;
     Object.keys(row).forEach(key => row[key] = null);
 
     row['sitRailConfigurationsG'] = newGuid.toString();
+    row['IsActive'] = 1;
 
     this.tabService.addTab(new Tab( SitRailConfigurationsEditComponent, 'Konfiguracja Rail - Nowy' , { parent: 'AppComponent', activeRow: row }));
   }
@@ -79,11 +78,4 @@ export class SitRailConfigurationsComponent implements OnInit {
     this.tabService.addTab(new Tab( SitRailConfigurationsEditComponent, 'Konfiguracja Rail - Edycja' , { parent: 'AppComponent', activeRow: dataSourceResponseWrapper.activeRow }));
   }
 
-
-
-
-
-  delete(){
-
-  }
 }
