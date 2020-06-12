@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Renderer2, ViewChild, ElementRef,
-   AfterContentChecked, AfterViewInit, AfterContentInit } from '@angular/core';
+   AfterContentChecked, AfterViewInit, AfterContentInit, EventEmitter, Output  } from '@angular/core';
 import { DataSourceResponseWrapper, Operation } from '@app/_models';
 
 @Component({
@@ -13,6 +13,8 @@ export class SitProcButtonComponent implements OnInit {
   @Input() actionIdent: string;
   @Input() color: string;
   @Input() caption: string;
+
+  @Output() afterCompleted: EventEmitter<string> = new EventEmitter<string>();
 
   @ViewChild('button') private _buttonElement: ElementRef;
 
@@ -43,10 +45,12 @@ export class SitProcButtonComponent implements OnInit {
 
   private executeActionCompletedCallback(self) {
     self.executing = false;
+    this.afterCompleted.emit('OK')
   }
 
   private executeActionExceptionCallback(self) {
     self.executing = false;
+    this.afterCompleted.emit('Error')
   }
 
 }

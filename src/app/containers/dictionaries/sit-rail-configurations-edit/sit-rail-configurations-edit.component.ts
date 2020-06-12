@@ -15,6 +15,7 @@ import { SitDialogDiscardComponent } from '@app/components/sit-dialog-discard';
 export class SitRailConfigurationsEditComponent implements OnInit {
   @ViewChild('sitDictcontainer') dictContainer: SitDictContainerComponent;
   tabIndex: number;
+  isChecked: boolean;
 
   constructor(
     private tabService: TabService,
@@ -57,5 +58,9 @@ export class SitRailConfigurationsEditComponent implements OnInit {
         this.tabService.removeTab(this.tabIndex);
       }
     });
+  }
+
+  onSave(e) {
+    console.log(e)
   }
 }

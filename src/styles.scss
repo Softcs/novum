@@ -1,8 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @import "./theme";
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
-@import '~@angular/material/theming';
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+// @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
 @import "../node_modules/ag-grid-community/src/styles/ag-grid.scss";
@@ -180,7 +180,7 @@ mat-toolbar-row{
 mat-toolbar-row,mat-toolbar-single-row{
   min-height: 42px !important;
   height: 42px !important;
-  background-color: $toolbar-color !important;
+//  background-color: $toolbar-color !important;
   width: 100%;
   min-width: 100%;
   padding: 0px 2px 0px 2px !important;
@@ -356,76 +356,4 @@ button:focus {
   box-shadow:        0px 2px 3px 0px #3d3d3d;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
 }
 
-$mat-myapp-primary: (
-  50 : #eceded,
-  100 : #d0d1d2,
-  200 : #b1b3b5,
-  300 : #929497,
-  400 : #7a7d80,
-  500 : #63666a,
-  600 : #5b5e62,
-  700 : #515357,
-  800 : #47494d,
-  900 : #35383c,
-  A100 : #99b9f8,
-  A200 : #6998f5,
-  A400 : #2c72ff,
-  A700 : #1361ff,
-  contrast: (
-      50 : #000000,
-      100 : #000000,
-      200 : #000000,
-      300 : #000000,
-      400 : #ffffff,
-      500 : #ffffff,
-      600 : #ffffff,
-      700 : #ffffff,
-      800 : #ffffff,
-      900 : #ffffff,
-      A100 : #000000,
-      A200 : #000000,
-      A400 : #ffffff,
-      A700 : #ffffff,  )
-);
 
-$mat-myapp-accent: (
-  50 : #e1e1e1,
-  100 : #b5b5b5,
-  200 : #848484,
-  300 : #535353,
-  400 : #2e2e2e,
-  500 : #090909,
-  600 : #080808,
-  700 : #060606,
-  800 : #050505,
-  900 : #020202,
-  A100 : #a6a6a6,
-  A200 : #8c8c8c,
-  A400 : #737373,
-  A700 : #666666,
-  contrast: (
-      50 : #000000,
-      100 : #000000,
-      200 : #000000,
-      300 : #ffffff,
-      400 : #ffffff,
-      500 : #ffffff,
-      600 : #ffffff,
-      700 : #ffffff,
-      800 : #ffffff,
-      900 : #ffffff,
-      A100 : #000000,
-      A200 : #000000,
-      A400 : #ffffff,
-      A700 : #ffffff,
-
-  )
-);
-
-$primary: mat-palette($mat-myapp-primary);
-$accent: mat-palette($mat-myapp-accent);
-
-$theme: mat-light-theme($primary, $accent);
-
-
-@include angular-material-theme($theme);
