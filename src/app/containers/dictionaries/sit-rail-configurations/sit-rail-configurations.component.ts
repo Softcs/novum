@@ -1,4 +1,4 @@
-﻿import { Component, OnInit, ViewChild } from '@angular/core';
+﻿import { Component, OnInit, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
 import { ColumnMode, SelectionType } from '../../../../ngx/public-api';
 import { DataSourceResponseWrapper } from '@app/_models';
@@ -17,6 +17,7 @@ import { SitRailConfigurationsEditComponent } from './../sit-rail-configurations
 export class SitRailConfigurationsComponent implements OnInit {
   @ViewChild('sitDictcontainer') dictContainer: SitDictContainerComponent;
   @ViewChild('sitRailConfigurations') table: any;
+  @ViewChildren('sitDictcontainer') dictContainers !: QueryList<SitDictContainerComponent>;
 
   sitRailConfigurationsSelected = [];
   ColumnMode = ColumnMode;

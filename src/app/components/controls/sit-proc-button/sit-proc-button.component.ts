@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Renderer2, ViewChild, ElementRef, EventEmitte
 import { DataSourceResponseWrapper, Operation } from '@app/_models';
 import { MatDialog } from '@angular/material/dialog';
 import { SitDialogConfirmDelComponent } from '@app/components/sit-dialog-confirm-del';
+import { ICON_REGISTRY_PROVIDER } from '@angular/material/icon';
 @Component({
   selector: 'sit-proc-button',
   templateUrl: './sit-proc-button.component.html',
@@ -13,7 +14,8 @@ export class SitProcButtonComponent implements OnInit {
   @Input() actionIdent: string;
   @Input() color: string;
   @Input() caption: string;
-  @Input() confirmDel = false;
+  @Input() delete = false;
+  @Input() icon: string;
 
   @Output() afterCompleted: EventEmitter<string> = new EventEmitter<string>();
 
@@ -31,8 +33,7 @@ export class SitProcButtonComponent implements OnInit {
   }
 
   onClick($event) {
-    console.log(this.confirmDel)
-    if (this.confirmDel) {
+    if (this.delete) {
       const dialogRef = this.dialog.open(SitDialogConfirmDelComponent, {
         width: '250px', height: '150px'
       });
@@ -43,7 +44,8 @@ export class SitProcButtonComponent implements OnInit {
           this.dataSourceResponseWrapper.ExecuteAction(this.actionIdent,
             this,
             this.executeActionCompletedCallback,
-            this.executeActionExceptionCallback);      }
+            this.executeActionExceptionCallback);
+          }
       });
 
     } else {
