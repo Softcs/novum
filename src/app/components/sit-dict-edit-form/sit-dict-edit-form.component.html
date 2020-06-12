@@ -1,6 +1,6 @@
 <sit-dict-container ident="{{dictIdent}}" #sitDictcontainer (refreshAfter) ="refreshAfter($event)">
   <sit-data-source-container ident="{{dataSourceIdent}}">
-
+<div class="sit-edit-form">
     <ng-content></ng-content>
 
 
@@ -14,6 +14,6 @@
         <button mat-raised-button color="primary" (click)="openDiscardDialog()"  style="width: 80px;">Anuluj</button>
       </span>
     </div>
-
+  </div>
   </sit-data-source-container>
 </sit-dict-container>

@@ -102,6 +102,14 @@ body {
 
 .sit-proc-buttons-row button, .sit-proc-buttons-row a, .sit-proc-buttons-row sit-proc-button {
   margin-right: 8px;
+
+
+}
+
+.sit-edit-form {
+  background-color: $edit-form-background-color;
+  margin: 5px 5px 0px;
+  padding: 5px 0px;
 }
 
 .container-menu{
@@ -173,7 +181,7 @@ mat-toolbar{
   // display: flex !important;
   // flex-direction: row !important;
   //background-color: $toolbar-color !important;
-  min-height: 42px !important;
+  min-height: 45px !important;
 }
 mat-toolbar-row{
   display: flex !important;
@@ -182,8 +190,8 @@ mat-toolbar-row{
 }
 
 mat-toolbar-row,mat-toolbar-single-row{
-  min-height: 42px !important;
-  height: 42px !important;
+  min-height: 45px !important;
+  height: 45px !important;
 //  background-color: $toolbar-color !important;
   width: 100%;
   min-width: 100%;
