@@ -64,9 +64,9 @@ export class SitRailConfigurationsComponent implements OnInit {
   new() {
     const dataSourceResponseWrapper: DataSourceResponseWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitRailConfigurations");
     const newGuid = Guid.create();
-    let row = dataSourceResponseWrapper.activeRow;
+    const row = [];
 
-    Object.keys(row).forEach(key => row[key] = null);
+    Object.keys(dataSourceResponseWrapper.activeRow).forEach(key => row[key] = null);
 
     row['sitRailConfigurationsG'] = newGuid.toString();
     row['IsActive'] = 1;
