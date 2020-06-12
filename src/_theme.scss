@@ -1,7 +1,7 @@
 @import '~@angular/material/theming';
 
-$background-color: #D0D0CE ;//#FF8F1C;//
-$content-background-color: #D0D0CE;//#F9F9F9;
+$background-color: #e1e7ec ;//#FF8F1C;//
+$content-background-color: #e1e7ec;//#F9F9F9;
 $messagebox-background-color: #ffb66b;//#ffb3b3;// #ffffb3;
 $toolbar-color: #63666A;
 $toolbar-text-color: white;
@@ -18,32 +18,32 @@ $table-footer-color: #B3B3B0;
 $table-row-odd-color: #F9F9F9;
 $table-row-even-color: white;
 $table-row-hover-color: #D7D7D5;
-$table-row-selected-color: rgb(248, 228, 172);// #FFC78E;
-$table-row-selected-hover-color: rgb(245, 205, 118);// #FFB160;
+$table-row-selected-color: #839bb1;// #FFC78E;
+$table-row-selected-hover-color: #839bb1;// #FFB160;
 
 $form-header-color: #e0e0e0;
 $form-body-color: #F9F9F9;
 
-$tab-header-color: #D0D0CE;// rgb(180, 180, 180); //kolor zakładek
-$tab-header-selected-color: #b38080;// rgb(212, 212, 212); //kolor aktywnej zakładki
+$tab-header-color: #839bb1;// rgb(180, 180, 180); //kolor zakładek
+$tab-header-selected-color: #839bb1;// rgb(212, 212, 212); //kolor aktywnej zakładki
 $tab-font-color: black;
 $tab-ink-bar-color: rgb(70, 70, 70);
 
 $mat-myapp-primary: (
-  50 : #ede0e0,
-  100 : #d1b3b3,
-  200 : #b38080,
-  300 : #944d4d,
-  400 : #7d2626,
-  500 : #660000,
-  600 : #5e0000,
-  700 : #530000,
-  800 : #490000,
-  900 : #380000,
-  A100 : #ff6e6e,
-  A200 : #ff3b3b,
-  A400 : #ff0808,
-  A700 : #ee0000,
+  50 : #e1e7ec,
+  100 : #b5c3d0,
+  200 : #839bb1,
+  300 : #517392,
+  400 : #2c557a,
+  500 : #073763,
+  600 : #06315b,
+  700 : #052a51,
+  800 : #042347,
+  900 : #021635,
+  A100 : #6d97ff,
+  A200 : #3a73ff,
+  A400 : #074fff,
+  A700 : #0044ec,
   contrast: (
       50 : #000000,
       100 : #000000,
@@ -63,20 +63,20 @@ $mat-myapp-primary: (
 );
 
 $mat-myapp-accent: (
-  50 : #f3fffb,
-  100 : #e0fff4,
-  200 : #ccffed,
-  300 : #b8ffe6,
-  400 : #a8ffe0,
-  500 : #99ffdb,
-  600 : #91ffd7,
-  700 : #86ffd2,
-  800 : #7cffcd,
-  900 : #6bffc4,
+  50 : #f6f6f6,
+  100 : #eaeaea,
+  200 : #dcdcdc,
+  300 : #cdcdcd,
+  400 : #c3c3c3,
+  500 : #b8b8b8,
+  600 : #b1b1b1,
+  700 : #a8a8a8,
+  800 : #a0a0a0,
+  900 : #919191,
   A100 : #ffffff,
-  A200 : #ffffff,
-  A400 : #ffffff,
-  A700 : #f3fffa,
+  A200 : #fefafa,
+  A400 : #ffc7c7,
+  A700 : #ffadad,
   contrast: (
       50 : #000000,
       100 : #000000,
@@ -91,8 +91,7 @@ $mat-myapp-accent: (
       A100 : #000000,
       A200 : #000000,
       A400 : #000000,
-      A700 : #000000,
-        )
+      A700 : #000000,        )
 );
 
 $primary: mat-palette($mat-myapp-primary);
