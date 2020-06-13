@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class SitRailConfigurationsEditComponent implements OnInit {
 
   isChecked: boolean;
-  activeRow = [];
+  activeRow: any;
 
   constructor(
   ) { }
@@ -18,12 +18,13 @@ export class SitRailConfigurationsEditComponent implements OnInit {
   }
 
   get activeRowRailConfigurations() {
-    return this?.activeRow;
+    return this.activeRow;
   }
 
 
   onChange(field, value) {
     this.activeRow[field] = value;
+    console.log(this.activeRow)
   }
 
 }
