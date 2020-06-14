@@ -7,10 +7,12 @@ import { SitDataBaseComponent } from '../sit-data-base/sit-data-base.component';
   templateUrl: './sit-data-input.component.html',
   styleUrls: ['./sit-data-input.component.scss']
 })
-export class SitDataInputComponent extends SitDataBaseComponent  {
+export class SitDataInputComponent extends SitDataBaseComponent {
 
   @Input() type: string = 'text';
   @Input() label: string = '';
+  @Input() showRefesh: boolean = true;
+
 
   onChange(event: any) {
     super.onChange(event);
@@ -24,6 +26,10 @@ export class SitDataInputComponent extends SitDataBaseComponent  {
     if (this.dataSourceResponseWrapper.activeRow != null) {
       this.dataSourceResponseWrapper.activeRow[this.field] = this.getValue();
     }
+    this.dataSourceResponseWrapper.RefreshChildren();
+  }
+
+  onRefreshClick(event: any) {
     this.dataSourceResponseWrapper.RefreshChildren();
   }
 

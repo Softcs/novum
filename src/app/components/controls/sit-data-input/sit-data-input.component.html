@@ -1,16 +1,18 @@
-<mat-form-field fxFlex>
-<mat-label>{{label}}</mat-label>
-<input
-    matInput
-  #inputElement
-  [value]="value"
-  [type]="type"
-  [id]="id"
-  [placeholder]="placeholder"
-  (change)="onChange($event)"
-  (keyup)="onKeyup($event)"
-  (blur)="onBlur($event)"
+<div fxFlexLayout="row">
+  <button *ngIf="showRefesh" mat-icon-button color="primary"><mat-icon (click)="onRefreshClick">autorenew</mat-icon></button>
+  <mat-form-field fxFlexLayout="column">
+  <mat-label>{{label}}</mat-label>
+  <input
+      matInput
+    #inputElement
+    [value]="value"
+    [type]="type"
+    [id]="id"
+    [placeholder]="placeholder"
+    (change)="onChange($event)"
+    (keyup)="onKeyup($event)"
+    (blur)="onBlur($event)"
 
-  >
-
-</mat-form-field>
+    >
+  </mat-form-field>
+</div>
