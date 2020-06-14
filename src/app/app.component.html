@@ -1,7 +1,7 @@
 ﻿<div class="container-cols">
   <mat-toolbar *ngIf="currentUser" class="toolbarTopNav" color="primary">
     <mat-toolbar-row >
-      <div style="display: flex; flex-direction: row; background-color: #5b5e62; color: white;margin: 2px 2px 2px 0px; justify-content: center;">
+      <div style="display: flex; flex-direction: row; color: white;margin: 2px 2px 2px 0px; justify-content: center;">
         <button mat-flat-button matTooltip="Menu" color="primary" (click)="appDrawer.toggle()" *ngIf="currentUser"><mat-icon>menu</mat-icon></button>
       </div>
       <sit-navbar style="width: 100%"></sit-navbar>
