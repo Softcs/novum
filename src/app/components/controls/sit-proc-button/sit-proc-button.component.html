@@ -1,7 +1,65 @@
-<button #button mat-stroked-button
+<span [ngSwitch]="matType">
+  <span *ngSwitchCase="'mat-button'">
+    <button #button mat-button
     color="{{color}}"
     (click)="onClick($event)" [disabled]="executing">
     <span *ngIf="executing" class="spinner-border spinner-border-sm mr-1"></span>
     <mat-icon *ngIf="icon" aria-hidden="false" aria-label="Firma">{{icon}}</mat-icon>
     {{caption}}
-</button>
+    </button>
+  </span>
+  <span *ngSwitchCase="'mat-raised-button'">
+    <button #button mat-raised-button
+    color="{{color}}"
+    (click)="onClick($event)" [disabled]="executing">
+    <span *ngIf="executing" class="spinner-border spinner-border-sm mr-1"></span>
+    <mat-icon *ngIf="icon" aria-hidden="false" aria-label="Firma">{{icon}}</mat-icon>
+    {{caption}}
+    </button>
+  </span>
+  <span *ngSwitchCase="'mat-stroked-button'">
+    <button #button mat-stroked-button
+    color="{{color}}"
+    (click)="onClick($event)" [disabled]="executing">
+    <span *ngIf="executing" class="spinner-border spinner-border-sm mr-1"></span>
+    <mat-icon *ngIf="icon" aria-hidden="false" aria-label="Firma">{{icon}}</mat-icon>
+    {{caption}}
+    </button>
+  </span>
+  <span *ngSwitchCase="'mat-flat-button'">
+    <button #button mat-flat-button
+    color="{{color}}"
+    (click)="onClick($event)" [disabled]="executing">
+    <span *ngIf="executing" class="spinner-border spinner-border-sm mr-1"></span>
+    <mat-icon *ngIf="icon" aria-hidden="false" aria-label="Firma">{{icon}}</mat-icon>
+    {{caption}}
+    </button>
+  </span>
+  <span *ngSwitchCase="'mat-icon-button'">
+    <button #button mat-icon-button
+    color="{{color}}"
+    (click)="onClick($event)" [disabled]="executing">
+    <span *ngIf="executing" class="spinner-border spinner-border-sm mr-1"></span>
+    <mat-icon *ngIf="icon" aria-hidden="false" aria-label="Firma">{{icon}}</mat-icon>
+    {{caption}}
+    </button>
+  </span>
+  <span *ngSwitchCase="'mat-fab'">
+    <button #button mat-fab
+    color="{{color}}"
+    (click)="onClick($event)" [disabled]="executing">
+    <span *ngIf="executing" class="spinner-border spinner-border-sm mr-1"></span>
+    <mat-icon *ngIf="icon" aria-hidden="false" aria-label="Firma">{{icon}}</mat-icon>
+    {{caption}}
+    </button>
+  </span>
+  <span *ngSwitchCase="'mat-mini-fab'">
+    <button #button mat-mini-fab
+    color="{{color}}"
+    (click)="onClick($event)" [disabled]="executing">
+    <span *ngIf="executing" class="spinner-border spinner-border-sm mr-1"></span>
+    <mat-icon *ngIf="icon" aria-hidden="false" aria-label="Firma">{{icon}}</mat-icon>
+    {{caption}}
+    </button>
+  </span>
+</span>
