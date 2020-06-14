@@ -7,13 +7,13 @@
         <mat-toolbar color="accent">
           <mat-toolbar-row>
             <div class="sit-proc-buttons-row">
-            <button mat-raised-button matTooltip="Nowy" color="accent" (click)="new()">
+            <button mat-stroked-button matTooltip="Nowy" color="primary" (click)="new()">
               <mat-icon aria-hidden="false" aria-label="Firma">post_add</mat-icon>
             </button>
-            <button mat-raised-button matTooltip="Edycja" color="accent" (click)="edit()">
+            <button mat-stroked-button matTooltip="Edycja" color="primary" (click)="edit()">
               <mat-icon aria-hidden="false" aria-label="Firma">edit</mat-icon>
             </button>
-            <sit-proc-button #sitControl actionIdent="delete" color="accent" icon="delete" delete="true"></sit-proc-button>
+            <sit-proc-button  #sitControl actionIdent="delete" color="primary" icon="delete" delete="true"></sit-proc-button>
           </div>
           </mat-toolbar-row>
         </mat-toolbar>
