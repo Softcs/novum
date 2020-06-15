@@ -23,7 +23,7 @@ export class SitWhiteListVATComponent implements OnInit {
 
   onChange(e) {
     const dataSetResponseWrapper: DataSetWrapper =
-      this.dictContainer.DataSourceManager.getDateSourceWrapper("sitJPKCheckVatNIPNRB");
+      this.dictContainer.DataSetManager.getDateSourceWrapper("sitJPKCheckVatNIPNRB");
     dataSetResponseWrapper.setFieldValue(e.srcElement.id, e.srcElement.value);
   }
 }

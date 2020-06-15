@@ -58,14 +58,14 @@ export class SitRozrachunkiInsertGTComponent implements OnInit {
   }
 
   onFilterKeyEnter(event:any) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitFilter");
+    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper("sitFilter");
     dataSourceResponseWrapper.activeRow[event.target.name] = event.target.value;
     dataSourceResponseWrapper.SetActiveRow(dataSourceResponseWrapper.activeRow);
 
   }
 
   calcSum(name) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitRozrachunkiInsertGT");
+    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper("sitRozrachunkiInsertGT");
     return dataSourceResponseWrapper.rows.map(row => row[name] != null ? row[name] : 0).reduce((s,v) => s += v,0);
   }
   noop() {

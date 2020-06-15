@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { SitDictEditFormComponent } from './sit-dict-edit-form.component';
+import { SitProcParamsComponent } from './sit-proc-params.component';
 
 describe('SitDictEditFormComponent', () => {
-  let component: SitDictEditFormComponent;
-  let fixture: ComponentFixture<SitDictEditFormComponent>;
+  let component: SitProcParamsComponent;
+  let fixture: ComponentFixture<SitProcParamsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SitDictEditFormComponent ]
+      declarations: [ SitProcParamsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SitDictEditFormComponent);
+    fixture = TestBed.createComponent(SitProcParamsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

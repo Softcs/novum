@@ -31,7 +31,7 @@ export class SitUserAccountComponent implements OnInit {
 
   onChange(e) {
     const dataSetResponseWrapper: DataSetWrapper =
-      this.dictContainer.DataSourceManager.getDateSourceWrapper('sitAppUserAccount');
+      this.dictContainer.DataSetManager.getDateSourceWrapper('sitAppUserAccount');
     dataSetResponseWrapper.setFieldValue(e.srcElement.id, e.srcElement.value);
   }
 }

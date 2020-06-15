@@ -30,11 +30,13 @@ export class DataSetWrapper {
         this.dataSourceManager.RefreshChildren(this);
     }
 
-    public SetActiveRow( row: any) {
+    public SetActiveRow(row: any, refreshChildren: boolean = true) {
         if(row !== this.activeRow) {
             this.activeRow = row;
             this.activeRowChanged.emit(this.activeRow);
-            this.dataSourceManager.RefreshChildren(this);
+            if (refreshChildren) {
+                this.dataSourceManager.RefreshChildren(this);
+            }
         }
     }
     public setInputDataSource(inputDataSource: any) {

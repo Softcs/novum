@@ -35,7 +35,6 @@ export class SitProjectsPubComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.isLoading = false;
-    console.log(this.isLoading)
   }
 
   get activeRowProjectsPub() {
@@ -44,7 +43,7 @@ export class SitProjectsPubComponent implements OnInit, AfterViewInit {
 
   onActivateProjectsPub(event) {
     if (event.type == 'click') {
-      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitProjectsPub");
+      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper("sitProjectsPub");
       dataSourceResponseWrapper.SetActiveRow(event.row);
     }
   }

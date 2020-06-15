@@ -82,9 +82,9 @@ import { SitProjectsPubComponent } from './containers/dictionaries/sit-projects-
 import { TabContentComponent } from './components/tab-content/tab-content.component';
 import { ContentContainerDirective } from './_directives/content-container.directive';
 import { SitPulpitComponent } from './containers/sit-pulpit';
-import { SitRailConfigurationsEditComponent } from './containers/dictionaries/sit-rail-configurations-edit/sit-rail-configurations-edit.component';
+import { SitRailConfigurationsEditComponent } from './containers/dictionaries/sit-rail-configurations/actions/sit-rail-configurations-edit';
 import { SitDialogDiscardComponent } from './components/sit-dialog-discard/sit-dialog-discard.component';
-import { SitDictEditFormComponent } from './components/sit-dict-edit-form/sit-dict-edit-form.component';
+import { SitProcParamsComponent } from './components/sit-proc-params/sit-proc-params.component';
 import { SitDialogConfirmDelComponent } from './components/sit-dialog-confirm-del/sit-dialog-confirm-del.component'
 
 @NgModule({
@@ -172,7 +172,7 @@ import { SitDialogConfirmDelComponent } from './components/sit-dialog-confirm-de
         ContentContainerDirective,
         SitRailConfigurationsEditComponent,
         SitDialogDiscardComponent,
-        SitDictEditFormComponent,
+        SitProcParamsComponent,
         SitDialogConfirmDelComponent
 
     ],

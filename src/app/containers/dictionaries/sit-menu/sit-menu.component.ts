@@ -61,7 +61,7 @@ export class SitMenuComponent implements OnInit {
 
   onActivateMenu(event) {
     if (event.type == 'click') {
-      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitMenu");
+      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper("sitMenu");
       dataSourceResponseWrapper.SetActiveRow(event.row);
     }
   }
@@ -74,7 +74,7 @@ export class SitMenuComponent implements OnInit {
   }
 
   onFilterKeyEnter(event: any) {
-    const dataSetWrapper: DataSetWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitFilter");
+    const dataSetWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper("sitFilter");
     dataSetWrapper.setFieldValue(event.target.name, event.target.value);
     dataSetWrapper.SetActiveRow(dataSetWrapper.activeRow);
   }

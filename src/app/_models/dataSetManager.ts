@@ -256,10 +256,9 @@ export class DataSetManager {
     }
 
     public getDateSourceWrapper(ident: string): DataSetWrapper {
-        if (ident == null) {
-            return;
+        if (ident == null || this.dataSetsWrapper.length === 0) {
+            return null;
         }
-
         const dataSources = this.dataSetsWrapper.filter(item => item.ident.toLowerCase() === ident.toLowerCase());
         return dataSources != null && dataSources.length > 0 ? dataSources[0] : null;
     }
@@ -270,12 +269,18 @@ export class DataSetManager {
         if(index !== -1) {
             this.dataSetsResponse[index] = newDataSource;
         }
-        let dataSourceResponseWrapper = this.getDateSourceWrapper(newDataSource.ident);
+
+        let dataSourceResponseWrapper = this.CreateDataSetWrapper(newDataSource.ident);
+        dataSourceResponseWrapper.setInputDataSource(newDataSource);
+    }
+    public CreateDataSetWrapper(ident: string): DataSetWrapper {
+        let dataSourceResponseWrapper = this.getDateSourceWrapper(ident);
         if (dataSourceResponseWrapper == null) {
             dataSourceResponseWrapper = new DataSetWrapper(this);
+            dataSourceResponseWrapper.ident = ident;
             this.dataSetsWrapper.push(dataSourceResponseWrapper);
         }
-        dataSourceResponseWrapper.setInputDataSource(newDataSource);
+        return dataSourceResponseWrapper;
     }
 
     private getDataSource(ident: string): any {

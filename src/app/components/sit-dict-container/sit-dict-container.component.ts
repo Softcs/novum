@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewChildren, QueryList, ViewChild, ContentChildren, Directive, ElementRef,
-          EventEmitter, Output } from '@angular/core';
+          EventEmitter, Output, AfterViewInit } from '@angular/core';
 import { GatewayService } from '../../_services/gateway.service';
 import { Operation, DataSetWrapper, DictInfoWrapper, DataSetManager } from '@app/_models';
 import { first } from 'rxjs/operators';
@@ -12,30 +12,31 @@ import { SitDataSetContainerComponent } from '../sit-data-set-container';
 })
 
 
-export class SitDictContainerComponent implements OnInit {
+export class SitDictContainerComponent implements OnInit, AfterViewInit {
   @ContentChildren(SitDataSetContainerComponent, { descendants: true })
   dataSetContainers !: QueryList<SitDataSetContainerComponent>;
 
   @Input() ident: string;
   private dictInfo: DictInfoWrapper;
   private dataSourcesResponse: any;
-  public DataSourceManager: DataSetManager;
+  public DataSetManager: DataSetManager;
 
   @Output()
   refreshAfter: EventEmitter<DataSetManager> = new EventEmitter<DataSetManager>();
 
   constructor(private gatewayService: GatewayService) {
-    this.DataSourceManager = new DataSetManager(gatewayService);
+    this.DataSetManager = new DataSetManager(gatewayService);
 
   }
 
   ngOnInit() {
-    this.DataSourceManager.refreshAfter = this.refreshAfter;
-
+    this.DataSetManager.refreshAfter = this.refreshAfter;
   }
+
   ngAfterViewInit() {
     this.loadData();
   }
+
   loadData() {
     const oprDictInfo: Operation =  this.gatewayService.operationGetDictInfo(this.ident);
     this.gatewayService.executeOperation(oprDictInfo)
@@ -45,11 +46,11 @@ export class SitDictContainerComponent implements OnInit {
           if (data.length === 1) {
 
             this.dictInfo = new DictInfoWrapper(data[0].dictInfo);
-            this.DataSourceManager.dictInfo = this.dictInfo;
-            this.DataSourceManager.dataSetContainers = this.dataSetContainers;
-            this.DataSourceManager.dataSetsResponse = data[0].dataSourcesResponse;
-            this.DataSourceManager.setRefreshDataSources(this.DataSourceManager.dataSetsResponse);
-            this.DataSourceManager.PropagateDataSources();
+            this.DataSetManager.dictInfo = this.dictInfo;
+            this.DataSetManager.dataSetContainers = this.dataSetContainers;
+            this.DataSetManager.dataSetsResponse = data[0].dataSourcesResponse;
+            this.DataSetManager.setRefreshDataSources(this.DataSetManager.dataSetsResponse);
+            this.DataSetManager.PropagateDataSources();
           }
         },
         error => {
@@ -62,7 +63,7 @@ export class SitDictContainerComponent implements OnInit {
   }
 
   public activeRow(ident: string) {
-    const wrapper = this.DataSourceManager.getDateSourceWrapper(ident);
+    const wrapper = this.DataSetManager.getDateSourceWrapper(ident);
     return wrapper?.activeRow;
   }
 }

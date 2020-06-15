@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-sit-rail-configurations-edit',
@@ -9,6 +9,7 @@ export class SitRailConfigurationsEditComponent implements OnInit {
 
   isChecked: boolean;
   activeRow: any;
+  senderObject: any;
 
   constructor(
   ) { }

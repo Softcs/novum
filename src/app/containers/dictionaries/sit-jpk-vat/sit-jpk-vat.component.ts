@@ -29,12 +29,12 @@ export class SitJPKVatComponent implements OnInit {
   }
 
   calcZakupSum(name) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitJPKVATZakupSum");
+    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper("sitJPKVATZakupSum");
     return dataSourceResponseWrapper.rows.map(row => row[name] != null ? row[name] : 0).reduce((s,v) =>s += v,0);
     }
 
   calcSprzedazSum(name) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitJPKVATSprzedazSum");
+    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper("sitJPKVATSprzedazSum");
     return dataSourceResponseWrapper.rows.map(row => row[name] != null ? row[name] : 0).reduce((s,v) =>s += v,0);
     }
 
@@ -42,7 +42,7 @@ export class SitJPKVatComponent implements OnInit {
 
   onChange(e) {
     const dataSourceResponseWrapper: DataSetWrapper =
-      this.dictContainer.DataSourceManager.getDateSourceWrapper("sitProcGetJPKData");
+      this.dictContainer.DataSetManager.getDateSourceWrapper("sitProcGetJPKData");
     dataSourceResponseWrapper.activeRow[e.srcElement.id] = e.srcElement.value;
   }
 

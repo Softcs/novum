@@ -64,21 +64,21 @@ export class SitKancelariaComponent implements OnInit {
 
   onActivateCustomers(event) {
     if (event.type == 'click') {
-      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitCustomers");
+      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper("sitCustomers");
       dataSourceResponseWrapper.SetActiveRow(event.row);
     }
   }
 
   onActivateAgreements(event) {
     if (event.type == 'click') {
-       const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitAgreements");
+       const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper("sitAgreements");
        dataSourceResponseWrapper.SetActiveRow(event.row);
     }
   }
 
   onActivateAttachments(event) {
     if (event.type == 'click') {
-      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitAttachments");
+      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper("sitAttachments");
       dataSourceResponseWrapper.SetActiveRow(event.row);
     }
   }
@@ -93,7 +93,7 @@ export class SitKancelariaComponent implements OnInit {
   }
 
   onFilterKeyEnter(event: any) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitFilter");
+    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper("sitFilter");
     dataSourceResponseWrapper.setFieldValue(event.target.name, event.target.value);
     dataSourceResponseWrapper.SetActiveRow(dataSourceResponseWrapper.activeRow);
 
