@@ -4,14 +4,14 @@ import { QueryList, Output, EventEmitter } from '@angular/core';
 import { GatewayService } from '@app/_services';
 import { first } from 'rxjs/operators';
 
-export class DataSourceManager {
+export class DataSetManager {
     private _dictInfo: DictInfoWrapper;
     private _dataSetContainers: QueryList<SitDataSetContainerComponent>;
     private _dataSetResponses: any[];
     public dataSetsWrapper: DataSetWrapper[];
 
     @Output()
-    refreshAfter: EventEmitter<DataSourceManager> = new EventEmitter<DataSourceManager>();
+    refreshAfter: EventEmitter<DataSetManager> = new EventEmitter<DataSetManager>();
 
 
     constructor(public gatewayService: GatewayService) {
@@ -114,13 +114,12 @@ export class DataSourceManager {
     private RefreshInternall(dataSourcesRequest: any[]) {
         const opr: Operation = this.gatewayService.operationRefreshDataSources(this.dictInfo.ident,
             dataSourcesRequest);
-
         this.gatewayService.executeOperation(opr)
             .pipe(first())
             .subscribe(
                 data => {
                     if (data.length === 1) {
-                        const dataSetsResponse = data[0].dataSetsResponse;
+                        const dataSetsResponse = data[0].dataSourcesResponse;
                         this.setRefreshDataSources(dataSetsResponse);
                         const dataSetToReload = dataSetsResponse?.map(d => d.ident);
                         this.PropagateDataSources(dataSetToReload);

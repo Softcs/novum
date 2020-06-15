@@ -24,14 +24,12 @@ export class SitDataInputComponent extends SitDataBaseComponent {
     return this.inputElement.nativeElement.value;
   }
   _onFilterKeyEnter(event: any) {
-    if (this.dataSourceResponseWrapper.activeRow != null) {
-      this.dataSourceResponseWrapper.activeRow[this.field] = this.getValue();
-    }
-    this.dataSourceResponseWrapper.RefreshChildren();
+    this.dataSetWrapper.setFieldValue(this.field, this.getValue());
+    this.dataSetWrapper.RefreshChildren();
   }
 
   onRefreshClick(event: any) {
-    this.dataSourceResponseWrapper.RefreshChildren();
+    this.dataSetWrapper.RefreshChildren();
   }
 
 

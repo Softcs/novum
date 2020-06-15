@@ -74,9 +74,10 @@ export class SitMenuComponent implements OnInit {
   }
 
   onFilterKeyEnter(event: any) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitFilter");
-    dataSourceResponseWrapper.activeRow[event.target.name] = event.target.value;
-    dataSourceResponseWrapper.SetActiveRow(dataSourceResponseWrapper.activeRow);
+    const dataSetWrapper: DataSetWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitFilter");
+    dataSetWrapper.setFieldValue(event.target.name, event.target.value);
+    dataSetWrapper.SetActiveRow(dataSetWrapper.activeRow);
   }
+
 
 }

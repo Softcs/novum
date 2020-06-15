@@ -94,7 +94,7 @@ export class SitKancelariaComponent implements OnInit {
 
   onFilterKeyEnter(event: any) {
     const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitFilter");
-    dataSourceResponseWrapper.activeRow[event.target.name] = event.target.value;
+    dataSourceResponseWrapper.setFieldValue(event.target.name, event.target.value);
     dataSourceResponseWrapper.SetActiveRow(dataSourceResponseWrapper.activeRow);
 
   }

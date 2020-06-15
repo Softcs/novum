@@ -9,8 +9,8 @@ import { ControlValueAccessor } from '@angular/forms';
 })
 export class SitDataBaseComponent implements ControlValueAccessor {
 
-  @Input() value: string ='';
-  public dataSourceResponseWrapper: DataSetWrapper;
+  @Input() value: string = '';
+  public dataSetWrapper: DataSetWrapper;
   @Input() placeholder: string = '';
   @Input() field: string = '';
   @Input() id: string = null;

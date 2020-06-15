@@ -62,8 +62,8 @@ export class SitDataSetContainerComponent implements OnInit {
     });
     if (this.dsControlsInterface != null) {
         this.dsControlsInterface.forEach(element => {
-          const fieldValue = this.dataSourceResponseWrapper.activeRow[element.field];
-          element.dataSourceResponseWrapper = this.dataSourceResponseWrapper;
+          const fieldValue = this.dataSourceResponseWrapper.getFieldValue(element.field);
+          element.dataSetWrapper = this.dataSourceResponseWrapper;
           element.setValue(fieldValue);
         });
      }

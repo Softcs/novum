@@ -1,14 +1,8 @@
 import { Component, OnInit, ViewChild, QueryList, ViewChildren } from '@angular/core';
-import { environment } from '@environments/environment';
 import { ColumnMode, SelectionType } from '../../../../ngx/public-api';
-import { DatatableComponent } from '@swimlane/ngx-datatable';
 import { SitDataSetContainerComponent } from '@app/components/sit-data-set-container';
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
 import { DataSetWrapper } from '@app/_models';
-import { SitDataInputComponent } from '@app/components/controls/sit-data-input/sit-data-input.component';
-import { GatewayService } from '@app/_services';
-import { User } from '@app/_models';
-
 
 @Component({
   selector: 'app-sit-jpk-vat',

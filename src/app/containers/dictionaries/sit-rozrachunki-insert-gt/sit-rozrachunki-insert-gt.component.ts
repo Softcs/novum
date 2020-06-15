@@ -59,7 +59,6 @@ export class SitRozrachunkiInsertGTComponent implements OnInit {
 
   onFilterKeyEnter(event:any) {
     const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitFilter");
-
     dataSourceResponseWrapper.activeRow[event.target.name] = event.target.value;
     dataSourceResponseWrapper.SetActiveRow(dataSourceResponseWrapper.activeRow);
 
@@ -67,8 +66,10 @@ export class SitRozrachunkiInsertGTComponent implements OnInit {
 
   calcSum(name) {
     const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitRozrachunkiInsertGT");
-    return dataSourceResponseWrapper.rows.map(row => row[name] != null ? row[name] : 0).reduce((s,v) =>s += v,0);
-    }
-    noop() { return null; }
+    return dataSourceResponseWrapper.rows.map(row => row[name] != null ? row[name] : 0).reduce((s,v) => s += v,0);
+  }
+  noop() {
+    return null;
+  }
 
 }

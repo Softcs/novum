@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, ViewChildren, QueryList, ViewChild, ContentChildren, Directive, ElementRef,
           EventEmitter, Output } from '@angular/core';
 import { GatewayService } from '../../_services/gateway.service';
-import { Operation, DataSetWrapper, DictInfoWrapper, DataSourceManager } from '@app/_models';
+import { Operation, DataSetWrapper, DictInfoWrapper, DataSetManager } from '@app/_models';
 import { first } from 'rxjs/operators';
 import { SitDataSetContainerComponent } from '../sit-data-set-container';
 @Component({
@@ -19,13 +19,13 @@ export class SitDictContainerComponent implements OnInit {
   @Input() ident: string;
   private dictInfo: DictInfoWrapper;
   private dataSourcesResponse: any;
-  public DataSourceManager: DataSourceManager;
+  public DataSourceManager: DataSetManager;
 
   @Output()
-  refreshAfter: EventEmitter<DataSourceManager> = new EventEmitter<DataSourceManager>();
+  refreshAfter: EventEmitter<DataSetManager> = new EventEmitter<DataSetManager>();
 
   constructor(private gatewayService: GatewayService) {
-    this.DataSourceManager = new DataSourceManager(gatewayService);
+    this.DataSourceManager = new DataSetManager(gatewayService);
 
   }
 
@@ -47,7 +47,6 @@ export class SitDictContainerComponent implements OnInit {
             this.dictInfo = new DictInfoWrapper(data[0].dictInfo);
             this.DataSourceManager.dictInfo = this.dictInfo;
             this.DataSourceManager.dataSetContainers = this.dataSetContainers;
-            console.log(data[0],"data[0]")
             this.DataSourceManager.dataSetsResponse = data[0].dataSourcesResponse;
             this.DataSourceManager.setRefreshDataSources(this.DataSourceManager.dataSetsResponse);
             this.DataSourceManager.PropagateDataSources();

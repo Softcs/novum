@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { GatewayService } from '@app/_services';
 import { Company } from '@app/_models/company';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-sit-change-company',
   templateUrl: './sit-change-company.component.html',

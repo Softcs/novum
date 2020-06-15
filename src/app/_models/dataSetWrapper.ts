@@ -1,10 +1,11 @@
-import { DataSourceManager, Operation } from '.';
+import { DataSetManager, Operation } from '.';
 import { Output, EventEmitter } from '@angular/core';
-import { first } from 'rxjs/operators';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 export class DataSetWrapper {
+    private _rows: any[];
+
     public ident: string;
-    public rows: [any];
     public activeRow: any;
     public errors: [any];
     private inputDataSource: any;
@@ -13,9 +14,18 @@ export class DataSetWrapper {
     @Output()
     activeRowChanged: EventEmitter<any> = new EventEmitter<any>();
 
-    constructor(public dataSourceManager: DataSourceManager) {
-
+    constructor(public dataSourceManager: DataSetManager) {
+        this._rows = null;
     }
+
+    get rows(): any[] {
+        return this._rows;
+    }
+
+    set rows(value) {
+        this._rows = value;
+    }
+
     public RefreshChildren() {
         this.dataSourceManager.RefreshChildren(this);
     }
@@ -59,5 +69,23 @@ export class DataSetWrapper {
             }
         });
         return newRow;
+    }
+
+    public setFieldValue(fieldName: string, fieldValue: any, rowToChange: any = null) {
+        const row = rowToChange ?? this.activeRow;
+
+        if (row == null) {
+            throw new Error('Active row is unnassigned');        }
+
+        row[fieldName] = fieldValue;
+    }
+
+    public getFieldValue(fieldName: string, rowToChange: any = null) {
+        const row = rowToChange ?? this.activeRow;
+        if (row == null) {
+            throw new Error('Active row is unnassigned');
+        }
+
+        return row[fieldName];
     }
 }
