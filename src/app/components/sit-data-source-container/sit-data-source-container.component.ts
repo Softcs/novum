@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Directive, ContentChildren,
   QueryList, ViewChild, ViewChildren, ElementRef, ContentChild, HostListener, ComponentFactoryResolver, Output, EventEmitter } from '@angular/core';
 
 import { GatewayService } from '@app/_services/gateway.service';
-import { DataSourceResponseWrapper } from '@app/_models';
+import { DataSetWrapper } from '@app/_models';
 import { SitDataBaseComponent } from '../controls/sit-data-base/sit-data-base.component';
 import { sitSetDataSourceDirective } from '@app/_directives/sitSetDataSourceDirective';
 import { connect } from 'http2';
@@ -14,17 +14,15 @@ import { connect } from 'http2';
   styleUrls: ['./sit-data-source-container.component.scss']
 })
 
-export class SitDataSourceContainerComponent implements OnInit {
+export class SitDataSetContainerComponent implements OnInit {
   @ContentChildren('sitSetDataSource', { descendants: true}) datasSourcesInterface: QueryList<sitSetDataSourceDirective>;
   @ContentChildren('sitControl', { descendants: true })
   dsControlsInterface!: QueryList<SitDataBaseComponent>;
 
   @Input() ident: string;
-  dataSourceResponseWrapper: DataSourceResponseWrapper;
+  dataSourceResponseWrapper: DataSetWrapper;
   @Output()
   activeRowChanged: EventEmitter<any> = new EventEmitter<any>();
-
-  // @HostListener('document:click', ['$event'])
 
   clearErrors() {
     this.errors?.splice(0,this.errors?.length);
@@ -54,7 +52,7 @@ export class SitDataSourceContainerComponent implements OnInit {
   public setErrors(errors: any[]) {
     this.errors = errors;
   }
-  public setDataSource(dataSourceResponseWrapper: DataSourceResponseWrapper) {
+  public setDataSource(dataSourceResponseWrapper: DataSetWrapper) {
     this.dataSourceResponseWrapper = dataSourceResponseWrapper;
     this.dataSourceResponseWrapper.activeRowChanged = this.activeRowChanged;
     this.errors = dataSourceResponseWrapper.errors;

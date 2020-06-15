@@ -4,9 +4,9 @@ import { User } from '@app/_models';
 import { Router } from '@angular/router';
 import { NavItem } from '../../_models/nav-item';
 import { NavService } from '../../_services/nav.service';
-import { SitDataSourceContainerComponent } from '@app/components/sit-data-source-container';
+import { SitDataSetContainerComponent } from '@app/components/sit-data-source-container';
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
-import { DataSourceResponseWrapper } from '@app/_models';
+import { DataSetWrapper } from '@app/_models';
 
 
 @Component({
@@ -43,7 +43,7 @@ export class SitSideMenuComponent implements OnInit {
   }
 
   refreshAfter(dataSourceManager) {
-    const dataSourceResponseWrapper: DataSourceResponseWrapper = dataSourceManager?.getDateSourceWrapper("sitSideMenu");
+    const dataSourceResponseWrapper: DataSetWrapper = dataSourceManager?.getDateSourceWrapper("sitSideMenu");
     const menu: NavItem[] = dataSourceResponseWrapper?.rows != null ? dataSourceResponseWrapper.rows[0]?.Menu : null;
 
     this.navItems.length = 0;

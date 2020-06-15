@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { SitDataSourceContainerComponent } from '@app/components/sit-data-source-container';
+import { SitDataSetContainerComponent } from '@app/components/sit-data-source-container';
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
-import { DataSourceResponseWrapper, User } from '@app/_models';
+import { DataSetWrapper, User } from '@app/_models';
 import { Router } from '@angular/router';
 import { GatewayService } from '@app/_services';
 import { Company } from '@app/_models/company';
@@ -30,7 +30,7 @@ export class SitChangeCompanyComponent implements OnInit {
   }
 
   refreshAfter(dataSourceManager) {
-    const dataSourceResponseWrapper: DataSourceResponseWrapper = dataSourceManager.getDateSourceWrapper("sitAppUserCompanies");
+    const dataSourceResponseWrapper: DataSetWrapper = dataSourceManager.getDateSourceWrapper("sitAppUserCompanies");
     this.companies = dataSourceResponseWrapper.rows;
   }
 

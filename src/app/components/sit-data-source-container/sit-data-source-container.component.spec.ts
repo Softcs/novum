@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SitDataSourceContainerComponent } from './sit-data-source-container.component';
+import { SitDataSetContainerComponent } from './sit-data-source-container.component';
 
-describe('SitDataSourceContainerComponent', () => {
-  let component: SitDataSourceContainerComponent;
-  let fixture: ComponentFixture<SitDataSourceContainerComponent>;
+describe('SitDataSetContainerComponent', () => {
+  let component: SitDataSetContainerComponent;
+  let fixture: ComponentFixture<SitDataSetContainerComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SitDataSourceContainerComponent ]
+      declarations: [ SitDataSetContainerComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SitDataSourceContainerComponent);
+    fixture = TestBed.createComponent(SitDataSetContainerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

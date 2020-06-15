@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewChild, ElementRef, Renderer2 } from '@angular/core';
-import { DataSourceResponseWrapper } from '@app/_models';
+import { DataSetWrapper } from '@app/_models';
 import { ControlValueAccessor } from '@angular/forms';
 
 @Component({
@@ -10,7 +10,7 @@ import { ControlValueAccessor } from '@angular/forms';
 export class SitDataBaseComponent implements ControlValueAccessor {
 
   @Input() value: string ='';
-  public dataSourceResponseWrapper: DataSourceResponseWrapper;
+  public dataSourceResponseWrapper: DataSetWrapper;
   @Input() placeholder: string = '';
   @Input() field: string = '';
   @Input() id: string = null;

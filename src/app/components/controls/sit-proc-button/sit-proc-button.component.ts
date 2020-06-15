@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Renderer2, ViewChild, ElementRef, EventEmitter, Output  } from '@angular/core';
-import { DataSourceResponseWrapper, Operation } from '@app/_models';
+import { DataSetWrapper, Operation } from '@app/_models';
 import { MatDialog } from '@angular/material/dialog';
 import { SitDialogConfirmDelComponent } from '@app/components/sit-dialog-confirm-del';
 import { ICON_REGISTRY_PROVIDER } from '@angular/material/icon';
@@ -9,7 +9,7 @@ import { ICON_REGISTRY_PROVIDER } from '@angular/material/icon';
   styleUrls: ['./sit-proc-button.component.scss']
 })
 export class SitProcButtonComponent implements OnInit {
-  public dataSourceResponseWrapper: DataSourceResponseWrapper;
+  public dataSourceResponseWrapper: DataSetWrapper;
   executing = false;
   @Input() actionIdent: string;
   @Input() color: string;

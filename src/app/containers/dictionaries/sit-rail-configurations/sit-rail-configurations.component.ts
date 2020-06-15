@@ -1,7 +1,7 @@
 ﻿import { Component, OnInit, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
 import { ColumnMode, SelectionType } from '../../../../ngx/public-api';
-import { DataSourceResponseWrapper } from '@app/_models';
+import { DataSetWrapper } from '@app/_models';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
 import { TabService } from '@app/_services/tab.service';
 import { Tab } from '@app/_models/tab.model';
@@ -38,7 +38,7 @@ export class SitRailConfigurationsComponent implements OnInit {
 
   onActivateRailConfigurations(event) {
     if (event.type == 'click') {
-      const dataSourceResponseWrapper: DataSourceResponseWrapper =
+      const dataSourceResponseWrapper: DataSetWrapper =
         this.dictContainer.DataSourceManager.getDateSourceWrapper("sitRailConfigurations");
       dataSourceResponseWrapper.SetActiveRow(event.row);
     }
@@ -50,7 +50,7 @@ export class SitRailConfigurationsComponent implements OnInit {
   }
 
   toggleExpandRow(row) {
-    const dataSourceResponseWrapper: DataSourceResponseWrapper =
+    const dataSourceResponseWrapper: DataSetWrapper =
       this.dictContainer.DataSourceManager.getDateSourceWrapper("sitRailConfigurations");
     this.table.rowDetail.toggleExpandRow(row);
   }
@@ -64,7 +64,7 @@ export class SitRailConfigurationsComponent implements OnInit {
   }
 
   new() {
-    const dataSourceResponseWrapper: DataSourceResponseWrapper =
+    const dataSourceResponseWrapper: DataSetWrapper =
       this.dictContainer.DataSourceManager.getDateSourceWrapper("sitRailConfigurations");
     const newGuid = Guid.create();
     const row = dataSourceResponseWrapper.GenerateNewRow();
@@ -77,7 +77,7 @@ export class SitRailConfigurationsComponent implements OnInit {
   }
 
   edit() {
-    const dataSourceResponseWrapper: DataSourceResponseWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitRailConfigurations");
+    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitRailConfigurations");
 
     this.tabService.addTab(new Tab( SitRailConfigurationsEditComponent, 'Konfiguracja Rail - Edycja' , { parent: 'AppComponent', activeRow: dataSourceResponseWrapper.activeRow }));
   }

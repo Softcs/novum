@@ -1,9 +1,9 @@
 import { Component, OnInit, Input, ViewChildren, QueryList, ViewChild, ContentChildren, Directive, ElementRef,
           EventEmitter, Output } from '@angular/core';
 import { GatewayService } from '../../_services/gateway.service';
-import { Operation, DataSourceResponseWrapper, DictInfoWrapper, DataSourceManager } from '@app/_models';
+import { Operation, DataSetWrapper, DictInfoWrapper, DataSourceManager } from '@app/_models';
 import { first } from 'rxjs/operators';
-import { SitDataSourceContainerComponent } from '../sit-data-source-container';
+import { SitDataSetContainerComponent } from '../sit-data-source-container';
 @Component({
   selector: 'sit-dict-container',
   templateUrl: './sit-dict-container.component.html',
@@ -13,8 +13,8 @@ import { SitDataSourceContainerComponent } from '../sit-data-source-container';
 
 
 export class SitDictContainerComponent implements OnInit {
-  @ContentChildren(SitDataSourceContainerComponent, { descendants: true })
-    dataSourceComponents !: QueryList<SitDataSourceContainerComponent>;
+  @ContentChildren(SitDataSetContainerComponent, { descendants: true })
+  dataSetContainers !: QueryList<SitDataSetContainerComponent>;
 
   @Input() ident: string;
   private dictInfo: DictInfoWrapper;
@@ -46,9 +46,10 @@ export class SitDictContainerComponent implements OnInit {
 
             this.dictInfo = new DictInfoWrapper(data[0].dictInfo);
             this.DataSourceManager.dictInfo = this.dictInfo;
-            this.DataSourceManager.dataSourceComponents = this.dataSourceComponents;
-            this.DataSourceManager.dataSourcesResponse = data[0].dataSourcesResponse;
-            this.DataSourceManager.setRefreshDataSources(this.DataSourceManager.dataSourcesResponse);
+            this.DataSourceManager.dataSetContainers = this.dataSetContainers;
+            console.log(data[0],"data[0]")
+            this.DataSourceManager.dataSetsResponse = data[0].dataSourcesResponse;
+            this.DataSourceManager.setRefreshDataSources(this.DataSourceManager.dataSetsResponse);
             this.DataSourceManager.PropagateDataSources();
           }
         },

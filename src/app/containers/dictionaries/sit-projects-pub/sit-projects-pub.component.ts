@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
-import { DataSourceResponseWrapper } from '@app/_models';
+import { DataSetWrapper } from '@app/_models';
 import { ColumnMode, SelectionType } from '../../../../ngx/public-api';
 import { environment } from '@environments/environment';
 import { User } from '@app/_models';
@@ -44,7 +44,7 @@ export class SitProjectsPubComponent implements OnInit, AfterViewInit {
 
   onActivateProjectsPub(event) {
     if (event.type == 'click') {
-      const dataSourceResponseWrapper: DataSourceResponseWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitProjectsPub");
+      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitProjectsPub");
       dataSourceResponseWrapper.SetActiveRow(event.row);
     }
   }

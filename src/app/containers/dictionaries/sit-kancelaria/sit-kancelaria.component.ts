@@ -2,9 +2,9 @@ import { environment } from '@environments/environment';
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { ColumnMode, SelectionType } from '../../../../ngx/public-api';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
-import { SitDataSourceContainerComponent } from '@app/components/sit-data-source-container';
+import { SitDataSetContainerComponent } from '@app/components/sit-data-source-container';
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
-import { DataSourceResponseWrapper } from '@app/_models';
+import { DataSetWrapper } from '@app/_models';
 import { SitDataInputComponent } from '@app/components/controls/sit-data-input/sit-data-input.component';
 import { GatewayService } from '@app/_services';
 import { User } from '@app/_models';
@@ -64,21 +64,21 @@ export class SitKancelariaComponent implements OnInit {
 
   onActivateCustomers(event) {
     if (event.type == 'click') {
-      const dataSourceResponseWrapper: DataSourceResponseWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitCustomers");
+      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitCustomers");
       dataSourceResponseWrapper.SetActiveRow(event.row);
     }
   }
 
   onActivateAgreements(event) {
     if (event.type == 'click') {
-       const dataSourceResponseWrapper: DataSourceResponseWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitAgreements");
+       const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitAgreements");
        dataSourceResponseWrapper.SetActiveRow(event.row);
     }
   }
 
   onActivateAttachments(event) {
     if (event.type == 'click') {
-      const dataSourceResponseWrapper: DataSourceResponseWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitAttachments");
+      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitAttachments");
       dataSourceResponseWrapper.SetActiveRow(event.row);
     }
   }
@@ -93,7 +93,7 @@ export class SitKancelariaComponent implements OnInit {
   }
 
   onFilterKeyEnter(event: any) {
-    const dataSourceResponseWrapper: DataSourceResponseWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitFilter");
+    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitFilter");
     dataSourceResponseWrapper.activeRow[event.target.name] = event.target.value;
     dataSourceResponseWrapper.SetActiveRow(dataSourceResponseWrapper.activeRow);
 

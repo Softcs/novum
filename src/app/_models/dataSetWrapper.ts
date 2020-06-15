@@ -1,8 +1,8 @@
-import { DictInfoWrapper, DataSourceManager, Operation } from '.';
+import { DataSourceManager, Operation } from '.';
 import { Output, EventEmitter } from '@angular/core';
 import { first } from 'rxjs/operators';
 
-export class DataSourceResponseWrapper {
+export class DataSetWrapper {
     public ident: string;
     public rows: [any];
     public activeRow: any;

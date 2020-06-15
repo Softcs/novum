@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, ViewChild, Output, EventEmitter } from '@angular/core';
 import { TabService } from '@app/_services/tab.service';
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
-import { DataSourceResponseWrapper } from '@app/_models';
+import { DataSetWrapper } from '@app/_models';
 import { MatDialog } from '@angular/material/dialog';
 import { SitDialogDiscardComponent } from '@app/components/sit-dialog-discard';
 
@@ -33,7 +33,7 @@ export class SitDictEditFormComponent implements OnInit {
   }
 
   refreshAfter(dataSourceManager)  {
-    const dataSourceResponseWrapper: DataSourceResponseWrapper =
+    const dataSourceResponseWrapper: DataSetWrapper =
       this.dictContainer.DataSourceManager.getDateSourceWrapper(this.dataSourceIdent);
 
     dataSourceManager.getDateSourceWrapper(this.dataSourceIdent).activeRow = this.tabService.tabs[this.tabIndex].tabData.activeRow;

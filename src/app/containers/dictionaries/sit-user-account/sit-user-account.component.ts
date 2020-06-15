@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
-import { DataSourceResponseWrapper } from '@app/_models';
+import { DataSetWrapper } from '@app/_models';
 
 
 @Component({
@@ -30,7 +30,7 @@ export class SitUserAccountComponent implements OnInit {
   }
 
   onChange(e) {
-    const dataSourceResponseWrapper: DataSourceResponseWrapper =
+    const dataSourceResponseWrapper: DataSetWrapper =
       this.dictContainer.DataSourceManager.getDateSourceWrapper('sitAppUserAccount');
     dataSourceResponseWrapper.activeRow[e.srcElement.id] = e.srcElement.value;
   }
