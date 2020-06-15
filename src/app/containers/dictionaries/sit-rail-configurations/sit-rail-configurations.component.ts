@@ -72,8 +72,7 @@ export class SitRailConfigurationsComponent implements OnInit {
     row['sitRailConfigurationsG'] = newGuid.toString();
     row['IsActive'] = 1;
 
-    this.tabService.addTab(new Tab( SitRailConfigurationsEditComponent,
-        'Konfiguracja Rail - Nowy' , { parent: 'AppComponent', activeRow: row }));
+    this.tabService.addTab(new Tab( 'sitRailConfigurationsEdit','Konfiguracja Rail - Nowy' , { parent: 'AppComponent', activeRow: row }));
   }
 
   edit() {
@@ -87,10 +86,7 @@ export class SitRailConfigurationsComponent implements OnInit {
     sender["dataSets"] = dataSets;
 
     this.tabService.addTab(
-      new Tab(
-         SitRailConfigurationsEditComponent,
-        'Konfiguracja Rail - Edycja' , { parent: 'AppComponent',
-          senderObject: sender }));
+      new Tab('sitRailConfigurationsEdit','Konfiguracja Rail - Edycja' , { parent: 'AppComponent', senderObject: sender }));
   }
 
 }

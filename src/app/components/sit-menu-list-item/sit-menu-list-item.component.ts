@@ -69,7 +69,8 @@ export class SitMenuListItemComponent {
       }
 
       if ( createNew ) {
-        this.tabService.addTab(new Tab(this.classes[item.link], item.caption , { parent: 'AppComponent' }));
+        this.tabService.addTab(new Tab(item.link, item.caption , { parent: 'AppComponent' }));
+        this.router.navigateByUrl(item.link)
       }
       this.navService.closeNav();
     }

@@ -10,7 +10,7 @@ import { BehaviorSubject } from 'rxjs';
 export class TabService {
 
   public tabs: Tab[] = [
-    new Tab(SitPulpitComponent, 'Pulpit', { parent: 'AppComponent' }),
+    new Tab('sitPulpit', 'Pulpit', { parent: 'AppComponent' }),
     ];
 
   public tabSub = new BehaviorSubject<Tab[]>(this.tabs);
@@ -40,6 +40,7 @@ export class TabService {
     tab.active = true;
     this.tabs.push(tab);
     this.tabSub.next(this.tabs);
+    console.log(this.tabs);
   }
 
   constructor() { }

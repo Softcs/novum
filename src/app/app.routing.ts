@@ -18,6 +18,7 @@ import { SitUserAccountComponent } from './containers/dictionaries/sit-user-acco
 import { SitWhiteListVATComponent } from './containers/dictionaries/sit-white-list-vat/';
 import { SitChangeCompanyComponent } from './containers/sit-change-company';
 import { SitProjectsPubComponent } from './containers/dictionaries/sit-projects-pub';
+import { SitPulpitComponent } from './containers/sit-pulpit';
 
 const routes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuard], data: {title: 'Panel główny'} },
@@ -36,9 +37,10 @@ const routes: Routes = [
     { path: 'sitKancelaria', component: SitKancelariaComponent, canActivate: [AuthGuard], data: {title: 'Kancelaria'} },
     { path: 'sitUserAccount', component: SitUserAccountComponent, canActivate: [AuthGuard], data: {title: 'Konto użytkownika'} },
     { path: 'sitWhiteListVat', component: SitWhiteListVATComponent, canActivate: [AuthGuard], data: {title: 'Biała lista VAT'} },
-    { path: 'sitJPKVAT', component: SitJPKVatComponent, canActivate: [AuthGuard], data: {title: 'JPK VAT'} },
+    { path: 'sitJPKVat', component: SitJPKVatComponent, canActivate: [AuthGuard], data: {title: 'JPK VAT'} },
     { path: 'sitChangeCompany', component: SitChangeCompanyComponent, canActivate: [AuthGuard] },
     { path: 'sitProjectsPub', component: SitProjectsPubComponent, canActivate: [AuthGuard], data: {title: 'Projekty wydawnicze'} },
+    { path: 'sitPulpit', component: SitPulpitComponent, canActivate: [AuthGuard], data: {title: 'Projekty wydawnicze'} },
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }

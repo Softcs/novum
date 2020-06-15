@@ -13,6 +13,16 @@
       <sit-side-menu></sit-side-menu>
     </mat-drawer>
     <div class="sit-main-panel">
+      <nav mat-tab-nav-bar *ngIf="currentUser">
+        <a mat-tab-link
+        *ngFor="let tab of tabs"
+        [routerLink]="tab.link"
+        [active]="tab.active"
+        (click) = "tabChanged($event.target.pathname)">
+        {{tab.title}}
+        </a>
+
+      </nav>
       <router-outlet></router-outlet>
 
     </div>
