@@ -8,6 +8,8 @@ export class DataSourceResponseWrapper {
     public activeRow: any;
     public errors: [any];
     private inputDataSource: any;
+    public fields: [any];
+
     @Output()
     activeRowChanged: EventEmitter<any> = new EventEmitter<any>();
 
@@ -30,6 +32,8 @@ export class DataSourceResponseWrapper {
         this.rows = inputDataSource.rows;
         this.activeRow = inputDataSource.activeRowIndex !== -1 ? inputDataSource.rows[inputDataSource.activeRowIndex] : null;
         this.errors = inputDataSource.errors;
+        const dataSourceDef =  this.dataSourceManager?.dictInfo?.FindDataSource(this.ident);
+        this.fields = dataSourceDef?.fields;
     }
     public AfterPropagte() {
         this.activeRowChanged.emit(this.activeRow);
@@ -45,5 +49,15 @@ export class DataSourceResponseWrapper {
         }
         this.dataSourceManager.ExecuteAction(actionIdent, this.ident, owner,
             executeActionCompletedCallback, executeActionExceptionCallback);
+    }
+
+    public GenerateNewRow() {
+        const newRow = {};
+        this.fields.forEach(field => {
+            if (!field.isParam) {
+                newRow[field.fieldName] = null;
+            }
+        });
+        return newRow;
     }
 }

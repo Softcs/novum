@@ -77,7 +77,6 @@ export class SitMenuComponent implements OnInit {
     const dataSourceResponseWrapper: DataSourceResponseWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitFilter");
     dataSourceResponseWrapper.activeRow[event.target.name] = event.target.value;
     dataSourceResponseWrapper.SetActiveRow(dataSourceResponseWrapper.activeRow);
-
   }
 
 }

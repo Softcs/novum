@@ -62,6 +62,7 @@ export class DataSourceManager {
         };
         return obj;
     }
+
     public Refresh(dataSourceIdents: string[]) {
         if (dataSourceIdents == null || dataSourceIdents.length === 0 ) {
             return;
@@ -89,6 +90,7 @@ export class DataSourceManager {
 
         this.RefreshInternall(dataSourcesRequest);
     }
+
     public RefreshChildren(dataSourceResponseWrapper: DataSourceResponseWrapper) {
         const dataSourceDefinition = this.dictInfo.FindDataSource(dataSourceResponseWrapper.ident);
         if (dataSourceDefinition.children == null || dataSourceDefinition.children.length === 0) {
@@ -128,6 +130,7 @@ export class DataSourceManager {
                     console.error("error", error);
                 });
     }
+
     public ExecuteRefreshAfter(actionIdent: string, dataSourceIdent: string) {
         const actionDefinition = this.dictInfo.FindActionDefinition(actionIdent, dataSourceIdent);
         if (actionDefinition != null) {
@@ -246,11 +249,13 @@ export class DataSourceManager {
         this.DataSourceAfterPropagte();
         this.refreshAfter.emit(this);
     }
+
     public DataSourceAfterPropagte() {
         this.dataSourcesWrapper.forEach(dataSourceWrapper => {
             dataSourceWrapper.AfterPropagte();
         });
     }
+
     public getDateSourceWrapper(ident: string): DataSourceResponseWrapper {
         if (ident == null) {
             return;
@@ -258,6 +263,7 @@ export class DataSourceManager {
         const dataSources = this.dataSourcesWrapper.filter(item => item.ident.toLowerCase() === ident.toLowerCase());
         return dataSources != null && dataSources.length > 0 ? dataSources[0] : null;
     }
+
     private setRefreshDataSource(newDataSource: any) {
         let oldDS = this.getDataSource(newDataSource.ident);
         const index = this.dataSourcesResponse.indexOf(oldDS);
@@ -271,6 +277,7 @@ export class DataSourceManager {
         }
         dataSourceResponseWrapper.setInputDataSource(newDataSource);
     }
+
     private getDataSource(ident: string): any {
         if (!this.dataSourcesResponse) {
             console.error(`Nie znaleziono źrodla danych: [${ident}]`);
@@ -285,21 +292,25 @@ export class DataSourceManager {
 
     set dictInfo(dictInfo: DictInfoWrapper) {
         this._dictInfo = dictInfo;
+        console.log("dictInfo", dictInfo)
     }
     get dictInfo() {
         return this._dictInfo;
     }
+
     set dataSourcesResponse(dataSourcesResponse: any[]) {
         this._dataSourcesResponse = dataSourcesResponse;
-    }
-    set dataSourceComponents(dataSourceComponents: QueryList<SitDataSourceContainerComponent>) {
-        this._dataSourceComponents = dataSourceComponents;
-    }
-    get dataSourceComponents() {
-        return this._dataSourceComponents;
     }
 
     get dataSourcesResponse() {
         return this._dataSourcesResponse;
+    }
+
+    set dataSourceComponents(dataSourceComponents: QueryList<SitDataSourceContainerComponent>) {
+        this._dataSourceComponents = dataSourceComponents;
+    }
+
+    get dataSourceComponents() {
+        return this._dataSourceComponents;
     }
 }

@@ -32,14 +32,15 @@ export class TabService {
 
   public addTab(tab: Tab) {
     for (let i = 0; i < this.tabs.length; i++) {
-    if (this.tabs[i].active === true) {
-    this.tabs[i].active = false;
-    }}
+      if (this.tabs[i].active === true) {
+         this.tabs[i].active = false;
+      }
+    }
     tab.id = this.tabs.length + 1;
     tab.active = true;
     this.tabs.push(tab);
     this.tabSub.next(this.tabs);
-    }
+  }
 
   constructor() { }
 }

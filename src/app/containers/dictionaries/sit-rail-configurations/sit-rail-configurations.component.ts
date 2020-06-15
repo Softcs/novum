@@ -38,7 +38,8 @@ export class SitRailConfigurationsComponent implements OnInit {
 
   onActivateRailConfigurations(event) {
     if (event.type == 'click') {
-      const dataSourceResponseWrapper: DataSourceResponseWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitRailConfigurations");
+      const dataSourceResponseWrapper: DataSourceResponseWrapper =
+        this.dictContainer.DataSourceManager.getDateSourceWrapper("sitRailConfigurations");
       dataSourceResponseWrapper.SetActiveRow(event.row);
     }
   }
@@ -49,7 +50,8 @@ export class SitRailConfigurationsComponent implements OnInit {
   }
 
   toggleExpandRow(row) {
-    const dataSourceResponseWrapper: DataSourceResponseWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitRailConfigurations");
+    const dataSourceResponseWrapper: DataSourceResponseWrapper =
+      this.dictContainer.DataSourceManager.getDateSourceWrapper("sitRailConfigurations");
     this.table.rowDetail.toggleExpandRow(row);
   }
 
@@ -62,16 +64,16 @@ export class SitRailConfigurationsComponent implements OnInit {
   }
 
   new() {
-    const dataSourceResponseWrapper: DataSourceResponseWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitRailConfigurations");
+    const dataSourceResponseWrapper: DataSourceResponseWrapper =
+      this.dictContainer.DataSourceManager.getDateSourceWrapper("sitRailConfigurations");
     const newGuid = Guid.create();
-    const row = [];
-
-    Object.keys(dataSourceResponseWrapper.activeRow).forEach(key => row[key] = null);
+    const row = dataSourceResponseWrapper.GenerateNewRow();
 
     row['sitRailConfigurationsG'] = newGuid.toString();
     row['IsActive'] = 1;
 
-    this.tabService.addTab(new Tab( SitRailConfigurationsEditComponent, 'Konfiguracja Rail - Nowy' , { parent: 'AppComponent', activeRow: row }));
+    this.tabService.addTab(new Tab( SitRailConfigurationsEditComponent,
+        'Konfiguracja Rail - Nowy' , { parent: 'AppComponent', activeRow: row }));
   }
 
   edit() {
