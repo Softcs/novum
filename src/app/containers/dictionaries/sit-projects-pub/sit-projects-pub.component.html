@@ -1,14 +1,14 @@
 <sit-dict-container ident="sitProjectsPub"  #sitDictcontainer fxFlexFill>
   <div fxLayout="row" fxFlexFill fxLayoutGap="5px">
     <div fxLayout="column" fxFlex="30%" class="content">
-      <sit-data-source-container ident="sitFilterProjectsPub" >
+      <sit-data-set-container ident="sitFilterProjectsPub" >
         <div style="width: 100%;">
           <sit-data-input #sitControl id="searchProjectsPub" field="searchProjectsPub" label="Filtruj projekty" placeholder="Projekt, Nazwa, EAN" autocomplete="off" style="width: 100%;"></sit-data-input>
         </div>
-      </sit-data-source-container>
+      </sit-data-set-container>
       <mat-spinner *ngIf="isLoading"></mat-spinner>
       <div class="data-table">
-        <sit-data-source-container  ident="sitProjectsPub" (activeRowChanged)="activeRowProjectsPubChanged($event)">
+        <sit-data-set-container  ident="sitProjectsPub" (activeRowChanged)="activeRowProjectsPubChanged($event)">
           <ngx-datatable #sitProjectsPub #sitSetDataSource
           class="material striped"
           [columnMode]="ColumnMode.force"
@@ -45,7 +45,7 @@
 
           </ngx-datatable>
 
-        </sit-data-source-container>
+        </sit-data-set-container>
       </div>
     </div>
     <div fxLayout="column" fxFlex="70%" class="content" style="padding: 10px;overflow: auto">

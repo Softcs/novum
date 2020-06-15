@@ -2,7 +2,7 @@
   <div class="container-cols" >
     <div class="content">
 
-      <sit-data-source-container ident="sitRailConfigurations">
+      <sit-data-set-container ident="sitRailConfigurations">
         <div class="sit-proc-bar">
         <mat-toolbar color="accent">
           <mat-toolbar-row>
@@ -19,11 +19,11 @@
         </mat-toolbar>
         </div>
 
-        <sit-data-source-container ident="sitFilter" >
+        <sit-data-set-container ident="sitFilter" >
           <div style="width: 300px;">
             <sit-data-input id="searchRailConfigurations" #sitControl field="searchRailConfigurations" label="Filtruj"></sit-data-input>
           </div>
-        </sit-data-source-container>
+        </sit-data-set-container>
 
         <div  style="flex: 1 1 auto;">
           <div class="data-table">
@@ -107,7 +107,7 @@
             </ngx-datatable>
           </div>
         </div>
-      </sit-data-source-container>
+      </sit-data-set-container>
     </div>
   </div>
 </sit-dict-container>

@@ -2,13 +2,13 @@
   <div fxLayout="row" fxFlexFill fxLayoutGap="5px">
     <div fxFlex="50%" fxLayout="column" fxLayoutGap="5px">
       <div fxFlex="450px" class="content" fxLayout="column">
-        <sit-data-source-container ident="sitFilterMenu" >
+        <sit-data-set-container ident="sitFilterMenu" >
           <span>
             <sit-data-input #sitControl field="searchMenu" label="Filtruj menu"></sit-data-input>
           </span>
-        </sit-data-source-container>
+        </sit-data-set-container>
         <div class="data-table">
-          <sit-data-source-container  ident="sitMenu">
+          <sit-data-set-container  ident="sitMenu">
             <ngx-datatable #sitMenu #sitSetDataSource
             class="material striped"
             [columnMode]="ColumnMode.force"
@@ -33,17 +33,17 @@
               <ngx-datatable-column prop="Caption" name="Nazwa"></ngx-datatable-column>
             </ngx-datatable>
 
-          </sit-data-source-container>
+          </sit-data-set-container>
         </div>
       </div>
       <div fxFlex class="content" fxLayout="column">
-        <sit-data-source-container  ident="sitFilterAppUsers" >
+        <sit-data-set-container  ident="sitFilterAppUsers" >
           <span>
             <sit-data-input #sitControl field="searchAppUsers" label="Filtruj użytkowników"></sit-data-input>
           </span>
-        </sit-data-source-container>
+        </sit-data-set-container>
         <div class="data-table">
-          <sit-data-source-container ident="sitAppUsers">
+          <sit-data-set-container ident="sitAppUsers">
             <ngx-datatable #sitAppUsers #sitSetDataSource
             class="material striped"
             [columnMode]="ColumnMode.force"
@@ -75,19 +75,19 @@
                 </ng-template>
               </ngx-datatable-column>
             </ngx-datatable>
-          </sit-data-source-container>
+          </sit-data-set-container>
         </div>
 
       </div>
     </div>
     <div fxFlex="50%" class="content" fxLayoutGap="5px">
-      <sit-data-source-container  ident="sitFilterMenuItems" >
+      <sit-data-set-container  ident="sitFilterMenuItems" >
         <span>
           <sit-data-input #sitControl field="searchMenuItems" label="Filtruj pozycje"></sit-data-input>
         </span>
-      </sit-data-source-container>
+      </sit-data-set-container>
       <div class="data-table">
-        <sit-data-source-container ident="sitMenuItems">
+        <sit-data-set-container ident="sitMenuItems">
           <ngx-datatable #sitMenuItems #sitSetDataSource
           class="material striped"
           [columnMode]="ColumnMode.force"
@@ -120,7 +120,7 @@
             <ngx-datatable-column prop="Link" name="Link"></ngx-datatable-column>
             <ngx-datatable-column prop="Icon" name="Ikona"></ngx-datatable-column>
           </ngx-datatable>
-        </sit-data-source-container>
+        </sit-data-set-container>
       </div>
     </div>
   </div>

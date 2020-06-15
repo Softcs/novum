@@ -1,5 +1,5 @@
 import { DictInfoWrapper, DataSetWrapper, Operation } from '.';
-import { SitDataSetContainerComponent } from '@app/components/sit-data-source-container';
+import { SitDataSetContainerComponent } from '@app/components/sit-data-set-container';
 import { QueryList, Output, EventEmitter } from '@angular/core';
 import { GatewayService } from '@app/_services';
 import { first } from 'rxjs/operators';

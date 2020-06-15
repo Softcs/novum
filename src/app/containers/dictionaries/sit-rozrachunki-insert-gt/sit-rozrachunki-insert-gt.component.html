@@ -1,16 +1,16 @@
 <sit-dict-container ident="sitRozrachunkiInsertGT"  #sitDictcontainer class="container-cols">
   <div class="content">
       <div style="flex: 0 1 auto;">
-        <sit-data-source-container  ident="sitFilter" >
+        <sit-data-set-container  ident="sitFilter" >
           <span>
             <sit-data-input #sitControl field="searchRozrachunki" label="Filtruj"></sit-data-input>
           </span>
-        </sit-data-source-container>
+        </sit-data-set-container>
       </div>
       <!-- <button mat-raised-button color="primary" (click)="ExportTOExcel()">Export as Excel</button> -->
       <div style="flex: 1 1 auto;">
         <div class="data-table">
-          <sit-data-source-container ident="sitRozrachunkiInsertGT">
+          <sit-data-set-container ident="sitRozrachunkiInsertGT">
             <ngx-datatable #sitRozrachunkiInsertGT #sitSetDataSource
             class="material striped"
             [columnMode]="ColumnMode.force"
@@ -61,7 +61,7 @@
             <ng-template #sumNaleznosc let-row="row">
               <div style="text-align: right;">{{calcSum('naleznosc') | number : "1.2-2"}}</div>
             </ng-template>
-          </sit-data-source-container>
+          </sit-data-set-container>
         </div>
     </div>
 </div>

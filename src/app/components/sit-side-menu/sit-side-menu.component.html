@@ -1,6 +1,6 @@
 <sit-dict-container *ngIf="currentUser" ident="sitSideMenu"  #sitDictcontainer (refreshAfter) ="refreshAfter($event)">
   <div class="container-menu">
-    <sit-data-source-container  ident="sitSideMenu" >
+    <sit-data-set-container  ident="sitSideMenu" >
       <div style="display: flex; flex-direction: column;">
         <!-- <button mat-flat-button class="menu-button" routerLink="/">Home</button>
         <mat-divider></mat-divider>
@@ -13,6 +13,6 @@
           <sit-menu-list-item *ngFor="let item of navItems" [item]="item" style="background-color: #35383c; margin-bottom: 2px;"></sit-menu-list-item>
         </mat-nav-list>
       </div>
-    </sit-data-source-container>
+    </sit-data-set-container>
   </div>
 </sit-dict-container>

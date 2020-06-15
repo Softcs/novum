@@ -38,7 +38,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
-import { SitDataSetContainerComponent } from './components/sit-data-source-container/sit-data-source-container.component';
+import { SitDataSetContainerComponent } from './components/sit-data-set-container/sit-data-set-container.component';
 import { SitNavbarComponent } from './components/sit-navbar/sit-navbar.component';
 import { MaterialTestComponent } from './containers/sandbox/material-test/material-test.component';
 import { testDict } from './containers/sandbox/testDict';

@@ -4,7 +4,7 @@ import { User } from '@app/_models';
 import { Router } from '@angular/router';
 import { NavItem } from '../../_models/nav-item';
 import { NavService } from '../../_services/nav.service';
-import { SitDataSetContainerComponent } from '@app/components/sit-data-source-container';
+import { SitDataSetContainerComponent } from '@app/components/sit-data-set-container';
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
 import { DataSetWrapper } from '@app/_models';
 

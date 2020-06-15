@@ -1,5 +1,5 @@
 <sit-dict-container ident="{{dictIdent}}" #sitDictcontainer (refreshAfter) ="refreshAfter($event)">
-  <sit-data-source-container ident="{{dataSourceIdent}}">
+  <sit-data-set-container ident="{{dataSourceIdent}}">
     <div class="sit-edit-form">
       <ng-content></ng-content>
 
@@ -15,5 +15,5 @@
         </span>
       </div>
     </div>
-  </sit-data-source-container>
+  </sit-data-set-container>
 </sit-dict-container>

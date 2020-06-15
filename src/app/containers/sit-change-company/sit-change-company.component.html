@@ -5,7 +5,7 @@
         <div>Wybierz firmę</div>
       </div>
       <div ident="sitAppUserAccount" class="sit-form-body" style="height: 400px;">
-        <sit-data-source-container ident="sitAppUserCompanies">
+        <sit-data-set-container ident="sitAppUserCompanies">
           <mat-nav-list>
             <div *ngFor="let row of companies" fxLayout="column">
               <div fxLayout="row">
@@ -16,7 +16,7 @@
               <mat-divider></mat-divider>
             </div>
           </mat-nav-list>
-        </sit-data-source-container>
+        </sit-data-set-container>
       </div>
     </div>
   </div>

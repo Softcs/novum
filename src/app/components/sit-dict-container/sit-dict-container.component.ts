@@ -3,7 +3,7 @@ import { Component, OnInit, Input, ViewChildren, QueryList, ViewChild, ContentCh
 import { GatewayService } from '../../_services/gateway.service';
 import { Operation, DataSetWrapper, DictInfoWrapper, DataSourceManager } from '@app/_models';
 import { first } from 'rxjs/operators';
-import { SitDataSetContainerComponent } from '../sit-data-source-container';
+import { SitDataSetContainerComponent } from '../sit-data-set-container';
 @Component({
   selector: 'sit-dict-container',
   templateUrl: './sit-dict-container.component.html',

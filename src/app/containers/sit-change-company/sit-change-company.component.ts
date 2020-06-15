@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { SitDataSetContainerComponent } from '@app/components/sit-data-source-container';
+import { SitDataSetContainerComponent } from '@app/components/sit-data-set-container';
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
 import { DataSetWrapper, User } from '@app/_models';
 import { Router } from '@angular/router';

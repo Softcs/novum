@@ -2,7 +2,7 @@ import { environment } from '@environments/environment';
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { ColumnMode, SelectionType } from '../../../../ngx/public-api';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
-import { SitDataSetContainerComponent } from '@app/components/sit-data-source-container';
+import { SitDataSetContainerComponent } from '@app/components/sit-data-set-container';
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
 import { DataSetWrapper } from '@app/_models';
 import { SitDataInputComponent } from '@app/components/controls/sit-data-input/sit-data-input.component';

@@ -8,10 +8,10 @@ import { sitSetDataSourceDirective } from '@app/_directives/sitSetDataSourceDire
 import { connect } from 'http2';
 
 @Component({
-  selector: 'sit-data-source-container',
-  templateUrl: './sit-data-source-container.component.html',
+  selector: 'sit-data-set-container',
+  templateUrl: './sit-data-set-container.component.html',
   // template: '<ng-container></ng-container>',
-  styleUrls: ['./sit-data-source-container.component.scss']
+  styleUrls: ['./sit-data-set-container.component.scss']
 })
 
 export class SitDataSetContainerComponent implements OnInit {
