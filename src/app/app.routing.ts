@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './containers/home';
 import { LoginComponent } from './containers/login';
 import { SitRailConfigurationsComponent } from './containers/dictionaries/sit-rail-configurations';
+import { SitRailConfigurationsEditComponent } from './containers/dictionaries/sit-rail-configurations/actions/sit-rail-configurations-edit';
 import { MaterialTestComponent } from './containers/sandbox/material-test';
 import { testDict } from './containers/sandbox/testDict';
 import { AuthGuard } from './_helpers';
@@ -30,6 +31,8 @@ const routes: Routes = [
     { path: 'ngx-datatable-test', component: NgxDatatableTestComponent, canActivate: [AuthGuard]},
     { path: 'sitMenu', component: SitMenuComponent, canActivate: [AuthGuard], data: {title: 'Definicja Menu'}},
     { path: 'sitRailConfigurations', component: SitRailConfigurationsComponent, canActivate: [AuthGuard],
+            data: {title: 'Konfiguracja Rail'}},
+    { path: 'sitRailConfigurationsEdit', component: SitRailConfigurationsEditComponent, canActivate: [AuthGuard],
             data: {title: 'Konfiguracja Rail'}},
     { path: 'sitRozrachunkiInsertGT', component: SitRozrachunkiInsertGTComponent, canActivate: [AuthGuard],
             data: {title: 'Rozrachunki z InsertGT'} },

@@ -17,7 +17,8 @@
         <a mat-tab-link
         *ngFor="let tab of tabs"
         [routerLink]="tab.link"
-        [active]="tab.active"
+        routerLinkActive #rla="routerLinkActive"
+        [active]="rla.isActive"
         (click) = "tabChanged($event.target.pathname)">
         {{tab.title}}
         </a>
