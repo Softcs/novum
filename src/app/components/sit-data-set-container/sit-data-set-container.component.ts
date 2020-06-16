@@ -26,7 +26,6 @@ export class SitDataSetContainerComponent implements OnInit {
 
   clearErrors() {
     this.errors?.splice(0,this.errors?.length);
-    console.log(this.errors)
   }
 
   private _errors: any[];
@@ -52,10 +51,10 @@ export class SitDataSetContainerComponent implements OnInit {
   public setErrors(errors: any[]) {
     this.errors = errors;
   }
-  public setDataSource(dataSourceResponseWrapper: DataSetWrapper) {
-    this.dataSourceResponseWrapper = dataSourceResponseWrapper;
+  public setDataSource(dataSetWrapper: DataSetWrapper) {
+    this.dataSourceResponseWrapper = dataSetWrapper;
     this.dataSourceResponseWrapper.activeRowChanged = this.activeRowChanged;
-    this.errors = dataSourceResponseWrapper.errors;
+    this.errors = dataSetWrapper.errors;
     this.datasSourcesInterface.forEach(element => {
       element.rows = this.dataSourceResponseWrapper.rows;
       element.selected = [this.dataSourceResponseWrapper.activeRow];

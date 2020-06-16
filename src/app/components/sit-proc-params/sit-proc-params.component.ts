@@ -20,11 +20,12 @@ export class SitProcParamsComponent implements OnInit, AfterViewInit {
   @Input() dictIdent: string;
   @Input() dataSourceIdent: string;
   @Input() senderObject = null;
+  @Input() activeRow = null;
   @Output() activeRowChange = new EventEmitter<any[]>();
 
   tabIndex: number;
   public DataSetManager: DataSetManager;
-
+  private mainDataSet: DataSetWrapper;
   constructor(
     private gatewayService: GatewayService,
     private tabService: TabService,
@@ -39,12 +40,17 @@ export class SitProcParamsComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.DataSetManager.dataSetContainers = this.dataSetContainers;
-    const dataSetWrapper = this.DataSetManager.CreateDataSetWrapper(this.dataSourceIdent);
+    this.mainDataSet = this.DataSetManager.CreateDataSetWrapper(this.dataSourceIdent);
     this.senderObject = this.tabService.tabs[this.tabIndex].tabData.senderObject;
     const dataSetSource = this.senderObject.dataSets[this.dataSourceIdent];
 
-    dataSetWrapper.rows = [dataSetSource.activeRow];
-    dataSetWrapper.SetActiveRow(dataSetSource.activeRow, false);
+    this.mainDataSet.rows = [dataSetSource.activeRow];
+    this.mainDataSet.SetActiveRow(dataSetSource.activeRow, false);
+
+    const dataSetContainer = this.DataSetManager.dataSetContainers.first;
+    dataSetContainer.setDataSource(this.mainDataSet);
+    this.activeRow = dataSetSource.activeRow;
+    this.activeRowChange.emit(this.activeRow);
   }
 
   refreshAfter(dataSourceManager)  {
@@ -70,6 +76,24 @@ export class SitProcParamsComponent implements OnInit, AfterViewInit {
 
   onSave(e: string) {
     if (e === 'OK') { this.tabService.removeTab(this.tabIndex); }
+  }
 
+  executeAction(): void {
+    this.mainDataSet.ExecuteAction(this.actionIdent,
+      this,
+      this.executeActionCompletedCallback,
+      this.executeActionExceptionCallback,
+      this.dataSourceIdent);
+  }
+
+  private executeActionCompletedCallback(self) {
+    self.executing = false;
+    console.log("OK");
+
+  }
+
+  private executeActionExceptionCallback(self) {
+    self.executing = false;
+    console.log("ERROR");
   }
 }
