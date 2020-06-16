@@ -53,14 +53,15 @@ export class DataSetWrapper {
     public ExecuteAction(actionIdent: string,
                          owner: any,
                          executeActionCompletedCallback: Function,
-                         executeActionExceptionCallback: Function
+                         executeActionExceptionCallback: Function,
+                         sourceDictIdent: string = null
     ) {
         if (this.dataSourceManager == null) {
             console.error('ExecuteAction data source manager is undefindex!');
             return;
         }
         this.dataSourceManager.ExecuteAction(actionIdent, this.ident, owner,
-            executeActionCompletedCallback, executeActionExceptionCallback);
+            executeActionCompletedCallback, executeActionExceptionCallback, sourceDictIdent);
     }
 
     public GenerateNewRow() {
