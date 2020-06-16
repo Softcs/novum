@@ -263,6 +263,12 @@ a:hover.mat-tab-link {
   color: $tab-font-color !important;
 
 }
+
+
+.mat-form-field-infix {
+  width: auto !important;
+}
+
 /* focus style */
 // .mat-tab-group.mat-primary .mat-tab-label:not(.mat-tab-disabled):focus, .mat-tab-group.mat-primary .mat-tab-link:not(.mat-tab-disabled):focus, .mat-tab-nav-bar.mat-primary .mat-tab-label:not(.mat-tab-disabled):focus, .mat-tab-nav-bar.mat-primary .mat-tab-link:not(.mat-tab-disabled):focus{
 //   background: #e7e7e7;

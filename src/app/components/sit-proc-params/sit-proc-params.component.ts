@@ -10,7 +10,8 @@ import { GatewayService } from '@app/_services';
 @Component({
   selector: 'sit-proc-params',
   templateUrl: './sit-proc-params.component.html',
-  styleUrls: ['./sit-proc-params.component.scss']
+  styleUrls: ['./sit-proc-params.component.scss'],
+  host: {class: 'router-flex'}
 })
 export class SitProcParamsComponent implements OnInit, AfterViewInit {
   @ContentChildren(SitDataSetContainerComponent, { descendants: true })

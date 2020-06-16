@@ -1,6 +1,6 @@
-<div fxFlexLayout="row">
-  <button *ngIf="showRefesh" mat-stroked-button color="primary"><mat-icon (click)="onRefreshClick">autorenew</mat-icon></button>
-  <mat-form-field fxFlexLayout="column">
+<div fxFlexLayout="row" fxFlex>
+  <button *ngIf="showRefresh" mat-stroked-button color="primary"><mat-icon (click)="onRefreshClick">autorenew</mat-icon></button>
+  <mat-form-field fxFlex appearance="{{ appearance }}" class="sit-edit-input">
   <mat-label>{{label}}</mat-label>
   <input
       matInput

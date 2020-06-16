@@ -11,7 +11,8 @@ import { connect } from 'http2';
   selector: 'sit-data-set-container',
   templateUrl: './sit-data-set-container.component.html',
   // template: '<ng-container></ng-container>',
-  styleUrls: ['./sit-data-set-container.component.scss']
+  styleUrls: ['./sit-data-set-container.component.scss'],
+  host: {class: 'router-flex'}
 })
 
 export class SitDataSetContainerComponent implements OnInit {

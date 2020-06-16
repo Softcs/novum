@@ -3,7 +3,8 @@ import { Component, OnInit, Input } from '@angular/core';
 @Component({
   selector: 'app-sit-rail-configurations-edit',
   templateUrl: './sit-rail-configurations-edit.component.html',
-  styleUrls: ['./sit-rail-configurations-edit.component.scss']
+  styleUrls: ['./sit-rail-configurations-edit.component.scss'],
+  host: {class: 'router-flex'}
 })
 export class SitRailConfigurationsEditComponent implements OnInit {
 

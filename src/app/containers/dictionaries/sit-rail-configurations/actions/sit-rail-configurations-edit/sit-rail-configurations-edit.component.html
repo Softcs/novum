@@ -1,4 +1,4 @@
-<sit-proc-params
+<sit-proc-params fxFlexFill
   dictIdent="sitRailConfigurations"
   dataSourceIdent="sitRailConfigurationsEdit"
   actionIdent='ins'
@@ -6,68 +6,42 @@
   [(activeRow)]="activeRow"
   >
   <sit-data-set-container ident="sitRailConfigurationsEdit">
-    <div fxLayout="row">
-      <div fxLayout="column">
+    <div fxLayout="row" fxFlexFill>
+      <div fxLayout="column" fxFlex="50%">
+
         <div fxLayout="row">
-          <mat-form-field class="sit-edit-input" appearance="fill" floatLabel="never" style="width: 100px;">
-            <mat-label>Id firmy</mat-label>
-            <input matInput type="number" id="sitCompaniesId" value="{{ activeRowRailConfigurations?.sitCompaniesId }}" (change)="onChange($event.srcElement.id,$event.srcElement.value)" required >
-          </mat-form-field>
-          <mat-form-field class="sit-edit-input" appearance="fill" style="width: 400px;">
-            <mat-label>Firma</mat-label>
-            <input matInput type="text" id="CompanyIdent" value="{{ activeRowRailConfigurations?.CompanyIdent }}" (change)="onChange($event.srcElement.id,$event.srcElement.value)">
-          </mat-form-field>
+          <sit-data-input type="number" id="sitCompaniesId" #sitControl field="sitCompaniesId" label="ID firmy" [showRefresh]=false appearance="fill" style="width: 100px"></sit-data-input>
+          <sit-data-input type="text" id="CompanyIdent" #sitControl field="CompanyIdent" label="Firma" [showRefresh]=false appearance="fill"></sit-data-input>
           <mat-checkbox id="IsActive" [(ngModel)]="isChecked" [checked]="activeRowRailConfigurations?.IsActive == 1" (change)="onChange($event.source.id, isChecked?1:0)">Aktywny</mat-checkbox>
+        </div>
 
-        </div>
         <div fxLayout="row">
-          <mat-form-field class="sit-edit-input"  appearance="fill" style="width: 100%;">
-            <mat-label>GUID Rail'a</mat-label>
-            <input matInput type="text" id="ClientGuid" value="{{ activeRowRailConfigurations?.ClientGuid }}" (change)="onChange($event.srcElement.id,$event.srcElement.value)">
-          </mat-form-field>
+          <sit-data-input type="text" id="ClientGuid" #sitControl field="ClientGuid" label="GUID Rail'a" [showRefresh]=false appearance="fill" style="width: 100%;"></sit-data-input>
         </div>
-        <div fxLayout="row">
-          <mat-form-field class="sit-edit-input" appearance="fill" style="width: 100%;">
-            <mat-label>Identyfikator operacji</mat-label>
-            <input matInput type="text" id="OperationIdent" value="{{ activeRowRailConfigurations?.OperationIdent }}" (change)="onChange($event.srcElement.id,$event.srcElement.value)">
-          </mat-form-field>
-        </div>
-        <div fxLayout="row">
-          <mat-form-field class="sit-edit-input"  appearance="fill" style="width: 100px;">
-            <mat-label>User Id</mat-label>
-            <input matInput type="number" id="sitWSUsersId" value="{{ activeRowRailConfigurations?.sitWSUsersId }}" (change)="onChange($event.srcElement.id,$event.srcElement.value)">
-          </mat-form-field>
-          <mat-form-field class="sit-edit-input"  appearance="fill" style="width: 200px;">
-            <mat-label>Użytkownik</mat-label>
-            <input matInput type="text" id="UserLogin" value="{{ activeRowRailConfigurations?.UserLogin }}" (change)="onChange($event.srcElement.id,$event.srcElement.value)">
-          </mat-form-field>
-          <mat-form-field class="sit-edit-input"  appearance="fill" style="width: 100px;">
-            <mat-label>Timeout</mat-label>
-            <input matInput type="number" id="Timeout" value="{{ activeRowRailConfigurations?.Timeout }}" (change)="onChange($event.srcElement.id,$event.srcElement.value)">
-          </mat-form-field>
-          <mat-form-field class="sit-edit-input" appearance="fill" style="width: 200px;">
-            <mat-label>Źródło</mat-label>
-            <input matInput type="text" id="Source" value="{{ activeRowRailConfigurations?.Source }}" (change)="onChange($event.srcElement.id,$event.srcElement.value)">
-          </mat-form-field>
 
-        </div>
         <div fxLayout="row">
-          <mat-form-field class="sit-edit-input" appearance="fill" style="width: 100%;">
-              <mat-label>Procedura transformująca</mat-label>
-            <input matInput type="text" id="TransformProcedure" value="{{ activeRowRailConfigurations?.TransformProcedure }}" (change)="onChange($event.srcElement.id,$event.srcElement.value)">
-          </mat-form-field>
+          <sit-data-input type="text" id="OperationIdent" #sitControl field="OperationIdent" label="Identyfikator operacji" [showRefresh]=false appearance="fill" style="width: 100%;"></sit-data-input>
         </div>
+
         <div fxLayout="row">
-          <mat-form-field class="sit-edit-input" appearance="fill" style="width: 100%;">
-            <mat-label>Funkcja konwertująca parametry</mat-label>
-            <input matInput type="text" id="ConvertFunctionForParams" value="{{ activeRowRailConfigurations?.ConvertFunctionForParams }}" (change)="onChange($event.srcElement.id,$event.srcElement.value)">
-          </mat-form-field>
+          <sit-data-input type="number" id="sitWSUsersId" #sitControl field="sitWSUsersId" label="User Id" [showRefresh]=false appearance="fill" style="width: 100px"></sit-data-input>
+          <sit-data-input type="text" id="UserLogin" #sitControl field="UserLogin" label="Użytkownik" [showRefresh]=false appearance="fill"></sit-data-input>
+          <sit-data-input type="number" id="Timeout" #sitControl field="Timeout" label="Timeout" [showRefresh]=false appearance="fill" ></sit-data-input>
+          <sit-data-input type="text" id="Source" #sitControl field="Source" label="Źródło" [showRefresh]=false appearance="fill"></sit-data-input>
+        </div>
+
+        <div fxLayout="row">
+          <sit-data-input type="text" id="TransformProcedure" #sitControl field="TransformProcedure" label="Procedura transformująca" [showRefresh]=false appearance="fill" style="width: 100%;"></sit-data-input>
+        </div>
+
+        <div fxLayout="row">
+          <sit-data-input type="text" id="ConvertFunctionForParams" #sitControl field="ConvertFunctionForParams" label="Funkcja konwertująca parametry" [showRefresh]=false appearance="fill" style="width: 100%;"></sit-data-input>
         </div>
       </div>
       <div fxFlex>
         <mat-form-field class="sit-edit-input"  appearance="fill" style="width: 100%;">
           <mat-label>Data</mat-label>
-          <textarea matInput id="Data" rows="50" value="{{ activeRowRailConfigurations?.Data }}" style="resize:none;" (change)="onChange($event.srcElement.id,$event.srcElement.value)"></textarea>
+          <textarea matInput id="Data" rows="48" value="{{ activeRowRailConfigurations?.Data }}" style="resize:none;" (change)="onChange($event.srcElement.id,$event.srcElement.value)"></textarea>
         </mat-form-field>
       </div>
     </div>
