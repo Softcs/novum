@@ -15,7 +15,7 @@ export class AppComponent {
     @ViewChild('appDrawer') appDrawer: ElementRef;
     currentUser: User;
     tabs = new Array<Tab>();
-    activeTab: number = -1;
+    activeTab: number = 0;
 
     constructor(
         private router: Router,
@@ -24,6 +24,7 @@ export class AppComponent {
         private tabService: TabService,
     ) {
         this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
+
     }
 
     ngOnInit() {
@@ -32,13 +33,18 @@ export class AppComponent {
         this.activeTab = tabs.findIndex(tab => tab.active);
         });
 
-        // this.router.events.subscribe((res) => {
-        //   this.activeTab = this.tabs.indexOf(this.tabs.find(tab => '/'+tab.link === this.router.url));
-        //   console.log(this.router.url.replace('/',''),this.activeTab);
-        //   if (this.activeTab === -1) {
-        //     this.tabService.addTab(new Tab(this.router.url.replace('/',''), this.router.url.replace('/',''), '' , { parent: 'AppComponent' }));
-        //   }
-      // });
+        this.router.events.subscribe((res) => {
+          this.activeTab = this.tabs.indexOf(this.tabs.find(tab => '/'+tab.link === this.router.url));
+          if (this.activeTab === -1 && this.router.url != '/' && this.router.url != '/login') {
+            this.tabService.addTab(new Tab(
+                  this.router.url.replace('/',''),
+                  this.router.url.replace('/',''),
+                  this.router.config[this.router.config.findIndex(r => r.path === this.router.url.replace('/',''))].data['title'],
+                  { parent: 'AppComponent' }));
+            console.log('url',this.router.url,this.router.config[this.router.config.findIndex(r => r.path === this.router.url.replace('/',''))].data['title']);
+
+          }
+        });
 
     }
 
