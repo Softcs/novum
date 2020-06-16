@@ -90,7 +90,7 @@ export class SitRailConfigurationsComponent implements OnInit {
         'sitRailConfigurationsEdit' + dataSourceResponseWrapper.activeRow['sitRailConfigurationsG'],
         'sitRailConfigurationsEdit',
         'Konfiguracja Rail - Edycja' ,
-        { parent: 'AppComponent', senderObject: sender }));
+        { parent: 'AppComponent', guid: dataSourceResponseWrapper.activeRow['sitRailConfigurationsG'], senderObject: sender }));
   }
 
 }

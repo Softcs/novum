@@ -21,21 +21,28 @@ export class TabService {
   public tabSub = new BehaviorSubject<Tab[]>(this.tabs);
 
   public removeTab(index: number) {
+    this.changeTab(index - 1);
+    console.log('removeTab',index,this.tabs,this.tabs[index - 1].link)
+    // if (this.tabs.length > 0) {
+    //   this.tabs[index].active = false;
+    //   this.tabs[index].title = 'Do usunięcia';
+    //   this.tabs[index - 1].active = true;
+    //   this.tabs[index - 1].title = 'Do aktywacji';
+    //   this.tabSub.next(this.tabs);
+    //   this.router.navigate([this.tabs[index - 1].link])
+    //   console.log('removeTab',index,this.tabs,this.tabs[index - 1].link)
+    // }
     this.tabs.splice(index, 1);
-    if (this.tabs.length > 0) {
-    this.tabs[this.tabs.length - 1].active = true;
-    }
     this.tabSub.next(this.tabs);
-
-    //this.router.navigate([this.tabs[this.tabs.findIndex(tab => tab.active)].link])
   }
 
   public changeTab(index: number) {
     for (let i = 0; i < this.tabs.length; i++) {
       if (index !== i ) { this.tabs[i].active = false; } else { this.tabs[i].active = true; }
-      this.tabSub.next(this.tabs);
     }
+    this.tabSub.next(this.tabs);
     this.router.navigate([this.tabs[this.tabs.findIndex(tab => tab.active)].link])
+    console.log('changeTab',this.tabs[this.tabs.findIndex(tab => tab.active)].link)
   }
 
   public addTab(tab: Tab) {
@@ -49,7 +56,7 @@ export class TabService {
     tab.active = true;
     this.tabs.push(tab);
     this.tabSub.next(this.tabs);
-    //console.log(this.tabs);
+    console.log(tab.tabData['guid']);
     this.router.navigate([this.tabs[this.tabs.findIndex(tab => tab.active)].link])
   }
 
