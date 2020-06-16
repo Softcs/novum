@@ -109,8 +109,8 @@ export class SitNavbarComponent implements OnInit, AfterViewInit {
     }
 
     if ( createNew ) {
-      this.tabService.addTab(new Tab( 'sitUserAccount', 'Konto użytkownika' , { parent: 'AppComponent' }));
-      this.router.navigateByUrl('sitUserAccount');
+      this.tabService.addTab(new Tab('sitUserAccount', 'sitUserAccount', 'Konto użytkownika' , { parent: 'AppComponent' }));
+
     }
     this.navService.closeNav();
   }

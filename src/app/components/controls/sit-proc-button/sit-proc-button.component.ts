@@ -30,7 +30,7 @@ export class SitProcButtonComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.matType)
+    //console.log(this.matType)
 
   }
 

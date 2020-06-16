@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { Tab } from '@app/_models/tab.model';
 import { SitPulpitComponent } from '@app/containers/sit-pulpit';
@@ -9,8 +10,12 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class TabService {
 
+  constructor(
+    public router: Router
+  ) { }
+
   public tabs: Tab[] = [
-    new Tab('sitPulpit', 'Pulpit', { parent: 'AppComponent' }),
+    new Tab('sitPulpit','sitPulpit', 'Pulpit', { parent: 'AppComponent' }),
     ];
 
   public tabSub = new BehaviorSubject<Tab[]>(this.tabs);
@@ -21,6 +26,8 @@ export class TabService {
     this.tabs[this.tabs.length - 1].active = true;
     }
     this.tabSub.next(this.tabs);
+
+    //this.router.navigate([this.tabs[this.tabs.findIndex(tab => tab.active)].link])
   }
 
   public changeTab(index: number) {
@@ -28,9 +35,11 @@ export class TabService {
       if (index !== i ) { this.tabs[i].active = false; } else { this.tabs[i].active = true; }
       this.tabSub.next(this.tabs);
     }
+    this.router.navigate([this.tabs[this.tabs.findIndex(tab => tab.active)].link])
   }
 
   public addTab(tab: Tab) {
+    router: Router;
     for (let i = 0; i < this.tabs.length; i++) {
       if (this.tabs[i].active === true) {
          this.tabs[i].active = false;
@@ -40,8 +49,9 @@ export class TabService {
     tab.active = true;
     this.tabs.push(tab);
     this.tabSub.next(this.tabs);
-    console.log(this.tabs);
+    //console.log(this.tabs);
+    this.router.navigate([this.tabs[this.tabs.findIndex(tab => tab.active)].link])
   }
 
-  constructor() { }
+
 }

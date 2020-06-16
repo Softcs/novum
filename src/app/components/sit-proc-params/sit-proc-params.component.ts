@@ -88,12 +88,9 @@ export class SitProcParamsComponent implements OnInit, AfterViewInit {
 
   private executeActionCompletedCallback(self) {
     self.executing = false;
-    console.log("OK");
-
   }
 
   private executeActionExceptionCallback(self) {
     self.executing = false;
-    console.log("ERROR");
   }
 }

@@ -15,7 +15,7 @@ export class AppComponent {
     @ViewChild('appDrawer') appDrawer: ElementRef;
     currentUser: User;
     tabs = new Array<Tab>();
-    selectedTab: number = -1;
+    activeTab: number = -1;
 
     constructor(
         private router: Router,
@@ -29,16 +29,16 @@ export class AppComponent {
     ngOnInit() {
       this.tabService.tabSub.subscribe(tabs => {
         this.tabs = tabs;
-        this.selectedTab = tabs.findIndex(tab => tab.active);
+        this.activeTab = tabs.findIndex(tab => tab.active);
         });
 
-        this.router.events.subscribe((res) => {
-          this.selectedTab = this.tabs.indexOf(this.tabs.find(tab => '/'+tab.link === this.router.url));
-          console.log(this.router.url.replace('/',''),this.selectedTab);
-          // if (this.selectedTab === -1) {
-          //   this.tabService.addTab(new Tab(this.router.url.replace('/',''), '' , { parent: 'AppComponent' }));
-          // }
-      });
+        // this.router.events.subscribe((res) => {
+        //   this.activeTab = this.tabs.indexOf(this.tabs.find(tab => '/'+tab.link === this.router.url));
+        //   console.log(this.router.url.replace('/',''),this.activeTab);
+        //   if (this.activeTab === -1) {
+        //     this.tabService.addTab(new Tab(this.router.url.replace('/',''), this.router.url.replace('/',''), '' , { parent: 'AppComponent' }));
+        //   }
+      // });
 
     }
 
@@ -46,15 +46,16 @@ export class AppComponent {
       this.navService.appDrawer = this.appDrawer;
     }
 
-    tabChanged(event) {
-      this.selectedTab = this.tabService.tabs.findIndex( tab => '/'+tab.link === event)
-      this.tabService.changeTab( this.selectedTab );
-
+    tabChanged(link) {
+      this.activeTab = this.tabs.findIndex( tab => tab.link === link)
+      this.tabService.changeTab( this.tabs.findIndex( tab => tab.link === link) );
+      //console.log('tabChanged',this.activeTab, this.tabs,link)
       // window.dispatchEvent(new Event('resize'));
     }
 
-    removeTab(index: number): void {
-      this.tabService.removeTab(index);
+    removeTab(ident: string): void {
+      this.tabService.removeTab(this.tabs.findIndex( tab => tab.ident === ident));
+      console.log(ident,this.activeTab)
     }
 
 }

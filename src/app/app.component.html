@@ -19,8 +19,12 @@
         [routerLink]="tab.link"
         routerLinkActive #rla="routerLinkActive"
         [active]="rla.isActive"
-        (click) = "tabChanged($event.target.pathname)">
-        {{tab.title}}
+        (click) = "tabChanged(tab.link)">
+          <div fxLayout="row" fxLayoutAlign="space-between center" (mouseover)="showClose=true" (mouseout)="showClose=false" style="width:100%;">
+            <div *ngIf="tab.title != 'Pulpit'" fxFlex class="sit-tab-title">{{ tab.title }}</div>
+            <div *ngIf="tab.title == 'Pulpit'" fxFlex fxLayoutAlign="center center"><i class="material-icons">home</i></div>
+            <div *ngIf="tab.title != 'Pulpit'" class="close-tab"><mat-icon class="close-tab-icon" (click)="removeTab(tab.ident)" >close</mat-icon></div>
+          </div>
         </a>
 
       </nav>

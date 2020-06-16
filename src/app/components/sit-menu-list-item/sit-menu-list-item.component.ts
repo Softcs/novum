@@ -59,7 +59,7 @@ export class SitMenuListItemComponent {
 
     if ((!item.children || !item.children.length) && item.kind == "app") {
       for ( let i = 0; i < this.tabService.tabs.length; i++ ) {
-        if (this.tabService.tabs[i].title === item.caption) {
+        if (this.tabService.tabs[i].link === item.link) {
           this.tabService.tabs[i].active = true;
           createNew = false;
           this.tabService.changeTab( i );
@@ -69,8 +69,8 @@ export class SitMenuListItemComponent {
       }
 
       if ( createNew ) {
-        this.tabService.addTab(new Tab(item.link, item.caption , { parent: 'AppComponent' }));
-        this.router.navigateByUrl(item.link)
+        this.tabService.addTab(new Tab(item.link, item.link, item.caption , { parent: 'AppComponent' }));
+
       }
       this.navService.closeNav();
     }

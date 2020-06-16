@@ -30,7 +30,7 @@ export class SitProjectsPubComponent implements OnInit, AfterViewInit {
    }
 
   ngOnInit(): void {
-    console.log(this.isLoading)
+//    console.log(this.isLoading)
   }
 
   ngAfterViewInit() {
