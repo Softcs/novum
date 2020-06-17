@@ -62,7 +62,7 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 // SIT;
 import { SitMenuListItemComponent } from './components/sit-menu-list-item/sit-menu-list-item.component';
 import { NavService } from './_services/nav.service';
-import { sitDSControlDirective, sitDataInputComponentDirective } from './_directives';
+import { sitDSControlDirective, sitDataInputComponentDirective, sitDataCheckboxComponentDirective } from './_directives';
 import { SitSideMenuComponent } from './components/sit-side-menu/';
 import { SitMenuComponent } from './containers/dictionaries/sit-menu/';
 import { SitRailConfigurationsComponent } from './containers/dictionaries/sit-rail-configurations';
@@ -84,7 +84,8 @@ import { SitPulpitComponent } from './containers/sit-pulpit';
 import { SitRailConfigurationsEditComponent } from './containers/dictionaries/sit-rail-configurations/actions/sit-rail-configurations-edit';
 import { SitDialogDiscardComponent } from './components/sit-dialog-discard/sit-dialog-discard.component';
 import { SitProcParamsComponent } from './components/sit-proc-params/sit-proc-params.component';
-import { SitDialogConfirmDelComponent } from './components/sit-dialog-confirm-del/sit-dialog-confirm-del.component'
+import { SitDialogConfirmDelComponent } from './components/sit-dialog-confirm-del/sit-dialog-confirm-del.component';
+import { SitDataCheckboxComponent } from './components/controls/sit-data-checkbox/sit-data-checkbox.component'
 
 @NgModule({
     imports: [
@@ -148,6 +149,7 @@ import { SitDialogConfirmDelComponent } from './components/sit-dialog-confirm-de
         MaterialTestComponent,
         sitSetDataSourceDirective,
         sitDataInputComponentDirective,
+        sitDataCheckboxComponentDirective,
         sitDSControlDirective,
         SitSideMenuComponent,
         SitRozrachunkiInsertGTComponent,
@@ -171,7 +173,8 @@ import { SitDialogConfirmDelComponent } from './components/sit-dialog-confirm-de
         SitRailConfigurationsEditComponent,
         SitDialogDiscardComponent,
         SitProcParamsComponent,
-        SitDialogConfirmDelComponent
+        SitDialogConfirmDelComponent,
+        SitDataCheckboxComponent
 
     ],
     providers: [

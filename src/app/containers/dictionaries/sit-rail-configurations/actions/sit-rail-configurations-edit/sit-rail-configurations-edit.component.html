@@ -1,4 +1,3 @@
-<p>GUID: {{guid}}</p>
 <sit-proc-params fxFlexFill
   dictIdent="sitRailConfigurations"
   dataSourceIdent="sitRailConfigurationsEdit"
@@ -13,7 +12,7 @@
         <div fxLayout="row">
           <sit-data-input type="number" id="sitCompaniesId" #sitControl field="sitCompaniesId" label="ID firmy" [showRefresh]=false appearance="fill" style="width: 100px"></sit-data-input>
           <sit-data-input type="text" id="CompanyIdent" #sitControl field="CompanyIdent" label="Firma" [showRefresh]=false appearance="fill"></sit-data-input>
-          <mat-checkbox id="IsActive" [(ngModel)]="isChecked" [checked]="activeRowRailConfigurations?.IsActive == 1" (change)="onChange($event.source.id, isChecked?1:0)">Aktywny</mat-checkbox>
+          <sit-data-checkbox id="IsActive" #sitControl field="IsActive" label="Aktywny"></sit-data-checkbox>
         </div>
 
         <div fxLayout="row">
@@ -47,4 +46,7 @@
       </div>
     </div>
   </sit-data-set-container>
+
+  <p>GUID: {{guid}}</p>
+
 </sit-proc-params>
