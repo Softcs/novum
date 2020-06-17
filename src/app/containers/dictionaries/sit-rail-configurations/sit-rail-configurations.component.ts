@@ -72,9 +72,11 @@ export class SitRailConfigurationsComponent implements OnInit {
     row['sitRailConfigurationsG'] = newGuid.toString();
     row['IsActive'] = 1;
 
-    this.tabService.addTab(new Tab( 'sitRailConfigurationsEdit','sitRailConfigurationsEdit',
+    this.tabService.addTab(new Tab(
+      'sitRailConfigurationsEdit', 'sitRailConfigurationsEdit',
       'Konfiguracja Rail - Nowy', { parent: 'AppComponent',
-        senderObject: this.getSenderObject(row) }));
+      guid: row['sitRailConfigurationsG'],
+      senderObject: this.getSenderObject(row) }));
   }
 
   edit() {
@@ -83,9 +85,10 @@ export class SitRailConfigurationsComponent implements OnInit {
     const row = dataSourceResponseWrapper.GenerateRow(dataSourceResponseWrapper.activeRow);
     this.tabService.addTab(
       new Tab(
-         'sitRailConfigurationsEdit','sitRailConfigurationsEdit',
-        'Konfiguracja Rail - Edycja' , { parent: 'AppComponent', guid: row['sitRailConfigurationsG'],
-          senderObject: this.getSenderObject(row) }));
+        'sitRailConfigurationsEdit','sitRailConfigurationsEdit',
+        'Konfiguracja Rail - Edycja' , { parent: 'AppComponent',
+        guid: row['sitRailConfigurationsG'],
+        senderObject: this.getSenderObject(row) }));
   }
 
   private getSenderObject(activeRow: any) {

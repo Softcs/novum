@@ -9,6 +9,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class TabService {
+  activeTab: number;
 
   constructor(
     public router: Router
@@ -37,27 +38,38 @@ export class TabService {
   }
 
   public changeTab(index: number) {
-    for (let i = 0; i < this.tabs.length; i++) {
-      if (index !== i ) { this.tabs[i].active = false; } else { this.tabs[i].active = true; }
-    }
+    this.activeTab = this.tabs.findIndex(t => t.active);
+    this.tabs[this.activeTab].active = false;
+    this.tabs[index].active = true;
     this.tabSub.next(this.tabs);
-    this.router.navigate([this.tabs[this.tabs.findIndex(tab => tab.active)].link])
-    console.log('changeTab',this.tabs[this.tabs.findIndex(tab => tab.active)].link)
+    this.activeTab = this.tabs.findIndex(t => t.active);
+    if (this.tabs[this.activeTab].tabData['guid'] === undefined) {
+      this.router.navigate([this.tabs[this.activeTab].link]);
+    } else {
+      this.router.navigate([this.tabs[this.activeTab].link, this.tabs[this.activeTab].tabData['guid']]);
+    };
   }
 
   public addTab(tab: Tab) {
-    router: Router;
-    for (let i = 0; i < this.tabs.length; i++) {
-      if (this.tabs[i].active === true) {
-         this.tabs[i].active = false;
-      }
+    this.activeTab = this.tabs.findIndex(t => t.active);
+    if (this.tabs.findIndex(t => t.link === tab.link) !== -1) {
+      this.changeTab(this.tabs.findIndex(t => t.link === tab.link))
+    } else {
+      this.tabs[this.activeTab].active = false;
+      tab.id = this.tabs.length + 1;
+      tab.active = true;
+      this.tabs.push(tab);
+      this.tabSub.next(this.tabs);
+      this.activeTab = this.tabs.findIndex(t => t.active);
+
+      if (this.tabs[this.activeTab].tabData['guid'] === undefined) {
+        this.router.navigate([this.tabs[this.activeTab].link]);
+      } else {
+        this.router.navigate([this.tabs[this.activeTab].link, this.tabs[this.activeTab].tabData['guid']]);
+      };
     }
-    tab.id = this.tabs.length + 1;
-    tab.active = true;
-    this.tabs.push(tab);
-    this.tabSub.next(this.tabs);
-    console.log(tab.tabData['guid']);
-    this.router.navigate([this.tabs[this.tabs.findIndex(tab => tab.active)].link])
+
+    console.log('Tabs po utworzeniu nowego',this.tabs,this.tabs[this.activeTab].link)
   }
 
 

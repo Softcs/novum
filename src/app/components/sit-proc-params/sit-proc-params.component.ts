@@ -93,6 +93,7 @@ export class SitProcParamsComponent implements OnInit, AfterViewInit {
 
   private executeActionCompletedCallback(self) {
     self.executing = false;
+    self.tabService.removeTab(self.tabIndex);
   }
 
   private executeActionExceptionCallback(self) {

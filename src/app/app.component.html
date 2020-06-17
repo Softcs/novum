@@ -14,20 +14,22 @@
     </mat-drawer>
     <div class="sit-main-panel">
       <nav mat-tab-nav-bar *ngIf="currentUser">
-        <div  fxLayout="row" *ngFor="let tab of tabs">
-        <a mat-tab-link
-        [routerLink]="tab.tabData['guid'] === undefined ? [tab.link] : [tab.link, tab.tabData['guid']]"
-        routerLinkActive #rla="routerLinkActive"
-        [active]="rla.isActive"
+        <div class="sit-tab" fxLayout="row" *ngFor="let tab of tabs">
+          <a mat-tab-link
+          [routerLink]="tab.tabData['guid'] === undefined ? [tab.link] : [tab.link, tab.tabData['guid']]"
+          routerLinkActive #rla="routerLinkActive"
+          [active]="rla.isActive"
 
-        >
-          <div fxLayout="row" fxLayoutAlign="space-between center" (mouseover)="showClose=true" (mouseout)="showClose=false" style="width:100%;">
-            <div *ngIf="tab.title != 'Pulpit'" fxFlex class="sit-tab-title">{{ tab.title }}</div>
-            <div *ngIf="tab.title == 'Pulpit'" fxFlex fxLayoutAlign="center center"><i class="material-icons">home</i></div>
+          >
+            <div fxLayout="row" fxLayoutAlign="space-between center" (mouseover)="showClose=true" (mouseout)="showClose=false" style="width:100%;">
+              <div *ngIf="tab.title != 'Pulpit'" fxFlex class="sit-tab-title">{{ tab.title }}</div>
+              <div *ngIf="tab.title == 'Pulpit'" fxFlex fxLayoutAlign="center center"><i class="material-icons">home</i></div>
+            </div>
+          </a>
+          <div *ngIf="tab.title != 'Pulpit'" class="sit-close-tab">
+            <mat-icon class="sit-close-tab-icon" (click)="removeTab(tab.ident)" >close</mat-icon>
           </div>
-        </a>
-        <div *ngIf="tab.title != 'Pulpit'" class="close-tab"><mat-icon class="close-tab-icon" (click)="removeTab(tab.ident)" >close</mat-icon></div>
-      </div>
+        </div>
       </nav>
       <router-outlet></router-outlet>
 

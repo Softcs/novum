@@ -83,6 +83,11 @@ body {
   overflow: auto;
 }
 
+.sit-tab {
+  border-right: 1px solid $background-color;
+
+}
+
 .sit-tab-title {
   padding: 6px 5px;
   height: 35px;
@@ -96,6 +101,25 @@ body {
 
 .sit-tab-content {
   overflow: auto;
+}
+
+.sit-close-tab {
+  height: 35px;
+  width: 12px;
+  position: relative;
+  top: 5px;
+  right: 15px;
+
+}
+
+
+.sit-close-tab-icon {
+  font-size: 12px;
+  text-align: right;
+  width: 10px !important;
+  cursor: pointer;
+  z-index: 100;
+
 }
 
 .sit-proc-bar{
@@ -136,17 +160,8 @@ body {
 
 }
 
-.close-tab {
-  height: 35px;
-  width: 12px;
-}
 
 
-.close-tab-icon {
-  font-size: 12px;
-  text-align: right;
-  width: 10px;
-}
 .content-left {
   padding: 5px;
   margin: 5px 0px 5px 5px;
@@ -246,7 +261,6 @@ mat-toolbar-row,mat-toolbar-single-row{
 .mat-tab-link{
 //  padding: 0px 3px !important;
 //  height: 35px !important;
-  border-right: 1px solid $background-color;
   min-width: 50px !important;
 }
 
