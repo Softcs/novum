@@ -64,11 +64,11 @@ export class DataSetWrapper {
             executeActionCompletedCallback, executeActionExceptionCallback, sourceDictIdent);
     }
 
-    public GenerateNewRow() {
+    public GenerateRow(sourceRow: any = null) {
         const newRow = {};
         this.fields.forEach(field => {
             if (!field.isParam) {
-                newRow[field.fieldName] = null;
+                newRow[field.fieldName] = sourceRow != null ? sourceRow[field.fieldName] : null;
             }
         });
         return newRow;
