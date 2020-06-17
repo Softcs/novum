@@ -50,8 +50,10 @@ export class TabService {
   public addTab(tab: Tab) {
     this.activeTabIndex = this.tabs.findIndex(t => t.active);
     if (this.tabs.findIndex(t => t.link === tab.link) !== -1) {
+      console.log('Tabs po przelaczeniu', this.tabs, this.tabs[this.activeTabIndex].link)
       this.changeTab(this.tabs.findIndex(t => t.link === tab.link));
     } else {
+      console.log('Tabs po utworzeniu nowego', this.tabs, this.tabs[this.activeTabIndex].link)
       this.tabs[this.activeTabIndex].active = false;
       tab.id = this.tabs.length + 1;
       tab.active = true;
@@ -63,10 +65,10 @@ export class TabService {
         this.router.navigate([this.tabs[this.activeTabIndex].link]);
       } else {
         this.router.navigate([this.tabs[this.activeTabIndex].link, this.tabs[this.activeTabIndex].tabData['guid']]);
-      };
+      }
     }
 
-    console.log('Tabs po utworzeniu nowego',this.tabs,this.tabs[this.activeTabIndex].link)
+
   }
 
 
