@@ -86,7 +86,7 @@ export class DataSetWrapper {
     public getFieldValue(fieldName: string, rowToChange: any = null) {
         const row = rowToChange ?? this.activeRow;
         if (row == null) {
-            throw new Error('Active row is unnassigned');
+            return null;
         }
 
         return row[fieldName];

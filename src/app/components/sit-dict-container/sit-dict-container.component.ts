@@ -23,7 +23,6 @@ export class SitDictContainerComponent implements OnInit, AfterViewInit {
 
   @Output()
   refreshAfter: EventEmitter<DataSetManager> = new EventEmitter<DataSetManager>();
-
   constructor(private gatewayService: GatewayService) {
     this.DataSetManager = new DataSetManager(gatewayService);
 
