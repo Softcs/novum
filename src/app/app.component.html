@@ -15,7 +15,7 @@
     <div class="sit-main-panel">
       <nav mat-tab-nav-bar *ngIf="currentUser">
         <div class="sit-tab" fxLayout="row" *ngFor="let tab of tabs">
-          <a mat-tab-link
+          <div mat-tab-link
           [routerLink]="tab.tabData['guid'] === undefined ? [tab.link] : [tab.link, tab.tabData['guid']]"
           routerLinkActive #rla="routerLinkActive"
           [active]="rla.isActive"
@@ -25,7 +25,7 @@
               <div *ngIf="tab.title != 'Pulpit'" fxFlex class="sit-tab-title">{{ tab.title }}</div>
               <div *ngIf="tab.title == 'Pulpit'" fxFlex fxLayoutAlign="center center"><i class="material-icons">home</i></div>
             </div>
-          </a>
+          </div>
           <div *ngIf="tab.title != 'Pulpit'" class="sit-close-tab">
             <mat-icon class="sit-close-tab-icon" (click)="removeTab(tab.ident)" >close</mat-icon>
           </div>

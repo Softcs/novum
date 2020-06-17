@@ -9,7 +9,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class TabService {
-  activeTab: number;
+  activeTabIndex: number;
 
   constructor(
     public router: Router
@@ -22,54 +22,51 @@ export class TabService {
   public tabSub = new BehaviorSubject<Tab[]>(this.tabs);
 
   public removeTab(index: number) {
-    this.changeTab(index - 1);
+    var wasActive = this.tabs[this.activeTabIndex].active;
     console.log('removeTab',index,this.tabs,this.tabs[index - 1].link)
-    // if (this.tabs.length > 0) {
-    //   this.tabs[index].active = false;
-    //   this.tabs[index].title = 'Do usunięcia';
-    //   this.tabs[index - 1].active = true;
-    //   this.tabs[index - 1].title = 'Do aktywacji';
-    //   this.tabSub.next(this.tabs);
-    //   this.router.navigate([this.tabs[index - 1].link])
-    //   console.log('removeTab',index,this.tabs,this.tabs[index - 1].link)
-    // }
+
     this.tabs.splice(index, 1);
-    this.tabSub.next(this.tabs);
+    if (wasActive) {
+      this.changeTab(index - 1);
+    }
   }
 
   public changeTab(index: number) {
-    this.activeTab = this.tabs.findIndex(t => t.active);
-    this.tabs[this.activeTab].active = false;
+    this.activeTabIndex = this.tabs.findIndex(t => t.active);
+    const lastActiveTab = this.tabs[this.activeTabIndex];
+    if (lastActiveTab != null) {
+      lastActiveTab.active = false;
+    }
+
     this.tabs[index].active = true;
     this.tabSub.next(this.tabs);
-    this.activeTab = this.tabs.findIndex(t => t.active);
-    if (this.tabs[this.activeTab].tabData['guid'] === undefined) {
-      this.router.navigate([this.tabs[this.activeTab].link]);
-    } else {
-      this.router.navigate([this.tabs[this.activeTab].link, this.tabs[this.activeTab].tabData['guid']]);
-    };
+    this.activeTabIndex = this.tabs.findIndex(t => t.active);
+    let linkToNavigate = this.tabs[this.activeTabIndex].link
+    let additionalParam = this.tabs[this.activeTabIndex].tabData['guid'];
+    additionalParam == null ? this.router.navigate([linkToNavigate]) : this.router.navigate([linkToNavigate, additionalParam]);
+
   }
 
   public addTab(tab: Tab) {
-    this.activeTab = this.tabs.findIndex(t => t.active);
+    this.activeTabIndex = this.tabs.findIndex(t => t.active);
     if (this.tabs.findIndex(t => t.link === tab.link) !== -1) {
-      this.changeTab(this.tabs.findIndex(t => t.link === tab.link))
+      this.changeTab(this.tabs.findIndex(t => t.link === tab.link));
     } else {
-      this.tabs[this.activeTab].active = false;
+      this.tabs[this.activeTabIndex].active = false;
       tab.id = this.tabs.length + 1;
       tab.active = true;
       this.tabs.push(tab);
       this.tabSub.next(this.tabs);
-      this.activeTab = this.tabs.findIndex(t => t.active);
+      this.activeTabIndex = this.tabs.findIndex(t => t.active);
 
-      if (this.tabs[this.activeTab].tabData['guid'] === undefined) {
-        this.router.navigate([this.tabs[this.activeTab].link]);
+      if (this.tabs[this.activeTabIndex].tabData['guid'] === undefined) {
+        this.router.navigate([this.tabs[this.activeTabIndex].link]);
       } else {
-        this.router.navigate([this.tabs[this.activeTab].link, this.tabs[this.activeTab].tabData['guid']]);
+        this.router.navigate([this.tabs[this.activeTabIndex].link, this.tabs[this.activeTabIndex].tabData['guid']]);
       };
     }
 
-    console.log('Tabs po utworzeniu nowego',this.tabs,this.tabs[this.activeTab].link)
+    console.log('Tabs po utworzeniu nowego',this.tabs,this.tabs[this.activeTabIndex].link)
   }
 
 
