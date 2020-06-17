@@ -41,11 +41,15 @@ export class SitProcParamsComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.DataSetManager.dataSetContainers = this.dataSetContainers;
     this.mainDataSet = this.DataSetManager.CreateDataSetWrapper(this.dataSourceIdent);
+    console.log("mainDataSet 1", this.mainDataSet);
     this.senderObject = this.tabService.tabs[this.tabIndex].tabData.senderObject;
     const dataSetSource = this.senderObject.dataSets[this.dataSourceIdent];
 
     this.mainDataSet.rows = [dataSetSource.activeRow];
     this.mainDataSet.SetActiveRow(dataSetSource.activeRow, false);
+    console.log("dataSetSource.activeRow", dataSetSource.activeRow);
+    console.log("mainDataSet", this.mainDataSet);
+
 
     const dataSetContainer = this.DataSetManager.dataSetContainers.first;
     dataSetContainer.setDataSource(this.mainDataSet);
@@ -83,7 +87,7 @@ export class SitProcParamsComponent implements OnInit, AfterViewInit {
       this,
       this.executeActionCompletedCallback,
       this.executeActionExceptionCallback,
-      this.dataSourceIdent);
+      this.dictIdent);
   }
 
   private executeActionCompletedCallback(self) {
