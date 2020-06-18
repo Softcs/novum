@@ -20,6 +20,7 @@ export class SitProjectsPubComponent implements OnInit, AfterViewInit {
   Link: string;
   currentUser: User;
   isLoading = true;
+  activeRow: any;
 
   sitProjectsPubSelected = [];
 

@@ -1,14 +1,17 @@
-<sit-dict-container ident="sitProjectsPub"  #sitDictcontainer fxFlexFill>
+<sit-dict-container ident="sitProjectsPub" #sitDictcontainer fxFlexFill>
   <div fxLayout="row" fxFlexFill fxLayoutGap="5px">
     <div fxLayout="column" fxFlex="30%" class="content">
-      <sit-data-set-container ident="sitFilterProjectsPub" >
-        <div style="width: 100%;">
-          <sit-data-input #sitControl id="searchProjectsPub" field="searchProjectsPub" label="Filtruj projekty" placeholder="Projekt, Nazwa, EAN" autocomplete="off" style="width: 100%;"></sit-data-input>
-        </div>
-      </sit-data-set-container>
-      <mat-spinner *ngIf="isLoading"></mat-spinner>
-      <div class="data-table">
-        <sit-data-set-container  ident="sitProjectsPub" (activeRowChanged)="activeRowProjectsPubChanged($event)">
+
+      <div class="sit-filter-bar">
+        <sit-data-set-container ident="sitFilterProjectsPub" >
+          <div style="width: 100%;">
+            <sit-data-input #sitControl id="searchProjectsPub" field="searchProjectsPub" label="Filtruj projekty" placeholder="Projekt, Nazwa, EAN" autocomplete="off" style="width: 100%;"></sit-data-input>
+          </div>
+        </sit-data-set-container>
+      </div>
+
+      <sit-data-set-container  ident="sitProjectsPub" (activeRowChanged)="activeRowProjectsPubChanged($event)">
+        <div class="data-table">
           <ngx-datatable #sitProjectsPub #sitSetDataSource
           class="material striped"
           [columnMode]="ColumnMode.force"
@@ -44,41 +47,49 @@
             <ngx-datatable-column prop="ISBN" name="ISBN"></ngx-datatable-column> -->
 
           </ngx-datatable>
+        </div>
+      </sit-data-set-container>
 
-        </sit-data-set-container>
-      </div>
     </div>
-    <div fxLayout="column" fxFlex="70%" class="content" style="padding: 10px;overflow: auto">
-      <div fxLayout="row">
-        <div class="cover"><img src="{{Link}}"></div>
-        <div fxFlex fxLayout="column" style="padding-left: 20px;">
-          <div style="font-size: 18px;font-weight: bold; height: 60px; width:100%;">{{ activeRowProjectsPub?.ProjectName }}</div>
-          <mat-divider></mat-divider>
-          <p></p>
-          <div fxLayout="row"><div class="label">Projekt:</div><div class="text">{{ activeRowProjectsPub?.ProjectIdent }}</div></div>
-          <div fxLayout="row"><div class="label">ISBN:</div><div class="text">{{ activeRowProjectsPub?.ISBN }}</div></div>
-          <div fxLayout="row"><div class="label">EAN:</div><div class="text">{{ activeRowProjectsPub?.EAN }}</div></div>
-          <div fxLayout="row"><div class="label">Autor:</div><div class="text">{{ activeRowProjectsPub?.Author }}</div></div>
-          <div fxLayout="row"><div class="label">Redaktor:</div><div class="text">{{ activeRowProjectsPub?.Editor }}</div></div>
-          <div fxLayout="row"><div class="label">Grafik:</div><div class="text">{{ activeRowProjectsPub?.GraphicDesigner }}</div></div>
-          <div fxLayout="row"><div class="label">Ilustrator:</div><div class="text">{{ activeRowProjectsPub?.Illustrator }}</div></div>
-          <div fxLayout="row"><div class="label">Tłumacz:</div><div class="text">{{ activeRowProjectsPub?.Translator }}</div></div>
-          <div fxLayout="row"><div class="label">Nakład:</div><div class="text">{{ activeRowProjectsPub?.Circulation }}</div></div>
+
+      <div fxLayout="column" fxFlex="70%" class="content" style="padding: 10px;overflow: auto; height: 100%;">
+        <sit-data-set-container  ident="sitProjectsPub" (activeRowChanged)="activeRowProjectsPubChanged($event)">
+          <div fxLayout="row">
+          <div class="cover"><img src="{{Link}}"></div>
+          <div fxFlex fxLayout="column" style="padding-left: 20px;">
+            <div style="font-size: 18px;font-weight: bold; height: 60px; width:100%;">{{ activeRowProjectsPub?.ProjectName }}</div>
+            <mat-divider></mat-divider>
+            <p></p>
+            <div fxLayout="row">
+              <sit-data-input #sitControl type="text" id="ProjectIdent" field="ProjectIdent" label="Projekt" appearance="outline" style="width: 400px" readonly="true"></sit-data-input>
+            </div>
+            <div fxLayout="row">
+              <sit-data-input #sitControl type="text" id="ISBN" field="ISBN" label="ISBN" appearance="outline" style="width: 400px" readonly="true"></sit-data-input>
+            </div>
+            <div fxLayout="row">
+              <sit-data-input #sitControl type="text" id="EAN" field="EAN" label="EAN" appearance="outline" style="width: 400px" readonly="true"></sit-data-input>
+            </div>
+              <div fxLayout="row"><div class="label">Autor:</div><div class="text">{{ activeRowProjectsPub?.Author }}</div></div>
+            <div fxLayout="row"><div class="label">Redaktor:</div><div class="text">{{ activeRowProjectsPub?.Editor }}</div></div>
+            <div fxLayout="row"><div class="label">Grafik:</div><div class="text">{{ activeRowProjectsPub?.GraphicDesigner }}</div></div>
+            <div fxLayout="row"><div class="label">Ilustrator:</div><div class="text">{{ activeRowProjectsPub?.Illustrator }}</div></div>
+            <div fxLayout="row"><div class="label">Tłumacz:</div><div class="text">{{ activeRowProjectsPub?.Translator }}</div></div>
+            <div fxLayout="row"><div class="label">Nakład:</div><div class="text">{{ activeRowProjectsPub?.Circulation }}</div></div>
+
+          </div>
+        </div>
+        <div>
+          <div fxLayout="row"><div class="label" style="width:200px;">Planowana data wydania</div><div class="text">{{ activeRowProjectsPub?.ReleaseDatePlan | date: 'yyyy-MM-dd'}}</div></div>
+          <div fxLayout="row"><div class="label" style="width:200px;">Rzeczywista data wydania</div><div class="text">{{ activeRowProjectsPub?.ReleaseDateAct | date: 'yyyy-MM-dd'}}</div></div>
+          <div fxLayout="row"><div class="label" style="width:200px;">Data dost. mat. do druku</div><div class="text">{{ activeRowProjectsPub?.MatDelivDate | date: 'yyyy-MM-dd'}}</div></div>
+          <div fxLayout="row"><div class="label" style="width:200px;">Data dost. ozalidów</div><div class="text">{{ activeRowProjectsPub?.OzalidDelivDate | date: 'yyyy-MM-dd'}}</div></div>
+          <div fxLayout="row"><div class="label" style="width:200px;">Data zamówienia PDF</div><div class="text">{{ activeRowProjectsPub?.PDFOrdDate | date: 'yyyy-MM-dd'}}</div></div>
+          <div fxLayout="row"><div class="label" style="width:200px;">Data premiery</div><div class="text">{{ activeRowProjectsPub?.PremiereDate | date: 'yyyy-MM-dd'}}</div></div>
+          <div>{{ activeRowProjectsPub?.ProjectDescription }}</div>
+          <p>{{ activeRowProjectsPub?.ProjectStatus }}</p>
 
         </div>
-      </div>
-      <div>
-        <div fxLayout="row"><div class="label" style="width:200px;">Planowana data wydania</div><div class="text">{{ activeRowProjectsPub?.ReleaseDatePlan | date: 'yyyy-MM-dd'}}</div></div>
-        <div fxLayout="row"><div class="label" style="width:200px;">Rzeczywista data wydania</div><div class="text">{{ activeRowProjectsPub?.ReleaseDateAct | date: 'yyyy-MM-dd'}}</div></div>
-        <div fxLayout="row"><div class="label" style="width:200px;">Data dost. mat. do druku</div><div class="text">{{ activeRowProjectsPub?.MatDelivDate | date: 'yyyy-MM-dd'}}</div></div>
-        <div fxLayout="row"><div class="label" style="width:200px;">Data dost. ozalidów</div><div class="text">{{ activeRowProjectsPub?.OzalidDelivDate | date: 'yyyy-MM-dd'}}</div></div>
-        <div fxLayout="row"><div class="label" style="width:200px;">Data zamówienia PDF</div><div class="text">{{ activeRowProjectsPub?.PDFOrdDate | date: 'yyyy-MM-dd'}}</div></div>
-        <div fxLayout="row"><div class="label" style="width:200px;">Data premiery</div><div class="text">{{ activeRowProjectsPub?.PremiereDate | date: 'yyyy-MM-dd'}}</div></div>
-        <p>{{ activeRowProjectsPub?.ProjectDescription }}</p>
-        <p>{{ activeRowProjectsPub?.ProjectStatus }}</p>
-
-      </div>
-
+      </sit-data-set-container>
     </div>
   </div>
 </sit-dict-container>
