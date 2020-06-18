@@ -1,16 +1,20 @@
 <sit-data-set-container ident="{{dataSourceIdent}}">
-  <div class="sit-edit-form">
-    <ng-content></ng-content>
-    <mat-divider></mat-divider>
-    <div fxLayout="row" style="width: 100%;">
-      <span style="padding: 20px">
-        <!-- <sit-proc-button #sitControl actionIdent="{{actionIdent}}" color="primary" caption="Zapisz" (afterCompleted)="onSave($event)" confirm="false" matType="mat-raised-button"></sit-proc-button> -->
-        <button mat-raised-button color="primary" (click)="executeAction()">Zapisz</button>
-      </span>
-      <span style="width: 50px"></span>
-      <span style="padding: 20px">
-        <button mat-raised-button color="primary" (click)="openDiscardDialog()"  style="width: 80px;">Anuluj</button>
-      </span>
+  <div class="sit-edit-form" fxFlexFill>
+    <div class="sit-edit-form-content">
+      <ng-content></ng-content>
+    </div>
+    <div class="sit-edit-form-bottom-bar">
+      <mat-divider></mat-divider>
+      <div fxLayout="row" style="width: 100%;">
+        <span style="padding: 20px">
+          <!-- <sit-proc-button #sitControl actionIdent="{{actionIdent}}" color="primary" caption="Zapisz" (afterCompleted)="onSave($event)" confirm="false" matType="mat-raised-button"></sit-proc-button> -->
+          <button mat-raised-button color="primary" (click)="executeAction()">Zapisz</button>
+        </span>
+        <span style="width: 50px"></span>
+        <span style="padding: 20px">
+          <button mat-raised-button color="primary" (click)="openDiscardDialog()"  style="width: 80px;">Anuluj</button>
+        </span>
+      </div>
     </div>
   </div>
 </sit-data-set-container>

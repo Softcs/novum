@@ -1,0 +1,16 @@
+<mat-form-field appearance="{{ appearance }}">
+  <mat-label>{{label}}</mat-label>
+  <textarea
+    matInput
+    #inputElement
+    [value]="value"
+    [type]="type"
+    [id]="id"
+    [rows]="rows"
+    [cols]="cols"
+    (change)="onChange($event)"
+    (keyup)="onKeyup($event)"
+    (blur)="onBlur($event)"
+  >
+  </textarea>
+</mat-form-field>

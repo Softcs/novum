@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Directive, ContentChildren,
-  QueryList, ViewChild, ViewChildren, ElementRef, ContentChild, HostListener, ComponentFactoryResolver, Output, EventEmitter } from '@angular/core';
+  QueryList, Output, EventEmitter } from '@angular/core';
 
 import { GatewayService } from '@app/_services/gateway.service';
 import { DataSetWrapper } from '@app/_models';
@@ -12,7 +12,7 @@ import { connect } from 'http2';
   templateUrl: './sit-data-set-container.component.html',
   // template: '<ng-container></ng-container>',
   styleUrls: ['./sit-data-set-container.component.scss'],
-
+  host: {class: 'router-flex'}
 })
 
 export class SitDataSetContainerComponent implements OnInit {

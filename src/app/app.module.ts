@@ -85,8 +85,10 @@ import { SitRailConfigurationsEditComponent } from './containers/dictionaries/si
 import { SitDialogDiscardComponent } from './components/sit-dialog-discard/sit-dialog-discard.component';
 import { SitProcParamsComponent } from './components/sit-proc-params/sit-proc-params.component';
 import { SitDialogConfirmDelComponent } from './components/sit-dialog-confirm-del/sit-dialog-confirm-del.component';
-import { SitDataCheckboxComponent } from './components/controls/sit-data-checkbox/sit-data-checkbox.component'
-
+import { SitDataCheckboxComponent } from './components/controls/sit-data-checkbox/sit-data-checkbox.component';
+import { SitDataTextareaComponent } from './components/controls/sit-data-textarea/sit-data-textarea.component';
+import { sitDataTextareaComponentDirectiveDirective } from './_directives/sitDataTextareaComponentDirective';
+import { SitDataTextareaComponentDirectiveDirective } from './_directives/sit-data-textarea-component-directive.directive'
 @NgModule({
     imports: [
         BrowserModule,
@@ -175,7 +177,11 @@ import { SitDataCheckboxComponent } from './components/controls/sit-data-checkbo
         SitProcParamsComponent,
         SitDialogConfirmDelComponent,
         SitDataCheckboxComponent
-
+,
+        SitDataTextareaComponent
+,
+        sitDataTextareaComponentDirectiveDirective,
+        SitDataTextareaComponentDirectiveDirective
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },

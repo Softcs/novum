@@ -135,8 +135,21 @@ body {
 
 .sit-edit-form {
   background-color: $edit-form-background-color;
-  margin: 5px 5px 0px;
+  //margin: 5px 5px 0px;
   padding: 5px 0px;
+
+}
+
+.sit-edit-form-content {
+  overflow-y: auto;
+
+}
+
+.sit-edit-form-bottom-bar {
+  height: 70px;
+  position: fixed;
+  bottom:0%;
+  width:100%;
 }
 
 .container-menu{

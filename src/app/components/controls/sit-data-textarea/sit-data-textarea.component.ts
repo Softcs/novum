@@ -1,20 +1,18 @@
-import { Component, Input, ViewChild, ElementRef, OnInit, Renderer2, forwardRef, Directive } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, Input } from '@angular/core';
 import { SitDataBaseComponent } from '../sit-data-base/sit-data-base.component';
 import { MatFormFieldAppearance  } from '@angular/material/form-field';
 
 @Component({
-  selector: 'sit-data-input',
-  templateUrl: './sit-data-input.component.html',
-  styleUrls: ['./sit-data-input.component.scss']
+  selector: 'sit-data-textarea',
+  templateUrl: './sit-data-textarea.component.html',
+  styleUrls: ['./sit-data-textarea.component.scss']
 })
-export class SitDataInputComponent extends SitDataBaseComponent {
-
+export class SitDataTextareaComponent extends SitDataBaseComponent {
   @Input() type = 'text';
   @Input() label = '';
-  @Input() showRefresh = true;
   @Input() appearance: MatFormFieldAppearance = 'legacy';
-  @Input() width: string;
+  @Input() rows: number;
+  @Input() cols: number;
 
   onChange(event: any) {
     super.onChange(event);
@@ -32,6 +30,5 @@ export class SitDataInputComponent extends SitDataBaseComponent {
   onRefreshClick(event: any) {
     this.dataSetWrapper.RefreshChildren();
   }
-
 
 }

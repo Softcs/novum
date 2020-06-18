@@ -1,4 +1,4 @@
-<sit-proc-params fxFlexFill
+<sit-proc-params
   dictIdent="sitRailConfigurations"
   dataSourceIdent="sitRailConfigurationsEdit"
   actionIdent='ins'
@@ -6,7 +6,7 @@
   [(activeRow)]="activeRow"
   >
   <sit-data-set-container ident="sitRailConfigurationsEdit">
-    <div fxLayout="row" fxFlexFill>
+    <div fxLayout="row">
       <div fxLayout="column" fxFlex="50%">
 
         <div fxLayout="row">
@@ -39,14 +39,8 @@
         </div>
       </div>
       <div fxFlex>
-        <mat-form-field class="sit-edit-input"  appearance="fill" style="width: 100%;">
-          <mat-label>Data</mat-label>
-          <textarea matInput id="Data" rows="48" value="{{ activeRowRailConfigurations?.Data }}" style="resize:none;" (change)="onChange($event.srcElement.id,$event.srcElement.value)"></textarea>
-        </mat-form-field>
+        <sit-data-textarea type="textarea" id="Data" #sitControl field="Data" label="Dane" appearance="fill" rows="30" cols="80"></sit-data-textarea>
       </div>
     </div>
   </sit-data-set-container>
-
-  <p>GUID: {{guid}}</p>
-
 </sit-proc-params>
