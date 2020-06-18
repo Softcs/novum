@@ -8,6 +8,8 @@ import { ActivatedRoute } from '@angular/router';
   host: {class: 'router-flex'}
 })
 export class SitRailConfigurationsEditComponent implements OnInit {
+  senderObject: any;
+  activeRow: any;
 
   constructor() {}
 
