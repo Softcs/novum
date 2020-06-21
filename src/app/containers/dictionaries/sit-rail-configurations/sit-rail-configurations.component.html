@@ -25,86 +25,97 @@
           </div>
         </sit-data-set-container>
 
-        <div  style="flex: 1 1 auto;">
-          <div class="data-table">
-            <ngx-datatable #sitRailConfigurations #sitSetDataSource
-              class="material striped"
-              style = "height:700px;"
-              [columnMode]="ColumnMode.force"
-              [limit]=20
-              [scrollbarV]=true
-              [footerHeight]="0"
-              [selected]="sitRailConfigurationsSelected"
-              [selectionType]="SelectionType.single"
-              [selectAllRowsOnPage]="false"
-              [displayCheck]="displayCheck"
-              (activate)="onActivateRailConfigurations($event)"
-              (select)="onSelectRailConfigurations($event)"
+        <div class="data-table">
+          <ngx-datatable #sitRailConfigurations #sitSetDataSource
+            class="material striped"
+            style = "height:400px;"
+            [columnMode]="ColumnMode.force"
+            [limit]=20
+            [scrollbarV]=true
+            [footerHeight]="0"
+            [selected]="sitRailConfigurationsSelected"
+            [selectionType]="SelectionType.single"
+            [selectAllRowsOnPage]="false"
+            [displayCheck]="displayCheck"
+            (activate)="onActivateRailConfigurations($event)"
+            (select)="onSelectRailConfigurations($event)"
 
-            >
-            <!-- Row Detail Template -->
-            <ngx-datatable-row-detail [rowHeight]="300" #myDetailRow (toggle)="onDetailToggle($event)">
-              <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
-                <div style="padding: 0px 20px 0px 20px; width:100%; height:100%;">
-                  <div><h6>Data</h6></div>
-                  <div><textarea name="Data" rows="13" >{{ row.Data }}</textarea></div>
+          >
+          <!-- Row Detail Template -->
+          <ngx-datatable-row-detail [rowHeight]="300" #myDetailRow (toggle)="onDetailToggle($event)">
+            <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
+              <div style="padding: 0px 20px 0px 20px; width:100%; height:100%;">
+                <div><h6>Data</h6></div>
+                <div><textarea name="Data" rows="13" >{{ row.Data }}</textarea></div>
+              </div>
+            </ng-template>
+          </ngx-datatable-row-detail>
+
+          <!-- Column Templates -->
+          <ngx-datatable-column
+            [width]="30"
+            [resizeable]="false"
+            [sortable]="false"
+            [draggable]="false"
+            [canAutoResize]="false"
+          >
+            <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
+              <a style="text-decoration: none;"
+                href="javascript:void(0)"
+                [class.datatable-icon-right]="!expanded"
+                [class.datatable-icon-down]="expanded"
+                title="Expand/Collapse Row"
+                (click)="toggleExpandRow(row)"
+              >
+              </a>
+            </ng-template>
+          </ngx-datatable-column>
+
+            <!-- <ngx-datatable-column prop="sitRailConfigurationsId" name="Id" [canAutoResize]="false" [width]="40">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                <div style="text-align: right;">
+                  {{value}}
                 </div>
               </ng-template>
-            </ngx-datatable-row-detail>
-
-            <!-- Column Templates -->
-            <ngx-datatable-column
-              [width]="30"
-              [resizeable]="false"
-              [sortable]="false"
-              [draggable]="false"
-              [canAutoResize]="false"
-            >
-              <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
-                <a style="text-decoration: none;"
-                  href="javascript:void(0)"
-                  [class.datatable-icon-right]="!expanded"
-                  [class.datatable-icon-down]="expanded"
-                  title="Expand/Collapse Row"
-                  (click)="toggleExpandRow(row)"
-                >
-                </a>
+            </ngx-datatable-column> -->
+            <ngx-datatable-column prop="sitCompaniesId" name="CompId" [canAutoResize]="false" [width]="55">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                <div style="text-align: right;">
+                  {{value}}
+                </div>
               </ng-template>
             </ngx-datatable-column>
+            <ngx-datatable-column prop="CompanyIdent" name="Company Ident"></ngx-datatable-column>
+            <ngx-datatable-column prop="ClientGuid" name="ClientGuid" [canAutoResize]="false" [width]="280"></ngx-datatable-column>
+            <ngx-datatable-column prop="UserLogin" name="User Login"></ngx-datatable-column>
+            <ngx-datatable-column prop="OperationIdent" name="OperationIdent"></ngx-datatable-column>
+            <ngx-datatable-column prop="IsActive" [canAutoResize]="false" [width]="55">
+              <ng-template let-column="column" ngx-datatable-header-template>
+                IsActive
+              </ng-template>
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                <div style="text-align: center;">
+                  <input type="checkbox" id="IsActive" name="IsActive" value="value" disabled=true [checked]="value == 1">
+                </div>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column prop="Timeout" name="Timeout" [canAutoResize]="false" [width]="60"></ngx-datatable-column>
+            <ngx-datatable-column prop="TransformProcedure" name="Transform procedure"></ngx-datatable-column>
+            <ngx-datatable-column prop="ConvertFunctionForParams" name="ConvertFunctionForParams"></ngx-datatable-column>
+            <ngx-datatable-column prop="Source" name="Źródło"></ngx-datatable-column>
+          </ngx-datatable>
+          <br>
+          <div>
+            <div fxLayout="row">
+              <sit-data-input type="number" id="sitCompaniesId" #sitControl field="sitCompaniesId" label="ID firmy" [showRefresh]=false appearance="outline" [readonly]=true style="width: 100px"></sit-data-input>
+              <sit-data-input type="text" id="CompanyIdent" #sitControl field="CompanyIdent" label="Firma" [showRefresh]=false appearance="outline" [readonly]=true></sit-data-input>
+              <sit-data-checkbox id="IsActive" #sitControl field="IsActive" label="Aktywny"></sit-data-checkbox>
+            </div>
 
-              <!-- <ngx-datatable-column prop="sitRailConfigurationsId" name="Id" [canAutoResize]="false" [width]="40">
-                <ng-template let-value="value" ngx-datatable-cell-template>
-                  <div style="text-align: right;">
-                    {{value}}
-                  </div>
-                </ng-template>
-              </ngx-datatable-column> -->
-              <ngx-datatable-column prop="sitCompaniesId" name="CompId" [canAutoResize]="false" [width]="55">
-                <ng-template let-value="value" ngx-datatable-cell-template>
-                  <div style="text-align: right;">
-                    {{value}}
-                  </div>
-                </ng-template>
-              </ngx-datatable-column>
-              <ngx-datatable-column prop="CompanyIdent" name="Company Ident"></ngx-datatable-column>
-              <ngx-datatable-column prop="ClientGuid" name="ClientGuid" [canAutoResize]="false" [width]="280"></ngx-datatable-column>
-              <ngx-datatable-column prop="UserLogin" name="User Login"></ngx-datatable-column>
-              <ngx-datatable-column prop="OperationIdent" name="OperationIdent"></ngx-datatable-column>
-              <ngx-datatable-column prop="IsActive" [canAutoResize]="false" [width]="55">
-                <ng-template let-column="column" ngx-datatable-header-template>
-                  IsActive
-                </ng-template>
-                <ng-template let-value="value" ngx-datatable-cell-template>
-                  <div style="text-align: center;">
-                    <input type="checkbox" id="IsActive" name="IsActive" value="value" disabled=true [checked]="value == 1">
-                  </div>
-                </ng-template>
-              </ngx-datatable-column>
-              <ngx-datatable-column prop="Timeout" name="Timeout" [canAutoResize]="false" [width]="60"></ngx-datatable-column>
-              <ngx-datatable-column prop="TransformProcedure" name="Transform procedure"></ngx-datatable-column>
-              <ngx-datatable-column prop="ConvertFunctionForParams" name="ConvertFunctionForParams"></ngx-datatable-column>
-              <ngx-datatable-column prop="Source" name="Źródło"></ngx-datatable-column>
-            </ngx-datatable>
+            <div fxLayout="row">
+              <sit-data-input type="text" id="OperationIdent" #sitControl field="OperationIdent" label="Identyfikator operacji" [showRefresh]=false appearance="outline" [readonly]=true style="width: 100%;" ></sit-data-input>
+            </div>
+
           </div>
         </div>
       </sit-data-set-container>

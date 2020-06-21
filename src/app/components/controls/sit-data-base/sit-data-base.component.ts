@@ -42,10 +42,11 @@ export class SitDataBaseComponent implements ControlValueAccessor {
   onChange(event: any) {
     if (event.target.type === 'checkbox') {
       event.target.checked ? this._onChange('1') : this._onChange('0');
+      console.log (event.target.type,event.target.checked,this.dataSetWrapper.activeRow)
     } else {
       this._onChange(event.target.value);
     }
-    console.log (this.dataSetWrapper.activeRow)
+
   }
 
   onKeyup(event: any) {
