@@ -12,8 +12,8 @@
     <mat-drawer #appDrawer class="sidenav" mode="overlay" >
       <sit-side-menu></sit-side-menu>
     </mat-drawer>
-    <div class="sit-main-panel">
-      <nav mat-tab-nav-bar *ngIf="currentUser">
+    <div fxFlexFill fxLayout="column">
+      <nav mat-tab-nav-bar *ngIf="currentUser" fxLayout="column">
         <div class="sit-tab" fxLayout="row" *ngFor="let tab of tabs">
           <div mat-tab-link
           [routerLink]="tab.tabData['guid'] === undefined ? [tab.link] : [tab.link, tab.tabData['guid']]"
@@ -31,7 +31,7 @@
           </div>
         </div>
       </nav>
-      <div class="sit-tab-content">
+      <div fxFlex fxLayout="column" style="max-height: 100%; overflow: auto;">
         <router-outlet></router-outlet>
       </div>
     </div>

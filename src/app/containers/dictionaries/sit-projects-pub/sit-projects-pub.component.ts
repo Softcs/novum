@@ -31,7 +31,6 @@ export class SitProjectsPubComponent implements OnInit, AfterViewInit {
    }
 
   ngOnInit(): void {
-//    console.log(this.isLoading)
   }
 
   ngAfterViewInit() {
@@ -44,7 +43,7 @@ export class SitProjectsPubComponent implements OnInit, AfterViewInit {
 
   onActivateProjectsPub(event) {
     if (event.type == 'click') {
-      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper("sitProjectsPub");
+      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitProjectsPub');
       dataSourceResponseWrapper.SetActiveRow(event.row);
     }
   }
@@ -53,9 +52,9 @@ export class SitProjectsPubComponent implements OnInit, AfterViewInit {
     // this.sitProjectsPubSelected.splice(0, this.sitProjectsPubSelected.length);
     // this.sitProjectsPubSelected.push(...[activeRow]);
 
-    this.Link = activeRow['sitImagesG'] == null
-      ? environment.apiUrl+"/service/attachments/get/" + this.currentUser.token + "/noimage/noimage.jpg" : // kiedy brak rekordu
-        environment.apiUrl+"/service/attachments/get/" + this.currentUser.token + "/"+activeRow['sitImagesG']+"/"+ activeRow['FileName']
+    this.Link = activeRow.sitImagesG == null
+      ? environment.apiUrl +'/service/attachments/get/' + this.currentUser.token + '/noimage/noimage.jpg' : // kiedy brak rekordu
+        environment.apiUrl +'/service/attachments/get/' + this.currentUser.token + '/'+ activeRow.sitImagesG+'/'+ activeRow.FileName
 
   }
 }
