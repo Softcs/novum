@@ -29,4 +29,9 @@ export class SitDataCheckboxComponent extends SitDataBaseComponent {
     this.dataSetWrapper.setFieldValue(this.field, this.getValue());
     this.dataSetWrapper.RefreshChildren();
   }
+
+  public refreshFieldValue() {
+    this.dataSetWrapper.refreshFieldValueInControl(this);
+  }
+
 }

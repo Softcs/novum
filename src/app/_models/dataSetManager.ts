@@ -13,7 +13,6 @@ export class DataSetManager {
     @Output()
     refreshAfter: EventEmitter<DataSetManager> = new EventEmitter<DataSetManager>();
 
-
     constructor(public gatewayService: GatewayService) {
         this.dataSetsWrapper = [];
     }

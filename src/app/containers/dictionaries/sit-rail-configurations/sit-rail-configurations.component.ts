@@ -38,9 +38,9 @@ export class SitRailConfigurationsComponent implements OnInit {
 
   onActivateRailConfigurations(event) {
     if (event.type == 'click') {
-      const dataSourceResponseWrapper: DataSetWrapper =
+      const dataSetResponseWrapper: DataSetWrapper =
         this.dictContainer.DataSetManager.getDateSourceWrapper("sitRailConfigurations");
-      dataSourceResponseWrapper.SetActiveRow(event.row);
+      dataSetResponseWrapper.SetActiveRow(event.row);
     }
   }
 

@@ -39,6 +39,7 @@ export class DataSetWrapper {
             }
         }
     }
+
     public setInputDataSource(inputDataSource: any) {
         this.ident = inputDataSource.ident;
         this.rows = inputDataSource.rows;
@@ -47,9 +48,11 @@ export class DataSetWrapper {
         const dataSourceDef =  this.dataSourceManager?.dictInfo?.FindDataSource(this.ident);
         this.fields = dataSourceDef?.fields;
     }
+
     public AfterPropagte() {
         this.activeRowChanged.emit(this.activeRow);
     }
+
     public ExecuteAction(actionIdent: string,
                          owner: any,
                          executeActionCompletedCallback: Function,
@@ -57,7 +60,7 @@ export class DataSetWrapper {
                          sourceDictIdent: string = null
     ) {
         if (this.dataSourceManager == null) {
-            console.error('ExecuteAction data source manager is undefindex!');
+            console.error('ExecuteAction data source manager is undefinde!');
             return;
         }
         this.dataSourceManager.ExecuteAction(actionIdent, this.ident, owner,
@@ -90,5 +93,11 @@ export class DataSetWrapper {
         }
 
         return row[fieldName];
+    }
+
+    public refreshFieldValueInControl(control) {
+        const fieldValue = this.getFieldValue(control.field);
+        control.dataSetWrapper = this;
+        control.setValue(fieldValue);
     }
 }

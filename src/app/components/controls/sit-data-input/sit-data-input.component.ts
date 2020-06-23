@@ -32,6 +32,7 @@ export class SitDataInputComponent extends SitDataBaseComponent {
   onRefreshClick(event: any) {
     this.dataSetWrapper.RefreshChildren();
   }
-
-
+  public refreshFieldValue() {
+    this.dataSetWrapper.refreshFieldValueInControl(this);
+  }
 }

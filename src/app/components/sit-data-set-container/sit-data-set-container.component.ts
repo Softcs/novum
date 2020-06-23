@@ -21,7 +21,7 @@ export class SitDataSetContainerComponent implements OnInit {
   dsControlsInterface!: QueryList<SitDataBaseComponent>;
 
   @Input() ident: string;
-  dataSourceResponseWrapper: DataSetWrapper;
+  dataSetResponseWrapper: DataSetWrapper;
   @Output()
   activeRowChanged: EventEmitter<any> = new EventEmitter<any>();
 
@@ -34,7 +34,7 @@ export class SitDataSetContainerComponent implements OnInit {
   constructor(private gatewayService: GatewayService) { }
 
   get activeRecord(): any {
-    return this.dataSourceResponseWrapper?.activeRow;
+    return this.dataSetResponseWrapper?.activeRow;
   }
 
   ngOnInit() {
@@ -47,27 +47,26 @@ export class SitDataSetContainerComponent implements OnInit {
 
   }
   public SetActiveRow(row: any) {
-      this.dataSourceResponseWrapper.SetActiveRow(row);
+      this.dataSetResponseWrapper.SetActiveRow(row);
   }
   public setErrors(errors: any[]) {
     this.errors = errors;
   }
   public setDataSource(dataSetWrapper: DataSetWrapper) {
-    this.dataSourceResponseWrapper = dataSetWrapper;
-    this.dataSourceResponseWrapper.activeRowChanged = this.activeRowChanged;
+    this.dataSetResponseWrapper = dataSetWrapper;
+    this.dataSetResponseWrapper.activeRowChanged = this.activeRowChanged;
     this.errors = dataSetWrapper.errors;
     this.datasSourcesInterface.forEach(element => {
-      element.rows = this.dataSourceResponseWrapper.rows;
-      element.selected = [this.dataSourceResponseWrapper.activeRow];
+      element.rows = this.dataSetResponseWrapper.rows;
+      element.selected = [this.dataSetResponseWrapper.activeRow];
     });
     if (this.dsControlsInterface != null) {
         this.dsControlsInterface.forEach(element => {
-          const fieldValue = this.dataSourceResponseWrapper.getFieldValue(element.field);
-          element.dataSetWrapper = this.dataSourceResponseWrapper;
-          element.setValue(fieldValue);
+          this.dataSetResponseWrapper.refreshFieldValueInControl(element);
         });
      }
   }
+
   public deleteData() {
 
   }
@@ -81,7 +80,6 @@ export class SitDataSetContainerComponent implements OnInit {
     const index = this._errors?.indexOf(error);
     this.errors?.splice(index, 1);
   }
-
 }
 
 
