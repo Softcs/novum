@@ -31,4 +31,7 @@ export class SitDataTextareaComponent extends SitDataBaseComponent {
     this.dataSetWrapper.RefreshChildren();
   }
 
+  public refreshFieldValue() {
+    this.dataSetWrapper.refreshFieldValueInControl(this);
+  }
 }
