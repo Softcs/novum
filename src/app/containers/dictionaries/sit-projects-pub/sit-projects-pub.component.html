@@ -1,6 +1,6 @@
 <sit-dict-container ident="sitProjectsPub" #sitDictcontainer fxFlexFill>
   <div fxLayout="row" fxFill fxLayoutGap="5px">
-    <div fxLayout="column" fxFlex="30%" class="content">
+    <div fxLayout="column" fxFlex="35%" class="content">
 
       <div class="sit-filter-bar">
         <sit-data-set-container ident="sitFilterProjectsPub" >
@@ -17,7 +17,7 @@
           [columnMode]="ColumnMode.force"
 
           [scrollbarV] = "false"
-          [limit]="12"
+          [limit]="14"
           [selected]="sitProjectsPubSelected"
           [selectionType]="SelectionType.single"
           [selectAllRowsOnPage]="false"
@@ -35,7 +35,7 @@
             <ngx-datatable-column prop="ProjectName" name="Projekt">
               <ng-template let-row="row" ngx-datatable-cell-template>
                 <div fxLayout="column">
-                  <div style="font-size: 16px;font-weight:500; text-overflow: ellipsis;overflow: hidden;">{{row.ProjectName}}</div>
+                  <div style="font-size: 15px;font-weight:500; text-overflow: ellipsis;overflow: hidden;">{{row.ProjectName}}</div>
                   <div fxLayout="row">
                     <div style="width: 200px;">{{row.ProjectIdent}}</div>
                     <div>ISBN: {{row.ISBN}}</div>
@@ -52,7 +52,7 @@
 
     </div>
 
-      <div fxLayout="column" fxFlex="70%" class="content" class="right-panel">
+      <div fxLayout="column" fxFlex="65%" class="content" class="right-panel">
         <sit-data-set-container  ident="sitProjectsPub" (activeRowChanged)="activeRowProjectsPubChanged($event)">
           <div *ngIf="activeRowProjectsPub?.ProjectIdent !== undefined" fxLayout="column">
             <div fxLayout="row" fxFlex>
@@ -149,6 +149,8 @@
                 <div fxFLex fxLayoutAlign="center center" class="subtitle">Oprawa - dodatki</div>
                 <div fxLayout="row" fxFLex>
                   <div class="label" style="width:200px;">Banderola</div><div fxFlex  class="text">{{ activeRowProjectsPub?.BindingAccStreamer }}</div>
+                  <!-- <input type="checkbox" id="BindingAccStreamer" [(ngModel)]="activeRowProjectsPub?.BindingAccStreamer" ng-true-value="1" ng-false-value="0"> -->
+
                 </div>
                 <div fxLayout="row" fxFLex>
                   <div class="label" style="width:200px;">Brokat</div><div fxFlex  class="text">{{ activeRowProjectsPub?.BindingAccGlitter}}</div>
