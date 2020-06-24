@@ -49,12 +49,19 @@ export class SitProjectsPubComponent implements OnInit, AfterViewInit {
   }
 
   activeRowProjectsPubChanged(activeRow) {
-    // this.sitProjectsPubSelected.splice(0, this.sitProjectsPubSelected.length);
-    // this.sitProjectsPubSelected.push(...[activeRow]);
-
-    this.Link = activeRow.sitImagesG == null
+    this.Link = activeRow == null || activeRow.sitImagesG == null
       ? environment.apiUrl +'/service/attachments/get/' + this.currentUser.token + '/noimage/noimage.jpg' : // kiedy brak rekordu
-        environment.apiUrl +'/service/attachments/get/' + this.currentUser.token + '/'+ activeRow.sitImagesG+'/'+ activeRow.FileName
+        environment.apiUrl +'/service/attachments/get/' + this.currentUser.token + '/' + activeRow.sitImagesG + '/' + activeRow.FileName
 
+  }
+
+  showProjectPanel() {
+    if (this.dictContainer !== undefined) {
+      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitProjectsPub');
+      if (dataSourceResponseWrapper !== null && dataSourceResponseWrapper.rows !== null) {
+        return true;
+      }
+    }
+    return false;
   }
 }
