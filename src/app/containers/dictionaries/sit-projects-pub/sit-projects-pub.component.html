@@ -1,4 +1,5 @@
 <sit-dict-container ident="sitProjectsPub" #sitDictcontainer fxFlexFill>
+  <sit-data-set-container  ident="sitProjectsPub" (activeRowChanged)="activeRowProjectsPubChanged($event)">
     <div fxLayout="row" fxFill fxLayoutGap="5px">
       <div fxLayout="column" fxFlex="35%" class="content">
 
@@ -10,7 +11,6 @@
           </sit-data-set-container>
         </div>
 
-        <sit-data-set-container  ident="sitProjectsPub" (activeRowChanged)="activeRowProjectsPubChanged($event)">
           <div class="data-table">
             <ngx-datatable #sitProjectsPub #sitSetDataSource
             class="material striped"
@@ -46,16 +46,12 @@
               <ngx-datatable-column prop="ISBN" name="ISBN"></ngx-datatable-column> -->
 
             </ngx-datatable>
-            <sit-data-checkbox id="InsideAccRoundCorners" #sitControl field="InsideAccRoundCorners" label="Zaokrąglone narożniki"></sit-data-checkbox>
-
           </div>
-        </sit-data-set-container>
       </div>
 
       <div *ngIf="!showProjectPanel()" fxLayout="column" fxFlex="65%" class="content" class="right-panel" fxLayoutAlign="start center">Wpisz w filtr symbol projektu, nazwę projektu lub EAN.</div>
 
       <div *ngIf="showProjectPanel()" fxLayout="column" fxFlex="65%" class="content" class="right-panel">
-        <sit-data-set-container  ident="sitProjectsPub" (activeRowChanged)="activeRowProjectsPubChanged($event)">
           <div *ngIf="activeRowProjectsPub?.ProjectIdent !== undefined" fxLayout="column">
             <div fxLayout="row" fxFlex>
               <div fxLayout="row" fxFlex="40">
@@ -85,6 +81,7 @@
                 <div fxLayout="row"><div class="label">Imprint</div><div fxFlex  class="text">{{ activeRowProjectsPub?.Imprint }}</div></div>
                 <div fxLayout="row"><div class="label">Cena detaliczna</div><div fxFlex  class="text">{{ activeRowProjectsPub?.CoverPrice | number : "1.2-2" }}</div></div>
                 <div fxLayout="row"><div class="label">Projekt eksportowy</div><sit-data-checkbox id="IsEksport" #sitControl field="IsEksport" label=""></sit-data-checkbox></div>
+                <div fxLayout="row"><div class="label">Menedżer</div><div fxFlex  class="text">{{ activeRowProjectsPub?.Manager }}</div></div>
                 <div fxLayout="row"><div class="label">Grafik</div><div fxFlex  class="text">{{ activeRowProjectsPub?.GraphicDesigner }}</div></div>
                 <div fxLayout="row"><div class="label">Redaktor</div><div fxFlex  class="text">{{ activeRowProjectsPub?.Editor }}</div></div>
                 <div fxLayout="row"><div class="label">Tłumacz</div><div fxFlex  class="text">{{ activeRowProjectsPub?.Translator }}</div></div>
@@ -124,7 +121,7 @@
             <br>
             <div fxLayout="row" fxFlex fxLayoutAlign="center center" class ="title">Dane techniczne</div>
             <div fxLayout="row" fxFlex>
-              <div fxLayout="column" fxFlex="50">
+              <div fxLayout="column" fxFlex="50" fxLayoutAlign="start stretch">
                 <div fxFlex fxLayoutAlign="center center" class="subtitle">Oprawa</div>
                 <div fxLayout="row" fxFlex>
                   <div class="label" style="width:200px;">Typ</div><div fxFlex  class="text">{{ activeRowProjectsPub?.BindingType }}</div>
@@ -162,75 +159,75 @@
                 <div fxFlex fxLayoutAlign="center center" class="subtitle">Oprawa - dodatki</div>
                 <div *ngIf="activeRowProjectsPub?.NumberOfPages == 1" fxLayout="row" fxFlex>
                   <div class="label" style="width:200px;">Banderola</div>
-                  <sit-data-checkbox id="BindingAccStreamer" #sitControl field="BindingAccStreamer" label=""></sit-data-checkbox>
+                  <!-- <sit-data-checkbox id="BindingAccStreamer" #sitControl field="BindingAccStreamer" label=""></sit-data-checkbox> -->
                 </div>
                 <div *ngIf="activeRowProjectsPub?.BindingAccGlitter == 1" fxLayout="row" fxFlex>
                   <div class="label" style="width:200px;">Brokat</div>
-                  <sit-data-checkbox id="BindingAccGlitter" #sitControl field="BindingAccGlitter" label=""></sit-data-checkbox>
+                  <!-- <sit-data-checkbox id="BindingAccGlitter" #sitControl field="BindingAccGlitter" label=""></sit-data-checkbox> -->
                 </div>
                 <div *ngIf="activeRowProjectsPub?.BindingAccExclusiveCase == 1" fxLayout="row" fxFlex>
                   <div class="label" style="width:200px;">Ekskluzywne etui</div>
-                  <sit-data-checkbox id="BindingAccExclusiveCase" #sitControl field="BindingAccExclusiveCase" label=""></sit-data-checkbox>
+                  <!-- <sit-data-checkbox id="BindingAccExclusiveCase" #sitControl field="BindingAccExclusiveCase" label=""></sit-data-checkbox> -->
                 </div>
                 <div *ngIf="activeRowProjectsPub?.BindingAccLocalFoil == 1" fxLayout="row" fxFlex>
                   <div class="label" style="width:200px;">Folia miejscowa</div>
-                  <sit-data-checkbox id="BindingAccLocalFoil" #sitControl field="BindingAccLocalFoil" label=""></sit-data-checkbox>
+                  <!-- <sit-data-checkbox id="BindingAccLocalFoil" #sitControl field="BindingAccLocalFoil" label=""></sit-data-checkbox> -->
                 </div>
                 <div *ngIf="activeRowProjectsPub?.BindingAccSponge == 1" fxLayout="row" fxFlex>
                   <div class="label" style="width:200px;">Gąbka</div>
-                  <sit-data-checkbox id="BindingAccSponge" #sitControl field="BindingAccSponge" label=""></sit-data-checkbox>
+                  <!-- <sit-data-checkbox id="BindingAccSponge" #sitControl field="BindingAccSponge" label=""></sit-data-checkbox> -->
                 </div>
                 <div *ngIf="activeRowProjectsPub?.BindingAccHarmonica == 1" fxLayout="row" fxFlex>
                   <div class="label" style="width:200px;">Harmonijka</div>
-                  <sit-data-checkbox id="BindingAccHarmonica" #sitControl field="BindingAccHarmonica" label=""></sit-data-checkbox>
+                  <!-- <sit-data-checkbox id="BindingAccHarmonica" #sitControl field="BindingAccHarmonica" label=""></sit-data-checkbox> -->
                 </div>
                 <div *ngIf="activeRowProjectsPub?.BindingAccHologram == 1" fxLayout="row" fxFlex>
                   <div class="label" style="width:200px;">Hologram</div>
-                  <sit-data-checkbox id="BindingAccHologram" #sitControl field="BindingAccHologram" label=""></sit-data-checkbox>
+                  <!-- <sit-data-checkbox id="BindingAccHologram" #sitControl field="BindingAccHologram" label=""></sit-data-checkbox> -->
                 </div>
                 <div *ngIf="activeRowProjectsPub?.BindingAccLocalVarnishing == 1" fxLayout="row" fxFlex>
                   <div class="label" style="width:200px;">Lakierowanie miejscowe</div>
-                  <sit-data-checkbox id="BindingAccLocalVarnishing" #sitControl field="BindingAccLocalVarnishing" label=""></sit-data-checkbox>
+                  <!-- <sit-data-checkbox id="BindingAccLocalVarnishing" #sitControl field="BindingAccLocalVarnishing" label=""></sit-data-checkbox> -->
                 </div>
                 <div *ngIf="activeRowProjectsPub?.BindingAccWrapper == 1" fxLayout="row" fxFlex>
                   <div class="label" style="width:200px;">Obwoluta</div>
-                  <sit-data-checkbox id="BindingAccWrapper" #sitControl field="BindingAccWrapper" label=""></sit-data-checkbox>
+                  <!-- <sit-data-checkbox id="BindingAccWrapper" #sitControl field="BindingAccWrapper" label=""></sit-data-checkbox> -->
                 </div>
                 <div *ngIf="activeRowProjectsPub?.BindingAccStapleEye == 1" fxLayout="row" fxFlex>
                   <div class="label" style="width:200px;">Oczko na zszywkach</div>
-                  <sit-data-checkbox id="BindingAccStapleEye" #sitControl field="BindingAccStapleEye" label=""></sit-data-checkbox>
+                  <!-- <sit-data-checkbox id="BindingAccStapleEye" #sitControl field="BindingAccStapleEye" label=""></sit-data-checkbox> -->
                 </div>
                 <div *ngIf="activeRowProjectsPub?.BindingAccBox == 1" fxLayout="row" fxFlex>
                   <div class="label" style="width:200px;">Pudełko</div>
-                  <sit-data-checkbox id="BindingAccBox" #sitControl field="BindingAccBox" label=""></sit-data-checkbox>
+                  <!-- <sit-data-checkbox id="BindingAccBox" #sitControl field="BindingAccBox" label=""></sit-data-checkbox> -->
                 </div>
                 <div *ngIf="activeRowProjectsPub?.BindingAccBinder == 1" fxLayout="row" fxFlex>
                   <div class="label" style="width:200px;">Segregator</div>
-                  <sit-data-checkbox id="BindingAccBinder" #sitControl field="BindingAccBinder" label=""></sit-data-checkbox>
+                  <!-- <sit-data-checkbox id="BindingAccBinder" #sitControl field="BindingAccBinder" label=""></sit-data-checkbox> -->
                 </div>
                 <div *ngIf="activeRowProjectsPub?.BindingAccLeather == 1" fxLayout="row" fxFlex>
                   <div class="label" style="width:200px;">Oprawa skórzana</div>
-                  <sit-data-checkbox id="BindingAccLeather" #sitControl field="BindingAccLeather" label=""></sit-data-checkbox>
+                  <!-- <sit-data-checkbox id="BindingAccLeather" #sitControl field="BindingAccLeather" label=""></sit-data-checkbox> -->
                 </div>
                 <div *ngIf="activeRowProjectsPub?.BindingAccWings == 1" fxLayout="row" fxFlex>
                   <div class="label" style="width:200px;">Oprawa ze skrzydełkami</div>
-                  <sit-data-checkbox id="BindingAccWings" #sitControl field="BindingAccWings" label=""></sit-data-checkbox>
+                  <!-- <sit-data-checkbox id="BindingAccWings" #sitControl field="BindingAccWings" label=""></sit-data-checkbox> -->
                 </div>
                 <div *ngIf="activeRowProjectsPub?.BindingAccDieCut == 1" fxLayout="row" fxFlex>
                   <div class="label" style="width:200px;">Oprawa sztancowa</div>
-                  <sit-data-checkbox id="BindingAccDieCut" #sitControl field="BindingAccDieCut" label=""></sit-data-checkbox>
+                  <!-- <sit-data-checkbox id="BindingAccDieCut" #sitControl field="BindingAccDieCut" label=""></sit-data-checkbox> -->
                 </div>
                 <div *ngIf="activeRowProjectsPub?.BindingAccRibbon == 1" fxLayout="row" fxFlex>
                   <div class="label" style="width:200px;">Tasiemka - zakładka</div>
-                  <sit-data-checkbox id="BindingAccRibbon" #sitControl field="BindingAccRibbon" label=""></sit-data-checkbox>
+                  <!-- <sit-data-checkbox id="BindingAccRibbon" #sitControl field="BindingAccRibbon" label=""></sit-data-checkbox> -->
                 </div>
                 <div *ngIf="activeRowProjectsPub?.BindingAcc3DPic == 1" fxLayout="row" fxFlex>
                   <div class="label" style="width:200px;">Trójwymiarowy obrazek</div>
-                  <sit-data-checkbox id="BindingAcc3DPic" #sitControl field="BindingAcc3DPic" label=""></sit-data-checkbox>
+                  <!-- <sit-data-checkbox id="BindingAcc3DPic" #sitControl field="BindingAcc3DPic" label=""></sit-data-checkbox> -->
                 </div>
                 <div *ngIf="activeRowProjectsPub?.BindingAccHandle == 1" fxLayout="row" fxFlex>
                   <div class="label" style="width:200px;">Uchwyt</div>
-                  <sit-data-checkbox id="BindingAccHandle" #sitControl field="BindingAccHandle" label=""></sit-data-checkbox>
+                  <!-- <sit-data-checkbox id="BindingAccHandle" #sitControl field="BindingAccHandle" label=""></sit-data-checkbox> -->
                 </div>
 
               </div>
@@ -239,83 +236,83 @@
                 <div fxFlex fxLayoutAlign="center start" class="subtitle">Wnętrze - dodatki</div>
                 <div *ngIf="activeRowProjectsPub?.InsideAccStreamer == 1" fxLayout="row" fxFlex>
                   <div class="label" style="width:200px;">Brokat</div>
-                  <sit-data-checkbox id="InsideAccStreamer" #sitControl field="InsideAccStreamer" label=""></sit-data-checkbox>
+                  <!-- <sit-data-checkbox id="InsideAccStreamer" #sitControl field="InsideAccStreamer" label=""></sit-data-checkbox> -->
                 </div>
                 <div *ngIf="activeRowProjectsPub?.InsideAccCDA == 1" fxLayout="row" fxFlex>
                   <div class="label" style="width:200px;">Audio CD</div>
-                  <sit-data-checkbox id="InsideAccCDA" #sitControl field="InsideAccCDA" label=""></sit-data-checkbox>
+                  <!-- <sit-data-checkbox id="InsideAccCDA" #sitControl field="InsideAccCDA" label=""></sit-data-checkbox> -->
                 </div>
                 <div *ngIf="activeRowProjectsPub?.InsideAccCDF == 1" fxLayout="row" fxFlex>
                   <div class="label" style="width:200px;">Film na CD</div>
-                  <sit-data-checkbox id="InsideAccCDF" #sitControl field="InsideAccCDF" label=""></sit-data-checkbox>
+                  <!-- <sit-data-checkbox id="InsideAccCDF" #sitControl field="InsideAccCDF" label=""></sit-data-checkbox> -->
                 </div>
                 <div *ngIf="activeRowProjectsPub?.InsideAccCDR == 1" fxLayout="row" fxFlex>
                   <div class="label" style="width:200px;">CD Rom</div>
-                  <sit-data-checkbox id="InsideAccCDR" #sitControl field="InsideAccCDR" label=""></sit-data-checkbox>
+                  <!-- <sit-data-checkbox id="InsideAccCDR" #sitControl field="InsideAccCDR" label=""></sit-data-checkbox> -->
                 </div>
                 <div *ngIf="activeRowProjectsPub?.InsideAccSep == 1" fxLayout="row" fxFlex>
                   <div class="label" style="width:200px;">Dziel.stron na el.</div>
-                  <sit-data-checkbox id="InsideAccSep" #sitControl field="InsideAccSep" label=""></sit-data-checkbox>
+                  <!-- <sit-data-checkbox id="InsideAccSep" #sitControl field="InsideAccSep" label=""></sit-data-checkbox> -->
                 </div>
                 <div *ngIf="activeRowProjectsPub?.InsideAccGad == 1" fxLayout="row" fxFlex>
                   <div class="label" style="width:200px;">Gadżet</div>
-                  <sit-data-checkbox id="InsideAccGad" #sitControl field="InsideAccGad" label=""></sit-data-checkbox>
+                  <!-- <sit-data-checkbox id="InsideAccGad" #sitControl field="InsideAccGad" label=""></sit-data-checkbox> -->
                 </div>
                 <div *ngIf="activeRowProjectsPub?.InsideAccHarmonica == 1" fxLayout="row" fxFlex>
                   <div class="label" style="width:200px;">Harmonijka</div>
-                  <sit-data-checkbox id="InsideAccHarmonica" #sitControl field="InsideAccHarmonica" label=""></sit-data-checkbox>
+                  <!-- <sit-data-checkbox id="InsideAccHarmonica" #sitControl field="InsideAccHarmonica" label=""></sit-data-checkbox> -->
                 </div>
                 <div *ngIf="activeRowProjectsPub?.InsideAccDieCutInd == 1" fxLayout="row" fxFlex>
                   <div class="label" style="width:200px;">Ind.sztancowany</div>
-                  <sit-data-checkbox id="InsideAccDieCutInd" #sitControl field="InsideAccDieCutInd" label=""></sit-data-checkbox>
+                  <!-- <sit-data-checkbox id="InsideAccDieCutInd" #sitControl field="InsideAccDieCutInd" label=""></sit-data-checkbox> -->
                 </div>
                 <div *ngIf="activeRowProjectsPub?.InsideAccMagnet == 1" fxLayout="row" fxFlex>
                   <div class="label" style="width:200px;">Magnesiki</div>
-                  <sit-data-checkbox id="InsideAccMagnet" #sitControl field="InsideAccMagnet" label=""></sit-data-checkbox>
+                  <!-- <sit-data-checkbox id="InsideAccMagnet" #sitControl field="InsideAccMagnet" label=""></sit-data-checkbox> -->
                 </div>
                 <div *ngIf="activeRowProjectsPub?.InsideAccSticker == 1" fxLayout="row" fxFlex>
                   <div class="label" style="width:200px;">Nalepki</div>
-                  <sit-data-checkbox id="InsideAccSticker" #sitControl field="InsideAccSticker" label=""></sit-data-checkbox>
+                  <!-- <sit-data-checkbox id="InsideAccSticker" #sitControl field="InsideAccSticker" label=""></sit-data-checkbox> -->
                 </div>
                 <div *ngIf="activeRowProjectsPub?.InsideAccRoundCorners == 1" fxLayout="row" fxFlex>
                   <div class="label" style="width:200px;">Zaokr.narożniki</div>
-                  <sit-data-checkbox id="InsideAccRoundCorners" #sitControl field="InsideAccRoundCorners" label=""></sit-data-checkbox>
-                  <div>{{activeRowProjectsPub?.InsideAccRoundCorners}}</div>
+                  <!-- <sit-data-checkbox id="InsideAccRoundCorners" #sitControl field="InsideAccRoundCorners" label=""></sit-data-checkbox> -->
                 </div>
                 <div *ngIf="activeRowProjectsPub?.InsideAccPoster == 1" fxLayout="row" fxFlex>
                   <div class="label" style="width:200px;">Plakat</div>
-                  <sit-data-checkbox id="InsideAccPoster" #sitControl field="InsideAccPoster" label=""></sit-data-checkbox>
+                  <!-- <sit-data-checkbox id="InsideAccPoster" #sitControl field="InsideAccPoster" label=""></sit-data-checkbox> -->
                 </div>
                 <div *ngIf="activeRowProjectsPub?.InsideAccPopUp == 1" fxLayout="row" fxFlex>
                   <div class="label" style="width:200px;">Pop-up</div>
-                  <sit-data-checkbox id="InsideAccPopUp" #sitControl field="InsideAccPopUp" label=""></sit-data-checkbox>
+                  <!-- <sit-data-checkbox id="InsideAccPopUp" #sitControl field="InsideAccPopUp" label=""></sit-data-checkbox> -->
                 </div>
                 <div *ngIf="activeRowProjectsPub?.InsideAccMusicBox == 1" fxLayout="row" fxFlex>
                   <div class="label" style="width:200px;">Pozytywka</div>
-                  <sit-data-checkbox id="InsideAccMusicBox" #sitControl field="InsideAccMusicBox" label=""></sit-data-checkbox>
+                  <!-- <sit-data-checkbox id="InsideAccMusicBox" #sitControl field="InsideAccMusicBox" label=""></sit-data-checkbox> -->
                 </div>
                 <div *ngIf="activeRowProjectsPub?.InsideAccPuzzle == 1" fxLayout="row" fxFlex>
                   <div class="label" style="width:200px;">Puzzle</div>
-                  <sit-data-checkbox id="InsideAccPuzzle" #sitControl field="InsideAccPuzzle" label=""></sit-data-checkbox>
+                  <!-- <sit-data-checkbox id="InsideAccPuzzle" #sitControl field="InsideAccPuzzle" label=""></sit-data-checkbox> -->
                 </div>
                 <div *ngIf="activeRowProjectsPub?.InsideAccSpiral == 1" fxLayout="row" fxFlex>
                   <div class="label" style="width:200px;">Spirala</div>
-                  <sit-data-checkbox id="InsideAccSpiral" #sitControl field="InsideAccSpiral" label=""></sit-data-checkbox>
+                  <!-- <sit-data-checkbox id="InsideAccSpiral" #sitControl field="InsideAccSpiral" label=""></sit-data-checkbox> -->
                 </div>
                 <div *ngIf="activeRowProjectsPub?.InsideAccDieCut == 1" fxLayout="row" fxFlex>
                   <div class="label" style="width:200px;">Sztanca</div>
-                  <sit-data-checkbox id="InsideAccDieCut" #sitControl field="InsideAccDieCut" label=""></sit-data-checkbox>
+                  <!-- <sit-data-checkbox id="InsideAccDieCut" #sitControl field="InsideAccDieCut" label=""></sit-data-checkbox> -->
                 </div>
                 <div *ngIf="activeRowProjectsPub?.InsideAccInsert == 1" fxLayout="row" fxFlex>
                   <div class="label" style="width:200px;">Wkładki (papier)</div>
-                  <sit-data-checkbox id="InsideAccInsert" #sitControl field="InsideAccInsert" label=""></sit-data-checkbox>
+                  <!-- <sit-data-checkbox id="InsideAccInsert" #sitControl field="InsideAccInsert" label=""></sit-data-checkbox> -->
                 </div>
 
 
               </div>
             </div>
             <br>
-            <div fxLayout="row" fxFlex fxLayoutAlign="center center" class ="title">Założenia marketingowe</div>
+
+            <div *ngIf="activeRowProjectsPub?.ShowMarketing == '1'" fxLayout="row" fxFlex fxLayoutAlign="center center" class ="title">Założenia marketingowe</div>
 
             <div fxLayout="column" fxFlex *ngIf="activeRowProjectsPub?.MarketingDistFeat !== ''">
               <div fxFlex fxLayoutAlign="center start" class="subtitle">Cechy wyróżniające produkt na tle konkurencji</div>
@@ -353,7 +350,7 @@
               <br>
             </div>
 
-            <div fxLayout="row" fxFlex fxLayoutAlign="center center" class ="title">Założenia produkcyjne</div>
+            <div *ngIf="activeRowProjectsPub?.ShowProd == '1'" fxLayout="row" fxFlex fxLayoutAlign="center center" class ="title">Założenia produkcyjne</div>
 
             <div fxLayout="column" fxFlex *ngIf="activeRowProjectsPub?.Ilustrations !== ''">
               <div fxFlex fxLayoutAlign="center start" class="subtitle">Ilustracje</div>
@@ -384,14 +381,14 @@
               <div fxLayout="row" fxFlex fxLayoutAlign="center center" class ="title">Poprawki</div>
               <div class="text">{{ activeRowProjectsPub?.Corrections }}</div>
             </div>
-              <!-- <br>
-            <div fxLayout="column" fxFlex *ngIf="activeRowProjectsPub?.ProjectDescription !== ''">
+            <br>
+            <!--<div fxLayout="column" fxFlex *ngIf="activeRowProjectsPub?.ProjectDescription !== ''">
               <div fxLayout="row" fxFlex fxLayoutAlign="center center" class ="title">Opis projektu</div>
               <div class="text">{{ activeRowProjectsPub?.ProjectDescription }}</div>
             </div> -->
 
       </div>
-      </sit-data-set-container>
     </div>
   </div>
+  </sit-data-set-container>
 </sit-dict-container>

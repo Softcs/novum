@@ -2,18 +2,23 @@
 
 div.cover{
   margin-right: 15px;
-  box-shadow: 1px 1px 10px 0px rgba(97, 97, 97, 0.35);
+  overflow: visible;
+  height: 280px;
+  //width: 300px;
 }
 
 img {
-  height: 250px;
+  height: 280px;
   width: auto;
+  box-shadow: 1px 1px 10px 0px rgba(97, 97, 97, 0.35);
 }
 
 img:hover{
   height: 600px;
   width: auto;
-  z-index: 100;
+  box-shadow: 1px 1px 10px 0px rgba(97, 97, 97, 0.35);
+  z-index: 1000;
+
 }
 
 
@@ -69,7 +74,7 @@ div.subtitle {
   min-height: 30px;
   height: 30px;
   max-height: 30px;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 div.right-panel {

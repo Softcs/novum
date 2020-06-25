@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ViewChildren, QueryList  } from '@angular/core';
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
 import { DataSetWrapper } from '@app/_models';
 import { ColumnMode, SelectionType } from '../../../../ngx/public-api';
@@ -14,6 +14,8 @@ import { MatSpinner } from '@angular/material/progress-spinner';
 })
 export class SitProjectsPubComponent implements OnInit, AfterViewInit {
   @ViewChild('sitDictcontainer') dictContainer: SitDictContainerComponent;
+  @ViewChildren('sitDictcontainer') dictContainers !: QueryList<SitDictContainerComponent>;
+  @ViewChild('sitProjectsPub') table: any;
 
   ColumnMode = ColumnMode;
   SelectionType = SelectionType;
