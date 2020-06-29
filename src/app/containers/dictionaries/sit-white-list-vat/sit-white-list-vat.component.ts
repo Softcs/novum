@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
-import { DataSourceResponseWrapper } from '@app/_models';
+import { DataSetWrapper } from '@app/_models';
 
 
 @Component({
@@ -22,8 +22,8 @@ export class SitWhiteListVATComponent implements OnInit {
   }
 
   onChange(e) {
-    const dataSourceResponseWrapper: DataSourceResponseWrapper =
-      this.dictContainer.DataSourceManager.getDateSourceWrapper("sitJPKCheckVatNIPNRB");
-    dataSourceResponseWrapper.activeRow[e.srcElement.id] = e.srcElement.value;
+    const dataSetResponseWrapper: DataSetWrapper =
+      this.dictContainer.DataSetManager.getDateSourceWrapper("sitJPKCheckVatNIPNRB");
+    dataSetResponseWrapper.setFieldValue(e.srcElement.id, e.srcElement.value);
   }
 }

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TabContentComponent } from './tab-content.component';
+import { SitDataTextareaComponent } from './sit-data-textarea.component';
 
-describe('TabContentComponent', () => {
-  let component: TabContentComponent;
-  let fixture: ComponentFixture<TabContentComponent>;
+describe('SitDataTextareaComponent', () => {
+  let component: SitDataTextareaComponent;
+  let fixture: ComponentFixture<SitDataTextareaComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TabContentComponent ]
+      declarations: [ SitDataTextareaComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TabContentComponent);
+    fixture = TestBed.createComponent(SitDataTextareaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

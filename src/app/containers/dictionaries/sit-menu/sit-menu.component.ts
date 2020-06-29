@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild, ContentChild, Input, ComponentFactoryResolver } from '@angular/core';
 import { ColumnMode, SelectionType } from '../../../../ngx/public-api';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
-import { SitDataSourceContainerComponent } from '@app/components/sit-data-source-container';
+import { SitDataSetContainerComponent } from '@app/components/sit-data-set-container';
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
-import { DataSourceResponseWrapper } from '@app/_models';
+import { DataSetWrapper } from '@app/_models';
 import { SitDataInputComponent } from '@app/components/controls/sit-data-input/sit-data-input.component';
 
 @Component({
@@ -61,7 +61,7 @@ export class SitMenuComponent implements OnInit {
 
   onActivateMenu(event) {
     if (event.type == 'click') {
-      const dataSourceResponseWrapper: DataSourceResponseWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitMenu");
+      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper("sitMenu");
       dataSourceResponseWrapper.SetActiveRow(event.row);
     }
   }
@@ -74,10 +74,10 @@ export class SitMenuComponent implements OnInit {
   }
 
   onFilterKeyEnter(event: any) {
-    const dataSourceResponseWrapper: DataSourceResponseWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitFilter");
-    dataSourceResponseWrapper.activeRow[event.target.name] = event.target.value;
-    dataSourceResponseWrapper.SetActiveRow(dataSourceResponseWrapper.activeRow);
-
+    const dataSetWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper("sitFilter");
+    dataSetWrapper.setFieldValue(event.target.name, event.target.value);
+    dataSetWrapper.SetActiveRow(dataSetWrapper.activeRow);
   }
+
 
 }

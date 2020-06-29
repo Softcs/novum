@@ -1,23 +1,28 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ViewChildren, QueryList  } from '@angular/core';
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
-import { DataSourceResponseWrapper } from '@app/_models';
+import { DataSetWrapper } from '@app/_models';
 import { ColumnMode, SelectionType } from '../../../../ngx/public-api';
 import { environment } from '@environments/environment';
 import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
+import { MatSpinner } from '@angular/material/progress-spinner';
 @Component({
   selector: 'app-sit-projects-pub',
   templateUrl: './sit-projects-pub.component.html',
   styleUrls: ['./sit-projects-pub.component.scss'],
   host: {class: 'router-flex'}
 })
-export class SitProjectsPubComponent implements OnInit {
+export class SitProjectsPubComponent implements OnInit, AfterViewInit {
   @ViewChild('sitDictcontainer') dictContainer: SitDictContainerComponent;
+  @ViewChildren('sitDictcontainer') dictContainers !: QueryList<SitDictContainerComponent>;
+  @ViewChild('sitProjectsPub') table: any;
 
   ColumnMode = ColumnMode;
   SelectionType = SelectionType;
   Link: string;
   currentUser: User;
+  isLoading = true;
+  activeRow: any;
 
   sitProjectsPubSelected = [];
 
@@ -30,24 +35,35 @@ export class SitProjectsPubComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  ngAfterViewInit() {
+    this.isLoading = false;
+  }
+
   get activeRowProjectsPub() {
     return this.dictContainer?.activeRow('sitProjectsPub');
   }
 
   onActivateProjectsPub(event) {
     if (event.type == 'click') {
-      const dataSourceResponseWrapper: DataSourceResponseWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitProjectsPub");
+      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitProjectsPub');
       dataSourceResponseWrapper.SetActiveRow(event.row);
     }
   }
 
   activeRowProjectsPubChanged(activeRow) {
-    // this.sitProjectsPubSelected.splice(0, this.sitProjectsPubSelected.length);
-    // this.sitProjectsPubSelected.push(...[activeRow]);
+    this.Link = activeRow == null || activeRow.sitImagesG == null
+      ? environment.apiUrl +'/service/attachments/get/' + this.currentUser.token + '/noimage/noimage.jpg' : // kiedy brak rekordu
+        environment.apiUrl +'/service/attachments/get/' + this.currentUser.token + '/' + activeRow.sitImagesG + '/' + activeRow.FileName
 
-    this.Link = activeRow['sitImagesG'] == null
-      ? environment.apiUrl+"/service/attachments/get/" + this.currentUser.token + "/noimage/noimage.jpg" : // kiedy brak rekordu
-        environment.apiUrl+"/service/attachments/get/" + this.currentUser.token + "/"+activeRow['sitImagesG']+"/"+ activeRow['FileName']
+  }
 
+  showProjectPanel() {
+    if (this.dictContainer !== undefined) {
+      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitProjectsPub');
+      if (dataSourceResponseWrapper !== null && dataSourceResponseWrapper.rows !== null) {
+        return true;
+      }
+    }
+    return false;
   }
 }

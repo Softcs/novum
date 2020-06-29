@@ -1,25 +1,84 @@
-img {
-  max-width:300px;
-  height:auto;
+@import "../../../../theme";
+
+div.cover{
+  margin-right: 15px;
+  overflow: visible;
+  height: 280px;
+  //width: 300px;
 }
 
+img {
+  height: 280px;
+  width: auto;
+  box-shadow: 1px 1px 10px 0px rgba(97, 97, 97, 0.35);
+}
+
+img:hover{
+  height: 600px;
+  width: auto;
+  box-shadow: 1px 1px 10px 0px rgba(97, 97, 97, 0.35);
+  z-index: 1000;
+
+}
+
+
 div.label {
+  font-weight: 500;
+  width: 200px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  border-bottom: 1px solid lightsteelblue;
+  min-height: 25px;
+  // max-height: 25px;
+}
+
+div.label-short {
   font-weight: 500;
   width: 100px;
   text-overflow: ellipsis;
   overflow: hidden;
+  border-bottom: 1px solid lightsteelblue;
+  min-height: 25px;
+  // max-height: 25px;
 }
 
 div.text {
   text-overflow: ellipsis;
   overflow: hidden;
+  border-bottom: 1px solid lightsteelblue;
+  //height: 25px;
+  // max-height: 25px;
+  white-space: pre-wrap;
 }
 
 div.number {
   text-align: right;
 }
 
-div.cover{
-  width: 300px;
-  height: 450px;
+
+
+div.title {
+  background-color: $table-header-color;
+  color: $table-header-font-color;
+  height: 35px;
+  min-height: 35px;
+  max-height: 35px;
+  font-weight: 400;
+  //margin-top: 10px;
+}
+
+div.subtitle {
+  background-color: lightgray;
+  color: black;
+  height: 30px;
+  min-height: 30px;
+  height: 30px;
+  max-height: 30px;
+  font-weight: 500;
+}
+
+div.right-panel {
+  padding: 10px;
+  overflow: auto;
+  height: calc(100vh - 100px);
 }

@@ -1,8 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @import "./theme";
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
-@import '~@angular/material/theming';
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+// @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
 @import "../node_modules/ag-grid-community/src/styles/ag-grid.scss";
@@ -80,17 +80,85 @@ body {
   padding: 0px;
   margin: 0px;
   background-color: $background-color;
-  overflow: auto;
-}
-
-.sit-tab-title {
-  padding: 1px 5px;
-  height: 25px;
-  text-align: center;
+//  overflow: auto;
 }
 
 .sit-tab-content {
   overflow: auto;
+  height: 100%;
+}
+
+.sit-tab {
+  border-right: 1px solid $background-color;
+
+}
+
+.sit-tab-title {
+  padding: 6px 5px;
+  height: 35px;
+  text-align: center;
+  align-items: center;
+
+}
+.sit-tab-title a{
+  text-decoration: none;
+}
+
+.sit-tab-content {
+  overflow: auto;
+}
+
+.sit-close-tab {
+  height: 35px;
+  width: 12px;
+  position: relative;
+  top: 1px;
+  right: 3px;
+
+}
+
+
+.sit-close-tab-icon {
+  font-size: 12px;
+  text-align: right;
+  width: 10px !important;
+  cursor: pointer;
+  z-index: 100;
+
+}
+
+.sit-filter-bar {
+
+}
+
+.sit-proc-bar{
+  margin-bottom: 5px;
+
+}
+
+.sit-proc-buttons-row button, .sit-proc-buttons-row a, .sit-proc-buttons-row sit-proc-button {
+  margin-right: 8px;
+
+
+}
+
+.sit-edit-form {
+  background-color: $edit-form-background-color;
+  //margin: 5px 5px 0px;
+  padding: 5px 0px;
+
+}
+
+.sit-edit-form-content {
+  overflow-y: auto;
+
+}
+
+.sit-edit-form-bottom-bar {
+  height: 70px;
+  position: fixed;
+  bottom:0%;
+  width:100%;
 }
 
 .container-menu{
@@ -103,6 +171,9 @@ body {
   background-color: $sidenav-background-color;
 }
 
+.sit-dialog {
+  background-color: $background-color;
+}
 .content {
   padding: 5px;
   //margin: 3px 3px 3px 3px;
@@ -110,6 +181,8 @@ body {
   background-color: $content-background-color;
 
 }
+
+
 
 .content-left {
   padding: 5px;
@@ -124,6 +197,7 @@ body {
   border-radius: 3px;
 
 }
+
 .sit-form-header {
   background-color: $form-header-color;
   font-size: 16px;
@@ -139,8 +213,13 @@ body {
   background-color: $form-body-color;
   border-radius: 0px 0px 3px 3px;
   padding: 8px;
+}
+
+.sit-edit-input {
+  padding: 0px 5px;
 
 }
+
 .router-flex {
   display: flex;
   flex: 1 1 auto;
@@ -157,7 +236,7 @@ mat-toolbar{
   // display: flex !important;
   // flex-direction: row !important;
   //background-color: $toolbar-color !important;
-  min-height: 42px !important;
+  min-height: 45px !important;
 }
 mat-toolbar-row{
   display: flex !important;
@@ -166,9 +245,9 @@ mat-toolbar-row{
 }
 
 mat-toolbar-row,mat-toolbar-single-row{
-  min-height: 42px !important;
-  height: 42px !important;
-  background-color: $toolbar-color !important;
+  min-height: 45px !important;
+  height: 45px !important;
+//  background-color: $toolbar-color !important;
   width: 100%;
   min-width: 100%;
   padding: 0px 2px 0px 2px !important;
@@ -201,17 +280,31 @@ mat-toolbar-row,mat-toolbar-single-row{
   margin-bottom: 2px;
   background-color: $tab-header-color;
 }
-.mat-tab-label{
-  padding: 0px 3px !important;
-  height: 35px !important;
-  border-right: 1px solid $background-color;
+
+.mat-tab-link{
+  padding: 0px 0px 0px 10px!important;
+//  height: 35px !important;
   min-width: 50px !important;
+}
+
+a.mat-tab-link {
+  text-decoration: none;
+  color: $tab-font-color;
+}
+
+a:hover.mat-tab-link {
+  color: $tab-font-color;
 }
 
 .mat-tab-label.mat-tab-label-active{
   color: $tab-font-color !important;
 
 }
+
+.mat-form-field-infix {
+  width: auto !important;
+}
+
 /* focus style */
 // .mat-tab-group.mat-primary .mat-tab-label:not(.mat-tab-disabled):focus, .mat-tab-group.mat-primary .mat-tab-link:not(.mat-tab-disabled):focus, .mat-tab-nav-bar.mat-primary .mat-tab-label:not(.mat-tab-disabled):focus, .mat-tab-nav-bar.mat-primary .mat-tab-link:not(.mat-tab-disabled):focus{
 //   background: #e7e7e7;
@@ -234,7 +327,8 @@ div[role="tab"][aria-selected="true"] {
 
 /* ink bar style */
 .mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar{
-  background: $tab-ink-bar-color !important;
+  //background: $tab-ink-bar-color !important;
+  background-image: linear-gradient(to right,red, $tab-header-color) !important;
 }
 
 .fill-space{
@@ -344,76 +438,4 @@ button:focus {
   box-shadow:        0px 2px 3px 0px #3d3d3d;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
 }
 
-$mat-myapp-primary: (
-  50 : #eceded,
-  100 : #d0d1d2,
-  200 : #b1b3b5,
-  300 : #929497,
-  400 : #7a7d80,
-  500 : #63666a,
-  600 : #5b5e62,
-  700 : #515357,
-  800 : #47494d,
-  900 : #35383c,
-  A100 : #99b9f8,
-  A200 : #6998f5,
-  A400 : #2c72ff,
-  A700 : #1361ff,
-  contrast: (
-      50 : #000000,
-      100 : #000000,
-      200 : #000000,
-      300 : #000000,
-      400 : #ffffff,
-      500 : #ffffff,
-      600 : #ffffff,
-      700 : #ffffff,
-      800 : #ffffff,
-      900 : #ffffff,
-      A100 : #000000,
-      A200 : #000000,
-      A400 : #ffffff,
-      A700 : #ffffff,  )
-);
 
-$mat-myapp-accent: (
-  50 : #e1e1e1,
-  100 : #b5b5b5,
-  200 : #848484,
-  300 : #535353,
-  400 : #2e2e2e,
-  500 : #090909,
-  600 : #080808,
-  700 : #060606,
-  800 : #050505,
-  900 : #020202,
-  A100 : #a6a6a6,
-  A200 : #8c8c8c,
-  A400 : #737373,
-  A700 : #666666,
-  contrast: (
-      50 : #000000,
-      100 : #000000,
-      200 : #000000,
-      300 : #ffffff,
-      400 : #ffffff,
-      500 : #ffffff,
-      600 : #ffffff,
-      700 : #ffffff,
-      800 : #ffffff,
-      900 : #ffffff,
-      A100 : #000000,
-      A200 : #000000,
-      A400 : #ffffff,
-      A700 : #ffffff,
-
-  )
-);
-
-$primary: mat-palette($mat-myapp-primary);
-$accent: mat-palette($mat-myapp-accent);
-
-$theme: mat-light-theme($primary, $accent);
-
-
-@include angular-material-theme($theme);

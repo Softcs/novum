@@ -8,7 +8,7 @@
         <div fxLayout="row" fxFlex="220px" fxLayoutGap="5px">
           <div class="content" fxFlex="50%">
               <div class="data-table" style="flex: 1 1 auto;">
-                <sit-data-source-container ident="sitJPKVATZakupSum">
+                <sit-data-set-container ident="sitJPKVATZakupSum">
                   <ngx-datatable #sitJPKVATZakupSum #sitSetDataSource
                     class="material striped"
                     [columnMode]="ColumnMode.force"
@@ -45,12 +45,12 @@
                   <ng-template #sumVat let-row="row">
                     <div style="text-align: right;">{{calcZakupSum('Vat') | number : "1.2-2"}}</div>
                   </ng-template>
-                </sit-data-source-container>
+                </sit-data-set-container>
               </div>
           </div>
           <div class="content" fxFlex="50%">
               <div class="data-table">
-                <sit-data-source-container ident="sitJPKVATZakupCust">
+                <sit-data-set-container ident="sitJPKVATZakupCust">
                   <ngx-datatable #sitJPKVATZakupSum #sitSetDataSource
                     class="material striped"
                     [columnMode]="ColumnMode.force"
@@ -69,22 +69,22 @@
                     <ngx-datatable-column prop="requestId" name="Id spr."></ngx-datatable-column>
 
                   </ngx-datatable>
-                </sit-data-source-container>
+                </sit-data-set-container>
               </div>
           </div>
         </div>
         <div fxLayout="column" fxFlex="100%" fxLayoutGap="5px">
             <div class="content">
               <div style="flex: 0 1 auto; width: 300px;">
-                <sit-data-source-container ident="sitFilterZakup" >
+                <sit-data-set-container ident="sitFilterZakup" >
                   <span>
                     <sit-data-input #sitControl field="searchZakup" label="Filtruj"></sit-data-input>
                   </span>
-                </sit-data-source-container>
+                </sit-data-set-container>
               </div>
               <div  style="flex: 1 1 auto;">
                 <div class="data-table">
-                  <sit-data-source-container ident="sitJPKVATZakup">
+                  <sit-data-set-container ident="sitJPKVATZakup">
                     <ngx-datatable #sitJPKVATZakup #sitSetDataSource
                       class="material striped"
                       [columnMode]="ColumnMode.force"
@@ -152,7 +152,7 @@
                       <ngx-datatable-column prop="Logo" name="Logo" [canAutoResize]="false" [width]="55"></ngx-datatable-column>
 
                     </ngx-datatable>
-                  </sit-data-source-container>
+                  </sit-data-set-container>
                 </div>
               </div>
             </div>
@@ -164,7 +164,7 @@
         <div fxLayout="row" fxFlex="300px" fxLayoutGap="5px">
           <div class="content" fxFlex="50%">
               <div class="data-table">
-                <sit-data-source-container ident="sitJPKVATSprzedazSum">
+                <sit-data-set-container ident="sitJPKVATSprzedazSum">
                   <ngx-datatable #sitJPKVATZakupSum #sitSetDataSource
                     class="material striped"
                     [columnMode]="ColumnMode.force"
@@ -201,12 +201,12 @@
                   <ng-template #sumVatS let-row="row">
                     <div style="text-align: right;">{{calcSprzedazSum('Vat') | number : "1.2-2"}}</div>
                   </ng-template>
-                </sit-data-source-container>
+                </sit-data-set-container>
               </div>
           </div>
           <div class="content" fxFlex="50%">
               <div class="data-table">
-                <sit-data-source-container ident="sitJPKVATSprzedazCust">
+                <sit-data-set-container ident="sitJPKVATSprzedazCust">
                   <ngx-datatable #sitJPKVATZakupSum #sitSetDataSource
                     class="material striped"
                     [columnMode]="ColumnMode.force"
@@ -222,22 +222,22 @@
                     <ngx-datatable-column prop="NAZWA_NABYWCY" name="Nazwa"></ngx-datatable-column>
 
                   </ngx-datatable>
-                </sit-data-source-container>
+                </sit-data-set-container>
               </div>
           </div>
         </div>
         <div fxLayout="column" fxFlex="100%" fxLayoutGap="5px">
             <div class="content">
               <div style="flex: 0 1 auto; width: 300px;">
-                <sit-data-source-container ident="sitFilterSprzedaz" >
+                <sit-data-set-container ident="sitFilterSprzedaz" >
                   <span>
                     <sit-data-input #sitControl field="searchSprzedaz" label="Filtruj"></sit-data-input>
                   </span>
-                </sit-data-source-container>
+                </sit-data-set-container>
               </div>
               <div  style="flex: 1 1 auto;">
                 <div class="data-table">
-                  <sit-data-source-container ident="sitJPKVATSprzedaz">
+                  <sit-data-set-container ident="sitJPKVATSprzedaz">
                     <ngx-datatable #sitJPKVATZakup #sitSetDataSource
                       class="material striped"
                       [columnMode]="ColumnMode.force"
@@ -305,7 +305,7 @@
                       <ngx-datatable-column prop="Logo" name="Logo" [canAutoResize]="false" [width]="55"></ngx-datatable-column>
 
                     </ngx-datatable>
-                  </sit-data-source-container>
+                  </sit-data-set-container>
                 </div>
               </div>
             </div>
@@ -316,7 +316,7 @@
         <div class="container-cols">
           <div fxFill fxLayoutAlign="center center" fxLayout="column">
             <div class="content" fxFill style="padding: 20px;">
-              <sit-data-source-container ident="sitProcGetJPKData">
+              <sit-data-set-container ident="sitProcGetJPKData">
                 <div>
                   <mat-form-field appearance="legacy" style="width: 200px;">
                     <mat-label>Data od</mat-label>
@@ -331,7 +331,7 @@
               <div>
                 <sit-proc-button #sitControl actionIdent="sitProcGetJPKData" color="primary" caption="Pobierz"></sit-proc-button>
               </div>
-              </sit-data-source-container>
+              </sit-data-set-container>
               <div style="flex: 0 1 auto;">
               </div>
             </div>

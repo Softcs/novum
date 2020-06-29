@@ -1,21 +1,20 @@
-import { DictInfoWrapper, DataSourceResponseWrapper, Operation } from '.';
-import { SitDataSourceContainerComponent } from '@app/components/sit-data-source-container';
+import { DictInfoWrapper, DataSetWrapper, Operation } from '.';
+import { SitDataSetContainerComponent } from '@app/components/sit-data-set-container';
 import { QueryList, Output, EventEmitter } from '@angular/core';
 import { GatewayService } from '@app/_services';
 import { first } from 'rxjs/operators';
 
-export class DataSourceManager {
+export class DataSetManager {
     private _dictInfo: DictInfoWrapper;
-    private _dataSourceComponents: QueryList<SitDataSourceContainerComponent>;
-    private _dataSourcesResponse: any[];
-    public dataSourcesWrapper: DataSourceResponseWrapper[];
+    private _dataSetContainers: QueryList<SitDataSetContainerComponent>;
+    private _dataSetResponses: any[];
+    public dataSetsWrapper: DataSetWrapper[];
 
     @Output()
-    refreshAfter: EventEmitter<DataSourceManager> = new EventEmitter<DataSourceManager>();
-
+    refreshAfter: EventEmitter<DataSetManager> = new EventEmitter<DataSetManager>();
 
     constructor(public gatewayService: GatewayService) {
-        this.dataSourcesWrapper = [];
+        this.dataSetsWrapper = [];
     }
     private prapareDataSource4Request(dataSourceDefinition: any, dataSourcesRequest: any[]) {
         if (dataSourceDefinition == null || dataSourceDefinition.children == null || dataSourceDefinition.children.length === 0) {
@@ -23,7 +22,7 @@ export class DataSourceManager {
         }
         dataSourceDefinition.children.forEach(dataSource => {
             const dataSourceDefinitionChild = this.dictInfo.FindDataSource(dataSource.ident);
-            const dsWrapper: DataSourceResponseWrapper = this.getDateSourceWrapper(dataSource.ident);
+            const dsWrapper: DataSetWrapper = this.getDateSourceWrapper(dataSource.ident);
             const obj = this.getObjectForDataSourceRequest(dsWrapper, true);
             dataSourcesRequest.push(obj);
             this.prapareDataSource4Request(dataSourceDefinitionChild, dataSourcesRequest);
@@ -37,7 +36,7 @@ export class DataSourceManager {
 
         dataSourceDefinition.parents.forEach(dataSource => {
             const dataSourceDefinitionParent = this.getDataSource(dataSource);
-            const dsWrapper: DataSourceResponseWrapper = this.getDateSourceWrapper(dataSource);
+            const dsWrapper: DataSetWrapper = this.getDateSourceWrapper(dataSource);
             if (dsWrapper == null) {
                 return;
             }
@@ -54,7 +53,7 @@ export class DataSourceManager {
         });
     }
 
-    private getObjectForDataSourceRequest(dataSourceResponseWrapper: DataSourceResponseWrapper, canRefresh: boolean )  {
+    private getObjectForDataSourceRequest(dataSourceResponseWrapper: DataSetWrapper, canRefresh: boolean )  {
         const  obj = {
             ident: dataSourceResponseWrapper.ident,
             activeRow: dataSourceResponseWrapper.activeRow,
@@ -62,6 +61,7 @@ export class DataSourceManager {
         };
         return obj;
     }
+
     public Refresh(dataSourceIdents: string[]) {
         if (dataSourceIdents == null || dataSourceIdents.length === 0 ) {
             return;
@@ -89,7 +89,8 @@ export class DataSourceManager {
 
         this.RefreshInternall(dataSourcesRequest);
     }
-    public RefreshChildren(dataSourceResponseWrapper: DataSourceResponseWrapper) {
+
+    public RefreshChildren(dataSourceResponseWrapper: DataSetWrapper) {
         const dataSourceDefinition = this.dictInfo.FindDataSource(dataSourceResponseWrapper.ident);
         if (dataSourceDefinition.children == null || dataSourceDefinition.children.length === 0) {
             return;
@@ -112,15 +113,14 @@ export class DataSourceManager {
     private RefreshInternall(dataSourcesRequest: any[]) {
         const opr: Operation = this.gatewayService.operationRefreshDataSources(this.dictInfo.ident,
             dataSourcesRequest);
-
         this.gatewayService.executeOperation(opr)
             .pipe(first())
             .subscribe(
                 data => {
                     if (data.length === 1) {
-                        const dataSourcesResponse = data[0].dataSourcesResponse;
-                        this.setRefreshDataSources(dataSourcesResponse);
-                        const dataSetToReload = dataSourcesResponse?.map(d => d.ident);
+                        const dataSetsResponse = data[0].dataSourcesResponse;
+                        this.setRefreshDataSources(dataSetsResponse);
+                        const dataSetToReload = dataSetsResponse?.map(d => d.ident);
                         this.PropagateDataSources(dataSetToReload);
                     }
                 },
@@ -128,6 +128,7 @@ export class DataSourceManager {
                     console.error("error", error);
                 });
     }
+
     public ExecuteRefreshAfter(actionIdent: string, dataSourceIdent: string) {
         const actionDefinition = this.dictInfo.FindActionDefinition(actionIdent, dataSourceIdent);
         if (actionDefinition != null) {
@@ -152,11 +153,12 @@ export class DataSourceManager {
     public ExecuteAction(actionIdent: string, dataSourceIdent: string,
                          owner: any,
                          executeActionCompletedCallback: Function,
-                         executeActionExceptionCallback: Function
+                         executeActionExceptionCallback: Function,
+                         sourceDictIdent: string = null
         ) {
-        const dictIdent = this.dictInfo?.ident;
+        const dictIdent = sourceDictIdent ?? this.dictInfo?.ident;
         const dataSourcesRequest: any[] = [];
-        const dsWrapper: DataSourceResponseWrapper = this.getDateSourceWrapper(dataSourceIdent);
+        const dsWrapper: DataSetWrapper = this.getDateSourceWrapper(dataSourceIdent);
         const obj = this.getObjectForDataSourceRequest(dsWrapper, true);
         dataSourcesRequest.push(obj);
 
@@ -199,20 +201,20 @@ export class DataSourceManager {
                 });
     }
 
-    public setRefreshDataSources(dataSourcesResponse) {
-        if (dataSourcesResponse == null) {
+    public setRefreshDataSources(dataSetsResponse) {
+        if (dataSetsResponse == null) {
             return;
         }
-        dataSourcesResponse.forEach(dsRespons => {
+        dataSetsResponse.forEach(dsRespons => {
             this.setRefreshDataSource(dsRespons);
         });
     }
     public PropagateErrors(dataSourceIdent: string, errors: [any]): boolean {
 
-        if (!this.dataSourceComponents) {
+        if (!this.dataSetContainers) {
             return;
         }
-        this.dataSourceComponents.forEach(dataSourceContainer => {
+        this.dataSetContainers.forEach(dataSourceContainer => {
             if (dataSourceIdent.toLowerCase() === dataSourceContainer.ident.toLowerCase()) {
                 const dataSourceResponseWrapper = this.getDateSourceWrapper(dataSourceContainer.ident);
                 if (dataSourceResponseWrapper != null) {
@@ -226,11 +228,11 @@ export class DataSourceManager {
 
     public PropagateDataSources(dataSetToReload: string[] = null) {
 
-        if (!this.dataSourceComponents) {
+        if (!this.dataSetContainers) {
             return;
         }
 
-        this.dataSourceComponents.forEach(dataSourceContainer => {
+        this.dataSetContainers.forEach(dataSourceContainer => {
             if (dataSetToReload != null && dataSetToReload.length > 0
                 && dataSetToReload.indexOf(dataSourceContainer.ident) === -1) {
                 return;
@@ -246,40 +248,50 @@ export class DataSourceManager {
         this.DataSourceAfterPropagte();
         this.refreshAfter.emit(this);
     }
+
     public DataSourceAfterPropagte() {
-        this.dataSourcesWrapper.forEach(dataSourceWrapper => {
+        this.dataSetsWrapper.forEach(dataSourceWrapper => {
             dataSourceWrapper.AfterPropagte();
         });
     }
-    public getDateSourceWrapper(ident: string): DataSourceResponseWrapper {
-        if (ident == null) {
-            return;
+
+    public getDateSourceWrapper(ident: string): DataSetWrapper {
+        if (ident == null || this.dataSetsWrapper.length === 0) {
+            return null;
         }
-        const dataSources = this.dataSourcesWrapper.filter(item => item.ident.toLowerCase() === ident.toLowerCase());
+        const dataSources = this.dataSetsWrapper.filter(item => item.ident.toLowerCase() === ident.toLowerCase());
         return dataSources != null && dataSources.length > 0 ? dataSources[0] : null;
     }
+
     private setRefreshDataSource(newDataSource: any) {
         let oldDS = this.getDataSource(newDataSource.ident);
-        const index = this.dataSourcesResponse.indexOf(oldDS);
+        const index = this.dataSetsResponse.indexOf(oldDS);
         if(index !== -1) {
-            this.dataSourcesResponse[index] = newDataSource;
+            this.dataSetsResponse[index] = newDataSource;
         }
-        let dataSourceResponseWrapper = this.getDateSourceWrapper(newDataSource.ident);
-        if (dataSourceResponseWrapper == null) {
-            dataSourceResponseWrapper = new DataSourceResponseWrapper(this);
-            this.dataSourcesWrapper.push(dataSourceResponseWrapper);
-        }
+
+        let dataSourceResponseWrapper = this.CreateDataSetWrapper(newDataSource.ident);
         dataSourceResponseWrapper.setInputDataSource(newDataSource);
     }
+    public CreateDataSetWrapper(ident: string): DataSetWrapper {
+        let dataSourceResponseWrapper = this.getDateSourceWrapper(ident);
+        if (dataSourceResponseWrapper == null) {
+            dataSourceResponseWrapper = new DataSetWrapper(this);
+            dataSourceResponseWrapper.ident = ident;
+            this.dataSetsWrapper.push(dataSourceResponseWrapper);
+        }
+        return dataSourceResponseWrapper;
+    }
+
     private getDataSource(ident: string): any {
-        if (!this.dataSourcesResponse) {
+        if (!this.dataSetsResponse) {
             console.error(`Nie znaleziono źrodla danych: [${ident}]`);
             return;
         }
         if (ident == null) {
             return;
         }
-        const dataSource = this.dataSourcesResponse.filter(item => item["ident"].toLowerCase() === ident?.toLowerCase())[0];
+        const dataSource = this.dataSetsResponse.filter(item => item["ident"].toLowerCase() === ident?.toLowerCase())[0];
         return dataSource;
     }
 
@@ -289,17 +301,20 @@ export class DataSourceManager {
     get dictInfo() {
         return this._dictInfo;
     }
-    set dataSourcesResponse(dataSourcesResponse: any[]) {
-        this._dataSourcesResponse = dataSourcesResponse;
-    }
-    set dataSourceComponents(dataSourceComponents: QueryList<SitDataSourceContainerComponent>) {
-        this._dataSourceComponents = dataSourceComponents;
-    }
-    get dataSourceComponents() {
-        return this._dataSourceComponents;
+
+    set dataSetsResponse(dataSetsResponse: any[]) {
+        this._dataSetResponses = dataSetsResponse;
     }
 
-    get dataSourcesResponse() {
-        return this._dataSourcesResponse;
+    get dataSetsResponse() {
+        return this._dataSetResponses;
+    }
+
+    set dataSetContainers(dataSetContainers: QueryList<SitDataSetContainerComponent>) {
+        this._dataSetContainers = dataSetContainers;
+    }
+
+    get dataSetContainers() {
+        return this._dataSetContainers;
     }
 }

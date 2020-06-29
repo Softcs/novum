@@ -1,34 +1,32 @@
 import { Component, OnInit, Input, Directive, ContentChildren,
-  QueryList, ViewChild, ViewChildren, ElementRef, ContentChild, HostListener, ComponentFactoryResolver, Output, EventEmitter } from '@angular/core';
+  QueryList, Output, EventEmitter } from '@angular/core';
 
 import { GatewayService } from '@app/_services/gateway.service';
-import { DataSourceResponseWrapper } from '@app/_models';
+import { DataSetWrapper } from '@app/_models';
 import { SitDataBaseComponent } from '../controls/sit-data-base/sit-data-base.component';
 import { sitSetDataSourceDirective } from '@app/_directives/sitSetDataSourceDirective';
 import { connect } from 'http2';
 
 @Component({
-  selector: 'sit-data-source-container',
-  templateUrl: './sit-data-source-container.component.html',
+  selector: 'sit-data-set-container',
+  templateUrl: './sit-data-set-container.component.html',
   // template: '<ng-container></ng-container>',
-  styleUrls: ['./sit-data-source-container.component.scss']
+  styleUrls: ['./sit-data-set-container.component.scss'],
+  host: {class: 'router-flex'}
 })
 
-export class SitDataSourceContainerComponent implements OnInit {
+export class SitDataSetContainerComponent implements OnInit {
   @ContentChildren('sitSetDataSource', { descendants: true}) datasSourcesInterface: QueryList<sitSetDataSourceDirective>;
   @ContentChildren('sitControl', { descendants: true })
   dsControlsInterface!: QueryList<SitDataBaseComponent>;
 
   @Input() ident: string;
-  dataSourceResponseWrapper: DataSourceResponseWrapper;
+  dataSetResponseWrapper: DataSetWrapper;
   @Output()
   activeRowChanged: EventEmitter<any> = new EventEmitter<any>();
 
-  // @HostListener('document:click', ['$event'])
-
   clearErrors() {
     this.errors?.splice(0,this.errors?.length);
-    console.log(this.errors)
   }
 
   private _errors: any[];
@@ -36,7 +34,7 @@ export class SitDataSourceContainerComponent implements OnInit {
   constructor(private gatewayService: GatewayService) { }
 
   get activeRecord(): any {
-    return this.dataSourceResponseWrapper?.activeRow;
+    return this.dataSetResponseWrapper?.activeRow;
   }
 
   ngOnInit() {
@@ -49,27 +47,26 @@ export class SitDataSourceContainerComponent implements OnInit {
 
   }
   public SetActiveRow(row: any) {
-      this.dataSourceResponseWrapper.SetActiveRow(row);
+      this.dataSetResponseWrapper.SetActiveRow(row);
   }
   public setErrors(errors: any[]) {
     this.errors = errors;
   }
-  public setDataSource(dataSourceResponseWrapper: DataSourceResponseWrapper) {
-    this.dataSourceResponseWrapper = dataSourceResponseWrapper;
-    this.dataSourceResponseWrapper.activeRowChanged = this.activeRowChanged;
-    this.errors = dataSourceResponseWrapper.errors;
+  public setDataSource(dataSetWrapper: DataSetWrapper) {
+    this.dataSetResponseWrapper = dataSetWrapper;
+    this.dataSetResponseWrapper.activeRowChanged = this.activeRowChanged;
+    this.errors = dataSetWrapper.errors;
     this.datasSourcesInterface.forEach(element => {
-      element.rows = this.dataSourceResponseWrapper.rows;
-      element.selected = [this.dataSourceResponseWrapper.activeRow];
+      element.rows = this.dataSetResponseWrapper.rows;
+      element.selected = [this.dataSetResponseWrapper.activeRow];
     });
     if (this.dsControlsInterface != null) {
         this.dsControlsInterface.forEach(element => {
-          const fieldValue = this.dataSourceResponseWrapper.activeRow[element.field];
-          element.dataSourceResponseWrapper = this.dataSourceResponseWrapper;
-          element.setValue(fieldValue);
+          this.dataSetResponseWrapper.refreshFieldValueInControl(element);
         });
      }
   }
+
   public deleteData() {
 
   }
@@ -83,7 +80,6 @@ export class SitDataSourceContainerComponent implements OnInit {
     const index = this._errors?.indexOf(error);
     this.errors?.splice(index, 1);
   }
-
 }
 
 

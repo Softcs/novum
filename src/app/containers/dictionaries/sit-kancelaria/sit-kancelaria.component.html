@@ -2,13 +2,13 @@
   <div fxLayout="row" fxFlexFill fxLayoutGap="5px">
     <div fxFlex="50%" fxLayout="column" fxLayoutGap="5px">
       <div fxFlex="300px" class="content" fxLayout="column">
-        <sit-data-source-container ident="sitFilterCustomers" >
+        <sit-data-set-container ident="sitFilterCustomers" >
           <span>
             <sit-data-input #sitControl field="searchCustomers" label="Filtruj klientów"></sit-data-input>
           </span>
-        </sit-data-source-container>
+        </sit-data-set-container>
         <div class="data-table">
-          <sit-data-source-container  ident="sitCustomers" (activeRowChanged)="activeRowCustomersChanged($event)">
+          <sit-data-set-container  ident="sitCustomers" (activeRowChanged)="activeRowCustomersChanged($event)">
             <ngx-datatable #sitCustomers #sitSetDataSource
             class="material"
             style="height: 210px;"
@@ -53,17 +53,17 @@
               </ngx-datatable-footer>
             </ngx-datatable>
 
-          </sit-data-source-container>
+          </sit-data-set-container>
         </div>
       </div>
       <div fxFlex="300px" class="content" fxLayout="column">
-        <sit-data-source-container ident="sitFilterAgreements" >
+        <sit-data-set-container ident="sitFilterAgreements" >
           <span>
             <sit-data-input #sitControl field="searchAgreements" label="Filtruj umowy"></sit-data-input>
           </span>
-        </sit-data-source-container>
+        </sit-data-set-container>
         <div class="data-table">
-          <sit-data-source-container  ident="sitAgreements">
+          <sit-data-set-container  ident="sitAgreements">
 
             <ngx-datatable #sitAgreements #sitSetDataSource
             class="material"
@@ -101,17 +101,17 @@
 
             </ngx-datatable>
 
-          </sit-data-source-container>
+          </sit-data-set-container>
         </div>
       </div>
       <div fxFlex class="content" fxLayout="column">
-        <sit-data-source-container  ident="sitFilterAttachments" >
+        <sit-data-set-container  ident="sitFilterAttachments" >
           <span>
             <sit-data-input #sitControl field="searchAttachments" label="Filtruj załączniki"></sit-data-input>
           </span>
-        </sit-data-source-container>
+        </sit-data-set-container>
         <div class="data-table">
-          <sit-data-source-container  ident="sitAttachments" (activeRowChanged)="activeRowAttachmentChanged($event)">
+          <sit-data-set-container  ident="sitAttachments" (activeRowChanged)="activeRowAttachmentChanged($event)">
             <ngx-datatable #sitAttachments #sitSetDataSource
             class="material"
             style="height: 140px;"
@@ -138,7 +138,7 @@
               </ngx-datatable-footer>
             </ngx-datatable>
 
-          </sit-data-source-container>
+          </sit-data-set-container>
         </div>
       </div>
     </div>

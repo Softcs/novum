@@ -1,7 +1,7 @@
 ﻿<div class="container-cols">
-  <mat-toolbar *ngIf="currentUser" class="toolbarTopNav">
-    <mat-toolbar-row color="primary">
-      <div style="display: flex; flex-direction: row; background-color: #5b5e62; color: white;margin: 2px 2px 2px 0px; justify-content: center;">
+  <mat-toolbar *ngIf="currentUser" class="toolbarTopNav" color="primary">
+    <mat-toolbar-row >
+      <div style="display: flex; flex-direction: row; color: white;margin: 2px 2px 2px 0px; justify-content: center;">
         <button mat-flat-button matTooltip="Menu" color="primary" (click)="appDrawer.toggle()" *ngIf="currentUser"><mat-icon>menu</mat-icon></button>
       </div>
       <sit-navbar style="width: 100%"></sit-navbar>
@@ -12,9 +12,28 @@
     <mat-drawer #appDrawer class="sidenav" mode="overlay" >
       <sit-side-menu></sit-side-menu>
     </mat-drawer>
-    <div class="sit-main-panel">
-      <router-outlet></router-outlet>
+    <div fxFlexFill fxLayout="column">
+      <nav mat-tab-nav-bar *ngIf="currentUser" fxLayout="column">
+        <div class="sit-tab" fxLayout="row" *ngFor="let tab of tabs">
+          <div mat-tab-link
+          [routerLink]="tab.tabData['guid'] === undefined ? [tab.link] : [tab.link, tab.tabData['guid']]"
+          routerLinkActive #rla="routerLinkActive"
+          [active]="rla.isActive"
 
+          >
+            <div fxLayout="row" fxLayoutAlign="space-between center" (mouseover)="showClose=true" (mouseout)="showClose=false" style="width:100%;">
+              <div *ngIf="tab.title != 'Pulpit'" fxFlex class="sit-tab-title">{{ tab.title }}</div>
+              <div *ngIf="tab.title == 'Pulpit'" fxFlex fxLayoutAlign="center center"><i class="material-icons">home</i></div>
+            </div>
+          </div>
+          <div *ngIf="tab.title != 'Pulpit'" class="sit-close-tab">
+            <mat-icon class="sit-close-tab-icon" (click)="removeTab(tab.ident)" >close</mat-icon>
+          </div>
+        </div>
+      </nav>
+      <div fxFlex fxLayout="column" style="max-height: 100%; overflow: auto;">
+        <router-outlet></router-outlet>
+      </div>
     </div>
   </mat-drawer-container>
   <!-- <mat-toolbar class="toolbarBottomNav">

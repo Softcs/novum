@@ -58,19 +58,7 @@ export class SitMenuListItemComponent {
     let createNew = true;
 
     if ((!item.children || !item.children.length) && item.kind == "app") {
-      for ( let i = 0; i < this.tabService.tabs.length; i++ ) {
-        if (this.tabService.tabs[i].title === item.caption) {
-          this.tabService.tabs[i].active = true;
-          createNew = false;
-          this.tabService.changeTab( i );
-        } else {
-          this.tabService.tabs[i].active = false;
-        }
-      }
-
-      if ( createNew ) {
-        this.tabService.addTab(new Tab(this.classes[item.link], item.caption , { parent: 'AppComponent' }));
-      }
+      this.tabService.addTab(new Tab(item.link, item.link, item.caption , { parent: 'AppComponent' }));
       this.navService.closeNav();
     }
 

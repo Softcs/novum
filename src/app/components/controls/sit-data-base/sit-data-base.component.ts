@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewChild, ElementRef, Renderer2 } from '@angular/core';
-import { DataSourceResponseWrapper } from '@app/_models';
+import { DataSetWrapper } from '@app/_models';
 import { ControlValueAccessor } from '@angular/forms';
 
 @Component({
@@ -8,9 +8,23 @@ import { ControlValueAccessor } from '@angular/forms';
   styleUrls: ['./sit-data-base.component.scss']
 })
 export class SitDataBaseComponent implements ControlValueAccessor {
+  private _dataSetWrapper: DataSetWrapper;
 
-  @Input() value: string ='';
-  public dataSourceResponseWrapper: DataSourceResponseWrapper;
+  @Input() value: string = '';
+  get dataSetWrapper(): DataSetWrapper {
+    return this._dataSetWrapper;
+  }
+
+  set dataSetWrapper(value: DataSetWrapper) {
+    if (this._dataSetWrapper == value) {
+      return;
+    }
+    this._dataSetWrapper = value;
+    if (this._dataSetWrapper != null) {
+      this._dataSetWrapper.activeRowChanged.subscribe( (row) => this.activeRowChanged(row, this));
+    }
+  }
+
   @Input() placeholder: string = '';
   @Input() field: string = '';
   @Input() id: string = null;
@@ -24,7 +38,6 @@ export class SitDataBaseComponent implements ControlValueAccessor {
   get inputElement(): ElementRef {
     return this._inputElement;
   }
-
 
   private _onChange = (_: any) => { };
   private _onTouched = () => { };
@@ -40,8 +53,14 @@ export class SitDataBaseComponent implements ControlValueAccessor {
   }
 
   onChange(event: any) {
-    this._onChange(event.target.value);
+    if (event.target.type === 'checkbox') {
+      event.target.checked ? this._onChange('1') : this._onChange('0');
+      console.log (event.target.type,event.target.checked,this.dataSetWrapper.activeRow);
+    } else {
+      this._onChange(event.target.value);
+    }
   }
+
   onKeyup(event: any) {
     this._onChange(event.target.value);
   }
@@ -53,10 +72,18 @@ export class SitDataBaseComponent implements ControlValueAccessor {
     this._onTouched();
   }
 
-  public getValue(): string{
+  public getValue(): string {
     return null;
   }
+
   public setValue(value: any) {
     this.value = value;
+  }
+
+  public activeRowChanged(row, self) {
+    self.refreshFieldValue();
+  }
+
+  public refreshFieldValue() {
   }
 }

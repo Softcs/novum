@@ -1,31 +1,49 @@
-﻿<sit-dict-container ident="sitRailConfigurations" #sitDictcontainer class="container-cols">
-  <div class="container-cols" >
-    <div class="content">
-      <div style="flex: 0 1 auto;">
-        <sit-data-source-container  ident="sitFilter" >
-        <span>
-          <sit-data-input #sitControl field="searchRailConfigurations" label="Filtruj"></sit-data-input>
-        </span>
-        </sit-data-source-container>
-      </div>
-      <div  style="flex: 1 1 auto;">
-        <div class="data-table">
-        <sit-data-source-container ident="sitRailConfigurations">
+﻿<sit-dict-container ident="sitRailConfigurations" #sitDictcontainer fxFlexFill>
+  <sit-data-set-container ident="sitRailConfigurations">
+    <div fxLayout="row" fxFill>
+      <div fxLayout="column" fxFlex="30" class="content">
+
+          <div class="sit-proc-bar">
+            <mat-toolbar color="accent">
+              <mat-toolbar-row>
+                <div class="sit-proc-buttons-row">
+                <button mat-stroked-button matTooltip="Nowy" color="primary" (click)="new()">
+                  <mat-icon aria-hidden="false" aria-label="Firma">post_add</mat-icon>
+                </button>
+                <button mat-stroked-button matTooltip="Edycja" color="primary" (click)="edit()">
+                  <mat-icon aria-hidden="false" aria-label="Firma">edit</mat-icon>
+                </button>
+                <sit-proc-button  #sitControl actionIdent="delete" color="primary" icon="delete" delete="true" matType="mat-stroked-button"></sit-proc-button>
+              </div>
+              </mat-toolbar-row>
+            </mat-toolbar>
+          </div>
+
+          <div class="sit-filter-bar">
+            <sit-data-set-container ident="sitFilter" >
+              <div style="width: 300px;">
+                <sit-data-input id="searchRailConfigurations" #sitControl field="searchRailConfigurations" label="Filtruj"></sit-data-input>
+              </div>
+            </sit-data-set-container>
+          </div>
+
           <ngx-datatable #sitRailConfigurations #sitSetDataSource
             class="material striped"
+            style = "height:700px;"
             [columnMode]="ColumnMode.force"
-            [limit]=5
-            [footerHeight]="50"
+            [limit]=20
+            [scrollbarV]=true
+            [footerHeight]="0"
             [selected]="sitRailConfigurationsSelected"
             [selectionType]="SelectionType.single"
             [selectAllRowsOnPage]="false"
             [displayCheck]="displayCheck"
             (activate)="onActivateRailConfigurations($event)"
             (select)="onSelectRailConfigurations($event)"
-            [footerHeight]="50"
+
           >
-          <!-- Row Detail Template -->
-          <ngx-datatable-row-detail [rowHeight]="300" #myDetailRow (toggle)="onDetailToggle($event)">
+
+          <!-- <ngx-datatable-row-detail [rowHeight]="300" #myDetailRow (toggle)="onDetailToggle($event)">
             <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
               <div style="padding: 0px 20px 0px 20px; width:100%; height:100%;">
                 <div><h6>Data</h6></div>
@@ -34,7 +52,6 @@
             </ng-template>
           </ngx-datatable-row-detail>
 
-          <!-- Column Templates -->
           <ngx-datatable-column
             [width]="30"
             [resizeable]="false"
@@ -52,67 +69,53 @@
               >
               </a>
             </ng-template>
+          </ngx-datatable-column> -->
+          <ngx-datatable-column prop="CompanyIdent" name="Company Ident"></ngx-datatable-column>
+          <ngx-datatable-column prop="OperationIdent" name="OperationIdent"></ngx-datatable-column>
+          <ngx-datatable-column prop="IsActive" [canAutoResize]="false" [width]="55">
+            <ng-template let-column="column" ngx-datatable-header-template>
+              IsActive
+            </ng-template>
+            <ng-template let-value="value" ngx-datatable-cell-template>
+              <div style="text-align: center;">
+                <input type="checkbox" id="IsActive" name="IsActive" value="value" disabled=true [checked]="value == 1">
+              </div>
+            </ng-template>
           </ngx-datatable-column>
+        </ngx-datatable>
 
-            <ngx-datatable-column prop="sitRailConfigurationsId" name="Id" [canAutoResize]="false" [width]="50">
-              <ng-template let-value="value" ngx-datatable-cell-template>
-                <div style="text-align: right;">
-                  {{value}}
-                </div>
-              </ng-template>
-            </ngx-datatable-column>
-            <ngx-datatable-column prop="sitCompaniesId" name="CompanyId" [canAutoResize]="false" [width]="80">
-              <ng-template let-value="value" ngx-datatable-cell-template>
-                <div style="text-align: right;">
-                  {{value}}
-                </div>
-              </ng-template>
-            </ngx-datatable-column>
-            <ngx-datatable-column prop="CompanyIdent" name="Company Ident"></ngx-datatable-column>
-            <ngx-datatable-column prop="ClientGuid" name="ClientGuid"></ngx-datatable-column>
-            <ngx-datatable-column prop="UserLogin" name="User Login"></ngx-datatable-column>
-            <ngx-datatable-column prop="OperationIdent" name="OperationIdent"></ngx-datatable-column>
-            <ngx-datatable-column prop="IsActive" [width]="50">
-              <ng-template let-column="column" ngx-datatable-header-template>
-                IsActive
-              </ng-template>
-              <ng-template let-value="value" ngx-datatable-cell-template>
-                <div style="text-align: center;">
-                  <input type="checkbox" id="IsActive" name="IsActive" value="value" disabled=true [checked]="value == 1">
-                </div>
-              </ng-template>
-            </ngx-datatable-column>
-            <ngx-datatable-column prop="Timeout" name="Timeout"></ngx-datatable-column>
-            <ngx-datatable-column prop="TransformProcedure" name="Transform procedure"></ngx-datatable-column>
-            <ngx-datatable-column prop="ConvertFunctionForParams" name="ConvertFunctionForParams"></ngx-datatable-column>
-          </ngx-datatable>
-          <div>
-            <mat-form-field appearance="fill" style="width: 100%;">
-              <mat-label>CompanyId</mat-label>
-              <input matInput value="{{ activeRowRailConfigurations?.sitCompaniesId }}" >
-            </mat-form-field>
-            <mat-form-field appearance="fill" style="width: 100%;">
-                <mat-label>OperationIdent</mat-label>
-              <input matInput value="{{ activeRowRailConfigurations?.OperationIdent }}" >
-            </mat-form-field>
-            <mat-form-field appearance="fill" style="width: 100%;">
-              <mat-label>ClientGuid</mat-label>
-              <input matInput value="{{ activeRowRailConfigurations?.ClientGuid }}" >
-            </mat-form-field>
-            <mat-form-field appearance="fill" style="width: 100%;">
-              <mat-label>UserLogin</mat-label>
-              <input matInput value="{{ activeRowRailConfigurations?.UserLogin }}" >
-            </mat-form-field>
-            <p>
-            <mat-form-field appearance="fill" style="width: 100%;">
-              <mat-label>Data</mat-label>
-              <textarea matInput rows="20" value="{{ activeRowRailConfigurations?.Data }}" style="resize:none;"></textarea>
-            </mat-form-field>
-          </p>
-          </div>
-        </sit-data-source-container>
-        </div>
       </div>
+
+      <div fxLayout="column" fxFlex="70" class="content">
+        <div fxLayout="row">
+          <sit-data-checkbox id="IsActive" #sitControl field="IsActive" label="Aktywny"></sit-data-checkbox>
+          <sit-data-input type="number" id="sitCompaniesId" #sitControl field="sitCompaniesId" label="ID firmy" [showRefresh]=false appearance="outline" [readonly]=true style="width: 100px"></sit-data-input>
+          <sit-data-input type="text" id="CompanyIdent" #sitControl field="CompanyIdent" label="Firma" [showRefresh]=false appearance="outline" [readonly]=true></sit-data-input>
+          <sit-data-input type="number" id="sitWSUsersId" #sitControl field="sitWSUsersId" label="User Id" [showRefresh]=false appearance="outline" [readonly]=true style="width: 100px"></sit-data-input>
+          <sit-data-input type="text" id="UserLogin" #sitControl field="UserLogin" label="Użytkownik" [showRefresh]=false appearance="outline" [readonly]=true></sit-data-input>
+          <sit-data-input type="number" id="Timeout" #sitControl field="Timeout" label="Timeout" [showRefresh]=false appearance="outline" [readonly]=true></sit-data-input>
+          <sit-data-input type="text" id="Source" #sitControl field="Source" label="Źródło" [showRefresh]=false appearance="outline" [readonly]=true></sit-data-input>
+        </div>
+
+        <div fxLayout="row">
+          <sit-data-input type="text" id="OperationIdent" #sitControl field="OperationIdent" label="Identyfikator operacji" [showRefresh]=false appearance="outline" [readonly]=true style="width: 100%;"></sit-data-input>
+          <sit-data-input type="text" id="ClientGuid" #sitControl field="ClientGuid" label="GUID Rail'a" [showRefresh]=false appearance="outline" [readonly]=true style="width: 100%;"></sit-data-input>
+        </div>
+
+
+        <div fxLayout="row">
+          <sit-data-input type="text" id="TransformProcedure" #sitControl field="TransformProcedure" label="Procedura transformująca" [showRefresh]=false appearance="outline" [readonly]=true style="width: 100%;"></sit-data-input>
+        </div>
+
+        <div fxLayout="row">
+          <sit-data-input type="text" id="ConvertFunctionForParams" #sitControl field="ConvertFunctionForParams" label="Funkcja konwertująca parametry" [showRefresh]=false appearance="outline" [readonly]=true style="width: 100%;"></sit-data-input>
+        </div>
+        <div fxLayout="row">
+          <sit-data-textarea type="textarea" id="Data" #sitControl field="Data" label="Dane" appearance="outline" rows="30" cols="200"></sit-data-textarea>
+        </div>
+
+      </div>
+
     </div>
-  </div>
+  </sit-data-set-container>
 </sit-dict-container>

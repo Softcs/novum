@@ -1,7 +1,5 @@
-@import "../../../theme";
-
-.mat-icon{
-    cursor: pointer;
+.mat-icon {
+  cursor: pointer;
 }
 
 .sit-msg-container {
@@ -13,16 +11,15 @@
 .sit-msg-box {
   width: 300px;
   border-radius: 15px;
-  background: $messagebox-background-color;
+  background: #ffb66b;
   padding: 5px;
   text-align: left;
   font-family: arial;
   position: relative;
-  box-shadow: 2px 2px 25px -9px rgba(0,0,0,0.73);
+  -webkit-box-shadow: 2px 2px 25px -9px rgba(0, 0, 0, 0.73);
+          box-shadow: 2px 2px 25px -9px rgba(0, 0, 0, 0.73);
   padding: 5px 10px 20px 10px;
-
 }
-
 
 .sit-msg-left:before {
   content: "";
@@ -30,30 +27,34 @@
   height: 0px;
   position: absolute;
   border-left: 15px solid transparent;
-  border-right: 15px solid $messagebox-background-color;
-  border-top: 15px solid $messagebox-background-color;
+  border-right: 15px solid #ffb66b;
+  border-top: 15px solid #ffb66b;
   border-bottom: 15px solid transparent;
   left: -16px;
   top: 0px;
 }
 
-.error-header{
+.error-header {
   color: red;
 }
 
-.sit-msg-error{
+.sit-msg-error {
   color: #47494d;
   text-align: left;
   width: 250px;
   padding: 5px 0px;
   font-size: 14px;
-  white-space: pre-wrap;      /* CSS3 */
-  white-space: -moz-pre-wrap; /* Firefox */
-  white-space: -o-pre-wrap;   /* Opera 7 */
-  word-wrap: break-word;      /* IE */
-
+  white-space: pre-wrap;
+  /* CSS3 */
+  white-space: -moz-pre-wrap;
+  /* Firefox */
+  white-space: -o-pre-wrap;
+  /* Opera 7 */
+  word-wrap: break-word;
+  /* IE */
 }
 
-.gray-icon{
+.gray-icon {
   color: #47494d;
 }
+/*# sourceMappingURL=sit-data-set-container.component.css.map */

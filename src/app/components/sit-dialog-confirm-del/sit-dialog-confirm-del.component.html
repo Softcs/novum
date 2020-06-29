@@ -1,0 +1,8 @@
+<div fxFlexFill fxLayout="column" fxLayoutAlign="center center" class="sit-dialog">
+  <div mat-dialog-content>Usunąć rekord?</div>
+  <p></p>
+  <div mat-dialog-actions>
+    <button mat-raised-button color="primary" [mat-dialog-close]="true">Tak</button>
+    <button mat-raised-button color="primary" (click)="onNoClick()">Nie</button>
+  </div>
+</div>

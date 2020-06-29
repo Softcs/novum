@@ -1,5 +1,8 @@
-$background-color: #D0D0CE ;//#FF8F1C;//
-$content-background-color: #F9F9F9;
+@import '~@angular/material/theming';
+
+$background-color: #e1e7ec ;//#FF8F1C;//
+$content-background-color: #e1e7ec;//#F9F9F9;
+$edit-form-background-color: white;
 $messagebox-background-color: #ffb66b;//#ffb3b3;// #ffffb3;
 $toolbar-color: #63666A;
 $toolbar-text-color: white;
@@ -9,21 +12,91 @@ $sidenav-item-active:#47494d;
 $sidenav-font-color: #d0d1d2;
 $sidenav-hover-color: #47494d;
 
-$table-header-color: #a7a7a7;
+$table-header-color: #2c557a;
 $table-header-font-color: white;
 $table-cell-font-color: black;
 $table-footer-color: #B3B3B0;
 $table-row-odd-color: #F9F9F9;
 $table-row-even-color: white;
 $table-row-hover-color: #D7D7D5;
-$table-row-selected-color: rgb(248, 228, 172);// #FFC78E;
-$table-row-selected-hover-color: rgb(245, 205, 118);// #FFB160;
+$table-row-selected-color: #b5c3d0;// #FFC78E;
+$table-row-selected-hover-color: #839bb1;// #FFB160;
 
 $form-header-color: #e0e0e0;
 $form-body-color: #F9F9F9;
 
-$tab-header-color: rgb(170, 170, 170); //kolor zakładek
-$tab-header-selected-color: rgb(212, 212, 212); //kolor aktywnej zakładki
+$tab-header-color: #839bb1;// rgb(180, 180, 180); //kolor zakładek
+$tab-header-selected-color: #839bb1;// rgb(212, 212, 212); //kolor aktywnej zakładki
 $tab-font-color: black;
-$tab-ink-bar-color: rgb(70, 70, 70);
+$tab-ink-bar-color: #042347;
 
+$mat-myapp-primary: (
+  50 : #e1e7ec,
+  100 : #b5c3d0,
+  200 : #839bb1,
+  300 : #517392,
+  400 : #2c557a,
+  500 : #073763,
+  600 : #06315b,
+  700 : #052a51,
+  800 : #042347,
+  900 : #021635,
+  A100 : #6d97ff,
+  A200 : #3a73ff,
+  A400 : #074fff,
+  A700 : #0044ec,
+  contrast: (
+      50 : #000000,
+      100 : #000000,
+      200 : #000000,
+      300 : #ffffff,
+      400 : #ffffff,
+      500 : #ffffff,
+      600 : #ffffff,
+      700 : #ffffff,
+      800 : #ffffff,
+      900 : #ffffff,
+      A100 : #000000,
+      A200 : #ffffff,
+      A400 : #ffffff,
+      A700 : #ffffff,
+      )
+);
+
+$mat-myapp-accent: (
+  50 : #f6f8f9,
+  100 : #e9edf1,
+  200 : #dae1e8,
+  300 : #cbd5de,
+  400 : #c0ccd7,
+  500 : #b5c3d0,
+  600 : #aebdcb,
+  700 : #a5b5c4,
+  800 : #9daebe,
+  900 : #8da1b3,
+  A100 : #ffffff,
+  A200 : #ffffff,
+  A400 : #e3f1ff,
+  A700 : #c9e5ff,
+  contrast: (
+      50 : #000000,
+      100 : #000000,
+      200 : #000000,
+      300 : #000000,
+      400 : #000000,
+      500 : #000000,
+      600 : #000000,
+      700 : #000000,
+      800 : #000000,
+      900 : #000000,
+      A100 : #000000,
+      A200 : #000000,
+      A400 : #000000,
+      A700 : #000000,
+      )
+);
+
+$primary: mat-palette($mat-myapp-primary);
+$accent: mat-palette($mat-myapp-accent);
+$theme: mat-light-theme($primary, $accent);
+@include angular-material-theme($theme);

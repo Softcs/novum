@@ -1,14 +1,14 @@
 import { map } from 'rxjs/operators';
 import { element } from 'protractor';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { SitDataSourceContainerComponent } from '@app/components/sit-data-source-container';
+import { SitDataSetContainerComponent } from '@app/components/sit-data-set-container';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import * as $ from 'jquery';
 import * as XLSX from 'xlsx';
 import { ColumnMode, SelectionType } from '../../../../ngx/public-api';
-import { DataSourceResponseWrapper } from '@app/_models';
+import { DataSetWrapper } from '@app/_models';
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
 
@@ -23,7 +23,7 @@ import { DatatableComponent } from '@swimlane/ngx-datatable';
 export class SitRozrachunkiInsertGTComponent implements OnInit {
   // @ViewChild(MatSort, {static: true}) sort: MatSort;
   // @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
-  @ViewChild(SitDataSourceContainerComponent, { static: true }) dataSourceContainer: SitDataSourceContainerComponent;
+  @ViewChild(SitDataSetContainerComponent, { static: true }) dataSourceContainer: SitDataSetContainerComponent;
   @ViewChild('TABLE', {static: true}) table: ElementRef;
   @ViewChild('sitDictcontainer') dictContainer: SitDictContainerComponent;
   @ViewChild('sit-rozrachunki-insert-gt') menuTable: DatatableComponent;
@@ -58,17 +58,18 @@ export class SitRozrachunkiInsertGTComponent implements OnInit {
   }
 
   onFilterKeyEnter(event:any) {
-    const dataSourceResponseWrapper: DataSourceResponseWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitFilter");
-
+    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper("sitFilter");
     dataSourceResponseWrapper.activeRow[event.target.name] = event.target.value;
     dataSourceResponseWrapper.SetActiveRow(dataSourceResponseWrapper.activeRow);
 
   }
 
   calcSum(name) {
-    const dataSourceResponseWrapper: DataSourceResponseWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitRozrachunkiInsertGT");
-    return dataSourceResponseWrapper.rows.map(row => row[name] != null ? row[name] : 0).reduce((s,v) =>s += v,0);
-    }
-    noop() { return null; }
+    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper("sitRozrachunkiInsertGT");
+    return dataSourceResponseWrapper.rows.map(row => row[name] != null ? row[name] : 0).reduce((s,v) => s += v,0);
+  }
+  noop() {
+    return null;
+  }
 
 }

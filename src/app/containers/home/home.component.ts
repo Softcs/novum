@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
     users: User[];
     tabs = new Array<Tab>();
     selectedTab: number;
+    showClose = false;
 
     constructor(
       private userService: UserService,

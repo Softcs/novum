@@ -1,9 +1,12 @@
-﻿import { Component, OnInit, ViewChild } from '@angular/core';
+﻿import { Component, OnInit, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
 import { ColumnMode, SelectionType } from '../../../../ngx/public-api';
-import { DataSourceResponseWrapper } from '@app/_models';
+import { DataSetWrapper } from '@app/_models';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
-import * as $ from 'jquery';
+import { TabService } from '@app/_services/tab.service';
+import { Tab } from '@app/_models/tab.model';
+import { Guid } from "guid-typescript";
+import { SitRailConfigurationsEditComponent } from './../sit-rail-configurations/actions/sit-rail-configurations-edit';
 
 @Component({
     selector: 'sit-rail-configurations',
@@ -12,15 +15,17 @@ import * as $ from 'jquery';
     host: {class: 'router-flex'}
 })
 export class SitRailConfigurationsComponent implements OnInit {
-  @ViewChild('sit-rail-configurations') menuTable: DatatableComponent;
   @ViewChild('sitDictcontainer') dictContainer: SitDictContainerComponent;
   @ViewChild('sitRailConfigurations') table: any;
+  @ViewChildren('sitDictcontainer') dictContainers !: QueryList<SitDictContainerComponent>;
 
   sitRailConfigurationsSelected = [];
   ColumnMode = ColumnMode;
   SelectionType = SelectionType;
 
-  constructor() {
+  constructor(
+    private tabService: TabService,
+  ) {
 
   }
 
@@ -33,8 +38,9 @@ export class SitRailConfigurationsComponent implements OnInit {
 
   onActivateRailConfigurations(event) {
     if (event.type == 'click') {
-      const dataSourceResponseWrapper: DataSourceResponseWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitRailConfigurations");
-      dataSourceResponseWrapper.SetActiveRow(event.row);
+      const dataSetResponseWrapper: DataSetWrapper =
+        this.dictContainer.DataSetManager.getDateSourceWrapper("sitRailConfigurations");
+      dataSetResponseWrapper.SetActiveRow(event.row);
     }
   }
 
@@ -44,15 +50,55 @@ export class SitRailConfigurationsComponent implements OnInit {
   }
 
   toggleExpandRow(row) {
-    const dataSourceResponseWrapper: DataSourceResponseWrapper = this.dictContainer.DataSourceManager.getDateSourceWrapper("sitRailConfigurations");
+    const dataSourceResponseWrapper: DataSetWrapper =
+      this.dictContainer.DataSetManager.getDateSourceWrapper("sitRailConfigurations");
     this.table.rowDetail.toggleExpandRow(row);
   }
 
   onDetailToggle(event) {
-    //console.log('Detail Toggled', event);
+
   }
 
   get activeRowRailConfigurations() {
     return this.dictContainer?.activeRow('sitRailConfigurations');
   }
+
+  new() {
+    const dataSourceResponseWrapper: DataSetWrapper =
+      this.dictContainer.DataSetManager.getDateSourceWrapper("sitRailConfigurations");
+    const newGuid = Guid.create();
+    const row = dataSourceResponseWrapper.GenerateRow();
+
+    row['sitRailConfigurationsG'] = newGuid.toString();
+    row['IsActive'] = 1;
+
+    this.tabService.addTab(new Tab(
+      'sitRailConfigurationsEdit', 'sitRailConfigurationsEdit',
+      'Konfiguracja Rail - Nowy', { parent: 'AppComponent',
+      guid: row['sitRailConfigurationsG'],
+      senderObject: this.getSenderObject(row) }));
+  }
+
+  edit() {
+    const dataSourceResponseWrapper: DataSetWrapper =
+        this.dictContainer.DataSetManager.getDateSourceWrapper("sitRailConfigurations");
+    const row = dataSourceResponseWrapper.GenerateRow(dataSourceResponseWrapper.activeRow);
+    this.tabService.addTab(
+      new Tab(
+        'sitRailConfigurationsEdit','sitRailConfigurationsEdit',
+        'Konfiguracja Rail - Edycja' , { parent: 'AppComponent',
+        guid: row['sitRailConfigurationsG'],
+        senderObject: this.getSenderObject(row) }));
+  }
+
+  private getSenderObject(activeRow: any) {
+    const sender = {};
+    const dataSets = {};
+    dataSets["sitRailConfigurationsEdit"] = {
+      'activeRow': activeRow
+    };
+    sender["dataSets"] = dataSets;
+    return sender;
+  }
+
 }
