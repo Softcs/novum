@@ -4,11 +4,10 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './containers/home';
 import { LoginComponent } from './containers/login';
 import { SitRailConfigurationsComponent } from './containers/dictionaries/sit-rail-configurations';
-import { SitRailConfigurationsEditComponent } from './containers/dictionaries/sit-rail-configurations/actions/sit-rail-configurations-edit';
+import { SitRailConfigurationsEditComponent } from './containers/dictionaries/sit-rail-configurations/actions/sit-rail-configurations-edit/sit-rail-configurations-edit.component';
 import { MaterialTestComponent } from './containers/sandbox/material-test';
 import { testDict } from './containers/sandbox/testDict';
 import { AuthGuard } from './_helpers';
-import { AgGridTestComponent } from './containers/sandbox/ag-grid-test';
 import { PrimeNgTestComponent } from './containers/sandbox/prime-ng-test/prime-ng-test.component';
 import { NgxDatatableTestComponent } from './containers/sandbox/ngx-datatable-test';
 import { NgxPdfTestComponent } from './containers/sandbox/ngx-pdf-test';
@@ -27,7 +26,6 @@ const routes: Routes = [
     { path: 'login', component: LoginComponent, data: {title: 'Logowanie'} },
     { path: 'material-test', component: MaterialTestComponent, canActivate: [AuthGuard]},
     { path: 'test', component: testDict, canActivate: [AuthGuard] },
-    { path: 'ag-grid-test', component: AgGridTestComponent, canActivate: [AuthGuard]},
     { path: 'prime-ng-test', component: PrimeNgTestComponent, canActivate: [AuthGuard]},
     { path: 'ngx-datatable-test', component: NgxDatatableTestComponent, canActivate: [AuthGuard]},
     { path: 'sitMenu', component: SitMenuComponent, canActivate: [AuthGuard], data: {title: 'Definicja Menu'}},

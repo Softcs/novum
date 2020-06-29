@@ -5,17 +5,11 @@
 
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
-@import "../node_modules/ag-grid-community/src/styles/ag-grid.scss";
-@import "../node_modules/ag-grid-community/src/styles/ag-theme-alpine/sass/ag-theme-alpine-mixin.scss";
-
 @import "../node_modules/primeng/resources/primeng.min.css";
 @import "../node_modules/primeicons/primeicons.css";
 @import "../node_modules/primeng/resources/themes/luna-amber/theme.css";
 @import "../node_modules/font-awesome/css/font-awesome.min.css";
 
-.ag-theme-alpine {
-    @include ag-theme-alpine();
-}
 
 //NGX
 @import '~@swimlane/ngx-datatable/index.css';

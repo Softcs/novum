@@ -43,8 +43,6 @@ import { SitNavbarComponent } from './components/sit-navbar/sit-navbar.component
 import { MaterialTestComponent } from './containers/sandbox/material-test/material-test.component';
 import { testDict } from './containers/sandbox/testDict';
 import { LayoutModule } from '@angular/cdk/layout';
-import { AgGridTestComponent } from './containers/sandbox/ag-grid-test/ag-grid-test.component';
-import { AgGridModule } from 'ag-grid-angular';
 
 // primeng
 import { PrimeNgTestComponent } from './containers/sandbox/prime-ng-test/prime-ng-test.component';
@@ -81,13 +79,14 @@ import { SitChangeCompanyComponent } from './containers/sit-change-company/sit-c
 import { SitProjectsPubComponent } from './containers/dictionaries/sit-projects-pub/sit-projects-pub.component';
 import { ContentContainerDirective } from './_directives/content-container.directive';
 import { SitPulpitComponent } from './containers/sit-pulpit';
-import { SitRailConfigurationsEditComponent } from './containers/dictionaries/sit-rail-configurations/actions/sit-rail-configurations-edit';
+import { SitRailConfigurationsEditComponent } from './containers/dictionaries/sit-rail-configurations/actions/sit-rail-configurations-edit/sit-rail-configurations-edit.component';
 import { SitDialogDiscardComponent } from './components/sit-dialog-discard/sit-dialog-discard.component';
 import { SitProcParamsComponent } from './components/sit-proc-params/sit-proc-params.component';
 import { SitDialogConfirmDelComponent } from './components/sit-dialog-confirm-del/sit-dialog-confirm-del.component';
 import { SitDataCheckboxComponent } from './components/controls/sit-data-checkbox/sit-data-checkbox.component';
 import { SitDataTextareaComponent } from './components/controls/sit-data-textarea/sit-data-textarea.component';
-import { sitDataTextareaComponentDirectiveDirective } from './_directives/sitDataTextareaComponentDirective';
+import { sitDataTextareaComponentDirectiveDirective } from './_directives/sitDataTextareaComponentDirective'
+;
 import { SitDataTextareaComponentDirectiveDirective } from './_directives/sit-data-textarea-component-directive.directive'
 @NgModule({
     imports: [
@@ -118,8 +117,6 @@ import { SitDataTextareaComponentDirectiveDirective } from './_directives/sit-da
 
         FormsModule,
         LayoutModule,
-
-        AgGridModule.withComponents([]),
 
         // PrimeNG
         TableModule,
@@ -155,7 +152,6 @@ import { SitDataTextareaComponentDirectiveDirective } from './_directives/sit-da
         sitDSControlDirective,
         SitSideMenuComponent,
         SitRozrachunkiInsertGTComponent,
-        AgGridTestComponent,
         PrimeNgTestComponent,
         NgxDatatableTestComponent,
         SitMenuComponent,
@@ -180,7 +176,8 @@ import { SitDataTextareaComponentDirectiveDirective } from './_directives/sit-da
 ,
         SitDataTextareaComponent
 ,
-        sitDataTextareaComponentDirectiveDirective,
+        sitDataTextareaComponentDirectiveDirective
+,
         SitDataTextareaComponentDirectiveDirective
     ],
     providers: [

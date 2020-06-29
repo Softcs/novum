@@ -60,7 +60,7 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
-              "optimization": true,
+              "optiminpm install -g webpack-bundle-analyzeration": true,
               "outputHashing": "all",
               "sourceMap": false,
               "extractCss": true,
