@@ -16,7 +16,7 @@ export class SitProcButtonComponent implements OnInit {
   @Input() caption: string;
   @Input() delete = false;
   @Input() icon: string;
-  @Input() matType: string = "mat-rised-button";
+  @Input() tooltip: string;
 
   @Output() afterCompleted: EventEmitter<string> = new EventEmitter<string>();
 
@@ -30,7 +30,6 @@ export class SitProcButtonComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //console.log(this.matType)
 
   }
 

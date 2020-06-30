@@ -130,7 +130,7 @@ export class DataSetManager {
     }
 
     public ExecuteRefreshAfter(actionIdent: string, dataSourceIdent: string) {
-        const actionDefinition = this.dictInfo.FindActionDefinition(actionIdent, dataSourceIdent);
+        const actionDefinition = this.dictInfo?.FindActionDefinition(actionIdent, dataSourceIdent);
         if (actionDefinition != null) {
             let ds2RefreshIdents = null;
             if (actionDefinition.dataSources2Refresh != null) {
