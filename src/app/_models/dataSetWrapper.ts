@@ -1,14 +1,11 @@
 import { DataSetManager, Operation } from '.';
 import { Output, EventEmitter } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
 
 export class DataSetWrapper {
     private _rows: any[];
-
     public ident: string;
     public activeRow: any;
     public errors: [any];
-    private inputDataSource: any;
     public fields: [any];
 
     @Output()

@@ -3,12 +3,14 @@ import { SitDataSetContainerComponent } from '@app/components/sit-data-set-conta
 import { QueryList, Output, EventEmitter } from '@angular/core';
 import { GatewayService } from '@app/_services';
 import { first } from 'rxjs/operators';
+import { DataSetDefinitionWrapper } from './dataSetDefinitionWrapper';
 
 export class DataSetManager {
     private _dictInfo: DictInfoWrapper;
     private _dataSetContainers: QueryList<SitDataSetContainerComponent>;
     private _dataSetResponses: any[];
     public dataSetsWrapper: DataSetWrapper[];
+    public dataSetDefinitionWrappers: DataSetDefinitionWrapper[];
 
     @Output()
     refreshAfter: EventEmitter<DataSetManager> = new EventEmitter<DataSetManager>();
@@ -53,10 +55,10 @@ export class DataSetManager {
         });
     }
 
-    private getObjectForDataSourceRequest(dataSourceResponseWrapper: DataSetWrapper, canRefresh: boolean )  {
+    private getObjectForDataSourceRequest(dataSetResponseWrapper: DataSetWrapper, canRefresh: boolean )  {
         const  obj = {
-            ident: dataSourceResponseWrapper.ident,
-            activeRow: dataSourceResponseWrapper.activeRow,
+            ident: dataSetResponseWrapper.ident,
+            activeRow: dataSetResponseWrapper.activeRow,
             refresh: canRefresh
         };
         return obj;
@@ -90,13 +92,13 @@ export class DataSetManager {
         this.RefreshInternall(dataSourcesRequest);
     }
 
-    public RefreshChildren(dataSourceResponseWrapper: DataSetWrapper) {
-        const dataSourceDefinition = this.dictInfo.FindDataSource(dataSourceResponseWrapper.ident);
+    public RefreshChildren(dataSetResponseWrapper: DataSetWrapper) {
+        const dataSourceDefinition = this.dictInfo.FindDataSource(dataSetResponseWrapper.ident);
         if (dataSourceDefinition.children == null || dataSourceDefinition.children.length === 0) {
             return;
         }
         const dataSourcesRequest: any[] = [];
-        const obj = this.getObjectForDataSourceRequest(dataSourceResponseWrapper, false);
+        const obj = this.getObjectForDataSourceRequest(dataSetResponseWrapper, false);
         dataSourcesRequest.push(obj);
 
         this.prapareDataSource4Request(dataSourceDefinition, dataSourcesRequest);
@@ -216,8 +218,8 @@ export class DataSetManager {
         }
         this.dataSetContainers.forEach(dataSourceContainer => {
             if (dataSourceIdent.toLowerCase() === dataSourceContainer.ident.toLowerCase()) {
-                const dataSourceResponseWrapper = this.getDateSourceWrapper(dataSourceContainer.ident);
-                if (dataSourceResponseWrapper != null) {
+                const dataSetResponseWrapper = this.getDateSourceWrapper(dataSourceContainer.ident);
+                if (dataSetResponseWrapper != null) {
                     dataSourceContainer.setErrors(errors);
                 }
             }
@@ -238,9 +240,9 @@ export class DataSetManager {
                 return;
             }
             const dataSource = this.getDataSource(dataSourceContainer.ident);
-            const dataSourceResponseWrapper = this.getDateSourceWrapper(dataSourceContainer.ident);
-            if (dataSourceResponseWrapper != null) {
-                dataSourceContainer.setDataSource(dataSourceResponseWrapper);
+            const dataSetResponseWrapper = this.getDateSourceWrapper(dataSourceContainer.ident);
+            if (dataSetResponseWrapper != null) {
+                dataSourceContainer.setDataSource(dataSetResponseWrapper);
             } else {
                 console.error('DataSource: ' + dataSourceContainer.ident + ' not found!');
             }
@@ -264,23 +266,23 @@ export class DataSetManager {
     }
 
     private setRefreshDataSource(newDataSource: any) {
-        let oldDS = this.getDataSource(newDataSource.ident);
+        const oldDS = this.getDataSource(newDataSource.ident);
         const index = this.dataSetsResponse.indexOf(oldDS);
         if(index !== -1) {
             this.dataSetsResponse[index] = newDataSource;
         }
 
-        let dataSourceResponseWrapper = this.CreateDataSetWrapper(newDataSource.ident);
-        dataSourceResponseWrapper.setInputDataSource(newDataSource);
+        const dataSetResponseWrapper = this.CreateDataSetWrapper(newDataSource.ident);
+        dataSetResponseWrapper.setInputDataSource(newDataSource);
     }
     public CreateDataSetWrapper(ident: string): DataSetWrapper {
-        let dataSourceResponseWrapper = this.getDateSourceWrapper(ident);
-        if (dataSourceResponseWrapper == null) {
-            dataSourceResponseWrapper = new DataSetWrapper(this);
-            dataSourceResponseWrapper.ident = ident;
-            this.dataSetsWrapper.push(dataSourceResponseWrapper);
+        let dataSetResponseWrapper = this.getDateSourceWrapper(ident);
+        if (dataSetResponseWrapper == null) {
+            dataSetResponseWrapper = new DataSetWrapper(this);
+            dataSetResponseWrapper.ident = ident;
+            this.dataSetsWrapper.push(dataSetResponseWrapper);
         }
-        return dataSourceResponseWrapper;
+        return dataSetResponseWrapper;
     }
 
     private getDataSource(ident: string): any {
@@ -295,8 +297,24 @@ export class DataSetManager {
         return dataSource;
     }
 
+    public prepareControls() {
+        this.dataSetContainers.forEach(dataSetContainer => {
+            const dsDefWrapper = this.dataSetDefinitionWrappers.find(ds => ds.ident === dataSetContainer.ident);
+            dataSetContainer.prepareControls(dsDefWrapper);
+        });
+    }
+
     set dictInfo(dictInfo: DictInfoWrapper) {
         this._dictInfo = dictInfo;
+        this.dataSetDefinitionWrappers = [];
+        if (this._dictInfo != null) {
+            if (this._dictInfo.dataSources != null) {
+                this._dictInfo.dataSources.forEach(dataSet => {
+                    const dataSetDefinitionWrapper = new DataSetDefinitionWrapper(dataSet);
+                    this.dataSetDefinitionWrappers.push(dataSetDefinitionWrapper);
+                }) ;
+            }
+        }
     }
     get dictInfo() {
         return this._dictInfo;

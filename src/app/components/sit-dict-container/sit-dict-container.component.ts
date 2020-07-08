@@ -33,7 +33,12 @@ export class SitDictContainerComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
+    this.DataSetManager.dataSetContainers = this.dataSetContainers;
     this.loadData();
+  }
+
+  private prepareControls() {
+    this.DataSetManager.prepareControls();
   }
 
   loadData() {
@@ -43,13 +48,12 @@ export class SitDictContainerComponent implements OnInit, AfterViewInit {
       .subscribe(
         data => {
           if (data.length === 1) {
-
             this.dictInfo = new DictInfoWrapper(data[0].dictInfo);
             this.DataSetManager.dictInfo = this.dictInfo;
-            this.DataSetManager.dataSetContainers = this.dataSetContainers;
             this.DataSetManager.dataSetsResponse = data[0].dataSourcesResponse;
             this.DataSetManager.setRefreshDataSources(this.DataSetManager.dataSetsResponse);
             this.DataSetManager.PropagateDataSources();
+            this.prepareControls();
           }
         },
         error => {

@@ -68,7 +68,7 @@ import { SitRozrachunkiInsertGTComponent } from './containers/dictionaries/sit-r
 import { SitDataInputComponent } from './components/controls/sit-data-input/sit-data-input.component';
 import { SitDataBaseComponent } from './components/controls/sit-data-base/sit-data-base.component';
 import { SitDataTableComponent } from './components/controls/sit-data-table/sit-data-table.component';
-import { sitSetDataSourceDirective } from './_directives/sitSetDataSourceDirective';
+import { sitSetDataSetDirective } from './_directives/sitSetDataSetDirective';
 import { NgxPdfTestComponent } from './containers/sandbox/ngx-pdf-test/ngx-pdf-test.component';
 import { SitKancelariaComponent } from './containers/dictionaries/sit-kancelaria/sit-kancelaria.component';
 import { SitUserAccountComponent } from './containers/dictionaries/sit-user-account/sit-user-account.component';
@@ -79,7 +79,8 @@ import { SitChangeCompanyComponent } from './containers/sit-change-company/sit-c
 import { SitProjectsPubComponent } from './containers/dictionaries/sit-projects-pub/sit-projects-pub.component';
 import { ContentContainerDirective } from './_directives/content-container.directive';
 import { SitPulpitComponent } from './containers/sit-pulpit';
-import { SitRailConfigurationsEditComponent } from './containers/dictionaries/sit-rail-configurations/actions/sit-rail-configurations-edit/sit-rail-configurations-edit.component';
+import { SitRailConfigurationsEditComponent }
+    from './containers/dictionaries/sit-rail-configurations/actions/sit-rail-configurations-edit/sit-rail-configurations-edit.component';
 import { SitDialogDiscardComponent } from './components/sit-dialog-discard/sit-dialog-discard.component';
 import { SitProcParamsComponent } from './components/sit-proc-params/sit-proc-params.component';
 import { SitDialogConfirmDelComponent } from './components/sit-dialog-confirm-del/sit-dialog-confirm-del.component';
@@ -88,6 +89,7 @@ import { SitDataTextareaComponent } from './components/controls/sit-data-textare
 import { sitDataTextareaComponentDirectiveDirective } from './_directives/sitDataTextareaComponentDirective'
 ;
 import { SitDataTextareaComponentDirectiveDirective } from './_directives/sit-data-textarea-component-directive.directive'
+import { SitActionDirective } from './_directives/sitActionDirective';
 @NgModule({
     imports: [
         BrowserModule,
@@ -146,7 +148,7 @@ import { SitDataTextareaComponentDirectiveDirective } from './_directives/sit-da
         testDict,
         SitNavbarComponent,
         MaterialTestComponent,
-        sitSetDataSourceDirective,
+        sitSetDataSetDirective,
         sitDataInputComponentDirective,
         sitDataCheckboxComponentDirective,
         sitDSControlDirective,
@@ -172,13 +174,11 @@ import { SitDataTextareaComponentDirectiveDirective } from './_directives/sit-da
         SitDialogDiscardComponent,
         SitProcParamsComponent,
         SitDialogConfirmDelComponent,
-        SitDataCheckboxComponent
-,
-        SitDataTextareaComponent
-,
-        sitDataTextareaComponentDirectiveDirective
-,
-        SitDataTextareaComponentDirectiveDirective
+        SitDataCheckboxComponent,
+        SitDataTextareaComponent,
+        sitDataTextareaComponentDirectiveDirective,
+        SitDataTextareaComponentDirectiveDirective,
+        SitActionDirective
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
