@@ -1,5 +1,6 @@
 import { DataSetManager, Operation } from '.';
 import { Output, EventEmitter } from '@angular/core';
+import { Guid } from 'guid-typescript';
 
 export class DataSetWrapper {
     private _rows: any[];
@@ -93,7 +94,24 @@ export class DataSetWrapper {
         }
     }
 
-    public GenerateRow(sourceRow: any = null): any  {
+    private initRowByEditFields(row: any, editFields: any[]) {
+        if (editFields == null) {
+            return;
+        }
+        editFields.forEach(field => {
+            let value = null;
+            if (field.value != null) {
+                value = field.value;
+            }
+            if (field.setNewGuid) {
+                value = Guid.create().toString();
+            }
+
+            row[field.fieldName] = value;
+        });
+    }
+
+    public GenerateRow(sourceRow: any = null, add: boolean = true, editFields: any[] = null): any  {
         const newRow = {};
         if (this.fields == null) {
             console.error('Fields are empty [' + this.ident + ']');
@@ -105,6 +123,11 @@ export class DataSetWrapper {
             }
         });
 
+        this.initRowByEditFields(newRow, editFields);
+
+        if (add) {
+            this.AddRow(newRow, true);
+        }
 
         return newRow;
     }

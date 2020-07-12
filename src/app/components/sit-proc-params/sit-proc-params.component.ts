@@ -54,8 +54,6 @@ export class SitProcParamsComponent implements OnInit, AfterViewInit {
     const dataSourceDefinition = this.dataSetManagerSource.FindDataSource(dataSetContainer.ident);
 
     const activeRow = this.mainDataSet.GenerateRow(this.tabData.activeRow);
-    this.mainDataSet.AddRow(activeRow);
-
 
     dataSetContainer.setDataSource(this.mainDataSet);
     this.activeRow = this.mainDataSet.activeRow;

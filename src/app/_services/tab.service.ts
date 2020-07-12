@@ -54,9 +54,11 @@ export class TabService {
 
   public addTab(tab: Tab) {
     this.activeTabIndex = this.tabs.findIndex(t => t.active);
-    if (this.tabs.findIndex(t => t.link === tab.link) !== -1) {
-      console.log('Tabs po przelaczeniu', this.tabs, this.tabs[this.activeTabIndex].link)
-      this.changeTab(this.tabs.findIndex(t => t.link === tab.link));
+    const tabIndex = this.tabs.findIndex(t => t.ident === tab.ident);
+
+    if (tabIndex !== -1) {
+      console.log('Tabs po przelaczeniu', this.tabs, this.tabs[this.activeTabIndex].link);
+      this.changeTab(tabIndex);
     } else {
       console.log('Tabs po utworzeniu nowego', this.tabs);
       this.tabs[this.activeTabIndex].active = false;

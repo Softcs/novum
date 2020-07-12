@@ -62,43 +62,4 @@ export class SitRailConfigurationsComponent implements OnInit {
   get activeRowRailConfigurations() {
     return this.dictContainer?.activeRow('sitRailConfigurations');
   }
-
-  new() {
-    const dataSourceResponseWrapper: DataSetWrapper =
-      this.dictContainer.DataSetManager.getDateSourceWrapper("sitRailConfigurations");
-    const newGuid = Guid.create();
-    const row = dataSourceResponseWrapper.GenerateRow();
-
-    row['sitRailConfigurationsG'] = newGuid.toString();
-    row['IsActive'] = 1;
-
-    this.tabService.addTab(new Tab(
-      'sitRailConfigurationsEdit', 'sitRailConfigurationsEdit',
-      'Konfiguracja Rail - Nowy', { parent: 'AppComponent',
-      guid: row['sitRailConfigurationsG'],
-      senderObject: this.getSenderObject(row) }));
-  }
-
-  edit() {
-    const dataSourceResponseWrapper: DataSetWrapper =
-        this.dictContainer.DataSetManager.getDateSourceWrapper("sitRailConfigurations");
-    const row = dataSourceResponseWrapper.GenerateRow(dataSourceResponseWrapper.activeRow);
-    this.tabService.addTab(
-      new Tab(
-        'sitRailConfigurationsEdit','sitRailConfigurationsEdit',
-        'Konfiguracja Rail - Edycja' , { parent: 'AppComponent',
-        guid: row['sitRailConfigurationsG'],
-        senderObject: this.getSenderObject(row) }));
-  }
-
-  private getSenderObject(activeRow: any) {
-    const sender = {};
-    const dataSets = {};
-    dataSets["sitRailConfigurationsEdit"] = {
-      'activeRow': activeRow
-    };
-    sender["dataSets"] = dataSets;
-    return sender;
-  }
-
 }

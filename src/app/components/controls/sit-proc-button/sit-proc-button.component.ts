@@ -16,7 +16,6 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
   executing = false;
   @Input() color: string;
   @Input() caption: string;
-  @Input() delete = false;
   @Input() icon: string;
   @Input() tooltip: string;
   @Input() componentParamsIdent: string;
@@ -24,6 +23,8 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
   @Output() afterCompleted: EventEmitter<string> = new EventEmitter<string>();
 
   @ViewChild('button') private _buttonElement: ElementRef;
+
+  private tabLink: string;
 
   constructor(
     public el: ElementRef,
@@ -39,10 +40,22 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
 
   }
 
+  isDelete(): boolean {
+    return this.actionDefinition?.kind === 'delete';
+  }
+
+  isInsert(): boolean {
+    return this.actionDefinition?.kind === 'insert';
+  }
+
+  isUpdate(): boolean {
+    return this.actionDefinition?.kind === 'update';
+  }
+
   getTabSenderObject(): TabData {
     const identRowField = this.actionDefinition?.fieldsConfiguration?.identRow;
     const identRowValue = identRowField ? this.dataSetResponseWrapper.getFieldValue(identRowField) : null;
-
+    this.tabLink = this.componentParamsIdent + '_' + identRowValue;
     const data = new TabData();
     data.tabIdent = identRowValue;
     data.activeRow = this.dataSetResponseWrapper?.activeRow;
@@ -53,7 +66,7 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
   }
 
   onClick($event) {
-    if (this.delete) {
+    if (this.isDelete()) {
       const dialogRef = this.dialog.open(SitDialogConfirmDelComponent, {
         width: '250px', height: '150px'
       });
@@ -71,12 +84,15 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
       if (!this.componentParamsIdent) {
         this.executeAction();
       } else {
-        console.log("this.actionDefinition", this.actionDefinition)
+        if( this.isInsert()) {
+          this.dataSetResponseWrapper.GenerateRow(null, true, this.actionDefinition?.editFields);
+        }
+        const tabData = this.getTabSenderObject();
         this.tabService.addTab(
           new Tab(
-            this.componentParamsIdent, this.componentParamsIdent,
+            this.tabLink, this.componentParamsIdent,
             this.actionDefinition.caption,
-            this.getTabSenderObject()
+            tabData
           )
         );
       }
