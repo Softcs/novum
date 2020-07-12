@@ -60,7 +60,6 @@ export class SitProcParamsComponent implements OnInit, AfterViewInit {
     this.activeRowChange.emit(this.activeRow);
   }
 
-
   ngAfterViewInit() {
     this.DataSetManager.dataSetContainers = this.dataSetContainers;
     this.prepareDataSet();

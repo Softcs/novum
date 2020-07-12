@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, ViewChildren, QueryList, ViewChild, ContentChildren, Directive, ElementRef,
           EventEmitter, Output, AfterViewInit } from '@angular/core';
 import { GatewayService } from '../../_services/gateway.service';
-import { Operation, DataSetWrapper, DictInfoWrapper, DataSetManager } from '@app/_models';
+import { Operation, DictInfoWrapper, DataSetManager } from '@app/_models';
 import { first } from 'rxjs/operators';
 import { SitDataSetContainerComponent } from '../sit-data-set-container';
 @Component({
@@ -18,7 +18,6 @@ export class SitDictContainerComponent implements OnInit, AfterViewInit {
 
   @Input() ident: string;
   private dictInfo: DictInfoWrapper;
-  private dataSourcesResponse: any;
   public DataSetManager: DataSetManager;
 
   @Output()

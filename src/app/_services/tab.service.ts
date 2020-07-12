@@ -16,7 +16,7 @@ export class TabService {
   ) { }
 
   public tabs: Tab[] = [
-    new Tab('sitPulpit','sitPulpit', 'Pulpit', { parent: 'AppComponent' }),
+    new Tab('sitPulpit', 'sitPulpit', 'Pulpit', { parent: 'AppComponent' }),
     ];
 
   public tabSub = new BehaviorSubject<Tab[]>(this.tabs);

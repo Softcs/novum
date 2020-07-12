@@ -1,5 +1,5 @@
 ﻿import { NavService } from './_services/nav.service';
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef, OnInit, AfterViewInit } from '@angular/core';
 import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 import { GatewayService } from './_services';
 import { User } from './_models';
@@ -10,7 +10,7 @@ import { Tab } from '@app/_models/tab.model';
   selector: 'app',
   templateUrl: 'app.component.html'
 })
-export class AppComponent {
+export class AppComponent implements OnInit, AfterViewInit {
 
     @ViewChild('appDrawer') appDrawer: ElementRef;
     currentUser: User;
