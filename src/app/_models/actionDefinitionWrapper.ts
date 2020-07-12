@@ -9,6 +9,7 @@ export class ActionDefinitionWrapper {
     public showInToolbar: boolean;
     public editFields: [any];
     public caption: string;
+    public fieldsConfiguration: [any];
 
     constructor(source: any) {
         this.createNewRow = source.createNewRow;
@@ -19,6 +20,7 @@ export class ActionDefinitionWrapper {
         this.showInToolbar = source.showInToolbar;
         this.editFields = source.editFields;
         this.caption = source.caption;
+        this.fieldsConfiguration = source.fieldsConfiguration;
     }
 
 

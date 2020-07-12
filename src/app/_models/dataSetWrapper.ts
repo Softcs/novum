@@ -3,7 +3,6 @@ import { Output, EventEmitter } from '@angular/core';
 
 export class DataSetWrapper {
     private _rows: any[];
-    public ident: string;
     public activeRow: any;
     public errors: [any];
     public fields: [any];
@@ -11,8 +10,14 @@ export class DataSetWrapper {
     @Output()
     activeRowChanged: EventEmitter<any> = new EventEmitter<any>();
 
-    constructor(public dataSourceManager: DataSetManager) {
+    constructor(
+        public ident: string,
+        public dataSourceManager: DataSetManager,
+        dataSetManagerSource: DataSetManager
+    ) {
         this._rows = null;
+        this.fields = null;
+        this.readFields(dataSetManagerSource);
     }
 
     get rows(): any[] {
@@ -37,13 +42,20 @@ export class DataSetWrapper {
         }
     }
 
+    private readFields(dataSetManagerSource: DataSetManager) {
+        let dataSourceDef = this.dataSourceManager?.FindDataSource(this.ident);
+        if (dataSourceDef == null) {
+            dataSourceDef = dataSetManagerSource?.FindDataSource(this.ident);
+        }
+        this.fields = dataSourceDef?.fields;
+    }
+
     public setInputDataSource(inputDataSource: any) {
         this.ident = inputDataSource.ident;
         this.rows = inputDataSource.rows;
         this.activeRow = inputDataSource.activeRowIndex !== -1 ? inputDataSource.rows[inputDataSource.activeRowIndex] : null;
         this.errors = inputDataSource.errors;
         const dataSourceDef =  this.dataSourceManager?.dictInfo?.FindDataSource(this.ident);
-        this.fields = dataSourceDef?.fields;
     }
 
     public AfterPropagte() {
@@ -64,13 +76,36 @@ export class DataSetWrapper {
             executeActionCompletedCallback, executeActionExceptionCallback, sourceDictIdent);
     }
 
-    public GenerateRow(sourceRow: any = null) {
+    private initRows() {
+        if (this._rows == null) {
+            this._rows = [];
+        }
+    }
+
+    public AddRow(row: any, activate: boolean = true) {
+        if (row == null) {
+            return;
+        }
+        this.initRows();
+        this._rows.push(row);
+        if (activate) {
+            this.SetActiveRow(row);
+        }
+    }
+
+    public GenerateRow(sourceRow: any = null): any  {
         const newRow = {};
+        if (this.fields == null) {
+            console.error('Fields are empty [' + this.ident + ']');
+            return null;
+        }
         this.fields.forEach(field => {
             if (!field.isParam) {
                 newRow[field.fieldName] = sourceRow != null ? sourceRow[field.fieldName] : null;
             }
         });
+
+
         return newRow;
     }
 

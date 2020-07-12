@@ -1,12 +1,10 @@
 import { Component, OnInit, Input, Renderer2, ViewChild, ElementRef, EventEmitter, Output, Directive  } from '@angular/core';
-import { DataSetWrapper, Operation, Tab } from '@app/_models';
 import { MatDialog } from '@angular/material/dialog';
 import { SitDialogConfirmDelComponent } from '@app/components/sit-dialog-confirm-del';
-import { ICON_REGISTRY_PROVIDER } from '@angular/material/icon';
-import { SitDataBaseComponent } from '../sit-data-base/sit-data-base.component';
 import { SitActionDirective } from '@app/_directives/sitActionDirective';
 import { TabService } from '@app/_services/tab.service';
-import { TYPED_NULL_EXPR } from '@angular/compiler/src/output/output_ast';
+import { Tab } from '@app/_models/tab.model';
+import { TabData } from '@app/_models/tabdata';
 
 
 @Component({
@@ -41,6 +39,17 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
 
   }
 
+  getTabSenderObject(): TabData {
+    const identRowField = this.actionDefinition?.fieldsConfiguration?.identRow;
+    const identRowValue = identRowField ? this.dataSetResponseWrapper.getFieldValue(identRowField) : null;
+
+    const data = new TabData();
+    data.tabIdent = identRowValue;
+    data.activeRow = this.dataSetResponseWrapper?.activeRow;
+    data.dataSetManagerSource = this.dataSetManagerSource;
+    return data;
+  }
+
   onClick($event) {
     if (this.delete) {
       const dialogRef = this.dialog.open(SitDialogConfirmDelComponent, {
@@ -65,11 +74,7 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
           new Tab(
             this.componentParamsIdent, this.componentParamsIdent,
             this.actionDefinition.caption,
-            {
-              parent: 'AppComponent',
-              guid: "",
-              senderObject: {}
-            }
+            this.getTabSenderObject()
           )
         );
       }

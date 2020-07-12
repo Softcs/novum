@@ -5,6 +5,7 @@ import { SitDialogDiscardComponent } from '@app/components/sit-dialog-discard';
 import { SitDataSetContainerComponent } from '../sit-data-set-container';
 import { DataSetManager, DataSetWrapper } from '@app/_models';
 import { GatewayService } from '@app/_services';
+import { TabData } from '@app/_models/tabdata';
 
 
 @Component({
@@ -26,6 +27,7 @@ export class SitProcParamsComponent implements OnInit, AfterViewInit {
 
   tabIndex: number;
   public DataSetManager: DataSetManager;
+  private dataSetManagerSource: DataSetManager;
   private mainDataSet: DataSetWrapper;
   constructor(
     private gatewayService: GatewayService,
@@ -39,23 +41,31 @@ export class SitProcParamsComponent implements OnInit, AfterViewInit {
     this.tabIndex = this.tabService.tabs.findIndex(tab => tab.active);
   }
 
-  ngAfterViewInit() {
-    this.DataSetManager.dataSetContainers = this.dataSetContainers;
-    this.mainDataSet = this.DataSetManager.CreateDataSetWrapper(this.dataSourceIdent);
-    console.log("mainDataSet 1", this.mainDataSet);
-    this.senderObject = this.tabService.tabs[this.tabIndex].tabData.senderObject;
-    const dataSetSource = this.senderObject.dataSets[this.dataSourceIdent];
+  getTabData(): TabData {
+    const tabData = this.tabService.tabs[this.tabIndex].tabData;
+    this.dataSetManagerSource = tabData?.dataSetManagerSource;
+    console.log("tabData", tabData);
+    return tabData;
+  }
 
-    this.mainDataSet.rows = [dataSetSource.activeRow];
-    this.mainDataSet.SetActiveRow(dataSetSource.activeRow, false);
-    console.log("dataSetSource.activeRow", dataSetSource.activeRow);
-    console.log("mainDataSet", this.mainDataSet);
+  prepareDataSet() {
+    const tabData = this.getTabData();
+    this.mainDataSet = this.DataSetManager.CreateDataSetWrapper(this.dataSourceIdent, this.dataSetManagerSource);
+    const dataSourceDefinition = this.dataSetManagerSource.FindDataSource(this.dataSourceIdent);
 
+    const activeRow = this.mainDataSet.GenerateRow(tabData.activeRow);
+    this.mainDataSet.AddRow(activeRow);
 
     const dataSetContainer = this.DataSetManager.dataSetContainers.first;
     dataSetContainer.setDataSource(this.mainDataSet);
-    this.activeRow = dataSetSource.activeRow;
+    this.activeRow = this.mainDataSet;
     this.activeRowChange.emit(this.activeRow);
+  }
+
+
+  ngAfterViewInit() {
+    this.DataSetManager.dataSetContainers = this.dataSetContainers;
+    this.prepareDataSet();
   }
 
   refreshAfter(dataSourceManager)  {
@@ -80,7 +90,9 @@ export class SitProcParamsComponent implements OnInit, AfterViewInit {
   }
 
   onSave(e: string) {
-    if (e === 'OK') { this.tabService.removeTab(this.tabIndex); }
+    if (e === 'OK') {
+      this.tabService.removeTab(this.tabIndex);
+    }
   }
 
   executeAction(): void {

@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Directive, ContentChildren,
   QueryList, Output, EventEmitter } from '@angular/core';
 
 import { GatewayService } from '@app/_services/gateway.service';
-import { DataSetWrapper } from '@app/_models';
+import { DataSetWrapper, DataSetManager } from '@app/_models';
 import { SitDataBaseComponent } from '../controls/sit-data-base/sit-data-base.component';
 import { sitSetDataSetDirective } from '@app/_directives/sitSetDataSetDirective';
 import { connect } from 'http2';
@@ -17,6 +17,8 @@ import { DataSetDefinitionWrapper } from '@app/_models/dataSetDefinitionWrapper'
 })
 
 export class SitDataSetContainerComponent implements OnInit {
+  private _errors: any[];
+
   @ContentChildren('sitSetDataSource', { descendants: true})
   datasSourcesInterface: QueryList<sitSetDataSetDirective>;
   @ContentChildren('sitControl', { descendants: true })
@@ -30,13 +32,15 @@ export class SitDataSetContainerComponent implements OnInit {
   @Output()
   activeRowChanged: EventEmitter<any> = new EventEmitter<any>();
 
+  public dataSetControlsManager: DataSetManager;
+
+  constructor(private gatewayService: GatewayService) { }
+
   clearErrors() {
     this.errors?.splice(0, this.errors?.length);
   }
 
-  private _errors: any[];
 
-  constructor(private gatewayService: GatewayService) { }
 
   get activeRecord(): any {
     return this.dataSetResponseWrapper?.activeRow;
@@ -89,6 +93,7 @@ export class SitDataSetContainerComponent implements OnInit {
       this.actionControlsInterface.forEach(actionControl => {
         actionControl.dataSetResponseWrapper = this.dataSetResponseWrapper;
         actionControl.actionDefinition = dataSetWrapperDefinition?.FindActionDefinition(actionControl.actionIdent);
+        actionControl.dataSetManagerSource = this.dataSetControlsManager;
       });
     }
 
@@ -105,6 +110,10 @@ export class SitDataSetContainerComponent implements OnInit {
   closeError(error: any) {
     const index = this._errors?.indexOf(error);
     this.errors?.splice(index, 1);
+  }
+
+  public setDataSetManager(dataSetControlsManager: DataSetManager) {
+    this.dataSetControlsManager = dataSetControlsManager;
   }
 }
 
