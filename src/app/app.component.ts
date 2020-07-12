@@ -40,7 +40,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       this.router.events.subscribe((res) => {
         if (res instanceof  NavigationEnd) {
           const url = res.url.slice(1);
-          const activeTabIndex = this.tabs.findIndex(tab => tab.link === res.url);
+          const activeTabIndex = this.tabs.findIndex(tab => tab.link === url);
           if (activeTabIndex === -1 && this.router.url !== '/login') {
             this.tabService.addTab(new Tab(
               url,
