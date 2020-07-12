@@ -275,9 +275,10 @@ export class DataSetManager {
             this.dataSetsResponse[index] = newDataSource;
         }
 
-        const dataSetResponseWrapper = this.CreateDataSetWrapper(newDataSource.ident);
+        const dataSetResponseWrapper = this.CreateDataSetWrapper(newDataSource.ident, null);
         dataSetResponseWrapper.setInputDataSource(newDataSource);
     }
+
     public CreateDataSetWrapper(ident: string, dataSetManagerSource: DataSetManager): DataSetWrapper {
         let dataSetResponseWrapper = this.getDateSourceWrapper(ident);
         if (dataSetResponseWrapper == null) {

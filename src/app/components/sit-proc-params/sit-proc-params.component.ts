@@ -18,9 +18,7 @@ export class SitProcParamsComponent implements OnInit, AfterViewInit {
   @ContentChildren(SitDataSetContainerComponent, { descendants: true })
   dataSetContainers !: QueryList<SitDataSetContainerComponent>;
 
-  @Input() actionIdent;
   @Input() dictIdent: string;
-  @Input() dataSourceIdent: string;
   @Input() senderObject = null;
   @Input() activeRow = null;
   @Output() activeRowChange = new EventEmitter<any[]>();
@@ -29,6 +27,8 @@ export class SitProcParamsComponent implements OnInit, AfterViewInit {
   public DataSetManager: DataSetManager;
   private dataSetManagerSource: DataSetManager;
   private mainDataSet: DataSetWrapper;
+  private tabData: TabData;
+
   constructor(
     private gatewayService: GatewayService,
     private tabService: TabService,
@@ -44,21 +44,21 @@ export class SitProcParamsComponent implements OnInit, AfterViewInit {
   getTabData(): TabData {
     const tabData = this.tabService.tabs[this.tabIndex].tabData;
     this.dataSetManagerSource = tabData?.dataSetManagerSource;
-    console.log("tabData", tabData);
     return tabData;
   }
 
   prepareDataSet() {
-    const tabData = this.getTabData();
-    this.mainDataSet = this.DataSetManager.CreateDataSetWrapper(this.dataSourceIdent, this.dataSetManagerSource);
-    const dataSourceDefinition = this.dataSetManagerSource.FindDataSource(this.dataSourceIdent);
+    this.tabData = this.getTabData();
+    const dataSetContainer = this.DataSetManager.dataSetContainers.first;
+    this.mainDataSet = this.DataSetManager.CreateDataSetWrapper(dataSetContainer.ident, this.dataSetManagerSource);
+    const dataSourceDefinition = this.dataSetManagerSource.FindDataSource(dataSetContainer.ident);
 
-    const activeRow = this.mainDataSet.GenerateRow(tabData.activeRow);
+    const activeRow = this.mainDataSet.GenerateRow(this.tabData.activeRow);
     this.mainDataSet.AddRow(activeRow);
 
-    const dataSetContainer = this.DataSetManager.dataSetContainers.first;
+
     dataSetContainer.setDataSource(this.mainDataSet);
-    this.activeRow = this.mainDataSet;
+    this.activeRow = this.mainDataSet.activeRow;
     this.activeRowChange.emit(this.activeRow);
   }
 
@@ -96,7 +96,9 @@ export class SitProcParamsComponent implements OnInit, AfterViewInit {
   }
 
   executeAction(): void {
-    this.mainDataSet.ExecuteAction(this.actionIdent,
+    this.dataSetManagerSource.ExecuteAction(
+      this.tabData.actionIdent,
+      this.tabData.sourceDataSetIdent,
       this,
       this.executeActionCompletedCallback,
       this.executeActionExceptionCallback,

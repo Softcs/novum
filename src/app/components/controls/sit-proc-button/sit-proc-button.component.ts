@@ -47,6 +47,8 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
     data.tabIdent = identRowValue;
     data.activeRow = this.dataSetResponseWrapper?.activeRow;
     data.dataSetManagerSource = this.dataSetManagerSource;
+    data.sourceDataSetIdent = this.dataSetResponseWrapper?.ident;
+    data.actionIdent = this.actionIdent;
     return data;
   }
 

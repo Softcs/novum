@@ -124,7 +124,8 @@ export class DataSetWrapper {
             return null;
         }
 
-        return row[fieldName];
+        const result = row[fieldName];
+        return result === undefined ? null : result;
     }
 
     public refreshFieldValueInControl(control) {
