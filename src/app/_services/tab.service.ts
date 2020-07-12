@@ -31,6 +31,11 @@ export class TabService {
     }
   }
 
+  private getTabIdent(): string {
+    const tab = this.tabs[this.activeTabIndex];
+    return tab?.tabData['tabIdent'];
+  }
+
   public changeTab(index: number) {
     this.activeTabIndex = this.tabs.findIndex(t => t.active);
     const lastActiveTab = this.tabs[this.activeTabIndex];
@@ -41,17 +46,19 @@ export class TabService {
     this.tabs[index].active = true;
     this.tabSub.next(this.tabs);
     this.activeTabIndex = this.tabs.findIndex(t => t.active);
-    let linkToNavigate = this.tabs[this.activeTabIndex].link
-    let additionalParam = this.tabs[this.activeTabIndex].tabData['guid'];
-    additionalParam == null ? this.router.navigate([linkToNavigate]) : this.router.navigate([linkToNavigate, additionalParam]);
+    const linkToNavigate = this.tabs[this.activeTabIndex].link;
+    const tabIdent = this.getTabIdent();
+    tabIdent == null ? this.router.navigate([linkToNavigate]) : this.router.navigate([linkToNavigate, tabIdent]);
 
   }
 
   public addTab(tab: Tab) {
     this.activeTabIndex = this.tabs.findIndex(t => t.active);
-    if (this.tabs.findIndex(t => t.link === tab.link) !== -1) {
-      console.log('Tabs po przelaczeniu', this.tabs, this.tabs[this.activeTabIndex].link)
-      this.changeTab(this.tabs.findIndex(t => t.link === tab.link));
+    const tabIndex = this.tabs.findIndex(t => t.ident === tab.ident);
+
+    if (tabIndex !== -1) {
+      console.log('Tabs po przelaczeniu', this.tabs, this.tabs[this.activeTabIndex].link);
+      this.changeTab(tabIndex);
     } else {
       console.log('Tabs po utworzeniu nowego', this.tabs);
       this.tabs[this.activeTabIndex].active = false;
@@ -60,16 +67,13 @@ export class TabService {
       this.tabs.push(tab);
       this.tabSub.next(this.tabs);
       this.activeTabIndex = this.tabs.findIndex(t => t.active);
-
-      if (this.tabs[this.activeTabIndex].tabData['guid'] == null) {
-        //this.router.navigate([this.tabs[this.activeTabIndex].link]);
-      } else {
-        //this.router.navigate([this.tabs[this.activeTabIndex].link, this.tabs[this.activeTabIndex].tabData['guid']]);
+      const tabIdent = this.getTabIdent();
+      if (tabIdent == null) {
+        this.router.navigate([this.tabs[this.activeTabIndex].link]);
       }
-    }
-
-
+      else {
+        this.router.navigate([this.tabs[this.activeTabIndex].link, tabIdent]);
+      }
+      }
   }
-
-
 }

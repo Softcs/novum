@@ -1,12 +1,10 @@
 import { Component, OnInit, Input, Renderer2, ViewChild, ElementRef, EventEmitter, Output, Directive  } from '@angular/core';
-import { DataSetWrapper, Operation, Tab } from '@app/_models';
 import { MatDialog } from '@angular/material/dialog';
 import { SitDialogConfirmDelComponent } from '@app/components/sit-dialog-confirm-del';
-import { ICON_REGISTRY_PROVIDER } from '@angular/material/icon';
-import { SitDataBaseComponent } from '../sit-data-base/sit-data-base.component';
 import { SitActionDirective } from '@app/_directives/sitActionDirective';
 import { TabService } from '@app/_services/tab.service';
-import { TYPED_NULL_EXPR } from '@angular/compiler/src/output/output_ast';
+import { Tab } from '@app/_models/tab.model';
+import { TabData } from '@app/_models/tabdata';
 
 
 @Component({
@@ -18,7 +16,6 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
   executing = false;
   @Input() color: string;
   @Input() caption: string;
-  @Input() delete = false;
   @Input() icon: string;
   @Input() tooltip: string;
   @Input() componentParamsIdent: string;
@@ -26,6 +23,8 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
   @Output() afterCompleted: EventEmitter<string> = new EventEmitter<string>();
 
   @ViewChild('button') private _buttonElement: ElementRef;
+
+  private tabLink: string;
 
   constructor(
     public el: ElementRef,
@@ -41,8 +40,33 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
 
   }
 
+  isDelete(): boolean {
+    return this.actionDefinition?.kind === 'delete';
+  }
+
+  isInsert(): boolean {
+    return this.actionDefinition?.kind === 'insert';
+  }
+
+  isUpdate(): boolean {
+    return this.actionDefinition?.kind === 'update';
+  }
+
+  getTabSenderObject(): TabData {
+    const identRowField = this.actionDefinition?.fieldsConfiguration?.identRow;
+    const identRowValue = identRowField ? this.dataSetResponseWrapper.getFieldValue(identRowField) : null;
+    this.tabLink = this.componentParamsIdent + '_' + identRowValue;
+    const data = new TabData();
+    data.tabIdent = identRowValue;
+    data.activeRow = this.dataSetResponseWrapper?.activeRow;
+    data.dataSetManagerSource = this.dataSetManagerSource;
+    data.sourceDataSetIdent = this.dataSetResponseWrapper?.ident;
+    data.actionIdent = this.actionIdent;
+    return data;
+  }
+
   onClick($event) {
-    if (this.delete) {
+    if (this.isDelete()) {
       const dialogRef = this.dialog.open(SitDialogConfirmDelComponent, {
         width: '250px', height: '150px'
       });
@@ -60,16 +84,15 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
       if (!this.componentParamsIdent) {
         this.executeAction();
       } else {
-        console.log("this.actionDefinition", this.actionDefinition)
+        if( this.isInsert()) {
+          this.dataSetResponseWrapper.GenerateRow(null, true, this.actionDefinition?.editFields);
+        }
+        const tabData = this.getTabSenderObject();
         this.tabService.addTab(
           new Tab(
-            this.componentParamsIdent, this.componentParamsIdent,
+            this.tabLink, this.componentParamsIdent,
             this.actionDefinition.caption,
-            {
-              parent: 'AppComponent',
-              guid: "",
-              senderObject: {}
-            }
+            tabData
           )
         );
       }

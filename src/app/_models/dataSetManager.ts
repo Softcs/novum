@@ -93,6 +93,9 @@ export class DataSetManager {
     }
 
     public RefreshChildren(dataSetResponseWrapper: DataSetWrapper) {
+        if (this.dictInfo == null) {
+            return;
+        }
         const dataSourceDefinition = this.dictInfo.FindDataSource(dataSetResponseWrapper.ident);
         if (dataSourceDefinition.children == null || dataSourceDefinition.children.length === 0) {
             return;
@@ -272,14 +275,14 @@ export class DataSetManager {
             this.dataSetsResponse[index] = newDataSource;
         }
 
-        const dataSetResponseWrapper = this.CreateDataSetWrapper(newDataSource.ident);
+        const dataSetResponseWrapper = this.CreateDataSetWrapper(newDataSource.ident, null);
         dataSetResponseWrapper.setInputDataSource(newDataSource);
     }
-    public CreateDataSetWrapper(ident: string): DataSetWrapper {
+
+    public CreateDataSetWrapper(ident: string, dataSetManagerSource: DataSetManager): DataSetWrapper {
         let dataSetResponseWrapper = this.getDateSourceWrapper(ident);
         if (dataSetResponseWrapper == null) {
-            dataSetResponseWrapper = new DataSetWrapper(this);
-            dataSetResponseWrapper.ident = ident;
+            dataSetResponseWrapper = new DataSetWrapper(ident, this, dataSetManagerSource);
             this.dataSetsWrapper.push(dataSetResponseWrapper);
         }
         return dataSetResponseWrapper;
@@ -330,9 +333,18 @@ export class DataSetManager {
 
     set dataSetContainers(dataSetContainers: QueryList<SitDataSetContainerComponent>) {
         this._dataSetContainers = dataSetContainers;
+        if (this._dataSetContainers != null) {
+            this._dataSetContainers.forEach(dataSetCont => {
+                dataSetCont.setDataSetManager(this)
+            });
+        }
     }
 
     get dataSetContainers() {
         return this._dataSetContainers;
+    }
+
+    public FindDataSource(ident: string) {
+        return this.dictInfo?.FindDataSource(ident);
     }
 }
