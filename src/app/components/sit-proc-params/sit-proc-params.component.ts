@@ -51,10 +51,7 @@ export class SitProcParamsComponent implements OnInit, AfterViewInit {
     this.tabData = this.getTabData();
     const dataSetContainer = this.DataSetManager.dataSetContainers.first;
     this.mainDataSet = this.DataSetManager.CreateDataSetWrapper(dataSetContainer.ident, this.dataSetManagerSource);
-    const dataSourceDefinition = this.dataSetManagerSource.FindDataSource(dataSetContainer.ident);
-
-    const activeRow = this.mainDataSet.GenerateRow(this.tabData.activeRow);
-
+    this.mainDataSet.GenerateRow(this.tabData.activeRow);
     dataSetContainer.setDataSource(this.mainDataSet);
     this.activeRow = this.mainDataSet.activeRow;
     this.activeRowChange.emit(this.activeRow);
@@ -99,7 +96,8 @@ export class SitProcParamsComponent implements OnInit, AfterViewInit {
       this,
       this.executeActionCompletedCallback,
       this.executeActionExceptionCallback,
-      this.dictIdent);
+      this.dictIdent,
+      this.mainDataSet);
   }
 
   private executeActionCompletedCallback(self) {
