@@ -1,0 +1,36 @@
+<sit-dict-container ident="sitProducts" #sitDictcontainer fxFlexFill>
+  <sit-data-set-container  ident="sitProducts">
+    <div fxLayout="row" fxFill fxLayoutGap="5px">
+      <div fxLayout="column" fxFill class="content">
+        <div class="sit-filter-bar">
+          <sit-data-set-container ident="sitFilterProducts" >
+            <div style="width: 100%;">
+              <sit-data-input #sitControl id="searchProducts" field="searchProducts" label="Filtruj kontrahentów" placeholder="Nazwa, NIP, Identyfikator" style="width: 100%;"></sit-data-input>
+            </div>
+          </sit-data-set-container>
+        </div>
+        <div class="data-table">
+          <ngx-datatable #sitProducts #sitSetDataSource
+          class="material striped"
+          style = "height:700px;"
+          [columnMode]="ColumnMode.force"
+          [scrollbarV]=true
+          [selected]="sitProductsSelected"
+          [selectionType]="SelectionType.single"
+          [selectAllRowsOnPage]="false"
+          (activate)="onActivateProducts($event)"
+          [footerHeight]="30"
+          >
+            <ngx-datatable-column prop="ProductIdent" name="Symbol"></ngx-datatable-column>
+            <ngx-datatable-column prop="ProductName" name="Nazwa"></ngx-datatable-column>
+            <ngx-datatable-column prop="ProductDescription" name="Opis"></ngx-datatable-column>
+            <ngx-datatable-column prop="UnitIdent" name="JM"></ngx-datatable-column>
+            <ngx-datatable-column prop="EAN" name="EAN"></ngx-datatable-column>
+            <ngx-datatable-column prop="CountrySymbol" name="Kraj" [resizeable]="false" [width]="40" [canAutoResize]="false"></ngx-datatable-column>
+            <ngx-datatable-column prop="PKWIU" name="PKWiU"></ngx-datatable-column>
+          </ngx-datatable>
+        </div>
+      </div>
+    </div>
+  </sit-data-set-container>
+</sit-dict-container>

@@ -89,7 +89,8 @@ import { SitDataTextareaComponent } from './components/controls/sit-data-textare
 import { sitDataTextareaComponentDirectiveDirective } from './_directives/sitDataTextareaComponentDirective';
 import { SitDataTextareaComponentDirectiveDirective } from './_directives/sit-data-textarea-component-directive.directive'
 import { SitActionDirective } from './_directives/sitActionDirective';;
-import { SitCustomersComponent } from './containers/dictionaries/sit-customers/sit-customers.component'
+import { SitCustomersComponent } from './containers/dictionaries/sit-customers/sit-customers.component';
+import { SitProductsComponent } from './containers/dictionaries/sit-products/sit-products.component'
 @NgModule({
     imports: [
         BrowserModule,
@@ -181,6 +182,8 @@ import { SitCustomersComponent } from './containers/dictionaries/sit-customers/s
         SitActionDirective
 ,
         SitCustomersComponent
+,
+        SitProductsComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
