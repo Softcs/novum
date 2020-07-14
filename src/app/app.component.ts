@@ -1,5 +1,5 @@
 ﻿import { NavService } from './_services/nav.service';
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef, OnInit, AfterViewInit } from '@angular/core';
 import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 import { GatewayService } from './_services';
 import { User } from './_models';
@@ -10,7 +10,7 @@ import { Tab } from '@app/_models/tab.model';
   selector: 'app',
   templateUrl: 'app.component.html'
 })
-export class AppComponent {
+export class AppComponent implements OnInit, AfterViewInit {
 
     @ViewChild('appDrawer') appDrawer: ElementRef;
     currentUser: User;
@@ -40,7 +40,7 @@ export class AppComponent {
       this.router.events.subscribe((res) => {
         if (res instanceof  NavigationEnd) {
           const url = res.url.slice(1);
-          const activeTabIndex = this.tabs.findIndex(tab => tab.link === res.url);
+          const activeTabIndex = this.tabs.findIndex(tab => tab.link === url);
           if (activeTabIndex === -1 && this.router.url !== '/login') {
             this.tabService.addTab(new Tab(
               url,

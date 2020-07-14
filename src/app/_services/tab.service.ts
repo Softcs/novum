@@ -4,6 +4,8 @@ import { Tab } from '@app/_models/tab.model';
 import { SitPulpitComponent } from '@app/containers/sit-pulpit';
 
 import { BehaviorSubject } from 'rxjs';
+import { TabData } from '@app/_models/tabdata';
+import { DataSetManager } from '@app/_models';
 
 @Injectable({
   providedIn: 'root'
@@ -16,14 +18,14 @@ export class TabService {
   ) { }
 
   public tabs: Tab[] = [
-    new Tab('sitPulpit','sitPulpit', 'Pulpit', { parent: 'AppComponent' }),
+    new Tab('sitPulpit', 'sitPulpit', 'Pulpit', { parent: 'AppComponent' }),
     ];
 
   public tabSub = new BehaviorSubject<Tab[]>(this.tabs);
 
   public removeTab(index: number) {
     var wasActive = this.tabs[this.activeTabIndex].active;
-    console.log('removeTab',index,this.tabs,this.tabs[index - 1].link)
+    console.log('removeTab', index, this.tabs, this.tabs[index - 1].link)
 
     this.tabs.splice(index, 1);
     if (wasActive) {

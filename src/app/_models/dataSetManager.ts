@@ -159,11 +159,12 @@ export class DataSetManager {
                          owner: any,
                          executeActionCompletedCallback: Function,
                          executeActionExceptionCallback: Function,
-                         sourceDictIdent: string = null
+                         sourceDictIdent: string = null,
+                         activeDataSet: DataSetWrapper = null
         ) {
         const dictIdent = sourceDictIdent ?? this.dictInfo?.ident;
         const dataSourcesRequest: any[] = [];
-        const dsWrapper: DataSetWrapper = this.getDateSourceWrapper(dataSourceIdent);
+        const dsWrapper: DataSetWrapper = activeDataSet == null ? this.getDateSourceWrapper(dataSourceIdent) : activeDataSet;
         const obj = this.getObjectForDataSourceRequest(dsWrapper, true);
         dataSourcesRequest.push(obj);
 
