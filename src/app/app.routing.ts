@@ -4,7 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './containers/home';
 import { LoginComponent } from './containers/login';
 import { SitRailConfigurationsComponent } from './containers/dictionaries/sit-rail-configurations';
-import { SitRailConfigurationsEditComponent } from './containers/dictionaries/sit-rail-configurations/actions/sit-rail-configurations-edit/sit-rail-configurations-edit.component';
+import { SitRailConfigurationsEditComponent }
+from './containers/dictionaries/sit-rail-configurations/actions/sit-rail-configurations-edit/sit-rail-configurations-edit.component';
 import { MaterialTestComponent } from './containers/sandbox/material-test';
 import { testDict } from './containers/sandbox/testDict';
 import { AuthGuard } from './_helpers';
@@ -22,7 +23,6 @@ import { SitPulpitComponent } from './containers/sit-pulpit';
 
 const routes: Routes = [
     { path: '', component: SitPulpitComponent, canActivate: [AuthGuard], data: {title: 'Pulpit'} },
-    { path: 'sitPulpit', component: SitPulpitComponent, canActivate: [AuthGuard], data: {title: 'Pulpit'} },
     { path: 'login', component: LoginComponent, data: {title: 'Logowanie'} },
     { path: 'material-test', component: MaterialTestComponent, canActivate: [AuthGuard]},
     { path: 'test', component: testDict, canActivate: [AuthGuard] },
