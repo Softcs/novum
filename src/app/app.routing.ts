@@ -21,6 +21,7 @@ import { SitProjectsPubComponent } from './containers/dictionaries/sit-projects-
 import { SitPulpitComponent } from './containers/sit-pulpit';
 import { SitCustomersComponent } from './containers/dictionaries/sit-customers';
 import { SitProductsComponent } from './containers/dictionaries/sit-products';
+import { SitDocumentsComponent } from './containers/dictionaries/sit-documents';
 
 const routes: Routes = [
     { path: '', component: SitPulpitComponent, canActivate: [AuthGuard], data: {title: 'Pulpit'} },
@@ -46,6 +47,7 @@ const routes: Routes = [
     { path: 'sitProjectsPub', component: SitProjectsPubComponent, canActivate: [AuthGuard], data: {title: 'Projekty wydawnicze'} },
     { path: 'sitCustomers', component: SitCustomersComponent, canActivate: [AuthGuard], data: {title: 'Kontrahenci'} },
     { path: 'sitProducts', component: SitProductsComponent, canActivate: [AuthGuard], data: {title: 'Produkty'} },
+    { path: 'sitDocuments', component: SitDocumentsComponent, canActivate: [AuthGuard], data: {title: 'Dokumenty'} },
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }

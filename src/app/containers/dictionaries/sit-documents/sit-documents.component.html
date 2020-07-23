@@ -1,0 +1,201 @@
+<sit-dict-container ident="sitDocuments" #sitDictcontainer fxFlexFill>
+  <sit-data-set-container  ident="sitDocumentsHeaders">
+    <div fxLayout="row" fxFlexFill fxLayoutGap="5px">
+      <div fxFlex="50%" fxLayout="column" fxLayoutGap="5px">
+
+          <div fxLayout="row" fxFill fxLayoutGap="5px">
+            <div fxLayout="column" fxFill class="content">
+              <div class="sit-filter-bar">
+                <sit-data-set-container ident="sitFilterDocumentsHeaders" >
+                  <div style="width: 100%;">
+                    <sit-data-input #sitControl id="searchDocumentsHeaders" field="searchDocumentsHeaders" label="Filtruj dokumenty" placeholder="Numer" style="width: 100%;"></sit-data-input>
+                  </div>
+                </sit-data-set-container>
+              </div>
+              <div class="data-table">
+                <ngx-datatable #sitDocuments #sitSetDataSource
+                class="material striped"
+                style = "height:700px;"
+                [columnMode]="ColumnMode.force"
+                [scrollbarV]=true
+                [selected]="sitDocumentsHeadersSelected"
+                [selectionType]="SelectionType.single"
+                [selectAllRowsOnPage]="false"
+                (activate)="onActivateDocumentsHeaders($event)"
+                [footerHeight]="30"
+                >
+                  <ngx-datatable-column prop="DocumentNumber" name="Numer"></ngx-datatable-column>
+                  <ngx-datatable-column prop="DocumentDate" name="Data">
+                    <ng-template let-value="value" ngx-datatable-cell-template>
+                      {{value | date: 'yyyy-MM-dd'}}
+                    </ng-template>
+                  </ngx-datatable-column>
+                  <ngx-datatable-column prop="SalesDate" name="Data sprz.">
+                    <ng-template let-value="value" ngx-datatable-cell-template>
+                      {{value | date: 'yyyy-MM-dd'}}
+                    </ng-template>
+                  </ngx-datatable-column>
+                  <ngx-datatable-column prop="PaymentDate" name="Data płat.">
+                    <ng-template let-value="value" ngx-datatable-cell-template>
+                      {{value | date: 'yyyy-MM-dd'}}
+                    </ng-template>
+                  </ngx-datatable-column>
+                  <ngx-datatable-column prop="DocumentDescription" name="Opis"></ngx-datatable-column>
+                  <ngx-datatable-column prop="Net" name="Netto">
+                    <ng-template let-value="value" ngx-datatable-cell-template>
+                      <div style="text-align: right;">{{value | number : "1.2-2"}}</div>
+                    </ng-template>
+                  </ngx-datatable-column>
+                  <ngx-datatable-column prop="VAT" name="Vat">
+                    <ng-template let-value="value" ngx-datatable-cell-template>
+                      <div style="text-align: right;">{{value | number : "1.2-2"}}</div>
+                    </ng-template>
+                  </ngx-datatable-column>
+                  <ngx-datatable-column prop="Gross" name="Brutto">
+                    <ng-template let-value="value" ngx-datatable-cell-template>
+                      <div style="text-align: right;">{{value | number : "1.2-2"}}</div>
+                    </ng-template>
+                  </ngx-datatable-column>
+
+                </ngx-datatable>
+              </div>
+            </div>
+          </div>
+
+      </div>
+      <div fxFlex="50%" fxLayout="column">
+        <mat-tab-group id="tab-group"
+        animationDuration="0ms"
+        (selectedTabChange)="tabChanged($event)">
+          <mat-tab label="Pozycje">
+            <div fxLayout="column" fxFlexFill fxLayoutGap="5px" class="content">
+              <div fxFlex="500px">
+              <sit-data-set-container  ident="sitDocumentsPositions">
+                <div fxLayout="column" fxFill>
+                    <div class="data-table">
+                      <ngx-datatable #sitDocumentsPositions #sitSetDataSource
+                      class="material striped"
+                      style = "height: 500px;"
+                      [columnMode]="ColumnMode.force"
+                      [scrollbarV]=true
+                      [selected]="sitDocumentsPositionsSelected"
+                      [selectionType]="SelectionType.single"
+                      [selectAllRowsOnPage]="false"
+                      (activate)="onActivateDocumentsPositions($event)"
+                      [footerHeight]="0"
+                      >
+                        <ngx-datatable-column prop="OrdNumber" name="Lp" [width]="45" [canAutoResize]="false">
+                          <ng-template let-value="value" ngx-datatable-cell-template>
+                            <div style="text-align: right;">{{value | number : "1.0-0"}}</div>
+                          </ng-template>
+                        </ngx-datatable-column>
+                        <ngx-datatable-column prop="ProductIdent" name="Symbol">
+                        </ngx-datatable-column>
+                        <ngx-datatable-column prop="EAN" name="EAN">
+                        </ngx-datatable-column>
+                        <ngx-datatable-column prop="PositionDescription" name="Opis">
+                        </ngx-datatable-column>
+                        <ngx-datatable-column prop="Net" name="Netto">
+                          <ng-template let-value="value" ngx-datatable-cell-template>
+                            <div style="text-align: right;">{{value | number : "1.2-2"}}</div>
+                          </ng-template>
+                        </ngx-datatable-column>
+                        <ngx-datatable-column prop="VAT" name="Vat">
+                          <ng-template let-value="value" ngx-datatable-cell-template>
+                            <div style="text-align: right;">{{value | number : "1.2-2"}}</div>
+                          </ng-template>
+                        </ngx-datatable-column>
+                        <ngx-datatable-column prop="Gross" name="Brutto">
+                          <ng-template let-value="value" ngx-datatable-cell-template>
+                            <div style="text-align: right;">{{value | number : "1.2-2"}}</div>
+                          </ng-template>
+                        </ngx-datatable-column>
+
+                      </ngx-datatable>
+                  </div>
+                </div>
+              </sit-data-set-container>
+              </div>
+              <div fxFlex>
+              <sit-data-set-container  ident="sitDocumentsVATFooters">
+                <div fxLayout="row" fxFill>
+                  <div fxFlex="50"></div>
+                  <div fxFlex="50">
+                    <div class="data-table">
+                      <ngx-datatable #sitDocumentsPositions #sitSetDataSource
+                      class="material striped"
+                      style = "height:200px;"
+                      [columnMode]="ColumnMode.force"
+                      [scrollbarV]=true
+                      [selected]="sitDocumentsVATFootersSelected"
+                      [selectionType]="SelectionType.single"
+                      [selectAllRowsOnPage]="false"
+                      (activate)="onActivateDocumentsVATFooters($event)"
+                      [footerHeight]="0"
+                      >
+                        <ngx-datatable-column prop="VATRatesIdent" name="SV" [width]="45" [canAutoResize]="false"></ngx-datatable-column>
+                        <ngx-datatable-column prop="Net" name="Netto">
+                          <ng-template let-value="value" ngx-datatable-cell-template>
+                            <div style="text-align: right;">{{value | number : "1.2-2"}}</div>
+                          </ng-template>
+                        </ngx-datatable-column>
+                        <ngx-datatable-column prop="VAT" name="Vat">
+                          <ng-template let-value="value" ngx-datatable-cell-template>
+                            <div style="text-align: right;">{{value | number : "1.2-2"}}</div>
+                          </ng-template>
+                        </ngx-datatable-column>
+                        <ngx-datatable-column prop="Gross" name="Brutto">
+                          <ng-template let-value="value" ngx-datatable-cell-template>
+                            <div style="text-align: right;">{{value | number : "1.2-2"}}</div>
+                          </ng-template>
+                        </ngx-datatable-column>
+
+                      </ngx-datatable>
+                    </div>
+                  </div>
+                </div>
+              </sit-data-set-container>
+              </div>
+            </div>
+          </mat-tab>
+          <mat-tab label="Odbiorca">
+              <div fxLayout="column" fxFlexFill class="content">
+                <div fxLayout="row">
+                  <sit-data-input type="text" id="BuyerCountry" #sitControl field="BuyerCountry" label="Kraj" [showRefresh]=false appearance="fill" style="width: 100px" [readonly]=true></sit-data-input>
+                </div>
+                <sit-data-input type="text" id="BuyerDesc01" #sitControl field="BuyerDesc01" label="Identyfikator" [showRefresh]=false appearance="fill" style="width: 100%" [readonly]=true></sit-data-input>
+                <sit-data-input type="text" id="BuyerDesc02" #sitControl field="BuyerDesc02" label="Nazwa pełna" [showRefresh]=false appearance="fill" style="width: 100%" [readonly]=true></sit-data-input>
+                <div fxLayout="row">
+                  <sit-data-input type="text" id="BuyerStreet" #sitControl field="BuyerStreet" label="Ulica" [showRefresh]=false appearance="fill" style="width: 400px" [readonly]=true></sit-data-input>
+                  <sit-data-input type="text" id="BuyerHouseNum" #sitControl field="BuyerHouseNum" label="Numer" [showRefresh]=false appearance="fill" style="width: 100px" [readonly]=true></sit-data-input>
+                </div>
+                <div fxLayout="row">
+                  <sit-data-input type="text" id="BuyerPostCode" #sitControl field="BuyerPostCode" label="Kod pocztowy" [showRefresh]=false appearance="fill" style="width: 150px" [readonly]=true></sit-data-input>
+                  <sit-data-input type="text" id="BuyerCity" #sitControl field="BuyerCity" label="Miasto" [showRefresh]=false appearance="fill" style="width: 350px" [readonly]=true></sit-data-input>
+                </div>
+              </div>
+          </mat-tab>
+          <mat-tab label="Płatnik">
+              <div fxLayout="column" fxFill class="content">
+                <div fxLayout="row">
+                  <sit-data-input type="text" id="PayerCountry" #sitControl field="PayerCountry" label="Kraj" [showRefresh]=false appearance="fill" style="width: 100px" [readonly]=true></sit-data-input>
+                  <sit-data-input type="text" id="PayerVATId" #sitControl field="PayerVATId" label="NIP" [showRefresh]=false appearance="fill" style="width: 300px" [readonly]=true></sit-data-input>
+                </div>
+                <sit-data-input type="text" id="PayerDesc01" #sitControl field="PayerDesc01" label="Identyfikator" [showRefresh]=false appearance="fill" style="width: 100%" [readonly]=true></sit-data-input>
+                <sit-data-input type="text" id="PayerDesc02" #sitControl field="PayerDesc02" label="Nazwa pełna" [showRefresh]=false appearance="fill" style="width: 100%" [readonly]=true></sit-data-input>
+                <div fxLayout="row">
+                  <sit-data-input type="text" id="PayerStreet" #sitControl field="PayerStreet" label="Ulica" [showRefresh]=false appearance="fill" style="width: 400px" [readonly]=true></sit-data-input>
+                  <sit-data-input type="text" id="PayerHouseNum" #sitControl field="PayerHouseNum" label="Numer" [showRefresh]=false appearance="fill" style="width: 100px" [readonly]=true></sit-data-input>
+                </div>
+                <div fxLayout="row">
+                  <sit-data-input type="text" id="PayerPostCode" #sitControl field="PayerPostCode" label="Kod pocztowy" [showRefresh]=false appearance="fill" style="width: 150px" [readonly]=true></sit-data-input>
+                  <sit-data-input type="text" id="PayerCity" #sitControl field="PayerCity" label="Miasto" [showRefresh]=false appearance="fill" style="width: 350px" [readonly]=true></sit-data-input>
+                </div>
+              </div>
+          </mat-tab>
+
+        </mat-tab-group>
+      </div>
+    </div>
+  </sit-data-set-container>
+</sit-dict-container>
