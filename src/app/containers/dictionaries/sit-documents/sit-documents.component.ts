@@ -49,7 +49,8 @@ export class SitDocumentsComponent implements OnInit {
     }
 
   }
-  onActivateDocumentsVatFooters(event) {
+
+  onActivateDocumentsVATFooters(event) {
     if (event.type === 'click') {
       const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsPositions');
       dataSourceResponseWrapper.SetActiveRow(event.row);

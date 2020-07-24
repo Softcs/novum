@@ -38,7 +38,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
-import { SitDataSetContainerComponent } from './components/sit-data-set-container/sit-data-set-container.component';
+import { SitDataSetContainerComponent } from '@app/components/sit-data-set-container/sit-data-set-container.component';
 import { SitNavbarComponent } from './components/sit-navbar/sit-navbar.component';
 import { MaterialTestComponent } from './containers/sandbox/material-test/material-test.component';
 import { testDict } from './containers/sandbox/testDict';
@@ -68,7 +68,7 @@ import { SitRozrachunkiInsertGTComponent } from './containers/dictionaries/sit-r
 import { SitDataInputComponent } from './components/controls/sit-data-input/sit-data-input.component';
 import { SitDataBaseComponent } from './components/controls/sit-data-base/sit-data-base.component';
 import { SitDataTableComponent } from './components/controls/sit-data-table/sit-data-table.component';
-import { sitSetDataSetDirective } from './_directives/sitSetDataSetDirective';
+import { sitSetDataSetDirective } from '@app/_directives/sitSetDataSetDirective';
 import { NgxPdfTestComponent } from './containers/sandbox/ngx-pdf-test/ngx-pdf-test.component';
 import { SitKancelariaComponent } from './containers/dictionaries/sit-kancelaria/sit-kancelaria.component';
 import { SitUserAccountComponent } from './containers/dictionaries/sit-user-account/sit-user-account.component';
@@ -80,18 +80,19 @@ import { SitProjectsPubComponent } from './containers/dictionaries/sit-projects-
 import { ContentContainerDirective } from './_directives/content-container.directive';
 import { SitPulpitComponent } from './containers/sit-pulpit';
 import { SitRailConfigurationsEditComponent }
-    from './containers/dictionaries/sit-rail-configurations/actions/sit-rail-configurations-edit/sit-rail-configurations-edit.component';
+    from '@app/containers/dictionaries/sit-rail-configurations/actions/sit-rail-configurations-edit/sit-rail-configurations-edit.component';
 import { SitDialogDiscardComponent } from './components/sit-dialog-discard/sit-dialog-discard.component';
 import { SitProcParamsComponent } from './components/sit-proc-params/sit-proc-params.component';
 import { SitDialogConfirmDelComponent } from './components/sit-dialog-confirm-del/sit-dialog-confirm-del.component';
-import { SitDataCheckboxComponent } from './components/controls/sit-data-checkbox/sit-data-checkbox.component';
-import { SitDataTextareaComponent } from './components/controls/sit-data-textarea/sit-data-textarea.component';
+import { SitDataCheckboxComponent } from '@app/components/controls/sit-data-checkbox/sit-data-checkbox.component';
+import { SitDataTextareaComponent } from '@app/components/controls/sit-data-textarea/sit-data-textarea.component';
 import { sitDataTextareaComponentDirectiveDirective } from './_directives/sitDataTextareaComponentDirective';
-import { SitDataTextareaComponentDirectiveDirective } from './_directives/sit-data-textarea-component-directive.directive'
-import { SitActionDirective } from './_directives/sitActionDirective';;
-import { SitCustomersComponent } from './containers/dictionaries/sit-customers/sit-customers.component';
-import { SitProductsComponent } from './containers/dictionaries/sit-products/sit-products.component';
-import { SitDocumentsComponent } from './containers/dictionaries/sit-documents/sit-documents.component'
+import { SitDataTextareaComponentDirectiveDirective } from '@app/_directives/sit-data-textarea-component-directive.directive'
+import { SitActionDirective } from '@app/_directives/sitActionDirective';;
+import { SitCustomersComponent } from '@app/containers/dictionaries/sit-customers/sit-customers.component';
+import { SitProductsComponent } from '@app/containers/dictionaries/sit-products/sit-products.component';
+import { SitDocumentsComponent } from '@app/containers/dictionaries/sit-documents/sit-documents.component';
+import { TabContentComponent } from '@app/components/tab-content/tab-content.component'
 @NgModule({
     imports: [
         BrowserModule,
@@ -183,7 +184,8 @@ import { SitDocumentsComponent } from './containers/dictionaries/sit-documents/s
         SitActionDirective,
         SitCustomersComponent,
         SitProductsComponent,
-        SitDocumentsComponent
+        SitDocumentsComponent,
+        TabContentComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
@@ -197,9 +199,10 @@ import { SitDocumentsComponent } from './containers/dictionaries/sit-documents/s
     bootstrap: [AppComponent],
     entryComponents: [
       SitPulpitComponent,
-      SitRailConfigurationsEditComponent,
       SitDialogDiscardComponent,
-      SitDialogConfirmDelComponent
+      SitDialogConfirmDelComponent,
+
+
     ]
 })
 export class AppModule { }

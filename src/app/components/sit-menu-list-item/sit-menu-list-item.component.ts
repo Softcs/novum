@@ -13,6 +13,9 @@ import { SitRailConfigurationsComponent } from '@app/containers/dictionaries/sit
 import { SitRozrachunkiInsertGTComponent } from '@app/containers/dictionaries/sit-rozrachunki-insert-gt';
 import { SitUserAccountComponent } from '@app/containers/dictionaries/sit-user-account';
 import { SitWhiteListVATComponent } from '@app/containers/dictionaries/sit-white-list-vat';
+import { SitCustomersComponent } from '@app/containers/dictionaries/sit-customers/sit-customers.component';
+import { SitProductsComponent } from '@app/containers/dictionaries/sit-products/sit-products.component';
+import { SitDocumentsComponent } from '@app/containers/dictionaries/sit-documents/sit-documents.component';
 @Component({
   selector: 'sit-menu-list-item',
   templateUrl: './sit-menu-list-item.component.html',
@@ -41,7 +44,10 @@ export class SitMenuListItemComponent {
     sitRailConfigurations: SitRailConfigurationsComponent,
     sitRozrachunkiInsertGT: SitRozrachunkiInsertGTComponent,
     sitUserAccount: SitUserAccountComponent,
-    sitWhiteListVat : SitWhiteListVATComponent
+    sitWhiteListVat : SitWhiteListVATComponent,
+    sitCustomersComponent: SitCustomersComponent,
+    sitProductsComponent: SitProductsComponent,
+    sitDocumentsComponent: SitDocumentsComponent
   }
 
   constructor(
