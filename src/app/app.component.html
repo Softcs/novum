@@ -13,22 +13,6 @@
       <sit-side-menu></sit-side-menu>
     </mat-drawer>
     <div fxFlexFill fxLayout="column">
-      <nav mat-tab-nav-bar *ngIf="currentUser" fxLayout="column">
-        <div class="sit-tab" fxLayout="row" *ngFor="let tab of tabs">
-          <div mat-tab-link
-          [routerLink]="tab.tabData['tabIdent'] === undefined ? [tab.link] : [tab.link, tab.tabData['tabIdent']]"
-          routerLinkActive #rla="routerLinkActive"
-          [active]="rla.isActive">
-            <div fxLayout="row" fxLayoutAlign="space-between center" (mouseover)="showClose=true" (mouseout)="showClose=false" style="width:100%;">
-              <div *ngIf="tab.title != 'Pulpit'" fxFlex class="sit-tab-title">{{ tab.title }}</div>
-              <div *ngIf="tab.title == 'Pulpit'" fxFlex fxLayoutAlign="center center"><i class="material-icons">home</i></div>
-            </div>
-          </div>
-          <div *ngIf="tab.title != 'Pulpit'" class="sit-close-tab">
-            <mat-icon class="sit-close-tab-icon" (click)="removeTab(tab.ident)" >close</mat-icon>
-          </div>
-        </div>
-      </nav>
       <div fxFlex fxLayout="column" style="max-height: 100%; overflow: auto;">
         <router-outlet></router-outlet>
       </div>
