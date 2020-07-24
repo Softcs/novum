@@ -88,13 +88,13 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
           this.dataSetResponseWrapper.GenerateRow(null, true, this.actionDefinition?.editFields);
         }
         const tabData = this.getTabSenderObject();
-        this.tabService.addTab(
-          new Tab(
-            this.tabLink, this.componentParamsIdent,
-            this.actionDefinition.caption,
-            tabData
-          )
-        );
+        // this.tabService.addTab(
+        //   new Tab(
+        //     this.tabLink, this.componentParamsIdent,
+        //     this.actionDefinition.caption,
+        //     tabData
+        //   )
+        //);
       }
    }
   }

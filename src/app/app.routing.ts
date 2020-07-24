@@ -24,7 +24,7 @@ import { SitProductsComponent } from './containers/dictionaries/sit-products';
 import { SitDocumentsComponent } from './containers/dictionaries/sit-documents';
 
 const routes: Routes = [
-    { path: '', component: SitPulpitComponent, canActivate: [AuthGuard], data: {title: 'Pulpit'} },
+    { path: '', component: HomeComponent, canActivate: [AuthGuard], data: {title: 'Home'} },
     { path: 'sitPulpit', component: SitPulpitComponent, canActivate: [AuthGuard], data: {title: 'Pulpit'} },
     { path: 'login', component: LoginComponent, data: {title: 'Logowanie'} },
     { path: 'material-test', component: MaterialTestComponent, canActivate: [AuthGuard]},
