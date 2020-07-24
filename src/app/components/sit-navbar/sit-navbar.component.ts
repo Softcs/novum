@@ -98,21 +98,21 @@ export class SitNavbarComponent implements OnInit, AfterViewInit {
   onClicUser() {
     let createNew = true;
 
-    for ( let i = 0; i < this.tabService.tabs.length; i++ ) {
-      if (this.tabService.tabs[i].title === 'Konto użytkownika') {
-        this.tabService.tabs[i].active = true;
-        createNew = false;
-      }
-      else {
-        this.tabService.tabs[i].active = false;
-      }
-    }
+    // for ( let i = 0; i < this.tabService.tabs.length; i++ ) {
+    //   if (this.tabService.tabs[i].title === 'Konto użytkownika') {
+    //     this.tabService.tabs[i].active = true;
+    //     createNew = false;
+    //   }
+    //   else {
+    //     this.tabService.tabs[i].active = false;
+    //   }
+    // }
 
-    if ( createNew ) {
-      this.tabService.addTab(new Tab('sitUserAccount', 'sitUserAccount', 'Konto użytkownika' , { parent: 'AppComponent' }));
+    // if ( createNew ) {
+    //   this.tabService.addTab(new Tab('sitUserAccount', 'sitUserAccount', 'Konto użytkownika' , { parent: 'AppComponent' }));
 
-    }
-    this.navService.closeNav();
+    // }
+    // this.navService.closeNav();
   }
 
   closeNav() {

@@ -28,32 +28,10 @@ export class AppComponent implements OnInit, AfterViewInit {
     }
 
     ngOnInit() {
-      this.activeTabIndex = this.tabs.findIndex(tab => tab.active);
-      this.tabService.tabSub.subscribe(tabs => {
-        this.tabs = tabs;
-        this.activeTabIndex = tabs.findIndex(tab => tab.active);
-        });
+
     }
 
     ngAfterViewInit() {
       this.navService.appDrawer = this.appDrawer;
-      this.router.events.subscribe((res) => {
-        if (res instanceof  NavigationEnd) {
-          const url = res.url.slice(1);
-          const activeTabIndex = this.tabs.findIndex(tab => tab.link === url);
-          if (activeTabIndex === -1 && this.router.url !== '/login') {
-            this.tabService.addTab(new Tab(
-              url,
-              url,
-              this.router.config[this.router.config.findIndex(r => r.path === url)].data.title,
-              { parent: 'AppComponent' }));
-          }
-        }
-      });
     }
-
-  removeTab(ident: string): void {
-    console.log('kliknięcie', ident, this.activeTabIndex)
-    this.tabService.removeTab(this.tabs.findIndex(tab => tab.ident === ident));
-  }
 }
