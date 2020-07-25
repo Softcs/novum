@@ -86,10 +86,11 @@ import { SitProcParamsComponent } from './components/sit-proc-params/sit-proc-pa
 import { SitDialogConfirmDelComponent } from './components/sit-dialog-confirm-del/sit-dialog-confirm-del.component';
 import { SitDataCheckboxComponent } from './components/controls/sit-data-checkbox/sit-data-checkbox.component';
 import { SitDataTextareaComponent } from './components/controls/sit-data-textarea/sit-data-textarea.component';
-import { sitDataTextareaComponentDirectiveDirective } from './_directives/sitDataTextareaComponentDirective'
-;
+import { sitDataTextareaComponentDirectiveDirective } from './_directives/sitDataTextareaComponentDirective';
 import { SitDataTextareaComponentDirectiveDirective } from './_directives/sit-data-textarea-component-directive.directive'
-import { SitActionDirective } from './_directives/sitActionDirective';
+import { SitActionDirective } from './_directives/sitActionDirective';;
+import { SitCustomersComponent } from './containers/dictionaries/sit-customers/sit-customers.component';
+import { SitProductsComponent } from './containers/dictionaries/sit-products/sit-products.component'
 @NgModule({
     imports: [
         BrowserModule,
@@ -179,6 +180,10 @@ import { SitActionDirective } from './_directives/sitActionDirective';
         sitDataTextareaComponentDirectiveDirective,
         SitDataTextareaComponentDirectiveDirective,
         SitActionDirective
+,
+        SitCustomersComponent
+,
+        SitProductsComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
