@@ -1,6 +1,6 @@
 import { DataSetManager } from './dataSetManager';
 
-export class TabData {
+export class ActionExecuteData {
     parent: string;
     tabIdent: string;
     activeRow: any;

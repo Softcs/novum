@@ -1,9 +1,10 @@
 import { Component, OnInit, Input, ViewChildren, QueryList, ViewChild, ContentChildren, Directive, ElementRef,
-          EventEmitter, Output, AfterContentInit } from '@angular/core';
+          EventEmitter, Output, AfterContentInit, AfterViewInit } from '@angular/core';
 import { GatewayService } from '../../_services/gateway.service';
 import { Operation, DictInfoWrapper, DataSetManager } from '@app/_models';
 import { first } from 'rxjs/operators';
 import { SitDataSetContainerComponent } from '../sit-data-set-container';
+import { SitProcExpanderComponent } from '../controls/sit-proc-expander/sit-proc-expander.component';
 @Component({
   selector: 'sit-dict-container',
   templateUrl: './sit-dict-container.component.html',
@@ -12,19 +13,25 @@ import { SitDataSetContainerComponent } from '../sit-data-set-container';
 })
 
 
-export class SitDictContainerComponent implements OnInit, AfterContentInit {
+export class SitDictContainerComponent implements OnInit, AfterViewInit, AfterContentInit {
   @ContentChildren(SitDataSetContainerComponent, { descendants: true })
   dataSetContainers !: QueryList<SitDataSetContainerComponent>;
+  @ViewChild(SitProcExpanderComponent) procExpander: SitProcExpanderComponent;
 
   @Input() ident: string;
   private dictInfo: DictInfoWrapper;
   public DataSetManager: DataSetManager;
 
-  @Output()
-  refreshAfter: EventEmitter<DataSetManager> = new EventEmitter<DataSetManager>();
-  constructor(private gatewayService: GatewayService) {
-    this.DataSetManager = new DataSetManager(gatewayService);
+  @Output() refreshAfter: EventEmitter<DataSetManager> = new EventEmitter<DataSetManager>();
 
+  constructor(private gatewayService: GatewayService) {
+    this.DataSetManager =   new DataSetManager(gatewayService);
+
+
+  }
+
+  ngAfterViewInit(): void {
+    this.DataSetManager.procExpander = this.procExpander;
   }
 
   ngOnInit() {

@@ -5,7 +5,7 @@ import { SitDialogDiscardComponent } from '@app/components/sit-dialog-discard';
 import { SitDataSetContainerComponent } from '../sit-data-set-container';
 import { DataSetManager, DataSetWrapper } from '@app/_models';
 import { GatewayService } from '@app/_services';
-import { TabData } from '@app/_models/tabdata';
+import { ActionExecuteData } from '@app/_models/actionExecuteData';
 
 
 @Component({
@@ -27,7 +27,7 @@ export class SitProcParamsComponent implements OnInit, AfterViewInit {
   public DataSetManager: DataSetManager;
   private dataSetManagerSource: DataSetManager;
   private mainDataSet: DataSetWrapper;
-  private tabData: TabData;
+  private actionExecuteData: ActionExecuteData;
 
   constructor(
     private gatewayService: GatewayService,
@@ -41,17 +41,17 @@ export class SitProcParamsComponent implements OnInit, AfterViewInit {
     this.tabIndex = this.tabService.tabs.findIndex(tab => tab.active);
   }
 
-  getTabData(): TabData {
-    const tabData = this.tabService.tabs[this.tabIndex].tabData;
-    this.dataSetManagerSource = tabData?.dataSetManagerSource;
-    return tabData;
+  getActionExecuteData(): ActionExecuteData {
+    const actionExecuteData = this.tabService.tabs[this.tabIndex].tabData;
+    this.dataSetManagerSource = actionExecuteData?.dataSetManagerSource;
+    return actionExecuteData;
   }
 
   prepareDataSet() {
-    this.tabData = this.getTabData();
+    this.actionExecuteData = this.getActionExecuteData();
     const dataSetContainer = this.DataSetManager.dataSetContainers.first;
     this.mainDataSet = this.DataSetManager.CreateDataSetWrapper(dataSetContainer.ident, this.dataSetManagerSource);
-    this.mainDataSet.GenerateRow(this.tabData.activeRow);
+    this.mainDataSet.GenerateRow(this.actionExecuteData.activeRow);
     dataSetContainer.setDataSource(this.mainDataSet);
     this.activeRow = this.mainDataSet.activeRow;
     this.activeRowChange.emit(this.activeRow);
@@ -91,8 +91,8 @@ export class SitProcParamsComponent implements OnInit, AfterViewInit {
 
   executeAction(): void {
     this.dataSetManagerSource.ExecuteAction(
-      this.tabData.actionIdent,
-      this.tabData.sourceDataSetIdent,
+      this.actionExecuteData.actionIdent,
+      this.actionExecuteData.sourceDataSetIdent,
       this,
       this.executeActionCompletedCallback,
       this.executeActionExceptionCallback,

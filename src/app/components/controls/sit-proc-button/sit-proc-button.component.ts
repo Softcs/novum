@@ -4,9 +4,9 @@ import { SitDialogConfirmDelComponent } from '@app/components/sit-dialog-confirm
 import { SitActionDirective } from '@app/_directives/sitActionDirective';
 import { TabService } from '@app/_services/tab.service';
 import { Tab } from '@app/_models/tab.model';
-import { TabData } from '@app/_models/tabdata';
+import { ActionExecuteData } from '@app/_models/actionExecuteData';
 import { FactoryService } from '@app/_services/factory.service';
-
+import { ProcExpanderService } from '@app/_services/procexpander.service';
 
 @Component({
   selector: 'sit-proc-button',
@@ -32,6 +32,7 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
     private _renderer: Renderer2,
     private tabService: TabService,
     private factoryService: FactoryService,
+    private procExpanderService: ProcExpanderService,
     public dialog: MatDialog,
     ) {
       super(el);
@@ -54,11 +55,11 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
     return this.actionDefinition?.kind === 'update';
   }
 
-  getTabSenderObject(): TabData {
+  getTabSenderObject(): ActionExecuteData {
     const identRowField = this.actionDefinition?.fieldsConfiguration?.identRow;
     const identRowValue = identRowField ? this.dataSetResponseWrapper.getFieldValue(identRowField) : null;
     this.tabLink = this.componentParamsIdent + '_' + identRowValue;
-    const data = new TabData();
+    const data = new ActionExecuteData();
     data.tabIdent = identRowValue;
     data.activeRow = this.dataSetResponseWrapper?.activeRow;
     data.dataSetManagerSource = this.dataSetManagerSource;
@@ -67,39 +68,44 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
     return data;
   }
 
-  onClick($event) {
-    if (this.isDelete()) {
-      const dialogRef = this.dialog.open(SitDialogConfirmDelComponent, {
-        width: '250px', height: '150px'
-      });
+  invokeDeleteAction():boolean {
+    if (!this.isDelete()) {
+      return false;
+    }
 
-      dialogRef.afterClosed().subscribe(result => {
-        if (result) {
-          this.changeExecutingState(true);
-          this.dataSetResponseWrapper.ExecuteAction(this.actionIdent,
-            this,
-            this.executeActionCompletedCallback,
-            this.executeActionExceptionCallback);
-          }
-      });
-    } else {
-      if (!this.componentParamsIdent) {
-        this.executeAction();
-      } else {
-        if( this.isInsert()) {
-          this.dataSetResponseWrapper.GenerateRow(null, true, this.actionDefinition?.editFields);
-        }
-        const tabData = this.getTabSenderObject();
+    const dialogRef = this.dialog.open(SitDialogConfirmDelComponent, {
+      width: '250px', height: '150px'
+    });
 
-        this.tabService.addTab(
-          new Tab(
-             this.factoryService.GetFactory(this.componentParamsIdent),
-            this.actionDefinition.caption,
-            tabData
-          )
-        );
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.changeExecutingState(true);
+        this.dataSetResponseWrapper.ExecuteAction(this.actionIdent,
+          this,
+          this.executeActionCompletedCallback,
+          this.executeActionExceptionCallback);
       }
-   }
+    });
+    return true;
+  }
+
+  onClick($event) {
+    if (this.invokeDeleteAction()) {
+      return;
+    }
+
+    if (!this.componentParamsIdent) { //action doesn't has visual form
+      this.executeAction();
+      return;
+    }
+
+    if (this.isInsert()) {
+      this.dataSetResponseWrapper.GenerateRow(null, true, this.actionDefinition?.editFields);
+    }
+
+    const actionExecuteData = this.getTabSenderObject();
+    this.openActionOnTab(actionExecuteData);
+    this.openActionOnExpander(actionExecuteData);
   }
 
   private executeAction(): void {
@@ -129,6 +135,22 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
   private executeActionExceptionCallback(self) {
     self.changeExecutingState(false);
     self.afterCompleted.emit('Error');
+  }
+
+  private openActionOnExpander(actionExecuteData: ActionExecuteData) {
+    console.log("this.dataSetManagerSource.procExpander.items", this.dataSetManagerSource.procExpander.items);
+    this.procExpanderService.openAction(this.dataSetManagerSource.procExpander.items, this.actionDefinition, actionExecuteData);
+
+  }
+
+  private openActionOnTab(actionExecuteData: ActionExecuteData) {
+    this.tabService.addTab(
+      new Tab(
+        this.factoryService.GetFactory(this.componentParamsIdent),
+        this.actionDefinition.caption,
+        actionExecuteData
+      )
+    );
   }
 
 }

@@ -4,18 +4,20 @@ import { QueryList, Output, EventEmitter } from '@angular/core';
 import { GatewayService } from '@app/_services';
 import { first } from 'rxjs/operators';
 import { DataSetDefinitionWrapper } from './dataSetDefinitionWrapper';
+import { SitProcExpanderComponent } from '@app/components/controls/sit-proc-expander/sit-proc-expander.component';
 
 export class DataSetManager {
     private _dictInfo: DictInfoWrapper;
     private _dataSetContainers: QueryList<SitDataSetContainerComponent>;
     private _dataSetResponses: any[];
+
     public dataSetsWrapper: DataSetWrapper[];
     public dataSetDefinitionWrappers: DataSetDefinitionWrapper[];
-
+    public procExpander: SitProcExpanderComponent;
     @Output()
     refreshAfter: EventEmitter<DataSetManager> = new EventEmitter<DataSetManager>();
 
-    constructor(public gatewayService: GatewayService) {
+    constructor(private gatewayService: GatewayService) {
         this.dataSetsWrapper = [];
     }
     private prapareDataSource4Request(dataSourceDefinition: any, dataSourcesRequest: any[]) {

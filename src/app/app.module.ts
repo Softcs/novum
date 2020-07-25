@@ -92,7 +92,8 @@ import { SitActionDirective } from '@app/_directives/sitActionDirective';;
 import { SitCustomersComponent } from '@app/containers/dictionaries/sit-customers/sit-customers.component';
 import { SitProductsComponent } from '@app/containers/dictionaries/sit-products/sit-products.component';
 import { SitDocumentsComponent } from '@app/containers/dictionaries/sit-documents/sit-documents.component';
-import { TabContentComponent } from '@app/components/tab-content/tab-content.component'
+import { TabContentComponent } from '@app/components/tab-content/tab-content.component';
+import { SitProcExpanderComponent } from './components/controls/sit-proc-expander/sit-proc-expander.component'
 @NgModule({
     imports: [
         BrowserModule,
@@ -185,7 +186,8 @@ import { TabContentComponent } from '@app/components/tab-content/tab-content.com
         SitCustomersComponent,
         SitProductsComponent,
         SitDocumentsComponent,
-        TabContentComponent
+        TabContentComponent,
+        SitProcExpanderComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
