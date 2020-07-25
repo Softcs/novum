@@ -5,17 +5,7 @@ import { NavService } from '../../_services/nav.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { TabService } from '@app/_services/tab.service';
 import { Tab } from '@app/_models/tab.model';
-import { SitJPKVatComponent } from '@app/containers/dictionaries/sit-jpk-vat';
-import { SitKancelariaComponent } from '@app/containers/dictionaries/sit-kancelaria/';
-import { SitMenuComponent } from '@app/containers/dictionaries/sit-menu';
-import { SitProjectsPubComponent } from '@app/containers/dictionaries/sit-projects-pub';
-import { SitRailConfigurationsComponent } from '@app/containers/dictionaries/sit-rail-configurations';
-import { SitRozrachunkiInsertGTComponent } from '@app/containers/dictionaries/sit-rozrachunki-insert-gt';
-import { SitUserAccountComponent } from '@app/containers/dictionaries/sit-user-account';
-import { SitWhiteListVATComponent } from '@app/containers/dictionaries/sit-white-list-vat';
-import { SitCustomersComponent } from '@app/containers/dictionaries/sit-customers/sit-customers.component';
-import { SitProductsComponent } from '@app/containers/dictionaries/sit-products/sit-products.component';
-import { SitDocumentsComponent } from '@app/containers/dictionaries/sit-documents/sit-documents.component';
+import { FactoryService } from '@app/_services/factory.service';
 @Component({
   selector: 'sit-menu-list-item',
   templateUrl: './sit-menu-list-item.component.html',
@@ -36,25 +26,12 @@ export class SitMenuListItemComponent {
   @Input() item: NavItem;
   @Input() depth: number;
 
-  classes = {
-    sitJPKVat: SitJPKVatComponent,
-    sitKancelaria: SitKancelariaComponent,
-    sitMenu: SitMenuComponent,
-    sitProjectsPub: SitProjectsPubComponent,
-    sitRailConfigurations: SitRailConfigurationsComponent,
-    sitRozrachunkiInsertGT: SitRozrachunkiInsertGTComponent,
-    sitUserAccount: SitUserAccountComponent,
-    sitWhiteListVat : SitWhiteListVATComponent,
-    sitCustomers: SitCustomersComponent,
-    sitProducts: SitProductsComponent,
-    sitDocuments: SitDocumentsComponent
-  }
-
   constructor(
     public navService: NavService,
     public router: Router,
-    private tabService: TabService
-              ) {
+    private tabService: TabService,
+    private factoryService: FactoryService
+  ) {
     if (this.depth === undefined) {
       this.depth = 0;
     }
@@ -75,7 +52,7 @@ export class SitMenuListItemComponent {
       }
 
       if ( createNew ) {
-        this.tabService.addTab(new Tab(this.classes[item.link], item.caption , { parent: 'AppComponent' }));
+        this.tabService.addTab(new Tab(this.factoryService.GetFactory(item.link), item.caption , { parent: 'AppComponent' }));
       }
       this.navService.closeNav();
     }
