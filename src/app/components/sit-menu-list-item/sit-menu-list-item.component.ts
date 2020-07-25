@@ -45,9 +45,9 @@ export class SitMenuListItemComponent {
     sitRozrachunkiInsertGT: SitRozrachunkiInsertGTComponent,
     sitUserAccount: SitUserAccountComponent,
     sitWhiteListVat : SitWhiteListVATComponent,
-    sitCustomersComponent: SitCustomersComponent,
-    sitProductsComponent: SitProductsComponent,
-    sitDocumentsComponent: SitDocumentsComponent
+    sitCustomers: SitCustomersComponent,
+    sitProducts: SitProductsComponent,
+    sitDocuments: SitDocumentsComponent
   }
 
   constructor(
