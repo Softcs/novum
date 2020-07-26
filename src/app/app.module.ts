@@ -92,8 +92,10 @@ import { SitActionDirective } from '@app/_directives/sitActionDirective';;
 import { SitCustomersComponent } from '@app/containers/dictionaries/sit-customers/sit-customers.component';
 import { SitProductsComponent } from '@app/containers/dictionaries/sit-products/sit-products.component';
 import { SitDocumentsComponent } from '@app/containers/dictionaries/sit-documents/sit-documents.component';
-import { TabContentComponent } from '@app/components/tab-content/tab-content.component';
-import { SitProcExpanderComponent } from './components/controls/sit-proc-expander/sit-proc-expander.component'
+import { TabContentComponent } from '@app/components/tab-content/tab-content.component';
+import { SitProcExpanderComponent } from './components/controls/sit-proc-expander/sit-proc-expander.component';;
+import { SitProcExpanderItemBodyComponent } from './components/controls/sit-proc-expander/sit-proc-expander-item-body/sit-proc-expander-item-body.component'
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -186,8 +188,9 @@ import { SitProcExpanderComponent } from './components/controls/sit-proc-expande
         SitCustomersComponent,
         SitProductsComponent,
         SitDocumentsComponent,
-        TabContentComponent,
-        SitProcExpanderComponent
+        TabContentComponent,
+        SitProcExpanderComponent,
+        SitProcExpanderItemBodyComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
@@ -202,9 +205,7 @@ import { SitProcExpanderComponent } from './components/controls/sit-proc-expande
     entryComponents: [
       SitPulpitComponent,
       SitDialogDiscardComponent,
-      SitDialogConfirmDelComponent,
-
-
+      SitDialogConfirmDelComponent
     ]
 })
 export class AppModule { }

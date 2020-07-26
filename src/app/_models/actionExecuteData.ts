@@ -7,4 +7,5 @@ export class ActionExecuteData {
     actionIdent: string;
     sourceDataSetIdent: string;
     dataSetManagerSource: DataSetManager;
+    componentParamsIdent: string;
 }

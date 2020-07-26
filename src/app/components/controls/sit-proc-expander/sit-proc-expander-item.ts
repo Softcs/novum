@@ -5,7 +5,7 @@ export class sitProcExpanderItem {
     public caption: string;
     public actionDefinitionWrapper: ActionDefinitionWrapper;
     public isOpen: boolean;
-
+    public componentFactoryIdent: string;
     constructor() {
 
     }

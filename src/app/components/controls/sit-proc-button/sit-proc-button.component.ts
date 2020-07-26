@@ -65,6 +65,7 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
     data.dataSetManagerSource = this.dataSetManagerSource;
     data.sourceDataSetIdent = this.dataSetResponseWrapper?.ident;
     data.actionIdent = this.actionIdent;
+    data.componentParamsIdent = this.componentParamsIdent;
     return data;
   }
 
@@ -104,7 +105,7 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
     }
 
     const actionExecuteData = this.getTabSenderObject();
-    this.openActionOnTab(actionExecuteData);
+    // this.openActionOnTab(actionExecuteData);
     this.openActionOnExpander(actionExecuteData);
   }
 
@@ -138,15 +139,14 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
   }
 
   private openActionOnExpander(actionExecuteData: ActionExecuteData) {
-    console.log("this.dataSetManagerSource.procExpander.items", this.dataSetManagerSource.procExpander.items);
-    this.procExpanderService.openAction(this.dataSetManagerSource.procExpander.items, this.actionDefinition, actionExecuteData);
+    this.procExpanderService.openAction(this.dataSetManagerSource.procExpander, this.actionDefinition, actionExecuteData);
 
   }
 
   private openActionOnTab(actionExecuteData: ActionExecuteData) {
     this.tabService.addTab(
       new Tab(
-        this.factoryService.GetFactory(this.componentParamsIdent),
+        this.factoryService.GetFactory(actionExecuteData.componentParamsIdent),
         this.actionDefinition.caption,
         actionExecuteData
       )
