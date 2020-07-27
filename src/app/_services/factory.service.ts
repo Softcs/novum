@@ -1,4 +1,5 @@
-﻿import { Injectable, Type } from '@angular/core';
+﻿import { SitJpkVatGetDataComponent } from './../containers/dictionaries/sit-jpk-vat/actions/sit-jpk-vat-get-data/sit-jpk-vat-get-data.component';
+import { Injectable, Type } from '@angular/core';
 import { SitJPKVatComponent } from '@app/containers/dictionaries/sit-jpk-vat';
 import { SitKancelariaComponent } from '@app/containers/dictionaries/sit-kancelaria';
 import { SitMenuComponent } from '@app/containers/dictionaries/sit-menu';
@@ -29,7 +30,8 @@ export class FactoryService {
         sitCustomers: SitCustomersComponent,
         sitProducts: SitProductsComponent,
         sitDocuments: SitDocumentsComponent,
-        sitRailConfigurationsEdit: SitRailConfigurationsEditComponent
+        sitRailConfigurationsEdit: SitRailConfigurationsEditComponent,
+        sitJpkVatGetData: SitJpkVatGetDataComponent
     };
 
     public GetFactory(ident: string) {
