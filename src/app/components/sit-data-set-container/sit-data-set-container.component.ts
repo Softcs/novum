@@ -1,13 +1,11 @@
 import { Component, OnInit, Input, Directive, ContentChildren,
   QueryList, Output, EventEmitter } from '@angular/core';
-
 import { GatewayService } from '@app/_services/gateway.service';
 import { DataSetWrapper, DataSetManager } from '@app/_models';
 import { SitDataBaseComponent } from '../controls/sit-data-base/sit-data-base.component';
 import { sitSetDataSetDirective } from '@app/_directives/sitSetDataSetDirective';
-import { connect } from 'http2';
-import { SitActionDirective } from '@app/_directives/sitActionDirective';
 import { DataSetDefinitionWrapper } from '@app/_models/dataSetDefinitionWrapper';
+import { SitActionDirective } from '@app/_directives';
 
 @Component({
   selector: 'sit-data-set-container',

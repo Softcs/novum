@@ -88,13 +88,14 @@ import { SitDataCheckboxComponent } from '@app/components/controls/sit-data-chec
 import { SitDataTextareaComponent } from '@app/components/controls/sit-data-textarea/sit-data-textarea.component';
 import { sitDataTextareaComponentDirectiveDirective } from './_directives/sitDataTextareaComponentDirective';
 import { SitDataTextareaComponentDirectiveDirective } from '@app/_directives/sit-data-textarea-component-directive.directive'
-import { SitActionDirective } from '@app/_directives/sitActionDirective';;
+import { SitActionDirective } from '@app/_directives/sitActionDirective';
 import { SitCustomersComponent } from '@app/containers/dictionaries/sit-customers/sit-customers.component';
 import { SitProductsComponent } from '@app/containers/dictionaries/sit-products/sit-products.component';
 import { SitDocumentsComponent } from '@app/containers/dictionaries/sit-documents/sit-documents.component';
 import { TabContentComponent } from '@app/components/tab-content/tab-content.component';
 import { SitProcExpanderComponent } from './components/controls/sit-proc-expander/sit-proc-expander.component';;
-import { SitProcExpanderItemBodyComponent } from './components/controls/sit-proc-expander/sit-proc-expander-item-body/sit-proc-expander-item-body.component';
+import { SitProcExpanderItemBodyComponent } from './components/controls/sit-proc-expander/sit-proc-expander-item-body/sit-proc-expander-item-body.component'
+;
 import { SitJpkVatGetDataComponent } from './containers/dictionaries/sit-jpk-vat/actions/sit-jpk-vat-get-data/sit-jpk-vat-get-data.component'
 
 @NgModule({
@@ -190,10 +191,123 @@ import { SitJpkVatGetDataComponent } from './containers/dictionaries/sit-jpk-vat
         SitProductsComponent,
         SitDocumentsComponent,
         TabContentComponent,
-        SitProcExpanderComponent,
-        SitProcExpanderItemBodyComponent
-,
+        SitProcExpanderComponent,
+        SitProcExpanderItemBodyComponent,
         SitJpkVatGetDataComponent    ],
+    providers: [
+        { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
+        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+
+        // provider used to create fake backend
+        fakeBackendProvider,
+        NavService,
+        Title
+    ],
+    bootstrap: [AppComponent],
+    entryComponents: [
+      SitPulpitComponent,
+      SitDialogDiscardComponent,
+      SitDialogConfirmDelComponent
+    ]
+})
+
+@NgModule({
+    imports: [
+        BrowserModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        appRoutingModule,
+
+        MatSliderModule,
+        MatButtonModule,
+        MatIconModule,
+        BrowserAnimationsModule,
+        MatToolbarModule,
+        MatMenuModule,
+        MatSidenavModule,
+        MatTableModule,
+        MatSortModule,
+        MatInputModule,
+        MatPaginatorModule,
+        MatCheckboxModule,
+        MatListModule,
+        MatCardModule,
+        MatGridListModule,
+        MatTabsModule,
+        MatTooltipModule,
+        MatDialogModule,
+        MatProgressSpinnerModule,
+
+        FormsModule,
+        LayoutModule,
+
+        // PrimeNG
+        TableModule,
+        TabViewModule,
+        DropdownModule,
+        MultiSelectModule,
+        SliderModule,
+        // AccordionModule,
+        // PanelModule,
+        // ButtonModule,
+        // RadioButtonModule
+
+        // NGX
+        NgxDatatableModule,
+        NgxExtendedPdfViewerModule,
+
+        FlexLayoutModule
+    ],
+    declarations: [
+        AppComponent,
+        HomeComponent,
+        SitPulpitComponent,
+        LoginComponent,
+        SitRailConfigurationsComponent,
+        SitDictContainerComponent,
+        SitDataSetContainerComponent,
+        testDict,
+        SitNavbarComponent,
+        MaterialTestComponent,
+        sitSetDataSetDirective,
+        sitDataInputComponentDirective,
+        sitDataCheckboxComponentDirective,
+        sitDSControlDirective,
+        SitSideMenuComponent,
+        SitRozrachunkiInsertGTComponent,
+        PrimeNgTestComponent,
+        NgxDatatableTestComponent,
+        SitMenuComponent,
+        SitMenuListItemComponent,
+        SitDataInputComponent,
+        SitDataBaseComponent,
+        SitDataTableComponent,
+        NgxPdfTestComponent,
+        SitKancelariaComponent,
+        SitUserAccountComponent,
+        SitProcButtonComponent,
+        SitWhiteListVATComponent ,
+        SitJPKVatComponent,
+        SitChangeCompanyComponent,
+        SitProjectsPubComponent,
+        ContentContainerDirective,
+        SitRailConfigurationsEditComponent,
+        SitDialogDiscardComponent,
+        SitProcParamsComponent,
+        SitDialogConfirmDelComponent,
+        SitDataCheckboxComponent,
+        SitDataTextareaComponent,
+        sitDataTextareaComponentDirectiveDirective,
+        SitDataTextareaComponentDirectiveDirective,
+        SitActionDirective,
+        SitCustomersComponent,
+        SitProductsComponent,
+        SitDocumentsComponent,
+        TabContentComponent,
+        SitProcExpanderComponent
+,
+        SitProcExpanderItemBodyComponent
+    ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

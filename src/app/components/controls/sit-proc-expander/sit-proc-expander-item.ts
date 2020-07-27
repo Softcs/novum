@@ -1,4 +1,5 @@
 import { ActionDefinitionWrapper } from '@app/_models/actionDefinitionWrapper';
+import { ActionExecuteData } from '@app/_models/actionExecuteData';
 
 export class sitProcExpanderItem {
     public ident: string;
@@ -6,6 +7,7 @@ export class sitProcExpanderItem {
     public actionDefinitionWrapper: ActionDefinitionWrapper;
     public isOpen: boolean;
     public componentFactoryIdent: string;
+    public actionExecuteData: ActionExecuteData;
     constructor() {
 
     }

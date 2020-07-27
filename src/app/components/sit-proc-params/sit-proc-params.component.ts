@@ -19,7 +19,7 @@ export class SitProcParamsComponent implements OnInit, AfterViewInit {
   dataSetContainers !: QueryList<SitDataSetContainerComponent>;
 
   @Input() dictIdent: string;
-  @Input() senderObject = null;
+  @Input() actionExecuteData: ActionExecuteData  = null;
   @Input() activeRow = null;
   @Output() activeRowChange = new EventEmitter<any[]>();
 
@@ -27,7 +27,6 @@ export class SitProcParamsComponent implements OnInit, AfterViewInit {
   public DataSetManager: DataSetManager;
   private dataSetManagerSource: DataSetManager;
   private mainDataSet: DataSetWrapper;
-  private actionExecuteData: ActionExecuteData;
 
   constructor(
     private gatewayService: GatewayService,
@@ -42,19 +41,23 @@ export class SitProcParamsComponent implements OnInit, AfterViewInit {
   }
 
   getActionExecuteData(): ActionExecuteData {
+    if (this.actionExecuteData) {
+      return this.actionExecuteData;
+    }
     const actionExecuteData = this.tabService.tabs[this.tabIndex].tabData;
-    this.dataSetManagerSource = actionExecuteData?.dataSetManagerSource;
     return actionExecuteData;
   }
 
   prepareDataSet() {
     this.actionExecuteData = this.getActionExecuteData();
+    this.dataSetManagerSource = this.actionExecuteData.dataSetManagerSource;
     const dataSetContainer = this.DataSetManager.dataSetContainers.first;
     this.mainDataSet = this.DataSetManager.CreateDataSetWrapper(dataSetContainer.ident, this.dataSetManagerSource);
     this.mainDataSet.GenerateRow(this.actionExecuteData.activeRow);
     dataSetContainer.setDataSource(this.mainDataSet);
     this.activeRow = this.mainDataSet.activeRow;
     this.activeRowChange.emit(this.activeRow);
+    console.log("prepareDataSet",this)
   }
 
   ngAfterViewInit() {
