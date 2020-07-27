@@ -6,13 +6,16 @@
         .item {
             .header{
                 font-size: 0.7rem;
-                color: red;
                 text-transform: uppercase;
                 letter-spacing: 3px;
-                // margin-left: -20px;
-                // transform: rotate(270deg);
                 padding: 10px;
                 background: #073763;
+                max-width: 150px;
+                text-align: center;
+                color: white;
+                transform: rotate(270deg);
+                margin-top: 70px;
+                margin-left: -50px;
             }
         }
     }
