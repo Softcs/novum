@@ -29,7 +29,7 @@ export class SitProcExpanderItemBodyComponent implements OnInit, AfterViewInit {
     const componentType = this.factoryService.GetFactory(this.componentFactoryIdent);
     const factory = this.componentFactoryResolver.resolveComponentFactory(componentType);
     const ref = this.viewContainerRef.createComponent(factory);
-    (ref as unknown as SitActionParamsForm).actionExecuteData = this.actionExecuteData;
+    (ref.instance as SitActionParamsForm).actionExecuteData = this.actionExecuteData;
     ref.changeDetectorRef.detectChanges();
   }
 

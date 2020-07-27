@@ -45,18 +45,19 @@ export class SitProcParamsComponent implements OnInit, AfterViewInit {
       return this.actionExecuteData;
     }
     const actionExecuteData = this.tabService.tabs[this.tabIndex].tabData;
-    this.dataSetManagerSource = actionExecuteData?.dataSetManagerSource;
     return actionExecuteData;
   }
 
   prepareDataSet() {
     this.actionExecuteData = this.getActionExecuteData();
+    this.dataSetManagerSource = this.actionExecuteData.dataSetManagerSource;
     const dataSetContainer = this.DataSetManager.dataSetContainers.first;
     this.mainDataSet = this.DataSetManager.CreateDataSetWrapper(dataSetContainer.ident, this.dataSetManagerSource);
     this.mainDataSet.GenerateRow(this.actionExecuteData.activeRow);
     dataSetContainer.setDataSource(this.mainDataSet);
     this.activeRow = this.mainDataSet.activeRow;
     this.activeRowChange.emit(this.activeRow);
+    console.log("prepareDataSet",this)
   }
 
   ngAfterViewInit() {

@@ -4,8 +4,8 @@ import { GatewayService } from '@app/_services/gateway.service';
 import { DataSetWrapper, DataSetManager } from '@app/_models';
 import { SitDataBaseComponent } from '../controls/sit-data-base/sit-data-base.component';
 import { sitSetDataSetDirective } from '@app/_directives/sitSetDataSetDirective';
-import { SitActionDirective } from '@app/_directives/SitActionDirective';
 import { DataSetDefinitionWrapper } from '@app/_models/dataSetDefinitionWrapper';
+import { SitActionDirective } from '@app/_directives';
 
 @Component({
   selector: 'sit-data-set-container',
