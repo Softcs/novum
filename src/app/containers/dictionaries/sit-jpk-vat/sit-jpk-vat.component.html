@@ -1,4 +1,14 @@
 <sit-dict-container ident="sitJPKVAT" #sitDictcontainer id="wrapper">
+  <div class="sit-proc-bar">
+    <mat-toolbar color="accent">
+      <mat-toolbar-row>
+        <div class="sit-proc-buttons-row">
+          <sit-proc-button #sitAction actionIdent="sitProcGetJPKData" componentParamsIdent="sitJpkVatGetData" tooltip="Pobierz dane" color="primary" icon="cloud_download" >
+          </sit-proc-button>
+      </div>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </div>
   <mat-tab-group id="tab-group"
     animationDuration="0ms"
     (selectedTabChange)="tabChanged($event)">
@@ -311,32 +321,6 @@
             </div>
         </div>
       </div>
-    </mat-tab>
-    <mat-tab label="Pobierz dane">
-        <div class="container-cols">
-          <div fxFill fxLayoutAlign="center center" fxLayout="column">
-            <div class="content" fxFill style="padding: 20px;">
-              <sit-data-set-container ident="sitProcGetJPKData">
-                <div>
-                  <mat-form-field appearance="legacy" style="width: 200px;">
-                    <mat-label>Data od</mat-label>
-                  <input matInput (change)="onChange($event)" id="DateFrom" type="date">
-                  </mat-form-field>
-                  <br>
-                  <mat-form-field appearance="legacy" style="width: 200px;">
-                    <mat-label>Data do</mat-label>
-                    <input matInput (change)="onChange($event)" id="DateTo" type="date">
-                  </mat-form-field>
-                </div>
-              <div>
-                <sit-proc-button #sitControl actionIdent="sitProcGetJPKData" color="primary" caption="Pobierz"></sit-proc-button>
-              </div>
-              </sit-data-set-container>
-              <div style="flex: 0 1 auto;">
-              </div>
-            </div>
-          </div>
-        </div>
     </mat-tab>
   </mat-tab-group>
 </sit-dict-container>
