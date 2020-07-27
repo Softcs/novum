@@ -2,11 +2,7 @@
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
 import { ColumnMode, SelectionType } from '../../../../ngx/public-api';
 import { DataSetWrapper } from '@app/_models';
-import { DatatableComponent } from '@swimlane/ngx-datatable';
 import { TabService } from '@app/_services/tab.service';
-import { Tab } from '@app/_models/tab.model';
-import { Guid } from "guid-typescript";
-import { SitRailConfigurationsEditComponent } from './../sit-rail-configurations/actions/sit-rail-configurations-edit';
 
 @Component({
     selector: 'sit-rail-configurations',

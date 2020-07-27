@@ -1,5 +1,7 @@
 import { Component, ComponentFactoryResolver, ViewContainerRef, Input, ViewChild, AfterViewInit, OnInit } from '@angular/core';
 import { FactoryService } from '@app/_services/factory.service';
+import { ActionExecuteData } from '@app/_models/actionExecuteData';
+import { SitActionParamsForm } from '@app/_interfaces/sitActionParamsForm';
 
 @Component({
   selector: 'sit-proc-expander-item-body',
@@ -8,6 +10,7 @@ import { FactoryService } from '@app/_services/factory.service';
 })
 export class SitProcExpanderItemBodyComponent implements OnInit, AfterViewInit {
   @Input() componentFactoryIdent: string;
+  @Input() actionExecuteData: ActionExecuteData;
   @ViewChild('container', { read: ViewContainerRef }) viewContainerRef: ViewContainerRef;
 
   constructor(
@@ -24,11 +27,9 @@ export class SitProcExpanderItemBodyComponent implements OnInit, AfterViewInit {
 
   private loadComponent() {
     const componentType = this.factoryService.GetFactory(this.componentFactoryIdent);
-    console.log("componentType", componentType);
     const factory = this.componentFactoryResolver.resolveComponentFactory(componentType);
-    console.log("factory", factory);
     const ref = this.viewContainerRef.createComponent(factory);
-    console.log("ref", ref);
+    (ref as unknown as SitActionParamsForm).actionExecuteData = this.actionExecuteData;
     ref.changeDetectorRef.detectChanges();
   }
 

@@ -11,8 +11,7 @@ export class ProcExpanderService {
     public openAction(
         procExpander: SitProcExpanderComponent,
         actionDefinition: ActionDefinitionWrapper,
-        actionExecuteData: ActionExecuteData)
-    {
-        procExpander.AddPanel(actionDefinition, actionExecuteData)        ;
+        actionExecuteData: ActionExecuteData)  {
+        procExpander.AddPanel(actionDefinition, actionExecuteData);
     }
 }

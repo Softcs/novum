@@ -2,7 +2,7 @@
     <div class="item" *ngFor="let item of items">
         <div class="header">{{item.caption}}</div>
         <div class="body">
-            <sit-proc-expander-item-body [componentFactoryIdent]="item.componentFactoryIdent"></sit-proc-expander-item-body>
+            <sit-proc-expander-item-body [componentFactoryIdent]="item.componentFactoryIdent" [actionExecuteData]="item.actionExecuteData"></sit-proc-expander-item-body>
         </div>
     </div>
 </div>

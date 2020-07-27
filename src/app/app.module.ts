@@ -88,7 +88,7 @@ import { SitDataCheckboxComponent } from '@app/components/controls/sit-data-chec
 import { SitDataTextareaComponent } from '@app/components/controls/sit-data-textarea/sit-data-textarea.component';
 import { sitDataTextareaComponentDirectiveDirective } from './_directives/sitDataTextareaComponentDirective';
 import { SitDataTextareaComponentDirectiveDirective } from '@app/_directives/sit-data-textarea-component-directive.directive'
-import { SitActionDirective } from '@app/_directives/sitActionDirective';;
+import { SitActionDirective } from '@app/_directives/sitActionDirective';
 import { SitCustomersComponent } from '@app/containers/dictionaries/sit-customers/sit-customers.component';
 import { SitProductsComponent } from '@app/containers/dictionaries/sit-products/sit-products.component';
 import { SitDocumentsComponent } from '@app/containers/dictionaries/sit-documents/sit-documents.component';
@@ -189,7 +189,8 @@ import { SitProcExpanderItemBodyComponent } from './components/controls/sit-proc
         SitProductsComponent,
         SitDocumentsComponent,
         TabContentComponent,
-        SitProcExpanderComponent,
+        SitProcExpanderComponent
+,
         SitProcExpanderItemBodyComponent
     ],
     providers: [
