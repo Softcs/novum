@@ -6,15 +6,9 @@
   <div class="content" fxFill style="padding: 20px;">
     <sit-data-set-container ident="sitProcGetJPKData">
       <div>
-        <mat-form-field appearance="legacy" style="width: 200px;">
-          <mat-label>Data od</mat-label>
-        <input matInput (change)="onChange($event)" id="DateFrom" type="date">
-        </mat-form-field>
-        <br>
-        <mat-form-field appearance="legacy" style="width: 200px;">
-          <mat-label>Data do</mat-label>
-          <input matInput (change)="onChange($event)" id="DateTo" type="date">
-        </mat-form-field>
+        Podaj parametry
+        <sit-data-input type="date" id="DateFrom" #sitControl field="DateFrom" label="Data od" [showRefresh]=false appearance="fill" style="width: 100%;"></sit-data-input>
+        <sit-data-input type="date" id="DateTo" #sitControl field="DateTo" label="Data do" [showRefresh]=false appearance="fill" style="width: 100%;"></sit-data-input>
       </div>
     </sit-data-set-container>
   </div>

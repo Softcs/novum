@@ -207,7 +207,8 @@ import { SitJpkVatGetDataComponent } from './containers/dictionaries/sit-jpk-vat
     entryComponents: [
       SitPulpitComponent,
       SitDialogDiscardComponent,
-      SitDialogConfirmDelComponent
+      SitDialogConfirmDelComponent,
+      SitJpkVatGetDataComponent
     ]
 })
 export class AppModule { }

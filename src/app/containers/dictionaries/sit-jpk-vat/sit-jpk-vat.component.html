@@ -3,9 +3,11 @@
     <mat-toolbar color="accent">
       <mat-toolbar-row>
         <div class="sit-proc-buttons-row">
-          <sit-proc-button #sitAction actionIdent="sitProcGetJPKData" componentParamsIdent="sitJpkVatGetData" tooltip="Pobierz dane" color="primary" icon="cloud_download" >
-          </sit-proc-button>
-      </div>
+          <sit-data-set-container ident="sitProcGetJPKData">
+            <sit-proc-button #sitAction actionIdent="sitProcGetJPKData" componentParamsIdent="sitJpkVatGetData" tooltip="Pobierz dane" color="primary" icon="cloud_download" >
+            </sit-proc-button>
+          </sit-data-set-container>
+        </div>
       </mat-toolbar-row>
     </mat-toolbar>
   </div>
@@ -98,7 +100,7 @@
                     <ngx-datatable #sitJPKVATZakup #sitSetDataSource
                       class="material striped"
                       [columnMode]="ColumnMode.force"
-                      style="height: 520px;"
+                      style="height: 480px;"
                       [scrollbarV] = "true"
                       [footerHeight]="50"
                       [selected]="sitJPKVATZakupSelected"
@@ -251,7 +253,7 @@
                     <ngx-datatable #sitJPKVATZakup #sitSetDataSource
                       class="material striped"
                       [columnMode]="ColumnMode.force"
-                      style="height: 430px;"
+                      style="height: 400px;"
                       [scrollbarV] = "true"
                       [footerHeight]="50"
                       [selected]="sitJPKVATSprzedazSelected"
