@@ -8,4 +8,5 @@ export class ActionExecuteData {
     sourceDataSetIdent: string;
     dataSetManagerSource: DataSetManager;
     componentParamsIdent: string;
+    openKind: string;
 }

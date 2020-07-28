@@ -24,13 +24,37 @@ export class SitProcExpanderComponent implements OnInit {
     this.items = new Array<sitProcExpanderItem>();
   }
 
+  private activatePanel(item: sitProcExpanderItem) {
+    this.items.forEach(it => it.isOpen = false);
+    item.isOpen = true;
+  }
+
   public AddPanel(actionDefinition: ActionDefinitionWrapper, actionExecuteData: ActionExecuteData) {
+    const ident = actionExecuteData.actionIdent;
+    const existingItem = this.items.find(item => item.ident === ident);
+    if (existingItem) {
+      this.activatePanel(existingItem);
+      return;
+    }
     const panelItem = new sitProcExpanderItem();
     panelItem.actionExecuteData = actionExecuteData;
-    panelItem.ident = actionExecuteData.tabIdent;
+    panelItem.ident = ident;
     panelItem.caption = actionDefinition.caption;
     panelItem.componentFactoryIdent = actionExecuteData.componentParamsIdent;
+    panelItem.isOpen = true;
+    this.items.forEach(item => item.isOpen = false);
     this.items.push(panelItem);
+  }
+
+  public Close(actionExecuteData: ActionExecuteData) {
+    const index = this.items.findIndex( p => p.ident == actionExecuteData.actionIdent);
+    if (index !== -1) {
+      this.items.splice(index, 1);
+    }
+  }
+
+  public onHeaderClick(item) {
+    item.isOpen = !item.isOpen;
   }
 
 }

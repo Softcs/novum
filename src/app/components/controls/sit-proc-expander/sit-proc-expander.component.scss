@@ -1,21 +1,36 @@
+$backgroud-color: #073763;
 .sit-proc-expander {
     position: absolute;
-    margin-top: 50px;
+    margin-top: 55px;
     z-index: 1;
     .items-container {
         .item {
+            display: grid;
+            grid-template-columns: 30px 1fr;
+
             .header{
-                font-size: 0.7rem;
-                text-transform: uppercase;
-                letter-spacing: 3px;
-                padding: 10px;
-                background: #073763;
-                max-width: 150px;
-                text-align: center;
-                color: white;
-                transform: rotate(270deg);
-                margin-top: 70px;
-                margin-left: -50px;
+                    font-size: 0.7rem;
+                    text-transform: uppercase;
+                    letter-spacing: 3px;
+                    background: #073763;
+                    text-align: center;
+                    color: white;
+                    grid-column: 1;
+                    justify-content: center;
+                    justify-items: center;
+                    align-content: center;
+                    margin-bottom: 20px;
+                    height: 200px;
+                    cursor: pointer;
+                .caption {
+                    transform: rotate(270deg);
+                    margin-top: 100px;
+                }
+            }
+            .body {
+                border: 2px solid $backgroud-color;
+                margin-bottom: 20px;
+                margin-right: 20px;
             }
         }
     }
