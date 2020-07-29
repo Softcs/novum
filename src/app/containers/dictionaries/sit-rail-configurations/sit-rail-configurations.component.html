@@ -7,14 +7,14 @@
             <mat-toolbar color="accent">
               <mat-toolbar-row>
                 <div class="sit-proc-buttons-row">
-                  <sit-proc-button #sitAction actionIdent="insert" componentParamsIdent="sitRailConfigurationsEdit" tooltip="Nowy" color="primary" icon="post_add" >
+                  <sit-proc-button #sitAction actionIdent="insert" componentParamsIdent="sitRailConfigurationsEdit" openKind="TAB" tooltip="Nowy" color="primary" icon="post_add" >
                   </sit-proc-button>
 
-                  <sit-proc-button #sitAction actionIdent="update" componentParamsIdent="sitRailConfigurationsEdit" tooltip="Edycja" color="primary" icon="edit">
+                  <sit-proc-button #sitAction actionIdent="update" componentParamsIdent="sitRailConfigurationsEdit" openKind="TAB" tooltip="Edycja" color="primary" icon="edit">
                   </sit-proc-button>
 
-                <sit-proc-button #sitAction actionIdent="delete" color="primary" icon="delete" delete="true" matType="mat-stroked-button"></sit-proc-button>
-              </div>
+                  <sit-proc-button #sitAction actionIdent="delete" color="primary" icon="delete" delete="true" matType="mat-stroked-button"></sit-proc-button>
+                </div>
               </mat-toolbar-row>
             </mat-toolbar>
           </div>

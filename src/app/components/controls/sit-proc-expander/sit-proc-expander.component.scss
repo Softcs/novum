@@ -2,7 +2,7 @@ $backgroud-color: #073763;
 .sit-proc-expander {
     position: absolute;
     margin-top: 55px;
-    z-index: 1;
+    z-index: 100;
     .items-container {
         .item {
             display: grid;
