@@ -23,6 +23,7 @@ export class SitProcParamsComponent implements OnInit, AfterViewInit {
   @Input() activeRow = null;
   @Output() activeRowChange = new EventEmitter<any[]>();
 
+  executing = false;
   tabIndex: number;
   public DataSetManager: DataSetManager;
   private dataSetManagerSource: DataSetManager;
@@ -60,6 +61,7 @@ export class SitProcParamsComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
+    console.log("ngAfterViewInit")
     this.DataSetManager.dataSetContainers = this.dataSetContainers;
     this.prepareDataSet();
   }
@@ -105,6 +107,7 @@ export class SitProcParamsComponent implements OnInit, AfterViewInit {
   }
 
   executeAction(): void {
+    this.executing = true;
     this.dataSetManagerSource.ExecuteAction(
       this.actionExecuteData.actionIdent,
       this.actionExecuteData.sourceDataSetIdent,

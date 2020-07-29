@@ -8,7 +8,10 @@
       <div fxLayout="row" style="width: 100%;">
         <span style="padding: 20px">
           <!-- <sit-proc-button #sitControl actionIdent="{{actionIdent}}" color="primary" caption="Zapisz" (afterCompleted)="onSave($event)" confirm="false" matType="mat-raised-button"></sit-proc-button> -->
-          <button mat-raised-button color="primary" (click)="executeAction()">Zapisz</button>
+          <button [disabled]="executing" mat-raised-button color="primary" (click)="executeAction()">
+              <span *ngIf="executing" class="spinner-border spinner-border-sm mr-1"></span>
+              Zapisz
+          </button>
         </span>
         <span style="width: 50px"></span>
         <span style="padding: 20px">
