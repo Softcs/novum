@@ -57,7 +57,6 @@ export class SitProcParamsComponent implements OnInit, AfterViewInit {
     dataSetContainer.setDataSource(this.mainDataSet);
     this.activeRow = this.mainDataSet.activeRow;
     this.activeRowChange.emit(this.activeRow);
-    console.log("prepareDataSet",this)
   }
 
   ngAfterViewInit() {
@@ -81,14 +80,18 @@ export class SitProcParamsComponent implements OnInit, AfterViewInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.tabService.removeTab(this.tabIndex);
+        this.close();
       }
     });
   }
 
+  private isExpanderOpenKind() {
+    return this.actionExecuteData.openKind === 'EXPANDER';
+  }
+
   onSave(e: string) {
     if (e === 'OK') {
-      this.tabService.removeTab(this.tabIndex);
+      this.close();
     }
   }
 
@@ -105,10 +108,18 @@ export class SitProcParamsComponent implements OnInit, AfterViewInit {
 
   private executeActionCompletedCallback(self) {
     self.executing = false;
-    self.tabService.removeTab(self.tabIndex);
+    self.close(self.tabIndex);
   }
 
   private executeActionExceptionCallback(self) {
     self.executing = false;
+  }
+
+  private close() {
+    if (this.isExpanderOpenKind()) {
+      this.actionExecuteData.dataSetManagerSource.procExpander.Close(this.actionExecuteData);
+    } else {
+      this.tabService.removeTab(this.tabIndex);
+    }
   }
 }

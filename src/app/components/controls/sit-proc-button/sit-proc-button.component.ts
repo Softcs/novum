@@ -20,6 +20,7 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
   @Input() icon: string;
   @Input() tooltip: string;
   @Input() componentParamsIdent: string;
+  @Input() openKind = 'EXPANDER';
 
   @Output() afterCompleted: EventEmitter<string> = new EventEmitter<string>();
 
@@ -55,7 +56,7 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
     return this.actionDefinition?.kind === 'update';
   }
 
-  getTabSenderObject(): ActionExecuteData {
+  getActionExecuteData(): ActionExecuteData {
     const identRowField = this.actionDefinition?.fieldsConfiguration?.identRow;
     const identRowValue = identRowField ? this.dataSetResponseWrapper.getFieldValue(identRowField) : null;
     this.tabLink = this.componentParamsIdent + '_' + identRowValue;
@@ -66,10 +67,11 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
     data.sourceDataSetIdent = this.dataSetResponseWrapper?.ident;
     data.actionIdent = this.actionIdent;
     data.componentParamsIdent = this.componentParamsIdent;
+    data.openKind = this.openKind;
     return data;
   }
 
-  invokeDeleteAction():boolean {
+  invokeDeleteAction(): boolean {
     if (!this.isDelete()) {
       return false;
     }
@@ -104,9 +106,13 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
       this.dataSetResponseWrapper.GenerateRow(null, true, this.actionDefinition?.editFields);
     }
 
-    const actionExecuteData = this.getTabSenderObject();
-    // this.openActionOnTab(actionExecuteData);
-    this.openActionOnExpander(actionExecuteData);
+    const actionExecuteData = this.getActionExecuteData();
+    if (this.openKind === 'EXPANDER') {
+      this.openActionOnExpander(actionExecuteData);
+    } else {
+     this.openActionOnTab(actionExecuteData);
+    }
+
   }
 
   private executeAction(): void {

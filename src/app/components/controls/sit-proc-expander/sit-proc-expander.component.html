@@ -1,7 +1,9 @@
 <div class="items-container">
     <div class="item" *ngFor="let item of items">
-        <div class="header">{{item.caption}}</div>
-        <div class="body">
+        <div class="header" (click)="onHeaderClick(item)">
+            <div class="caption">{{item.caption}}</div>
+        </div>
+        <div class="body" *ngIf="item.isOpen">
             <sit-proc-expander-item-body [componentFactoryIdent]="item.componentFactoryIdent" [actionExecuteData]="item.actionExecuteData"></sit-proc-expander-item-body>
         </div>
     </div>
