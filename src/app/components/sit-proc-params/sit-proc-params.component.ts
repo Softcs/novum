@@ -73,7 +73,16 @@ export class SitProcParamsComponent implements OnInit, AfterViewInit {
     // this.activeRowChange.emit(this.activeRow);
   }
 
-  openDiscardDialog(): void {
+  discard() {
+    if (this.isExpanderOpenKind()) {
+      this.close()
+    } else {
+      this.openDiscardDialog();
+    }
+
+  }
+
+  private openDiscardDialog(): void {
     const dialogRef = this.dialog.open(SitDialogDiscardComponent, {
       width: '250px', height: '150px'
     });
