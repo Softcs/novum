@@ -93,6 +93,11 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
   }
 
   onClick($event) {
+    if (!this.actionDefinition) {
+      console.error(`Action "${this.actionIdent}" could not be found!`);
+      this.changeExecutingState(false);
+      return;
+    }
     if (this.invokeDeleteAction()) {
       return;
     }

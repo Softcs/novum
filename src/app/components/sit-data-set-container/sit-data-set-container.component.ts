@@ -62,7 +62,38 @@ export class SitDataSetContainerComponent implements OnInit {
 
   public setErrors(errors: any[]) {
     this.errors = errors;
-    console.log('Errors',this.errors)
+    if (this.errors) {
+      console.log('Errors', this.errors);
+    }
+  }
+  public refreshRows(dataSetWrapper: DataSetWrapper) {
+    if (!dataSetWrapper || !dataSetWrapper.rows) {
+      return;
+    }
+
+    const fieldName = dataSetWrapper.ident + 'Id';
+    let rowsToUpdate = [];
+
+    this.datasSourcesInterface.forEach(control => {
+
+      dataSetWrapper.rows.forEach(inputRow => {
+        const fieldValue = inputRow[fieldName];
+        rowsToUpdate = control.rows.filter(controlRow => controlRow[fieldName] == fieldValue);
+        rowsToUpdate.forEach(row => {
+          // tslint:disable-next-line: forin
+          for (const key in inputRow) {
+            const newValue = inputRow[key];
+            if (Object.prototype.hasOwnProperty.call(row, key)) {
+              if (this.activeRecord === row) {
+                this.activeRecord[key] = newValue;
+              }
+              row[key] = newValue;
+            }
+          }
+        });
+      });
+    });
+    this.activeRowChanged.emit(this.activeRecord);
   }
 
   public setDataSource(dataSetWrapper: DataSetWrapper) {

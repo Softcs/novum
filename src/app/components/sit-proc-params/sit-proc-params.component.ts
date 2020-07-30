@@ -61,9 +61,10 @@ export class SitProcParamsComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    console.log("ngAfterViewInit")
     this.DataSetManager.dataSetContainers = this.dataSetContainers;
-    this.prepareDataSet();
+    setTimeout(() => {
+      this.prepareDataSet();
+    }, 20);
   }
 
   refreshAfter(dataSourceManager)  {

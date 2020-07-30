@@ -56,7 +56,6 @@ export class DataSetWrapper {
         this.rows = inputDataSource.rows;
         this.activeRow = inputDataSource.activeRowIndex !== -1 ? inputDataSource.rows[inputDataSource.activeRowIndex] : null;
         this.errors = inputDataSource.errors;
-        const dataSourceDef =  this.dataSourceManager?.dictInfo?.FindDataSource(this.ident);
     }
 
     public AfterPropagte() {

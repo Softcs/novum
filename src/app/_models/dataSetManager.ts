@@ -183,6 +183,7 @@ export class DataSetManager {
                     if (data.length === 1) {
                         const response = data[0];
                         const wasErrors = this.PropagateErrors(dataSourceIdent, response?.Errors);
+                        this.RefreshOneRows(response.dataSourcesResponse);
                         if (!wasErrors) {
                             if(executeActionCompletedCallback != null) {
                                 executeActionCompletedCallback(owner);
@@ -232,6 +233,27 @@ export class DataSetManager {
         });
 
         return errors != null && errors.length > 0;
+    }
+
+    public RefreshOneRows(dataSourcesResponse) {
+        if (!dataSourcesResponse) {
+            return;
+        }
+
+        dataSourcesResponse.forEach(dataSet => {
+            const dataSetContainers = this.findDataSetContainers(dataSet.ident);
+            if (!dataSetContainers) {
+                console.error('DataSource: ' + dataSet.ident + ' not found!');
+            }
+
+            const dataSetResponseWrapper = new DataSetWrapper(dataSet.ident, null, null);
+            dataSetResponseWrapper.setInputDataSource(dataSet);
+
+            dataSetContainers.forEach(cont => {
+                cont.refreshRows(dataSetResponseWrapper);
+            });
+
+        });
     }
 
     public PropagateDataSources(dataSetToReload: string[] = null) {
@@ -322,6 +344,11 @@ export class DataSetManager {
             }
         }
     }
+
+    findDataSetContainers(ident: string) {
+        return this.dataSetContainers.filter(dataSet => dataSet.ident === ident);
+    }
+
     get dictInfo() {
         return this._dictInfo;
     }
@@ -338,7 +365,7 @@ export class DataSetManager {
         this._dataSetContainers = dataSetContainers;
         if (this._dataSetContainers != null) {
             this._dataSetContainers.forEach(dataSetCont => {
-                dataSetCont.setDataSetManager(this)
+                dataSetCont.setDataSetManager(this);
             });
         }
     }
