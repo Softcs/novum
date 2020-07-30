@@ -1,0 +1,17 @@
+<sit-proc-params
+  dictIdent="sitMenu"
+  [(actionExecuteData)]="actionExecuteData"
+  >
+  <sit-data-set-container ident="sitMenuEdit">
+      <div fxFill>
+        Nowa pozycja menu
+        <div fxLayout="column">
+          <sit-data-input type="text" id="Symbol" #sitControl field="Symbol" label="Symbol" [showRefresh]=false appearance="fill" style="width: 400px"></sit-data-input>
+          <sit-data-input type="text" id="Caption" #sitControl field="Caption" label="Opis" [showRefresh]=false appearance="fill"></sit-data-input>
+          <sit-data-input type="text" id="sitMenuG" #sitControl field="sitMenuG" label="sitMenuG" [showRefresh]=false appearance="fill" style="width: 300px"></sit-data-input>
+          <sit-data-input type="number" id="sitMenuId" #sitControl field="sitMenuId" label="sitMenuId" [showRefresh]=false appearance="fill" style="width: 300px"></sit-data-input>
+        </div>
+        </div>
+
+  </sit-data-set-container>
+</sit-proc-params>

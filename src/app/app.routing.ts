@@ -13,6 +13,7 @@ import { PrimeNgTestComponent } from './containers/sandbox/prime-ng-test/prime-n
 import { NgxDatatableTestComponent } from './containers/sandbox/ngx-datatable-test';
 import { NgxPdfTestComponent } from './containers/sandbox/ngx-pdf-test';
 import { SitMenuComponent } from './containers/dictionaries/sit-menu/';
+import { SitMenuEditComponent } from './containers/dictionaries/sit-menu/actions/sit-menu-edit/';
 import { SitRozrachunkiInsertGTComponent } from './containers/dictionaries/sit-rozrachunki-insert-gt/sit-rozrachunki-insert-gt.component';
 import { SitKancelariaComponent } from './containers/dictionaries/sit-kancelaria/';
 import { SitUserAccountComponent } from './containers/dictionaries/sit-user-account/';

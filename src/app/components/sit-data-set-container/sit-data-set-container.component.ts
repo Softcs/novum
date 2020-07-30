@@ -62,6 +62,7 @@ export class SitDataSetContainerComponent implements OnInit {
 
   public setErrors(errors: any[]) {
     this.errors = errors;
+    console.log('Errors',this.errors)
   }
 
   public setDataSource(dataSetWrapper: DataSetWrapper) {

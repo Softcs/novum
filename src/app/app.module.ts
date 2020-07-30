@@ -95,7 +95,8 @@ import { SitDocumentsComponent } from '@app/containers/dictionaries/sit-document
 import { TabContentComponent } from '@app/components/tab-content/tab-content.component';
 import { SitProcExpanderComponent } from './components/controls/sit-proc-expander/sit-proc-expander.component';;
 import { SitProcExpanderItemBodyComponent } from './components/controls/sit-proc-expander/sit-proc-expander-item-body/sit-proc-expander-item-body.component';
-import { SitJpkVatGetDataComponent } from './containers/dictionaries/sit-jpk-vat/actions/sit-jpk-vat-get-data/sit-jpk-vat-get-data.component'
+import { SitJpkVatGetDataComponent } from './containers/dictionaries/sit-jpk-vat/actions/sit-jpk-vat-get-data/sit-jpk-vat-get-data.component';
+import { SitMenuEditComponent } from './containers/dictionaries/sit-menu/actions/sit-menu-edit/sit-menu-edit.component'
 
 @NgModule({
     imports: [
@@ -192,7 +193,8 @@ import { SitJpkVatGetDataComponent } from './containers/dictionaries/sit-jpk-vat
         TabContentComponent,
         SitProcExpanderComponent,
         SitProcExpanderItemBodyComponent,
-        SitJpkVatGetDataComponent
+        SitJpkVatGetDataComponent,
+        SitMenuEditComponent
       ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
@@ -208,7 +210,8 @@ import { SitJpkVatGetDataComponent } from './containers/dictionaries/sit-jpk-vat
       SitPulpitComponent,
       SitDialogDiscardComponent,
       SitDialogConfirmDelComponent,
-      SitJpkVatGetDataComponent
+      SitJpkVatGetDataComponent,
+      SitMenuEditComponent
     ]
 })
 export class AppModule { }

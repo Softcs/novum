@@ -1,11 +1,27 @@
 <sit-dict-container ident="sitMenu"  #sitDictcontainer fxFlexFill>
   <div fxLayout="row" fxFlexFill fxLayoutGap="5px">
     <div fxFlex="50%" fxLayout="column" fxLayoutGap="5px">
+      <sit-data-set-container  ident="sitMenu">
+        <div class="sit-proc-bar">
+        <mat-toolbar color="accent">
+          <mat-toolbar-row>
+            <div class="sit-proc-buttons-row">
+                <sit-proc-button #sitAction actionIdent="insert" componentParamsIdent="sitMenuEdit" openKind="EXPANDER" tooltip="Nowy" color="primary" icon="post_add" >
+              </sit-proc-button>
+
+              <sit-proc-button #sitAction actionIdent="update" componentParamsIdent="sitMenuEdit" openKind="EXPANDER" tooltip="Edycja" color="primary" icon="edit">
+              </sit-proc-button>
+
+              <sit-proc-button #sitAction actionIdent="delete" color="primary" icon="delete" delete="true" matType="mat-stroked-button"></sit-proc-button>
+            </div>
+          </mat-toolbar-row>
+        </mat-toolbar>
+      </div>
+    </sit-data-set-container>
+
       <div fxFlex="450px" class="content" fxLayout="column">
         <sit-data-set-container ident="sitFilterMenu" >
-          <span>
             <sit-data-input #sitControl field="searchMenu" label="Filtruj menu"></sit-data-input>
-          </span>
         </sit-data-set-container>
         <div class="data-table">
           <sit-data-set-container  ident="sitMenu">

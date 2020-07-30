@@ -13,6 +13,7 @@ import { SitDataInputComponent } from '@app/components/controls/sit-data-input/s
   host: {class: 'router-flex'}
 })
 export class SitMenuComponent implements OnInit {
+  @ViewChild(SitDataSetContainerComponent, { static: true }) dataSourceContainer: SitDataSetContainerComponent;
   @ViewChild('sit-menu') menuTable: DatatableComponent;
   @ViewChild('sitDictcontainer') dictContainer: SitDictContainerComponent;
 

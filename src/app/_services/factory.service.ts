@@ -3,6 +3,7 @@ import { Injectable, Type } from '@angular/core';
 import { SitJPKVatComponent } from '@app/containers/dictionaries/sit-jpk-vat';
 import { SitKancelariaComponent } from '@app/containers/dictionaries/sit-kancelaria';
 import { SitMenuComponent } from '@app/containers/dictionaries/sit-menu';
+import { SitMenuEditComponent } from '@app/containers/dictionaries/sit-menu/actions/sit-menu-edit';
 import { SitProjectsPubComponent } from '@app/containers/dictionaries/sit-projects-pub';
 import { SitRailConfigurationsComponent } from '@app/containers/dictionaries/sit-rail-configurations';
 import { SitRozrachunkiInsertGTComponent } from '@app/containers/dictionaries/sit-rozrachunki-insert-gt';
@@ -22,6 +23,7 @@ export class FactoryService {
         sitJPKVat: SitJPKVatComponent,
         sitKancelaria: SitKancelariaComponent,
         sitMenu: SitMenuComponent,
+        sitMenuEdit: SitMenuEditComponent,
         sitProjectsPub: SitProjectsPubComponent,
         sitRailConfigurations: SitRailConfigurationsComponent,
         sitRozrachunkiInsertGT: SitRozrachunkiInsertGTComponent,
