@@ -11,7 +11,7 @@ import { SitActionDirective } from '@app/_directives';
   selector: 'sit-data-set-container',
   templateUrl: './sit-data-set-container.component.html',
   styleUrls: ['./sit-data-set-container.component.scss'],
-  host: {class: 'router-flex'}
+  // host: {class: 'router-flex'}
 })
 
 export class SitDataSetContainerComponent implements OnInit {

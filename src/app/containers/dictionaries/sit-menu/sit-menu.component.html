@@ -1,34 +1,37 @@
-<sit-dict-container ident="sitMenu"  #sitDictcontainer fxFlexFill>
+<sit-dict-container ident="sitMenu"  #sitDictcontainer fxFill>
   <div fxLayout="row" fxFlexFill fxLayoutGap="5px">
     <div fxFlex="50%" fxLayout="column" fxLayoutGap="5px">
-      <sit-data-set-container  ident="sitMenu">
-        <div class="sit-proc-bar">
-        <mat-toolbar color="accent">
-          <mat-toolbar-row>
-            <div class="sit-proc-buttons-row">
-                <sit-proc-button #sitAction actionIdent="insert" componentParamsIdent="sitMenuEdit" openKind="EXPANDER" tooltip="Nowy" color="primary" icon="post_add" >
-              </sit-proc-button>
+      <div fxFlex="400px" class="content" fxLayout="column">
 
-              <sit-proc-button #sitAction actionIdent="update" componentParamsIdent="sitMenuEdit" openKind="EXPANDER" tooltip="Edycja" color="primary" icon="edit">
-              </sit-proc-button>
-
-              <sit-proc-button #sitAction actionIdent="delete" color="primary" icon="delete" delete="true" matType="mat-stroked-button"></sit-proc-button>
-            </div>
-          </mat-toolbar-row>
-        </mat-toolbar>
-      </div>
-    </sit-data-set-container>
-
-      <div fxFlex="450px" class="content" fxLayout="column">
-        <sit-data-set-container ident="sitFilterMenu" >
-            <sit-data-input #sitControl field="searchMenu" label="Filtruj menu"></sit-data-input>
+        <!-- Procedury sitMenu -->
+        <sit-data-set-container  ident="sitMenu">
+          <div class="sit-proc-bar">
+            <mat-toolbar color="accent">
+              <mat-toolbar-row>
+                <div class="sit-proc-buttons-row">
+                  <sit-proc-button #sitAction actionIdent="insert" componentParamsIdent="sitMenuEdit" openKind="EXPANDER" tooltip="Nowy" color="primary" icon="post_add" >              </sit-proc-button>
+                  <sit-proc-button #sitAction actionIdent="update" componentParamsIdent="sitMenuEdit" openKind="EXPANDER" tooltip="Edycja" color="primary" icon="edit">              </sit-proc-button>
+                  <sit-proc-button #sitAction actionIdent="delete" color="primary" icon="delete" delete="true" matType="mat-stroked-button"></sit-proc-button>
+                </div>
+              </mat-toolbar-row>
+            </mat-toolbar>
+          </div>
         </sit-data-set-container>
-        <div class="data-table">
-          <sit-data-set-container  ident="sitMenu">
+
+        <!-- Filtry sitMenu -->
+        <sit-data-set-container ident="sitFilterMenu" >
+          <span>
+            <sit-data-input #sitControl field="searchMenu" label="Filtruj menu"></sit-data-input>
+          </span>
+        </sit-data-set-container>
+
+        <!-- Grid sitMenu -->
+        <sit-data-set-container  ident="sitMenu">
+          <div class="data-table">
             <ngx-datatable #sitMenu #sitSetDataSource
             class="material striped"
             [columnMode]="ColumnMode.force"
-            style="height: 350px;"
+            style="height: 280px;"
             [scrollbarV] = "true"
             [selected]="sitMenuSelected"
             [selectionType]="SelectionType.single"
@@ -36,7 +39,7 @@
             [displayCheck]="displayCheck"
             (activate)="onActivateMenu($event)"
             (select)="onSelectMenu($event)"
-            [footerHeight]="50"
+            [footerHeight]="0"
             >
               <ngx-datatable-column prop="sitMenuId" name="Id" [canAutoResize]="false" [width]="50">
                 <ng-template let-value="value" ngx-datatable-cell-template>
@@ -48,22 +51,39 @@
               <ngx-datatable-column prop="Symbol" name="Symbol"></ngx-datatable-column>
               <ngx-datatable-column prop="Caption" name="Nazwa"></ngx-datatable-column>
             </ngx-datatable>
-
-          </sit-data-set-container>
-        </div>
+          </div>
+        </sit-data-set-container>
       </div>
       <div fxFlex class="content" fxLayout="column">
+
+        <!-- Procedury sitAppUsers -->
+        <sit-data-set-container  ident="sitAppUsers">
+          <div class="sit-proc-bar">
+            <mat-toolbar color="accent">
+              <mat-toolbar-row>
+                <div class="sit-proc-buttons-row">
+                  <sit-proc-button #sitAction actionIdent="insert" componentParamsIdent="sitMenuEdit" openKind="EXPANDER" tooltip="Nowy" color="primary" icon="post_add" >              </sit-proc-button>
+                  <sit-proc-button #sitAction actionIdent="delete" color="primary" icon="delete" delete="true" matType="mat-stroked-button"></sit-proc-button>
+                </div>
+              </mat-toolbar-row>
+            </mat-toolbar>
+          </div>
+        </sit-data-set-container>
+
+        <!-- Filtr sitAppUsers -->
         <sit-data-set-container  ident="sitFilterAppUsers" >
           <span>
             <sit-data-input #sitControl field="searchAppUsers" label="Filtruj użytkowników"></sit-data-input>
           </span>
         </sit-data-set-container>
-        <div class="data-table">
-          <sit-data-set-container ident="sitAppUsers">
+
+        <!-- Grid sitAppUsers-->
+        <sit-data-set-container ident="sitAppUsers">
+          <div class="data-table">
             <ngx-datatable #sitAppUsers #sitSetDataSource
             class="material striped"
             [columnMode]="ColumnMode.force"
-            style="height: 350px;"
+            style="height: 330px;"
             [scrollbarV] = "true"
               [selected]="sitAppUsersSelected"
             [selectionType]="SelectionType.single"
@@ -71,7 +91,7 @@
             [displayCheck]="displayCheck"
             (activate)="onActivate($event)"
             (select)="onSelectAppUsers($event)"
-            [footerHeight]="50"
+            [footerHeight]="0"
             >
               <ngx-datatable-column prop="sitAppUsersId" name="Id"  [canAutoResize]="false" [width]="50">
                 <ng-template let-value="value" ngx-datatable-cell-template>
@@ -91,23 +111,42 @@
                 </ng-template>
               </ngx-datatable-column>
             </ngx-datatable>
-          </sit-data-set-container>
-        </div>
+          </div>
+        </sit-data-set-container>
 
       </div>
     </div>
-    <div fxFlex="50%" class="content" fxLayoutGap="5px">
+    <div fxFlex="50%" class="content">
+
+      <!-- Procedury sitAppUsers -->
+      <sit-data-set-container  ident="sitMenuItems">
+        <div class="sit-proc-bar">
+          <mat-toolbar color="accent">
+            <mat-toolbar-row>
+              <div class="sit-proc-buttons-row">
+                <sit-proc-button #sitAction actionIdent="insert" componentParamsIdent="sitMenuEdit" openKind="EXPANDER" tooltip="Nowy" color="primary" icon="post_add"></sit-proc-button>
+                <sit-proc-button #sitAction actionIdent="update" componentParamsIdent="sitMenuEdit" openKind="EXPANDER" tooltip="Edycja" color="primary" icon="edit"></sit-proc-button>
+                <sit-proc-button #sitAction actionIdent="delete" color="primary" icon="delete" delete="true" matType="mat-stroked-button"></sit-proc-button>
+              </div>
+            </mat-toolbar-row>
+          </mat-toolbar>
+        </div>
+      </sit-data-set-container>
+
+      <!-- Filtr sitMenuItems -->
       <sit-data-set-container  ident="sitFilterMenuItems" >
         <span>
           <sit-data-input #sitControl field="searchMenuItems" label="Filtruj pozycje"></sit-data-input>
         </span>
       </sit-data-set-container>
-      <div class="data-table">
-        <sit-data-set-container ident="sitMenuItems">
+
+      <!-- Grid sitMenuItems -->
+      <sit-data-set-container ident="sitMenuItems">
+        <div class="data-table">
           <ngx-datatable #sitMenuItems #sitSetDataSource
           class="material striped"
           [columnMode]="ColumnMode.force"
-          style="height: 800px;"
+          style="height: 735px;"
           [scrollbarV] = "true"
           [selected]="sitMenuItemsSelected"
           [selectionType]="SelectionType.single"
@@ -115,7 +154,7 @@
           [displayCheck]="displayCheck"
           (select)="onSelectMenuItems($event)"
           (activate)="onActivate($event)"
-          [footerHeight]="50"
+          [footerHeight]="0"
         >
             <ngx-datatable-column prop="sitMenuItemsId" name="Id" [canAutoResize]="false" [width]="50">
               <ng-template let-value="value" ngx-datatable-cell-template>
@@ -136,8 +175,8 @@
             <ngx-datatable-column prop="Link" name="Link"></ngx-datatable-column>
             <ngx-datatable-column prop="Icon" name="Ikona"></ngx-datatable-column>
           </ngx-datatable>
-        </sit-data-set-container>
-      </div>
+        </div>
+      </sit-data-set-container>
     </div>
   </div>
 </sit-dict-container>

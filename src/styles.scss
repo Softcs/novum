@@ -136,6 +136,13 @@ body {
 
 }
 
+.sit-proc-expander-title {
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: $table-header-color;
+}
+
 .sit-edit-form {
   background-color: $edit-form-background-color;
   //margin: 5px 5px 0px;
@@ -259,6 +266,7 @@ mat-toolbar-row,mat-toolbar-single-row{
 
 .mat-tab-body {
   overflow: auto !important;
+  flex-grow: 1;
 }
 
 // .mat-tab-body-active{

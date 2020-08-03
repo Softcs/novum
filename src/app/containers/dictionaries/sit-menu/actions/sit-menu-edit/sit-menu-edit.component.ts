@@ -14,6 +14,7 @@ export class SitMenuEditComponent implements SitActionParamsForm, OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }

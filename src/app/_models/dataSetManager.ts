@@ -242,6 +242,7 @@ export class DataSetManager {
 
         dataSourcesResponse.forEach(dataSet => {
             const dataSetContainers = this.findDataSetContainers(dataSet.ident);
+            console.log(dataSet.ident);
             if (!dataSetContainers) {
                 console.error('DataSource: ' + dataSet.ident + ' not found!');
             }

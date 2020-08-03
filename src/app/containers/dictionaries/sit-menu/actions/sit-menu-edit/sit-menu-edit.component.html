@@ -4,9 +4,9 @@
   >
   <sit-data-set-container ident="sitMenuEdit">
       <div fxFill>
-        <h3>Nowa pozycja menu</h3>
-        <mat-divider></mat-divider>
-        <br>
+        <div class="sit-proc-expander-title" *ngIf="actionExecuteData.actionIdent === 'insert'">Nowa pozycja menu</div>
+        <div class="sit-proc-expander-title" *ngIf="actionExecuteData.actionIdent === 'update'">Edycja pozycji menu</div>
+
         <div fxLayout="column">
           <sit-data-input type="text" id="Symbol" #sitControl field="Symbol" label="Symbol" [showRefresh]=false appearance="fill" style="width: 400px"></sit-data-input>
           <sit-data-input type="text" id="Caption" #sitControl field="Caption" label="Opis" [showRefresh]=false appearance="fill"></sit-data-input>
