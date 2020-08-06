@@ -3,6 +3,13 @@
     <div fxFlex="50%" fxLayout="column" fxLayoutGap="5px">
       <div fxFlex="400px" class="content" fxLayout="column">
 
+        <!-- Filtry sitMenu -->
+        <sit-data-set-container ident="sitFilterMenu" >
+          <span>
+            <sit-data-input #sitControl field="searchMenu" label="Filtruj menu" appearance="outline" style="width: 300px"></sit-data-input>
+          </span>
+        </sit-data-set-container>
+
         <!-- Procedury sitMenu -->
         <sit-data-set-container  ident="sitMenu">
           <div class="sit-proc-bar">
@@ -16,13 +23,6 @@
               </mat-toolbar-row>
             </mat-toolbar>
           </div>
-        </sit-data-set-container>
-
-        <!-- Filtry sitMenu -->
-        <sit-data-set-container ident="sitFilterMenu" >
-          <span>
-            <sit-data-input #sitControl field="searchMenu" label="Filtruj menu"></sit-data-input>
-          </span>
         </sit-data-set-container>
 
         <!-- Grid sitMenu -->
@@ -56,6 +56,13 @@
       </div>
       <div fxFlex class="content" fxLayout="column">
 
+        <!-- Filtr sitAppUsers -->
+        <sit-data-set-container  ident="sitFilterAppUsers" >
+          <span>
+            <sit-data-input #sitControl field="searchAppUsers" label="Filtruj użytkowników" appearance="outline" style="width: 300px"></sit-data-input>
+          </span>
+        </sit-data-set-container>
+
         <!-- Procedury sitAppUsers -->
         <sit-data-set-container  ident="sitAppUsers">
           <div class="sit-proc-bar">
@@ -70,13 +77,6 @@
           </div>
         </sit-data-set-container>
 
-        <!-- Filtr sitAppUsers -->
-        <sit-data-set-container  ident="sitFilterAppUsers" >
-          <span>
-            <sit-data-input #sitControl field="searchAppUsers" label="Filtruj użytkowników"></sit-data-input>
-          </span>
-        </sit-data-set-container>
-
         <!-- Grid sitAppUsers-->
         <sit-data-set-container ident="sitAppUsers">
           <div class="data-table">
@@ -89,7 +89,7 @@
             [selectionType]="SelectionType.single"
             [selectAllRowsOnPage]="false"
             [displayCheck]="displayCheck"
-            (activate)="onActivate($event)"
+            (activate)="onActivateAppUsers($event)"
             (select)="onSelectAppUsers($event)"
             [footerHeight]="0"
             >
@@ -118,26 +118,26 @@
     </div>
     <div fxFlex="50%" class="content">
 
-      <!-- Procedury sitAppUsers -->
+      <!-- Filtr sitMenuItems -->
+      <sit-data-set-container  ident="sitFilterMenuItems" >
+        <span>
+          <sit-data-input #sitControl field="searchMenuItems" label="Filtruj pozycje" appearance="outline" style="width: 300px"></sit-data-input>
+        </span>
+      </sit-data-set-container>
+
+      <!-- Procedury sitMenuItems -->
       <sit-data-set-container  ident="sitMenuItems">
         <div class="sit-proc-bar">
           <mat-toolbar color="accent">
             <mat-toolbar-row>
               <div class="sit-proc-buttons-row">
-                <sit-proc-button #sitAction actionIdent="insert" componentParamsIdent="sitMenuEdit" openKind="EXPANDER" tooltip="Nowy" color="primary" icon="post_add"></sit-proc-button>
-                <sit-proc-button #sitAction actionIdent="update" componentParamsIdent="sitMenuEdit" openKind="EXPANDER" tooltip="Edycja" color="primary" icon="edit"></sit-proc-button>
-                <sit-proc-button #sitAction actionIdent="delete" color="primary" icon="delete" delete="true" matType="mat-stroked-button"></sit-proc-button>
+                <sit-proc-button #sitAction actionIdent="insert" componentParamsIdent="sitMenuItemsEdit" openKind="EXPANDER" tooltip="Nowy" color="primary" icon="post_add"></sit-proc-button>
+                <sit-proc-button #sitAction actionIdent="update" componentParamsIdent="sitMenuItemsEdit" openKind="EXPANDER" tooltip="Edycja" color="primary" icon="edit"></sit-proc-button>
+                <sit-proc-button #sitAction actionIdent="delete" tooltip="Usuń"  color="primary" icon="delete" delete="true" matType="mat-stroked-button"></sit-proc-button>
               </div>
             </mat-toolbar-row>
           </mat-toolbar>
         </div>
-      </sit-data-set-container>
-
-      <!-- Filtr sitMenuItems -->
-      <sit-data-set-container  ident="sitFilterMenuItems" >
-        <span>
-          <sit-data-input #sitControl field="searchMenuItems" label="Filtruj pozycje"></sit-data-input>
-        </span>
       </sit-data-set-container>
 
       <!-- Grid sitMenuItems -->
@@ -153,10 +153,17 @@
           [selectAllRowsOnPage]="false"
           [displayCheck]="displayCheck"
           (select)="onSelectMenuItems($event)"
-          (activate)="onActivate($event)"
+          (activate)="onActivateMenuItems($event)"
           [footerHeight]="0"
         >
             <ngx-datatable-column prop="sitMenuItemsId" name="Id" [canAutoResize]="false" [width]="50">
+              <ng-template let-value="value" ngx-datatable-cell-template>
+                <div style="text-align: right;">
+                  {{value}}
+                </div>
+              </ng-template>
+            </ngx-datatable-column>
+            <ngx-datatable-column prop="ParentId" name="Grupa" [canAutoResize]="false" [width]="40">
               <ng-template let-value="value" ngx-datatable-cell-template>
                 <div style="text-align: right;">
                   {{value}}

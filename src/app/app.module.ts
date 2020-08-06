@@ -97,6 +97,12 @@ import { SitProcExpanderComponent } from './components/controls/sit-proc-expande
 import { SitProcExpanderItemBodyComponent } from './components/controls/sit-proc-expander/sit-proc-expander-item-body/sit-proc-expander-item-body.component';
 import { SitJpkVatGetDataComponent } from './containers/dictionaries/sit-jpk-vat/actions/sit-jpk-vat-get-data/sit-jpk-vat-get-data.component';
 import { SitMenuEditComponent } from './containers/dictionaries/sit-menu/actions/sit-menu-edit/sit-menu-edit.component'
+;
+import { SitMenuItemsEditComponent } from './containers/dictionaries/sit-menu/actions/sit-menu-items-edit/sit-menu-items-edit.component'
+;
+import { SitAgreementsEditComponent } from './containers/dictionaries/sit-kancelaria/actions/sit-agreements-edit/sit-agreements-edit.component'
+;
+import { SitCustomersEditComponent } from './containers/dictionaries/sit-customers/actions/sit-customers-edit/sit-customers-edit.component'
 
 @NgModule({
     imports: [
@@ -195,6 +201,12 @@ import { SitMenuEditComponent } from './containers/dictionaries/sit-menu/actions
         SitProcExpanderItemBodyComponent,
         SitJpkVatGetDataComponent,
         SitMenuEditComponent
+,
+        SitMenuItemsEditComponent
+,
+        SitAgreementsEditComponent
+,
+        SitCustomersEditComponent
       ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
@@ -211,7 +223,10 @@ import { SitMenuEditComponent } from './containers/dictionaries/sit-menu/actions
       SitDialogDiscardComponent,
       SitDialogConfirmDelComponent,
       SitJpkVatGetDataComponent,
-      SitMenuEditComponent
+      SitMenuEditComponent,
+      SitMenuItemsEditComponent,
+      SitAgreementsEditComponent,
+      SitCustomersEditComponent
     ]
 })
 export class AppModule { }

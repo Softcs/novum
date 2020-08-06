@@ -1,9 +1,12 @@
-﻿import { SitJpkVatGetDataComponent } from './../containers/dictionaries/sit-jpk-vat/actions/sit-jpk-vat-get-data/sit-jpk-vat-get-data.component';
+﻿import { SitCustomersEditComponent } from './../containers/dictionaries/sit-customers/actions/sit-customers-edit/sit-customers-edit.component';
+import { SitAgreementsEditComponent } from './../containers/dictionaries/sit-kancelaria/actions/sit-agreements-edit/sit-agreements-edit.component';
+import { SitJpkVatGetDataComponent } from './../containers/dictionaries/sit-jpk-vat/actions/sit-jpk-vat-get-data/sit-jpk-vat-get-data.component';
 import { Injectable, Type } from '@angular/core';
 import { SitJPKVatComponent } from '@app/containers/dictionaries/sit-jpk-vat';
 import { SitKancelariaComponent } from '@app/containers/dictionaries/sit-kancelaria';
 import { SitMenuComponent } from '@app/containers/dictionaries/sit-menu';
 import { SitMenuEditComponent } from '@app/containers/dictionaries/sit-menu/actions/sit-menu-edit';
+import { SitMenuItemsEditComponent } from '@app/containers/dictionaries/sit-menu/actions/sit-menu-items-edit';
 import { SitProjectsPubComponent } from '@app/containers/dictionaries/sit-projects-pub';
 import { SitRailConfigurationsComponent } from '@app/containers/dictionaries/sit-rail-configurations';
 import { SitRozrachunkiInsertGTComponent } from '@app/containers/dictionaries/sit-rozrachunki-insert-gt';
@@ -15,6 +18,7 @@ import { SitDocumentsComponent } from '@app/containers/dictionaries/sit-document
 import { SitRailConfigurationsEditComponent } from
 '@app/containers/dictionaries/sit-rail-configurations/actions/sit-rail-configurations-edit';
 
+
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
     constructor() { }
@@ -24,6 +28,7 @@ export class FactoryService {
         sitKancelaria: SitKancelariaComponent,
         sitMenu: SitMenuComponent,
         sitMenuEdit: SitMenuEditComponent,
+        sitMenuItemsEdit: SitMenuItemsEditComponent,
         sitProjectsPub: SitProjectsPubComponent,
         sitRailConfigurations: SitRailConfigurationsComponent,
         sitRozrachunkiInsertGT: SitRozrachunkiInsertGTComponent,
@@ -33,7 +38,9 @@ export class FactoryService {
         sitProducts: SitProductsComponent,
         sitDocuments: SitDocumentsComponent,
         sitRailConfigurationsEdit: SitRailConfigurationsEditComponent,
-        sitJpkVatGetData: SitJpkVatGetDataComponent
+        sitJpkVatGetData: SitJpkVatGetDataComponent,
+        sitAgreementsEdit: SitAgreementsEditComponent,
+        sitCustomersEdit: SitCustomersEditComponent
     };
 
     public GetFactory(ident: string) {

@@ -3,6 +3,14 @@
     <div fxLayout="row" fxFill>
       <div fxLayout="column" fxFlex="30" class="content">
 
+          <div class="sit-filter-bar">
+            <sit-data-set-container ident="sitFilter" >
+              <div style="width: 300px;">
+                <sit-data-input id="searchRailConfigurations" #sitControl field="searchRailConfigurations" label="Filtruj" appearance="outline"></sit-data-input>
+              </div>
+            </sit-data-set-container>
+          </div>
+
           <div class="sit-proc-bar">
             <mat-toolbar color="accent">
               <mat-toolbar-row>
@@ -17,14 +25,6 @@
                 </div>
               </mat-toolbar-row>
             </mat-toolbar>
-          </div>
-
-          <div class="sit-filter-bar">
-            <sit-data-set-container ident="sitFilter" >
-              <div style="width: 300px;">
-                <sit-data-input id="searchRailConfigurations" #sitControl field="searchRailConfigurations" label="Filtruj"></sit-data-input>
-              </div>
-            </sit-data-set-container>
           </div>
 
           <ngx-datatable #sitRailConfigurations #sitSetDataSource

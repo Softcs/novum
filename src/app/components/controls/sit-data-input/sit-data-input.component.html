@@ -1,20 +1,17 @@
-<div fxFlexLayout="row">
-  <!-- <button *ngIf="showRefresh" mat-stroked-button color="primary"><mat-icon (click)="onRefreshClick">autorenew</mat-icon></button> -->
-  <mat-form-field fxFlex appearance="{{ appearance }}" class="sit-edit-input" [style.fontSize.px]=14>
-    <mat-label>{{label}}</mat-label>
-    <input
-      matInput
-      #inputElement
-      [value]="value"
-      [type]="type"
-      [id]="id"
-      [placeholder]="placeholder"
-      [readonly]="readonly"
-      (change)="onChange($event)"
-      (keyup)="onKeyup($event)"
-      (blur)="onBlur($event)"
+<mat-form-field appearance="{{ appearance }}" fxFlex [style.fontSize.px]=12>
+  <mat-label>{{label}}</mat-label>
+  <input
+    matInput
+    #inputElement
+    [value]="value"
+    [type]="type"
+    [id]="id"
+    [placeholder]="placeholder"
+    [readonly]="readonly"
+    (change)="onChange($event)"
+    (keyup)="onKeyup($event)"
+    (blur)="onBlur($event)"
 
-      >
-  </mat-form-field>
-</div>
+    >
+</mat-form-field>
 

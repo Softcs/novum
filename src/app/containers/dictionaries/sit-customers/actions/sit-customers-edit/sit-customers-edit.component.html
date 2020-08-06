@@ -1,0 +1,38 @@
+<sit-proc-params
+  dictIdent="sitCustomers"
+  [(actionExecuteData)]="actionExecuteData"
+  >
+  <sit-data-set-container ident="sitCustomersEdit">
+      <div fxFill style="padding: 5px;">
+        <div class="sit-proc-expander-title" *ngIf="actionExecuteData.actionIdent === 'insert'">Nowy kontrahent</div>
+        <div class="sit-proc-expander-title" *ngIf="actionExecuteData.actionIdent === 'update'">Edycja kontrahenta</div>
+
+        <div fxLayout="column">
+          <div fxLayout="row">
+            <sit-data-input type="text" id="VATId" #sitControl field="VATId" label="NIP" [showRefresh]=false appearance="outline" style="width: 150px"></sit-data-input>
+            <sit-data-input type="text" id="CustIdent" #sitControl field="CustIdent" label="Identyfikator" [showRefresh]=false appearance="outline" style="width: 450px"></sit-data-input>
+          </div>
+          <div>
+            <sit-data-input type="text" id="CustName" #sitControl field="CustName" label="Nazwa" [showRefresh]=false appearance="outline" style="width: 600px"></sit-data-input>
+          </div>
+          <div fxLayout="row">
+            <sit-data-input type="text" id="REGON" #sitControl field="REGON" label="REGON" [showRefresh]=false appearance="outline" style="width: 300px"></sit-data-input>
+            <sit-data-input type="text" id="KRS" #sitControl field="KRS" label="KRS" [showRefresh]=false appearance="outline" style="width: 300px"></sit-data-input>
+          </div>
+          <div fxLayout="row">
+            <sit-data-input type="text" id="Street" #sitControl field="Street" label="Ulica" [showRefresh]=false appearance="outline" style="width: 500px"></sit-data-input>
+            <sit-data-input type="text" id="HouseNum" #sitControl field="HouseNum" label="Numer" [showRefresh]=false appearance="outline" style="width: 100px"></sit-data-input>
+          </div>
+          <div fxLayout="row">
+            <sit-data-input type="text" id="PostCode" #sitControl field="PostCode" label="Kod pocztowy" [showRefresh]=false appearance="outline" style="width: 100px"></sit-data-input>
+            <sit-data-input type="text" id="City" #sitControl field="City" label="Miasto" [showRefresh]=false appearance="outline" style="width: 500px"></sit-data-input>
+          </div>
+          <div fxLayout="row">
+            <sit-data-input type="text" id="ExtIdent" #sitControl field="ExtIdent" label="Identyfikator zewnętrzny" [showRefresh]=false appearance="outline" style="width: 600px"></sit-data-input>
+          </div>
+        </div>
+
+      </div>
+
+  </sit-data-set-container>
+</sit-proc-params>

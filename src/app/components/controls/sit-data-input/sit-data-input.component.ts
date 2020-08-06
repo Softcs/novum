@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild, ElementRef, OnInit, Renderer2, forwardRef, Directive } from '@angular/core';
+import { Component, Input, ViewChild, ElementRef, OnInit, Renderer2, forwardRef, Directive, ViewEncapsulation } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { SitDataBaseComponent } from '../sit-data-base/sit-data-base.component';
 import { MatFormFieldAppearance  } from '@angular/material/form-field';
@@ -6,7 +6,8 @@ import { MatFormFieldAppearance  } from '@angular/material/form-field';
 @Component({
   selector: 'sit-data-input',
   templateUrl: './sit-data-input.component.html',
-  styleUrls: ['./sit-data-input.component.scss']
+  styleUrls: ['./sit-data-input.component.scss'],
+  encapsulation : ViewEncapsulation.None
 })
 export class SitDataInputComponent extends SitDataBaseComponent {
 

@@ -67,11 +67,18 @@ export class SitMenuComponent implements OnInit {
     }
   }
 
+  onActivateAppUsers(event) {
+    if (event.type == 'click') {
+        const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper("sitAppUsers");
+        dataSourceResponseWrapper.SetActiveRow(event.row);
+      }
+  }
 
-  onActivate(event) {
-    if(event.type == 'click') {
-        //console.log("a", event.row);
-    }
+  onActivateMenuItems(event) {
+    if (event.type == 'click') {
+        const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper("sitMenuItems");
+        dataSourceResponseWrapper.SetActiveRow(event.row);
+      }
   }
 
   onFilterKeyEnter(event: any) {

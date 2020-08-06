@@ -1,0 +1,22 @@
+<sit-proc-params
+  dictIdent="sitAgreements"
+  [(actionExecuteData)]="actionExecuteData"
+  >
+  <sit-data-set-container ident="sitAgreementsEdit">
+      <div fxFill>
+        <div class="sit-proc-expander-title" *ngIf="actionExecuteData.actionIdent === 'insert'">Nowa umowa</div>
+        <div class="sit-proc-expander-title" *ngIf="actionExecuteData.actionIdent === 'update'">Edycja umowy</div>
+
+        <div fxLayout="row">
+          <sit-data-input type="text" id="AgreementNo" #sitControl field="AgreementNo" label="Numer" [showRefresh]=false appearance="outline" style="width: 200px"></sit-data-input>
+          <sit-data-input type="date" id="Date" #sitControl field="Date" label="Data umowy" [showRefresh]=false appearance="outline"></sit-data-input>
+          <sit-data-input type="date" id="DateTo" #sitControl field="DateTo" label="Data zakończenia" [showRefresh]=false appearance="outline"></sit-data-input>
+        </div>
+        <div fxLayout="row">
+          <sit-data-textarea type="textarea" id="AgreementDesc" #sitControl field="AgreementDesc" label="Opis" appearance="outline" rows="10" cols="80" style="padding-left: 5px;"></sit-data-textarea>
+        </div>
+
+      </div>
+
+  </sit-data-set-container>
+</sit-proc-params>

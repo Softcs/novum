@@ -2,13 +2,30 @@
   <sit-data-set-container  ident="sitCustomers">
     <div fxLayout="row" fxFill fxLayoutGap="5px">
       <div fxLayout="column" fxFill class="content">
+
+        <!-- Filtry sitCustomers -->
         <div class="sit-filter-bar">
           <sit-data-set-container ident="sitFilterCustomers" >
-            <div style="width: 100%;">
-              <sit-data-input #sitControl id="searchCustomers" field="searchCustomers" label="Filtruj kontrahentów" placeholder="Nazwa, NIP, Identyfikator" style="width: 100%;"></sit-data-input>
-            </div>
+              <sit-data-input #sitControl id="searchCustomers" field="searchCustomers" label="Filtruj kontrahentów" placeholder="Nazwa, NIP, Identyfikator" appearance="outline" style="width: 300px;"></sit-data-input>
           </sit-data-set-container>
         </div>
+
+        <!-- Procedury sitCustomers -->
+        <sit-data-set-container  ident="sitCustomers">
+          <div class="sit-proc-bar">
+            <mat-toolbar color="accent">
+              <mat-toolbar-row>
+                <div class="sit-proc-buttons-row">
+                  <sit-proc-button #sitAction actionIdent="insert" componentParamsIdent="sitCustomersEdit" openKind="EXPANDER" tooltip="Nowy" color="primary" icon="post_add"></sit-proc-button>
+                  <sit-proc-button #sitAction actionIdent="update" componentParamsIdent="sitCustomersEdit" openKind="EXPANDER" tooltip="Edycja" color="primary" icon="edit"></sit-proc-button>
+                  <sit-proc-button #sitAction actionIdent="delete" tooltip="Usuń"  color="primary" icon="delete" delete="true" matType="mat-stroked-button"></sit-proc-button>
+                </div>
+              </mat-toolbar-row>
+            </mat-toolbar>
+          </div>
+        </sit-data-set-container>
+
+        <!--Grid sitCustomers-->
         <div class="data-table">
           <ngx-datatable #sitCustomers #sitSetDataSource
           class="material striped"

@@ -4,7 +4,7 @@
       <div fxFlex="300px" class="content" fxLayout="column">
         <sit-data-set-container ident="sitFilterCustomers" >
           <span>
-            <sit-data-input #sitControl field="searchCustomers" label="Filtruj klientów"></sit-data-input>
+            <sit-data-input #sitControl field="searchCustomers" label="Filtruj klientów"  appearance="outline" style="width: 300px"></sit-data-input>
           </span>
         </sit-data-set-container>
         <div class="data-table">
@@ -19,7 +19,7 @@
             [selectAllRowsOnPage]="false"
             [displayCheck]="displayCheck"
             (activate)="onActivateCustomers($event)"
-            [footerHeight]="25"
+            [footerHeight]="0"
 
             >
               <ngx-datatable-column prop="CustIdent" name="Skrót"></ngx-datatable-column>
@@ -57,17 +57,35 @@
         </div>
       </div>
       <div fxFlex="300px" class="content" fxLayout="column">
+        <!-- Filtry sitAgreements-->
         <sit-data-set-container ident="sitFilterAgreements" >
           <span>
-            <sit-data-input #sitControl field="searchAgreements" label="Filtruj umowy"></sit-data-input>
+            <sit-data-input #sitControl field="searchAgreements" label="Filtruj umowy" appearance="outline" style="width: 300px"></sit-data-input>
           </span>
         </sit-data-set-container>
+
+        <!-- Procedury sitAgreements -->
+        <sit-data-set-container  ident="sitAgreements">
+          <div class="sit-proc-bar">
+            <mat-toolbar color="accent">
+              <mat-toolbar-row>
+                <div class="sit-proc-buttons-row">
+                  <sit-proc-button #sitAction actionIdent="insert" componentParamsIdent="sitAgreementsEdit" openKind="EXPANDER" tooltip="Nowy" color="primary" icon="post_add"></sit-proc-button>
+                  <sit-proc-button #sitAction actionIdent="update" componentParamsIdent="sitAgreementsEdit" openKind="EXPANDER" tooltip="Edycja" color="primary" icon="edit"></sit-proc-button>
+                  <sit-proc-button #sitAction actionIdent="delete" tooltip="Usuń"  color="primary" icon="delete" delete="true" matType="mat-stroked-button"></sit-proc-button>
+                </div>
+              </mat-toolbar-row>
+            </mat-toolbar>
+          </div>
+        </sit-data-set-container>
+
+        <!--Grid sitAgreements-->
         <div class="data-table">
           <sit-data-set-container  ident="sitAgreements">
 
             <ngx-datatable #sitAgreements #sitSetDataSource
             class="material"
-            style="height: 210px;"
+            style="height: 200px;"
             [columnMode]="ColumnMode.force"
             [scrollbarV]="true"
             [selected]="sitAgreementsSelected"
@@ -76,7 +94,7 @@
             [displayCheck]="displayCheck"
             (activate)="onActivateAgreements($event)"
             (select)="onSelectAgreements($event)"
-            [footerHeight]="25"
+            [footerHeight]="0"
             >
               <ngx-datatable-column prop="AgreementDesc" name="Opis"></ngx-datatable-column>
               <ngx-datatable-column prop="Date" name="Data">
@@ -107,7 +125,7 @@
       <div fxFlex class="content" fxLayout="column">
         <sit-data-set-container  ident="sitFilterAttachments" >
           <span>
-            <sit-data-input #sitControl field="searchAttachments" label="Filtruj załączniki"></sit-data-input>
+            <sit-data-input #sitControl field="searchAttachments" label="Filtruj załączniki"  appearance="outline" style="width: 300px"></sit-data-input>
           </span>
         </sit-data-set-container>
         <div class="data-table">
@@ -123,7 +141,7 @@
             [displayCheck]="displayCheck"
             (activate)="onActivateAttachments($event)"
             (select)="onSelectAttachments($event)"
-            [footerHeight]="25"
+            [footerHeight]="0"
             >
               <ngx-datatable-column prop="AttachmentDesc" name="Opis"></ngx-datatable-column>
               <ngx-datatable-column prop="FileName" name="Nazwa pliku"></ngx-datatable-column>

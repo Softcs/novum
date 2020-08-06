@@ -1,0 +1,22 @@
+<sit-proc-params
+  dictIdent="sitMenuItems"
+  [(actionExecuteData)]="actionExecuteData"
+  >
+  <sit-data-set-container ident="sitMenuItemsEdit">
+      <div fxFill>
+        <div class="sit-proc-expander-title" *ngIf="actionExecuteData.actionIdent === 'insert'">Nowa pozycja menu</div>
+        <div class="sit-proc-expander-title" *ngIf="actionExecuteData.actionIdent === 'update'">Edycja pozycji menu</div>
+
+        <div fxLayout="column">
+          <sit-data-input type="number" id="sitMenuId" #sitControl field="sitMenuId" label="sitMenuId" [showRefresh]=false appearance="outline" style="width: 400px"></sit-data-input>
+          <sit-data-input type="number" id="OrdId" #sitControl field="OrdId" label="Kolejność" [showRefresh]=false appearance="outline"></sit-data-input>
+          <sit-data-input type="text" id="Caption" #sitControl field="Caption" label="Opis" [showRefresh]=false appearance="outline"></sit-data-input>
+          <sit-data-input type="text" id="Kind" #sitControl field="Kind" label="Rodzaj" [showRefresh]=false appearance="outline"></sit-data-input>
+          <sit-data-input type="text" id="Link" #sitControl field="Link" label="Link" [showRefresh]=false appearance="outline"></sit-data-input>
+          <sit-data-input type="text" id="ParentId" #sitControl field="ParentId" label="ParentId" [showRefresh]=false appearance="outline"></sit-data-input>
+          <sit-data-input type="text" id="Icon" #sitControl field="Icon" label="Ikona" [showRefresh]=false appearance="outline"></sit-data-input>
+        </div>
+      </div>
+
+  </sit-data-set-container>
+</sit-proc-params>

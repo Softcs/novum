@@ -141,6 +141,8 @@ body {
   font-size: 16px;
   font-weight: bold;
   color: $table-header-color;
+  height: 40px;
+  padding-top: 7px;
 }
 
 .sit-edit-form {
@@ -309,9 +311,7 @@ a:hover.mat-tab-link {
   color: $tab-font-color !important;
 }
 
-.mat-form-field-infix {
-  width: auto !important;
-}
+
 
 /* focus style */
 // .mat-tab-group.mat-primary .mat-tab-label:not(.mat-tab-disabled):focus, .mat-tab-group.mat-primary .mat-tab-link:not(.mat-tab-disabled):focus, .mat-tab-nav-bar.mat-primary .mat-tab-label:not(.mat-tab-disabled):focus, .mat-tab-nav-bar.mat-primary .mat-tab-link:not(.mat-tab-disabled):focus{
