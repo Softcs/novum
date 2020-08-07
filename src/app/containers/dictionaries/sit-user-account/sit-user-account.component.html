@@ -1,44 +1,23 @@
 <sit-dict-container ident="sitAppUserAccount"  #sitDictcontainer fxFlexFill>
   <div fxFlexFill fxLayoutAlign="start center" fxLayout="column" class="content">
     <sit-data-set-container ident="sitAppUserAccount" style="padding: 50px;">
-      <div>
-        <mat-form-field appearance="legacy" style="width: 100%;">
-            <mat-label>Login</mat-label>
-          <input matInput value="{{ activeRowUserAccount?.UserLogin }}" readonly="true">
-          <!-- <sit-data-input #sitControl field="UserLogin" label="Login" readonly="true"></sit-data-input> -->
-        </mat-form-field>
+      <div fxLayout="column">
+        <sit-data-input type="text" id="UserLogin" #sitControl field="UserLogin" label="Login" [showRefresh]=false appearance="outline" style="width: 500px" readonly="true"></sit-data-input>
+        <div fxLayout="row">
+          <sit-data-input type="text" id="Name" #sitControl field="Name" label="Imię" [showRefresh]=false appearance="outline" style="width: 250px" readonly="true"></sit-data-input>
+          <sit-data-input type="text" id="SurName" #sitControl field="SurName" label="Nazwisko" [showRefresh]=false appearance="outline" style="width: 250px" readonly="true"></sit-data-input>
+        </div>
+        <sit-data-input type="text" id="email" #sitControl field="email" label="e-mail" [showRefresh]=false appearance="outline" style="width: 500px" readonly="true"></sit-data-input>
         <br>
-        <mat-form-field appearance="legacy" style="width: 200px; margin-right: 10px;">
-          <mat-label>Imię</mat-label>
-          <input matInput value="{{ activeRowUserAccount?.Name }}" readonly="true">
-        </mat-form-field>
-
-        <mat-form-field appearance="legacy" style="width: 273px;">
-          <mat-label>Nazwisko</mat-label>
-          <input matInput value="{{ activeRowUserAccount?.SurName }}" readonly="true">
-        </mat-form-field>
-        <br>
-        <mat-form-field appearance="legacy" style="width: 100%;">
-          <mat-label>e-mail</mat-label>
-          <input matInput value="{{ activeRowUserAccount?.email }}" readonly="true">
-        </mat-form-field>
-        <br>
-        <mat-form-field appearance="fill" style="width: 100%;">
-          <mat-label>Stare hasło</mat-label>
-          <input matInput (change)="onChange($event)" id="OldPassword" type="password" value="{{ activeRowUserAccount?.OldPassword }}" >
-        </mat-form-field>
-        <br>
-        <mat-form-field appearance="fill" style="width: 100%;">
-          <mat-label>Nowe hasło</mat-label>
-          <input matInput (change)="onChange($event)" id="NewPassword" type="password" value="{{ activeRowUserAccount?.NewPassword }}" >
-        </mat-form-field>
-        <mat-form-field appearance="fill" style="width: 100%;">
-          <mat-label>Powtórz nowe hasło</mat-label>
-          <input matInput (change)="onChange($event)" id="RepeatNewPassword" type="password" value="{{ activeRowUserAccount?.RepeatNewPassword }}" >
-        </mat-form-field>
       </div>
-      <div>
-        <sit-proc-button #sitControl actionIdent="changePassword" color="primary" caption="Zmień hasło"></sit-proc-button>
+      <div class="sit-proc-bar">
+        <mat-toolbar color="accent">
+          <mat-toolbar-row>
+            <div class="sit-proc-buttons-row">
+              <sit-proc-button #sitAction actionIdent="changePassword" componentParamsIdent="sitUserAccoutChangePassword" tooltip="Zmień hasło" color="primary" caption="Zmień hasło"></sit-proc-button>
+            </div>
+          </mat-toolbar-row>
+        </mat-toolbar>
       </div>
     </sit-data-set-container>
   </div>

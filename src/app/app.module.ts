@@ -103,6 +103,8 @@ import { SitMenuItemsEditComponent } from './containers/dictionaries/sit-menu/ac
 import { SitAgreementsEditComponent } from './containers/dictionaries/sit-kancelaria/actions/sit-agreements-edit/sit-agreements-edit.component'
 ;
 import { SitCustomersEditComponent } from './containers/dictionaries/sit-customers/actions/sit-customers-edit/sit-customers-edit.component'
+;
+import { SitUserAccountChangePasswordComponent } from './containers/dictionaries/sit-user-account/actions/sit-user-account-change-password/sit-user-account-change-password.component'
 
 @NgModule({
     imports: [
@@ -207,6 +209,8 @@ import { SitCustomersEditComponent } from './containers/dictionaries/sit-custome
         SitAgreementsEditComponent
 ,
         SitCustomersEditComponent
+,
+        SitUserAccountChangePasswordComponent
       ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
@@ -226,7 +230,8 @@ import { SitCustomersEditComponent } from './containers/dictionaries/sit-custome
       SitMenuEditComponent,
       SitMenuItemsEditComponent,
       SitAgreementsEditComponent,
-      SitCustomersEditComponent
+      SitCustomersEditComponent,
+      SitUserAccountChangePasswordComponent
     ]
 })
 export class AppModule { }

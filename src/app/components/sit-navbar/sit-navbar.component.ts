@@ -12,6 +12,7 @@ import { Title } from '@angular/platform-browser';
 import { filter, map } from 'rxjs/operators';
 import { TabService } from '@app/_services/tab.service';
 import { Tab } from '@app/_models/tab.model';
+import { FactoryService } from '@app/_services/factory.service';
 
 @Component({
   selector: 'sit-navbar',
@@ -33,6 +34,8 @@ export class SitNavbarComponent implements OnInit, AfterViewInit {
     private tabService: TabService,
     public navService: NavService,
     public matDialog: MatDialog,
+    private factoryService: FactoryService
+
     //private dictContainerComponent: DictContainerComponent
   ) {
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
@@ -98,21 +101,21 @@ export class SitNavbarComponent implements OnInit, AfterViewInit {
   onClicUser() {
     let createNew = true;
 
-    // for ( let i = 0; i < this.tabService.tabs.length; i++ ) {
-    //   if (this.tabService.tabs[i].title === 'Konto użytkownika') {
-    //     this.tabService.tabs[i].active = true;
-    //     createNew = false;
-    //   }
-    //   else {
-    //     this.tabService.tabs[i].active = false;
-    //   }
-    // }
+    for ( let i = 0; i < this.tabService.tabs.length; i++ ) {
+      if (this.tabService.tabs[i].title === 'Konto użytkownika') {
+        this.tabService.tabs[i].active = true;
+        createNew = false;
+      }
+      else {
+        this.tabService.tabs[i].active = false;
+      }
+    }
 
-    // if ( createNew ) {
-    //   this.tabService.addTab(new Tab('sitUserAccount', 'sitUserAccount', 'Konto użytkownika' , { parent: 'AppComponent' }));
+    if ( createNew ) {
+      this.tabService.addTab(new Tab(this.factoryService.GetFactory('sitUserAccount'), 'Konto użytkownika' , { parent: 'AppComponent' }));
 
-    // }
-    // this.navService.closeNav();
+    }
+    this.navService.closeNav();
   }
 
   closeNav() {
