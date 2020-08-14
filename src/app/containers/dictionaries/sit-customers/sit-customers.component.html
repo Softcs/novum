@@ -1,7 +1,7 @@
-<sit-dict-container ident="sitCustomers" #sitDictcontainer fxFlexFill>
-  <sit-data-set-container  ident="sitCustomers">
+<sit-dict-container ident="sitCustomers" #sitDictcontainer fxFill>
+  <sit-data-set-container  ident="sitCustomers" fxFill>
     <div fxLayout="row" fxFill fxLayoutGap="5px">
-      <div fxLayout="column" fxFill class="content">
+      <div fxLayout="column" fxFlex="50" class="content">
 
         <!-- Filtry sitCustomers -->
         <div class="sit-filter-bar">
@@ -11,19 +11,17 @@
         </div>
 
         <!-- Procedury sitCustomers -->
-        <sit-data-set-container  ident="sitCustomers">
-          <div class="sit-proc-bar">
-            <mat-toolbar color="accent">
-              <mat-toolbar-row>
-                <div class="sit-proc-buttons-row">
-                  <sit-proc-button #sitAction actionIdent="insert" componentParamsIdent="sitCustomersEdit" openKind="EXPANDER" tooltip="Nowy" color="primary" icon="post_add"></sit-proc-button>
-                  <sit-proc-button #sitAction actionIdent="update" componentParamsIdent="sitCustomersEdit" openKind="EXPANDER" tooltip="Edycja" color="primary" icon="edit"></sit-proc-button>
-                  <sit-proc-button #sitAction actionIdent="delete" tooltip="Usuń"  color="primary" icon="delete" delete="true" matType="mat-stroked-button"></sit-proc-button>
-                </div>
-              </mat-toolbar-row>
-            </mat-toolbar>
-          </div>
-        </sit-data-set-container>
+        <div class="sit-proc-bar">
+          <mat-toolbar color="accent">
+            <mat-toolbar-row>
+              <div class="sit-proc-buttons-row">
+                <sit-proc-button #sitAction actionIdent="insert" componentParamsIdent="sitCustomersEdit" openKind="EXPANDER" tooltip="Nowy" color="primary" icon="post_add"></sit-proc-button>
+                <sit-proc-button #sitAction actionIdent="update" componentParamsIdent="sitCustomersEdit" openKind="EXPANDER" tooltip="Edycja" color="primary" icon="edit"></sit-proc-button>
+                <sit-proc-button #sitAction actionIdent="delete" tooltip="Usuń"  color="primary" icon="delete" delete="true" matType="mat-stroked-button"></sit-proc-button>
+              </div>
+            </mat-toolbar-row>
+          </mat-toolbar>
+        </div>
 
         <!--Grid sitCustomers-->
         <div class="data-table">
@@ -38,31 +36,62 @@
           (activate)="onActivateCustomers($event)"
           [footerHeight]="30"
           >
-            <ngx-datatable-column prop="CustIdent" name="Identyfikator"></ngx-datatable-column>
+            <ngx-datatable-column prop="CustIdent" name="Identyfikator" [width]="150" [canAutoResize]="false"></ngx-datatable-column>
             <ngx-datatable-column prop="CustName" name="Nazwa"></ngx-datatable-column>
-            <ngx-datatable-column prop="VATId" name="NIP"></ngx-datatable-column>
-            <ngx-datatable-column prop="Person" name="Os.fiz." [resizeable]="false" [width]="45" [canAutoResize]="false">
+            <ngx-datatable-column prop="VATId" name="NIP" [width]="120" [canAutoResize]="false"></ngx-datatable-column>
+            <!-- <ngx-datatable-column prop="Person" name="Os.fiz." [resizeable]="false" [width]="45" [canAutoResize]="false">
               <ng-template let-value="value" ngx-datatable-cell-template>
                 <div style="text-align: center;">
                   <input type="checkbox" id="IsActive" name="Person" value="value" disabled=true [checked]="value == 1">
                 </div>
               </ng-template>
-            </ngx-datatable-column>
-            <ngx-datatable-column prop="Street" name="Ulica">
+            </ngx-datatable-column> -->
+            <!-- <ngx-datatable-column prop="Street" name="Ulica">
               <ng-template let-row="row" ngx-datatable-cell-template>
                 <div>
                   {{row.Street}} {{row.HouseNum}}
                 </div>
               </ng-template>
             </ngx-datatable-column>
-            <ngx-datatable-column prop="PostCode" name="Kod pocz."></ngx-datatable-column>
+            <ngx-datatable-column prop="PostCode" name="Kod pocz."></ngx-datatable-column> -->
             <ngx-datatable-column prop="City" name="Miasto"></ngx-datatable-column>
             <ngx-datatable-column prop="CountrySymbol" name="Kraj" [resizeable]="false" [width]="40" [canAutoResize]="false"></ngx-datatable-column>
-            <ngx-datatable-column prop="KRS" name="KRS"></ngx-datatable-column>
+            <!-- <ngx-datatable-column prop="KRS" name="KRS"></ngx-datatable-column>
             <ngx-datatable-column prop="REGON" name="REGON"></ngx-datatable-column>
-            <ngx-datatable-column prop="ExtIdent" name="Zew ID"></ngx-datatable-column>
+            <ngx-datatable-column prop="ExtIdent" name="Zew ID"></ngx-datatable-column> -->
           </ngx-datatable>
         </div>
+      </div>
+      <div fxLayout="column" fxFlex="50" class="content">
+        <mat-tab-group id="tab-group"
+        animationDuration="0ms"
+        (selectedTabChange)="tabChanged($event)">
+          <mat-tab label="Podstawowe">
+            <div fxLayout="column" fxFill class="content">
+              <div fxLayout="row">
+                <sit-data-input type="text" id="CustIdent" #sitControl field="CustIdent" label="Identyfikator" [showRefresh]=false appearance="outline" fxFlex [readonly]=true></sit-data-input>
+                <sit-data-input type="text" id="VATId" #sitControl field="VATId" label="NIP" [showRefresh]=false appearance="outline" style="width: 150px" [readonly]=true></sit-data-input>
+                <sit-data-input type="text" id="REGON" #sitControl field="REGON" label="REGON" [showRefresh]=false appearance="outline" style="width: 150px" [readonly]=true></sit-data-input>
+                <sit-data-input type="text" id="KRS" #sitControl field="KRS" label="KRS" [showRefresh]=false appearance="outline" style="width: 150px" [readonly]=true></sit-data-input>
+              </div>
+              <div fxLayout="row">
+                <sit-data-input type="text" id="CustName" #sitControl field="CustName" label="Identyfikator" [showRefresh]=false appearance="outline" style="width: 100%" [readonly]=true></sit-data-input>
+              </div>
+              <div fxLayout="row">
+                <sit-data-input type="text" id="CountrySymbol" #sitControl field="CountrySymbol" label="Kraj" [showRefresh]=false appearance="outline"  style="width: 100px"  [readonly]=true></sit-data-input>
+                <sit-data-input type="text" id="PostCode" #sitControl field="PostCode" label="Kod pocztowy" [showRefresh]=false appearance="outline" style="width: 100px" [readonly]=true></sit-data-input>
+                <sit-data-input type="text" id="City" #sitControl field="City" label="Numer" [showRefresh]=false appearance="outline"  fxFlex  [readonly]=true></sit-data-input>
+              </div>
+              <div fxLayout="row">
+                <sit-data-input type="text" id="Street" #sitControl field="Street" label="Ulica" [showRefresh]=false appearance="outline" fxFlex [readonly]=true></sit-data-input>
+                <sit-data-input type="text" id="HouseNum" #sitControl field="HouseNum" label="Numer" [showRefresh]=false appearance="outline" style="width: 100px" [readonly]=true></sit-data-input>
+              </div>
+              <div fxLayout="row">
+                <sit-data-input type="text" id="ExtIdent" #sitControl field="ExtIdent" label="Identyfikator zewnętrzny" [showRefresh]=false appearance="outline"  [readonly]=true></sit-data-input>
+              </div>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
       </div>
     </div>
   </sit-data-set-container>

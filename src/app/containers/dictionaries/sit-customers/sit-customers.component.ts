@@ -15,7 +15,6 @@ import { GatewayService } from '@app/_services';
 export class SitCustomersComponent implements OnInit {
   @ViewChild('sitDictcontainer') dictContainer: SitDictContainerComponent;
   @ViewChildren('sitDictcontainer') dictContainers !: QueryList<SitDictContainerComponent>;
-  @ViewChild('sitCustomers') table: any;
 
   ColumnMode = ColumnMode;
   SelectionType = SelectionType;
@@ -33,9 +32,13 @@ export class SitCustomersComponent implements OnInit {
   }
 
   onActivateCustomers(event) {
-    if (event.type == 'click') {
+    if (event.type === 'click') {
       const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitCustomers');
       dataSourceResponseWrapper.SetActiveRow(event.row);
     }
+  }
+
+  tabChanged(event) {
+    window.dispatchEvent(new Event('resize'));
   }
 }

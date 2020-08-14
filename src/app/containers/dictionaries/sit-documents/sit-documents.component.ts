@@ -6,7 +6,6 @@ import { environment } from '@environments/environment';
 import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
 
-
 @Component({
   selector: 'app-sit-documents',
   templateUrl: './sit-documents.component.html',
