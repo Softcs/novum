@@ -30,8 +30,6 @@ export class SitProcParamsComponent implements OnInit, AfterViewInit {
   public executing = false;
   public DataSetManager: DataSetManager;
 
-
-
   constructor(
     gatewayService: GatewayService,
     private tabService: TabService,

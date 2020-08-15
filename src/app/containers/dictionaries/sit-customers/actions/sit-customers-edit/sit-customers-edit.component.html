@@ -3,8 +3,8 @@
   >
   <sit-data-set-container ident="sitCustomersEdit">
       <div fxFill style="padding: 5px;">
-        <div class="sit-proc-expander-title" *ngIf="actionExecuteData.actionIdent === 'insert'">Nowy kontrahent</div>
-        <div class="sit-proc-expander-title" *ngIf="actionExecuteData.actionIdent === 'update'">Edycja kontrahenta</div>
+        <div class="sit-proc-expander-title" *ngIf="actionIdent === 'insert'">Nowy kontrahent</div>
+        <div class="sit-proc-expander-title" *ngIf="actionIdent === 'update'">Edycja kontrahenta</div>
 
         <div fxLayout="column">
           <div fxLayout="row">

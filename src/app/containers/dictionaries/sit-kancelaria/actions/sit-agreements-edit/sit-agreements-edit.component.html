@@ -3,8 +3,8 @@
   >
   <sit-data-set-container ident="sitAgreementsEdit">
       <div fxFill>
-        <div class="sit-proc-expander-title" *ngIf="actionExecuteData.actionIdent === 'insert'">Nowa umowa</div>
-        <div class="sit-proc-expander-title" *ngIf="actionExecuteData.actionIdent === 'update'">Edycja umowy</div>
+        <div class="sit-proc-expander-title" *ngIf="isInsert">Nowa umowa</div>
+        <div class="sit-proc-expander-title" *ngIf="isUpdate">Edycja umowy</div>
 
         <div fxLayout="row">
           <sit-data-input type="text" id="AgreementNo" #sitControl field="AgreementNo" label="Numer" [showRefresh]=false appearance="outline" style="width: 200px"></sit-data-input>

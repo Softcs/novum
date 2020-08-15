@@ -1,5 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ActionExecuteData } from '@app/_models/actionExecuteData';
+import { Component } from '@angular/core';
 import { SitActionParamsForm } from '@app/_interfaces/sitActionParamsForm';
 
 @Component({
@@ -8,11 +7,5 @@ import { SitActionParamsForm } from '@app/_interfaces/sitActionParamsForm';
   styleUrls: ['./sit-rail-configurations-edit.component.scss'],
   host: {class: 'router-flex'}
 })
-export class SitRailConfigurationsEditComponent implements SitActionParamsForm, OnInit {
-  @Input() actionExecuteData: ActionExecuteData;
-
-  constructor() {}
-
-  ngOnInit(): void {}
-
+export class SitRailConfigurationsEditComponent extends SitActionParamsForm {
 }

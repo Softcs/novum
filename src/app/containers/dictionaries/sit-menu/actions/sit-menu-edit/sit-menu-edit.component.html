@@ -3,8 +3,8 @@
   >
   <sit-data-set-container ident="sitMenuEdit">
       <div fxFill>
-        <div class="sit-proc-expander-title" *ngIf="actionExecuteData.actionIdent === 'insert'">Nowe menu</div>
-        <div class="sit-proc-expander-title" *ngIf="actionExecuteData.actionIdent === 'update'">Edycja menu</div>
+        <div class="sit-proc-expander-title" *ngIf="actionIdent === 'insert'">Nowe menu</div>
+        <div class="sit-proc-expander-title" *ngIf="actionIdent === 'update'">Edycja menu</div>
 
         <div fxLayout="column">
           <sit-data-input type="text" id="Symbol" #sitControl field="Symbol" label="Symbol" [showRefresh]=false appearance="outline" style="width: 400px"></sit-data-input>

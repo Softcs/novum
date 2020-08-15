@@ -1,5 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ActionExecuteData } from '@app/_models/actionExecuteData';
+import { Component } from '@angular/core';
 import { SitActionParamsForm } from '@app/_interfaces/sitActionParamsForm';
 
 @Component({
@@ -7,12 +6,6 @@ import { SitActionParamsForm } from '@app/_interfaces/sitActionParamsForm';
   templateUrl: './sit-menu-items-edit.component.html',
   styleUrls: ['./sit-menu-items-edit.component.scss']
 })
-export class SitMenuItemsEditComponent implements SitActionParamsForm, OnInit {
-  @Input() actionExecuteData: ActionExecuteData;
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+export class SitMenuItemsEditComponent extends SitActionParamsForm {
 
 }
