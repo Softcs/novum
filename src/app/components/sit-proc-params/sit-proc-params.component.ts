@@ -18,19 +18,22 @@ export class SitProcParamsComponent implements OnInit, AfterViewInit {
   @ContentChildren(SitDataSetContainerComponent, { descendants: true })
   dataSetContainers !: QueryList<SitDataSetContainerComponent>;
 
-  @Input() dictIdent: string;
   @Input() actionExecuteData: ActionExecuteData  = null;
   @Input() activeRow = null;
   @Output() activeRowChange = new EventEmitter<any[]>();
 
-  executing = false;
-  tabIndex: number;
-  public DataSetManager: DataSetManager;
   private dataSetManagerSource: DataSetManager;
   private mainDataSet: DataSetWrapper;
+  private tabIndex: number;
+  private dictIdent: string;
+
+  public executing = false;
+  public DataSetManager: DataSetManager;
+
+
 
   constructor(
-    private gatewayService: GatewayService,
+    gatewayService: GatewayService,
     private tabService: TabService,
     public dialog: MatDialog,
   ) {
@@ -45,12 +48,13 @@ export class SitProcParamsComponent implements OnInit, AfterViewInit {
     if (this.actionExecuteData) {
       return this.actionExecuteData;
     }
-    const actionExecuteData = this.tabService.tabs[this.tabIndex].tabData;
+    const actionExecuteData: ActionExecuteData = this.tabService.tabs[this.tabIndex].tabData;
     return actionExecuteData;
   }
 
   prepareDataSet() {
     this.actionExecuteData = this.getActionExecuteData();
+    this.dictIdent = this.actionExecuteData?.dataSetManagerSource?.dictIdent;
     this.dataSetManagerSource = this.actionExecuteData.dataSetManagerSource;
     const dataSetContainer = this.DataSetManager.dataSetContainers.first;
     this.mainDataSet = this.DataSetManager.CreateDataSetWrapper(dataSetContainer.ident, this.dataSetManagerSource);

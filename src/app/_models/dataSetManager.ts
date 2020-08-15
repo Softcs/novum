@@ -350,6 +350,10 @@ export class DataSetManager {
         return this.dataSetContainers.filter(dataSet => dataSet.ident === ident);
     }
 
+    get dictIdent(): string {
+        return this.dictInfo?.ident;
+    }
+
     get dictInfo() {
         return this._dictInfo;
     }
