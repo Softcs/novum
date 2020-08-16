@@ -25,7 +25,7 @@ export class SitProcParamsComponent implements OnInit, AfterViewInit {
   private dataSetManagerSource: DataSetManager;
   private mainDataSet: DataSetWrapper;
   private tabIndex: number;
-  private dictIdent: string;
+  public dictIdent: string;
 
   public executing = false;
   public DataSetManager: DataSetManager;
