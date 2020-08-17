@@ -1,0 +1,62 @@
+<sit-dict-container ident="sitParams" #sitDictcontainer fxFill>
+  <sit-data-set-container  ident="sitParams" fxFill>
+    <div fxLayout="row" fxFill fxLayoutGap="5px">
+      <div fxLayout="column" fxFlex="50" class="content">
+
+        <!-- Filtry sitParams -->
+        <div class="sit-filter-bar">
+          <sit-data-set-container ident="sitFilterParams" >
+              <sit-data-input #sitControl id="searchParams" field="searchParams" label="Filtruj" placeholder="Parametr, wartość" appearance="outline" style="width: 300px;"></sit-data-input>
+          </sit-data-set-container>
+        </div>
+
+        <!-- Procedury sitParams -->
+        <div class="sit-proc-bar">
+          <mat-toolbar color="accent">
+            <mat-toolbar-row>
+              <div class="sit-proc-buttons-row">
+                <sit-proc-button #sitAction actionIdent="insert" componentParamsIdent="sitParamsEdit" openKind="EXPANDER" tooltip="Nowy" color="primary" icon="post_add"></sit-proc-button>
+                <sit-proc-button #sitAction actionIdent="update" componentParamsIdent="sitParamsEdit" openKind="EXPANDER" tooltip="Edycja" color="primary" icon="edit"></sit-proc-button>
+                <sit-proc-button #sitAction actionIdent="delete" tooltip="Usuń"  color="primary" icon="delete" delete="true" matType="mat-stroked-button"></sit-proc-button>
+              </div>
+            </mat-toolbar-row>
+          </mat-toolbar>
+        </div>
+
+        <!--Grid sitParams-->
+        <div class="data-table">
+          <ngx-datatable #sitParams #sitSetDataSource
+          class="material striped"
+          style = "height:700px;"
+          [columnMode]="ColumnMode.force"
+          [scrollbarV]=true
+          [selected]="sitParamsSelected"
+          [selectionType]="SelectionType.single"
+          [selectAllRowsOnPage]="false"
+          (activate)="onActivateParams($event)"
+          [footerHeight]="30"
+          >
+            <ngx-datatable-column prop="ParamIdent" name="Identyfikator" [width]="150" [canAutoResize]="false"></ngx-datatable-column>
+            <ngx-datatable-column prop="ParamValue" name="Nazwa"></ngx-datatable-column>
+          </ngx-datatable>
+        </div>
+      </div>
+      <div fxLayout="column" fxFlex="50" class="content">
+        <!-- <mat-tab-group id="tab-group"
+        animationDuration="0ms"
+        (selectedTabChange)="tabChanged($event)">
+          <mat-tab label="Dane">
+            <div fxLayout="column" fxFill class="content"> -->
+              <div fxLayout="row">
+                <sit-data-input type="text" id="ParamIdent" #sitControl field="ParamIdent" label="Identyfikator" [showRefresh]=false appearance="outline" fxFlex [readonly]=true></sit-data-input>
+              </div>
+              <div fxLayout="row">
+                <sit-data-textarea type="textarea" id="ParamValue" #sitControl field="ParamValue" label="Wartosć" appearance="outline" rows="30" cols="300"></sit-data-textarea>
+              </div>
+            <!-- </div>
+          </mat-tab>
+        </mat-tab-group> -->
+      </div>
+    </div>
+  </sit-data-set-container>
+</sit-dict-container>
