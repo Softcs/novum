@@ -2,10 +2,10 @@
   <sit-data-set-container  ident="sitProducts">
     <div fxLayout="row" fxFill fxLayoutGap="5px">
       <div fxLayout="column" fxFill class="content">
-        <ag-grid-angular
-          style="width: 500px; height: 500px;"
+        <ag-grid-angular #sitSetDataSource
+          style="width: 500px; height: 300px;"
           class="ag-theme-alpine"
-          [rowData]="rowData"
+
           [columnDefs]="columnDefs"
         >
         </ag-grid-angular>
@@ -30,7 +30,6 @@
           >
             <ngx-datatable-column prop="ProductIdent" name="Symbol"></ngx-datatable-column>
             <ngx-datatable-column prop="ProductName" name="Nazwa"></ngx-datatable-column>
-            <ngx-datatable-column prop="ProductDescription" name="Opis"></ngx-datatable-column>
             <ngx-datatable-column prop="UnitIdent" name="JM"></ngx-datatable-column>
             <ngx-datatable-column prop="VATRateIdent" name="Vat"></ngx-datatable-column>
             <ngx-datatable-column prop="EAN" name="EAN"></ngx-datatable-column>

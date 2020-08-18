@@ -101,8 +101,19 @@ export class SitDataSetContainerComponent implements OnInit {
     this.dataSetResponseWrapper.activeRowChanged = this.activeRowChanged;
     this.errors = dataSetWrapper.errors;
     this.datasSourcesInterface.forEach(element => {
-      element.rows = this.dataSetResponseWrapper.rows;
+      let gOp = element["gridOptions"];
+
+      if (gOp) {
+        gOp["rowData"] = this.dataSetResponseWrapper.rows;
+        element.rowData = this.dataSetResponseWrapper.rows;
+      }
+        else  {
+          element.rows = this.dataSetResponseWrapper.rows;
+        }
       element.selected = [this.dataSetResponseWrapper.activeRow];
+
+      console.log("element",element)
+
     });
 
     if (this.databaseControlsInterface != null) {

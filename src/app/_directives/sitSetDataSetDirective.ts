@@ -7,5 +7,6 @@ export class sitSetDataSetDirective {
     constructor(private el: ElementRef) {
     }
     @Input() rows;
+    @Input() rowData;
     @Input() selected;
 }
