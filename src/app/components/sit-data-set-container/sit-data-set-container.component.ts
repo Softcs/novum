@@ -104,8 +104,8 @@ export class SitDataSetContainerComponent implements OnInit {
       let gOp = element["gridOptions"];
 
       if (gOp) {
-        gOp["rowData"] = this.dataSetResponseWrapper.rows;
-        element.rowData = this.dataSetResponseWrapper.rows;
+        element["api"].setRowData(this.dataSetResponseWrapper.rows);
+
       }
         else  {
           element.rows = this.dataSetResponseWrapper.rows;

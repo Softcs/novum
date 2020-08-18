@@ -1,15 +1,16 @@
 <sit-dict-container ident="sitProducts" #sitDictcontainer fxFlexFill>
-  <sit-data-set-container  ident="sitProducts">
+  <sit-data-set-container  ident="sitProducts" fxFill>
     <div fxLayout="row" fxFill fxLayoutGap="5px">
       <div fxLayout="column" fxFill class="content">
         <ag-grid-angular #sitSetDataSource
-          style="width: 500px; height: 300px;"
+          style="width: 100%; height: 100%;"
           class="ag-theme-alpine"
 
           [columnDefs]="columnDefs"
+          [defaultColDef]="defaultColDef"
         >
         </ag-grid-angular>
-        <div class="sit-filter-bar">
+        <!-- <div class="sit-filter-bar">
           <sit-data-set-container ident="sitFilterProducts" >
             <div style="width: 100%;">
               <sit-data-input #sitControl id="searchProducts" field="searchProducts" label="Filtruj produkty" placeholder="Nazwa, NIP, Identyfikator" appearance="outline"  style="width: 300px;"></sit-data-input>
@@ -36,7 +37,7 @@
             <ngx-datatable-column prop="CountrySymbol" name="Kraj" [resizeable]="false" [width]="40" [canAutoResize]="false"></ngx-datatable-column>
             <ngx-datatable-column prop="PKWIU" name="PKWiU"></ngx-datatable-column>
           </ngx-datatable>
-        </div>
+        </div> -->
       </div>
     </div>
   </sit-data-set-container>
