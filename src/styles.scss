@@ -18,6 +18,13 @@
 @import '~@swimlane/ngx-datatable/themes/dark.css';
 @import '~@swimlane/ngx-datatable/assets/icons.css';
 
+//ag-Grid
+@import "../node_modules/ag-grid-community/src/styles/ag-grid.scss";
+@import "../node_modules/ag-grid-community/src/styles/ag-theme-alpine/sass/ag-theme-alpine-mixin.scss";
+
+.ag-theme-alpine {
+    @include ag-theme-alpine();
+}
 
 html {
   height: 100%;

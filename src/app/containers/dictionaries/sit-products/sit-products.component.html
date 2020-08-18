@@ -2,6 +2,13 @@
   <sit-data-set-container  ident="sitProducts">
     <div fxLayout="row" fxFill fxLayoutGap="5px">
       <div fxLayout="column" fxFill class="content">
+        <ag-grid-angular
+          style="width: 500px; height: 500px;"
+          class="ag-theme-alpine"
+          [rowData]="rowData"
+          [columnDefs]="columnDefs"
+        >
+        </ag-grid-angular>
         <div class="sit-filter-bar">
           <sit-data-set-container ident="sitFilterProducts" >
             <div style="width: 100%;">

@@ -5,6 +5,7 @@ import { ColumnMode, SelectionType } from '../../../../ngx/public-api';
 import { environment } from '@environments/environment';
 import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-sit-products',
@@ -23,13 +24,27 @@ export class SitProductsComponent implements OnInit {
   activeRow: any;
   sitProductsSelected = [];
 
+  columnDefs = [
+    {headerName: 'Make', field: 'make', sortable: true, filter: true, checkboxSelection: true },
+    {headerName: 'Model', field: 'model', sortable: true, filter: true },
+    {headerName: 'Price', field: 'price', sortable: true, filter: true}
+  ];
+
+  rowData = [
+    { make: 'Toyota', model: 'Celica', price: 35000 },
+    { make: 'Ford', model: 'Mondeo', price: 32000 },
+    { make: 'Porsche', model: 'Boxter', price: 72000 }
+  ];
+
   constructor(
-    private gatewayService: GatewayService
+    private gatewayService: GatewayService,
+    private http: HttpClient
   ) {
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
   }
 
   ngOnInit(): void {
+
   }
   onActivateProducts(event) {
     if (event.type === 'click') {
