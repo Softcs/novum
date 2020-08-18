@@ -27,12 +27,15 @@ export class SitProductsComponent implements OnInit {
   //public modules: Module[] = [ClientSideRowModelModule];
   public columnDefs;
   public defaultColDef;
+  public rowSelection;
 
 
   constructor(
     private gatewayService: GatewayService
   ) {
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
+
+    this.rowSelection = 'single';
     this.columnDefs = [
       { headerName: 'Identyfikator', field: 'ProductIdent', sortable: true, resizable: true,
       filter: 'agTextColumnFilter',
@@ -64,5 +67,9 @@ export class SitProductsComponent implements OnInit {
       const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitCustomers');
       dataSourceResponseWrapper.SetActiveRow(event.row);
     }
+  }
+
+  onSelectionChanged(event) {
+    console.log(event)
   }
 }
