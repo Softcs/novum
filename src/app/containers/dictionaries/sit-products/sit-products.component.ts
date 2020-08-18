@@ -39,7 +39,7 @@ export class SitProductsComponent implements OnInit {
       filterParams: {
         filterOptions: ['contains', 'notContains']
       },
-      checkboxSelection: true },
+      checkboxSelection: false },
       {headerName: 'Nazwa', field: 'ProductName', sortable: true, filter: true, resizable: true },
       {headerName: 'JM', field: 'UnitIdent', sortable: true, filter: true, resizable: true },
       {headerName: 'Vat', field: 'VATRateIdent', sortable: true, filter: true, resizable: true },

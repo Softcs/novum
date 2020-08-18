@@ -5,7 +5,8 @@
         <ag-grid-angular #sitSetDataSource
           style="width: 100%; height: 100%;"
           class="ag-theme-alpine"
-
+          [rowSelection]="multiple"
+          [rowMultiSelectWithClick]="true"
           [columnDefs]="columnDefs"
           [defaultColDef]="defaultColDef"
         >
