@@ -101,19 +101,17 @@ export class SitDataSetContainerComponent implements OnInit {
     this.dataSetResponseWrapper.activeRowChanged = this.activeRowChanged;
     this.errors = dataSetWrapper.errors;
     this.datasSourcesInterface.forEach(element => {
-      let gOp = element["gridOptions"];
-
-      if (gOp) {
-        element["api"].setRowData(this.dataSetResponseWrapper.rows);
-
+      //agGrid
+      let gridApi = element["api"];
+      if (gridApi) {
+        gridApi.setRowData(this.dataSetResponseWrapper.rows);
+        gridApi.forEachNode(function(node) { node.setSelected(node.rowIndex === 0); });
       }
+      //ngx-datatable
         else  {
           element.rows = this.dataSetResponseWrapper.rows;
+          element.selected = [this.dataSetResponseWrapper.activeRow];
         }
-      element.selected = [this.dataSetResponseWrapper.activeRow];
-
-      console.log("element",element)
-
     });
 
     if (this.databaseControlsInterface != null) {

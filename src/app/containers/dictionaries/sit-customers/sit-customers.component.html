@@ -4,11 +4,11 @@
       <div fxLayout="column" fxFlex="50" class="content">
 
         <!-- Filtry sitCustomers -->
-        <div class="sit-filter-bar">
+        <!-- <div class="sit-filter-bar">
           <sit-data-set-container ident="sitFilterCustomers" >
               <sit-data-input #sitControl id="searchCustomers" field="searchCustomers" label="Filtruj kontrahentów" placeholder="Nazwa, NIP, Identyfikator" appearance="outline" style="width: 300px;"></sit-data-input>
           </sit-data-set-container>
-        </div>
+        </div> -->
 
         <!-- Procedury sitCustomers -->
         <div class="sit-proc-bar">
@@ -24,42 +24,26 @@
         </div>
 
         <!--Grid sitCustomers-->
-        <div class="data-table">
-          <ngx-datatable #sitCustomers #sitSetDataSource
-          class="material striped"
-          style = "height:700px;"
-          [columnMode]="ColumnMode.force"
-          [scrollbarV]=true
-          [selected]="sitCustomersSelected"
-          [selectionType]="SelectionType.single"
-          [selectAllRowsOnPage]="false"
-          (activate)="onActivateCustomers($event)"
-          [footerHeight]="30"
+        <div class="data-table" fxFlex>
+          <ag-grid-angular #sitSetDataSource
+            #agGrid
+            id="gridCustomers"
+            style="width: 100%; height: 100%;"
+            class="ag-theme-balham"
+            [modules]="modules"
+            [columnDefs]="columnDefsCustomers"
+            [defaultColDef]="defaultColDef"
+            [rowSelection]="rowSelection"
+            [rowMultiSelectWithClick]="true"
+            [enableCellTextSelection]="true"
+            [enableRangeSelection]="false"
+            [popupParent]="popupParent"
+            (rowClicked)="onRowClickedCustomers($event)"
+            (gridReady)="onGridReadyCustomers($event)"
+            (firstDataRendered)="onFirstDataRendered($event)"
+
           >
-            <ngx-datatable-column prop="CustIdent" name="Identyfikator" [width]="150" [canAutoResize]="false"></ngx-datatable-column>
-            <ngx-datatable-column prop="CustName" name="Nazwa"></ngx-datatable-column>
-            <ngx-datatable-column prop="VATId" name="NIP" [width]="120" [canAutoResize]="false"></ngx-datatable-column>
-            <!-- <ngx-datatable-column prop="Person" name="Os.fiz." [resizeable]="false" [width]="45" [canAutoResize]="false">
-              <ng-template let-value="value" ngx-datatable-cell-template>
-                <div style="text-align: center;">
-                  <input type="checkbox" id="IsActive" name="Person" value="value" disabled=true [checked]="value == 1">
-                </div>
-              </ng-template>
-            </ngx-datatable-column> -->
-            <!-- <ngx-datatable-column prop="Street" name="Ulica">
-              <ng-template let-row="row" ngx-datatable-cell-template>
-                <div>
-                  {{row.Street}} {{row.HouseNum}}
-                </div>
-              </ng-template>
-            </ngx-datatable-column>
-            <ngx-datatable-column prop="PostCode" name="Kod pocz."></ngx-datatable-column> -->
-            <ngx-datatable-column prop="City" name="Miasto"></ngx-datatable-column>
-            <ngx-datatable-column prop="CountrySymbol" name="Kraj" [resizeable]="false" [width]="40" [canAutoResize]="false"></ngx-datatable-column>
-            <!-- <ngx-datatable-column prop="KRS" name="KRS"></ngx-datatable-column>
-            <ngx-datatable-column prop="REGON" name="REGON"></ngx-datatable-column>
-            <ngx-datatable-column prop="ExtIdent" name="Zew ID"></ngx-datatable-column> -->
-          </ngx-datatable>
+          </ag-grid-angular>
         </div>
       </div>
       <div fxLayout="column" fxFlex="50" class="content">

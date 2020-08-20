@@ -1,11 +1,10 @@
 import { Component, OnInit, ViewChild, AfterViewInit, ViewChildren, QueryList  } from '@angular/core';
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
 import { DataSetWrapper } from '@app/_models';
-import { ColumnMode, SelectionType } from '../../../../ngx/public-api';
 import { environment } from '@environments/environment';
 import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
-//import { ClientSideRowModelModule } from '@ag-grid-community/client-side-row-model';
+import { AllModules } from '@ag-grid-enterprise/all-modules';
 
 @Component({
   selector: 'app-sit-products',
@@ -16,18 +15,16 @@ import { GatewayService } from '@app/_services';
 export class SitProductsComponent implements OnInit {
   @ViewChild('sitDictcontainer') dictContainer: SitDictContainerComponent;
   @ViewChildren('sitDictcontainer') dictContainers !: QueryList<SitDictContainerComponent>;
-  @ViewChild('sitProducts') table: any;
 
-  ColumnMode = ColumnMode;
-  SelectionType = SelectionType;
   currentUser: User;
-  activeRow: any;
-  sitProductsSelected = [];
 
-  //public modules: Module[] = [ClientSideRowModelModule];
-  public columnDefs;
-  public defaultColDef;
-  public rowSelection;
+  modules: any[] = AllModules;
+  gridApiProducts;
+  gridColumnApiProducts;
+  columnDefsProducts;
+  defaultColDefProducts;
+  rowSelection;
+  popupParent;
 
 
   constructor(
@@ -35,41 +32,51 @@ export class SitProductsComponent implements OnInit {
   ) {
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
 
+    this.popupParent = document.querySelector('body');
     this.rowSelection = 'single';
-    this.columnDefs = [
-      { headerName: 'Identyfikator', field: 'ProductIdent', sortable: true, resizable: true,
-      filter: 'agTextColumnFilter',
-      filterParams: {
-        filterOptions: ['contains', 'notContains']
-      },
-      checkboxSelection: false },
-      {headerName: 'Nazwa', field: 'ProductName', sortable: true, filter: true, resizable: true },
-      {headerName: 'JM', field: 'UnitIdent', sortable: true, filter: true, resizable: true },
-      {headerName: 'Vat', field: 'VATRateIdent', sortable: true, filter: true, resizable: true },
-      {headerName: 'EAN', field: 'EAN', sortable: true, filter: true, resizable: true },
-      {headerName: 'Kraj', field: 'CountrySymbol', sortable: true, filter: true, resizable: true },
-      {headerName: 'PKWIU', field: 'PKWIU', sortable: true, filter: true, resizable: true },
-    ];
-    this.defaultColDef = {
+
+    this.defaultColDefProducts = {
       flex: 1,
       sortable: true,
       filter: true,
       floatingFilter: true,
+      resizable: true
     };
+
+    this.columnDefsProducts = [
+      { headerName: 'Identyfikator', field: 'ProductIdent', sortable: true, resizable: true, filter: 'agTextColumnFilter',
+      // filterParams: {
+      //   filterOptions: ['contains', 'notContains']
+      // },
+      checkboxSelection: false },
+      {headerName: 'Nazwa', field: 'ProductName', filter: 'agTextColumnFilter' },
+      {headerName: 'JM', field: 'UnitIdent', filter: 'agTextColumnFilter' },
+      {headerName: 'Vat', field: 'VATRateIdent', filter: 'agTextColumnFilter' },
+      {headerName: 'EAN', field: 'EAN', filter: 'agTextColumnFilter' },
+      {headerName: 'PKWIU', field: 'PKWIU', filter: 'agTextColumnFilter' },
+    ];
 
 }
 
   ngOnInit(): void {
 
   }
-  onActivateProducts(event) {
-    if (event.type === 'click') {
-      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitCustomers');
-      dataSourceResponseWrapper.SetActiveRow(event.row);
-    }
+
+  onGridReadyProducts(params) {
+    this.gridApiProducts = params.api;
+    this.gridColumnApiProducts = params.columnApi;
   }
 
-  onSelectionChanged(event) {
-    console.log(event)
+  onRowClickedProducts(event) {
+    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitProducts');
+      dataSourceResponseWrapper.SetActiveRow(event.data);
+  }
+
+  onFirstDataRendered(params) {
+    var allColumnIds = [];
+    this.gridColumnApiProducts.getAllColumns().forEach(function(column) {
+      allColumnIds.push(column.colId);
+    });
+    this.gridColumnApiProducts.autoSizeColumns(allColumnIds, false);
   }
 }

@@ -27,6 +27,7 @@
     "@fortawesome/fontawesome-free": "^5.13.0",
     "@swimlane/ngx-datatable": "^16.1.1",
     "@types/chart.js": "^2.9.21",
+    "@ag-grid-enterprise/all-modules": "23.2.1",
     "ag-grid": "^18.1.2",
     "ag-grid-angular": "^23.2.1",
     "ag-grid-community": "^23.2.1",

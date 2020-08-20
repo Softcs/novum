@@ -10,43 +10,27 @@
             </div>
           </sit-data-set-container>
         </div>
+        <div class="data-table" fxFlex>
+          <ag-grid-angular #sitSetDataSource
+            #agGrid
+            id="gridProjectsPub"
+            style="width: 100%; height: 100%;"
+            class="ag-theme-balham"
+            [modules]="modules"
+            [columnDefs]="columnDefsProjectsPub"
+            [defaultColDef]="defaultColDefProjectsPub"
+            [rowSelection]="rowSelection"
+            [rowMultiSelectWithClick]="true"
+            [enableCellTextSelection]="true"
+            [enableRangeSelection]="false"
+            [popupParent]="popupParent"
+            (rowClicked)="onRowClickedProjectsPub($event)"
+            (gridReady)="onGridReadyProjectsPub($event)"
+            (firstDataRendered)="onFirstDataRendered($event)"
 
-          <div class="data-table">
-            <ngx-datatable #sitProjectsPub #sitSetDataSource
-            class="material striped"
-            [columnMode]="ColumnMode.force"
-            [scrollbarV] = "false"
-            [limit]="14"
-            [selected]="sitProjectsPubSelected"
-            [selectionType]="SelectionType.single"
-            [selectAllRowsOnPage]="false"
-            (activate)="onActivateProjectsPub($event)"
-            rowHeight="auto"
-            [footerHeight]="50"
-            >
-              <!-- <ngx-datatable-column prop="sitMenuId" name="Id" [canAutoResize]="false" [width]="50">
-                <ng-template let-value="value" ngx-datatable-cell-template>
-                  <div style="text-align: right;">
-                    {{value}}
-                  </div>
-                </ng-template>
-              </ngx-datatable-column> -->
-              <ngx-datatable-column prop="ProjectName" name="Projekt">
-                <ng-template let-row="row" ngx-datatable-cell-template>
-                  <div fxLayout="column">
-                    <div style="font-size: 15px;font-weight:500; text-overflow: ellipsis;overflow: hidden;">{{row.ProjectName}}</div>
-                    <div fxLayout="row">
-                      <div style="width: 200px;">{{row.ProjectIdent}}</div>
-                      <div>ISBN: {{row.ISBN}}</div>
-                    </div>
-                  </div>
-                </ng-template>
-              </ngx-datatable-column>
-              <!-- <ngx-datatable-column prop="ProjectName" name="Nazwa"></ngx-datatable-column>
-              <ngx-datatable-column prop="ISBN" name="ISBN"></ngx-datatable-column> -->
-
-            </ngx-datatable>
-          </div>
+          >
+          </ag-grid-angular>
+        </div>
       </div>
 
       <div *ngIf="!showProjectPanel()" fxLayout="column" fxFlex="65%" class="content" class="right-panel" fxLayoutAlign="start center">Wpisz w filtr symbol projektu, nazwę projektu lub EAN.</div>
