@@ -2,7 +2,8 @@
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
 import { ColumnMode, SelectionType } from '../../../../ngx/public-api';
 import { DataSetWrapper } from '@app/_models';
-import { TabService } from '@app/_services/tab.service';
+import { AllModules } from '@ag-grid-enterprise/all-modules';
+import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
 
 @Component({
     selector: 'sit-rail-configurations',
@@ -19,43 +20,61 @@ export class SitRailConfigurationsComponent implements OnInit {
   ColumnMode = ColumnMode;
   SelectionType = SelectionType;
 
-  constructor(
-    private tabService: TabService,
-  ) {
+  modules: any[] = AllModules;
+  defaultColDef;
+  rowSelection;
+  popupParent;
+  frameworkComponents;
 
+  gridApi;
+  gridColumnApi;
+  columnDefs;
+  pinnedBottomRowData;
+
+  constructor() {
+    this.popupParent = document.querySelector('body');
+    this.rowSelection = 'single';
+
+    this.defaultColDef = {
+      sortable: true,
+      filter: true,
+      resizable: true,
+      enableValue: true,
+      enableRowGroup: true,
+      enablePivot: true,
+    };
+    this.columnDefs = [
+      { headerName: 'CompanyIdent', field: 'CompanyIdent', sortable: true, flex: 2, filter: 'agTextColumnFilter', autoHeight: true },
+      { headerName: 'OperationIdent', field: 'OperationIdent', sortable: true, flex: 2, filter: 'agTextColumnFilter', autoHeight: true },
+      { headerName: 'IsActive', field: 'IsActive', sortable: true, flex: 1, filter: 'agTextColumnFilter', autoHeight: true, cellRenderer: 'gridCheckboxRenderer', cellClass: "grid-cell-centered"  },
+    ];
+
+    this.frameworkComponents = {
+      gridCheckboxRenderer: GridCheckboxRenderer,
+    };
   }
 
   ngOnInit() {
   }
 
-  displayCheck(row) {
-    return row.name !== 'xxx';
-  }
-
-  onActivateRailConfigurations(event) {
-    if (event.type == 'click') {
-      const dataSetResponseWrapper: DataSetWrapper =
-        this.dictContainer.DataSetManager.getDateSourceWrapper("sitRailConfigurations");
-      dataSetResponseWrapper.SetActiveRow(event.row);
-    }
-  }
-
-  onSelectRailConfigurations({ selected }) {
-    this.sitRailConfigurationsSelected.splice(0, this.sitRailConfigurationsSelected.length);
-    this.sitRailConfigurationsSelected.push(...selected);
-  }
-
-  toggleExpandRow(row) {
-    const dataSourceResponseWrapper: DataSetWrapper =
-      this.dictContainer.DataSetManager.getDateSourceWrapper("sitRailConfigurations");
-    this.table.rowDetail.toggleExpandRow(row);
-  }
-
-  onDetailToggle(event) {
+  onGridReady(params) {
+    this.gridApi = params.api;
+    this.gridColumnApi = params.columnApi;
 
   }
 
-  get activeRowRailConfigurations() {
-    return this.dictContainer?.activeRow('sitRailConfigurations');
+  onRowClicked(event) {
+    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitRailConfigurations');
+      dataSourceResponseWrapper.SetActiveRow(event.data);
   }
+
+  onFirstDataRendered(params) {
+    const allColumnIds = [];
+
+    this.gridColumnApi.getAllColumns().forEach(function(column) {
+      allColumnIds.push(column.colId);
+    });
+  }
+
+
 }

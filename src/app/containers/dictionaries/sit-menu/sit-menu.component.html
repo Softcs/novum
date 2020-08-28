@@ -26,31 +26,27 @@
         </sit-data-set-container>
 
         <!-- Grid sitMenu -->
-        <sit-data-set-container  ident="sitMenu">
-          <div class="data-table">
-            <ngx-datatable #sitMenu #sitSetDataSource
-            class="material striped"
-            [columnMode]="ColumnMode.force"
-            style="height: 280px;"
-            [scrollbarV] = "true"
-            [selected]="sitMenuSelected"
-            [selectionType]="SelectionType.single"
-            [selectAllRowsOnPage]="false"
-            [displayCheck]="displayCheck"
-            (activate)="onActivateMenu($event)"
-            (select)="onSelectMenu($event)"
-            [footerHeight]="0"
+        <sit-data-set-container  ident="sitMenu" fxFlex>
+          <div class="data-table" fxFill>
+            <ag-grid-angular #sitSetDataSource
+              #agGrid
+              id="gridRailConfigurations"
+              style="width: 100%; height: 100%;"
+              class="ag-theme-balham"
+              [modules]="modules"
+              [columnDefs]="columnDefs"
+              [defaultColDef]="defaultColDef"
+              [rowSelection]="rowSelection"
+              [rowMultiSelectWithClick]="true"
+              [enableCellTextSelection]="true"
+              [enableRangeSelection]="false"
+              [popupParent]="popupParent"
+              [frameworkComponents]="frameworkComponents"
+              (rowClicked)="onRowClicked($event)"
+              (gridReady)="onGridReady($event)"
+              (firstDataRendered)="onFirstDataRendered($event)"
             >
-              <ngx-datatable-column prop="sitMenuId" name="Id" [canAutoResize]="false" [width]="50">
-                <ng-template let-value="value" ngx-datatable-cell-template>
-                  <div style="text-align: right;">
-                    {{value}}
-                  </div>
-                </ng-template>
-              </ngx-datatable-column>
-              <ngx-datatable-column prop="Symbol" name="Symbol"></ngx-datatable-column>
-              <ngx-datatable-column prop="Caption" name="Nazwa"></ngx-datatable-column>
-            </ngx-datatable>
+            </ag-grid-angular>
           </div>
         </sit-data-set-container>
       </div>
@@ -78,45 +74,33 @@
         </sit-data-set-container>
 
         <!-- Grid sitAppUsers-->
-        <sit-data-set-container ident="sitAppUsers">
-          <div class="data-table">
-            <ngx-datatable #sitAppUsers #sitSetDataSource
-            class="material striped"
-            [columnMode]="ColumnMode.force"
-            style="height: 330px;"
-            [scrollbarV] = "true"
-              [selected]="sitAppUsersSelected"
-            [selectionType]="SelectionType.single"
-            [selectAllRowsOnPage]="false"
-            [displayCheck]="displayCheck"
-            (activate)="onActivateAppUsers($event)"
-            (select)="onSelectAppUsers($event)"
-            [footerHeight]="0"
+        <sit-data-set-container ident="sitAppUsers" fxFlex>
+          <div class="data-table" fxFill>
+            <ag-grid-angular #sitSetDataSource
+              #agGrid
+              id="gridRailConfigurations"
+              style="width: 100%; height: 100%;"
+              class="ag-theme-balham"
+              [modules]="modules"
+              [columnDefs]="columnDefsAppUsers"
+              [defaultColDef]="defaultColDef"
+              [rowSelection]="rowSelection"
+              [rowMultiSelectWithClick]="true"
+              [enableCellTextSelection]="true"
+              [enableRangeSelection]="false"
+              [popupParent]="popupParent"
+              [frameworkComponents]="frameworkComponents"
+              (rowClicked)="onRowClickedAppUsers($event)"
+              (gridReady)="onGridReadyAppUsers($event)"
+              (firstDataRendered)="onFirstDataRendered($event)"
             >
-              <ngx-datatable-column prop="sitAppUsersId" name="Id"  [canAutoResize]="false" [width]="50">
-                <ng-template let-value="value" ngx-datatable-cell-template>
-                  <div style="text-align: right;">
-                    {{value}}
-                  </div>
-                </ng-template>
-              </ngx-datatable-column>
-              <ngx-datatable-column prop="UserLogin" name="Login"></ngx-datatable-column>
-              <ngx-datatable-column prop="Name" name="Imię"></ngx-datatable-column>
-              <ngx-datatable-column prop="SurName" name="Nazwisko"></ngx-datatable-column>
-              <ngx-datatable-column prop="IsActive" name="Aktywny" [resizeable]="false" [width]="60" [canAutoResize]="false">
-                <ng-template let-value="value" ngx-datatable-cell-template>
-                  <div style="text-align: center;">
-                    <input type="checkbox" id="IsActive" name="Aktywny" value="value" disabled=true [checked]="value == 1">
-                  </div>
-                </ng-template>
-              </ngx-datatable-column>
-            </ngx-datatable>
+            </ag-grid-angular>
           </div>
         </sit-data-set-container>
 
       </div>
     </div>
-    <div fxFlex="50%" class="content">
+    <div fxFlex="50%" fxLayout="column" class="content">
 
       <!-- Filtr sitMenuItems -->
       <sit-data-set-container  ident="sitFilterMenuItems" >
@@ -141,48 +125,28 @@
       </sit-data-set-container>
 
       <!-- Grid sitMenuItems -->
-      <sit-data-set-container ident="sitMenuItems">
-        <div class="data-table">
-          <ngx-datatable #sitMenuItems #sitSetDataSource
-          class="material striped"
-          [columnMode]="ColumnMode.force"
-          style="height: 735px;"
-          [scrollbarV] = "true"
-          [selected]="sitMenuItemsSelected"
-          [selectionType]="SelectionType.single"
-          [selectAllRowsOnPage]="false"
-          [displayCheck]="displayCheck"
-          (select)="onSelectMenuItems($event)"
-          (activate)="onActivateMenuItems($event)"
-          [footerHeight]="0"
-        >
-            <ngx-datatable-column prop="sitMenuItemsId" name="Id" [canAutoResize]="false" [width]="50">
-              <ng-template let-value="value" ngx-datatable-cell-template>
-                <div style="text-align: right;">
-                  {{value}}
-                </div>
-              </ng-template>
-            </ngx-datatable-column>
-            <ngx-datatable-column prop="ParentId" name="Grupa" [canAutoResize]="false" [width]="40">
-              <ng-template let-value="value" ngx-datatable-cell-template>
-                <div style="text-align: right;">
-                  {{value}}
-                </div>
-              </ng-template>
-            </ngx-datatable-column>
-            <ngx-datatable-column prop="OrdId" name="Kolejność" [canAutoResize]="false" [width]="70">
-              <ng-template let-value="value" ngx-datatable-cell-template>
-                <div style="text-align: right;">
-                  {{value}}
-                </div>
-              </ng-template>
-            </ngx-datatable-column>
-            <ngx-datatable-column prop="Caption" name="Nazwa"></ngx-datatable-column>
-            <ngx-datatable-column prop="Kind" name="Rodzaj"></ngx-datatable-column>
-            <ngx-datatable-column prop="Link" name="Link"></ngx-datatable-column>
-            <ngx-datatable-column prop="Icon" name="Ikona"></ngx-datatable-column>
-          </ngx-datatable>
-        </div>
+      <sit-data-set-container ident="sitMenuItems" fxFlex>
+        <div class="data-table" fxFill>
+          <ag-grid-angular #sitSetDataSource
+            #agGrid
+            id="gridMenuItems"
+            style="width: 100%; height: 100%;"
+            class="ag-theme-balham"
+            [modules]="modules"
+            [columnDefs]="columnDefsMenuItems"
+            [defaultColDef]="defaultColDef"
+            [rowSelection]="rowSelection"
+            [rowMultiSelectWithClick]="true"
+            [enableCellTextSelection]="true"
+            [enableRangeSelection]="false"
+            [popupParent]="popupParent"
+            [frameworkComponents]="frameworkComponents"
+            (rowClicked)="onRowClickedMenuItems($event)"
+            (gridReady)="onGridReadyMenuItems($event)"
+            (firstDataRendered)="onFirstDataRendered($event)"
+          >
+          </ag-grid-angular>
+    </div>
       </sit-data-set-container>
     </div>
   </div>

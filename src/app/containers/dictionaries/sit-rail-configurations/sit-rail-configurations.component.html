@@ -1,5 +1,5 @@
-﻿<sit-dict-container ident="sitRailConfigurations" #sitDictcontainer fxFlexFill>
-  <sit-data-set-container ident="sitRailConfigurations">
+﻿<sit-dict-container ident="sitRailConfigurations" #sitDictcontainer fxFill>
+  <sit-data-set-container ident="sitRailConfigurations" fxFill>
     <div fxLayout="row" fxFill>
       <div fxLayout="column" fxFlex="30" class="content">
 
@@ -21,69 +21,33 @@
                   <sit-proc-button #sitAction actionIdent="update" componentParamsIdent="sitRailConfigurationsEdit" openKind="TAB" tooltip="Edycja" color="primary" icon="edit">
                   </sit-proc-button>
 
-                  <sit-proc-button #sitAction actionIdent="delete" color="primary" icon="delete" delete="true" matType="mat-stroked-button"></sit-proc-button>
+                  <sit-proc-button #sitAction actionIdent="delete" color="primary" icon="delete" delete="true" matType="mats-stroked-button"></sit-proc-button>
                 </div>
               </mat-toolbar-row>
             </mat-toolbar>
           </div>
 
-          <ngx-datatable #sitRailConfigurations #sitSetDataSource
-            class="material striped"
-            style = "height:700px;"
-            [columnMode]="ColumnMode.force"
-            [limit]=20
-            [scrollbarV]=true
-            [footerHeight]="0"
-            [selected]="sitRailConfigurationsSelected"
-            [selectionType]="SelectionType.single"
-            [selectAllRowsOnPage]="false"
-            [displayCheck]="displayCheck"
-            (activate)="onActivateRailConfigurations($event)"
-            (select)="onSelectRailConfigurations($event)"
-
-          >
-
-          <!-- <ngx-datatable-row-detail [rowHeight]="300" #myDetailRow (toggle)="onDetailToggle($event)">
-            <ng-template let-row="row" let-expanded="expanded" ngx-datatable-row-detail-template>
-              <div style="padding: 0px 20px 0px 20px; width:100%; height:100%;">
-                <div><h6>Data</h6></div>
-                <div><textarea name="Data" rows="13" >{{ row.Data }}</textarea></div>
-              </div>
-            </ng-template>
-          </ngx-datatable-row-detail>
-
-          <ngx-datatable-column
-            [width]="30"
-            [resizeable]="false"
-            [sortable]="false"
-            [draggable]="false"
-            [canAutoResize]="false"
-          >
-            <ng-template let-row="row" let-expanded="expanded" ngx-datatable-cell-template>
-              <a style="text-decoration: none;"
-                href="javascript:void(0)"
-                [class.datatable-icon-right]="!expanded"
-                [class.datatable-icon-down]="expanded"
-                title="Expand/Collapse Row"
-                (click)="toggleExpandRow(row)"
-              >
-              </a>
-            </ng-template>
-          </ngx-datatable-column> -->
-          <ngx-datatable-column prop="CompanyIdent" name="Company Ident"></ngx-datatable-column>
-          <ngx-datatable-column prop="OperationIdent" name="OperationIdent"></ngx-datatable-column>
-          <ngx-datatable-column prop="IsActive" [canAutoResize]="false" [width]="55">
-            <ng-template let-column="column" ngx-datatable-header-template>
-              IsActive
-            </ng-template>
-            <ng-template let-value="value" ngx-datatable-cell-template>
-              <div style="text-align: center;">
-                <input type="checkbox" id="IsActive" name="IsActive" value="value" disabled=true [checked]="value == 1">
-              </div>
-            </ng-template>
-          </ngx-datatable-column>
-        </ngx-datatable>
-
+          <div class="data-table" fxFlex>
+            <ag-grid-angular #sitSetDataSource
+              #agGrid
+              id="gridRailConfigurations"
+              style="width: 100%; height: 100%;"
+              class="ag-theme-balham"
+              [modules]="modules"
+              [columnDefs]="columnDefs"
+              [defaultColDef]="defaultColDef"
+              [rowSelection]="rowSelection"
+              [rowMultiSelectWithClick]="true"
+              [enableCellTextSelection]="true"
+              [enableRangeSelection]="false"
+              [popupParent]="popupParent"
+              [frameworkComponents]="frameworkComponents"
+              (rowClicked)="onRowClicked($event)"
+              (gridReady)="onGridReady($event)"
+              (firstDataRendered)="onFirstDataRendered($event)"
+            >
+            </ag-grid-angular>
+          </div>
       </div>
 
       <div fxLayout="column" fxFlex="70" class="content">
