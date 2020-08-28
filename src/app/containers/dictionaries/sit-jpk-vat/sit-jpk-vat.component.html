@@ -17,153 +17,89 @@
 
     <mat-tab label="Zakup">
       <div fxLayout="column" fxFill fxLayoutGap="5px">
-        <div fxLayout="row" fxFlex="220px" fxLayoutGap="5px">
+        <div fxLayout="row" fxFlex="30">
           <div class="content" fxFlex="50%">
-              <div class="data-table" style="flex: 1 1 auto;">
-                <sit-data-set-container ident="sitJPKVATZakupSum">
-                  <ngx-datatable #sitJPKVATZakupSum #sitSetDataSource
-                    class="material striped"
-                    [columnMode]="ColumnMode.force"
-                    style="height: 200px;"
-                    [scrollbarV] = "true"
-                    [footerHeight]="false"
-                    [selected]="sitJPKVATZakupSumSelected"
-                    [selectionType]="SelectionType.single"
-                    [selectAllRowsOnPage]="false"
-                    [summaryRow]="true"
-                    summaryPosition="bottom"
-                    [summaryHeight]="30"
-                    [sorts]="[{prop: 'Field', dir: 'asc'}]"
-
+              <div class="data-table" fxFill>
+                <sit-data-set-container ident="sitJPKVATZakupSum" fxFlex>
+                  <ag-grid-angular #sitSetDataSource
+                    #agGrid
+                    id="gridZakupSum"
+                    style="width: 100%; height: 100%;"
+                    class="ag-theme-balham"
+                    [modules]="modules"
+                    [columnDefs]="columnDefs"
+                    [defaultColDef]="defaultColDef"
+                    [rowSelection]="rowSelection"
+                    [rowMultiSelectWithClick]="true"
+                    [enableCellTextSelection]="true"
+                    [enableRangeSelection]="false"
+                    [popupParent]="popupParent"
+                    [frameworkComponents]="frameworkComponents"
+                    (rowClicked)="onRowClicked($event)"
+                    (gridReady)="onGridReady($event)"
+                    (firstDataRendered)="onFirstDataRendered($event)"
                   >
-                  <ngx-datatable-column prop="Field" name="Pole" [canAutoResize]="false" [width]="80"></ngx-datatable-column>
-                  <ngx-datatable-column prop="Typ" name="Typ" [canAutoResize]="false" [width]="50"></ngx-datatable-column>
-                    <ngx-datatable-column prop="Desc" name="Opis" [width]="100"></ngx-datatable-column>
-                    <ngx-datatable-column prop="Netto" name="Netto" [summaryTemplate]="sumNetto">
-                      <ng-template let-value="value" ngx-datatable-cell-template>
-                        <div style="text-align: right;">{{value | number : "1.2-2"}}</div>
-                      </ng-template>
-                    </ngx-datatable-column>
-                    <ngx-datatable-column prop="Vat" name="Vat" [summaryTemplate]="sumVat">
-                      <ng-template let-value="value" ngx-datatable-cell-template>
-                        <div style="text-align: right;">{{value | number : "1.2-2"}}</div>
-                      </ng-template>
-                    </ngx-datatable-column>
-
-                  </ngx-datatable>
-                  <ng-template #sumNetto let-row="row">
-                    <div style="text-align: right;">{{calcZakupSum('Netto') | number : "1.2-2"}}</div>
-                  </ng-template>
-                  <ng-template #sumVat let-row="row">
-                    <div style="text-align: right;">{{calcZakupSum('Vat') | number : "1.2-2"}}</div>
-                  </ng-template>
+                  </ag-grid-angular>
                 </sit-data-set-container>
               </div>
           </div>
           <div class="content" fxFlex="50%">
-              <div class="data-table">
-                <sit-data-set-container ident="sitJPKVATZakupCust">
-                  <ngx-datatable #sitJPKVATZakupSum #sitSetDataSource
-                    class="material striped"
-                    [columnMode]="ColumnMode.force"
-                    style="height: 200px;"
-                    [scrollbarV] = "true"
-                    [footerHeight]="false"
-                    [selected]="sitJPKVATZakupCustSelected"
-                    [selectionType]="SelectionType.single"
-                    [selectAllRowsOnPage]="false"
-
+              <div class="data-table" fxFill>
+                <sit-data-set-container ident="sitJPKVATZakupCust" fxFIll>
+                  <ag-grid-angular #sitSetDataSource
+                    #agGrid
+                    id="gridZakupCust"
+                    style="width: 100%; height: 100%;"
+                    class="ag-theme-balham"
+                    [modules]="modules"
+                    [columnDefs]="columnDefsZakupCust"
+                    [defaultColDef]="defaultColDef"
+                    [rowSelection]="rowSelection"
+                    [rowMultiSelectWithClick]="true"
+                    [enableCellTextSelection]="true"
+                    [enableRangeSelection]="false"
+                    [popupParent]="popupParent"
+                    [frameworkComponents]="frameworkComponents"
+                    (rowClicked)="onRowClickedZakupCust($event)"
+                    (gridReady)="onGridReadyZakupCust($event)"
+                    (firstDataRendered)="onFirstDataRendered($event)"
                   >
-                    <ngx-datatable-column prop="NR_ID_WYSTAWCY" name="NIP"></ngx-datatable-column>
-                    <ngx-datatable-column prop="NAZWA_WYSTAWCY" name="Nazwa"></ngx-datatable-column>
-                    <ngx-datatable-column prop="StatusVat" name="Status VAT"></ngx-datatable-column>
-                    <ngx-datatable-column prop="requestDateTime" name="Data spr."></ngx-datatable-column>
-                    <ngx-datatable-column prop="requestId" name="Id spr."></ngx-datatable-column>
-
-                  </ngx-datatable>
+                  </ag-grid-angular>
                 </sit-data-set-container>
               </div>
           </div>
         </div>
-        <div fxLayout="column" fxFlex="100%" fxLayoutGap="5px">
-            <div class="content">
-              <div style="flex: 0 1 auto; width: 300px;">
+        <div fxLayout="column" fxFlex>
+            <div class="content" fxFill>
+              <!-- <div style="flex: 0 1 auto; width: 300px;">
                 <sit-data-set-container ident="sitFilterZakup" >
                   <span>
                     <sit-data-input #sitControl field="searchZakup" label="Filtruj"></sit-data-input>
                   </span>
                 </sit-data-set-container>
-              </div>
-              <div  style="flex: 1 1 auto;">
-                <div class="data-table">
-                  <sit-data-set-container ident="sitJPKVATZakup">
-                    <ngx-datatable #sitJPKVATZakup #sitSetDataSource
-                      class="material striped"
-                      [columnMode]="ColumnMode.force"
-                      style="height: 480px;"
-                      [scrollbarV] = "true"
-                      [footerHeight]="50"
-                      [selected]="sitJPKVATZakupSelected"
-                      [selectionType]="SelectionType.single"
-                      [selectAllRowsOnPage]="false"
+              </div> -->
+              <div fxFill>
+                <div class="data-table" fxFill>
+                  <sit-data-set-container ident="sitJPKVATZakup" fxFill>
+                    <ag-grid-angular #sitSetDataSource
+                      #agGrid
+                      id="gridZakup"
+                      style="width: 100%; height: 100%;"
+                      class="ag-theme-balham"
+                      [modules]="modules"
+                      [columnDefs]="columnDefsZakup"
+                      [defaultColDef]="defaultColDef"
+                      [rowSelection]="rowSelection"
+                      [rowMultiSelectWithClick]="true"
+                      [enableCellTextSelection]="true"
+                      [enableRangeSelection]="false"
+                      [popupParent]="popupParent"
+                      [frameworkComponents]="frameworkComponents"
+                      (rowClicked)="onRowClickedZakup($event)"
+                      (gridReady)="onGridReadyZakup($event)"
+                      (firstDataRendered)="onFirstDataRendered($event)"
                     >
-                      <ngx-datatable-column prop="Id" name="Id" [canAutoResize]="false" [width]="45">
-                        <ng-template let-value="value" ngx-datatable-cell-template>
-                          <div style="text-align: right;">
-                            {{value}}
-                          </div>
-                        </ng-template>
-                      </ngx-datatable-column>
-                      <ngx-datatable-column prop="RD" name="RD" [canAutoResize]="false" [width]="60"></ngx-datatable-column>
-                      <ngx-datatable-column prop="ND" name="ND" [canAutoResize]="false" [width]="50">
-                        <ng-template let-value="value" ngx-datatable-cell-template>
-                          <div style="text-align: right;">
-                          {{value}}
-                        </div>
-                      </ng-template>
-                      </ngx-datatable-column>
-                      <ngx-datatable-column prop="Numer" name="Numer" [canAutoResize]="false" [width]="150"></ngx-datatable-column>
-                      <ngx-datatable-column prop="GrupaKlas" name="Gr.Klas." [canAutoResize]="false" [width]="55"></ngx-datatable-column>
-                      <ngx-datatable-column prop="SymbolSV" name="St.VAT" [canAutoResize]="false" [width]="55"></ngx-datatable-column>
-                      <ngx-datatable-column prop="Netto" name="Netto" [canAutoResize]="false" [width]="100">
-                        <ng-template let-value="value" ngx-datatable-cell-template>
-                          <div style="text-align: right;">{{value | number : "1.2-2"}}</div>
-                        </ng-template>
-                      </ngx-datatable-column>
-                      <ngx-datatable-column prop="Vat" name="Vat" [canAutoResize]="false" [width]="100">
-                        <ng-template let-value="value" ngx-datatable-cell-template>
-                          <div style="text-align: right;">{{value | number : "1.2-2"}}</div>
-                        </ng-template>
-                      </ngx-datatable-column>
-                      <ngx-datatable-column prop="Data" name="Data" [canAutoResize]="false" [width]="80">
-                        <ng-template let-value="value" ngx-datatable-cell-template>
-                          {{value | date: 'yyyy-MM-dd'}}
-                        </ng-template>
-                      </ngx-datatable-column>
-                      <ngx-datatable-column prop="DataVat" name="Data Vat" [canAutoResize]="false" [width]="80">
-                        <ng-template let-value="value" ngx-datatable-cell-template>
-                          {{value | date: 'yyyy-MM-dd'}}
-                        </ng-template>
-                      </ngx-datatable-column>
-                      <ngx-datatable-column prop="DATA_ZAKUPU" name="Data zak." [canAutoResize]="false" [width]="80">
-                        <ng-template let-value="value" ngx-datatable-cell-template>
-                          {{value | date: 'yyyy-MM-dd'}}
-                        </ng-template>
-                      </ngx-datatable-column>
-                      <ngx-datatable-column prop="DATA_WPLYWU" name="Data wpł." [canAutoResize]="false" [width]="80">
-                        <ng-template let-value="value" ngx-datatable-cell-template>
-                          {{value | date: 'yyyy-MM-dd'}}
-                        </ng-template>
-                      </ngx-datatable-column>
-                      <ngx-datatable-column prop="NAZWA_WYSTAWCY" name="Nazwa"></ngx-datatable-column>
-                      <ngx-datatable-column prop="ADRES_WYSTAWCY" name="Adres"></ngx-datatable-column>
-                      <ngx-datatable-column prop="NR_ID_WYSTAWCY" name="NIP" [canAutoResize]="false" [width]="100"></ngx-datatable-column>
-                      <ngx-datatable-column prop="NumerFa" name="Nr Fakt."></ngx-datatable-column>
-                      <ngx-datatable-column prop="TYP" name="Typ" [canAutoResize]="false" [width]="50"></ngx-datatable-column>
-                      <ngx-datatable-column prop="LogoP" name="LogoP" [canAutoResize]="false" [width]="55"></ngx-datatable-column>
-                      <ngx-datatable-column prop="Logo" name="Logo" [canAutoResize]="false" [width]="55"></ngx-datatable-column>
-
-                    </ngx-datatable>
+                    </ag-grid-angular>
                   </sit-data-set-container>
                 </div>
               </div>
@@ -173,152 +109,90 @@
     </mat-tab>
     <mat-tab label="Sprzedaż">
       <div fxLayout="column" fxFill fxLayoutGap="5px">
-        <div fxLayout="row" fxFlex="300px" fxLayoutGap="5px">
-          <div class="content" fxFlex="50%">
-              <div class="data-table">
-                <sit-data-set-container ident="sitJPKVATSprzedazSum">
-                  <ngx-datatable #sitJPKVATZakupSum #sitSetDataSource
-                    class="material striped"
-                    [columnMode]="ColumnMode.force"
-                    style="height: 280px;"
-                    [scrollbarV] = "true"
-                    [footerHeight]="false"
-                    [selected]="sitJPKVATSprzedazSumSelected"
-                    [selectionType]="SelectionType.single"
-                    [selectAllRowsOnPage]="false"
-                    [summaryRow]="true"
-                    summaryPosition="bottom"
-                    [summaryHeight]="30"
-                    [sorts]="[{prop: 'Field', dir: 'asc'}]"
-
+        <div fxLayout="row" fxFlex="40">
+          <div class="content" fxFlex="50">
+              <div class="data-table" fxFill>
+                <sit-data-set-container ident="sitJPKVATSprzedazSum" fxFill>
+                  <ag-grid-angular #sitSetDataSource
+                    #agGrid
+                    id="gridSprzedazSum"
+                    style="width: 100%; height: 100%;"
+                    class="ag-theme-balham"
+                    [modules]="modules"
+                    [columnDefs]="columnDefsSprzedazSum"
+                    [defaultColDef]="defaultColDef"
+                    [rowSelection]="rowSelection"
+                    [rowMultiSelectWithClick]="true"
+                    [enableCellTextSelection]="true"
+                    [enableRangeSelection]="false"
+                    [popupParent]="popupParent"
+                    [frameworkComponents]="frameworkComponents"
+                    (rowClicked)="onRowClickedSprzedazSum($event)"
+                    (gridReady)="onGridReadySprzedazSum($event)"
+                    (firstDataRendered)="onFirstDataRendered($event)"
                   >
-                  <ngx-datatable-column prop="Field" name="Pole" [canAutoResize]="false" [width]="80"></ngx-datatable-column>
-                  <ngx-datatable-column prop="Typ" name="Typ" [canAutoResize]="false" [width]="50"></ngx-datatable-column>
-                    <ngx-datatable-column prop="Desc" name="Opis" [width]="100"></ngx-datatable-column>
-                    <ngx-datatable-column prop="Netto" name="Netto" [summaryTemplate]="sumNettoS">
-                      <ng-template let-value="value" ngx-datatable-cell-template>
-                        <div style="text-align: right;">{{value | number : "1.2-2"}}</div>
-                      </ng-template>
-                    </ngx-datatable-column>
-                    <ngx-datatable-column prop="Vat" name="Vat" [summaryTemplate]="sumVat">
-                      <ng-template let-value="value" ngx-datatable-cell-template>
-                        <div style="text-align: right;">{{value | number : "1.2-2"}}</div>
-                      </ng-template>
-                    </ngx-datatable-column>
-
-                  </ngx-datatable>
-                  <ng-template #sumNettoS let-row="row">
-                    <div style="text-align: right;">{{calcSprzedazSum('Netto') | number : "1.2-2"}}</div>
-                  </ng-template>
-                  <ng-template #sumVatS let-row="row">
-                    <div style="text-align: right;">{{calcSprzedazSum('Vat') | number : "1.2-2"}}</div>
-                  </ng-template>
+                  </ag-grid-angular>
                 </sit-data-set-container>
               </div>
           </div>
-          <div class="content" fxFlex="50%">
-              <div class="data-table">
-                <sit-data-set-container ident="sitJPKVATSprzedazCust">
-                  <ngx-datatable #sitJPKVATZakupSum #sitSetDataSource
-                    class="material striped"
-                    [columnMode]="ColumnMode.force"
-                    style="height: 280px;"
-                    [scrollbarV] = "true"
-                    [footerHeight]="false"
-                    [selected]="sitJPKVATSprzedazCustSelected"
-                    [selectionType]="SelectionType.single"
-                    [selectAllRowsOnPage]="false"
-
+          <div class="content" fxFlex="50">
+              <div class="data-table" fxFill>
+                <sit-data-set-container ident="sitJPKVATSprzedazCust" fxFill>
+                  <ag-grid-angular #sitSetDataSource
+                    #agGrid
+                    id="gridSprzedazCust"
+                    style="width: 100%; height: 100%;"
+                    class="ag-theme-balham"
+                    [modules]="modules"
+                    [columnDefs]="columnDefsSprzedazCust"
+                    [defaultColDef]="defaultColDef"
+                    [rowSelection]="rowSelection"
+                    [rowMultiSelectWithClick]="true"
+                    [enableCellTextSelection]="true"
+                    [enableRangeSelection]="false"
+                    [popupParent]="popupParent"
+                    [frameworkComponents]="frameworkComponents"
+                    (rowClicked)="onRowClickedSprzedazCust($event)"
+                    (gridReady)="onGridReadySprzedazCust($event)"
+                    (firstDataRendered)="onFirstDataRendered($event)"
                   >
-                    <ngx-datatable-column prop="NIP" name="NIP"></ngx-datatable-column>
-                    <ngx-datatable-column prop="NAZWA_NABYWCY" name="Nazwa"></ngx-datatable-column>
-
-                  </ngx-datatable>
+                  </ag-grid-angular>
                 </sit-data-set-container>
               </div>
           </div>
         </div>
-        <div fxLayout="column" fxFlex="100%" fxLayoutGap="5px">
-            <div class="content">
-              <div style="flex: 0 1 auto; width: 300px;">
+        <div fxLayout="column" fxFlex="60">
+            <div class="content" fxFill>
+              <!-- <div >
                 <sit-data-set-container ident="sitFilterSprzedaz" >
                   <span>
                     <sit-data-input #sitControl field="searchSprzedaz" label="Filtruj"></sit-data-input>
                   </span>
                 </sit-data-set-container>
-              </div>
-              <div  style="flex: 1 1 auto;">
-                <div class="data-table">
-                  <sit-data-set-container ident="sitJPKVATSprzedaz">
-                    <ngx-datatable #sitJPKVATZakup #sitSetDataSource
-                      class="material striped"
-                      [columnMode]="ColumnMode.force"
-                      style="height: 400px;"
-                      [scrollbarV] = "true"
-                      [footerHeight]="50"
-                      [selected]="sitJPKVATSprzedazSelected"
-                      [selectionType]="SelectionType.single"
-                      [selectAllRowsOnPage]="false"
-                    >
-                      <ngx-datatable-column prop="Id" name="Id" [canAutoResize]="false" [width]="45">
-                        <ng-template let-value="value" ngx-datatable-cell-template>
-                          <div style="text-align: right;">
-                            {{value}}
-                          </div>
-                        </ng-template>
-                      </ngx-datatable-column>
-                      <ngx-datatable-column prop="RD" name="RD" [canAutoResize]="false" [width]="60"></ngx-datatable-column>
-                      <ngx-datatable-column prop="ND" name="ND" [canAutoResize]="false" [width]="50">
-                        <ng-template let-value="value" ngx-datatable-cell-template>
-                          <div style="text-align: right;">
-                          {{value}}
-                        </div>
-                      </ng-template>
-                      </ngx-datatable-column>
-                      <ngx-datatable-column prop="Numer" name="Numer" [canAutoResize]="false" [width]="150"></ngx-datatable-column>
-                      <ngx-datatable-column prop="GrupaKlas" name="Gr.Klas." [canAutoResize]="false" [width]="55"></ngx-datatable-column>
-                      <ngx-datatable-column prop="SymbolSV" name="St.VAT" [canAutoResize]="false" [width]="55"></ngx-datatable-column>
-                      <ngx-datatable-column prop="Netto" name="Netto" [canAutoResize]="false" [width]="100">
-                        <ng-template let-value="value" ngx-datatable-cell-template>
-                          <div style="text-align: right;">{{value | number : "1.2-2"}}</div>
-                        </ng-template>
-                      </ngx-datatable-column>
-                      <ngx-datatable-column prop="Vat" name="Vat" [canAutoResize]="false" [width]="100">
-                        <ng-template let-value="value" ngx-datatable-cell-template>
-                          <div style="text-align: right;">{{value | number : "1.2-2"}}</div>
-                        </ng-template>
-                      </ngx-datatable-column>
-                      <ngx-datatable-column prop="Data" name="Data" [canAutoResize]="false" [width]="80">
-                        <ng-template let-value="value" ngx-datatable-cell-template>
-                          {{value | date: 'yyyy-MM-dd'}}
-                        </ng-template>
-                      </ngx-datatable-column>
-                      <ngx-datatable-column prop="DataVat" name="Data Vat" [canAutoResize]="false" [width]="80">
-                        <ng-template let-value="value" ngx-datatable-cell-template>
-                          {{value | date: 'yyyy-MM-dd'}}
-                        </ng-template>
-                      </ngx-datatable-column>
-                      <ngx-datatable-column prop="DATA_SPRZEDAZY" name="Data sprz." [canAutoResize]="false" [width]="80">
-                        <ng-template let-value="value" ngx-datatable-cell-template>
-                          {{value | date: 'yyyy-MM-dd'}}
-                        </ng-template>
-                      </ngx-datatable-column>
-                      <ngx-datatable-column prop="DATA_WYSTAWIENIA" name="Data wyst." [canAutoResize]="false" [width]="80">
-                        <ng-template let-value="value" ngx-datatable-cell-template>
-                          {{value | date: 'yyyy-MM-dd'}}
-                        </ng-template>
-                      </ngx-datatable-column>
-                      <ngx-datatable-column prop="NAZWA_NABYWCY" name="Nazwa"></ngx-datatable-column>
-                      <ngx-datatable-column prop="ADRES_NABYWCY" name="Adres"></ngx-datatable-column>
-                      <ngx-datatable-column prop="NIP" name="NIP" [canAutoResize]="false" [width]="100"></ngx-datatable-column>
-                      <ngx-datatable-column prop="NumerFa" name="Nr Fakt."></ngx-datatable-column>
-                      <ngx-datatable-column prop="TYP" name="Typ" [canAutoResize]="false" [width]="50"></ngx-datatable-column>
-                      <ngx-datatable-column prop="LogoP" name="LogoP" [canAutoResize]="false" [width]="55"></ngx-datatable-column>
-                      <ngx-datatable-column prop="Logo" name="Logo" [canAutoResize]="false" [width]="55"></ngx-datatable-column>
+              </div> -->
+              <div class="data-table" fxFill>
+                <sit-data-set-container ident="sitJPKVATSprzedaz">
 
-                    </ngx-datatable>
-                  </sit-data-set-container>
-                </div>
+                  <ag-grid-angular #sitSetDataSource
+                    #agGrid
+                    id="gridSprzedaz"
+                    style="width: 100%; height: 100%;"
+                    class="ag-theme-balham"
+                    [modules]="modules"
+                    [columnDefs]="columnDefsSprzedaz"
+                    [defaultColDef]="defaultColDef"
+                    [rowSelection]="rowSelection"
+                    [rowMultiSelectWithClick]="true"
+                    [enableCellTextSelection]="true"
+                    [enableRangeSelection]="false"
+                    [popupParent]="popupParent"
+                    [frameworkComponents]="frameworkComponents"
+                    (rowClicked)="onRowClickedSprzedaz($event)"
+                    (gridReady)="onGridReadySprzedaz($event)"
+                    (firstDataRendered)="onFirstDataRendered($event)"
+                  >
+                  </ag-grid-angular>
+                </sit-data-set-container>
               </div>
             </div>
         </div>

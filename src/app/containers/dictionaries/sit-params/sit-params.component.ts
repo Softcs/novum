@@ -5,6 +5,8 @@ import { ColumnMode, SelectionType } from '../../../../ngx/public-api';
 import { environment } from '@environments/environment';
 import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
+import { AllModules } from '@ag-grid-enterprise/all-modules';
+import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
 
 @Component({
   selector: 'app-sit-params',
@@ -16,29 +18,65 @@ export class SitParamsComponent implements OnInit {
   @ViewChild('sitDictcontainer') dictContainer: SitDictContainerComponent;
   @ViewChildren('sitDictcontainer') dictContainers !: QueryList<SitDictContainerComponent>;
 
-  ColumnMode = ColumnMode;
-  SelectionType = SelectionType;
   currentUser: User;
-  activeRow: any;
-  sitParamsSelected = [];
+
+  modules: any[] = AllModules;
+  defaultColDef;
+  rowSelection;
+  popupParent;
+  frameworkComponents;
+
+  gridApi;
+  gridColumnApi;
+  columnDefs;
+  pinnedBottomRowData;
 
   constructor(
     private gatewayService: GatewayService
   ) {
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
+
+    this.popupParent = document.querySelector('body');
+    this.rowSelection = 'single';
+
+    this.defaultColDef = {
+      sortable: true,
+      filter: true,
+      resizable: true,
+      enableValue: true,
+      enableRowGroup: true,
+      enablePivot: true,
+    };
+
+    this.frameworkComponents = {
+      gridCheckboxRenderer: GridCheckboxRenderer,
+    };
+
+    this.columnDefs = [
+      { headerName: 'Identyfikator', field: 'ParamIdent', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, flex: 1 },
+      { headerName: 'Wartość', field: 'ParamValue', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, flex: 2 },
+    ];
   }
 
   ngOnInit(): void {
   }
 
-  onActivateParams(event) {
-    if (event.type === 'click') {
-      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitParams');
-      dataSourceResponseWrapper.SetActiveRow(event.row);
-    }
+  onGridReady(params) {
+    this.gridApi = params.api;
+    this.gridColumnApi = params.columnApi;
   }
 
-  tabChanged(event) {
-    window.dispatchEvent(new Event('resize'));
+  onRowClicked(event) {
+    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitParams');
+      dataSourceResponseWrapper.SetActiveRow(event.data);
   }
+
+  onFirstDataRendered(params) {
+    const allColumnIds = [];
+
+    this.gridColumnApi.getAllColumns().forEach(function(column) {
+      allColumnIds.push(column.colId);
+    });
+  }
+
 }

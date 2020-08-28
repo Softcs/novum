@@ -1,7 +1,7 @@
 <sit-dict-container ident="sitParams" #sitDictcontainer fxFill>
   <sit-data-set-container  ident="sitParams" fxFill>
     <div fxLayout="row" fxFill fxLayoutGap="5px">
-      <div fxLayout="column" fxFlex="50" class="content">
+      <div fxLayout="column" fxFlex="40" class="content">
 
         <!-- Filtry sitParams -->
         <div class="sit-filter-bar">
@@ -24,24 +24,29 @@
         </div>
 
         <!--Grid sitParams-->
-        <div class="data-table">
-          <ngx-datatable #sitParams #sitSetDataSource
-          class="material striped"
-          style = "height:700px;"
-          [columnMode]="ColumnMode.force"
-          [scrollbarV]=true
-          [selected]="sitParamsSelected"
-          [selectionType]="SelectionType.single"
-          [selectAllRowsOnPage]="false"
-          (activate)="onActivateParams($event)"
-          [footerHeight]="30"
+        <div class="data-table" fxFlex>
+          <ag-grid-angular #sitSetDataSource
+            #agGrid
+            id="gridRailConfigurations"
+            style="width: 100%; height: 100%;"
+            class="ag-theme-balham"
+            [modules]="modules"
+            [columnDefs]="columnDefs"
+            [defaultColDef]="defaultColDef"
+            [rowSelection]="rowSelection"
+            [rowMultiSelectWithClick]="true"
+            [enableCellTextSelection]="true"
+            [enableRangeSelection]="false"
+            [popupParent]="popupParent"
+            [frameworkComponents]="frameworkComponents"
+            (rowClicked)="onRowClicked($event)"
+            (gridReady)="onGridReady($event)"
+            (firstDataRendered)="onFirstDataRendered($event)"
           >
-            <ngx-datatable-column prop="ParamIdent" name="Identyfikator" [width]="150" [canAutoResize]="false"></ngx-datatable-column>
-            <ngx-datatable-column prop="ParamValue" name="Nazwa"></ngx-datatable-column>
-          </ngx-datatable>
+          </ag-grid-angular>
         </div>
-      </div>
-      <div fxLayout="column" fxFlex="50" class="content">
+    </div>
+      <div fxLayout="column" fxFlex="60" class="content">
         <!-- <mat-tab-group id="tab-group"
         animationDuration="0ms"
         (selectedTabChange)="tabChanged($event)">
