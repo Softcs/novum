@@ -11,8 +11,9 @@ import { ColumnMode, SelectionType } from '../../../../ngx/public-api';
 import { DataSetWrapper } from '@app/_models';
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
-
-
+import { AllModules } from '@ag-grid-enterprise/all-modules';
+import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
+import { MenuModule } from '@ag-grid-enterprise/menu';
 
 @Component({
   selector: 'sit-rozrachunki-insert-gt',
@@ -35,8 +36,48 @@ export class SitRozrachunkiInsertGTComponent implements OnInit {
 
   sitRozrachunkiInsertGTselected = [];
 
+  modules = [MenuModule];
+  defaultColDef;
+  rowSelection;
+  popupParent;
+  frameworkComponents;
 
-  constructor() { }
+  gridApi;
+  gridColumnApi;
+  columnDefs;
+  pinnedBottomRowData;
+
+
+  constructor() {
+    this.popupParent = document.querySelector('body');
+    this.rowSelection = 'single';
+
+    this.defaultColDef = {
+      sortable: true,
+      filter: true,
+      resizable: true,
+      enableValue: true,
+      enableRowGroup: true,
+      enablePivot: true,
+      autoHeight: true,
+      floatingFilter: true
+    };
+
+    this.frameworkComponents = {
+      gridCheckboxRenderer: GridCheckboxRenderer,
+    };
+
+    this.columnDefs = [
+      { headerName: 'Kontrahent', field: 'adr_Nazwa', sortable: true, filter: 'agTextColumnFilter' },
+      { headerName: 'Rozrachunek', field: 'nzf_NumerPelny', sortable: true, filter: 'agTextColumnFilter'},
+      { headerName: 'Data', field: 'nzf_Data', sortable: true, filter: 'agTextColumnFilter'},
+      { headerName: 'Termin pł.', field: 'nzf_TerminPlatnosci', sortable: true, filter: 'agTextColumnFilter'},
+      { headerName: 'Dni sp.', field: 'DniSpoznienia', sortable: true, filter: 'agTextColumnFilter', type: 'numericColumn'},
+      { headerName: 'Należność', field: 'naleznosc', sortable: true, filter: 'agTextColumnFilter', type: 'numericColumn'},
+      { headerName: 'Zobowiązanie', field: 'zobowiazanie', sortable: true, filter: 'agTextColumnFilter', type: 'numericColumn'},
+    ];
+
+  }
 
   ngOnInit() {
   }
@@ -46,30 +87,22 @@ export class SitRozrachunkiInsertGTComponent implements OnInit {
     this.sitRozrachunkiInsertGTselected.push(...selected);
   }
 
-  ExportTOExcel()
-  {
-    const ws: XLSX.WorkSheet=XLSX.utils.table_to_sheet(this.table.nativeElement);
-    const wb: XLSX.WorkBook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
-
-    /* save to file */
-    XLSX.writeFile(wb, 'SheetJS.xlsx');
-
+  onGridReady(params) {
+    this.gridApi = params.api;
+    this.gridColumnApi = params.columnApi;
   }
 
-  onFilterKeyEnter(event:any) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper("sitFilter");
-    dataSourceResponseWrapper.activeRow[event.target.name] = event.target.value;
-    dataSourceResponseWrapper.SetActiveRow(dataSourceResponseWrapper.activeRow);
-
+  onRowClicked(event) {
+    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitParams');
+      dataSourceResponseWrapper.SetActiveRow(event.data);
   }
 
-  calcSum(name) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper("sitRozrachunkiInsertGT");
-    return dataSourceResponseWrapper.rows.map(row => row[name] != null ? row[name] : 0).reduce((s,v) => s += v,0);
-  }
-  noop() {
-    return null;
+  onFirstDataRendered(params) {
+    const allColumnIds = [];
+
+    this.gridColumnApi.getAllColumns().forEach(function(column) {
+      allColumnIds.push(column.colId);
+    });
   }
 
 }

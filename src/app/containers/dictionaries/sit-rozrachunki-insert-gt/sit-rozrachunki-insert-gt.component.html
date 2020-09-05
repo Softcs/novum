@@ -1,68 +1,28 @@
 <sit-dict-container ident="sitRozrachunkiInsertGT"  #sitDictcontainer class="container-cols">
-  <div class="content">
-      <div style="flex: 0 1 auto;">
-        <sit-data-set-container  ident="sitFilter" >
-          <span>
-            <sit-data-input #sitControl field="searchRozrachunki" label="Filtruj"></sit-data-input>
-          </span>
-        </sit-data-set-container>
-      </div>
-      <!-- <button mat-raised-button color="primary" (click)="ExportTOExcel()">Export as Excel</button> -->
-      <div style="flex: 1 1 auto;">
-        <div class="data-table">
-          <sit-data-set-container ident="sitRozrachunkiInsertGT">
-            <ngx-datatable #sitRozrachunkiInsertGT #sitSetDataSource
-            class="material striped"
-            [columnMode]="ColumnMode.force"
-            [limit]=20
-            [selected]="sitRozrachunkiInsertGTselected"
-            [selectionType]="SelectionType.single"
-            [selectAllRowsOnPage]="false"
-            (select)="onSelectRozrachunki($event)"
-            [summaryRow]="true"
-            summaryPosition="bottom"
-            [summaryHeight]="40"
+  <div class="content" fxFill>
+    <div class="data-table" fxFill>
+      <sit-data-set-container ident="sitRozrachunkiInsertGT">
+        <ag-grid-angular #sitSetDataSource
+        #agGrid
+        id="gridRozrachunkiInsertGT"
+        style="width: 100%; height: 100%;"
+        class="ag-theme-balham"
+        [modules]="modules"
+        [columnDefs]="columnDefs"
+        [defaultColDef]="defaultColDef"
+        [rowSelection]="rowSelection"
+        [rowMultiSelectWithClick]="true"
+        [enableCellTextSelection]="true"
+        [enableRangeSelection]="false"
+        [popupParent]="popupParent"
+        [frameworkComponents]="frameworkComponents"
+        (rowClicked)="onRowClicked($event)"
+        (gridReady)="onGridReady($event)"
+        (firstDataRendered)="onFirstDataRendered($event)"
+      >
+      </ag-grid-angular>
 
-            [footerHeight]="50"
-            style="height: 100% !important;"
-
-            >
-              <ngx-datatable-column prop="adr_Nazwa" name="Kontrahent"></ngx-datatable-column>
-              <ngx-datatable-column prop="nzf_NumerPelny" name="Rozrachunek"></ngx-datatable-column>
-              <ngx-datatable-column prop="nzf_Data" name="Data">
-                <ng-template let-value="value" ngx-datatable-cell-template>
-                  {{value | date: 'yyyy-MM-dd'}}
-                </ng-template>
-              </ngx-datatable-column>
-              <ngx-datatable-column prop="nzf_TerminPlatnosci" name="Termin płatności">
-                <ng-template let-value="value" ngx-datatable-cell-template>
-                  {{value | date: 'yyyy-MM-dd'}}
-                </ng-template>
-              </ngx-datatable-column>
-              <ngx-datatable-column prop="DniSpoznienia" name="Dni" [summaryFunc]="noop">
-                <ng-template let-value="value" ngx-datatable-cell-template>
-                  <div style="text-align: right;">{{value | number : "1.0-0"}}</div>
-                </ng-template>
-              </ngx-datatable-column>
-              <ngx-datatable-column prop="naleznosc" name="Należność w PLN" [summaryTemplate]="sumNaleznosc">
-                <ng-template let-value="value" ngx-datatable-cell-template>
-                  <div style="text-align: right;">{{value | number : "1.2-2"}}</div>
-                </ng-template>
-              </ngx-datatable-column>
-              <ngx-datatable-column prop="zobowiazanie" name="Zobowiązanie w PLN"  [summaryTemplate]="sumZobowiazanie">
-                <ng-template let-value="value" ngx-datatable-cell-template>
-                  <div style="text-align: right;">{{value | number : "1.2-2"}}</div>
-                </ng-template>
-                  </ngx-datatable-column>
-            </ngx-datatable>
-            <ng-template #sumZobowiazanie let-row="row">
-              <div style="text-align: right;">{{calcSum('zobowiazanie') | number : "1.2-2"}}</div>
-            </ng-template>
-            <ng-template #sumNaleznosc let-row="row">
-              <div style="text-align: right;">{{calcSum('naleznosc') | number : "1.2-2"}}</div>
-            </ng-template>
-          </sit-data-set-container>
-        </div>
+      </sit-data-set-container>
     </div>
 </div>
 </sit-dict-container>
