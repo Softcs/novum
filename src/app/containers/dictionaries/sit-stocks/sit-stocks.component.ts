@@ -42,14 +42,10 @@ export class SitStocksComponent implements OnInit {
     };
 
     this.columnDefs = [
-      { headerName: 'Identyfikator', field: 'ProductIdent', sortable: true, resizable: true, filter: 'agTextColumnFilter',
-      // filterParams: {
-      //   filterOptions: ['contains', 'notContains']
-      // },
-      checkboxSelection: false },
+      { headerName: 'Identyfikator', field: 'ProductIdent', sortable: true, resizable: true, filter: 'agTextColumnFilter'},
       {headerName: 'Nazwa', field: 'ProductName', filter: 'agTextColumnFilter' },      
-      {headerName: 'Ilość', field: 'Quantity', filter: 'agTextColumnFilter' },
-      {headerName: 'Ilość zew.', field: 'Quantity', filter: 'agTextColumnFilter' },
+      {headerName: 'Ilość', field: 'Quantity', type: 'numericColumn', filter: 'agTextColumnFilter' },
+      {headerName: 'Ilość zew.', field: 'Quantity', type: 'numericColumn', filter: 'agTextColumnFilter' },
     ];
     
   }
