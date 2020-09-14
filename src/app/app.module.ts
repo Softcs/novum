@@ -113,6 +113,10 @@ import { SitUserAccountChangePasswordComponent } from './containers/dictionaries
 import { SitParamsComponent } from './containers/dictionaries/sit-params/sit-params.component'
 ;
 import { GridCheckboxRenderer } from './components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component'
+;
+import { SitStocksComponent } from './containers/dictionaries/sit-stocks/sit-stocks.component'
+;
+import { SitStocksImportComponent } from './containers/dictionaries/sit-stocks/actions/sit-stocks-import/sit-stocks-import.component'
 
 @NgModule({
     imports: [
@@ -226,6 +230,10 @@ import { GridCheckboxRenderer } from './components/controls/grid-checkbox-render
         SitParamsComponent
 ,
         GridCheckboxRenderer
+,
+        SitStocksComponent
+,
+        SitStocksImportComponent
       ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
@@ -247,7 +255,9 @@ import { GridCheckboxRenderer } from './components/controls/grid-checkbox-render
       SitAgreementsEditComponent,
       SitCustomersEditComponent,
       SitUserAccountChangePasswordComponent,
-      GridCheckboxRenderer
+      GridCheckboxRenderer,
+      SitStocksComponent,
+      SitStocksImportComponent
     ]
 })
 export class AppModule { }
