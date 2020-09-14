@@ -116,7 +116,6 @@ import { GridCheckboxRenderer } from './components/controls/grid-checkbox-render
 ;
 import { SitStocksComponent } from './containers/dictionaries/sit-stocks/sit-stocks.component'
 ;
-import { SitStocksImportComponent } from './containers/dictionaries/sit-stocks/actions/sit-stocks-import/sit-stocks-import.component'
 
 @NgModule({
     imports: [
@@ -232,8 +231,6 @@ import { SitStocksImportComponent } from './containers/dictionaries/sit-stocks/a
         GridCheckboxRenderer
 ,
         SitStocksComponent
-,
-        SitStocksImportComponent
       ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
@@ -256,8 +253,7 @@ import { SitStocksImportComponent } from './containers/dictionaries/sit-stocks/a
       SitCustomersEditComponent,
       SitUserAccountChangePasswordComponent,
       GridCheckboxRenderer,
-      SitStocksComponent,
-      SitStocksImportComponent
+      SitStocksComponent
     ]
 })
 export class AppModule { }

@@ -5,13 +5,13 @@
                 <mat-toolbar color="accent">
                     <mat-toolbar-row>
                     <div class="sit-proc-buttons-row">
-                        <sit-proc-button #sitAction actionIdent="sitProcStocksImport" componentParamsIdent="sitStocksImport" tooltip="Synchronizuj" color="primary" icon="cloud_download" >
+                        <sit-proc-button #sitAction actionIdent="sitProcStocksImport"  tooltip="Synchronizuj" color="primary" icon="cloud_download" >
                         </sit-proc-button>
                     </div>
                     </mat-toolbar-row>
                 </mat-toolbar>
             </div>
-        
+
             <div fxLayout="column" fxFlex class="content">
                 <ag-grid-angular #sitSetDataSource
                     #agGrid
@@ -29,11 +29,10 @@
                     (rowClicked)="onRowClicked($event)"
                     (gridReady)="onGridReady($event)"
                     (firstDataRendered)="onFirstDataRendered($event)"
-        
+
                 >
                 </ag-grid-angular>
             </div>
         </div>
     </sit-data-set-container>
   </sit-dict-container>
-  

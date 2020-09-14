@@ -56,6 +56,10 @@ export class SitDataSetContainerComponent implements OnInit {
 
   }
 
+  private getApi(control) {
+    return control ?? control.api;
+  }
+
   public SetActiveRow(row: any) {
       this.dataSetResponseWrapper.SetActiveRow(row);
   }
@@ -73,12 +77,29 @@ export class SitDataSetContainerComponent implements OnInit {
 
     const fieldName = dataSetWrapper.ident + 'Id';
     let rowsToUpdate = [];
+    let rowsApiToUpdate = [];
 
     this.datasSourcesInterface.forEach(control => {
-
       dataSetWrapper.rows.forEach(inputRow => {
         const fieldValue = inputRow[fieldName];
-        rowsToUpdate = control.rows.filter(controlRow => controlRow[fieldName] == fieldValue);
+        const gridApi = control["api"];
+        if (gridApi) {
+          gridApi.forEachNode( (rowNode) => {
+            const rowValue = rowNode.data[fieldName];
+            if (rowValue == fieldValue) {
+              for (const key in inputRow) {
+                const newValue = inputRow[key];
+                rowNode.data[key] = newValue;
+                rowsApiToUpdate.push(rowNode);
+              }
+            }
+          });
+          gridApi.redrawRows({ rowNodes: rowsApiToUpdate });
+        } else {
+          rowsToUpdate = control.rows.filter(controlRow => controlRow[fieldName] == fieldValue);
+        }
+
+
         rowsToUpdate.forEach(row => {
           // tslint:disable-next-line: forin
           for (const key in inputRow) {
@@ -101,8 +122,8 @@ export class SitDataSetContainerComponent implements OnInit {
     this.dataSetResponseWrapper.activeRowChanged = this.activeRowChanged;
     this.errors = dataSetWrapper.errors;
     this.datasSourcesInterface.forEach(element => {
-      //agGrid
-      let gridApi = element["api"];
+      // agGrid
+      const gridApi = element["api"];
       if (gridApi) {
         gridApi.setRowData(this.dataSetResponseWrapper.rows);
         gridApi.forEachNode(function(node) { node.setSelected(node.rowIndex === 0); });
