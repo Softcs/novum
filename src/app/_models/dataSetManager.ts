@@ -183,7 +183,7 @@ export class DataSetManager {
                     if (data.length === 1) {
                         const response = data[0];
                         const wasErrors = this.PropagateErrors(dataSourceIdent, response?.Errors);
-                        this.RefreshOneRows(response.dataSourcesResponse);
+                        this.RefreshOneRows(response.dataSourcesResponse, dataSourcesRequest);
                         if (!wasErrors) {
                             if(executeActionCompletedCallback != null) {
                                 executeActionCompletedCallback(owner);
@@ -235,7 +235,7 @@ export class DataSetManager {
         return errors != null && errors.length > 0;
     }
 
-    public RefreshOneRows(dataSourcesResponse) {
+    public RefreshOneRows(dataSourcesResponse, dataSourcesRequest) {
         if (!dataSourcesResponse) {
             return;
         }
@@ -250,7 +250,7 @@ export class DataSetManager {
             dataSetResponseWrapper.setInputDataSource(dataSet);
 
             dataSetContainers.forEach(cont => {
-                cont.refreshRows(dataSetResponseWrapper);
+                cont.refreshRows(dataSetResponseWrapper, dataSourcesRequest);
             });
 
         });

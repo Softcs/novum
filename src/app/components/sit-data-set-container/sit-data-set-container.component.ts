@@ -56,10 +56,6 @@ export class SitDataSetContainerComponent implements OnInit {
 
   }
 
-  private getApi(control) {
-    return control ?? control.api;
-  }
-
   public SetActiveRow(row: any) {
       this.dataSetResponseWrapper.SetActiveRow(row);
   }
@@ -70,14 +66,53 @@ export class SitDataSetContainerComponent implements OnInit {
       console.log('Errors', this.errors);
     }
   }
-  public refreshRows(dataSetWrapper: DataSetWrapper) {
-    if (!dataSetWrapper || !dataSetWrapper.rows) {
+
+  private getFieldId(ident: string) {
+    return ident + 'Id';
+  }
+
+  private deleteRows(dataSource) {
+    if (!dataSource) {
       return;
     }
 
-    const fieldName = dataSetWrapper.ident + 'Id';
+    const activeRow = dataSource.activeRow;
+    if (!activeRow) {
+      return;
+    }
+    const fieldName = this.getFieldId(dataSource.ident);
+    this.datasSourcesInterface.forEach(control => {
+      const fieldValue = activeRow[fieldName];
+      const gridApi = control["api"];
+      const rowsDataApiToDelete = [];
+      if (gridApi) {
+        gridApi.forEachNode((rowNode) => {
+          const rowValue = rowNode.data[fieldName];
+          if (rowValue == fieldValue) {
+            rowsDataApiToDelete.push(rowNode.data);
+          }
+        });
+        if (rowsDataApiToDelete) {
+          gridApi.applyTransaction({ remove: rowsDataApiToDelete });
+        }
+      }
+    });
+  }
+
+  public refreshRows(dataSetWrapper: DataSetWrapper, dataSourcesRequest) {
+    if (!dataSetWrapper || !dataSetWrapper.rows) {
+      dataSourcesRequest?.forEach(element => {
+        if (dataSetWrapper.ident == element.ident) {
+          this.deleteRows(element);
+        }
+      });
+
+      return;
+    }
+
+    const fieldName = this.getFieldId(dataSetWrapper.ident);
     let rowsToUpdate = [];
-    let rowsApiToUpdate = [];
+    const rowsApiToUpdate = [];
 
     this.datasSourcesInterface.forEach(control => {
       dataSetWrapper.rows.forEach(inputRow => {
@@ -125,8 +160,14 @@ export class SitDataSetContainerComponent implements OnInit {
       // agGrid
       const gridApi = element["api"];
       if (gridApi) {
+        const fieldName = this.getFieldId(this.dataSetResponseWrapper.ident);
+
         gridApi.setRowData(this.dataSetResponseWrapper.rows);
-        gridApi.forEachNode(function(node) { node.setSelected(node.rowIndex === 0); });
+        gridApi.forEachNode((node) => {
+          const fieldValue = node.data[fieldName];
+          const acFieldValue = dataSetWrapper.activeRow[fieldName];
+          node.setSelected(acFieldValue == fieldValue);
+        });
       }
       //ngx-datatable
         else  {
