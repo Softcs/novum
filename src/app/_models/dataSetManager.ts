@@ -332,6 +332,13 @@ export class DataSetManager {
         });
     }
 
+    public AddRow(dataSetWrapper: DataSetWrapper, newRow: any) {
+        const dataSetContainers = this.dataSetContainers.filter(ds => ds.ident == dataSetWrapper.ident);
+        dataSetContainers.forEach(dataSetContainer => {
+            dataSetContainer.AddRow(newRow);
+        });
+    }
+
     set dictInfo(dictInfo: DictInfoWrapper) {
         this._dictInfo = dictInfo;
         this.dataSetDefinitionWrappers = [];

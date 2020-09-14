@@ -88,6 +88,7 @@ export class DataSetWrapper {
         }
         this.initRows();
         this._rows.push(row);
+        this.dataSourceManager.AddRow(this, row);
         if (activate) {
             this.SetActiveRow(row);
         }

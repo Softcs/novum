@@ -68,7 +68,11 @@ export class SitDataSetContainerComponent implements OnInit {
   }
 
   private getFieldId(ident: string) {
-    return ident + 'Id';
+    return ident + 'G';
+  }
+
+  private compareStrings(one,two): boolean {
+    return one != null && one.localeCompare(two, undefined, { sensitivity: 'base' }) === 0;
   }
 
   private deleteRows(dataSource) {
@@ -88,7 +92,7 @@ export class SitDataSetContainerComponent implements OnInit {
       if (gridApi) {
         gridApi.forEachNode((rowNode) => {
           const rowValue = rowNode.data[fieldName];
-          if (rowValue == fieldValue) {
+          if (this.compareStrings(rowValue, fieldValue)) {
             rowsDataApiToDelete.push(rowNode.data);
           }
         });
@@ -121,7 +125,7 @@ export class SitDataSetContainerComponent implements OnInit {
         if (gridApi) {
           gridApi.forEachNode( (rowNode) => {
             const rowValue = rowNode.data[fieldName];
-            if (rowValue == fieldValue) {
+            if (this.compareStrings(rowValue, fieldValue)) {
               for (const key in inputRow) {
                 const newValue = inputRow[key];
                 rowNode.data[key] = newValue;
@@ -183,8 +187,13 @@ export class SitDataSetContainerComponent implements OnInit {
      }
   }
 
-  public deleteData() {
-
+  public AddRow(newRow: any) {
+    this.datasSourcesInterface.forEach(control => {
+        const gridApi = control["api"];
+        if (gridApi) {
+          gridApi.applyTransaction({ add: [newRow] });
+        }
+      });
   }
 
   public prepareControls(dataSetWrapperDefinition: DataSetDefinitionWrapper) {
