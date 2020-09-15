@@ -51,6 +51,10 @@ export class DataSetWrapper {
         this.fields = dataSourceDef?.fields;
     }
 
+    private findField(fieldName: string) {
+        return this.fields.find(f => f.fieldName == fieldName);
+    }
+
     public setInputDataSource(inputDataSource: any) {
         this.ident = inputDataSource.ident;
         this.rows = inputDataSource.rows;
@@ -111,7 +115,47 @@ export class DataSetWrapper {
         });
     }
 
-    public GenerateRow(sourceRow: any = null, add: boolean = true, editFields: any[] = null): any  {
+    private initRowByParents(sourceRow, dataSetManagerSource: DataSetManager) {
+        const dataSourceDef = dataSetManagerSource?.FindDataSource(this.ident);
+        if (!dataSourceDef || !dataSourceDef.hasParents) {
+            return;
+        }
+
+        dataSourceDef.parents.forEach(parent => {
+            const parentDataSource = dataSetManagerSource.FindDataSource(parent);
+            const child = parentDataSource.children.find(c => c.ident === this.ident);
+            if (!child || !child.connections) {
+                return false;
+            }
+
+            const parentDataSet = dataSetManagerSource.getDateSourceWrapper(parent);
+            if (parentDataSet == null || parentDataSet.activeRow == null) {
+                return false;
+            }
+
+            child.connections.forEach(c => {
+                let targetSource = c.targetSource;
+                if (targetSource && targetSource[0] === '@') {
+                    targetSource = targetSource.substring(1, targetSource.length);
+                }
+
+                const field = this.findField(targetSource);
+
+                if (!field) {
+                    return false;
+                }
+
+                const parentFieldValue = parentDataSet.activeRow[c.sourceField];
+                this.setFieldValue(targetSource, parentFieldValue, sourceRow);
+            });
+        });
+    }
+
+    public GenerateRow(
+        sourceRow: any = null, add: boolean = true,
+        editFields: any[] = null,
+        initFromMaster: boolean = false,
+        dataSetManagerSource: DataSetManager = null): any  {
         const newRow = {};
         if (this.fields == null) {
             console.error('Fields are empty [' + this.ident + ']');
@@ -119,9 +163,13 @@ export class DataSetWrapper {
         }
         this.fields.forEach(field => {
             if (!field.isParam) {
-                newRow[field.fieldName] = sourceRow != null ? sourceRow[field.fieldName] : null;
+                this.setFieldValue(field.fieldName, sourceRow != null ? sourceRow[field.fieldName] : null, newRow);
             }
         });
+
+        if (initFromMaster) {
+            this.initRowByParents(newRow, dataSetManagerSource);
+        }
 
         this.initRowByEditFields(newRow, editFields);
 

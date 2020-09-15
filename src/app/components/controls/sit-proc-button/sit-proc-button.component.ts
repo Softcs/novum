@@ -108,7 +108,7 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
     }
 
     if (this.isInsert()) {
-      this.dataSetResponseWrapper.GenerateRow(null, true, this.actionDefinition?.editFields);
+      this.dataSetResponseWrapper.GenerateRow(null, true, this.actionDefinition?.editFields, true, this.dataSetManagerSource);
     }
 
     const actionExecuteData = this.getActionExecuteData();
