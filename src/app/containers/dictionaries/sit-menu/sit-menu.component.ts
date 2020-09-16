@@ -4,7 +4,7 @@ import { DatatableComponent } from '@swimlane/ngx-datatable';
 import { SitDataSetContainerComponent } from '@app/components/sit-data-set-container';
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
 import { DataSetWrapper } from '@app/_models';
-import { AllModules } from '@ag-grid-enterprise/all-modules';
+//import { AllModules } from '@ag-grid-enterprise/all-modules';
 import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
 
 @Component({
@@ -19,7 +19,7 @@ export class SitMenuComponent implements OnInit {
   @ViewChild('sitDictcontainer') dictContainer: SitDictContainerComponent;
 
 
-  modules: any[] = AllModules;
+  //modules: any[] = AllModules;
   defaultColDef;
   rowSelection;
   popupParent;

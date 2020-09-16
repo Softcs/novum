@@ -3,7 +3,7 @@ import { SitDictContainerComponent } from '@app/components/sit-dict-container';
 import { DataSetWrapper } from '@app/_models';
 import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
-import { AllModules } from '@ag-grid-enterprise/all-modules';
+//import { AllModules } from '@ag-grid-enterprise/all-modules';
 
 @Component({
   selector: 'app-sit-stocks',
@@ -17,7 +17,7 @@ export class SitStocksComponent implements OnInit {
 
   currentUser: User;
 
-  modules: any[] = AllModules;
+  //modules: any[] = AllModules;
   gridApi;
   gridColumnApi;
   columnDefs;
@@ -27,7 +27,7 @@ export class SitStocksComponent implements OnInit {
 
   constructor(
     private gatewayService: GatewayService
-  ) { 
+  ) {
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
 
     this.popupParent = document.querySelector('body');
@@ -38,16 +38,19 @@ export class SitStocksComponent implements OnInit {
       sortable: true,
       filter: true,
       floatingFilter: true,
-      resizable: true
+      resizable: true,
+      enableRowGroup: true,
+      enableValue: true,
+      enablePivot: true
     };
 
     this.columnDefs = [
       { headerName: 'Identyfikator', field: 'ProductIdent', sortable: true, resizable: true, filter: 'agTextColumnFilter'},
-      {headerName: 'Nazwa', field: 'ProductName', filter: 'agTextColumnFilter' },      
+      {headerName: 'Nazwa', field: 'ProductName', filter: 'agTextColumnFilter' },
       {headerName: 'Ilość', field: 'Quantity', type: 'numericColumn', filter: 'agTextColumnFilter' },
       {headerName: 'Ilość zew.', field: 'Quantity', type: 'numericColumn', filter: 'agTextColumnFilter' },
     ];
-    
+
   }
 
   ngOnInit(): void {

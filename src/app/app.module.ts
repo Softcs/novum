@@ -59,6 +59,7 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 
 //ag-grid
 import { AgGridModule } from 'ag-grid-angular';
+import 'ag-grid-enterprise';
 
 // SIT;
 import { SitMenuListItemComponent } from './components/sit-menu-list-item/sit-menu-list-item.component';

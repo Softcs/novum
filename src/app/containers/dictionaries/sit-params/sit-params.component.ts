@@ -5,7 +5,7 @@ import { ColumnMode, SelectionType } from '../../../../ngx/public-api';
 import { environment } from '@environments/environment';
 import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
-import { AllModules } from '@ag-grid-enterprise/all-modules';
+//import { AllModules } from '@ag-grid-enterprise/all-modules';
 import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
 
 @Component({
@@ -20,7 +20,7 @@ export class SitParamsComponent implements OnInit {
 
   currentUser: User;
 
-  modules: any[] = AllModules;
+  //modules: any[] = AllModules;
   defaultColDef;
   rowSelection;
   popupParent;

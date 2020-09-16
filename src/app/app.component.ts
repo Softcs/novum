@@ -5,8 +5,8 @@ import { GatewayService } from './_services';
 import { User } from './_models';
 import { TabService } from '@app/_services/tab.service';
 import { Tab } from '@app/_models/tab.model';
-import {LicenseManager} from "@ag-grid-enterprise/core";
-LicenseManager.setLicenseKey("For_Trialing_ag-Grid_Only-Not_For_Real_Development_Or_Production_Projects-Valid_Until-13_November_2020_[v2]_MTYwNTIyNTYwMDAwMA==7e3cb37a704eaf68332d4aa39a647fc4");
+import { LicenseManager } from 'ag-grid-enterprise';
+ LicenseManager.setLicenseKey("For_Trialing_ag-Grid_Only-Not_For_Real_Development_Or_Production_Projects-Valid_Until-13_November_2020_[v2]_MTYwNTIyNTYwMDAwMA==7e3cb37a704eaf68332d4aa39a647fc4");
 
 @Component({
   selector: 'app',

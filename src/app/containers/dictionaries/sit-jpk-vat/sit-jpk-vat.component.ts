@@ -5,7 +5,7 @@ import { SitDictContainerComponent } from '@app/components/sit-dict-container';
 import { DataSetWrapper } from '@app/_models';
 import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
-import { AllModules } from '@ag-grid-enterprise/all-modules';
+// import { AllModules } from '@ag-grid-enterprise/all-modules';
 import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
 
 @Component({
@@ -29,7 +29,7 @@ export class SitJPKVatComponent implements OnInit {
 
   currentUser: User;
 
-  modules: any[] = AllModules;
+  //modules: any[] = AllModules;
   defaultColDef;
   rowSelection;
   popupParent;

@@ -5,7 +5,7 @@ import { ColumnMode, SelectionType } from '../../../../ngx/public-api';
 import { environment } from '@environments/environment';
 import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
-import { AllModules } from '@ag-grid-enterprise/all-modules';
+// import { AllModules } from '@ag-grid-enterprise/all-modules';
 
 @Component({
   selector: 'app-sit-documents',
@@ -19,7 +19,6 @@ export class SitDocumentsComponent implements OnInit {
 
   currentUser: User;
 
-  modules: any[] = AllModules;
   defaultColDef;
   rowSelection;
   popupParent;

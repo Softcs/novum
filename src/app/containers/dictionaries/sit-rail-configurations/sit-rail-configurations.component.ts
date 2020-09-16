@@ -2,7 +2,7 @@
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
 import { ColumnMode, SelectionType } from '../../../../ngx/public-api';
 import { DataSetWrapper } from '@app/_models';
-import { AllModules } from '@ag-grid-enterprise/all-modules';
+//import { AllModules } from '@ag-grid-enterprise/all-modules';
 import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
 
 @Component({
@@ -20,7 +20,7 @@ export class SitRailConfigurationsComponent implements OnInit {
   ColumnMode = ColumnMode;
   SelectionType = SelectionType;
 
-  modules: any[] = AllModules;
+  //modules: any[] = AllModules;
   defaultColDef;
   rowSelection;
   popupParent;

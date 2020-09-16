@@ -11,9 +11,8 @@ import { ColumnMode, SelectionType } from '../../../../ngx/public-api';
 import { DataSetWrapper } from '@app/_models';
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
-import { AllModules } from '@ag-grid-enterprise/all-modules';
+//import { AllModules } from '@ag-grid-enterprise/all-modules';
 import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
-import { MenuModule } from '@ag-grid-enterprise/menu';
 
 @Component({
   selector: 'sit-rozrachunki-insert-gt',
@@ -36,7 +35,7 @@ export class SitRozrachunkiInsertGTComponent implements OnInit {
 
   sitRozrachunkiInsertGTselected = [];
 
-  modules = [MenuModule];
+  //modules = [MenuModule];
   defaultColDef;
   rowSelection;
   popupParent;

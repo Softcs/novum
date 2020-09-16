@@ -8,7 +8,7 @@ import { DataSetWrapper } from '@app/_models';
 import { SitDataInputComponent } from '@app/components/controls/sit-data-input/sit-data-input.component';
 import { GatewayService } from '@app/_services';
 import { User } from '@app/_models';
-import { AllModules } from '@ag-grid-enterprise/all-modules';
+//import { AllModules } from '@ag-grid-enterprise/all-modules';
 import { formatDate } from '@angular/common';
 
 @Component({
@@ -31,7 +31,7 @@ export class SitKancelariaComponent implements OnInit {
   ColumnMode = ColumnMode;
   SelectionType = SelectionType;
 
-  modules: any[] = AllModules;
+  //modules: any[] = AllModules;
   defaultColDef;
   rowSelection;
   popupParent;

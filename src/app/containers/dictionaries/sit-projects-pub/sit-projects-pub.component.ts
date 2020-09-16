@@ -6,7 +6,7 @@ import { environment } from '@environments/environment';
 import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
 import { MatSpinner } from '@angular/material/progress-spinner';
-import { AllModules } from '@ag-grid-enterprise/all-modules';
+//import { AllModules } from '@ag-grid-enterprise/all-modules';
 
 @Component({
   selector: 'app-sit-projects-pub',
@@ -22,7 +22,7 @@ export class SitProjectsPubComponent implements OnInit {
   currentUser: User;
   Link: any;
 
-  modules: any[] = AllModules;
+  //modules: any[] = AllModules;
   defaultColDef;
   rowSelection;
   popupParent;
