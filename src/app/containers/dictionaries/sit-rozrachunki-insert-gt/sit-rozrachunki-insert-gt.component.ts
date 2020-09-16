@@ -1,17 +1,7 @@
-import { map } from 'rxjs/operators';
-import { element } from 'protractor';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { SitDataSetContainerComponent } from '@app/components/sit-data-set-container';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
-import * as $ from 'jquery';
-import * as XLSX from 'xlsx';
-import { ColumnMode, SelectionType } from '../../../../ngx/public-api';
 import { DataSetWrapper } from '@app/_models';
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
-import { DatatableComponent } from '@swimlane/ngx-datatable';
-//import { AllModules } from '@ag-grid-enterprise/all-modules';
 import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
 
 @Component({
@@ -21,16 +11,9 @@ import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-ren
   host: {class: 'router-flex'}
 })
 export class SitRozrachunkiInsertGTComponent implements OnInit {
-  // @ViewChild(MatSort, {static: true}) sort: MatSort;
-  // @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(SitDataSetContainerComponent, { static: true }) dataSourceContainer: SitDataSetContainerComponent;
   @ViewChild('TABLE', {static: true}) table: ElementRef;
   @ViewChild('sitDictcontainer') dictContainer: SitDictContainerComponent;
-  @ViewChild('sit-rozrachunki-insert-gt') menuTable: DatatableComponent;
-
-
-  ColumnMode = ColumnMode;
-  SelectionType = SelectionType;
 
 
   sitRozrachunkiInsertGTselected = [];

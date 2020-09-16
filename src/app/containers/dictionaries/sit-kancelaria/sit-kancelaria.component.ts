@@ -1,7 +1,5 @@
 import { environment } from '@environments/environment';
 import { Component, OnInit, ViewChild, Inject, LOCALE_ID  } from '@angular/core';
-import { ColumnMode, SelectionType } from '../../../../ngx/public-api';
-import { DatatableComponent } from '@swimlane/ngx-datatable';
 import { SitDataSetContainerComponent } from '@app/components/sit-data-set-container';
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
 import { DataSetWrapper } from '@app/_models';
@@ -18,9 +16,6 @@ import { formatDate } from '@angular/common';
   host: {class: 'router-flex'}
 })
 export class SitKancelariaComponent implements OnInit {
-  @ViewChild('sitCustomers') customersTable: DatatableComponent;
-  @ViewChild('sitAgreements') agreementsTable: DatatableComponent;
-  @ViewChild('sitAttachments') attachmentsTable: DatatableComponent;
   @ViewChild('sitDictcontainer') dictContainer: SitDictContainerComponent;
 
   currentUser: User;
@@ -28,8 +23,6 @@ export class SitKancelariaComponent implements OnInit {
   sitCustomersSelected = [];
   sitAgreementsSelected = [];
   sitAttachmentsSelected = [];
-  ColumnMode = ColumnMode;
-  SelectionType = SelectionType;
 
   //modules: any[] = AllModules;
   defaultColDef;

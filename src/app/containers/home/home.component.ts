@@ -6,7 +6,6 @@ import { UserService } from '@app/_services';
 import { Title } from '@angular/platform-browser';
 import { TabService } from '@app/_services/tab.service';
 import { Tab } from '@app/_models/tab.model';
-import { runInThisContext } from 'vm';
 
 
 @Component({

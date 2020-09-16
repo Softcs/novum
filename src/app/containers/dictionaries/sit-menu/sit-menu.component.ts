@@ -1,6 +1,4 @@
 import { Component, OnInit, ViewChild, ContentChild, Input, ComponentFactoryResolver } from '@angular/core';
-import { ColumnMode, SelectionType } from '../../../../ngx/public-api';
-import { DatatableComponent } from '@swimlane/ngx-datatable';
 import { SitDataSetContainerComponent } from '@app/components/sit-data-set-container';
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
 import { DataSetWrapper } from '@app/_models';
@@ -15,7 +13,6 @@ import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-ren
 })
 export class SitMenuComponent implements OnInit {
   @ViewChild(SitDataSetContainerComponent, { static: true }) dataSourceContainer: SitDataSetContainerComponent;
-  @ViewChild('sit-menu') menuTable: DatatableComponent;
   @ViewChild('sitDictcontainer') dictContainer: SitDictContainerComponent;
 
 

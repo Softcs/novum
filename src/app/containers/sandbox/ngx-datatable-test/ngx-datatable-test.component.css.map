@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "",
-    "sources": [
-        "ngx-datatable-test.component.scss"
-    ],
-    "names": [],
-    "file": "ngx-datatable-test.component.css"
-}

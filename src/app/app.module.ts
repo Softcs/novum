@@ -40,21 +40,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { SitDataSetContainerComponent } from '@app/components/sit-data-set-container/sit-data-set-container.component';
 import { SitNavbarComponent } from './components/sit-navbar/sit-navbar.component';
-import { MaterialTestComponent } from './containers/sandbox/material-test/material-test.component';
 import { testDict } from './containers/sandbox/testDict';
 import { LayoutModule } from '@angular/cdk/layout';
-
-// primeng
-import { PrimeNgTestComponent } from './containers/sandbox/prime-ng-test/prime-ng-test.component';
-import { TableModule } from 'primeng/table';
-import { TabViewModule } from 'primeng/tabview';
-import { DropdownModule } from 'primeng/dropdown';
-import { MultiSelectModule } from 'primeng/multiselect';
-import { SliderModule } from 'primeng/slider';
-
 // ngx
-import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { NgxDatatableTestComponent } from './containers/sandbox/ngx-datatable-test/ngx-datatable-test.component';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 
 //ag-grid
@@ -71,7 +59,6 @@ import { SitRailConfigurationsComponent } from './containers/dictionaries/sit-ra
 import { SitRozrachunkiInsertGTComponent } from './containers/dictionaries/sit-rozrachunki-insert-gt/sit-rozrachunki-insert-gt.component';
 import { SitDataInputComponent } from './components/controls/sit-data-input/sit-data-input.component';
 import { SitDataBaseComponent } from './components/controls/sit-data-base/sit-data-base.component';
-import { SitDataTableComponent } from './components/controls/sit-data-table/sit-data-table.component';
 import { sitSetDataSetDirective } from '@app/_directives/sitSetDataSetDirective';
 import { NgxPdfTestComponent } from './containers/sandbox/ngx-pdf-test/ngx-pdf-test.component';
 import { SitKancelariaComponent } from './containers/dictionaries/sit-kancelaria/sit-kancelaria.component';
@@ -139,20 +126,6 @@ import { SitWmsDocsComponent } from '@app/containers/dictionaries/sit-wms-docs/s
 
         FormsModule,
         LayoutModule,
-
-        // PrimeNG
-        TableModule,
-        TabViewModule,
-        DropdownModule,
-        MultiSelectModule,
-        SliderModule,
-        // AccordionModule,
-        // PanelModule,
-        // ButtonModule,
-        // RadioButtonModule
-
-        // NGX
-        NgxDatatableModule,
         NgxExtendedPdfViewerModule,
 
         FlexLayoutModule,
@@ -170,20 +143,16 @@ import { SitWmsDocsComponent } from '@app/containers/dictionaries/sit-wms-docs/s
         SitDataSetContainerComponent,
         testDict,
         SitNavbarComponent,
-        MaterialTestComponent,
         sitSetDataSetDirective,
         sitDataInputComponentDirective,
         sitDataCheckboxComponentDirective,
         sitDSControlDirective,
         SitSideMenuComponent,
         SitRozrachunkiInsertGTComponent,
-        PrimeNgTestComponent,
-        NgxDatatableTestComponent,
         SitMenuComponent,
         SitMenuListItemComponent,
         SitDataInputComponent,
         SitDataBaseComponent,
-        SitDataTableComponent,
         NgxPdfTestComponent,
         SitKancelariaComponent,
         SitUserAccountComponent,

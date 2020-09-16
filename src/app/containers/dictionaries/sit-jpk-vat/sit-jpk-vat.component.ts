@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild, QueryList, ViewChildren } from '@angular/core';
-import { ColumnMode, SelectionType } from '../../../../ngx/public-api';
 import { SitDataSetContainerComponent } from '@app/components/sit-data-set-container';
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
 import { DataSetWrapper } from '@app/_models';
@@ -24,8 +23,6 @@ export class SitJPKVatComponent implements OnInit {
   sitJPKVATSprzedazCustSelected = [];
   sitJPKVATZakupSumSelected = [];
   sitJPKVATSprzedazSumSelected = [];
-  ColumnMode = ColumnMode;
-  SelectionType = SelectionType;
 
   currentUser: User;
 

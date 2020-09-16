@@ -173,11 +173,6 @@ export class SitDataSetContainerComponent implements OnInit {
           node.setSelected(acFieldValue == fieldValue);
         });
       }
-      //ngx-datatable
-        else  {
-          element.rows = this.dataSetResponseWrapper.rows;
-          element.selected = [this.dataSetResponseWrapper.activeRow];
-        }
     });
 
     if (this.databaseControlsInterface != null) {
