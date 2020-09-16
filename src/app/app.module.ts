@@ -100,22 +100,15 @@ import { TabContentComponent } from '@app/components/tab-content/tab-content.com
 import { SitProcExpanderComponent } from './components/controls/sit-proc-expander/sit-proc-expander.component';;
 import { SitProcExpanderItemBodyComponent } from './components/controls/sit-proc-expander/sit-proc-expander-item-body/sit-proc-expander-item-body.component';
 import { SitJpkVatGetDataComponent } from './containers/dictionaries/sit-jpk-vat/actions/sit-jpk-vat-get-data/sit-jpk-vat-get-data.component';
-import { SitMenuEditComponent } from './containers/dictionaries/sit-menu/actions/sit-menu-edit/sit-menu-edit.component'
-;
-import { SitMenuItemsEditComponent } from './containers/dictionaries/sit-menu/actions/sit-menu-items-edit/sit-menu-items-edit.component'
-;
-import { SitAgreementsEditComponent } from './containers/dictionaries/sit-kancelaria/actions/sit-agreements-edit/sit-agreements-edit.component'
-;
-import { SitCustomersEditComponent } from './containers/dictionaries/sit-customers/actions/sit-customers-edit/sit-customers-edit.component'
-;
-import { SitUserAccountChangePasswordComponent } from './containers/dictionaries/sit-user-account/actions/sit-user-account-change-password/sit-user-account-change-password.component'
-;
-import { SitParamsComponent } from './containers/dictionaries/sit-params/sit-params.component'
-;
-import { GridCheckboxRenderer } from './components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component'
-;
-import { SitStocksComponent } from './containers/dictionaries/sit-stocks/sit-stocks.component'
-;
+import { SitMenuEditComponent } from './containers/dictionaries/sit-menu/actions/sit-menu-edit/sit-menu-edit.component';
+import { SitMenuItemsEditComponent } from './containers/dictionaries/sit-menu/actions/sit-menu-items-edit/sit-menu-items-edit.component';
+import { SitAgreementsEditComponent } from './containers/dictionaries/sit-kancelaria/actions/sit-agreements-edit/sit-agreements-edit.component';
+import { SitCustomersEditComponent } from './containers/dictionaries/sit-customers/actions/sit-customers-edit/sit-customers-edit.component';
+import { SitUserAccountChangePasswordComponent } from './containers/dictionaries/sit-user-account/actions/sit-user-account-change-password/sit-user-account-change-password.component';
+import { SitParamsComponent } from './containers/dictionaries/sit-params/sit-params.component';
+import { GridCheckboxRenderer } from './components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
+import { SitStocksComponent } from './containers/dictionaries/sit-stocks/sit-stocks.component';
+import { SitWmsDocsComponent } from '@app/containers/dictionaries/sit-wms-docs/sit-wms-docs.component';
 
 @NgModule({
     imports: [
@@ -216,21 +209,15 @@ import { SitStocksComponent } from './containers/dictionaries/sit-stocks/sit-sto
         SitProcExpanderComponent,
         SitProcExpanderItemBodyComponent,
         SitJpkVatGetDataComponent,
-        SitMenuEditComponent
-,
-        SitMenuItemsEditComponent
-,
-        SitAgreementsEditComponent
-,
-        SitCustomersEditComponent
-,
-        SitUserAccountChangePasswordComponent
-,
-        SitParamsComponent
-,
-        GridCheckboxRenderer
-,
-        SitStocksComponent
+        SitMenuEditComponent,
+        SitMenuItemsEditComponent,
+        SitAgreementsEditComponent,
+        SitCustomersEditComponent,
+        SitUserAccountChangePasswordComponent,
+        SitParamsComponent,
+        GridCheckboxRenderer,
+        SitStocksComponent,
+        SitWmsDocsComponent
       ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },

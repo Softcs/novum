@@ -20,6 +20,7 @@ import { SitProductsComponent } from '@app/containers/dictionaries/sit-products'
 import { SitDocumentsComponent } from '@app/containers/dictionaries/sit-documents';
 import { SitRailConfigurationsEditComponent } from
 '@app/containers/dictionaries/sit-rail-configurations/actions/sit-rail-configurations-edit';
+import { SitWmsDocsComponent } from '@app/containers/dictionaries/sit-wms-docs';
 
 
 @Injectable({ providedIn: 'root' })
@@ -46,7 +47,8 @@ export class FactoryService {
         sitCustomersEdit: SitCustomersEditComponent,
         sitUserAccoutChangePassword: SitUserAccountChangePasswordComponent,
         sitParams: SitParamsComponent,
-        sitStocks: SitStocksComponent
+        sitStocks: SitStocksComponent,
+        sitWmsDocs: SitWmsDocsComponent
     };
 
     public GetFactory(ident: string) {

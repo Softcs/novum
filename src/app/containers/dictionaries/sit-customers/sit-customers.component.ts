@@ -67,10 +67,10 @@ export class SitCustomersComponent implements OnInit {
 
   onFirstDataRendered(params) {
     const allColumnIds = [];
-    this.gridColumnApiCustomers.getAllColumns().forEach(function(column) {
-      allColumnIds.push(column.colId);
-    });
-    this.gridColumnApiCustomers.autoSizeColumns(allColumnIds, false);
+    // this.gridColumnApiCustomers.getAllColumns().forEach(function(column) {
+    //   allColumnIds.push(column.colId);
+    // });
+    // this.gridColumnApiCustomers.autoSizeColumns(allColumnIds, false);
   }
 
 }
