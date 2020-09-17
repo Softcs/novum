@@ -31,6 +31,14 @@ export class SitWmsDocsComponent implements OnInit {
   gridColumnApiDocumentsPositions;
   columnDefsDocumentsPositions;
 
+  gridApiDocumentsPositionsHistory;
+  gridColumnApiDocumentsPositionsHisotry;
+  columnDefsDocumentsPositionsHistory;
+
+  gridApiDocumentsHeadersHistory;
+  gridColumnApiDocumentsHeadersHistory;
+  columnDefsDocumentsHeadersHistory;
+
   constructor(
     private gatewayService: GatewayService
     ) {
@@ -71,6 +79,20 @@ export class SitWmsDocsComponent implements OnInit {
         { headerName: 'Ilość', field: 'Quantity', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
       ];
 
+      //definicja kolumn historii nagłówków
+      this.columnDefsDocumentsHeadersHistory = [
+        { headerName: 'Operacja', field: 'OprType', filter: 'agTextColumnFilter', floatingFilter: true, width: 100 },
+        { headerName: 'Data mod.', field: 'ChangeDate', sortable: true, resizable: true, suppressMenu: true, width: 180, floatingFilter: false, sort: 'desc',},
+        { headerName: 'Status', field: 'ValueName', filter: 'agTextColumnFilter', floatingFilter: true },
+        { headerName: 'Komentarz', field: '__HistoryComments__', filter: 'agTextColumnFilter', floatingFilter: true },
+      ];
+
+      //definicja kolumn historii pozycji
+      this.columnDefsDocumentsPositionsHistory = [
+        { headerName: 'Operacja', field: 'OprType', filter: 'agTextColumnFilter', floatingFilter: true, width: 100 },
+        { headerName: 'Data mod.', field: 'ChangeDate', sortable: true, resizable: true, suppressMenu: true, width: 180, floatingFilter: false, sort: 'desc',},
+        { headerName: 'Ilość', field: 'Quantity', floatingFilter: false, type: "numericColumn" }
+      ];
 
     }
 
@@ -83,23 +105,39 @@ export class SitWmsDocsComponent implements OnInit {
   onGridReadyDocumentsHeaders(params) {
     this.gridApiDocumentsHeaders = params.api;
     this.gridColumnApiDocumentsHeaders = params.columnApi;
+  }
 
+  onGridReadyDocumentsHeadersHistory(params) {
+    this.gridColumnApiDocumentsHeadersHistory = params.api;
+    this.gridColumnApiDocumentsHeadersHistory = params.columnApi;
   }
 
   onGridReadyDocumentsPositions(params) {
     this.gridApiDocumentsPositions = params.api;
     this.gridColumnApiDocumentsPositions = params.columnApi;
-
   }
-
+  onGridReadyDocumentsPositionsHistory(params) {
+    this.gridApiDocumentsPositionsHistory = params.api;
+    this.gridColumnApiDocumentsPositionsHisotry = params.columnApi;
+  }
 
   onRowClickedDocumentsHeaders(event) {
     const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsHeaders');
       dataSourceResponseWrapper.SetActiveRow(event.data);
   }
 
+  onRowClickedDocumentsHeadersHistory(event) {
+    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsHeadersHistory');
+      dataSourceResponseWrapper.SetActiveRow(event.data);
+  }
+
   onRowClickedDocumentsPositions(event) {
     const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsPositions');
+      dataSourceResponseWrapper.SetActiveRow(event.data);
+  }
+
+  onRowClickedDocumentsPositionsHistory(event) {
+    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsPositionsHistory');
       dataSourceResponseWrapper.SetActiveRow(event.data);
   }
 
