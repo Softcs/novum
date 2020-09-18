@@ -61,7 +61,7 @@ export class SitMenuComponent implements OnInit {
     this.columnDefsMenuItems = [
       { headerName: 'Id', field: 'sitMenuItemsId', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, width: 60, type: 'numericColumn' },
       { headerName: 'Id grupy', field: 'ParentId', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, width: 80, type: 'numericColumn'},
-      { headerName: 'Kolejność', field: 'OrdId', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, width: 80, type: 'numericColumn' },
+      { headerName: 'Kolejność', field: 'OrdId', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, width: 80, type: 'numericColumn', sort: "asc" },
       { headerName: 'Nazwa', field: 'Caption', sortable: true, filter: 'agTextColumnFilter', autoHeight: true },
       { headerName: 'Rodzaj', field: 'Kind', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, width: 80 },
       { headerName: 'Link', field: 'Link', sortable: true, filter: 'agTextColumnFilter', autoHeight: true },

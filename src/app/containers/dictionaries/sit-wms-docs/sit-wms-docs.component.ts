@@ -76,7 +76,9 @@ export class SitWmsDocsComponent implements OnInit {
         { headerName: 'Identyfikator', field: 'ProductIdent', filter: 'agTextColumnFilter', width: 130, floatingFilter: true },
         { headerName: 'EAN', field: 'EAN', filter: 'agTextColumnFilter', width: 120, floatingFilter: true },
         { headerName: 'Opis', field: 'PositionDescription', filter: 'agTextColumnFilter', floatingFilter: true },
-        { headerName: 'Ilość', field: 'Quantity', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
+        { headerName: 'Il. start', field: 'QuantityUnitStart', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
+        { headerName: 'Ilość', field: 'QuantityUnit', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
+        { headerName: 'JM', field: 'Unit', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
       ];
 
       //definicja kolumn historii nagłówków
