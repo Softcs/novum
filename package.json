@@ -56,7 +56,7 @@
     "@types/jquery": "^3.3.38",
     "@types/node": "^12.12.43",
     "codelyzer": "^5.1.2",
-    "crypto-js": "^4.0.0",
+    "crypto-js": "^3.3.0",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "^5.0.9",

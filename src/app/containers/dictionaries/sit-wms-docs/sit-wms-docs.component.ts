@@ -4,6 +4,8 @@ import { DataSetWrapper } from '@app/_models';
 import { environment } from '@environments/environment';
 import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
+import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
+
 // import { AllModules } from '@ag-grid-enterprise/all-modules';
 
 @Component({
@@ -21,6 +23,8 @@ export class SitWmsDocsComponent implements OnInit {
   defaultColDef;
   rowSelection;
   popupParent;
+  frameworkComponents;
+  rowClassRules;
 
   gridApiDocumentsHeaders;
   gridColumnApiDocumentsHeaders;
@@ -45,6 +49,9 @@ export class SitWmsDocsComponent implements OnInit {
       this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
       this.popupParent = document.querySelector('body');
       this.rowSelection = 'single';
+      this.frameworkComponents = {
+        gridCheckboxRenderer: GridCheckboxRenderer,
+      };
 
       this.defaultColDef = {
         sortable: true,
@@ -86,7 +93,10 @@ export class SitWmsDocsComponent implements OnInit {
         { headerName: 'Il. start', field: 'QuantityUnitStart', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
         { headerName: 'Ilość', field: 'QuantityUnit', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
         { headerName: 'JM', field: 'Unit', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
+        { headerName: 'Defekt', field: 'IsDefect', filter: 'agSetColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80,cellRenderer: 'gridCheckboxRenderer' }
       ];
+
+
 
       //definicja kolumn historii nagłówków
       this.columnDefsDocumentsHeadersHistory = [
