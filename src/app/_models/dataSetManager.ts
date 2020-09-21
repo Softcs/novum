@@ -267,7 +267,7 @@ export class DataSetManager {
                 && dataSetToReload.indexOf(dataSourceContainer.ident) === -1) {
                 return;
             }
-            const dataSource = this.getDataSource(dataSourceContainer.ident);
+
             const dataSetResponseWrapper = this.getDateSourceWrapper(dataSourceContainer.ident);
             if (dataSetResponseWrapper != null) {
                 dataSourceContainer.setDataSource(dataSetResponseWrapper);

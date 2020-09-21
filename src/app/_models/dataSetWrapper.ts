@@ -11,6 +11,11 @@ export class DataSetWrapper {
     @Output()
     activeRowChanged: EventEmitter<any> = new EventEmitter<any>();
 
+    @Output()
+    afterPropagte: EventEmitter<string> = new EventEmitter<string>();
+
+
+
     constructor(
         public ident: string,
         public dataSourceManager: DataSetManager,
@@ -27,6 +32,10 @@ export class DataSetWrapper {
 
     set rows(value) {
         this._rows = value;
+    }
+
+    public Refresh() {
+        this.dataSourceManager.Refresh([this.ident]);
     }
 
     public RefreshChildren() {
@@ -64,6 +73,7 @@ export class DataSetWrapper {
 
     public AfterPropagte() {
         this.activeRowChanged.emit(this.activeRow);
+        this.afterPropagte.emit(this.ident);
     }
 
     public ExecuteAction(actionIdent: string,

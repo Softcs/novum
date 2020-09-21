@@ -6,6 +6,7 @@ import { SitDataBaseComponent } from '../controls/sit-data-base/sit-data-base.co
 import { sitSetDataSetDirective } from '@app/_directives/sitSetDataSetDirective';
 import { DataSetDefinitionWrapper } from '@app/_models/dataSetDefinitionWrapper';
 import { SitActionDirective } from '@app/_directives';
+import { SitRefreshButtonComponent } from '../controls/sit-refresh-button/sit-refresh-button.component';
 
 @Component({
   selector: 'sit-data-set-container',
@@ -14,7 +15,7 @@ import { SitActionDirective } from '@app/_directives';
   // host: {class: 'router-flex'}
 })
 
-export class SitDataSetContainerComponent implements OnInit {
+export class SitDataSetContainerComponent {
   private _errors: any[];
 
   @ContentChildren('sitSetDataSource', { descendants: true})
@@ -24,11 +25,18 @@ export class SitDataSetContainerComponent implements OnInit {
   @ContentChildren("sitAction", { descendants: true })
   actionControlsInterface!: QueryList<SitActionDirective>;
 
+  @ContentChildren(SitRefreshButtonComponent, { descendants: true })
+  refreshButtons!: QueryList<SitRefreshButtonComponent>;
+
 
   @Input() ident: string;
   dataSetResponseWrapper: DataSetWrapper;
   @Output()
   activeRowChanged: EventEmitter<any> = new EventEmitter<any>();
+
+  @Output()
+  afterPropagte: EventEmitter<string> = new EventEmitter<string>();
+
 
   public dataSetControlsManager: DataSetManager;
 
@@ -42,18 +50,6 @@ export class SitDataSetContainerComponent implements OnInit {
 
   get activeRecord(): any {
     return this.dataSetResponseWrapper?.activeRow;
-  }
-
-  ngOnInit() {
-
-  }
-
-  ngAfterContentInit() {
-
-  }
-
-  ngAfterViewInit() {
-
   }
 
   public SetActiveRow(row: any) {
@@ -159,6 +155,7 @@ export class SitDataSetContainerComponent implements OnInit {
   public setDataSource(dataSetWrapper: DataSetWrapper) {
     this.dataSetResponseWrapper = dataSetWrapper;
     this.dataSetResponseWrapper.activeRowChanged = this.activeRowChanged;
+    this.dataSetResponseWrapper.afterPropagte = this.afterPropagte;
     this.errors = dataSetWrapper.errors;
     this.datasSourcesInterface.forEach(element => {
       // agGrid
@@ -201,7 +198,11 @@ export class SitDataSetContainerComponent implements OnInit {
         actionControl.dataSetManagerSource = this.dataSetControlsManager;
       });
     }
-
+    if (this.refreshButtons) {
+      this.refreshButtons.forEach(refreshButton => {
+        refreshButton.setDataSetWrapper(this.dataSetResponseWrapper);
+      })
+    }
   }
 
   set errors(value: any[]) {
