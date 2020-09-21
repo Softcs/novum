@@ -113,6 +113,9 @@ export class SitWmsDocsComponent implements OnInit {
         { headerName: 'Ilość', field: 'Quantity', floatingFilter: false, type: "numericColumn" }
       ];
 
+      this.rowClassRules = {
+        'row-defect': 'data.IsDefect == 1'
+      }
     }
 
 
