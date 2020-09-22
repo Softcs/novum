@@ -20,13 +20,13 @@ export class SitDataInputComponent extends SitDataBaseComponent {
   @Input() showRefresh = true;
   @Input() appearance: MatFormFieldAppearance = 'legacy';
   @Input() width: string;
-  @Input() refhreshButton: boolean;
-  @Input() refhreshOnChange: boolean;
+  @Input() showRefreshButton: boolean;
+  @Input() refreshOnChange: boolean;
 
   constructor(_renderer: Renderer2) {
     super(_renderer);
-    this.refhreshButton = false;
-    this.refhreshOnChange = true;
+    this.showRefreshButton = false;
+    this.refreshOnChange = true;
   }
 
   onChange(event: any) {
@@ -39,7 +39,7 @@ export class SitDataInputComponent extends SitDataBaseComponent {
   }
   _onFilterKeyEnter(event: any) {
     this.dataSetWrapper.setFieldValue(this.field, this.getValue());
-    if (this.refhreshOnChange) {
+    if (this.refreshOnChange) {
       this.dataSetWrapper.RefreshChildren();
     }
   }
