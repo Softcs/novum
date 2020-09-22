@@ -1,7 +1,8 @@
-import { Component, Input, ViewChild, ElementRef, OnInit, Renderer2, forwardRef, Directive, ViewEncapsulation } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, Input,  Renderer2, ViewEncapsulation, ContentChild, ViewChild } from '@angular/core';
 import { SitDataBaseComponent } from '../sit-data-base/sit-data-base.component';
 import { MatFormFieldAppearance  } from '@angular/material/form-field';
+import { SitRefreshButtonComponent } from '../sit-refresh-button/sit-refresh-button.component';
+import { DataSetWrapper } from '@app/_models';
 
 @Component({
   selector: 'sit-data-input',
@@ -11,11 +12,22 @@ import { MatFormFieldAppearance  } from '@angular/material/form-field';
 })
 export class SitDataInputComponent extends SitDataBaseComponent {
 
+  @ViewChild(SitRefreshButtonComponent)
+  refreshButton: SitRefreshButtonComponent;
+
   @Input() type = 'text';
   @Input() label = '';
   @Input() showRefresh = true;
   @Input() appearance: MatFormFieldAppearance = 'legacy';
   @Input() width: string;
+  @Input() refhreshButton: boolean;
+  @Input() refhreshOnChange: boolean;
+
+  constructor(_renderer: Renderer2) {
+    super(_renderer);
+    this.refhreshButton = false;
+    this.refhreshOnChange = true;
+  }
 
   onChange(event: any) {
     super.onChange(event);
@@ -27,13 +39,16 @@ export class SitDataInputComponent extends SitDataBaseComponent {
   }
   _onFilterKeyEnter(event: any) {
     this.dataSetWrapper.setFieldValue(this.field, this.getValue());
-    this.dataSetWrapper.RefreshChildren();
+    if (this.refhreshOnChange) {
+      this.dataSetWrapper.RefreshChildren();
+    }
   }
 
-  onRefreshClick(event: any) {
-    this.dataSetWrapper.RefreshChildren();
-  }
   public refreshFieldValue() {
     this.dataSetWrapper.refreshFieldValueInControl(this);
+  }
+
+  public afterSetDataSetWrapper() {
+    this.refreshButton?.setDataSetWrapper(this.dataSetWrapper);
   }
 }

@@ -23,6 +23,7 @@ export class SitDataBaseComponent implements ControlValueAccessor {
     if (this._dataSetWrapper != null) {
       this._dataSetWrapper.activeRowChanged.subscribe( (row) => this.activeRowChanged(row, this));
     }
+    this.afterSetDataSetWrapper();
   }
 
   @Input() placeholder: string = '';
@@ -84,5 +85,8 @@ export class SitDataBaseComponent implements ControlValueAccessor {
   }
 
   public refreshFieldValue() {
+  }
+
+  public afterSetDataSetWrapper() {
   }
 }

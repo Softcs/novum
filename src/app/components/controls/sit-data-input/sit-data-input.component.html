@@ -10,8 +10,7 @@
     [readonly]="readonly"
     (change)="onChange($event)"
     (keyup)="onKeyup($event)"
-    (blur)="onBlur($event)"
-
-    >
+    (blur)="onBlur($event)">
 </mat-form-field>
+<sit-refresh-button *ngIf="refhreshButton"></sit-refresh-button>
 
