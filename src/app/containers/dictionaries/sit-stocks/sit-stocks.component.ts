@@ -48,7 +48,8 @@ export class SitStocksComponent implements OnInit {
       { headerName: 'Identyfikator', field: 'ProductIdent', sortable: true, resizable: true, filter: 'agTextColumnFilter'},
       {headerName: 'Nazwa', field: 'ProductName', filter: 'agTextColumnFilter' },
       {headerName: 'Ilość', field: 'Quantity', type: 'numericColumn', filter: 'agTextColumnFilter' },
-      {headerName: 'Ilość zew.', field: 'Quantity', type: 'numericColumn', filter: 'agTextColumnFilter' },
+      {headerName: 'Ilość zew.', field: 'QuantityExt', type: 'numericColumn', filter: 'agTextColumnFilter' },
+      {headerName: 'Różnica.', field: 'QuantityDiff', type: 'numericColumn', filter: 'agTextColumnFilter' },
     ];
 
   }
