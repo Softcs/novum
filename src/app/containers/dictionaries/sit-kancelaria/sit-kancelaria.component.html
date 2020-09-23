@@ -3,8 +3,9 @@
     <div fxFlex="50%" fxLayout="column" fxLayoutGap="5px">
       <div fxFlex="300px" class="content" fxLayout="column">
         <sit-data-set-container ident="sitFilterCustomers" >
-          <span>
+          <span class="filter-container">
             <sit-data-input #sitControl field="searchCustomers" label="Filtruj klientów"  appearance="outline" style="width: 300px"></sit-data-input>
+            <sit-files-button></sit-files-button>
           </span>
         </sit-data-set-container>
         <div class="data-table" fxFlex>

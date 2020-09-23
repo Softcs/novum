@@ -96,7 +96,8 @@ import { SitParamsComponent } from './containers/dictionaries/sit-params/sit-par
 import { GridCheckboxRenderer } from './components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
 import { SitStocksComponent } from './containers/dictionaries/sit-stocks/sit-stocks.component';
 import { SitWmsDocsComponent } from '@app/containers/dictionaries/sit-wms-docs/sit-wms-docs.component';;
-import { SitRefreshButtonComponent } from './components/controls/sit-refresh-button/sit-refresh-button.component'
+import { SitRefreshButtonComponent } from './components/controls/sit-refresh-button/sit-refresh-button.component';
+import { SitFilesButtonComponent } from './components/controls/sit-files-button/sit-files-button.component';
 
 @NgModule({
     imports: [
@@ -189,6 +190,8 @@ import { SitRefreshButtonComponent } from './components/controls/sit-refresh-but
         GridCheckboxRenderer,
         SitStocksComponent,
         SitWmsDocsComponent
+,
+        SitFilesButtonComponent
       ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },

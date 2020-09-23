@@ -1,12 +1,9 @@
 import { environment } from '@environments/environment';
 import { Component, OnInit, ViewChild, Inject, LOCALE_ID  } from '@angular/core';
-import { SitDataSetContainerComponent } from '@app/components/sit-data-set-container';
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
 import { DataSetWrapper } from '@app/_models';
-import { SitDataInputComponent } from '@app/components/controls/sit-data-input/sit-data-input.component';
 import { GatewayService } from '@app/_services';
 import { User } from '@app/_models';
-//import { AllModules } from '@ag-grid-enterprise/all-modules';
 import { formatDate } from '@angular/common';
 
 @Component({
@@ -15,7 +12,7 @@ import { formatDate } from '@angular/common';
   styleUrls: ['./sit-kancelaria.component.scss'],
   host: {class: 'router-flex'}
 })
-export class SitKancelariaComponent implements OnInit {
+export class SitKancelariaComponent {
   @ViewChild('sitDictcontainer') dictContainer: SitDictContainerComponent;
 
   currentUser: User;
@@ -24,7 +21,6 @@ export class SitKancelariaComponent implements OnInit {
   sitAgreementsSelected = [];
   sitAttachmentsSelected = [];
 
-  //modules: any[] = AllModules;
   defaultColDef;
   rowSelection;
   popupParent;
@@ -40,9 +36,6 @@ export class SitKancelariaComponent implements OnInit {
   gridApiAttachments;
   gridColumnApiAttachments;
   columnDefsAttachments;
-
-
-
 
   constructor(
     private gatewayService: GatewayService,
@@ -95,26 +88,15 @@ export class SitKancelariaComponent implements OnInit {
 
   }
 
-  ngOnInit(): void {
-  }
-
-
   activeRowAttachmentsChanged(activeRow) {
     this.sitAttachmentsSelected.splice(0, this.sitAttachmentsSelected.length);
     this.sitAttachmentsSelected.push(...[activeRow]);
 
     this.Link = activeRow == null
-      ? environment.apiUrl+"/service/attachments/get/" + "1" + "/" + "1" + "/" + "1.pdf" : // kiedy brak rekordu
-        environment.apiUrl+"/service/attachments/get/" + this.currentUser.token + "/" + activeRow['sitAttachmentsG'] + "/" + activeRow['FileName']
-
+      ? ''
+      : environment.apiUrl + '/service/attachments/get/' + this.currentUser.token + '/'
+        + activeRow['sitAttachmentsG'] + '/' + activeRow['FileName'];
   }
-
-  // onFilterKeyEnter(event: any) {
-  //   const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper("sitFilter");
-  //   dataSourceResponseWrapper.setFieldValue(event.target.name, event.target.value);
-  //   dataSourceResponseWrapper.SetActiveRow(dataSourceResponseWrapper.activeRow);
-
-  // }
 
   onGridReadyCustomers(params) {
     console.log(params)
@@ -132,15 +114,15 @@ export class SitKancelariaComponent implements OnInit {
 
   onRowClickedCustomers(event) {
     const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitCustomers');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
+    dataSourceResponseWrapper.SetActiveRow(event.data);
   }
   onRowClickedAgreements(event) {
     const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitAgreements');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
+    dataSourceResponseWrapper.SetActiveRow(event.data);
   }
   onRowClickedAttachments(event) {
     const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitAttachments');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
+    dataSourceResponseWrapper.SetActiveRow(event.data);
   }
 
   onFirstDataRendered(params) {
