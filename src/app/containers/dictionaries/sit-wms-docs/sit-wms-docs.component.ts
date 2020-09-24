@@ -68,12 +68,12 @@ export class SitWmsDocsComponent implements OnInit {
       this.columnDefsDocumentsHeaders = [
         { headerName: 'Typ dok.', field: 'DocumentIdent', sortable: true, resizable: true, filter: 'agSetColumnFilter',width: 90 },
         { headerName: 'Numer', field: 'DocumentNumber', sortable: true, resizable: true, filter: 'agTextColumnFilter' },
-        { headerName: 'Data', field: 'DocumentDate', filter: 'agDateColumnFilter',width: 100  },
+        { headerName: 'Data', field: 'DocumentDate', filter: 'agDateColumnFilter',width: 100, floatingFilter: false  },
         { headerName: 'Status WMS', field: 'Status_WMS', filter: 'agSetColumnFilter', width: 160,
           cellStyle: function(params) {
-            if (params.value=='Wysłana') { return {color: 'blue', backgroundColor: 'white'}; }
-            else if (params.value=='Błąd wysyłki') { return {color: 'red' }; }
-            else if (params.value=='Przetworzone poprawnie') { return {color: 'green' }; }
+            if (params.value === 'Wysłana') { return { color: 'blue' }; }
+            else if (params.value === 'Błąd wysyłki') { return { color: 'red' }; }
+            else if (params.value === 'Przetworzone poprawnie') { return { color: 'green' }; }
             else { return null; }
           }
         },
@@ -123,7 +123,6 @@ export class SitWmsDocsComponent implements OnInit {
   }
 
 
-
   onGridReadyDocumentsHeaders(params) {
     this.gridApiDocumentsHeaders = params.api;
     this.gridColumnApiDocumentsHeaders = params.columnApi;
@@ -146,7 +145,7 @@ export class SitWmsDocsComponent implements OnInit {
   onRowClickedDocumentsHeaders(event) {
     const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsHeaders');
       dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
+    }
 
   onRowClickedDocumentsHeadersHistory(event) {
     const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsHeadersHistory');

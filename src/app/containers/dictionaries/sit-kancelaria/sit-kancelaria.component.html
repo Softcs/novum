@@ -5,7 +5,6 @@
         <sit-data-set-container ident="sitFilterCustomers" >
           <span class="filter-container">
             <sit-data-input #sitControl field="searchCustomers" label="Filtruj klientów"  appearance="outline" style="width: 300px"></sit-data-input>
-            <sit-files-button></sit-files-button>
           </span>
         </sit-data-set-container>
         <div class="data-table" fxFlex>
@@ -77,13 +76,17 @@
         </div>
       </div>
       <div fxFlex class="content" fxLayout="column">
-        <!-- <sit-data-set-container  ident="sitFilterAttachments" >
-          <span>
-            <sit-data-input #sitControl field="searchAttachments" label="Filtruj załączniki"  appearance="outline" style="width: 300px"></sit-data-input>
-          </span>
-        </sit-data-set-container> -->
-        <div class="data-table" fxFlex>
-          <sit-data-set-container  ident="sitAttachments" (activeRowChanged)="activeRowAttachmentsChanged($event)" FxFlex>
+        <sit-data-set-container  ident="sitAttachments" (activeRowChanged)="activeRowAttachmentsChanged($event)" fxFlex fxLayout="column">
+          <div class="sit-proc-bar">
+            <mat-toolbar color="accent">
+              <mat-toolbar-row>
+                <div class="sit-proc-buttons-row">
+                  <sit-files-button tooltip="Wczytaj skan umowy"></sit-files-button>
+                </div>
+              </mat-toolbar-row>
+            </mat-toolbar>
+          </div>
+          <div class="data-table" fxFlex>
             <ag-grid-angular #sitSetDataSource
             #agGrid
             id="gridAttachments"
@@ -101,9 +104,8 @@
             (firstDataRendered)="onFirstDataRendered($event)"
             >
             </ag-grid-angular>
-
-          </sit-data-set-container>
-        </div>
+          </div>
+        </sit-data-set-container>
       </div>
     </div>
 
