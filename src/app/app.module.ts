@@ -95,9 +95,10 @@ import { SitUserAccountChangePasswordComponent } from './containers/dictionaries
 import { SitParamsComponent } from './containers/dictionaries/sit-params/sit-params.component';
 import { GridCheckboxRenderer } from './components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
 import { SitStocksComponent } from './containers/dictionaries/sit-stocks/sit-stocks.component';
-import { SitWmsDocsComponent } from '@app/containers/dictionaries/sit-wms-docs/sit-wms-docs.component';;
+import { SitWmsDocsComponent } from '@app/containers/dictionaries/sit-wms-docs/sit-wms-docs.component';
 import { SitRefreshButtonComponent } from './components/controls/sit-refresh-button/sit-refresh-button.component';
-import { SitFilesButtonComponent } from './components/controls/sit-files-button/sit-files-button.component';
+import { SitFilesButtonComponent } from './components/controls/sit-files-button/sit-files-button.component';;
+import { SitButtonBaseComponent } from './components/controls/sit-button-base/sit-button-base.component'
 
 @NgModule({
     imports: [
@@ -160,6 +161,7 @@ import { SitFilesButtonComponent } from './components/controls/sit-files-button/
         SitUserAccountComponent,
         SitProcButtonComponent,
         SitRefreshButtonComponent,
+        SitFilesButtonComponent,
         SitWhiteListVATComponent ,
         SitJPKVatComponent,
         SitChangeCompanyComponent,
@@ -189,9 +191,8 @@ import { SitFilesButtonComponent } from './components/controls/sit-files-button/
         SitParamsComponent,
         GridCheckboxRenderer,
         SitStocksComponent,
-        SitWmsDocsComponent
-,
-        SitFilesButtonComponent
+        SitWmsDocsComponent,
+        SitButtonBaseComponent
       ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },

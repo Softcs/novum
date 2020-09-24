@@ -14,7 +14,8 @@ export class DataSetWrapper {
     @Output()
     afterPropagte: EventEmitter<string> = new EventEmitter<string>();
 
-
+    @Output()
+    afterSetFieldValue: EventEmitter<string> = new EventEmitter<string>();
 
     constructor(
         public ident: string,
@@ -67,7 +68,10 @@ export class DataSetWrapper {
     public setInputDataSource(inputDataSource: any) {
         this.ident = inputDataSource.ident;
         this.rows = inputDataSource.rows;
-        this.activeRow = inputDataSource.activeRowIndex !== -1 ? inputDataSource.rows[inputDataSource.activeRowIndex] : null;
+        this.SetActiveRow(inputDataSource.activeRowIndex !== -1
+            ? inputDataSource.rows[inputDataSource.activeRowIndex]
+            : null,
+            false);
         this.errors = inputDataSource.errors;
     }
 
@@ -197,6 +201,7 @@ export class DataSetWrapper {
             throw new Error('Active row is unnassigned');        }
 
         row[fieldName] = fieldValue;
+        this.afterSetFieldValue.emit(fieldName);
     }
 
     public getFieldValue(fieldName: string, rowToChange: any = null) {

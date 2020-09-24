@@ -7,6 +7,9 @@ import { sitSetDataSetDirective } from '@app/_directives/sitSetDataSetDirective'
 import { DataSetDefinitionWrapper } from '@app/_models/dataSetDefinitionWrapper';
 import { SitActionDirective } from '@app/_directives';
 import { SitRefreshButtonComponent } from '../controls/sit-refresh-button/sit-refresh-button.component';
+import { SitFilesButtonComponent } from '../controls/sit-files-button/sit-files-button.component';
+import { SitButtonBaseComponent } from '../controls/sit-button-base/sit-button-base.component';
+import { AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'sit-data-set-container',
@@ -28,6 +31,8 @@ export class SitDataSetContainerComponent {
   @ContentChildren(SitRefreshButtonComponent, { descendants: true })
   refreshButtons!: QueryList<SitRefreshButtonComponent>;
 
+  @ContentChildren(SitFilesButtonComponent, { descendants: true })
+  filesButtons!: QueryList<SitFilesButtonComponent>;
 
   @Input() ident: string;
   dataSetResponseWrapper: DataSetWrapper;
@@ -188,6 +193,14 @@ export class SitDataSetContainerComponent {
       });
   }
 
+  private pepareControlForButtons(buttons: QueryList<SitButtonBaseComponent>) {
+    if (buttons) {
+      buttons.forEach(button => {
+        button.setDataSetWrapper(this.dataSetResponseWrapper);
+      });
+    }
+  }
+
   public prepareControls(dataSetWrapperDefinition: DataSetDefinitionWrapper) {
 
     if (this.actionControlsInterface != null) {
@@ -198,11 +211,8 @@ export class SitDataSetContainerComponent {
         actionControl.dataSetManagerSource = this.dataSetControlsManager;
       });
     }
-    if (this.refreshButtons) {
-      this.refreshButtons.forEach(refreshButton => {
-        refreshButton.setDataSetWrapper(this.dataSetResponseWrapper);
-      })
-    }
+    this.pepareControlForButtons(this.refreshButtons);
+    this.pepareControlForButtons(this.filesButtons);
   }
 
   set errors(value: any[]) {

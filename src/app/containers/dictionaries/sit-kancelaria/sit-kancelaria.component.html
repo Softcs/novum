@@ -5,7 +5,7 @@
         <sit-data-set-container ident="sitFilterCustomers" >
           <span class="filter-container">
             <sit-data-input #sitControl field="searchCustomers" label="Filtruj klientów"  appearance="outline" style="width: 300px"></sit-data-input>
-            <sit-files-button></sit-files-button>
+            <sit-files-button #sitSimpleButton fieldFileNames="searchCustomers"></sit-files-button >
           </span>
         </sit-data-set-container>
         <div class="data-table" fxFlex>
@@ -24,8 +24,7 @@
             [popupParent]="popupParent"
             (rowClicked)="onRowClickedCustomers($event)"
             (gridReady)="onGridReadyCustomers($event)"
-            (firstDataRendered)="onFirstDataRendered($event)"
-            >
+            (firstDataRendered)="onFirstDataRendered($event)">
             </ag-grid-angular>
           </sit-data-set-container>
         </div>
