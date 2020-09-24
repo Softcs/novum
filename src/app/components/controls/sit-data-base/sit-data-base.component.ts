@@ -22,7 +22,7 @@ export class SitDataBaseComponent implements ControlValueAccessor {
     this._dataSetWrapper = value;
     if (this._dataSetWrapper != null) {
       this._dataSetWrapper.activeRowChanged.subscribe( (row) => this.activeRowChanged(row, this));
-      this._dataSetWrapper.afterSetFieldValue.subscribe((fieldName) => this.afterSetFieldValue(fieldName, this));
+      this._dataSetWrapper.afterSetFieldValue.subscribe((fieldName) => this.afterSetFieldValue(fieldName));
     }
     this.afterSetDataSetWrapper();
   }
@@ -85,12 +85,12 @@ export class SitDataBaseComponent implements ControlValueAccessor {
     self.refreshFieldValue();
   }
 
-  public afterSetFieldValue(fieldName, self) {
-    if (self.field !== fieldName)  {
+  public afterSetFieldValue(fieldName) {
+    if (this.field !== fieldName)  {
       return;
     }
 
-    self.refreshFieldValue();
+    this.refreshFieldValue();
   }
 
   public refreshFieldValue() {

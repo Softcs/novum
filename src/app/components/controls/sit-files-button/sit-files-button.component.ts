@@ -17,6 +17,7 @@ export class SitFilesButtonComponent extends SitButtonBaseComponent {
     this.color = 'primary';
     this.multiple = false;
   }
+
   @Input() multiple: boolean;
   @Input() fieldFileNames: string;
   @Input() fieldFileIdents: string;
@@ -26,8 +27,17 @@ export class SitFilesButtonComponent extends SitButtonBaseComponent {
   }
 
   onHandleFileInput($event) {
-    console.log("$$$", this.hiddenInput.nativeElement['files']);
-    this.dataSetWrapper?.setFieldValue(this.fieldFileNames,"aaaa");
+    this.dataSetWrapper?.setFieldValue(this.fieldFileNames, this.getFileNames(this.hiddenInput.nativeElement['files']));
+  }
 
+  private getFileNames(files: File[]) {
+    if (!files || files.length === 0) {
+      return null;
+    }
+    if (files.length === 1) {
+      return files[0].name;
+    }
+    const value = files.map(f => f.name).join('; ');
+    return value;
   }
 }
