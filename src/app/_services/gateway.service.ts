@@ -1,5 +1,5 @@
 ﻿import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpRequest } from '@angular/common/http';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { map, first } from 'rxjs/operators';
 
@@ -205,5 +205,22 @@ export class GatewayService {
                 }
                 return railResponse;
             }));
+    }
+
+    public UploadFile(file: File) {
+        if (!file) {
+            return;
+        }
+        const fileData: FormData = new FormData();
+        fileData.append('uploadFile', file, file.name);
+        let params = new HttpParams();
+        const options = {
+            params: params,
+            reportProgress: true,
+        };
+
+        // return this.http.post<any>(`${environment.apiUrl}/api/upload/file`, oprC)
+        const req = new HttpRequest('POST', `${environment.apiUrl}/api/upload/file`, fileData, options);
+        return this.http.request(req);
     }
 }
