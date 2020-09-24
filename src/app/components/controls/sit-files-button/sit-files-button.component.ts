@@ -21,6 +21,8 @@ export class SitFilesButtonComponent implements AfterViewInit {
   @Input() icon: string;
   @Input() tooltip: string;
   @Input() multiple: boolean;
+  @Input() fieldFileName: string;
+  @Input() fieldIdent: string;
 
   ngAfterViewInit() {
 
@@ -31,7 +33,7 @@ export class SitFilesButtonComponent implements AfterViewInit {
   }
 
   onHandleFileInput($event) {
-    console.log("handleFileInput", $event)
+    //console.log("handleFileInput", $event)
   }
 
   private connectToHiddenInput() {
