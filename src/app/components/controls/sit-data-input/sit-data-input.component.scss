@@ -2,21 +2,20 @@ button {
   margin-right: 8px;
 }
 
-
- .mat-form-field {
-   height: 47px;
-   .mat-form-field-wrapper {
+.mat-form-field {
+  height: 47px;
+  .mat-form-field-wrapper {
+    height: 40px;
+    padding: 0px 1px 5px;
+    .mat-form-field-infix {
+      width: auto;
       height: 40px;
-      padding: 0px 1px 5px;
-     .mat-form-field-infix {
-       width: auto;
-       height: 40px;
-       padding-top: 7px;
-       .mat-form-field-label-wrapper {
-         padding-top: 7px;
-       }
-     }
-   }
+      padding-top: 7px;
+      .mat-form-field-label-wrapper {
+        padding-top: 7px;
+      }
+    }
+  }
 }
 
 sit-refresh-button {
