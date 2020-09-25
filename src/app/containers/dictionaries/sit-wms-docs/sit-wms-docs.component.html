@@ -134,12 +134,10 @@
           <mat-tab label="Pozycje sumy">
             <div fxLayout="column" fxFill fxLayoutGap="5px">
               <div fxFill fxLayout="column">
-                <sit-data-set-container  ident="sitFilterPositionsSum" fxLayout="column">
-                  <!-- <div class="sit-filter-bar">
-                    <sit-data-set-container ident="sitFilterDocumentsHeaders" fxLayout="row">
-                        <sit-data-input #sitControl id="onlyDiff" type="number" field="onlyDiff" label="Tylko różnice" appearance="outline" style="width: 300px;"></sit-data-input>
-                    </sit-data-set-container>
-                  </div> -->
+                <sit-data-set-container ident="sitFilterPositionsSum" fxLayout="row">
+                  <div class="sit-filter-bar">
+                      <sit-data-checkbox #sitControl label="Tylko różnice" id="onlyDiff" field="onlyDiff" widht="100px"></sit-data-checkbox>
+                  </div>
                 </sit-data-set-container>
                 <sit-data-set-container  ident="sitDocumentsPositionsSum" fxFlex fxLayout="column">
                     <div fxLayout="column" fxFill>
