@@ -1,4 +1,5 @@
-﻿import { SitStocksComponent } from './../containers/dictionaries/sit-stocks/sit-stocks.component';
+﻿import { SitAttachmentsInsComponent } from './../containers/dictionaries/sit-kancelaria/actions/sit-attachments-ins/sit-attachments-ins.component';
+import { SitStocksComponent } from './../containers/dictionaries/sit-stocks/sit-stocks.component';
 import { SitParamsComponent } from './../containers/dictionaries/sit-params/sit-params.component';
 import { SitUserAccountChangePasswordComponent } from './../containers/dictionaries/sit-user-account/actions/sit-user-account-change-password/sit-user-account-change-password.component';
 import { SitCustomersEditComponent } from './../containers/dictionaries/sit-customers/actions/sit-customers-edit/sit-customers-edit.component';
@@ -48,7 +49,8 @@ export class FactoryService {
         sitUserAccoutChangePassword: SitUserAccountChangePasswordComponent,
         sitParams: SitParamsComponent,
         sitStocks: SitStocksComponent,
-        sitWmsDocs: SitWmsDocsComponent
+        sitWmsDocs: SitWmsDocsComponent,
+        sitAttachmentsIns: SitAttachmentsInsComponent
     };
 
     public GetFactory(ident: string) {
