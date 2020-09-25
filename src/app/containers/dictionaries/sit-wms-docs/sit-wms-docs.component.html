@@ -1,14 +1,14 @@
 <sit-dict-container ident="sitWmsDocs" #sitDictcontainer fxFill>
   <sit-data-set-container  ident="sitDocumentsHeaders" fxFill>
     <div fxLayout="row" fxFlexFill class="content" fxLayoutGap="5px">
-      <div fxFlex="60%" fxLayout="column" fxLayoutGap="5px">
-        <div fxLayout="column" fxFlex="70%">
+      <div fxFlex="55%" fxLayout="column" fxLayoutGap="5px">
+        <div fxLayout="column" fxFlex="80%">
 
             <div class="sit-filter-bar">
               <sit-data-set-container ident="sitFilterDocumentsHeaders" fxLayout="row">
                   <sit-data-input #sitControl id="searchDocumentsHeaders" field="searchDocumentsHeaders" label="Filtruj dokumenty" placeholder="Numer" appearance="outline" style="width: 300px;"></sit-data-input>
-                  <div><sit-data-input #sitControl id="DateFrom" field="DateFrom" type="date" label="Od" appearance="outline" style="width: 15  0px;"></sit-data-input></div>
-                  <div><sit-data-input #sitControl id="DateFrom" field="DateTo" type="date" label="Do" appearance="outline" style="width: 150px;" showRefreshButton="true" ></sit-data-input></div>
+                  <sit-data-input #sitControl id="DateFrom" field="DateFrom" type="date" label="Od" appearance="outline" style="width: 15  0px;"></sit-data-input>
+                  <sit-data-input #sitControl id="DateFrom" field="DateTo" type="date" label="Do" appearance="outline" style="width: 150px;" showRefreshButton="true" ></sit-data-input>
               </sit-data-set-container>
             </div>
 
@@ -46,7 +46,7 @@
               </ag-grid-angular>
             </div>
         </div>
-        <div fxLayout="column" fxFlex="30%">
+        <div fxLayout="column" fxFlex="20%">
           <sit-data-set-container  ident="sitDocumentsHeadersHistory" fxFill>
             <div class="data-table" fxFill>
               <ag-grid-angular #sitSetDataSource
@@ -71,7 +71,7 @@
           </sit-data-set-container>
         </div>
       </div>
-      <div fxFlex="40%" fxLayout="column" fxLayoutGap="5px">
+      <div fxFlex fxLayout="column" fxLayoutGap="5px">
         <mat-tab-group id="tab-group" animationDuration="0ms">
           <mat-tab label="Pozycje">
             <div fxLayout="column" fxFill fxLayoutGap="5px">
@@ -131,7 +131,47 @@
               </div>
             </div>
           </mat-tab>
-          <mat-tab label="Kontrahent">
+          <mat-tab label="Pozycje sumy">
+            <div fxLayout="column" fxFill fxLayoutGap="5px">
+              <div fxFill fxLayout="column">
+                <sit-data-set-container  ident="sitFilterPositionsSum" fxLayout="column">
+                  <!-- <div class="sit-filter-bar">
+                    <sit-data-set-container ident="sitFilterDocumentsHeaders" fxLayout="row">
+                        <sit-data-input #sitControl id="onlyDiff" type="number" field="onlyDiff" label="Tylko różnice" appearance="outline" style="width: 300px;"></sit-data-input>
+                    </sit-data-set-container>
+                  </div> -->
+                </sit-data-set-container>
+                <sit-data-set-container  ident="sitDocumentsPositionsSum" fxFlex fxLayout="column">
+                    <div fxLayout="column" fxFill>
+                      <div class="data-table" fxFill>
+                        <ag-grid-angular #sitSetDataSource
+                        #agGrid
+                        id="gridDocumentsPositionsSum"
+                        style="width: 100%; height: 100%;"
+                        class="ag-theme-balham"
+                        [columnDefs]="columnDefsDocumentsPositionsSum"
+                        [defaultColDef]="defaultColDef"
+                        [rowSelection]="rowSelection"
+                        [rowMultiSelectWithClick]="true"
+                        [enableCellTextSelection]="true"
+                        [enableRangeSelection]="false"
+                        [popupParent]="popupParent"
+                        [sideBar]="false"
+                        [frameworkComponents]="frameworkComponents"
+                        [rowClassRules]="rowClassRules"
+                        (rowClicked)="onRowClickedDocumentsPositionsSum($event)"
+                        (gridReady)="onGridReadyDocumentsPositionsSum($event)"
+                        (firstDataRendered)="onFirstDataRendered($event)"
+                      >
+                      </ag-grid-angular>
+                    </div>
+                  </div>
+                </sit-data-set-container>
+              </div>
+            </div>
+          </mat-tab>
+
+          <mat-tab label="Nagłówek">
             <div fxLayout="column" fxFill>
               <div fxLayout="row">
                 <sit-data-input type="text" id="PayerCountry" #sitControl field="PayerCountry" label="Kraj" [showRefresh]=false appearance="outline" style="width: 100px" [readonly]=true></sit-data-input>

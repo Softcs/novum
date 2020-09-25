@@ -35,6 +35,10 @@ export class SitWmsDocsComponent implements OnInit {
   gridColumnApiDocumentsPositions;
   columnDefsDocumentsPositions;
 
+  gridApiDocumentsPositionsSum;
+  gridColumnApiDocumentsPositionsSum;
+  columnDefsDocumentsPositionsSum;
+  
   gridApiDocumentsPositionsHistory;
   gridColumnApiDocumentsPositionsHisotry;
   columnDefsDocumentsPositionsHistory;
@@ -66,9 +70,11 @@ export class SitWmsDocsComponent implements OnInit {
 
       //definicja kolumn nagłówków dowodów
       this.columnDefsDocumentsHeaders = [
+        { headerName: 'Id', field: 'sitDocumentsHeadersId', sortable: true, resizable: true, filter: 'agTextColumnFilter',width: 90 },
+        { headerName: 'GUID', field: 'sitDocumentsHeadersG', sortable: true, resizable: true, filter: 'agTextColumnFilter',width: 150 },
         { headerName: 'Typ dok.', field: 'DocumentIdent', sortable: true, resizable: true, filter: 'agSetColumnFilter',width: 90 },
         { headerName: 'Numer', field: 'DocumentNumber', sortable: true, resizable: true, filter: 'agTextColumnFilter' },
-        { headerName: 'Data', field: 'DocumentDate', filter: 'agDateColumnFilter',width: 100, floatingFilter: false  },
+        { headerName: 'Data', field: 'DocumentDate', filter: 'agDateColumnFilter',width: 100, floatingFilter: false, sort: 'desc'  },
         { headerName: 'Status WMS', field: 'Status_WMS', filter: 'agSetColumnFilter', width: 160,
           cellStyle: function(params) {
             if (params.value === 'Wysłana') { return { color: 'blue' }; }
@@ -86,17 +92,27 @@ export class SitWmsDocsComponent implements OnInit {
 
       //definicja kolumn pozycji dowodów
       this.columnDefsDocumentsPositions = [
-        { headerName: 'Lp', field: 'OrdNumber', type: 'numericColumn', sortable: true, resizable: true, suppressMenu: true, width: 50,floatingFilter: false },
-        { headerName: 'Identyfikator', field: 'ProductIdent', filter: 'agTextColumnFilter', width: 130, floatingFilter: true },
-        { headerName: 'EAN', field: 'EAN', filter: 'agTextColumnFilter', width: 120, floatingFilter: true },
+        { headerName: 'Lp', field: 'OrdNumber', type: 'numericColumn', sortable: true, resizable: true, suppressMenu: true, width: 40,floatingFilter: false },
+        { headerName: 'Identyfikator', field: 'ProductIdent', filter: 'agTextColumnFilter', width: 120, floatingFilter: true },
+        { headerName: 'EAN', field: 'EAN', filter: 'agTextColumnFilter', width: 110, floatingFilter: true },
         { headerName: 'Opis', field: 'PositionDescription', filter: 'agTextColumnFilter', floatingFilter: true },
+        { headerName: 'JM', field: 'UnitIdent', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 60 },
         { headerName: 'Il. start', field: 'QuantityUnitStart', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
         { headerName: 'Ilość', field: 'QuantityUnit', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
-        { headerName: 'JM', field: 'UnitIdent', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
         { headerName: 'Defekt', field: 'IsDefect', filter: 'agSetColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80,cellRenderer: 'gridCheckboxRenderer' }
       ];
 
-
+      //definicja kolumn sum pozycji dowodów
+      this.columnDefsDocumentsPositionsSum = [
+        { headerName: 'Lp', field: 'OrdNumber', type: 'numericColumn', sortable: true, resizable: true, suppressMenu: true, width: 40,floatingFilter: false },
+        { headerName: 'Identyfikator', field: 'ProductIdent', filter: 'agTextColumnFilter', width: 120, floatingFilter: true },
+        { headerName: 'EAN', field: 'EAN', filter: 'agTextColumnFilter', width: 110, floatingFilter: true },
+        { headerName: 'Opis', field: 'PositionDescription', filter: 'agTextColumnFilter', floatingFilter: true },
+        { headerName: 'JM', field: 'UnitIdent', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 60 },
+        { headerName: 'Il. start', field: 'QuantityUnitStart', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
+        { headerName: 'Ilość', field: 'QuantityUnit', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
+        { headerName: 'Różnica', field: 'QuantityDiff', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
+      ];
 
       //definicja kolumn historii nagłówków
       this.columnDefsDocumentsHeadersHistory = [
@@ -126,6 +142,7 @@ export class SitWmsDocsComponent implements OnInit {
   onGridReadyDocumentsHeaders(params) {
     this.gridApiDocumentsHeaders = params.api;
     this.gridColumnApiDocumentsHeaders = params.columnApi;
+    this.gridColumnApiDocumentsHeaders.setColumnsVisible(['sitDocumentsHeadersId','sitDocumentsHeadersG'],false)
   }
 
   onGridReadyDocumentsHeadersHistory(params) {
@@ -137,6 +154,12 @@ export class SitWmsDocsComponent implements OnInit {
     this.gridApiDocumentsPositions = params.api;
     this.gridColumnApiDocumentsPositions = params.columnApi;
   }
+
+  onGridReadyDocumentsPositionsSum(params) {
+    this.gridApiDocumentsPositionsSum = params.api;
+    this.gridColumnApiDocumentsPositionsSum = params.columnApi;
+  }
+  
   onGridReadyDocumentsPositionsHistory(params) {
     this.gridApiDocumentsPositionsHistory = params.api;
     this.gridColumnApiDocumentsPositionsHisotry = params.columnApi;
@@ -154,6 +177,11 @@ export class SitWmsDocsComponent implements OnInit {
 
   onRowClickedDocumentsPositions(event) {
     const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsPositions');
+      dataSourceResponseWrapper.SetActiveRow(event.data);
+  }
+
+  onRowClickedDocumentsPositionsSum(event) {
+    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsPositionsSum');
       dataSourceResponseWrapper.SetActiveRow(event.data);
   }
 
