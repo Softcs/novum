@@ -56,6 +56,10 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
     return this.actionDefinition?.kind === 'update';
   }
 
+  public get isShouldBeHidden(): boolean {
+    return false;
+  }
+
   getActionExecuteData(): ActionExecuteData {
     const identRowField = this.actionDefinition?.fieldsConfiguration?.identRow;
     const identRowValue = identRowField ? this.dataSetResponseWrapper.getFieldValue(identRowField) : null;

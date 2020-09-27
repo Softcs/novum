@@ -9,6 +9,7 @@ import * as CryptoJS from 'crypto-js';
 import { OperationCrypt } from '@app/_models/operationCrypt';
 import { LoginInfo } from '@app/_models/loginInfo';
 import { Company } from '@app/_models/company';
+import { Guid } from 'guid-typescript';
 
 @Injectable({ providedIn: 'root' })
 export class GatewayService {
@@ -150,7 +151,7 @@ export class GatewayService {
         return opr;
     }
 
-    executeOperation(opr: Operation) {
+    fillOperation(opr: Operation) {
         if (opr.loginInfo == null) {
             opr.loginInfo = new LoginInfo();
             opr.loginInfo.username = this.currentUserValue?.username;
@@ -158,13 +159,21 @@ export class GatewayService {
             opr.loginInfo.token = this.currentUserValue?.token;
         }
         opr.connection = this.currentUserValue?.connection;
+    }
 
+    getCryptOperation(opr: Operation): OperationCrypt {
         const listOfOprs = [];
         listOfOprs.push(opr);
         let data = JSON.stringify(listOfOprs);
         data = this.encV(data);
-        let oprC = new OperationCrypt();
+        const oprC = new OperationCrypt();
         oprC.d = data;
+        return oprC;
+    }
+
+    executeOperation(opr: Operation) {
+        this.fillOperation(opr);
+        const oprC = this.getCryptOperation(opr);
 
         return this.http.post<any>(`${environment.apiUrl}/api/json/gateway/railc`, oprC)
             .pipe(map(railResponse => {
@@ -211,16 +220,17 @@ export class GatewayService {
         if (!file) {
             return;
         }
-        const fileData: FormData = new FormData();
-        fileData.append('uploadFile', file, file.name);
-        let params = new HttpParams();
+        const fileId = 'd0087aa5-e4f4-42eb-9729-63595a113a59';
+        const fileData = new FormData();
+        fileData.append(fileId, file);
+        fileData.append('c', this.currentUserValue?.connection);
+        const params = new HttpParams();
         const options = {
-            params: params,
+            params,
             reportProgress: true,
         };
-
-        // return this.http.post<any>(`${environment.apiUrl}/api/upload/file`, oprC)
-        const req = new HttpRequest('POST', `${environment.apiUrl}/api/upload/file`, fileData, options);
+        const url = `/service/upload/files/${this.currentUserValue?.token}/${fileId}/${file.name}`;
+        const req = new HttpRequest('POST', `${environment.apiUrl}${url}`, fileData, options);
         return this.http.request(req);
     }
 }
