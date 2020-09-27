@@ -83,6 +83,8 @@ export class SitKancelariaComponent {
     this.columnDefsAttachments = [
       { headerName: 'Opis', field: 'AttachmentDesc', flex: 1 },
       { headerName: 'Nazwa pliku', field: 'FileName', flex: 1 },
+      { headerName: 'ParentId', field: 'ParentId', flex: 2 },
+      { headerName: 'sitAttachmentsG', field: 'sitAttachmentsG', flex: 2 }
     ];
 
 
@@ -110,6 +112,8 @@ export class SitKancelariaComponent {
   onGridReadyAttachments(params) {
     this.gridApiAttachments = params.api;
     this.gridColumnApiAttachments = params.columnApi;
+    this.gridColumnApiAttachments.setColumnsVisible(['sitAttachmentsId','sitAttachmentsG','ParentId'],false)
+
   }
 
   onRowClickedCustomers(event) {

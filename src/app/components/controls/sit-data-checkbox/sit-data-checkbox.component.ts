@@ -18,14 +18,16 @@ export class SitDataCheckboxComponent extends SitDataBaseComponent {
 
   onChange(event: any) {
     super.onChange(event);
-    //this._onFilterKeyEnter(event);
+    this._onFilterKeyEnter(event);
   }
 
   public getValue(): string {
+    console.log(this.inputElement);
     return this.inputElement.nativeElement.value;
   }
 
   _onFilterKeyEnter(event: any) {
+    console.log(this.field,this.dataSetWrapper.getFieldValue(this.field));
     this.dataSetWrapper.setFieldValue(this.field, this.getValue());
     this.dataSetWrapper.RefreshChildren();
   }
