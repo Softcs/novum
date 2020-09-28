@@ -1,4 +1,4 @@
-<button #button mat-stroked-button
+<button #button mat-stroked-button *ngIf="!isShouldBeHidden"
     color="{{color}}"
     (click)="onClick($event)" [disabled]="executing"
     matTooltip="{{tooltip}}">

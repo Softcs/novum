@@ -129,6 +129,8 @@ export class DataSetWrapper {
         });
     }
 
+
+
     private initRowByParents(sourceRow, dataSetManagerSource: DataSetManager) {
         const dataSourceDef = dataSetManagerSource?.FindDataSource(this.ident);
         if (!dataSourceDef || !dataSourceDef.hasParents) {
@@ -163,6 +165,22 @@ export class DataSetWrapper {
                 this.setFieldValue(targetSource, parentFieldValue, sourceRow);
             });
         });
+    }
+
+    public allParentsHaveRows(): boolean {
+        const dataSourceDef = this.dataSourceManager?.FindDataSource(this.ident);
+        if (!dataSourceDef || !dataSourceDef.hasParents) {
+            return true;
+        }
+        let result = true;
+        dataSourceDef.parents.forEach(parent => {
+            const parentDataSet = this.dataSourceManager.getDateSourceWrapper(parent);
+            if (!parentDataSet || !parentDataSet || !parentDataSet.rows || parentDataSet.rows.length === 0) {
+                result = false;
+                return false;
+            }
+        });
+        return result;
     }
 
     public GenerateRow(
