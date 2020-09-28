@@ -12,6 +12,11 @@ export class SitFilesButtonComponent extends SitButtonBaseComponent {
   @ViewChild('fileInput', { static: true }) hiddenInput: ElementRef<HTMLElement>;
 
   executing = false;
+  private multiple: boolean;
+  @Input() fieldFileNames: string;
+  // @Input() fieldFileIdents: string;
+  @Input() fieldIdent: string;
+
 
   constructor(private gatewayService: GatewayService)  {
     super();
@@ -21,9 +26,9 @@ export class SitFilesButtonComponent extends SitButtonBaseComponent {
     this.multiple = false;
   }
 
-  @Input() multiple: boolean;
-  @Input() fieldFileNames: string;
-  @Input() fieldFileIdents: string;
+
+
+
 
   onClick($event) {
     this.hiddenInput.nativeElement.click();
@@ -33,7 +38,9 @@ export class SitFilesButtonComponent extends SitButtonBaseComponent {
     const files = this.hiddenInput.nativeElement['files'];
     this.dataSetWrapper?.setFieldValue(this.fieldFileNames, this.getFileNames(files));
     if (files) {
-      this.gatewayService.UploadFile(files[0]).subscribe(
+      this.changeExecutingState(true);
+      const fileId = this.getFileId();
+      this.gatewayService.UploadFile(files[0], fileId).subscribe(
         event => {
           if (event.type == HttpEventType.UploadProgress) {
             const percentDone = Math.round(100 * event.loaded / event.total);
@@ -43,13 +50,18 @@ export class SitFilesButtonComponent extends SitButtonBaseComponent {
           }
         },
         (err) => {
-          console.log("Upload Error:", err);
+          this.changeExecutingState(false);
+          console.log('Upload Error:', err);
         },
         () => {
-          console.log("Upload done");
+          this.changeExecutingState(false);
         }
       );
     }
+  }
+
+  private getFileId() {
+    return this.dataSetWrapper.getFieldValue(this.fieldIdent);
   }
 
   private getFileNames(files: File[]) {

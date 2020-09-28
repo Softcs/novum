@@ -216,11 +216,10 @@ export class GatewayService {
             }));
     }
 
-    public UploadFile(file: File) {
-        if (!file) {
+    public UploadFile(file: File, fileId: string) {
+        if (!file || !fileId) {
             return;
         }
-        const fileId = 'd0087aa5-e4f4-42eb-9729-63595a113a59';
         const fileData = new FormData();
         fileData.append(fileId, file);
         fileData.append('c', this.currentUserValue?.connection);

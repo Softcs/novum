@@ -58,6 +58,7 @@ export class SitProcParamsComponent implements OnInit, AfterViewInit {
     this.mainDataSet = this.DataSetManager.CreateDataSetWrapper(dataSetContainer.ident, this.dataSetManagerSource);
     this.mainDataSet.GenerateRow(this.actionExecuteData.activeRow);
     dataSetContainer.setDataSource(this.mainDataSet);
+    dataSetContainer.prepareControls(null);
     this.activeRow = this.mainDataSet.activeRow;
     this.activeRowChange.emit(this.activeRow);
   }
