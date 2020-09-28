@@ -12,7 +12,7 @@ export class SitFilesButtonComponent extends SitButtonBaseComponent {
   @ViewChild('fileInput', { static: true }) hiddenInput: ElementRef<HTMLElement>;
 
   executing = false;
-  private multiple: boolean;
+  public multiple: boolean;
   @Input() fieldFileNames: string;
   // @Input() fieldFileIdents: string;
   @Input() fieldIdent: string;
