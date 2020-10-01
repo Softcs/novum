@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, Renderer2 } from '@angular/core';
 import { SitDataBaseComponent } from '../sit-data-base/sit-data-base.component';
 
 @Component({
@@ -6,34 +6,30 @@ import { SitDataBaseComponent } from '../sit-data-base/sit-data-base.component';
   templateUrl: './sit-data-checkbox.component.html',
   styleUrls: ['./sit-data-checkbox.component.scss']
 })
+
 export class SitDataCheckboxComponent extends SitDataBaseComponent {
   @Input() label = '';
   @Input() width: string;
+  @Input() refreshOnChange: boolean;
 
-  isChecked: boolean;
-
-  ngOnInit(): void {
-
+  constructor(renderer: Renderer2) {
+    super(renderer);
+    this.refreshOnChange = false;
+    this.registerOnChange(this.onChangeInternal);
   }
 
-  onChange(event: any) {
-    super.onChange(event);
-    this._onFilterKeyEnter(event);
+  private onChangeInternal(val: any) {
+    this.dataSetWrapper.setFieldValue(this.field, val);
+    if (this.refreshOnChange) {
+      this.dataSetWrapper.RefreshChildren();
+    }
   }
 
   public getValue(): string {
-    console.log(this.inputElement);
-    return this.inputElement.nativeElement.value;
-  }
-
-  _onFilterKeyEnter(event: any) {
-    console.log(this.field,this.dataSetWrapper.getFieldValue(this.field));
-    this.dataSetWrapper.setFieldValue(this.field, this.getValue());
-    this.dataSetWrapper.RefreshChildren();
+    return this.inputElement.nativeElement['checked'];
   }
 
   public refreshFieldValue() {
     this.dataSetWrapper.refreshFieldValueInControl(this);
   }
-
 }

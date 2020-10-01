@@ -15,11 +15,11 @@ export class SitDataBaseComponent implements ControlValueAccessor {
     return this._dataSetWrapper;
   }
 
-  set dataSetWrapper(value: DataSetWrapper) {
-    if (this._dataSetWrapper == value) {
+  set dataSetWrapper(dataSetWrapper: DataSetWrapper) {
+    if (this._dataSetWrapper == dataSetWrapper) {
       return;
     }
-    this._dataSetWrapper = value;
+    this._dataSetWrapper = dataSetWrapper;
     if (this._dataSetWrapper != null) {
       this._dataSetWrapper.activeRowChanged.subscribe( (row) => this.activeRowChanged(row, this));
       this._dataSetWrapper.afterSetFieldValue.subscribe((fieldName) => this.afterSetFieldValue(fieldName));

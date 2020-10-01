@@ -136,7 +136,7 @@
               <div fxFill fxLayout="column">
                 <sit-data-set-container ident="sitFilterPositionsSum" fxLayout="row">
                   <div class="sit-filter-bar">
-                      <sit-data-checkbox #sitControl label="Tylko różnice" id="onlyDiff" field="onlyDiff" widht="100px"></sit-data-checkbox>
+                      <sit-data-checkbox #sitControl [refreshOnChange]="true" label="Tylko różnice" id="onlyDiff" field="onlyDiff" widht="100px"></sit-data-checkbox>
                   </div>
                 </sit-data-set-container>
                 <sit-data-set-container  ident="sitDocumentsPositionsSum" fxFlex fxLayout="column">
