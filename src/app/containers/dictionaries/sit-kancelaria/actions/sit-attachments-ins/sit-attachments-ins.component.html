@@ -11,12 +11,12 @@
           <sit-data-input #sitControl  type="text" id="ParentId" field="ParentId" label="ParentId" appearance="outline" style="width: 200px"></sit-data-input>
           <sit-data-input #sitControl  type="text" id="EntityName" field="EntityName" label="EntityName" appearance="outline" style="width: 200px"></sit-data-input>
         </div> -->
-        <div fxLayout="column">
-          <sit-data-input #sitControl  type="text" id="AttachmentDesc" field="AttachmentDesc" label="Opis" appearance="outline" style="width: 600px"></sit-data-input>
-        </div>
         <div fxLayout="row">
-          <sit-data-input #sitControl  type="text" id="FileName" field="FileName" label="Nazwa pliku" appearance="outline" fxFlex></sit-data-input>
           <sit-files-button #sitSimpleButton fieldIdent="sitAttachmentsG" fieldFileNames="FileName"></sit-files-button >
+          <sit-data-input #sitControl  type="text" id="FileName" field="FileName" label="Nazwa pliku" appearance="outline" style="width: 500px;"></sit-data-input>
+        </div>
+        <div fxLayout="column">
+          <sit-data-input #sitControl  type="text" id="AttachmentDesc" field="AttachmentDesc" label="Opis" appearance="outline" fxFlex></sit-data-input>
         </div>
 
       </div>

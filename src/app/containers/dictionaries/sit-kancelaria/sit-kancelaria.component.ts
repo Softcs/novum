@@ -67,6 +67,11 @@ export class SitKancelariaComponent {
     ];
 
     this.columnDefsAgreements = [
+      { headerName: 'Numer', field: 'AgreementNo', flex: 2, filter: 'agTextColumnFilter', floatingFilter: true,
+        filterParams: {
+          filterOptions: ['contains']
+        }
+      },
       { headerName: 'Opis', field: 'AgreementDesc', flex: 2, filter: 'agTextColumnFilter', floatingFilter: true,
         filterParams: {
           filterOptions: ['contains']
@@ -81,10 +86,13 @@ export class SitKancelariaComponent {
     ];
 
     this.columnDefsAttachments = [
-      { headerName: 'Opis', field: 'AttachmentDesc', flex: 1 },
-      { headerName: 'Nazwa pliku', field: 'FileName', flex: 1 },
+      { headerName: 'Opis', field: 'AttachmentDesc', flex: 2 },
+      { headerName: 'Nazwa pliku', field: 'FileName', flex: 2 },
       { headerName: 'ParentId', field: 'ParentId', flex: 2 },
-      { headerName: 'sitAttachmentsG', field: 'sitAttachmentsG', flex: 2 }
+      { headerName: 'sitAttachmentsG', field: 'sitAttachmentsG', flex: 2 },
+      { headerName: 'Data dodania', field: 'InsertDate', flex: 1,
+        // cellRenderer: (data) => { return formatDate(data.value, 'yyyy-MM-dd', this.locale }
+      }
     ];
 
 
