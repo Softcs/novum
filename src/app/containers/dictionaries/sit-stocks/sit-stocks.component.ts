@@ -45,13 +45,26 @@ export class SitStocksComponent implements OnInit {
     };
 
     this.columnDefs = [
-      { headerName: 'Identyfikator', field: 'ProductIdent', sortable: true, resizable: true, filter: 'agTextColumnFilter'},
-      {headerName: 'Nazwa', field: 'ProductName', filter: 'agTextColumnFilter' },
-      {headerName: 'Ilość', field: 'Quantity', type: 'numericColumn', filter: 'agTextColumnFilter' },
-      {headerName: 'Ilość MWS', field: 'QuantityExt', type: 'numericColumn', filter: 'agTextColumnFilter' },
-      {headerName: 'Różnica.', field: 'QuantityDiff', type: 'numericColumn', filter: 'agTextColumnFilter' },
-    ];
-
+      { headerName: 'Produkt / Towar',
+        children: [
+          { headerName: 'Identyfikator', field: 'ProductIdent', sortable: true, resizable: true, filter: 'agTextColumnFilter' },
+          { headerName: 'Nazwa', field: 'ProductName', filter: 'agTextColumnFilter' }
+        ]
+      },
+      { headerName: 'Stany',
+        children: [
+          { headerName: 'ERP', field: 'Quantity', type: 'numericColumn', filter: 'agTextColumnFilter' },
+          { headerName: 'MWS', field: 'QuantityExt', type: 'numericColumn', filter: 'agTextColumnFilter' },
+          { headerName: 'Różnica.', field: 'QuantityDiff', type: 'numericColumn', filter: 'agTextColumnFilter' },
+        ]
+      },
+      { headerName: 'Magazyn',
+        children: [
+          { headerName: "Ident.", field: 'WarehouseIdent', sortable: true, resizable: true, filter: 'agTextColumnFilter' },
+          { headerName: "Nazwa", field: 'WarehouseName', sortable: true, resizable: true, filter: 'agTextColumnFilter' },
+        ],
+      }
+    ]
   }
 
   ngOnInit(): void {

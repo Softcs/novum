@@ -38,7 +38,7 @@ export class SitWmsDocsComponent implements OnInit {
   gridApiDocumentsPositionsSum;
   gridColumnApiDocumentsPositionsSum;
   columnDefsDocumentsPositionsSum;
-  
+
   gridApiDocumentsPositionsHistory;
   gridColumnApiDocumentsPositionsHisotry;
   columnDefsDocumentsPositionsHistory;
@@ -83,7 +83,7 @@ export class SitWmsDocsComponent implements OnInit {
             else { return null; }
           }
         },
-        { headerName: 'Kontrahent', field: 'PayerDesc02', filter: 'agTextColumnFilter' },
+        { headerName: 'Kontrahent', field: 'CustName', filter: 'agTextColumnFilter' },
         { headerName: 'Opis', field: 'DocumentDescription', filter: 'agTextColumnFilter' },
         { headerName: 'NagId SL', field: 'ExtAppIdent01', filter: 'agTextColumnFilter',width: 100 },
         { headerName: 'XL ID', field: 'ExtAppIdent02', filter: 'agTextColumnFilter',width: 100  },
@@ -159,7 +159,7 @@ export class SitWmsDocsComponent implements OnInit {
     this.gridApiDocumentsPositionsSum = params.api;
     this.gridColumnApiDocumentsPositionsSum = params.columnApi;
   }
-  
+
   onGridReadyDocumentsPositionsHistory(params) {
     this.gridApiDocumentsPositionsHistory = params.api;
     this.gridColumnApiDocumentsPositionsHisotry = params.columnApi;
