@@ -172,18 +172,21 @@
           <mat-tab label="Nagłówek">
             <div fxLayout="column" fxFill>
               <div fxLayout="row">
-                <sit-data-input type="text" id="CountrySymbol" #sitControl field="CountrySymbol" label="Kraj" [showRefresh]=false appearance="outline" style="width: 100px" [readonly]=true></sit-data-input>
+                <sit-data-input type="text" id="CustIdent" #sitControl field="CustIdent" label="Identyfikator" [showRefresh]=false appearance="outline" fxFlex [readonly]=true></sit-data-input>
                 <sit-data-input type="text" id="VATId" #sitControl field="VATId" label="NIP" [showRefresh]=false appearance="outline" style="width: 300px" [readonly]=true></sit-data-input>
               </div>
-              <sit-data-input type="text" id="CustIdent" #sitControl field="CustIdent" label="Identyfikator" [showRefresh]=false appearance="outline" style="width: 100%" [readonly]=true></sit-data-input>
               <sit-data-input type="text" id="CustName" #sitControl field="CustName" label="Nazwa pełna" [showRefresh]=false appearance="outline" style="width: 100%" [readonly]=true></sit-data-input>
               <div fxLayout="row">
-                <sit-data-input type="text" id="Street" #sitControl field="Street" label="Ulica" [showRefresh]=false appearance="outline" style="width: 400px" [readonly]=true></sit-data-input>
+                <sit-data-input type="text" id="Street" #sitControl field="Street" label="Ulica" [showRefresh]=false appearance="outline" fxFlex [readonly]=true></sit-data-input>
                 <sit-data-input type="text" id="HouseNum" #sitControl field="HouseNum" label="Numer" [showRefresh]=false appearance="outline" style="width: 100px" [readonly]=true></sit-data-input>
               </div>
               <div fxLayout="row">
                 <sit-data-input type="text" id="PostCode" #sitControl field="PostCode" label="Kod pocztowy" [showRefresh]=false appearance="outline" style="width: 150px" [readonly]=true></sit-data-input>
-                <sit-data-input type="text" id="City" #sitControl field="City" label="Miasto" [showRefresh]=false appearance="outline" style="width: 350px" [readonly]=true></sit-data-input>
+                <sit-data-input type="text" id="City" #sitControl field="City" label="Miasto" [showRefresh]=false appearance="outline" fxFlex [readonly]=true></sit-data-input>
+                <sit-data-input type="text" id="CountrySymbol" #sitControl field="CountrySymbol" label="Kraj" [showRefresh]=false appearance="outline" style="width: 100px" [readonly]=true></sit-data-input>
+              </div>
+              <div fxLayout="row">
+                <sit-data-input type="text" id="DocumentDescription" #sitControl field="DocumentDescription" label="Opis dokumentu" [showRefresh]=false appearance="outline" fxFill [readonly]=true></sit-data-input>
               </div>
             </div>
           </mat-tab>
