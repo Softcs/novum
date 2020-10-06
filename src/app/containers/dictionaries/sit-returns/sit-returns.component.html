@@ -1,0 +1,69 @@
+<sit-dict-container ident="sitReturns" #sitDictcontainer fxFill>
+  <sit-data-set-container  ident="sitDocumentsHeaders" fxFill fxLayout="column">
+    <div class="sit-filter-bar">
+      <sit-data-set-container ident="sitFilterDocumentsHeaders" fxLayout="row">
+          <sit-data-input #sitControl id="searchDocumentsHeaders" field="searchDocumentsHeaders" label="Filtruj dokumenty" placeholder="Numer" appearance="outline" style="width: 300px;"></sit-data-input>
+          <sit-data-input #sitControl id="DateFrom" field="DateFrom" type="date" label="Od" appearance="outline" style="width: 15  0px;"></sit-data-input>
+          <sit-data-input #sitControl id="DateFrom" field="DateTo" type="date" label="Do" appearance="outline" style="width: 150px;" showRefreshButton="true" ></sit-data-input>
+      </sit-data-set-container>
+    </div>
+    <div class="sit-proc-bar">
+      <mat-toolbar color="accent">
+        <mat-toolbar-row>
+          <div class="sit-proc-buttons-row">
+             <!-- <sit-proc-button #sitAction actionIdent="insert" componentParamsIdent="sitMenuItemsEdit" openKind="EXPANDER" tooltip="Nowy" color="primary" icon="post_add"></sit-proc-button> -->
+          </div>
+        </mat-toolbar-row>
+      </mat-toolbar>
+    </div>
+    <div fxLayout="row" fxFlex class="content" fxLayoutGap="5px">
+      <div fxFlex="50">
+        <div class="data-table" fxFlex>
+          <ag-grid-angular #sitSetDataSource
+            #agGrid
+            id="gridDocumentsHeaders"
+            style="width: 100%; height: 100%;"
+            class="ag-theme-balham"
+            [columnDefs]="columnDefsDocumentsHeaders"
+            [defaultColDef]="defaultColDef"
+            [rowSelection]="rowSelection"
+            [rowMultiSelectWithClick]="true"
+            [enableCellTextSelection]="true"
+            [enableRangeSelection]="false"
+            [popupParent]="popupParent"
+
+            [sideBar]="false"
+            (rowClicked)="onRowClickedDocumentsHeaders($event)"
+            (gridReady)="onGridReadyDocumentsHeaders($event)"
+          >
+          </ag-grid-angular>
+        </div>
+      </div>
+      <div fxFlex>
+        <sit-data-set-container  ident="sitDocumentsPositions" fxFill>
+          <div class="data-table" fxFill>
+            <ag-grid-angular #sitSetDataSource
+            #agGrid
+            id="gridDocumentsPositions"
+            style="width: 100%; height: 100%;"
+            class="ag-theme-balham"
+            [columnDefs]="columnDefsDocumentsPositions"
+            [defaultColDef]="defaultColDef"
+            [rowSelection]="rowSelection"
+            [rowMultiSelectWithClick]="true"
+            [enableCellTextSelection]="true"
+            [enableRangeSelection]="false"
+            [popupParent]="popupParent"
+            [sideBar]="false"
+            [frameworkComponents]="frameworkComponents"
+            [rowClassRules]="rowClassRules"
+            (rowClicked)="onRowClickedDocumentsPositions($event)"
+            (gridReady)="onGridReadyDocumentsPositions($event)"
+            >
+            </ag-grid-angular>
+          </div>
+        </sit-data-set-container>
+    </div>
+    </div>
+  </sit-data-set-container>
+</sit-dict-container>
