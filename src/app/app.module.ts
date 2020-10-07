@@ -102,6 +102,8 @@ import { SitButtonBaseComponent } from './components/controls/sit-button-base/si
 import { SitAttachmentsInsComponent } from './containers/dictionaries/sit-kancelaria/actions/sit-attachments-ins/sit-attachments-ins.component'
 ;
 import { SitReturnsComponent } from './containers/dictionaries/sit-returns/sit-returns.component'
+;
+import { SitReturnsGetdataComponent } from './containers/dictionaries/sit-returns/actions/sit-returns-getdata/sit-returns-getdata.component'
 
 @NgModule({
     imports: [
@@ -199,7 +201,8 @@ import { SitReturnsComponent } from './containers/dictionaries/sit-returns/sit-r
         SitButtonBaseComponent
 ,
         SitAttachmentsInsComponent ,
-        SitReturnsComponent     ],
+        SitReturnsComponent ,
+        SitReturnsGetdataComponent    ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
@@ -223,7 +226,8 @@ import { SitReturnsComponent } from './containers/dictionaries/sit-returns/sit-r
       GridCheckboxRenderer,
       SitStocksComponent,
       SitAttachmentsInsComponent,
-      SitReturnsComponent
+      SitReturnsComponent,
+      SitReturnsGetdataComponent
     ]
 })
 export class AppModule { }

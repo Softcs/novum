@@ -1,4 +1,5 @@
-﻿import { SitReturnsComponent } from './../containers/dictionaries/sit-returns/sit-returns.component';
+﻿import { SitReturnsGetdataComponent } from './../containers/dictionaries/sit-returns/actions/sit-returns-getdata/sit-returns-getdata.component';
+import { SitReturnsComponent } from './../containers/dictionaries/sit-returns/sit-returns.component';
 import { SitAttachmentsInsComponent } from './../containers/dictionaries/sit-kancelaria/actions/sit-attachments-ins/sit-attachments-ins.component';
 import { SitStocksComponent } from './../containers/dictionaries/sit-stocks/sit-stocks.component';
 import { SitParamsComponent } from './../containers/dictionaries/sit-params/sit-params.component';
@@ -52,7 +53,8 @@ export class FactoryService {
         sitStocks: SitStocksComponent,
         sitWmsDocs: SitWmsDocsComponent,
         sitAttachmentsIns: SitAttachmentsInsComponent,
-        sitReturns: SitReturnsComponent
+        sitReturns: SitReturnsComponent,
+        sitReturnsGetData: SitReturnsGetdataComponent
     };
 
     public GetFactory(ident: string) {
