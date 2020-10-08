@@ -104,6 +104,10 @@ import { SitAttachmentsInsComponent } from './containers/dictionaries/sit-kancel
 import { SitReturnsComponent } from './containers/dictionaries/sit-returns/sit-returns.component'
 ;
 import { SitReturnsGetdataComponent } from './containers/dictionaries/sit-returns/actions/sit-returns-getdata/sit-returns-getdata.component'
+;
+import { SitAppUsersComponent } from './containers/dictionaries/sit-app-users/sit-app-users.component'
+;
+import { SitAppUsersEditComponent } from './containers/dictionaries/sit-app-users/actions/sit-app-users-edit/sit-app-users-edit.component'
 
 @NgModule({
     imports: [
@@ -202,7 +206,9 @@ import { SitReturnsGetdataComponent } from './containers/dictionaries/sit-return
 ,
         SitAttachmentsInsComponent ,
         SitReturnsComponent ,
-        SitReturnsGetdataComponent    ],
+        SitReturnsGetdataComponent ,
+        SitAppUsersComponent ,
+        SitAppUsersEditComponent  ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
@@ -227,7 +233,9 @@ import { SitReturnsGetdataComponent } from './containers/dictionaries/sit-return
       SitStocksComponent,
       SitAttachmentsInsComponent,
       SitReturnsComponent,
-      SitReturnsGetdataComponent
+      SitReturnsGetdataComponent,
+      SitAppUsersComponent,
+      SitAppUsersEditComponent
     ]
 })
 export class AppModule { }
