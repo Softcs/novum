@@ -108,6 +108,10 @@ import { SitReturnsGetdataComponent } from './containers/dictionaries/sit-return
 import { SitAppUsersComponent } from './containers/dictionaries/sit-app-users/sit-app-users.component'
 ;
 import { SitAppUsersEditComponent } from './containers/dictionaries/sit-app-users/actions/sit-app-users-edit/sit-app-users-edit.component'
+;
+import { SitAppUserCompaniesEditComponent } from './containers/dictionaries/sit-app-users/actions/sit-app-user-companies-edit/sit-app-user-companies-edit.component'
+;
+import { SitAppUsersSetPasswordComponent } from './containers/dictionaries/sit-app-users/actions/sit-app-users-set-password/sit-app-users-set-password.component'
 
 @NgModule({
     imports: [
@@ -208,7 +212,9 @@ import { SitAppUsersEditComponent } from './containers/dictionaries/sit-app-user
         SitReturnsComponent ,
         SitReturnsGetdataComponent ,
         SitAppUsersComponent ,
-        SitAppUsersEditComponent  ],
+        SitAppUsersEditComponent ,
+        SitAppUserCompaniesEditComponent ,
+        SitAppUsersSetPasswordComponent],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
@@ -235,7 +241,9 @@ import { SitAppUsersEditComponent } from './containers/dictionaries/sit-app-user
       SitReturnsComponent,
       SitReturnsGetdataComponent,
       SitAppUsersComponent,
-      SitAppUsersEditComponent
+      SitAppUsersEditComponent,
+      SitAppUserCompaniesEditComponent,
+      SitAppUsersSetPasswordComponent
     ]
 })
 export class AppModule { }

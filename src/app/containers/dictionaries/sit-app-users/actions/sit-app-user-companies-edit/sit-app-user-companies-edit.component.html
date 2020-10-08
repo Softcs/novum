@@ -1,0 +1,19 @@
+<sit-proc-params
+  [(actionExecuteData)]="actionExecuteData"
+  >
+  <sit-data-set-container ident="sitAppUserCompaniesEdit" fxLayout="column">
+      <div style="padding: 5px; width: 400px; height: 200px;">
+        <div class="sit-proc-expander-title" *ngIf="actionIdent === 'insert'">Dodaj firmę</div>
+        <div class="sit-proc-expander-title" *ngIf="actionIdent === 'update'">Edytuj firmę</div>
+
+        <div fxLayout="column">
+          <div fxLayout="row">
+            <sit-data-input type="text" id="sitCompaniesId" #sitControl field="sitCompaniesId" label="sitCompaniesId" [showRefresh]=false appearance="outline" style="width: 200px"></sit-data-input>
+            <sit-data-checkbox id="Def" #sitControl field="Def" label="Domyślny"></sit-data-checkbox>
+          </div>
+        </div>
+
+      </div>
+
+  </sit-data-set-container>
+</sit-proc-params>

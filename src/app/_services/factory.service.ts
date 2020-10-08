@@ -1,4 +1,5 @@
-﻿import { SitAppUsersEditComponent } from './../containers/dictionaries/sit-app-users/actions/sit-app-users-edit/sit-app-users-edit.component';
+﻿import { SitAppUsersSetPasswordComponent } from './../containers/dictionaries/sit-app-users/actions/sit-app-users-set-password/sit-app-users-set-password.component';
+import { SitAppUsersEditComponent } from './../containers/dictionaries/sit-app-users/actions/sit-app-users-edit/sit-app-users-edit.component';
 import { SitAppUsersComponent } from './../containers/dictionaries/sit-app-users/sit-app-users.component';
 import { SitReturnsGetdataComponent } from './../containers/dictionaries/sit-returns/actions/sit-returns-getdata/sit-returns-getdata.component';
 import { SitReturnsComponent } from './../containers/dictionaries/sit-returns/sit-returns.component';
@@ -26,6 +27,7 @@ import { SitDocumentsComponent } from '@app/containers/dictionaries/sit-document
 import { SitRailConfigurationsEditComponent } from
 '@app/containers/dictionaries/sit-rail-configurations/actions/sit-rail-configurations-edit';
 import { SitWmsDocsComponent } from '@app/containers/dictionaries/sit-wms-docs';
+import { SitAppUserCompaniesEditComponent } from '@app/containers/dictionaries/sit-app-users/actions/sit-app-user-companies-edit';
 
 
 @Injectable({ providedIn: 'root' })
@@ -58,7 +60,9 @@ export class FactoryService {
         sitReturns: SitReturnsComponent,
         sitReturnsGetData: SitReturnsGetdataComponent,
         sitAppUsers: SitAppUsersComponent,
-        sitAppUsersEdit: SitAppUsersEditComponent
+        sitAppUsersEdit: SitAppUsersEditComponent,
+        sitAppUserCompaniesEdit: SitAppUserCompaniesEditComponent,
+        sitAppUsersSetPassword: SitAppUsersSetPasswordComponent
     };
 
     public GetFactory(ident: string) {
