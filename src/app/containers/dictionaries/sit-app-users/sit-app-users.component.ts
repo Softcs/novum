@@ -19,12 +19,17 @@ export class SitAppUsersComponent implements OnInit {
   currentUser: User;
   frameworkComponents;
 
-  gridApi;
-  gridColumnApi;
-  columnDefs;
   defaultColDef;
   rowSelection;
   popupParent;
+
+  gridApi;
+  gridColumnApi;
+  columnDefs;
+
+  gridApiAppUserCompanies;
+  gridColumnApiAppUserCompanies;
+  columnDefsAppUserCompanies;
 
   constructor(
     private gatewayService: GatewayService
@@ -52,7 +57,15 @@ export class SitAppUsersComponent implements OnInit {
       { headerName: 'IsActive', field: 'IsActive', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, cellRenderer: 'gridCheckboxRenderer', cellClass: "grid-cell-centered"  },
 
     ];
+    this.columnDefsAppUserCompanies = [
+      { headerName: 'sitAppUserCompaniesId', field: 'sitAppUserCompaniesId', type: 'numericColumn', filter: 'agTextColumnFilter' },
+      { headerName: 'sitAppUserCompaniesG', field: 'sitAppUserCompaniesG', filter: 'agTextColumnFilter' },
+      { headerName: 'Symbol', field: 'CompanyIdent', filter: 'agTextColumnFilter' },
+      { headerName: 'Nazwa', field: 'CompanyDescription', filter: 'agTextColumnFilter' },
+      { headerName: 'Plik konfig.', field: 'ConfigFile', filter: 'agTextColumnFilter' },
+      { headerName: 'Def', field: 'Def', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, cellRenderer: 'gridCheckboxRenderer', cellClass: "grid-cell-centered"  },
 
+    ];
     this.frameworkComponents = {
       gridCheckboxRenderer: GridCheckboxRenderer,
     };
@@ -68,8 +81,20 @@ export class SitAppUsersComponent implements OnInit {
 
   }
 
+  onGridReadyAppUserCompanies(params) {
+    this.gridApi = params.api;
+    this.gridColumnApi = params.columnApi;
+    this.gridColumnApi.setColumnsVisible(['sitAppUserCompaniesId','sitAppUserCompaniesG'],false)
+
+  }  
+
   onRowClicked(event) {
     const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitAppUsers');
+      dataSourceResponseWrapper.SetActiveRow(event.data);
+  }
+
+  onRowClickedAppUserCompanies(event) {
+    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitAppUserCompanies');
       dataSourceResponseWrapper.SetActiveRow(event.data);
   }
 

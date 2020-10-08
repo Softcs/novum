@@ -1,5 +1,6 @@
-<sit-dict-container ident="sitAppUsers" #sitDictcontainer fxFill>
-  <sit-data-set-container  ident="sitAppUsers" fxFill fxLayout="column">
+<sit-dict-container ident="sitAppUsers" #sitDictcontainer fxFill >
+  <div fxFill fxLayout="row" fxLayoutGap="5px">
+  <sit-data-set-container  ident="sitAppUsers" fxFlex="60" fxLayout="column">
     <div class="sit-filter-bar">
       <sit-data-set-container ident="sitFilterAppUsers" >
           <sit-data-input #sitControl id="searchAppUsers" field="searchAppUsers" label="Filtruj użytkowników" placeholder="Nazwwisko, Imię, e-mail" appearance="outline" style="width: 300px;" showRefreshButton="true"></sit-data-input>
@@ -19,7 +20,7 @@
     <div class="data-table" fxFlex>
       <ag-grid-angular #sitSetDataSource
         #agGrid
-        id="gridCustomers"
+        id="gridAppUsers"
         style="width: 100%; height: 100%;"
         class="ag-theme-balham"
         [columnDefs]="columnDefs"
@@ -38,4 +39,44 @@
       </ag-grid-angular>
     </div>
   </sit-data-set-container>
+  <sit-data-set-container  ident="sitAppUserCompanies" fxFlex fxLayout="column">
+    <div class="sit-filter-bar">
+      <sit-data-set-container ident="sitFilterAppUserCompanies" >
+          <sit-data-input #sitControl id="searchAppUserComapnies" field="searchAppUserComapnies" label="Filtruj firmy" placeholder="Identyfikator, Nazwa" appearance="outline" style="width: 300px;" showRefreshButton="true"></sit-data-input>
+      </sit-data-set-container>
+    </div>
+    <div class="sit-proc-bar">
+      <mat-toolbar color="accent">
+        <mat-toolbar-row>
+          <div class="sit-proc-buttons-row">
+            <sit-proc-button #sitAction actionIdent="insert" componentParamsIdent="sitAppUsersEdit" openKind="EXPANDER" tooltip="Nowy" color="primary" icon="post_add"></sit-proc-button>
+            <sit-proc-button #sitAction actionIdent="update" componentParamsIdent="sitAppUsersEdit" openKind="EXPANDER" tooltip="Edycja" color="primary" icon="edit"></sit-proc-button>
+            <sit-proc-button #sitAction actionIdent="delete" tooltip="Usuń"  color="primary" icon="delete" delete="true" matType="mat-stroked-button"></sit-proc-button>
+          </div>
+        </mat-toolbar-row>
+      </mat-toolbar>
+    </div>
+    <div class="data-table" fxFlex>
+      <ag-grid-angular #sitSetDataSource
+        #agGrid
+        id="gridAppUserCompanies"
+        style="width: 100%; height: 100%;"
+        class="ag-theme-balham"
+        [columnDefs]="columnDefsAppUserCompanies"
+        [defaultColDef]="defaultColDef"
+        [rowSelection]="rowSelection"
+        [rowMultiSelectWithClick]="true"
+        [enableCellTextSelection]="true"
+        [enableRangeSelection]="false"
+        [popupParent]="popupParent"
+        [frameworkComponents]="frameworkComponents"
+        (rowClicked)="onRowClickedAppUserCompanies($event)"
+        (gridReady)="onGridReadyAppUserCompanies($event)"
+        (firstDataRendered)="onFirstDataRendered($event)"
+
+      >
+      </ag-grid-angular>
+    </div>
+  </sit-data-set-container>
+</div>
 </sit-dict-container>
