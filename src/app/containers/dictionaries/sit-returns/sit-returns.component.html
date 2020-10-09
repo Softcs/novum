@@ -16,54 +16,60 @@
         </mat-toolbar-row>
       </mat-toolbar>
     </div>
-    <div fxLayout="row" fxFlex class="content" fxLayoutGap="5px">
-      <div fxFlex="50">
-        <div class="data-table" fxFlex>
-          <ag-grid-angular #sitSetDataSource
-            #agGrid
-            id="gridDocumentsHeaders"
-            style="width: 100%; height: 100%;"
-            class="ag-theme-balham"
-            [columnDefs]="columnDefsDocumentsHeaders"
-            [defaultColDef]="defaultColDef"
-            [rowSelection]="rowSelection"
-            [rowMultiSelectWithClick]="true"
-            [enableCellTextSelection]="true"
-            [enableRangeSelection]="false"
-            [popupParent]="popupParent"
+    <div fxLayout="row" fxFlex class="content">
+      <as-split direction="horizontal">
+        <as-split-area [size]="50">
+          <div fxFill>
+            <div class="data-table" fxFlex>
+              <ag-grid-angular #sitSetDataSource
+                #agGrid
+                id="gridDocumentsHeaders"
+                style="width: 100%; height: 100%;"
+                class="ag-theme-balham"
+                [columnDefs]="columnDefsDocumentsHeaders"
+                [defaultColDef]="defaultColDef"
+                [rowSelection]="rowSelection"
+                [rowMultiSelectWithClick]="true"
+                [enableCellTextSelection]="true"
+                [enableRangeSelection]="false"
+                [popupParent]="popupParent"
 
-            [sideBar]="false"
-            (rowClicked)="onRowClickedDocumentsHeaders($event)"
-            (gridReady)="onGridReadyDocumentsHeaders($event)"
-          >
-          </ag-grid-angular>
-        </div>
-      </div>
-      <div fxFlex>
-        <sit-data-set-container  ident="sitDocumentsPositions" fxFill>
-          <div class="data-table" fxFill>
-            <ag-grid-angular #sitSetDataSource
-            #agGrid
-            id="gridDocumentsPositions"
-            style="width: 100%; height: 100%;"
-            class="ag-theme-balham"
-            [columnDefs]="columnDefsDocumentsPositions"
-            [defaultColDef]="defaultColDef"
-            [rowSelection]="rowSelection"
-            [rowMultiSelectWithClick]="true"
-            [enableCellTextSelection]="true"
-            [enableRangeSelection]="false"
-            [popupParent]="popupParent"
-            [sideBar]="false"
-            [frameworkComponents]="frameworkComponents"
-            [rowClassRules]="rowClassRules"
-            (rowClicked)="onRowClickedDocumentsPositions($event)"
-            (gridReady)="onGridReadyDocumentsPositions($event)"
-            >
-            </ag-grid-angular>
+                [sideBar]="false"
+                (rowClicked)="onRowClickedDocumentsHeaders($event)"
+                (gridReady)="onGridReadyDocumentsHeaders($event)"
+              >
+              </ag-grid-angular>
+            </div>
           </div>
-        </sit-data-set-container>
-    </div>
+        </as-split-area>
+        <as-split-area [size]="50">
+          <div fxFill>
+            <sit-data-set-container  ident="sitDocumentsPositions" fxFill>
+              <div class="data-table" fxFill>
+                <ag-grid-angular #sitSetDataSource
+                #agGrid
+                id="gridDocumentsPositions"
+                style="width: 100%; height: 100%;"
+                class="ag-theme-balham"
+                [columnDefs]="columnDefsDocumentsPositions"
+                [defaultColDef]="defaultColDef"
+                [rowSelection]="rowSelection"
+                [rowMultiSelectWithClick]="true"
+                [enableCellTextSelection]="true"
+                [enableRangeSelection]="false"
+                [popupParent]="popupParent"
+                [sideBar]="false"
+                [frameworkComponents]="frameworkComponents"
+                [rowClassRules]="rowClassRules"
+                (rowClicked)="onRowClickedDocumentsPositions($event)"
+                (gridReady)="onGridReadyDocumentsPositions($event)"
+                >
+                </ag-grid-angular>
+              </div>
+            </sit-data-set-container>
+          </div>
+        </as-split-area>
+      </as-split>
     </div>
   </sit-data-set-container>
 </sit-dict-container>
