@@ -17,72 +17,48 @@
         </mat-toolbar-row>
       </mat-toolbar>
     </div> -->
-    <div fxLayout="row" fxFlex class="content" fxLayoutGap="5px">
-      <div fxFlex="55%" fxLayout="column" fxLayoutGap="5px">
-        <div fxLayout="column" fxFlex="80%">
+    <div fxLayout="row" fxFlex class="content">
+      <as-split direction="horizontal">
+        <as-split-area [size]="55">
+      <!-- <div fxFlex="55%" fxLayout="column" fxLayoutGap="5px"> -->
+          <div fxFill fxLayout="column">
+            <as-split direction="vertical">
+              <as-split-area [size]="80">
+                <div fxLayout="column" fxFill>
+                    <!-- Grid dowody -->
+                  <div class="data-table" fxFlex>
+                    <ag-grid-angular #sitSetDataSource
+                      #agGrid
+                      id="gridDocumentsHeaders"
+                      style="width: 100%; height: 100%;"
+                      class="ag-theme-balham"
+                      [columnDefs]="columnDefsDocumentsHeaders"
+                      [defaultColDef]="defaultColDef"
+                      [rowSelection]="rowSelection"
+                      [rowMultiSelectWithClick]="true"
+                      [enableCellTextSelection]="true"
+                      [enableRangeSelection]="false"
+                      [popupParent]="popupParent"
 
-              <!-- Grid dowody -->
-            <div class="data-table" fxFlex>
-              <ag-grid-angular #sitSetDataSource
-                #agGrid
-                id="gridDocumentsHeaders"
-                style="width: 100%; height: 100%;"
-                class="ag-theme-balham"
-                [columnDefs]="columnDefsDocumentsHeaders"
-                [defaultColDef]="defaultColDef"
-                [rowSelection]="rowSelection"
-                [rowMultiSelectWithClick]="true"
-                [enableCellTextSelection]="true"
-                [enableRangeSelection]="false"
-                [popupParent]="popupParent"
-
-                [sideBar]="false"
-                (rowClicked)="onRowClickedDocumentsHeaders($event)"
-                (gridReady)="onGridReadyDocumentsHeaders($event)"
-                (firstDataRendered)="onFirstDataRendered($event)"
-              >
-              </ag-grid-angular>
-            </div>
-        </div>
-        <div fxLayout="column" fxFlex="20%">
-          <sit-data-set-container  ident="sitDocumentsHeadersHistory" fxFill>
-            <div class="data-table" fxFill>
-              <ag-grid-angular #sitSetDataSource
-                #agGrid
-                id="gridDocumentsHeadersHistory"
-                style="width: 100%; height: 100%;"
-                class="ag-theme-balham"
-                [columnDefs]="columnDefsDocumentsHeadersHistory"
-                [defaultColDef]="defaultColDef"
-                [rowSelection]="rowSelection"
-                [rowMultiSelectWithClick]="true"
-                [enableCellTextSelection]="true"
-                [enableRangeSelection]="false"
-                [popupParent]="popupParent"
-                [sideBar]="false"
-                (rowClicked)="onRowClickedDocumentsHeadersHistory($event)"
-                (gridReady)="onGridReadyDocumentsHeadersHistory($event)"
-                (firstDataRendered)="onFirstDataRendered($event)"
-              >
-              </ag-grid-angular>
-            </div>
-          </sit-data-set-container>
-        </div>
-      </div>
-      <div fxFlex fxLayout="column" fxLayoutGap="5px">
-        <mat-tab-group id="tab-group" animationDuration="0ms">
-          <mat-tab label="Pozycje">
-            <div fxLayout="column" fxFill fxLayoutGap="5px">
-              <div fxFlex="70%">
-                <sit-data-set-container  ident="sitDocumentsPositions" fxFill>
-                  <div fxLayout="column" fxFill>
-                      <div class="data-table" fxFill>
-                        <ag-grid-angular #sitSetDataSource
+                      [sideBar]="false"
+                      (rowClicked)="onRowClickedDocumentsHeaders($event)"
+                      (gridReady)="onGridReadyDocumentsHeaders($event)"
+                      (firstDataRendered)="onFirstDataRendered($event)"
+                    >
+                    </ag-grid-angular>
+                  </div>
+                </div>
+              </as-split-area>
+              <as-split-area [size]="20">
+                <div fxLayout="column" fxFill>
+                  <sit-data-set-container  ident="sitDocumentsHeadersHistory" fxFill>
+                    <div class="data-table" fxFill>
+                      <ag-grid-angular #sitSetDataSource
                         #agGrid
-                        id="gridDocumentsPositions"
+                        id="gridDocumentsHeadersHistory"
                         style="width: 100%; height: 100%;"
                         class="ag-theme-balham"
-                        [columnDefs]="columnDefsDocumentsPositions"
+                        [columnDefs]="columnDefsDocumentsHeadersHistory"
                         [defaultColDef]="defaultColDef"
                         [rowSelection]="rowSelection"
                         [rowMultiSelectWithClick]="true"
@@ -90,106 +66,148 @@
                         [enableRangeSelection]="false"
                         [popupParent]="popupParent"
                         [sideBar]="false"
-                        [frameworkComponents]="frameworkComponents"
-                        [rowClassRules]="rowClassRules"
-                        (rowClicked)="onRowClickedDocumentsPositions($event)"
-                        (gridReady)="onGridReadyDocumentsPositions($event)"
+                        (rowClicked)="onRowClickedDocumentsHeadersHistory($event)"
+                        (gridReady)="onGridReadyDocumentsHeadersHistory($event)"
                         (firstDataRendered)="onFirstDataRendered($event)"
                       >
                       </ag-grid-angular>
                     </div>
+                  </sit-data-set-container>
+                </div>
+              </as-split-area>
+            </as-split>
+          </div>
+        </as-split-area>
+        <as-split-area [size]="45">
+          <div fxFill fxLayout="column">
+            <mat-tab-group id="tab-group" animationDuration="0ms">
+              <mat-tab label="Pozycje">
+                <div fxLayout="column" fxFill fxLayoutGap="5px">
+                  <as-split direction="vertical">
+                    <as-split-area [size]="80">
+                      <div fxFill>
+                        <sit-data-set-container  ident="sitDocumentsPositions" fxFill>
+                          <div fxLayout="column" fxFill>
+                              <div class="data-table" fxFill>
+                                <ag-grid-angular #sitSetDataSource
+                                #agGrid
+                                id="gridDocumentsPositions"
+                                style="width: 100%; height: 100%;"
+                                class="ag-theme-balham"
+                                [columnDefs]="columnDefsDocumentsPositions"
+                                [defaultColDef]="defaultColDef"
+                                [rowSelection]="rowSelection"
+                                [rowMultiSelectWithClick]="true"
+                                [enableCellTextSelection]="true"
+                                [enableRangeSelection]="false"
+                                [popupParent]="popupParent"
+                                [sideBar]="false"
+                                [frameworkComponents]="frameworkComponents"
+                                [rowClassRules]="rowClassRules"
+                                (rowClicked)="onRowClickedDocumentsPositions($event)"
+                                (gridReady)="onGridReadyDocumentsPositions($event)"
+                                (firstDataRendered)="onFirstDataRendered($event)"
+                              >
+                              </ag-grid-angular>
+                            </div>
+                          </div>
+                        </sit-data-set-container>
+                      </div>
+                    </as-split-area>
+                    <as-split-area [size]="20">
+                      <div fxFill>
+                      <sit-data-set-container  ident="sitDocumentsPositionsHistory" fxFill>
+                        <div fxLayout="column" fxFill>
+                            <div class="data-table" fxFill>
+                              <ag-grid-angular #sitSetDataSource
+                                #agGrid
+                                id="gridDocumentsPositionsHistory"
+                                style="width: 100%; height: 100%;"
+                                class="ag-theme-balham"
+                                [columnDefs]="columnDefsDocumentsPositionsHistory"
+                                [defaultColDef]="defaultColDef"
+                                [rowSelection]="rowSelection"
+                                [rowMultiSelectWithClick]="true"
+                                [enableCellTextSelection]="true"
+                                [enableRangeSelection]="false"
+                                [popupParent]="popupParent"
+                                [sideBar]="false"
+                                (rowClicked)="onRowClickedDocumentsPositionsHistory($event)"
+                                (gridReady)="onGridReadyDocumentsPositionsHistory($event)"
+                                (firstDataRendered)="onFirstDataRendered($event)"
+                              >
+                              </ag-grid-angular>
+                          </div>
+                        </div>
+                      </sit-data-set-container>
+                      </div>
+                    </as-split-area>
+                  </as-split>
+                </div>
+              </mat-tab>
+              <mat-tab label="Pozycje sumy">
+                <div fxLayout="column" fxFill fxLayoutGap="5px">
+                  <div fxFill fxLayout="column">
+                    <sit-data-set-container ident="sitFilterPositionsSum" fxLayout="row">
+                      <div class="sit-filter-bar">
+                          <sit-data-checkbox #sitControl [refreshOnChange]="true" label="Tylko różnice" id="onlyDiff" field="onlyDiff" widht="100px"></sit-data-checkbox>
+                      </div>
+                    </sit-data-set-container>
+                    <sit-data-set-container  ident="sitDocumentsPositionsSum" fxFlex fxLayout="column">
+                        <div fxLayout="column" fxFill>
+                          <div class="data-table" fxFill>
+                            <ag-grid-angular #sitSetDataSource
+                            #agGrid
+                            id="gridDocumentsPositionsSum"
+                            style="width: 100%; height: 100%;"
+                            class="ag-theme-balham"
+                            [columnDefs]="columnDefsDocumentsPositionsSum"
+                            [defaultColDef]="defaultColDef"
+                            [rowSelection]="rowSelection"
+                            [rowMultiSelectWithClick]="true"
+                            [enableCellTextSelection]="true"
+                            [enableRangeSelection]="false"
+                            [popupParent]="popupParent"
+                            [sideBar]="false"
+                            [frameworkComponents]="frameworkComponents"
+                            [rowClassRules]="rowClassRules"
+                            (rowClicked)="onRowClickedDocumentsPositionsSum($event)"
+                            (gridReady)="onGridReadyDocumentsPositionsSum($event)"
+                            (firstDataRendered)="onFirstDataRendered($event)"
+                          >
+                          </ag-grid-angular>
+                        </div>
+                      </div>
+                    </sit-data-set-container>
                   </div>
-                </sit-data-set-container>
-              </div>
-              <div fxFlex="30%">
-                <sit-data-set-container  ident="sitDocumentsPositionsHistory" fxFill>
-                  <div fxLayout="column" fxFill>
-                      <div class="data-table" fxFill>
-                        <ag-grid-angular #sitSetDataSource
-                          #agGrid
-                          id="gridDocumentsPositionsHistory"
-                          style="width: 100%; height: 100%;"
-                          class="ag-theme-balham"
-                          [columnDefs]="columnDefsDocumentsPositionsHistory"
-                          [defaultColDef]="defaultColDef"
-                          [rowSelection]="rowSelection"
-                          [rowMultiSelectWithClick]="true"
-                          [enableCellTextSelection]="true"
-                          [enableRangeSelection]="false"
-                          [popupParent]="popupParent"
-                          [sideBar]="false"
-                          (rowClicked)="onRowClickedDocumentsPositionsHistory($event)"
-                          (gridReady)="onGridReadyDocumentsPositionsHistory($event)"
-                          (firstDataRendered)="onFirstDataRendered($event)"
-                        >
-                        </ag-grid-angular>
-                    </div>
-                  </div>
-                </sit-data-set-container>
-              </div>
-            </div>
-          </mat-tab>
-          <mat-tab label="Pozycje sumy">
-            <div fxLayout="column" fxFill fxLayoutGap="5px">
-              <div fxFill fxLayout="column">
-                <sit-data-set-container ident="sitFilterPositionsSum" fxLayout="row">
-                  <div class="sit-filter-bar">
-                      <sit-data-checkbox #sitControl [refreshOnChange]="true" label="Tylko różnice" id="onlyDiff" field="onlyDiff" widht="100px"></sit-data-checkbox>
-                  </div>
-                </sit-data-set-container>
-                <sit-data-set-container  ident="sitDocumentsPositionsSum" fxFlex fxLayout="column">
-                    <div fxLayout="column" fxFill>
-                      <div class="data-table" fxFill>
-                        <ag-grid-angular #sitSetDataSource
-                        #agGrid
-                        id="gridDocumentsPositionsSum"
-                        style="width: 100%; height: 100%;"
-                        class="ag-theme-balham"
-                        [columnDefs]="columnDefsDocumentsPositionsSum"
-                        [defaultColDef]="defaultColDef"
-                        [rowSelection]="rowSelection"
-                        [rowMultiSelectWithClick]="true"
-                        [enableCellTextSelection]="true"
-                        [enableRangeSelection]="false"
-                        [popupParent]="popupParent"
-                        [sideBar]="false"
-                        [frameworkComponents]="frameworkComponents"
-                        [rowClassRules]="rowClassRules"
-                        (rowClicked)="onRowClickedDocumentsPositionsSum($event)"
-                        (gridReady)="onGridReadyDocumentsPositionsSum($event)"
-                        (firstDataRendered)="onFirstDataRendered($event)"
-                      >
-                      </ag-grid-angular>
-                    </div>
-                  </div>
-                </sit-data-set-container>
-              </div>
-            </div>
-          </mat-tab>
+                </div>
+              </mat-tab>
 
-          <mat-tab label="Nagłówek">
-            <div fxLayout="column" fxFill>
-              <div fxLayout="row">
-                <sit-data-input type="text" id="CustIdent" #sitControl field="CustIdent" label="Identyfikator" [showRefresh]=false appearance="outline" fxFlex [readonly]=true></sit-data-input>
-                <sit-data-input type="text" id="VATId" #sitControl field="VATId" label="NIP" [showRefresh]=false appearance="outline" style="width: 300px" [readonly]=true></sit-data-input>
-              </div>
-              <sit-data-input type="text" id="CustName" #sitControl field="CustName" label="Nazwa pełna" [showRefresh]=false appearance="outline" style="width: 100%" [readonly]=true></sit-data-input>
-              <div fxLayout="row">
-                <sit-data-input type="text" id="Street" #sitControl field="Street" label="Ulica" [showRefresh]=false appearance="outline" fxFlex [readonly]=true></sit-data-input>
-                <sit-data-input type="text" id="HouseNum" #sitControl field="HouseNum" label="Numer" [showRefresh]=false appearance="outline" style="width: 100px" [readonly]=true></sit-data-input>
-              </div>
-              <div fxLayout="row">
-                <sit-data-input type="text" id="PostCode" #sitControl field="PostCode" label="Kod pocztowy" [showRefresh]=false appearance="outline" style="width: 150px" [readonly]=true></sit-data-input>
-                <sit-data-input type="text" id="City" #sitControl field="City" label="Miasto" [showRefresh]=false appearance="outline" fxFlex [readonly]=true></sit-data-input>
-                <sit-data-input type="text" id="CountrySymbol" #sitControl field="CountrySymbol" label="Kraj" [showRefresh]=false appearance="outline" style="width: 100px" [readonly]=true></sit-data-input>
-              </div>
-              <div fxLayout="row">
-                <sit-data-input type="text" id="DocumentDescription" #sitControl field="DocumentDescription" label="Opis dokumentu" [showRefresh]=false appearance="outline" fxFill [readonly]=true></sit-data-input>
-              </div>
-            </div>
-          </mat-tab>
-        </mat-tab-group>
-      </div>
+              <mat-tab label="Nagłówek">
+                <div fxLayout="column" fxFill>
+                  <div fxLayout="row">
+                    <sit-data-input type="text" id="CustIdent" #sitControl field="CustIdent" label="Identyfikator" [showRefresh]=false appearance="outline" fxFlex [readonly]=true></sit-data-input>
+                    <sit-data-input type="text" id="VATId" #sitControl field="VATId" label="NIP" [showRefresh]=false appearance="outline" style="width: 300px" [readonly]=true></sit-data-input>
+                  </div>
+                  <sit-data-input type="text" id="CustName" #sitControl field="CustName" label="Nazwa pełna" [showRefresh]=false appearance="outline" style="width: 100%" [readonly]=true></sit-data-input>
+                  <div fxLayout="row">
+                    <sit-data-input type="text" id="Street" #sitControl field="Street" label="Ulica" [showRefresh]=false appearance="outline" fxFlex [readonly]=true></sit-data-input>
+                    <sit-data-input type="text" id="HouseNum" #sitControl field="HouseNum" label="Numer" [showRefresh]=false appearance="outline" style="width: 100px" [readonly]=true></sit-data-input>
+                  </div>
+                  <div fxLayout="row">
+                    <sit-data-input type="text" id="PostCode" #sitControl field="PostCode" label="Kod pocztowy" [showRefresh]=false appearance="outline" style="width: 150px" [readonly]=true></sit-data-input>
+                    <sit-data-input type="text" id="City" #sitControl field="City" label="Miasto" [showRefresh]=false appearance="outline" fxFlex [readonly]=true></sit-data-input>
+                    <sit-data-input type="text" id="CountrySymbol" #sitControl field="CountrySymbol" label="Kraj" [showRefresh]=false appearance="outline" style="width: 100px" [readonly]=true></sit-data-input>
+                  </div>
+                  <div fxLayout="row">
+                    <sit-data-input type="text" id="DocumentDescription" #sitControl field="DocumentDescription" label="Opis dokumentu" [showRefresh]=false appearance="outline" fxFill [readonly]=true></sit-data-input>
+                  </div>
+                </div>
+              </mat-tab>
+            </mat-tab-group>
+          </div>
+        </as-split-area>
+      </as-split>
     </div>
   </sit-data-set-container>
 </sit-dict-container>

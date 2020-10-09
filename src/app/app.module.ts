@@ -99,19 +99,14 @@ import { SitWmsDocsComponent } from '@app/containers/dictionaries/sit-wms-docs/s
 import { SitRefreshButtonComponent } from './components/controls/sit-refresh-button/sit-refresh-button.component';
 import { SitFilesButtonComponent } from './components/controls/sit-files-button/sit-files-button.component';;
 import { SitButtonBaseComponent } from './components/controls/sit-button-base/sit-button-base.component';
-import { SitAttachmentsInsComponent } from './containers/dictionaries/sit-kancelaria/actions/sit-attachments-ins/sit-attachments-ins.component'
-;
-import { SitReturnsComponent } from './containers/dictionaries/sit-returns/sit-returns.component'
-;
-import { SitReturnsGetdataComponent } from './containers/dictionaries/sit-returns/actions/sit-returns-getdata/sit-returns-getdata.component'
-;
-import { SitAppUsersComponent } from './containers/dictionaries/sit-app-users/sit-app-users.component'
-;
-import { SitAppUsersEditComponent } from './containers/dictionaries/sit-app-users/actions/sit-app-users-edit/sit-app-users-edit.component'
-;
-import { SitAppUserCompaniesEditComponent } from './containers/dictionaries/sit-app-users/actions/sit-app-user-companies-edit/sit-app-user-companies-edit.component'
-;
-import { SitAppUsersSetPasswordComponent } from './containers/dictionaries/sit-app-users/actions/sit-app-users-set-password/sit-app-users-set-password.component'
+import { SitAttachmentsInsComponent } from './containers/dictionaries/sit-kancelaria/actions/sit-attachments-ins/sit-attachments-ins.component';
+import { SitReturnsComponent } from './containers/dictionaries/sit-returns/sit-returns.component';
+import { SitReturnsGetdataComponent } from './containers/dictionaries/sit-returns/actions/sit-returns-getdata/sit-returns-getdata.component';
+import { SitAppUsersComponent } from './containers/dictionaries/sit-app-users/sit-app-users.component';
+import { SitAppUsersEditComponent } from './containers/dictionaries/sit-app-users/actions/sit-app-users-edit/sit-app-users-edit.component';
+import { SitAppUserCompaniesEditComponent } from './containers/dictionaries/sit-app-users/actions/sit-app-user-companies-edit/sit-app-user-companies-edit.component';
+import { SitAppUsersSetPasswordComponent } from './containers/dictionaries/sit-app-users/actions/sit-app-users-set-password/sit-app-users-set-password.component';
+import { AngularSplitModule } from 'angular-split';
 
 @NgModule({
     imports: [
@@ -147,7 +142,8 @@ import { SitAppUsersSetPasswordComponent } from './containers/dictionaries/sit-a
         FlexLayoutModule,
 
         //ag-Grid
-        AgGridModule.withComponents([])
+        AgGridModule.withComponents([]),
+        AngularSplitModule.forRoot()
     ],
     declarations: [
         AppComponent,
