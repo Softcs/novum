@@ -107,6 +107,7 @@ import { SitAppUsersEditComponent } from './containers/dictionaries/sit-app-user
 import { SitAppUserCompaniesEditComponent } from './containers/dictionaries/sit-app-users/actions/sit-app-user-companies-edit/sit-app-user-companies-edit.component';
 import { SitAppUsersSetPasswordComponent } from './containers/dictionaries/sit-app-users/actions/sit-app-users-set-password/sit-app-users-set-password.component';
 import { AngularSplitModule } from 'angular-split';
+import { SitParamsEditComponent } from './containers/dictionaries/sit-params/actions/sit-params-edit/sit-params-edit.component'
 
 @NgModule({
     imports: [
@@ -200,17 +201,18 @@ import { AngularSplitModule } from 'angular-split';
         SitParamsComponent,
         GridCheckboxRenderer,
         SitStocksComponent,
-        SitWmsDocsComponent
-,
-        SitButtonBaseComponent
-,
+        SitWmsDocsComponent,
+        SitButtonBaseComponent,
         SitAttachmentsInsComponent ,
         SitReturnsComponent ,
         SitReturnsGetdataComponent ,
         SitAppUsersComponent ,
         SitAppUsersEditComponent ,
         SitAppUserCompaniesEditComponent ,
-        SitAppUsersSetPasswordComponent],
+        SitAppUsersSetPasswordComponent,
+        SitParamsEditComponent
+
+     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
@@ -239,7 +241,8 @@ import { AngularSplitModule } from 'angular-split';
       SitAppUsersComponent,
       SitAppUsersEditComponent,
       SitAppUserCompaniesEditComponent,
-      SitAppUsersSetPasswordComponent
+      SitAppUsersSetPasswordComponent,
+      SitParamsEditComponent
     ]
 })
 export class AppModule { }
