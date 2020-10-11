@@ -45,15 +45,15 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
   }
 
   isDelete(): boolean {
-    return this.actionDefinition?.kind === 'delete';
+    return (this.actionDefinition?.kind === 'delete' || this.actionDefinition?.kind === 'D');
   }
 
   isInsert(): boolean {
-    return this.actionDefinition?.kind === 'insert';
+    return (this.actionDefinition?.kind === 'insert' || this.actionDefinition?.kind === 'I');
   }
 
   isUpdate(): boolean {
-    return this.actionDefinition?.kind === 'update';
+    return (this.actionDefinition?.kind === 'update' || this.actionDefinition?.kind === 'U');
   }
 
   public get isShouldBeHidden(): boolean {
