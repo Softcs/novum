@@ -45,6 +45,7 @@ export class SitCustomersComponent implements OnInit {
       { headerName: 'NIP', field: 'VATId', filter: 'agTextColumnFilter' },
       { headerName: 'Miasto', field: 'City', filter: 'agTextColumnFilter' },
       { headerName: 'Kraj', field: 'CountrySymbol', filter: 'agTextColumnFilter' },
+      { headerName: 'Status WMS', field: 'Status_WMS', filter: 'agTextColumnFilter' },
     ];
 
 
