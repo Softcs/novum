@@ -108,6 +108,12 @@ import { SitAppUserCompaniesEditComponent } from './containers/dictionaries/sit-
 import { SitAppUsersSetPasswordComponent } from './containers/dictionaries/sit-app-users/actions/sit-app-users-set-password/sit-app-users-set-password.component';
 import { AngularSplitModule } from 'angular-split';
 import { SitParamsEditComponent } from './containers/dictionaries/sit-params/actions/sit-params-edit/sit-params-edit.component'
+;
+import { SitJobsComponent } from './containers/dictionaries/sit-jobs/sit-jobs.component'
+;
+import { SitJobsEditComponent } from './containers/dictionaries/sit-jobs/actions/sit-jobs-edit/sit-jobs-edit.component'
+;
+import { SitJobStepsEditComponent } from './containers/dictionaries/sit-jobs/actions/sit-job-steps-edit/sit-job-steps-edit.component'
 
 @NgModule({
     imports: [
@@ -211,6 +217,12 @@ import { SitParamsEditComponent } from './containers/dictionaries/sit-params/act
         SitAppUserCompaniesEditComponent ,
         SitAppUsersSetPasswordComponent,
         SitParamsEditComponent
+,
+        SitJobsComponent
+,
+        SitJobsEditComponent
+,
+        SitJobStepsEditComponent
 
      ],
     providers: [
@@ -242,7 +254,10 @@ import { SitParamsEditComponent } from './containers/dictionaries/sit-params/act
       SitAppUsersEditComponent,
       SitAppUserCompaniesEditComponent,
       SitAppUsersSetPasswordComponent,
-      SitParamsEditComponent
+      SitParamsEditComponent,
+      SitJobsComponent,
+      SitJobsEditComponent,
+      SitJobStepsEditComponent
     ]
 })
 export class AppModule { }
