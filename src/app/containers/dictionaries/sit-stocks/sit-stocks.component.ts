@@ -16,14 +16,17 @@ export class SitStocksComponent implements OnInit {
   @ViewChildren('sitDictcontainer') dictContainers !: QueryList<SitDictContainerComponent>;
 
   currentUser: User;
-
-  //modules: any[] = AllModules;
-  gridApi;
-  gridColumnApi;
-  columnDefs;
   defaultColDef;
   rowSelection;
   popupParent;
+
+  gridApi;
+  gridColumnApi;
+  columnDefs;
+
+  gridApiWMSStocks;
+  gridColumnApiWMSStocks;
+  columnDefsWMSStocks;
 
   constructor(
     private gatewayService: GatewayService
@@ -41,7 +44,8 @@ export class SitStocksComponent implements OnInit {
       resizable: true,
       enableRowGroup: true,
       enableValue: true,
-      enablePivot: true
+      enablePivot: true,
+      autoHeight: true,
     };
 
     this.columnDefs = [
@@ -62,19 +66,36 @@ export class SitStocksComponent implements OnInit {
         children: [
           { headerName: "Ident.", field: 'WarehouseIdent', sortable: true, resizable: true, filter: 'agTextColumnFilter' },
           { headerName: "Nazwa", field: 'WarehouseName', sortable: true, resizable: true, filter: 'agTextColumnFilter' },
+
         ],
       }
-    ]
+    ];
+
+    this.columnDefsWMSStocks = [
+      { headerName: 'Lokalizacja', field: 'LocationIdent', sortable: true, filter: 'agTextColumnFilter', floatingFilter: false },
+      { headerName: 'Stan - MWS', field: 'Quantity', sortable: true, filter: 'agTextColumnFilter', floatingFilter: false },
+      { headerName: "Typ lokalizacji", field: 'LocationTypeDesc', sortable: true, resizable: true, filter: 'agTextColumnFilter', floatingFilter: false },
+    ];
+
   }
 
   ngOnInit(): void {
   }
+
   onGridReady(params) {
+    this.gridApi = params.api;
+    this.gridColumnApi = params.columnApi;
+  }
+  onGridReadyWMSStocks(params) {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
   }
 
   onRowClicked(event) {
+    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitStocks');
+      dataSourceResponseWrapper.SetActiveRow(event.data);
+  }
+  onRowClickedWMSStocks(event) {
     const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitStocks');
       dataSourceResponseWrapper.SetActiveRow(event.data);
   }
