@@ -37,10 +37,9 @@ export class SitStocksComponent implements OnInit {
     this.rowSelection = 'single';
 
     this.defaultColDef = {
-      flex: 1,
       sortable: true,
       filter: true,
-      floatingFilter: true,
+      // floatingFilter: true,
       resizable: true,
       enableRowGroup: true,
       enableValue: true,
@@ -51,7 +50,7 @@ export class SitStocksComponent implements OnInit {
     this.columnDefs = [
       { headerName: 'Produkt / Towar',
         children: [
-          { headerName: 'Identyfikator', field: 'ProductIdent', sortable: true, resizable: true, filter: 'agTextColumnFilter' },
+          { headerName: 'Identyfikator', field: 'ProductIdent', sortable: true, resizable: true, filter: 'agTextColumnFilter',floatingFilter: true },
           { headerName: 'Nazwa', field: 'ProductName', filter: 'agTextColumnFilter' }
         ]
       },
@@ -74,7 +73,7 @@ export class SitStocksComponent implements OnInit {
     this.columnDefsWMSStocks = [
       { headerName: 'Lokalizacja', field: 'LocationIdent', sortable: true, filter: 'agTextColumnFilter', floatingFilter: false },
       { headerName: 'Stan - MWS', field: 'Quantity', sortable: true, filter: 'agTextColumnFilter', floatingFilter: false },
-      { headerName: "Typ lokalizacji", field: 'LocationTypeDesc', sortable: true, resizable: true, filter: 'agTextColumnFilter', floatingFilter: false },
+      { headerName: "Typ lokalizacji", field: 'LocationTypeDesc', sortable: true, filter: 'agTextColumnFilter', floatingFilter: false },
     ];
 
   }
