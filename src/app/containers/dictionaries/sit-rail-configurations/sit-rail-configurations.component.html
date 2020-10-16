@@ -51,7 +51,7 @@
 
       <div fxLayout="column" fxFlex="70" class="content">
         <div fxLayout="row">
-          <sit-data-checkbox id="IsActive" #sitControl field="IsActive" label="Aktywny"></sit-data-checkbox>
+          <sit-data-checkbox id="IsActive" #sitControl field="IsActive" label="Aktywny" readonly="true"></sit-data-checkbox>
           <sit-data-input type="number" id="sitCompaniesId" #sitControl field="sitCompaniesId" label="ID firmy" [showRefresh]=false appearance="outline" [readonly]=true style="width: 100px"></sit-data-input>
           <sit-data-input type="text" id="CompanyIdent" #sitControl field="CompanyIdent" label="Firma" [showRefresh]=false appearance="outline" [readonly]=true></sit-data-input>
           <sit-data-input type="number" id="sitWSUsersId" #sitControl field="sitWSUsersId" label="User Id" [showRefresh]=false appearance="outline" [readonly]=true style="width: 100px"></sit-data-input>

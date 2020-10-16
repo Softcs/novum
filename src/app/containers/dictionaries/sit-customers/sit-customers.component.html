@@ -50,6 +50,10 @@
           <mat-tab label="Podstawowe">
             <div fxLayout="column" fxFill class="content">
               <div fxLayout="row">
+                <sit-data-checkbox id="IsRecipient" #sitControl field="IsRecipient" label="Odbiorca" readonly="true"></sit-data-checkbox>
+                <sit-data-checkbox id="IsSupplier" #sitControl field="IsSupplier" label="Dostawca" readonly="true"></sit-data-checkbox>
+              </div>              
+              <div fxLayout="row">
                 <sit-data-input type="text" id="CustIdent" #sitControl field="CustIdent" label="Identyfikator" [showRefresh]=false appearance="outline" fxFlex [readonly]=true></sit-data-input>
                 <sit-data-input type="text" id="VATId" #sitControl field="VATId" label="NIP" [showRefresh]=false appearance="outline" style="width: 150px" [readonly]=true></sit-data-input>
                 <sit-data-input type="text" id="REGON" #sitControl field="REGON" label="REGON" [showRefresh]=false appearance="outline" style="width: 150px" [readonly]=true></sit-data-input>
