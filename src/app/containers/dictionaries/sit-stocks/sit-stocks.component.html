@@ -1,6 +1,6 @@
 <sit-dict-container ident="sitStocks" #sitDictcontainer fxFill>
-    <sit-data-set-container  ident="sitStocks" fxFill>
-        <div fxLayout="column" fxFill fxLayoutGap="5px">
+    <sit-data-set-container  ident="sitStocks" fxFill class="content">
+        <div fxLayout="column" fxFill>
             <div class="sit-proc-bar">
                 <mat-toolbar color="accent">
                     <mat-toolbar-row>
@@ -12,26 +12,51 @@
                 </mat-toolbar>
             </div>
 
-            <div fxLayout="column" fxFlex class="content">
-                <ag-grid-angular #sitSetDataSource
-                    #agGrid
-                    id="gridStocks"
-                    style="width: 100%; height: 100%;"
-                    class="ag-theme-balham"
-                    [columnDefs]="columnDefs"
-                    [defaultColDef]="defaultColDef"
-                    [rowSelection]="rowSelection"
-                    [rowMultiSelectWithClick]="true"
-                    [enableCellTextSelection]="true"
-                    [enableRangeSelection]="false"
-                    [popupParent]="popupParent"
-                    [sideBar]="true"
-                    (rowClicked)="onRowClicked($event)"
-                    (gridReady)="onGridReady($event)"
-                    (firstDataRendered)="onFirstDataRendered($event)"
-
-                >
-                </ag-grid-angular>
+            <div fxLayout="column" fxFlex>
+              <as-split direction="vertical">
+                <as-split-area [size]="70">
+                  <ag-grid-angular #sitSetDataSource
+                      #agGrid
+                      id="gridStocks"
+                      style="width: 100%; height: 100%;"
+                      class="ag-theme-balham"
+                      [columnDefs]="columnDefs"
+                      [defaultColDef]="defaultColDef"
+                      [rowSelection]="rowSelection"
+                      [rowMultiSelectWithClick]="true"
+                      [enableCellTextSelection]="true"
+                      [enableRangeSelection]="false"
+                      [popupParent]="popupParent"
+                      [sideBar]="false"
+                      (rowClicked)="onRowClicked($event)"
+                      (gridReady)="onGridReady($event)"
+                      (firstDataRendered)="onFirstDataRendered($event)"
+                    >
+                  </ag-grid-angular>
+                </as-split-area>
+                <as-split-area [size]="30">
+                  <sit-data-set-container  ident="sitWMSStocks" fxFill>
+                    <ag-grid-angular #sitSetDataSource
+                      #agGrid
+                      id="gridWMSStocks"
+                      style="width: 100%; height: 100%;"
+                      class="ag-theme-balham"
+                      [columnDefs]="columnDefsWMSStocks"
+                      [defaultColDef]="defaultColDef"
+                      [rowSelection]="rowSelection"
+                      [rowMultiSelectWithClick]="true"
+                      [enableCellTextSelection]="true"
+                      [enableRangeSelection]="false"
+                      [popupParent]="popupParent"
+                      [sideBar]="false"
+                      (rowClicked)="onRowClickedWMSStocks($event)"
+                      (gridReady)="onGridReadyWMSStocks($event)"
+                      (firstDataRendered)="onFirstDataRendered($event)"
+                      >
+                    </ag-grid-angular>
+                  </sit-data-set-container>
+                </as-split-area>
+              </as-split>
             </div>
         </div>
     </sit-data-set-container>

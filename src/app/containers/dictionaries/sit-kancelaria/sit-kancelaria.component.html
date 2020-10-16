@@ -6,7 +6,7 @@
           <div fxFlex="300px" fxLayout="column">
             <sit-data-set-container ident="sitFilterCustomers" >
               <span class="filter-container">
-                <sit-data-input #sitControl field="searchCustomers" label="Filtruj klientów"  appearance="outline" style="width: 300px"></sit-data-input>
+                <sit-data-input #sitControl field="searchCustomers" label="Filtruj klientów"  appearance="outline" showRefreshButton="true" style="width: 300px"></sit-data-input>
               </span>
             </sit-data-set-container>
             <div class="data-table" fxFlex>
@@ -83,6 +83,7 @@
                   <mat-toolbar-row>
                     <div class="sit-proc-buttons-row">
                       <sit-proc-button #sitAction actionIdent="insert" componentParamsIdent="sitAttachmentsIns" tooltip="Dodaj skan" color="primary" icon="post_add" ></sit-proc-button>
+                      <sit-proc-button #sitAction actionIdent="delete" tooltip="Usuń"  color="primary" icon="delete" delete="true" matType="mat-stroked-button"></sit-proc-button>
                     </div>
                   </mat-toolbar-row>
                 </mat-toolbar>
