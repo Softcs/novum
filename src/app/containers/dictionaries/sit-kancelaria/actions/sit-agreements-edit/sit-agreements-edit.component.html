@@ -2,12 +2,12 @@
   [(actionExecuteData)]="actionExecuteData"
   >
   <sit-data-set-container ident="sitAgreementsEdit">
-      <div fxFill>
+      <div style="width: 400; height: 400; padding: 5px;">
         <div class="sit-proc-expander-title" *ngIf="isInsert">Nowa umowa</div>
         <div class="sit-proc-expander-title" *ngIf="isUpdate">Edycja umowy</div>
 
         <div fxLayout="row">
-          <sit-data-input type="text" id="AgreementNo" #sitControl field="AgreementNo" label="Numer" [showRefresh]=false appearance="outline" style="width: 200px"></sit-data-input>
+          <sit-data-input type="text" id="AgreementNo" #sitControl field="AgreementNo" label="Numer" [showRefresh]=false appearance="outline" fxFlex></sit-data-input>
           <sit-data-input type="date" id="Date" #sitControl field="Date" label="Data umowy" [showRefresh]=false appearance="outline"></sit-data-input>
           <sit-data-input type="date" id="DateTo" #sitControl field="DateTo" label="Data zakończenia" [showRefresh]=false appearance="outline"></sit-data-input>
           <!-- <sit-files-button #sitSimpleButton fieldIdent="sitAgreementsG" ></sit-files-button> -->
