@@ -7,6 +7,7 @@ import { Tab } from '@app/_models/tab.model';
 import { ActionExecuteData } from '@app/_models/actionExecuteData';
 import { FactoryService } from '@app/_services/factory.service';
 import { ProcExpanderService } from '@app/_services/procexpander.service';
+import { isUndefined } from 'util';
 
 @Component({
   selector: 'sit-proc-button',
@@ -57,7 +58,15 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
   }
 
   public get isShouldBeHidden(): boolean {
-    return ( this.isInsert() || this.isUpdate() || this.isDelete()) && !this.dataSetResponseWrapper.allParentsHaveRows();
+    if ( ( this.isInsert() || this.isUpdate() || this.isDelete() ) && !this.dataSetResponseWrapper.allParentsHaveRows() ) {
+       return true;
+    };
+    if ( ( this.isUpdate() || this.isDelete() ) && this.dataSetResponseWrapper !== undefined ) {
+      if ( this.dataSetResponseWrapper.rows == null) {
+        return true;
+      }
+    }
+    return false;
   }
 
   getActionExecuteData(): ActionExecuteData {

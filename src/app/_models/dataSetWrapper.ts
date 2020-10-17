@@ -183,6 +183,7 @@ export class DataSetWrapper {
         return result;
     }
 
+
     public GenerateRow(
         sourceRow: any = null, add: boolean = true,
         editFields: any[] = null,

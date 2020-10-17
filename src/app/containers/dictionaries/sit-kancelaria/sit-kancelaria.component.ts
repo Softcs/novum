@@ -102,8 +102,8 @@ export class SitKancelariaComponent {
     this.sitAttachmentsSelected.splice(0, this.sitAttachmentsSelected.length);
     this.sitAttachmentsSelected.push(...[activeRow]);
 
-    this.Link = activeRow == null
-      ? ''
+    this.Link = activeRow === null
+      ? environment.apiUrl + '/service/attachments/get/' + this.currentUser.token + '/noPDF.pdf'
       : environment.apiUrl + '/service/attachments/get/' + this.currentUser.token + '/'
         + activeRow['sitAttachmentsG'] + '/' + activeRow['FileName'];
   }
