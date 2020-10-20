@@ -74,33 +74,34 @@
         </div>
       </mat-tab>
       <mat-tab label="Lokalizacje">
-        <sit-data-set-container ident="sitFilterWMSStocks" fxLayout="row">
-          <div class="sit-filter-bar">
-              <sit-data-input #sitControl id="searchWMSStocks" field="searchWMSStocks" label="Filtruj" placeholder="produkt, lokalizacja" appearance="outline" style="width: 300px;" showRefreshButton="true"></sit-data-input>
-          </div>
-        </sit-data-set-container>
+        <div fxFill fxLayout="column">
+          <sit-data-set-container ident="sitFilterWMSStocks" fxLayout="row">
+            <div class="sit-filter-bar">
+                <sit-data-input #sitControl id="searchWMSStocks" field="searchWMSStocks" label="Filtruj" placeholder="produkt, lokalizacja" appearance="outline" style="width: 300px;" showRefreshButton="true"></sit-data-input>
+            </div>
+          </sit-data-set-container>
 
-        <sit-data-set-container  ident="sitWMSStocks" fxFlex>
-          <ag-grid-angular #sitSetDataSource
-            #agGridWMSStocks
-            id="gridWMSStocks"
-            style="width: 100%; height: 100%;"
-            class="ag-theme-balham"
-            [columnDefs]="columnDefsWMSStocks"
-            [defaultColDef]="defaultColDef"
-            [rowSelection]="rowSelection"
-            [rowMultiSelectWithClick]="true"
-            [enableCellTextSelection]="true"
-            [enableRangeSelection]="false"
-            [popupParent]="popupParent"
-            [sideBar]="false"
-            (rowClicked)="onRowClickedWMSStocks($event)"
-            (gridReady)="onGridReadyWMSStocks($event)"
-            (firstDataRendered)="onFirstDataRendered($event)"
-            >
-          </ag-grid-angular>
-        </sit-data-set-container>
-
+          <sit-data-set-container  ident="sitWMSStocks" fxFlex>
+            <ag-grid-angular #sitSetDataSource
+              #agGridWMSStocks
+              id="gridWMSStocks"
+              style="width: 100%; height: 100%;"
+              class="ag-theme-balham"
+              [columnDefs]="columnDefsWMSStocks"
+              [defaultColDef]="defaultColDef"
+              [rowSelection]="rowSelection"
+              [rowMultiSelectWithClick]="true"
+              [enableCellTextSelection]="true"
+              [enableRangeSelection]="false"
+              [popupParent]="popupParent"
+              [sideBar]="false"
+              (rowClicked)="onRowClickedWMSStocks($event)"
+              (gridReady)="onGridReadyWMSStocks($event)"
+              (firstDataRendered)="onFirstDataRendered($event)"
+              >
+            </ag-grid-angular>
+          </sit-data-set-container>
+        </div>
       </mat-tab>
       <mat-tab label="Jednostki logistyczne">
       </mat-tab>
