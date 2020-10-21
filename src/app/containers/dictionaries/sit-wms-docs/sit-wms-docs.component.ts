@@ -75,11 +75,12 @@ export class SitWmsDocsComponent implements OnInit {
         { headerName: 'Typ dok.', field: 'DocumentIdent', sortable: true, resizable: true, filter: 'agSetColumnFilter',width: 90 },
         { headerName: 'Numer', field: 'DocumentNumber', sortable: true, resizable: true, filter: 'agTextColumnFilter' },
         { headerName: 'Data', field: 'DocumentDate', filter: 'agDateColumnFilter',width: 100, floatingFilter: false, sort: 'desc'  },
-        { headerName: 'Status WMS', field: 'Status_WMS', filter: 'agSetColumnFilter', width: 160,
+        { headerName: 'Status WMS', field: 'Status_WMS', filter: 'agSetColumnFilter', width: 220,
           cellStyle: function(params) {
             if (params.value === 'Wysłana') { return { color: 'blue' }; }
             else if (params.value === 'Błąd wysyłki') { return { color: 'red' }; }
             else if (params.value === 'Przetworzone poprawnie') { return { color: 'green' }; }
+            else if (params.value === 'Zrealizowane w WMS z różnicami') { return { color: 'purple' }; }
             else { return null; }
           }
         },
