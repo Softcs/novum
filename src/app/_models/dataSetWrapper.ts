@@ -7,6 +7,7 @@ export class DataSetWrapper {
     public activeRow: any;
     public errors: [any];
     public fields: [any];
+    public connectedLookups: any;
 
     @Output()
     activeRowChanged: EventEmitter<any> = new EventEmitter<any>();
@@ -21,10 +22,12 @@ export class DataSetWrapper {
         public ident: string,
         public dataSourceManager: DataSetManager,
         dataSetManagerSource: DataSetManager
-    ) {
+        )
+    {
         this._rows = null;
         this.fields = null;
         this.readFields(dataSetManagerSource);
+        this.readLookups(dataSetManagerSource);
     }
 
     get rows(): any[] {
@@ -33,6 +36,10 @@ export class DataSetWrapper {
 
     set rows(value) {
         this._rows = value;
+    }
+
+    private findDataSource() {
+        return this.dataSourceManager?.FindDataSource(this.ident);
     }
 
     public Refresh() {
@@ -53,8 +60,17 @@ export class DataSetWrapper {
         }
     }
 
+    private readLookups(dataSetManagerSource: DataSetManager) {
+        let dataSourceDef = this.findDataSource();
+        if (dataSourceDef == null) {
+            dataSourceDef = dataSetManagerSource?.FindDataSource(this.ident);
+        }
+        this.connectedLookups = dataSourceDef.connectedLookups;
+        console.log("dataSourceDef", dataSourceDef);
+    }
+
     private readFields(dataSetManagerSource: DataSetManager) {
-        let dataSourceDef = this.dataSourceManager?.FindDataSource(this.ident);
+        let dataSourceDef = this.findDataSource();
         if (dataSourceDef == null) {
             dataSourceDef = dataSetManagerSource?.FindDataSource(this.ident);
         }
@@ -129,8 +145,6 @@ export class DataSetWrapper {
         });
     }
 
-
-
     private initRowByParents(sourceRow, dataSetManagerSource: DataSetManager) {
         const dataSourceDef = dataSetManagerSource?.FindDataSource(this.ident);
         if (!dataSourceDef || !dataSourceDef.hasParents) {
@@ -168,7 +182,7 @@ export class DataSetWrapper {
     }
 
     public allParentsHaveRows(): boolean {
-        const dataSourceDef = this.dataSourceManager?.FindDataSource(this.ident);
+        const dataSourceDef = this.findDataSource();
         if (!dataSourceDef || !dataSourceDef.hasParents) {
             return true;
         }
@@ -236,5 +250,12 @@ export class DataSetWrapper {
         const fieldValue = this.getFieldValue(control.field);
         control.dataSetWrapper = this;
         control.setValue(fieldValue);
+    }
+
+    public getLookupForField(field: string) {
+        if (!this.connectedLookups) {
+            return null;
+        }
+        return this.connectedLookups[field];
     }
 }

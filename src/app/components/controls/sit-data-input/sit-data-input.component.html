@@ -10,7 +10,19 @@
     [readonly]="readonly"
     (change)="onChange($event)"
     (keyup)="onKeyup($event)"
-    (blur)="onBlur($event)">
+    (blur)="onBlur($event)"
+    [matAutocomplete]="lookup">
+    <mat-autocomplete #lookupElement #lookup="matAutocomplete" *ngIf="hasLookup">
+      <mat-option *ngFor="let record of lookupRecords" [value]="getLookupValue(record)">
+        {{getLookupDisplay(record)}}
+      </mat-option>
+    </mat-autocomplete>
 </mat-form-field>
+
+<span class="lookup_icon" *ngIf="hasLookup">
+  <mat-icon role="img" matdatepickertoggleicon="" class="mat-icon notranslate material-icons mat-icon-no-color"
+    aria-hidden="true" data-mat-icon-type="font">keyboard_arrow_down</mat-icon>
+</span>
+
 <sit-refresh-button *ngIf="showRefreshButton" tooltip="Odśwież"></sit-refresh-button>
 

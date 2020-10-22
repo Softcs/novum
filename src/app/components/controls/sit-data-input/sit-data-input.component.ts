@@ -2,7 +2,7 @@ import { Component, Input,  Renderer2, ViewEncapsulation, ContentChild, ViewChil
 import { SitDataBaseComponent } from '../sit-data-base/sit-data-base.component';
 import { MatFormFieldAppearance  } from '@angular/material/form-field';
 import { SitRefreshButtonComponent } from '../sit-refresh-button/sit-refresh-button.component';
-import { DataSetWrapper } from '@app/_models';
+import { MatAutocomplete } from '@angular/material/autocomplete';
 
 @Component({
   selector: 'sit-data-input',
@@ -12,6 +12,7 @@ import { DataSetWrapper } from '@app/_models';
 })
 export class SitDataInputComponent extends SitDataBaseComponent {
 
+  @ViewChild('lookupElement') private autocomplete: MatAutocomplete;
   @ViewChild(SitRefreshButtonComponent)
   refreshButton: SitRefreshButtonComponent;
 
@@ -22,6 +23,9 @@ export class SitDataInputComponent extends SitDataBaseComponent {
   @Input() width: string;
   @Input() showRefreshButton: boolean;
   @Input() refreshOnChange: boolean;
+  @Input() hasLookup: boolean;
+
+  public lookupRecords: any[] = ["a","b","c"];
 
   constructor(_renderer: Renderer2) {
     super(_renderer);
@@ -34,9 +38,15 @@ export class SitDataInputComponent extends SitDataBaseComponent {
     this._onFilterKeyEnter(event);
   }
 
+  initLookup() {
+    const lookup = this.dataSetWrapper.getLookupForField(this.field);
+    this.hasLookup = lookup != null;
+  }
+
   public getValue(): string {
     return this.inputElement.nativeElement.value;
   }
+
   _onFilterKeyEnter(event: any) {
     this.dataSetWrapper.setFieldValue(this.field, this.getValue());
     if (this.refreshOnChange) {
@@ -50,5 +60,14 @@ export class SitDataInputComponent extends SitDataBaseComponent {
 
   public afterSetDataSetWrapper() {
     this.refreshButton?.setDataSetWrapper(this.dataSetWrapper);
+    this.initLookup();
+  }
+
+  public getLookupValue(record: any) {
+    return record;
+  }
+
+  public getLookupDisplay(record: any) {
+    return record;
   }
 }

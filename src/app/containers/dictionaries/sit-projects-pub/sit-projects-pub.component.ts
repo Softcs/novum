@@ -69,7 +69,7 @@ export class SitProjectsPubComponent implements OnInit {
 
   onRowClickedProjectsPub(event) {
     const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitProjectsPub');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
+    dataSourceResponseWrapper.SetActiveRow(event.data);
   }
 
   onFirstDataRendered(params) {

@@ -28,6 +28,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule} from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatInputModule } from '@angular/material/input';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatListModule } from '@angular/material/list';
@@ -126,6 +127,7 @@ import { SitParamsEditComponent } from './containers/dictionaries/sit-params/act
         MatTableModule,
         MatSortModule,
         MatInputModule,
+        MatAutocompleteModule,
         MatPaginatorModule,
         MatCheckboxModule,
         MatListModule,

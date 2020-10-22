@@ -127,6 +127,7 @@ export class SitDataSetContainerComponent {
           gridApi.forEachNode( (rowNode) => {
             const rowValue = rowNode.data[fieldName];
             if (this.compareStrings(rowValue, fieldValue)) {
+              // tslint:disable-next-line: forin
               for (const key in inputRow) {
                 const newValue = inputRow[key];
                 rowNode.data[key] = newValue;

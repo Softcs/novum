@@ -10,7 +10,13 @@ import { ControlValueAccessor } from '@angular/forms';
 export class SitDataBaseComponent implements ControlValueAccessor {
   private _dataSetWrapper: DataSetWrapper;
 
-  @Input() value: string = '';
+  @Input() value = '';
+  @Input() placeholder = '';
+  @Input() field = '';
+  @Input() id: string = null;
+  @Input() readonly = false;
+  @ViewChild('inputElement') private _inputElement: ElementRef;
+
   get dataSetWrapper(): DataSetWrapper {
     return this._dataSetWrapper;
   }
@@ -26,12 +32,6 @@ export class SitDataBaseComponent implements ControlValueAccessor {
     }
     this.afterSetDataSetWrapper();
   }
-
-  @Input() placeholder: string = '';
-  @Input() field: string = '';
-  @Input() id: string = null;
-  @Input() readonly: boolean = false;
-  @ViewChild('inputElement') private _inputElement: ElementRef;
 
   constructor(private _renderer: Renderer2) {
 
