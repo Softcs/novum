@@ -70,4 +70,8 @@ export class SitDataInputComponent extends SitDataBaseComponent {
   public getLookupDisplay(record: any) {
     return record;
   }
+
+  filterValues(search: string) {
+    return this.lookupRecords;
+  }
 }
