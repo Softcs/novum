@@ -1,5 +1,6 @@
 import { Component, Input, Renderer2 } from '@angular/core';
 import { SitDataBaseComponent } from '../sit-data-base/sit-data-base.component';
+import {MatCheckboxChange} from '@angular/material/checkbox';
 
 @Component({
   selector: 'sit-data-checkbox',
@@ -10,25 +11,27 @@ import { SitDataBaseComponent } from '../sit-data-base/sit-data-base.component';
 export class SitDataCheckboxComponent extends SitDataBaseComponent {
   @Input() label = '';
   @Input() width: string;
-  @Input() refreshOnChange: boolean;
+  @Input() refreshOnChange: boolean; 
+  
+  labelPosition: 'before' | 'after' = 'after'; //pozycja etykiety checkboxa, domyslnie za
 
   constructor(renderer: Renderer2) {
     super(renderer);
     this.refreshOnChange = false;
-    this.registerOnChange(this.onChangeInternal);
+    this.registerOnChange(this.onChange);
   }
 
-  private onChangeInternal(val: any) {
-    this.dataSetWrapper.setFieldValue(this.field, val);
-    if (this.refreshOnChange) {
-      this.dataSetWrapper.RefreshChildren();
-    }
+onChange(event: MatCheckboxChange){
+  if(event.checked){
+    //mapowanie true/false do 0 / 1 na potrzeby zgodnosci typow z db ms sql
+    this.dataSetWrapper.setFieldValue(this.field, '1');
+  } else {
+    this.dataSetWrapper.setFieldValue(this.field, '0');
   }
-
-  public getValue(): string {
-    return this.inputElement.nativeElement['checked'];
+  if (this.refreshOnChange) {
+    this.dataSetWrapper.RefreshChildren();
   }
-
+}
   public refreshFieldValue() {
     this.dataSetWrapper.refreshFieldValueInControl(this);
   }
