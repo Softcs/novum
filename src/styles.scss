@@ -377,3 +377,39 @@ button:focus {
 .row-defect {
   color: red !important;
 }
+
+.sit-grid-title {
+  font-size: small;
+  letter-spacing: 3px;
+  color: white;
+  background-color: #073763;
+  width: 100%;
+  padding: 3px 10px;
+
+}
+
+
+.mat-stroked-button.small {
+  min-width: 40px !important;
+  height: 30px !important;
+  padding: 0px 5px;
+  margin-right: 0px;
+  margin-left: 2px;
+
+  .mat-icon {
+     width: 20px !important;
+     height: 20px !important;
+     font-size: 20px !important;
+     margin-bottom: 8px;
+  }
+}
+
+.mat-toolbar {
+  min-height: 38px !important;
+  height: 38px !important;
+}
+
+.mat-toolbar-row {
+  min-height: 38px !important;
+  height: 38px !important;
+}

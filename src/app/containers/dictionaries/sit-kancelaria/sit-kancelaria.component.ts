@@ -67,32 +67,32 @@ export class SitKancelariaComponent {
     ];
 
     this.columnDefsAgreements = [
-      { headerName: 'Numer', field: 'AgreementNo', flex: 2, filter: 'agTextColumnFilter', floatingFilter: true,
+      { headerName: 'Numer', field: 'AgreementNo', width: 150, filter: 'agTextColumnFilter', floatingFilter: true,
         filterParams: {
           filterOptions: ['contains']
         }
       },
-      { headerName: 'Opis', field: 'AgreementDesc', flex: 2, filter: 'agTextColumnFilter', floatingFilter: true,
+      { headerName: 'Opis', field: 'AgreementDesc', width: 200, filter: 'agTextColumnFilter', floatingFilter: true,
         filterParams: {
           filterOptions: ['contains']
         }
       },
-      { headerName: 'Data', field: 'Date', flex: 1, type: 'dateColumn',
+      { headerName: 'Data', field: 'Date', width: 100, type: 'dateColumn',
         // cellRenderer: (data) => { return  formatDate(data.value, 'yyyy-MM-dd', this.locale)}
       },
-      { headerName: 'Data do', field: 'DateTo', flex: 1, type: 'dateColumn',
+      { headerName: 'Data do', field: 'DateTo', width: 100, type: 'dateColumn',
         // cellRenderer: (data) => { return  formatDate(data.value, 'yyyy-MM-dd', this.locale)}
       },
     ];
 
     this.columnDefsAttachments = [
-      { headerName: 'Opis', field: 'AttachmentDesc', flex: 2 },
-      { headerName: 'Nazwa pliku', field: 'FileName', flex: 2 },
-      { headerName: 'ParentId', field: 'ParentId', flex: 2 },
-      { headerName: 'sitAttachmentsG', field: 'sitAttachmentsG', flex: 2 },
-      { headerName: 'Data dodania', field: 'InsertDate', flex: 1,
+      { headerName: 'ParentId', field: 'ParentId' },
+      { headerName: 'sitAttachmentsG', field: 'sitAttachmentsG' },
+      { headerName: 'Data dodania', field: 'InsertDate', width: 120,
          cellRenderer: (data) => { return formatDate(data.value, 'yyyy-MM-dd H:mm', this.locale) }
       },
+      { headerName: 'Nazwa pliku', field: 'FileName', width: 250 },
+      { headerName: 'Opis', field: 'AttachmentDesc', width: 250 },
     ];
 
 
@@ -109,7 +109,6 @@ export class SitKancelariaComponent {
   }
 
   onGridReadyCustomers(params) {
-    console.log(params)
     this.gridApiCustomers = params.api;
     this.gridColumnApiCustomers = params.columnApi;
   }

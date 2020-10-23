@@ -5,7 +5,7 @@ import { environment } from '@environments/environment';
 import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
 import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
-import { userInfo } from 'os';
+
 
 // import { AllModules } from '@ag-grid-enterprise/all-modules';
 
@@ -20,6 +20,7 @@ export class SitWmsDocsComponent implements OnInit {
   @ViewChildren('sitDictcontainer') dictContainers !: QueryList<SitDictContainerComponent>;
 
   currentUser: User;
+  companyGUID: string;
 
   defaultColDef;
   rowSelection;
@@ -52,13 +53,12 @@ export class SitWmsDocsComponent implements OnInit {
     private gatewayService: GatewayService
     ) {
       this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
+      this.companyGUID = this.currentUser.company.companyGUID;
       this.popupParent = document.querySelector('body');
       this.rowSelection = 'single';
       this.frameworkComponents = {
         gridCheckboxRenderer: GridCheckboxRenderer,
       };
-      this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
-console.log(this.currentUser);
 
       this.defaultColDef = {
         sortable: true,
@@ -141,6 +141,12 @@ console.log(this.currentUser);
   ngOnInit(): void {
   }
 
+  getPrintout() {
+    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsHeaders');
+    let url;
+    url = environment.apiUrl + '/service/show/anonymous/report/' + this.companyGUID + '/' + dataSourceResponseWrapper.activeRow['sitDocumentsHeadersG'];
+    window.open(url, "_blank");
+  }
 
   onGridReadyDocumentsHeaders(params) {
     this.gridApiDocumentsHeaders = params.api;

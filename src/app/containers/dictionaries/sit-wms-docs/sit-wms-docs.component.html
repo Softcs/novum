@@ -25,6 +25,17 @@
             <as-split direction="vertical">
               <as-split-area [size]="80">
                 <div fxLayout="column" fxFill>
+
+                  <div class="sit-proc-bar">
+                    <mat-toolbar color="accent">
+                      <mat-toolbar-row>
+                        <div class="sit-proc-buttons-row">
+                          <button mat-stroked-button color="primary" (click)="getPrintout()" class="small"><mat-icon aria-hidden="false" aria-label="Drukuj">print</mat-icon></button>
+                        </div>
+                      </mat-toolbar-row>
+                    </mat-toolbar>
+                  </div>
+
                     <!-- Grid dowody -->
                   <div class="data-table" fxFlex>
                     <ag-grid-angular #sitSetDataSource

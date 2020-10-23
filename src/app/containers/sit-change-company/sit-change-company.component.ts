@@ -37,7 +37,7 @@ export class SitChangeCompanyComponent implements OnInit {
 
   onClick(companyRow) {
     this.gatewayService.currentUserValue.connection = companyRow.ConfigFile;
-    this.gatewayService.currentUserValue.company = new Company(companyRow.CompanyIdent, companyRow.CompanyDescription);
+    this.gatewayService.currentUserValue.company = new Company(companyRow.CompanyIdent, companyRow.CompanyDescription, companyRow.sitCompaniesG);
     this.gatewayService.saveCurrentUser();
     this.dialogRef.close();
     this.router.navigate(['/login']);
