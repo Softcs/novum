@@ -77,11 +77,11 @@ export class SitKancelariaComponent {
           filterOptions: ['contains']
         }
       },
-      { headerName: 'Data', field: 'Date', flex: 1,
-        cellRenderer: (data) => { return  formatDate(data.value, 'yyyy-MM-dd', this.locale)}
+      { headerName: 'Data', field: 'Date', flex: 1, type: 'dateColumn',
+        // cellRenderer: (data) => { return  formatDate(data.value, 'yyyy-MM-dd', this.locale)}
       },
-      { headerName: 'Data do', field: 'DateTo', flex: 1,
-        cellRenderer: (data) => { return  formatDate(data.value, 'yyyy-MM-dd', this.locale)}
+      { headerName: 'Data do', field: 'DateTo', flex: 1, type: 'dateColumn',
+        // cellRenderer: (data) => { return  formatDate(data.value, 'yyyy-MM-dd', this.locale)}
       },
     ];
 
@@ -91,8 +91,8 @@ export class SitKancelariaComponent {
       { headerName: 'ParentId', field: 'ParentId', flex: 2 },
       { headerName: 'sitAttachmentsG', field: 'sitAttachmentsG', flex: 2 },
       { headerName: 'Data dodania', field: 'InsertDate', flex: 1,
-        // cellRenderer: (data) => { return formatDate(data.value, 'yyyy-MM-dd', this.locale }
-      }
+         cellRenderer: (data) => { return formatDate(data.value, 'yyyy-MM-dd H:mm', this.locale) }
+      },
     ];
 
 
