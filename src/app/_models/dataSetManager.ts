@@ -275,12 +275,15 @@ export class DataSetManager {
                 console.error('DataSource: ' + dataSourceContainer.ident + ' not found!');
             }
         });
-        this.DataSourceAfterPropagte();
+        this.DataSourceAfterPropagte(dataSetToReload);
         this.refreshAfter.emit(this);
     }
 
-    public DataSourceAfterPropagte() {
+    public DataSourceAfterPropagte(dataSetToReload: string[]) {
         this.dataSetsWrapper.forEach(dataSourceWrapper => {
+            if (dataSetToReload != null && dataSetToReload.indexOf(dataSourceWrapper.ident) === -1) {
+                return false;
+            }
             dataSourceWrapper.AfterPropagte();
         });
     }

@@ -11,16 +11,17 @@
     (change)="onChange($event)"
     (keyup)="onKeyup($event)"
     (blur)="onBlur($event)"
-    [matAutocomplete]="lookup"
-    [matAutocompleteDisabled]="!hasLookup"
-    [autocomplete]="hasLookup ? disabled : null"
+    [autocomplete]="none"
     >
 
-    <mat-autocomplete  #lookup="matAutocomplete" >
-      <mat-option *ngFor="let record of lookupRecords" [value]="getLookupValue(record)">
+    <mat-select *ngIf="hasLookup"
+      (openedChange)="onLookupOpen($event)"
+      (selectionChange)="onLookupSelect($event)"
+      disableOptionCentering >
+      <mat-option *ngFor="let record of getLookupRecord()" [value]="getLookupValue(record)">
         {{getLookupDisplay(record)}}
       </mat-option>
-    </mat-autocomplete>
+    </mat-select>
 </mat-form-field>
 
 <sit-refresh-button *ngIf="showRefreshButton" tooltip="Odśwież"></sit-refresh-button>

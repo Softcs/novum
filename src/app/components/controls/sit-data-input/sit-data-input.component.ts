@@ -3,6 +3,7 @@ import { SitDataBaseComponent } from '../sit-data-base/sit-data-base.component';
 import { MatFormFieldAppearance  } from '@angular/material/form-field';
 import { SitRefreshButtonComponent } from '../sit-refresh-button/sit-refresh-button.component';
 import { MatAutocomplete } from '@angular/material/autocomplete';
+import { LookupService } from '@app/_services/lookup.service';
 
 @Component({
   selector: 'sit-data-input',
@@ -23,11 +24,12 @@ export class SitDataInputComponent extends SitDataBaseComponent {
   @Input() width: string;
   @Input() showRefreshButton: boolean;
   @Input() refreshOnChange: boolean;
-  @Input() hasLookup: boolean;
-
-  public lookupRecords: any[] = ["a","b","c"];
-
-  constructor(_renderer: Renderer2) {
+  hasLookup: boolean;
+  private lookupSettings = null;
+  lookupRows = ['Ładuję'];
+  constructor(
+    _renderer: Renderer2,
+    private lookupService: LookupService) {
     super(_renderer);
     this.showRefreshButton = false;
     this.refreshOnChange = true;
@@ -39,8 +41,8 @@ export class SitDataInputComponent extends SitDataBaseComponent {
   }
 
   initLookup() {
-    const lookup = this.dataSetWrapper.getLookupForField(this.field);
-    this.hasLookup = lookup != null;
+    this.lookupSettings = this.dataSetWrapper.getLookupForField(this.field);
+    this.hasLookup = this.lookupSettings != null;
   }
 
   public getValue(): string {
@@ -62,16 +64,43 @@ export class SitDataInputComponent extends SitDataBaseComponent {
     this.refreshButton?.setDataSetWrapper(this.dataSetWrapper);
     this.initLookup();
   }
-
+//#region lookup
   public getLookupValue(record: any) {
     return record;
   }
 
   public getLookupDisplay(record: any) {
-    return record;
+    return record+"AAAA";
   }
 
-  filterValues(search: string) {
-    return this.lookupRecords;
+  getLookupRecord() {
+    const dataSourceLookup = this.dataSetWrapper.getDataSetManager().getDateSourceWrapper(this.lookupSettings.lookupDataSourceIdent);
+    if (!dataSourceLookup) {
+      return;
+    }
+    return dataSourceLookup.rows;
   }
+
+  onLookupOpen(isOpen) {
+    if (!isOpen) {
+      return;
+    }
+    const activeRow = this.dataSetWrapper.activeRow;
+    this.lookupService.open(this.dataSetWrapper, activeRow, this.lookupSettings, this.getValue());
+  }
+  onLookupSelect($event) {
+
+    console.log("s", $event)
+    console.log("SS", this.lookupSettings)
+  }
+
+
+  //#endregion lookup
+  protected afterPropagte(ident: string) {
+    super.afterPropagte(ident);
+    if (this.lookupSettings != null && ident == this.lookupSettings.lookupDataSourceIdent) {
+      console.log("a");
+    }
+  }
+
 }

@@ -110,6 +110,7 @@ import { SitAppUserCompaniesEditComponent } from './containers/dictionaries/sit-
 import { SitAppUsersSetPasswordComponent } from './containers/dictionaries/sit-app-users/actions/sit-app-users-set-password/sit-app-users-set-password.component';
 import { AngularSplitModule } from 'angular-split';
 import { SitParamsEditComponent } from './containers/dictionaries/sit-params/actions/sit-params-edit/sit-params-edit.component'
+import { LookupService } from './_services/lookup.service';
 
 @NgModule({
     imports: [
@@ -224,7 +225,8 @@ import { SitParamsEditComponent } from './containers/dictionaries/sit-params/act
         // provider used to create fake backend
         fakeBackendProvider,
         NavService,
-        Title
+        Title,
+        LookupService
     ],
     bootstrap: [AppComponent],
     entryComponents: [

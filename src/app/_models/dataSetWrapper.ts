@@ -21,7 +21,7 @@ export class DataSetWrapper {
     constructor(
         public ident: string,
         public dataSourceManager: DataSetManager,
-        dataSetManagerSource: DataSetManager
+        private dataSetManagerSource: DataSetManager
         )
     {
         this._rows = null;
@@ -66,7 +66,6 @@ export class DataSetWrapper {
             dataSourceDef = dataSetManagerSource?.FindDataSource(this.ident);
         }
         this.connectedLookups = dataSourceDef.connectedLookups;
-        console.log("dataSourceDef", dataSourceDef);
     }
 
     private readFields(dataSetManagerSource: DataSetManager) {
@@ -257,5 +256,11 @@ export class DataSetWrapper {
             return null;
         }
         return this.connectedLookups[field];
+    }
+
+    public getDataSetManager() {
+        return this.dataSourceManager != null && this.dataSourceManager.dictInfo != null
+                ? this.dataSourceManager
+                : this.dataSetManagerSource;
     }
 }
