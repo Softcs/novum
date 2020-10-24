@@ -21,6 +21,8 @@ export class SitWmsDocsComponent implements OnInit {
 
   currentUser: User;
   companyGUID: string;
+  showPrint: boolean = false;
+  printUrl: string;
 
   defaultColDef;
   rowSelection;
@@ -91,7 +93,6 @@ export class SitWmsDocsComponent implements OnInit {
         { headerName: 'NagId SL', field: 'ExtAppIdent01', filter: 'agTextColumnFilter',width: 100 },
         { headerName: 'XL ID', field: 'ExtAppIdent02', filter: 'agTextColumnFilter',width: 100  },
       ];
-      this.pinnedBottomRowDataDocumentsHeaders = this.createData(1, '');
 
       //definicja kolumn pozycji dowodów
       this.columnDefsDocumentsPositions = [
@@ -142,6 +143,7 @@ export class SitWmsDocsComponent implements OnInit {
   }
 
   getPrintout() {
+    //generuje wydruk w nowej zakładce
     const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsHeaders');
     let url;
     url = environment.apiUrl + '/service/show/anonymous/report/' + this.companyGUID + '/' + dataSourceResponseWrapper.activeRow['sitDocumentsHeadersG'];
@@ -152,6 +154,7 @@ export class SitWmsDocsComponent implements OnInit {
     this.gridApiDocumentsHeaders = params.api;
     this.gridColumnApiDocumentsHeaders = params.columnApi;
     this.gridColumnApiDocumentsHeaders.setColumnsVisible(['sitDocumentsHeadersId','sitDocumentsHeadersG'],false)
+
   }
 
   onGridReadyDocumentsHeadersHistory(params) {
@@ -176,8 +179,8 @@ export class SitWmsDocsComponent implements OnInit {
 
   onRowClickedDocumentsHeaders(event) {
     const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsHeaders');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-    }
+    dataSourceResponseWrapper.SetActiveRow(event.data);
+  }
 
   onRowClickedDocumentsHeadersHistory(event) {
     const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsHeadersHistory');
@@ -206,6 +209,9 @@ export class SitWmsDocsComponent implements OnInit {
 
   onFirstDataRendered(params) {
     const allColumnIds = [];
+    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsHeaders');
+
+    dataSourceResponseWrapper.activeRow['showPrint'] === 1 ? this.showPrint = true : this.showPrint = false;
 
     // this.gridColumnApiDocumentsHeaders.getAllColumns().forEach(function(column) {
     //   allColumnIds.push(column.colId);
@@ -219,15 +225,16 @@ export class SitWmsDocsComponent implements OnInit {
 
   }
 
-  createData(count, prefix) {
-    let result = [];
-    for (var i = 0; i < count; i++) {
-      result.push({
-        Net: prefix + 0,
-        VAT: prefix + 0,
-        Gross: prefix + 0,
-      });
-    }
-    return result;
+  activateTab(index) {
+    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsHeaders');
+    this.showPrint = index === 3 && dataSourceResponseWrapper.activeRow['showPrint'] === 1 ? true : false;
+  }
+
+  activeRowChangedDocumentsHeaders(activeRow) {
+    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsHeaders');
+
+    dataSourceResponseWrapper.activeRow['showPrint'] === 1 ? this.showPrint = true : this.showPrint = false;
+    this.showPrint = dataSourceResponseWrapper.activeRow['showPrint'] === 1 ? true : false;
+    this.printUrl = environment.apiUrl + '/service/show/anonymous/report/' + this.companyGUID + '/' + dataSourceResponseWrapper.activeRow['sitDocumentsHeadersG'];
   }
 }
