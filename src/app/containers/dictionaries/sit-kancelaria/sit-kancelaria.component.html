@@ -119,7 +119,7 @@
       </as-split-area>
       <as-split-area [size]="40">
         <div fxFill>
-          <ngx-extended-pdf-viewer
+          <ngx-extended-pdf-viewer *ngIf="showPDF"
             [src]="Link"
             [useBrowserLocale]="true"
             [height]="'100%'"

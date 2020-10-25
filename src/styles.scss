@@ -21,6 +21,11 @@
   @include ag-theme-balham();
 }
 
+@media print {
+  body {
+    min-width: auto !important;
+  }
+}
 
 .grid-cell-centered {
   text-align: center;

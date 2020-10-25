@@ -26,7 +26,7 @@
                   </div>
 
                     <!-- Grid dowody -->
-                    <sit-data-set-container  ident="sitDocumentsHeaders" fxFill fxLayout="column" (activeRowChanged)="activeRowChangedDocumentsHeaders($event)">
+                    <sit-data-set-container  ident="sitDocumentsHeaders" fxFlex fxLayout="column" (activeRowChanged)="activeRowChangedDocumentsHeaders($event)">
                       <div class="data-table" fxFlex>
                         <ag-grid-angular #sitSetDataSource
                           #agGrid
@@ -209,8 +209,8 @@
               </mat-tab>
               <mat-tab label="Wydruk">
                 <div fxLayout="column" fxFill>
-                  <div *ngIf = "!showPrint" fxLayoutAlign="space-around center" fxFill><H5>Brak wzorca wydruku, lub dowód w statusie nie do wydruku!</H5></div>
-                  <ngx-extended-pdf-viewer *ngIf = "showPrint"
+                  <div *ngIf = "!showPDF" fxLayoutAlign="space-around center" fxFill><H5>Brak wzorca wydruku, lub dowód w statusie nie do wydruku!</H5></div>
+                  <ngx-extended-pdf-viewer *ngIf = "showPDF"
                     [src]="printUrl"
                     [useBrowserLocale]="true"
                     fxFlex

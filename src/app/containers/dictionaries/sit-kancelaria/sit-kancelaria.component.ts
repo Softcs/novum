@@ -5,6 +5,7 @@ import { DataSetWrapper } from '@app/_models';
 import { GatewayService } from '@app/_services';
 import { User } from '@app/_models';
 import { formatDate } from '@angular/common';
+import { TabService } from '@app/_services/tab.service';
 
 @Component({
   selector: 'app-sit-kancelaria',
@@ -12,11 +13,13 @@ import { formatDate } from '@angular/common';
   styleUrls: ['./sit-kancelaria.component.scss'],
   host: {class: 'router-flex'}
 })
-export class SitKancelariaComponent {
+export class SitKancelariaComponent implements OnInit {
   @ViewChild('sitDictcontainer') dictContainer: SitDictContainerComponent;
 
   currentUser: User;
   Link: string;
+  showPDF = true;
+
   sitCustomersSelected = [];
   sitAgreementsSelected = [];
   sitAttachmentsSelected = [];
@@ -39,7 +42,8 @@ export class SitKancelariaComponent {
 
   constructor(
     private gatewayService: GatewayService,
-    @Inject(LOCALE_ID) private locale: string
+    @Inject(LOCALE_ID) private locale: string,
+    private tabService: TabService,
   ) {
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
 
@@ -95,6 +99,10 @@ export class SitKancelariaComponent {
       { headerName: 'Opis', field: 'AttachmentDesc', width: 250 },
     ];
 
+
+  }
+
+  ngOnInit(): void {
 
   }
 
