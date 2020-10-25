@@ -17,6 +17,7 @@ export class SitKancelariaComponent implements OnInit {
   @ViewChild('sitDictcontainer') dictContainer: SitDictContainerComponent;
 
   currentUser: User;
+  activeTab: number;
   Link: string;
   showPDF = true;
 
@@ -45,7 +46,13 @@ export class SitKancelariaComponent implements OnInit {
     @Inject(LOCALE_ID) private locale: string,
     private tabService: TabService,
   ) {
+
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
+    this.tabService.activeTab.subscribe(x => this.activeTab = x);
+
+    // // sprawdzanie czy component jest na aktywnej zakładce
+    // this.showPDF = this.tabService.tabs[this.activeTab].component.name === this.constructor.name ? true : false;
+    // console.log('Kancelaria',this.tabService.tabs[this.activeTab].component.name, this.showPDF)
 
     this.defaultColDef = {
       flex: 0,
@@ -102,18 +109,18 @@ export class SitKancelariaComponent implements OnInit {
 
   }
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   activeRowAttachmentsChanged(activeRow) {
     this.sitAttachmentsSelected.splice(0, this.sitAttachmentsSelected.length);
     this.sitAttachmentsSelected.push(...[activeRow]);
 
+    this.showPDF = false;
     this.Link = activeRow === null
       ? environment.apiUrl + '/service/attachments/get/' + this.currentUser.token + '/noPDF.pdf'
       : environment.apiUrl + '/service/attachments/get/' + this.currentUser.token + '/'
         + activeRow['sitAttachmentsG'] + '/' + activeRow['FileName'];
+    this.showPDF = true;
   }
 
   onGridReadyCustomers(params) {

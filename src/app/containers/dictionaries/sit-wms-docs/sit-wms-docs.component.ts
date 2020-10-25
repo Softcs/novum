@@ -23,7 +23,8 @@ export class SitWmsDocsComponent implements OnInit {
   currentUser: User;
   companyGUID: string;
   showPDF = false;
-  activeTab = 0;
+  activeTab: number;
+  activeSubTab: number;
   printUrl: string;
 
   defaultColDef;
@@ -60,6 +61,8 @@ export class SitWmsDocsComponent implements OnInit {
     ) {
 
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
+    this.tabService.activeTab.subscribe(x => this.activeTab = x);
+
     this.companyGUID = this.currentUser.company.companyGUID;
     this.popupParent = document.querySelector('body');
     this.rowSelection = 'single';
@@ -145,15 +148,9 @@ export class SitWmsDocsComponent implements OnInit {
 
 
     ngOnInit(): void {
-      let activeTab: number;
-
-      // sprawdzanie czy component jest na aktywnej zakładce
-      for ( let i = 0; i < this.tabService.tabs.length; i++ ) {
-        // szukamy aktywnej zakłąki
-        if (this.tabService.tabs[i].active) { activeTab = i }
-      };
-      this.showPDF = this.tabService.tabs[activeTab].component.name === this.constructor.name && this.activeTab === 3 ? true : false;
-      console.log('ngOnInit',this.showPDF)
+      // // sprawdzanie czy component jest na aktywnej zakładce
+      // this.showPDF = this.tabService.tabs[this.activeTab].component.name === this.constructor.name && this.activeSubTab === 3 ? true : false;
+      // console.log('WMS, ngOnInit',this.showPDF)
     }
 
 
@@ -241,16 +238,16 @@ export class SitWmsDocsComponent implements OnInit {
   }
 
   activateTab(index) {
-    this.activeTab = index;
+    this.activeSubTab = index;
     const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsHeaders');
-    this.showPDF = this.activeTab === 3 && dataSourceResponseWrapper.activeRow['showPrint'] === 1 ? true : false;
+    this.showPDF = this.activeSubTab === 3 && dataSourceResponseWrapper.activeRow['showPrint'] === 1 ? true : false;
     this.printUrl = environment.apiUrl + '/service/show/anonymous/report/' + this.companyGUID + '/' + dataSourceResponseWrapper.activeRow['sitDocumentsHeadersG'];
   }
 
   activeRowChangedDocumentsHeaders(activeRow) {
     const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsHeaders');
 
-    this.showPDF = this.activeTab === 3 && dataSourceResponseWrapper.activeRow['showPrint'] === 1 ? true : false;
+    this.showPDF = this.activeSubTab === 3 && dataSourceResponseWrapper.activeRow['showPrint'] === 1 ? true : false;
     this.printUrl = environment.apiUrl + '/service/show/anonymous/report/' + this.companyGUID + '/' + dataSourceResponseWrapper.activeRow['sitDocumentsHeadersG'];
   }
 }
