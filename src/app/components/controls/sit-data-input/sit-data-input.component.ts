@@ -4,6 +4,7 @@ import { MatFormFieldAppearance  } from '@angular/material/form-field';
 import { SitRefreshButtonComponent } from '../sit-refresh-button/sit-refresh-button.component';
 import { MatAutocomplete } from '@angular/material/autocomplete';
 import { LookupService } from '@app/_services/lookup.service';
+import { MatSelect } from '@angular/material/select';
 
 @Component({
   selector: 'sit-data-input',
@@ -13,7 +14,7 @@ import { LookupService } from '@app/_services/lookup.service';
 })
 export class SitDataInputComponent extends SitDataBaseComponent {
 
-  @ViewChild('lookupElement') private autocomplete: MatAutocomplete;
+  @ViewChild('lookupElement', { static: false }) private lookupElement: MatSelect;
   @ViewChild(SitRefreshButtonComponent)
   refreshButton: SitRefreshButtonComponent;
 
@@ -26,7 +27,7 @@ export class SitDataInputComponent extends SitDataBaseComponent {
   @Input() refreshOnChange: boolean;
   hasLookup: boolean;
   private lookupSettings = null;
-  lookupRows = ['Ładuję'];
+  lookupRows = [{CountrySymbol: 'L'}];
   constructor(
     _renderer: Renderer2,
     private lookupService: LookupService) {
@@ -43,6 +44,11 @@ export class SitDataInputComponent extends SitDataBaseComponent {
   initLookup() {
     this.lookupSettings = this.dataSetWrapper.getLookupForField(this.field);
     this.hasLookup = this.lookupSettings != null;
+    if (this.hasLookup) {
+
+      const lookupDataSourceWrapper = this.dataSetWrapper?.getDataSetManager().getDateSourceWrapper(this.lookupSettings.lookupDataSourceIdent);
+      lookupDataSourceWrapper?.afterPropagte.subscribe(ident => this.lookupAfterPropagte(ident));
+    }
   }
 
   public getValue(): string {
@@ -70,10 +76,10 @@ export class SitDataInputComponent extends SitDataBaseComponent {
   }
 
   public getLookupDisplay(record: any) {
-    return record+"AAAA";
+    return record[this.field];
   }
 
-  getLookupRecord() {
+  getLookupRows() {
     const dataSourceLookup = this.dataSetWrapper.getDataSetManager().getDateSourceWrapper(this.lookupSettings.lookupDataSourceIdent);
     if (!dataSourceLookup) {
       return;
@@ -81,26 +87,31 @@ export class SitDataInputComponent extends SitDataBaseComponent {
     return dataSourceLookup.rows;
   }
 
-  onLookupOpen(isOpen) {
-    if (!isOpen) {
-      return;
-    }
+  onLookupOpen() {
     const activeRow = this.dataSetWrapper.activeRow;
     this.lookupService.open(this.dataSetWrapper, activeRow, this.lookupSettings, this.getValue());
   }
   onLookupSelect($event) {
+    if (this.lookupSettings && this.lookupSettings.valuesTo) {
+      const row = $event.value;
+      this.lookupSettings.valuesTo.forEach(valueTo => {
+        const fieldValue = row[valueTo.source];
+        this.dataSetWrapper.setFieldValue(valueTo.target, fieldValue);
+      });
+    }
+  }
 
-    console.log("s", $event)
-    console.log("SS", this.lookupSettings)
+  private lookupAfterPropagte(ident: string) {
+    if (this.lookupSettings != null && ident === this.lookupSettings.lookupDataSourceIdent) {
+      this.lookupRows.length = 0;
+      this.lookupRows.push.apply(this.lookupRows, this.getLookupRows());
+      if (this.lookupElement) {
+        this.lookupElement.open();
+      }
+    }
   }
 
 
   //#endregion lookup
-  protected afterPropagte(ident: string) {
-    super.afterPropagte(ident);
-    if (this.lookupSettings != null && ident == this.lookupSettings.lookupDataSourceIdent) {
-      console.log("a");
-    }
-  }
 
 }

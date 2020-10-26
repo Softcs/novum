@@ -11,17 +11,18 @@
     (change)="onChange($event)"
     (keyup)="onKeyup($event)"
     (blur)="onBlur($event)"
-    [autocomplete]="none"
     >
 
-    <mat-select *ngIf="hasLookup"
-      (openedChange)="onLookupOpen($event)"
+    <mat-select #lookupElement *ngIf="hasLookup"
       (selectionChange)="onLookupSelect($event)"
       disableOptionCentering >
-      <mat-option *ngFor="let record of getLookupRecord()" [value]="getLookupValue(record)">
+      <mat-option *ngFor="let record of lookupRows" [value]="getLookupValue(record)">
         {{getLookupDisplay(record)}}
       </mat-option>
     </mat-select>
+    <span class="material-icons lookupDropDawn" *ngIf="hasLookup" (click)="onLookupOpen()">
+      arrow_drop_down
+    </span>
 </mat-form-field>
 
 <sit-refresh-button *ngIf="showRefreshButton" tooltip="Odśwież"></sit-refresh-button>

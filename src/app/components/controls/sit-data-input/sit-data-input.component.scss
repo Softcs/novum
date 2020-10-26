@@ -11,8 +11,16 @@ button {
       width: auto;
       height: 40px;
       padding-top: 7px;
+      display: inline-flex;
+
       .mat-form-field-label-wrapper {
         padding-top: 7px;
+      }
+      .mat-select-value, .mat-select-arrow {
+        display: none;
+      }
+      .lookupDropDawn {
+        align-self: center;
       }
     }
   }
