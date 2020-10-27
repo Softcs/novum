@@ -115,12 +115,11 @@ export class SitKancelariaComponent implements OnInit {
     this.sitAttachmentsSelected.splice(0, this.sitAttachmentsSelected.length);
     this.sitAttachmentsSelected.push(...[activeRow]);
 
-    this.showPDF = false;
     this.Link = activeRow === null
-      ? environment.apiUrl + '/service/attachments/get/' + this.currentUser.token + '/noPDF.pdf'
+      ? null
       : environment.apiUrl + '/service/attachments/get/' + this.currentUser.token + '/'
         + activeRow['sitAttachmentsG'] + '/' + activeRow['FileName'];
-    this.showPDF = true;
+    this.showPDF = this.Link !== null ? true : false;
   }
 
   onGridReadyCustomers(params) {
