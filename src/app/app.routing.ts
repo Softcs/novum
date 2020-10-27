@@ -8,7 +8,6 @@ import { SitRailConfigurationsEditComponent }
 from './containers/dictionaries/sit-rail-configurations/actions/sit-rail-configurations-edit/sit-rail-configurations-edit.component';
 import { testDict } from './containers/sandbox/testDict';
 import { AuthGuard } from './_helpers';
-import { NgxPdfTestComponent } from './containers/sandbox/ngx-pdf-test';
 import { SitMenuComponent } from './containers/dictionaries/sit-menu/';
 import { SitMenuEditComponent } from './containers/dictionaries/sit-menu/actions/sit-menu-edit/';
 import { SitRozrachunkiInsertGTComponent } from './containers/dictionaries/sit-rozrachunki-insert-gt/sit-rozrachunki-insert-gt.component';
@@ -36,7 +35,6 @@ const routes: Routes = [
             data: {title: 'Konfiguracja Rail - Edycja'}},
     { path: 'sitRozrachunkiInsertGT', component: SitRozrachunkiInsertGTComponent, canActivate: [AuthGuard],
             data: {title: 'Rozrachunki z InsertGT'} },
-    { path: 'ngx-extended-pdf-viewer-test', component: NgxPdfTestComponent, canActivate: [AuthGuard] },
     { path: 'sitKancelaria', component: SitKancelariaComponent, canActivate: [AuthGuard], data: {title: 'Kancelaria'} },
     { path: 'sitUserAccount', component: SitUserAccountComponent, canActivate: [AuthGuard], data: {title: 'Konto użytkownika'} },
     { path: 'sitWhiteListVat', component: SitWhiteListVATComponent, canActivate: [AuthGuard], data: {title: 'Biała lista VAT'} },

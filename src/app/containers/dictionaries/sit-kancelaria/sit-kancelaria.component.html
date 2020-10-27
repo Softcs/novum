@@ -119,12 +119,9 @@
       </as-split-area>
       <as-split-area [size]="40">
         <div fxFill>
-          <ngx-extended-pdf-viewer *ngIf="showPDF"
-            [src]="Link"
-            [useBrowserLocale]="true"
-            [height]="'100%'"
-          >
-          </ngx-extended-pdf-viewer>
+          <sit-data-set-container  ident="sitAttachments" (activeRowChanged)="activeRowAttachmentsChanged($event)" fxFlex fxLayout="column">
+            <sit-pdf-viewer #sitControl id="FileName" field="FileName" fxFill></sit-pdf-viewer>
+          </sit-data-set-container>
         </div>
       </as-split-area>
     </as-split>

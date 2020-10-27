@@ -19,7 +19,6 @@ export class SitKancelariaComponent implements OnInit {
   currentUser: User;
   activeTab: number;
   Link: string;
-  showPDF = true;
 
   sitCustomersSelected = [];
   sitAgreementsSelected = [];
@@ -50,9 +49,6 @@ export class SitKancelariaComponent implements OnInit {
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
     this.tabService.activeTab.subscribe(x => this.activeTab = x);
 
-    // // sprawdzanie czy component jest na aktywnej zakładce
-    // this.showPDF = this.tabService.tabs[this.activeTab].component.name === this.constructor.name ? true : false;
-    // console.log('Kancelaria',this.tabService.tabs[this.activeTab].component.name, this.showPDF)
 
     this.defaultColDef = {
       flex: 0,
@@ -115,11 +111,6 @@ export class SitKancelariaComponent implements OnInit {
     this.sitAttachmentsSelected.splice(0, this.sitAttachmentsSelected.length);
     this.sitAttachmentsSelected.push(...[activeRow]);
 
-    this.Link = activeRow === null
-      ? null
-      : environment.apiUrl + '/service/attachments/get/' + this.currentUser.token + '/'
-        + activeRow['sitAttachmentsG'] + '/' + activeRow['FileName'];
-    this.showPDF = this.Link !== null ? true : false;
   }
 
   onGridReadyCustomers(params) {
