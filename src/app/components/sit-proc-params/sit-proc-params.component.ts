@@ -133,10 +133,14 @@ export class SitProcParamsComponent implements OnInit, AfterViewInit {
   }
 
   private close() {
+    this.dataSetContainers?.forEach(container => {
+      container.detachEvents();
+    });
     if (this.isExpanderOpenKind()) {
       this.actionExecuteData.dataSetManagerSource.procExpander.Close(this.actionExecuteData);
     } else {
       this.tabService.removeTab(this.tabIndex);
     }
+
   }
 }

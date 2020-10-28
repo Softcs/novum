@@ -114,6 +114,10 @@ export class DataSetManager {
                 return;
             }
             const dsDefItem = this.dictInfo.FindDataSource(dsToRefresh.ident);
+            if (dsDefItem.isLookup) {
+                dsToRefresh.refresh = false;
+                return;
+            }
             this.prapareDataSource4RequestParent(dsDefItem, dataSourcesRequest);
          });
         this.RefreshInternall(dataSourcesRequest);

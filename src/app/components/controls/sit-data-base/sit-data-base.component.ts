@@ -100,4 +100,6 @@ export class SitDataBaseComponent implements ControlValueAccessor {
   protected afterPropagte(ident: string) {
 
   }
+
+  public detachEvents() { }
 }

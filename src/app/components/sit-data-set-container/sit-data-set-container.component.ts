@@ -232,6 +232,12 @@ export class SitDataSetContainerComponent {
   public setDataSetManager(dataSetControlsManager: DataSetManager) {
     this.dataSetControlsManager = dataSetControlsManager;
   }
+
+  public detachEvents() {
+    this.databaseControlsInterface.forEach(control => {
+      control.detachEvents();
+    });
+  }
 }
 
 

@@ -5,6 +5,7 @@ import { SitRefreshButtonComponent } from '../sit-refresh-button/sit-refresh-but
 import { MatAutocomplete } from '@angular/material/autocomplete';
 import { LookupService } from '@app/_services/lookup.service';
 import { MatSelect } from '@angular/material/select';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'sit-data-input',
@@ -27,7 +28,8 @@ export class SitDataInputComponent extends SitDataBaseComponent {
   @Input() refreshOnChange: boolean;
   hasLookup: boolean;
   private lookupSettings = null;
-  lookupRows = [{CountrySymbol: 'L'}];
+  lookupRows = [];
+  lookupSubscriber: Subscription;
   constructor(
     _renderer: Renderer2,
     private lookupService: LookupService) {
@@ -41,13 +43,16 @@ export class SitDataInputComponent extends SitDataBaseComponent {
     this._onFilterKeyEnter(event);
   }
 
+  detachEvents() {
+    this.lookupSubscriber?.unsubscribe();
+  }
+
   initLookup() {
     this.lookupSettings = this.dataSetWrapper.getLookupForField(this.field);
     this.hasLookup = this.lookupSettings != null;
     if (this.hasLookup) {
-
       const lookupDataSourceWrapper = this.dataSetWrapper?.getDataSetManager().getDateSourceWrapper(this.lookupSettings.lookupDataSourceIdent);
-      lookupDataSourceWrapper?.lookupAfterPropagte.subscribe(ident => this.lookupAfterPropagte(ident));
+      this.lookupSubscriber = lookupDataSourceWrapper?.lookupAfterPropagte.subscribe(ident => this.lookupAfterPropagte(ident));
     }
   }
 
