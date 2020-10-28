@@ -8,12 +8,16 @@ export class DataSetWrapper {
     public errors: [any];
     public fields: [any];
     public connectedLookups: any;
+    public isLookup = false;
 
     @Output()
     activeRowChanged: EventEmitter<any> = new EventEmitter<any>();
 
     @Output()
     afterPropagte: EventEmitter<string> = new EventEmitter<string>();
+
+    @Output()
+    lookupAfterPropagte: EventEmitter<string> = new EventEmitter<string>();
 
     @Output()
     afterSetFieldValue: EventEmitter<string> = new EventEmitter<string>();
@@ -36,6 +40,10 @@ export class DataSetWrapper {
 
     set rows(value) {
         this._rows = value;
+    }
+
+    get hasLookups(): boolean {
+        return this.connectedLookups != null;
     }
 
     private findDataSource() {
@@ -65,7 +73,8 @@ export class DataSetWrapper {
         if (dataSourceDef == null) {
             dataSourceDef = dataSetManagerSource?.FindDataSource(this.ident);
         }
-        this.connectedLookups = dataSourceDef.connectedLookups;
+        this.connectedLookups = dataSourceDef?.connectedLookups;
+        this.isLookup = dataSourceDef?.isLookup;
     }
 
     private readFields(dataSetManagerSource: DataSetManager) {
@@ -93,6 +102,10 @@ export class DataSetWrapper {
     public AfterPropagte() {
         this.activeRowChanged.emit(this.activeRow);
         this.afterPropagte.emit(this.ident);
+    }
+
+    public LookupAfterPropagte() {
+        this.lookupAfterPropagte.emit(this.ident);
     }
 
     public ExecuteAction(actionIdent: string,
@@ -259,9 +272,9 @@ export class DataSetWrapper {
         return this.connectedLookups[field];
     }
 
+
+
     public getDataSetManager() {
-        return this.dataSourceManager != null && this.dataSourceManager.dictInfo != null
-                ? this.dataSourceManager
-                : this.dataSetManagerSource;
+        return this.dataSourceManager;
     }
 }

@@ -47,7 +47,7 @@ export class SitDataInputComponent extends SitDataBaseComponent {
     if (this.hasLookup) {
 
       const lookupDataSourceWrapper = this.dataSetWrapper?.getDataSetManager().getDateSourceWrapper(this.lookupSettings.lookupDataSourceIdent);
-      lookupDataSourceWrapper?.afterPropagte.subscribe(ident => this.lookupAfterPropagte(ident));
+      lookupDataSourceWrapper?.lookupAfterPropagte.subscribe(ident => this.lookupAfterPropagte(ident));
     }
   }
 
