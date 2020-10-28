@@ -18,7 +18,6 @@ export class HomeComponent implements OnInit {
     users: User[];
     tabs = new Array<Tab>();
     selectedTab: number;
-    showClose = false;
 
     constructor(
       private userService: UserService,
@@ -42,5 +41,12 @@ export class HomeComponent implements OnInit {
 
     removeTab(index: number): void {
       this.tabService.removeTab(index);
+    }
+
+    showClose(index: number): boolean {
+      if ( this.selectedTab === index && index !== 0 ) {
+        return true;
+      }
+      return false;
     }
 }

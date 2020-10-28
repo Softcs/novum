@@ -1,0 +1,14 @@
+<sit-proc-params
+  [(actionExecuteData)]="actionExecuteData"
+  >
+  <sit-data-set-container ident="sitLogisticUnitsEdit">
+    <div fxFill fxLayout="column" style="width: 500px; height: 500px; padding:5px;">
+      <div class="sit-proc-expander-title" *ngIf="actionIdent === 'insert'">Nowy</div>
+      <div class="sit-proc-expander-title" *ngIf="actionIdent === 'update'">Edycja</div>
+
+      <sit-data-input type="text" id="LogisticUnitEAN" #sitControl field="LogisticUnitEAN" label="Opis" [showRefresh]=false appearance="outline" readonly="true" fxFlex></sit-data-input>
+      <sit-data-input type="text" id="LogisticUnitDesc" #sitControl field="LogisticUnitDesc" label="Opis" [showRefresh]=false appearance="outline" fxFlex></sit-data-input>
+
+    </div>
+  </sit-data-set-container>
+</sit-proc-params>

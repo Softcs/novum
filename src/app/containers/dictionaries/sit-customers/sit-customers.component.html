@@ -50,25 +50,34 @@
           <mat-tab label="Podstawowe">
             <div fxLayout="column" fxFill class="content">
               <div fxLayout="row">
+                <sit-data-checkbox id="IsRecipient" #sitControl field="IsRecipient" label="Odbiorca" readonly="true"></sit-data-checkbox>
+                <sit-data-checkbox id="IsSupplier" #sitControl field="IsSupplier" label="Dostawca" readonly="true"></sit-data-checkbox>
+              </div>              
+              <div fxLayout="row">
                 <sit-data-input type="text" id="CustIdent" #sitControl field="CustIdent" label="Identyfikator" [showRefresh]=false appearance="outline" fxFlex [readonly]=true></sit-data-input>
                 <sit-data-input type="text" id="VATId" #sitControl field="VATId" label="NIP" [showRefresh]=false appearance="outline" style="width: 150px" [readonly]=true></sit-data-input>
                 <sit-data-input type="text" id="REGON" #sitControl field="REGON" label="REGON" [showRefresh]=false appearance="outline" style="width: 150px" [readonly]=true></sit-data-input>
                 <sit-data-input type="text" id="KRS" #sitControl field="KRS" label="KRS" [showRefresh]=false appearance="outline" style="width: 150px" [readonly]=true></sit-data-input>
               </div>
               <div fxLayout="row">
-                <sit-data-input type="text" id="CustName" #sitControl field="CustName" label="Identyfikator" [showRefresh]=false appearance="outline" style="width: 100%" [readonly]=true></sit-data-input>
+                <sit-data-input type="text" id="CustName" #sitControl field="CustName" label="Nazwa" [showRefresh]=false appearance="outline" style="width: 100%" [readonly]=true></sit-data-input>
               </div>
               <div fxLayout="row">
                 <sit-data-input type="text" id="CountrySymbol" #sitControl field="CountrySymbol" label="Kraj" [showRefresh]=false appearance="outline"  style="width: 100px"  [readonly]=true></sit-data-input>
                 <sit-data-input type="text" id="PostCode" #sitControl field="PostCode" label="Kod pocztowy" [showRefresh]=false appearance="outline" style="width: 100px" [readonly]=true></sit-data-input>
-                <sit-data-input type="text" id="City" #sitControl field="City" label="Numer" [showRefresh]=false appearance="outline"  fxFlex  [readonly]=true></sit-data-input>
+                <sit-data-input type="text" id="City" #sitControl field="City" label="Miasto" [showRefresh]=false appearance="outline"  fxFlex  [readonly]=true></sit-data-input>
               </div>
               <div fxLayout="row">
                 <sit-data-input type="text" id="Street" #sitControl field="Street" label="Ulica" [showRefresh]=false appearance="outline" fxFlex [readonly]=true></sit-data-input>
                 <sit-data-input type="text" id="HouseNum" #sitControl field="HouseNum" label="Numer" [showRefresh]=false appearance="outline" style="width: 100px" [readonly]=true></sit-data-input>
               </div>
               <div fxLayout="row">
-                <sit-data-input type="text" id="ExtIdent" #sitControl field="ExtIdent" label="Identyfikator zewnętrzny" [showRefresh]=false appearance="outline"  [readonly]=true></sit-data-input>
+                <sit-data-input type="text" id="OldCustName" #sitControl field="OldCustName" label="Stara nazwa" [showRefresh]=false appearance="outline"  [readonly]=true fxFlex="40"></sit-data-input>
+                <sit-data-input type="text" id="ExtIdent" #sitControl field="ExtIdent" label="Identyfikator zewnętrzny" [showRefresh]=false appearance="outline"  [readonly]=true fxFlex="30"></sit-data-input>
+                <sit-data-input type="text" id="ExtIdent02" #sitControl field="ExtIdent02" label="Identyfikator zewnętrzny 2" [showRefresh]=false appearance="outline"  [readonly]=true fxFlex="30"></sit-data-input>
+              </div>
+              <div fxLayout="row">
+                <sit-data-input type="text" id="PhoneNumber" #sitControl field="PhoneNumber" label="Nr telefonu" [showRefresh]=false appearance="outline"  [readonly]=true fxFlex="50"></sit-data-input>
               </div>
             </div>
           </mat-tab>

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 import { DataSetWrapper } from '@app/_models';
 import { ControlValueAccessor } from '@angular/forms';
+import { EventManager } from '@angular/platform-browser';
 
 @Component({
   selector: 'sit-data-base',
@@ -56,11 +57,7 @@ export class SitDataBaseComponent implements ControlValueAccessor {
   }
 
   onChange(event: any) {
-    if (event.target.type === 'checkbox') {
-      event.target.checked ? this._onChange('1') : this._onChange('0');
-    } else {
-      this._onChange(event.target.value);
-    }
+    this._onChange(event.target.value);
   }
 
   onKeyup(event: any) {
@@ -75,7 +72,7 @@ export class SitDataBaseComponent implements ControlValueAccessor {
   }
 
   public getValue(): string {
-    return null;
+    return this.value;
   }
 
   public setValue(value: any) {

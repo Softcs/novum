@@ -2,7 +2,10 @@
   [(actionExecuteData)]="actionExecuteData"
   >
   <sit-data-set-container ident="sitRailConfigurationsEdit">
-    <div fxFill>
+    <div fxFill style="width: 500px; height: 500px; padding:5px;">
+      <div class="sit-proc-expander-title" *ngIf="actionIdent === 'insert'">Nowy</div>
+      <div class="sit-proc-expander-title" *ngIf="actionIdent === 'update'">Edycja</div>
+
       <div fxLayout="row">
         <sit-data-checkbox id="IsActive" #sitControl field="IsActive" label="Aktywny"></sit-data-checkbox>
         <sit-data-input type="number" id="sitCompaniesId" #sitControl field="sitCompaniesId" label="ID firmy" [showRefresh]=false appearance="outline" style="width: 100px"></sit-data-input>
@@ -24,7 +27,7 @@
       </div>
 
       <div fxLayout="row">
-        <sit-data-textarea type="textarea" id="Data" #sitControl field="Data" label="Dane" appearance="outline" rows="30" cols="300"></sit-data-textarea>
+        <sit-data-textarea type="textarea" id="Data" #sitControl field="Data" label="Dane" appearance="outline" rows="30" cols="200" ></sit-data-textarea>
       </div>
     </div>
   </sit-data-set-container>

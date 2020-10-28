@@ -4,10 +4,13 @@ class="main-tab-group mt-1"
 (selectedTabChange)="tabChanged($event)">
 <mat-tab *ngFor="let tab of tabs; let tabIndex = index">
   <ng-template mat-tab-label>
-    <div fxLayout="row" fxLayoutAlign="space-between center" (mouseover)="showClose=true" (mouseout)="showClose=false" style="width:100%;">
+    <div fxLayout="row" fxLayoutAlign="space-between center" style="width:100%;">
       <div *ngIf="tab.title != 'Pulpit'" fxFlex class="sit-tab-title">{{ tab.title }}</div>
       <div *ngIf="tab.title == 'Pulpit'" fxFlex fxLayoutAlign="center center"><i class="material-icons">home</i></div>
-      <div *ngIf="tab.title != 'Pulpit'" class="close-tab"><mat-icon class="close-tab-icon" (click)="removeTab(tabIndex)" >close</mat-icon></div>
+      <div *ngIf="showClose(tabIndex)" class="sit-close-tab">
+        <!-- <mat-icon class="close-tab-icon" (click)="removeTab(tabIndex)" >close</mat-icon> -->
+        <button type="button" class="close" aria-label="Close" (click)="removeTab(tabIndex)"><span aria-hidden="true">×</span></button>
+      </div>
     </div>
   </ng-template>
   <div class="sit-tab-content">

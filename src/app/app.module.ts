@@ -44,10 +44,9 @@ import { SitDataSetContainerComponent } from '@app/components/sit-data-set-conta
 import { SitNavbarComponent } from './components/sit-navbar/sit-navbar.component';
 import { testDict } from './containers/sandbox/testDict';
 import { LayoutModule } from '@angular/cdk/layout';
-// ngx
-import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
-
-//ag-grid
+// ng2 pdf
+import { PdfJsViewerModule } from 'ng2-pdfjs-viewer';
+// ag-grid
 import { AgGridModule } from 'ag-grid-angular';
 import 'ag-grid-enterprise';
 
@@ -62,7 +61,6 @@ import { SitRozrachunkiInsertGTComponent } from './containers/dictionaries/sit-r
 import { SitDataInputComponent } from './components/controls/sit-data-input/sit-data-input.component';
 import { SitDataBaseComponent } from './components/controls/sit-data-base/sit-data-base.component';
 import { sitSetDataSetDirective } from '@app/_directives/sitSetDataSetDirective';
-import { NgxPdfTestComponent } from './containers/sandbox/ngx-pdf-test/ngx-pdf-test.component';
 import { SitKancelariaComponent } from './containers/dictionaries/sit-kancelaria/sit-kancelaria.component';
 import { SitUserAccountComponent } from './containers/dictionaries/sit-user-account/sit-user-account.component';
 import { SitProcButtonComponent } from './components/controls/sit-proc-button/sit-proc-button.component';
@@ -109,8 +107,13 @@ import { SitAppUsersEditComponent } from './containers/dictionaries/sit-app-user
 import { SitAppUserCompaniesEditComponent } from './containers/dictionaries/sit-app-users/actions/sit-app-user-companies-edit/sit-app-user-companies-edit.component';
 import { SitAppUsersSetPasswordComponent } from './containers/dictionaries/sit-app-users/actions/sit-app-users-set-password/sit-app-users-set-password.component';
 import { AngularSplitModule } from 'angular-split';
-import { SitParamsEditComponent } from './containers/dictionaries/sit-params/actions/sit-params-edit/sit-params-edit.component'
+import { SitParamsEditComponent } from './containers/dictionaries/sit-params/actions/sit-params-edit/sit-params-edit.component';
 import { LookupService } from './_services/lookup.service';
+import { SitJobsComponent } from './containers/dictionaries/sit-jobs/sit-jobs.component';
+import { SitJobsEditComponent } from './containers/dictionaries/sit-jobs/actions/sit-jobs-edit/sit-jobs-edit.component';
+import { SitJobStepsEditComponent } from './containers/dictionaries/sit-jobs/actions/sit-job-steps-edit/sit-job-steps-edit.component';
+import { SitPdfViewerComponent } from './components/controls/sit-pdf-viewer/sit-pdf-viewer.component';
+import { SitLogisticUnitsEditComponent } from './containers/dictionaries/sit-stocks/actions/sit-logistic-units-edit/sit-logistic-units-edit.component'
 
 @NgModule({
     imports: [
@@ -143,8 +146,7 @@ import { LookupService } from './_services/lookup.service';
 
         FormsModule,
         LayoutModule,
-        NgxExtendedPdfViewerModule,
-
+        PdfJsViewerModule,
         FlexLayoutModule,
 
         //ag-Grid
@@ -171,7 +173,6 @@ import { LookupService } from './_services/lookup.service';
         SitMenuListItemComponent,
         SitDataInputComponent,
         SitDataBaseComponent,
-        NgxPdfTestComponent,
         SitKancelariaComponent,
         SitUserAccountComponent,
         SitProcButtonComponent,
@@ -215,7 +216,13 @@ import { LookupService } from './_services/lookup.service';
         SitAppUsersEditComponent ,
         SitAppUserCompaniesEditComponent ,
         SitAppUsersSetPasswordComponent,
-        SitParamsEditComponent
+        SitParamsEditComponent,
+        SitJobsComponent,
+        SitJobsEditComponent,
+        SitJobStepsEditComponent,
+        SitPdfViewerComponent,
+        SitLogisticUnitsEditComponent,
+        SitLogisticUnitsEditComponent
 
      ],
     providers: [
@@ -248,7 +255,11 @@ import { LookupService } from './_services/lookup.service';
       SitAppUsersEditComponent,
       SitAppUserCompaniesEditComponent,
       SitAppUsersSetPasswordComponent,
-      SitParamsEditComponent
+      SitParamsEditComponent,
+      SitJobsComponent,
+      SitJobsEditComponent,
+      SitJobStepsEditComponent,
+      SitLogisticUnitsEditComponent
     ]
 })
 export class AppModule { }

@@ -16,14 +16,29 @@ export class SitStocksComponent implements OnInit {
   @ViewChildren('sitDictcontainer') dictContainers !: QueryList<SitDictContainerComponent>;
 
   currentUser: User;
-
-  //modules: any[] = AllModules;
-  gridApi;
-  gridColumnApi;
-  columnDefs;
   defaultColDef;
   rowSelection;
   popupParent;
+
+  gridApi;
+  gridColumnApi;
+  columnDefs;
+
+  gridApiWMSStocksDet;
+  gridColumnApiWMSStocksDet;
+  columnDefsWMSStocksDet;
+
+  gridApiWMSStocks;
+  gridColumnApiWMSStocks;
+  columnDefsWMSStocks;
+
+  gridApiLogisticUnits;
+  gridColumnApiLogisticUnits;
+  columnDefsLogisticUnits;
+
+  gridApiWMSStocksWithLogisticUnits;
+  gridColumnApiWMSStocksWithLogisticUnits;
+  columnDefsWMSStocksWithLogisticUnits;
 
   constructor(
     private gatewayService: GatewayService
@@ -34,20 +49,20 @@ export class SitStocksComponent implements OnInit {
     this.rowSelection = 'single';
 
     this.defaultColDef = {
-      flex: 1,
       sortable: true,
       filter: true,
-      floatingFilter: true,
+      // floatingFilter: true,
       resizable: true,
       enableRowGroup: true,
       enableValue: true,
-      enablePivot: true
+      enablePivot: true,
+      autoHeight: true,
     };
 
     this.columnDefs = [
       { headerName: 'Produkt / Towar',
         children: [
-          { headerName: 'Identyfikator', field: 'ProductIdent', sortable: true, resizable: true, filter: 'agTextColumnFilter' },
+          { headerName: 'Identyfikator', field: 'ProductIdent', sortable: true, resizable: true, filter: 'agTextColumnFilter',floatingFilter: true },
           { headerName: 'Nazwa', field: 'ProductName', filter: 'agTextColumnFilter' }
         ]
       },
@@ -62,20 +77,123 @@ export class SitStocksComponent implements OnInit {
         children: [
           { headerName: "Ident.", field: 'WarehouseIdent', sortable: true, resizable: true, filter: 'agTextColumnFilter' },
           { headerName: "Nazwa", field: 'WarehouseName', sortable: true, resizable: true, filter: 'agTextColumnFilter' },
+
         ],
       }
+    ];
+
+    this.columnDefsWMSStocksDet = [
+      { headerName: 'Lokalizacja', field: 'LocationIdent', sortable: true, filter: 'agTextColumnFilter', floatingFilter: false },
+      { headerName: 'Stan - MWS', field: 'Quantity', sortable: true, filter: 'agTextColumnFilter', floatingFilter: false },
+      { headerName: "Typ lokalizacji", field: 'LocationTypeDesc', sortable: true, filter: 'agTextColumnFilter', floatingFilter: false },
+    ];
+
+    this.columnDefsWMSStocks = [
+      { headerName: 'Produkt / Towar',
+        children: [
+          { headerName: 'Identyfikator', field: 'ProductIdent', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 150 },
+          { headerName: 'Nazwa', field: 'ProductName', filter: 'agTextColumnFilter', width: 300 }
+        ]
+      },
+      { headerName: 'Magazyn',
+        children: [
+          { headerName: "Ident.", field: 'WarehouseIdent', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 100 },
+          { headerName: "Nazwa", field: 'WarehouseName', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 200 },
+
+        ],
+      },
+      { headerName: 'Lokalizacja',
+        children: [
+          { headerName: "Ident.", field: 'LocationIdent', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 150 },
+          { headerName: "Typ", field: 'LocationTypeDesc', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 150 },
+
+        ],
+      },
+      { headerName: 'Stan',
+        children: [
+          { headerName: 'MWS', field: 'Quantity', type: 'numericColumn', filter: 'agNumericColumnFilter', width: 100 },
+        ]
+      },
+    ];
+
+    this.columnDefsLogisticUnits = [
+      { headerName: 'Id', field: 'sitLogisticUnitsId', sortable: true, resizable: true, type: "numericColumn", filter: 'agNumericColumnFilter' },
+      { headerName: 'GUID', field: 'sitLogisticUnitsG', sortable: true, resizable: true, filter: 'agTextColumnFilter' },
+      { headerName: 'EAN', field: 'LogisticUnitEAN', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 150 },
+      { headerName: 'Opis', field: 'LogisticUnitDesc', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 400 }
+    ];
+
+    this.columnDefsWMSStocksWithLogisticUnits = [
+      { headerName: 'Produkt / Towar',
+        children: [
+          { headerName: 'Identyfikator', field: 'ProductIdent', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 150 },
+          { headerName: 'Nazwa', field: 'ProductName', filter: 'agTextColumnFilter', width: 250 }
+        ]
+      },
+      { headerName: 'Magazyn',
+        children: [
+          { headerName: "Ident.", field: 'WarehouseIdent', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 80 },
+          { headerName: "Nazwa", field: 'WarehouseName', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 200 },
+
+        ],
+      },
+      { headerName: 'Lokalizacja',
+        children: [
+          { headerName: "Ident.", field: 'LocationIdent', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 150 },
+          { headerName: "Typ", field: 'LocationTypeDesc', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 150 },
+
+        ],
+      },
+      { headerName: 'Stan', field: 'Quantity', type: 'numericColumn', filter: 'agNumericColumnFilter', width: 100 },
+
     ]
+
+
   }
 
   ngOnInit(): void {
   }
+
   onGridReady(params) {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
   }
+  onGridReadyWMSStocksDet(params) {
+    this.gridApiWMSStocksDet = params.api;
+    this.gridColumnApiWMSStocksDet = params.columnApi;
+  }
+  onGridReadyWMSStocks(params) {
+    this.gridApiWMSStocks = params.api;
+    this.gridColumnApiWMSStocks = params.columnApi;
+  }
+  onGridReadyLogisticUnits(params) {
+    this.gridApiLogisticUnits = params.api;
+    this.gridColumnApiLogisticUnits = params.columnApi;
+    this.gridColumnApiLogisticUnits.setColumnsVisible(['sitLogisticUnitsId','sitLogisticUnitsG'],false)
+  }
+  onGridReadyWMSStocksWithLogisticUnits(params) {
+    this.gridApiWMSStocksWithLogisticUnits = params.api;
+    this.gridColumnApiWMSStocksWithLogisticUnits = params.columnApi;
+  }
 
   onRowClicked(event) {
     const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitStocks');
+      dataSourceResponseWrapper.SetActiveRow(event.data);
+  }
+  onRowClickedWMSStocksDet(event) {
+    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitWMSStocksDet');
+      dataSourceResponseWrapper.SetActiveRow(event.data);
+  }
+  onRowClickedWMSStocks(event) {
+    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitWMSStocks');
+      dataSourceResponseWrapper.SetActiveRow(event.data);
+  }
+  onRowClickedLogisticUnits(event) {
+    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitLogisticUnits');
+      dataSourceResponseWrapper.SetActiveRow(event.data);
+  }
+  onRowClickedWMSStocksWithLogisticUnits(event) {
+    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitWMSStocksWithLogisticUnits');
       dataSourceResponseWrapper.SetActiveRow(event.data);
   }
 

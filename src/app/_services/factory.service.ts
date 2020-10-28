@@ -1,4 +1,8 @@
-﻿import { SitParamsEditComponent } from './../containers/dictionaries/sit-params/actions/sit-params-edit/sit-params-edit.component';
+﻿import { SitLogisticUnitsEditComponent } from './../containers/dictionaries/sit-stocks/actions/sit-logistic-units-edit/sit-logistic-units-edit.component';
+import { SitJobStepsEditComponent } from './../containers/dictionaries/sit-jobs/actions/sit-job-steps-edit/sit-job-steps-edit.component';
+import { SitJobsEditComponent } from './../containers/dictionaries/sit-jobs/actions/sit-jobs-edit/sit-jobs-edit.component';
+import { SitJobsComponent } from './../containers/dictionaries/sit-jobs/sit-jobs.component';
+import { SitParamsEditComponent } from './../containers/dictionaries/sit-params/actions/sit-params-edit/sit-params-edit.component';
 import { SitAppUsersSetPasswordComponent } from './../containers/dictionaries/sit-app-users/actions/sit-app-users-set-password/sit-app-users-set-password.component';
 import { SitAppUsersEditComponent } from './../containers/dictionaries/sit-app-users/actions/sit-app-users-edit/sit-app-users-edit.component';
 import { SitAppUsersComponent } from './../containers/dictionaries/sit-app-users/sit-app-users.component';
@@ -65,6 +69,11 @@ export class FactoryService {
         sitAppUsersEdit: SitAppUsersEditComponent,
         sitAppUserCompaniesEdit: SitAppUserCompaniesEditComponent,
         sitAppUsersSetPassword: SitAppUsersSetPasswordComponent,
+        sitJobs: SitJobsComponent,
+        sitJobsEdit: SitJobsEditComponent,
+        sitJobStepsEdit: SitJobStepsEditComponent,
+        sitLogisticUnitsEdit: SitLogisticUnitsEditComponent,
+
     };
 
     public GetFactory(ident: string) {
