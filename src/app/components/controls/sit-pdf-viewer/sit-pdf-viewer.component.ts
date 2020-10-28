@@ -30,6 +30,7 @@ export class SitPdfViewerComponent  extends SitDataBaseComponent {
   }
 
   private refreshPdfSource() {
+
     // załączniki
     if (this.dataSetWrapper.getFieldValue('sitAttachmentsG') !== null) {
       this.pdfSrc = environment.apiUrl
@@ -38,7 +39,7 @@ export class SitPdfViewerComponent  extends SitDataBaseComponent {
         + this.dataSetWrapper.getFieldValue('sitAttachmentsG') + '/'
         + this.dataSetWrapper.getFieldValue('FileName');
       this.downloadFileName = this.dataSetWrapper.getFieldValue('FileName');
-    }
+    } else
 
     // dowody
     if (this.dataSetWrapper.getFieldValue('sitDocumentsHeadersG') !== null) {
@@ -48,7 +49,7 @@ export class SitPdfViewerComponent  extends SitDataBaseComponent {
         + this.dataSetWrapper.getFieldValue('sitDocumentsHeadersG');
 
       this.downloadFileName = this.dataSetWrapper.getFieldValue('sitDocumentsHeadersG');
-    }
+    } else
 
     // jednostki logistyczne
     if (this.dataSetWrapper.getFieldValue('sitLogisticUnitsG') !== null) {
@@ -58,13 +59,13 @@ export class SitPdfViewerComponent  extends SitDataBaseComponent {
         + this.dataSetWrapper.getFieldValue('sitLogisticUnitsG');
 
       this.downloadFileName = this.dataSetWrapper.getFieldValue('LogisticUnitEAN');
-    }
+    } else { this.pdfSrc = null }
   }
 
   public refreshFieldValue() {
     this.refreshPdfSource();
     this.showPDF = true;
-    if (this.dataSetWrapper.getFieldValue('showPrint') === 0) {
+    if (this.dataSetWrapper.getFieldValue('showPrint') === 0 || this.pdfSrc === null ) {
       this.showPDF = false;
     };
     if (this.pdfSrc !== this.pdfViewer.pdfSrc) {
