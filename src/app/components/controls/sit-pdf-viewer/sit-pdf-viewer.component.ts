@@ -24,30 +24,28 @@ export class SitPdfViewerComponent  extends SitDataBaseComponent {
       private gatewayService: GatewayService,
       ) {
     super(_renderer);
+
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
     this.companyGUID = this.currentUser.company.companyGUID;
   }
 
-
-  public refreshFieldValue() {
-    this.showPDF = true;
-
+  private refreshPdfSource() {
     // załączniki
     if (this.dataSetWrapper.getFieldValue('sitAttachmentsG') !== null) {
       this.pdfSrc = environment.apiUrl
-                    + '/service/attachments/get/'
-                    + this.currentUser.token + '/'
-                    + this.dataSetWrapper.getFieldValue('sitAttachmentsG') + '/'
-                    + this.dataSetWrapper.getFieldValue('FileName');
+        + '/service/attachments/get/'
+        + this.currentUser.token + '/'
+        + this.dataSetWrapper.getFieldValue('sitAttachmentsG') + '/'
+        + this.dataSetWrapper.getFieldValue('FileName');
       this.downloadFileName = this.dataSetWrapper.getFieldValue('FileName');
     }
 
     // dowody
     if (this.dataSetWrapper.getFieldValue('sitDocumentsHeadersG') !== null) {
       this.pdfSrc = environment.apiUrl
-                    + '/service/show/anonymous/report/'
-                    + this.companyGUID + '/'
-                    + this.dataSetWrapper.getFieldValue('sitDocumentsHeadersG');
+        + '/service/show/anonymous/report/'
+        + this.companyGUID + '/'
+        + this.dataSetWrapper.getFieldValue('sitDocumentsHeadersG');
 
       this.downloadFileName = this.dataSetWrapper.getFieldValue('sitDocumentsHeadersG');
       if (this.dataSetWrapper.getFieldValue('showPrint') === 0) {
@@ -58,16 +56,21 @@ export class SitPdfViewerComponent  extends SitDataBaseComponent {
     // jednostki logistyczne
     if (this.dataSetWrapper.getFieldValue('sitLogisticUnitsG') !== null) {
       this.pdfSrc = environment.apiUrl
-                    + '/service/show/anonymous/report/'
-                    + this.companyGUID + '/'
-                    + this.dataSetWrapper.getFieldValue('sitLogisticUnitsG');
+        + '/service/show/anonymous/report/'
+        + this.companyGUID + '/'
+        + this.dataSetWrapper.getFieldValue('sitLogisticUnitsG');
 
       this.downloadFileName = this.dataSetWrapper.getFieldValue('LogisticUnitEAN');
     }
+  }
 
-
-    this.pdfViewer.pdfSrc = this.pdfSrc;
-    this.pdfViewer.downloadFileName = this.downloadFileName;
-    this.pdfViewer.refresh();
+  public refreshFieldValue() {
+    this.refreshPdfSource();
+    this.showPDF = true;
+    if (this.pdfSrc !== this.pdfViewer.pdfSrc) {
+      this.pdfViewer.pdfSrc = this.pdfSrc;
+      this.pdfViewer.downloadFileName = this.downloadFileName;
+      this.pdfViewer.refresh();
+    }
   }
 }
