@@ -17,6 +17,7 @@ export class SitPdfViewerComponent  extends SitDataBaseComponent {
   downloadFileName: string;
   currentUser: User;
   companyGUID: string;
+  showPDF = true;
 
   constructor(
       _renderer: Renderer2,
@@ -27,8 +28,9 @@ export class SitPdfViewerComponent  extends SitDataBaseComponent {
     this.companyGUID = this.currentUser.company.companyGUID;
   }
 
+
   public refreshFieldValue() {
-    this.dataSetWrapper.refreshFieldValueInControl(this);
+    this.showPDF = true;
 
     // załączniki
     if (this.dataSetWrapper.getFieldValue('sitAttachmentsG') !== null) {
@@ -48,6 +50,9 @@ export class SitPdfViewerComponent  extends SitDataBaseComponent {
                     + this.dataSetWrapper.getFieldValue('sitDocumentsHeadersG');
 
       this.downloadFileName = this.dataSetWrapper.getFieldValue('sitDocumentsHeadersG');
+      if (this.dataSetWrapper.getFieldValue('showPrint') === 0) {
+        this.showPDF = false;
+      }
     }
 
     // jednostki logistyczne
@@ -59,7 +64,8 @@ export class SitPdfViewerComponent  extends SitDataBaseComponent {
 
       this.downloadFileName = this.dataSetWrapper.getFieldValue('LogisticUnitEAN');
     }
-console.log(this.dataSetWrapper.getFieldValue('sitLogisticUnitsG'),this.pdfSrc)
+
+
     this.pdfViewer.pdfSrc = this.pdfSrc;
     this.pdfViewer.downloadFileName = this.downloadFileName;
     this.pdfViewer.refresh();
