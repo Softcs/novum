@@ -48,9 +48,6 @@ export class SitPdfViewerComponent  extends SitDataBaseComponent {
         + this.dataSetWrapper.getFieldValue('sitDocumentsHeadersG');
 
       this.downloadFileName = this.dataSetWrapper.getFieldValue('sitDocumentsHeadersG');
-      if (this.dataSetWrapper.getFieldValue('showPrint') === 0) {
-        this.showPDF = false;
-      }
     }
 
     // jednostki logistyczne
@@ -67,6 +64,9 @@ export class SitPdfViewerComponent  extends SitDataBaseComponent {
   public refreshFieldValue() {
     this.refreshPdfSource();
     this.showPDF = true;
+    if (this.dataSetWrapper.getFieldValue('showPrint') === 0) {
+      this.showPDF = false;
+    };
     if (this.pdfSrc !== this.pdfViewer.pdfSrc) {
       this.pdfViewer.pdfSrc = this.pdfSrc;
       this.pdfViewer.downloadFileName = this.downloadFileName;
