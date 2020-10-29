@@ -1,25 +1,22 @@
 <sit-proc-params
   [(actionExecuteData)]="actionExecuteData"
   >
-  <sit-data-set-container ident="sitJobSTeps" fxLayout="column">
-      <div style="padding: 5px; width: 600px; height: 300px;">
-        <div class="sit-proc-expander-title" *ngIf="actionIdent === 'insert'">Nowe zadanie</div>
-        <div class="sit-proc-expander-title" *ngIf="actionIdent === 'update'">Edytuj zadanie</div>
-
-        <div fxLayout="column">
-          <div fxLayout="row">
-            <sit-data-input type="text" id="JobStepIdent" #sitControl field="JobStepIdent" label="Identyfikator"  appearance="outline" fxFlex="70"></sit-data-input>
-            <sit-data-input type="number" id="StepOrder" #sitControl field="StepOrder" label="Kolejność"  appearance="outline" fxFlex></sit-data-input>
-            <sit-data-checkbox id="IsActive" #sitControl field="IsActive" label="Aktywny" fxFlex></sit-data-checkbox>
-          </div>
-          <sit-data-input type="text" id="JobStepName" #sitControl field="JobStepName" label="Nazwa"  appearance="outline" fxFlex></sit-data-input>
-          <div fxLayout="row">
-            <sit-data-input type="text" id="ProcedureName" #sitControl field="ProcedureName" label="Nazwa procedury" appearance="outline" fxFlex="80"></sit-data-input>
-            <sit-data-input type="number" id="TimeOut" #sitControl field="TimeOut" label="Timeout" appearance="outline" fxFlex="20"></sit-data-input>
-          </div>
-          <sit-data-checkbox id="ActionAfterError" #sitControl field="ActionAfterError" label="Akcja po błędzie" fxFlex></sit-data-checkbox>
-          <sit-data-input type="text" id="Params" #sitControl field="Params" label="Parametry" appearance="outline" fxFlex></sit-data-input>
-        </div>
+  <sit-data-set-container ident="sitJobSTeps">
+    <div class="sit-proc-params-content" fxLayout="column">
+      <div fxLayout="row">
+        <sit-data-checkbox id="IsActive" #sitControl field="IsActive" label="Aktywny" fxFlex></sit-data-checkbox>
+        <sit-data-checkbox id="ActionAfterError" #sitControl field="ActionAfterError" label="Akcja po błędzie" fxFlex></sit-data-checkbox>
       </div>
+      <div fxLayout="row">
+        <sit-data-input type="text" id="JobStepIdent" #sitControl field="JobStepIdent" label="Identyfikator"  appearance="outline" fxFlex="70"></sit-data-input>
+        <sit-data-input type="number" id="StepOrder" #sitControl field="StepOrder" label="Kolejność"  appearance="outline" fxFlex></sit-data-input>
+      </div>
+      <sit-data-input type="text" id="JobStepName" #sitControl field="JobStepName" label="Nazwa"  appearance="outline" fxFlex></sit-data-input>
+      <div fxLayout="row">
+        <sit-data-input type="text" id="ProcedureName" #sitControl field="ProcedureName" label="Nazwa procedury" appearance="outline" fxFlex="80"></sit-data-input>
+        <sit-data-input type="number" id="TimeOut" #sitControl field="TimeOut" label="Timeout" appearance="outline" fxFlex="20"></sit-data-input>
+      </div>
+      <sit-data-input type="text" id="Params" #sitControl field="Params" label="Parametry" appearance="outline" fxFlex></sit-data-input>
+    </div>
   </sit-data-set-container>
 </sit-proc-params>

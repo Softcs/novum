@@ -2,26 +2,21 @@
   [(actionExecuteData)]="actionExecuteData"
   >
   <sit-data-set-container ident="sitAppUsersEdit" fxLayout="column">
-      <div fxFill style="padding: 5px;">
-        <div class="sit-proc-expander-title" *ngIf="actionIdent === 'insert'">Nowy użytkownik</div>
-        <div class="sit-proc-expander-title" *ngIf="actionIdent === 'update'">Edycja użytkownika</div>
+    <div class="sit-proc-params-content"  fxLayout="column">
 
-        <div fxLayout="column">
-          <div fxLayout="row">
-            <sit-data-input type="text" id="UserLogin" #sitControl field="UserLogin" label="Login" [showRefresh]=false appearance="outline" style="width: 200px"></sit-data-input>
-            <sit-data-input type="text" id="email" #sitControl field="email" label="E-mail" [showRefresh]=false appearance="outline" style="width: 200px"></sit-data-input>
-          </div>
-          <div fxLayout="row">
-            <sit-data-input type="text" id="Name" #sitControl field="Name" label="Imię" [showRefresh]=false appearance="outline" style="width: 200px"></sit-data-input>
-            <sit-data-input type="text" id="SurName" #sitControl field="SurName" label="Nazwisko" [showRefresh]=false appearance="outline" style="width: 200px"></sit-data-input>
-          </div>
-          <div fxLayout="row">
-            <sit-data-input type="text" id="sitMenuId" #sitControl field="sitMenuId" label="MenuId" [showRefresh]=false appearance="outline" style="width: 200px"></sit-data-input>
-            <sit-data-checkbox id="IsActive" #sitControl field="IsActive" label="Aktywny"></sit-data-checkbox>
-          </div>
+        <div fxLayout="row">
+          <sit-data-input #sitControl type="text" field="UserLogin" label="Login" [showRefresh]=false appearance="outline" style="width: 200px"></sit-data-input>
+          <sit-data-input #sitControl type="text" field="email" label="E-mail" [showRefresh]=false appearance="outline" style="width: 200px"></sit-data-input>
+        </div>
+        <div fxLayout="row">
+          <sit-data-input #sitControl type="text" field="Name" label="Imię" [showRefresh]=false appearance="outline" style="width: 200px"></sit-data-input>
+          <sit-data-input #sitControl type="text" field="SurName" label="Nazwisko" [showRefresh]=false appearance="outline" style="width: 200px"></sit-data-input>
+        </div>
+        <div fxLayout="row">
+          <sit-data-input #sitControl type="text" field="sitMenuId" label="MenuId" [showRefresh]=false appearance="outline" style="width: 200px"></sit-data-input>
+          <sit-data-checkbox #sitControl field="IsActive" label="Aktywny"></sit-data-checkbox>
         </div>
 
-      </div>
-
+    </div>
   </sit-data-set-container>
 </sit-proc-params>

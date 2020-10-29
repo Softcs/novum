@@ -1,32 +1,24 @@
 <sit-proc-params
   [(actionExecuteData)]="actionExecuteData"
   >
-  <sit-data-set-container ident="sitJobs" fxLayout="column">
-      <div style="padding: 5px; width: 600px; height: 300px;">
-        <div class="sit-proc-expander-title" *ngIf="actionIdent === 'insert'">Nowe zadanie</div>
-        <div class="sit-proc-expander-title" *ngIf="actionIdent === 'update'">Edytuj zadanie</div>
-
-        <div fxLayout="column">
-          <div fxLayout="row">
-            <sit-data-input type="text" id="JobIdent" #sitControl field="JobIdent" label="Identyfikator"  appearance="outline" fxFlex></sit-data-input>
-            <sit-data-checkbox id="IsActive" #sitControl field="IsActive" label="Aktywny"></sit-data-checkbox>
-          </div>
-          <div fxLayout="row">
-            <sit-data-input type="text" id="JobName" #sitControl field="JobName" label="Nazwa"  appearance="outline" fxFlex></sit-data-input>
-          </div>
-          <div fxLayout="row">
-            <sit-data-input type="text" id="IntervalKind" #sitControl field="IntervalKind" label="Rodzaj interwału - mm/hh" appearance="outline" fxFlex></sit-data-input>
-            <sit-data-input type="text" id="IntervalCounter" #sitControl field="IntervalCounter" label="Interwał - ilosć" appearance="outline" fxFlex></sit-data-input>
-          </div>
-          <div fxLayout="row">
-            <sit-data-input type="datetime-local" id="StartDate" #sitControl field="StartDate" label="Data rozpoczęcia" appearance="outline" style="width: 200px"></sit-data-input>
-            <sit-data-input type="text" id="sitCompaniesId" #sitControl field="sitCompaniesId" label="ID firmy" appearance="outline" style="width: 80px"></sit-data-input>
-          </div>
-          <div fxLayout="row">
-            <sit-data-checkbox id="RunImmediately" #sitControl field="RunImmediately" label="Uruchom natychmiast" fxFlex></sit-data-checkbox>
-          </div>
-        </div>
+  <sit-data-set-container ident="sitJobs">
+    <div class="sit-proc-params-content" fxLayout="column">
+      <div fxLayout="row">
+        <sit-data-checkbox #sitControl field="IsActive" label="Aktywny"></sit-data-checkbox>
+        <sit-data-checkbox  #sitControl field="RunImmediately" label="Uruchom natychmiast" fxFlex></sit-data-checkbox>
       </div>
-
+      <sit-data-input type="text" #sitControl field="JobIdent" label="Identyfikator"  appearance="outline" fxFlex></sit-data-input>
+      <div fxLayout="row">
+        <sit-data-input type="text" #sitControl field="JobName" label="Nazwa"  appearance="outline" fxFlex></sit-data-input>
+      </div>
+      <div fxLayout="row">
+        <sit-data-input type="text" #sitControl field="IntervalKind" label="Rodzaj interwału - mm/hh" appearance="outline" fxFlex></sit-data-input>
+        <sit-data-input type="text" #sitControl field="IntervalCounter" label="Interwał - ilosć" appearance="outline" fxFlex></sit-data-input>
+      </div>
+      <div fxLayout="row">
+        <sit-data-input type="datetime-local" #sitControl field="StartDate" label="Data rozpoczęcia" appearance="outline" style="width: 200px"></sit-data-input>
+        <sit-data-input type="text" #sitControl field="sitCompaniesId" label="ID firmy" appearance="outline" style="width: 80px"></sit-data-input>
+      </div>
+    </div>
   </sit-data-set-container>
 </sit-proc-params>

@@ -2,21 +2,14 @@
   [(actionExecuteData)]="actionExecuteData"
   >
   <sit-data-set-container ident="sitAgreementsEdit">
-      <div style="width: 400; height: 400; padding: 5px;">
-        <div class="sit-proc-expander-title" *ngIf="isInsert">Nowa umowa</div>
-        <div class="sit-proc-expander-title" *ngIf="isUpdate">Edycja umowy</div>
-
-        <div fxLayout="row">
-          <sit-data-input type="text" id="AgreementNo" #sitControl field="AgreementNo" label="Numer" [showRefresh]=false appearance="outline" fxFlex></sit-data-input>
-          <sit-data-input type="date" id="Date" #sitControl field="Date" label="Data umowy" [showRefresh]=false appearance="outline"></sit-data-input>
-          <sit-data-input type="date" id="DateTo" #sitControl field="DateTo" label="Data zakończenia" [showRefresh]=false appearance="outline"></sit-data-input>
-          <!-- <sit-files-button #sitSimpleButton fieldIdent="sitAgreementsG" ></sit-files-button> -->
-        </div>
-        <div fxLayout="row">
-          <sit-data-textarea type="textarea" id="AgreementDesc" #sitControl field="AgreementDesc" label="Opis" appearance="outline" rows="10" cols="80" style="padding-left: 5px;"></sit-data-textarea>
-        </div>
-
+    <div class="sit-proc-params-content" fxLayout="column">
+      <div fxLayout="row">
+        <sit-data-input type="text" #sitControl field="AgreementNo" label="Numer" [showRefresh]=false appearance="outline" fxFlex></sit-data-input>
+        <sit-data-input type="date" #sitControl field="Date" label="Data umowy" [showRefresh]=false appearance="outline"></sit-data-input>
+        <sit-data-input type="date" #sitControl field="DateTo" label="Data zakończenia" [showRefresh]=false appearance="outline"></sit-data-input>
+        <!-- <sit-files-button #sitSimpleButton fieldIdent="sitAgreementsG" ></sit-files-button> -->
       </div>
-
+      <sit-data-textarea type="textarea" #sitControl field="AgreementDesc" label="Opis" appearance="outline" rows="10" cols="80" style="padding-left: 5px;"></sit-data-textarea>
+    </div>
   </sit-data-set-container>
 </sit-proc-params>

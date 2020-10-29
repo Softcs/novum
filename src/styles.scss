@@ -159,23 +159,19 @@ body {
   padding-top: 7px;
 }
 
-.sit-edit-form {
+.sit-proc-params-content {
   background-color: $edit-form-background-color;
-  //margin: 5px 5px 0px;
-  padding: 5px 0px;
-
-}
-
-.sit-edit-form-content {
   overflow-y: auto;
+  padding: 20px;
+  min-width: 400px;
+  min-height: 200px;
 
 }
 
-.sit-edit-form-bottom-bar {
-  height: 70px;
-  // position: fixed;
-  // bottom:0%;
-  width:100%;
+.sit-proc-params-bottom-bar {
+  background-color: #9daebe;
+  height: 60px;
+  width: 100%;
 }
 
 .container-menu{
