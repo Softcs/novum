@@ -414,3 +414,11 @@ button:focus {
   min-height: 38px !important;
   height: 38px !important;
 }
+
+.sit-textarea-container {
+  font-size: 14px;
+  textarea{
+    background-color: transparent;
+    resize: both;
+  }
+}

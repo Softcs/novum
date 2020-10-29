@@ -1,4 +1,4 @@
-<mat-form-field appearance="{{ appearance }}" [style.fontSize.px]=14>
+<!-- <mat-form-field appearance="{{ appearance }}" [style.fontSize.px]=14>
   <mat-label>{{label}}</mat-label>
   <textarea
     matInput
@@ -14,4 +14,19 @@
     (blur)="onBlur($event)"
   >
   </textarea>
-</mat-form-field>
+</mat-form-field> -->
+<div fxLayout="column" class="sit-textarea-container">
+  <label>{{label}}</label>
+  <textarea
+    #inputElement
+    [value]="value"
+    [id]="id"
+    [rows]="rows"
+    [cols]="cols"
+    [readonly]="readonly"
+    (change)="onChange($event)"
+    (keyup)="onKeyup($event)"
+    (blur)="onBlur($event)"
+  >
+  </textarea>
+</div>
