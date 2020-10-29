@@ -6,9 +6,10 @@
           <as-split-area [size]="40">
             <div fxFill fxLayout="column">
               <sit-data-set-container ident="sitFilterCustomers" >
-                <span class="filter-container">
-                  <sit-data-input #sitControl field="searchCustomers" label="Filtruj klientów"  appearance="outline" showRefreshButton="true" style="width: 300px"></sit-data-input>
-                </span>
+                <div fxLayout="row">
+                  <sit-data-input #sitControl field="searchCustomers" label="Filtruj klientów"  appearance="outline" style="width: 300px"></sit-data-input>
+                  <sit-data-input #sitControl field="searchAgreements" label="Filtruj umowy" placeholder="Numer, treść"  appearance="outline" showRefreshButton="true" style="width: 300px"></sit-data-input>
+                </div>
               </sit-data-set-container>
               <div class="data-table" fxFlex>
                 <sit-data-set-container  ident="sitCustomers" fxFlex>
