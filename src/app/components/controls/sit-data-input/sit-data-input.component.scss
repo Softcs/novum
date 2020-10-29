@@ -1,7 +1,19 @@
 button {
   margin-right: 8px;
 }
+.hasLookup {
+  .mat-select {
+        visibility: collapse;
+  }
 
+  .lookupDropDawn {
+        align-self: center;
+
+        &.loading {
+          background-color: red;
+        }
+  }
+}
 .mat-form-field {
   height: 47px;
   .mat-form-field-wrapper {
@@ -18,9 +30,6 @@ button {
       }
       .mat-select-value, .mat-select-arrow {
         display: none;
-      }
-      .lookupDropDawn {
-        align-self: center;
       }
     }
   }

@@ -1,11 +1,11 @@
-import { Component, Input,  Renderer2, ViewEncapsulation, ContentChild, ViewChild } from '@angular/core';
+import { Component, Input,  Renderer2, ViewEncapsulation, ContentChild, ViewChild, NgZone } from '@angular/core';
 import { SitDataBaseComponent } from '../sit-data-base/sit-data-base.component';
 import { MatFormFieldAppearance  } from '@angular/material/form-field';
 import { SitRefreshButtonComponent } from '../sit-refresh-button/sit-refresh-button.component';
 import { MatAutocomplete } from '@angular/material/autocomplete';
 import { LookupService } from '@app/_services/lookup.service';
 import { MatSelect } from '@angular/material/select';
-import { Subscription } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'sit-data-input',
@@ -26,15 +26,24 @@ export class SitDataInputComponent extends SitDataBaseComponent {
   @Input() width: string;
   @Input() showRefreshButton: boolean;
   @Input() refreshOnChange: boolean;
+
   hasLookup: boolean;
+  lookupIsLoading = false;
+
   private lookupSettings = null;
-  lookupRows = [];
+  private _lookupRows = new BehaviorSubject<any[]>([]);
+
   lookupSubscriber: Subscription;
   lookupTimeout: any;
 
+  get lookupRows() {
+    return this._lookupRows.asObservable();
+  }
+
   constructor(
     _renderer: Renderer2,
-    private lookupService: LookupService) {
+    private lookupService: LookupService,
+    private ngZone: NgZone) {
     super(_renderer);
     this.showRefreshButton = false;
     this.refreshOnChange = true;
@@ -53,6 +62,7 @@ export class SitDataInputComponent extends SitDataBaseComponent {
     this.lookupSettings = this.dataSetWrapper.getLookupForField(this.field);
     this.hasLookup = this.lookupSettings != null;
     if (this.hasLookup) {
+      this._lookupRows.next([]);
       const lookupDataSourceWrapper = this.dataSetWrapper?.getDataSetManager().getDateSourceWrapper(this.lookupSettings.lookupDataSourceIdent);
       this.lookupSubscriber = lookupDataSourceWrapper?.lookupAfterPropagte.subscribe(ident => this.lookupAfterPropagte(ident));
     }
@@ -96,6 +106,7 @@ export class SitDataInputComponent extends SitDataBaseComponent {
 
   onLookupOpen() {
     const activeRow = this.dataSetWrapper.activeRow;
+    this.lookupIsLoading = true;
     this.lookupService.open(this.dataSetWrapper, activeRow, this.lookupSettings, this.getValue());
   }
 
@@ -112,10 +123,13 @@ export class SitDataInputComponent extends SitDataBaseComponent {
 
   private lookupAfterPropagte(ident: string) {
     if (this.lookupSettings != null && ident === this.lookupSettings.lookupDataSourceIdent) {
-      this.lookupRows.length = 0;
-      this.lookupRows.push.apply(this.lookupRows, this.getLookupRows());
       if (this.lookupElement) {
-        this.lookupElement.open();
+        this.ngZone.run( () => {
+          this._lookupRows.next(this.getLookupRows());
+          setTimeout(() => this.lookupElement.open(), 10);
+        });
+
+        this.lookupIsLoading = false;
       }
     }
   }
@@ -130,7 +144,7 @@ export class SitDataInputComponent extends SitDataBaseComponent {
     clearTimeout(this.lookupTimeout);
     this.lookupTimeout = setTimeout(() => {
       this.dataSetWrapper.setFieldValue(this.field, this.getValue());
-      this.onLookupOpen()
+      this.onLookupOpen();
     }, 1000);
 
   }
