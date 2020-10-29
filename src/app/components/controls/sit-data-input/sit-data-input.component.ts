@@ -30,6 +30,8 @@ export class SitDataInputComponent extends SitDataBaseComponent {
   private lookupSettings = null;
   lookupRows = [];
   lookupSubscriber: Subscription;
+  lookupTimeout: any;
+
   constructor(
     _renderer: Renderer2,
     private lookupService: LookupService) {
@@ -96,9 +98,11 @@ export class SitDataInputComponent extends SitDataBaseComponent {
     const activeRow = this.dataSetWrapper.activeRow;
     this.lookupService.open(this.dataSetWrapper, activeRow, this.lookupSettings, this.getValue());
   }
+
   onLookupSelect($event) {
     if (this.lookupSettings && this.lookupSettings.valuesTo) {
       const row = $event.value;
+
       this.lookupSettings.valuesTo.forEach(valueTo => {
         const fieldValue = row[valueTo.source];
         this.dataSetWrapper.setFieldValue(valueTo.target, fieldValue);
@@ -116,6 +120,20 @@ export class SitDataInputComponent extends SitDataBaseComponent {
     }
   }
 
+  onKeyup(event: any) {
+    super.onKeyup(event);
+    this._onKeyup(event);
+
+  }
+
+  _onKeyup(event: any) {
+    clearTimeout(this.lookupTimeout);
+    this.lookupTimeout = setTimeout(() => {
+      this.dataSetWrapper.setFieldValue(this.field, this.getValue());
+      this.onLookupOpen()
+    }, 1000);
+
+  }
 
   //#endregion lookup
 
