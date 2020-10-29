@@ -55,7 +55,7 @@ export class SitAppUsersComponent implements OnInit {
       { headerName: 'e-mail', field: 'email', filter: 'agTextColumnFilter', width: 200 },
       { headerName: 'MenuId', field: 'sitMenuId', type: 'numericColumn', filter: 'agTextColumnFilter', width: 80 },
       { headerName: 'Menu', field: 'Symbol', filter: 'agTextColumnFilter', width: 100 },
-      { headerName: 'Aktywny', field: 'IsActive', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, cellRenderer: 'gridCheckboxRenderer', cellClass: "grid-cell-centered", width: 80  },
+      { headerName: 'Aktywny', field: 'IsActive', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, cellRenderer: 'gridCheckboxRenderer', cellClass: "grid-cell-centered", width: 100  },
 
     ];
     this.columnDefsAppUserCompanies = [
@@ -79,7 +79,7 @@ export class SitAppUsersComponent implements OnInit {
   onGridReady(params) {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
-    this.gridColumnApi.setColumnsVisible(['sitAppUsersId','sitAppUsersG'],false)
+    this.gridColumnApi.setColumnsVisible(['sitAppUsersId','sitAppUsersG','sitMenuId'],false)
 
   }
 
