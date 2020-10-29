@@ -28,14 +28,14 @@ export class SitProcParamsComponent implements OnInit, AfterViewInit {
   public dictIdent: string;
 
   public executing = false;
-  public DataSetManager: DataSetManager;
+  public dataSetManager: DataSetManager;
 
   constructor(
     gatewayService: GatewayService,
     private tabService: TabService,
     public dialog: MatDialog,
   ) {
-    this.DataSetManager = new DataSetManager(gatewayService);
+    this.dataSetManager = new DataSetManager(gatewayService);
   }
 
   ngOnInit(): void {
@@ -54,8 +54,9 @@ export class SitProcParamsComponent implements OnInit, AfterViewInit {
     this.actionExecuteData = this.getActionExecuteData();
     this.dictIdent = this.actionExecuteData?.dataSetManagerSource?.dictIdent;
     this.dataSetManagerSource = this.actionExecuteData.dataSetManagerSource;
-    const dataSetContainer = this.DataSetManager.dataSetContainers.first;
-    this.mainDataSet = this.DataSetManager.CreateDataSetWrapper(dataSetContainer.ident, this.dataSetManagerSource);
+    this.dataSetManager.parentDataSetManager = this.dataSetManagerSource;
+    const dataSetContainer = this.dataSetManager.dataSetContainers.first;
+    this.mainDataSet = this.dataSetManager.CreateDataSetWrapper(dataSetContainer.ident, this.dataSetManagerSource);
     this.mainDataSet.GenerateRow(this.actionExecuteData.activeRow);
     dataSetContainer.setDataSource(this.mainDataSet);
     dataSetContainer.prepareControls(null);
@@ -64,7 +65,7 @@ export class SitProcParamsComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.DataSetManager.dataSetContainers = this.dataSetContainers;
+    this.dataSetManager.dataSetContainers = this.dataSetContainers;
     setTimeout(() => {
       this.prepareDataSet();
     }, 20);
@@ -132,10 +133,14 @@ export class SitProcParamsComponent implements OnInit, AfterViewInit {
   }
 
   private close() {
+    this.dataSetContainers?.forEach(container => {
+      container.detachEvents();
+    });
     if (this.isExpanderOpenKind()) {
       this.actionExecuteData.dataSetManagerSource.procExpander.Close(this.actionExecuteData);
     } else {
       this.tabService.removeTab(this.tabIndex);
     }
+
   }
 }

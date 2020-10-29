@@ -28,6 +28,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule} from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatInputModule } from '@angular/material/input';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatSelectModule } from '@angular/material/select';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatListModule } from '@angular/material/list';
@@ -105,16 +107,12 @@ import { SitAppUsersEditComponent } from './containers/dictionaries/sit-app-user
 import { SitAppUserCompaniesEditComponent } from './containers/dictionaries/sit-app-users/actions/sit-app-user-companies-edit/sit-app-user-companies-edit.component';
 import { SitAppUsersSetPasswordComponent } from './containers/dictionaries/sit-app-users/actions/sit-app-users-set-password/sit-app-users-set-password.component';
 import { AngularSplitModule } from 'angular-split';
-import { SitParamsEditComponent } from './containers/dictionaries/sit-params/actions/sit-params-edit/sit-params-edit.component'
-;
-import { SitJobsComponent } from './containers/dictionaries/sit-jobs/sit-jobs.component'
-;
-import { SitJobsEditComponent } from './containers/dictionaries/sit-jobs/actions/sit-jobs-edit/sit-jobs-edit.component'
-;
-import { SitJobStepsEditComponent } from './containers/dictionaries/sit-jobs/actions/sit-job-steps-edit/sit-job-steps-edit.component'
-;
-import { SitPdfViewerComponent } from './components/controls/sit-pdf-viewer/sit-pdf-viewer.component'
-;
+import { SitParamsEditComponent } from './containers/dictionaries/sit-params/actions/sit-params-edit/sit-params-edit.component';
+import { LookupService } from './_services/lookup.service';
+import { SitJobsComponent } from './containers/dictionaries/sit-jobs/sit-jobs.component';
+import { SitJobsEditComponent } from './containers/dictionaries/sit-jobs/actions/sit-jobs-edit/sit-jobs-edit.component';
+import { SitJobStepsEditComponent } from './containers/dictionaries/sit-jobs/actions/sit-job-steps-edit/sit-job-steps-edit.component';
+import { SitPdfViewerComponent } from './components/controls/sit-pdf-viewer/sit-pdf-viewer.component';
 import { SitLogisticUnitsEditComponent } from './containers/dictionaries/sit-stocks/actions/sit-logistic-units-edit/sit-logistic-units-edit.component'
 
 @NgModule({
@@ -134,6 +132,8 @@ import { SitLogisticUnitsEditComponent } from './containers/dictionaries/sit-sto
         MatTableModule,
         MatSortModule,
         MatInputModule,
+        MatAutocompleteModule,
+        MatSelectModule,
         MatPaginatorModule,
         MatCheckboxModule,
         MatListModule,
@@ -232,7 +232,8 @@ import { SitLogisticUnitsEditComponent } from './containers/dictionaries/sit-sto
         // provider used to create fake backend
         fakeBackendProvider,
         NavService,
-        Title
+        Title,
+        LookupService
     ],
     bootstrap: [AppComponent],
     entryComponents: [

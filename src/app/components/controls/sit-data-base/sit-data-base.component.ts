@@ -11,7 +11,13 @@ import { EventManager } from '@angular/platform-browser';
 export class SitDataBaseComponent implements ControlValueAccessor {
   private _dataSetWrapper: DataSetWrapper;
 
-  @Input() value: string = '';
+  @Input() value = '';
+  @Input() placeholder = '';
+  @Input() field = '';
+  @Input() id: string = null;
+  @Input() readonly = false;
+  @ViewChild('inputElement') private _inputElement: ElementRef;
+
   get dataSetWrapper(): DataSetWrapper {
     return this._dataSetWrapper;
   }
@@ -24,15 +30,10 @@ export class SitDataBaseComponent implements ControlValueAccessor {
     if (this._dataSetWrapper != null) {
       this._dataSetWrapper.activeRowChanged.subscribe( (row) => this.activeRowChanged(row, this));
       this._dataSetWrapper.afterSetFieldValue.subscribe((fieldName) => this.afterSetFieldValue(fieldName));
+      this._dataSetWrapper.afterPropagte.subscribe(ident => this.afterPropagte(ident));
     }
     this.afterSetDataSetWrapper();
   }
-
-  @Input() placeholder: string = '';
-  @Input() field: string = '';
-  @Input() id: string = null;
-  @Input() readonly: boolean = false;
-  @ViewChild('inputElement') private _inputElement: ElementRef;
 
   constructor(private _renderer: Renderer2) {
 
@@ -95,4 +96,10 @@ export class SitDataBaseComponent implements ControlValueAccessor {
 
   public afterSetDataSetWrapper() {
   }
+
+  protected afterPropagte(ident: string) {
+
+  }
+
+  public detachEvents() { }
 }
