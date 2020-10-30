@@ -1,14 +1,15 @@
 <sit-proc-params
   [(actionExecuteData)]="actionExecuteData"
-  >
+>
   <sit-data-set-container ident="sitMenuItemsEdit">
-    <div class="sit-proc-params-content"  fxLayout="column">
-      <sit-data-input type="number" id="OrdId" #sitControl field="OrdId" label="Kolejność" [showRefresh]=false appearance="outline"></sit-data-input>
-      <sit-data-input type="text" id="Caption" #sitControl field="Caption" label="Opis" [showRefresh]=false appearance="outline"></sit-data-input>
-      <sit-data-input type="text" id="Kind" #sitControl field="Kind" label="Rodzaj" [showRefresh]=false appearance="outline"></sit-data-input>
-      <sit-data-input type="text" id="Link" #sitControl field="Link" label="Link" [showRefresh]=false appearance="outline"></sit-data-input>
-      <sit-data-input type="text" id="ParentG" #sitControl field="ParentG" label="ParentG" [showRefresh]=false appearance="outline"></sit-data-input>
-      <sit-data-input type="text" id="Icon" #sitControl field="Icon" label="Ikona" [showRefresh]=false appearance="outline"></sit-data-input>
+    <div class="sit-proc-params-content" fxLayout="column">
+      <sit-data-input type="number" #sitControl field="OrdId" label="Kolejność" appearance="outline"></sit-data-input>
+      <sit-data-input type="text" #sitControl field="Caption" label="Opis" appearance="outline"></sit-data-input>
+      <sit-data-input type="text" #sitControl field="Kind" label="Rodzaj" appearance="outline"></sit-data-input>
+      <sit-data-input type="text" #sitControl field="Link" label="Link" appearance="outline"></sit-data-input>
+      <sit-data-input type="text" #sitControl field="ParentCaption" label="Grupa" appearance="outline"></sit-data-input>
+      <sit-data-input type="text" #sitControl field="ParentG" label="ParentG" appearance="outline"></sit-data-input>
+      <sit-data-input type="text" #sitControl field="Icon" label="Ikona" appearance="outline"></sit-data-input>
     </div>
   </sit-data-set-container>
 </sit-proc-params>

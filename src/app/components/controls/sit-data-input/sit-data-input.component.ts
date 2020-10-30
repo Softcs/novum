@@ -145,7 +145,7 @@ export class SitDataInputComponent extends SitDataBaseComponent {
     this.lookupTimeout = setTimeout(() => {
       this.dataSetWrapper.setFieldValue(this.field, this.getValue());
       this.onLookupOpen();
-    }, 1000);
+    }, 500);
 
   }
 
