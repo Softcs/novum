@@ -8,7 +8,7 @@ button {
 
   .lookupDropDawn {
         align-self: center;
-
+        cursor: pointer;
         &.loading {
           background-color: red;
         }

@@ -13,20 +13,25 @@
     (blur)="onBlur($event)"
     >
 
-    <mat-select #lookupElement *ngIf="hasLookup"
+    <mat-select #lookupElement *ngIf="hasLookup" style="width: 0px;"
       (selectionChange)="onLookupSelect($event)"
-      disableOptionCentering >
+      disableOptionCentering
+    >
       <mat-option *ngFor="let record of lookupRows | async" [value]="getLookupValue(record)">
         {{getLookupDisplay(record)}}
       </mat-option>
     </mat-select>
-    <span class="material-icons lookupDropDawn" [ngClass]="{'loading': lookupIsLoading}"
-      *ngIf="hasLookup"
-      (click)="onLookupOpen()"
-      style="cursor: pointer;">
-      arrow_drop_down
-    </span>
-</mat-form-field>
 
+</mat-form-field>
+<div *ngIf="hasLookup" style="width: 25px;">
+  <span
+     class="material-icons lookupDropDawn" [ngClass]="{'loading': lookupIsLoading}"
+    *ngIf="hasLookup && !lookupIsLoading"
+    (click)="onLookupOpen()"
+  >
+  arrow_drop_down
+  </span>
+  <div *ngIf="lookupIsLoading" class="spinner-border spinner-border-sm"></div>
+</div>
 <sit-refresh-button *ngIf="showRefreshButton" tooltip="Odśwież"></sit-refresh-button>
 
