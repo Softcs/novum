@@ -1,4 +1,4 @@
-<mat-form-field appearance="{{ appearance }}" fxFlex [style.fontSize.px]=12 [ngClass]="{'hasLookup': hasLookup}">
+<mat-form-field appearance="{{ appearance }}" fxFlex [style.fontSize.px]=12>
   <mat-label>{{label}}</mat-label>
   <input
     matInput
@@ -13,7 +13,7 @@
     (blur)="onBlur($event)"
     >
 
-    <mat-select #lookupElement *ngIf="hasLookup" style="width: 0px;"
+    <mat-select #lookupElement *ngIf="hasLookup" style="width: 0px;margin-top: 20px;"
       (selectionChange)="onLookupSelect($event)"
       disableOptionCentering
     >
@@ -21,17 +21,17 @@
         {{getLookupDisplay(record)}}
       </mat-option>
     </mat-select>
+    <div *ngIf="hasLookup" [ngClass]="{'hasLookup': hasLookup, 'loading': lookupIsLoading}" fxLayoutAlign="center center" >
+      <span
+         class="material-icons lookupDropDawn"
+        *ngIf="hasLookup && !lookupIsLoading"
+        (click)="onLookupOpen()"
+      >
+      arrow_drop_down
+      </span>
+      <div *ngIf="lookupIsLoading" class="spinner-border spinner-border-sm text-muted" style="width: 21px; height:21px;"></div>
+    </div>
 
 </mat-form-field>
-<div *ngIf="hasLookup" style="width: 25px;">
-  <span
-     class="material-icons lookupDropDawn" [ngClass]="{'loading': lookupIsLoading}"
-    *ngIf="hasLookup && !lookupIsLoading"
-    (click)="onLookupOpen()"
-  >
-  arrow_drop_down
-  </span>
-  <div *ngIf="lookupIsLoading" class="spinner-border spinner-border-sm"></div>
-</div>
 <sit-refresh-button *ngIf="showRefreshButton" tooltip="Odśwież"></sit-refresh-button>
 

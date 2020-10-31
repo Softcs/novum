@@ -5,22 +5,22 @@
     <div class="sit-proc-params-content" fxLayout="column">
       <sit-data-checkbox #sitControl field="IsActive" label="Aktywny"></sit-data-checkbox>
       <div fxLayout="row">
-        <sit-data-input type="number" #sitControl field="sitCompaniesId" label="ID firmy" [showRefresh]=false appearance="outline" style="width: 100px"></sit-data-input>
-        <sit-data-input type="text" #sitControl field="CompanyIdent" label="Firma" [showRefresh]=false appearance="outline"></sit-data-input>
-        <sit-data-input type="number" #sitControl field="sitWSUsersId" label="User Id" [showRefresh]=false appearance="outline" style="width: 100px"></sit-data-input>
-        <sit-data-input type="text" #sitControl field="UserLogin" label="Użytkownik" [showRefresh]=false appearance="outline"></sit-data-input>
-        <sit-data-input type="number" #sitControl field="Timeout" label="Timeout" [showRefresh]=false appearance="outline" ></sit-data-input>
-        <sit-data-input type="text" #sitControl field="Source" label="Źródło" [showRefresh]=false appearance="outline"></sit-data-input>
+        <!-- <sit-data-input type="number" #sitControl field="sitCompaniesId" label="ID firmy" appearance="outline" style="width: 100px"></sit-data-input> -->
+        <sit-data-input type="text" #sitControl field="CompanyIdent" label="Firma" appearance="outline"></sit-data-input>
+        <!-- <sit-data-input type="number" #sitControl field="sitWSUsersId" label="User Id" appearance="outline" style="width: 100px"></sit-data-input> -->
+        <sit-data-input type="text" #sitControl field="UserLogin" label="Użytkownik" appearance="outline"></sit-data-input>
+        <sit-data-input type="number" #sitControl field="Timeout" label="Timeout" appearance="outline" ></sit-data-input>
+        <sit-data-input type="text" #sitControl field="Source" label="Źródło" appearance="outline"></sit-data-input>
       </div>
 
       <div fxLayout="row">
-        <sit-data-input type="text" #sitControl field="ClientGuid" label="GUID Rail'a" [showRefresh]=false appearance="outline" style="width: 350px;"></sit-data-input>
-        <sit-data-input type="text" #sitControl field="OperationIdent" label="Identyfikator operacji" [showRefresh]=false appearance="outline" style="width: 100%;"></sit-data-input>
+        <sit-data-input type="text" #sitControl field="ClientGuid" label="GUID Rail'a" appearance="outline" style="width: 400px;"></sit-data-input>
+        <sit-data-input type="text" #sitControl field="OperationIdent" label="Identyfikator operacji" appearance="outline" style="width: 100%;"></sit-data-input>
       </div>
 
       <div fxLayout="row">
-        <sit-data-input type="text" #sitControl field="TransformProcedure" label="Procedura transformująca" [showRefresh]=false appearance="outline" style="width: 100%;"></sit-data-input>
-        <sit-data-input type="text" #sitControl field="ConvertFunctionForParams" label="Funkcja konwertująca parametry" [showRefresh]=false appearance="outline" style="width: 100%;"></sit-data-input>
+        <sit-data-input type="text" #sitControl field="TransformProcedure" label="Procedura transformująca" appearance="outline" style="width: 100%;"></sit-data-input>
+        <sit-data-input type="text" #sitControl field="ConvertFunctionForParams" label="Funkcja konwertująca parametry" appearance="outline" style="width: 100%;"></sit-data-input>
       </div>
 
       <div fxLayout="row">
