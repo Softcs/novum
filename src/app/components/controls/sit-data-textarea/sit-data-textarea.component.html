@@ -16,13 +16,13 @@
   </textarea>
 </mat-form-field> -->
 <div fxLayout="column" class="sit-textarea-container">
-  <label>{{label}}</label>
+  <label class="sit-textarea-label">{{label}}</label>
   <textarea
     #inputElement
     [value]="value"
     [id]="id"
-    [rows]="rows"
-    [cols]="cols"
+    [rows]=""
+    [cols]=""
     [readonly]="readonly"
     (change)="onChange($event)"
     (keyup)="onKeyup($event)"
