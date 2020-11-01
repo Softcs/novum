@@ -1,4 +1,6 @@
-﻿import { SitLogisticUnitsEditComponent } from './../containers/dictionaries/sit-stocks/actions/sit-logistic-units-edit/sit-logistic-units-edit.component';
+﻿import { SitWarehousesEditComponent } from './../containers/dictionaries/sit-warehouses/actions/sit-warehouses-edit/sit-warehouses-edit.component';
+import { SitWarehousesComponent } from './../containers/dictionaries/sit-warehouses/sit-warehouses.component';
+import { SitLogisticUnitsEditComponent } from './../containers/dictionaries/sit-stocks/actions/sit-logistic-units-edit/sit-logistic-units-edit.component';
 import { SitJobStepsEditComponent } from './../containers/dictionaries/sit-jobs/actions/sit-job-steps-edit/sit-job-steps-edit.component';
 import { SitJobsEditComponent } from './../containers/dictionaries/sit-jobs/actions/sit-jobs-edit/sit-jobs-edit.component';
 import { SitJobsComponent } from './../containers/dictionaries/sit-jobs/sit-jobs.component';
@@ -73,6 +75,8 @@ export class FactoryService {
         sitJobsEdit: SitJobsEditComponent,
         sitJobStepsEdit: SitJobStepsEditComponent,
         sitLogisticUnitsEdit: SitLogisticUnitsEditComponent,
+        sitWarehouses: SitWarehousesComponent,
+        sitWarehousesEdit: SitWarehousesEditComponent
 
     };
 

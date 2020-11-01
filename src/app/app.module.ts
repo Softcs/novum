@@ -114,6 +114,10 @@ import { SitJobsEditComponent } from './containers/dictionaries/sit-jobs/actions
 import { SitJobStepsEditComponent } from './containers/dictionaries/sit-jobs/actions/sit-job-steps-edit/sit-job-steps-edit.component';
 import { SitPdfViewerComponent } from './components/controls/sit-pdf-viewer/sit-pdf-viewer.component';
 import { SitLogisticUnitsEditComponent } from './containers/dictionaries/sit-stocks/actions/sit-logistic-units-edit/sit-logistic-units-edit.component'
+;
+import { SitWarehousesComponent } from './containers/dictionaries/sit-warehouses/sit-warehouses.component'
+;
+import { SitWarehousesEditComponent } from './containers/dictionaries/sit-warehouses/actions/sit-warehouses-edit/sit-warehouses-edit.component'
 
 @NgModule({
     imports: [
@@ -223,6 +227,10 @@ import { SitLogisticUnitsEditComponent } from './containers/dictionaries/sit-sto
         SitPdfViewerComponent,
         SitLogisticUnitsEditComponent,
         SitLogisticUnitsEditComponent
+,
+        SitWarehousesComponent
+,
+        SitWarehousesEditComponent
 
      ],
     providers: [
@@ -259,7 +267,9 @@ import { SitLogisticUnitsEditComponent } from './containers/dictionaries/sit-sto
       SitJobsComponent,
       SitJobsEditComponent,
       SitJobStepsEditComponent,
-      SitLogisticUnitsEditComponent
+      SitLogisticUnitsEditComponent,
+      SitWarehousesComponent,
+      SitWarehousesEditComponent
     ]
 })
 export class AppModule { }
