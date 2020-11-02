@@ -6,10 +6,23 @@
         <div class="sit-filter-bar">
           <sit-data-set-container ident="sitFilterProjectsPub" >
             <div style="width: 100%;">
-              <sit-data-input #sitControl id="searchProjectsPub" field="searchProjectsPub" label="Filtruj projekty" placeholder="Projekt, Nazwa, EAN" appearance="outline" style="width: 100%;"></sit-data-input>
+              <sit-data-input #sitControl id="searchProjectsPub" field="searchProjectsPub" label="Filtruj projekty" placeholder="Projekt, Nazwa, EAN" appearance="outline" style="width: 100%;" showRefreshButton="true"></sit-data-input>
             </div>
           </sit-data-set-container>
         </div>
+
+        <sit-data-set-container  ident="sitProjectsPub">
+          <div class="sit-proc-bar">
+            <mat-toolbar color="accent">
+              <mat-toolbar-row>
+                <div class="sit-proc-buttons-row">
+                  <sit-proc-button #sitAction actionIdent="registerWorkTime" componentParamsIdent="sitProjectsPubRegisterWorkTimeEdit" openKind="EXPANDER" tooltip="Rejestrój czas pracy" color="primary" icon="schedule"></sit-proc-button>
+                </div>
+              </mat-toolbar-row>
+            </mat-toolbar>
+          </div>
+        </sit-data-set-container>
+
         <div class="data-table" fxFlex>
           <ag-grid-angular #sitSetDataSource
             #agGrid

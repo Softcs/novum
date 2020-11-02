@@ -141,12 +141,12 @@ export class SitDataInputComponent extends SitDataBaseComponent {
   }
 
   _onKeyup(event: any) {
+    if (!this.hasLookup) { return; }
     clearTimeout(this.lookupTimeout);
     this.lookupTimeout = setTimeout(() => {
       this.dataSetWrapper.setFieldValue(this.field, this.getValue());
       this.onLookupOpen();
     }, 500);
-
   }
 
   //#endregion lookup
