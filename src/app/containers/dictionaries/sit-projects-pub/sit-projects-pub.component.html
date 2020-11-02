@@ -10,7 +10,7 @@
           </sit-data-set-container>
         </div>
 
-        <sit-data-set-container  ident="sitProjectsPub" fxLayout="column" fxFlex>
+        <sit-data-set-container  ident="sitProjectsPub" fxLayout="column" (activeRowChanged)="activeRowProjectsPubChanged($event)" fxFlex>
           <div class="sit-proc-bar">
             <mat-toolbar color="accent">
               <mat-toolbar-row>
