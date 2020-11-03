@@ -1,4 +1,8 @@
-﻿import { SitProjectsPubRegisterWorkTimeComponent } from './../containers/dictionaries/sit-projects-pub/actions/sit-projects-pub-register-work-time/sit-projects-pub-register-work-time.component';
+﻿import { SitSysActionsEditComponent } from '../containers/dictionaries/sit-sys-dictionaries/actions/sit-sys-actions-edit/sit-sys-actions-edit.component';
+import { SitSysDatasourcesEditComponent } from './../containers/dictionaries/sit-sys-dictionaries/actions/sit-sys-datasources-edit/sit-sys-datasources-edit.component';
+import { SitSysDictionariesEditComponent } from './../containers/dictionaries/sit-sys-dictionaries/actions/sit-sys-dictionaries-edit/sit-sys-dictionaries-edit.component';
+import { SitSysDictionariesComponent } from './../containers/dictionaries/sit-sys-dictionaries/sit-sys-dictionaries.component';
+import { SitProjectsPubRegisterWorkTimeComponent } from './../containers/dictionaries/sit-projects-pub/actions/sit-projects-pub-register-work-time/sit-projects-pub-register-work-time.component';
 import { SitWarehousesEditComponent } from './../containers/dictionaries/sit-warehouses/actions/sit-warehouses-edit/sit-warehouses-edit.component';
 import { SitWarehousesComponent } from './../containers/dictionaries/sit-warehouses/sit-warehouses.component';
 import { SitLogisticUnitsEditComponent } from './../containers/dictionaries/sit-stocks/actions/sit-logistic-units-edit/sit-logistic-units-edit.component';
@@ -78,7 +82,11 @@ export class FactoryService {
         sitLogisticUnitsEdit: SitLogisticUnitsEditComponent,
         sitWarehouses: SitWarehousesComponent,
         sitWarehousesEdit: SitWarehousesEditComponent,
-        sitProjectsPubRegisterWorkTimeEdit: SitProjectsPubRegisterWorkTimeComponent
+        sitProjectsPubRegisterWorkTimeEdit: SitProjectsPubRegisterWorkTimeComponent,
+        sitSysDictionaries: SitSysDictionariesComponent,
+        sitSysDictionariesEdit: SitSysDictionariesEditComponent,
+        sitSysDatasourcesEdit: SitSysDatasourcesEditComponent,
+        sitSysActionsEdit: SitSysActionsEditComponent
 
     };
 

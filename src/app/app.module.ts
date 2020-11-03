@@ -113,14 +113,14 @@ import { SitJobsComponent } from './containers/dictionaries/sit-jobs/sit-jobs.co
 import { SitJobsEditComponent } from './containers/dictionaries/sit-jobs/actions/sit-jobs-edit/sit-jobs-edit.component';
 import { SitJobStepsEditComponent } from './containers/dictionaries/sit-jobs/actions/sit-job-steps-edit/sit-job-steps-edit.component';
 import { SitPdfViewerComponent } from './components/controls/sit-pdf-viewer/sit-pdf-viewer.component';
-import { SitLogisticUnitsEditComponent } from './containers/dictionaries/sit-stocks/actions/sit-logistic-units-edit/sit-logistic-units-edit.component'
-;
-import { SitWarehousesComponent } from './containers/dictionaries/sit-warehouses/sit-warehouses.component'
-;
-import { SitWarehousesEditComponent } from './containers/dictionaries/sit-warehouses/actions/sit-warehouses-edit/sit-warehouses-edit.component'
-;
-import { SitProjectsPubRegisterWorkTimeComponent } from './containers/dictionaries/sit-projects-pub/actions/sit-projects-pub-register-work-time/sit-projects-pub-register-work-time.component'
-
+import { SitLogisticUnitsEditComponent } from './containers/dictionaries/sit-stocks/actions/sit-logistic-units-edit/sit-logistic-units-edit.component';
+import { SitWarehousesComponent } from './containers/dictionaries/sit-warehouses/sit-warehouses.component';
+import { SitWarehousesEditComponent } from './containers/dictionaries/sit-warehouses/actions/sit-warehouses-edit/sit-warehouses-edit.component';
+import { SitProjectsPubRegisterWorkTimeComponent } from './containers/dictionaries/sit-projects-pub/actions/sit-projects-pub-register-work-time/sit-projects-pub-register-work-time.component';
+import { SitSysDictionariesComponent } from './containers/dictionaries/sit-sys-dictionaries/sit-sys-dictionaries.component';
+import { SitSysDictionariesEditComponent } from './containers/dictionaries/sit-sys-dictionaries/actions/sit-sys-dictionaries-edit/sit-sys-dictionaries-edit.component';
+import { SitSysDatasourcesEditComponent } from './containers/dictionaries/sit-sys-dictionaries/actions/sit-sys-datasources-edit/sit-sys-datasources-edit.component';
+import { SitSysActionsEditComponent } from './containers/dictionaries/sit-sys-dictionaries/actions/sit-sys-actions-edit/sit-sys-actions-edit.component'
 @NgModule({
     imports: [
         BrowserModule,
@@ -228,14 +228,14 @@ import { SitProjectsPubRegisterWorkTimeComponent } from './containers/dictionari
         SitJobStepsEditComponent,
         SitPdfViewerComponent,
         SitLogisticUnitsEditComponent,
-        SitLogisticUnitsEditComponent
-,
-        SitWarehousesComponent
-,
-        SitWarehousesEditComponent
-,
-        SitProjectsPubRegisterWorkTimeComponent
-
+        SitLogisticUnitsEditComponent,
+        SitWarehousesComponent,
+        SitWarehousesEditComponent,
+        SitProjectsPubRegisterWorkTimeComponent,
+        SitSysDictionariesComponent,
+        SitSysDictionariesEditComponent,
+        SitSysDatasourcesEditComponent,
+        SitSysActionsEditComponent
      ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
@@ -274,7 +274,11 @@ import { SitProjectsPubRegisterWorkTimeComponent } from './containers/dictionari
       SitLogisticUnitsEditComponent,
       SitWarehousesComponent,
       SitWarehousesEditComponent,
-      SitProjectsPubRegisterWorkTimeComponent
+      SitProjectsPubRegisterWorkTimeComponent,
+      SitSysDictionariesComponent,
+      SitSysDictionariesEditComponent,
+      SitSysDatasourcesEditComponent,
+      SitSysActionsEditComponent
     ]
 })
 export class AppModule { }

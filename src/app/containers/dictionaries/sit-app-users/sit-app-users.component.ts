@@ -61,11 +61,10 @@ export class SitAppUsersComponent implements OnInit {
     this.columnDefsAppUserCompanies = [
       { headerName: 'sitAppUserCompaniesId', field: 'sitAppUserCompaniesId', type: 'numericColumn', filter: 'agTextColumnFilter', flex: 1 },
       { headerName: 'sitAppUserCompaniesG', field: 'sitAppUserCompaniesG', filter: 'agTextColumnFilter', flex: 1 },
-      { headerName: 'Id', field: 'sitCompaniesId', type: 'numericColumn', filter: 'agTextColumnFilter', flex: 1 },
-      { headerName: 'Symbol', field: 'CompanyIdent', filter: 'agTextColumnFilter', flex: 2 },
+      { headerName: 'Identyfikator', field: 'CompanyIdent', filter: 'agTextColumnFilter', flex: 2 },
       { headerName: 'Nazwa', field: 'CompanyDescription', filter: 'agTextColumnFilter', flex: 3 },
       { headerName: 'Plik konfig.', field: 'ConfigFile', filter: 'agTextColumnFilter', flex: 1 },
-      { headerName: 'Def', field: 'Def', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, cellRenderer: 'gridCheckboxRenderer', cellClass: "grid-cell-centered", flex: 1  },
+      { headerName: 'Domyślna', field: 'IsDefault', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, cellRenderer: 'gridCheckboxRenderer', cellClass: "grid-cell-centered", flex: 1  },
 
     ];
     this.frameworkComponents = {
