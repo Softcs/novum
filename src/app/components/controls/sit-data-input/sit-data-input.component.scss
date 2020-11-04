@@ -1,6 +1,19 @@
+$input-height: 40px;
+
+.lookup-select-panel-class {
+  margin-top: $input-height!important;
+  margin-left: 20px;
+}
+
+.lookup-select {
+  visibility: collapse;
+  width: 0px!important
+}
+
 button {
   margin-right: 8px;
 }
+
 .hasLookup {
   margin-top: -11px;
   margin-right: -6px;
@@ -34,11 +47,11 @@ button {
 .mat-form-field {
   height: 47px;
   .mat-form-field-wrapper {
-    height: 40px;
+    height: $input-height;
     padding: 0px 1px 5px;
     .mat-form-field-infix {
       width: auto;
-      height: 40px;
+      height: $input-height;
       padding-top: 7px;
       display: inline-flex;
 
