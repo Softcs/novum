@@ -31,6 +31,10 @@ export class SitAppUsersComponent implements OnInit {
   gridColumnApiAppUserCompanies;
   columnDefsAppUserCompanies;
 
+  gridApiRightsGroupUsers;
+  gridColumnApiRightsGroupUsers;
+  columnDefsRightsGroupUsers;
+
   constructor(
     private gatewayService: GatewayService
   ) {
@@ -58,6 +62,7 @@ export class SitAppUsersComponent implements OnInit {
       { headerName: 'Aktywny', field: 'IsActive', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, cellRenderer: 'gridCheckboxRenderer', cellClass: "grid-cell-centered", width: 100  },
 
     ];
+
     this.columnDefsAppUserCompanies = [
       { headerName: 'sitAppUserCompaniesId', field: 'sitAppUserCompaniesId', type: 'numericColumn', filter: 'agTextColumnFilter', flex: 1 },
       { headerName: 'sitAppUserCompaniesG', field: 'sitAppUserCompaniesG', filter: 'agTextColumnFilter', flex: 1 },
@@ -67,6 +72,12 @@ export class SitAppUsersComponent implements OnInit {
       { headerName: 'Domyślna', field: 'IsDefault', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, cellRenderer: 'gridCheckboxRenderer', cellClass: "grid-cell-centered", flex: 1  },
 
     ];
+
+    this.columnDefsRightsGroupUsers = [
+      { headerName: 'Identyfikator', field: 'RightsGroupIdent', filter: 'agTextColumnFilter'},
+      { headerName: 'Nazwa', field: 'RightsGroupName', filter: 'agTextColumnFilter'},
+    ];
+
     this.frameworkComponents = {
       gridCheckboxRenderer: GridCheckboxRenderer,
     };
@@ -83,10 +94,14 @@ export class SitAppUsersComponent implements OnInit {
   }
 
   onGridReadyAppUserCompanies(params) {
-    this.gridApi = params.api;
-    this.gridColumnApi = params.columnApi;
-    this.gridColumnApi.setColumnsVisible(['sitAppUserCompaniesId','sitAppUserCompaniesG'],false)
+    this.gridApiAppUserCompanies = params.api;
+    this.gridColumnApiAppUserCompanies = params.columnApi;
+    this.gridColumnApiAppUserCompanies.setColumnsVisible(['sitAppUserCompaniesId','sitAppUserCompaniesG'],false)
+  }
 
+  onGridReadyRightsGroupUsers(params) {
+    this.gridApiRightsGroupUsers = params.api;
+    this.gridColumnApiRightsGroupUsers = params.columnApi;
   }
 
   onRowClicked(event) {
@@ -96,6 +111,11 @@ export class SitAppUsersComponent implements OnInit {
 
   onRowClickedAppUserCompanies(event) {
     const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitAppUserCompanies');
+      dataSourceResponseWrapper.SetActiveRow(event.data);
+  }
+
+  onRowClickedRightsGroupUsers(event) {
+    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitRightsGroupUsers');
       dataSourceResponseWrapper.SetActiveRow(event.data);
   }
 

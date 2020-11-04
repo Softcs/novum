@@ -121,6 +121,8 @@ import { SitSysDictionariesComponent } from './containers/dictionaries/sit-sys-d
 import { SitSysDictionariesEditComponent } from './containers/dictionaries/sit-sys-dictionaries/actions/sit-sys-dictionaries-edit/sit-sys-dictionaries-edit.component';
 import { SitSysDatasourcesEditComponent } from './containers/dictionaries/sit-sys-dictionaries/actions/sit-sys-datasources-edit/sit-sys-datasources-edit.component';
 import { SitSysActionsEditComponent } from './containers/dictionaries/sit-sys-dictionaries/actions/sit-sys-actions-edit/sit-sys-actions-edit.component'
+;
+import { SitRightsGroupUsersEditComponent } from './containers/dictionaries/sit-app-users/actions/sit-rights-group-users-edit/sit-rights-group-users-edit.component'
 @NgModule({
     imports: [
         BrowserModule,
@@ -236,6 +238,8 @@ import { SitSysActionsEditComponent } from './containers/dictionaries/sit-sys-di
         SitSysDictionariesEditComponent,
         SitSysDatasourcesEditComponent,
         SitSysActionsEditComponent
+,
+        SitRightsGroupUsersEditComponent
      ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
@@ -278,7 +282,8 @@ import { SitSysActionsEditComponent } from './containers/dictionaries/sit-sys-di
       SitSysDictionariesComponent,
       SitSysDictionariesEditComponent,
       SitSysDatasourcesEditComponent,
-      SitSysActionsEditComponent
+      SitSysActionsEditComponent,
+      SitRightsGroupUsersEditComponent
     ]
 })
 export class AppModule { }
