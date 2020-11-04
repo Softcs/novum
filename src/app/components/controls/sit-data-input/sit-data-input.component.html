@@ -1,26 +1,21 @@
-<mat-form-field appearance="{{ appearance }}" fxFlex [style.fontSize.px]=12>
-  <mat-label>{{label}}</mat-label>
-  <input
-    matInput
-    #inputElement
-    [value]="value"
-    [type]="type"
-    [id]="id"
-    [placeholder]="placeholder"
-    [readonly]="readonly"
-    (change)="onChange($event)"
-    (keyup)="onKeyup($event)"
-    (blur)="onBlur($event)"
-    >
+<mat-select #lookupElement *ngIf="hasLookup" class="lookup-select"
+  panelClass="lookup-select-panel-class"
+  (selectionChange)="onLookupSelect($event)"
+  disableOptionCentering>
+  <mat-option *ngFor="let record of lookupRows | async" [value]="getLookupValue(record)">
+    <span *ngFor="let dispField of lookupDisplayFields" class="{{dispField}}">
+      {{record[dispField]}}
+    </span>
+    <ng-template *ngIf="lookupDisplayFields">
+      {{getLookupDisplay(record)}}
+    </ng-template>
+  </mat-option>
+</mat-select>
 
-    <mat-select #lookupElement *ngIf="hasLookup" style="width: 0px;margin-top: 20px;"
-      (selectionChange)="onLookupSelect($event)"
-      disableOptionCentering
-    >
-      <mat-option *ngFor="let record of lookupRows | async" [value]="getLookupValue(record)">
-        {{getLookupDisplay(record)}}
-      </mat-option>
-    </mat-select>
+<mat-form-field appearance="{{ appearance }}" fxFlex [style.fontSize.px]=12>
+    <mat-label>{{label}}</mat-label>
+    <input matInput #inputElement [value]="value" [type]="type" [id]="id" [placeholder]="placeholder" [readonly]="readonly"
+      (change)="onChange($event)" (keyup)="onKeyup($event)" (blur)="onBlur($event)">
     <div *ngIf="hasLookup" [ngClass]="{'hasLookup': hasLookup, 'loading': lookupIsLoading}" fxLayoutAlign="center center" >
       <span
          class="material-icons lookupDropDawn"
@@ -31,7 +26,7 @@
       </span>
       <div *ngIf="lookupIsLoading" class="spinner-border spinner-border-sm text-muted" style="width: 21px; height:21px;"></div>
     </div>
-
 </mat-form-field>
+
 <sit-refresh-button *ngIf="showRefreshButton" tooltip="Odśwież"></sit-refresh-button>
 

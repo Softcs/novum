@@ -244,7 +244,7 @@ export class DataSetWrapper {
         return newRow;
     }
 
-    private clearLookupsFieldsForField(fieldName: string, usedFields: string[]) {
+    private clearLookupsFieldsForField(fieldName: string, usedFields: string[], rowToChange: any ) {
         const lookupSettings = this.getLookupForField(fieldName);
         if (!lookupSettings) {
             return;
@@ -253,7 +253,7 @@ export class DataSetWrapper {
         lookupSettings.valuesTo.forEach(valueTo => {
             if (usedFields.indexOf(valueTo.target) === -1) {
                 usedFields.push(valueTo.target);
-                this.setFieldValue(valueTo.target, null);
+                this.setFieldValue(valueTo.target, null, rowToChange);
             }
         });
     }
@@ -271,7 +271,7 @@ export class DataSetWrapper {
         row[fieldName] = fieldValue;
         if (!Boolean(fieldValue)) {
             const usedFields = [fieldName];
-            this.clearLookupsFieldsForField(fieldName, usedFields);
+            this.clearLookupsFieldsForField(fieldName, usedFields, row);
         }
 
         this.afterSetFieldValue.emit(fieldName);

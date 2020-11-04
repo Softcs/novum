@@ -26,6 +26,7 @@ export class SitDataInputComponent extends SitDataBaseComponent {
   @Input() width: string;
   @Input() showRefreshButton: boolean;
   @Input() refreshOnChange: boolean;
+  @Input() lookupDisplayFields: string[];
 
   hasLookup: boolean;
   lookupIsLoading = false;
@@ -63,7 +64,9 @@ export class SitDataInputComponent extends SitDataBaseComponent {
     this.hasLookup = this.lookupSettings != null;
     if (this.hasLookup) {
       this._lookupRows.next([]);
-      const lookupDataSourceWrapper = this.dataSetWrapper?.getDataSetManager().getDateSourceWrapper(this.lookupSettings.lookupDataSourceIdent);
+      const lookupDataSourceWrapper = this.dataSetWrapper?.getDataSetManager()
+                                        .getDateSourceWrapper(this.lookupSettings.lookupDataSourceIdent);
+
       this.lookupSubscriber = lookupDataSourceWrapper?.lookupAfterPropagte.subscribe(ident => this.lookupAfterPropagte(ident));
     }
   }
