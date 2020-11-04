@@ -136,11 +136,7 @@ export class SitDataInputComponent extends SitDataBaseComponent {
 
   onKeyup(event: any) {
     super.onKeyup(event);
-    this._onKeyup(event);
 
-  }
-
-  _onKeyup(event: any) {
     if (!this.hasLookup) { return; }
     clearTimeout(this.lookupTimeout);
     this.lookupTimeout = setTimeout(() => {
@@ -148,7 +144,6 @@ export class SitDataInputComponent extends SitDataBaseComponent {
       this.onLookupOpen();
     }, 500);
   }
-
   //#endregion lookup
 
 }
