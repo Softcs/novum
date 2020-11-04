@@ -1,9 +1,11 @@
 import { DataSetManager, Operation } from '.';
 import { Output, EventEmitter } from '@angular/core';
 import { Guid } from 'guid-typescript';
+import { _ } from 'ag-grid-community';
 
 export class DataSetWrapper {
     private _rows: any[];
+    private _dataSource: any;
     public activeRow: any;
     public errors: [any];
     public fields: [any];
@@ -26,8 +28,7 @@ export class DataSetWrapper {
         public ident: string,
         public dataSourceManager: DataSetManager,
         private dataSetManagerSource: DataSetManager
-        )
-    {
+        ) {
         this._rows = null;
         this.fields = null;
         this.readFields(dataSetManagerSource);
@@ -46,8 +47,12 @@ export class DataSetWrapper {
         return this.connectedLookups != null;
     }
 
-    private findDataSource() {
-        return this.dataSourceManager?.FindDataSource(this.ident);
+    private getDataSource() {
+        if (this._dataSource) {
+            return this._dataSource;
+        }
+        this._dataSource = this.dataSourceManager?.FindDataSource(this.ident);
+        return this._dataSource;
     }
 
     public Refresh() {
@@ -69,7 +74,7 @@ export class DataSetWrapper {
     }
 
     private readLookups(dataSetManagerSource: DataSetManager) {
-        let dataSourceDef = this.findDataSource();
+        let dataSourceDef = this.getDataSource();
         if (dataSourceDef == null) {
             dataSourceDef = dataSetManagerSource?.FindDataSource(this.ident);
         }
@@ -78,7 +83,7 @@ export class DataSetWrapper {
     }
 
     private readFields(dataSetManagerSource: DataSetManager) {
-        let dataSourceDef = this.findDataSource();
+        let dataSourceDef = this.getDataSource();
         if (dataSourceDef == null) {
             dataSourceDef = dataSetManagerSource?.FindDataSource(this.ident);
         }
@@ -194,7 +199,7 @@ export class DataSetWrapper {
     }
 
     public allParentsHaveRows(): boolean {
-        const dataSourceDef = this.findDataSource();
+        const dataSourceDef = this.getDataSource();
         if (!dataSourceDef || !dataSourceDef.hasParents) {
             return true;
         }
@@ -239,15 +244,39 @@ export class DataSetWrapper {
         return newRow;
     }
 
+    private clearLookupsFieldsForField(fieldName: string, usedFields: string[]) {
+        const lookupSettings = this.getLookupForField(fieldName);
+        if (!lookupSettings) {
+            return;
+        }
+
+        lookupSettings.valuesTo.forEach(valueTo => {
+            if (usedFields.indexOf(valueTo.target) === -1) {
+                usedFields.push(valueTo.target);
+                this.setFieldValue(valueTo.target, null);
+            }
+        });
+    }
+
     public setFieldValue(fieldName: string, fieldValue: any, rowToChange: any = null) {
         const row = rowToChange ?? this.activeRow;
 
         if (row == null) {
             throw new Error('Active row is unnassigned');        }
 
+        if (row[fieldName] === fieldValue) {
+            return;
+        }
+
         row[fieldName] = fieldValue;
+        if (!Boolean(fieldValue)) {
+            const usedFields = [fieldName];
+            this.clearLookupsFieldsForField(fieldName, usedFields);
+        }
+
         this.afterSetFieldValue.emit(fieldName);
     }
+
 
     public getFieldValue(fieldName: string, rowToChange: any = null) {
         const row = rowToChange ?? this.activeRow;
