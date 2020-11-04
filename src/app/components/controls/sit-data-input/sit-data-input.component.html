@@ -3,7 +3,12 @@
   (selectionChange)="onLookupSelect($event)"
   disableOptionCentering>
   <mat-option *ngFor="let record of lookupRows | async" [value]="getLookupValue(record)">
-    {{getLookupDisplay(record)}}
+    <span *ngFor="let dispField of lookupDisplayFields" class="{{dispField}}">
+      {{record[dispField]}}
+    </span>
+    <ng-template *ngIf="lookupDisplayFields">
+      {{getLookupDisplay(record)}}
+    </ng-template>
   </mat-option>
 </mat-select>
 
