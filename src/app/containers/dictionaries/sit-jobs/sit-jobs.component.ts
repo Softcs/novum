@@ -61,7 +61,6 @@ export class SitJobsComponent implements OnInit {
       { headerName: 'LastActiveStatus', field: 'LastActiveStatus', type: 'numericColumn', sortable: true, filter: 'agTextColumnFilter', width: 120 },
       { headerName: 'Uruchom natychmiast', field: 'RunImmediately', filter: 'agSetColumnFilter', type: 'numericColumn', suppressMenu: true, width: 120,cellRenderer: 'gridCheckboxRenderer' },
       { headerName: 'CompanyIdent', field: 'CompanyIdent', sortable: true, filter: 'agTextColumnFilter', width: 150 },
-      { headerName: 'Id firmy', field: 'sitCompaniesId', type:"numericColumn", sortable: true, filter: 'agTextColumnFilter', width: 100 },
 
     ];
 
