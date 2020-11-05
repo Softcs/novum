@@ -26,7 +26,7 @@ export class SitDataInputComponent extends SitDataBaseComponent {
   @Input() width: string;
   @Input() showRefreshButton: boolean;
   @Input() refreshOnChange: boolean;
-  @Input() lookupDisplayFields: string[];
+  @Input() lookupDisplayFields: string[] = null;
 
   hasLookup: boolean;
   lookupIsLoading = false;
