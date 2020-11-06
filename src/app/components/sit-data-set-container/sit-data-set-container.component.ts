@@ -10,6 +10,7 @@ import { SitRefreshButtonComponent } from '../controls/sit-refresh-button/sit-re
 import { SitFilesButtonComponent } from '../controls/sit-files-button/sit-files-button.component';
 import { SitButtonBaseComponent } from '../controls/sit-button-base/sit-button-base.component';
 import { AfterViewInit } from '@angular/core';
+import { ActionDefinitionWrapper } from '@app/_models/actionDefinitionWrapper';
 
 @Component({
   selector: 'sit-data-set-container',
@@ -42,6 +43,7 @@ export class SitDataSetContainerComponent {
   @Output()
   afterPropagte: EventEmitter<string> = new EventEmitter<string>();
 
+  actionsTable: ActionDefinitionWrapper[] = null; //tabela akcji do przekazywania do sit-actions-toolbar
 
   public dataSetControlsManager: DataSetManager;
 
@@ -213,6 +215,10 @@ export class SitDataSetContainerComponent {
     }
     this.pepareControlForButtons(this.refreshButtons);
     this.pepareControlForButtons(this.filesButtons);
+    
+    //inicjalizacja tabeli akcji dla actions-toolbara
+    this.actionsTable = dataSetWrapperDefinition.actions;
+    //console.log("Actions table =" + this.actionsTable);
   }
 
   set errors(value: any[]) {

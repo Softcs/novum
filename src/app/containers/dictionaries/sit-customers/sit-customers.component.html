@@ -1,5 +1,5 @@
 <sit-dict-container ident="sitCustomers" #sitDictcontainer fxFill>
-  <sit-data-set-container  ident="sitCustomers" fxFill>
+  <sit-data-set-container  ident="sitCustomers" #sitDataSetContainer fxFill>
     <div fxLayout="row" fxFill fxLayoutGap="5px">
       <div fxLayout="column" fxFlex="50" class="content">
 
@@ -12,7 +12,9 @@
 
         <!-- Procedury sitCustomers -->
         <div class="sit-proc-bar">
-          <mat-toolbar color="accent">
+          <sit-actions-toolbar #sitActionsToolbar [sitActionsTable]="sitDataSetContainer.actionsTable" componentParamsIdent="sitCustomersEdit"></sit-actions-toolbar>
+          <!-- test-->
+          <!-- <mat-toolbar color="accent">
             <mat-toolbar-row>
               <div class="sit-proc-buttons-row">
                 <sit-proc-button #sitAction actionIdent="insert" componentParamsIdent="sitCustomersEdit" openKind="EXPANDER" tooltip="Nowy" color="primary" icon="post_add"></sit-proc-button>
@@ -20,7 +22,7 @@
                 <sit-proc-button #sitAction actionIdent="delete" tooltip="Usuń"  color="primary" icon="delete" delete="true" matType="mat-stroked-button"></sit-proc-button>
               </div>
             </mat-toolbar-row>
-          </mat-toolbar>
+          </mat-toolbar> -->
         </div>
 
         <!--Grid sitCustomers-->

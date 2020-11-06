@@ -114,7 +114,8 @@ import { SitJobsComponent } from './containers/dictionaries/sit-jobs/sit-jobs.co
 import { SitJobsEditComponent } from './containers/dictionaries/sit-jobs/actions/sit-jobs-edit/sit-jobs-edit.component'
 ;
 import { SitJobStepsEditComponent } from './containers/dictionaries/sit-jobs/actions/sit-job-steps-edit/sit-job-steps-edit.component'
-
+;
+import { SitActionsToolbarComponent } from './components/controls/sit-actions-toolbar/sit-actions-toolbar.component'
 @NgModule({
     imports: [
         BrowserModule,
@@ -223,7 +224,8 @@ import { SitJobStepsEditComponent } from './containers/dictionaries/sit-jobs/act
         SitJobsEditComponent
 ,
         SitJobStepsEditComponent
-
+,
+        SitActionsToolbarComponent
      ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },

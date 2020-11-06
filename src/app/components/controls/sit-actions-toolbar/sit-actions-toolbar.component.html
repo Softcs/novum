@@ -1,0 +1,14 @@
+<mat-toolbar color="accent">
+    <mat-toolbar-row>
+      <div class="sit-proc-buttons-row" *ngFor="let action of sitActionsTable;">
+          <div *ngIf="action.showInToolbar">
+            <sit-proc-button *ngIf="action.ident === 'insert'" #sitAction actionIdent="insert" componentParamsIdent="{{componentParamsIdent}}" openKind="EXPANDER" tooltip="Nowy" 
+            color="primary" icon="post_add"></sit-proc-button>
+            <sit-proc-button *ngIf="action.ident === 'update'" #sitAction actionIdent="update" componentParamsIdent="{{componentParamsIdent}}" openKind="EXPANDER" tooltip="Edycja" 
+            color="primary" icon="edit"></sit-proc-button>
+            <sit-proc-button *ngIf="action.ident === 'delete'" #sitAction actionIdent="delete" tooltip="Usuń"  color="primary" icon="delete" delete="true" 
+            matType="mat-stroked-button"></sit-proc-button>
+        </div>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
