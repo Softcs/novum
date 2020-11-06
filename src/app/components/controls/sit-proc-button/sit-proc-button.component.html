@@ -2,7 +2,7 @@
     color="{{color}}"
     (click)="onClick($event)" [disabled]="executing"
     matTooltip="{{tooltip}}">
-    <span *ngIf="executing" class="spinner-border spinner-border-sm mr-1"></span>
-    <mat-icon *ngIf="icon" aria-hidden="false" aria-label="Firma">{{icon}}</mat-icon>
-    {{caption}}
+    <span *ngIf="executing" class="spinner-border spinner-border-sm mr-1 sit-proc-button-spinner"></span>
+    <mat-icon *ngIf="icon && !executing" aria-hidden="false" aria-label="Firma">{{icon}}</mat-icon>
+    <span class="sit-proc-button-caption">{{caption}}</span>
 </button>
