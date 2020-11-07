@@ -41,6 +41,10 @@ export class SitRightsComponent implements OnInit {
   gridColumnApiActions;
   columnDefsActions;
 
+  gridApiRightsGroupUsers;
+  gridColumnApiRightsGroupUsers;
+  columnDefsRightsGroupUsers;
+
 
   constructor(
     private gatewayService: GatewayService
@@ -95,6 +99,13 @@ export class SitRightsComponent implements OnInit {
 
     ];
 
+    this.columnDefsRightsGroupUsers = [
+      { headerName: 'Login', field: 'UserLogin', filter: 'agTextColumnFilter'},
+      { headerName: 'Imię', field: 'Name', filter: 'agTextColumnFilter'},
+      { headerName: 'Nazwisko', field: 'SurName', filter: 'agTextColumnFilter'},
+    ];
+
+
    }
 
   ngOnInit(): void {
@@ -141,6 +152,16 @@ export class SitRightsComponent implements OnInit {
 
   onRowClickedActions(event) {
     const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitSysActions');
+      dataSourceResponseWrapper.SetActiveRow(event.data);
+  }
+
+  onGridReadyRightsGroupUsers(params) {
+    this.gridApiRightsGroupUsers = params.api;
+    this.gridColumnApiRightsGroupUsers = params.columnApi;
+  }
+
+  onRowClickedRightsGroupUsers(event) {
+    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitRightsGroupUsers');
       dataSourceResponseWrapper.SetActiveRow(event.data);
   }
 
