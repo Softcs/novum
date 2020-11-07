@@ -441,7 +441,7 @@ button:focus {
   }
 }
 
-
+// lookup fields
 .CountrySymbol {
   display: inline-block;
   width: 30px;
@@ -453,6 +453,11 @@ button:focus {
   width: 200px;
 }
 
+.RightsGroupIdent {
+  display: inline-block;
+  width: 100px;
+}
+// end of lookup fields
 .sit-proc-button-spinner {
   position: relative;
   top: -4px;
