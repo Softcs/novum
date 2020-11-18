@@ -2,9 +2,10 @@
   <div fxFill class="content" fxLayout="column">
     <div class="sit-filter-bar">
       <sit-data-set-container ident="sitFilterDocumentsHeaders" fxLayout="row">
-          <sit-data-input #sitControl id="searchDocumentsHeaders" field="searchDocumentsHeaders" label="Filtruj dokumenty" placeholder="Numer" appearance="outline" style="width: 300px;"></sit-data-input>
-          <sit-data-input #sitControl id="DateFrom" field="DateFrom" type="date" label="Od" appearance="outline" style="width: 150px;"></sit-data-input>
-          <sit-data-input #sitControl id="DateFrom" field="DateTo" type="date" label="Do" appearance="outline" style="width: 150px;" showRefreshButton="true" ></sit-data-input>
+        <sit-data-input #sitControl field="DocumentsType" label="Typ dok." placeholder="Numer" appearance="outline" style="width: 100px;"></sit-data-input>
+        <sit-data-input #sitControl field="searchDocumentsHeaders" label="Filtruj dokumenty" placeholder="Numer" appearance="outline" style="width: 300px;"></sit-data-input>
+        <sit-data-input #sitControl field="DateFrom" type="date" label="Od" appearance="outline" style="width: 150px;"></sit-data-input>
+        <sit-data-input #sitControl field="DateTo" type="date" label="Do" appearance="outline" style="width: 150px;" showRefreshButton="true" ></sit-data-input>
       </sit-data-set-container>
     </div>
     <div fxLayout="row" fxFlex >
@@ -185,32 +186,41 @@
                 </div>
               </mat-tab>
               <mat-tab label="Nagłówek">
-                <sit-data-set-container  ident="sitDocumentsHeaders" fxFill fxLayout="column" (activeRowChanged)="activeRowChangedDocumentsHeaders($event)">
+                <sit-data-set-container ident="sitDocumentsHeaders" fxFill fxLayout="column">
                   <div fxLayout="column" fxFill>
                     <div fxLayout="row">
-                      <sit-data-input type="text" id="CustIdent" #sitControl field="CustIdent" label="Identyfikator" [showRefresh]=false appearance="outline" fxFlex [readonly]=true></sit-data-input>
-                      <sit-data-input type="text" id="VATId" #sitControl field="VATId" label="NIP" [showRefresh]=false appearance="outline" style="width: 300px" [readonly]=true></sit-data-input>
+                      <sit-data-input type="text" #sitControl field="CustIdent" label="Identyfikator" [showRefresh]=false appearance="outline" fxFlex [readonly]=true></sit-data-input>
+                      <sit-data-input type="text" #sitControl field="VATId" label="NIP" [showRefresh]=false appearance="outline" style="width: 300px" [readonly]=true></sit-data-input>
                     </div>
-                    <sit-data-input type="text" id="CustName" #sitControl field="CustName" label="Nazwa pełna" [showRefresh]=false appearance="outline" style="width: 100%" [readonly]=true></sit-data-input>
+                    <sit-data-input type="text" #sitControl field="CustName" label="Nazwa pełna" [showRefresh]=false appearance="outline" style="width: 100%" [readonly]=true></sit-data-input>
                     <div fxLayout="row">
-                      <sit-data-input type="text" id="Street" #sitControl field="Street" label="Ulica" [showRefresh]=false appearance="outline" fxFlex [readonly]=true></sit-data-input>
-                      <sit-data-input type="text" id="HouseNum" #sitControl field="HouseNum" label="Numer" [showRefresh]=false appearance="outline" style="width: 100px" [readonly]=true></sit-data-input>
-                    </div>
-                    <div fxLayout="row">
-                      <sit-data-input type="text" id="PostCode" #sitControl field="PostCode" label="Kod pocztowy" [showRefresh]=false appearance="outline" style="width: 150px" [readonly]=true></sit-data-input>
-                      <sit-data-input type="text" id="City" #sitControl field="City" label="Miasto" [showRefresh]=false appearance="outline" fxFlex [readonly]=true></sit-data-input>
-                      <sit-data-input type="text" id="CountrySymbol" #sitControl field="CountrySymbol" label="Kraj" [showRefresh]=false appearance="outline" style="width: 100px" [readonly]=true></sit-data-input>
+                      <sit-data-input type="text" #sitControl field="Street" label="Ulica" [showRefresh]=false appearance="outline" fxFlex [readonly]=true></sit-data-input>
+                      <sit-data-input type="text" #sitControl field="HouseNum" label="Numer" [showRefresh]=false appearance="outline" style="width: 100px" [readonly]=true></sit-data-input>
                     </div>
                     <div fxLayout="row">
-                      <sit-data-input type="text" id="DocumentDescription" #sitControl field="DocumentDescription" label="Opis dokumentu" [showRefresh]=false appearance="outline" fxFill [readonly]=true></sit-data-input>
+                      <sit-data-input type="text" #sitControl field="PostCode" label="Kod pocztowy" [showRefresh]=false appearance="outline" style="width: 150px" [readonly]=true></sit-data-input>
+                      <sit-data-input type="text" #sitControl field="City" label="Miasto" [showRefresh]=false appearance="outline" fxFlex [readonly]=true></sit-data-input>
+                      <sit-data-input type="text" #sitControl field="CountrySymbol" label="Kraj" [showRefresh]=false appearance="outline" style="width: 100px" [readonly]=true></sit-data-input>
+                    </div>
+                    <div fxLayout="row">
+                      <sit-data-input type="text" #sitControl field="DocumentDescription" label="Opis dokumentu" [showRefresh]=false appearance="outline" fxFill [readonly]=true></sit-data-input>
+                    </div>
+                    <div fxLayout="row">
+                      <sit-data-input type="text" #sitControl field="ExtAppDescription01" label="Opis zewnętrzny" [showRefresh]=false appearance="outline" fxFill [readonly]=true></sit-data-input>
                     </div>
                   </div>
                 </sit-data-set-container>
               </mat-tab>
-              <mat-tab label="Wydruk dowodu">
+              <mat-tab>
+                <ng-template mat-tab-label><i class="material-icons">print</i></ng-template>
                 <div fxLayout="column" fxFill>
                   <sit-data-set-container  ident="sitDocumentsHeaders" fxFlex fxLayout="column">
-                    <sit-pdf-viewer #sitControl id="sitDocumentsHeadersG" field="sitDocumentsHeadersG" fxFill></sit-pdf-viewer>
+                    <div fxFlex>
+                      <sit-pdf-viewer #sitControl id="sitDocumentsHeadersG" field="sitDocumentsHeadersG" fxFlex></sit-pdf-viewer>
+                    </div>
+                    <div fxFlex="50">
+                      <sit-pdf-viewer #sitControl id="sitDocumentsHeadersG_Invoice" field="sitDocumentsHeadersG_Invoice" fxFill></sit-pdf-viewer>
+                    </div>
                   </sit-data-set-container>
                 </div>
               </mat-tab>

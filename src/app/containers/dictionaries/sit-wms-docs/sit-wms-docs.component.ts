@@ -25,6 +25,7 @@ export class SitWmsDocsComponent implements OnInit {
   companyGUID: string;
   activeTab: number;
   activeSubTab: number;
+  printLinked = false;
 
   defaultColDef;
   rowSelection;
@@ -190,6 +191,9 @@ export class SitWmsDocsComponent implements OnInit {
   onRowClickedDocumentsHeaders(event) {
     const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsHeaders');
     dataSourceResponseWrapper.SetActiveRow(event.data);
+    if (dataSourceResponseWrapper.activeRow['sitDocumentsHeadersG_Invoice'] !== null) {
+      this.printLinked = true;
+    } else { this.printLinked = false };
   }
 
   onRowClickedDocumentsHeadersHistory(event) {
@@ -238,6 +242,9 @@ export class SitWmsDocsComponent implements OnInit {
 
   activeRowChangedDocumentsHeaders(activeRow) {
     const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsHeaders');
-
+    console.log(activeRow);
+    // if (activeRow['sitDocumentsHeadersG_Invoice'] !== null) {
+    //   this.printLinked = true;
+    // }
   }
 }

@@ -42,13 +42,13 @@ export class SitPdfViewerComponent  extends SitDataBaseComponent {
     } else
 
     // dowody
-    if (this.dataSetWrapper.getFieldValue('sitDocumentsHeadersG') !== null) {
+    if (this.dataSetWrapper.getFieldValue(this.field) !== null) {
       this.pdfSrc = environment.apiUrl
         + '/service/show/anonymous/report/'
         + this.companyGUID + '/'
-        + this.dataSetWrapper.getFieldValue('sitDocumentsHeadersG');
+        + this.dataSetWrapper.getFieldValue(this.field);
 
-      this.downloadFileName = this.dataSetWrapper.getFieldValue('sitDocumentsHeadersG');
+      this.downloadFileName = this.dataSetWrapper.getFieldValue(this.field);
     } else
 
     // jednostki logistyczne
