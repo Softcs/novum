@@ -1,4 +1,14 @@
-﻿import { SitJobStepsEditComponent } from './../containers/dictionaries/sit-jobs/actions/sit-job-steps-edit/sit-job-steps-edit.component';
+﻿import { SitRightsComponent } from './../containers/dictionaries/sit-rights/sit-rights.component';
+import { SitRightsGroupUsersEditComponent } from './../containers/dictionaries/sit-app-users/actions/sit-rights-group-users-edit/sit-rights-group-users-edit.component';
+import { SitSysActionsEditComponent } from '../containers/dictionaries/sit-sys-dictionaries/actions/sit-sys-actions-edit/sit-sys-actions-edit.component';
+import { SitSysDatasourcesEditComponent } from './../containers/dictionaries/sit-sys-dictionaries/actions/sit-sys-datasources-edit/sit-sys-datasources-edit.component';
+import { SitSysDictionariesEditComponent } from './../containers/dictionaries/sit-sys-dictionaries/actions/sit-sys-dictionaries-edit/sit-sys-dictionaries-edit.component';
+import { SitSysDictionariesComponent } from './../containers/dictionaries/sit-sys-dictionaries/sit-sys-dictionaries.component';
+import { SitProjectsPubRegisterWorkTimeComponent } from './../containers/dictionaries/sit-projects-pub/actions/sit-projects-pub-register-work-time/sit-projects-pub-register-work-time.component';
+import { SitWarehousesEditComponent } from './../containers/dictionaries/sit-warehouses/actions/sit-warehouses-edit/sit-warehouses-edit.component';
+import { SitWarehousesComponent } from './../containers/dictionaries/sit-warehouses/sit-warehouses.component';
+import { SitLogisticUnitsEditComponent } from './../containers/dictionaries/sit-stocks/actions/sit-logistic-units-edit/sit-logistic-units-edit.component';
+import { SitJobStepsEditComponent } from './../containers/dictionaries/sit-jobs/actions/sit-job-steps-edit/sit-job-steps-edit.component';
 import { SitJobsEditComponent } from './../containers/dictionaries/sit-jobs/actions/sit-jobs-edit/sit-jobs-edit.component';
 import { SitJobsComponent } from './../containers/dictionaries/sit-jobs/sit-jobs.component';
 import { SitParamsEditComponent } from './../containers/dictionaries/sit-params/actions/sit-params-edit/sit-params-edit.component';
@@ -70,7 +80,18 @@ export class FactoryService {
         sitAppUsersSetPassword: SitAppUsersSetPasswordComponent,
         sitJobs: SitJobsComponent,
         sitJobsEdit: SitJobsEditComponent,
-        sitJobStepsEdit: SitJobStepsEditComponent
+        sitJobStepsEdit: SitJobStepsEditComponent,
+        sitLogisticUnitsEdit: SitLogisticUnitsEditComponent,
+        sitWarehouses: SitWarehousesComponent,
+        sitWarehousesEdit: SitWarehousesEditComponent,
+        sitProjectsPubRegisterWorkTimeEdit: SitProjectsPubRegisterWorkTimeComponent,
+        sitSysDictionaries: SitSysDictionariesComponent,
+        sitSysDictionariesEdit: SitSysDictionariesEditComponent,
+        sitSysDatasourcesEdit: SitSysDatasourcesEditComponent,
+        sitSysActionsEdit: SitSysActionsEditComponent,
+        sitRightsGroupUsersEdit: SitRightsGroupUsersEditComponent,
+        sitRights: SitRightsComponent
+
     };
 
     public GetFactory(ident: string) {

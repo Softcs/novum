@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 import { DataSetWrapper } from '@app/_models';
 import { ControlValueAccessor } from '@angular/forms';
+import { EventManager } from '@angular/platform-browser';
 
 @Component({
   selector: 'sit-data-base',
@@ -10,7 +11,13 @@ import { ControlValueAccessor } from '@angular/forms';
 export class SitDataBaseComponent implements ControlValueAccessor {
   private _dataSetWrapper: DataSetWrapper;
 
-  @Input() value: string = '';
+  @Input() value = '';
+  @Input() placeholder = '';
+  @Input() field = '';
+  @Input() id: string = null;
+  @Input() readonly = false;
+  @ViewChild('inputElement') private _inputElement: ElementRef;
+
   get dataSetWrapper(): DataSetWrapper {
     return this._dataSetWrapper;
   }
@@ -23,15 +30,10 @@ export class SitDataBaseComponent implements ControlValueAccessor {
     if (this._dataSetWrapper != null) {
       this._dataSetWrapper.activeRowChanged.subscribe( (row) => this.activeRowChanged(row, this));
       this._dataSetWrapper.afterSetFieldValue.subscribe((fieldName) => this.afterSetFieldValue(fieldName));
+      this._dataSetWrapper.afterPropagte.subscribe(ident => this.afterPropagte(ident));
     }
     this.afterSetDataSetWrapper();
   }
-
-  @Input() placeholder: string = '';
-  @Input() field: string = '';
-  @Input() id: string = null;
-  @Input() readonly: boolean = false;
-  @ViewChild('inputElement') private _inputElement: ElementRef;
 
   constructor(private _renderer: Renderer2) {
 
@@ -55,11 +57,7 @@ export class SitDataBaseComponent implements ControlValueAccessor {
   }
 
   onChange(event: any) {
-    if (event.target.type === 'checkbox') {
-      event.target.checked ? this._onChange('1') : this._onChange('0');
-    } else {
-      this._onChange(event.target.value);
-    }
+    this._onChange(event.target.value);
   }
 
   onKeyup(event: any) {
@@ -74,7 +72,7 @@ export class SitDataBaseComponent implements ControlValueAccessor {
   }
 
   public getValue(): string {
-    return null;
+    return this.value;
   }
 
   public setValue(value: any) {
@@ -98,4 +96,10 @@ export class SitDataBaseComponent implements ControlValueAccessor {
 
   public afterSetDataSetWrapper() {
   }
+
+  protected afterPropagte(ident: string) {
+
+  }
+
+  public detachEvents() { }
 }

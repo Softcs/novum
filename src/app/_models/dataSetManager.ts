@@ -9,11 +9,13 @@ import { SitProcExpanderComponent } from '@app/components/controls/sit-proc-expa
 export class DataSetManager {
     private _dictInfo: DictInfoWrapper;
     private _dataSetContainers: QueryList<SitDataSetContainerComponent>;
-    private _dataSetResponses: any[];
+    private _dataSetResponses: any[] = [];
 
     public dataSetsWrapper: DataSetWrapper[];
     public dataSetDefinitionWrappers: DataSetDefinitionWrapper[];
     public procExpander: SitProcExpanderComponent;
+    public parentDataSetManager: DataSetManager;
+
     @Output()
     refreshAfter: EventEmitter<DataSetManager> = new EventEmitter<DataSetManager>();
 
@@ -112,6 +114,10 @@ export class DataSetManager {
                 return;
             }
             const dsDefItem = this.dictInfo.FindDataSource(dsToRefresh.ident);
+            if (dsDefItem.isLookup) {
+                dsToRefresh.refresh = false;
+                return;
+            }
             this.prapareDataSource4RequestParent(dsDefItem, dataSourcesRequest);
          });
         this.RefreshInternall(dataSourcesRequest);
@@ -275,12 +281,28 @@ export class DataSetManager {
                 console.error('DataSource: ' + dataSourceContainer.ident + ' not found!');
             }
         });
-        this.DataSourceAfterPropagte();
+        this.DataSourceAfterPropagte(dataSetToReload);
+        this.LookupDataSourceAfterPropagate(dataSetToReload);
         this.refreshAfter.emit(this);
     }
 
-    public DataSourceAfterPropagte() {
+    public LookupDataSourceAfterPropagate(dataSetToReload: string[]) {
+        if (!dataSetToReload) {
+            return;
+        }
+
+        dataSetToReload.forEach(dataSetIdent => {
+            const wrapper = this.getDateSourceWrapper(dataSetIdent);
+            if (wrapper && wrapper.isLookup)  {
+                wrapper.LookupAfterPropagte();
+            }
+        });
+    }
+    public DataSourceAfterPropagte(dataSetToReload: string[]) {
         this.dataSetsWrapper.forEach(dataSourceWrapper => {
+            if (dataSetToReload != null && dataSetToReload.indexOf(dataSourceWrapper.ident) === -1) {
+                return false;
+            }
             dataSourceWrapper.AfterPropagte();
         });
     }
@@ -289,18 +311,29 @@ export class DataSetManager {
         if (ident == null || this.dataSetsWrapper.length === 0) {
             return null;
         }
-        const dataSources = this.dataSetsWrapper.filter(item => item.ident.toLowerCase() === ident.toLowerCase());
-        return dataSources != null && dataSources.length > 0 ? dataSources[0] : null;
+
+        let dataSetWrappers = this.dataSetsWrapper.filter(item => item.ident.toLowerCase() === ident.toLowerCase());
+        if (dataSetWrappers.length === 0 && this.parentDataSetManager) {
+            dataSetWrappers = this.parentDataSetManager.dataSetsWrapper.filter(item => item.ident.toLowerCase() === ident.toLowerCase());
+        }
+
+        return dataSetWrappers != null && dataSetWrappers.length > 0 ? dataSetWrappers[0] : null;
     }
 
     private setRefreshDataSource(newDataSource: any) {
-        const oldDS = this.getDataSource(newDataSource.ident);
-        const index = this.dataSetsResponse.indexOf(oldDS);
-        if(index !== -1) {
-            this.dataSetsResponse[index] = newDataSource;
+        if (!this.dataSetsResponse) {
+            return;
         }
 
-        const dataSetResponseWrapper = this.CreateDataSetWrapper(newDataSource.ident, null);
+        const oldDS = this.getDataSource(newDataSource.ident);
+        const index = this.dataSetsResponse.indexOf(oldDS);
+        if (index !== -1) {
+            this.dataSetsResponse[index] = newDataSource;
+        } else {
+            this.dataSetsResponse.push(newDataSource);
+        }
+
+        const dataSetResponseWrapper = this.CreateDataSetWrapper(newDataSource.ident, this.parentDataSetManager);
         dataSetResponseWrapper.setInputDataSource(newDataSource);
     }
 
@@ -314,14 +347,17 @@ export class DataSetManager {
     }
 
     private getDataSource(ident: string): any {
-        if (!this.dataSetsResponse) {
-            console.error(`Nie znaleziono źrodla danych: [${ident}]`);
-            return;
-        }
         if (ident == null) {
             return;
         }
-        const dataSource = this.dataSetsResponse.filter(item => item["ident"].toLowerCase() === ident?.toLowerCase())[0];
+        let dataSource = this.dataSetsResponse?.filter(item => item["ident"].toLowerCase() === ident?.toLowerCase())[0];
+        if (!dataSource && this.parentDataSetManager) {
+            dataSource = this.parentDataSetManager.dataSetsResponse.filter(item => item["ident"].toLowerCase() === ident?.toLowerCase())[0];
+        }
+        if (!dataSource) {
+            console.error(`Nie znaleziono źrodla danych: [${ident}]`);
+        }
+
         return dataSource;
     }
 
@@ -360,8 +396,15 @@ export class DataSetManager {
         return this.dictInfo?.ident;
     }
 
+    // tslint:disable-next-line: adjacent-overload-signatures
     get dictInfo() {
-        return this._dictInfo;
+        return this._dictInfo
+                ? this._dictInfo
+                : (
+                    this.parentDataSetManager
+                        ? this.parentDataSetManager.dictInfo
+                        : null
+                );
     }
 
     set dataSetsResponse(dataSetsResponse: any[]) {

@@ -5,6 +5,7 @@ import { DataSetWrapper } from '@app/_models';
 import { GatewayService } from '@app/_services';
 import { User } from '@app/_models';
 import { formatDate } from '@angular/common';
+import { TabService } from '@app/_services/tab.service';
 
 @Component({
   selector: 'app-sit-kancelaria',
@@ -12,11 +13,13 @@ import { formatDate } from '@angular/common';
   styleUrls: ['./sit-kancelaria.component.scss'],
   host: {class: 'router-flex'}
 })
-export class SitKancelariaComponent {
+export class SitKancelariaComponent implements OnInit {
   @ViewChild('sitDictcontainer') dictContainer: SitDictContainerComponent;
 
   currentUser: User;
+  activeTab: number;
   Link: string;
+
   sitCustomersSelected = [];
   sitAgreementsSelected = [];
   sitAttachmentsSelected = [];
@@ -39,9 +42,13 @@ export class SitKancelariaComponent {
 
   constructor(
     private gatewayService: GatewayService,
-    @Inject(LOCALE_ID) private locale: string
+    @Inject(LOCALE_ID) private locale: string,
+    private tabService: TabService,
   ) {
+
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
+    this.tabService.activeTab.subscribe(x => this.activeTab = x);
+
 
     this.defaultColDef = {
       flex: 0,
@@ -67,49 +74,46 @@ export class SitKancelariaComponent {
     ];
 
     this.columnDefsAgreements = [
-      { headerName: 'Numer', field: 'AgreementNo', flex: 2, filter: 'agTextColumnFilter', floatingFilter: true,
+      { headerName: 'Numer', field: 'AgreementNo', width: 150, filter: 'agTextColumnFilter', floatingFilter: true,
         filterParams: {
           filterOptions: ['contains']
         }
       },
-      { headerName: 'Opis', field: 'AgreementDesc', flex: 2, filter: 'agTextColumnFilter', floatingFilter: true,
+      { headerName: 'Opis', field: 'AgreementDesc', width: 200, filter: 'agTextColumnFilter', floatingFilter: true,
         filterParams: {
           filterOptions: ['contains']
         }
       },
-      { headerName: 'Data', field: 'Date', flex: 1,
-        cellRenderer: (data) => { return  formatDate(data.value, 'yyyy-MM-dd', this.locale)}
+      { headerName: 'Data', field: 'Date', width: 100, type: 'dateColumn',
+        // cellRenderer: (data) => { return  formatDate(data.value, 'yyyy-MM-dd', this.locale)}
       },
-      { headerName: 'Data do', field: 'DateTo', flex: 1,
-        cellRenderer: (data) => { return  formatDate(data.value, 'yyyy-MM-dd', this.locale)}
+      { headerName: 'Data do', field: 'DateTo', width: 100, type: 'dateColumn',
+        // cellRenderer: (data) => { return  formatDate(data.value, 'yyyy-MM-dd', this.locale)}
       },
     ];
 
     this.columnDefsAttachments = [
-      { headerName: 'Opis', field: 'AttachmentDesc', flex: 2 },
-      { headerName: 'Nazwa pliku', field: 'FileName', flex: 2 },
-      { headerName: 'ParentId', field: 'ParentId', flex: 2 },
-      { headerName: 'sitAttachmentsG', field: 'sitAttachmentsG', flex: 2 },
-      { headerName: 'Data dodania', field: 'InsertDate', flex: 1,
-        // cellRenderer: (data) => { return formatDate(data.value, 'yyyy-MM-dd', this.locale }
-      }
+      { headerName: 'ParentId', field: 'ParentId' },
+      { headerName: 'sitAttachmentsG', field: 'sitAttachmentsG' },
+      { headerName: 'Data dodania', field: 'InsertDate', width: 120,
+         cellRenderer: (data) => { return formatDate(data.value, 'yyyy-MM-dd H:mm', this.locale) }
+      },
+      { headerName: 'Nazwa pliku', field: 'FileName', width: 250 },
+      { headerName: 'Opis', field: 'AttachmentDesc', width: 250 },
     ];
 
 
   }
+
+  ngOnInit(): void {}
 
   activeRowAttachmentsChanged(activeRow) {
     this.sitAttachmentsSelected.splice(0, this.sitAttachmentsSelected.length);
     this.sitAttachmentsSelected.push(...[activeRow]);
 
-    this.Link = activeRow === null
-      ? environment.apiUrl + '/service/attachments/get/' + this.currentUser.token + '/noPDF.pdf'
-      : environment.apiUrl + '/service/attachments/get/' + this.currentUser.token + '/'
-        + activeRow['sitAttachmentsG'] + '/' + activeRow['FileName'];
   }
 
   onGridReadyCustomers(params) {
-    console.log(params)
     this.gridApiCustomers = params.api;
     this.gridColumnApiCustomers = params.columnApi;
   }

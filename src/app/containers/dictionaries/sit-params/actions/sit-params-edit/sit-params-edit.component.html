@@ -2,15 +2,11 @@
    [(actionExecuteData)]="actionExecuteData"
   >
   <sit-data-set-container ident="sitParamsEdit">
-      <div style="width: 500px">
-        <div class="sit-proc-expander-title" *ngIf="actionIdent === 'insert'">Nowe menu</div>
-        <div class="sit-proc-expander-title" *ngIf="actionIdent === 'update'">Edycja menu</div>
-
-        <div fxLayout="column">
-          <sit-data-input type="text" id="ParamIdent" #sitControl field="ParamIdent" label="Identyfikator" [showRefresh]=false appearance="outline" fxFlex></sit-data-input>
-          <sit-data-textarea type="textarea" id="ParamValue" #sitControl field="ParamValue" label="Wartosć" appearance="outline" rows="20" cols="65"></sit-data-textarea>
-        </div>
+    <div class="sit-proc-params-content" fxLayout="column" style="width: 700px;height: 500px;">
+      <sit-data-input type="text" #sitControl field="ParamIdent" label="Identyfikator" appearance="outline"></sit-data-input>
+      <div fxLayout="row" fxFlex>
+        <sit-data-textarea type="textarea" #sitControl field="ParamValue" label="Wartosć" appearance="outline" rows="20" cols="65" fxFill></sit-data-textarea>
       </div>
-
+    </div>
   </sit-data-set-container>
 </sit-proc-params>

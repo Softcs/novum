@@ -204,10 +204,10 @@ export class GatewayService {
                     if (this.currentUserValue != null && resData.companyConfig && this.currentUserValue.connection == null) {
                         this.currentUserValue.company = new Company(
                                 resData.companyConfig.companyIdent,
-                                resData.companyConfig.companyDescription);
+                                resData.companyConfig.companyDescription,
+                                resData.companyConfig.companyGUID);
                         this.currentUserValue.connection = resData.companyConfig.configFile;
                     }
-
                     if (resData.forceLogout){
                         this.removeCurrentUser();
                     }

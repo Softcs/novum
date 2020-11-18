@@ -1,0 +1,15 @@
+<sit-proc-params
+  [(actionExecuteData)]="actionExecuteData"
+  >
+  <sit-data-set-container ident="sitSysDictionariesEdit" fxLayout="column">
+    <div class="sit-proc-params-content" fxLayout="column" style="width: 500px; height: 500px;">
+      <div fxLayout="row">
+        <sit-data-input type="text" #sitControl field="DictionaryIdent" label="Identyfikator" appearance="outline" fxFlex></sit-data-input>
+        <sit-data-input type="text" #sitControl field="DictionaryName" label="Nazwa" appearance="outline" fxFlex></sit-data-input>
+      </div>
+      <div fxLayout="row" fxFlex>
+        <sit-data-textarea type="textarea" #sitControl field="DictionaryInfo" label="Definicja" appearance="outline" fxFill></sit-data-textarea>
+      </div>
+    </div>
+  </sit-data-set-container>
+</sit-proc-params>

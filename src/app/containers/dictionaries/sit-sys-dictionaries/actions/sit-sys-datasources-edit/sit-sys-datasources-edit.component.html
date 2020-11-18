@@ -1,0 +1,12 @@
+<sit-proc-params
+  [(actionExecuteData)]="actionExecuteData"
+  >
+  <sit-data-set-container ident="sitSysDatasourcesEdit" fxLayout="column">
+    <div class="sit-proc-params-content" fxLayout="column" style="width: 500px; height: 300px;">
+        <div fxLayout="column">
+            <sit-data-input type="text" #sitControl field="DatasourceIdent" label="Identyfikator" appearance="outline" fxFlex></sit-data-input>
+            <sit-data-input type="text" #sitControl field="DatasourceName" label="Nazwa" appearance="outline" fxFlex></sit-data-input>
+        </div>
+    </div>
+  </sit-data-set-container>
+</sit-proc-params>
