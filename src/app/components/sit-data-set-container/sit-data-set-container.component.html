@@ -14,10 +14,26 @@
       </div>
     </div>
   </div>
+  <!-- Toolbar z akcjami -->
+  <div class="sit-proc-bar">
+      <sit-actions-toolbar #sitActionsToolbar [sitActionsTable]="actionsTable" componentParamsIdent="sitCustomersEdit"></sit-actions-toolbar>
+    <!--  
+    <mat-toolbar color="accent">  
+      <mat-toolbar-row> 
+        <div class="sit-proc-buttons-row" *ngFor="let action of actionsTable;">
+                <sit-proc-button *ngIf="action.ident === 'insert'" #sitAction [actionIdent]="action.ident" componentParamsIdent="sitCustomersEdit" openKind="EXPANDER" 
+                tooltip="{{action.caption}}" color="primary" icon="post_add"></sit-proc-button>
+                <sit-proc-button *ngIf="action.ident === 'update'" #sitAction [actionIdent]="action.ident" componentParamsIdent="sitCustomersEdit" openKind="EXPANDER" 
+                tooltip="{{action.caption}}" color="primary" icon="edit"></sit-proc-button>
+                <sit-proc-button *ngIf="action.ident === 'delete'" #sitAction [actionIdent]="action.ident" tooltip="{{action.caption}}" color="primary" icon="delete" delete="true" 
+                matType="mat-stroked-button"></sit-proc-button>
+          </div>
+        </mat-toolbar-row>
+      </mat-toolbar> -->
+  </div>
 </ng-container>
 
 
 <ng-content>
-
 </ng-content>
 

@@ -217,7 +217,7 @@ export class SitDataSetContainerComponent {
     this.pepareControlForButtons(this.filesButtons);
     
     //inicjalizacja tabeli akcji dla actions-toolbara
-    this.actionsTable = dataSetWrapperDefinition.actions;
+    this.actionsTable = this.filterActionsToShowOnToolbar(dataSetWrapperDefinition.actions);
     //console.log("Actions table =" + this.actionsTable);
   }
 
@@ -236,6 +236,21 @@ export class SitDataSetContainerComponent {
 
   public setDataSetManager(dataSetControlsManager: DataSetManager) {
     this.dataSetControlsManager = dataSetControlsManager;
+  }
+  //funkcja callbackowa do filtrowania czy akcja powinna byc wystwietlona na tollbarze
+  showActionOnToolbar(action: ActionDefinitionWrapper): boolean {
+    if(action != null) {
+      return action.showInToolbar;
+    } else 
+      return false;
+  }
+  
+  //filtrowanie tabeli akcji do wyswietlenia na toolbarze
+  filterActionsToShowOnToolbar(actionsTable: ActionDefinitionWrapper[]): ActionDefinitionWrapper[]{
+    if(actionsTable != null) 
+      return actionsTable.filter(this.showActionOnToolbar);
+    else 
+      return null;
   }
 }
 
