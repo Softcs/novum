@@ -1,6 +1,5 @@
-import { Component, OnInit, Input, Directive, ContentChildren,
+import { Component,  Input,  ContentChildren,
   QueryList, Output, EventEmitter } from '@angular/core';
-import { GatewayService } from '@app/_services/gateway.service';
 import { DataSetWrapper, DataSetManager } from '@app/_models';
 import { SitDataBaseComponent } from '../controls/sit-data-base/sit-data-base.component';
 import { sitSetDataSetDirective } from '@app/_directives/sitSetDataSetDirective';
@@ -9,13 +8,11 @@ import { SitActionDirective } from '@app/_directives';
 import { SitRefreshButtonComponent } from '../controls/sit-refresh-button/sit-refresh-button.component';
 import { SitFilesButtonComponent } from '../controls/sit-files-button/sit-files-button.component';
 import { SitButtonBaseComponent } from '../controls/sit-button-base/sit-button-base.component';
-import { AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'sit-data-set-container',
   templateUrl: './sit-data-set-container.component.html',
-  styleUrls: ['./sit-data-set-container.component.scss'],
-  // host: {class: 'router-flex'}
+  styleUrls: ['./sit-data-set-container.component.scss']
 })
 
 export class SitDataSetContainerComponent {
@@ -23,8 +20,10 @@ export class SitDataSetContainerComponent {
 
   @ContentChildren('sitSetDataSource', { descendants: true})
   datasSourcesInterface: QueryList<sitSetDataSetDirective>;
+
   @ContentChildren('sitControl', { descendants: true })
   databaseControlsInterface!: QueryList<SitDataBaseComponent>;
+
   @ContentChildren("sitAction", { descendants: true })
   actionControlsInterface!: QueryList<SitActionDirective>;
 
@@ -39,19 +38,11 @@ export class SitDataSetContainerComponent {
   @Output()
   activeRowChanged: EventEmitter<any> = new EventEmitter<any>();
 
-  @Output()
-  afterPropagte: EventEmitter<string> = new EventEmitter<string>();
-
-
   public dataSetControlsManager: DataSetManager;
-
-  constructor(private gatewayService: GatewayService) { }
 
   clearErrors() {
     this.errors?.splice(0, this.errors?.length);
   }
-
-
 
   get activeRecord(): any {
     return this.dataSetResponseWrapper?.activeRow;
@@ -155,13 +146,10 @@ export class SitDataSetContainerComponent {
         });
       });
     });
-    this.activeRowChanged.emit(this.activeRecord);
   }
 
   public setDataSource(dataSetWrapper: DataSetWrapper) {
     this.dataSetResponseWrapper = dataSetWrapper;
-    this.dataSetResponseWrapper.activeRowChanged = this.activeRowChanged;
-    this.dataSetResponseWrapper.afterPropagte = this.afterPropagte;
     this.errors = dataSetWrapper.errors;
     this.datasSourcesInterface.forEach(element => {
       // agGrid
