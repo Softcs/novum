@@ -257,6 +257,7 @@ export class DataSetManager {
 
             dataSetContainers.forEach(cont => {
                 cont.refreshRows(dataSetResponseWrapper, dataSourcesRequest);
+                cont.refreshFieldValueInControl();
             });
 
         });
