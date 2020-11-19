@@ -165,12 +165,15 @@ export class SitDataSetContainerComponent {
         });
       }
     });
+    this.refreshFieldValueInControl();
+  }
 
+  public refreshFieldValueInControl(): void {
     if (this.databaseControlsInterface != null) {
-        this.databaseControlsInterface.forEach(element => {
-          this.dataSetResponseWrapper.refreshFieldValueInControl(element);
-        });
-     }
+      this.databaseControlsInterface.forEach(element => {
+        this.dataSetResponseWrapper.refreshFieldValueInControl(element);
+      });
+    }
   }
 
   public AddRow(newRow: any) {
