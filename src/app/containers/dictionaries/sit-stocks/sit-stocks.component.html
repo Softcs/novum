@@ -106,13 +106,15 @@
       <mat-tab label="Jednostki logistyczne">
         <div fxFill fxLayout="column">
           <sit-data-set-container ident="sitFilterLogisticUnits" fxLayout="row">
-            <div class="sit-filter-bar">
-                <sit-data-input #sitControl id="searchLogisticUnits" field="searchLogisticUnits" label="Filtruj" placeholder="EAN, opis" appearance="outline" style="width: 300px;" showRefreshButton="true"></sit-data-input>
+            <div class="sit-filter-bar" fxLayout="row">
+              <sit-data-checkbox #sitControl [refreshOnChange]="true" label="Pokaż puste" field="searchWithEmpty"></sit-data-checkbox>
+              <sit-data-input #sitControl field="searchLogisticUnits" label="Filtruj jednostki logistyczne" placeholder="EAN, opis" appearance="outline" style="width: 200px;"></sit-data-input>
+              <sit-data-input #sitControl field="searchProduct" label="Filtruj wg. produktu" placeholder="" appearance="outline" style="width: 250px;" showRefreshButton="true"></sit-data-input>
             </div>
           </sit-data-set-container>
           <as-split direction="horizontal">
-            <as-split-area [size]="30" fxLayout="column">
-              <sit-data-set-container  ident="sitLogisticUnits" fxFlex>
+            <as-split-area [size]="40" fxLayout="column">
+              <sit-data-set-container ident="sitLogisticUnits" fxFill fxLayout="column">
                 <div class="sit-proc-bar">
                   <mat-toolbar color="accent">
                     <mat-toolbar-row>
@@ -122,27 +124,29 @@
                     </mat-toolbar-row>
                   </mat-toolbar>
                 </div>
-                <ag-grid-angular #sitSetDataSource
-                  #agGrid
-                  id="gridLogisticUnits"
-                  style="width: 100%; height: 100%;"
-                  class="ag-theme-balham"
-                  [columnDefs]="columnDefsLogisticUnits"
-                  [defaultColDef]="defaultColDef"
-                  [rowSelection]="rowSelection"
-                  [rowMultiSelectWithClick]="true"
-                  [enableCellTextSelection]="true"
-                  [enableRangeSelection]="false"
-                  [popupParent]="popupParent"
-                  [sideBar]="false"
-                  (rowClicked)="onRowClickedLogisticUnits($event)"
-                  (gridReady)="onGridReadyLogisticUnits($event)"
-                  (firstDataRendered)="onFirstDataRendered($event)"
-                  >
-                </ag-grid-angular>
+                <div class="data-table" fxFlex>
+                  <ag-grid-angular #sitSetDataSource
+                    #agGrid
+                    id="gridLogisticUnits"
+                    style="width: 100%; height: 100%;"
+                    class="ag-theme-balham"
+                    [columnDefs]="columnDefsLogisticUnits"
+                    [defaultColDef]="defaultColDef"
+                    [rowSelection]="rowSelection"
+                    [rowMultiSelectWithClick]="true"
+                    [enableCellTextSelection]="true"
+                    [enableRangeSelection]="false"
+                    [popupParent]="popupParent"
+                    [sideBar]="false"
+                    (rowClicked)="onRowClickedLogisticUnits($event)"
+                    (gridReady)="onGridReadyLogisticUnits($event)"
+                    (firstDataRendered)="onFirstDataRendered($event)"
+                    >
+                  </ag-grid-angular>
+                </div>
               </sit-data-set-container>
             </as-split-area>
-            <as-split-area [size]="70" fxLayout="column">
+            <as-split-area [size]="60" fxLayout="column">
               <mat-tab-group id="tab-group" animationDuration="0ms">
                 <mat-tab label="Pozycje">
                   <sit-data-set-container  ident="sitWMSStocksWithLogisticUnits" fxFill>

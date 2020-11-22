@@ -62,7 +62,8 @@ export class SitStocksComponent implements OnInit {
     this.columnDefs = [
       { headerName: 'Produkt / Towar',
         children: [
-          { headerName: 'Identyfikator', field: 'ProductIdent', sortable: true, resizable: true, filter: 'agTextColumnFilter',floatingFilter: true },
+          { headerName: 'Identyfikator', field: 'ProductIdent', sortable: true, resizable: true, filter: 'agTextColumnFilter' },
+          { headerName: 'EAN', field: 'EAN', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 110 },
           { headerName: 'Nazwa', field: 'ProductName', filter: 'agTextColumnFilter' }
         ]
       },
@@ -92,6 +93,7 @@ export class SitStocksComponent implements OnInit {
       { headerName: 'Produkt / Towar',
         children: [
           { headerName: 'Identyfikator', field: 'ProductIdent', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 150 },
+          { headerName: 'EAN', field: 'EAN', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 110 },
           { headerName: 'Nazwa', field: 'ProductName', filter: 'agTextColumnFilter', width: 300 }
         ]
       },
@@ -119,14 +121,17 @@ export class SitStocksComponent implements OnInit {
     this.columnDefsLogisticUnits = [
       { headerName: 'Id', field: 'sitLogisticUnitsId', sortable: true, resizable: true, type: "numericColumn", filter: 'agNumericColumnFilter' },
       { headerName: 'GUID', field: 'sitLogisticUnitsG', sortable: true, resizable: true, filter: 'agTextColumnFilter' },
-      { headerName: 'EAN', field: 'LogisticUnitEAN', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 150 },
-      { headerName: 'Opis', field: 'LogisticUnitDesc', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 400 }
+      { headerName: 'EAN', field: 'LogisticUnitEAN', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 110 },
+      { headerName: "Lokalizacja", field: 'LocationIdent', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 150 },
+      { headerName: 'Opis', field: 'LogisticUnitDesc', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 400 },
+
     ];
 
     this.columnDefsWMSStocksWithLogisticUnits = [
       { headerName: 'Produkt / Towar',
         children: [
           { headerName: 'Identyfikator', field: 'ProductIdent', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 150 },
+          { headerName: 'EAN', field: 'EAN', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 110 },
           { headerName: 'Nazwa', field: 'ProductName', filter: 'agTextColumnFilter', width: 250 }
         ]
       },

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit, ViewChildren, QueryList  } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ViewChildren, QueryList, Inject, LOCALE_ID  } from '@angular/core';
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
 import { DataSetWrapper } from '@app/_models';
 import { environment } from '@environments/environment';
@@ -6,7 +6,7 @@ import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
 import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
 import { TabService } from '@app/_services/tab.service';
-
+import { formatDate } from '@angular/common';
 
 // import { AllModules } from '@ag-grid-enterprise/all-modules';
 
@@ -19,7 +19,6 @@ import { TabService } from '@app/_services/tab.service';
 export class SitWmsDocsComponent implements OnInit {
   @ViewChild('sitDictcontainer') dictContainer: SitDictContainerComponent;
   @ViewChildren('sitDictcontainer') dictContainers !: QueryList<SitDictContainerComponent>;
-  @ViewChild('pdfViewer') pdfViewer;
 
   currentUser: User;
   companyGUID: string;
@@ -57,6 +56,8 @@ export class SitWmsDocsComponent implements OnInit {
   constructor(
     private gatewayService: GatewayService,
     private tabService: TabService,
+    @Inject(LOCALE_ID) private locale: string,
+
 
     ) {
 
@@ -85,7 +86,7 @@ export class SitWmsDocsComponent implements OnInit {
     this.columnDefsDocumentsHeaders = [
       { headerName: 'Id', field: 'sitDocumentsHeadersId', sortable: true, resizable: true, filter: 'agTextColumnFilter',width: 90 },
       { headerName: 'GUID', field: 'sitDocumentsHeadersG', sortable: true, resizable: true, filter: 'agTextColumnFilter',width: 150 },
-      { headerName: 'Typ dok.', field: 'DocumentIdent', sortable: true, resizable: true, filter: 'agSetColumnFilter',width: 90 },
+      { headerName: 'Typ dok.', field: 'DocumentIdent', sortable: true, resizable: true, filter: 'agSetColumnFilter', floatingFilter: false, width: 90 },
       { headerName: 'Numer', field: 'DocumentNumber', sortable: true, resizable: true, filter: 'agTextColumnFilter' },
       { headerName: 'Data', field: 'DocumentDate', type: 'dateColumn', filter: 'agDateColumnFilter',width: 100, floatingFilter: false, sort: 'desc'  },
       { headerName: 'Status WMS', field: 'Status_WMS', filter: 'agSetColumnFilter', width: 160,
@@ -96,11 +97,11 @@ export class SitWmsDocsComponent implements OnInit {
           else { return null; }
         }
       },
-      { headerName: 'Kontrahent', field: 'CustName', filter: 'agTextColumnFilter' },
-      { headerName: 'Opis', field: 'DocumentDescription', filter: 'agTextColumnFilter' },
+      { headerName: 'Kontrahent', field: 'CustName', filter: 'agTextColumnFilter', tooltipField: 'CustName'},
+      { headerName: 'Opis', field: 'DocumentDescription', filter: 'agTextColumnFilter', tooltipField: 'DocumentDescription' },
       { headerName: 'NagId SL', field: 'ExtAppIdent01', filter: 'agTextColumnFilter',width: 100 },
-      { headerName: 'XL ID', field: 'ExtAppIdent02', filter: 'agTextColumnFilter',width: 100  },
-      { headerName: 'Opis zew.', field: 'ExtAppDescription01', filter: 'agTextColumnFilter',width: 200  },
+      // { headerName: 'XL ID', field: 'ExtAppIdent02', filter: 'agTextColumnFilter',width: 100  },
+      // { headerName: 'Opis zew.', field: 'ExtAppDescription01', filter: 'agTextColumnFilter',width: 200  },
 
     ];
 
@@ -113,7 +114,7 @@ export class SitWmsDocsComponent implements OnInit {
       { headerName: 'JM', field: 'UnitIdent', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 60 },
       { headerName: 'Il. start', field: 'QuantityUnitStart', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
       { headerName: 'Ilość', field: 'QuantityUnit', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
-      { headerName: 'Defekt', field: 'IsDefect', filter: 'agSetColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80,cellRenderer: 'gridCheckboxRenderer' }
+      { headerName: 'Defekt', field: 'IsDefect', filter: 'agSetColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80,cellRenderer: 'gridCheckboxRenderer', floatingFilter: false }
     ];
 
     //definicja kolumn sum pozycji dowodów
@@ -131,7 +132,9 @@ export class SitWmsDocsComponent implements OnInit {
     //definicja kolumn historii nagłówków
     this.columnDefsDocumentsHeadersHistory = [
       { headerName: 'Operacja', field: 'OprType', filter: 'agTextColumnFilter', floatingFilter: true, width: 100 },
-      { headerName: 'Data mod.', field: 'ChangeDate', sortable: true, resizable: true, suppressMenu: true, width: 180, floatingFilter: false, sort: 'desc',},
+      { headerName: 'Data mod.', field: 'ChangeDate', sortable: true, resizable: true, suppressMenu: true, width: 180, floatingFilter: false, sort: 'desc',
+        cellRenderer: (data) => { return formatDate(data.value, 'yyyy-MM-dd H:mm', this.locale) }
+      },
       { headerName: 'Status', field: 'ValueName', filter: 'agTextColumnFilter', floatingFilter: true },
       { headerName: 'Komentarz', field: '__HistoryComments__', filter: 'agTextColumnFilter', floatingFilter: true },
     ];
@@ -139,7 +142,9 @@ export class SitWmsDocsComponent implements OnInit {
     //definicja kolumn historii pozycji
     this.columnDefsDocumentsPositionsHistory = [
       { headerName: 'Operacja', field: 'OprType', filter: 'agTextColumnFilter', floatingFilter: true, width: 100 },
-      { headerName: 'Data mod.', field: 'ChangeDate', sortable: true, resizable: true, suppressMenu: true, width: 180, floatingFilter: false, sort: 'desc',},
+      { headerName: 'Data mod.', field: 'ChangeDate', sortable: true, resizable: true, suppressMenu: true, width: 180, floatingFilter: false, sort: 'desc',
+        cellRenderer: (data) => { return formatDate(data.value, 'yyyy-MM-dd H:mm', this.locale) }
+      },
       { headerName: 'Ilość', field: 'Quantity', floatingFilter: false, type: "numericColumn" }
     ];
 

@@ -457,7 +457,19 @@ button:focus {
   display: inline-block;
   width: 100px;
 }
+
+.DocumentIdent {
+  display: inline-block;
+  width: 80px;
+}
+
+.DocumentName {
+  display: inline-block;
+  width: 200px;
+}
 // end of lookup fields
+
+
 .sit-proc-button-spinner {
   position: relative;
   top: -4px;
@@ -468,22 +480,22 @@ button:focus {
   top: -3px;
 }
 
-::-webkit-scrollbar {
+#nav-list::-webkit-scrollbar {
   width: 8px;
 }
 
 /* Track */
-::-webkit-scrollbar-track {
+#nav-list::-webkit-scrollbar-track {
   background: lightgray;
 }
 
 /* Handle */
-::-webkit-scrollbar-thumb {
+#nav-list::-webkit-scrollbar-thumb {
   background: darkgray;
   border-radius: 5px;
 }
 
 /* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
+#nav-list::-webkit-scrollbar-thumb:hover {
   background: gray;
 }
