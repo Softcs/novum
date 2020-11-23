@@ -14,5 +14,6 @@ export class SitActionsToolbarComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log("Actions table from toolbar: " + this.sitActionsTable);
   }
 }

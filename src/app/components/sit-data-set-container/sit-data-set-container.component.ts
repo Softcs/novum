@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, Directive, ContentChildren,
-  QueryList, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Directive, ContentChildren, ViewChildren,
+  QueryList, Output, EventEmitter, AfterContentInit } from '@angular/core';
 import { GatewayService } from '@app/_services/gateway.service';
 import { DataSetWrapper, DataSetManager } from '@app/_models';
 import { SitDataBaseComponent } from '../controls/sit-data-base/sit-data-base.component';
@@ -11,6 +11,7 @@ import { SitFilesButtonComponent } from '../controls/sit-files-button/sit-files-
 import { SitButtonBaseComponent } from '../controls/sit-button-base/sit-button-base.component';
 import { AfterViewInit } from '@angular/core';
 import { ActionDefinitionWrapper } from '@app/_models/actionDefinitionWrapper';
+import { SitProcButtonComponent } from '../controls/sit-proc-button/sit-proc-button.component';
 
 @Component({
   selector: 'sit-data-set-container',
@@ -19,14 +20,14 @@ import { ActionDefinitionWrapper } from '@app/_models/actionDefinitionWrapper';
   // host: {class: 'router-flex'}
 })
 
-export class SitDataSetContainerComponent {
+export class SitDataSetContainerComponent implements AfterViewInit {
   private _errors: any[];
 
   @ContentChildren('sitSetDataSource', { descendants: true})
   datasSourcesInterface: QueryList<sitSetDataSetDirective>;
   @ContentChildren('sitControl', { descendants: true })
   databaseControlsInterface!: QueryList<SitDataBaseComponent>;
-  @ContentChildren("sitAction", { descendants: true })
+  @ViewChildren('sitAction')
   actionControlsInterface!: QueryList<SitActionDirective>;
 
   @ContentChildren(SitRefreshButtonComponent, { descendants: true })
@@ -37,6 +38,8 @@ export class SitDataSetContainerComponent {
 
   @Input() ident: string;
   dataSetResponseWrapper: DataSetWrapper;
+  @Input() showActionsToolbar: boolean = false; // czy pokazywac w widoku actions-toolbar
+  
   @Output()
   activeRowChanged: EventEmitter<any> = new EventEmitter<any>();
 
@@ -218,7 +221,7 @@ export class SitDataSetContainerComponent {
     
     //inicjalizacja tabeli akcji dla actions-toolbara
     this.actionsTable = this.filterActionsToShowOnToolbar(dataSetWrapperDefinition.actions);
-    //console.log("Actions table =" + this.actionsTable);
+    console.log("Actions table =" + this.actionsTable);
   }
 
   set errors(value: any[]) {
@@ -237,7 +240,7 @@ export class SitDataSetContainerComponent {
   public setDataSetManager(dataSetControlsManager: DataSetManager) {
     this.dataSetControlsManager = dataSetControlsManager;
   }
-  //funkcja callbackowa do filtrowania czy akcja powinna byc wystwietlona na tollbarze
+  //funkcja callbackowa do filtrowania czy akcja powinna byc wystwietlona na toolbarze
   showActionOnToolbar(action: ActionDefinitionWrapper): boolean {
     if(action != null) {
       return action.showInToolbar;
@@ -252,8 +255,15 @@ export class SitDataSetContainerComponent {
     else 
       return null;
   }
+  ngAfterViewInit(): void {
+    console.log(`Action controls interface: ${this.actionControlsInterface}`);
+    this.actionControlsInterface.changes.subscribe(() => console.log("Action controls interface from subscriber " + this.actionControlsInterface));
+  }
+  /* ngAfterViewInit(): void {
+    this.skillImgs.changes
+        .subscribe(() => console.log(this.skillImgs));
+  } */ 
 }
-
 
 
 
