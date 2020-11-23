@@ -8,8 +8,5 @@ export class sitProcExpanderItem {
     public isOpen: boolean;
     public componentFactoryIdent: string;
     public actionExecuteData: ActionExecuteData;
-    constructor() {
-
-    }
 }
 

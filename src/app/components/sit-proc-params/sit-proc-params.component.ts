@@ -28,6 +28,8 @@ export class SitProcParamsComponent implements OnInit, AfterViewInit {
   public dictIdent: string;
 
   public executing = false;
+  public saveDisabled = false;
+
   public dataSetManager: DataSetManager;
 
   constructor(
@@ -62,6 +64,8 @@ export class SitProcParamsComponent implements OnInit, AfterViewInit {
     dataSetContainer.prepareControls(null);
     this.activeRow = this.mainDataSet.activeRow;
     this.activeRowChange.emit(this.activeRow);
+
+    this.connectToFilesButton();
   }
 
   ngAfterViewInit() {
@@ -69,15 +73,6 @@ export class SitProcParamsComponent implements OnInit, AfterViewInit {
     setTimeout(() => {
       this.prepareDataSet();
     }, 20);
-  }
-
-  refreshAfter(dataSourceManager)  {
-    // const dataSourceResponseWrapper: DataSetWrapper =
-    //   this.dictContainer.DataSourceManager.getDateSourceWrapper(this.dataSourceIdent);
-
-    // dataSourceManager.getDateSourceWrapper(this.dataSourceIdent).activeRow = this.tabService.tabs[this.tabIndex].tabData.activeRow;
-    // this.activeRow =  this.tabService.tabs[this.tabIndex].tabData.activeRow;
-    // this.activeRowChange.emit(this.activeRow);
   }
 
   discard() {
@@ -141,6 +136,27 @@ export class SitProcParamsComponent implements OnInit, AfterViewInit {
     } else {
       this.tabService.removeTab(this.tabIndex);
     }
+  }
 
+  private connectToFilesButton() {
+    const dataSetContainer =  this.dataSetManager.dataSetContainers?.first;
+
+    if (!dataSetContainer) {
+      return;
+    }
+
+    if (!dataSetContainer.filesButtons) {
+      return;
+    }
+
+    const fileButton = dataSetContainer.filesButtons.first;
+
+    if (!fileButton) {
+      return;
+    }
+
+    fileButton.stateExecutinChanged.subscribe(
+      x => this.saveDisabled = x
+    );
   }
 }

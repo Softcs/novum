@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DataSetWrapper } from '@app/_models';
 
 @Component({
@@ -18,8 +18,12 @@ export class SitButtonBaseComponent {
   @Input() icon: string;
   @Input() tooltip: string;
 
+  @Output()
+  stateExecutinChanged: EventEmitter<boolean> = new EventEmitter<boolean>();
+
   protected changeExecutingState(state: boolean) {
     this.executing = state;
+    this.stateExecutinChanged.emit(this.executing);
   }
 
   protected afterPropagte(ident: string) {
