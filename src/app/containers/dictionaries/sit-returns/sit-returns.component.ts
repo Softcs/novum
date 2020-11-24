@@ -142,4 +142,7 @@ export class SitReturnsComponent implements OnInit {
     const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitAttachments');
     dataSourceResponseWrapper.SetActiveRow(event.data);
   }
+
+  onFirstDataRendered(params) {
+  }
 }
