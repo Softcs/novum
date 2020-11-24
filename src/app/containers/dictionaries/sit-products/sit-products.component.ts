@@ -17,6 +17,7 @@ export class SitProductsComponent implements OnInit {
   @ViewChildren('sitDictcontainer') dictContainers !: QueryList<SitDictContainerComponent>;
 
   currentUser: User;
+  link: any;
 
   //modules: any[] = AllModules;
   gridApiProducts;
@@ -39,7 +40,7 @@ export class SitProductsComponent implements OnInit {
       flex: 1,
       sortable: true,
       filter: true,
-      floatingFilter: true,
+      floatingFilter: false,
       resizable: true
     };
 
@@ -54,6 +55,7 @@ export class SitProductsComponent implements OnInit {
       {headerName: 'Vat', field: 'VATRateIdent', filter: 'agTextColumnFilter' },
       {headerName: 'EAN', field: 'EAN', filter: 'agTextColumnFilter' },
       {headerName: 'PKWIU', field: 'PKWIU', filter: 'agTextColumnFilter' },
+      {headerName: 'Waga', field: 'Weight', filter: 'agTextColumnFilter' },
     ];
 
 }
@@ -70,6 +72,9 @@ export class SitProductsComponent implements OnInit {
   onRowClickedProducts(event) {
     const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitProducts');
       dataSourceResponseWrapper.SetActiveRow(event.data);
+      this.link = event.data == null || event.data.sitImagesG == null
+      ? environment.apiUrl +'/service/attachments/get/' + this.currentUser.token + '/noimage/noimage.jpg' : // kiedy brak rekordu
+        environment.apiUrl +'/service/attachments/get/' + this.currentUser.token + '/' + event.data.sitImagesG + '/' + event.data.FileName
   }
 
   onFirstDataRendered(params) {
@@ -78,5 +83,13 @@ export class SitProductsComponent implements OnInit {
       allColumnIds.push(column.colId);
     });
     this.gridColumnApiProducts.autoSizeColumns(allColumnIds, false);
+  }
+
+  activeRowProductsChanged(activeRow) {
+    console.log(activeRow);
+    this.link = activeRow == null || activeRow.sitImagesG == null
+      ? environment.apiUrl +'/service/attachments/get/' + this.currentUser.token + '/noimage/noimage.jpg' : // kiedy brak rekordu
+        environment.apiUrl +'/service/attachments/get/' + this.currentUser.token + '/' + activeRow.sitImagesG + '/' + activeRow.FileName
+
   }
 }
