@@ -11,11 +11,11 @@
 <mat-toolbar color="accent">  
   <mat-toolbar-row>
       <div class="sit-proc-buttons-row" *ngFor="let action of sitActionsTable;">
-            <sit-proc-button *ngIf="action.ident === 'insert'" #sitAction [actionIdent]="action.ident" componentParamsIdent="{{componentParamsIdent}}" openKind="EXPANDER" 
+            <sit-proc-button #sitAction *ngIf="action.ident === 'insert'" [actionIdent]="action.ident" componentParamsIdent="{{componentParamsIdent}}" openKind="EXPANDER" 
             tooltip="{{action.caption}}" color="primary" icon="post_add"></sit-proc-button>
-            <sit-proc-button *ngIf="action.ident === 'update'" #sitAction [actionIdent]="action.ident" componentParamsIdent="{{componentParamsIdent}}" openKind="EXPANDER" 
+            <sit-proc-button #sitAction *ngIf="action.ident === 'update'" [actionIdent]="action.ident" componentParamsIdent="{{componentParamsIdent}}" openKind="EXPANDER" 
             tooltip="{{action.caption}}" color="primary" icon="edit"></sit-proc-button>
-            <sit-proc-button *ngIf="action.ident === 'delete'" #sitAction [actionIdent]="action.ident" tooltip="{{action.caption}}" color="primary" icon="delete" delete="true" 
+            <sit-proc-button #sitAction *ngIf="action.ident === 'delete'" [actionIdent]="action.ident" tooltip="{{action.caption}}" color="primary" icon="delete" delete="true" 
             matType="mat-stroked-button"></sit-proc-button>
       </div>
     </mat-toolbar-row>

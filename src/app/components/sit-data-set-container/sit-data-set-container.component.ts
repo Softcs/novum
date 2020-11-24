@@ -1,5 +1,5 @@
-import { Component, OnInit, Input, Directive, ContentChildren, ViewChildren,
-  QueryList, Output, EventEmitter, AfterContentInit } from '@angular/core';
+import { Component, Input, ContentChildren, ViewChildren,
+  QueryList, Output, EventEmitter} from '@angular/core';
 import { GatewayService } from '@app/_services/gateway.service';
 import { DataSetWrapper, DataSetManager } from '@app/_models';
 import { SitDataBaseComponent } from '../controls/sit-data-base/sit-data-base.component';
@@ -9,9 +9,7 @@ import { SitActionDirective } from '@app/_directives';
 import { SitRefreshButtonComponent } from '../controls/sit-refresh-button/sit-refresh-button.component';
 import { SitFilesButtonComponent } from '../controls/sit-files-button/sit-files-button.component';
 import { SitButtonBaseComponent } from '../controls/sit-button-base/sit-button-base.component';
-import { AfterViewInit } from '@angular/core';
 import { ActionDefinitionWrapper } from '@app/_models/actionDefinitionWrapper';
-import { SitProcButtonComponent } from '../controls/sit-proc-button/sit-proc-button.component';
 
 @Component({
   selector: 'sit-data-set-container',
@@ -20,7 +18,7 @@ import { SitProcButtonComponent } from '../controls/sit-proc-button/sit-proc-but
   // host: {class: 'router-flex'}
 })
 
-export class SitDataSetContainerComponent implements AfterViewInit {
+export class SitDataSetContainerComponent {
   private _errors: any[];
 
   @ContentChildren('sitSetDataSource', { descendants: true})
@@ -46,7 +44,7 @@ export class SitDataSetContainerComponent implements AfterViewInit {
   @Output()
   afterPropagte: EventEmitter<string> = new EventEmitter<string>();
 
-  actionsTable: ActionDefinitionWrapper[] = null; //tabela akcji do przekazywania do sit-actions-toolbar
+  actionsTable: ActionDefinitionWrapper[] = null; //tabela akcji do wyświetlenia w actions-toolbar
 
   public dataSetControlsManager: DataSetManager;
 
@@ -208,6 +206,22 @@ export class SitDataSetContainerComponent implements AfterViewInit {
 
   public prepareControls(dataSetWrapperDefinition: DataSetDefinitionWrapper) {
 
+    //inicjalizacja tabeli akcji dla actions-toolbara
+    if(dataSetWrapperDefinition != null) {
+      this.actionsTable = this.filterActionsToShowOnToolbar(dataSetWrapperDefinition.actions);
+      //console.log("Actions table =" + this.actionsTable);
+    }
+    
+    //z uwagi na asynchroniczne przetwarzanie ngFor lista sit-proc-buttons w ngAfterViewInit jest pusta, taki myk
+    this.actionControlsInterface.changes.subscribe(() => {
+      //console.log("Action controls interface from subscriber " + this.actionControlsInterface);
+      this.actionControlsInterface.forEach(actionControl => {
+        actionControl.dataSetResponseWrapper = this.dataSetResponseWrapper;
+        actionControl.actionDefinition = dataSetWrapperDefinition?.FindActionDefinition(actionControl.actionIdent);
+        actionControl.dataSetManagerSource = this.dataSetControlsManager;
+      });
+    })
+    /* wcześniejszy kod
     if (this.actionControlsInterface != null) {
 
       this.actionControlsInterface.forEach(actionControl => {
@@ -215,13 +229,10 @@ export class SitDataSetContainerComponent implements AfterViewInit {
         actionControl.actionDefinition = dataSetWrapperDefinition?.FindActionDefinition(actionControl.actionIdent);
         actionControl.dataSetManagerSource = this.dataSetControlsManager;
       });
-    }
+    } */
+    
     this.pepareControlForButtons(this.refreshButtons);
     this.pepareControlForButtons(this.filesButtons);
-    
-    //inicjalizacja tabeli akcji dla actions-toolbara
-    this.actionsTable = this.filterActionsToShowOnToolbar(dataSetWrapperDefinition.actions);
-    console.log("Actions table =" + this.actionsTable);
   }
 
   set errors(value: any[]) {
@@ -255,15 +266,4 @@ export class SitDataSetContainerComponent implements AfterViewInit {
     else 
       return null;
   }
-  ngAfterViewInit(): void {
-    console.log(`Action controls interface: ${this.actionControlsInterface}`);
-    this.actionControlsInterface.changes.subscribe(() => console.log("Action controls interface from subscriber " + this.actionControlsInterface));
-  }
-  /* ngAfterViewInit(): void {
-    this.skillImgs.changes
-        .subscribe(() => console.log(this.skillImgs));
-  } */ 
 }
-
-
-

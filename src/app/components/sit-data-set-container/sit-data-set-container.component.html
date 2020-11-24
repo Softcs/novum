@@ -28,19 +28,21 @@
               </div>
             </mat-toolbar-row>
           </mat-toolbar>
+          matType="mat-stroked-button"
         -->
-    <mat-toolbar color="accent">  
+         <!-- <sit-actions-toolbar #sitActionsToolbar [sitActionsTable]="actionsTable" componentParamsIdent="sitCustomersEdit"></sit-actions-toolbar> --> 
+      <mat-toolbar color="accent">  
       <mat-toolbar-row> 
         <div class="sit-proc-buttons-row" *ngFor="let action of actionsTable;">
                 <sit-proc-button #sitAction *ngIf="action.ident === 'insert'"  actionIdent="{{action.ident}}" componentParamsIdent="sitCustomersEdit" openKind="EXPANDER" 
                 tooltip="{{action.caption}}" color="primary" icon="post_add"></sit-proc-button>
                 <sit-proc-button #sitAction *ngIf="action.ident === 'update'" actionIdent="{{action.ident}}" componentParamsIdent="sitCustomersEdit" openKind="EXPANDER" 
                 tooltip="{{action.caption}}" color="primary" icon="edit"></sit-proc-button>
-                <sit-proc-button #sitAction *ngIf="action.ident === 'delete'" actionIdent="{{action.ident}}" tooltip="{{action.caption}}" color="primary" icon="delete" delete="true" 
-                matType="mat-stroked-button"></sit-proc-button>
+                <sit-proc-button #sitAction *ngIf="action.ident === 'delete'" actionIdent="{{action.ident}}" tooltip="{{action.caption}}" color="primary" icon="delete" delete="true" >
+                </sit-proc-button>
           </div>
         </mat-toolbar-row>
-      </mat-toolbar> 
+      </mat-toolbar>
   </div>
 
 <ng-content>
