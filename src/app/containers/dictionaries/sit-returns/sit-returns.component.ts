@@ -1,11 +1,11 @@
-import { Component, OnInit, ViewChild, AfterViewInit, ViewChildren, QueryList  } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ViewChildren, QueryList, Inject, LOCALE_ID  } from '@angular/core';
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
 import { DataSetWrapper } from '@app/_models';
 import { environment } from '@environments/environment';
 import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
 import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
-
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-sit-returns',
@@ -33,8 +33,13 @@ export class SitReturnsComponent implements OnInit {
   gridColumnApiDocumentsPositions;
   columnDefsDocumentsPositions;
 
+  gridApiAttachments;
+  gridColumnApiAttachments;
+  columnDefsAttachments;
+
   constructor(
-    private gatewayService: GatewayService
+    private gatewayService: GatewayService,
+    @Inject(LOCALE_ID) private locale: string,
   )
   {
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
@@ -47,12 +52,11 @@ export class SitReturnsComponent implements OnInit {
     this.defaultColDef = {
       sortable: true,
       filter: true,
-      //floatingFilter: true,
       resizable: true,
       enableValue: true,
       enableRowGroup: true,
       enablePivot: true,
-      floatingFilter: true,
+      floatingFilter: false,
     };
 
     //definicja kolumn nagłówków dowodów
@@ -86,7 +90,16 @@ export class SitReturnsComponent implements OnInit {
         { headerName: 'Ilość klienta', field: 'Quantity4Compare', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
         { headerName: 'Różnica', field: 'QuantityDiff', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
         { headerName: 'Defekty', field: 'QuantityDefect', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
+      ];
 
+      this.columnDefsAttachments = [
+        { headerName: 'ParentId', field: 'ParentId' },
+        { headerName: 'sitAttachmentsG', field: 'sitAttachmentsG' },
+        { headerName: 'Data dodania', field: 'InsertDate', width: 120,
+           cellRenderer: (data) => { return formatDate(data.value, 'yyyy-MM-dd H:mm', this.locale) }
+        },
+        { headerName: 'Nazwa pliku', field: 'FileName', width: 250 },
+        { headerName: 'Opis', field: 'AttachmentDesc', width: 250 },
       ];
 
       this.rowClassRules = {
@@ -104,20 +117,29 @@ export class SitReturnsComponent implements OnInit {
     this.gridColumnApiDocumentsHeaders.setColumnsVisible(['sitDocumentsHeadersId','sitDocumentsHeadersG'],false)
   }
 
+  onRowClickedDocumentsHeaders(event) {
+    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsHeaders');
+      dataSourceResponseWrapper.SetActiveRow(event.data);
+  }
+
   onGridReadyDocumentsPositions(params) {
     this.gridApiDocumentsPositions = params.api;
     this.gridColumnApiDocumentsPositions = params.columnApi;
   }
-
-
-  onRowClickedDocumentsHeaders(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsHeaders');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-    }
 
   onRowClickedDocumentsPositions(event) {
     const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsPositions');
       dataSourceResponseWrapper.SetActiveRow(event.data);
   }
 
+  onGridReadyAttachments(params) {
+    this.gridApiAttachments = params.api;
+    this.gridColumnApiAttachments = params.columnApi;
+    this.gridColumnApiAttachments.setColumnsVisible(['sitAttachmentsId','sitAttachmentsG','ParentId'],false)
+  }
+
+  onRowClickedAttachments(event) {
+    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitAttachments');
+    dataSourceResponseWrapper.SetActiveRow(event.data);
+  }
 }

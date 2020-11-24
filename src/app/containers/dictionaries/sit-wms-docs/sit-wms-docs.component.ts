@@ -53,11 +53,14 @@ export class SitWmsDocsComponent implements OnInit {
   gridColumnApiDocumentsHeadersHistory;
   columnDefsDocumentsHeadersHistory;
 
+  gridApiAttachments;
+  gridColumnApiAttachments;
+  columnDefsAttachments;
+
   constructor(
     private gatewayService: GatewayService,
     private tabService: TabService,
     @Inject(LOCALE_ID) private locale: string,
-
 
     ) {
 
@@ -74,12 +77,11 @@ export class SitWmsDocsComponent implements OnInit {
     this.defaultColDef = {
       sortable: true,
       filter: true,
-      //floatingFilter: true,
       resizable: true,
       enableValue: true,
       enableRowGroup: true,
       enablePivot: true,
-      floatingFilter: true,
+      floatingFilter: false,
     };
 
     //definicja kolumn nagłówków dowodów
@@ -89,7 +91,7 @@ export class SitWmsDocsComponent implements OnInit {
       { headerName: 'Typ dok.', field: 'DocumentIdent', sortable: true, resizable: true, filter: 'agSetColumnFilter', floatingFilter: false, width: 90 },
       { headerName: 'Numer', field: 'DocumentNumber', sortable: true, resizable: true, filter: 'agTextColumnFilter' },
       { headerName: 'Data', field: 'DocumentDate', type: 'dateColumn', filter: 'agDateColumnFilter',width: 100, floatingFilter: false, sort: 'desc'  },
-      { headerName: 'Status WMS', field: 'Status_WMS', filter: 'agSetColumnFilter', width: 160,
+      { headerName: 'Status WMS', field: 'Status_WMS', filter: 'agSetColumnFilter', width: 160, floatingFilter: true,
         cellStyle: function(params) {
           if (params.value === 'Wysłana') { return { color: 'blue' }; }
           else if (params.value === 'Błąd wysyłki') { return { color: 'red' }; }
@@ -97,9 +99,9 @@ export class SitWmsDocsComponent implements OnInit {
           else { return null; }
         }
       },
-      { headerName: 'Kontrahent', field: 'CustName', filter: 'agTextColumnFilter', tooltipField: 'CustName'},
-      { headerName: 'Opis', field: 'DocumentDescription', filter: 'agTextColumnFilter', tooltipField: 'DocumentDescription' },
-      { headerName: 'NagId SL', field: 'ExtAppIdent01', filter: 'agTextColumnFilter',width: 100 },
+      { headerName: 'Kontrahent', field: 'CustName', filter: 'agTextColumnFilter', tooltipField: 'CustName', floatingFilter: true},
+      { headerName: 'Opis', field: 'DocumentDescription', filter: 'agTextColumnFilter', tooltipField: 'DocumentDescription', floatingFilter: true },
+      { headerName: 'NagId SL', field: 'ExtAppIdent01', filter: 'agTextColumnFilter', width: 100, floatingFilter: true },
       // { headerName: 'XL ID', field: 'ExtAppIdent02', filter: 'agTextColumnFilter',width: 100  },
       // { headerName: 'Opis zew.', field: 'ExtAppDescription01', filter: 'agTextColumnFilter',width: 200  },
 
@@ -131,21 +133,31 @@ export class SitWmsDocsComponent implements OnInit {
 
     //definicja kolumn historii nagłówków
     this.columnDefsDocumentsHeadersHistory = [
-      { headerName: 'Operacja', field: 'OprType', filter: 'agTextColumnFilter', floatingFilter: true, width: 100 },
-      { headerName: 'Data mod.', field: 'ChangeDate', sortable: true, resizable: true, suppressMenu: true, width: 180, floatingFilter: false, sort: 'desc',
+      { headerName: 'Operacja', field: 'OprType', filter: 'agTextColumnFilter',  width: 100 },
+      { headerName: 'Data mod.', field: 'ChangeDate', sortable: true, resizable: true, suppressMenu: true, width: 180, sort: 'desc',
         cellRenderer: (data) => { return formatDate(data.value, 'yyyy-MM-dd H:mm', this.locale) }
       },
-      { headerName: 'Status', field: 'ValueName', filter: 'agTextColumnFilter', floatingFilter: true },
-      { headerName: 'Komentarz', field: '__HistoryComments__', filter: 'agTextColumnFilter', floatingFilter: true },
+      { headerName: 'Status', field: 'ValueName', filter: 'agTextColumnFilter'},
+      { headerName: 'Komentarz', field: '__HistoryComments__', filter: 'agTextColumnFilter' },
     ];
 
     //definicja kolumn historii pozycji
     this.columnDefsDocumentsPositionsHistory = [
-      { headerName: 'Operacja', field: 'OprType', filter: 'agTextColumnFilter', floatingFilter: true, width: 100 },
-      { headerName: 'Data mod.', field: 'ChangeDate', sortable: true, resizable: true, suppressMenu: true, width: 180, floatingFilter: false, sort: 'desc',
+      { headerName: 'Operacja', field: 'OprType', filter: 'agTextColumnFilter', width: 100 },
+      { headerName: 'Data mod.', field: 'ChangeDate', sortable: true, resizable: true, suppressMenu: true, width: 180, sort: 'desc',
         cellRenderer: (data) => { return formatDate(data.value, 'yyyy-MM-dd H:mm', this.locale) }
       },
-      { headerName: 'Ilość', field: 'Quantity', floatingFilter: false, type: "numericColumn" }
+      { headerName: 'Ilość', field: 'Quantity', type: "numericColumn" }
+    ];
+
+    this.columnDefsAttachments = [
+      { headerName: 'ParentId', field: 'ParentId' },
+      { headerName: 'sitAttachmentsG', field: 'sitAttachmentsG' },
+      { headerName: 'Data dodania', field: 'InsertDate', width: 120,
+         cellRenderer: (data) => { return formatDate(data.value, 'yyyy-MM-dd H:mm', this.locale) }
+      },
+      { headerName: 'Nazwa pliku', field: 'FileName', width: 250 },
+      { headerName: 'Opis', field: 'AttachmentDesc', width: 250 },
     ];
 
     this.rowClassRules = {
@@ -224,6 +236,18 @@ export class SitWmsDocsComponent implements OnInit {
   onRowClickedDocumentsVATFooter(event) {
     const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsVATFooters');
       dataSourceResponseWrapper.SetActiveRow(event.data);
+  }
+
+  onGridReadyAttachments(params) {
+    this.gridApiAttachments = params.api;
+    this.gridColumnApiAttachments = params.columnApi;
+    this.gridColumnApiAttachments.setColumnsVisible(['sitAttachmentsId','sitAttachmentsG','ParentId'],false)
+
+  }
+
+  onRowClickedAttachments(event) {
+    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitAttachments');
+    dataSourceResponseWrapper.SetActiveRow(event.data);
   }
 
   onFirstDataRendered(params) {

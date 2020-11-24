@@ -216,6 +216,48 @@
                   </div>
                 </div>
               </mat-tab>
+              <mat-tab label="Załączniki">
+                <div class="content" fxFill fxLayout="column">
+                  <div fxFlex="20">
+                    <sit-data-set-container  ident="sitAttachments"  fxFlex fxLayout="column">
+                      <div class="sit-proc-bar">
+                        <mat-toolbar color="accent">
+                          <mat-toolbar-row>
+                            <div class="sit-proc-buttons-row">
+                              <sit-proc-button #sitAction actionIdent="insert" componentParamsIdent="sitAttachmentsIns" tooltip="Dodaj skan" color="primary" icon="post_add" ></sit-proc-button>
+                              <sit-proc-button #sitAction actionIdent="delete" tooltip="Usuń"  color="primary" icon="delete" delete="true" matType="mat-stroked-button"></sit-proc-button>
+                            </div>
+                          </mat-toolbar-row>
+                        </mat-toolbar>
+                      </div>
+                      <div class="data-table" fxFlex>
+                        <ag-grid-angular #sitSetDataSource
+                        #agGrid
+                        id="gridAttachments"
+                        style="width: 100%; height: 100%;"
+                        class="ag-theme-balham"
+                        [columnDefs]="columnDefsAttachments"
+                        [defaultColDef]="defaultColDef"
+                        [rowSelection]="rowSelection"
+                        [rowMultiSelectWithClick]="true"
+                        [enableCellTextSelection]="true"
+                        [enableRangeSelection]="false"
+                        [popupParent]="popupParent"
+                        (rowClicked)="onRowClickedAttachments($event)"
+                        (gridReady)="onGridReadyAttachments($event)"
+                        (firstDataRendered)="onFirstDataRendered($event)"
+                        >
+                        </ag-grid-angular>
+                      </div>
+                    </sit-data-set-container>
+                  </div>
+                  <div fxFlex>
+                    <sit-data-set-container  ident="sitAttachments"  fxFlex fxLayout="column">
+                      <sit-pdf-viewer #sitControl field="FileName" fxFill></sit-pdf-viewer>
+                    </sit-data-set-container>
+                  </div>
+                </div>
+              </mat-tab>
               <mat-tab>
                 <ng-template mat-tab-label><i class="material-icons">print</i></ng-template>
                 <div fxLayout="column" fxFill>
