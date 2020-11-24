@@ -14,8 +14,7 @@ import { ActionDefinitionWrapper } from '@app/_models/actionDefinitionWrapper';
 @Component({
   selector: 'sit-data-set-container',
   templateUrl: './sit-data-set-container.component.html',
-  styleUrls: ['./sit-data-set-container.component.scss'],
-  // host: {class: 'router-flex'}
+  styleUrls: ['./sit-data-set-container.component.scss']
 })
 
 export class SitDataSetContainerComponent {
@@ -23,6 +22,7 @@ export class SitDataSetContainerComponent {
 
   @ContentChildren('sitSetDataSource', { descendants: true})
   datasSourcesInterface: QueryList<sitSetDataSetDirective>;
+
   @ContentChildren('sitControl', { descendants: true })
   databaseControlsInterface!: QueryList<SitDataBaseComponent>;
   @ViewChildren('sitAction')
@@ -37,7 +37,7 @@ export class SitDataSetContainerComponent {
   @Input() ident: string;
   dataSetResponseWrapper: DataSetWrapper;
   @Input() showActionsToolbar: boolean = false; // czy pokazywac w widoku actions-toolbar
-  
+
   @Output()
   activeRowChanged: EventEmitter<any> = new EventEmitter<any>();
 
@@ -48,13 +48,9 @@ export class SitDataSetContainerComponent {
 
   public dataSetControlsManager: DataSetManager;
 
-  constructor(private gatewayService: GatewayService) { }
-
   clearErrors() {
     this.errors?.splice(0, this.errors?.length);
   }
-
-
 
   get activeRecord(): any {
     return this.dataSetResponseWrapper?.activeRow;
@@ -130,6 +126,7 @@ export class SitDataSetContainerComponent {
           gridApi.forEachNode( (rowNode) => {
             const rowValue = rowNode.data[fieldName];
             if (this.compareStrings(rowValue, fieldValue)) {
+              // tslint:disable-next-line: forin
               for (const key in inputRow) {
                 const newValue = inputRow[key];
                 rowNode.data[key] = newValue;
@@ -157,13 +154,10 @@ export class SitDataSetContainerComponent {
         });
       });
     });
-    this.activeRowChanged.emit(this.activeRecord);
   }
 
   public setDataSource(dataSetWrapper: DataSetWrapper) {
     this.dataSetResponseWrapper = dataSetWrapper;
-    this.dataSetResponseWrapper.activeRowChanged = this.activeRowChanged;
-    this.dataSetResponseWrapper.afterPropagte = this.afterPropagte;
     this.errors = dataSetWrapper.errors;
     this.datasSourcesInterface.forEach(element => {
       // agGrid
@@ -179,12 +173,15 @@ export class SitDataSetContainerComponent {
         });
       }
     });
+    this.refreshFieldValueInControl();
+  }
 
+  public refreshFieldValueInControl(): void {
     if (this.databaseControlsInterface != null) {
-        this.databaseControlsInterface.forEach(element => {
-          this.dataSetResponseWrapper.refreshFieldValueInControl(element);
-        });
-     }
+      this.databaseControlsInterface.forEach(element => {
+        this.dataSetResponseWrapper.refreshFieldValueInControl(element);
+      });
+    }
   }
 
   public AddRow(newRow: any) {
@@ -211,7 +208,7 @@ export class SitDataSetContainerComponent {
       this.actionsTable = this.filterActionsToShowOnToolbar(dataSetWrapperDefinition.actions);
       //console.log("Actions table =" + this.actionsTable);
     }
-    
+
     //z uwagi na asynchroniczne przetwarzanie ngFor lista sit-proc-buttons w ngAfterViewInit jest pusta, taki myk
     this.actionControlsInterface.changes.subscribe(() => {
       //console.log("Action controls interface from subscriber " + this.actionControlsInterface);
@@ -230,7 +227,7 @@ export class SitDataSetContainerComponent {
         actionControl.dataSetManagerSource = this.dataSetControlsManager;
       });
     } */
-    
+
     this.pepareControlForButtons(this.refreshButtons);
     this.pepareControlForButtons(this.filesButtons);
   }
@@ -255,15 +252,25 @@ export class SitDataSetContainerComponent {
   showActionOnToolbar(action: ActionDefinitionWrapper): boolean {
     if(action != null) {
       return action.showInToolbar;
-    } else 
+    } else
       return false;
   }
-  
+
   //filtrowanie tabeli akcji do wyswietlenia na toolbarze
   filterActionsToShowOnToolbar(actionsTable: ActionDefinitionWrapper[]): ActionDefinitionWrapper[]{
-    if(actionsTable != null) 
+    if(actionsTable != null)
       return actionsTable.filter(this.showActionOnToolbar);
-    else 
+    else
       return null;
   }
+
+  public detachEvents() {
+    this.databaseControlsInterface.forEach(control => {
+      control.detachEvents();
+    });
+  }
 }
+
+
+
+

@@ -4,11 +4,11 @@
       <div fxLayout="column" fxFlex="50" class="content">
 
         <!-- Filtry sitCustomers -->
-        <!-- <div class="sit-filter-bar">
+        <div class="sit-filter-bar">
           <sit-data-set-container ident="sitFilterCustomers" >
-              <sit-data-input #sitControl id="searchCustomers" field="searchCustomers" label="Filtruj kontrahentów" placeholder="Nazwa, NIP, Identyfikator" appearance="outline" style="width: 300px;"></sit-data-input>
+              <sit-data-input #sitControl id="searchCustomers" field="searchCustomers" label="Filtruj kontrahentów" placeholder="Nazwa, NIP, Identyfikator" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
           </sit-data-set-container>
-        </div> -->
+        </div>
 
         <!-- Procedury sitCustomers -->
        <!--  <div class="sit-proc-bar"> -->
@@ -17,8 +17,8 @@
           <mat-toolbar color="accent">
             <mat-toolbar-row>
               <div class="sit-proc-buttons-row">
-                <sit-proc-button #sitAction actionIdent="insert" componentParamsIdent="sitCustomersEdit" openKind="EXPANDER" tooltip="Nowy" color="primary" icon="post_add"></sit-proc-button>
-                <sit-proc-button #sitAction actionIdent="update" componentParamsIdent="sitCustomersEdit" openKind="EXPANDER" tooltip="Edycja" color="primary" icon="edit"></sit-proc-button>
+                <sit-proc-button #sitAction actionIdent="insert" componentParamsIdent="sitCustomersEdit" openKind="TAB" tooltip="Nowy" color="primary" icon="post_add"></sit-proc-button>
+                <sit-proc-button #sitAction actionIdent="update" componentParamsIdent="sitCustomersEdit" openKind="TAB" tooltip="Edycja" color="primary" icon="edit"></sit-proc-button>
                 <sit-proc-button #sitAction actionIdent="delete" tooltip="Usuń"  color="primary" icon="delete" delete="true" matType="mat-stroked-button"></sit-proc-button>
               </div>
             </mat-toolbar-row>
@@ -66,7 +66,7 @@
               <div fxLayout="row">
                 <sit-data-checkbox id="IsRecipient" #sitControl field="IsRecipient" label="Odbiorca" readonly="true"></sit-data-checkbox>
                 <sit-data-checkbox id="IsSupplier" #sitControl field="IsSupplier" label="Dostawca" readonly="true"></sit-data-checkbox>
-              </div>              
+              </div>
               <div fxLayout="row">
                 <sit-data-input type="text" id="CustIdent" #sitControl field="CustIdent" label="Identyfikator" [showRefresh]=false appearance="outline" fxFlex [readonly]=true></sit-data-input>
                 <sit-data-input type="text" id="VATId" #sitControl field="VATId" label="NIP" [showRefresh]=false appearance="outline" style="width: 150px" [readonly]=true></sit-data-input>

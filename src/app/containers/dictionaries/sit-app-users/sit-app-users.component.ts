@@ -31,6 +31,10 @@ export class SitAppUsersComponent implements OnInit {
   gridColumnApiAppUserCompanies;
   columnDefsAppUserCompanies;
 
+  gridApiRightsGroupUsers;
+  gridColumnApiRightsGroupUsers;
+  columnDefsRightsGroupUsers;
+
   constructor(
     private gatewayService: GatewayService
   ) {
@@ -55,19 +59,25 @@ export class SitAppUsersComponent implements OnInit {
       { headerName: 'e-mail', field: 'email', filter: 'agTextColumnFilter', width: 200 },
       { headerName: 'MenuId', field: 'sitMenuId', type: 'numericColumn', filter: 'agTextColumnFilter', width: 80 },
       { headerName: 'Menu', field: 'Symbol', filter: 'agTextColumnFilter', width: 100 },
-      { headerName: 'Aktywny', field: 'IsActive', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, cellRenderer: 'gridCheckboxRenderer', cellClass: "grid-cell-centered", width: 80  },
+      { headerName: 'Aktywny', field: 'IsActive', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, cellRenderer: 'gridCheckboxRenderer', cellClass: "grid-cell-centered", width: 100  },
 
     ];
+
     this.columnDefsAppUserCompanies = [
       { headerName: 'sitAppUserCompaniesId', field: 'sitAppUserCompaniesId', type: 'numericColumn', filter: 'agTextColumnFilter', flex: 1 },
       { headerName: 'sitAppUserCompaniesG', field: 'sitAppUserCompaniesG', filter: 'agTextColumnFilter', flex: 1 },
-      { headerName: 'Id', field: 'sitCompaniesId', type: 'numericColumn', filter: 'agTextColumnFilter', flex: 1 },
-      { headerName: 'Symbol', field: 'CompanyIdent', filter: 'agTextColumnFilter', flex: 2 },
+      { headerName: 'Identyfikator', field: 'CompanyIdent', filter: 'agTextColumnFilter', flex: 2 },
       { headerName: 'Nazwa', field: 'CompanyDescription', filter: 'agTextColumnFilter', flex: 3 },
       { headerName: 'Plik konfig.', field: 'ConfigFile', filter: 'agTextColumnFilter', flex: 1 },
-      { headerName: 'Def', field: 'Def', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, cellRenderer: 'gridCheckboxRenderer', cellClass: "grid-cell-centered", flex: 1  },
+      { headerName: 'Domyślna', field: 'IsDefault', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, cellRenderer: 'gridCheckboxRenderer', cellClass: "grid-cell-centered", flex: 1  },
 
     ];
+
+    this.columnDefsRightsGroupUsers = [
+      { headerName: 'Identyfikator', field: 'RightsGroupIdent', filter: 'agTextColumnFilter'},
+      { headerName: 'Nazwa', field: 'RightsGroupName', filter: 'agTextColumnFilter'},
+    ];
+
     this.frameworkComponents = {
       gridCheckboxRenderer: GridCheckboxRenderer,
     };
@@ -79,15 +89,19 @@ export class SitAppUsersComponent implements OnInit {
   onGridReady(params) {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
-    this.gridColumnApi.setColumnsVisible(['sitAppUsersId','sitAppUsersG'],false)
+    this.gridColumnApi.setColumnsVisible(['sitAppUsersId','sitAppUsersG','sitMenuId'],false)
 
   }
 
   onGridReadyAppUserCompanies(params) {
-    this.gridApi = params.api;
-    this.gridColumnApi = params.columnApi;
-    this.gridColumnApi.setColumnsVisible(['sitAppUserCompaniesId','sitAppUserCompaniesG'],false)
+    this.gridApiAppUserCompanies = params.api;
+    this.gridColumnApiAppUserCompanies = params.columnApi;
+    this.gridColumnApiAppUserCompanies.setColumnsVisible(['sitAppUserCompaniesId','sitAppUserCompaniesG'],false)
+  }
 
+  onGridReadyRightsGroupUsers(params) {
+    this.gridApiRightsGroupUsers = params.api;
+    this.gridColumnApiRightsGroupUsers = params.columnApi;
   }
 
   onRowClicked(event) {
@@ -97,6 +111,11 @@ export class SitAppUsersComponent implements OnInit {
 
   onRowClickedAppUserCompanies(event) {
     const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitAppUserCompanies');
+      dataSourceResponseWrapper.SetActiveRow(event.data);
+  }
+
+  onRowClickedRightsGroupUsers(event) {
+    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitRightsGroupUsers');
       dataSourceResponseWrapper.SetActiveRow(event.data);
   }
 

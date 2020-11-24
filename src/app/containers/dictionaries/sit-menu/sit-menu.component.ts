@@ -44,6 +44,7 @@ export class SitMenuComponent implements OnInit {
     this.defaultColDef = {
       sortable: true,
       filter: true,
+      floatingFilter: false,
       resizable: true,
       enableValue: true,
       enableRowGroup: true,
@@ -60,7 +61,8 @@ export class SitMenuComponent implements OnInit {
     ];
     this.columnDefsMenuItems = [
       { headerName: 'Id', field: 'sitMenuItemsId', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, width: 60, type: 'numericColumn' },
-      { headerName: 'Id grupy', field: 'ParentId', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, width: 80, type: 'numericColumn'},
+      { headerName: 'GUID', field: 'sitMenuItemsG', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, width: 60, },
+      { headerName: 'Grupa', field: 'ParentCaption', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, width: 100, floatingFilter: true, sort: "asc" },
       { headerName: 'Kolejność', field: 'OrdId', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, width: 80, type: 'numericColumn', sort: "asc" },
       { headerName: 'Nazwa', field: 'Caption', sortable: true, filter: 'agTextColumnFilter', autoHeight: true },
       { headerName: 'Rodzaj', field: 'Kind', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, width: 80 },
@@ -87,6 +89,8 @@ export class SitMenuComponent implements OnInit {
   onGridReadyMenuItems(params) {
     this.gridApiMenuItems = params.api;
     this.gridColumnApiMenuItems = params.columnApi;
+    this.gridColumnApiMenuItems.setColumnsVisible(['sitMenuItemsId','sitMenuItemsG'],false)
+
   }
 
   onGridReadyAppUsers(params) {

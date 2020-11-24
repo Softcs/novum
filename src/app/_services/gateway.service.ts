@@ -95,18 +95,28 @@ export class GatewayService {
         return decrypted.toString(CryptoJS.enc.Utf8);
     }
 
-    createUser(username: string, password: string): User {
+    createUser(username: string, password: string, company: Company): User {
         const user = new User();
         user.password = password;
         user.username = username;
         user.token = null;
         user.connection = null;
-        user.company = null;
+        user.company = company;
+        user.connection = company?.configFile;
         return user;
     }
 
-    login(username: string, password: string) {
-        const user = this.createUser(username,password);
+    createCompany(companyConfig): Company {
+        const company = new Company(
+            companyConfig.companyIdent,
+            companyConfig.companyDescription,
+            companyConfig.companyGUID,
+            companyConfig.configFile);
+        return company;
+    }
+
+    login(username: string, password: string, company: Company) {
+        const user = this.createUser(username,password, company);
         const oprLogin: Operation = this.operationLogin(user);
         return oprLogin;
     }
@@ -115,6 +125,7 @@ export class GatewayService {
         // remove user from local storage to log user out
         this.removeCurrentUser();
     }
+
     operationLogin(user: User) {
         const opr: Operation = new Operation();
         if(user != null) {
@@ -202,12 +213,10 @@ export class GatewayService {
                         this.currentUserValue.token = resData.token;
                     }
                     if (this.currentUserValue != null && resData.companyConfig && this.currentUserValue.connection == null) {
-                        this.currentUserValue.company = new Company(
-                                resData.companyConfig.companyIdent,
-                                resData.companyConfig.companyDescription);
-                        this.currentUserValue.connection = resData.companyConfig.configFile;
+                        const company = this.createCompany(resData.companyConfig);
+                        this.currentUserValue.company = company;
+                        this.currentUserValue.connection = company.configFile;
                     }
-
                     if (resData.forceLogout){
                         this.removeCurrentUser();
                     }

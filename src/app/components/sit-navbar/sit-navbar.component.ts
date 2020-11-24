@@ -46,7 +46,12 @@ export class SitNavbarComponent implements OnInit, AfterViewInit {
       i = tabs.findIndex(tab => tab.active);
       if ( i > -1 ) {
         this.title = tabs[i].title;
-        this.titleService.setTitle(this.title);
+        let browserTab = this.title;
+        if (this.currentUser.company) {
+            browserTab = this.currentUser.company.companyDescription + ' - ' + this.title;
+        }
+
+        this.titleService.setTitle(browserTab);
       }
       });
 

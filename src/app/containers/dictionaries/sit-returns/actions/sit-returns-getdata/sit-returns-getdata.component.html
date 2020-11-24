@@ -2,15 +2,12 @@
   [(actionExecuteData)]="actionExecuteData"
   >
   <sit-data-set-container ident="sitProcGetDataForReturnsCompare">
-      <div fxFill>
-        <div class="sit-proc-expander-title">Wczytaj dane klienta</div>
-
-        <div fxLayout="column">
-          <!-- <sit-data-input type="number" id="sitDocumentsHeadersId" #sitControl field="sitDocumentsHeadersId" label="sitDocumentsHeadersId" [showRefresh]=false appearance="outline" style="width: 400px"></sit-data-input> -->
-          <sit-data-textarea type="textarea" id="data" #sitControl field="data" label="Wklej dwie kolumny z Excela - EAN i ilość" appearance="outline" rows="30" cols="30"></sit-data-textarea>
-
-        </div>
+    <div class="sit-proc-params-content" fxLayout="column" style="width: 400px; height: 400px;">
+      <div>Wczytaj dane klienta</div>
+      <!-- <sit-data-input type="number" id="sitDocumentsHeadersId" #sitControl field="sitDocumentsHeadersId" label="sitDocumentsHeadersId" [showRefresh]=false appearance="outline" style="width: 400px"></sit-data-input> -->
+      <div fxLayout="row" fxFlex>
+        <sit-data-textarea type="textarea" id="data" #sitControl field="data" label="Wklej dwie kolumny z Excela - EAN i ilość" appearance="outline" fxFill></sit-data-textarea>
       </div>
-
+    </div>
   </sit-data-set-container>
 </sit-proc-params>

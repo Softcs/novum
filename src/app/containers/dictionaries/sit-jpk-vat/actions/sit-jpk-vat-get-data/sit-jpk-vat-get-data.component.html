@@ -1,15 +1,11 @@
 <sit-proc-params
   [(actionExecuteData)]="actionExecuteData"
   >
-<div fxFill fxLayoutAlign="center center" fxLayout="column">
-  <div class="content" fxFill style="padding: 20px;">
-    <sit-data-set-container ident="sitProcGetJPKData">
-      <div>
-        Podaj parametry
-        <sit-data-input type="date" id="DateFrom" #sitControl field="DateFrom" label="Data od" [showRefresh]=false appearance="outline" style="width: 100%;"></sit-data-input>
-        <sit-data-input type="date" id="DateTo" #sitControl field="DateTo" label="Data do" [showRefresh]=false appearance="outline" style="width: 100%;"></sit-data-input>
-      </div>
-    </sit-data-set-container>
-  </div>
-</div>
+  <sit-data-set-container ident="sitProcGetJPKData">
+    <div class="sit-proc-params-content" fxLayout="column">
+      Podaj parametry
+      <sit-data-input type="date" id="DateFrom" #sitControl field="DateFrom" label="Data od" [showRefresh]=false appearance="outline" style="width: 100%;"></sit-data-input>
+      <sit-data-input type="date" id="DateTo" #sitControl field="DateTo" label="Data do" [showRefresh]=false appearance="outline" style="width: 100%;"></sit-data-input>
+    </div>
+  </sit-data-set-container>
 </sit-proc-params>

@@ -13,10 +13,9 @@ export class SitFilesButtonComponent extends SitButtonBaseComponent {
 
   executing = false;
   public multiple: boolean;
-  @Input() fieldFileNames: string;
-  // @Input() fieldFileIdents: string;
-  @Input() fieldIdent: string;
 
+  @Input() fieldFileNames: string;
+  @Input() fieldIdent: string;
 
   constructor(private gatewayService: GatewayService)  {
     super();
@@ -25,10 +24,6 @@ export class SitFilesButtonComponent extends SitButtonBaseComponent {
     this.color = 'primary';
     this.multiple = false;
   }
-
-
-
-
 
   onClick($event) {
     this.hiddenInput.nativeElement.click();

@@ -52,7 +52,7 @@ export class SitJobsComponent implements OnInit {
       { headerName: 'GUID', field: 'sitJobsG', filter: 'agTextColumnFilter', width: 100 },
       { headerName: 'Identyfikator', field: 'JobIdent', sortable: true, filter: 'agTextColumnFilter' },
       { headerName: 'Nazwa', field: 'JobName', sortable: true, filter: 'agTextColumnFilter', width: 200 },
-      { headerName: 'Aktywny', field: 'IsActive', filter: 'agSetColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80,cellRenderer: 'gridCheckboxRenderer' },
+      { headerName: 'Aktywny', field: 'IsActive', filter: 'agSetColumnFilter', suppressMenu: true, width: 80,cellRenderer: 'gridCheckboxRenderer' },
       { headerName: 'Int.rodz.', field: 'IntervalKind', sortable: true, filter: 'agTextColumnFilter', width: 100 },
       { headerName: 'Int.czas', field: 'IntervalCounter', sortable: true, filter: 'agTextColumnFilter', width: 100 },
       { headerName: 'Data rozpoczęcia', field: 'StartDate', sortable: true, filter: 'agTextColumnFilter', width: 150 },
@@ -61,7 +61,6 @@ export class SitJobsComponent implements OnInit {
       { headerName: 'LastActiveStatus', field: 'LastActiveStatus', type: 'numericColumn', sortable: true, filter: 'agTextColumnFilter', width: 120 },
       { headerName: 'Uruchom natychmiast', field: 'RunImmediately', filter: 'agSetColumnFilter', type: 'numericColumn', suppressMenu: true, width: 120,cellRenderer: 'gridCheckboxRenderer' },
       { headerName: 'CompanyIdent', field: 'CompanyIdent', sortable: true, filter: 'agTextColumnFilter', width: 150 },
-      { headerName: 'Id firmy', field: 'sitCompaniesId', type:"numericColumn", sortable: true, filter: 'agTextColumnFilter', width: 100 },
 
     ];
 
@@ -72,9 +71,9 @@ export class SitJobsComponent implements OnInit {
       { headerName: 'Kolejność', field: 'StepOrder', type: 'numericColumn', sortable: true, filter: 'agTextColumnFilter', width: 100, sort: 'asc' },
       { headerName: 'Identyfikator', field: 'JobStepIdent', sortable: true, filter: 'agTextColumnFilter', width: 150 },
       { headerName: 'Nazwa', field: 'JobStepName', sortable: true, filter: 'agTextColumnFilter', width: 150 },
-      { headerName: 'Aktywny', field: 'IsActive', filter: 'agSetColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80,cellRenderer: 'gridCheckboxRenderer' },
+      { headerName: 'Aktywny', field: 'IsActive', filter: 'agSetColumnFilter',  suppressMenu: true, width: 80,cellRenderer: 'gridCheckboxRenderer' },
       { headerName: 'Nazwa procedury', field: 'ProcedureName', sortable: true, filter: 'agTextColumnFilter', width: 250 },
-      { headerName: 'Akcja po błędzie', field: 'ActionAfterError', filter: 'agSetColumnFilter', type: 'numericColumn', suppressMenu: true, width: 120,cellRenderer: 'gridCheckboxRenderer' },
+      { headerName: 'Akcja po błędzie', field: 'ActionAfterError', filter: 'agSetColumnFilter', suppressMenu: true, width: 120,cellRenderer: 'gridCheckboxRenderer' },
       { headerName: 'LastActiveStatus', field: 'LastActiveStatus', sortable: true, filter: 'agTextColumnFilter', width: 120 },
       { headerName: 'Parametry', field: 'Params', sortable: true, filter: 'agTextColumnFilter', width: 250 },
       { headerName: 'TimeOut', field: 'TimeOut', sortable: true, filter: 'agTextColumnFilter', width: 100 },

@@ -1,22 +1,19 @@
 <sit-data-set-container ident="{{dictIdent}}">
-  <div class="sit-edit-form" fxFlexFill>
-    <div class="sit-edit-form-content">
+  <div fxLayout="column">
+    <div fxFlex>
       <ng-content></ng-content>
     </div>
-    <div class="sit-edit-form-bottom-bar">
-      <mat-divider></mat-divider>
-      <div fxLayout="row" style="width: 100%;">
-        <span style="padding: 20px">
-          <!-- <sit-proc-button #sitControl actionIdent="{{actionIdent}}" color="primary" caption="Zapisz" (afterCompleted)="onSave($event)" confirm="false" matType="mat-raised-button"></sit-proc-button> -->
-          <button [disabled]="executing" mat-raised-button color="primary" (click)="executeAction()">
+    <div class="sit-proc-params-bottom-bar">
+      <div fxLayout="row" fxFill fxLayoutAlign="start center" >
+          <div style="padding: 0px 20px;">
+            <button [disabled]="executing || saveDisabled" mat-raised-button color="primary" (click)="executeAction()">
               <span *ngIf="executing" class="spinner-border spinner-border-sm mr-1"></span>
               Zapisz
-          </button>
-        </span>
-        <span style="width: 50px"></span>
-        <span style="padding: 20px">
-          <button mat-raised-button color="primary" (click)="discard()"  style="width: 80px;">Anuluj</button>
-        </span>
+            </button>
+          </div>
+          <div>
+            <button mat-raised-button color="primary" (click)="discard()"  style="width: 80px;">Anuluj</button>
+          </div>
       </div>
     </div>
   </div>

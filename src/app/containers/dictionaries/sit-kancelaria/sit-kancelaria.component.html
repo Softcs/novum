@@ -1,126 +1,133 @@
-<sit-dict-container ident="sitKancelaria" #sitDictcontainer fxFlexFIll class="content">
-  <!-- <div fxLayout="row" fxFlexFill> -->
+<sit-dict-container ident="sitKancelaria" #sitDictcontainer fxFlexFill >
+  <div fxLayout="row" fxFlexFill class="content">
     <as-split direction="horizontal">
-      <as-split-area [size]="50">
-        <div fxFill fxLayout="column">
-          <div fxFlex="300px" fxLayout="column">
-            <sit-data-set-container ident="sitFilterCustomers" >
-              <span class="filter-container">
-                <sit-data-input #sitControl field="searchCustomers" label="Filtruj klientów"  appearance="outline" showRefreshButton="true" style="width: 300px"></sit-data-input>
-              </span>
-            </sit-data-set-container>
-            <div class="data-table" fxFlex>
-              <sit-data-set-container  ident="sitCustomers" fxFlex>
-                <ag-grid-angular #sitSetDataSource
-                #agGrid
-                id="gridCustomers"
-                style="width: 100%; height: 100%;"
-                class="ag-theme-balham"
-                [columnDefs]="columnDefsCustomers"
-                [defaultColDef]="defaultColDef"
-                [rowSelection]="rowSelection"
-                [rowMultiSelectWithClick]="true"
-                [enableCellTextSelection]="true"
-                [enableRangeSelection]="false"
-                [popupParent]="popupParent"
-                (rowClicked)="onRowClickedCustomers($event)"
-                (gridReady)="onGridReadyCustomers($event)"
-                (firstDataRendered)="onFirstDataRendered($event)">
-                </ag-grid-angular>
+      <as-split-area [size]="60">
+        <as-split direction="vertical">
+          <as-split-area [size]="30">
+            <div fxFill fxLayout="column">
+              <sit-data-set-container ident="sitFilterCustomers" >
+                <div fxLayout="row">
+                  <sit-data-input #sitControl field="searchCustomers" label="Filtruj klientów"  appearance="outline" style="width: 300px"></sit-data-input>
+                  <sit-data-input #sitControl field="searchAgreements" label="Filtruj umowy" placeholder="Numer, treść"  appearance="outline" showRefreshButton="true" style="width: 300px"></sit-data-input>
+                </div>
               </sit-data-set-container>
-            </div>
-          </div>
-          <div fxFlex="300px" fxLayout="column">
-            <!-- Filtry sitAgreements-->
-            <!-- <sit-data-set-container ident="sitFilterAgreements" >
-              <span>
-                <sit-data-input #sitControl field="searchAgreements" label="Filtruj umowy" appearance="outline" style="width: 300px"></sit-data-input>
-              </span>
-            </sit-data-set-container> -->
-
-            <!-- Procedury sitAgreements -->
-            <sit-data-set-container  ident="sitAgreements">
-              <div class="sit-proc-bar">
-                <mat-toolbar color="accent">
-                  <mat-toolbar-row>
-                    <div class="sit-proc-buttons-row">
-                      <sit-proc-button #sitAction actionIdent="insert" componentParamsIdent="sitAgreementsEdit" openKind="EXPANDER" tooltip="Nowy" color="primary" icon="post_add"></sit-proc-button>
-                      <sit-proc-button #sitAction actionIdent="update" componentParamsIdent="sitAgreementsEdit" openKind="EXPANDER" tooltip="Edycja" color="primary" icon="edit"></sit-proc-button>
-                      <sit-proc-button #sitAction actionIdent="delete" tooltip="Usuń"  color="primary" icon="delete" delete="true" matType="mat-stroked-button"></sit-proc-button>
-                    </div>
-                  </mat-toolbar-row>
-                </mat-toolbar>
-              </div>
-            </sit-data-set-container>
-
-            <!--Grid sitAgreements-->
-            <div class="data-table" fxFlex>
-              <sit-data-set-container  ident="sitAgreements" fxFlex>
-                <ag-grid-angular #sitSetDataSource
-                #agGrid
-                id="gridAgreements"
-                style="width: 100%; height: 100%;"
-                class="ag-theme-balham"
-                [columnDefs]="columnDefsAgreements"
-                [defaultColDef]="defaultColDef"
-                [rowSelection]="rowSelection"
-                [rowMultiSelectWithClick]="true"
-                [enableCellTextSelection]="true"
-                [enableRangeSelection]="false"
-                [popupParent]="popupParent"
-                (rowClicked)="onRowClickedAgreements($event)"
-                (gridReady)="onGridReadyAgreements($event)"
-                (firstDataRendered)="onFirstDataRendered($event)"
-                >
-                </ag-grid-angular>
-              </sit-data-set-container>
-            </div>
-          </div>
-          <div fxFlex fxLayout="column">
-            <sit-data-set-container  ident="sitAttachments" (activeRowChanged)="activeRowAttachmentsChanged($event)" fxFlex fxLayout="column">
-              <div class="sit-proc-bar">
-                <mat-toolbar color="accent">
-                  <mat-toolbar-row>
-                    <div class="sit-proc-buttons-row">
-                      <sit-proc-button #sitAction actionIdent="insert" componentParamsIdent="sitAttachmentsIns" tooltip="Dodaj skan" color="primary" icon="post_add" ></sit-proc-button>
-                      <sit-proc-button #sitAction actionIdent="delete" tooltip="Usuń"  color="primary" icon="delete" delete="true" matType="mat-stroked-button"></sit-proc-button>
-                    </div>
-                  </mat-toolbar-row>
-                </mat-toolbar>
-              </div>
               <div class="data-table" fxFlex>
-                <ag-grid-angular #sitSetDataSource
-                #agGrid
-                id="gridAttachments"
-                style="width: 100%; height: 100%;"
-                class="ag-theme-balham"
-                [columnDefs]="columnDefsAttachments"
-                [defaultColDef]="defaultColDef"
-                [rowSelection]="rowSelection"
-                [rowMultiSelectWithClick]="true"
-                [enableCellTextSelection]="true"
-                [enableRangeSelection]="false"
-                [popupParent]="popupParent"
-                (rowClicked)="onRowClickedAttachments($event)"
-                (gridReady)="onGridReadyAttachments($event)"
-                (firstDataRendered)="onFirstDataRendered($event)"
-                >
-                </ag-grid-angular>
+                <sit-data-set-container  ident="sitCustomers" fxFlex>
+                  <ag-grid-angular #sitSetDataSource
+                  #agGrid
+                  id="gridCustomers"
+                  style="width: 100%; height: 100%;"
+                  class="ag-theme-balham"
+                  [columnDefs]="columnDefsCustomers"
+                  [defaultColDef]="defaultColDef"
+                  [rowSelection]="rowSelection"
+                  [rowMultiSelectWithClick]="true"
+                  [enableCellTextSelection]="true"
+                  [enableRangeSelection]="false"
+                  [popupParent]="popupParent"
+                  (rowClicked)="onRowClickedCustomers($event)"
+                  (gridReady)="onGridReadyCustomers($event)"
+                  (firstDataRendered)="onFirstDataRendered($event)">
+                  </ag-grid-angular>
+                </sit-data-set-container>
               </div>
-            </sit-data-set-container>
-          </div>
-        </div>
+            </div>
+          </as-split-area>
+          <as-split-area [size]="70">
+            <as-split direction="horizontal">
+              <as-split-area [size]="60">
+                <div fxLayout="column" fxFill>
+                  <div class="sit-grid-title">Umowy</div>
+                  <!-- Procedury sitAgreements -->
+                  <sit-data-set-container  ident="sitAgreements">
+                    <div class="sit-proc-bar">
+                      <mat-toolbar color="accent">
+                        <mat-toolbar-row>
+                          <div class="sit-proc-buttons-row">
+                            <sit-proc-button #sitAction actionIdent="insert" componentParamsIdent="sitAgreementsEdit" openKind="EXPANDER" tooltip="Nowy" color="primary" icon="post_add"></sit-proc-button>
+                            <sit-proc-button #sitAction actionIdent="update" componentParamsIdent="sitAgreementsEdit" openKind="EXPANDER" tooltip="Edycja" color="primary" icon="edit"></sit-proc-button>
+                            <sit-proc-button #sitAction actionIdent="delete" tooltip="Usuń"  color="primary" icon="delete" delete="true" matType="mat-stroked-button"></sit-proc-button>
+                          </div>
+                        </mat-toolbar-row>
+                      </mat-toolbar>
+                    </div>
+                  </sit-data-set-container>
+
+                  <!--Grid sitAgreements-->
+                  <div class="data-table" fxFlex>
+                    <sit-data-set-container  ident="sitAgreements" fxFlex fxLayout="column">
+                      <ag-grid-angular #sitSetDataSource
+                      #agGrid
+                      id="gridAgreements"
+                      style="width: 100%; height: 100%;"
+                      class="ag-theme-balham"
+                      [columnDefs]="columnDefsAgreements"
+                      [defaultColDef]="defaultColDef"
+                      [rowSelection]="rowSelection"
+                      [rowMultiSelectWithClick]="true"
+                      [enableCellTextSelection]="true"
+                      [enableRangeSelection]="false"
+                      [popupParent]="popupParent"
+                      (rowClicked)="onRowClickedAgreements($event)"
+                      (gridReady)="onGridReadyAgreements($event)"
+                      (firstDataRendered)="onFirstDataRendered($event)"
+                      >
+                      </ag-grid-angular>
+                      <div style="width: 100%;height: 80px;">
+                        <sit-data-textarea type="textarea" #sitControl field="AgreementDesc" label="Opis" appearance="outline" fxFill></sit-data-textarea>
+                      </div>
+                    </sit-data-set-container>
+                  </div>
+                </div>
+              </as-split-area>
+              <as-split-area [size]="40">
+                <div fxFlex fxLayout="column">
+                  <div class="sit-grid-title">Załączniki do umów</div>
+                  <sit-data-set-container  ident="sitAttachments" (activeRowChanged)="activeRowAttachmentsChanged($event)" fxFlex fxLayout="column">
+                    <div class="sit-proc-bar">
+                      <mat-toolbar color="accent">
+                        <mat-toolbar-row>
+                          <div class="sit-proc-buttons-row">
+                            <sit-proc-button #sitAction actionIdent="insert" componentParamsIdent="sitAttachmentsIns" tooltip="Dodaj skan" color="primary" icon="post_add" ></sit-proc-button>
+                            <sit-proc-button #sitAction actionIdent="delete" tooltip="Usuń"  color="primary" icon="delete" delete="true" matType="mat-stroked-button"></sit-proc-button>
+                          </div>
+                        </mat-toolbar-row>
+                      </mat-toolbar>
+                    </div>
+                    <div class="data-table" fxFlex>
+                      <ag-grid-angular #sitSetDataSource
+                      #agGrid
+                      id="gridAttachments"
+                      style="width: 100%; height: 100%;"
+                      class="ag-theme-balham"
+                      [columnDefs]="columnDefsAttachments"
+                      [defaultColDef]="defaultColDef"
+                      [rowSelection]="rowSelection"
+                      [rowMultiSelectWithClick]="true"
+                      [enableCellTextSelection]="true"
+                      [enableRangeSelection]="false"
+                      [popupParent]="popupParent"
+                      (rowClicked)="onRowClickedAttachments($event)"
+                      (gridReady)="onGridReadyAttachments($event)"
+                      (firstDataRendered)="onFirstDataRendered($event)"
+                      >
+                      </ag-grid-angular>
+                    </div>
+                  </sit-data-set-container>
+                </div>
+
+              </as-split-area>
+            </as-split>
+          </as-split-area>
+        </as-split>
       </as-split-area>
-      <as-split-area [size]="50">
+      <as-split-area [size]="40">
         <div fxFill>
-          <ngx-extended-pdf-viewer
-            [src]="Link"
-            [useBrowserLocale]="true"
-            [height]="'100%'"
-          >
-          </ngx-extended-pdf-viewer>
+          <sit-data-set-container  ident="sitAttachments" (activeRowChanged)="activeRowAttachmentsChanged($event)" fxFlex fxLayout="column">
+            <sit-pdf-viewer #sitControl id="FileName" field="FileName" fxFill></sit-pdf-viewer>
+          </sit-data-set-container>
         </div>
       </as-split-area>
     </as-split>
-  <!-- </div> -->
+  </div>
 </sit-dict-container>
