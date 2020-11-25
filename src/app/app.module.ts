@@ -15,7 +15,7 @@ import { appRoutingModule } from './app.routing';
 
 import { BasicAuthInterceptor, ErrorInterceptor } from './_helpers';
 import { HomeComponent } from './containers/home';
-import { LoginComponent, TrackCapsDirective } from './containers/login';
+import { LoginComponent } from './containers/login';
 import { SitDictContainerComponent } from './components/sit-dict-container/sit-dict-container.component';
 
 // material
@@ -125,6 +125,8 @@ import { SitSysActionsEditComponent } from './containers/dictionaries/sit-sys-di
 import { SitRightsGroupUsersEditComponent } from './containers/dictionaries/sit-app-users/actions/sit-rights-group-users-edit/sit-rights-group-users-edit.component'
 ;
 import { SitRightsComponent } from './containers/dictionaries/sit-rights/sit-rights.component'
+;
+import { SitTrackCapsDirective } from './_directives/sit-track-caps-directive.directive'
 
 @NgModule({
     imports: [
@@ -246,7 +248,7 @@ import { SitRightsComponent } from './containers/dictionaries/sit-rights/sit-rig
         SitRightsGroupUsersEditComponent
 ,
         SitRightsComponent,
-        TrackCapsDirective
+        SitTrackCapsDirective
      ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
