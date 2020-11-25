@@ -15,3 +15,30 @@
   display: inline-block;
   margin-left: 10px;
 }
+
+.show-password {
+  cursor: pointer;
+}
+
+#input-container {
+  position:relative;
+  // direction: rtl;
+  width: 100%;
+}
+#input {
+  margin:0;
+  padding-right: 30px;
+  width: 100%;
+}
+#input-img {
+  position:absolute;
+  bottom:7px;
+  right:5px;
+  width:24px;
+  height:24px;
+}
+
+.capslock {
+  width: 100%;
+  text-align: center;
+}

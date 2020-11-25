@@ -1,5 +1,5 @@
 ﻿import { SitChangeCompanyComponent } from './../../containers/sit-change-company/sit-change-company.component';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, HostListener, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
@@ -7,6 +7,7 @@ import { first } from 'rxjs/operators';
 import { GatewayService } from '@app/_services';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { calcPossibleSecurityContexts } from '@angular/compiler/src/template_parser/binding_parser';
+import { Directive } from '@angular/core';
 
 
 @Component({
@@ -20,6 +21,8 @@ export class LoginComponent implements OnInit {
     submitted = false;
     returnUrl: string;
     error = '';
+    passType = "password";
+    capsOn;
 
     constructor(
         private formBuilder: FormBuilder,
@@ -101,6 +104,15 @@ export class LoginComponent implements OnInit {
                 });
     }
 
+    showPassword() {
+      if (this.passType === 'password')
+        { this.passType = 'text'; }
+      else
+        { this.passType = 'password'; }
+
+      console.log(this.passType)
+    }
+
     // openModalChangeCompany() {
     //   const dialogConfig = new MatDialogConfig();
     //   dialogConfig.disableClose = true;
@@ -111,4 +123,19 @@ export class LoginComponent implements OnInit {
     //   // https://material.angular.io/components/dialog/overview
     //   const modalDialog = this.matDialog.open(SitChangeCompanyComponent, dialogConfig);
     // }
+}
+
+@Directive({ selector: '[capsLock]' })
+export class TrackCapsDirective {
+  @Output('capsLock') capsLock = new EventEmitter<Boolean>();
+
+  @HostListener('window:keydown', ['$event'])
+  onKeyDown(event: KeyboardEvent): void {
+    this.capsLock.emit(event.getModifierState && event.getModifierState('CapsLock'));
+  }
+  @HostListener('window:keyup', ['$event'])
+  onKeyUp(event: KeyboardEvent): void {
+    this.capsLock.emit(event.getModifierState && event.getModifierState('CapsLock'));
+  }
+
 }
