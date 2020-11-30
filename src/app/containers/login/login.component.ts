@@ -8,6 +8,7 @@ import { GatewayService } from '@app/_services';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { calcPossibleSecurityContexts } from '@angular/compiler/src/template_parser/binding_parser';
 import { Directive } from '@angular/core';
+import {environment} from '../../../environments/environment';
 
 
 @Component({
@@ -23,6 +24,7 @@ export class LoginComponent implements OnInit {
     error = '';
     passType = "password";
     capsOn;
+    currentApplicationVersion = environment.appVersion;
 
     constructor(
         private formBuilder: FormBuilder,
