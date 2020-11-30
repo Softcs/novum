@@ -6,6 +6,7 @@ import { GatewayService } from '@app/_services';
 import { User } from '@app/_models';
 import { formatDate } from '@angular/common';
 import { TabService } from '@app/_services/tab.service';
+import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
 
 @Component({
   selector: 'app-sit-kancelaria',
@@ -19,6 +20,7 @@ export class SitKancelariaComponent implements OnInit {
   currentUser: User;
   activeTab: number;
   Link: string;
+  frameworkComponents;
 
   sitCustomersSelected = [];
   sitAgreementsSelected = [];
@@ -48,7 +50,9 @@ export class SitKancelariaComponent implements OnInit {
 
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
     this.tabService.activeTab.subscribe(x => this.activeTab = x);
-
+    this.frameworkComponents = {
+      gridCheckboxRenderer: GridCheckboxRenderer,
+    };
 
     this.defaultColDef = {
       flex: 0,
@@ -79,17 +83,16 @@ export class SitKancelariaComponent implements OnInit {
           filterOptions: ['contains']
         }
       },
-      { headerName: 'Opis', field: 'AgreementDesc', width: 200, filter: 'agTextColumnFilter', floatingFilter: true,
-        filterParams: {
-          filterOptions: ['contains']
-        }
-      },
       { headerName: 'Data', field: 'Date', width: 100, type: 'dateColumn',
         // cellRenderer: (data) => { return  formatDate(data.value, 'yyyy-MM-dd', this.locale)}
       },
       { headerName: 'Data do', field: 'DateTo', width: 100, type: 'dateColumn',
         // cellRenderer: (data) => { return  formatDate(data.value, 'yyyy-MM-dd', this.locale)}
       },
+      { headerName: 'Rodzaj umowy', field: 'AgreementsTypeName', width: 150, filter: 'agTextColumnFilter', floatingFilter: true },
+      { headerName: 'Lokalizacja', field: 'LocationName', width: 150, filter: 'agTextColumnFilter', floatingFilter: true },
+      { headerName: 'Poufny', field: 'Confidential', sortable: true, filter: 'agTextColumnFilter', width: 80, autoHeight: true, cellRenderer: 'gridCheckboxRenderer' },
+
     ];
 
     this.columnDefsAttachments = [
