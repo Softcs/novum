@@ -103,7 +103,7 @@ export class SitWmsDocsComponent implements OnInit {
       { headerName: 'Opis', field: 'DocumentDescription', filter: 'agTextColumnFilter', tooltipField: 'DocumentDescription', floatingFilter: true },
       { headerName: 'NagId SL', field: 'ExtAppIdent01', filter: 'agTextColumnFilter', width: 100, floatingFilter: true },
       // { headerName: 'XL ID', field: 'ExtAppIdent02', filter: 'agTextColumnFilter',width: 100  },
-      // { headerName: 'Opis zew.', field: 'ExtAppDescription01', filter: 'agTextColumnFilter',width: 200  },
+      { headerName: 'Opis zew.', field: 'ExtAppDescription01', filter: 'agTextColumnFilter',width: 200  },
 
     ];
 

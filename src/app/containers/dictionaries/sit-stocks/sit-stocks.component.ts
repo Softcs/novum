@@ -80,7 +80,9 @@ export class SitStocksComponent implements OnInit {
           { headerName: "Nazwa", field: 'WarehouseName', sortable: true, resizable: true, filter: 'agTextColumnFilter' },
 
         ],
-      }
+      },
+      { headerName: 'Waga', field: 'Weight', type: 'numericColumn', sortable: true, filter: 'agTextColumnFilter', floatingFilter: false },
+
     ];
 
     this.columnDefsWMSStocksDet = [
