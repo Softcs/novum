@@ -120,13 +120,11 @@ import { SitProjectsPubRegisterWorkTimeComponent } from './containers/dictionari
 import { SitSysDictionariesComponent } from './containers/dictionaries/sit-sys-dictionaries/sit-sys-dictionaries.component';
 import { SitSysDictionariesEditComponent } from './containers/dictionaries/sit-sys-dictionaries/actions/sit-sys-dictionaries-edit/sit-sys-dictionaries-edit.component';
 import { SitSysDatasourcesEditComponent } from './containers/dictionaries/sit-sys-dictionaries/actions/sit-sys-datasources-edit/sit-sys-datasources-edit.component';
-import { SitSysActionsEditComponent } from './containers/dictionaries/sit-sys-dictionaries/actions/sit-sys-actions-edit/sit-sys-actions-edit.component'
-;
-import { SitRightsGroupUsersEditComponent } from './containers/dictionaries/sit-app-users/actions/sit-rights-group-users-edit/sit-rights-group-users-edit.component'
-;
-import { SitRightsComponent } from './containers/dictionaries/sit-rights/sit-rights.component'
-;
-import { SitTrackCapsDirective } from './_directives/sit-track-caps-directive.directive'
+import { SitSysActionsEditComponent } from './containers/dictionaries/sit-sys-dictionaries/actions/sit-sys-actions-edit/sit-sys-actions-edit.component';
+import { SitRightsGroupUsersEditComponent } from './containers/dictionaries/sit-app-users/actions/sit-rights-group-users-edit/sit-rights-group-users-edit.component';
+import { SitRightsComponent } from './containers/dictionaries/sit-rights/sit-rights.component';
+import { SitTrackCapsDirective } from './_directives/sit-track-caps-directive.directive';
+import { NgxBarcodeModule } from 'ngx-barcode';
 
 @NgModule({
     imports: [
@@ -165,6 +163,7 @@ import { SitTrackCapsDirective } from './_directives/sit-track-caps-directive.di
         //ag-Grid
         AgGridModule.withComponents([]),
         AngularSplitModule.forRoot(),
+        NgxBarcodeModule,
 
     ],
     declarations: [
