@@ -16,17 +16,16 @@
     <mat-tab-group id="tab-group" animationDuration="0ms">
       <mat-tab label="Magazyny">
         <div fxLayout="column" fxFill>
-          <as-split direction="vertical">
-            <as-split-area [size]="70" fxLayout="column">
+          <sit-data-set-container ident="sitFilterStocks" fxLayout="row">
+            <div class="sit-filter-bar">
+                <sit-data-input #sitControl id="searchStocks" field="searchStocks" label="Filtruj produkty" placeholder="Identyfikator, nazwa" appearance="outline" style="width: 300px;" showRefreshButton="true"></sit-data-input>
+            </div>
+          </sit-data-set-container>
 
-              <sit-data-set-container ident="sitFilterStocks" fxLayout="row">
-                <div class="sit-filter-bar">
-                    <sit-data-input #sitControl id="searchStocks" field="searchStocks" label="Filtruj produkty" placeholder="Identyfikator, nazwa" appearance="outline" style="width: 300px;" showRefreshButton="true"></sit-data-input>
-                </div>
-              </sit-data-set-container>
-
-              <as-split direction="horizontal">
-                <as-split-area [size]="80" fxLayout="column">
+          <as-split direction="horizontal">
+            <as-split-area [size]="80" fxLayout="column">
+              <as-split direction="vertical">
+                <as-split-area [size]="70" fxLayout="column">
                   <div fxFlex>
                     <sit-data-set-container ident="sitStocks" (activeRowChanged)="activeRowStocksChanged($event)">
                       <ag-grid-angular #sitSetDataSource
@@ -42,6 +41,7 @@
                         [enableRangeSelection]="false"
                         [popupParent]="popupParent"
                         [sideBar]="false"
+                        [frameworkComponents]="frameworkComponents"
                         (rowClicked)="onRowClicked($event)"
                         (gridReady)="onGridReady($event)"
                         (firstDataRendered)="onFirstDataRendered($event)"
@@ -50,35 +50,35 @@
                     </sit-data-set-container>
                   </div>
                 </as-split-area>
-                <as-split-area [size]="20" fxLayout="column">
-                  <div class="content" fxFill fxLayout="column" fxLayoutAlign=" center" >
-                    <div fxLayout="row" fxLayoutAlign="start start"><a href="{{link}}" target="_blank"><img src="{{link}}" height="300"></a></div>
-                    <ngx-barcode [bc-value]="ean" [bc-display-value]="false" [bc-height]="50"></ngx-barcode>
-                  </div>
+                <as-split-area [size]="30">
+                  <sit-data-set-container  ident="sitWMSStocksDet" fxFill>
+                    <ag-grid-angular #sitSetDataSource
+                      #agGrid
+                      id="gridWMSStocksDet"
+                      style="width: 100%; height: 100%;"
+                      class="ag-theme-balham"
+                      [columnDefs]="columnDefsWMSStocksDet"
+                      [defaultColDef]="defaultColDef"
+                      [rowSelection]="rowSelection"
+                      [rowMultiSelectWithClick]="true"
+                      [enableCellTextSelection]="true"
+                      [enableRangeSelection]="false"
+                      [popupParent]="popupParent"
+                      [sideBar]="false"
+                      (rowClicked)="onRowClickedWMSStocksDet($event)"
+                      (gridReady)="onGridReadyWMSStocksDet($event)"
+                      (firstDataRendered)="onFirstDataRendered($event)"
+                      >
+                    </ag-grid-angular>
+                  </sit-data-set-container>
                 </as-split-area>
               </as-split>
             </as-split-area>
-            <as-split-area [size]="30">
-              <sit-data-set-container  ident="sitWMSStocksDet" fxFill>
-                <ag-grid-angular #sitSetDataSource
-                  #agGrid
-                  id="gridWMSStocksDet"
-                  style="width: 100%; height: 100%;"
-                  class="ag-theme-balham"
-                  [columnDefs]="columnDefsWMSStocksDet"
-                  [defaultColDef]="defaultColDef"
-                  [rowSelection]="rowSelection"
-                  [rowMultiSelectWithClick]="true"
-                  [enableCellTextSelection]="true"
-                  [enableRangeSelection]="false"
-                  [popupParent]="popupParent"
-                  [sideBar]="false"
-                  (rowClicked)="onRowClickedWMSStocksDet($event)"
-                  (gridReady)="onGridReadyWMSStocksDet($event)"
-                  (firstDataRendered)="onFirstDataRendered($event)"
-                  >
-                </ag-grid-angular>
-              </sit-data-set-container>
+            <as-split-area [size]="20" fxLayout="column">
+              <div class="content" fxFill fxLayout="column" fxLayoutAlign=" center" >
+                <div fxLayout="row" fxLayoutAlign="start start"><a href="{{link}}" target="_blank"><img src="{{link}}" height="350"></a></div>
+                <ngx-barcode [bc-value]="ean" [bc-display-value]="true" [bc-height]="30" [bc-font-size]="15"></ngx-barcode>
+              </div>
             </as-split-area>
           </as-split>
         </div>

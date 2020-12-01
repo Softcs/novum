@@ -4,7 +4,7 @@ import { DataSetWrapper } from '@app/_models';
 import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
 import { environment } from '@environments/environment';
-//import { AllModules } from '@ag-grid-enterprise/all-modules';
+import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
 
 @Component({
   selector: 'app-sit-stocks',
@@ -22,6 +22,7 @@ export class SitStocksComponent implements OnInit {
   defaultColDef;
   rowSelection;
   popupParent;
+  frameworkComponents;
 
   gridApi;
   gridColumnApi;
@@ -50,6 +51,9 @@ export class SitStocksComponent implements OnInit {
 
     this.popupParent = document.querySelector('body');
     this.rowSelection = 'single';
+    this.frameworkComponents = {
+      gridCheckboxRenderer: GridCheckboxRenderer,
+    };
 
     this.defaultColDef = {
       sortable: true,
@@ -85,6 +89,8 @@ export class SitStocksComponent implements OnInit {
         ],
       },
       { headerName: 'Waga', field: 'Weight', type: 'numericColumn', sortable: true, filter: 'agTextColumnFilter', floatingFilter: false },
+      { headerName: 'Aktywny', field: 'IsActive', filter: 'agSetColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80,cellRenderer: 'gridCheckboxRenderer', floatingFilter: false }
+
 
     ];
 
