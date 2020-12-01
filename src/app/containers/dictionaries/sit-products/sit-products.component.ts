@@ -17,7 +17,8 @@ export class SitProductsComponent implements OnInit {
   @ViewChildren('sitDictcontainer') dictContainers !: QueryList<SitDictContainerComponent>;
 
   currentUser: User;
-  link: any;
+  link;
+  ean;
 
   //modules: any[] = AllModules;
   gridApiProducts;
@@ -71,10 +72,7 @@ export class SitProductsComponent implements OnInit {
 
   onRowClickedProducts(event) {
     const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitProducts');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-      this.link = event.data == null || event.data.sitImagesG == null
-      ? environment.apiUrl +'/service/attachments/get/' + this.currentUser.token + '/noimage/noimage.jpg' : // kiedy brak rekordu
-        environment.apiUrl +'/service/attachments/get/' + this.currentUser.token + '/' + event.data.sitImagesG + '/' + event.data.FileName
+    dataSourceResponseWrapper.SetActiveRow(event.data);
   }
 
   onFirstDataRendered(params) {
@@ -86,10 +84,11 @@ export class SitProductsComponent implements OnInit {
   }
 
   activeRowProductsChanged(activeRow) {
-    console.log(activeRow);
     this.link = activeRow == null || activeRow.sitImagesG == null
       ? environment.apiUrl +'/service/attachments/get/' + this.currentUser.token + '/noimage/noimage.jpg' : // kiedy brak rekordu
-        environment.apiUrl +'/service/attachments/get/' + this.currentUser.token + '/' + activeRow.sitImagesG + '/' + activeRow.FileName
+        environment.apiUrl +'/service/attachments/get/' + this.currentUser.token + '/' + activeRow.sitImagesG + '/' + activeRow.FileName;
+
+    this.ean = activeRow !== null ? activeRow.EAN : '';
 
   }
 }

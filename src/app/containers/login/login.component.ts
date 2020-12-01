@@ -3,12 +3,11 @@ import { Component, OnInit, Output, HostListener, EventEmitter } from '@angular/
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-
 import { GatewayService } from '@app/_services';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { calcPossibleSecurityContexts } from '@angular/compiler/src/template_parser/binding_parser';
 import { Directive } from '@angular/core';
-import {environment} from '../../../environments/environment';
+import { environment } from '../../../environments/environment';
 
 
 @Component({
@@ -127,17 +126,3 @@ export class LoginComponent implements OnInit {
     // }
 }
 
-@Directive({ selector: '[capsLock]' })
-export class TrackCapsDirective {
-  @Output('capsLock') capsLock = new EventEmitter<Boolean>();
-
-  @HostListener('window:keydown', ['$event'])
-  onKeyDown(event: KeyboardEvent): void {
-    this.capsLock.emit(event.getModifierState && event.getModifierState('CapsLock'));
-  }
-  @HostListener('window:keyup', ['$event'])
-  onKeyUp(event: KeyboardEvent): void {
-    this.capsLock.emit(event.getModifierState && event.getModifierState('CapsLock'));
-  }
-
-}

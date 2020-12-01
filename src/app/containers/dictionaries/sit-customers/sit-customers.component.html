@@ -1,15 +1,13 @@
 <sit-dict-container ident="sitCustomers" #sitDictcontainer fxFill>
-  <sit-data-set-container  ident="sitCustomers" fxFill>
-    <div fxLayout="row" fxFill fxLayoutGap="5px">
-      <div fxLayout="column" fxFlex="50" class="content">
-
-        <!-- Filtry sitCustomers -->
-        <div class="sit-filter-bar">
-          <sit-data-set-container ident="sitFilterCustomers" >
-              <sit-data-input #sitControl id="searchCustomers" field="searchCustomers" label="Filtruj kontrahentów" placeholder="Nazwa, NIP, Identyfikator" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
-          </sit-data-set-container>
-        </div>
-
+  <div fxLayout="row" fxFill fxLayoutGap="5px">
+    <div fxLayout="column" fxFlex="50" class="content">
+      <!-- Filtry sitCustomers -->
+      <div class="sit-filter-bar">
+        <sit-data-set-container ident="sitFilterCustomers" >
+            <sit-data-input #sitControl id="searchCustomers" field="searchCustomers" label="Filtruj kontrahentów" placeholder="Nazwa, NIP, Identyfikator" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
+        </sit-data-set-container>
+      </div>
+      <sit-data-set-container  ident="sitCustomers" fxFlex fxLayout="column">
         <!-- Procedury sitCustomers -->
         <div class="sit-proc-bar">
           <mat-toolbar color="accent">
@@ -22,7 +20,6 @@
             </mat-toolbar-row>
           </mat-toolbar>
         </div>
-
         <!--Grid sitCustomers-->
         <div class="data-table" fxFlex>
           <ag-grid-angular #sitSetDataSource
@@ -40,12 +37,13 @@
             (rowClicked)="onRowClickedCustomers($event)"
             (gridReady)="onGridReadyCustomers($event)"
             (firstDataRendered)="onFirstDataRendered($event)"
-
           >
           </ag-grid-angular>
         </div>
-      </div>
-      <div fxLayout="column" fxFlex="50" class="content">
+      </sit-data-set-container>
+    </div>
+    <div fxLayout="column" fxFlex="50" class="content">
+      <sit-data-set-container  ident="sitCustomers" fxFlex>
         <mat-tab-group id="tab-group" animationDuration="0ms">
           <mat-tab label="Podstawowe">
             <div fxLayout="column" fxFill class="content">
@@ -82,7 +80,7 @@
             </div>
           </mat-tab>
         </mat-tab-group>
-      </div>
+      </sit-data-set-container>
     </div>
-  </sit-data-set-container>
+  </div>
 </sit-dict-container>

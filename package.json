@@ -1,6 +1,6 @@
 {
   "name": "Novum",
-  "version": "2.0.0",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --open",
@@ -41,6 +41,7 @@
     "js-sha512": "^0.8.0",
     "material-design-icons": "^3.0.1",
     "ng2-pdfjs-viewer": "^5.0.7",
+    "ngx-barcode": "^0.3.0",
     "npm": "^6.14.8",
     "rxjs": "^6.5.5",
     "tslib": "^1.13.0",
