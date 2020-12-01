@@ -8,6 +8,7 @@ import { SitActionDirective } from '@app/_directives';
 import { SitRefreshButtonComponent } from '../controls/sit-refresh-button/sit-refresh-button.component';
 import { SitFilesButtonComponent } from '../controls/sit-files-button/sit-files-button.component';
 import { SitButtonBaseComponent } from '../controls/sit-button-base/sit-button-base.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'sit-data-set-container',
@@ -17,6 +18,7 @@ import { SitButtonBaseComponent } from '../controls/sit-button-base/sit-button-b
 
 export class SitDataSetContainerComponent {
   private _errors: any[];
+  private acriveRowSubscription: Subscription;
 
   @ContentChildren('sitSetDataSource', { descendants: true})
   datasSourcesInterface: QueryList<sitSetDataSetDirective>;
@@ -150,6 +152,13 @@ export class SitDataSetContainerComponent {
 
   public setDataSource(dataSetWrapper: DataSetWrapper) {
     this.dataSetResponseWrapper = dataSetWrapper;
+    
+    if (!this.acriveRowSubscription) {
+        this.acriveRowSubscription = this.dataSetResponseWrapper.activeRowChanged.subscribe(
+            (row) => this.activeRowChanged.emit(row));
+    }
+    
+    
     this.errors = dataSetWrapper.errors;
     this.datasSourcesInterface.forEach(element => {
       // agGrid
