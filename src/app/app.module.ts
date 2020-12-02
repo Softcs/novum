@@ -124,7 +124,11 @@ import { SitSysActionsEditComponent } from './containers/dictionaries/sit-sys-di
 import { SitRightsGroupUsersEditComponent } from './containers/dictionaries/sit-app-users/actions/sit-rights-group-users-edit/sit-rights-group-users-edit.component';
 import { SitRightsComponent } from './containers/dictionaries/sit-rights/sit-rights.component';
 import { SitTrackCapsDirective } from './_directives/sit-track-caps-directive.directive';
-import { NgxBarcodeModule } from 'ngx-barcode';
+import { NgxBarcodeModule } from 'ngx-barcode';;
+import { SitAgreementsTypesComponent } from './containers/dictionaries/sit-agreements-types/sit-agreements-types.component';
+import { SitLocationsComponent } from './containers/dictionaries/sit-locations/sit-locations.component';
+import { SitAgreementsTypesEditComponent } from './containers/dictionaries/sit-agreements-types/actions/sit-agreements-types-edit/sit-agreements-types-edit.component';
+import { SitLocationsEditComponent } from './containers/dictionaries/sit-locations/actions/sit-locations-edit/sit-locations-edit.component'
 
 @NgModule({
     imports: [
@@ -242,13 +246,15 @@ import { NgxBarcodeModule } from 'ngx-barcode';
         SitSysDictionariesComponent,
         SitSysDictionariesEditComponent,
         SitSysDatasourcesEditComponent,
-        SitSysActionsEditComponent
-,
-        SitRightsGroupUsersEditComponent
-,
+        SitSysActionsEditComponent,
+        SitRightsGroupUsersEditComponent,
         SitRightsComponent,
-        SitTrackCapsDirective
-     ],
+        SitTrackCapsDirective,
+        SitAgreementsTypesComponent,
+        SitLocationsComponent,
+        SitAgreementsTypesEditComponent,
+        SitLocationsEditComponent
+    ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
@@ -292,7 +298,11 @@ import { NgxBarcodeModule } from 'ngx-barcode';
       SitSysDatasourcesEditComponent,
       SitSysActionsEditComponent,
       SitRightsGroupUsersEditComponent,
-      SitRightsComponent
+      SitRightsComponent,
+      SitLocationsComponent,
+      SitAgreementsTypesComponent,
+      SitAgreementsTypesEditComponent,
+      SitLocationsEditComponent
     ]
 })
 export class AppModule { }

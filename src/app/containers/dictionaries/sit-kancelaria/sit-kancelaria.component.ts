@@ -89,7 +89,7 @@ export class SitKancelariaComponent implements OnInit {
       { headerName: 'Data do', field: 'DateTo', width: 100, type: 'dateColumn',
         // cellRenderer: (data) => { return  formatDate(data.value, 'yyyy-MM-dd', this.locale)}
       },
-      { headerName: 'Rodzaj umowy', field: 'AgreementsTypeName', width: 150, filter: 'agTextColumnFilter', floatingFilter: true },
+      { headerName: 'Typ umowy', field: 'AgreementsTypeName', width: 150, filter: 'agTextColumnFilter', floatingFilter: true },
       { headerName: 'Lokalizacja', field: 'LocationName', width: 150, filter: 'agTextColumnFilter', floatingFilter: true },
       { headerName: 'Poufny', field: 'Confidential', sortable: true, filter: 'agTextColumnFilter', width: 80, autoHeight: true, cellRenderer: 'gridCheckboxRenderer' },
 

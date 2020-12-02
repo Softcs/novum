@@ -1,4 +1,8 @@
-﻿import { SitRightsComponent } from './../containers/dictionaries/sit-rights/sit-rights.component';
+﻿import { SitLocationsEditComponent } from './../containers/dictionaries/sit-locations/actions/sit-locations-edit/sit-locations-edit.component';
+import { SitAgreementsTypesEditComponent } from './../containers/dictionaries/sit-agreements-types/actions/sit-agreements-types-edit/sit-agreements-types-edit.component';
+import { SitLocationsComponent } from './../containers/dictionaries/sit-locations/sit-locations.component';
+import { SitAgreementsTypesComponent } from './../containers/dictionaries/sit-agreements-types/sit-agreements-types.component';
+import { SitRightsComponent } from './../containers/dictionaries/sit-rights/sit-rights.component';
 import { SitRightsGroupUsersEditComponent } from './../containers/dictionaries/sit-app-users/actions/sit-rights-group-users-edit/sit-rights-group-users-edit.component';
 import { SitSysActionsEditComponent } from '../containers/dictionaries/sit-sys-dictionaries/actions/sit-sys-actions-edit/sit-sys-actions-edit.component';
 import { SitSysDatasourcesEditComponent } from './../containers/dictionaries/sit-sys-dictionaries/actions/sit-sys-datasources-edit/sit-sys-datasources-edit.component';
@@ -90,7 +94,11 @@ export class FactoryService {
         sitSysDatasourcesEdit: SitSysDatasourcesEditComponent,
         sitSysActionsEdit: SitSysActionsEditComponent,
         sitRightsGroupUsersEdit: SitRightsGroupUsersEditComponent,
-        sitRights: SitRightsComponent
+        sitRights: SitRightsComponent,
+        sitAgreementsTypes: SitAgreementsTypesComponent,
+        sitAgreementsTypesEdit: SitAgreementsTypesEditComponent,
+        sitLocations: SitLocationsComponent,
+        sitLocationsEdit: SitLocationsEditComponent
 
     };
 
