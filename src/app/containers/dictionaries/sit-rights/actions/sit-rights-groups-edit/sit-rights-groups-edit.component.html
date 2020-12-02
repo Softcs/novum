@@ -1,0 +1,13 @@
+<sit-proc-params
+  [(actionExecuteData)]="actionExecuteData"
+  >
+  <sit-data-set-container ident="sitRightsGroupsEdit" fxLayout="column">
+    <div class="sit-proc-params-content" fxLayout="column">
+
+      <sit-data-input type="text" #sitControl field="RightsGroupIdent" label="Identyfikator" appearance="outline" style="width: 300px"></sit-data-input>
+      <sit-data-input type="text" #sitControl field="RightsGroupName" label="Nazwa" appearance="outline" style="width: 300px"></sit-data-input>
+      <sit-data-checkbox #sitControl field="ConfidentialAgreements" label="Może widzieć poufne umowy"></sit-data-checkbox>
+
+    </div>
+  </sit-data-set-container>
+</sit-proc-params>

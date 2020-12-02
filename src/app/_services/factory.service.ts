@@ -46,6 +46,7 @@ import { SitRailConfigurationsEditComponent } from
 '@app/containers/dictionaries/sit-rail-configurations/actions/sit-rail-configurations-edit';
 import { SitWmsDocsComponent } from '@app/containers/dictionaries/sit-wms-docs';
 import { SitAppUserCompaniesEditComponent } from '@app/containers/dictionaries/sit-app-users/actions/sit-app-user-companies-edit';
+import { SitRightsGroupsEditComponent } from '@app/containers/dictionaries/sit-rights/actions/sit-rights-groups-edit/sit-rights-groups-edit.component';
 
 
 @Injectable({ providedIn: 'root' })
@@ -98,8 +99,8 @@ export class FactoryService {
         sitAgreementsTypes: SitAgreementsTypesComponent,
         sitAgreementsTypesEdit: SitAgreementsTypesEditComponent,
         sitLocations: SitLocationsComponent,
-        sitLocationsEdit: SitLocationsEditComponent
-
+        sitLocationsEdit: SitLocationsEditComponent,
+        sitRightsGroupsEdit: SitRightsGroupsEditComponent
     };
 
     public GetFactory(ident: string) {

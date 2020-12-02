@@ -70,6 +70,7 @@ export class SitRightsComponent implements OnInit {
       { headerName: 'GUID', field: 'sitRightsGroupsG', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 100 },
       { headerName: 'Identyfikator', field: 'RightsGroupIdent', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 100 },
       { headerName: 'Nazwa grupy', field: 'RightsGroupName', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 200 },
+      { headerName: 'Poufne umowy', field: 'ConfidentialAgreements', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, cellRenderer: 'gridCheckboxRenderer', cellClass: "grid-cell-centered",width: 80 },
     ]
 
     this.columnDefsDictionaries = [
@@ -77,7 +78,7 @@ export class SitRightsComponent implements OnInit {
       { headerName: 'GUID', field: 'sitSysDictionariesG', filter: 'agTextColumnFilter' },
       { headerName: "Identyfikator", field: 'DictionaryIdent', filter: 'agTextColumnFilter'},
       { headerName: "Nazwa", field: 'DictionaryName', filter: 'agTextColumnFilter'},
-      { headerName: 'Prawo', field: 'HasRight', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, cellRenderer: 'gridCheckboxRenderer', cellClass: "grid-cell-centered",width: 80 },
+      { headerName: 'Prawo', field: 'HasRight', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, cellRenderer: 'gridCheckboxRenderer', cellClass: "grid-cell-centered",width: 130 },
 
     ];
 
