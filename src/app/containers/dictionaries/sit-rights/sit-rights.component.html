@@ -82,126 +82,216 @@
       </div>
     </div>
     <div fxFlex fxLayout="column">
-      <div fxFlex=35 fxLayout="column">
-        <div class="sit-grid-title">Dictionaries</div>
-        <sit-data-set-container ident="sitFilterSysDictionaries" fxLayout="row">
-          <div class="sit-filter-bar">
-            <sit-data-input #sitControl field="searchDictionaries" label="Filtruj" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
-          </div>
-        </sit-data-set-container>
-        <sit-data-set-container  ident="sitSysDictionaries" fxFlex fxLayout="column">
-          <div class="sit-proc-bar">
-            <mat-toolbar color="accent">
-              <mat-toolbar-row>
-                <div class="sit-proc-buttons-row">
-                  <sit-proc-button #sitAction actionIdent="sitProcRightsSetRightForDictionary" color="primary" caption="Nadaj/Odbierz" tooltip="Nadaj/Odbierz prawo" icon="done" matType="mat-stroked-button">Nadaj/Odbierz</sit-proc-button>
+      <mat-tab-group id="tab-group" animationDuration="0ms">
+        <mat-tab label="Aplikacja">
+          <div fxFill fxLayout="column">
+            <div fxFlex=35 fxLayout="column">
+              <div class="sit-grid-title">Dictionaries</div>
+              <sit-data-set-container ident="sitFilterSysDictionaries" fxLayout="row">
+                <div class="sit-filter-bar">
+                  <sit-data-input #sitControl field="searchDictionaries" label="Filtruj" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
                 </div>
-              </mat-toolbar-row>
-            </mat-toolbar>
-          </div>
-          <div class="data-table" fxFlex>
-            <ag-grid-angular #sitSetDataSource
-              #agGrid
-              id="gridDictionaries"
-              style="width: 100%; height: 100%;"
-              class="ag-theme-balham"
-              [columnDefs]="columnDefsDictionaries"
-              [defaultColDef]="defaultColDef"
-              [rowSelection]="rowSelection"
-              [rowMultiSelectWithClick]="true"
-              [enableCellTextSelection]="true"
-              [enableRangeSelection]="false"
-              [popupParent]="popupParent"
-              [sideBar]="false"
-              (rowClicked)="onRowClickedDictionaries($event)"
-              (gridReady)="onGridReadyDictionaries($event)"
-              [frameworkComponents]="frameworkComponents"
-            >
-            </ag-grid-angular>
-          </div>
-        </sit-data-set-container>
-
-      </div>
-
-      <div fxFlex=35 fxLayout="column">
-        <div class="sit-grid-title">Datasources</div>
-        <sit-data-set-container ident="sitFilterSysDatasources" fxLayout="row">
-          <div class="sit-filter-bar">
-            <sit-data-input #sitControl field="searchDatasources" label="Filtruj" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
-          </div>
-        </sit-data-set-container>
-        <sit-data-set-container ident="sitSysDatasources" fxFlex fxLayout="column">
-          <div class="sit-proc-bar">
-            <mat-toolbar color="accent">
-              <mat-toolbar-row>
-                <div class="sit-proc-buttons-row">
-                  <sit-proc-button #sitAction actionIdent="sitProcRightsSetRightForDatasource" color="primary" caption="Nadaj/Odbierz" tooltip="Nadaj/Odbierz prawo" icon="done" matType="mat-stroked-button">Nadaj/Odbierz</sit-proc-button>
+              </sit-data-set-container>
+              <sit-data-set-container  ident="sitSysDictionaries" fxFlex fxLayout="column">
+                <div class="sit-proc-bar">
+                  <mat-toolbar color="accent">
+                    <mat-toolbar-row>
+                      <div class="sit-proc-buttons-row">
+                        <sit-proc-button #sitAction actionIdent="sitProcRightsSetRightForDictionary" color="primary" caption="Nadaj/Odbierz" tooltip="Nadaj/Odbierz prawo" icon="done" matType="mat-stroked-button">Nadaj/Odbierz</sit-proc-button>
+                      </div>
+                    </mat-toolbar-row>
+                  </mat-toolbar>
                 </div>
-              </mat-toolbar-row>
-            </mat-toolbar>
-          </div>
-          <div class="data-table" fxFlex>
-            <ag-grid-angular #sitSetDataSource
-              #agGrid
-              id="gridDatasources"
-              style="width: 100%; height: 100%;"
-              class="ag-theme-balham"
-              [columnDefs]="columnDefsDatasources"
-              [defaultColDef]="defaultColDef"
-              [rowSelection]="rowSelection"
-              [rowMultiSelectWithClick]="true"
-              [enableCellTextSelection]="true"
-              [enableRangeSelection]="false"
-              [popupParent]="popupParent"
-              [sideBar]="false"
-              (rowClicked)="onRowClickedDatasources($event)"
-              (gridReady)="onGridReadyDatasources($event)"
-              [frameworkComponents]="frameworkComponents"
-            >
-            </ag-grid-angular>
-          </div>
-        </sit-data-set-container>
-      </div>
-      <div fxFlex fxLayout="column">
-        <div class="sit-grid-title">Actions</div>
-        <sit-data-set-container ident="sitFilterSysActions" fxLayout="row">
-          <div class="sit-filter-bar">
-            <sit-data-input #sitControl field="searchActions" label="Filtruj" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
-          </div>
-        </sit-data-set-container>
-
-        <sit-data-set-container  ident="sitSysActions" fxFlex fxLayout="column">
-          <div class="sit-proc-bar">
-            <mat-toolbar color="accent">
-              <mat-toolbar-row>
-                <div class="sit-proc-buttons-row">
-                  <sit-proc-button #sitAction actionIdent="sitProcRightsSetRightForAction" color="primary" caption="Nadaj/Odbierz" tooltip="Nadaj/Odbierz prawo" icon="done" matType="mat-stroked-button"></sit-proc-button>
+                <div class="data-table" fxFlex>
+                  <ag-grid-angular #sitSetDataSource
+                    #agGrid
+                    id="gridDictionaries"
+                    style="width: 100%; height: 100%;"
+                    class="ag-theme-balham"
+                    [columnDefs]="columnDefsDictionaries"
+                    [defaultColDef]="defaultColDef"
+                    [rowSelection]="rowSelection"
+                    [rowMultiSelectWithClick]="true"
+                    [enableCellTextSelection]="true"
+                    [enableRangeSelection]="false"
+                    [popupParent]="popupParent"
+                    [sideBar]="false"
+                    (rowClicked)="onRowClickedDictionaries($event)"
+                    (gridReady)="onGridReadyDictionaries($event)"
+                    [frameworkComponents]="frameworkComponents"
+                  >
+                  </ag-grid-angular>
                 </div>
-              </mat-toolbar-row>
-            </mat-toolbar>
+              </sit-data-set-container>
+
+            </div>
+            <div fxFlex=35 fxLayout="column">
+              <div class="sit-grid-title">Datasources</div>
+              <sit-data-set-container ident="sitFilterSysDatasources" fxLayout="row">
+                <div class="sit-filter-bar">
+                  <sit-data-input #sitControl field="searchDatasources" label="Filtruj" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
+                </div>
+              </sit-data-set-container>
+              <sit-data-set-container ident="sitSysDatasources" fxFlex fxLayout="column">
+                <div class="sit-proc-bar">
+                  <mat-toolbar color="accent">
+                    <mat-toolbar-row>
+                      <div class="sit-proc-buttons-row">
+                        <sit-proc-button #sitAction actionIdent="sitProcRightsSetRightForDatasource" color="primary" caption="Nadaj/Odbierz" tooltip="Nadaj/Odbierz prawo" icon="done" matType="mat-stroked-button">Nadaj/Odbierz</sit-proc-button>
+                      </div>
+                    </mat-toolbar-row>
+                  </mat-toolbar>
+                </div>
+                <div class="data-table" fxFlex>
+                  <ag-grid-angular #sitSetDataSource
+                    #agGrid
+                    id="gridDatasources"
+                    style="width: 100%; height: 100%;"
+                    class="ag-theme-balham"
+                    [columnDefs]="columnDefsDatasources"
+                    [defaultColDef]="defaultColDef"
+                    [rowSelection]="rowSelection"
+                    [rowMultiSelectWithClick]="true"
+                    [enableCellTextSelection]="true"
+                    [enableRangeSelection]="false"
+                    [popupParent]="popupParent"
+                    [sideBar]="false"
+                    (rowClicked)="onRowClickedDatasources($event)"
+                    (gridReady)="onGridReadyDatasources($event)"
+                    [frameworkComponents]="frameworkComponents"
+                  >
+                  </ag-grid-angular>
+                </div>
+              </sit-data-set-container>
+            </div>
+            <div fxFlex fxLayout="column">
+              <div class="sit-grid-title">Actions</div>
+              <sit-data-set-container ident="sitFilterSysActions" fxLayout="row">
+                <div class="sit-filter-bar">
+                  <sit-data-input #sitControl field="searchActions" label="Filtruj" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
+                </div>
+              </sit-data-set-container>
+
+              <sit-data-set-container  ident="sitSysActions" fxFlex fxLayout="column">
+                <div class="sit-proc-bar">
+                  <mat-toolbar color="accent">
+                    <mat-toolbar-row>
+                      <div class="sit-proc-buttons-row">
+                        <sit-proc-button #sitAction actionIdent="sitProcRightsSetRightForAction" color="primary" caption="Nadaj/Odbierz" tooltip="Nadaj/Odbierz prawo" icon="done" matType="mat-stroked-button"></sit-proc-button>
+                      </div>
+                    </mat-toolbar-row>
+                  </mat-toolbar>
+                </div>
+                <div class="data-table" fxFlex>
+                  <ag-grid-angular #sitSetDataSource
+                    #agGrid
+                    id="gridActions"
+                    style="width: 100%; height: 100%;"
+                    class="ag-theme-balham"
+                    [columnDefs]="columnDefsActions"
+                    [defaultColDef]="defaultColDef"
+                    [rowSelection]="rowSelection"
+                    [rowMultiSelectWithClick]="true"
+                    [enableCellTextSelection]="true"
+                    [enableRangeSelection]="false"
+                    [popupParent]="popupParent"
+                    [sideBar]="false"
+                    (rowClicked)="onRowClickedActions($event)"
+                    (gridReady)="onGridReadyActions($event)"
+                    [frameworkComponents]="frameworkComponents"
+                  >
+                  </ag-grid-angular>
+                </div>
+              </sit-data-set-container>
+            </div>
           </div>
-          <div class="data-table" fxFlex>
-            <ag-grid-angular #sitSetDataSource
-              #agGrid
-              id="gridActions"
-              style="width: 100%; height: 100%;"
-              class="ag-theme-balham"
-              [columnDefs]="columnDefsActions"
-              [defaultColDef]="defaultColDef"
-              [rowSelection]="rowSelection"
-              [rowMultiSelectWithClick]="true"
-              [enableCellTextSelection]="true"
-              [enableRangeSelection]="false"
-              [popupParent]="popupParent"
-              [sideBar]="false"
-              (rowClicked)="onRowClickedActions($event)"
-              (gridReady)="onGridReadyActions($event)"
-              [frameworkComponents]="frameworkComponents"
-            >
-            </ag-grid-angular>
+        </mat-tab>
+        <mat-tab label="Archiwum umów">
+          <div fxLayout="column" fxFill>
+            <div fxFlex="50" fxLayout="column">
+              <div class="sit-grid-title">Lokalizacje</div>
+              <sit-data-set-container ident="sitFilterLocations" fxLayout="row">
+                <div class="sit-filter-bar">
+                  <sit-data-input #sitControl field="searchLocations" label="Filtruj" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
+                </div>
+              </sit-data-set-container>
+
+              <sit-data-set-container  ident="sitLocations" fxFlex fxLayout="column">
+                <div class="sit-proc-bar">
+                  <mat-toolbar color="accent">
+                    <mat-toolbar-row>
+                      <div class="sit-proc-buttons-row">
+                        <sit-proc-button #sitAction actionIdent="sitProcRightsSetRightForLocation" color="primary" caption="Nadaj/Odbierz" tooltip="Nadaj/Odbierz prawo" icon="done" matType="mat-stroked-button"></sit-proc-button>
+                      </div>
+                    </mat-toolbar-row>
+                  </mat-toolbar>
+                </div>
+                <div class="data-table" fxFlex>
+                  <ag-grid-angular #sitSetDataSource
+                    #agGrid
+                    id="gridLocations"
+                    style="width: 100%; height: 100%;"
+                    class="ag-theme-balham"
+                    [columnDefs]="columnDefsLocations"
+                    [defaultColDef]="defaultColDef"
+                    [rowSelection]="rowSelection"
+                    [rowMultiSelectWithClick]="true"
+                    [enableCellTextSelection]="true"
+                    [enableRangeSelection]="false"
+                    [popupParent]="popupParent"
+                    [sideBar]="false"
+                    (rowClicked)="onRowClickedLocations($event)"
+                    (gridReady)="onGridReadyLocations($event)"
+                    [frameworkComponents]="frameworkComponents"
+                  >
+                  </ag-grid-angular>
+                </div>
+              </sit-data-set-container>
+            </div>
+            <div fxFlex fxLayout="column">
+              <div class="sit-grid-title">Typy umów</div>
+              <sit-data-set-container ident="sitFilterAgreementsTypes" fxLayout="row">
+                <div class="sit-filter-bar">
+                  <sit-data-input #sitControl field="searchAgreementsTypes" label="Filtruj" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
+                </div>
+              </sit-data-set-container>
+
+              <sit-data-set-container  ident="sitAgreementsTypes" fxFlex fxLayout="column">
+                <div class="sit-proc-bar">
+                  <mat-toolbar color="accent">
+                    <mat-toolbar-row>
+                      <div class="sit-proc-buttons-row">
+                        <sit-proc-button #sitAction actionIdent="sitProcRightsSetRightForAgreementsType" color="primary" caption="Nadaj/Odbierz" tooltip="Nadaj/Odbierz prawo" icon="done" matType="mat-stroked-button"></sit-proc-button>
+                      </div>
+                    </mat-toolbar-row>
+                  </mat-toolbar>
+                </div>
+                <div class="data-table" fxFlex>
+                  <ag-grid-angular #sitSetDataSource
+                    #agGrid
+                    id="gridAgreementsTypes"
+                    style="width: 100%; height: 100%;"
+                    class="ag-theme-balham"
+                    [columnDefs]="columnDefsAgreementsTypes"
+                    [defaultColDef]="defaultColDef"
+                    [rowSelection]="rowSelection"
+                    [rowMultiSelectWithClick]="true"
+                    [enableCellTextSelection]="true"
+                    [enableRangeSelection]="false"
+                    [popupParent]="popupParent"
+                    [sideBar]="false"
+                    (rowClicked)="onRowClickedAgreementsTypes($event)"
+                    (gridReady)="onGridReadyAgreementsTypes($event)"
+                    [frameworkComponents]="frameworkComponents"
+                  >
+                  </ag-grid-angular>
+                </div>
+              </sit-data-set-container>
+            </div>
+
           </div>
-        </sit-data-set-container>
-      </div>
+        </mat-tab>
+      </mat-tab-group>
     </div>
   </div>
 </sit-dict-container>

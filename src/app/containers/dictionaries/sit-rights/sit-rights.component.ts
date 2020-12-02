@@ -45,6 +45,13 @@ export class SitRightsComponent implements OnInit {
   gridColumnApiRightsGroupUsers;
   columnDefsRightsGroupUsers;
 
+  gridApiLocations;
+  gridColumnApiLocations;
+  columnDefsLocations;
+
+  gridApiAgreementsTypes;
+  gridColumnApiAgreementsTypes;
+  columnDefsAgreementsTypes;
 
   constructor(
     private gatewayService: GatewayService
@@ -106,6 +113,23 @@ export class SitRightsComponent implements OnInit {
       { headerName: 'Nazwisko', field: 'SurName', filter: 'agTextColumnFilter'},
     ];
 
+    this.columnDefsLocations = [
+      { headerName: 'Id', type: 'numericColumn', field: 'sitLocationsId', filter: 'agTextColumnFilter' },
+      { headerName: 'GUID', field: 'sitLocationsG', filter: 'agTextColumnFilter' },
+      { headerName: "Identyfikator", field: 'LocationIdent', filter: 'agTextColumnFilter'},
+      { headerName: "Nazwa", field: 'LocationName', filter: 'agTextColumnFilter'},
+      { headerName: 'Prawo', field: 'HasRight', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, cellRenderer: 'gridCheckboxRenderer', cellClass: "grid-cell-centered",width: 80 },
+
+    ];
+
+    this.columnDefsAgreementsTypes = [
+      { headerName: 'Id', type: 'numericColumn', field: 'sitAgreementsTypesId', filter: 'agTextColumnFilter' },
+      { headerName: 'GUID', field: 'sitAgreementsTypesG', filter: 'agTextColumnFilter' },
+      { headerName: "Identyfikator", field: 'AgreementsTypeIdent', filter: 'agTextColumnFilter'},
+      { headerName: "Nazwa", field: 'AgreementsTypeName', filter: 'agTextColumnFilter'},
+      { headerName: 'Prawo', field: 'HasRight', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, cellRenderer: 'gridCheckboxRenderer', cellClass: "grid-cell-centered",width: 80 },
+
+    ];
 
    }
 
@@ -163,6 +187,28 @@ export class SitRightsComponent implements OnInit {
 
   onRowClickedRightsGroupUsers(event) {
     const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitRightsGroupUsers');
+      dataSourceResponseWrapper.SetActiveRow(event.data);
+  }
+
+  onGridReadyLocations(params) {
+    this.gridApiLocations = params.api;
+    this.gridColumnApiLocations = params.columnApi;
+    this.gridColumnApiLocations.setColumnsVisible(['sitLocationsId', 'sitLocationsG'], false)
+  }
+
+  onRowClickedLocations(event) {
+    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitLocations');
+      dataSourceResponseWrapper.SetActiveRow(event.data);
+  }
+
+  onGridReadyAgreementsTypes(params) {
+    this.gridApiAgreementsTypes = params.api;
+    this.gridColumnApiAgreementsTypes = params.columnApi;
+    this.gridColumnApiAgreementsTypes.setColumnsVisible(['sitAgreementsTypesId', 'sitAgreementsTypesG'], false)
+  }
+
+  onRowClickedAgreementsTypes(event) {
+    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitAgreementsTypes');
       dataSourceResponseWrapper.SetActiveRow(event.data);
   }
 
