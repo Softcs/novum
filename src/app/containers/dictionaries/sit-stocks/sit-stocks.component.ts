@@ -19,6 +19,7 @@ export class SitStocksComponent implements OnInit {
   currentUser: User;
   link;
   ean;
+  locationIdent;
   defaultColDef;
   rowSelection;
   popupParent;
@@ -227,6 +228,11 @@ export class SitStocksComponent implements OnInit {
         environment.apiUrl +'/service/attachments/get/' + this.currentUser.token + '/' + activeRow.sitImagesG + '/' + activeRow.FileName;
 
     this.ean = activeRow !== null ? activeRow.EAN : '';
+
+  }
+
+  activeRowWMSStocksDetChanged(activeRow) {
+    this.locationIdent = activeRow !== null ? activeRow.LocationIdent : '';
 
   }
 }
