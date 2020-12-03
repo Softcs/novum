@@ -24,6 +24,7 @@ export class SitStocksComponent implements OnInit {
   rowSelection;
   popupParent;
   frameworkComponents;
+  contentColor;
 
   gridApi;
   gridColumnApi;
@@ -48,8 +49,8 @@ export class SitStocksComponent implements OnInit {
   constructor(
     private gatewayService: GatewayService
   ) {
+    this.contentColor = document.documentElement.style.getPropertyValue('$content-background-color');
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
-
     this.popupParent = document.querySelector('body');
     this.rowSelection = 'single';
     this.frameworkComponents = {
