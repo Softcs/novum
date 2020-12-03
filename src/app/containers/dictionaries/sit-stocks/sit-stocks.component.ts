@@ -233,7 +233,7 @@ export class SitStocksComponent implements OnInit {
   }
 
   activeRowWMSStocksDetChanged(activeRow) {
-    this.locationIdent = activeRow !== null ? activeRow.LocationIdent : '';
-
+    this.locationIdent = activeRow !== null ? activeRow.LocationIdent : 'ś';
+    console.log(activeRow,this.locationIdent);
   }
 }
