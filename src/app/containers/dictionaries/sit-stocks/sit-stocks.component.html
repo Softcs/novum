@@ -142,7 +142,7 @@
             </sit-data-set-container>
             <as-split direction="horizontal">
               <as-split-area [size]="40" fxLayout="column">
-                <sit-data-set-container ident="sitLogisticUnits" fxFill fxLayout="column">
+                <sit-data-set-container ident="sitLogisticUnits" (activeRowChanged)="activeRowLogisticUnitsChanged($event)" fxFill fxLayout="column">
                   <div class="sit-proc-bar">
                     <mat-toolbar color="accent">
                       <mat-toolbar-row>
@@ -172,6 +172,17 @@
                       >
                     </ag-grid-angular>
                   </div>
+                  <div fxFlex="15" fxLayoutAlign="center center" >
+                    <ngx-barcode
+                      [bc-value]="logisticUnitEAN"
+                      [bc-display-value]="true"
+                      [bc-height]="30"
+                      [bc-font-size]="20"
+                      [bc-background]="contentColor"
+                    >
+                    </ngx-barcode>
+                  </div>
+
                 </sit-data-set-container>
               </as-split-area>
               <as-split-area [size]="60" fxLayout="column">

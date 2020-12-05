@@ -20,6 +20,7 @@ export class SitStocksComponent implements OnInit {
   link;
   ean;
   locationIdent;
+  logisticUnitEAN;
   defaultColDef;
   rowSelection;
   popupParent;
@@ -234,6 +235,9 @@ export class SitStocksComponent implements OnInit {
 
   activeRowWMSStocksDetChanged(activeRow) {
     this.locationIdent = activeRow !== null ? activeRow.LocationIdent : 'ś';
-    console.log(activeRow,this.locationIdent);
+  }
+
+  activeRowLogisticUnitsChanged(activeRow) {
+    this.logisticUnitEAN = activeRow !== null ? activeRow.LogisticUnitEAN : 'ś';
   }
 }
