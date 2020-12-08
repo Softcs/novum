@@ -1,4 +1,5 @@
-﻿import { SitLocationsEditComponent } from './../containers/dictionaries/sit-locations/actions/sit-locations-edit/sit-locations-edit.component';
+﻿import { SitImportCustomerFromImpTableComponent } from './../containers/dictionaries/sit-kancelaria/actions/sit-import-customer-from-imp-table/sit-import-customer-from-imp-table.component';
+import { SitLocationsEditComponent } from './../containers/dictionaries/sit-locations/actions/sit-locations-edit/sit-locations-edit.component';
 import { SitAgreementsTypesEditComponent } from './../containers/dictionaries/sit-agreements-types/actions/sit-agreements-types-edit/sit-agreements-types-edit.component';
 import { SitLocationsComponent } from './../containers/dictionaries/sit-locations/sit-locations.component';
 import { SitAgreementsTypesComponent } from './../containers/dictionaries/sit-agreements-types/sit-agreements-types.component';
@@ -100,7 +101,8 @@ export class FactoryService {
         sitAgreementsTypesEdit: SitAgreementsTypesEditComponent,
         sitLocations: SitLocationsComponent,
         sitLocationsEdit: SitLocationsEditComponent,
-        sitRightsGroupsEdit: SitRightsGroupsEditComponent
+        sitRightsGroupsEdit: SitRightsGroupsEditComponent,
+        sitImportCustomerFromImpTable: SitImportCustomerFromImpTableComponent
     };
 
     public GetFactory(ident: string) {

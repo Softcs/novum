@@ -131,6 +131,8 @@ import { SitAgreementsTypesEditComponent } from './containers/dictionaries/sit-a
 import { SitLocationsEditComponent } from './containers/dictionaries/sit-locations/actions/sit-locations-edit/sit-locations-edit.component'
 ;
 import { SitRightsGroupsEditComponent } from './containers/dictionaries/sit-rights/actions/sit-rights-groups-edit/sit-rights-groups-edit.component'
+;
+import { SitImportCustomerFromImpTableComponent } from './containers/dictionaries/sit-kancelaria/actions/sit-import-customer-from-imp-table/sit-import-customer-from-imp-table.component'
 
 @NgModule({
     imports: [
@@ -257,6 +259,8 @@ import { SitRightsGroupsEditComponent } from './containers/dictionaries/sit-righ
         SitAgreementsTypesEditComponent,
         SitLocationsEditComponent,
         SitRightsGroupsEditComponent
+,
+        SitImportCustomerFromImpTableComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
@@ -306,7 +310,9 @@ import { SitRightsGroupsEditComponent } from './containers/dictionaries/sit-righ
       SitAgreementsTypesComponent,
       SitAgreementsTypesEditComponent,
       SitLocationsEditComponent,
-      SitRightsGroupsEditComponent
+      SitRightsGroupsEditComponent,
+      SitImportCustomerFromImpTableComponent,
+      SitJPKVatComponent
     ]
 })
 export class AppModule { }
