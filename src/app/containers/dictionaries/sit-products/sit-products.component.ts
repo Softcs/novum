@@ -4,7 +4,7 @@ import { DataSetWrapper } from '@app/_models';
 import { environment } from '@environments/environment';
 import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
-//import { AllModules } from '@ag-grid-enterprise/all-modules';
+import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
 
 @Component({
   selector: 'app-sit-products',
@@ -17,7 +17,9 @@ export class SitProductsComponent implements OnInit {
   @ViewChildren('sitDictcontainer') dictContainers !: QueryList<SitDictContainerComponent>;
 
   currentUser: User;
-  link: any;
+  link;
+  ean;
+  frameworkComponents;
 
   //modules: any[] = AllModules;
   gridApiProducts;
@@ -35,6 +37,9 @@ export class SitProductsComponent implements OnInit {
 
     this.popupParent = document.querySelector('body');
     this.rowSelection = 'single';
+    this.frameworkComponents = {
+      gridCheckboxRenderer: GridCheckboxRenderer,
+    };
 
     this.defaultColDefProducts = {
       flex: 1,
@@ -50,12 +55,14 @@ export class SitProductsComponent implements OnInit {
       //   filterOptions: ['contains', 'notContains']
       // },
       checkboxSelection: false },
-      {headerName: 'Nazwa', field: 'ProductName', filter: 'agTextColumnFilter' },
-      {headerName: 'JM', field: 'UnitIdent', filter: 'agTextColumnFilter' },
-      {headerName: 'Vat', field: 'VATRateIdent', filter: 'agTextColumnFilter' },
-      {headerName: 'EAN', field: 'EAN', filter: 'agTextColumnFilter' },
-      {headerName: 'PKWIU', field: 'PKWIU', filter: 'agTextColumnFilter' },
-      {headerName: 'Waga', field: 'Weight', filter: 'agTextColumnFilter' },
+      { headerName: 'Nazwa', field: 'ProductName', filter: 'agTextColumnFilter' },
+      { headerName: 'JM', field: 'UnitIdent', filter: 'agTextColumnFilter' },
+      { headerName: 'Vat', field: 'VATRateIdent', filter: 'agTextColumnFilter' },
+      { headerName: 'EAN', field: 'EAN', filter: 'agTextColumnFilter' },
+      { headerName: 'PKWIU', field: 'PKWIU', filter: 'agTextColumnFilter' },
+      { headerName: 'Waga', field: 'Weight', filter: 'agTextColumnFilter' },
+      { headerName: 'Aktywny', field: 'IsActive', filter: 'agSetColumnFilter', type: 'numericColumn', width: 80, cellRenderer: 'gridCheckboxRenderer', floatingFilter: false }
+
     ];
 
 }
@@ -85,7 +92,9 @@ export class SitProductsComponent implements OnInit {
   activeRowProductsChanged(activeRow) {
     this.link = activeRow == null || activeRow.sitImagesG == null
       ? environment.apiUrl +'/service/attachments/get/' + this.currentUser.token + '/noimage/noimage.jpg' : // kiedy brak rekordu
-        environment.apiUrl +'/service/attachments/get/' + this.currentUser.token + '/' + activeRow.sitImagesG + '/' + activeRow.FileName
+        environment.apiUrl +'/service/attachments/get/' + this.currentUser.token + '/' + activeRow.sitImagesG + '/' + activeRow.FileName;
+
+    this.ean = activeRow !== null ? activeRow.EAN : '';
 
   }
 }

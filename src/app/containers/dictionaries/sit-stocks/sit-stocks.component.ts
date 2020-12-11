@@ -3,7 +3,8 @@ import { SitDictContainerComponent } from '@app/components/sit-dict-container';
 import { DataSetWrapper } from '@app/_models';
 import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
-//import { AllModules } from '@ag-grid-enterprise/all-modules';
+import { environment } from '@environments/environment';
+import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
 
 @Component({
   selector: 'app-sit-stocks',
@@ -16,9 +17,15 @@ export class SitStocksComponent implements OnInit {
   @ViewChildren('sitDictcontainer') dictContainers !: QueryList<SitDictContainerComponent>;
 
   currentUser: User;
+  link;
+  ean;
+  locationIdent;
+  logisticUnitEAN;
   defaultColDef;
   rowSelection;
   popupParent;
+  frameworkComponents;
+  contentColor;
 
   gridApi;
   gridColumnApi;
@@ -43,10 +50,13 @@ export class SitStocksComponent implements OnInit {
   constructor(
     private gatewayService: GatewayService
   ) {
+    this.contentColor = document.documentElement.style.getPropertyValue('$content-background-color');
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
-
     this.popupParent = document.querySelector('body');
     this.rowSelection = 'single';
+    this.frameworkComponents = {
+      gridCheckboxRenderer: GridCheckboxRenderer,
+    };
 
     this.defaultColDef = {
       sortable: true,
@@ -80,7 +90,11 @@ export class SitStocksComponent implements OnInit {
           { headerName: "Nazwa", field: 'WarehouseName', sortable: true, resizable: true, filter: 'agTextColumnFilter' },
 
         ],
-      }
+      },
+      { headerName: 'Waga', field: 'Weight', type: 'numericColumn', sortable: true, filter: 'agTextColumnFilter', floatingFilter: false },
+      { headerName: 'Aktywny', field: 'IsActive', filter: 'agSetColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80,cellRenderer: 'gridCheckboxRenderer', floatingFilter: false }
+
+
     ];
 
     this.columnDefsWMSStocksDet = [
@@ -208,5 +222,22 @@ export class SitStocksComponent implements OnInit {
       allColumnIds.push(column.colId);
     });
     this.gridColumnApi.autoSizeColumns(allColumnIds, false);
+  }
+
+  activeRowStocksChanged(activeRow) {
+    this.link = activeRow == null || activeRow.sitImagesG == null
+      ? environment.apiUrl +'/service/attachments/get/' + this.currentUser.token + '/noimage/noimage.jpg' : // kiedy brak rekordu
+        environment.apiUrl +'/service/attachments/get/' + this.currentUser.token + '/' + activeRow.sitImagesG + '/' + activeRow.FileName;
+
+    this.ean = activeRow !== null ? activeRow.EAN : '';
+
+  }
+
+  activeRowWMSStocksDetChanged(activeRow) {
+    this.locationIdent = activeRow !== null ? activeRow.LocationIdent : 'ś';
+  }
+
+  activeRowLogisticUnitsChanged(activeRow) {
+    this.logisticUnitEAN = activeRow !== null ? activeRow.LogisticUnitEAN : 'ś';
   }
 }

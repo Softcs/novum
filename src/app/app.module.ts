@@ -120,13 +120,19 @@ import { SitProjectsPubRegisterWorkTimeComponent } from './containers/dictionari
 import { SitSysDictionariesComponent } from './containers/dictionaries/sit-sys-dictionaries/sit-sys-dictionaries.component';
 import { SitSysDictionariesEditComponent } from './containers/dictionaries/sit-sys-dictionaries/actions/sit-sys-dictionaries-edit/sit-sys-dictionaries-edit.component';
 import { SitSysDatasourcesEditComponent } from './containers/dictionaries/sit-sys-dictionaries/actions/sit-sys-datasources-edit/sit-sys-datasources-edit.component';
-import { SitSysActionsEditComponent } from './containers/dictionaries/sit-sys-dictionaries/actions/sit-sys-actions-edit/sit-sys-actions-edit.component'
+import { SitSysActionsEditComponent } from './containers/dictionaries/sit-sys-dictionaries/actions/sit-sys-actions-edit/sit-sys-actions-edit.component';
+import { SitRightsGroupUsersEditComponent } from './containers/dictionaries/sit-app-users/actions/sit-rights-group-users-edit/sit-rights-group-users-edit.component';
+import { SitRightsComponent } from './containers/dictionaries/sit-rights/sit-rights.component';
+import { SitTrackCapsDirective } from './_directives/sit-track-caps-directive.directive';
+import { NgxBarcodeModule } from 'ngx-barcode';;
+import { SitAgreementsTypesComponent } from './containers/dictionaries/sit-agreements-types/sit-agreements-types.component';
+import { SitLocationsComponent } from './containers/dictionaries/sit-locations/sit-locations.component';
+import { SitAgreementsTypesEditComponent } from './containers/dictionaries/sit-agreements-types/actions/sit-agreements-types-edit/sit-agreements-types-edit.component';
+import { SitLocationsEditComponent } from './containers/dictionaries/sit-locations/actions/sit-locations-edit/sit-locations-edit.component'
 ;
-import { SitRightsGroupUsersEditComponent } from './containers/dictionaries/sit-app-users/actions/sit-rights-group-users-edit/sit-rights-group-users-edit.component'
+import { SitRightsGroupsEditComponent } from './containers/dictionaries/sit-rights/actions/sit-rights-groups-edit/sit-rights-groups-edit.component'
 ;
-import { SitRightsComponent } from './containers/dictionaries/sit-rights/sit-rights.component'
-;
-import { SitTrackCapsDirective } from './_directives/sit-track-caps-directive.directive'
+import { SitImportCustomerFromImpTableComponent } from './containers/dictionaries/sit-kancelaria/actions/sit-import-customer-from-imp-table/sit-import-customer-from-imp-table.component'
 
 @NgModule({
     imports: [
@@ -165,6 +171,7 @@ import { SitTrackCapsDirective } from './_directives/sit-track-caps-directive.di
         //ag-Grid
         AgGridModule.withComponents([]),
         AngularSplitModule.forRoot(),
+        NgxBarcodeModule,
 
     ],
     declarations: [
@@ -243,13 +250,18 @@ import { SitTrackCapsDirective } from './_directives/sit-track-caps-directive.di
         SitSysDictionariesComponent,
         SitSysDictionariesEditComponent,
         SitSysDatasourcesEditComponent,
-        SitSysActionsEditComponent
-,
-        SitRightsGroupUsersEditComponent
-,
+        SitSysActionsEditComponent,
+        SitRightsGroupUsersEditComponent,
         SitRightsComponent,
-        SitTrackCapsDirective
-     ],
+        SitTrackCapsDirective,
+        SitAgreementsTypesComponent,
+        SitLocationsComponent,
+        SitAgreementsTypesEditComponent,
+        SitLocationsEditComponent,
+        SitRightsGroupsEditComponent
+,
+        SitImportCustomerFromImpTableComponent
+    ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
@@ -293,7 +305,14 @@ import { SitTrackCapsDirective } from './_directives/sit-track-caps-directive.di
       SitSysDatasourcesEditComponent,
       SitSysActionsEditComponent,
       SitRightsGroupUsersEditComponent,
-      SitRightsComponent
+      SitRightsComponent,
+      SitLocationsComponent,
+      SitAgreementsTypesComponent,
+      SitAgreementsTypesEditComponent,
+      SitLocationsEditComponent,
+      SitRightsGroupsEditComponent,
+      SitImportCustomerFromImpTableComponent,
+      SitJPKVatComponent
     ]
 })
 export class AppModule { }
