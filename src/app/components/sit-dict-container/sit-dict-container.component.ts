@@ -55,6 +55,10 @@ export class SitDictContainerComponent implements OnInit, AfterViewInit, AfterCo
         data => {
           if (data.length === 1) {
             this.dictInfo = new DictInfoWrapper(data[0].dictInfo);
+            if (this.dictInfo != null && !this.dictInfo.hasRights) {
+              console.warn(this.dictInfo.ident + " no rights!");
+              return;
+            }
             this.DataSetManager.dictInfo = this.dictInfo;
             this.DataSetManager.dataSetsResponse = data[0].dataSourcesResponse;
             this.DataSetManager.setRefreshDataSources(this.DataSetManager.dataSetsResponse);

@@ -100,7 +100,6 @@ export class GatewayService {
         user.password = password;
         user.username = username;
         user.token = null;
-        user.connection = null;
         user.company = company;
         user.connection = company?.configFile;
         return user;

@@ -379,7 +379,7 @@ export class DataSetManager {
     set dictInfo(dictInfo: DictInfoWrapper) {
         this._dictInfo = dictInfo;
         this.dataSetDefinitionWrappers = [];
-        if (this._dictInfo != null) {
+        if (this._dictInfo != null && this._dictInfo.hasRights) {
             if (this._dictInfo.dataSources != null) {
                 this._dictInfo.dataSources.forEach(dataSet => {
                     const dataSetDefinitionWrapper = new DataSetDefinitionWrapper(dataSet);

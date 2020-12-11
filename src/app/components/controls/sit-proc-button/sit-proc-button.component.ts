@@ -58,6 +58,10 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
   }
 
   public get isShouldBeHidden(): boolean {
+    if (!this.actionDefinition) {
+      return true;
+    }
+    
     if ( ( this.isInsert() || this.isUpdate() || this.isDelete() ) && !this.dataSetResponseWrapper.allParentsHaveRows() ) {
        return true;
     };

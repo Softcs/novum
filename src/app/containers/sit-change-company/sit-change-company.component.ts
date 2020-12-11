@@ -27,12 +27,12 @@ export class SitChangeCompanyComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.gatewayService.currentUserValue.connection = null;
+
   }
 
   refreshAfter(dataSourceManager) {
     const dataSourceResponseWrapper: DataSetWrapper = dataSourceManager.getDateSourceWrapper("sitAppUserCompanies");
-    this.companies = dataSourceResponseWrapper.rows;
+    this.companies = dataSourceResponseWrapper?.rows;
   }
 
   onClick(companyRow) {
