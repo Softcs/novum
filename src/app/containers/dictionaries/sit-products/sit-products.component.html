@@ -21,6 +21,7 @@
               [enableCellTextSelection]="true"
               [enableRangeSelection]="false"
               [popupParent]="popupParent"
+              [frameworkComponents]="frameworkComponents"
               (rowClicked)="onRowClickedProducts($event)"
               (gridReady)="onGridReadyProducts($event)"
               (firstDataRendered)="onFirstDataRendered($event)"
@@ -32,7 +33,7 @@
         <as-split-area [size]="30">
           <div class="content" fxFill fxLayout="column" fxLayoutAlign=" center" >
             <div fxLayout="row" fxLayoutAlign="start start"><a href="{{link}}" target="_blank"><img src="{{link}}" height="500"></a></div>
-            <ngx-barcode [bc-value]="ean" [bc-display-value]="false" [bc-height]="50"></ngx-barcode>
+            <ngx-barcode [bc-value]="ean" [bc-display-value]="true" [bc-height]="30"  [bc-font-size]="15"></ngx-barcode>
           </div>
         </as-split-area>
       </as-split>
