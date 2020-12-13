@@ -2,7 +2,7 @@
 import { first } from 'rxjs/operators';
 import { User } from '@app/_models';
 import { UserService } from '@app/_services';
-import { Title } from '@angular/platform-browser';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-pulpit',
@@ -13,7 +13,7 @@ import { Title } from '@angular/platform-browser';
 export class SitPulpitComponent implements OnInit {
     loading = false;
     users: User[];
-
+    appVersion = environment.appVersion;
 
     constructor(
       private userService: UserService,
