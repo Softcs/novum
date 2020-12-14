@@ -1,9 +1,10 @@
 {
   "name": "Novum",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --open",
+    "prebuild": "npm --no-git-tag-version version patch",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

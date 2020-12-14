@@ -3,10 +3,12 @@ import { Component, OnInit, Output, HostListener, EventEmitter } from '@angular/
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-
 import { GatewayService } from '@app/_services';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { calcPossibleSecurityContexts } from '@angular/compiler/src/template_parser/binding_parser';
+import { Directive } from '@angular/core';
+import { environment } from '../../../environments/environment';
+
 
 @Component({
   templateUrl: 'login.component.html',
@@ -21,6 +23,7 @@ export class LoginComponent implements OnInit {
     error = '';
     passType = "password";
     capsOn;
+    currentApplicationVersion = environment.appVersion;
 
     constructor(
         private formBuilder: FormBuilder,

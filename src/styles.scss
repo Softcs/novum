@@ -441,6 +441,12 @@ button:focus {
   }
 }
 
+.sit-pulpit-bottom-bar{
+  background-color: $content-background-color;
+  text-align: right;
+  padding-right: 5px;
+}
+
 // lookup fields
 .CountrySymbol {
   display: inline-block;

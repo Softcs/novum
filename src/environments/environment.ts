@@ -3,6 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+    appVersion: require('../../package.json').version,
     production: false,
     apiUrl: 'https://ws.seidoit.pl',
     // apiUrl: 'http://localhost:5000',

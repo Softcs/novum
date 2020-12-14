@@ -1,54 +1,55 @@
 <sit-dict-container ident="sitAppUsers" #sitDictcontainer fxFill >
   <div fxFill fxLayout="row" fxLayoutGap="5px">
-    <sit-data-set-container  ident="sitAppUsers" fxFlex="60" fxLayout="column">
-      <div class="sit-filter-bar">
-        <sit-data-set-container ident="sitFilterAppUsers" >
-            <sit-data-input #sitControl field="searchAppUsers" label="Filtruj użytkowników" placeholder="Nazwwisko, Imię, e-mail" appearance="outline" style="width: 300px;" showRefreshButton="true"></sit-data-input>
-        </sit-data-set-container>
-      </div>
-      <div class="sit-proc-bar">
-        <mat-toolbar color="accent">
-          <mat-toolbar-row>
-            <div class="sit-proc-buttons-row">
-              <sit-proc-button #sitAction actionIdent="insert" componentParamsIdent="sitAppUsersEdit" openKind="EXPANDER" tooltip="Nowy" color="primary" icon="post_add"></sit-proc-button>
-              <sit-proc-button #sitAction actionIdent="update" componentParamsIdent="sitAppUsersEdit" openKind="EXPANDER" tooltip="Edycja" color="primary" icon="edit"></sit-proc-button>
-              <sit-proc-button #sitAction actionIdent="delete" tooltip="Usuń"  color="primary" icon="delete" delete="true" matType="mat-stroked-button"></sit-proc-button>
-              <sit-proc-button #sitAction actionIdent="setPassword" componentParamsIdent="sitAppUsersSetPassword"  color="primary" caption="Zmień hasło" matType="mat-stroked-button"></sit-proc-button>
-            </div>
-          </mat-toolbar-row>
-        </mat-toolbar>
-      </div>
-      <div class="data-table" fxFlex>
-        <ag-grid-angular #sitSetDataSource
-          #agGrid
-          id="gridAppUsers"
-          style="width: 100%; height: 100%;"
-          class="ag-theme-balham"
-          [columnDefs]="columnDefs"
-          [defaultColDef]="defaultColDef"
-          [rowSelection]="rowSelection"
-          [rowMultiSelectWithClick]="true"
-          [enableCellTextSelection]="true"
-          [enableRangeSelection]="false"
-          [popupParent]="popupParent"
-          [frameworkComponents]="frameworkComponents"
-          (rowClicked)="onRowClicked($event)"
-          (gridReady)="onGridReady($event)"
-          (firstDataRendered)="onFirstDataRendered($event)"
-
-        >
-        </ag-grid-angular>
-      </div>
-    </sit-data-set-container>
-    <div fxFlex fxLayout="column">
-      <sit-data-set-container  ident="sitAppUserCompanies" fxFlex=50 fxLayout="column">
-        <div class="sit-grid-title">Firmy użytkownika</div>
-
+    <div fxFlex="60" fxLayout="column">
+      <sit-data-set-container ident="sitFilterAppUsers" >
         <div class="sit-filter-bar">
-          <sit-data-set-container ident="sitFilterAppUserCompanies" >
-              <sit-data-input #sitControl field="searchAppUserComapnies" label="Filtruj firmy" placeholder="Identyfikator, Nazwa" appearance="outline" style="width: 300px;" showRefreshButton="true"></sit-data-input>
-          </sit-data-set-container>
+          <sit-data-input #sitControl field="searchAppUsers" label="Filtruj użytkowników" placeholder="Nazwwisko, Imię, e-mail" appearance="outline" style="width: 300px;" showRefreshButton="true"></sit-data-input>
         </div>
+      </sit-data-set-container>
+      <sit-data-set-container ident="sitAppUsers" fxFlex fxLayout="column">
+        <div class="sit-proc-bar">
+          <mat-toolbar color="accent">
+            <mat-toolbar-row>
+              <div class="sit-proc-buttons-row">
+                <sit-proc-button #sitAction actionIdent="insert" componentParamsIdent="sitAppUsersEdit" openKind="EXPANDER" tooltip="Nowy" color="primary" icon="post_add"></sit-proc-button>
+                <sit-proc-button #sitAction actionIdent="update" componentParamsIdent="sitAppUsersEdit" openKind="EXPANDER" tooltip="Edycja" color="primary" icon="edit"></sit-proc-button>
+                <sit-proc-button #sitAction actionIdent="delete" tooltip="Usuń"  color="primary" icon="delete" delete="true" matType="mat-stroked-button"></sit-proc-button>
+                <sit-proc-button #sitAction actionIdent="setPassword" componentParamsIdent="sitAppUsersSetPassword"  color="primary" caption="Zmień hasło" matType="mat-stroked-button"></sit-proc-button>
+              </div>
+            </mat-toolbar-row>
+          </mat-toolbar>
+        </div>
+        <div class="data-table" fxFlex>
+          <ag-grid-angular #sitSetDataSource
+            #agGrid
+            id="gridAppUsers"
+            style="width: 100%; height: 100%;"
+            class="ag-theme-balham"
+            [columnDefs]="columnDefs"
+            [defaultColDef]="defaultColDef"
+            [rowSelection]="rowSelection"
+            [rowMultiSelectWithClick]="true"
+            [enableCellTextSelection]="true"
+            [enableRangeSelection]="false"
+            [popupParent]="popupParent"
+            [frameworkComponents]="frameworkComponents"
+            (rowClicked)="onRowClicked($event)"
+            (gridReady)="onGridReady($event)"
+            (firstDataRendered)="onFirstDataRendered($event)"
+
+          >
+          </ag-grid-angular>
+        </div>
+      </sit-data-set-container>
+    </div>
+    <div fxFlex fxLayout="column">
+      <div class="sit-grid-title">Firmy użytkownika</div>
+      <sit-data-set-container ident="sitFilterAppUserCompanies" >
+        <div class="sit-filter-bar">
+            <sit-data-input #sitControl field="searchAppUserCompanies" label="Filtruj firmy" placeholder="Identyfikator, Nazwa" appearance="outline" style="width: 300px;" showRefreshButton="true"></sit-data-input>
+        </div>
+      </sit-data-set-container>
+      <sit-data-set-container  ident="sitAppUserCompanies" fxFlex=50 fxLayout="column">
         <div class="sit-proc-bar">
           <mat-toolbar color="accent">
             <mat-toolbar-row>
@@ -82,9 +83,8 @@
           </ag-grid-angular>
         </div>
       </sit-data-set-container>
+      <div class="sit-grid-title">Grupy praw użytkownika</div>
       <sit-data-set-container  ident="sitRightsGroupUsers" fxFlex fxLayout="column">
-        <div class="sit-grid-title">Grupy praw użytkownika</div>
-
         <div class="sit-proc-bar">
           <mat-toolbar color="accent">
             <mat-toolbar-row>
@@ -117,7 +117,6 @@
           </ag-grid-angular>
         </div>
       </sit-data-set-container>
-
     </div>
   </div>
 </sit-dict-container>
