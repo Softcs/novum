@@ -11,7 +11,7 @@
         </sit-data-set-container>
 
         <!-- Procedury sitMenu -->
-        <sit-data-set-container  ident="sitMenu">
+        <sit-data-set-container  ident="sitMenu" fxFlex fxLayout="column">
           <div class="sit-proc-bar">
             <mat-toolbar color="accent">
               <mat-toolbar-row>
@@ -23,11 +23,8 @@
               </mat-toolbar-row>
             </mat-toolbar>
           </div>
-        </sit-data-set-container>
-
-        <!-- Grid sitMenu -->
-        <sit-data-set-container  ident="sitMenu" fxFlex>
-          <div class="data-table" fxFill>
+          <!-- Grid sitMenu -->
+          <div class="data-table" fxFlex>
             <ag-grid-angular #sitSetDataSource
               #agGrid
               id="gridRailConfigurations"
@@ -73,7 +70,7 @@
         </sit-data-set-container> -->
 
         <!-- Grid sitAppUsers-->
-        <sit-data-set-container ident="sitAppUsers" fxFlex>
+        <sit-data-set-container ident="sitAppUsers" fxFlex fxLayout="column">
           <div class="data-table" fxFill>
             <ag-grid-angular #sitSetDataSource
               #agGrid
@@ -108,7 +105,7 @@
       </sit-data-set-container>
 
       <!-- Procedury sitMenuItems -->
-      <sit-data-set-container  ident="sitMenuItems">
+      <sit-data-set-container  ident="sitMenuItems" fxFlex fxLayout="column">
         <div class="sit-proc-bar">
           <mat-toolbar color="accent">
             <mat-toolbar-row>
@@ -122,11 +119,8 @@
             </mat-toolbar-row>
           </mat-toolbar>
         </div>
-      </sit-data-set-container>
-
-      <!-- Grid sitMenuItems -->
-      <sit-data-set-container ident="sitMenuItems" fxFlex>
-        <div class="data-table" fxFill>
+        <!-- Grid sitMenuItems -->
+        <div class="data-table" fxFlex>
           <ag-grid-angular #sitSetDataSource
             #agGrid
             id="gridMenuItems"
@@ -145,7 +139,7 @@
             (firstDataRendered)="onFirstDataRendered($event)"
           >
           </ag-grid-angular>
-    </div>
+        </div>
       </sit-data-set-container>
     </div>
   </div>

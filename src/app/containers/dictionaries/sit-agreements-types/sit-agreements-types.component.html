@@ -1,10 +1,10 @@
 <sit-dict-container ident="sitAgreementsTypes" #sitDictcontainer fxFill >
   <div fxLayout="column" fxFill class="content">
-    <div class="sit-filter-bar">
-      <sit-data-set-container ident="sitFilterAgreementsTypes" >
-          <sit-data-input #sitControl field="searchAgreementsTypes" label="Filtruj" placeholder="" appearance="outline" style="width: 300px;" showRefreshButton="true"></sit-data-input>
-      </sit-data-set-container>
+    <sit-data-set-container ident="sitFilterAgreementsTypes" >
+      <div class="sit-filter-bar">
+        <sit-data-input #sitControl field="searchAgreementsTypes" label="Filtruj" placeholder="" appearance="outline" style="width: 300px;" showRefreshButton="true"></sit-data-input>
     </div>
+    </sit-data-set-container>
     <sit-data-set-container ident="sitAgreementsTypes" fxFlex fxLayout="column">
       <div class="sit-proc-bar">
         <mat-toolbar color="accent">

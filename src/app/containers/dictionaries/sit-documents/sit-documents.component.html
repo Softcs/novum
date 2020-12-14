@@ -1,141 +1,138 @@
 <sit-dict-container ident="sitDocuments" #sitDictcontainer fxFill>
-  <sit-data-set-container  ident="sitDocumentsHeaders" fxFill>
-    <div fxLayout="row" fxFlexFill fxLayoutGap="5px">
-      <div fxFlex="60%" fxLayout="column">
-
-          <div fxLayout="row" fxFill>
-            <div fxLayout="column" fxFill class="content">
-
-              <!-- Filtry dowodów -->
-              <div class="sit-filter-bar">
-                <sit-data-set-container ident="sitFilterDocumentsHeaders" >
-                    <sit-data-input #sitControl id="searchDocumentsHeaders" field="searchDocumentsHeaders" label="Filtruj dokumenty" placeholder="Numer" appearance="outline" style="width: 300px;"></sit-data-input>
-                </sit-data-set-container>
-              </div>
-
-              <!-- Grid dowody -->
-              <div class="data-table" fxFlex>
-                <ag-grid-angular #sitSetDataSource
-                  #agGrid
-                  id="gridDocumentsHeaders"
-                  style="width: 100%; height: 100%;"
-                  class="ag-theme-balham"
-                  [columnDefs]="columnDefsDocumentsHeaders"
-                  [defaultColDef]="defaultColDef"
-                  [rowSelection]="rowSelection"
-                  [rowMultiSelectWithClick]="true"
-                  [enableCellTextSelection]="true"
-                  [enableRangeSelection]="false"
-                  [popupParent]="popupParent"
-
-                  [sideBar]="false"
-                  (rowClicked)="onRowClickedDocumentsHeaders($event)"
-                  (gridReady)="onGridReadyDocumentsHeaders($event)"
-                  (firstDataRendered)="onFirstDataRendered($event)"
-                >
-                </ag-grid-angular>
+  <div fxLayout="row" fxFill fxLayoutGap="5px">
+    <div fxFlex="60%" fxLayout="column">
+      <div fxLayout="row" fxFill>
+        <div fxLayout="column" fxFill class="content">
+          <!-- Filtry dowodów -->
+          <sit-data-set-container ident="sitFilterDocumentsHeaders" >
+            <div class="sit-filter-bar">
+                <sit-data-input #sitControl id="searchDocumentsHeaders" field="searchDocumentsHeaders" label="Filtruj dokumenty" placeholder="Numer" appearance="outline" style="width: 300px;"></sit-data-input>
             </div>
-          </div>
+          </sit-data-set-container>
+          <!-- Grid dowody -->
+          <sit-data-set-container  ident="sitDocumentsHeaders" fxFlex>
+            <div class="data-table" fxFlex>
+              <ag-grid-angular #sitSetDataSource
+                #agGrid
+                id="gridDocumentsHeaders"
+                style="width: 100%; height: 100%;"
+                class="ag-theme-balham"
+                [columnDefs]="columnDefsDocumentsHeaders"
+                [defaultColDef]="defaultColDef"
+                [rowSelection]="rowSelection"
+                [rowMultiSelectWithClick]="true"
+                [enableCellTextSelection]="true"
+                [enableRangeSelection]="false"
+                [popupParent]="popupParent"
+
+                [sideBar]="false"
+                (rowClicked)="onRowClickedDocumentsHeaders($event)"
+                (gridReady)="onGridReadyDocumentsHeaders($event)"
+                (firstDataRendered)="onFirstDataRendered($event)"
+              >
+              </ag-grid-angular>
+            </div>
+          </sit-data-set-container>
         </div>
       </div>
-      <div fxFlex="40%" fxLayout="column">
-        <mat-tab-group id="tab-group" animationDuration="0ms">
-          <mat-tab label="Pozycje">
-            <div fxLayout="column" fxFlexFill fxLayoutGap="5px" class="content">
-              <div fxFlex="500px">
-              <sit-data-set-container  ident="sitDocumentsPositions" fxFill>
-                <div fxLayout="column" fxFill>
-                    <div class="data-table" fxFill>
-                      <ag-grid-angular #sitSetDataSource
-                      #agGrid
-                      id="gridDocumentsPositions"
-                      style="width: 100%; height: 100%;"
-                      class="ag-theme-balham"
-                      [columnDefs]="columnDefsDocumentsPositions"
-                      [defaultColDef]="defaultColDef"
-                      [rowSelection]="rowSelection"
-                      [rowMultiSelectWithClick]="true"
-                      [enableCellTextSelection]="true"
-                      [enableRangeSelection]="false"
-                      [popupParent]="popupParent"
-                      [sideBar]="false"
-                      (rowClicked)="onRowClickedDocumentsPositions($event)"
-                      (gridReady)="onGridReadyDocumentsPositions($event)"
-                      (firstDataRendered)="onFirstDataRendered($event)"
+    </div>
+    <div fxFlex fxLayout="column">
+      <mat-tab-group id="tab-group" animationDuration="0ms">
+        <mat-tab label="Pozycje">
+          <div fxLayout="column" fxFlexFill fxLayoutGap="5px" class="content">
+            <div fxFlex="500px">
+            <sit-data-set-container  ident="sitDocumentsPositions" fxFill>
+              <div fxLayout="column" fxFill>
+                  <div class="data-table" fxFill>
+                    <ag-grid-angular #sitSetDataSource
+                    #agGrid
+                    id="gridDocumentsPositions"
+                    style="width: 100%; height: 100%;"
+                    class="ag-theme-balham"
+                    [columnDefs]="columnDefsDocumentsPositions"
+                    [defaultColDef]="defaultColDef"
+                    [rowSelection]="rowSelection"
+                    [rowMultiSelectWithClick]="true"
+                    [enableCellTextSelection]="true"
+                    [enableRangeSelection]="false"
+                    [popupParent]="popupParent"
+                    [sideBar]="false"
+                    (rowClicked)="onRowClickedDocumentsPositions($event)"
+                    (gridReady)="onGridReadyDocumentsPositions($event)"
+                    (firstDataRendered)="onFirstDataRendered($event)"
+                  >
+                  </ag-grid-angular>
+                </div>
+              </div>
+            </sit-data-set-container>
+            </div>
+            <div fxFlex>
+            <sit-data-set-container  ident="sitDocumentsVATFooters" fxFill>
+              <div fxLayout="row" fxFill>
+                <div fxFlex="50">
+                  <div class="data-table" fxFill>
+                    <ag-grid-angular #sitSetDataSource
+                    #agGrid
+                    id="gridDocumentsVATFooter"
+                    style="width: 100%; height: 100%;"
+                    class="ag-theme-balham"
+                    [columnDefs]="columnDefsDocumentsVATFooter"
+                    [defaultColDef]="defaultColDef"
+                    [rowSelection]="rowSelection"
+                    [rowMultiSelectWithClick]="true"
+                    [enableCellTextSelection]="true"
+                    [enableRangeSelection]="false"
+                    [popupParent]="popupParent"
+                    [sideBar]="false"
+                    (rowClicked)="onRowClickedDocumentsVATFooter($event)"
+                    (gridReady)="onGridReadyDocumentsVATFooter($event)"
+                    (firstDataRendered)="onFirstDataRendered($event)"
                     >
                     </ag-grid-angular>
                   </div>
                 </div>
-              </sit-data-set-container>
+                <div fxFlex="50"></div>
               </div>
-              <div fxFlex>
-              <sit-data-set-container  ident="sitDocumentsVATFooters" fxFill>
-                <div fxLayout="row" fxFill>
-                  <div fxFlex="50">
-                    <div class="data-table" fxFill>
-                      <ag-grid-angular #sitSetDataSource
-                      #agGrid
-                      id="gridDocumentsVATFooter"
-                      style="width: 100%; height: 100%;"
-                      class="ag-theme-balham"
-                      [columnDefs]="columnDefsDocumentsVATFooter"
-                      [defaultColDef]="defaultColDef"
-                      [rowSelection]="rowSelection"
-                      [rowMultiSelectWithClick]="true"
-                      [enableCellTextSelection]="true"
-                      [enableRangeSelection]="false"
-                      [popupParent]="popupParent"
-                      [sideBar]="false"
-                      (rowClicked)="onRowClickedDocumentsVATFooter($event)"
-                      (gridReady)="onGridReadyDocumentsVATFooter($event)"
-                      (firstDataRendered)="onFirstDataRendered($event)"
-                      >
-                      </ag-grid-angular>
-                    </div>
-                  </div>
-                  <div fxFlex="50"></div>
-                </div>
-              </sit-data-set-container>
+            </sit-data-set-container>
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab label="Płatnik">
+          <div fxLayout="column" fxFill class="content">
+            <div fxLayout="row">
+              <sit-data-input type="text" id="PayerCountry" #sitControl field="PayerCountry" label="Kraj" [showRefresh]=false appearance="outline" style="width: 100px" [readonly]=true></sit-data-input>
+              <sit-data-input type="text" id="PayerVATId" #sitControl field="PayerVATId" label="NIP" [showRefresh]=false appearance="outline" style="width: 300px" [readonly]=true></sit-data-input>
+            </div>
+            <sit-data-input type="text" id="PayerDesc01" #sitControl field="PayerDesc01" label="Identyfikator" [showRefresh]=false appearance="outline" style="width: 100%" [readonly]=true></sit-data-input>
+            <sit-data-input type="text" id="PayerDesc02" #sitControl field="PayerDesc02" label="Nazwa pełna" [showRefresh]=false appearance="outline" style="width: 100%" [readonly]=true></sit-data-input>
+            <div fxLayout="row">
+              <sit-data-input type="text" id="PayerStreet" #sitControl field="PayerStreet" label="Ulica" [showRefresh]=false appearance="outline" style="width: 400px" [readonly]=true></sit-data-input>
+              <sit-data-input type="text" id="PayerHouseNum" #sitControl field="PayerHouseNum" label="Numer" [showRefresh]=false appearance="outline" style="width: 100px" [readonly]=true></sit-data-input>
+            </div>
+            <div fxLayout="row">
+              <sit-data-input type="text" id="PayerPostCode" #sitControl field="PayerPostCode" label="Kod pocztowy" [showRefresh]=false appearance="outline" style="width: 150px" [readonly]=true></sit-data-input>
+              <sit-data-input type="text" id="PayerCity" #sitControl field="PayerCity" label="Miasto" [showRefresh]=false appearance="outline" style="width: 350px" [readonly]=true></sit-data-input>
+            </div>
+          </div>
+        </mat-tab>
+        <mat-tab label="Odbiorca">
+            <div fxLayout="column" fxFlexFill class="content">
+              <div fxLayout="row">
+                <sit-data-input type="text" id="BuyerCountry" #sitControl field="BuyerCountry" label="Kraj" [showRefresh]=false appearance="outline" style="width: 100px" [readonly]=true></sit-data-input>
+              </div>
+              <sit-data-input type="text" id="BuyerDesc01" #sitControl field="BuyerDesc01" label="Identyfikator" [showRefresh]=false appearance="outline" style="width: 100%" [readonly]=true></sit-data-input>
+              <sit-data-input type="text" id="BuyerDesc02" #sitControl field="BuyerDesc02" label="Nazwa pełna" [showRefresh]=false appearance="outline" style="width: 100%" [readonly]=true></sit-data-input>
+              <div fxLayout="row">
+                <sit-data-input type="text" id="BuyerStreet" #sitControl field="BuyerStreet" label="Ulica" [showRefresh]=false appearance="outline" style="width: 400px" [readonly]=true></sit-data-input>
+                <sit-data-input type="text" id="BuyerHouseNum" #sitControl field="BuyerHouseNum" label="Numer" [showRefresh]=false appearance="outline" style="width: 100px" [readonly]=true></sit-data-input>
+              </div>
+              <div fxLayout="row">
+                <sit-data-input type="text" id="BuyerPostCode" #sitControl field="BuyerPostCode" label="Kod pocztowy" [showRefresh]=false appearance="outline" style="width: 150px" [readonly]=true></sit-data-input>
+                <sit-data-input type="text" id="BuyerCity" #sitControl field="BuyerCity" label="Miasto" [showRefresh]=false appearance="outline" style="width: 350px" [readonly]=true></sit-data-input>
               </div>
             </div>
-          </mat-tab>
-          <mat-tab label="Płatnik">
-            <div fxLayout="column" fxFill class="content">
-              <div fxLayout="row">
-                <sit-data-input type="text" id="PayerCountry" #sitControl field="PayerCountry" label="Kraj" [showRefresh]=false appearance="outline" style="width: 100px" [readonly]=true></sit-data-input>
-                <sit-data-input type="text" id="PayerVATId" #sitControl field="PayerVATId" label="NIP" [showRefresh]=false appearance="outline" style="width: 300px" [readonly]=true></sit-data-input>
-              </div>
-              <sit-data-input type="text" id="PayerDesc01" #sitControl field="PayerDesc01" label="Identyfikator" [showRefresh]=false appearance="outline" style="width: 100%" [readonly]=true></sit-data-input>
-              <sit-data-input type="text" id="PayerDesc02" #sitControl field="PayerDesc02" label="Nazwa pełna" [showRefresh]=false appearance="outline" style="width: 100%" [readonly]=true></sit-data-input>
-              <div fxLayout="row">
-                <sit-data-input type="text" id="PayerStreet" #sitControl field="PayerStreet" label="Ulica" [showRefresh]=false appearance="outline" style="width: 400px" [readonly]=true></sit-data-input>
-                <sit-data-input type="text" id="PayerHouseNum" #sitControl field="PayerHouseNum" label="Numer" [showRefresh]=false appearance="outline" style="width: 100px" [readonly]=true></sit-data-input>
-              </div>
-              <div fxLayout="row">
-                <sit-data-input type="text" id="PayerPostCode" #sitControl field="PayerPostCode" label="Kod pocztowy" [showRefresh]=false appearance="outline" style="width: 150px" [readonly]=true></sit-data-input>
-                <sit-data-input type="text" id="PayerCity" #sitControl field="PayerCity" label="Miasto" [showRefresh]=false appearance="outline" style="width: 350px" [readonly]=true></sit-data-input>
-              </div>
-            </div>
-          </mat-tab>
-          <mat-tab label="Odbiorca">
-              <div fxLayout="column" fxFlexFill class="content">
-                <div fxLayout="row">
-                  <sit-data-input type="text" id="BuyerCountry" #sitControl field="BuyerCountry" label="Kraj" [showRefresh]=false appearance="outline" style="width: 100px" [readonly]=true></sit-data-input>
-                </div>
-                <sit-data-input type="text" id="BuyerDesc01" #sitControl field="BuyerDesc01" label="Identyfikator" [showRefresh]=false appearance="outline" style="width: 100%" [readonly]=true></sit-data-input>
-                <sit-data-input type="text" id="BuyerDesc02" #sitControl field="BuyerDesc02" label="Nazwa pełna" [showRefresh]=false appearance="outline" style="width: 100%" [readonly]=true></sit-data-input>
-                <div fxLayout="row">
-                  <sit-data-input type="text" id="BuyerStreet" #sitControl field="BuyerStreet" label="Ulica" [showRefresh]=false appearance="outline" style="width: 400px" [readonly]=true></sit-data-input>
-                  <sit-data-input type="text" id="BuyerHouseNum" #sitControl field="BuyerHouseNum" label="Numer" [showRefresh]=false appearance="outline" style="width: 100px" [readonly]=true></sit-data-input>
-                </div>
-                <div fxLayout="row">
-                  <sit-data-input type="text" id="BuyerPostCode" #sitControl field="BuyerPostCode" label="Kod pocztowy" [showRefresh]=false appearance="outline" style="width: 150px" [readonly]=true></sit-data-input>
-                  <sit-data-input type="text" id="BuyerCity" #sitControl field="BuyerCity" label="Miasto" [showRefresh]=false appearance="outline" style="width: 350px" [readonly]=true></sit-data-input>
-                </div>
-              </div>
-          </mat-tab>
-        </mat-tab-group>
-      </div>
+        </mat-tab>
+      </mat-tab-group>
     </div>
-  </sit-data-set-container>
+  </div>
 </sit-dict-container>

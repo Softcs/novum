@@ -1,55 +1,51 @@
 ﻿<sit-dict-container ident="sitRailConfigurations" #sitDictcontainer fxFill>
-  <sit-data-set-container ident="sitRailConfigurations" fxFill>
-    <div fxLayout="row" fxFill>
-      <div fxLayout="column" fxFlex="30" class="content">
-
-          <div class="sit-filter-bar">
-            <sit-data-set-container ident="sitFilter" >
-              <div style="width: 300px;">
-                <sit-data-input id="searchRailConfigurations" #sitControl field="searchRailConfigurations" label="Filtruj" showRefreshButton=true appearance="outline"></sit-data-input>
+  <div fxLayout="row" fxFill>
+    <div fxLayout="column" fxFlex="30" fxLayout="column" class="content">
+      <sit-data-set-container ident="sitFilter" >
+        <div class="sit-filter-bar">
+          <div style="width: 300px;">
+            <sit-data-input id="searchRailConfigurations" #sitControl field="searchRailConfigurations" label="Filtruj" showRefreshButton=true appearance="outline"></sit-data-input>
+          </div>
+        </div>
+      </sit-data-set-container>
+      <sit-data-set-container ident="sitRailConfigurations" fxLayout="column" fxFlex>
+        <div class="sit-proc-bar">
+          <mat-toolbar color="accent">
+            <mat-toolbar-row>
+              <div class="sit-proc-buttons-row">
+                <sit-proc-button #sitAction actionIdent="insert" componentParamsIdent="sitRailConfigurationsEdit" openKind="EXPANDER" tooltip="Nowy" color="primary" icon="post_add" >
+                </sit-proc-button>
+                <sit-proc-button #sitAction actionIdent="update" componentParamsIdent="sitRailConfigurationsEdit" openKind="EXPANDER" tooltip="Edycja" color="primary" icon="edit">
+                </sit-proc-button>
+                <sit-proc-button #sitAction actionIdent="delete" color="primary" icon="delete" delete="true" matType="mat-stroked-button"></sit-proc-button>
               </div>
-            </sit-data-set-container>
-          </div>
-
-          <div class="sit-proc-bar">
-            <mat-toolbar color="accent">
-              <mat-toolbar-row>
-                <div class="sit-proc-buttons-row">
-                  <sit-proc-button #sitAction actionIdent="insert" componentParamsIdent="sitRailConfigurationsEdit" openKind="EXPANDER" tooltip="Nowy" color="primary" icon="post_add" >
-                  </sit-proc-button>
-
-                  <sit-proc-button #sitAction actionIdent="update" componentParamsIdent="sitRailConfigurationsEdit" openKind="EXPANDER" tooltip="Edycja" color="primary" icon="edit">
-                  </sit-proc-button>
-
-                  <sit-proc-button #sitAction actionIdent="delete" color="primary" icon="delete" delete="true" matType="mat-stroked-button"></sit-proc-button>
-                </div>
-              </mat-toolbar-row>
-            </mat-toolbar>
-          </div>
-
-          <div class="data-table" fxFlex>
-            <ag-grid-angular #sitSetDataSource
-              #agGrid
-              id="gridRailConfigurations"
-              style="width: 100%; height: 100%;"
-              class="ag-theme-balham"
-              [columnDefs]="columnDefs"
-              [defaultColDef]="defaultColDef"
-              [rowSelection]="rowSelection"
-              [rowMultiSelectWithClick]="true"
-              [enableCellTextSelection]="true"
-              [enableRangeSelection]="false"
-              [popupParent]="popupParent"
-              [frameworkComponents]="frameworkComponents"
-              (rowClicked)="onRowClicked($event)"
-              (gridReady)="onGridReady($event)"
-              (firstDataRendered)="onFirstDataRendered($event)"
-            >
-            </ag-grid-angular>
-          </div>
-      </div>
-
-      <div fxLayout="column" fxFlex="70" class="content">
+            </mat-toolbar-row>
+          </mat-toolbar>
+        </div>
+        <div class="data-table" fxFlex>
+          <ag-grid-angular #sitSetDataSource
+            #agGrid
+            id="gridRailConfigurations"
+            style="width: 100%; height: 100%;"
+            class="ag-theme-balham"
+            [columnDefs]="columnDefs"
+            [defaultColDef]="defaultColDef"
+            [rowSelection]="rowSelection"
+            [rowMultiSelectWithClick]="true"
+            [enableCellTextSelection]="true"
+            [enableRangeSelection]="false"
+            [popupParent]="popupParent"
+            [frameworkComponents]="frameworkComponents"
+            (rowClicked)="onRowClicked($event)"
+            (gridReady)="onGridReady($event)"
+            (firstDataRendered)="onFirstDataRendered($event)"
+          >
+          </ag-grid-angular>
+        </div>
+      </sit-data-set-container>
+    </div>
+    <div fxLayout="column" fxFlex="70" class="content">
+      <sit-data-set-container ident="sitRailConfigurations" fxLayout="column" fxFill>
         <div fxLayout="row">
           <sit-data-checkbox #sitControl field="IsActive" label="Aktywny" readonly="true"></sit-data-checkbox>
           <!-- <sit-data-input type="text" #sitControl field="sitCompaniesG" label="ID firmy" appearance="outline" [readonly]=true style="width: 100px"></sit-data-input> -->
@@ -67,9 +63,7 @@
         <div fxLayout="row" fxFlex>
           <sit-data-textarea type="textarea" #sitControl field="Data" label="Dane" appearance="outline" [readonly]=true fxFill></sit-data-textarea>
         </div>
-
-      </div>
-
+      </sit-data-set-container>
     </div>
-  </sit-data-set-container>
+  </div>
 </sit-dict-container>

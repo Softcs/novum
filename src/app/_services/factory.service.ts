@@ -55,7 +55,7 @@ export class FactoryService {
     constructor() { }
 
     classes = {
-        sitJPKVat: SitJPKVatComponent,
+        sitJpkVat: SitJPKVatComponent,
         sitKancelaria: SitKancelariaComponent,
         sitMenu: SitMenuComponent,
         sitMenuEdit: SitMenuEditComponent,
@@ -102,7 +102,7 @@ export class FactoryService {
         sitLocations: SitLocationsComponent,
         sitLocationsEdit: SitLocationsEditComponent,
         sitRightsGroupsEdit: SitRightsGroupsEditComponent,
-        sitImportCustomerFromImpTable: SitImportCustomerFromImpTableComponent
+        sitImportCustomerFromImpTable: SitImportCustomerFromImpTableComponent,
     };
 
     public GetFactory(ident: string) {
