@@ -1,5 +1,6 @@
 export const environment = {
     appVersion: require('../../package.json').version + '-dev',
+    serverVersion: '',
     production: false,
     apiUrl: 'https://ws-test.seidoit.pl',
     crypt: {

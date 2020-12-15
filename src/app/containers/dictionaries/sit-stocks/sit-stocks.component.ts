@@ -5,6 +5,7 @@ import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
 import { environment } from '@environments/environment';
 import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
+import { AttachmentsService } from '@app/_services/attachments.service';
 
 @Component({
   selector: 'app-sit-stocks',
@@ -48,7 +49,8 @@ export class SitStocksComponent implements OnInit {
   columnDefsWMSStocksWithLogisticUnits;
 
   constructor(
-    private gatewayService: GatewayService
+    private gatewayService: GatewayService,
+    private attachmentsService: AttachmentsService
   ) {
     this.contentColor = document.documentElement.style.getPropertyValue('$content-background-color');
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
@@ -225,12 +227,11 @@ export class SitStocksComponent implements OnInit {
   }
 
   activeRowStocksChanged(activeRow) {
-    this.link = activeRow == null || activeRow.sitImagesG == null
-      ? environment.apiUrl +'/service/attachments/get/' + this.currentUser.token + '/noimage/noimage.jpg' : // kiedy brak rekordu
-        environment.apiUrl +'/service/attachments/get/' + this.currentUser.token + '/' + activeRow.sitImagesG + '/' + activeRow.FileName;
+    this.link = activeRow?.sitImagesG == null
+      ? this.attachmentsService.getUrl(this.currentUser, "noimage", "noimage.jpg") // kiedy brak rekordu
+      :  this.attachmentsService.getUrl(this.currentUser, activeRow.sitImagesG, activeRow.FileName) ;     
 
     this.ean = activeRow !== null ? activeRow.EAN : '';
-
   }
 
   activeRowWMSStocksDetChanged(activeRow) {

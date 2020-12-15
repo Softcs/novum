@@ -3,6 +3,7 @@ import { SitDataBaseComponent } from '../sit-data-base/sit-data-base.component';
 import { environment } from '@environments/environment';
 import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
+import { AttachmentsService } from '@app/_services/attachments.service';
 
 
 @Component({
@@ -22,6 +23,7 @@ export class SitPdfViewerComponent  extends SitDataBaseComponent {
   constructor(
       _renderer: Renderer2,
       private gatewayService: GatewayService,
+      private attachmentsService: AttachmentsService
       ) {
     super(_renderer);
 
@@ -33,11 +35,7 @@ export class SitPdfViewerComponent  extends SitDataBaseComponent {
 
     // załączniki
     if (this.dataSetWrapper.getFieldValue('sitAttachmentsG') !== null) {
-      this.pdfSrc = environment.apiUrl
-        + '/service/attachments/get/'
-        + this.currentUser.token + '/'
-        + this.dataSetWrapper.getFieldValue('sitAttachmentsG') + '/'
-        + this.dataSetWrapper.getFieldValue('FileName');
+      this.pdfSrc = this.attachmentsService.getUrl(this.currentUser, this.dataSetWrapper.getFieldValue('sitAttachmentsG'), this.dataSetWrapper.getFieldValue('FileName'));        
       this.downloadFileName = this.dataSetWrapper.getFieldValue('FileName');
     } else
 
