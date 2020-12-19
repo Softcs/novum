@@ -110,7 +110,9 @@ export class SitStocksComponent implements OnInit {
         children: [
           { headerName: 'Identyfikator', field: 'ProductIdent', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 150 },
           { headerName: 'EAN', field: 'EAN', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 110 },
-          { headerName: 'Nazwa', field: 'ProductName', filter: 'agTextColumnFilter', width: 300 }
+          { headerName: 'Nazwa', field: 'ProductName', filter: 'agTextColumnFilter', width: 300 },
+          { headerName: 'Waga', field: 'Weight', filter: 'agNumericColumnFilter', width: 100 }
+
         ]
       },
       { headerName: 'Magazyn',
@@ -229,7 +231,7 @@ export class SitStocksComponent implements OnInit {
   activeRowStocksChanged(activeRow) {
     this.link = activeRow?.sitImagesG == null
       ? this.attachmentsService.getUrl(this.currentUser, "noimage", "noimage.jpg") // kiedy brak rekordu
-      :  this.attachmentsService.getUrl(this.currentUser, activeRow.sitImagesG, activeRow.FileName) ;     
+      :  this.attachmentsService.getUrl(this.currentUser, activeRow.sitImagesG, activeRow.FileName) ;
 
     this.ean = activeRow !== null ? activeRow.EAN : '';
   }

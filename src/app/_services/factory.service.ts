@@ -1,4 +1,8 @@
-﻿import { SitImportCustomerFromImpTableComponent } from './../containers/dictionaries/sit-kancelaria/actions/sit-import-customer-from-imp-table/sit-import-customer-from-imp-table.component';
+﻿import { SitPayrollImportComponent } from './../containers/dictionaries/sit-payrolls/actions/sit-payroll-import/sit-payroll-import.component';
+import { SitPayrollComponentsComponent } from './../containers/dictionaries/sit-payroll-components/sit-payroll-components.component';
+import { SitPayrollsComponent } from './../containers/dictionaries/sit-payrolls/sit-payrolls.component';
+import { SitEmployeesComponent } from './../containers/dictionaries/sit-employees/sit-employees.component';
+import { SitImportCustomerFromImpTableComponent } from './../containers/dictionaries/sit-kancelaria/actions/sit-import-customer-from-imp-table/sit-import-customer-from-imp-table.component';
 import { SitLocationsEditComponent } from './../containers/dictionaries/sit-locations/actions/sit-locations-edit/sit-locations-edit.component';
 import { SitAgreementsTypesEditComponent } from './../containers/dictionaries/sit-agreements-types/actions/sit-agreements-types-edit/sit-agreements-types-edit.component';
 import { SitLocationsComponent } from './../containers/dictionaries/sit-locations/sit-locations.component';
@@ -103,6 +107,10 @@ export class FactoryService {
         sitLocationsEdit: SitLocationsEditComponent,
         sitRightsGroupsEdit: SitRightsGroupsEditComponent,
         sitImportCustomerFromImpTable: SitImportCustomerFromImpTableComponent,
+        sitEmployees: SitEmployeesComponent,
+        sitPayrolls: SitPayrollsComponent,
+        sitPayrollComponents: SitPayrollComponentsComponent,
+        sitPayrollImport: SitPayrollImportComponent
     };
 
     public GetFactory(ident: string) {

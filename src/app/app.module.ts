@@ -133,6 +133,14 @@ import { SitLocationsEditComponent } from './containers/dictionaries/sit-locatio
 import { SitRightsGroupsEditComponent } from './containers/dictionaries/sit-rights/actions/sit-rights-groups-edit/sit-rights-groups-edit.component'
 ;
 import { SitImportCustomerFromImpTableComponent } from './containers/dictionaries/sit-kancelaria/actions/sit-import-customer-from-imp-table/sit-import-customer-from-imp-table.component'
+;
+import { SitEmployeesComponent } from './containers/dictionaries/sit-employees/sit-employees.component'
+;
+import { SitPayrollsComponent } from './containers/dictionaries/sit-payrolls/sit-payrolls.component'
+;
+import { SitPayrollComponentsComponent } from './containers/dictionaries/sit-payroll-components/sit-payroll-components.component'
+;
+import { SitPayrollImportComponent } from './containers/dictionaries/sit-payrolls/actions/sit-payroll-import/sit-payroll-import.component'
 
 @NgModule({
     imports: [
@@ -261,6 +269,14 @@ import { SitImportCustomerFromImpTableComponent } from './containers/dictionarie
         SitRightsGroupsEditComponent
 ,
         SitImportCustomerFromImpTableComponent
+,
+        SitEmployeesComponent
+,
+        SitPayrollsComponent
+,
+        SitPayrollComponentsComponent
+,
+        SitPayrollImportComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
@@ -312,7 +328,11 @@ import { SitImportCustomerFromImpTableComponent } from './containers/dictionarie
       SitLocationsEditComponent,
       SitRightsGroupsEditComponent,
       SitImportCustomerFromImpTableComponent,
-      SitJPKVatComponent
+      SitJPKVatComponent,
+      SitEmployeesComponent,
+      SitPayrollsComponent,
+      SitPayrollComponentsComponent,
+      SitPayrollImportComponent
     ]
 })
 export class AppModule { }

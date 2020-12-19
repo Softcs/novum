@@ -273,7 +273,6 @@ export class SitWmsDocsComponent implements OnInit {
 
   activeRowChangedDocumentsHeaders(activeRow) {
     const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsHeaders');
-    console.log(activeRow);
     // if (activeRow['sitDocumentsHeadersG_Invoice'] !== null) {
     //   this.printLinked = true;
     // }
