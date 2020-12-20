@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit, ViewChildren, QueryList  } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewChildren, QueryList, Inject, LOCALE_ID  } from '@angular/core';
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
 import { DataSetWrapper } from '@app/_models';
 import { environment } from '@environments/environment';
@@ -6,6 +6,9 @@ import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
 import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
 import { AttachmentsService } from '@app/_services/attachments.service';
+import { formatNumber } from '@angular/common';
+import { formatDate } from '@angular/common';
+
 
 @Component({
   selector: 'app-sit-products',
@@ -33,7 +36,8 @@ export class SitProductsComponent implements OnInit {
 
   constructor(
     private gatewayService: GatewayService,
-    private attachmentsService: AttachmentsService
+    private attachmentsService: AttachmentsService,
+    @Inject(LOCALE_ID) private locale: string
   ) {
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
 
@@ -44,7 +48,6 @@ export class SitProductsComponent implements OnInit {
     };
 
     this.defaultColDefProducts = {
-      flex: 1,
       sortable: true,
       filter: true,
       floatingFilter: false,
@@ -52,18 +55,23 @@ export class SitProductsComponent implements OnInit {
     };
 
     this.columnDefsProducts = [
-      { headerName: 'Identyfikator', field: 'ProductIdent', sortable: true, resizable: true, filter: 'agTextColumnFilter',
+      { headerName: 'Identyfikator', field: 'ProductIdent', filter: 'agTextColumnFilter', width: 150,
       // filterParams: {
       //   filterOptions: ['contains', 'notContains']
       // },
       checkboxSelection: false },
-      { headerName: 'Nazwa', field: 'ProductName', filter: 'agTextColumnFilter' },
-      { headerName: 'JM', field: 'UnitIdent', filter: 'agTextColumnFilter' },
-      { headerName: 'Vat', field: 'VATRateIdent', filter: 'agTextColumnFilter' },
-      { headerName: 'EAN', field: 'EAN', filter: 'agTextColumnFilter' },
-      { headerName: 'PKWIU', field: 'PKWIU', filter: 'agTextColumnFilter' },
-      { headerName: 'Waga', field: 'Weight', filter: 'agTextColumnFilter' },
-      { headerName: 'Aktywny', field: 'IsActive', filter: 'agSetColumnFilter', type: 'numericColumn', width: 80, cellRenderer: 'gridCheckboxRenderer', floatingFilter: false }
+      { headerName: 'EAN', field: 'EAN', filter: 'agTextColumnFilter', width: 120 },
+      { headerName: 'Nazwa', field: 'ProductName', tooltipField: 'ProductName', filter: 'agTextColumnFilter', width: 300 },
+      { headerName: 'JM', field: 'UnitIdent', filter: 'agTextColumnFilter', width: 60 },
+      { headerName: 'Vat', field: 'VATRateIdent', filter: 'agTextColumnFilter', width: 60 },
+      { headerName: 'PKWIU', field: 'PKWIU', filter: 'agTextColumnFilter', width: 100 },
+      { headerName: 'Waga', field: 'Weight', filter: 'agTextColumnFilter', type: 'numericColumn', width: 80,
+        cellRenderer: function(params) {
+        return formatNumber(params.data["Weight"], locale,'1.3-3')
+        }
+
+      },
+      { headerName: 'Aktywny', field: 'IsActive', filter: 'agSetColumnFilter', type: 'numericColumn', width: 100, cellRenderer: 'gridCheckboxRenderer', floatingFilter: false }
 
     ];
 
@@ -85,16 +93,16 @@ export class SitProductsComponent implements OnInit {
 
   onFirstDataRendered(params) {
     var allColumnIds = [];
-    this.gridColumnApiProducts.getAllColumns().forEach(function(column) {
-      allColumnIds.push(column.colId);
-    });
-    this.gridColumnApiProducts.autoSizeColumns(allColumnIds, false);
+    // this.gridColumnApiProducts.getAllColumns().forEach(function(column) {
+    //   allColumnIds.push(column.colId);
+    // });
+    // this.gridColumnApiProducts.autoSizeColumns(allColumnIds, false);
   }
 
   activeRowProductsChanged(activeRow) {
     this.link = activeRow?.sitImagesG == null
       ? this.attachmentsService.getUrl(this.currentUser, "noimage", "noimage.jpg") // kiedy brak rekordu
-      :  this.attachmentsService.getUrl(this.currentUser, activeRow.sitImagesG, activeRow.FileName) ;     
+      :  this.attachmentsService.getUrl(this.currentUser, activeRow.sitImagesG, activeRow.FileName) ;
 
       this.ean = activeRow !== null ? activeRow.EAN : '';
   }

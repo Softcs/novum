@@ -6,8 +6,8 @@ import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
 import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
 import { TabService } from '@app/_services/tab.service';
+import { formatNumber } from '@angular/common';
 import { formatDate } from '@angular/common';
-
 // import { AllModules } from '@ag-grid-enterprise/all-modules';
 
 @Component({
@@ -101,10 +101,14 @@ export class SitWmsDocsComponent implements OnInit {
       },
       { headerName: 'Kontrahent', field: 'CustName', filter: 'agTextColumnFilter', tooltipField: 'CustName', floatingFilter: true},
       { headerName: 'Opis', field: 'DocumentDescription', filter: 'agTextColumnFilter', tooltipField: 'DocumentDescription', floatingFilter: true, width: 120 },
-      { headerName: 'Waga', field: 'Weight', type: 'numericColumn', filter: 'agNumberColumnFilter', tooltipField: 'DocumentDescription', width: 80 },
+      { headerName: 'Waga', field: 'Weight', type: 'numericColumn', filter: 'agNumberColumnFilter', tooltipField: 'DocumentDescription', width: 80,
+        cellRenderer: function(params) {
+        return formatNumber(params.data["Weight"], locale,'1.2-2')
+        }
+      },
       { headerName: 'NagId SL', field: 'ExtAppIdent01', filter: 'agTextColumnFilter', width: 100, floatingFilter: true },
       // { headerName: 'XL ID', field: 'ExtAppIdent02', filter: 'agTextColumnFilter',width: 100  },
-      { headerName: 'Opis zew.', field: 'ExtAppDescription01', filter: 'agTextColumnFilter',width: 200  },
+      { headerName: 'Opis zew.', field: 'ExtAppDescription01', tootipField: 'ExtAppDescription01', filter: 'agTextColumnFilter',width: 200  },
 
     ];
 
@@ -117,7 +121,11 @@ export class SitWmsDocsComponent implements OnInit {
       { headerName: 'JM', field: 'UnitIdent', filter: 'agNumberColumnFilter', type: 'numericColumn', suppressMenu: true, width: 60 },
       { headerName: 'Il. start', field: 'QuantityUnitStart', filter: 'agNumberColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
       { headerName: 'Ilość', field: 'QuantityUnit', filter: 'agNumberColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
-      { headerName: 'Waga', field: 'Weight', filter: 'agNumberColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
+      { headerName: 'Waga', field: 'Weight', filter: 'agNumberColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80,
+        cellRenderer: function(params) {
+        return formatNumber(params.data["Weight"], locale,'1.2-2')
+        }
+      },
       { headerName: 'Defekt', field: 'IsDefect', filter: 'agSetColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80,cellRenderer: 'gridCheckboxRenderer', floatingFilter: false }
     ];
 

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit, ViewChildren, QueryList  } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewChildren, QueryList, Inject, LOCALE_ID  } from '@angular/core';
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
 import { DataSetWrapper } from '@app/_models';
 import { User } from '@app/_models';
@@ -6,6 +6,8 @@ import { GatewayService } from '@app/_services';
 import { environment } from '@environments/environment';
 import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
 import { AttachmentsService } from '@app/_services/attachments.service';
+import { formatNumber } from '@angular/common';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-sit-stocks',
@@ -50,7 +52,8 @@ export class SitStocksComponent implements OnInit {
 
   constructor(
     private gatewayService: GatewayService,
-    private attachmentsService: AttachmentsService
+    private attachmentsService: AttachmentsService,
+    @Inject(LOCALE_ID) private locale: string
   ) {
     this.contentColor = document.documentElement.style.getPropertyValue('$content-background-color');
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
@@ -74,26 +77,30 @@ export class SitStocksComponent implements OnInit {
     this.columnDefs = [
       { headerName: 'Produkt / Towar',
         children: [
-          { headerName: 'Identyfikator', field: 'ProductIdent', sortable: true, resizable: true, filter: 'agTextColumnFilter' },
-          { headerName: 'EAN', field: 'EAN', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 110 },
-          { headerName: 'Nazwa', field: 'ProductName', filter: 'agTextColumnFilter' }
+          { headerName: 'Identyfikator', field: 'ProductIdent', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 150 },
+          { headerName: 'EAN', field: 'EAN', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 120 },
+          { headerName: 'Nazwa', field: 'ProductName', tooltipField: 'ProductName', filter: 'agTextColumnFilter', width: 300 },
+          { headerName: 'Waga', field: 'Weight', type: 'numericColumn', sortable: true, filter: 'agTextColumnFilter', floatingFilter: false, width: 80,
+            cellRenderer: function(params) {
+            return formatNumber(params.data["Weight"], locale,'1.3-3')
+            }
+          },
         ]
       },
       { headerName: 'Stany',
         children: [
-          { headerName: 'ERP', field: 'Quantity', type: 'numericColumn', filter: 'agTextColumnFilter' },
-          { headerName: 'MWS', field: 'QuantityExt', type: 'numericColumn', filter: 'agTextColumnFilter' },
-          { headerName: 'Różnica.', field: 'QuantityDiff', type: 'numericColumn', filter: 'agTextColumnFilter' },
+          { headerName: 'ERP', field: 'Quantity', type: 'numericColumn', filter: 'agTextColumnFilter', width: 100 },
+          { headerName: 'MWS', field: 'QuantityExt', type: 'numericColumn', filter: 'agTextColumnFilter', width: 100 },
+          { headerName: 'Różnica.', field: 'QuantityDiff', type: 'numericColumn', filter: 'agTextColumnFilter', width: 100 },
         ]
       },
       { headerName: 'Magazyn',
         children: [
-          { headerName: "Ident.", field: 'WarehouseIdent', sortable: true, resizable: true, filter: 'agTextColumnFilter' },
-          { headerName: "Nazwa", field: 'WarehouseName', sortable: true, resizable: true, filter: 'agTextColumnFilter' },
+          { headerName: "Ident.", field: 'WarehouseIdent', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 100 },
+          { headerName: "Nazwa", field: 'WarehouseName', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 150 },
 
         ],
       },
-      { headerName: 'Waga', field: 'Weight', type: 'numericColumn', sortable: true, filter: 'agTextColumnFilter', floatingFilter: false },
       { headerName: 'Aktywny', field: 'IsActive', filter: 'agSetColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80,cellRenderer: 'gridCheckboxRenderer', floatingFilter: false }
 
 
@@ -109,10 +116,14 @@ export class SitStocksComponent implements OnInit {
       { headerName: 'Produkt / Towar',
         children: [
           { headerName: 'Identyfikator', field: 'ProductIdent', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 150 },
-          { headerName: 'EAN', field: 'EAN', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 110 },
-          { headerName: 'Nazwa', field: 'ProductName', filter: 'agTextColumnFilter', width: 300 },
-          { headerName: 'Waga', field: 'Weight', filter: 'agNumericColumnFilter', width: 100 }
-
+          { headerName: 'EAN', field: 'EAN', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 120 },
+          { headerName: 'Nazwa', field: 'ProductName', tooltipField: 'ProductName', filter: 'agTextColumnFilter', width: 300 },
+          { headerName: 'Waga', field: 'Weight', filter: 'agNumericColumnFilter', width: 80,
+            type: 'numericColumn',
+            cellRenderer: function(params) {
+            return formatNumber(params.data["Weight"], locale,'1.3-3')
+            }
+          }
         ]
       },
       { headerName: 'Magazyn',
@@ -141,7 +152,7 @@ export class SitStocksComponent implements OnInit {
       { headerName: 'GUID', field: 'sitLogisticUnitsG', sortable: true, resizable: true, filter: 'agTextColumnFilter' },
       { headerName: 'EAN', field: 'LogisticUnitEAN', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 110 },
       { headerName: "Lokalizacja", field: 'LocationIdent', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 150 },
-      { headerName: 'Opis', field: 'LogisticUnitDesc', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 400 },
+      { headerName: 'Opis', field: 'LogisticUnitDesc', tooltipField: 'LogisticUnitDesc', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 400 },
 
     ];
 
@@ -150,7 +161,7 @@ export class SitStocksComponent implements OnInit {
         children: [
           { headerName: 'Identyfikator', field: 'ProductIdent', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 150 },
           { headerName: 'EAN', field: 'EAN', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 110 },
-          { headerName: 'Nazwa', field: 'ProductName', filter: 'agTextColumnFilter', width: 250 }
+          { headerName: 'Nazwa', field: 'ProductName', tooltipField: 'ProductName', filter: 'agTextColumnFilter', width: 250 }
         ]
       },
       { headerName: 'Magazyn',
@@ -222,10 +233,10 @@ export class SitStocksComponent implements OnInit {
 
   onFirstDataRendered(params) {
     var allColumnIds = [];
-    this.gridColumnApi.getAllColumns().forEach(function(column) {
-      allColumnIds.push(column.colId);
-    });
-    this.gridColumnApi.autoSizeColumns(allColumnIds, false);
+    // this.gridColumnApi.getAllColumns().forEach(function(column) {
+    //   allColumnIds.push(column.colId);
+    // });
+    // this.gridColumnApi.autoSizeColumns(allColumnIds, false);
   }
 
   activeRowStocksChanged(activeRow) {
