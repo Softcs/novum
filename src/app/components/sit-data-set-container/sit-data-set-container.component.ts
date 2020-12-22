@@ -18,7 +18,7 @@ import { Subscription } from 'rxjs';
 
 export class SitDataSetContainerComponent {
   private _errors: any[];
-  private acriveRowSubscription: Subscription;
+  private activeRowSubscription: Subscription;
 
   @ContentChildren('sitSetDataSource', { descendants: true})
   datasSourcesInterface: QueryList<sitSetDataSetDirective>;
@@ -46,7 +46,7 @@ export class SitDataSetContainerComponent {
     this.errors?.splice(0, this.errors?.length);
   }
 
-  get activeRecord(): any {
+  get activeRow(): any {
     return this.dataSetResponseWrapper?.activeRow;
   }
 
@@ -97,6 +97,42 @@ export class SitDataSetContainerComponent {
     });
   }
 
+  private appluCustomPropsGrid(element) {
+    const gridApi = element["api"];
+    if (gridApi == null) {
+      return null;
+    }
+    var customProperty = gridApi.SeidoCustomProperty;
+    if (customProperty == null) {
+      customProperty = {};
+      customProperty.activeRow = null;
+      if (gridApi.gridOptionsWrapper) {
+        var rowClassRules = gridApi.gridOptionsWrapper.rowClassRules();
+        if (!rowClassRules) {
+          rowClassRules = {};
+          gridApi.gridOptionsWrapper.gridOptions.rowClassRules = rowClassRules;
+        }
+
+        rowClassRules["seido-row-active"] = function(params) { 
+            return params.api.SeidoCustomProperty.activeRow == params.node.data; 
+        }
+      }
+      
+
+      gridApi.SeidoCustomProperty = customProperty;
+      this.activeRowChanged.subscribe( (row) => {
+        var prevRow = customProperty.activeRow;
+        customProperty.activeRow = row;
+        var rowsToUpdate = [row];
+        if (prevRow) {
+          rowsToUpdate.push(prevRow);
+        }
+        gridApi.applyTransaction({update:rowsToUpdate});
+      });
+    }
+    return customProperty;
+  }
+
   public refreshRows(dataSetWrapper: DataSetWrapper, dataSourcesRequest) {
     if (!dataSetWrapper || !dataSetWrapper.rows) {
       dataSourcesRequest?.forEach(element => {
@@ -139,8 +175,8 @@ export class SitDataSetContainerComponent {
           for (const key in inputRow) {
             const newValue = inputRow[key];
             if (Object.prototype.hasOwnProperty.call(row, key)) {
-              if (this.activeRecord === row) {
-                this.activeRecord[key] = newValue;
+              if (this.activeRow === row) {
+                this.activeRow[key] = newValue;
               }
               row[key] = newValue;
             }
@@ -153,25 +189,18 @@ export class SitDataSetContainerComponent {
   public setDataSource(dataSetWrapper: DataSetWrapper) {
     this.dataSetResponseWrapper = dataSetWrapper;
     
-    if (!this.acriveRowSubscription) {
-        this.acriveRowSubscription = this.dataSetResponseWrapper.activeRowChanged.subscribe(
+    if (!this.activeRowSubscription) {
+        this.activeRowSubscription = this.dataSetResponseWrapper.activeRowChanged.subscribe(
             (row) => this.activeRowChanged.emit(row));
-    }
-    
+    }    
     
     this.errors = dataSetWrapper.errors;
     this.datasSourcesInterface.forEach(element => {
       // agGrid
+      this.appluCustomPropsGrid(element);
       const gridApi = element["api"];
       if (gridApi) {
-        const fieldName = this.getFieldId(this.dataSetResponseWrapper.ident);
-
         gridApi.setRowData(this.dataSetResponseWrapper.rows);
-        gridApi.forEachNode((node) => {
-          const fieldValue = node.data[fieldName];
-          const acFieldValue = dataSetWrapper.activeRow[fieldName];
-          node.setSelected(acFieldValue == fieldValue);
-        });
       }
     });
     this.refreshFieldValueInControl();
