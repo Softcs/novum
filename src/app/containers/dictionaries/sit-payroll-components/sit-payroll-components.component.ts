@@ -28,6 +28,10 @@ export class SitPayrollComponentsComponent implements OnInit {
   gridColumnApi;
   columnDefs;
 
+  gridApiAccountingDef;
+  gridColumnApiAccountingDef;
+  columnDefsAccountingDef;
+
   constructor(
     private gatewayService: GatewayService,
     @Inject(LOCALE_ID) private locale: string
@@ -46,10 +50,20 @@ export class SitPayrollComponentsComponent implements OnInit {
     this.columnDefs = [
       { headerName: 'ID', field: 'sitPayrollComponentsId', filter: 'agNumericColumnFilter' },
       { headerName: 'GUID', field: 'sitPayrollComponentsG', filter: 'agTextColumnFilter' },
-      { headerName: 'Ientyfikator', field: 'PayrollComponentIdent', filter: 'agTextColumnFilter', width: 150 },
+      { headerName: 'Identyfikator', field: 'PayrollComponentIdent', filter: 'agTextColumnFilter', width: 150 },
       { headerName: 'Opis', field: 'PayrollComponentDesc', filter: 'agTextColumnFilter', width: 300 },
       { headerName: 'Ident.zew.', field: 'ExtIdent01', filter: 'agTextColumnFilter', width: 200 },
+    ];
+
+    this.columnDefsAccountingDef = [
+      { headerName: 'ID', field: 'sitPayrollComponentsAccountingDefId', filter: 'agNumericColumnFilter' },
+      { headerName: 'GUID', field: 'sitPayrollComponentsAccountingDefG', filter: 'agTextColumnFilter' },
+      { headerName: 'Ident.typu listy płac', field: 'PayrollTypeIdent', filter: 'agTextColumnFilter', width: 100 },
+      { headerName: 'Typ listy płac', field: 'PayrollTypeName', filter: 'agTextColumnFilter', width: 200 },
+      { headerName: 'Konto WN', field: 'CAccount', filter: 'agTextColumnFilter', width: 150 },
+      { headerName: 'Konto MA', field: 'DAccount', filter: 'agTextColumnFilter', width: 150 },
     ]
+
    }
 
   ngOnInit(): void {
@@ -65,6 +79,17 @@ export class SitPayrollComponentsComponent implements OnInit {
   }
 
   onRowClicked(event) {
+    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitPayrollComponents');
+      dataSourceResponseWrapper.SetActiveRow(event.data);
+  }
+
+  onGridReadyAccountingDef(params) {
+    this.gridApi = params.api;
+    this.gridColumnApi = params.columnApi;
+    this.gridColumnApi.setColumnsVisible(['sitPayrollComponentsAccountingDefId','sitPayrollComponentsAccountingDefG','PayrollTypeIdent'], false)
+  }
+
+  onRowClickedAccountingDef(event) {
     const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitPayrollComponents');
       dataSourceResponseWrapper.SetActiveRow(event.data);
   }

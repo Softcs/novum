@@ -93,7 +93,8 @@
                     <mat-card>
                       <mat-card-content>
                         <div fxLayout="row">
-                          <sit-data-input type="text" #sitControl field="DocumentName" label="Typ dokumentu" appearance="outline" fxFlex [readonly]=true></sit-data-input>
+                          <sit-data-input type="text" #sitControl field="DocumentName" label="Typ dokumentu" appearance="outline" fxFlex [readonly]=true fxFlex="70"></sit-data-input>
+                          <sit-data-input type="text" #sitControl field="Weight" label="Waga" [showRefresh]=false appearance="outline" fxFill [readonly]=true fxFlex></sit-data-input>
                         </div>
                       </mat-card-content>
                     </mat-card>
@@ -142,7 +143,7 @@
                           <sit-data-input type="text" #sitControl field="ExtAppDescription01" label="Opis zewnętrzny" [showRefresh]=false appearance="outline" fxFill [readonly]=true></sit-data-input>
                         </div>
                         <div fxLayout="row">
-                          <sit-data-input type="text" #sitControl field="Weight" label="Waga" [showRefresh]=false appearance="outline" fxFill [readonly]=true></sit-data-input>
+                          <sit-data-input type="text" #sitControl field="DescriptionForReport" label="Opis do wydruku" [showRefresh]=false appearance="outline" fxFill [readonly]=true></sit-data-input>
                         </div>
                       </mat-card-content>
                     </mat-card>
