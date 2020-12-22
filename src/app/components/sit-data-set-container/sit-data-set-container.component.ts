@@ -113,7 +113,7 @@ export class SitDataSetContainerComponent {
           gridApi.gridOptionsWrapper.gridOptions.rowClassRules = rowClassRules;
         }
 
-        rowClassRules["row-active-row"] = function(params) { 
+        rowClassRules["seido-row-active"] = function(params) { 
             return params.api.SeidoCustomProperty.activeRow == params.node.data; 
         }
       }
