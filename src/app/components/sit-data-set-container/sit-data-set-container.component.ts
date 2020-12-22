@@ -113,11 +113,11 @@ export class SitDataSetContainerComponent {
           gridApi.gridOptionsWrapper.gridOptions.rowClassRules = rowClassRules;
         }
 
-        rowClassRules["seido-row-active"] = function(params) { 
-            return params.api.SeidoCustomProperty.activeRow == params.node.data; 
+        rowClassRules["sit-row-active"] = function(params) {
+            return params.api.SeidoCustomProperty.activeRow == params.node.data;
         }
       }
-      
+
 
       gridApi.SeidoCustomProperty = customProperty;
       this.activeRowChanged.subscribe( (row) => {
@@ -188,12 +188,12 @@ export class SitDataSetContainerComponent {
 
   public setDataSource(dataSetWrapper: DataSetWrapper) {
     this.dataSetResponseWrapper = dataSetWrapper;
-    
+
     if (!this.activeRowSubscription) {
         this.activeRowSubscription = this.dataSetResponseWrapper.activeRowChanged.subscribe(
             (row) => this.activeRowChanged.emit(row));
-    }    
-    
+    }
+
     this.errors = dataSetWrapper.errors;
     this.datasSourcesInterface.forEach(element => {
       // agGrid
