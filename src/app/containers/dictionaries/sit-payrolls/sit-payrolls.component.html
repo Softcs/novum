@@ -1,44 +1,71 @@
 <sit-dict-container ident="sitPayrolls" #sitDictcontainer fxFill>
   <as-split direction="horizontal">
     <as-split-area [size]="45">
-      <div fxLayout="column" fxFill class="content">
-        <div class="sit-filter-bar">
-          <sit-data-set-container ident="sitFilterPayrolls" fxLayout="row">
-            <sit-data-input #sitControl field="PayrollNo" label="Nr listy" placeholder="Wybierz numer listy" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
-            <!-- <sit-data-input #sitControl field="searchPayrolls" label="Filtruj" placeholder="" appearance="outline" showRefreshButton="true" style="width: 200px;"></sit-data-input> -->
+      <as-split direction="vertical">
+        <as-split-area [size]="50">
+          <div fxLayout="column" fxFill class="content">
+            <div class="sit-filter-bar">
+              <sit-data-set-container ident="sitFilterPayrolls" fxLayout="row">
+                <sit-data-input #sitControl field="PayrollNo" label="Nr listy" placeholder="Wybierz numer listy" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
+                <!-- <sit-data-input #sitControl field="searchPayrolls" label="Filtruj" placeholder="" appearance="outline" showRefreshButton="true" style="width: 200px;"></sit-data-input> -->
+              </sit-data-set-container>
+            </div>
+            <sit-data-set-container  ident="sitPayrolls" fxFlex fxLayout="column">
+              <div class="sit-proc-bar">
+                <mat-toolbar color="accent">
+                  <mat-toolbar-row>
+                    <div class="sit-proc-buttons-row">
+                      <sit-proc-button #sitAction actionIdent="payrollImport" componentParamsIdent="sitPayrollImport" openKind="EXPANDER" tooltip="Nowy" color="primary" icon="post_add"></sit-proc-button>
+                    </div>
+                  </mat-toolbar-row>
+                </mat-toolbar>
+              </div>
+              <div class="data-table" fxFlex>
+                <ag-grid-angular #sitSetDataSource
+                  #agGrid
+                  id="gridPayrolls"
+                  style="width: 100%; height: 100%;"
+                  class="ag-theme-balham"
+                  [columnDefs]="columnDefs"
+                  [defaultColDef]="defaultColDef"
+                  [rowSelection]="rowSelection"
+                  [rowMultiSelectWithClick]="true"
+                  [enableCellTextSelection]="true"
+                  [enableRangeSelection]="false"
+                  [popupParent]="popupParent"
+                  (rowClicked)="onRowClicked($event)"
+                  (gridReady)="onGridReady($event)"
+                  (firstDataRendered)="onFirstDataRendered($event)"
+                >
+                </ag-grid-angular>
+              </div>
+            </sit-data-set-container>
+          </div>
+        </as-split-area>
+        <as-split-area [size]="50">
+          <sit-data-set-container  ident="sitPayrollsAccounting" fxFlex fxLayout="column">
+            <div class="data-table" fxFlex>
+              <ag-grid-angular #sitSetDataSource
+                #agGrid
+                id="gridPayrollsAccountin"
+                style="width: 100%; height: 100%;"
+                class="ag-theme-balham"
+                [columnDefs]="columnDefsPayrollsAccounting"
+                [defaultColDef]="defaultColDef"
+                [rowSelection]="rowSelection"
+                [rowMultiSelectWithClick]="true"
+                [enableCellTextSelection]="true"
+                [enableRangeSelection]="false"
+                [popupParent]="popupParent"
+                (rowClicked)="onRowClickedPayrollsAccounting($event)"
+                (gridReady)="onGridReadyPayrollsAccounting($event)"
+                (firstDataRendered)="onFirstDataRendered($event)"
+              >
+              </ag-grid-angular>
+            </div>
           </sit-data-set-container>
-        </div>
-        <sit-data-set-container  ident="sitPayrolls" fxFlex fxLayout="column">
-          <div class="sit-proc-bar">
-            <mat-toolbar color="accent">
-              <mat-toolbar-row>
-                <div class="sit-proc-buttons-row">
-                  <sit-proc-button #sitAction actionIdent="payrollImport" componentParamsIdent="sitPayrollImport" openKind="EXPANDER" tooltip="Nowy" color="primary" icon="post_add"></sit-proc-button>
-                </div>
-              </mat-toolbar-row>
-            </mat-toolbar>
-          </div>
-          <div class="data-table" fxFlex>
-            <ag-grid-angular #sitSetDataSource
-              #agGrid
-              id="gridPayrolls"
-              style="width: 100%; height: 100%;"
-              class="ag-theme-balham"
-              [columnDefs]="columnDefs"
-              [defaultColDef]="defaultColDef"
-              [rowSelection]="rowSelection"
-              [rowMultiSelectWithClick]="true"
-              [enableCellTextSelection]="true"
-              [enableRangeSelection]="false"
-              [popupParent]="popupParent"
-              (rowClicked)="onRowClicked($event)"
-              (gridReady)="onGridReady($event)"
-              (firstDataRendered)="onFirstDataRendered($event)"
-            >
-            </ag-grid-angular>
-          </div>
-        </sit-data-set-container>
-      </div>
+        </as-split-area>
+      </as-split>
     </as-split-area>
     <as-split-area [size]="55">
       <as-split direction="vertical">
@@ -50,6 +77,16 @@
               </sit-data-set-container>
             </div>
             <sit-data-set-container  ident="sitPayrollsCalc" fxFlex fxLayout="column">
+              <div class="sit-proc-bar">
+                <mat-toolbar color="accent">
+                  <mat-toolbar-row>
+                    <div class="sit-proc-buttons-row">
+                      <sit-proc-button #sitAction actionIdent="payrollsCalcGenAccounting" caption="Generuj dekret" tooltip="Generuj dekret dla jednej osoby" color="primary" icon="library_books"></sit-proc-button>
+                      <sit-proc-button #sitAction actionIdent="payrollsCalcGenAccounting4All" caption="Generuj dekrety dla wszystkich" tooltip="Generuj dekret dla jednej osoby" color="primary" icon="library_books"></sit-proc-button>
+                    </div>
+                  </mat-toolbar-row>
+                </mat-toolbar>
+              </div>
               <div class="data-table" fxFlex>
                 <ag-grid-angular #sitSetDataSource
                   #agGrid
@@ -73,7 +110,7 @@
           </div>
         </as-split-area>
         <as-split-area [size]="50">
-          <mat-tab-group id="tab-group" animationDuration="0ms">
+          <mat-tab-group id="tab-group" animationDuration="0ms" (selectedTabChange)="onTabChanged($event);">
             <mat-tab label="Składniki">
               <sit-data-set-container  ident="sitPayrollComponentsCalc" fxFill fxLayout="column">
                 <div class="data-table" fxFlex>
@@ -98,6 +135,27 @@
               </sit-data-set-container>
             </mat-tab>
             <mat-tab label="Księgowanie">
+              <sit-data-set-container  ident="sitPayrollsCalcAccounting" fxFill fxLayout="column">
+                <div class="data-table" fxFlex>
+                  <ag-grid-angular #sitSetDataSource
+                    #agGrid
+                    id="gridPayrollsCalcAccounting"
+                    style="width: 100%; height: 100%;"
+                    class="ag-theme-balham"
+                    [columnDefs]="columnDefsPayrollsCalcAccounting"
+                    [defaultColDef]="defaultColDef"
+                    [rowSelection]="rowSelection"
+                    [rowMultiSelectWithClick]="true"
+                    [enableCellTextSelection]="true"
+                    [enableRangeSelection]="false"
+                    [popupParent]="popupParent"
+                    (rowClicked)="onRowClickedPayrollsCalcAccounting($event)"
+                    (gridReady)="onGridReadyPayrollsCalcAccounting($event)"
+                    (firstDataRendered)="onFirstDataRendered($event)"
+                  >
+                  </ag-grid-angular>
+                </div>
+              </sit-data-set-container>
             </mat-tab>
           </mat-tab-group>
         </as-split-area>
