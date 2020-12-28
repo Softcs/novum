@@ -1,15 +1,13 @@
 <sit-dict-container ident="sitCustomers" #sitDictcontainer fxFill>
-  <sit-data-set-container  ident="sitCustomers" showActionsToolbar="true" #sitDataSetContainer fxFill>
-    <div fxLayout="row" fxFill fxLayoutGap="5px">
-      <div fxLayout="column" fxFlex="50" class="content">
-
-        <!-- Filtry sitCustomers -->
-        <div class="sit-filter-bar">
-          <sit-data-set-container ident="sitFilterCustomers" >
-              <sit-data-input #sitControl id="searchCustomers" field="searchCustomers" label="Filtruj kontrahentów" placeholder="Nazwa, NIP, Identyfikator" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
-          </sit-data-set-container>
-        </div>
-
+  <div fxLayout="row" fxFill fxLayoutGap="5px">
+    <div fxLayout="column" fxFlex="50" class="content">
+      <!-- Filtry sitCustomers -->
+      <div class="sit-filter-bar">
+        <sit-data-set-container ident="sitFilterCustomers" >
+            <sit-data-input #sitControl id="searchCustomers" field="searchCustomers" label="Filtruj kontrahentów" placeholder="Nazwa, NIP, Identyfikator" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
+        </sit-data-set-container>
+      </div>
+      <sit-data-set-container  ident="sitCustomers" showActionsToolbar="true" #sitDataSetContainer fxFlex fxLayout="column">
         <!-- Procedury sitCustomers -->
        <!--  <div class="sit-proc-bar"> -->
           <!-- <sit-actions-toolbar #sitActionsToolbar [sitActionsTable]="actionsTable" componentParamsIdent="sitCustomersEdit"></sit-actions-toolbar> --> 
@@ -22,21 +20,8 @@
                 <sit-proc-button #sitAction actionIdent="delete" tooltip="Usuń"  color="primary" icon="delete" delete="true" matType="mat-stroked-button"></sit-proc-button>
               </div>
             </mat-toolbar-row>
-          </mat-toolbar> --> 
-          <!-- 
-        <mat-toolbar color="accent">  
-          <mat-toolbar-row> 
-            <div class="sit-proc-buttons-row" *ngFor="let action of actionsTable;">
-                    <sit-proc-button *ngIf="action.ident === 'insert'" #sitAction [actionIdent]="action.ident" componentParamsIdent="sitCustomersEdit" openKind="EXPANDER" 
-                    tooltip="{{action.caption}}" color="primary" icon="post_add"></sit-proc-button>
-                    <sit-proc-button *ngIf="action.ident === 'update'" #sitAction [actionIdent]="action.ident" componentParamsIdent="sitCustomersEdit" openKind="EXPANDER" 
-                    tooltip="{{action.caption}}" color="primary" icon="edit"></sit-proc-button>
-                    <sit-proc-button *ngIf="action.ident === 'delete'" #sitAction [actionIdent]="action.ident" tooltip="{{action.caption}}" color="primary" icon="delete" delete="true" 
-                    matType="mat-stroked-button"></sit-proc-button>
-              </div>
-            </mat-toolbar-row>
-          </mat-toolbar> -->
-      <!-- </div> -->
+          </mat-toolbar>
+        </div> -->
         <!--Grid sitCustomers-->
         <div class="data-table" fxFlex>
           <ag-grid-angular #sitSetDataSource
@@ -54,12 +39,13 @@
             (rowClicked)="onRowClickedCustomers($event)"
             (gridReady)="onGridReadyCustomers($event)"
             (firstDataRendered)="onFirstDataRendered($event)"
-
           >
           </ag-grid-angular>
         </div>
-      </div>
-      <div fxLayout="column" fxFlex="50" class="content">
+      </sit-data-set-container>
+    </div>
+    <div fxLayout="column" fxFlex="50" class="content">
+      <sit-data-set-container  ident="sitCustomers" fxFlex>
         <mat-tab-group id="tab-group" animationDuration="0ms">
           <mat-tab label="Podstawowe">
             <div fxLayout="column" fxFill class="content">
@@ -96,7 +82,7 @@
             </div>
           </mat-tab>
         </mat-tab-group>
-      </div>
+      </sit-data-set-container>
     </div>
-  </sit-data-set-container>
+  </div>
 </sit-dict-container>

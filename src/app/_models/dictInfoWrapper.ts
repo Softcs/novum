@@ -1,13 +1,19 @@
 export class DictInfoWrapper {
-    constructor(private dictInfo: any) {
 
+    constructor(private dictInfo: any) {
     }
+
+    get hasRights() {
+        return this.dictInfo != null && this.dictInfo.hasRights;
+    }
+
     public FindDataSource(ident: string): any {
         if(!ident) {
             return null;
         }
         return this.dictInfo.dataSources.filter(item => item.ident.toLowerCase() === ident.toLowerCase())[0];
     }
+
     public FindActionDefinition(actionIdent: string, dataSourceIdent: string) {
         const dataSource = this.FindDataSource(dataSourceIdent);
 
@@ -16,14 +22,21 @@ export class DictInfoWrapper {
         }
         return dataSource.actions.filter(item => item.ident === actionIdent)[0];
     }
+
     get caption() {
-        return this.dictInfo.caption;
+        return this.dictInfo?.caption;
     }
+
     get dataSources() {
-        return this.dictInfo.dataSources;
+        return this.dictInfo?.dataSources;
     }
+
     get ident() {
-        return this.dictInfo.ident;
+        return this.dictInfo?.ident;
+    }
+
+    get hasValue() {
+        return this.dictInfo != null;
     }
 
 }

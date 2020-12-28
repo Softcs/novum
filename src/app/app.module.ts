@@ -122,8 +122,28 @@ import { SitSysDictionariesEditComponent } from './containers/dictionaries/sit-s
 import { SitSysDatasourcesEditComponent } from './containers/dictionaries/sit-sys-dictionaries/actions/sit-sys-datasources-edit/sit-sys-datasources-edit.component';
 import { SitSysActionsEditComponent } from './containers/dictionaries/sit-sys-dictionaries/actions/sit-sys-actions-edit/sit-sys-actions-edit.component';
 import { SitRightsGroupUsersEditComponent } from './containers/dictionaries/sit-app-users/actions/sit-rights-group-users-edit/sit-rights-group-users-edit.component';
-import { SitActionsToolbarComponent } from './components/controls/sit-actions-toolbar/sit-actions-toolbar.component'
-import { SitRightsComponent } from './containers/dictionaries/sit-rights/sit-rights.component'
+import { SitRightsComponent } from './containers/dictionaries/sit-rights/sit-rights.component';
+import { SitTrackCapsDirective } from './_directives/sit-track-caps-directive.directive';
+import { NgxBarcodeModule } from 'ngx-barcode';;
+import { SitAgreementsTypesComponent } from './containers/dictionaries/sit-agreements-types/sit-agreements-types.component';
+import { SitLocationsComponent } from './containers/dictionaries/sit-locations/sit-locations.component';
+import { SitAgreementsTypesEditComponent } from './containers/dictionaries/sit-agreements-types/actions/sit-agreements-types-edit/sit-agreements-types-edit.component';
+import { SitLocationsEditComponent } from './containers/dictionaries/sit-locations/actions/sit-locations-edit/sit-locations-edit.component'
+;
+import { SitRightsGroupsEditComponent } from './containers/dictionaries/sit-rights/actions/sit-rights-groups-edit/sit-rights-groups-edit.component'
+;
+import { SitImportCustomerFromImpTableComponent } from './containers/dictionaries/sit-kancelaria/actions/sit-import-customer-from-imp-table/sit-import-customer-from-imp-table.component'
+;
+import { SitEmployeesComponent } from './containers/dictionaries/sit-employees/sit-employees.component'
+;
+import { SitPayrollsComponent } from './containers/dictionaries/sit-payrolls/sit-payrolls.component'
+;
+import { SitPayrollComponentsComponent } from './containers/dictionaries/sit-payroll-components/sit-payroll-components.component'
+;
+import { SitPayrollImportComponent } from './containers/dictionaries/sit-payrolls/actions/sit-payroll-import/sit-payroll-import.component'
+;
+import { SitProcPayrollComponentsAccountingDefEditComponent } from './containers/dictionaries/sit-payroll-components/actions/sit-proc-payroll-components-accounting-def-edit/sit-proc-payroll-components-accounting-def-edit.component'
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -160,7 +180,9 @@ import { SitRightsComponent } from './containers/dictionaries/sit-rights/sit-rig
 
         //ag-Grid
         AgGridModule.withComponents([]),
-        AngularSplitModule.forRoot()
+        AngularSplitModule.forRoot(),
+        NgxBarcodeModule,
+
     ],
     declarations: [
         AppComponent,
@@ -240,10 +262,26 @@ import { SitRightsComponent } from './containers/dictionaries/sit-rights/sit-rig
         SitSysDatasourcesEditComponent,
         SitSysActionsEditComponent,
         SitRightsGroupUsersEditComponent,
-        SitJobStepsEditComponent,
-        SitActionsToolbarComponent,
-        SitRightsComponent
-     ],
+        SitRightsComponent,
+        SitTrackCapsDirective,
+        SitAgreementsTypesComponent,
+        SitLocationsComponent,
+        SitAgreementsTypesEditComponent,
+        SitLocationsEditComponent,
+        SitRightsGroupsEditComponent
+,
+        SitImportCustomerFromImpTableComponent
+,
+        SitEmployeesComponent
+,
+        SitPayrollsComponent
+,
+        SitPayrollComponentsComponent
+,
+        SitPayrollImportComponent
+,
+        SitProcPayrollComponentsAccountingDefEditComponent
+    ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
@@ -287,7 +325,19 @@ import { SitRightsComponent } from './containers/dictionaries/sit-rights/sit-rig
       SitSysDatasourcesEditComponent,
       SitSysActionsEditComponent,
       SitRightsGroupUsersEditComponent,
-      SitRightsComponent
+      SitRightsComponent,
+      SitLocationsComponent,
+      SitAgreementsTypesComponent,
+      SitAgreementsTypesEditComponent,
+      SitLocationsEditComponent,
+      SitRightsGroupsEditComponent,
+      SitImportCustomerFromImpTableComponent,
+      SitJPKVatComponent,
+      SitEmployeesComponent,
+      SitPayrollsComponent,
+      SitPayrollComponentsComponent,
+      SitPayrollImportComponent,
+      SitProcPayrollComponentsAccountingDefEditComponent
     ]
 })
 export class AppModule { }

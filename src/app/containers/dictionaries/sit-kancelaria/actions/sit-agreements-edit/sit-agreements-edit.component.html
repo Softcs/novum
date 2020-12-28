@@ -4,10 +4,15 @@
   <sit-data-set-container ident="sitAgreementsEdit">
     <div class="sit-proc-params-content" fxLayout="column" style="width: 500px; height: 400px;">
       <div fxLayout="row">
-        <sit-data-input type="text" #sitControl field="AgreementNo" label="Numer" [showRefresh]=false appearance="outline" fxFlex></sit-data-input>
-        <sit-data-input type="date" #sitControl field="Date" label="Data umowy" [showRefresh]=false appearance="outline"></sit-data-input>
-        <sit-data-input type="date" #sitControl field="DateTo" label="Data zakończenia" [showRefresh]=false appearance="outline"></sit-data-input>
+        <sit-data-input #sitControl type="text" field="AgreementNo" label="Numer" [showRefresh]=false appearance="outline" fxFlex></sit-data-input>
+        <sit-data-input #sitControl type="date" field="Date" label="Data umowy" [showRefresh]=false appearance="outline"></sit-data-input>
+        <sit-data-input #sitControl type="date" field="DateTo" label="Data zakończenia" [showRefresh]=false appearance="outline"></sit-data-input>
         <!-- <sit-files-button #sitSimpleButton fieldIdent="sitAgreementsG" ></sit-files-button> -->
+      </div>
+      <div fxLayout="row">
+        <sit-data-input #sitControl type="text" field="AgreementsTypeName" label="Typ umowy" appearance="outline" fxFlex></sit-data-input>
+        <sit-data-input #sitControl type="text" field="LocationName" label="Lokalizacja" appearance="outline" fxFlex></sit-data-input>
+        <sit-data-checkbox #sitControl field="Confidential" label="Poufny"></sit-data-checkbox>
       </div>
       <sit-data-textarea type="textarea" #sitControl field="AgreementDesc" label="Opis" appearance="outline" rows="10" cols="80" style="padding-left: 5px;" fxFlex></sit-data-textarea>
     </div>

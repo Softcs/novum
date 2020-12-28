@@ -5,7 +5,8 @@
         <sit-data-input #sitControl field="DocumentsType" label="Typ dok." placeholder="Numer" appearance="outline" style="width: 100px;"
           [lookupDisplayFields] = "['DocumentIdent', 'DocumentName']">
         </sit-data-input>
-        <sit-data-input #sitControl field="searchDocumentsHeaders" label="Filtruj dokumenty" placeholder="Numer" appearance="outline" style="width: 300px;"></sit-data-input>
+        <sit-data-input #sitControl field="searchDocumentsHeaders" label="Filtruj dokumenty" placeholder="Numer" appearance="outline" style="width: 250px;"></sit-data-input>
+        <sit-data-input #sitControl field="Product" label="Filtruj wg. produktu" placeholder="Identyfikator, EAN, Nazwa" appearance="outline" style="width: 250px;"></sit-data-input>
         <sit-data-input #sitControl field="DateFrom" type="date" label="Od" appearance="outline" style="width: 150px;"></sit-data-input>
         <sit-data-input #sitControl field="DateTo" type="date" label="Do" appearance="outline" style="width: 150px;" showRefreshButton="true" ></sit-data-input>
       </sit-data-set-container>
@@ -88,30 +89,64 @@
             <mat-tab-group id="tab-group" animationDuration="0ms" (selectedTabChange)="activateTab($event.index)">
               <mat-tab label="Nagłówek">
                 <sit-data-set-container ident="sitDocumentsHeaders" fxFill fxLayout="column" class="content">
-                  <div fxLayout="column" fxFill>
-                    <div fxLayout="row">
-                      <sit-data-input type="text" #sitControl field="DocumentName" label="Typ dokumentu" appearance="outline" fxFlex [readonly]=true></sit-data-input>
-                    </div>
-                    <div fxLayout="row">
-                      <sit-data-input type="text" #sitControl field="CustIdent" label="Identyfikator kontrahenta" [showRefresh]=false appearance="outline" fxFlex [readonly]=true></sit-data-input>
-                      <sit-data-input type="text" #sitControl field="VATId" label="NIP" [showRefresh]=false appearance="outline" style="width: 300px" [readonly]=true></sit-data-input>
-                    </div>
-                    <sit-data-input type="text" #sitControl field="CustName" label="Nazwa pełna" [showRefresh]=false appearance="outline" style="width: 100%" [readonly]=true></sit-data-input>
-                    <div fxLayout="row">
-                      <sit-data-input type="text" #sitControl field="Street" label="Ulica" [showRefresh]=false appearance="outline" fxFlex [readonly]=true></sit-data-input>
-                      <sit-data-input type="text" #sitControl field="HouseNum" label="Numer" [showRefresh]=false appearance="outline" style="width: 100px" [readonly]=true></sit-data-input>
-                    </div>
-                    <div fxLayout="row">
-                      <sit-data-input type="text" #sitControl field="PostCode" label="Kod pocztowy" [showRefresh]=false appearance="outline" style="width: 150px" [readonly]=true></sit-data-input>
-                      <sit-data-input type="text" #sitControl field="City" label="Miasto" [showRefresh]=false appearance="outline" fxFlex [readonly]=true></sit-data-input>
-                      <sit-data-input type="text" #sitControl field="CountrySymbol" label="Kraj" [showRefresh]=false appearance="outline" style="width: 100px" [readonly]=true></sit-data-input>
-                    </div>
-                    <div fxLayout="row">
-                      <sit-data-input type="text" #sitControl field="DocumentDescription" label="Opis dokumentu" [showRefresh]=false appearance="outline" fxFill [readonly]=true></sit-data-input>
-                    </div>
-                    <div fxLayout="row">
-                      <sit-data-input type="text" #sitControl field="ExtAppDescription01" label="Opis zewnętrzny" [showRefresh]=false appearance="outline" fxFill [readonly]=true></sit-data-input>
-                    </div>
+                  <div fxLayout="column" fxFill fxLayoutGap="5px">
+                    <mat-card>
+                      <mat-card-content>
+                        <div fxLayout="row">
+                          <sit-data-input type="text" #sitControl field="DocumentName" label="Typ dokumentu" appearance="outline" fxFlex [readonly]=true fxFlex="70"></sit-data-input>
+                          <sit-data-input type="text" #sitControl field="Weight" label="Waga" [showRefresh]=false appearance="outline" fxFill [readonly]=true fxFlex></sit-data-input>
+                        </div>
+                      </mat-card-content>
+                    </mat-card>
+
+                    <mat-card>
+                      <mat-card-content>
+                        <div fxLayout="row">
+                          <sit-data-input type="text" #sitControl field="CustIdent" label="Identyfikator kontrahenta" [showRefresh]=false appearance="outline" fxFlex [readonly]=true></sit-data-input>
+                          <sit-data-input type="text" #sitControl field="VATId" label="NIP" [showRefresh]=false appearance="outline" style="width: 300px" [readonly]=true></sit-data-input>
+                        </div>
+                        <sit-data-input type="text" #sitControl field="CustName" label="Nazwa pełna" [showRefresh]=false appearance="outline" style="width: 100%" [readonly]=true></sit-data-input>
+                        <div fxLayout="row">
+                          <sit-data-input type="text" #sitControl field="StreetHouseNum" label="Ulica" [showRefresh]=false appearance="outline" fxFlex [readonly]=true></sit-data-input>
+                          <!-- <sit-data-input type="text" #sitControl field="HouseNum" label="Numer" [showRefresh]=false appearance="outline" style="width: 100px" [readonly]=true></sit-data-input> -->
+                        </div>
+                        <div fxLayout="row">
+                          <sit-data-input type="text" #sitControl field="PostCode" label="Kod pocztowy" [showRefresh]=false appearance="outline" style="width: 150px" [readonly]=true></sit-data-input>
+                          <sit-data-input type="text" #sitControl field="City" label="Miasto" [showRefresh]=false appearance="outline" fxFlex [readonly]=true></sit-data-input>
+                          <sit-data-input type="text" #sitControl field="CountrySymbol" label="Kraj" [showRefresh]=false appearance="outline" style="width: 100px" [readonly]=true></sit-data-input>
+                        </div>
+                      </mat-card-content>
+                    </mat-card>
+
+                    <mat-card>
+                      <mat-card-title>Adres dostawy</mat-card-title>
+                      <mat-card-content>
+                        <!-- <sit-data-input type="text" #sitControl field="DelAdd_CustomerDesc01" label="Nazwa pełna" [showRefresh]=false appearance="outline" style="width: 100%" [readonly]=true></sit-data-input> -->
+                        <sit-data-input type="text" #sitControl field="DelAdd_CustomerDesc02" label="Nazwa pełna" [showRefresh]=false appearance="outline" style="width: 100%" [readonly]=true></sit-data-input>
+                        <div fxLayout="row">
+                          <sit-data-input type="text" #sitControl field="DelAdd_StreetHouseNum" label="Ulica" [showRefresh]=false appearance="outline" fxFlex [readonly]=true></sit-data-input>
+                        </div>
+                        <div fxLayout="row">
+                          <sit-data-input type="text" #sitControl field="DelAdd_PostalCode" label="Kod pocztowy" [showRefresh]=false appearance="outline" style="width: 150px" [readonly]=true></sit-data-input>
+                          <sit-data-input type="text" #sitControl field="DelAdd_City" label="Miasto" [showRefresh]=false appearance="outline" fxFlex [readonly]=true></sit-data-input>
+                          <sit-data-input type="text" #sitControl field="DelAdd_Country" label="Kraj" [showRefresh]=false appearance="outline" style="width: 100px" [readonly]=true></sit-data-input>
+                        </div>
+                      </mat-card-content>
+                    </mat-card>
+
+                    <mat-card>
+                      <mat-card-content>
+                        <div fxLayout="row">
+                          <sit-data-input type="text" #sitControl field="DocumentDescription" label="Opis dokumentu" [showRefresh]=false appearance="outline" fxFill [readonly]=true></sit-data-input>
+                        </div>
+                        <div fxLayout="row">
+                          <sit-data-input type="text" #sitControl field="ExtAppDescription01" label="Opis zewnętrzny" [showRefresh]=false appearance="outline" fxFill [readonly]=true></sit-data-input>
+                        </div>
+                        <div fxLayout="row">
+                          <sit-data-input type="text" #sitControl field="DescriptionForReport" label="Opis do wydruku" [showRefresh]=false appearance="outline" fxFill [readonly]=true></sit-data-input>
+                        </div>
+                      </mat-card-content>
+                    </mat-card>
                   </div>
                 </sit-data-set-container>
               </mat-tab>
@@ -212,6 +247,48 @@
                           </ag-grid-angular>
                         </div>
                       </div>
+                    </sit-data-set-container>
+                  </div>
+                </div>
+              </mat-tab>
+              <mat-tab label="Załączniki">
+                <div class="content" fxFill fxLayout="column">
+                  <div fxFlex="20">
+                    <sit-data-set-container  ident="sitAttachments"  fxFlex fxLayout="column">
+                      <div class="sit-proc-bar">
+                        <mat-toolbar color="accent">
+                          <mat-toolbar-row>
+                            <div class="sit-proc-buttons-row">
+                              <sit-proc-button #sitAction actionIdent="insert" componentParamsIdent="sitAttachmentsIns" tooltip="Dodaj skan" color="primary" icon="post_add" ></sit-proc-button>
+                              <sit-proc-button #sitAction actionIdent="delete" tooltip="Usuń"  color="primary" icon="delete" delete="true" matType="mat-stroked-button"></sit-proc-button>
+                            </div>
+                          </mat-toolbar-row>
+                        </mat-toolbar>
+                      </div>
+                      <div class="data-table" fxFlex>
+                        <ag-grid-angular #sitSetDataSource
+                        #agGrid
+                        id="gridAttachments"
+                        style="width: 100%; height: 100%;"
+                        class="ag-theme-balham"
+                        [columnDefs]="columnDefsAttachments"
+                        [defaultColDef]="defaultColDef"
+                        [rowSelection]="rowSelection"
+                        [rowMultiSelectWithClick]="true"
+                        [enableCellTextSelection]="true"
+                        [enableRangeSelection]="false"
+                        [popupParent]="popupParent"
+                        (rowClicked)="onRowClickedAttachments($event)"
+                        (gridReady)="onGridReadyAttachments($event)"
+                        (firstDataRendered)="onFirstDataRendered($event)"
+                        >
+                        </ag-grid-angular>
+                      </div>
+                    </sit-data-set-container>
+                  </div>
+                  <div fxFlex>
+                    <sit-data-set-container  ident="sitAttachments"  fxFlex fxLayout="column">
+                      <sit-pdf-viewer #sitControl field="FileName" fxFill></sit-pdf-viewer>
                     </sit-data-set-container>
                   </div>
                 </div>

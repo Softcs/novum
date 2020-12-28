@@ -1,0 +1,13 @@
+<sit-proc-params
+  [(actionExecuteData)]="actionExecuteData"
+  >
+  <sit-data-set-container ident="sitImportCustomerFromImpTableEdit">
+    <div class="sit-proc-params-content" fxLayout="column" style="width: 500px">
+      <sit-data-input #sitControl type="text" field="CustIdentToImp" label="Identyfikator" appearance="outline" fxFlex
+        [lookupDisplayFields] = "['CustIdent', 'CustName']"></sit-data-input>
+      <sit-data-input #sitControl type="text" field="CustNameToImp" label="Nazwa" readonly="true" appearance="outline" fxFlex></sit-data-input>
+      <sit-data-input #sitControl type="text" field="VATIdToImp" label="NIP" readonly="true" appearance="outline" fxFlex></sit-data-input>
+
+    </div>
+  </sit-data-set-container>
+</sit-proc-params>

@@ -13,13 +13,17 @@ import { Guid } from 'guid-typescript';
 
 @Injectable({ providedIn: 'root' })
 export class GatewayService {
-    private currentUserSubject: BehaviorSubject<User>;
+    private currentUserSubject: BehaviorSubject<User>;w    
     public currentUser: Observable<User>;
+    public serverVersion: string;
     public canUseLocalStorage: boolean;
+    
 
     constructor(private http: HttpClient) {
         this.currentUserSubject = new BehaviorSubject<User>(this.readCurrentUser());
         this.currentUser = this.currentUserSubject.asObservable();
+        
+        this.serverVersion = "";
     }
 
     public get currentUserValue(): User {
@@ -100,7 +104,6 @@ export class GatewayService {
         user.password = password;
         user.username = username;
         user.token = null;
-        user.connection = null;
         user.company = company;
         user.connection = company?.configFile;
         return user;
@@ -191,6 +194,7 @@ export class GatewayService {
                 railResponse = this.decV(railResponse.d);
                 railResponse = JSON.parse(railResponse);
                 if (railResponse != null && railResponse.length > 0) {
+                    this.serverVersion = railResponse[0].serverVersion;                    
                     if(railResponse[0].Errors != null) {
                         railResponse[0].Errors.forEach(error => {
                             console.error(error.message);

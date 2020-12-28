@@ -1,12 +1,13 @@
 ﻿import { SitChangeCompanyComponent } from './../../containers/sit-change-company/sit-change-company.component';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, HostListener, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
-
 import { GatewayService } from '@app/_services';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { calcPossibleSecurityContexts } from '@angular/compiler/src/template_parser/binding_parser';
+import { Directive } from '@angular/core';
+import { environment } from '../../../environments/environment';
 
 
 @Component({
@@ -20,6 +21,9 @@ export class LoginComponent implements OnInit {
     submitted = false;
     returnUrl: string;
     error = '';
+    passType = "password";
+    capsOn;
+    currentApplicationVersion = environment.appVersion;
 
     constructor(
         private formBuilder: FormBuilder,
@@ -101,6 +105,15 @@ export class LoginComponent implements OnInit {
                 });
     }
 
+    showPassword() {
+      if (this.passType === 'password')
+        { this.passType = 'text'; }
+      else
+        { this.passType = 'password'; }
+
+      console.log(this.passType)
+    }
+
     // openModalChangeCompany() {
     //   const dialogConfig = new MatDialogConfig();
     //   dialogConfig.disableClose = true;
@@ -112,3 +125,4 @@ export class LoginComponent implements OnInit {
     //   const modalDialog = this.matDialog.open(SitChangeCompanyComponent, dialogConfig);
     // }
 }
+

@@ -6,8 +6,8 @@ import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
 import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
 import { TabService } from '@app/_services/tab.service';
+import { formatNumber } from '@angular/common';
 import { formatDate } from '@angular/common';
-
 // import { AllModules } from '@ag-grid-enterprise/all-modules';
 
 @Component({
@@ -53,11 +53,14 @@ export class SitWmsDocsComponent implements OnInit {
   gridColumnApiDocumentsHeadersHistory;
   columnDefsDocumentsHeadersHistory;
 
+  gridApiAttachments;
+  gridColumnApiAttachments;
+  columnDefsAttachments;
+
   constructor(
     private gatewayService: GatewayService,
     private tabService: TabService,
     @Inject(LOCALE_ID) private locale: string,
-
 
     ) {
 
@@ -74,12 +77,11 @@ export class SitWmsDocsComponent implements OnInit {
     this.defaultColDef = {
       sortable: true,
       filter: true,
-      //floatingFilter: true,
       resizable: true,
       enableValue: true,
       enableRowGroup: true,
       enablePivot: true,
-      floatingFilter: true,
+      floatingFilter: false,
     };
 
     //definicja kolumn nagłówków dowodów
@@ -89,7 +91,7 @@ export class SitWmsDocsComponent implements OnInit {
       { headerName: 'Typ dok.', field: 'DocumentIdent', sortable: true, resizable: true, filter: 'agSetColumnFilter', floatingFilter: false, width: 90 },
       { headerName: 'Numer', field: 'DocumentNumber', sortable: true, resizable: true, filter: 'agTextColumnFilter' },
       { headerName: 'Data', field: 'DocumentDate', type: 'dateColumn', filter: 'agDateColumnFilter',width: 100, floatingFilter: false, sort: 'desc'  },
-      { headerName: 'Status WMS', field: 'Status_WMS', filter: 'agSetColumnFilter', width: 160,
+      { headerName: 'Status WMS', field: 'Status_WMS', filter: 'agSetColumnFilter', width: 160, floatingFilter: true,
         cellStyle: function(params) {
           if (params.value === 'Wysłana') { return { color: 'blue' }; }
           else if (params.value === 'Błąd wysyłki') { return { color: 'red' }; }
@@ -97,11 +99,16 @@ export class SitWmsDocsComponent implements OnInit {
           else { return null; }
         }
       },
-      { headerName: 'Kontrahent', field: 'CustName', filter: 'agTextColumnFilter', tooltipField: 'CustName'},
-      { headerName: 'Opis', field: 'DocumentDescription', filter: 'agTextColumnFilter', tooltipField: 'DocumentDescription' },
-      { headerName: 'NagId SL', field: 'ExtAppIdent01', filter: 'agTextColumnFilter',width: 100 },
+      { headerName: 'Kontrahent', field: 'CustName', filter: 'agTextColumnFilter', tooltipField: 'CustName', floatingFilter: true},
+      { headerName: 'Opis', field: 'DocumentDescription', filter: 'agTextColumnFilter', tooltipField: 'DocumentDescription', floatingFilter: true, width: 120 },
+      { headerName: 'Waga', field: 'Weight', type: 'numericColumn', filter: 'agNumberColumnFilter', tooltipField: 'DocumentDescription', width: 80,
+        cellRenderer: function(params) {
+        return formatNumber(params.data["Weight"], locale,'1.2-2')
+        }
+      },
+      { headerName: 'NagId SL', field: 'ExtAppIdent01', filter: 'agTextColumnFilter', width: 100, floatingFilter: true },
       // { headerName: 'XL ID', field: 'ExtAppIdent02', filter: 'agTextColumnFilter',width: 100  },
-      // { headerName: 'Opis zew.', field: 'ExtAppDescription01', filter: 'agTextColumnFilter',width: 200  },
+      { headerName: 'Opis zew.', field: 'ExtAppDescription01', tootipField: 'ExtAppDescription01', filter: 'agTextColumnFilter',width: 200  },
 
     ];
 
@@ -111,9 +118,14 @@ export class SitWmsDocsComponent implements OnInit {
       { headerName: 'Identyfikator', field: 'ProductIdent', filter: 'agTextColumnFilter', width: 120, floatingFilter: true },
       { headerName: 'EAN', field: 'EAN', filter: 'agTextColumnFilter', width: 110, floatingFilter: true },
       { headerName: 'Opis', field: 'PositionDescription', filter: 'agTextColumnFilter', floatingFilter: true },
-      { headerName: 'JM', field: 'UnitIdent', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 60 },
-      { headerName: 'Il. start', field: 'QuantityUnitStart', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
-      { headerName: 'Ilość', field: 'QuantityUnit', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
+      { headerName: 'JM', field: 'UnitIdent', filter: 'agNumberColumnFilter', type: 'numericColumn', suppressMenu: true, width: 60 },
+      { headerName: 'Il. start', field: 'QuantityUnitStart', filter: 'agNumberColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
+      { headerName: 'Ilość', field: 'QuantityUnit', filter: 'agNumberColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
+      { headerName: 'Waga', field: 'Weight', filter: 'agNumberColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80,
+        cellRenderer: function(params) {
+        return formatNumber(params.data["Weight"], locale,'1.2-2')
+        }
+      },
       { headerName: 'Defekt', field: 'IsDefect', filter: 'agSetColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80,cellRenderer: 'gridCheckboxRenderer', floatingFilter: false }
     ];
 
@@ -123,29 +135,39 @@ export class SitWmsDocsComponent implements OnInit {
       { headerName: 'Identyfikator', field: 'ProductIdent', filter: 'agTextColumnFilter', width: 120, floatingFilter: true },
       { headerName: 'EAN', field: 'EAN', filter: 'agTextColumnFilter', width: 110, floatingFilter: true },
       { headerName: 'Opis', field: 'PositionDescription', filter: 'agTextColumnFilter', floatingFilter: true },
-      { headerName: 'JM', field: 'UnitIdent', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 60 },
+      { headerName: 'JM', field: 'UnitIdent', filter: 'agNumberColumnFilter', type: 'numericColumn', suppressMenu: true, width: 60 },
       { headerName: 'Il. start', field: 'QuantityUnitStart', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
-      { headerName: 'Ilość', field: 'QuantityUnit', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
-      { headerName: 'Różnica', field: 'QuantityDiff', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
+      { headerName: 'Ilość', field: 'QuantityUnit', filter: 'agNumberColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
+      { headerName: 'Różnica', field: 'QuantityDiff', filter: 'agNumberColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
     ];
 
     //definicja kolumn historii nagłówków
     this.columnDefsDocumentsHeadersHistory = [
-      { headerName: 'Operacja', field: 'OprType', filter: 'agTextColumnFilter', floatingFilter: true, width: 100 },
-      { headerName: 'Data mod.', field: 'ChangeDate', sortable: true, resizable: true, suppressMenu: true, width: 180, floatingFilter: false, sort: 'desc',
+      { headerName: 'Operacja', field: 'OprType', filter: 'agTextColumnFilter',  width: 100 },
+      { headerName: 'Data mod.', field: 'ChangeDate', sortable: true, resizable: true, suppressMenu: true, width: 180, sort: 'desc',
         cellRenderer: (data) => { return formatDate(data.value, 'yyyy-MM-dd H:mm', this.locale) }
       },
-      { headerName: 'Status', field: 'ValueName', filter: 'agTextColumnFilter', floatingFilter: true },
-      { headerName: 'Komentarz', field: '__HistoryComments__', filter: 'agTextColumnFilter', floatingFilter: true },
+      { headerName: 'Status', field: 'ValueName', filter: 'agTextColumnFilter'},
+      { headerName: 'Komentarz', field: '__HistoryComments__', filter: 'agTextColumnFilter' },
     ];
 
     //definicja kolumn historii pozycji
     this.columnDefsDocumentsPositionsHistory = [
-      { headerName: 'Operacja', field: 'OprType', filter: 'agTextColumnFilter', floatingFilter: true, width: 100 },
-      { headerName: 'Data mod.', field: 'ChangeDate', sortable: true, resizable: true, suppressMenu: true, width: 180, floatingFilter: false, sort: 'desc',
+      { headerName: 'Operacja', field: 'OprType', filter: 'agTextColumnFilter', width: 100 },
+      { headerName: 'Data mod.', field: 'ChangeDate', sortable: true, resizable: true, suppressMenu: true, width: 180, sort: 'desc',
         cellRenderer: (data) => { return formatDate(data.value, 'yyyy-MM-dd H:mm', this.locale) }
       },
-      { headerName: 'Ilość', field: 'Quantity', floatingFilter: false, type: "numericColumn" }
+      { headerName: 'Ilość', field: 'Quantity', type: "numericColumn" }
+    ];
+
+    this.columnDefsAttachments = [
+      { headerName: 'ParentId', field: 'ParentId' },
+      { headerName: 'sitAttachmentsG', field: 'sitAttachmentsG' },
+      { headerName: 'Data dodania', field: 'InsertDate', width: 120,
+         cellRenderer: (data) => { return formatDate(data.value, 'yyyy-MM-dd H:mm', this.locale) }
+      },
+      { headerName: 'Nazwa pliku', field: 'FileName', width: 250 },
+      { headerName: 'Opis', field: 'AttachmentDesc', width: 250 },
     ];
 
     this.rowClassRules = {
@@ -226,6 +248,18 @@ export class SitWmsDocsComponent implements OnInit {
       dataSourceResponseWrapper.SetActiveRow(event.data);
   }
 
+  onGridReadyAttachments(params) {
+    this.gridApiAttachments = params.api;
+    this.gridColumnApiAttachments = params.columnApi;
+    this.gridColumnApiAttachments.setColumnsVisible(['sitAttachmentsId','sitAttachmentsG','ParentId'],false)
+
+  }
+
+  onRowClickedAttachments(event) {
+    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitAttachments');
+    dataSourceResponseWrapper.SetActiveRow(event.data);
+  }
+
   onFirstDataRendered(params) {
     const allColumnIds = [];
     // this.gridColumnApiDocumentsHeaders.getAllColumns().forEach(function(column) {
@@ -247,7 +281,6 @@ export class SitWmsDocsComponent implements OnInit {
 
   activeRowChangedDocumentsHeaders(activeRow) {
     const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsHeaders');
-    console.log(activeRow);
     // if (activeRow['sitDocumentsHeadersG_Invoice'] !== null) {
     //   this.printLinked = true;
     // }

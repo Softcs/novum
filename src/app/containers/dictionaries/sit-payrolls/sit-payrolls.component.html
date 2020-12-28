@@ -1,0 +1,107 @@
+<sit-dict-container ident="sitPayrolls" #sitDictcontainer fxFill>
+  <as-split direction="horizontal">
+    <as-split-area [size]="45">
+      <div fxLayout="column" fxFill class="content">
+        <div class="sit-filter-bar">
+          <sit-data-set-container ident="sitFilterPayrolls" fxLayout="row">
+            <sit-data-input #sitControl field="PayrollNo" label="Nr listy" placeholder="Wybierz numer listy" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
+            <!-- <sit-data-input #sitControl field="searchPayrolls" label="Filtruj" placeholder="" appearance="outline" showRefreshButton="true" style="width: 200px;"></sit-data-input> -->
+          </sit-data-set-container>
+        </div>
+        <sit-data-set-container  ident="sitPayrolls" fxFlex fxLayout="column">
+          <div class="sit-proc-bar">
+            <mat-toolbar color="accent">
+              <mat-toolbar-row>
+                <div class="sit-proc-buttons-row">
+                  <sit-proc-button #sitAction actionIdent="payrollImport" componentParamsIdent="sitPayrollImport" openKind="EXPANDER" tooltip="Nowy" color="primary" icon="post_add"></sit-proc-button>
+                </div>
+              </mat-toolbar-row>
+            </mat-toolbar>
+          </div>
+          <div class="data-table" fxFlex>
+            <ag-grid-angular #sitSetDataSource
+              #agGrid
+              id="gridPayrolls"
+              style="width: 100%; height: 100%;"
+              class="ag-theme-balham"
+              [columnDefs]="columnDefs"
+              [defaultColDef]="defaultColDef"
+              [rowSelection]="rowSelection"
+              [rowMultiSelectWithClick]="true"
+              [enableCellTextSelection]="true"
+              [enableRangeSelection]="false"
+              [popupParent]="popupParent"
+              (rowClicked)="onRowClicked($event)"
+              (gridReady)="onGridReady($event)"
+              (firstDataRendered)="onFirstDataRendered($event)"
+            >
+            </ag-grid-angular>
+          </div>
+        </sit-data-set-container>
+      </div>
+    </as-split-area>
+    <as-split-area [size]="55">
+      <as-split direction="vertical">
+        <as-split-area [size]="50">
+          <div fxLayout="column" fxFill class="content">
+            <div class="sit-filter-bar">
+              <sit-data-set-container ident="sitFilterPayrollsCalc" fxLayout="row">
+                <sit-data-input #sitControl field="searchPayrollsCalc" label="Filtruj" placeholder="" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
+              </sit-data-set-container>
+            </div>
+            <sit-data-set-container  ident="sitPayrollsCalc" fxFlex fxLayout="column">
+              <div class="data-table" fxFlex>
+                <ag-grid-angular #sitSetDataSource
+                  #agGrid
+                  id="gridPayrollsCalc"
+                  style="width: 100%; height: 100%;"
+                  class="ag-theme-balham"
+                  [columnDefs]="columnDefsPayrollsCalc"
+                  [defaultColDef]="defaultColDef"
+                  [rowSelection]="rowSelection"
+                  [rowMultiSelectWithClick]="true"
+                  [enableCellTextSelection]="true"
+                  [enableRangeSelection]="false"
+                  [popupParent]="popupParent"
+                  (rowClicked)="onRowClickedPayrollsCalc($event)"
+                  (gridReady)="onGridReadyPayrollsCalc($event)"
+                  (firstDataRendered)="onFirstDataRendered($event)"
+                >
+                </ag-grid-angular>
+              </div>
+            </sit-data-set-container>
+          </div>
+        </as-split-area>
+        <as-split-area [size]="50">
+          <mat-tab-group id="tab-group" animationDuration="0ms">
+            <mat-tab label="Składniki">
+              <sit-data-set-container  ident="sitPayrollComponentsCalc" fxFill fxLayout="column">
+                <div class="data-table" fxFlex>
+                  <ag-grid-angular #sitSetDataSource
+                    #agGrid
+                    id="gridPayrollComponentsCalc"
+                    style="width: 100%; height: 100%;"
+                    class="ag-theme-balham"
+                    [columnDefs]="columnDefsPayrollComponentsCalc"
+                    [defaultColDef]="defaultColDef"
+                    [rowSelection]="rowSelection"
+                    [rowMultiSelectWithClick]="true"
+                    [enableCellTextSelection]="true"
+                    [enableRangeSelection]="false"
+                    [popupParent]="popupParent"
+                    (rowClicked)="onRowClickedPayrollComponentsCalc($event)"
+                    (gridReady)="onGridReadyPayrollComponentsCalc($event)"
+                    (firstDataRendered)="onFirstDataRendered($event)"
+                  >
+                  </ag-grid-angular>
+                </div>
+              </sit-data-set-container>
+            </mat-tab>
+            <mat-tab label="Księgowanie">
+            </mat-tab>
+          </mat-tab-group>
+        </as-split-area>
+      </as-split>
+    </as-split-area>
+  </as-split>
+</sit-dict-container>
