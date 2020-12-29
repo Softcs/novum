@@ -34,6 +34,12 @@ export class SitPayrollsComponent implements OnInit {
   gridApiPayrollComponentsCalc;
   gridColumnApiPayrollComponentsCalc;
   columnDefsPayrollComponentsCalc;
+  gridApiPayrollsCalcAccounting;
+  gridColumnApiPayrollsCalcAccounting;
+  columnDefsPayrollsCalcAccounting;
+  gridApiPayrollsAccounting;
+  gridColumnApiPayrollsAccounting;
+  columnDefsPayrollsAccounting;
 
   constructor(
     private gatewayService: GatewayService,
@@ -41,13 +47,14 @@ export class SitPayrollsComponent implements OnInit {
   ) {
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
     this.popupParent = document.querySelector('body');
-    this.rowSelection = 'single';
+    this.rowSelection = 'multi';
 
     this.defaultColDef = {
       sortable: true,
       filter: false,
       floatingFilter: false,
-      resizable: true
+      resizable: true,
+      autoHeight: true
     };
 
     this.columnDefs = [
@@ -216,7 +223,41 @@ export class SitPayrollsComponent implements OnInit {
     }
   ];
 
-  }
+  this.columnDefsPayrollsCalcAccounting = [
+    { headerName: 'ID', field: 'sitPayrollsCalcAccountingId', filter: 'agNumericColumnFilter' },
+    { headerName: 'GUID', field: 'sitPayrollsCalcAccountingG', filter: 'agTextColumnFilter' },
+    { headerName: 'Lp', field: 'PosId', type: 'numericColumn', filter: 'agNumericColumnFilter', width: 80, sort: 'asc' },
+    { headerName: 'Konto', field: 'Account', filter: 'agTextColumnFilter', width: 150 },
+    { headerName: 'Kwota WN', field: 'CAmount', type: 'numericColumn', filter: 'agNumericColumnFilter', width: 100,
+      cellRenderer: function(params) {
+        return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
+      }
+    },
+    { headerName: 'Kwota MA', field: 'DAmount', type: 'numericColumn', filter: 'agNumericColumnFilter', width: 100,
+      cellRenderer: function(params) {
+        return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
+      },
+    },
+    { headerName: 'Opis', field: 'PosDesc', filter: 'agTextColumnFilter', width: 250 },
+];
+
+this.columnDefsPayrollsAccounting = [
+  { headerName: 'Lp', field: 'PosId', type: 'numericColumn', filter: 'agNumericColumnFilter', width: 80, sort: 'asc' },
+  { headerName: 'Konto', field: 'Account', filter: 'agTextColumnFilter', width: 150, floatingFilter: true },
+  { headerName: 'Kwota WN', field: 'CAmount', type: 'numericColumn', filter: 'agNumericColumnFilter', width: 100, floatingFilter: true,
+    cellRenderer: function(params) {
+      return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
+    }
+  },
+  { headerName: 'Kwota MA', field: 'DAmount', type: 'numericColumn', filter: 'agNumericColumnFilter', width: 100, floatingFilter: true,
+    cellRenderer: function(params) {
+      return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
+    },
+  },
+  { headerName: 'Opis', field: 'PosDesc', filter: 'agTextColumnFilter', width: 250, floatingFilter: true },
+];
+
+}
 
   ngOnInit(): void {}
 
@@ -232,9 +273,9 @@ export class SitPayrollsComponent implements OnInit {
   }
 
   onGridReadyPayrollsCalc(params) {
-    this.gridApi = params.api;
-    this.gridColumnApi = params.columnApi;
-    this.gridColumnApi.setColumnsVisible(['sitPayrollsCalcId','sitPayrollsCalcG'], false)
+    this.gridApiPayrollsCalc = params.api;
+    this.gridColumnApiPayrollsCalc = params.columnApi;
+    this.gridColumnApiPayrollsCalc.setColumnsVisible(['sitPayrollsCalcId','sitPayrollsCalcG'], false)
   }
 
   onRowClickedPayrollsCalc(event) {
@@ -243,9 +284,9 @@ export class SitPayrollsComponent implements OnInit {
   }
 
   onGridReadyPayrollComponentsCalc(params) {
-    this.gridApi = params.api;
-    this.gridColumnApi = params.columnApi;
-    this.gridColumnApi.setColumnsVisible(['sitPayrollComponentsCalcId','sitPayrollComponentsCalcG'], false)
+    this.gridApiPayrollComponentsCalc = params.api;
+    this.gridColumnApiPayrollComponentsCalc = params.columnApi;
+    this.gridColumnApiPayrollComponentsCalc.setColumnsVisible(['sitPayrollComponentsCalcId','sitPayrollComponentsCalcG'], false)
   }
 
   onRowClickedPayrollComponentsCalc(event) {
@@ -253,6 +294,34 @@ export class SitPayrollsComponent implements OnInit {
       dataSourceResponseWrapper.SetActiveRow(event.data);
   }
 
+  onGridReadyPayrollsCalcAccounting(params) {
+    this.gridApiPayrollsCalcAccounting = params.api;
+    this.gridColumnApiPayrollsCalcAccounting = params.columnApi;
+    this.gridColumnApiPayrollsCalcAccounting.setColumnsVisible(['sitPayrollsCalcAccountingId','sitPayrollsCalcAccountingG'], false)
+  }
+
+  onRowClickedPayrollsCalcAccounting(event) {
+    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitPayrollsCalcAccounting');
+      dataSourceResponseWrapper.SetActiveRow(event.data);
+  }
+
+  onGridReadyPayrollsAccounting(params) {
+    this.gridApiPayrollsAccounting = params.api;
+    this.gridColumnApiPayrollsAccounting = params.columnApi;
+  }
+
+  onRowClickedPayrollsAccounting(event) {
+    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitPayrollsAccounting');
+      dataSourceResponseWrapper.SetActiveRow(event.data);
+  }
+
   onFirstDataRendered(params) {
+  }
+
+  onTabChanged (tab) {
+    if (tab.index === 0) {
+      this.gridApiPayrollComponentsCalc.resetRowHeights();
+    }
+
   }
 }
