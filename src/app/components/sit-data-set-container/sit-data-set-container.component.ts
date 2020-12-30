@@ -200,6 +200,9 @@ export class SitDataSetContainerComponent {
       this.appluCustomPropsGrid(element);
       const gridApi = element["api"];
       if (gridApi) {
+        this.dataSetResponseWrapper.rows.forEach(element => {
+          if (element['dataPath']) { element['dataPath'] = JSON.parse(element['dataPath']);}
+        });
         gridApi.setRowData(this.dataSetResponseWrapper.rows);
       }
     });

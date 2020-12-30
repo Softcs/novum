@@ -41,7 +41,7 @@ export class SitCompanyDepartmentsComponent implements OnInit {
 
     this.autoGroupColumnDef = {
       headerName: 'Działy firmy',
-      minWidth: 300,
+      minWidth: 200,
       cellRendererParams: { suppressCount: true },
     };
     this.groupDefaultExpanded = -1;
@@ -61,9 +61,9 @@ export class SitCompanyDepartmentsComponent implements OnInit {
     this.columnDefs = [
       { headerName: 'ID', field: 'sitCompanyDepartmentsId', filter: 'agNumericColumnFilter' },
       { headerName: 'GUID', field: 'sitCompanyDepartmentsG', filter: 'agTextColumnFilter' },
-      { headerName: 'Identyfikator', field: 'CompanyDepartmentIdent', filter: 'agTextColumnFilter' },
-      { headerName: 'Opis', field: 'CompanyDepartmentDesc', filter: 'agTextColumnFilter' },
-      { headerName: 'dataPath', field: 'dataPath', filter: 'agTextColumnFilter' },
+      // { headerName: 'Identyfikator', field: 'CompanyDepartmentIdent', filter: 'agTextColumnFilter' },
+      { headerName: 'Opis', field: 'CompanyDepartmentDesc', filter: 'agTextColumnFilter', width: 300 },
+      // { headerName: 'dataPath', field: 'dataPath', filter: 'agTextColumnFilter' },
     ];
 
   }
