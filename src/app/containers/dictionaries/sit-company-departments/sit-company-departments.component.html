@@ -1,0 +1,29 @@
+<sit-dict-container ident="sitCompanyDepartments" #sitDictcontainer fxFill>
+  <div fxLayout="column" fxFill class="content">
+    <sit-data-set-container  ident="sitCompanyDepartments" fxFlex fxLayout="column">
+      <div class="data-table" fxFlex>
+        <ag-grid-angular #sitSetDataSource
+          #agGrid
+          id="gridCompanyDepartments"
+          style="width: 100%; height: 100%;"
+          class="ag-theme-balham"
+          [columnDefs]="columnDefs"
+          [defaultColDef]="defaultColDef"
+          [rowSelection]="rowSelection"
+          [rowMultiSelectWithClick]="true"
+          [enableCellTextSelection]="true"
+          [enableRangeSelection]="false"
+          [popupParent]="popupParent"
+          [treeData]="false"
+          [getDataPath]="getDataPath"
+          [autoGroupColumnDef]="autoGroupColumnDef"
+          [groupDefaultExpanded]="groupDefaultExpanded"
+          (rowClicked)="onRowClicked($event)"
+          (gridReady)="onGridReady($event)"
+          (firstDataRendered)="onFirstDataRendered($event)"
+        >
+        </ag-grid-angular>
+      </div>
+    </sit-data-set-container>
+  </div>
+</sit-dict-container>
