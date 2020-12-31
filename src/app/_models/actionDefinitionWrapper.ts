@@ -10,6 +10,13 @@ export class ActionDefinitionWrapper {
     public editFields: [any];
     public caption: string;
     public fieldsConfiguration: [any];
+    public color: string;
+    public icon: string;
+    public componentParamsIdent: string;
+    public openKind: string;
+    public order: Number;
+    public showWhenEmpty: boolean;
+    public tooltip: string;
 
     constructor(source: any) {
         this.createNewRow = source.createNewRow;
@@ -21,6 +28,13 @@ export class ActionDefinitionWrapper {
         this.editFields = source.editFields;
         this.caption = source.caption;
         this.fieldsConfiguration = source.fieldsConfiguration;
+        this.color = source.color;
+        this.icon = source.icon;
+        this.componentParamsIdent = source.componentParamsIdent;
+        this.openKind = source.openKind;
+        this.order = source.order;
+        this.showWhenEmpty = source.showWhenEmpty;
+        this.tooltip = source.tooltip;
     }
 
 

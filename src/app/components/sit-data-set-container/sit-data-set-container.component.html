@@ -34,12 +34,8 @@
       <mat-toolbar color="accent">  
       <mat-toolbar-row> 
         <div class="sit-proc-buttons-row" *ngFor="let action of actionsTable;">
-                <sit-proc-button #sitAction *ngIf="action.ident === 'insert'"  actionIdent="{{action.ident}}" componentParamsIdent="sitCustomersEdit" openKind="TAB" 
-                tooltip="{{action.caption}}" color="primary" icon="post_add"></sit-proc-button>
-                <sit-proc-button #sitAction *ngIf="action.ident === 'update'" actionIdent="{{action.ident}}" componentParamsIdent="sitCustomersEdit" openKind="TAB" 
-                tooltip="{{action.caption}}" color="primary" icon="edit"></sit-proc-button>
-                <sit-proc-button #sitAction *ngIf="action.ident === 'delete'" actionIdent="{{action.ident}}" tooltip="{{action.caption}}" color="primary" icon="delete" delete="true" >
-                </sit-proc-button>
+                <sit-proc-button #sitAction actionIdent="{{action.ident}}" componentParamsIdent="{{action.componentParamsIdent}}" 
+                openKind="{{action.openKind}}" tooltip="{{action.tooltip}}" color="{{action.color}}" icon="{{action.icon}}" delete="action.ident === 'delete'"></sit-proc-button>
           </div>
         </mat-toolbar-row>
       </mat-toolbar>
