@@ -200,9 +200,13 @@ export class SitDataSetContainerComponent {
       this.appluCustomPropsGrid(element);
       const gridApi = element["api"];
       if (gridApi) {
-        this.dataSetResponseWrapper.rows.forEach(element => {
-          if (element['dataPath']) { element['dataPath'] = JSON.parse(element['dataPath']);}
-        });
+        // tree grid - parsowanie kolumny z danymi do drzewa
+        if (this.dataSetResponseWrapper.rows) {
+          this.dataSetResponseWrapper.rows.forEach(element => {
+            if (element['dataPath']) { element['dataPath'] = JSON.parse(element['dataPath']);}
+          });
+        }
+        // end of tree grid
         gridApi.setRowData(this.dataSetResponseWrapper.rows);
       }
     });

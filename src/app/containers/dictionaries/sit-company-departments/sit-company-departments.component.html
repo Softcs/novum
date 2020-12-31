@@ -1,5 +1,10 @@
 <sit-dict-container ident="sitCompanyDepartments" #sitDictcontainer fxFill>
   <div fxLayout="column" fxFill class="content">
+    <sit-data-set-container ident="sitFilter" fxLayout="row">
+      <div class="sit-filter-bar">
+        <sit-data-input #sitControl field="search" label="Filtruj" placeholder="" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
+      </div>
+    </sit-data-set-container>
     <sit-data-set-container  ident="sitCompanyDepartments" fxFlex fxLayout="column">
       <div class="data-table" fxFlex>
         <ag-grid-angular #sitSetDataSource
