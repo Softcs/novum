@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
     returnUrl: string;
     error = '';
     passType = "password";
+    eyeIcon = 'visibility_off';
     capsOn;
     currentApplicationVersion = environment.appVersion;
 
@@ -106,10 +107,14 @@ export class LoginComponent implements OnInit {
     }
 
     showPassword() {
-      if (this.passType === 'password')
-        { this.passType = 'text'; }
-      else
-        { this.passType = 'password'; }
+      if (this.passType === 'password') {
+          this.passType = 'text';
+          this.eyeIcon = 'visibility'
+         }
+      else {
+        this.passType = 'password';
+        this.eyeIcon = 'visibility_off'
+      }
 
       console.log(this.passType)
     }

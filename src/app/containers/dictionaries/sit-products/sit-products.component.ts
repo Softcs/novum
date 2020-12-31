@@ -24,6 +24,8 @@ export class SitProductsComponent implements OnInit {
   link;
   ean;
   frameworkComponents;
+  contentColor;
+
 
   //modules: any[] = AllModules;
   gridApiProducts;
@@ -40,7 +42,7 @@ export class SitProductsComponent implements OnInit {
     @Inject(LOCALE_ID) private locale: string
   ) {
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
-
+    this.contentColor = document.documentElement.style.getPropertyValue('$content-background-color');
     this.popupParent = document.querySelector('body');
     this.rowSelection = 'single';
     this.frameworkComponents = {

@@ -18,7 +18,7 @@
                     <label for="password">Password</label>
                     <div id="input-container" fxLayout="row" fxLayoutAlign="start center">
                       <input id="input" type="{{passType}}" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
-                      <mat-icon id="input-img" (click)="showPassword()" class="show-password">remove_red_eye</mat-icon>
+                      <mat-icon id="input-img" (click)="showPassword()" class="show-password">{{eyeIcon}}</mat-icon>
                     </div>
                     <label *ngIf="capsOn" class="capslock">CapsLock!</label>
                     <div *ngIf="submitted && f.password.errors" class="invalid-feedback">

@@ -1,4 +1,5 @@
-﻿import { SitProcPayrollComponentsAccountingDefEditComponent } from './../containers/dictionaries/sit-payroll-components/actions/sit-proc-payroll-components-accounting-def-edit/sit-proc-payroll-components-accounting-def-edit.component';
+﻿import { SitCompanyDepartmentsComponent } from './../containers/dictionaries/sit-company-departments/sit-company-departments.component';
+import { SitProcPayrollComponentsAccountingDefEditComponent } from './../containers/dictionaries/sit-payroll-components/actions/sit-proc-payroll-components-accounting-def-edit/sit-proc-payroll-components-accounting-def-edit.component';
 import { SitPayrollImportComponent } from './../containers/dictionaries/sit-payrolls/actions/sit-payroll-import/sit-payroll-import.component';
 import { SitPayrollComponentsComponent } from './../containers/dictionaries/sit-payroll-components/sit-payroll-components.component';
 import { SitPayrollsComponent } from './../containers/dictionaries/sit-payrolls/sit-payrolls.component';
@@ -112,7 +113,8 @@ export class FactoryService {
         sitPayrolls: SitPayrollsComponent,
         sitPayrollComponents: SitPayrollComponentsComponent,
         sitPayrollImport: SitPayrollImportComponent,
-        sitProcPayrollComponentsAccountingDefEdit: SitProcPayrollComponentsAccountingDefEditComponent
+        sitProcPayrollComponentsAccountingDefEdit: SitProcPayrollComponentsAccountingDefEditComponent,
+        sitCompanyDepartments: SitCompanyDepartmentsComponent
     };
 
     public GetFactory(ident: string) {
