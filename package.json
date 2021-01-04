@@ -53,7 +53,7 @@
     "@angular/cli": "^10.2.1",
     "@angular/compiler-cli": "^10.2.4",
     "@angular/language-service": "^10.2.4",
-    "@babel/compat-data": "~7.8.0",
+    "@babel/compat-data": "~7.12.7",
     "@babel/plugin-proposal-numeric-separator": "^7.10.1",
     "@types/jasmine": "^3.5.10",
     "@types/jasminewd2": "^2.0.8",
