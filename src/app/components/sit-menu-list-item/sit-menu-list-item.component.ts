@@ -22,7 +22,7 @@ import { FactoryService } from '@app/_services/factory.service';
 })
 export class SitMenuListItemComponent {
   expanded: boolean;
-  @HostBinding('attr.aria-expanded') ariaExpanded = this.expanded;
+  //@HostBinding('attr.aria-expanded') ariaExpanded = this.expanded;
   @Input() item: NavItem;
   @Input() depth: number;
 
