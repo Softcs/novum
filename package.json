@@ -40,7 +40,6 @@
     "jquery": "^3.5.1",
     "js-sha512": "^0.8.0",
     "material-design-icons": "^3.0.1",
-    "ngx-barcode": "^0.3.0",
     "npm": "^6.14.8",
     "rxjs": "^6.5.5",
     "tslib": "^1.13.0",
