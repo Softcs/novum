@@ -6,9 +6,15 @@
     "Novum": {
       "projectType": "application",
       "schematics": {
-
         "@schematics/angular:component": {
-          "style": "scss"
+        "style": "scss"
+        },
+        "architect": {
+          "build": {
+            "options": {
+              "aot": true
+            }
+          }
         }
       },
       "root": "",
