@@ -80,7 +80,7 @@ export class SitCompanyDepartmentsComponent implements OnInit {
   onRowClicked(event) {
     const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitCompanyDepartments');
       dataSourceResponseWrapper.SetActiveRow(event.data);
-      console.log(event.data)
+
   }
 
   onFirstDataRendered(params) {
