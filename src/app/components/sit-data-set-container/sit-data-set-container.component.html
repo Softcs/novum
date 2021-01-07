@@ -18,20 +18,7 @@
   
 <!-- Toolbar z akcjami -->
   <div class="sit-proc-bar" *ngIf="showActionsToolbar">
-    <!--      
-          <mat-toolbar color="accent">
-            <mat-toolbar-row>
-              <div class="sit-proc-buttons-row">
-                <sit-proc-button #sitAction actionIdent="insert" componentParamsIdent="sitCustomersEdit" openKind="EXPANDER" tooltip="Nowy" color="primary" icon="post_add"></sit-proc-button>
-                <sit-proc-button #sitAction actionIdent="update" componentParamsIdent="sitCustomersEdit" openKind="EXPANDER" tooltip="Edycja" color="primary" icon="edit"></sit-proc-button>
-                <sit-proc-button #sitAction actionIdent="delete" tooltip="Usuń"  color="primary" icon="delete" delete="true" matType="mat-stroked-button"></sit-proc-button>
-              </div>
-            </mat-toolbar-row>
-          </mat-toolbar>
-          matType="mat-stroked-button"
-        -->
-         <!-- <sit-actions-toolbar #sitActionsToolbar [sitActionsTable]="actionsTable" componentParamsIdent="sitCustomersEdit"></sit-actions-toolbar> --> 
-      <mat-toolbar color="accent">  
+    <mat-toolbar color="accent">  
       <mat-toolbar-row> 
         <div class="sit-proc-buttons-row" *ngFor="let action of actionsTable;">
                 <sit-proc-button #sitAction actionIdent="{{action.ident}}" componentParamsIdent="{{action.componentParamsIdent}}" 

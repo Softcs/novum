@@ -251,7 +251,7 @@ export class SitDataSetContainerComponent {
     //inicjalizacja tabeli akcji dla actions-toolbara
     if(dataSetWrapperDefinition != null) {
       this.actionsTable = this.filterActionsToShowOnToolbar(dataSetWrapperDefinition.actions);
-      console.log("Actions table =" + this.actionsTable);
+      //console.log("Actions table =" + this.actionsTable);
     }
 
     //z uwagi na asynchroniczne przetwarzanie ngFor lista sit-proc-buttons w ngAfterViewInit jest pusta, taki myk
