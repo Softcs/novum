@@ -49,7 +49,7 @@ export class SitKancelariaComponent implements OnInit {
   ) {
 
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
-    this.tabService.activeTab.subscribe(x => this.activeTab = x);
+    this.tabService.activeTabIndex.subscribe(x => this.activeTab = x);
     this.frameworkComponents = {
       gridCheckboxRenderer: GridCheckboxRenderer,
     };

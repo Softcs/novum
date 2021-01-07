@@ -1,6 +1,6 @@
 ﻿<mat-tab-group animationDuration="0ms" style="height: 100%"
 class="main-tab-group mt-1"
-[(selectedIndex)]="selectedTab"
+[(selectedIndex)]="selectedTabIndex"
 (selectedTabChange)="tabChanged($event)">
 <mat-tab *ngFor="let tab of tabs; let tabIndex = index">
   <ng-template mat-tab-label>

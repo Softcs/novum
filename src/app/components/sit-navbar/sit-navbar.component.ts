@@ -1,15 +1,11 @@
-import { SitUserAccountComponent } from '@app/containers/dictionaries/sit-user-account';
 import { SitChangeCompanyComponent } from './../../containers/sit-change-company/sit-change-company.component';
 import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
-import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
-
+import { Router } from '@angular/router';
 import { GatewayService } from '@app/_services';
 import { User } from '@app/_models';
-import { SitDictContainerComponent } from '@app/components/sit-dict-container';
 import { NavService } from '@app/_services/nav.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Title } from '@angular/platform-browser';
-import { filter, map } from 'rxjs/operators';
 import { TabService } from '@app/_services/tab.service';
 import { Tab } from '@app/_models/tab.model';
 import { FactoryService } from '@app/_services/factory.service';
@@ -19,7 +15,7 @@ import { FactoryService } from '@app/_services/factory.service';
   templateUrl: './sit-navbar.component.html',
   styleUrls: ['./sit-navbar.component.scss']
 })
-export class SitNavbarComponent implements OnInit, AfterViewInit {
+export class SitNavbarComponent {
   @ViewChild('appDrawer') appDrawer: ElementRef;
   currentUser: User;
   caption: string;
@@ -30,31 +26,27 @@ export class SitNavbarComponent implements OnInit, AfterViewInit {
     private router: Router,
     private gatewayService: GatewayService,
     private titleService: Title,
-    private activatedRoute: ActivatedRoute,
     private tabService: TabService,
     public navService: NavService,
     public matDialog: MatDialog,
     private factoryService: FactoryService
-
-    //private dictContainerComponent: DictContainerComponent
   ) {
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
-    //this.dictContainerComponent.subscribe(x => this.caption = x);
 
     this.tabService.tabSub.subscribe(tabs => {
-      let i = -1;
-      i = tabs.findIndex(tab => tab.active);
-      if ( i > -1 ) {
-        this.title = tabs[i].title;
-        let browserTab = this.title;
-        if (this.currentUser.company) {
-            browserTab = this.currentUser.company.companyDescription + ' - ' + this.title;
-        }
-
-        this.titleService.setTitle(browserTab);
+      var tab = tabs.find(tab => tab.active);
+      if (!tab) {
+        return;
       }
-      });
+      
+      this.title = tab.title;
+      let browserTab = this.title;
+      if (this.currentUser.company) {
+          browserTab = this.currentUser.company.companyDescription + ' - ' + this.title;
+      }
 
+      this.titleService.setTitle(browserTab);      
+    });
   }
 
   logout() {
@@ -63,32 +55,6 @@ export class SitNavbarComponent implements OnInit, AfterViewInit {
     this.router.navigate(['/login']);
   }
 
-  ngOnInit() {
-    const appTitle = this.titleService.getTitle();
-    // this.router
-    //   .events.pipe(
-    //     filter(event => event instanceof NavigationEnd),
-    //     map(() => {
-    //       let child = this.activatedRoute.firstChild;
-    //       while (child.firstChild) {
-    //         child = child.firstChild;
-    //       }
-    //       if (child.snapshot.data['title']) {
-    //         return child.snapshot.data['title'];
-    //       }
-    //       return appTitle;
-    //     })
-    //   ).subscribe((ttl: string) => {
-    //     this.titleService.setTitle(ttl);
-    //     this.title = this.titleService.getTitle();
-    //   });
-
-    this.title = this.tabService.tabs[0].title;
-  }
-
-  ngAfterViewInit() {
-
-  }
   openModalChangeCompany() {
     const dialogConfig = new MatDialogConfig();
 

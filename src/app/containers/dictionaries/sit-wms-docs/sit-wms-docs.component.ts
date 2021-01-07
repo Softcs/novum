@@ -65,7 +65,7 @@ export class SitWmsDocsComponent implements OnInit {
     ) {
 
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
-    this.tabService.activeTab.subscribe(x => this.activeTab = x);
+    this.tabService.activeTabIndex.subscribe(x => this.activeTab = x);
 
     this.companyGUID = this.currentUser.company.companyGUID;
     this.popupParent = document.querySelector('body');
