@@ -41,7 +41,9 @@ export class SitProcParamsComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.tabIndex = this.tabService.tabs.findIndex(tab => tab.active);
+    this.tabService.activeTabIndex.subscribe( i => {
+      this.tabIndex = i;
+    });
   }
 
   getActionExecuteData(): ActionExecuteData {

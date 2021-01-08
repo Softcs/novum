@@ -1,7 +1,8 @@
 import { ActionExecuteData } from '@app/_models/actionExecuteData';
-import { Input, OnInit } from '@angular/core';
+import { Input, OnInit, Directive } from '@angular/core';
 
 
+@Directive()
 export class SitActionParamsForm implements OnInit{
     @Input() actionExecuteData: ActionExecuteData;
 

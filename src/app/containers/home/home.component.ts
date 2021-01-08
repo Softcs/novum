@@ -1,41 +1,37 @@
-﻿
-import { Component, OnInit } from '@angular/core';
-import { first } from 'rxjs/operators';
+﻿import { Component, NgZone, ChangeDetectorRef } from '@angular/core';
 import { User } from '@app/_models';
-import { UserService } from '@app/_services';
-import { Title } from '@angular/platform-browser';
 import { TabService } from '@app/_services/tab.service';
 import { Tab } from '@app/_models/tab.model';
-
 
 @Component({
   templateUrl: 'home.component.html',
   styleUrls: ['./home.component.scss'],
   host: {class: 'router-flex'}
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent
+{
     loading = false;
     users: User[];
     tabs = new Array<Tab>();
-    selectedTab: number;
+    selectedTabIndex: number;
 
     constructor(
-      private userService: UserService,
-      private tabService: TabService,
-      ) {
-
-      }
-
-    ngOnInit() {
+      private ref: ChangeDetectorRef,
+      private tabService: TabService
+    ) {
       this.tabService.tabSub.subscribe(tabs => {
         this.tabs = tabs;
-        this.selectedTab = tabs.findIndex(tab => tab.active);
-        });
+      });
 
+      this.tabService.activeTabIndex.subscribe( i => {
+        this.ref.detectChanges()
+        this.selectedTabIndex = i;
+      });    
     }
 
+
     tabChanged(event) {
-      this.tabService.changeTab( this.selectedTab );
+      this.tabService.changeTab( this.selectedTabIndex );
       window.dispatchEvent(new Event('resize'));
     }
 
@@ -44,7 +40,7 @@ export class HomeComponent implements OnInit {
     }
 
     showClose(index: number): boolean {
-      if ( this.selectedTab === index && index !== 0 ) {
+      if ( this.selectedTabIndex === index && index !== 0 ) {
         return true;
       }
       return false;

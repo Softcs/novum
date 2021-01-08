@@ -1,8 +1,9 @@
 import { DataSetManager, Operation } from '.';
-import { Output, EventEmitter } from '@angular/core';
+import { Output, EventEmitter, Directive } from '@angular/core';
 import { Guid } from 'guid-typescript';
 import { _ } from 'ag-grid-community';
 
+@Directive()
 export class DataSetWrapper {
     private _rows: any[];
     private _dataSource: any;
