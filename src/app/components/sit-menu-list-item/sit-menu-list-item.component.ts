@@ -39,15 +39,11 @@ export class SitMenuListItemComponent {
 
   onItemSelected(item: NavItem) {
     let createNew = true;
-
     if ((!item.children || !item.children.length) && item.kind == "app") {
       for ( let i = 0; i < this.tabService.tabs.length; i++ ) {
         if (this.tabService.tabs[i].title === item.caption) {
-          this.tabService.tabs[i].active = true;
+          this.tabService.changeTab(i);
           createNew = false;
-          this.tabService.changeTab( i );
-        } else {
-          this.tabService.tabs[i].active = false;
         }
       }
 
