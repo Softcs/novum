@@ -1,5 +1,5 @@
 import { SitChangeCompanyComponent } from './../../containers/sit-change-company/sit-change-company.component';
-import { Component, OnInit, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { GatewayService } from '@app/_services';
 import { User } from '@app/_models';
@@ -19,10 +19,12 @@ export class SitNavbarComponent {
   @ViewChild('appDrawer') appDrawer: ElementRef;
   currentUser: User;
   caption: string;
-  title = 'Novum';
+  title = 'Pulpit';
   tabs = new Array<Tab>();
+  selectedTabIndex: number;
 
   constructor(
+    private ref: ChangeDetectorRef,
     private router: Router,
     private gatewayService: GatewayService,
     private titleService: Title,
@@ -31,22 +33,17 @@ export class SitNavbarComponent {
     public matDialog: MatDialog,
     private factoryService: FactoryService
   ) {
-    this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
-
-    this.tabService.tabSub.subscribe(tabs => {
-      var tab = tabs.find(tab => tab.active);
-      if (!tab) {
-        return;
-      }
-      
-      this.title = tab.title;
-      let browserTab = this.title;
-      if (this.currentUser.company) {
-          browserTab = this.currentUser.company.companyDescription + ' - ' + this.title;
-      }
-
-      this.titleService.setTitle(browserTab);      
+    this.gatewayService.currentUser.subscribe(x => {
+      this.currentUser = x;
+      this.titleService.setTitle(this.currentUser.company.companyDescription);
     });
+
+    this.tabService.activeTabIndex.subscribe( i => {
+      this.ref.detectChanges()
+      this.selectedTabIndex = i;
+      this.title = this.tabService.tabs[this.selectedTabIndex].title;
+    });
+
   }
 
   logout() {
@@ -74,17 +71,13 @@ export class SitNavbarComponent {
 
     for ( let i = 0; i < this.tabService.tabs.length; i++ ) {
       if (this.tabService.tabs[i].title === 'Konto użytkownika') {
-        this.tabService.tabs[i].active = true;
+        this.tabService.changeTab(i);
         createNew = false;
-      }
-      else {
-        this.tabService.tabs[i].active = false;
       }
     }
 
     if ( createNew ) {
       this.tabService.addTab(new Tab(this.factoryService.GetFactory('sitUserAccount'), 'Konto użytkownika' , { parent: 'AppComponent' }));
-
     }
     this.navService.closeNav();
   }
