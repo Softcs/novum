@@ -15,14 +15,22 @@
     </div>
   </div>
 </ng-container>
-  
+
 <!-- Toolbar z akcjami -->
   <div class="sit-proc-bar" *ngIf="showActionsToolbar">
-    <mat-toolbar color="accent">  
-      <mat-toolbar-row> 
+    <mat-toolbar color="accent">
+      <mat-toolbar-row>
         <div class="sit-proc-buttons-row" *ngFor="let action of actionsTable;">
-                <sit-proc-button #sitAction actionIdent="{{action.ident}}" componentParamsIdent="{{action.componentParamsIdent}}" 
-                openKind="{{action.openKind}}" tooltip="{{action.tooltip}}" color="{{action.color}}" icon="{{action.icon}}" delete="action.ident === 'delete'"></sit-proc-button>
+                <sit-proc-button #sitAction
+                  actionIdent="{{action.ident}}"
+                  caption="{{action.caption}}"
+                  componentParamsIdent="{{action.componentParamsIdent}}"
+                  openKind="{{action.openKind}}"
+                  tooltip="{{action.tooltip}}"
+                  color="{{action.color}}"
+                  icon="{{action.icon}}"
+                  delete="action.ident === 'delete'"
+                ></sit-proc-button>
           </div>
         </mat-toolbar-row>
       </mat-toolbar>
