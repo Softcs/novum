@@ -7,18 +7,7 @@
     </sit-data-set-container>
     <as-split direction="vertical">
       <as-split-area [size]="50">
-        <sit-data-set-container  ident="sitJobs" fxFill fxLayout="column" class="content">
-          <div class="sit-proc-bar">
-            <mat-toolbar color="accent">
-              <mat-toolbar-row>
-                <div class="sit-proc-buttons-row">
-                  <sit-proc-button #sitAction actionIdent="insert" componentParamsIdent="sitJobsEdit" openKind="EXPANDER" tooltip="Nowy" color="primary" icon="post_add"></sit-proc-button>
-                  <sit-proc-button #sitAction actionIdent="update" componentParamsIdent="sitJobsEdit" openKind="EXPANDER" tooltip="Edycja" color="primary" icon="edit"></sit-proc-button>
-                  <sit-proc-button #sitAction actionIdent="delete" tooltip="Usuń"  color="primary" icon="delete" delete="true" matType="mat-stroked-button"></sit-proc-button>
-                </div>
-              </mat-toolbar-row>
-            </mat-toolbar>
-          </div>
+        <sit-data-set-container ident="sitJobs" showActionsToolbar="true" fxFill fxLayout="column" class="content">
           <div class="data-table" fxFlex>
             <ag-grid-angular #sitSetDataSource
               #agGrid
@@ -43,18 +32,7 @@
         </sit-data-set-container>
       </as-split-area>
       <as-split-area [size]="50">
-        <sit-data-set-container  ident="sitJobSteps" fxFill fxLayout="column">
-          <div class="sit-proc-bar">
-            <mat-toolbar color="accent">
-              <mat-toolbar-row>
-                <div class="sit-proc-buttons-row">
-                  <sit-proc-button #sitAction actionIdent="insert" componentParamsIdent="sitJobStepsEdit" openKind="EXPANDER" tooltip="Nowy" color="primary" icon="post_add"></sit-proc-button>
-                  <sit-proc-button #sitAction actionIdent="update" componentParamsIdent="sitJobStepsEdit" openKind="EXPANDER" tooltip="Edycja" color="primary" icon="edit"></sit-proc-button>
-                  <sit-proc-button #sitAction actionIdent="delete" tooltip="Usuń"  color="primary" icon="delete" delete="true" matType="mat-stroked-button"></sit-proc-button>
-                </div>
-              </mat-toolbar-row>
-            </mat-toolbar>
-          </div>
+        <sit-data-set-container  ident="sitJobSteps" showActionsToolbar="true" fxFill fxLayout="column">
           <div class="data-table" fxFlex>
             <ag-grid-angular #sitSetDataSource
               #agGrid

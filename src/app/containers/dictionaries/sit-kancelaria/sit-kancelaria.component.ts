@@ -111,8 +111,8 @@ export class SitKancelariaComponent implements OnInit {
   ngOnInit(): void {}
 
   activeRowAttachmentsChanged(activeRow) {
-    this.sitAttachmentsSelected.splice(0, this.sitAttachmentsSelected.length);
-    this.sitAttachmentsSelected.push(...[activeRow]);
+    // this.sitAttachmentsSelected.splice(0, this.sitAttachmentsSelected.length);
+    // this.sitAttachmentsSelected.push(...[activeRow]);
 
   }
 

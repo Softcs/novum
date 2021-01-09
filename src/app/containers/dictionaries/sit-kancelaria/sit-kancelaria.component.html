@@ -11,17 +11,7 @@
                   <sit-data-input #sitControl field="searchAgreements" label="Filtruj umowy" placeholder="Numer, treść"  appearance="outline" showRefreshButton="true" style="width: 300px"></sit-data-input>
                 </div>
               </sit-data-set-container>
-              <sit-data-set-container  ident="sitCustomers" fxFlex fxLayout="column">
-                <div class="sit-proc-bar">
-                  <mat-toolbar color="accent">
-                    <mat-toolbar-row>
-                      <div class="sit-proc-buttons-row">
-                        <sit-proc-button #sitAction actionIdent="sitImportCustomerFromImpTable" componentParamsIdent="sitImportCustomerFromImpTable" openKind="EXPANDER" tooltip="Importuj klienta" color="primary" caption="Importuj klienta"></sit-proc-button>
-                      </div>
-                    </mat-toolbar-row>
-                  </mat-toolbar>
-                </div>
-
+              <sit-data-set-container ident="sitCustomers" showActionsToolbar="true" fxFlex fxLayout="column">
                 <div class="data-table" fxFlex>
                   <ag-grid-angular #sitSetDataSource
                   #agGrid
@@ -49,24 +39,10 @@
                 <div fxLayout="column" fxFill>
                   <div class="sit-grid-title">Umowy</div>
                   <!-- Procedury sitAgreements -->
-                  <sit-data-set-container  ident="sitAgreements">
-                    <div class="sit-proc-bar">
-                      <mat-toolbar color="accent">
-                        <mat-toolbar-row>
-                          <div class="sit-proc-buttons-row">
-                            <sit-proc-button #sitAction actionIdent="insert" componentParamsIdent="sitAgreementsEdit" openKind="EXPANDER" tooltip="Nowy" color="primary" icon="post_add"></sit-proc-button>
-                            <sit-proc-button #sitAction actionIdent="update" componentParamsIdent="sitAgreementsEdit" openKind="EXPANDER" tooltip="Edycja" color="primary" icon="edit"></sit-proc-button>
-                            <sit-proc-button #sitAction actionIdent="delete" tooltip="Usuń"  color="primary" icon="delete" delete="true" matType="mat-stroked-button"></sit-proc-button>
-                          </div>
-                        </mat-toolbar-row>
-                      </mat-toolbar>
-                    </div>
-                  </sit-data-set-container>
-
+                  <sit-data-set-container ident="sitAgreements" showActionsToolbar="true" fxFill fxLayout="column">
                   <!--Grid sitAgreements-->
                   <div class="data-table" fxFlex>
-                    <sit-data-set-container  ident="sitAgreements" fxFlex fxLayout="column">
-                      <ag-grid-angular #sitSetDataSource
+                    <ag-grid-angular #sitSetDataSource
                       #agGrid
                       id="gridAgreements"
                       style="width: 100%; height: 100%;"
@@ -82,29 +58,19 @@
                       (gridReady)="onGridReadyAgreements($event)"
                       (firstDataRendered)="onFirstDataRendered($event)"
                       [frameworkComponents]="frameworkComponents"
-                      >
-                      </ag-grid-angular>
-                      <div style="width: 100%;height: 120px;">
-                        <sit-data-textarea type="textarea" #sitControl field="AgreementDesc" label="Opis" appearance="outline" fxFill></sit-data-textarea>
-                      </div>
-                    </sit-data-set-container>
+                    >
+                    </ag-grid-angular>
+                    <div style="width: 100%;height: 120px;">
+                      <sit-data-textarea type="textarea" #sitControl field="AgreementDesc" label="Opis" appearance="outline" fxFill></sit-data-textarea>
+                    </div>
                   </div>
-                </div>
+                </sit-data-set-container>
+              </div>
               </as-split-area>
               <as-split-area [size]="35">
                 <div fxFlex fxLayout="column">
                   <div class="sit-grid-title">Załączniki do umów</div>
-                  <sit-data-set-container  ident="sitAttachments" (activeRowChanged)="activeRowAttachmentsChanged($event)" fxFlex fxLayout="column">
-                    <div class="sit-proc-bar">
-                      <mat-toolbar color="accent">
-                        <mat-toolbar-row>
-                          <div class="sit-proc-buttons-row">
-                            <sit-proc-button #sitAction actionIdent="insert" componentParamsIdent="sitAttachmentsIns" tooltip="Dodaj skan" color="primary" icon="post_add" ></sit-proc-button>
-                            <sit-proc-button #sitAction actionIdent="delete" tooltip="Usuń"  color="primary" icon="delete" delete="true" matType="mat-stroked-button"></sit-proc-button>
-                          </div>
-                        </mat-toolbar-row>
-                      </mat-toolbar>
-                    </div>
+                  <sit-data-set-container  ident="sitAttachments" showActionsToolbar="true" (activeRowChanged)="activeRowAttachmentsChanged($event)" fxFlex fxLayout="column">
                     <div class="data-table" fxFlex>
                       <ag-grid-angular #sitSetDataSource
                       #agGrid
