@@ -28,7 +28,7 @@ export class SitWarehousesComponent implements OnInit {
   ) {
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
 
-    this.popupParent = document.querySelector('body');
+    // this.popupParent = document.querySelector('body');
     this.rowSelection = 'single';
 
     this.defaultColDef = {

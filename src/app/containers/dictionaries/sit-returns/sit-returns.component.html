@@ -13,16 +13,7 @@
                       <sit-data-input #sitControl id="DateFrom" field="DateTo" type="date" label="Do" appearance="outline" style="width: 150px;" showRefreshButton="true" ></sit-data-input>
                   </sit-data-set-container>
                 </div>
-                <sit-data-set-container ident="sitDocumentsHeaders" fxFlex fxLayout="column">
-                  <div class="sit-proc-bar">
-                    <mat-toolbar color="accent">
-                      <mat-toolbar-row>
-                        <div class="sit-proc-buttons-row">
-                          <sit-proc-button #sitAction actionIdent="sitProcGetDataForReturnsCompare" componentParamsIdent="sitReturnsGetData" openKind="EXPANDER" tooltip="Wczytaj dane klienta"  color="primary" icon="get_app" delete="true" matType="mat-stroked-button"></sit-proc-button>
-                        </div>
-                      </mat-toolbar-row>
-                    </mat-toolbar>
-                  </div>
+                <sit-data-set-container ident="sitDocumentsHeaders" showActionsToolbar="true" fxFlex fxLayout="column">
                   <div class="data-table" fxFlex>
                     <ag-grid-angular #sitSetDataSource
                       #agGrid
@@ -36,7 +27,6 @@
                       [enableCellTextSelection]="true"
                       [enableRangeSelection]="false"
                       [popupParent]="popupParent"
-
                       [sideBar]="false"
                       (rowClicked)="onRowClickedDocumentsHeaders($event)"
                       (gridReady)="onGridReadyDocumentsHeaders($event)"
@@ -77,19 +67,9 @@
         </as-split-area>
         <as-split-area [size]="50">
           <div class="content" fxFill fxLayout="column">
-            <div fxFlex="25">
-              <sit-data-set-container  ident="sitAttachments"  fxFlex fxLayout="column">
-                <div class="sit-grid-title">Załączniki</div>
-                <div class="sit-proc-bar">
-                  <mat-toolbar color="accent">
-                    <mat-toolbar-row>
-                      <div class="sit-proc-buttons-row">
-                        <sit-proc-button #sitAction actionIdent="insert" componentParamsIdent="sitAttachmentsIns" tooltip="Dodaj skan" color="primary" icon="post_add" ></sit-proc-button>
-                        <sit-proc-button #sitAction actionIdent="delete" tooltip="Usuń"  color="primary" icon="delete" delete="true" matType="mat-stroked-button"></sit-proc-button>
-                      </div>
-                    </mat-toolbar-row>
-                  </mat-toolbar>
-                </div>
+            <div fxFlex="25" fxLayout="column">
+              <div class="sit-grid-title">Załączniki</div>
+              <sit-data-set-container ident="sitAttachments" showActionsToolbar="true" fxFlex fxLayout="column">
                 <div class="data-table" fxFlex>
                   <ag-grid-angular #sitSetDataSource
                   #agGrid

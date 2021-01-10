@@ -1,23 +1,11 @@
 <sit-dict-container ident="sitSysDictionaries" #sitDictcontainer fxFill>
   <div fxLayout="row" fxFill  class="content" fxLayoutGap="5px">
     <div fxLayout="column" fxFlex=40>
+      <div class="sit-grid-title">Dictionaries</div>
       <sit-data-set-container ident="sitFilterSysDictionaries" >
         <sit-data-input #sitControl field="searchSysDictionaries" label="Filtruj" appearance="outline" style="width: 300px" showRefreshButton="true"></sit-data-input>
       </sit-data-set-container>
-      <sit-data-set-container ident="sitSysDictionaries" fxFlex fxLayout="column">
-        <div class="sit-proc-bar">
-          <mat-toolbar color="accent">
-            <mat-toolbar-row>
-              <div class="sit-proc-buttons-row">
-                <sit-proc-button #sitAction actionIdent="insert" componentParamsIdent="sitSysDictionariesEdit" openKind="EXPANDER" tooltip="Nowy" color="primary" icon="post_add" >              </sit-proc-button>
-                <sit-proc-button #sitAction actionIdent="update" componentParamsIdent="sitSysDictionariesEdit" openKind="EXPANDER" tooltip="Edycja" color="primary" icon="edit">              </sit-proc-button>
-                <sit-proc-button #sitAction actionIdent="delete" color="primary" icon="delete" delete="true" matType="mat-stroked-button"></sit-proc-button>
-                <sit-proc-button #sitAction actionIdent="sitProcDictionaryImportFromInfo" color="primary" icon="get_app" tooltip="Importuj z pliku" matType="mat-stroked-button"></sit-proc-button>
-              </div>
-            </mat-toolbar-row>
-          </mat-toolbar>
-        </div>
-        <div class="sit-grid-title">Dictionaries</div>
+      <sit-data-set-container ident="sitSysDictionaries" showActionsToolbar="true" fxFlex fxLayout="column">
         <div class="data-table" fxFlex>
           <ag-grid-angular #sitSetDataSource
             #agGrid
@@ -45,22 +33,11 @@
         <mat-tab label="Definicja">
         <div fxFill fxLayout="column">
           <div fxLayout="column" fxFlex=50>
+            <div class="sit-grid-title">Datasources</div>
             <sit-data-set-container ident="sitFilterSysDatasources" >
               <sit-data-input #sitControl field="searchSysDatasources" label="Filtruj" appearance="outline" style="width: 300px" showRefreshButton="true"></sit-data-input>
             </sit-data-set-container>
-            <sit-data-set-container ident="sitSysDatasources" fxFlex fxLayout="column">
-              <div class="sit-proc-bar">
-                <mat-toolbar color="accent">
-                  <mat-toolbar-row>
-                    <div class="sit-proc-buttons-row">
-                      <sit-proc-button #sitAction actionIdent="insert" componentParamsIdent="sitSysDatasourcesEdit" openKind="EXPANDER" tooltip="Nowy" color="primary" icon="post_add" >              </sit-proc-button>
-                      <sit-proc-button #sitAction actionIdent="update" componentParamsIdent="sitSysDatasourcesEdit" openKind="EXPANDER" tooltip="Edycja" color="primary" icon="edit">              </sit-proc-button>
-                      <sit-proc-button #sitAction actionIdent="delete" color="primary" icon="delete" delete="true" matType="mat-stroked-button"></sit-proc-button>
-                    </div>
-                  </mat-toolbar-row>
-                </mat-toolbar>
-              </div>
-              <div class="sit-grid-title">Datasources</div>
+            <sit-data-set-container ident="sitSysDatasources" showActionsToolbar="true" fxFlex fxLayout="column">
               <div class="data-table" fxFlex>
                 <ag-grid-angular #sitSetDataSource
                   #agGrid
@@ -84,22 +61,11 @@
             </sit-data-set-container>
             </div>
             <div fxLayout="column" fxFlex=50>
+              <div class="sit-grid-title">Actions</div>
               <sit-data-set-container ident="sitFilterSysActions" >
                 <sit-data-input #sitControl field="searchSysActions" label="Filtruj" appearance="outline" style="width: 300px" showRefreshButton="true"></sit-data-input>
               </sit-data-set-container>
-              <sit-data-set-container ident="sitSysActions" fxFlex fxLayout="column">
-                <div class="sit-proc-bar">
-                  <mat-toolbar color="accent">
-                    <mat-toolbar-row>
-                      <div class="sit-proc-buttons-row">
-                        <sit-proc-button #sitAction actionIdent="insert" componentParamsIdent="sitSysActionsEdit" openKind="EXPANDER" tooltip="Nowy" color="primary" icon="post_add" >              </sit-proc-button>
-                        <sit-proc-button #sitAction actionIdent="update" componentParamsIdent="sitSysActionsEdit" openKind="EXPANDER" tooltip="Edycja" color="primary" icon="edit">              </sit-proc-button>
-                        <sit-proc-button #sitAction actionIdent="delete" color="primary" icon="delete" delete="true" matType="mat-stroked-button"></sit-proc-button>
-                      </div>
-                    </mat-toolbar-row>
-                  </mat-toolbar>
-                </div>
-                <div class="sit-grid-title">Actions</div>
+              <sit-data-set-container ident="sitSysActions" showActionsToolbar="true" fxFlex fxLayout="column">
                 <div class="data-table" fxFlex>
                   <ag-grid-angular #sitSetDataSource
                     #agGrid

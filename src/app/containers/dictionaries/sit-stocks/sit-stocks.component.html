@@ -1,15 +1,6 @@
 <sit-dict-container ident="sitStocks" #sitDictcontainer fxFill>
   <div fxLayout="column" fxFill class="content">
-    <sit-data-set-container  ident="sitStocks" >
-      <div class="sit-proc-bar">
-        <mat-toolbar color="accent">
-          <mat-toolbar-row>
-            <div class="sit-proc-buttons-row">
-              <sit-proc-button #sitAction actionIdent="sitProcStocksImport"  tooltip="Pobierz dane" color="primary" icon="cloud_download" caption="Pobierz dane"></sit-proc-button>
-            </div>
-          </mat-toolbar-row>
-        </mat-toolbar>
-      </div>
+    <sit-data-set-container ident="sitStocks" showActionsToolbar="true">
     </sit-data-set-container>
     <div fxFlex fxLayout="column">
       <mat-tab-group id="tab-group" animationDuration="0ms">
@@ -142,16 +133,7 @@
             </sit-data-set-container>
             <as-split direction="horizontal">
               <as-split-area [size]="40" fxLayout="column">
-                <sit-data-set-container ident="sitLogisticUnits" (activeRowChanged)="activeRowLogisticUnitsChanged($event)" fxFill fxLayout="column">
-                  <div class="sit-proc-bar">
-                    <mat-toolbar color="accent">
-                      <mat-toolbar-row>
-                        <div class="sit-proc-buttons-row">
-                          <sit-proc-button #sitAction actionIdent="update" componentParamsIdent="sitLogisticUnitsEdit" openKind="EXPANDER" tooltip="Edycja" color="primary" icon="edit" ></sit-proc-button>
-                        </div>
-                      </mat-toolbar-row>
-                    </mat-toolbar>
-                  </div>
+                <sit-data-set-container ident="sitLogisticUnits" showActionsToolbar="true" (activeRowChanged)="activeRowLogisticUnitsChanged($event)" fxFill fxLayout="column">
                   <div class="data-table" fxFlex>
                     <ag-grid-angular #sitSetDataSource
                       #agGrid

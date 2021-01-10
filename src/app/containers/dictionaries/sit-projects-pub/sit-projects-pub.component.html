@@ -10,17 +10,7 @@
           </sit-data-set-container>
         </div>
 
-        <sit-data-set-container  ident="sitProjectsPub" fxLayout="column" (activeRowChanged)="activeRowProjectsPubChanged($event)" fxFlex>
-          <div class="sit-proc-bar">
-            <mat-toolbar color="accent">
-              <mat-toolbar-row>
-                <div class="sit-proc-buttons-row">
-                  <sit-proc-button #sitAction actionIdent="registerWorkTime" componentParamsIdent="sitProjectsPubRegisterWorkTimeEdit" openKind="EXPANDER" tooltip="Rejestrój czas pracy" color="primary" icon="schedule"></sit-proc-button>
-                </div>
-              </mat-toolbar-row>
-            </mat-toolbar>
-          </div>
-
+        <sit-data-set-container ident="sitProjectsPub" showActionsToolbar="true" fxLayout="column" (activeRowChanged)="activeRowProjectsPubChanged($event)" fxFlex>
           <div class="data-table" fxFlex>
             <ag-grid-angular #sitSetDataSource
               #agGrid
@@ -37,7 +27,6 @@
               (rowClicked)="onRowClickedProjectsPub($event)"
               (gridReady)="onGridReadyProjectsPub($event)"
               (firstDataRendered)="onFirstDataRendered($event)"
-
             >
             </ag-grid-angular>
           </div>

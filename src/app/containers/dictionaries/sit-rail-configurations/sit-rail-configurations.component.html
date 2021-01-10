@@ -8,20 +8,7 @@
           </div>
         </div>
       </sit-data-set-container>
-      <sit-data-set-container ident="sitRailConfigurations" fxLayout="column" fxFlex>
-        <div class="sit-proc-bar">
-          <mat-toolbar color="accent">
-            <mat-toolbar-row>
-              <div class="sit-proc-buttons-row">
-                <sit-proc-button #sitAction actionIdent="insert" componentParamsIdent="sitRailConfigurationsEdit" openKind="EXPANDER" tooltip="Nowy" color="primary" icon="post_add" >
-                </sit-proc-button>
-                <sit-proc-button #sitAction actionIdent="update" componentParamsIdent="sitRailConfigurationsEdit" openKind="EXPANDER" tooltip="Edycja" color="primary" icon="edit">
-                </sit-proc-button>
-                <sit-proc-button #sitAction actionIdent="delete" color="primary" icon="delete" delete="true" matType="mat-stroked-button"></sit-proc-button>
-              </div>
-            </mat-toolbar-row>
-          </mat-toolbar>
-        </div>
+      <sit-data-set-container ident="sitRailConfigurations" showActionsToolbar="true" fxLayout="column" fxFlex>
         <div class="data-table" fxFlex>
           <ag-grid-angular #sitSetDataSource
             #agGrid

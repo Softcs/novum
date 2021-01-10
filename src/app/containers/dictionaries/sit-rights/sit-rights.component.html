@@ -8,19 +8,7 @@
             <sit-data-input #sitControl field="searchRightsGroups" label="Filtruj grupy" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
           </div>
         </sit-data-set-container>
-        <sit-data-set-container  ident="sitRightsGroups" fxFlex fxLayout="column">
-          <div class="sit-proc-bar">
-            <mat-toolbar color="accent">
-              <mat-toolbar-row>
-                <div class="sit-proc-buttons-row">
-                  <sit-proc-button #sitAction actionIdent="insert" componentParamsIdent="sitRightsGroupsEdit" openKind="EXPANDER" tooltip="Nowy" color="primary" icon="post_add" >              </sit-proc-button>
-                  <sit-proc-button #sitAction actionIdent="update" componentParamsIdent="sitRightsGroupsEdit" openKind="EXPANDER" tooltip="Edycja" color="primary" icon="edit">              </sit-proc-button>
-                  <sit-proc-button #sitAction actionIdent="delete" color="primary" icon="delete" delete="true" matType="mat-stroked-button"></sit-proc-button>
-                </div>
-              </mat-toolbar-row>
-            </mat-toolbar>
-          </div>
-
+        <sit-data-set-container  ident="sitRightsGroups" showActionsToolbar="true" fxFlex fxLayout="column">
           <div class="data-table" fxFlex>
             <ag-grid-angular #sitSetDataSource
               #agGrid
@@ -45,17 +33,7 @@
       </div>
       <div fxFlex fxLayout="column">
         <div class="sit-grid-title">Użytkownicy w grupie</div>
-        <sit-data-set-container  ident="sitRightsGroupUsers" fxFlex fxLayout="column">
-          <div class="sit-proc-bar">
-            <mat-toolbar color="accent">
-              <mat-toolbar-row>
-                <div class="sit-proc-buttons-row">
-                  <sit-proc-button #sitAction actionIdent="insert" componentParamsIdent="sitRightsGroupUsersEdit" openKind="EXPANDER" tooltip="Nowy" color="primary" icon="post_add"></sit-proc-button>
-                  <sit-proc-button #sitAction actionIdent="delete" tooltip="Usuń"  color="primary" icon="delete" delete="true" matType="mat-stroked-button"></sit-proc-button>
-                </div>
-              </mat-toolbar-row>
-            </mat-toolbar>
-          </div>
+        <sit-data-set-container  ident="sitRightsGroupUsers" showActionsToolbar="true" fxFlex fxLayout="column">
           <div class="data-table" fxFlex>
             <ag-grid-angular #sitSetDataSource
               #agGrid
@@ -92,16 +70,7 @@
                   <sit-data-input #sitControl field="searchDictionaries" label="Filtruj" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
                 </div>
               </sit-data-set-container>
-              <sit-data-set-container  ident="sitSysDictionaries" fxFlex fxLayout="column">
-                <div class="sit-proc-bar">
-                  <mat-toolbar color="accent">
-                    <mat-toolbar-row>
-                      <div class="sit-proc-buttons-row">
-                        <sit-proc-button #sitAction actionIdent="sitProcRightsSetRightForDictionary" color="primary" caption="Nadaj/Odbierz" tooltip="Nadaj/Odbierz prawo" icon="done" matType="mat-stroked-button">Nadaj/Odbierz</sit-proc-button>
-                      </div>
-                    </mat-toolbar-row>
-                  </mat-toolbar>
-                </div>
+              <sit-data-set-container  ident="sitSysDictionaries" showActionsToolbar="true" fxFlex fxLayout="column">
                 <div class="data-table" fxFlex>
                   <ag-grid-angular #sitSetDataSource
                     #agGrid
@@ -132,16 +101,7 @@
                   <sit-data-input #sitControl field="searchDatasources" label="Filtruj" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
                 </div>
               </sit-data-set-container>
-              <sit-data-set-container ident="sitSysDatasources" fxFlex fxLayout="column">
-                <div class="sit-proc-bar">
-                  <mat-toolbar color="accent">
-                    <mat-toolbar-row>
-                      <div class="sit-proc-buttons-row">
-                        <sit-proc-button #sitAction actionIdent="sitProcRightsSetRightForDatasource" color="primary" caption="Nadaj/Odbierz" tooltip="Nadaj/Odbierz prawo" icon="done" matType="mat-stroked-button">Nadaj/Odbierz</sit-proc-button>
-                      </div>
-                    </mat-toolbar-row>
-                  </mat-toolbar>
-                </div>
+              <sit-data-set-container ident="sitSysDatasources" showActionsToolbar="true" fxFlex fxLayout="column">
                 <div class="data-table" fxFlex>
                   <ag-grid-angular #sitSetDataSource
                     #agGrid
@@ -172,16 +132,7 @@
                 </div>
               </sit-data-set-container>
 
-              <sit-data-set-container  ident="sitSysActions" fxFlex fxLayout="column">
-                <div class="sit-proc-bar">
-                  <mat-toolbar color="accent">
-                    <mat-toolbar-row>
-                      <div class="sit-proc-buttons-row">
-                        <sit-proc-button #sitAction actionIdent="sitProcRightsSetRightForAction" color="primary" caption="Nadaj/Odbierz" tooltip="Nadaj/Odbierz prawo" icon="done" matType="mat-stroked-button"></sit-proc-button>
-                      </div>
-                    </mat-toolbar-row>
-                  </mat-toolbar>
-                </div>
+              <sit-data-set-container  ident="sitSysActions" showActionsToolbar="true" fxFlex fxLayout="column">
                 <div class="data-table" fxFlex>
                   <ag-grid-angular #sitSetDataSource
                     #agGrid
@@ -216,16 +167,7 @@
                 </div>
               </sit-data-set-container>
 
-              <sit-data-set-container  ident="sitLocations" fxFlex fxLayout="column">
-                <div class="sit-proc-bar">
-                  <mat-toolbar color="accent">
-                    <mat-toolbar-row>
-                      <div class="sit-proc-buttons-row">
-                        <sit-proc-button #sitAction actionIdent="sitProcRightsSetRightForLocation" color="primary" caption="Nadaj/Odbierz" tooltip="Nadaj/Odbierz prawo" icon="done" matType="mat-stroked-button"></sit-proc-button>
-                      </div>
-                    </mat-toolbar-row>
-                  </mat-toolbar>
-                </div>
+              <sit-data-set-container  ident="sitLocations" showActionsToolbar="true" fxFlex fxLayout="column">
                 <div class="data-table" fxFlex>
                   <ag-grid-angular #sitSetDataSource
                     #agGrid
@@ -256,16 +198,7 @@
                 </div>
               </sit-data-set-container>
 
-              <sit-data-set-container  ident="sitAgreementsTypes" fxFlex fxLayout="column">
-                <div class="sit-proc-bar">
-                  <mat-toolbar color="accent">
-                    <mat-toolbar-row>
-                      <div class="sit-proc-buttons-row">
-                        <sit-proc-button #sitAction actionIdent="sitProcRightsSetRightForAgreementsType" color="primary" caption="Nadaj/Odbierz" tooltip="Nadaj/Odbierz prawo" icon="done" matType="mat-stroked-button"></sit-proc-button>
-                      </div>
-                    </mat-toolbar-row>
-                  </mat-toolbar>
-                </div>
+              <sit-data-set-container  ident="sitAgreementsTypes" showActionsToolbar="true" fxFlex fxLayout="column">
                 <div class="data-table" fxFlex>
                   <ag-grid-angular #sitSetDataSource
                     #agGrid
