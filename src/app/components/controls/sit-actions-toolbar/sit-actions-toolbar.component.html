@@ -1,22 +1,9 @@
-<!-- <mat-toolbar color="accent">
+<mat-toolbar color="accent">
   <mat-toolbar-row>
-    <div class="sit-proc-buttons-row">
-      <sit-proc-button #sitAction actionIdent="insert" componentParamsIdent="sitCustomersEdit" openKind="EXPANDER" tooltip="Nowy" color="primary" icon="post_add"></sit-proc-button>
-      <sit-proc-button #sitAction actionIdent="update" componentParamsIdent="sitCustomersEdit" openKind="EXPANDER" tooltip="Edycja" color="primary" icon="edit"></sit-proc-button>
-      <sit-proc-button #sitAction actionIdent="delete" tooltip="Usuń"  color="primary" icon="delete" delete="true" matType="mat-stroked-button"></sit-proc-button>
+    <div class="sit-proc-buttons-row" *ngFor="let action of actions">
+      <sit-proc-button #sitAction
+        [actionDefinition] = "action"       
+      ></sit-proc-button>
     </div>
   </mat-toolbar-row>
-</mat-toolbar> -->
-
-<mat-toolbar color="accent">  
-  <mat-toolbar-row>
-      <div class="sit-proc-buttons-row" *ngFor="let action of sitActionsTable;">
-            <sit-proc-button #sitAction *ngIf="action.ident === 'insert'" [actionIdent]="action.ident" componentParamsIdent="{{componentParamsIdent}}" openKind="EXPANDER" 
-            tooltip="{{action.caption}}" color="primary" icon="post_add"></sit-proc-button>
-            <sit-proc-button #sitAction *ngIf="action.ident === 'update'" [actionIdent]="action.ident" componentParamsIdent="{{componentParamsIdent}}" openKind="EXPANDER" 
-            tooltip="{{action.caption}}" color="primary" icon="edit"></sit-proc-button>
-            <sit-proc-button #sitAction *ngIf="action.ident === 'delete'" [actionIdent]="action.ident" tooltip="{{action.caption}}" color="primary" icon="delete" delete="true" 
-            matType="mat-stroked-button"></sit-proc-button>
-      </div>
-    </mat-toolbar-row>
-  </mat-toolbar>
+</mat-toolbar>

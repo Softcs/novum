@@ -7,9 +7,10 @@ import { ActionDefinitionWrapper } from '@app/_models/actionDefinitionWrapper';
   styleUrls: ['./sit-actions-toolbar.component.scss']
 })
 export class SitActionsToolbarComponent {
-
-  @Input() sitActionsTable: ActionDefinitionWrapper[]; // tabela z definicjami akcji do rekurencyjnego wyswietlenia
-  @Input() componentParamsIdent: string; // parametry przekazywane do sit-proc-buttona
   
-  constructor() { }
+  public actions: ActionDefinitionWrapper[];  
+
+  public setActions(actions: ActionDefinitionWrapper[]) {
+    this.actions.push(...actions);
+  }
 }
