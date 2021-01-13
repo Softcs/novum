@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { DataSetManager, DataSetWrapper } from '@app/_models';
 import { ActionDefinitionWrapper } from '@app/_models/actionDefinitionWrapper';
 
 @Component({
@@ -7,9 +8,12 @@ import { ActionDefinitionWrapper } from '@app/_models/actionDefinitionWrapper';
   styleUrls: ['./sit-actions-toolbar.component.scss']
 })
 export class SitActionsToolbarComponent {
-
-  @Input() sitActionsTable: ActionDefinitionWrapper[]; // tabela z definicjami akcji do rekurencyjnego wyswietlenia
-  @Input() componentParamsIdent: string; // parametry przekazywane do sit-proc-buttona
   
-  constructor() { }
+  public actions: ActionDefinitionWrapper[];  
+  public dataSetResponseWrapper: DataSetWrapper;
+  public dataSetManagerSource: DataSetManager;
+
+  public setActions(actions: ActionDefinitionWrapper[]) {
+    this.actions.push(...actions);
+  }
 }

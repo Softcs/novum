@@ -14,7 +14,7 @@ import { ActionExecuteData } from '@app/_models/actionExecuteData';
   styleUrls: ['./sit-proc-params.component.scss'],
   host: {class: 'router-flex'}
 })
-export class SitProcParamsComponent implements OnInit, AfterViewInit {
+export class SitProcParamsComponent implements AfterViewInit {
   @ContentChildren(SitDataSetContainerComponent, { descendants: true })
   dataSetContainers !: QueryList<SitDataSetContainerComponent>;
 
@@ -38,11 +38,11 @@ export class SitProcParamsComponent implements OnInit, AfterViewInit {
     public dialog: MatDialog,
   ) {
     this.dataSetManager = new DataSetManager(gatewayService);
-  }
-
-  ngOnInit(): void {
+    
     this.tabService.activeTabIndex.subscribe( i => {
-      this.tabIndex = i;
+      if (!this.tabIndex) {
+        this.tabIndex = i;
+      }
     });
   }
 
@@ -50,6 +50,11 @@ export class SitProcParamsComponent implements OnInit, AfterViewInit {
     if (this.actionExecuteData) {
       return this.actionExecuteData;
     }
+    
+    if (!this.tabIndex) {
+      return null;
+    }
+
     const actionExecuteData: ActionExecuteData = this.tabService.tabs[this.tabIndex].tabData;
     return actionExecuteData;
   }

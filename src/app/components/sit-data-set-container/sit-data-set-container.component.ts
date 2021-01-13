@@ -1,6 +1,5 @@
 import { Component, Input, ContentChildren, ViewChildren,
-  QueryList, Output, EventEmitter} from '@angular/core';
-import { GatewayService } from '@app/_services/gateway.service';
+  QueryList, Output, EventEmitter, ViewChild} from '@angular/core';
 import { DataSetWrapper, DataSetManager } from '@app/_models';
 import { SitDataBaseComponent } from '../controls/sit-data-base/sit-data-base.component';
 import { sitSetDataSetDirective } from '@app/_directives/sitSetDataSetDirective';
@@ -11,6 +10,7 @@ import { SitFilesButtonComponent } from '../controls/sit-files-button/sit-files-
 import { SitButtonBaseComponent } from '../controls/sit-button-base/sit-button-base.component';
 import { ActionDefinitionWrapper } from '@app/_models/actionDefinitionWrapper';
 import { Subscription } from 'rxjs';
+import { SitActionsToolbarComponent } from '../controls/sit-actions-toolbar/sit-actions-toolbar.component';
 
 @Component({
   selector: 'sit-data-set-container',
@@ -27,11 +27,15 @@ export class SitDataSetContainerComponent {
 
   @ContentChildren('sitControl', { descendants: true })
   databaseControlsInterface!: QueryList<SitDataBaseComponent>;
-  @ViewChildren('sitAction')
+
+  @ContentChildren('sitAction',  { descendants: true })
   actionControlsInterface!: QueryList<SitActionDirective>;
 
   @ContentChildren(SitRefreshButtonComponent, { descendants: true })
   refreshButtons!: QueryList<SitRefreshButtonComponent>;
+
+  @ViewChild('sitActionToolbar', { static: false })
+  actionToolbar: SitActionsToolbarComponent;
 
   @ContentChildren(SitFilesButtonComponent, { descendants: true })
   filesButtons!: QueryList<SitFilesButtonComponent>;
@@ -45,8 +49,6 @@ export class SitDataSetContainerComponent {
 
   @Output()
   afterPropagte: EventEmitter<string> = new EventEmitter<string>();
-
-  actionsTable: ActionDefinitionWrapper[] = null; //tabela akcji do wyświetlenia w actions-toolbar
 
   public dataSetControlsManager: DataSetManager;
 
@@ -246,35 +248,21 @@ export class SitDataSetContainerComponent {
     }
   }
 
-  public prepareControls(dataSetWrapperDefinition: DataSetDefinitionWrapper) {
-
-    //inicjalizacja tabeli akcji dla actions-toolbara
-    if(dataSetWrapperDefinition != null) {
-      this.actionsTable = this.filterActionsToShowOnToolbar(dataSetWrapperDefinition.actions);
-      //console.log("Actions table =" + this.actionsTable);
-    }
-
-    //z uwagi na asynchroniczne przetwarzanie ngFor lista sit-proc-buttons w ngAfterViewInit jest pusta, taki myk
-    this.actionControlsInterface.changes.subscribe(() => {
-      //console.log("Action controls interface from subscriber " + this.actionControlsInterface);
-      this.actionControlsInterface.forEach(actionControl => {
-        actionControl.dataSetResponseWrapper = this.dataSetResponseWrapper;
-        actionControl.actionDefinition = dataSetWrapperDefinition?.FindActionDefinition(actionControl.actionIdent);
-        actionControl.dataSetManagerSource = this.dataSetControlsManager;
-      });
-    })
-    /* wcześniejszy kod
-    if (this.actionControlsInterface != null) {
-
-      this.actionControlsInterface.forEach(actionControl => {
-        actionControl.dataSetResponseWrapper = this.dataSetResponseWrapper;
-        actionControl.actionDefinition = dataSetWrapperDefinition?.FindActionDefinition(actionControl.actionIdent);
-        actionControl.dataSetManagerSource = this.dataSetControlsManager;
-      });
-    } */
+  public prepareControls(dataSetWrapperDefinition: DataSetDefinitionWrapper) {    
+    this.actionControlsInterface.forEach(actionControl => {
+      actionControl.dataSetResponseWrapper = this.dataSetResponseWrapper;
+      actionControl.actionDefinition = dataSetWrapperDefinition?.FindActionDefinition(actionControl.actionIdent);
+      actionControl.dataSetManagerSource = this.dataSetControlsManager;
+    });         
 
     this.pepareControlForButtons(this.refreshButtons);
-    this.pepareControlForButtons(this.filesButtons);
+    this.pepareControlForButtons(this.filesButtons);  
+
+    if (this.actionToolbar) {
+      this.actionToolbar.dataSetResponseWrapper = this.dataSetResponseWrapper;
+      this.actionToolbar.dataSetManagerSource = this.dataSetControlsManager;
+      this.actionToolbar.actions = dataSetWrapperDefinition.actions ? dataSetWrapperDefinition.actions.filter(a => a.showInToolbar) : [];
+    } 
   }
 
   set errors(value: any[]) {
@@ -299,14 +287,6 @@ export class SitDataSetContainerComponent {
       return action.showInToolbar;
     } else
       return false;
-  }
-
-  //filtrowanie tabeli akcji do wyswietlenia na toolbarze
-  filterActionsToShowOnToolbar(actionsTable: ActionDefinitionWrapper[]): ActionDefinitionWrapper[]{
-    if(actionsTable != null)
-      return actionsTable.filter(this.showActionOnToolbar);
-    else
-      return null;
   }
 
   public detachEvents() {

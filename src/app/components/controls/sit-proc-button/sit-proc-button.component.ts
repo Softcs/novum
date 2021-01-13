@@ -7,7 +7,8 @@ import { Tab } from '@app/_models/tab.model';
 import { ActionExecuteData } from '@app/_models/actionExecuteData';
 import { FactoryService } from '@app/_services/factory.service';
 import { ProcExpanderService } from '@app/_services/procexpander.service';
-import { isUndefined } from 'util';
+import { ActionDefinitionWrapper } from '@app/_models/actionDefinitionWrapper';
+import { DataSetWrapper } from '@app/_models';
 
 @Component({
   selector: 'sit-proc-button',
@@ -26,6 +27,33 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
   @Output() afterCompleted: EventEmitter<string> = new EventEmitter<string>();
 
   @ViewChild('button') private _buttonElement: ElementRef;
+  
+  public set actionDefinition(action: ActionDefinitionWrapper) {
+    super.actionDefinition = action;
+
+    this.actionIdent = action?.ident;
+    this.caption = action?.caption;
+    this.componentParamsIdent = action?.componentParamsIdent;
+    this.openKind = action?.openKind;
+    this.tooltip = action?.tooltip;
+    this.color= action?.color;
+    this.icon = action?.icon;
+  }
+
+  public get actionDefinition(): ActionDefinitionWrapper
+  {
+    return super.actionDefinition;
+  }
+
+  // public set dataSetResponseWrapper(value: DataSetWrapper) 
+  // {
+  //   super.dataSetResponseWrapper = value;
+  // }
+
+  // public get dataSetResponseWrapper(): DataSetWrapper
+  // {
+  //   return null;
+  // }
 
   private tabLink: string;
 
@@ -58,23 +86,23 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
   }
 
   public get isShouldBeHidden(): boolean {
-    if (!this.actionDefinition) {
+    if (!this.actionDefinition || !this.dataSetResponseWrapper) {
       return true;
     }
     
     if ( ( this.isInsert() || this.isUpdate() || this.isDelete() ) && !this.dataSetResponseWrapper.allParentsHaveRows() ) {
        return true;
     };
-    if ( ( this.isUpdate() || this.isDelete() ) && this.dataSetResponseWrapper !== undefined ) {
-      if ( this.dataSetResponseWrapper.rows == null) {
-        return true;
-      }
+
+    if ( (this.isUpdate() || this.isDelete()) && this.dataSetResponseWrapper !== undefined && this.dataSetResponseWrapper.rows == null) {
+        return true;      
     }
+
     return false;
   }
 
   getActionExecuteData(): ActionExecuteData {
-    const identRowField = this.actionDefinition?.fieldsConfiguration?.identRow;
+    const identRowField = this.actionDefinition?.fieldsConfiguration ? this.actionDefinition?.fieldsConfiguration["identRow"] : null;
     const identRowValue = identRowField ? this.dataSetResponseWrapper.getFieldValue(identRowField) : null;
     this.tabLink = this.componentParamsIdent + '_' + identRowValue;
     const data = new ActionExecuteData();

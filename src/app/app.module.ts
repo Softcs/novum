@@ -147,6 +147,7 @@ import { SitPayrollImportComponent } from './containers/dictionaries/sit-payroll
 import { SitProcPayrollComponentsAccountingDefEditComponent } from './containers/dictionaries/sit-payroll-components/actions/sit-proc-payroll-components-accounting-def-edit/sit-proc-payroll-components-accounting-def-edit.component'
 ;
 import { SitCompanyDepartmentsComponent } from './containers/dictionaries/sit-company-departments/sit-company-departments.component'
+import { SitActionsToolbarComponent } from './components/controls/sit-actions-toolbar/sit-actions-toolbar.component';
 
 @NgModule({
     imports: [
@@ -273,21 +274,15 @@ import { SitCompanyDepartmentsComponent } from './containers/dictionaries/sit-co
         SitLocationsComponent,
         SitAgreementsTypesEditComponent,
         SitLocationsEditComponent,
-        SitRightsGroupsEditComponent
-,
-        SitImportCustomerFromImpTableComponent
-,
-        SitEmployeesComponent
-,
-        SitPayrollsComponent
-,
-        SitPayrollComponentsComponent
-,
-        SitPayrollImportComponent
-,
-        SitProcPayrollComponentsAccountingDefEditComponent
-,
-        SitCompanyDepartmentsComponent
+        SitRightsGroupsEditComponent,
+        SitImportCustomerFromImpTableComponent,
+        SitEmployeesComponent,
+        SitPayrollsComponent,
+        SitPayrollComponentsComponent,
+        SitPayrollImportComponent,
+        SitProcPayrollComponentsAccountingDefEditComponent,
+        SitCompanyDepartmentsComponent,
+        SitActionsToolbarComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
