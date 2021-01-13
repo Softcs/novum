@@ -32,10 +32,9 @@ export class TabService {
   }
 
   public addTab(tab: Tab) {
-    tab.id = this.tabs.length + 1;
-
-    this.tabs = [...this.tabs, tab]
-    this.tabSub.next(this.tabs);
+    tab.id = this.tabs.length + 1;    
+    this.tabs = [...this.tabs, tab];
+    this.tabSub.next(this.tabs);   
     this.activeTabIndex.next(tab.id - 1);
   }
 }

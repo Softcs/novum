@@ -28,7 +28,7 @@ export class SitDataSetContainerComponent {
   @ContentChildren('sitControl', { descendants: true })
   databaseControlsInterface!: QueryList<SitDataBaseComponent>;
 
-  @ViewChildren('sitAction')
+  @ContentChildren('sitAction',  { descendants: true })
   actionControlsInterface!: QueryList<SitActionDirective>;
 
   @ContentChildren(SitRefreshButtonComponent, { descendants: true })
@@ -248,21 +248,20 @@ export class SitDataSetContainerComponent {
     }
   }
 
-  public prepareControls(dataSetWrapperDefinition: DataSetDefinitionWrapper) {
-    if (this.actionControlsInterface != null) {
-      this.actionControlsInterface.forEach(actionControl => {
-        actionControl.dataSetResponseWrapper = this.dataSetResponseWrapper;
-        actionControl.actionDefinition = dataSetWrapperDefinition?.FindActionDefinition(actionControl.actionIdent);
-        actionControl.dataSetManagerSource = this.dataSetControlsManager;
-      });
-    } 
+  public prepareControls(dataSetWrapperDefinition: DataSetDefinitionWrapper) {    
+    this.actionControlsInterface.forEach(actionControl => {
+      actionControl.dataSetResponseWrapper = this.dataSetResponseWrapper;
+      actionControl.actionDefinition = dataSetWrapperDefinition?.FindActionDefinition(actionControl.actionIdent);
+      actionControl.dataSetManagerSource = this.dataSetControlsManager;
+    });         
 
     this.pepareControlForButtons(this.refreshButtons);
     this.pepareControlForButtons(this.filesButtons);  
 
     if (this.actionToolbar) {
-      this.actionToolbar.actions = dataSetWrapperDefinition.actions;
-//      this.actionToolbar.setActions(dataSetWrapperDefinition.actions);
+      this.actionToolbar.dataSetResponseWrapper = this.dataSetResponseWrapper;
+      this.actionToolbar.dataSetManagerSource = this.dataSetControlsManager;
+      this.actionToolbar.actions = dataSetWrapperDefinition.actions ? dataSetWrapperDefinition.actions.filter(a => a.showInToolbar) : [];
     } 
   }
 

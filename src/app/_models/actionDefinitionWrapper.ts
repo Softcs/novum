@@ -1,5 +1,3 @@
-import { support } from 'jquery';
-
 export class ActionDefinitionWrapper {
     public createNewRow: boolean;
     public forCurrentRow: boolean;
@@ -9,7 +7,7 @@ export class ActionDefinitionWrapper {
     public showInToolbar: boolean;
     public editFields: [any];
     public caption: string;
-    public fieldsConfiguration: [any];
+    public fieldsConfiguration: any;
     public color: string;
     public icon: string;
     public componentParamsIdent: string;

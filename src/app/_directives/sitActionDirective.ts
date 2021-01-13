@@ -12,6 +12,7 @@ export class SitActionDirective {
     }
 
     @Input() actionIdent: string;
+
     @Input()
     public set actionDefinition(action: ActionDefinitionWrapper) {
         this._actionDefinition = action;
@@ -20,8 +21,8 @@ export class SitActionDirective {
     public get actionDefinition(): ActionDefinitionWrapper{ 
         return this._actionDefinition;
     }
+    
+    @Input() dataSetResponseWrapper: DataSetWrapper;
 
-    public dataSetResponseWrapper: DataSetWrapper;
-    public dataSetManagerSource: DataSetManager;
-
+    @Input() dataSetManagerSource: DataSetManager;
 }
