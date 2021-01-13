@@ -8,7 +8,18 @@
         </sit-data-set-container>
       </div>
       <sit-data-set-container  ident="sitCustomers" showActionsToolbar="true" #sitDataSetContainer fxFlex fxLayout="column">
-        
+        <div class="sit-proc-bar">
+          <mat-toolbar color="accent">
+            <mat-toolbar-row>
+              <div class="sit-proc-buttons-row">
+                <sit-proc-button #sitAction actionIdent="insert" componentParamsIdent="sitCustomersEdit" openKind="TAB" tooltip="Nowy" color="primary" icon="post_add"></sit-proc-button>
+                <sit-proc-button #sitAction actionIdent="update" componentParamsIdent="sitCustomersEdit" openKind="TAB" tooltip="Edycja" color="primary" icon="edit"></sit-proc-button>
+                <sit-proc-button #sitAction actionIdent="delete" tooltip="Usuń"  color="primary" icon="delete" delete="true" matType="mat-stroked-button"></sit-proc-button>
+              </div>
+            </mat-toolbar-row>
+          </mat-toolbar>
+        </div>
+
         <!--Grid sitCustomers-->
         <div class="data-table" fxFlex>
           <ag-grid-angular #sitSetDataSource
