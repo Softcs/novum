@@ -39,6 +39,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatExpansionModule } from '@angular/material/expansion';
+//
 
 import { SitDataSetContainerComponent } from '@app/components/sit-data-set-container/sit-data-set-container.component';
 import { SitNavbarComponent } from './components/sit-navbar/sit-navbar.component';
@@ -174,6 +176,7 @@ import { SitCompanyDepartmentsComponent } from './containers/dictionaries/sit-co
         MatTooltipModule,
         MatDialogModule,
         MatProgressSpinnerModule,
+        MatExpansionModule,
 
         FormsModule,
         LayoutModule,
