@@ -112,6 +112,7 @@ export class SitDataSetContainerComponent {
     if (gridApi == null) {
       return null;
     }
+
     var customProperty = gridApi.SeidoCustomProperty;
     if (customProperty == null) {
       customProperty = {};
@@ -128,19 +129,48 @@ export class SitDataSetContainerComponent {
         }
       }
 
-
       gridApi.SeidoCustomProperty = customProperty;
+
       this.activeRowChanged.subscribe( (row) => {
         var prevRow = customProperty.activeRow;
         customProperty.activeRow = row;
-        var rowsToUpdate = [row];
-        if (prevRow) {
+        var rowsToUpdate = [];
+  
+        if (row) {
+          rowsToUpdate.push(row);
+        }
+  
+        if (prevRow && row) {
           rowsToUpdate.push(prevRow);
         }
-        gridApi.applyTransaction({update:rowsToUpdate});
+        this.redrawGridActiveRow(gridApi, prevRow); 
+        //gridApi.applyTransaction({update:rowsToUpdate});
       });
     }
+    
     return customProperty;
+  }
+
+  public redrawGridActiveRow(gridApi: any, prevRow: any) {
+    if (!this.activeRow || !gridApi) {
+      return;
+    }  
+    
+    let limit = prevRow ? 2 : 1;
+    const fieldName = this.getFieldId(this.ident);      
+    const fieldValue = this.activeRow[fieldName];
+    const prevValue = prevRow ? prevRow[fieldName] : null;
+    gridApi.forEachNode( (rowNode) => { 
+      const rowValue = rowNode.data[fieldName];
+      if (this.compareStrings(rowValue, fieldValue) || this.compareStrings(rowValue, prevValue)) {
+        rowNode.setData(rowNode.data);
+        limit--;
+      }
+      
+      if (limit == 0) {
+        return false;
+      }
+    });    
   }
 
   public refreshRows(dataSetWrapper: DataSetWrapper, dataSourcesRequest) {
