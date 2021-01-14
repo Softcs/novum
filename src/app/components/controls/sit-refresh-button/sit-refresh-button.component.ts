@@ -12,7 +12,7 @@ export class SitRefreshButtonComponent extends SitButtonBaseComponent {
   constructor() {
     super();
     this.icon = 'refresh';
-    this.color = 'primary';
+    this.color = 'accent';
   }
   @Input() dataSetsToRefresh: string[];
 
