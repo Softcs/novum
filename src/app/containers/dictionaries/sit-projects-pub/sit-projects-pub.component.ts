@@ -6,7 +6,9 @@ import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
 import { AttachmentsService } from '@app/_services/attachments.service';
 import { MatSpinner } from '@angular/material/progress-spinner';
-//import { AllModules } from '@ag-grid-enterprise/all-modules';
+import { jsPDF } from 'jspdf';
+import html2canvas from 'html2canvas';
+
 
 @Component({
   selector: 'app-sit-projects-pub',
@@ -102,5 +104,26 @@ export class SitProjectsPubComponent implements OnInit {
 
   get activeRowProjectsPub() {
     return this.dictContainer?.activeRow('sitProjectsPub')
+  }
+
+  downloadPDF() {
+    var element = document.getElementById('projectData');
+    var divHeight = element.scrollHeight;
+    var divWidth = element.clientWidth;
+    var ratio = divHeight / divWidth;
+
+    html2canvas(element, {scale: 1,allowTaint: true,
+      useCORS: true,
+      logging: false,
+      height: window.outerHeight + window.innerHeight,
+      windowHeight: window.outerHeight + window.innerHeight}).then((canvas)=>{
+      const imgData = canvas.toDataURL('image/png');
+      const doc  = new jsPDF('p','mm','a4');
+      const width = doc.internal.pageSize.getWidth();
+      let height = doc.internal.pageSize.getHeight();
+      height = ratio * width;
+      doc.addImage(imgData,'png',10,10,width-20,height-10);
+      doc.save("image.pdf")
+    });
   }
 }
