@@ -39,8 +39,6 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { MatExpansionModule } from '@angular/material/expansion';
-//
 
 import { SitDataSetContainerComponent } from '@app/components/sit-data-set-container/sit-data-set-container.component';
 import { SitNavbarComponent } from './components/sit-navbar/sit-navbar.component';
@@ -130,24 +128,17 @@ import { NgxBarcodeModule } from 'ngx-barcode';;
 import { SitAgreementsTypesComponent } from './containers/dictionaries/sit-agreements-types/sit-agreements-types.component';
 import { SitLocationsComponent } from './containers/dictionaries/sit-locations/sit-locations.component';
 import { SitAgreementsTypesEditComponent } from './containers/dictionaries/sit-agreements-types/actions/sit-agreements-types-edit/sit-agreements-types-edit.component';
-import { SitLocationsEditComponent } from './containers/dictionaries/sit-locations/actions/sit-locations-edit/sit-locations-edit.component'
-;
-import { SitRightsGroupsEditComponent } from './containers/dictionaries/sit-rights/actions/sit-rights-groups-edit/sit-rights-groups-edit.component'
-;
-import { SitImportCustomerFromImpTableComponent } from './containers/dictionaries/sit-kancelaria/actions/sit-import-customer-from-imp-table/sit-import-customer-from-imp-table.component'
-;
-import { SitEmployeesComponent } from './containers/dictionaries/sit-employees/sit-employees.component'
-;
-import { SitPayrollsComponent } from './containers/dictionaries/sit-payrolls/sit-payrolls.component'
-;
-import { SitPayrollComponentsComponent } from './containers/dictionaries/sit-payroll-components/sit-payroll-components.component'
-;
-import { SitPayrollImportComponent } from './containers/dictionaries/sit-payrolls/actions/sit-payroll-import/sit-payroll-import.component'
-;
-import { SitProcPayrollComponentsAccountingDefEditComponent } from './containers/dictionaries/sit-payroll-components/actions/sit-proc-payroll-components-accounting-def-edit/sit-proc-payroll-components-accounting-def-edit.component'
-;
-import { SitCompanyDepartmentsComponent } from './containers/dictionaries/sit-company-departments/sit-company-departments.component'
+import { SitLocationsEditComponent } from './containers/dictionaries/sit-locations/actions/sit-locations-edit/sit-locations-edit.component';
+import { SitRightsGroupsEditComponent } from './containers/dictionaries/sit-rights/actions/sit-rights-groups-edit/sit-rights-groups-edit.component';
+import { SitImportCustomerFromImpTableComponent } from './containers/dictionaries/sit-kancelaria/actions/sit-import-customer-from-imp-table/sit-import-customer-from-imp-table.component';
+import { SitEmployeesComponent } from './containers/dictionaries/sit-employees/sit-employees.component';
+import { SitPayrollsComponent } from './containers/dictionaries/sit-payrolls/sit-payrolls.component';
+import { SitPayrollComponentsComponent } from './containers/dictionaries/sit-payroll-components/sit-payroll-components.component';
+import { SitPayrollImportComponent } from './containers/dictionaries/sit-payrolls/actions/sit-payroll-import/sit-payroll-import.component';
+import { SitProcPayrollComponentsAccountingDefEditComponent } from './containers/dictionaries/sit-payroll-components/actions/sit-proc-payroll-components-accounting-def-edit/sit-proc-payroll-components-accounting-def-edit.component';
+import { SitCompanyDepartmentsComponent } from './containers/dictionaries/sit-company-departments/sit-company-departments.component';
 import { SitActionsToolbarComponent } from './components/controls/sit-actions-toolbar/sit-actions-toolbar.component';
+import { SitProductsUpdateWeightComponent } from './containers/dictionaries/sit-products/actions/sit-products-update-weight/sit-products-update-weight.component';
 
 @NgModule({
     imports: [
@@ -177,7 +168,6 @@ import { SitActionsToolbarComponent } from './components/controls/sit-actions-to
         MatTooltipModule,
         MatDialogModule,
         MatProgressSpinnerModule,
-        MatExpansionModule,
 
         FormsModule,
         LayoutModule,
@@ -282,7 +272,8 @@ import { SitActionsToolbarComponent } from './components/controls/sit-actions-to
         SitPayrollImportComponent,
         SitProcPayrollComponentsAccountingDefEditComponent,
         SitCompanyDepartmentsComponent,
-        SitActionsToolbarComponent
+        SitActionsToolbarComponent,
+        SitProductsUpdateWeightComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },

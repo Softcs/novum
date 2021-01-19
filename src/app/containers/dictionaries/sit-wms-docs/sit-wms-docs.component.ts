@@ -90,7 +90,7 @@ export class SitWmsDocsComponent implements OnInit {
       { headerName: 'GUID', field: 'sitDocumentsHeadersG', sortable: true, resizable: true, filter: 'agTextColumnFilter',width: 150 },
       { headerName: 'Typ dok.', field: 'DocumentIdent', sortable: true, resizable: true, filter: 'agSetColumnFilter', floatingFilter: false, width: 90 },
       { headerName: 'Numer', field: 'DocumentNumber', sortable: true, resizable: true, filter: 'agTextColumnFilter' },
-      { headerName: 'Data', field: 'DocumentDate', type: 'dateColumn', filter: 'agDateColumnFilter',width: 100, floatingFilter: false, sort: 'desc'  },
+      { headerName: 'Data', field: 'DocumentDate', filter: 'agDateColumnFilter',width: 100, floatingFilter: false, sort: 'desc'  },
       { headerName: 'Status WMS', field: 'Status_WMS', filter: 'agSetColumnFilter', width: 160, floatingFilter: true,
         cellStyle: function(params) {
           if (params.value === 'Wysłana') { return { color: 'blue' }; }
@@ -108,7 +108,7 @@ export class SitWmsDocsComponent implements OnInit {
       },
       { headerName: 'NagId SL', field: 'ExtAppIdent01', filter: 'agTextColumnFilter', width: 100, floatingFilter: true },
       // { headerName: 'XL ID', field: 'ExtAppIdent02', filter: 'agTextColumnFilter',width: 100  },
-      { headerName: 'Opis zew.', field: 'ExtAppDescription01', tootipField: 'ExtAppDescription01', filter: 'agTextColumnFilter',width: 200  },
+      { headerName: 'Opis zew.', field: 'ExtAppDescription01', tooltipField: 'ExtAppDescription01', filter: 'agTextColumnFilter',width: 200  },
 
     ];
 

@@ -27,7 +27,7 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
   @Output() afterCompleted: EventEmitter<string> = new EventEmitter<string>();
 
   @ViewChild('button') private _buttonElement: ElementRef;
-  
+
   public set actionDefinition(action: ActionDefinitionWrapper) {
     super.actionDefinition = action;
 
@@ -45,7 +45,7 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
     return super.actionDefinition;
   }
 
-  // public set dataSetResponseWrapper(value: DataSetWrapper) 
+  // public set dataSetResponseWrapper(value: DataSetWrapper)
   // {
   //   super.dataSetResponseWrapper = value;
   // }
@@ -89,13 +89,13 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
     if (!this.actionDefinition || !this.dataSetResponseWrapper) {
       return true;
     }
-    
+
     if ( ( this.isInsert() || this.isUpdate() || this.isDelete() ) && !this.dataSetResponseWrapper.allParentsHaveRows() ) {
        return true;
     };
 
     if ( (this.isUpdate() || this.isDelete()) && this.dataSetResponseWrapper !== undefined && this.dataSetResponseWrapper.rows == null) {
-        return true;      
+        return true;
     }
 
     return false;
@@ -200,10 +200,12 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
   }
 
   private openActionOnTab(actionExecuteData: ActionExecuteData) {
+    var caption;
+    caption = this.actionDefinition.caption ? this.actionDefinition.caption : this.actionDefinition.tooltip;
     this.tabService.addTab(
       new Tab(
         this.factoryService.GetFactory(actionExecuteData.componentParamsIdent),
-        this.actionDefinition.caption,
+        caption,
         actionExecuteData
       )
     );

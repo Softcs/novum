@@ -44,7 +44,7 @@ export class SitProductsComponent implements OnInit {
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
     this.contentColor = document.documentElement.style.getPropertyValue('$content-background-color');
     this.popupParent = document.querySelector('body');
-    this.rowSelection = 'single';
+    this.rowSelection = 'multi';
     this.frameworkComponents = {
       gridCheckboxRenderer: GridCheckboxRenderer,
     };
@@ -67,13 +67,13 @@ export class SitProductsComponent implements OnInit {
       { headerName: 'JM', field: 'UnitIdent', filter: 'agTextColumnFilter', width: 60 },
       { headerName: 'Vat', field: 'VATRateIdent', filter: 'agTextColumnFilter', width: 60 },
       { headerName: 'PKWIU', field: 'PKWIU', filter: 'agTextColumnFilter', width: 100 },
-      { headerName: 'Waga', field: 'Weight', filter: 'agTextColumnFilter', type: 'numericColumn', width: 80,
+      { headerName: 'Waga kg', field: 'Weight', filter: 'agTextColumnFilter', type: 'numericColumn', width: 90,
         cellRenderer: function(params) {
         return formatNumber(params.data["Weight"], locale,'1.3-3')
         }
 
       },
-      { headerName: 'Aktywny', field: 'IsActive', filter: 'agSetColumnFilter', type: 'numericColumn', width: 100, cellRenderer: 'gridCheckboxRenderer', floatingFilter: false }
+      { headerName: 'Aktywny', field: 'IsActive', filter: 'agSetColumnFilter', width: 80, cellRenderer: 'gridCheckboxRenderer' }
 
     ];
 
