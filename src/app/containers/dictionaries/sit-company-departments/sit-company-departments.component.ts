@@ -59,7 +59,7 @@ export class SitCompanyDepartmentsComponent implements OnInit {
     };
 
     this.columnDefs = [
-      { headerName: 'ID', field: 'sitCompanyDepartmentsId', filter: 'agNumericColumnFilter' },
+      { headerName: 'ID', field: 'sitCompanyDepartmentsId', filter: 'agNumberColumnFilter' },
       { headerName: 'GUID', field: 'sitCompanyDepartmentsG', filter: 'agTextColumnFilter' },
       // { headerName: 'Identyfikator', field: 'CompanyDepartmentIdent', filter: 'agTextColumnFilter' },
       { headerName: 'Opis', field: 'CompanyDepartmentDesc', filter: 'agTextColumnFilter', width: 300 },

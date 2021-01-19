@@ -514,3 +514,10 @@ div.cover{
   height: 280px;
   //width: 300px;
 }
+
+.grid-cell-center-right {
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
