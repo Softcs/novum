@@ -1,42 +1,42 @@
 <sit-dict-container ident="sitProjectsPub" #sitDictcontainer fxFlexFill>
-    <div fxLayout="row" fxFill fxLayoutGap="5px">
-      <div fxLayout="column" fxFlex="35%" class="content">
+  <div fxLayout="row" fxFill fxLayoutGap="5px">
+    <div fxLayout="column" fxFlex="35%" class="content">
 
-        <div class="sit-filter-bar">
-          <sit-data-set-container ident="sitFilterProjectsPub" >
-            <div style="width: 100%;">
-              <sit-data-input #sitControl  field="searchProjectsPub" label="Filtruj projekty" placeholder="Projekt, Nazwa, EAN" appearance="outline" style="width: 100%;" showRefreshButton="true"></sit-data-input>
-            </div>
-          </sit-data-set-container>
-        </div>
-<!-- <button (click)="downloadPDF()">Pobierz PDF</button> -->
-        <sit-data-set-container ident="sitProjectsPub" showActionsToolbar="true" fxLayout="column" (activeRowChanged)="activeRowProjectsPubChanged($event)" fxFlex>
-          <div class="data-table" fxFlex>
-            <ag-grid-angular #sitSetDataSource
-              #agGrid
-              id="gridProjectsPub"
-              style="width: 100%; height: 100%;"
-              class="ag-theme-balham"
-              [columnDefs]="columnDefsProjectsPub"
-              [defaultColDef]="defaultColDef"
-              [rowSelection]="rowSelection"
-              [rowMultiSelectWithClick]="true"
-              [enableCellTextSelection]="true"
-              [suppressRowClickSelection]="true"
-              [enableRangeSelection]="true"
-              [popupParent]="popupParent"
-              (rowClicked)="onRowClickedProjectsPub($event)"
-              (gridReady)="onGridReadyProjectsPub($event)"
-              (firstDataRendered)="onFirstDataRendered($event)"
-            >
-            </ag-grid-angular>
+      <div class="sit-filter-bar">
+        <sit-data-set-container ident="sitFilterProjectsPub" >
+          <div style="width: 100%;">
+            <sit-data-input #sitControl  field="searchProjectsPub" label="Filtruj projekty" placeholder="Projekt, Nazwa, EAN" appearance="outline" style="width: 100%;" showRefreshButton="true"></sit-data-input>
           </div>
         </sit-data-set-container>
       </div>
+      <sit-data-set-container ident="sitProjectsPub" showActionsToolbar="true" fxLayout="column" (activeRowChanged)="activeRowProjectsPubChanged($event)" fxFlex>
+        <div class="data-table" fxFlex>
+          <ag-grid-angular #sitSetDataSource
+            #agGrid
+            id="gridProjectsPub"
+            style="width: 100%; height: 100%;"
+            class="ag-theme-balham"
+            [columnDefs]="columnDefsProjectsPub"
+            [defaultColDef]="defaultColDef"
+            [rowSelection]="rowSelection"
+            [rowMultiSelectWithClick]="true"
+            [enableCellTextSelection]="true"
+            [suppressRowClickSelection]="true"
+            [enableRangeSelection]="true"
+            [popupParent]="popupParent"
+            (rowClicked)="onRowClickedProjectsPub($event)"
+            (gridReady)="onGridReadyProjectsPub($event)"
+            (firstDataRendered)="onFirstDataRendered($event)"
+          >
+          </ag-grid-angular>
+        </div>
+      </sit-data-set-container>
+    </div>
+    <div fxLayout="column" fxFlex="65%" class="content">
+      <div *ngIf="!showProjectPanel()" fxLayout="column" fxFlex class="content" class="right-panel" fxLayoutAlign="start center">Wpisz w filtr symbol projektu, nazwę projektu lub EAN.</div>
 
-      <div *ngIf="!showProjectPanel()" fxLayout="column" fxFlex="65%" class="content" class="right-panel" fxLayoutAlign="start center">Wpisz w filtr symbol projektu, nazwę projektu lub EAN.</div>
-
-      <div id="projectData" *ngIf="showProjectPanel()" fxLayout="column" fxFlex="65%" class="content" class="right-panel">
+      <div *ngIf="showProjectPanel()" fxLayoutAlign="end center"><button mat-stroked-button color="primary" (click)="printProject()"><mat-icon>print</mat-icon> Drukuj projekt</button></div>
+      <div id="projectData" *ngIf="showProjectPanel()" fxLayout="column" fxFlex class="content" class="right-panel">
           <div *ngIf="activeRowProjectsPub?.ProjectIdent !== undefined" fxLayout="column">
             <div fxLayout="row" fxFlex>
               <div fxLayout="row" fxFlex="40">
@@ -378,6 +378,7 @@
               <div class="text">{{ activeRowProjectsPub?.ProjectDescription }}</div>
             </div> -->
 
+      </div>
       </div>
     </div>
   </div>

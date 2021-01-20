@@ -106,24 +106,20 @@ export class SitProjectsPubComponent implements OnInit {
     return this.dictContainer?.activeRow('sitProjectsPub')
   }
 
-  downloadPDF() {
-    var element = document.getElementById('projectData');
-    var divHeight = element.scrollHeight;
-    var divWidth = element.clientWidth;
-    var ratio = divHeight / divWidth;
+  printProject() {
+    var content = document.getElementById('projectData').innerHTML;
+    var printWindow =  window.open('', '', 'height=700, width=1000, left=100,top=100');
 
-    html2canvas(element, {scale: 1,allowTaint: true,
-      useCORS: true,
-      logging: false,
-      height: window.outerHeight + window.innerHeight,
-      windowHeight: window.outerHeight + window.innerHeight}).then((canvas)=>{
-      const imgData = canvas.toDataURL('image/png');
-      const doc  = new jsPDF('p','mm','a4');
-      const width = doc.internal.pageSize.getWidth();
-      let height = doc.internal.pageSize.getHeight();
-      height = ratio * width;
-      doc.addImage(imgData,'png',10,10,width-20,height-10);
-      doc.save("image.pdf")
+    printWindow.document.write('<html><body>');
+    printWindow.document.write(content);
+    printWindow.document.write('</body></html>');
+    document.querySelectorAll('link, style').forEach(htmlElement => {
+      printWindow.document.head.appendChild(htmlElement.cloneNode(true));
     });
+    printWindow.document.close();
+    setTimeout(function() {
+      printWindow.print();
+      printWindow.close();
+    }, 500);
   }
 }
