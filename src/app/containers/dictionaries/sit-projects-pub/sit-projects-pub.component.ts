@@ -6,8 +6,7 @@ import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
 import { AttachmentsService } from '@app/_services/attachments.service';
 import { MatSpinner } from '@angular/material/progress-spinner';
-import { jsPDF } from 'jspdf';
-import html2canvas from 'html2canvas';
+
 
 
 @Component({
