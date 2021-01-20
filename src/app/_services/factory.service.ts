@@ -1,4 +1,5 @@
-﻿import { SitProductsUpdateWeightComponent } from './../containers/dictionaries/sit-products/actions/sit-products-update-weight/sit-products-update-weight.component';
+﻿import { SitPubDeliveryDistributionComponent } from '../containers/dictionaries/sit-pub-delivery-distribution/sit-pub-delivery-distribution.component';
+import { SitProductsUpdateWeightComponent } from './../containers/dictionaries/sit-products/actions/sit-products-update-weight/sit-products-update-weight.component';
 import { SitCompanyDepartmentsComponent } from './../containers/dictionaries/sit-company-departments/sit-company-departments.component';
 import { SitProcPayrollComponentsAccountingDefEditComponent } from './../containers/dictionaries/sit-payroll-components/actions/sit-proc-payroll-components-accounting-def-edit/sit-proc-payroll-components-accounting-def-edit.component';
 import { SitPayrollImportComponent } from './../containers/dictionaries/sit-payrolls/actions/sit-payroll-import/sit-payroll-import.component';
@@ -116,7 +117,8 @@ export class FactoryService {
         sitPayrollImport: SitPayrollImportComponent,
         sitProcPayrollComponentsAccountingDefEdit: SitProcPayrollComponentsAccountingDefEditComponent,
         sitCompanyDepartments: SitCompanyDepartmentsComponent,
-        sitProductsUpdateWeight: SitProductsUpdateWeightComponent
+        sitProductsUpdateWeight: SitProductsUpdateWeightComponent,
+        sitPubDeliveryDistribution: SitPubDeliveryDistributionComponent
     };
 
     public GetFactory(ident: string) {
