@@ -1,11 +1,11 @@
 <sit-dict-container ident="sitPubDeliveryDistribution" #sitDictcontainer fxFill>
   <div fxLayout="column" fxFill class="content">
-    <!-- <div class="sit-filter-bar">
+    <div class="sit-filter-bar">
       <sit-data-set-container ident="sitFilter" fxLayout="row">
         <sit-data-input #sitControl field="search" label="Filtruj" placeholder="EAN, nazwa" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
       </sit-data-set-container>
-    </div> -->
-    <!-- <sit-data-set-container ident="sitPubDeliveryDistrybution" showActionsToolbar="true" fxFlex fxLayout="column">
+    </div>
+    <sit-data-set-container ident="sitPubDeliveryDistrybution" showActionsToolbar="true" fxFlex fxLayout="column">
       <div class="data-table" fxFlex>
         <ag-grid-angular #sitSetDataSource
           #agGrid
@@ -16,15 +16,16 @@
           [defaultColDef]="defaultColDef"
           [rowSelection]="rowSelection"
           [rowMultiSelectWithClick]="true"
-          [enableCellTextSelection]="true"
-          [enableRangeSelection]="false"
+          [enableCellTextSelection]="false"
+          [enableRangeSelection]="true"
           [popupParent]="popupParent"
+          [sideBar]="true"
           (rowClicked)="onRowClicked($event)"
           (gridReady)="onGridReady($event)"
           (firstDataRendered)="onFirstDataRendered($event)"
         >
         </ag-grid-angular>
       </div>
-    </sit-data-set-container> -->
+    </sit-data-set-container>
   </div>
 </sit-dict-container>
