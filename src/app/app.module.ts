@@ -139,7 +139,8 @@ import { SitProcPayrollComponentsAccountingDefEditComponent } from './containers
 import { SitCompanyDepartmentsComponent } from './containers/dictionaries/sit-company-departments/sit-company-departments.component';
 import { SitActionsToolbarComponent } from './components/controls/sit-actions-toolbar/sit-actions-toolbar.component';
 import { SitProductsUpdateWeightComponent } from './containers/dictionaries/sit-products/actions/sit-products-update-weight/sit-products-update-weight.component';;
-import { SitPubDeliveryDistributionComponent } from './containers/dictionaries/sit-pub-delivery-distribution/sit-pub-delivery-distribution.component'
+import { SitPubDeliveryDistributionComponent } from './containers/dictionaries/sit-pub-delivery-distribution/sit-pub-delivery-distribution.component';
+import { SitRailDeliveryDistrybutionImportComponent } from './containers/dictionaries/sit-pub-delivery-distribution/actions/sit-rail-delivery-distrybution-import/sit-rail-delivery-distrybution-import.component'
 
 @NgModule({
     imports: [
@@ -276,6 +277,8 @@ import { SitPubDeliveryDistributionComponent } from './containers/dictionaries/s
         SitActionsToolbarComponent,
         SitProductsUpdateWeightComponent,
         SitPubDeliveryDistributionComponent
+,
+        SitRailDeliveryDistrybutionImportComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
