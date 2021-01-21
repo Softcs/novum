@@ -160,6 +160,11 @@ export class SitPubDeliveryDistributionComponent implements OnInit {
           },
         ]
       },
+      { headerName: 'Pozostałe',
+        children: [
+          { headerName: 'Sprzedaż', field: 'OSaleQuantity', type: 'rightAligned', filter: 'agNumberColumnFilter', autoHeight: true, width: 100 },
+        ]
+      }
     ]
    }
 
