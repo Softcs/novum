@@ -19,6 +19,8 @@ import { LoginComponent } from './containers/login';
 import { SitDictContainerComponent } from './components/sit-dict-container/sit-dict-container.component';
 
 // material
+
+import { MatRadioModule } from '@angular/material/radio'; // there
 import { MatSliderModule} from '@angular/material/slider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -146,6 +148,8 @@ import { SitProcPayrollComponentsAccountingDefEditComponent } from './containers
 ;
 import { SitCompanyDepartmentsComponent } from './containers/dictionaries/sit-company-departments/sit-company-departments.component'
 
+import { SitDataRadioComponent } from './components/controls/sit-data-radio/sit-data-radio.component'; // there
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -153,6 +157,7 @@ import { SitCompanyDepartmentsComponent } from './containers/dictionaries/sit-co
         HttpClientModule,
         appRoutingModule,
 
+        MatRadioModule,// there
         MatSliderModule,
         MatButtonModule,
         MatIconModule,
@@ -285,6 +290,9 @@ import { SitCompanyDepartmentsComponent } from './containers/dictionaries/sit-co
         SitProcPayrollComponentsAccountingDefEditComponent
 ,
         SitCompanyDepartmentsComponent
+,
+        SitDataRadioComponent
+         // there
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
@@ -342,7 +350,8 @@ import { SitCompanyDepartmentsComponent } from './containers/dictionaries/sit-co
       SitPayrollComponentsComponent,
       SitPayrollImportComponent,
       SitProcPayrollComponentsAccountingDefEditComponent,
-      SitCompanyDepartmentsComponent
+      SitCompanyDepartmentsComponent,
+      SitDataRadioComponent // there
     ]
 })
 export class AppModule { }
