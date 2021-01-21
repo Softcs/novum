@@ -53,9 +53,12 @@ export class SitPubDeliveryDistributionComponent implements OnInit {
         ]
       },
       { headerName: 'Wyd.', field: 'Publishing', filter: 'agTextColumnFilter', width: 80, enableRowGroup: true, },
+      { headerName: 'Data wyd', field: 'ReleaseDateAct', filter: 'agDateColumnFilter', width: 100, enableRowGroup: true,
+        cellRenderer: function(params) { return formatDate(params.value, 'yyyy-MM-dd', locale) }
+      },
       { headerName: 'Ceny',
         children: [
-          { headerName: 'Detaliczna', field: 'DetailPrice', type: 'rightAligned', filter: 'agNumberColumnFilter', autoHeight: true, width: 90,
+          { headerName: 'Detal.', field: 'DetailPrice', type: 'rightAligned', filter: 'agNumberColumnFilter', autoHeight: true, width: 90,
             cellRenderer: function(params) { return formatNumber(params.value, locale,'1.2-2') }
           },
           { headerName: 'Zakupu', field: 'PurchacePrice', type: 'rightAligned', filter: 'agNumberColumnFilter', autoHeight: true, width: 90,
@@ -68,9 +71,9 @@ export class SitPubDeliveryDistributionComponent implements OnInit {
       { headerName: 'Sprzedaż', field: 'SaleQuantity', type: 'rightAligned', filter: 'agNumberColumnFilter', autoHeight: true, width: 100, enableValue: true,
       },
       { headerName: '% dost.', field: 'DeliveryPercent', type: 'rightAligned', filter: 'agNumberColumnFilter', autoHeight: true, width: 90,
-        cellRenderer: function(params) { return formatNumber(params.value*100, locale,'1.2-2')+'%' }
+        cellRenderer: function(params) { return formatNumber(params.value, locale,'1.0-0')+'%' }
       },
-      { headerName: 'Stan ogółem', field: 'WMSStock', type: 'rightAligned', filter: 'agNumberColumnFilter', autoHeight: true, width: 100, enableValue: true,
+      { headerName: 'Stan ogółem', field: 'WMSStock', type: 'rightAligned', filter: 'agNumberColumnFilter', autoHeight: true, width: 110, enableValue: true,
       },
       { headerName: 'Stan dysp.', field: 'WMSStockAv', type: 'rightAligned', filter: 'agNumberColumnFilter', autoHeight: true, width: 100, enableValue: true,
       },
@@ -83,7 +86,7 @@ export class SitPubDeliveryDistributionComponent implements OnInit {
             cellStyle: function(params) { return {backgroundColor: '#cce6ff'} }
           },
           { headerName: '% dost.', field: 'DistributedPercent', type: 'rightAligned', filter: 'agNumberColumnFilter', autoHeight: true, width: 90,
-            cellRenderer: function(params) { return formatNumber(params.value*100, locale,'1.2-2')+'%' },
+            cellRenderer: function(params) { return formatNumber(params.value, locale,'1.0-0')+'%' },
             cellStyle: function(params) { return {backgroundColor: '#cce6ff'} }
           },
         ]
@@ -94,7 +97,7 @@ export class SitPubDeliveryDistributionComponent implements OnInit {
             cellStyle: function(params) { return {backgroundColor: '#ffe6e6'} }
           },
           { headerName: '% rozdysp.', field: 'ConsignmentPercent', type: 'rightAligned', filter: 'agNumberColumnFilter', autoHeight: true, width: 90,
-            cellRenderer: function(params) { return formatNumber(params.value*100, locale,'1.2-2')+'%' },
+            cellRenderer: function(params) { return formatNumber(params.value, locale,'1.0-0')+'%' },
             cellStyle: function(params) { return {backgroundColor: '#ffe6e6'} }
           },
         ]
@@ -106,7 +109,7 @@ export class SitPubDeliveryDistributionComponent implements OnInit {
 
           },
           { headerName: '% rozdysp.', field: 'SalePercent', type: 'rightAligned', filter: 'agNumberColumnFilter', autoHeight: true, width: 90,
-            cellRenderer: function(params) { return formatNumber(params.value*100, locale,'1.2-2')+'%' },
+            cellRenderer: function(params) { return formatNumber(params.value, locale,'1.0-0')+'%' },
             cellStyle: function(params) { return {backgroundColor: '#d6f5d6'} }
 
           },
@@ -122,7 +125,7 @@ export class SitPubDeliveryDistributionComponent implements OnInit {
             cellStyle: function(params) { return {backgroundColor: '#ffe6e6'} }
           },
           { headerName: '%', field: 'HPercent', type: 'rightAligned', filter: 'agNumberColumnFilter', autoHeight: true, width: 80,
-            cellRenderer: function(params) { return formatNumber(params.value*100, locale,'1.2-2')+'%' },
+            cellRenderer: function(params) { return formatNumber(params.value, locale,'1.0-0')+'%' },
             cellStyle: function(params) { return {backgroundColor: '#ffe6e6'} }
           },
         ]
@@ -137,7 +140,7 @@ export class SitPubDeliveryDistributionComponent implements OnInit {
             cellStyle: function(params) { return {backgroundColor: '#ffe6e6'} }
           },
           { headerName: '%', field: 'ZPercent', type: 'rightAligned', filter: 'agNumberColumnFilter', autoHeight: true, width: 80,
-            cellRenderer: function(params) { return formatNumber(params.value*100, locale,'1.2-2')+'%' },
+            cellRenderer: function(params) { return formatNumber(params.value, locale,'1.0-0')+'%' },
             cellStyle: function(params) { return {backgroundColor: '#ffe6e6'} }
           },
         ]
@@ -152,7 +155,7 @@ export class SitPubDeliveryDistributionComponent implements OnInit {
             cellStyle: function(params) { return {backgroundColor: '#ffe6e6'} }
           },
           { headerName: '%', field: 'DPercent', type: 'rightAligned', filter: 'agNumberColumnFilter', autoHeight: true, width: 80,
-            cellRenderer: function(params) { return formatNumber(params.value*100, locale,'1.2-2')+'%' },
+            cellRenderer: function(params) { return formatNumber(params.value, locale,'1.0-0')+'%' },
             cellStyle: function(params) { return {backgroundColor: '#ffe6e6'} }
           },
         ]
