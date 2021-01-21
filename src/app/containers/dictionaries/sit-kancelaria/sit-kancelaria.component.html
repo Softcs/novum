@@ -38,34 +38,32 @@
               <as-split-area [size]="65">
                 <div fxLayout="column" fxFill>
                   <div class="sit-grid-title">Umowy</div>
-                  <!-- Procedury sitAgreements -->
-                  <sit-data-set-container ident="sitAgreements" showActionsToolbar="true" fxFill fxLayout="column">
-                  <!--Grid sitAgreements-->
-                  <div class="data-table" fxFlex>
-                    <ag-grid-angular #sitSetDataSource
-                      #agGrid
-                      id="gridAgreements"
-                      style="width: 100%; height: 100%;"
-                      class="ag-theme-balham"
-                      [columnDefs]="columnDefsAgreements"
-                      [defaultColDef]="defaultColDef"
-                      [rowSelection]="rowSelection"
-                      [rowMultiSelectWithClick]="true"
-                      [enableCellTextSelection]="true"
-                      [enableRangeSelection]="false"
-                      [popupParent]="popupParent"
-                      (rowClicked)="onRowClickedAgreements($event)"
-                      (gridReady)="onGridReadyAgreements($event)"
-                      (firstDataRendered)="onFirstDataRendered($event)"
-                      [frameworkComponents]="frameworkComponents"
-                    >
-                    </ag-grid-angular>
+                  <sit-data-set-container ident="sitAgreements" showActionsToolbar="true" fxFlex fxLayout="column">
+                    <div class="data-table" fxFlex>
+                      <ag-grid-angular #sitSetDataSource
+                        #agGrid
+                        id="gridAgreements"
+                        style="width: 100%; height: 100%;"
+                        class="ag-theme-balham"
+                        [columnDefs]="columnDefsAgreements"
+                        [defaultColDef]="defaultColDef"
+                        [rowSelection]="rowSelection"
+                        [rowMultiSelectWithClick]="true"
+                        [enableCellTextSelection]="true"
+                        [enableRangeSelection]="false"
+                        [popupParent]="popupParent"
+                        (rowClicked)="onRowClickedAgreements($event)"
+                        (gridReady)="onGridReadyAgreements($event)"
+                        (firstDataRendered)="onFirstDataRendered($event)"
+                        [frameworkComponents]="frameworkComponents"
+                        >
+                      </ag-grid-angular>
+                    </div>
                     <div style="width: 100%;height: 120px;">
                       <sit-data-textarea type="textarea" #sitControl field="AgreementDesc" label="Opis" appearance="outline" fxFill></sit-data-textarea>
                     </div>
-                  </div>
-                </sit-data-set-container>
-              </div>
+                  </sit-data-set-container>
+                </div>
               </as-split-area>
               <as-split-area [size]="35">
                 <div fxFlex fxLayout="column">
