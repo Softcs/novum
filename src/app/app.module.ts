@@ -20,7 +20,7 @@ import { SitDictContainerComponent } from './components/sit-dict-container/sit-d
 
 // material
 
-import { MatRadioModule } from '@angular/material/radio'; // there
+import { MatRadioModule } from '@angular/material/radio'; 
 import { MatSliderModule} from '@angular/material/slider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -157,7 +157,7 @@ import { SitDataRadioComponent } from './components/controls/sit-data-radio/sit-
         HttpClientModule,
         appRoutingModule,
 
-        MatRadioModule,// there
+        MatRadioModule,
         MatSliderModule,
         MatButtonModule,
         MatIconModule,
@@ -292,7 +292,7 @@ import { SitDataRadioComponent } from './components/controls/sit-data-radio/sit-
         SitCompanyDepartmentsComponent
 ,
         SitDataRadioComponent
-         // there
+        
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
@@ -351,7 +351,7 @@ import { SitDataRadioComponent } from './components/controls/sit-data-radio/sit-
       SitPayrollImportComponent,
       SitProcPayrollComponentsAccountingDefEditComponent,
       SitCompanyDepartmentsComponent,
-      SitDataRadioComponent // there
+      SitDataRadioComponent 
     ]
 })
 export class AppModule { }

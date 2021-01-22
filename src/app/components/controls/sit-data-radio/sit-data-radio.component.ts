@@ -1,11 +1,8 @@
-import { Component, Input,  Renderer2, ViewEncapsulation, ContentChild, ViewChild, NgZone } from '@angular/core';
+import { Component, Input,  Renderer2, ViewEncapsulation, ContentChild, ViewChild, NgZone, OnInit } from '@angular/core';
 import { SitDataBaseComponent } from '../sit-data-base/sit-data-base.component';
 import { MatFormFieldAppearance  } from '@angular/material/form-field';
-import { SitRefreshButtonComponent } from '../sit-refresh-button/sit-refresh-button.component';
-import { MatAutocomplete } from '@angular/material/autocomplete';
-import { LookupService } from '@app/_services/lookup.service';
-import { MatSelect } from '@angular/material/select';
-import { BehaviorSubject, Observable, Subscription } from 'rxjs';
+
+
 
 @Component({
   selector: 'sit-data-radio',
@@ -14,24 +11,22 @@ import { BehaviorSubject, Observable, Subscription } from 'rxjs';
   encapsulation : ViewEncapsulation.None
 })
 export class SitDataRadioComponent extends SitDataBaseComponent {
-  favoriteSeason: string;
-  public seasons: string[] = ['Winter', 'Spring', 'Summer', 'Autumn'];
+  
+  public button: any[] = [{caption:'a',value:'a'}, {caption:'b',value:'b'}];
 
 
-  @Input() type = 'text';
-  @Input() label = '';
+
   @Input() showRefresh = true;
   @Input() appearance: MatFormFieldAppearance = 'legacy';
-  @Input() width: string;
   @Input() showRefreshButton: boolean;
   @Input() refreshOnChange: boolean;
   @Input() lookupDisplayFields: string[] = null;
+  @Input() buttons: any[] = null;
+  
 
- 
 
   constructor(
     _renderer: Renderer2,
-    private lookupService: LookupService,
     private ngZone: NgZone) {
     super(_renderer);
     this.showRefreshButton = false;
@@ -39,7 +34,7 @@ export class SitDataRadioComponent extends SitDataBaseComponent {
   }
 
   onChange(event: any) {
-    super.onChange(event);
+    //super.onChange(event);
     this.dataSetWrapper.setFieldValue(this.field, this.getValue());
     if (this.refreshOnChange) {
       this.dataSetWrapper.RefreshChildren();
@@ -48,7 +43,8 @@ export class SitDataRadioComponent extends SitDataBaseComponent {
 
 
 
-  public getValue(): string {
+  public getValue(): any {
+    console.log( this.inputElement.nativeElement);
     return this.inputElement.nativeElement.value;
   }
 
@@ -58,4 +54,5 @@ export class SitDataRadioComponent extends SitDataBaseComponent {
     this.dataSetWrapper.refreshFieldValueInControl(this);
   }
 
+ 
 }
