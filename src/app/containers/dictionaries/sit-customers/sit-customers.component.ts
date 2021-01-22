@@ -21,26 +21,16 @@ export class SitCustomersComponent implements OnInit {
   gridApiCustomers;
   gridColumnApiCustomers;
   columnDefsCustomers;
-  defaultColDef;
-  rowSelection;
   popupParent;
 
-  
+
 
   constructor(
     private gatewayService: GatewayService
   ) {
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
-    this.popupParent = document.querySelector('body');
-    this.rowSelection = 'single';
 
-    this.defaultColDef = {
-      flex: 1,
-      sortable: true,
-      filter: true,
-      floatingFilter: true,
-      resizable: true
-    };
+    this.popupParent = document.querySelector('body');
 
     this.columnDefsCustomers = [
       { headerName: 'Identyfikator', field: 'CustIdent', sortable: true, resizable: true, filter: 'agTextColumnFilter' },

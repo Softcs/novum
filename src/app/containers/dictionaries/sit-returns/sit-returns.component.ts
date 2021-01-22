@@ -19,8 +19,6 @@ export class SitReturnsComponent implements OnInit {
 
   currentUser: User;
 
-  defaultColDef;
-  rowSelection;
   popupParent;
   frameworkComponents;
   rowClassRules;
@@ -44,20 +42,10 @@ export class SitReturnsComponent implements OnInit {
   {
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
     this.popupParent = document.querySelector('body');
-    this.rowSelection = 'single';
     this.frameworkComponents = {
       gridCheckboxRenderer: GridCheckboxRenderer,
     };
 
-    this.defaultColDef = {
-      sortable: true,
-      filter: true,
-      resizable: true,
-      enableValue: true,
-      enableRowGroup: true,
-      enablePivot: true,
-      floatingFilter: false,
-    };
 
     //definicja kolumn nagłówków dowodów
     this.columnDefsDocumentsHeaders = [

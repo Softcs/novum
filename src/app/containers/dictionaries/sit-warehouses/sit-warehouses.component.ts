@@ -15,8 +15,7 @@ export class SitWarehousesComponent implements OnInit {
   @ViewChildren('sitDictcontainer') dictContainers !: QueryList<SitDictContainerComponent>;
 
   currentUser: User;
-  defaultColDef;
-  rowSelection;
+
   popupParent;
 
   gridApi;
@@ -28,19 +27,7 @@ export class SitWarehousesComponent implements OnInit {
   ) {
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
 
-    // this.popupParent = document.querySelector('body');
-    this.rowSelection = 'single';
-
-    this.defaultColDef = {
-      sortable: true,
-      filter: true,
-      floatingFilter: true,
-      resizable: true,
-      enableRowGroup: true,
-      enableValue: true,
-      enablePivot: true,
-      autoHeight: true,
-    };
+    this.popupParent = document.querySelector('body');
 
     this.columnDefs = [
       { headerName: 'sitWarehousesId', field: 'sitWarehousesId', type: 'numericColumn', sortable: true, filter: 'agNumberColumnFilter'},

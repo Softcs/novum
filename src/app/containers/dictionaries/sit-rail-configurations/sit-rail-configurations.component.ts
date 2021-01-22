@@ -16,9 +16,6 @@ export class SitRailConfigurationsComponent implements OnInit {
 
   sitRailConfigurationsSelected = [];
 
-  //modules: any[] = AllModules;
-  defaultColDef;
-  rowSelection;
   popupParent;
   frameworkComponents;
 
@@ -29,16 +26,7 @@ export class SitRailConfigurationsComponent implements OnInit {
 
   constructor() {
     this.popupParent = document.querySelector('body');
-    this.rowSelection = 'single';
 
-    this.defaultColDef = {
-      sortable: true,
-      filter: true,
-      resizable: true,
-      enableValue: true,
-      enableRowGroup: true,
-      enablePivot: true,
-    };
     this.columnDefs = [
       { headerName: 'CompanyIdent', field: 'CompanyIdent', sortable: true, flex: 2, filter: 'agTextColumnFilter', autoHeight: true },
       { headerName: 'OperationIdent', field: 'OperationIdent', sortable: true, flex: 2, filter: 'agTextColumnFilter', autoHeight: true },

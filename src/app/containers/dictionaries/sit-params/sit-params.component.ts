@@ -19,9 +19,6 @@ export class SitParamsComponent implements OnInit {
 
   currentUser: User;
 
-  //modules: any[] = AllModules;
-  defaultColDef;
-  rowSelection;
   popupParent;
   frameworkComponents;
 
@@ -36,16 +33,6 @@ export class SitParamsComponent implements OnInit {
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
 
     this.popupParent = document.querySelector('body');
-    this.rowSelection = 'single';
-
-    this.defaultColDef = {
-      sortable: true,
-      filter: true,
-      resizable: true,
-      enableValue: true,
-      enableRowGroup: true,
-      enablePivot: true,
-    };
 
     this.frameworkComponents = {
       gridCheckboxRenderer: GridCheckboxRenderer,

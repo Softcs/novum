@@ -19,8 +19,6 @@ export class SitRightsComponent implements OnInit {
 
   currentUser: User;
 
-  defaultColDef;
-  rowSelection;
   popupParent;
   frameworkComponents;
   rowClassRules;
@@ -57,19 +55,8 @@ export class SitRightsComponent implements OnInit {
     private gatewayService: GatewayService
   ) {
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
-    this.rowSelection = 'single';
     this.frameworkComponents = {
       gridCheckboxRenderer: GridCheckboxRenderer,
-    };
-
-    this.defaultColDef = {
-      sortable: true,
-      filter: true,
-      floatingFilter: false,
-      resizable: true,
-      enableValue: true,
-      enableRowGroup: true,
-      enablePivot: true,
     };
 
     this.columnDefs = [

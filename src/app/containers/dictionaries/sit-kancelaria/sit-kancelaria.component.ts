@@ -26,8 +26,6 @@ export class SitKancelariaComponent implements OnInit {
   sitAgreementsSelected = [];
   sitAttachmentsSelected = [];
 
-  defaultColDef;
-  rowSelection;
   popupParent;
 
   gridApiCustomers;
@@ -54,22 +52,13 @@ export class SitKancelariaComponent implements OnInit {
       gridCheckboxRenderer: GridCheckboxRenderer,
     };
 
-    this.defaultColDef = {
-      flex: 0,
-      sortable: true,
-      filter: true,
-      floatingFilter: false,
-      resizable: true
-    };
     this.popupParent = document.querySelector('body');
-
-    this.rowSelection = 'single';
 
     this.columnDefsCustomers = [
       { headerName: 'Identyfikator', field: 'CustIdent', width: 150 },
-      { headerName: 'Nazwa', field: 'CustName'},
+      { headerName: 'Nazwa', field: 'CustName', tooltipField: 'CustName' },
       { headerName: 'NIP', field: 'VATId', width: 100},
-      { headerName: 'Ulica', field: 'Street',
+      { headerName: 'Ulica', field: 'Street', tooltipField: 'Street',
         valueGetter: function(params) { return params.data.Street + ' ' + params.data.HouseNum }
       },
       { headerName: 'Miasto', field: 'City' },

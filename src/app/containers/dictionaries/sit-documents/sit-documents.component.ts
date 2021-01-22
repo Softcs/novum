@@ -18,8 +18,6 @@ export class SitDocumentsComponent implements OnInit {
 
   currentUser: User;
 
-  defaultColDef;
-  rowSelection;
   popupParent;
 
   gridApiDocumentsHeaders;
@@ -41,17 +39,6 @@ export class SitDocumentsComponent implements OnInit {
       this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
       this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
       this.popupParent = document.querySelector('body');
-      this.rowSelection = 'single';
-
-      this.defaultColDef = {
-        sortable: true,
-        filter: true,
-        //floatingFilter: true,
-        resizable: true,
-        enableValue: true,
-        enableRowGroup: true,
-        enablePivot: true,
-      };
 
       //definicja kolumn nagłówków dowodów
       this.columnDefsDocumentsHeaders = [

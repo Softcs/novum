@@ -18,9 +18,6 @@ export class SitRozrachunkiInsertGTComponent implements OnInit {
 
   sitRozrachunkiInsertGTselected = [];
 
-  //modules = [MenuModule];
-  defaultColDef;
-  rowSelection;
   popupParent;
   frameworkComponents;
 
@@ -32,18 +29,6 @@ export class SitRozrachunkiInsertGTComponent implements OnInit {
 
   constructor() {
     this.popupParent = document.querySelector('body');
-    this.rowSelection = 'single';
-
-    this.defaultColDef = {
-      sortable: true,
-      filter: true,
-      resizable: true,
-      enableValue: true,
-      enableRowGroup: true,
-      enablePivot: true,
-      autoHeight: true,
-      floatingFilter: true
-    };
 
     this.frameworkComponents = {
       gridCheckboxRenderer: GridCheckboxRenderer,

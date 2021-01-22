@@ -20,9 +20,7 @@ export class SitPayrollComponentsComponent implements OnInit {
   @ViewChildren('sitDictcontainer') dictContainers !: QueryList<SitDictContainerComponent>;
 
   currentUser: User;
-  rowSelection;
   popupParent;
-  defaultColDef;
 
   gridApi;
   gridColumnApi;
@@ -38,14 +36,6 @@ export class SitPayrollComponentsComponent implements OnInit {
   ) {
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
     this.popupParent = document.querySelector('body');
-    this.rowSelection = 'single';
-
-    this.defaultColDef = {
-      sortable: true,
-      filter: false,
-      floatingFilter: false,
-      resizable: true
-    };
 
     this.columnDefs = [
       { headerName: 'ID', field: 'sitPayrollComponentsId', filter: 'agNumberColumnFilter' },

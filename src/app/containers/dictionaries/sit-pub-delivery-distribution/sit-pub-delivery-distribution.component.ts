@@ -34,15 +34,6 @@ export class SitPubDeliveryDistributionComponent implements OnInit {
   ) {
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
     this.popupParent = document.querySelector('body');
-    this.rowSelection = 'multi';
-
-    this.defaultColDef = {
-      sortable: true,
-      filter: false,
-      floatingFilter: false,
-      resizable: true,
-      autoHeight: true
-    };
 
     this.columnDefs = [
       { headerName: 'Kartoteka',
@@ -53,6 +44,7 @@ export class SitPubDeliveryDistributionComponent implements OnInit {
         ]
       },
       { headerName: 'Wyd.', field: 'Publishing', filter: 'agTextColumnFilter', width: 80, enableRowGroup: true, },
+      { headerName: 'Rynki', field: 'Markets',tooltipField: 'Markets' , filter: 'agTextColumnFilter', width: 80, enableRowGroup: true, },
       { headerName: 'Data wyd', field: 'ReleaseDateAct', filter: 'agDateColumnFilter', width: 100, enableRowGroup: true,
         cellRenderer: function(params) { return formatDate(params.value, 'yyyy-MM-dd', locale) }
       },
@@ -73,8 +65,8 @@ export class SitPubDeliveryDistributionComponent implements OnInit {
       { headerName: '% dost.', field: 'DeliveryPercent', type: 'rightAligned', filter: 'agNumberColumnFilter', autoHeight: true, width: 90,
         cellRenderer: function(params) { return formatNumber(params.value, locale,'1.0-0')+'%' }
       },
-      { headerName: 'Stan ogółem', field: 'WMSStock', type: 'rightAligned', filter: 'agNumberColumnFilter', autoHeight: true, width: 110, enableValue: true,
-      },
+      { headerName: 'Stan ogółem', field: 'AllStock', type: 'rightAligned', filter: 'agNumberColumnFilter', autoHeight: true, width: 110, enableValue: true, },
+      { headerName: 'Stan A100', field: 'WMSStock', type: 'rightAligned', filter: 'agNumberColumnFilter', autoHeight: true, width: 110, enableValue: true, },
       { headerName: 'Stan dysp.', field: 'WMSStockAv', type: 'rightAligned', filter: 'agNumberColumnFilter', autoHeight: true, width: 100, enableValue: true,
       },
       // { headerName: 'OtherStock', field: 'OtherStock', type: 'rightAligned', filter: 'agNumberColumnFilter', autoHeight: true, width: 100,
@@ -178,6 +170,7 @@ export class SitPubDeliveryDistributionComponent implements OnInit {
   onGridReady(params) {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
+    this.gridColumnApi.setColumnsVisible(['Publishing'],false)
   }
 
   onRowClicked(event) {

@@ -24,8 +24,6 @@ export class SitStocksComponent implements OnInit {
   ean;
   locationIdent;
   logisticUnitEAN;
-  defaultColDef;
-  rowSelection;
   popupParent;
   frameworkComponents;
   contentColor;
@@ -58,20 +56,8 @@ export class SitStocksComponent implements OnInit {
     this.contentColor = document.documentElement.style.getPropertyValue('$content-background-color');
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
     this.popupParent = document.querySelector('body');
-    this.rowSelection = 'single';
     this.frameworkComponents = {
       gridCheckboxRenderer: GridCheckboxRenderer,
-    };
-
-    this.defaultColDef = {
-      sortable: true,
-      filter: true,
-      // floatingFilter: true,
-      resizable: true,
-      enableRowGroup: true,
-      enableValue: true,
-      enablePivot: true,
-      autoHeight: true,
     };
 
     this.columnDefs = [

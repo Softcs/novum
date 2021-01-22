@@ -23,9 +23,6 @@ export class SitProjectsPubComponent implements OnInit {
   currentUser: User;
   Link: any;
 
-  //modules: any[] = AllModules;
-  defaultColDef;
-  rowSelection;
   popupParent;
 
   gridApiProjectsPub;
@@ -40,17 +37,7 @@ export class SitProjectsPubComponent implements OnInit {
     ) {
       this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
       this.popupParent = document.querySelector('body');
-      this.rowSelection = 'single';
 
-      this.defaultColDef = {
-        sortable: true,
-        filter: true,
-        //floatingFilter: true,
-        resizable: true,
-        enableValue: true,
-        enableRowGroup: true,
-        enablePivot: true,
-      };
       this.columnDefsProjectsPub = [
         { headerName: 'Projekt', field: 'ProjectIdent', sortable: true, flex: 1, filter: 'agTextColumnFilter', autoHeight: true,
           cellRenderer: function(params) {

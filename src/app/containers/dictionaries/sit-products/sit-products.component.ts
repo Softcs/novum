@@ -31,8 +31,6 @@ export class SitProductsComponent implements OnInit {
   gridApiProducts;
   gridColumnApiProducts;
   columnDefsProducts;
-  defaultColDefProducts;
-  rowSelection;
   popupParent;
 
 
@@ -44,16 +42,8 @@ export class SitProductsComponent implements OnInit {
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
     this.contentColor = document.documentElement.style.getPropertyValue('$content-background-color');
     this.popupParent = document.querySelector('body');
-    this.rowSelection = 'multi';
     this.frameworkComponents = {
       gridCheckboxRenderer: GridCheckboxRenderer,
-    };
-
-    this.defaultColDefProducts = {
-      sortable: true,
-      filter: true,
-      floatingFilter: false,
-      resizable: true
     };
 
     this.columnDefsProducts = [

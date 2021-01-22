@@ -27,8 +27,6 @@ export class SitJPKVatComponent implements OnInit {
   currentUser: User;
 
   //modules: any[] = AllModules;
-  defaultColDef;
-  rowSelection;
   popupParent;
   frameworkComponents;
 
@@ -63,17 +61,6 @@ export class SitJPKVatComponent implements OnInit {
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
 
     this.popupParent = document.querySelector('body');
-    this.rowSelection = 'single';
-
-    this.defaultColDef = {
-      sortable: true,
-      filter: true,
-      resizable: true,
-      enableValue: true,
-      enableRowGroup: true,
-      enablePivot: true,
-      autoHeight: true,
-    };
 
     this.frameworkComponents = {
       gridCheckboxRenderer: GridCheckboxRenderer,

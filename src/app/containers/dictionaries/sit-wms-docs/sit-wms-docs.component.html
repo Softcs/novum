@@ -1,61 +1,42 @@
 <sit-dict-container ident="sitWmsDocs" #sitDictcontainer fxFill>
   <div fxFill class="content" fxLayout="column">
-    <div class="sit-filter-bar">
-      <sit-data-set-container ident="sitFilterDocumentsHeaders" fxLayout="row">
-        <sit-data-input #sitControl field="DocumentsType" label="Typ dok." placeholder="Numer" appearance="outline" style="width: 100px;"
-          [lookupDisplayFields] = "['DocumentIdent', 'DocumentName']">
-        </sit-data-input>
-        <sit-data-input #sitControl field="searchDocumentsHeaders" label="Filtruj dokumenty" placeholder="Numer" appearance="outline" style="width: 250px;"></sit-data-input>
-        <sit-data-input #sitControl field="Product" label="Filtruj wg. produktu" placeholder="Identyfikator, EAN, Nazwa" appearance="outline" style="width: 250px;"></sit-data-input>
-        <sit-data-input #sitControl field="DateFrom" type="date" label="Od" appearance="outline" style="width: 150px;"></sit-data-input>
-        <sit-data-input #sitControl field="DateTo" type="date" label="Do" appearance="outline" style="width: 150px;" showRefreshButton="true" ></sit-data-input>
-      </sit-data-set-container>
-    </div>
     <div fxLayout="row" fxFlex >
       <as-split direction="horizontal">
         <as-split-area [size]="55">
           <div fxFill fxLayout="column">
             <as-split direction="vertical">
-              <as-split-area [size]="80">
+              <as-split-area [size]="85">
                 <div fxLayout="column" fxFill>
-
-                  <div class="sit-proc-bar">
-                    <mat-toolbar color="accent">
-                      <mat-toolbar-row>
-                        <div class="sit-proc-buttons-row">
-                          <!-- <button mat-stroked-button color="primary" (click)="getPrintout()" class="small" *ngIf="showPrint"><mat-icon aria-hidden="false" aria-label="Drukuj">print</mat-icon></button> -->
-                        </div>
-                      </mat-toolbar-row>
-                    </mat-toolbar>
-                  </div>
-
-                    <!-- Grid dowody -->
-                    <sit-data-set-container  ident="sitDocumentsHeaders" fxFlex fxLayout="column" (activeRowChanged)="activeRowChangedDocumentsHeaders($event)">
-                      <div class="data-table" fxFlex>
-                        <ag-grid-angular #sitSetDataSource
-                          #agGrid
-                          id="gridDocumentsHeaders"
-                          style="width: 100%; height: 100%;"
-                          class="ag-theme-balham"
-                          [columnDefs]="columnDefsDocumentsHeaders"
-                          [defaultColDef]="defaultColDef"
-                          [rowSelection]="rowSelection"
-                          [rowMultiSelectWithClick]="false"
-                          [suppressRowClickSelection]="true"
-                          [enableCellTextSelection]="false"
-                          [enableRangeSelection]="true"
-                          [popupParent]="popupParent"
-                          [sideBar]="false"
-                          (rowClicked)="onRowClickedDocumentsHeaders($event)"
-                          (gridReady)="onGridReadyDocumentsHeaders($event)"
-                          (firstDataRendered)="onFirstDataRendered($event)"
-                        >
-                        </ag-grid-angular>
-                      </div>
+                  <div class="sit-filter-bar">
+                    <sit-data-set-container ident="sitFilterDocumentsHeaders" fxLayout="row">
+                      <sit-data-input #sitControl field="DocumentsType" label="Typ dok." placeholder="Numer" appearance="outline" style="width: 100px;"
+                        [lookupDisplayFields] = "['DocumentIdent', 'DocumentName']">
+                      </sit-data-input>
+                      <sit-data-input #sitControl field="searchDocumentsHeaders" label="Filtruj dokumenty" placeholder="Numer" appearance="outline" style="width: 250px;"></sit-data-input>
+                      <sit-data-input #sitControl field="Product" label="Filtruj wg. produktu" placeholder="Identyfikator, EAN, Nazwa" appearance="outline" style="width: 250px;"></sit-data-input>
+                      <sit-data-input #sitControl field="DateFrom" type="date" label="Od" appearance="outline" style="width: 150px;"></sit-data-input>
+                      <sit-data-input #sitControl field="DateTo" type="date" label="Do" appearance="outline" style="width: 150px;" showRefreshButton="true" ></sit-data-input>
                     </sit-data-set-container>
+                  </div>
+                  <sit-data-set-container  ident="sitDocumentsHeaders" showActionsToolbar="true" fxFlex fxLayout="column" (activeRowChanged)="activeRowChangedDocumentsHeaders($event)">
+                    <div class="data-table" fxFlex>
+                      <ag-grid-angular #sitSetDataSource
+                        #agGrid
+                        id="gridDocumentsHeaders"
+                        style="width: 100%; height: 100%;"
+                        class="ag-theme-balham"
+                        [columnDefs]="columnDefsDocumentsHeaders"
+                        [popupParent]="popupParent"
+                        (rowClicked)="onRowClickedDocumentsHeaders($event)"
+                        (gridReady)="onGridReadyDocumentsHeaders($event)"
+                        (firstDataRendered)="onFirstDataRendered($event)"
+                      >
+                      </ag-grid-angular>
+                    </div>
+                  </sit-data-set-container>
                 </div>
               </as-split-area>
-              <as-split-area [size]="20">
+              <as-split-area [size]="15">
                 <div fxLayout="column" fxFill>
                   <sit-data-set-container  ident="sitDocumentsHeadersHistory" fxFill>
                     <div class="data-table" fxFill>
@@ -65,14 +46,7 @@
                         style="width: 100%; height: 100%;"
                         class="ag-theme-balham"
                         [columnDefs]="columnDefsDocumentsHeadersHistory"
-                        [defaultColDef]="defaultColDef"
-                        [rowSelection]="rowSelection"
-                        [rowMultiSelectWithClick]="false"
-                        [suppressRowClickSelection]="true"
-                        [enableCellTextSelection]="false"
-                        [enableRangeSelection]="true"
                         [popupParent]="popupParent"
-                        [sideBar]="false"
                         (rowClicked)="onRowClickedDocumentsHeadersHistory($event)"
                         (gridReady)="onGridReadyDocumentsHeadersHistory($event)"
                         (firstDataRendered)="onFirstDataRendered($event)"
@@ -157,7 +131,7 @@
               <mat-tab label="Pozycje">
                 <div fxLayout="column" fxFill>
                   <as-split direction="vertical">
-                    <as-split-area [size]="80">
+                    <as-split-area [size]="85">
                       <div fxFill>
                         <sit-data-set-container  ident="sitDocumentsPositions" fxFill>
                           <div fxLayout="column" fxFill>
@@ -168,14 +142,7 @@
                                 style="width: 100%; height: 100%;"
                                 class="ag-theme-balham"
                                 [columnDefs]="columnDefsDocumentsPositions"
-                                [defaultColDef]="defaultColDef"
-                                [rowSelection]="rowSelection"
-                                [rowMultiSelectWithClick]="false"
-                                [suppressRowClickSelection]="true"
-                                [enableCellTextSelection]="false"
-                                [enableRangeSelection]="true"
                                 [popupParent]="popupParent"
-                                [sideBar]="false"
                                 [frameworkComponents]="frameworkComponents"
                                 [rowClassRules]="rowClassRules"
                                 (rowClicked)="onRowClickedDocumentsPositions($event)"
@@ -188,7 +155,7 @@
                         </sit-data-set-container>
                       </div>
                     </as-split-area>
-                    <as-split-area [size]="20">
+                    <as-split-area [size]="15">
                       <div fxFill>
                       <sit-data-set-container  ident="sitDocumentsPositionsHistory" fxFill>
                         <div fxLayout="column" fxFill>
@@ -199,14 +166,7 @@
                                 style="width: 100%; height: 100%;"
                                 class="ag-theme-balham"
                                 [columnDefs]="columnDefsDocumentsPositionsHistory"
-                                [defaultColDef]="defaultColDef"
-                                [rowSelection]="rowSelection"
-                                [rowMultiSelectWithClick]="false"
-                                [suppressRowClickSelection]="true"
-                                [enableCellTextSelection]="false"
-                                [enableRangeSelection]="true"
                                 [popupParent]="popupParent"
-                                [sideBar]="false"
                                 (rowClicked)="onRowClickedDocumentsPositionsHistory($event)"
                                 (gridReady)="onGridReadyDocumentsPositionsHistory($event)"
                                 (firstDataRendered)="onFirstDataRendered($event)"
@@ -237,14 +197,7 @@
                             style="width: 100%; height: 100%;"
                             class="ag-theme-balham"
                             [columnDefs]="columnDefsDocumentsPositionsSum"
-                            [defaultColDef]="defaultColDef"
-                            [rowSelection]="rowSelection"
-                            [rowMultiSelectWithClick]="false"
-                            [suppressRowClickSelection]="true"
-                            [enableCellTextSelection]="false"
-                            [enableRangeSelection]="true"
                             [popupParent]="popupParent"
-                            [sideBar]="false"
                             [frameworkComponents]="frameworkComponents"
                             [rowClassRules]="rowClassRules"
                             (rowClicked)="onRowClickedDocumentsPositionsSum($event)"
@@ -269,11 +222,6 @@
                         style="width: 100%; height: 100%;"
                         class="ag-theme-balham"
                         [columnDefs]="columnDefsAttachments"
-                        [defaultColDef]="defaultColDef"
-                        [rowSelection]="rowSelection"
-                        [rowMultiSelectWithClick]="true"
-                        [enableCellTextSelection]="true"
-                        [enableRangeSelection]="false"
                         [popupParent]="popupParent"
                         (rowClicked)="onRowClickedAttachments($event)"
                         (gridReady)="onGridReadyAttachments($event)"

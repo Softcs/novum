@@ -22,8 +22,6 @@ export class SitEmployeesComponent implements OnInit {
   gridApi;
   gridColumnApi;
   columnDefs;
-  defaultColDef;
-  rowSelection;
   popupParent;
 
   constructor(
@@ -31,14 +29,6 @@ export class SitEmployeesComponent implements OnInit {
   ) {
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
     this.popupParent = document.querySelector('body');
-    this.rowSelection = 'single';
-
-    this.defaultColDef = {
-      sortable: true,
-      filter: false,
-      floatingFilter: false,
-      resizable: true
-    };
 
     this.columnDefs = [
       { headerName: 'Identyfikator', field: 'EmployeeIdent', filter: 'agTextColumnFilter' },

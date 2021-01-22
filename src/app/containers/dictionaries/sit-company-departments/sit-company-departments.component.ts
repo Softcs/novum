@@ -20,9 +20,7 @@ export class SitCompanyDepartmentsComponent implements OnInit {
   @ViewChildren('sitDictcontainer') dictContainers !: QueryList<SitDictContainerComponent>;
 
   currentUser: User;
-  rowSelection;
   popupParent;
-  defaultColDef;
   getDataPath;
   autoGroupColumnDef;
   groupDefaultExpanded;
@@ -37,7 +35,6 @@ export class SitCompanyDepartmentsComponent implements OnInit {
   ) {
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
     this.popupParent = document.querySelector('body');
-    this.rowSelection = 'multi';
 
     this.autoGroupColumnDef = {
       headerName: 'Działy firmy',
@@ -50,13 +47,6 @@ export class SitCompanyDepartmentsComponent implements OnInit {
       return data.dataPath;
     };
 
-    this.defaultColDef = {
-      sortable: true,
-      filter: false,
-      floatingFilter: false,
-      resizable: true,
-      autoHeight: true
-    };
 
     this.columnDefs = [
       { headerName: 'ID', field: 'sitCompanyDepartmentsId', filter: 'agNumberColumnFilter' },

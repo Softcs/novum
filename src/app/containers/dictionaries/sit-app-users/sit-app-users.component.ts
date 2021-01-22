@@ -19,8 +19,6 @@ export class SitAppUsersComponent implements OnInit {
   currentUser: User;
   frameworkComponents;
 
-  defaultColDef;
-  rowSelection;
   popupParent;
 
   gridApi;
@@ -40,15 +38,6 @@ export class SitAppUsersComponent implements OnInit {
   ) {
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
     this.popupParent = document.querySelector('body');
-    this.rowSelection = 'single';
-
-    this.defaultColDef = {
-      // flex: 1,
-      sortable: true,
-      filter: true,
-      floatingFilter: false,
-      resizable: true
-    };
 
     this.columnDefs = [
       { headerName: 'Id', field: 'sitAppUsersId', type: 'numericColumn', filter: 'agTextColumnFilter', width: 50 },

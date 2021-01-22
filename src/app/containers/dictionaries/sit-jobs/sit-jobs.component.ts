@@ -14,8 +14,6 @@ export class SitJobsComponent implements OnInit {
   @ViewChild(SitDataSetContainerComponent, { static: true }) dataSourceContainer: SitDataSetContainerComponent;
   @ViewChild('sitDictcontainer') dictContainer: SitDictContainerComponent;
 
-  defaultColDef;
-  rowSelection;
   popupParent;
   frameworkComponents;
 
@@ -31,17 +29,6 @@ export class SitJobsComponent implements OnInit {
 
   constructor() {
     this.popupParent = document.querySelector('body');
-    this.rowSelection = 'single';
-
-    this.defaultColDef = {
-      sortable: true,
-      filter: true,
-      resizable: true,
-      enableValue: true,
-      enableRowGroup: true,
-      enablePivot: true,
-      autoHeight: true
-    };
 
     this.frameworkComponents = {
       gridCheckboxRenderer: GridCheckboxRenderer,

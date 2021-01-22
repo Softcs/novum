@@ -16,8 +16,7 @@ export class SitSysDictionariesComponent implements OnInit {
   @ViewChildren('sitDictcontainer') dictContainers !: QueryList<SitDictContainerComponent>;
 
   currentUser: User;
-  defaultColDef;
-  rowSelection;
+
   popupParent;
   frameworkComponents;
 
@@ -41,18 +40,6 @@ export class SitSysDictionariesComponent implements OnInit {
       gridCheckboxRenderer: GridCheckboxRenderer,
     };
     this.popupParent = document.querySelector('body');
-    this.rowSelection = 'single';
-
-    this.defaultColDef = {
-      sortable: true,
-      filter: true,
-      floatingFilter: true,
-      resizable: true,
-      enableRowGroup: true,
-      enableValue: true,
-      enablePivot: true,
-      autoHeight: true,
-    };
 
     this.columnDefs = [
       { headerName: 'Id', type: 'numericColumn', field: 'sitSysDictionariesId', filter: 'agTextColumnFilter' },
