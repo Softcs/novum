@@ -51,7 +51,7 @@ export class SitDataInputComponent extends SitDataBaseComponent {
   }
 
   onChange(event: any) {
-    super.onChange(event);
+    super.onChange(this.getValue());
     this._onFilterKeyEnter(event);
   }
 
@@ -138,7 +138,7 @@ export class SitDataInputComponent extends SitDataBaseComponent {
   }
 
   onKeyup(event: any) {
-    super.onKeyup(event);
+    super.onKeyup(this.getValue());
 
     if (!this.hasLookup) { return; }
     clearTimeout(this.lookupTimeout);

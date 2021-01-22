@@ -1,8 +1,5 @@
-import { Component, Input,  Renderer2, ViewEncapsulation, ContentChild, ViewChild, NgZone, OnInit } from '@angular/core';
+import { Component, Input,  Renderer2, ViewEncapsulation} from '@angular/core';
 import { SitDataBaseComponent } from '../sit-data-base/sit-data-base.component';
-import { MatFormFieldAppearance  } from '@angular/material/form-field';
-
-
 
 @Component({
   selector: 'sit-data-radio',
@@ -11,48 +8,36 @@ import { MatFormFieldAppearance  } from '@angular/material/form-field';
   encapsulation : ViewEncapsulation.None
 })
 export class SitDataRadioComponent extends SitDataBaseComponent {
-  
-  public button: any[] = [{caption:'a',value:'a'}, {caption:'b',value:'b'}];
+  public internalValue: string;
 
-
-
-  @Input() showRefresh = true;
-  @Input() appearance: MatFormFieldAppearance = 'legacy';
-  @Input() showRefreshButton: boolean;
   @Input() refreshOnChange: boolean;
   @Input() lookupDisplayFields: string[] = null;
   @Input() buttons: any[] = null;
-  
-
 
   constructor(
-    _renderer: Renderer2,
-    private ngZone: NgZone) {
+    _renderer: Renderer2) {
     super(_renderer);
-    this.showRefreshButton = false;
     this.refreshOnChange = true;
   }
 
   onChange(event: any) {
-    //super.onChange(event);
+    super.onChange(this.getValue());
     this.dataSetWrapper.setFieldValue(this.field, this.getValue());
     if (this.refreshOnChange) {
       this.dataSetWrapper.RefreshChildren();
+    }
   }
-}
-
-
 
   public getValue(): any {
-    console.log( this.inputElement.nativeElement);
-    return this.inputElement.nativeElement.value;
+    console.log( this.internalValue);
+    return this.internalValue;
   }
 
-
+  public setValue(value: any) {
+    this.value = value;
+  }
 
   public refreshFieldValue() {
     this.dataSetWrapper.refreshFieldValueInControl(this);
   }
-
- 
 }

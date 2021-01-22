@@ -1,7 +1,7 @@
 
 
 
-<mat-radio-group  #inputElement [value]="value"  (change)="onChange($event)" >
+<mat-radio-group  #inputElement [(ngModel)]='internalValue' [value]="value" (change)="onChange($event)" >
   <mat-radio-button *ngFor="let button of buttons" [value]="button.value">
     {{button.caption}}
   </mat-radio-button>

@@ -15,7 +15,7 @@ export class SitDataTextareaComponent extends SitDataBaseComponent {
   @Input() cols: number;
 
   onChange(event: any) {
-    super.onChange(event);
+    super.onChange(this.getValue());
     this._onFilterKeyEnter(event);
   }
 
