@@ -28,7 +28,7 @@ export class SitWarehousesComponent implements OnInit {
   ) {
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
 
-    this.popupParent = document.querySelector('body');
+    // this.popupParent = document.querySelector('body');
     this.rowSelection = 'single';
 
     this.defaultColDef = {
@@ -43,7 +43,7 @@ export class SitWarehousesComponent implements OnInit {
     };
 
     this.columnDefs = [
-      { headerName: 'sitWarehousesId', field: 'sitWarehousesId', type: 'numericColumn', sortable: true, filter: 'agNumericColumnFilter'},
+      { headerName: 'sitWarehousesId', field: 'sitWarehousesId', type: 'numericColumn', sortable: true, filter: 'agNumberColumnFilter'},
       { headerName: 'sitWarehousesG', field: 'sitWarehousesG', filter: 'agTextColumnFilter' },
       { headerName: 'Identyfikator', field: 'WarehouseIdent', filter: 'agTextColumnFilter', width: 100 },
       { headerName: 'Nazwa', field: 'WarehouseName', filter: 'agTextColumnFilter', width: 200 },

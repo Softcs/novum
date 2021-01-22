@@ -130,23 +130,19 @@ import { NgxBarcodeModule } from 'ngx-barcode';;
 import { SitAgreementsTypesComponent } from './containers/dictionaries/sit-agreements-types/sit-agreements-types.component';
 import { SitLocationsComponent } from './containers/dictionaries/sit-locations/sit-locations.component';
 import { SitAgreementsTypesEditComponent } from './containers/dictionaries/sit-agreements-types/actions/sit-agreements-types-edit/sit-agreements-types-edit.component';
-import { SitLocationsEditComponent } from './containers/dictionaries/sit-locations/actions/sit-locations-edit/sit-locations-edit.component'
-;
-import { SitRightsGroupsEditComponent } from './containers/dictionaries/sit-rights/actions/sit-rights-groups-edit/sit-rights-groups-edit.component'
-;
-import { SitImportCustomerFromImpTableComponent } from './containers/dictionaries/sit-kancelaria/actions/sit-import-customer-from-imp-table/sit-import-customer-from-imp-table.component'
-;
-import { SitEmployeesComponent } from './containers/dictionaries/sit-employees/sit-employees.component'
-;
-import { SitPayrollsComponent } from './containers/dictionaries/sit-payrolls/sit-payrolls.component'
-;
-import { SitPayrollComponentsComponent } from './containers/dictionaries/sit-payroll-components/sit-payroll-components.component'
-;
-import { SitPayrollImportComponent } from './containers/dictionaries/sit-payrolls/actions/sit-payroll-import/sit-payroll-import.component'
-;
-import { SitProcPayrollComponentsAccountingDefEditComponent } from './containers/dictionaries/sit-payroll-components/actions/sit-proc-payroll-components-accounting-def-edit/sit-proc-payroll-components-accounting-def-edit.component'
-;
-import { SitCompanyDepartmentsComponent } from './containers/dictionaries/sit-company-departments/sit-company-departments.component'
+import { SitLocationsEditComponent } from './containers/dictionaries/sit-locations/actions/sit-locations-edit/sit-locations-edit.component';
+import { SitRightsGroupsEditComponent } from './containers/dictionaries/sit-rights/actions/sit-rights-groups-edit/sit-rights-groups-edit.component';
+import { SitImportCustomerFromImpTableComponent } from './containers/dictionaries/sit-kancelaria/actions/sit-import-customer-from-imp-table/sit-import-customer-from-imp-table.component';
+import { SitEmployeesComponent } from './containers/dictionaries/sit-employees/sit-employees.component';
+import { SitPayrollsComponent } from './containers/dictionaries/sit-payrolls/sit-payrolls.component';
+import { SitPayrollComponentsComponent } from './containers/dictionaries/sit-payroll-components/sit-payroll-components.component';
+import { SitPayrollImportComponent } from './containers/dictionaries/sit-payrolls/actions/sit-payroll-import/sit-payroll-import.component';
+import { SitProcPayrollComponentsAccountingDefEditComponent } from './containers/dictionaries/sit-payroll-components/actions/sit-proc-payroll-components-accounting-def-edit/sit-proc-payroll-components-accounting-def-edit.component';
+import { SitCompanyDepartmentsComponent } from './containers/dictionaries/sit-company-departments/sit-company-departments.component';
+import { SitActionsToolbarComponent } from './components/controls/sit-actions-toolbar/sit-actions-toolbar.component';
+import { SitProductsUpdateWeightComponent } from './containers/dictionaries/sit-products/actions/sit-products-update-weight/sit-products-update-weight.component';;
+import { SitPubDeliveryDistributionComponent } from './containers/dictionaries/sit-pub-delivery-distribution/sit-pub-delivery-distribution.component';
+import { SitRailDeliveryDistrybutionImportComponent } from './containers/dictionaries/sit-pub-delivery-distribution/actions/sit-rail-delivery-distrybution-import/sit-rail-delivery-distrybution-import.component'
 
 import { SitDataRadioComponent } from './components/controls/sit-data-radio/sit-data-radio.component'; // there
 
@@ -275,7 +271,17 @@ import { SitDataRadioComponent } from './components/controls/sit-data-radio/sit-
         SitLocationsComponent,
         SitAgreementsTypesEditComponent,
         SitLocationsEditComponent,
-        SitRightsGroupsEditComponent
+        SitRightsGroupsEditComponent,
+        SitImportCustomerFromImpTableComponent,
+        SitEmployeesComponent,
+        SitPayrollsComponent,
+        SitPayrollComponentsComponent,
+        SitPayrollImportComponent,
+        SitProcPayrollComponentsAccountingDefEditComponent,
+        SitCompanyDepartmentsComponent,
+        SitActionsToolbarComponent,
+        SitProductsUpdateWeightComponent,
+        SitPubDeliveryDistributionComponent
 ,
         SitImportCustomerFromImpTableComponent
 ,
@@ -291,8 +297,9 @@ import { SitDataRadioComponent } from './components/controls/sit-data-radio/sit-
 ,
         SitCompanyDepartmentsComponent
 ,
-        SitDataRadioComponent
+        SitDataRadioComponent,
         
+        SitRailDeliveryDistrybutionImportComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
@@ -352,6 +359,7 @@ import { SitDataRadioComponent } from './components/controls/sit-data-radio/sit-
       SitProcPayrollComponentsAccountingDefEditComponent,
       SitCompanyDepartmentsComponent,
       SitDataRadioComponent 
+
     ]
 })
 export class AppModule { }

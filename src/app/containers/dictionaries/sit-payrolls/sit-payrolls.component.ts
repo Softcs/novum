@@ -40,6 +40,9 @@ export class SitPayrollsComponent implements OnInit {
   gridApiPayrollsAccounting;
   gridColumnApiPayrollsAccounting;
   columnDefsPayrollsAccounting;
+  gridApiPayrollsCalcAccountingDim;
+  gridColumnApiPayrollsCalcAccountingDim;
+  columnDefsPayrollsCalcAccountingDim;
 
   constructor(
     private gatewayService: GatewayService,
@@ -58,7 +61,7 @@ export class SitPayrollsComponent implements OnInit {
     };
 
     this.columnDefs = [
-      { headerName: 'ID', field: 'sitPayrollsId', filter: 'agNumericColumnFilter' },
+      { headerName: 'ID', field: 'sitPayrollsId', filter: 'agNumberColumnFilter' },
       { headerName: 'GUID', field: 'sitPayrollsG', filter: 'agTextColumnFilter' },
       { headerName: 'Nr listy', field: 'PayrollNo',tooltipField: 'PayrollNo', filter: 'agTextColumnFilter', width: 180,
         cellRenderer: function(params) {
@@ -85,7 +88,7 @@ export class SitPayrollsComponent implements OnInit {
           + '<b><span style="color: dimgray;">Koszty:</span> <span style="display:inline-block;width:70px;">' + formatNumber(params.data["Costs"], locale,'1.2-2') + '</span></b>'
         }
       },
-      { headerName: 'ZUS pracownika', field: 'ZUSEmerPrac', filter: 'agNumericColumnFilter', width: 160, autoHeight: true,
+      { headerName: 'ZUS pracownika', field: 'ZUSEmerPrac', filter: 'agNumberColumnFilter', width: 160, autoHeight: true,
         type: 'rightAligned',
         cellRenderer: function(params) {
         return '<span style="color: dimgray;">Emeryt.:</span> <span style="display:inline-block;width:70px;">' + formatNumber(params.data["ZUSEmerPrac"], locale,'1.2-2') +'</span><br>'
@@ -96,7 +99,7 @@ export class SitPayrollsComponent implements OnInit {
             + '<b><span style="color: dimgray;">Suma:</span> <span style="display:inline-block;width:70px;">' + formatNumber(params.data["ZUSPrac"], locale,'1.2-2') + '</span></b>'
         }
       },
-      { headerName: 'ZUS pracodawcy', field: 'ZUSEmerFirma', filter: 'agNumericColumnFilter', width: 160, autoHeight: true,
+      { headerName: 'ZUS pracodawcy', field: 'ZUSEmerFirma', filter: 'agNumberColumnFilter', width: 160, autoHeight: true,
         type: 'rightAligned',
         cellRenderer: function(params) {
         return '<span style="color: dimgray;">Emeryt.:</span> <span style="display:inline-block;width:70px;">' + formatNumber(params.data["ZUSEmerFirma"], locale,'1.2-2') +'</span><br>'
@@ -112,14 +115,14 @@ export class SitPayrollsComponent implements OnInit {
     ];
 
     this.columnDefsPayrollsCalc = [
-      { headerName: 'ID', field: 'sitPayrollsCalcId', filter: 'agNumericColumnFilter' },
+      { headerName: 'ID', field: 'sitPayrollsCalcId', filter: 'agNumberColumnFilter' },
       { headerName: 'GUID', field: 'sitPayrollsCalcG', filter: 'agTextColumnFilter' },
       { headerName: 'Nazwisko', field: 'LastName', filter: 'agTextColumnFilter', width: 150, autoHeight: true, sort: 'asc',
         cellRenderer: function(params) {
         return '<b>' + params.data["LastName"] +'</b><br>' + params.data["FirstName"]
         }
       },
-      { headerName: 'Wynagrodzenie', field: 'Gross', filter: 'agNumericColumnFilter', width: 140, autoHeight: true,
+      { headerName: 'Wynagrodzenie', field: 'Gross', filter: 'agNumberColumnFilter', width: 140, autoHeight: true,
         type: 'rightAligned',
         cellRenderer: function(params) {
         return '<span style="color: dimgray;">Netto:</span> <span style="display:inline-block;width:60px;">' + formatNumber(params.data["Net"], locale,'1.2-2') +'</span><br>'
@@ -127,7 +130,7 @@ export class SitPayrollsComponent implements OnInit {
              + '<span style="color: dimgray;">Podatek:</span> <span style="display:inline-block;width:60px;">' + formatNumber(params.data["Tax"], locale,'1.2-2') + '</span>'
         }
       },
-      { headerName: 'ZUS pracownika', field: 'ZUSEmerPrac', filter: 'agNumericColumnFilter', width: 140, autoHeight: true,
+      { headerName: 'ZUS pracownika', field: 'ZUSEmerPrac', filter: 'agNumberColumnFilter', width: 140, autoHeight: true,
         type: 'rightAligned',
         cellRenderer: function(params) {
         return '<span style="color: dimgray;">Emeryt.:</span> <span style="display:inline-block;width:50px;">' + formatNumber(params.data["ZUSEmerPrac"], locale,'1.2-2') +'</span><br>'
@@ -135,7 +138,7 @@ export class SitPayrollsComponent implements OnInit {
             + '<span style="color: dimgray;">Chorob.:</span> <span style="display:inline-block;width:50px;">' + formatNumber(params.data["ZUSChorPrac"], locale,'1.2-2') + '</span>'
         }
       },
-      { headerName: '', field: 'ZUSWypPrac', filter: 'agNumericColumnFilter', width: 140, autoHeight: true,
+      { headerName: '', field: 'ZUSWypPrac', filter: 'agNumberColumnFilter', width: 140, autoHeight: true,
         type: 'rightAligned',
         cellRenderer: function(params) {
         return '<b><span style="color: dimgray;">Społeczne:</span> <span style="display:inline-block;width:50px;">' + formatNumber(params.data["ZUSSpolPrac"], locale,'1.2-2') + '</span></b><br>'
@@ -144,7 +147,7 @@ export class SitPayrollsComponent implements OnInit {
 
         }
       },
-      { headerName: 'ZUS pracodawcy', field: 'ZUSEmerPrac', filter: 'agNumericColumnFilter', width: 140, autoHeight: true,
+      { headerName: 'ZUS pracodawcy', field: 'ZUSEmerPrac', filter: 'agNumberColumnFilter', width: 140, autoHeight: true,
         type: 'rightAligned',
         cellRenderer: function(params) {
         return '<span style="color: dimgray;">Emeryt.:</span> <span style="display:inline-block;width:50px;">' + formatNumber(params.data["ZUSEmerFirma"], locale,'1.2-2') +'</span><br>'
@@ -152,7 +155,7 @@ export class SitPayrollsComponent implements OnInit {
             + '<span style="color: dimgray;">Wyp.:</span> <span style="display:inline-block;width:50px;">' + formatNumber(params.data["ZUSWypFirma"], locale,'1.2-2') + '</span>'
         }
       },
-      { headerName: '', field: 'ZUSFP', filter: 'agNumericColumnFilter', width: 130, autoHeight: true,
+      { headerName: '', field: 'ZUSFP', filter: 'agNumberColumnFilter', width: 130, autoHeight: true,
         type: 'rightAligned',
         cellRenderer: function(params) {
         return '<span style="color: dimgray;">FP:</span> <span style="display:inline-block;width:50px;">' + formatNumber(params.data["ZUSFP"], locale,'1.2-2') + '</span><br>'
@@ -160,7 +163,7 @@ export class SitPayrollsComponent implements OnInit {
             + '<b><span style="color: dimgray;">Suma:</span> <span style="display:inline-block;width:50px;">' + formatNumber(params.data["ZUSFirma"], locale,'1.2-2') + '</span></b>'
         }
       },
-      { headerName: 'PPK', field: 'PPKFirma', filter: 'agNumericColumnFilter', width: 150, autoHeight: true,
+      { headerName: 'PPK', field: 'PPKFirma', filter: 'agNumberColumnFilter', width: 150, autoHeight: true,
         type: 'rightAligned',
         cellRenderer: function(params) {
         return '<span style="color: dimgray;">Pracownik:</span> <span style="display:inline-block;width:50px;">' + formatNumber(params.data["PPKPrac"], locale,'1.2-2') + '</span><br>'
@@ -170,10 +173,10 @@ export class SitPayrollsComponent implements OnInit {
    ];
 
    this.columnDefsPayrollComponentsCalc = [
-    { headerName: 'ID', field: 'sitPayrollComponentsCalcId', filter: 'agNumericColumnFilter' },
+    { headerName: 'ID', field: 'sitPayrollComponentsCalcId', filter: 'agNumberColumnFilter' },
     { headerName: 'GUID', field: 'sitPayrollComponentsCalcG', filter: 'agTextColumnFilter' },
     { headerName: 'Składnik', field: 'PayrollComponentDesc', tooltipField: 'PayrollComponentDesc', filter: 'agTextColumnFilter' },
-    { headerName: 'Wynagrodzenie', field: 'Gross', filter: 'agNumericColumnFilter', width: 140, autoHeight: true,
+    { headerName: 'Wynagrodzenie', field: 'Gross', filter: 'agNumberColumnFilter', width: 140, autoHeight: true,
       type: 'rightAligned',
       cellRenderer: function(params) {
       return '<span style="color: dimgray;">Wartość:</span> <span style="display:inline-block;width:60px;">' + formatNumber(params.data["Value"], locale,'1.2-2') +'</span><br>'
@@ -181,7 +184,7 @@ export class SitPayrollsComponent implements OnInit {
            + '<span style="color: dimgray;">Podatek:</span> <span style="display:inline-block;width:60px;">' + formatNumber(params.data["Tax"], locale,'1.2-2') + '</span>'
       }
     },
-    { headerName: 'ZUS pracownika', field: 'ZUSEmerPrac', filter: 'agNumericColumnFilter', width: 140, autoHeight: true,
+    { headerName: 'ZUS pracownika', field: 'ZUSEmerPrac', filter: 'agNumberColumnFilter', width: 140, autoHeight: true,
       type: 'rightAligned',
       cellRenderer: function(params) {
       return '<span style="color: dimgray;">Emeryt.:</span> <span style="display:inline-block;width:50px;">' + formatNumber(params.data["ZUSEmerPrac"], locale,'1.2-2') +'</span><br>'
@@ -189,7 +192,7 @@ export class SitPayrollsComponent implements OnInit {
           + '<span style="color: dimgray;">Chorob.:</span> <span style="display:inline-block;width:50px;">' + formatNumber(params.data["ZUSChorPrac"], locale,'1.2-2') + '</span>'
       }
     },
-    { headerName: '', field: 'ZUSWypPrac', filter: 'agNumericColumnFilter', width: 140, autoHeight: true,
+    { headerName: '', field: 'ZUSWypPrac', filter: 'agNumberColumnFilter', width: 140, autoHeight: true,
       type: 'rightAligned',
       cellRenderer: function(params) {
       return '<b><span style="color: dimgray;">Społeczne:</span> <span style="display:inline-block;width:50px;">' + formatNumber(params.data["ZUSSpolPrac"], locale,'1.2-2') + '</span></b><br>'
@@ -198,7 +201,7 @@ export class SitPayrollsComponent implements OnInit {
 
       }
     },
-    { headerName: 'ZUS pracodawcy', field: 'ZUSEmerPrac', filter: 'agNumericColumnFilter', width: 140, autoHeight: true,
+    { headerName: 'ZUS pracodawcy', field: 'ZUSEmerPrac', filter: 'agNumberColumnFilter', width: 140, autoHeight: true,
       type: 'rightAligned',
       cellRenderer: function(params) {
       return '<span style="color: dimgray;">Emeryt.:</span> <span style="display:inline-block;width:50px;">' + formatNumber(params.data["ZUSEmerFirma"], locale,'1.2-2') +'</span><br>'
@@ -206,7 +209,7 @@ export class SitPayrollsComponent implements OnInit {
           + '<span style="color: dimgray;">Wyp.:</span> <span style="display:inline-block;width:50px;">' + formatNumber(params.data["ZUSWypFirma"], locale,'1.2-2') + '</span>'
       }
     },
-    { headerName: '', field: 'ZUSFP', filter: 'agNumericColumnFilter', width: 130, autoHeight: true,
+    { headerName: '', field: 'ZUSFP', filter: 'agNumberColumnFilter', width: 130, autoHeight: true,
       type: 'rightAligned',
       cellRenderer: function(params) {
       return '<span style="color: dimgray;">FP:</span> <span style="display:inline-block;width:50px;">' + formatNumber(params.data["ZUSFP"], locale,'1.2-2') + '</span><br>'
@@ -214,7 +217,7 @@ export class SitPayrollsComponent implements OnInit {
           + '<b><span style="color: dimgray;">Suma:</span> <span style="display:inline-block;width:50px;">' + formatNumber(params.data["ZUSFirma"], locale,'1.2-2') + '</span></b>'
       }
     },
-    { headerName: 'PPK', field: 'PPKFirma', filter: 'agNumericColumnFilter', width: 150, autoHeight: true,
+    { headerName: 'PPK', field: 'PPKFirma', filter: 'agNumberColumnFilter', width: 150, autoHeight: true,
       type: 'rightAligned',
       cellRenderer: function(params) {
       return '<span style="color: dimgray;">Pracownik:</span> <span style="display:inline-block;width:50px;">' + formatNumber(params.data["PPKPrac"], locale,'1.2-2') + '</span><br>'
@@ -224,16 +227,16 @@ export class SitPayrollsComponent implements OnInit {
   ];
 
   this.columnDefsPayrollsCalcAccounting = [
-    { headerName: 'ID', field: 'sitPayrollsCalcAccountingId', filter: 'agNumericColumnFilter' },
+    { headerName: 'ID', field: 'sitPayrollsCalcAccountingId', filter: 'agNumberColumnFilter' },
     { headerName: 'GUID', field: 'sitPayrollsCalcAccountingG', filter: 'agTextColumnFilter' },
-    { headerName: 'Lp', field: 'PosId', type: 'numericColumn', filter: 'agNumericColumnFilter', width: 80, sort: 'asc' },
+    { headerName: 'Lp', field: 'PosId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 60, sort: 'asc', suppressMenu: true },
     { headerName: 'Konto', field: 'Account', filter: 'agTextColumnFilter', width: 150 },
-    { headerName: 'Kwota WN', field: 'CAmount', type: 'numericColumn', filter: 'agNumericColumnFilter', width: 100,
+    { headerName: 'Kwota WN', field: 'CAmount', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100,
       cellRenderer: function(params) {
         return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
       }
     },
-    { headerName: 'Kwota MA', field: 'DAmount', type: 'numericColumn', filter: 'agNumericColumnFilter', width: 100,
+    { headerName: 'Kwota MA', field: 'DAmount', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100,
       cellRenderer: function(params) {
         return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
       },
@@ -242,19 +245,70 @@ export class SitPayrollsComponent implements OnInit {
 ];
 
 this.columnDefsPayrollsAccounting = [
-  { headerName: 'Lp', field: 'PosId', type: 'numericColumn', filter: 'agNumericColumnFilter', width: 80, sort: 'asc' },
+  { headerName: 'Lp', field: 'PosId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 60, sort: 'asc', suppressMenu: true },
   { headerName: 'Konto', field: 'Account', filter: 'agTextColumnFilter', width: 150, floatingFilter: true },
-  { headerName: 'Kwota WN', field: 'CAmount', type: 'numericColumn', filter: 'agNumericColumnFilter', width: 100, floatingFilter: true,
+  { headerName: 'Kwota WN', field: 'CAmount', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, floatingFilter: true,
     cellRenderer: function(params) {
       return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
     }
   },
-  { headerName: 'Kwota MA', field: 'DAmount', type: 'numericColumn', filter: 'agNumericColumnFilter', width: 100, floatingFilter: true,
+  { headerName: 'Kwota MA', field: 'DAmount', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, floatingFilter: true,
     cellRenderer: function(params) {
       return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
     },
   },
   { headerName: 'Opis', field: 'PosDesc', filter: 'agTextColumnFilter', width: 250, floatingFilter: true },
+];
+
+this.columnDefsPayrollsCalcAccountingDim = [
+  { headerName: 'ID', field: 'sitPayrollsCalcAccountingDimId', filter: 'agNumberColumnFilter' },
+  { headerName: 'GUID', field: 'sitPayrollsCalcAccountingDimG', filter: 'agTextColumnFilter' },
+  { headerName: 'Lp', field: 'PosId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 60, sort: 'asc', suppressMenu: true,
+    cellClass: 'grid-cell-center-right'
+  },
+  { headerName: 'Kwota', field: 'Amount', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100,
+    cellRenderer: function(params) {
+      return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
+    },
+    cellClass: 'grid-cell-center-right'
+  },
+  { headerName: 'Dział', field: 'CompanyDepartmentIdent', filter: 'agTextColumnFilter',tooltipField: 'CompanyDepartmentDesc',
+    cellRenderer: function(params) {
+      var ident;
+      var desc;
+      ident = params.data["CompanyDepartmentIdent"] ? params.data["CompanyDepartmentIdent"] : ''
+      desc = params.data["CompanyDepartmentDesc"] ? params.data["CompanyDepartmentDesc"] : ''
+      return '<b>' + ident + '</b><br>' + desc
+    }
+  },
+  { headerName: 'Projekt', field: 'ProjectIdent', filter: 'agTextColumnFilter', tooltipField: 'ProjectName',
+    cellRenderer: function(params) {
+      var ident;
+      var desc;
+      ident = params.data["ProjectIdent"] ? params.data["ProjectIdent"] : '';
+      desc = params.data["ProjectName"] ? params.data["ProjectName"] : '';
+      return '<b>' + ident + '</b><br>' + desc
+    }
+  },
+  { headerName: 'Kanał dystrybucji', field: 'DistributionChannelIdent', filter: 'agTextColumnFilter', tooltipField: 'DistributionChannelDesc',
+    cellRenderer: function(params) {
+      var ident;
+      var desc;
+      ident = params.data["DistributionChannelIdent"] ? params.data["DistributionChannelIdent"] : '';
+      desc = params.data["DistributionChannelDesc"] ? params.data["DistributionChannelDesc"] : '';
+      return '<b>' + ident + '</b><br>' + desc
+    }
+  },
+  { headerName: 'Typ produktu', field: 'ProductsTypeIdent', filter: 'agTextColumnFilter', tooltipField: 'ProductsTypeDesc',
+    cellRenderer: function(params) {
+      var ident;
+      var desc;
+      ident = params.data["ProductsTypeIdent"] ? params.data["ProductsTypeIdent"] : '';
+      desc = params.data["ProductsTypeDesc"] ? params.data["ProductsTypeDesc"] : '';
+      return '<b>' + ident + '</b><br>' + desc
+    }
+  },
+
 ];
 
 }
@@ -302,6 +356,17 @@ this.columnDefsPayrollsAccounting = [
 
   onRowClickedPayrollsCalcAccounting(event) {
     const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitPayrollsCalcAccounting');
+      dataSourceResponseWrapper.SetActiveRow(event.data);
+  }
+
+  onGridReadyPayrollsCalcAccountingDim(params) {
+    this.gridApiPayrollsCalcAccounting = params.api;
+    this.gridColumnApiPayrollsCalcAccounting = params.columnApi;
+    this.gridColumnApiPayrollsCalcAccounting.setColumnsVisible(['sitPayrollsCalcAccountingDimId','sitPayrollsCalcAccountingDimG'], false)
+  }
+
+  onRowClickedPayrollsCalcAccountingDim(event) {
+    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitPayrollsCalcAccountingDim');
       dataSourceResponseWrapper.SetActiveRow(event.data);
   }
 

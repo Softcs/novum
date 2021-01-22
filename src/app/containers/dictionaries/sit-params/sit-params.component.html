@@ -7,20 +7,7 @@
             <sit-data-input #sitControl id="searchParams" field="searchParams" label="Filtruj" placeholder="Parametr, wartość" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
         </sit-data-set-container>
       </div>
-      <!-- Procedury sitParams -->
-      <sit-data-set-container  ident="sitParams" fxFlex fxLayout="column">
-        <div class="sit-proc-bar">
-          <mat-toolbar color="accent">
-            <mat-toolbar-row>
-              <div class="sit-proc-buttons-row">
-                <sit-proc-button #sitAction actionIdent="insert" componentParamsIdent="sitParamsEdit" openKind="EXPANDER" tooltip="Nowy" color="primary" icon="post_add"></sit-proc-button>
-                <sit-proc-button #sitAction actionIdent="update" componentParamsIdent="sitParamsEdit" openKind="EXPANDER" tooltip="Edycja" color="primary" icon="edit"></sit-proc-button>
-                <sit-proc-button #sitAction actionIdent="delete" tooltip="Usuń"  color="primary" icon="delete" delete="true" matType="mat-stroked-button"></sit-proc-button>
-              </div>
-            </mat-toolbar-row>
-          </mat-toolbar>
-        </div>
-        <!--Grid sitParams-->
+      <sit-data-set-container  ident="sitParams" showActionsToolbar="true" fxFlex fxLayout="column">
         <div class="data-table" fxFlex>
           <ag-grid-angular #sitSetDataSource
             #agGrid

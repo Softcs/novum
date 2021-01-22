@@ -2,28 +2,12 @@
   <div fxLayout="row" fxFlexFill fxLayoutGap="5px">
     <div fxFlex="50%" fxLayout="column" fxLayoutGap="5px">
       <div fxFlex="400px" class="content" fxLayout="column">
-
-        <!-- Filtry sitMenu -->
         <sit-data-set-container ident="sitFilterMenu" >
           <span>
             <sit-data-input #sitControl field="searchMenu" label="Filtruj menu" appearance="outline" style="width: 300px" showRefreshButton="true"></sit-data-input>
           </span>
         </sit-data-set-container>
-
-        <!-- Procedury sitMenu -->
-        <sit-data-set-container  ident="sitMenu" fxFlex fxLayout="column">
-          <div class="sit-proc-bar">
-            <mat-toolbar color="accent">
-              <mat-toolbar-row>
-                <div class="sit-proc-buttons-row">
-                  <sit-proc-button #sitAction actionIdent="insert" componentParamsIdent="sitMenuEdit" openKind="EXPANDER" tooltip="Nowy" color="primary" icon="post_add" >              </sit-proc-button>
-                  <sit-proc-button #sitAction actionIdent="update" componentParamsIdent="sitMenuEdit" openKind="EXPANDER" tooltip="Edycja" color="primary" icon="edit">              </sit-proc-button>
-                  <sit-proc-button #sitAction actionIdent="delete" color="primary" icon="delete" delete="true" matType="mat-stroked-button"></sit-proc-button>
-                </div>
-              </mat-toolbar-row>
-            </mat-toolbar>
-          </div>
-          <!-- Grid sitMenu -->
+        <sit-data-set-container  ident="sitMenu" showActionsToolbar="true" fxFlex fxLayout="column">
           <div class="data-table" fxFlex>
             <ag-grid-angular #sitSetDataSource
               #agGrid
@@ -47,29 +31,11 @@
         </sit-data-set-container>
       </div>
       <div fxFlex class="content" fxLayout="column">
-
-        <!-- Filtr sitAppUsers -->
         <sit-data-set-container  ident="sitFilterAppUsers" >
           <span>
             <sit-data-input #sitControl field="searchAppUsers" label="Filtruj użytkowników" appearance="outline" style="width: 300px" showRefreshButton="true"></sit-data-input>
           </span>
         </sit-data-set-container>
-
-        <!-- Procedury sitAppUsers
-        <sit-data-set-container  ident="sitAppUsers">
-          <div class="sit-proc-bar">
-            <mat-toolbar color="accent">
-              <mat-toolbar-row>
-                <div class="sit-proc-buttons-row">
-                  <sit-proc-button #sitAction actionIdent="insert" componentParamsIdent="sitMenuEdit" openKind="EXPANDER" tooltip="Nowy" color="primary" icon="post_add" >              </sit-proc-button>
-                  <sit-proc-button #sitAction actionIdent="delete" color="primary" icon="delete" delete="true" matType="mat-stroked-button"></sit-proc-button>
-                </div>
-              </mat-toolbar-row>
-            </mat-toolbar>
-          </div>
-        </sit-data-set-container> -->
-
-        <!-- Grid sitAppUsers-->
         <sit-data-set-container ident="sitAppUsers" fxFlex fxLayout="column">
           <div class="data-table" fxFill>
             <ag-grid-angular #sitSetDataSource
@@ -96,30 +62,12 @@
       </div>
     </div>
     <div fxFlex="50%" fxLayout="column" class="content">
-
-      <!-- Filtr sitMenuItems -->
       <sit-data-set-container  ident="sitFilterMenuItems" >
         <span>
           <sit-data-input #sitControl field="searchMenuItems" label="Filtruj pozycje" appearance="outline" style="width: 300px" showRefreshButton="true"></sit-data-input>
         </span>
       </sit-data-set-container>
-
-      <!-- Procedury sitMenuItems -->
-      <sit-data-set-container  ident="sitMenuItems" fxFlex fxLayout="column">
-        <div class="sit-proc-bar">
-          <mat-toolbar color="accent">
-            <mat-toolbar-row>
-              <div class="sit-proc-buttons-row">
-                <sit-proc-button #sitAction actionIdent="insert" componentParamsIdent="sitMenuItemsEdit" openKind="EXPANDER" tooltip="Nowy" color="primary" icon="post_add"></sit-proc-button>
-                <sit-proc-button #sitAction actionIdent="update" componentParamsIdent="sitMenuItemsEdit" openKind="EXPANDER" tooltip="Edycja" color="primary" icon="edit"></sit-proc-button>
-                <sit-proc-button #sitAction actionIdent="delete" tooltip="Usuń"  color="primary" icon="delete" delete="true" matType="mat-stroked-button"></sit-proc-button>
-                <sit-proc-button #sitAction actionIdent="up" tooltip="Przesuń w górę"  color="primary" icon="arrow_drop_up" delete="true" matType="mat-stroked-button"></sit-proc-button>
-                <sit-proc-button #sitAction actionIdent="down" tooltip="Przesuń w dół"  color="primary" icon="arrow_drop_down" delete="true" matType="mat-stroked-button"></sit-proc-button>
-              </div>
-            </mat-toolbar-row>
-          </mat-toolbar>
-        </div>
-        <!-- Grid sitMenuItems -->
+      <sit-data-set-container ident="sitMenuItems" showActionsToolbar="true" fxFlex fxLayout="column">
         <div class="data-table" fxFlex>
           <ag-grid-angular #sitSetDataSource
             #agGrid

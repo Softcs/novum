@@ -64,7 +64,7 @@ export class SitReturnsComponent implements OnInit {
       { headerName: 'Id', field: 'sitDocumentsHeadersId', sortable: true, resizable: true, filter: 'agTextColumnFilter',width: 90 },
       { headerName: 'GUID', field: 'sitDocumentsHeadersG', sortable: true, resizable: true, filter: 'agTextColumnFilter',width: 150 },
       { headerName: 'Typ dok.', field: 'DocumentIdent', sortable: true, resizable: true, filter: 'agSetColumnFilter',width: 90 },
-      { headerName: 'Status', field: 'DocumentStatus', filter: 'agNumericColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
+      { headerName: 'Status', field: 'DocumentStatus', filter: 'agNumberColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
       { headerName: 'Numer', field: 'DocumentNumber', sortable: true, resizable: true, filter: 'agTextColumnFilter' },
       { headerName: 'Data', field: 'DocumentDate', filter: 'agDateColumnFilter',width: 100, floatingFilter: false, sort: 'desc'  },
       { headerName: 'Status WMS', field: 'Status_WMS', filter: 'agSetColumnFilter', width: 160,

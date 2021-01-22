@@ -1,0 +1,11 @@
+<mat-toolbar color="accent">
+  <mat-toolbar-row>
+    <div class="sit-proc-buttons-row" *ngFor="let action of actions">
+      <sit-proc-button #sitAction
+        [actionDefinition] = "action" 
+        [dataSetResponseWrapper] = "dataSetResponseWrapper"
+        [dataSetManagerSource] = "dataSetManagerSource"      
+      ></sit-proc-button>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>

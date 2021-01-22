@@ -112,17 +112,17 @@ export class SitMenuComponent implements OnInit {
   }
 
   onFirstDataRendered(params) {
-    const allColumnIds = [];
+    // const allColumnIds = [];
 
-    this.gridColumnApi.getAllColumns().forEach(function(column) {
-      allColumnIds.push(column.colId);
-    });
-    this.gridColumnApiMenuItems.getAllColumns().forEach(function(column) {
-      allColumnIds.push(column.colId);
-    });
-    this.gridColumnApiAppUsers.getAllColumns().forEach(function(column) {
-      allColumnIds.push(column.colId);
-    });
+    // this.gridColumnApi.getAllColumns().forEach(function(column) {
+    //   allColumnIds.push(column.colId);
+    // });
+    // this.gridColumnApiMenuItems.getAllColumns().forEach(function(column) {
+    //   allColumnIds.push(column.colId);
+    // });
+    // this.gridColumnApiAppUsers.getAllColumns().forEach(function(column) {
+    //   allColumnIds.push(column.colId);
+    // });
   }
 
 }

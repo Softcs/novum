@@ -1,9 +1,10 @@
-import { Component, OnInit, ViewChild, AfterViewInit, ViewChildren, QueryList  } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ViewChildren, QueryList, SystemJsNgModuleLoader  } from '@angular/core';
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
 import { DataSetWrapper } from '@app/_models';
 import { environment } from '@environments/environment';
 import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
+import { StylesheetMap } from '@angular/flex-layout';
 
 @Component({
   selector: 'app-sit-customers',
@@ -23,6 +24,8 @@ export class SitCustomersComponent implements OnInit {
   defaultColDef;
   rowSelection;
   popupParent;
+
+  
 
   constructor(
     private gatewayService: GatewayService
@@ -47,8 +50,6 @@ export class SitCustomersComponent implements OnInit {
       { headerName: 'Kraj', field: 'CountrySymbol', filter: 'agTextColumnFilter' },
       { headerName: 'Status WMS', field: 'Status_WMS', filter: 'agTextColumnFilter' },
     ];
-
-
    }
 
   ngOnInit(): void {

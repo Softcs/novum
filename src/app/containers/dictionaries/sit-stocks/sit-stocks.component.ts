@@ -118,7 +118,7 @@ export class SitStocksComponent implements OnInit {
           { headerName: 'Identyfikator', field: 'ProductIdent', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 150 },
           { headerName: 'EAN', field: 'EAN', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 120 },
           { headerName: 'Nazwa', field: 'ProductName', tooltipField: 'ProductName', filter: 'agTextColumnFilter', width: 300 },
-          { headerName: 'Waga', field: 'Weight', filter: 'agNumericColumnFilter', width: 80,
+          { headerName: 'Waga', field: 'Weight', filter: 'agNumberColumnFilter', width: 80,
             type: 'numericColumn',
             cellRenderer: function(params) {
             return formatNumber(params.data["Weight"], locale,'1.3-3')
@@ -142,13 +142,13 @@ export class SitStocksComponent implements OnInit {
       },
       { headerName: 'Stan',
         children: [
-          { headerName: 'MWS', field: 'Quantity', type: 'numericColumn', filter: 'agNumericColumnFilter', width: 100 },
+          { headerName: 'MWS', field: 'Quantity', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100 },
         ]
       },
     ];
 
     this.columnDefsLogisticUnits = [
-      { headerName: 'Id', field: 'sitLogisticUnitsId', sortable: true, resizable: true, type: "numericColumn", filter: 'agNumericColumnFilter' },
+      { headerName: 'Id', field: 'sitLogisticUnitsId', sortable: true, resizable: true, type: "numericColumn", filter: 'agNumberColumnFilter' },
       { headerName: 'GUID', field: 'sitLogisticUnitsG', sortable: true, resizable: true, filter: 'agTextColumnFilter' },
       { headerName: 'EAN', field: 'LogisticUnitEAN', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 110 },
       { headerName: "Lokalizacja", field: 'LocationIdent', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 150 },
@@ -178,7 +178,7 @@ export class SitStocksComponent implements OnInit {
 
         ],
       },
-      { headerName: 'Stan', field: 'Quantity', type: 'numericColumn', filter: 'agNumericColumnFilter', width: 100 },
+      { headerName: 'Stan', field: 'Quantity', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100 },
 
     ]
 

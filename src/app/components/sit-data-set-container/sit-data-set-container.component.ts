@@ -1,5 +1,5 @@
-import { Component,  Input,  ContentChildren,
-  QueryList, Output, EventEmitter } from '@angular/core';
+import { Component, Input, ContentChildren, ViewChildren,
+  QueryList, Output, EventEmitter, ViewChild} from '@angular/core';
 import { DataSetWrapper, DataSetManager } from '@app/_models';
 import { SitDataBaseComponent } from '../controls/sit-data-base/sit-data-base.component';
 import { sitSetDataSetDirective } from '@app/_directives/sitSetDataSetDirective';
@@ -8,7 +8,9 @@ import { SitActionDirective } from '@app/_directives';
 import { SitRefreshButtonComponent } from '../controls/sit-refresh-button/sit-refresh-button.component';
 import { SitFilesButtonComponent } from '../controls/sit-files-button/sit-files-button.component';
 import { SitButtonBaseComponent } from '../controls/sit-button-base/sit-button-base.component';
+import { ActionDefinitionWrapper } from '@app/_models/actionDefinitionWrapper';
 import { Subscription } from 'rxjs';
+import { SitActionsToolbarComponent } from '../controls/sit-actions-toolbar/sit-actions-toolbar.component';
 
 @Component({
   selector: 'sit-data-set-container',
@@ -26,19 +28,27 @@ export class SitDataSetContainerComponent {
   @ContentChildren('sitControl', { descendants: true })
   databaseControlsInterface!: QueryList<SitDataBaseComponent>;
 
-  @ContentChildren("sitAction", { descendants: true })
+  @ContentChildren('sitAction',  { descendants: true })
   actionControlsInterface!: QueryList<SitActionDirective>;
 
   @ContentChildren(SitRefreshButtonComponent, { descendants: true })
   refreshButtons!: QueryList<SitRefreshButtonComponent>;
+
+  @ViewChild('sitActionToolbar', { static: false })
+  actionToolbar: SitActionsToolbarComponent;
 
   @ContentChildren(SitFilesButtonComponent, { descendants: true })
   filesButtons!: QueryList<SitFilesButtonComponent>;
 
   @Input() ident: string;
   dataSetResponseWrapper: DataSetWrapper;
+  @Input() showActionsToolbar: boolean = false; // czy pokazywac w widoku actions-toolbar
+
   @Output()
   activeRowChanged: EventEmitter<any> = new EventEmitter<any>();
+
+  @Output()
+  afterPropagte: EventEmitter<string> = new EventEmitter<string>();
 
   public dataSetControlsManager: DataSetManager;
 
@@ -102,6 +112,7 @@ export class SitDataSetContainerComponent {
     if (gridApi == null) {
       return null;
     }
+
     var customProperty = gridApi.SeidoCustomProperty;
     if (customProperty == null) {
       customProperty = {};
@@ -118,19 +129,48 @@ export class SitDataSetContainerComponent {
         }
       }
 
-
       gridApi.SeidoCustomProperty = customProperty;
+
       this.activeRowChanged.subscribe( (row) => {
         var prevRow = customProperty.activeRow;
         customProperty.activeRow = row;
-        var rowsToUpdate = [row];
-        if (prevRow) {
+        var rowsToUpdate = [];
+  
+        if (row) {
+          rowsToUpdate.push(row);
+        }
+  
+        if (prevRow && row) {
           rowsToUpdate.push(prevRow);
         }
-        gridApi.applyTransaction({update:rowsToUpdate});
+        this.redrawGridActiveRow(gridApi, prevRow); 
+        //gridApi.applyTransaction({update:rowsToUpdate});
       });
     }
+    
     return customProperty;
+  }
+
+  public redrawGridActiveRow(gridApi: any, prevRow: any) {
+    if (!this.activeRow || !gridApi) {
+      return;
+    }  
+    
+    let limit = prevRow ? 2 : 1;
+    const fieldName = this.getFieldId(this.ident);      
+    const fieldValue = this.activeRow[fieldName];
+    const prevValue = prevRow ? prevRow[fieldName] : null;
+    gridApi.forEachNode( (rowNode) => { 
+      const rowValue = rowNode.data[fieldName];
+      if (this.compareStrings(rowValue, fieldValue) || this.compareStrings(rowValue, prevValue)) {
+        rowNode.setData(rowNode.data);
+        limit--;
+      }
+      
+      if (limit == 0) {
+        return false;
+      }
+    });    
   }
 
   public refreshRows(dataSetWrapper: DataSetWrapper, dataSourcesRequest) {
@@ -238,18 +278,21 @@ export class SitDataSetContainerComponent {
     }
   }
 
-  public prepareControls(dataSetWrapperDefinition: DataSetDefinitionWrapper) {
+  public prepareControls(dataSetWrapperDefinition: DataSetDefinitionWrapper) {    
+    this.actionControlsInterface.forEach(actionControl => {
+      actionControl.dataSetResponseWrapper = this.dataSetResponseWrapper;
+      actionControl.actionDefinition = dataSetWrapperDefinition?.FindActionDefinition(actionControl.actionIdent);
+      actionControl.dataSetManagerSource = this.dataSetControlsManager;
+    });         
 
-    if (this.actionControlsInterface != null) {
-
-      this.actionControlsInterface.forEach(actionControl => {
-        actionControl.dataSetResponseWrapper = this.dataSetResponseWrapper;
-        actionControl.actionDefinition = dataSetWrapperDefinition?.FindActionDefinition(actionControl.actionIdent);
-        actionControl.dataSetManagerSource = this.dataSetControlsManager;
-      });
-    }
     this.pepareControlForButtons(this.refreshButtons);
-    this.pepareControlForButtons(this.filesButtons);
+    this.pepareControlForButtons(this.filesButtons);  
+
+    if (this.actionToolbar) {
+      this.actionToolbar.dataSetResponseWrapper = this.dataSetResponseWrapper;
+      this.actionToolbar.dataSetManagerSource = this.dataSetControlsManager;
+      this.actionToolbar.actions = dataSetWrapperDefinition.actions ? dataSetWrapperDefinition.actions.filter(a => a.showInToolbar) : [];
+    } 
   }
 
   set errors(value: any[]) {
@@ -267,6 +310,13 @@ export class SitDataSetContainerComponent {
 
   public setDataSetManager(dataSetControlsManager: DataSetManager) {
     this.dataSetControlsManager = dataSetControlsManager;
+  }
+  //funkcja callbackowa do filtrowania czy akcja powinna byc wystwietlona na toolbarze
+  showActionOnToolbar(action: ActionDefinitionWrapper): boolean {
+    if(action != null) {
+      return action.showInToolbar;
+    } else
+      return false;
   }
 
   public detachEvents() {

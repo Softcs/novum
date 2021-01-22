@@ -4,8 +4,10 @@ import { DataSetWrapper } from '@app/_models';
 import { environment } from '@environments/environment';
 import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
+import { AttachmentsService } from '@app/_services/attachments.service';
 import { MatSpinner } from '@angular/material/progress-spinner';
-//import { AllModules } from '@ag-grid-enterprise/all-modules';
+
+
 
 @Component({
   selector: 'app-sit-projects-pub',
@@ -33,7 +35,8 @@ export class SitProjectsPubComponent implements OnInit {
 
 
   constructor(
-    private gatewayService: GatewayService
+    private gatewayService: GatewayService,
+    private attachmentsService: AttachmentsService,
     ) {
       this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
       this.popupParent = document.querySelector('body');
@@ -81,9 +84,10 @@ export class SitProjectsPubComponent implements OnInit {
   }
 
   activeRowProjectsPubChanged(activeRow) {
-    this.Link = activeRow == null || activeRow.sitImagesG == null
-      ? environment.apiUrl +'/service/attachments/get/' + this.currentUser.token + '/noimage/noimage.jpg' : // kiedy brak rekordu
-        environment.apiUrl +'/service/attachments/get/' + this.currentUser.token + '/' + activeRow.sitImagesG + '/' + activeRow.FileName
+    this.Link = activeRow?.sitImagesG == null
+    ? this.attachmentsService.getUrl(this.currentUser, "noimage", "noimage.jpg") // kiedy brak rekordu
+    :  this.attachmentsService.getUrl(this.currentUser, activeRow.sitImagesG, activeRow.FileName) ;
+
 
   }
 
@@ -99,5 +103,22 @@ export class SitProjectsPubComponent implements OnInit {
 
   get activeRowProjectsPub() {
     return this.dictContainer?.activeRow('sitProjectsPub')
+  }
+
+  printProject() {
+    var content = document.getElementById('projectData').innerHTML;
+    var printWindow =  window.open('', '', 'height=700, width=1000, left=100,top=100');
+
+    printWindow.document.write('<html><body>');
+    printWindow.document.write(content);
+    printWindow.document.write('</body></html>');
+    document.querySelectorAll('link, style').forEach(htmlElement => {
+      printWindow.document.head.appendChild(htmlElement.cloneNode(true));
+    });
+    printWindow.document.close();
+    setTimeout(function() {
+      printWindow.print();
+      printWindow.close();
+    }, 500);
   }
 }

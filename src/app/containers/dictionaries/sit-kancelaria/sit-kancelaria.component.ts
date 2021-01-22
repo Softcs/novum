@@ -49,7 +49,7 @@ export class SitKancelariaComponent implements OnInit {
   ) {
 
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
-    this.tabService.activeTab.subscribe(x => this.activeTab = x);
+    this.tabService.activeTabIndex.subscribe(x => this.activeTab = x);
     this.frameworkComponents = {
       gridCheckboxRenderer: GridCheckboxRenderer,
     };
@@ -111,8 +111,8 @@ export class SitKancelariaComponent implements OnInit {
   ngOnInit(): void {}
 
   activeRowAttachmentsChanged(activeRow) {
-    this.sitAttachmentsSelected.splice(0, this.sitAttachmentsSelected.length);
-    this.sitAttachmentsSelected.push(...[activeRow]);
+    // this.sitAttachmentsSelected.splice(0, this.sitAttachmentsSelected.length);
+    // this.sitAttachmentsSelected.push(...[activeRow]);
 
   }
 

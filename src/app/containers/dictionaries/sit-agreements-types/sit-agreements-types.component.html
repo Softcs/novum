@@ -5,18 +5,7 @@
         <sit-data-input #sitControl field="searchAgreementsTypes" label="Filtruj" placeholder="" appearance="outline" style="width: 300px;" showRefreshButton="true"></sit-data-input>
     </div>
     </sit-data-set-container>
-    <sit-data-set-container ident="sitAgreementsTypes" fxFlex fxLayout="column">
-      <div class="sit-proc-bar">
-        <mat-toolbar color="accent">
-          <mat-toolbar-row>
-            <div class="sit-proc-buttons-row">
-              <sit-proc-button #sitAction actionIdent="insert" componentParamsIdent="sitAgreementsTypesEdit" openKind="EXPANDER" tooltip="Nowy" color="primary" icon="post_add"></sit-proc-button>
-              <sit-proc-button #sitAction actionIdent="update" componentParamsIdent="sitAgreementsTypesEdit" openKind="EXPANDER" tooltip="Edycja" color="primary" icon="edit"></sit-proc-button>
-              <sit-proc-button #sitAction actionIdent="delete" tooltip="Usuń"  color="primary" icon="delete" delete="true" matType="mat-stroked-button"></sit-proc-button>
-            </div>
-          </mat-toolbar-row>
-        </mat-toolbar>
-      </div>
+    <sit-data-set-container ident="sitAgreementsTypes" showActionsToolbar="true" fxFlex fxLayout="column">
       <div class="data-table" fxFlex>
         <ag-grid-angular #sitSetDataSource
           #agGrid

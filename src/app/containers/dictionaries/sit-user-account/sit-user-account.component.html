@@ -1,23 +1,14 @@
 <sit-dict-container ident="sitAppUserAccount"  #sitDictcontainer fxFlexFill>
   <div fxFlexFill fxLayoutAlign="start center" fxLayout="column" class="content">
-    <sit-data-set-container ident="sitAppUserAccount" style="padding: 50px;">
+    <sit-data-set-container ident="sitAppUserAccount" showActionsToolbar="true" style="padding: 50px;">
       <div fxLayout="column">
+        <br>
         <sit-data-input type="text" id="UserLogin" #sitControl field="UserLogin" label="Login" [showRefresh]=false appearance="outline" style="width: 500px" readonly="true"></sit-data-input>
         <div fxLayout="row">
           <sit-data-input type="text" id="Name" #sitControl field="Name" label="Imię" [showRefresh]=false appearance="outline" style="width: 250px" readonly="true"></sit-data-input>
           <sit-data-input type="text" id="SurName" #sitControl field="SurName" label="Nazwisko" [showRefresh]=false appearance="outline" style="width: 250px" readonly="true"></sit-data-input>
         </div>
         <sit-data-input type="text" id="email" #sitControl field="email" label="e-mail" [showRefresh]=false appearance="outline" style="width: 500px" readonly="true"></sit-data-input>
-        <br>
-      </div>
-      <div class="sit-proc-bar">
-        <mat-toolbar color="accent">
-          <mat-toolbar-row>
-            <div class="sit-proc-buttons-row">
-              <sit-proc-button #sitAction actionIdent="changePassword" componentParamsIdent="sitUserAccoutChangePassword" tooltip="Zmień hasło" color="primary" caption="Zmień hasło"></sit-proc-button>
-            </div>
-          </mat-toolbar-row>
-        </mat-toolbar>
       </div>
     </sit-data-set-container>
   </div>

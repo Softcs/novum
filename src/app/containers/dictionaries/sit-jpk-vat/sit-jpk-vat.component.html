@@ -1,16 +1,6 @@
 <sit-dict-container ident="sitJPKVAT" #sitDictcontainer id="wrapper">
-  <div class="sit-proc-bar">
-    <mat-toolbar color="accent">
-      <mat-toolbar-row>
-        <div class="sit-proc-buttons-row">
-          <sit-data-set-container ident="sitProcGetJPKData">
-            <sit-proc-button #sitAction actionIdent="sitProcGetJPKData" componentParamsIdent="sitJpkVatGetData" tooltip="Pobierz dane" color="primary" icon="cloud_download" >
-            </sit-proc-button>
-          </sit-data-set-container>
-        </div>
-      </mat-toolbar-row>
-    </mat-toolbar>
-  </div>
+  <sit-data-set-container showActionsToolbar="true" ident="sitProcGetJPKData">
+  </sit-data-set-container>
   <mat-tab-group id="tab-group"
     animationDuration="0ms"
     (selectedTabChange)="tabChanged($event)">

@@ -1,25 +1,12 @@
 <sit-dict-container ident="sitWarehouses" #sitDictcontainer fxFill>
   <div fxLayout="column" fxFill class="content">
     <sit-data-set-container ident="sitFilterWarehouses" fxLayout="row">
-      <div class="sit-filter-bar">
+      <div class="sit-filter-bar" fxLayout="row">
           <sit-data-input #sitControl field="searchWarehouses" label="Filtruj magazyny" appearance="outline" style="width: 300px;" showRefreshButton="true"></sit-data-input>
       </div>
     </sit-data-set-container>
-    <sit-data-set-container ident="sitWarehouses" >
-      <div class="sit-proc-bar">
-        <mat-toolbar color="accent">
-          <mat-toolbar-row>
-            <div class="sit-proc-buttons-row">
-              <sit-proc-button #sitAction actionIdent="insert" componentParamsIdent="sitWarehousesEdit" openKind="EXPANDER" tooltip="Nowy" color="primary" icon="post_add"></sit-proc-button>
-              <sit-proc-button #sitAction actionIdent="update" componentParamsIdent="sitWarehousesEdit" openKind="EXPANDER" tooltip="Edycja" color="primary" icon="edit"></sit-proc-button>
-              <sit-proc-button #sitAction actionIdent="delete" tooltip="Usuń"  color="primary" icon="delete" delete="true" matType="mat-stroked-button"></sit-proc-button>
-            </div>
-          </mat-toolbar-row>
-        </mat-toolbar>
-      </div>
-    </sit-data-set-container>
-    <div fxFlex>
-      <sit-data-set-container ident="sitWarehouses" >
+    <sit-data-set-container ident="sitWarehouses" showActionsToolbar="true" fxLayout="column" fxFlex>
+      <div class="data-table" fxFlex>
         <ag-grid-angular #sitSetDataSource
           #agGrid
           id="gridWarehouses"
@@ -38,7 +25,7 @@
           (firstDataRendered)="onFirstDataRendered($event)"
         >
         </ag-grid-angular>
-      </sit-data-set-container>
-    </div>
+      </div>
+    </sit-data-set-container>
   </div>
 </sit-dict-container>

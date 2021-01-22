@@ -1,11 +1,12 @@
 import { DictInfoWrapper, DataSetWrapper, Operation } from '.';
 import { SitDataSetContainerComponent } from '@app/components/sit-data-set-container';
-import { QueryList, Output, EventEmitter } from '@angular/core';
+import { QueryList, Output, EventEmitter, Directive } from '@angular/core';
 import { GatewayService } from '@app/_services';
 import { first } from 'rxjs/operators';
 import { DataSetDefinitionWrapper } from './dataSetDefinitionWrapper';
 import { SitProcExpanderComponent } from '@app/components/controls/sit-proc-expander/sit-proc-expander.component';
 
+@Directive()
 export class DataSetManager {
     private _dictInfo: DictInfoWrapper;
     private _dataSetContainers: QueryList<SitDataSetContainerComponent>;

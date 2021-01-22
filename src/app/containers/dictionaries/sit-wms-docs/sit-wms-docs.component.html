@@ -258,17 +258,7 @@
               <mat-tab label="Załączniki">
                 <div class="content" fxFill fxLayout="column">
                   <div fxFlex="20">
-                    <sit-data-set-container  ident="sitAttachments"  fxFlex fxLayout="column">
-                      <div class="sit-proc-bar">
-                        <mat-toolbar color="accent">
-                          <mat-toolbar-row>
-                            <div class="sit-proc-buttons-row">
-                              <sit-proc-button #sitAction actionIdent="insert" componentParamsIdent="sitAttachmentsIns" tooltip="Dodaj skan" color="primary" icon="post_add" ></sit-proc-button>
-                              <sit-proc-button #sitAction actionIdent="delete" tooltip="Usuń"  color="primary" icon="delete" delete="true" matType="mat-stroked-button"></sit-proc-button>
-                            </div>
-                          </mat-toolbar-row>
-                        </mat-toolbar>
-                      </div>
+                    <sit-data-set-container ident="sitAttachments" showActionsToolbar="true" fxFlex fxLayout="column">
                       <div class="data-table" fxFlex>
                         <ag-grid-angular #sitSetDataSource
                         #agGrid

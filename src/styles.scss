@@ -125,7 +125,6 @@ body {
   z-index: 100;
 }
 
-
 .sit-close-tab-icon {
   font-size: 10px;
   text-align: right;
@@ -135,20 +134,6 @@ body {
 
 }
 
-.sit-filter-bar {
-
-}
-
-.sit-proc-bar{
-  margin-bottom: 5px;
-
-}
-
-.sit-proc-buttons-row button, .sit-proc-buttons-row a, .sit-proc-buttons-row sit-proc-button {
-  margin-right: 8px;
-
-
-}
 
 .sit-proc-expander-title {
   text-align: center;
@@ -165,7 +150,6 @@ body {
   padding: 20px;
   min-width: 400px;
   min-height: 200px;
-
 }
 
 .sit-proc-params-bottom-bar {
@@ -381,7 +365,7 @@ button:focus {
 
 .sit-row-active {
   //background-color: magenta !important;
-  background-color:#cce6ff !important;
+  background-color: #cce6ff !important;
 }
 
 .sit-grid-title {
@@ -526,4 +510,11 @@ div.cover{
   overflow: visible;
   height: 280px;
   //width: 300px;
+}
+
+.grid-cell-center-right {
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
