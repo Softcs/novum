@@ -48,6 +48,15 @@ export class DataSetWrapper {
         return this.connectedLookups != null;
     }
 
+    get parents() {
+        const dataSourceDef = this.getDataSource();
+        if (!dataSourceDef || !dataSourceDef.hasParents) {
+            return null;
+        }
+        
+        return dataSourceDef.parents;
+    }
+
     private getDataSource() {
         if (this._dataSource) {
             return this._dataSource;
@@ -200,21 +209,21 @@ export class DataSetWrapper {
     }
 
     public allParentsHaveRows(): boolean {
-        const dataSourceDef = this.getDataSource();
-        if (!dataSourceDef || !dataSourceDef.hasParents) {
+        if (!this.parents) {
             return true;
         }
+
         let result = true;
-        dataSourceDef.parents.forEach(parent => {
+        this.parents.forEach(parent => {
             const parentDataSet = this.dataSourceManager.getDateSourceWrapper(parent);
             if (!parentDataSet || !parentDataSet || !parentDataSet.rows || parentDataSet.rows.length === 0) {
                 result = false;
                 return false;
             }
         });
+        
         return result;
-    }
-
+    }   
 
     public GenerateRow(
         sourceRow: any = null, add: boolean = true,

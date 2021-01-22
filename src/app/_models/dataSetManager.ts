@@ -164,6 +164,48 @@ export class DataSetManager {
         }
     }
 
+    public ExdcuteInitInfo(dataSourceIdent: string, 
+                    executeActionCompletedCallback: Function,
+                    executeActionExceptionCallback: Function,
+                    owner: any,
+                    sourceDictIdent: string = null) {
+        const dictIdent = sourceDictIdent ?? this.dictInfo?.ident;
+        const dataSourcesRequest: any[] = [];
+        const dsWrapper: DataSetWrapper = this.getDateSourceWrapper(dataSourceIdent);
+        if (dsWrapper.parents) {
+            dsWrapper.parents.forEach(parent => {
+                const parentDataSource = this.FindDataSource(parent);
+                if (parentDataSource) {
+                    const obj = this.getObjectForDataSourceRequest(parentDataSource, false);
+                    dataSourcesRequest.push(obj);
+                }
+            });       
+        }
+
+        const opr: Operation = this.gatewayService.operationExecuteInitInfo(
+            dictIdent,
+            dataSourcesRequest,
+            dataSourceIdent);
+
+        this.gatewayService.executeOperation(opr)
+            .pipe(first())
+            .subscribe(
+                data => {
+                    if (data.length === 1) {
+                        const response = data[0];
+                        const wasErrors = this.PropagateErrors(dataSourceIdent, response?.Errors);
+                        
+                        !wasErrors 
+                                    ? executeActionCompletedCallback ?? executeActionCompletedCallback(owner)
+                                    : executeActionExceptionCallback ?? executeActionExceptionCallback(owner);                        
+                    }
+                },
+                error => {
+                    console.error("error", error);
+                    executeActionExceptionCallback ?? executeActionExceptionCallback(owner);
+                });
+    }
+
     public ExecuteAction(actionIdent: string, dataSourceIdent: string,
                          owner: any,
                          executeActionCompletedCallback: Function,
