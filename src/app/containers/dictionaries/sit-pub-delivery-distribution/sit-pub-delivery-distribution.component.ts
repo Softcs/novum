@@ -8,7 +8,7 @@ import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
 import { formatDate } from '@angular/common';
 import { formatNumber } from '@angular/common';
-
+import { GridService } from '@app/_services/grid.service';
 @Component({
   selector: 'sit-pub-delivery-distribution',
   templateUrl: './sit-pub-delivery-distribution.component.html',
@@ -20,16 +20,13 @@ export class SitPubDeliveryDistributionComponent implements OnInit {
   @ViewChildren('sitDictcontainer') dictContainers !: QueryList<SitDictContainerComponent>;
 
   currentUser: User;
-  rowSelection;
   popupParent;
   defaultColDef;
-
-  gridApi;
-  gridColumnApi;
   columnDefs;
 
   constructor(
     private gatewayService: GatewayService,
+    private gridService: GridService,
     @Inject(LOCALE_ID) private locale: string
   ) {
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
@@ -168,9 +165,9 @@ export class SitPubDeliveryDistributionComponent implements OnInit {
 
 
   onGridReady(params) {
-    this.gridApi = params.api;
-    this.gridColumnApi = params.columnApi;
-    this.gridColumnApi.setColumnsVisible(['Publishing'],false)
+    this.gridService.setDefGridOptionsOnReady(params);
+
+    params.columnApi.setColumnsVisible(['Publishing'],false)
   }
 
   onRowClicked(event) {

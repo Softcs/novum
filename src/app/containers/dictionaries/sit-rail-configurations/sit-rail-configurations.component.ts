@@ -2,7 +2,7 @@
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
 import { DataSetWrapper } from '@app/_models';
 import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
-
+import { GridService } from '@app/_services/grid.service';
 @Component({
     selector: 'sit-rail-configurations',
     templateUrl: 'sit-rail-configurations.component.html',
@@ -14,17 +14,13 @@ export class SitRailConfigurationsComponent implements OnInit {
   @ViewChild('sitRailConfigurations') table: any;
   @ViewChildren('sitDictcontainer') dictContainers !: QueryList<SitDictContainerComponent>;
 
-  sitRailConfigurationsSelected = [];
-
   popupParent;
   frameworkComponents;
-
-  gridApi;
-  gridColumnApi;
   columnDefs;
-  pinnedBottomRowData;
 
-  constructor() {
+  constructor(
+    private gridService: GridService
+  ) {
     this.popupParent = document.querySelector('body');
 
     this.columnDefs = [
@@ -42,23 +38,15 @@ export class SitRailConfigurationsComponent implements OnInit {
   }
 
   onGridReady(params) {
-    this.gridApi = params.api;
-    this.gridColumnApi = params.columnApi;
-
+    this.gridService.setDefGridOptionsOnReady(params);
   }
 
   onRowClicked(event) {
     const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitRailConfigurations');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
+    dataSourceResponseWrapper.SetActiveRow(event.data);
   }
 
-  onFirstDataRendered(params) {
-    const allColumnIds = [];
-
-    this.gridColumnApi.getAllColumns().forEach(function(column) {
-      allColumnIds.push(column.colId);
-    });
-  }
+  onFirstDataRendered(params) { }
 
 
 }

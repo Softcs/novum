@@ -4,7 +4,7 @@ import { SitDictContainerComponent } from '@app/components/sit-dict-container';
 import { DataSetWrapper } from '@app/_models';
 import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
-
+import { GridService } from '@app/_services/grid.service';
 @Component({
   selector: 'sit-sys-dictionaries',
   templateUrl: './sit-sys-dictionaries.component.html',
@@ -33,7 +33,8 @@ export class SitSysDictionariesComponent implements OnInit {
   columnDefsActions;
 
   constructor(
-    private gatewayService: GatewayService
+    private gatewayService: GatewayService,
+    private gridService: GridService
   ) {
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
     this.frameworkComponents = {
@@ -70,18 +71,21 @@ export class SitSysDictionariesComponent implements OnInit {
   }
 
   onGridReady(params) {
+    this.gridService.setDefGridOptionsOnReady(params);
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
     this.gridColumnApi.setColumnsVisible(['sitSysDictionariesId', 'sitSysDictionariesG'], false)
   }
 
   onGridReadyDatasources(params) {
+    this.gridService.setDefGridOptionsOnReady(params);
     this.gridApiDatasources = params.api;
     this.gridColumnApiDatasources = params.columnApi;
     this.gridColumnApiDatasources.setColumnsVisible(['sitSysDatasourcesId', 'sitSysDatasourcesG'], false)
   }
 
   onGridReadyActions(params) {
+    this.gridService.setDefGridOptionsOnReady(params);
     this.gridApiActions = params.api;
     this.gridColumnApiActions = params.columnApi;
     this.gridColumnApiActions.setColumnsVisible(['sitSysActionsId', 'sitSysActionsG'], false)

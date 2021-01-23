@@ -8,7 +8,7 @@ import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
 import { formatDate } from '@angular/common';
 import { formatNumber } from '@angular/common';
-
+import { GridService } from '@app/_services/grid.service';
 @Component({
   selector: 'app-sit-payroll-components',
   templateUrl: './sit-payroll-components.component.html',
@@ -32,6 +32,7 @@ export class SitPayrollComponentsComponent implements OnInit {
 
   constructor(
     private gatewayService: GatewayService,
+    private gridService: GridService,
     @Inject(LOCALE_ID) private locale: string
   ) {
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
@@ -63,6 +64,8 @@ export class SitPayrollComponentsComponent implements OnInit {
   }
 
   onGridReady(params) {
+    this.gridService.setDefGridOptionsOnReady(params);
+
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
     this.gridColumnApi.setColumnsVisible(['sitPayrollComponentsId','sitPayrollComponentsG'], false)

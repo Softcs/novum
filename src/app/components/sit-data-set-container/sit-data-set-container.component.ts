@@ -245,7 +245,6 @@ export class SitDataSetContainerComponent {
       this.applyCustomPropsGrid(element);
       const gridApi = element["api"];
       if (gridApi) {
-        this.gridService.setDefGridOptions (gridApi);
         // tree grid - parsowanie kolumny z danymi do drzewa
         if (this.dataSetResponseWrapper.rows) {
           this.dataSetResponseWrapper.rows.forEach(element => {
@@ -285,6 +284,14 @@ export class SitDataSetContainerComponent {
   }
 
   public prepareControls(dataSetWrapperDefinition: DataSetDefinitionWrapper) {
+
+    this.datasSourcesInterface.forEach(element => {
+      const gridApi = element["api"];
+      if (gridApi) {
+        this.gridService.setDefGridOptions (element);
+      }
+    });
+
     this.actionControlsInterface.forEach(actionControl => {
       actionControl.dataSetResponseWrapper = this.dataSetResponseWrapper;
       actionControl.actionDefinition = dataSetWrapperDefinition?.FindActionDefinition(actionControl.actionIdent);

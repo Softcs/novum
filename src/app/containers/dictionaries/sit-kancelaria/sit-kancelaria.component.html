@@ -13,16 +13,16 @@
               </sit-data-set-container>
               <sit-data-set-container ident="sitCustomers" showActionsToolbar="true" fxFlex fxLayout="column">
                 <div class="data-table" fxFlex>
-                  <ag-grid-angular #sitSetDataSource
-                  #agGrid
-                  id="gridCustomers"
-                  style="width: 100%; height: 100%;"
-                  class="ag-theme-balham"
-                  [columnDefs]="columnDefsCustomers"
-                  [popupParent]="popupParent"
-                  (rowClicked)="onRowClickedCustomers($event)"
-                  (gridReady)="onGridReadyCustomers($event)"
-                  (firstDataRendered)="onFirstDataRendered($event)">
+                  <ag-grid-angular
+                    #sitSetDataSource
+                    #sitCustomersGrid
+                    style="width: 100%; height: 100%;"
+                    class="ag-theme-balham"
+                    [columnDefs]="columnDefsCustomers"
+                    [popupParent]="popupParent"
+                    (rowClicked)="onRowClicked($event)"
+                    (gridReady)="onGridReady($event)"
+                    (firstDataRendered)="onFirstDataRendered($event)">
                   </ag-grid-angular>
                 </div>
               </sit-data-set-container>
@@ -35,15 +35,15 @@
                   <div class="sit-grid-title">Umowy</div>
                   <sit-data-set-container ident="sitAgreements" showActionsToolbar="true" fxFlex fxLayout="column">
                     <div class="data-table" fxFlex>
-                      <ag-grid-angular #sitSetDataSource
-                        #agGrid
-                        id="gridAgreements"
+                      <ag-grid-angular
+                        #sitSetDataSource
+                        #sitAgreementsGrid
                         style="width: 100%; height: 100%;"
                         class="ag-theme-balham"
                         [columnDefs]="columnDefsAgreements"
                         [popupParent]="popupParent"
-                        (rowClicked)="onRowClickedAgreements($event)"
-                        (gridReady)="onGridReadyAgreements($event)"
+                        (rowClicked)="onRowClicked($event)"
+                        (gridReady)="onGridReady($event)"
                         (firstDataRendered)="onFirstDataRendered($event)"
                         [frameworkComponents]="frameworkComponents"
                         >
@@ -60,16 +60,17 @@
                   <div class="sit-grid-title">Załączniki do umów</div>
                   <sit-data-set-container  ident="sitAttachments" showActionsToolbar="true" (activeRowChanged)="activeRowAttachmentsChanged($event)" fxFlex fxLayout="column">
                     <div class="data-table" fxFlex>
-                      <ag-grid-angular #sitSetDataSource
-                      #agGrid
-                      id="gridAttachments"
-                      style="width: 100%; height: 100%;"
-                      class="ag-theme-balham"
-                      [columnDefs]="columnDefsAttachments"
-                      [popupParent]="popupParent"
-                      (rowClicked)="onRowClickedAttachments($event)"
-                      (gridReady)="onGridReadyAttachments($event)"
-                      (firstDataRendered)="onFirstDataRendered($event)"
+                      <ag-grid-angular
+                        #sitSetDataSource
+                        #sitAttachmentsGrid
+                        id="gridAttachments"
+                        style="width: 100%; height: 100%;"
+                        class="ag-theme-balham"
+                        [columnDefs]="columnDefsAttachments"
+                        [popupParent]="popupParent"
+                        (rowClicked)="onRowClicked($event)"
+                        (gridReady)="onGridReady($event)"
+                        (firstDataRendered)="onFirstDataRendered($event)"
                       >
                       </ag-grid-angular>
                     </div>

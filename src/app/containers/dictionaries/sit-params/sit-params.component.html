@@ -9,9 +9,9 @@
       </div>
       <sit-data-set-container  ident="sitParams" showActionsToolbar="true" fxFlex fxLayout="column">
         <div class="data-table" fxFlex>
-          <ag-grid-angular #sitSetDataSource
-            #agGrid
-            id="gridRailConfigurations"
+          <ag-grid-angular
+            #sitSetDataSource
+            #sitParamsGrid
             style="width: 100%; height: 100%;"
             class="ag-theme-balham"
             [columnDefs]="columnDefs"

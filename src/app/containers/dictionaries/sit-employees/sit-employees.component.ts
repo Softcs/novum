@@ -6,6 +6,7 @@ import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-ren
 import { environment } from '@environments/environment';
 import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
+import { GridService } from '@app/_services/grid.service';
 
 @Component({
   selector: 'sit-employees',
@@ -18,14 +19,12 @@ export class SitEmployeesComponent implements OnInit {
   @ViewChildren('sitDictcontainer') dictContainers !: QueryList<SitDictContainerComponent>;
 
   currentUser: User;
-
-  gridApi;
-  gridColumnApi;
   columnDefs;
   popupParent;
 
   constructor(
-    private gatewayService: GatewayService
+    private gatewayService: GatewayService,
+    private gridService: GridService
   ) {
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
     this.popupParent = document.querySelector('body');
@@ -46,13 +45,15 @@ export class SitEmployeesComponent implements OnInit {
   }
 
   onGridReady(params) {
-    this.gridApi = params.api;
-    this.gridColumnApi = params.columnApi;
+    this.gridService.setDefGridOptionsOnReady(params);
+
   }
 
   onRowClicked(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitEmployees');
+    if (event.data['sitEmployeesG']) {
+      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitEmployees');
       dataSourceResponseWrapper.SetActiveRow(event.data);
+    }
   }
 
   onFirstDataRendered(params) {

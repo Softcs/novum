@@ -8,6 +8,7 @@ import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-ren
 import { AttachmentsService } from '@app/_services/attachments.service';
 import { formatNumber } from '@angular/common';
 import { formatDate } from '@angular/common';
+import { GridService } from '@app/_services/grid.service';
 
 @Component({
   selector: 'app-sit-stocks',
@@ -51,6 +52,7 @@ export class SitStocksComponent implements OnInit {
   constructor(
     private gatewayService: GatewayService,
     private attachmentsService: AttachmentsService,
+    private gridService: GridService,
     @Inject(LOCALE_ID) private locale: string
   ) {
     this.contentColor = document.documentElement.style.getPropertyValue('$content-background-color');
@@ -175,23 +177,28 @@ export class SitStocksComponent implements OnInit {
   }
 
   onGridReady(params) {
+    this.gridService.setDefGridOptionsOnReady(params);
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
   }
   onGridReadyWMSStocksDet(params) {
+    this.gridService.setDefGridOptionsOnReady(params);
     this.gridApiWMSStocksDet = params.api;
     this.gridColumnApiWMSStocksDet = params.columnApi;
   }
   onGridReadyWMSStocks(params) {
+    this.gridService.setDefGridOptionsOnReady(params);
     this.gridApiWMSStocks = params.api;
     this.gridColumnApiWMSStocks = params.columnApi;
   }
   onGridReadyLogisticUnits(params) {
+    this.gridService.setDefGridOptionsOnReady(params);
     this.gridApiLogisticUnits = params.api;
     this.gridColumnApiLogisticUnits = params.columnApi;
     this.gridColumnApiLogisticUnits.setColumnsVisible(['sitLogisticUnitsId','sitLogisticUnitsG'],false)
   }
   onGridReadyWMSStocksWithLogisticUnits(params) {
+    this.gridService.setDefGridOptionsOnReady(params);
     this.gridApiWMSStocksWithLogisticUnits = params.api;
     this.gridColumnApiWMSStocksWithLogisticUnits = params.columnApi;
   }

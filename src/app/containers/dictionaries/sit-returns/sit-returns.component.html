@@ -15,15 +15,15 @@
                 </div>
                 <sit-data-set-container ident="sitDocumentsHeaders" showActionsToolbar="true" fxFlex fxLayout="column">
                   <div class="data-table" fxFlex>
-                    <ag-grid-angular #sitSetDataSource
-                      #agGrid
-                      id="gridDocumentsHeaders"
+                    <ag-grid-angular
+                      #sitSetDataSource
+                      #sitDocumentsHeadersGrid
                       style="width: 100%; height: 100%;"
                       class="ag-theme-balham"
                       [columnDefs]="columnDefsDocumentsHeaders"
                       [popupParent]="popupParent"
-                      (rowClicked)="onRowClickedDocumentsHeaders($event)"
-                      (gridReady)="onGridReadyDocumentsHeaders($event)"
+                      (rowClicked)="onRowClicked($event)"
+                      (gridReady)="onGridReady($event)"
                     >
                     </ag-grid-angular>
                   </div>
@@ -34,17 +34,18 @@
               <div fxFill class="content">
                 <sit-data-set-container  ident="sitDocumentsPositions" fxFill fxLayout="column">
                   <div class="data-table" fxFill>
-                    <ag-grid-angular #sitSetDataSource
-                    #agGrid
-                    id="gridDocumentsPositions"
-                    style="width: 100%; height: 100%;"
-                    class="ag-theme-balham"
-                    [columnDefs]="columnDefsDocumentsPositions"
-                    [popupParent]="popupParent"
-                    [frameworkComponents]="frameworkComponents"
-                    [rowClassRules]="rowClassRules"
-                    (rowClicked)="onRowClickedDocumentsPositions($event)"
-                    (gridReady)="onGridReadyDocumentsPositions($event)"
+                    <ag-grid-angular
+                      #sitSetDataSource
+                      #sitDocumentsPositionsGrid
+                      style="width: 100%; height: 100%;"
+                      class="ag-theme-balham"
+                      [columnDefs]="columnDefsDocumentsPositions"
+                      [popupParent]="popupParent"
+                      [frameworkComponents]="frameworkComponents"
+                      [rowClassRules]="rowClassRules"
+                      (rowClicked)="onRowClicked($event)"
+                      (gridReady)="onGridReady($event)"
+                      (firstDataRendered)="onFirstDataRendered($event)"
                     >
                     </ag-grid-angular>
                   </div>
@@ -59,16 +60,16 @@
               <div class="sit-grid-title">Załączniki</div>
               <sit-data-set-container ident="sitAttachments" showActionsToolbar="true" fxFlex fxLayout="column">
                 <div class="data-table" fxFlex>
-                  <ag-grid-angular #sitSetDataSource
-                  #agGrid
-                  id="gridAttachments"
-                  style="width: 100%; height: 100%;"
-                  class="ag-theme-balham"
-                  [columnDefs]="columnDefsAttachments"
-                  [popupParent]="popupParent"
-                  (rowClicked)="onRowClickedAttachments($event)"
-                  (gridReady)="onGridReadyAttachments($event)"
-                  (firstDataRendered)="onFirstDataRendered($event)"
+                  <ag-grid-angular
+                    #sitSetDataSource
+                    #sitAttachmentsGrid
+                    style="width: 100%; height: 100%;"
+                    class="ag-theme-balham"
+                    [columnDefs]="columnDefsAttachments"
+                    [popupParent]="popupParent"
+                    (rowClicked)="onRowClicked($event)"
+                    (gridReady)="onGridReady($event)"
+                    (firstDataRendered)="onFirstDataRendered($event)"
                   >
                   </ag-grid-angular>
                 </div>

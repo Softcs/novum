@@ -9,9 +9,9 @@
       <as-split-area [size]="50">
         <sit-data-set-container ident="sitJobs" showActionsToolbar="true" fxFill fxLayout="column" class="content">
           <div class="data-table" fxFlex>
-            <ag-grid-angular #sitSetDataSource
-              #agGrid
-              id="gridJobs"
+            <ag-grid-angular
+              #sitSetDataSource
+              #sitJobsGrid
               style="width: 100%; height: 100%;"
               class="ag-theme-balham"
               [columnDefs]="columnDefs"
@@ -28,16 +28,16 @@
       <as-split-area [size]="50">
         <sit-data-set-container  ident="sitJobSteps" showActionsToolbar="true" fxFill fxLayout="column">
           <div class="data-table" fxFlex>
-            <ag-grid-angular #sitSetDataSource
-              #agGrid
-              id="gridJobSteps"
+            <ag-grid-angular
+              #sitSetDataSource
+              #sitJobStepsGrid
               style="width: 100%; height: 100%;"
               class="ag-theme-balham"
               [columnDefs]="columnDefsJobSteps"
               [popupParent]="popupParent"
               [frameworkComponents]="frameworkComponents"
-              (rowClicked)="onRowClickedJobSteps($event)"
-              (gridReady)="onGridReadyJobSteps($event)"
+              (rowClicked)="onRowClicked($event)"
+              (gridReady)="onGridReady($event)"
               (firstDataRendered)="onFirstDataRendered($event)"
             >
             </ag-grid-angular>

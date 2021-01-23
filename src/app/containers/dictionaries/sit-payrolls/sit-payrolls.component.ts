@@ -8,7 +8,7 @@ import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
 import { formatDate } from '@angular/common';
 import { formatNumber } from '@angular/common';
-
+import { GridService } from '@app/_services/grid.service';
 
 @Component({
   selector: 'app-sit-payrolls',
@@ -44,6 +44,7 @@ export class SitPayrollsComponent implements OnInit {
 
   constructor(
     private gatewayService: GatewayService,
+    private gridService: GridService,
     @Inject(LOCALE_ID) private locale: string
   ) {
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
@@ -305,6 +306,8 @@ this.columnDefsPayrollsCalcAccountingDim = [
   ngOnInit(): void {}
 
   onGridReady(params) {
+    this.gridService.setDefGridOptionsOnReady(params);
+
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
     this.gridColumnApi.setColumnsVisible(['sitPayrollsId','sitPayrollsG'], false)
@@ -316,6 +319,7 @@ this.columnDefsPayrollsCalcAccountingDim = [
   }
 
   onGridReadyPayrollsCalc(params) {
+    this.gridService.setDefGridOptionsOnReady(params);
     this.gridApiPayrollsCalc = params.api;
     this.gridColumnApiPayrollsCalc = params.columnApi;
     this.gridColumnApiPayrollsCalc.setColumnsVisible(['sitPayrollsCalcId','sitPayrollsCalcG'], false)
@@ -327,6 +331,7 @@ this.columnDefsPayrollsCalcAccountingDim = [
   }
 
   onGridReadyPayrollComponentsCalc(params) {
+    this.gridService.setDefGridOptionsOnReady(params);
     this.gridApiPayrollComponentsCalc = params.api;
     this.gridColumnApiPayrollComponentsCalc = params.columnApi;
     this.gridColumnApiPayrollComponentsCalc.setColumnsVisible(['sitPayrollComponentsCalcId','sitPayrollComponentsCalcG'], false)
@@ -338,6 +343,7 @@ this.columnDefsPayrollsCalcAccountingDim = [
   }
 
   onGridReadyPayrollsCalcAccounting(params) {
+    this.gridService.setDefGridOptionsOnReady(params);
     this.gridApiPayrollsCalcAccounting = params.api;
     this.gridColumnApiPayrollsCalcAccounting = params.columnApi;
     this.gridColumnApiPayrollsCalcAccounting.setColumnsVisible(['sitPayrollsCalcAccountingId','sitPayrollsCalcAccountingG'], false)
@@ -349,6 +355,7 @@ this.columnDefsPayrollsCalcAccountingDim = [
   }
 
   onGridReadyPayrollsCalcAccountingDim(params) {
+    this.gridService.setDefGridOptionsOnReady(params);
     this.gridApiPayrollsCalcAccounting = params.api;
     this.gridColumnApiPayrollsCalcAccounting = params.columnApi;
     this.gridColumnApiPayrollsCalcAccounting.setColumnsVisible(['sitPayrollsCalcAccountingDimId','sitPayrollsCalcAccountingDimG'], false)
@@ -360,6 +367,7 @@ this.columnDefsPayrollsCalcAccountingDim = [
   }
 
   onGridReadyPayrollsAccounting(params) {
+    this.gridService.setDefGridOptionsOnReady(params);
     this.gridApiPayrollsAccounting = params.api;
     this.gridColumnApiPayrollsAccounting = params.columnApi;
   }

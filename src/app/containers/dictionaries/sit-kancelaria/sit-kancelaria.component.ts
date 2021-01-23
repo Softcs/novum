@@ -7,7 +7,7 @@ import { User } from '@app/_models';
 import { formatDate } from '@angular/common';
 import { TabService } from '@app/_services/tab.service';
 import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
-
+import { GridService } from '@app/_services/grid.service';
 @Component({
   selector: 'app-sit-kancelaria',
   templateUrl: './sit-kancelaria.component.html',
@@ -21,27 +21,14 @@ export class SitKancelariaComponent implements OnInit {
   activeTab: number;
   Link: string;
   frameworkComponents;
-
-  sitCustomersSelected = [];
-  sitAgreementsSelected = [];
-  sitAttachmentsSelected = [];
-
   popupParent;
-
-  gridApiCustomers;
-  gridColumnApiCustomers;
   columnDefsCustomers;
-
-  gridApiAgreements;
-  gridColumnApiAgreements;
   columnDefsAgreements;
-
-  gridApiAttachments;
-  gridColumnApiAttachments;
   columnDefsAttachments;
 
   constructor(
     private gatewayService: GatewayService,
+    private gridService: GridService,
     @Inject(LOCALE_ID) private locale: string,
     private tabService: TabService,
   ) {
@@ -72,11 +59,11 @@ export class SitKancelariaComponent implements OnInit {
           filterOptions: ['contains']
         }
       },
-      { headerName: 'Data', field: 'Date', width: 100, type: 'dateColumn',
-        // cellRenderer: (data) => { return  formatDate(data.value, 'yyyy-MM-dd', this.locale)}
+      { headerName: 'Data', field: 'Date', width: 100,
+        cellRenderer: (data) => { return  formatDate(data.value, 'yyyy-MM-dd', this.locale)}
       },
-      { headerName: 'Data do', field: 'DateTo', width: 100, type: 'dateColumn',
-        // cellRenderer: (data) => { return  formatDate(data.value, 'yyyy-MM-dd', this.locale)}
+      { headerName: 'Data do', field: 'DateTo', width: 100,
+        cellRenderer: (data) => { return  formatDate(data.value, 'yyyy-MM-dd', this.locale)}
       },
       { headerName: 'Typ umowy', field: 'AgreementsTypeName', width: 150, filter: 'agTextColumnFilter', floatingFilter: true },
       { headerName: 'Lokalizacja', field: 'LocationName', width: 150, filter: 'agTextColumnFilter', floatingFilter: true },
@@ -105,40 +92,30 @@ export class SitKancelariaComponent implements OnInit {
 
   }
 
-  onGridReadyCustomers(params) {
-    this.gridApiCustomers = params.api;
-    this.gridColumnApiCustomers = params.columnApi;
-  }
-  onGridReadyAgreements(params) {
-    this.gridApiAgreements = params.api;
-    this.gridColumnApiAgreements = params.columnApi;
-  }
-  onGridReadyAttachments(params) {
-    this.gridApiAttachments = params.api;
-    this.gridColumnApiAttachments = params.columnApi;
-    this.gridColumnApiAttachments.setColumnsVisible(['sitAttachmentsId','sitAttachmentsG','ParentId'],false)
+  onGridReady(params) {
+    this.gridService.setDefGridOptionsOnReady(params);
 
+    if (params.columnApi.getColumn('sitAttachmentsG')) {
+      params.columnApi.setColumnsVisible(['sitAttachmentsId','sitAttachmentsG','ParentId'],false)
+    }
   }
 
-  onRowClickedCustomers(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitCustomers');
-    dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
-  onRowClickedAgreements(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitAgreements');
-    dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
-  onRowClickedAttachments(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitAttachments');
-    dataSourceResponseWrapper.SetActiveRow(event.data);
+  onRowClicked(event) {
+    if (event.data['sitCustomersG']) {
+      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitCustomers');
+      dataSourceResponseWrapper.SetActiveRow(event.data);
+    }
+
+    if (event.data['sitAgreementsG']) {
+      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitAgreements');
+      dataSourceResponseWrapper.SetActiveRow(event.data);
+    }
+
+    if (event.data['sitAttachmentsG']) {
+      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitAttachments');
+      dataSourceResponseWrapper.SetActiveRow(event.data);
+    }
   }
 
-  onFirstDataRendered(params) {
-    const allColumnIds = [];
-
-    this.gridColumnApiCustomers.getAllColumns().forEach(function(column) {
-      allColumnIds.push(column.colId);
-    });
-    this.gridColumnApiAgreements.autoSizeColumns(allColumnIds, false);
-  }
+  onFirstDataRendered(params) {}
 }

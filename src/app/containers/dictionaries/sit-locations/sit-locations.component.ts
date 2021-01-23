@@ -5,7 +5,7 @@ import { environment } from '@environments/environment';
 import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
 import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
-
+import { GridService } from '@app/_services/grid.service';
 
 @Component({
   selector: 'sit-locations',
@@ -21,13 +21,11 @@ export class SitLocationsComponent implements OnInit {
   frameworkComponents;
 
   popupParent;
-
-  gridApi;
-  gridColumnApi;
   columnDefs;
 
   constructor(
-    private gatewayService: GatewayService
+    private gatewayService: GatewayService,
+    private gridService: GridService
   ) {
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
     this.popupParent = document.querySelector('body');
@@ -47,14 +45,14 @@ export class SitLocationsComponent implements OnInit {
   }
 
   onGridReady(params) {
-    this.gridApi = params.api;
-    this.gridColumnApi = params.columnApi;
-    this.gridColumnApi.setColumnsVisible(['sitLocationsId','sitLocationsG'], false)
+    this.gridService.setDefGridOptionsOnReady(params);
+
+    params.columnApi.setColumnsVisible(['sitLocationsId','sitLocationsG'], false)
   }
 
   onRowClicked(event) {
     const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitLocations');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
+    dataSourceResponseWrapper.SetActiveRow(event.data);
   }
 
   onFirstDataRendered(event) {}

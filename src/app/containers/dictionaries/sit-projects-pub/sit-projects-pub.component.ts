@@ -6,9 +6,7 @@ import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
 import { AttachmentsService } from '@app/_services/attachments.service';
 import { MatSpinner } from '@angular/material/progress-spinner';
-
-
-
+import { GridService } from '@app/_services/grid.service';
 @Component({
   selector: 'app-sit-projects-pub',
   templateUrl: './sit-projects-pub.component.html',
@@ -24,16 +22,14 @@ export class SitProjectsPubComponent implements OnInit {
   Link: any;
 
   popupParent;
-
-  gridApiProjectsPub;
-  gridColumnApiProjectsPub;
   columnDefsProjectsPub;
-  pinnedBottomRowDataProjectsPub;
+
 
 
   constructor(
     private gatewayService: GatewayService,
     private attachmentsService: AttachmentsService,
+    private gridService: GridService
     ) {
       this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
       this.popupParent = document.querySelector('body');
@@ -51,30 +47,21 @@ export class SitProjectsPubComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onGridReadyProjectsPub(params) {
-    this.gridApiProjectsPub = params.api;
-    this.gridColumnApiProjectsPub = params.columnApi;
-
+  onGridReady(params) {
+    this.gridService.setDefGridOptionsOnReady(params);
   }
 
-  onRowClickedProjectsPub(event) {
+  onRowClicked(event) {
     const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitProjectsPub');
     dataSourceResponseWrapper.SetActiveRow(event.data);
   }
 
-  onFirstDataRendered(params) {
-    const allColumnIds = [];
-
-    this.gridColumnApiProjectsPub.getAllColumns().forEach(function(column) {
-      allColumnIds.push(column.colId);
-    });
-  }
+  onFirstDataRendered(params) { }
 
   activeRowProjectsPubChanged(activeRow) {
     this.Link = activeRow?.sitImagesG == null
     ? this.attachmentsService.getUrl(this.currentUser, "noimage", "noimage.jpg") // kiedy brak rekordu
     :  this.attachmentsService.getUrl(this.currentUser, activeRow.sitImagesG, activeRow.FileName) ;
-
 
   }
 

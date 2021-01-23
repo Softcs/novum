@@ -5,7 +5,7 @@ import { environment } from '@environments/environment';
 import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
 import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
-
+import { GridService } from '@app/_services/grid.service';
 
 @Component({
   selector: 'app-sit-rights',
@@ -52,7 +52,8 @@ export class SitRightsComponent implements OnInit {
   columnDefsAgreementsTypes;
 
   constructor(
-    private gatewayService: GatewayService
+    private gatewayService: GatewayService,
+    private gridService: GridService
   ) {
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
     this.frameworkComponents = {
@@ -124,6 +125,8 @@ export class SitRightsComponent implements OnInit {
   }
 
   onGridReady(params) {
+    this.gridService.setDefGridOptionsOnReady(params);
+
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
     this.gridColumnApi.setColumnsVisible(['sitRightsGroupsId','sitRightsGroupsG'],false)
@@ -135,6 +138,7 @@ export class SitRightsComponent implements OnInit {
   }
 
   onGridReadyDictionaries(params) {
+    this.gridService.setDefGridOptionsOnReady(params);
     this.gridApiDictionaries = params.api;
     this.gridColumnApiDictionaries = params.columnApi;
     this.gridColumnApiDictionaries.setColumnsVisible(['sitSysDictionariesId', 'sitSysDictionariesG'], false)
@@ -146,6 +150,7 @@ export class SitRightsComponent implements OnInit {
   }
 
   onGridReadyDatasources(params) {
+    this.gridService.setDefGridOptionsOnReady(params);
     this.gridApiDatasources = params.api;
     this.gridColumnApiDatasources = params.columnApi;
     this.gridColumnApiDatasources.setColumnsVisible(['sitSysDatasourcesId', 'sitSysDatasourcesG'], false)
@@ -157,6 +162,7 @@ export class SitRightsComponent implements OnInit {
   }
 
   onGridReadyActions(params) {
+    this.gridService.setDefGridOptionsOnReady(params);
     this.gridApiActions = params.api;
     this.gridColumnApiActions = params.columnApi;
     this.gridColumnApiActions.setColumnsVisible(['sitSysActionsId', 'sitSysActionsG'], false)
@@ -168,6 +174,7 @@ export class SitRightsComponent implements OnInit {
   }
 
   onGridReadyRightsGroupUsers(params) {
+    this.gridService.setDefGridOptionsOnReady(params);
     this.gridApiRightsGroupUsers = params.api;
     this.gridColumnApiRightsGroupUsers = params.columnApi;
   }
@@ -178,6 +185,7 @@ export class SitRightsComponent implements OnInit {
   }
 
   onGridReadyLocations(params) {
+    this.gridService.setDefGridOptionsOnReady(params);
     this.gridApiLocations = params.api;
     this.gridColumnApiLocations = params.columnApi;
     this.gridColumnApiLocations.setColumnsVisible(['sitLocationsId', 'sitLocationsG'], false)
@@ -189,6 +197,7 @@ export class SitRightsComponent implements OnInit {
   }
 
   onGridReadyAgreementsTypes(params) {
+    this.gridService.setDefGridOptionsOnReady(params);
     this.gridApiAgreementsTypes = params.api;
     this.gridColumnApiAgreementsTypes = params.columnApi;
     this.gridColumnApiAgreementsTypes.setColumnsVisible(['sitAgreementsTypesId', 'sitAgreementsTypesG'], false)

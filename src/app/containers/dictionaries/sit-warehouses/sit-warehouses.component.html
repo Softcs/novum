@@ -7,9 +7,9 @@
     </sit-data-set-container>
     <sit-data-set-container ident="sitWarehouses" showActionsToolbar="true" fxLayout="column" fxFlex>
       <div class="data-table" fxFlex>
-        <ag-grid-angular #sitSetDataSource
-          #agGrid
-          id="gridWarehouses"
+        <ag-grid-angular
+          #sitSetDataSource
+          #sitWarehousesGrid
           style="width: 100%; height: 100%;"
           class="ag-theme-balham"
           [columnDefs]="columnDefs"

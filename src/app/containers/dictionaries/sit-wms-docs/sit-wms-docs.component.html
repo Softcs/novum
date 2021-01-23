@@ -20,15 +20,15 @@
                   </div>
                   <sit-data-set-container  ident="sitDocumentsHeaders" showActionsToolbar="true" fxFlex fxLayout="column" (activeRowChanged)="activeRowChangedDocumentsHeaders($event)">
                     <div class="data-table" fxFlex>
-                      <ag-grid-angular #sitSetDataSource
-                        #agGrid
-                        id="gridDocumentsHeaders"
+                      <ag-grid-angular
+                        #sitSetDataSource
+                        #sitDocumentsHeadersGrid
                         style="width: 100%; height: 100%;"
                         class="ag-theme-balham"
                         [columnDefs]="columnDefsDocumentsHeaders"
                         [popupParent]="popupParent"
-                        (rowClicked)="onRowClickedDocumentsHeaders($event)"
-                        (gridReady)="onGridReadyDocumentsHeaders($event)"
+                        (rowClicked)="onRowClicked($event)"
+                        (gridReady)="onGridReady($event)"
                         (firstDataRendered)="onFirstDataRendered($event)"
                       >
                       </ag-grid-angular>
@@ -40,15 +40,15 @@
                 <div fxLayout="column" fxFill>
                   <sit-data-set-container  ident="sitDocumentsHeadersHistory" fxFill>
                     <div class="data-table" fxFill>
-                      <ag-grid-angular #sitSetDataSource
-                        #agGrid
-                        id="gridDocumentsHeadersHistory"
+                      <ag-grid-angular
+                        #sitSetDataSource
+                        #sitDocumentsHeadersHistoryGrid
                         style="width: 100%; height: 100%;"
                         class="ag-theme-balham"
                         [columnDefs]="columnDefsDocumentsHeadersHistory"
                         [popupParent]="popupParent"
-                        (rowClicked)="onRowClickedDocumentsHeadersHistory($event)"
-                        (gridReady)="onGridReadyDocumentsHeadersHistory($event)"
+                        (rowClicked)="onRowClicked($event)"
+                        (gridReady)="onGridReady($event)"
                         (firstDataRendered)="onFirstDataRendered($event)"
                       >
                       </ag-grid-angular>
@@ -135,18 +135,18 @@
                       <div fxFill>
                         <sit-data-set-container  ident="sitDocumentsPositions" fxFill>
                           <div fxLayout="column" fxFill>
-                              <div class="data-table" fxFill>
-                                <ag-grid-angular #sitSetDataSource
-                                #agGrid
-                                id="gridDocumentsPositions"
+                            <div class="data-table" fxFill>
+                              <ag-grid-angular
+                                #sitSetDataSource
+                                #sitDocumentsPositionsGrid
                                 style="width: 100%; height: 100%;"
                                 class="ag-theme-balham"
                                 [columnDefs]="columnDefsDocumentsPositions"
                                 [popupParent]="popupParent"
                                 [frameworkComponents]="frameworkComponents"
                                 [rowClassRules]="rowClassRules"
-                                (rowClicked)="onRowClickedDocumentsPositions($event)"
-                                (gridReady)="onGridReadyDocumentsPositions($event)"
+                                (rowClicked)="onRowClicked($event)"
+                                (gridReady)="onGridReady($event)"
                                 (firstDataRendered)="onFirstDataRendered($event)"
                               >
                               </ag-grid-angular>
@@ -160,15 +160,16 @@
                       <sit-data-set-container  ident="sitDocumentsPositionsHistory" fxFill>
                         <div fxLayout="column" fxFill>
                             <div class="data-table" fxFill>
-                              <ag-grid-angular #sitSetDataSource
-                                #agGrid
+                              <ag-grid-angular
+                                #sitSetDataSource
+                                #sitDocumentsPositionsHistoryGrid
                                 id="gridDocumentsPositionsHistory"
                                 style="width: 100%; height: 100%;"
                                 class="ag-theme-balham"
                                 [columnDefs]="columnDefsDocumentsPositionsHistory"
                                 [popupParent]="popupParent"
-                                (rowClicked)="onRowClickedDocumentsPositionsHistory($event)"
-                                (gridReady)="onGridReadyDocumentsPositionsHistory($event)"
+                                (rowClicked)="onRowClicked($event)"
+                                (gridReady)="onGridReady($event)"
                                 (firstDataRendered)="onFirstDataRendered($event)"
                               >
                               </ag-grid-angular>
@@ -189,10 +190,11 @@
                       </div>
                     </sit-data-set-container>
                     <sit-data-set-container  ident="sitDocumentsPositionsSum" fxFlex fxLayout="column">
-                        <div fxLayout="column" fxFill>
-                          <div class="data-table" fxFill>
-                            <ag-grid-angular #sitSetDataSource
-                            #agGrid
+                      <div fxLayout="column" fxFill>
+                        <div class="data-table" fxFill>
+                          <ag-grid-angular
+                            #sitSetDataSource
+                            #sitDocumentsPositionsSumGrid
                             id="gridDocumentsPositionsSum"
                             style="width: 100%; height: 100%;"
                             class="ag-theme-balham"
@@ -200,8 +202,8 @@
                             [popupParent]="popupParent"
                             [frameworkComponents]="frameworkComponents"
                             [rowClassRules]="rowClassRules"
-                            (rowClicked)="onRowClickedDocumentsPositionsSum($event)"
-                            (gridReady)="onGridReadyDocumentsPositionsSum($event)"
+                            (rowClicked)="onRowClicked($event)"
+                            (gridReady)="onGridReady($event)"
                             (firstDataRendered)="onFirstDataRendered($event)"
                           >
                           </ag-grid-angular>
@@ -216,16 +218,16 @@
                   <div fxFlex="20">
                     <sit-data-set-container ident="sitAttachments" showActionsToolbar="true" fxFlex fxLayout="column">
                       <div class="data-table" fxFlex>
-                        <ag-grid-angular #sitSetDataSource
-                        #agGrid
-                        id="gridAttachments"
-                        style="width: 100%; height: 100%;"
-                        class="ag-theme-balham"
-                        [columnDefs]="columnDefsAttachments"
-                        [popupParent]="popupParent"
-                        (rowClicked)="onRowClickedAttachments($event)"
-                        (gridReady)="onGridReadyAttachments($event)"
-                        (firstDataRendered)="onFirstDataRendered($event)"
+                        <ag-grid-angular
+                          #sitSetDataSource
+                          #sitAttachmentsGrid
+                          style="width: 100%; height: 100%;"
+                          class="ag-theme-balham"
+                          [columnDefs]="columnDefsAttachments"
+                          [popupParent]="popupParent"
+                          (rowClicked)="onRowClicked($event)"
+                          (gridReady)="onGridReady($event)"
+                          (firstDataRendered)="onFirstDataRendered($event)"
                         >
                         </ag-grid-angular>
                       </div>

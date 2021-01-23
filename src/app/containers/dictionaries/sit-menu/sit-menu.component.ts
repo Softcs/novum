@@ -4,7 +4,7 @@ import { SitDictContainerComponent } from '@app/components/sit-dict-container';
 import { DataSetWrapper } from '@app/_models';
 //import { AllModules } from '@ag-grid-enterprise/all-modules';
 import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
-
+import { GridService } from '@app/_services/grid.service';
 @Component({
   selector: 'sit-menu',
   templateUrl: './sit-menu.component.html',
@@ -17,23 +17,13 @@ export class SitMenuComponent implements OnInit {
 
   popupParent;
   frameworkComponents;
-
-  gridApi;
-  gridColumnApi;
   columnDefs;
-  pinnedBottomRowData;
-
-  gridApiMenuItems;
-  gridColumnApiMenuItems;
   columnDefsMenuItems;
-  pinnedBottomRowDataMenuItems;
-
-  gridApiAppUsers;
-  gridColumnApiAppUsers;
   columnDefsAppUsers;
-  pinnedBottomRowDataAppUsers;
 
-  constructor() {
+  constructor(
+    private gridService: GridService
+  ) {
     this.popupParent = document.querySelector('body');
 
     this.frameworkComponents = {
@@ -41,24 +31,24 @@ export class SitMenuComponent implements OnInit {
     };
 
     this.columnDefs = [
-      { headerName: 'Symbol', field: 'Symbol', sortable: true, filter: 'agTextColumnFilter', autoHeight: true },
-      { headerName: 'Nazwa', field: 'Caption', sortable: true, filter: 'agTextColumnFilter', autoHeight: true },
+      { headerName: 'Symbol', field: 'Symbol', filter: 'agTextColumnFilter' },
+      { headerName: 'Nazwa', field: 'Caption', filter: 'agTextColumnFilter' },
     ];
     this.columnDefsMenuItems = [
-      { headerName: 'Id', field: 'sitMenuItemsId', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, width: 60, type: 'numericColumn' },
-      { headerName: 'GUID', field: 'sitMenuItemsG', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, width: 60, },
-      { headerName: 'Grupa', field: 'ParentCaption', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, width: 100, floatingFilter: true, sort: "asc" },
-      { headerName: 'Kolejność', field: 'OrdId', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, width: 80, type: 'numericColumn', sort: "asc" },
-      { headerName: 'Nazwa', field: 'Caption', sortable: true, filter: 'agTextColumnFilter', autoHeight: true },
-      { headerName: 'Rodzaj', field: 'Kind', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, width: 80 },
-      { headerName: 'Link', field: 'Link', sortable: true, filter: 'agTextColumnFilter', autoHeight: true },
-      { headerName: 'Ikona', field: 'Icon', sortable: true, filter: 'agTextColumnFilter', autoHeight: true },
+      { headerName: 'Id', field: 'sitMenuItemsId', filter: 'agTextColumnFilter', width: 60, type: 'numericColumn' },
+      { headerName: 'GUID', field: 'sitMenuItemsG', filter: 'agTextColumnFilter', width: 60, },
+      { headerName: 'Grupa', field: 'ParentCaption', filter: 'agTextColumnFilter', width: 100, floatingFilter: true, sort: "asc" },
+      { headerName: 'Kolejność', field: 'OrdId', filter: 'agTextColumnFilter', width: 80, type: 'numericColumn', sort: "asc" },
+      { headerName: 'Nazwa', field: 'Caption', filter: 'agTextColumnFilter' },
+      { headerName: 'Rodzaj', field: 'Kind', filter: 'agTextColumnFilter', width: 80 },
+      { headerName: 'Link', field: 'Link', filter: 'agTextColumnFilter' },
+      { headerName: 'Ikona', field: 'Icon', filter: 'agTextColumnFilter' },
     ];
     this.columnDefsAppUsers = [
-      { headerName: 'Login', field: 'UserLogin', sortable: true, filter: 'agTextColumnFilter', autoHeight: true },
-      { headerName: 'Imię', field: 'Name', sortable: true, filter: 'agTextColumnFilter', autoHeight: true },
-      { headerName: 'Nazwisko', field: 'SurName', sortable: true, filter: 'agTextColumnFilter', autoHeight: true },
-      { headerName: 'Aktywny', field: 'IsActive', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, cellRenderer: 'gridCheckboxRenderer' },
+      { headerName: 'Login', field: 'UserLogin', filter: 'agTextColumnFilter' },
+      { headerName: 'Imię', field: 'Name', filter: 'agTextColumnFilter' },
+      { headerName: 'Nazwisko', field: 'SurName', filter: 'agTextColumnFilter' },
+      { headerName: 'Aktywny', field: 'IsActive', filter: 'agTextColumnFilter', cellRenderer: 'gridCheckboxRenderer' },
     ];
 
    }
@@ -68,46 +58,30 @@ export class SitMenuComponent implements OnInit {
   }
 
   onGridReady(params) {
-    this.gridApi = params.api;
-    this.gridColumnApi = params.columnApi;
-  }
-  onGridReadyMenuItems(params) {
-    this.gridApiMenuItems = params.api;
-    this.gridColumnApiMenuItems = params.columnApi;
-    this.gridColumnApiMenuItems.setColumnsVisible(['sitMenuItemsId','sitMenuItemsG'],false)
+    this.gridService.setDefGridOptionsOnReady(params);
 
-  }
-
-  onGridReadyAppUsers(params) {
-    this.gridApiAppUsers = params.api;
-    this.gridColumnApiAppUsers = params.columnApi;
+    if (params.columnApi.getColumn('sitMenuItemsG')) {
+     params.columnApi.setColumnsVisible(['sitMenuItemsId','sitMenuItemsG'],false)
+    }
   }
 
   onRowClicked(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitMenu');
+    if (event.data['sitMenuG'] && !event.data['sitMenuItemsG'] && !event.data['sitAppUsersG']) {
+      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitMenu');
       dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
-  onRowClickedMenuItems(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitMenuItems');
+    }
+
+    if (event.data['sitMenuItemsG']) {
+      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitMenuItems');
       dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
-  onRowClickedAppUsers(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitAppUsers');
+    }
+
+    if (event.data['sitAppUsersG']) {
+      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitAppUsers');
       dataSourceResponseWrapper.SetActiveRow(event.data);
+    }
   }
 
-  onFirstDataRendered(params) {
-    // const allColumnIds = [];
-
-    // this.gridColumnApi.getAllColumns().forEach(function(column) {
-    //   allColumnIds.push(column.colId);
-    // });
-    // this.gridColumnApiMenuItems.getAllColumns().forEach(function(column) {
-    //   allColumnIds.push(column.colId);
-    // });
-    // this.gridColumnApiAppUsers.getAllColumns().forEach(function(column) {
-    //   allColumnIds.push(column.colId);
-    // });
-  }
+  onFirstDataRendered(params) { }
 
 }

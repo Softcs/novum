@@ -8,9 +8,9 @@
       </sit-data-set-container>
       <sit-data-set-container ident="sitAppUsers" showActionsToolbar="true" fxFlex fxLayout="column">
         <div class="data-table" fxFlex>
-          <ag-grid-angular #sitSetDataSource
-            #agGrid
-            id="gridAppUsers"
+          <ag-grid-angular
+            #sitSetDataSource
+            #sitAppUsersGrid
             style="width: 100%; height: 100%;"
             class="ag-theme-balham"
             [columnDefs]="columnDefs"
@@ -19,7 +19,6 @@
             (rowClicked)="onRowClicked($event)"
             (gridReady)="onGridReady($event)"
             (firstDataRendered)="onFirstDataRendered($event)"
-
           >
           </ag-grid-angular>
         </div>
@@ -34,16 +33,17 @@
       </sit-data-set-container>
       <sit-data-set-container ident="sitAppUserCompanies" showActionsToolbar="true" fxFlex=50 fxLayout="column">
         <div class="data-table" fxFlex>
-          <ag-grid-angular #sitSetDataSource
-            #agGrid
+          <ag-grid-angular
+            #sitSetDataSource
+            #sitAppUserCompaniesGrid
             id="gridAppUserCompanies"
             style="width: 100%; height: 100%;"
             class="ag-theme-balham"
             [columnDefs]="columnDefsAppUserCompanies"
             [popupParent]="popupParent"
             [frameworkComponents]="frameworkComponents"
-            (rowClicked)="onRowClickedAppUserCompanies($event)"
-            (gridReady)="onGridReadyAppUserCompanies($event)"
+            (rowClicked)="onRowClicked($event)"
+            (gridReady)="onGridReady($event)"
             (firstDataRendered)="onFirstDataRendered($event)"
 
           >
@@ -53,18 +53,17 @@
       <div class="sit-grid-title">Grupy praw użytkownika</div>
       <sit-data-set-container ident="sitRightsGroupUsers" showActionsToolbar="true" fxFlex fxLayout="column">
         <div class="data-table" fxFlex>
-          <ag-grid-angular #sitSetDataSource
-            #agGrid
-            id="gridRightsGroupUsers"
+          <ag-grid-angular
+            #sitSetDataSource
+            #sitRightsGroupUsersGrid
             style="width: 100%; height: 100%;"
             class="ag-theme-balham"
             [columnDefs]="columnDefsRightsGroupUsers"
             [popupParent]="popupParent"
             [frameworkComponents]="frameworkComponents"
-            (rowClicked)="onRowClickedRightsGroupUsers($event)"
-            (gridReady)="onGridReadyRightsGroupUsers($event)"
+            (rowClicked)="onRowClicked($event)"
+            (gridReady)="onGridReady($event)"
             (firstDataRendered)="onFirstDataRendered($event)"
-
           >
           </ag-grid-angular>
         </div>

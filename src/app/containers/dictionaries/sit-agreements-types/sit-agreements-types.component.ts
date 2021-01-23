@@ -5,6 +5,7 @@ import { environment } from '@environments/environment';
 import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
 import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
+import { GridService } from '@app/_services/grid.service';
 
 @Component({
   selector: 'sit-agreements-types',
@@ -19,17 +20,14 @@ export class SitAgreementsTypesComponent implements OnInit {
   currentUser: User;
   frameworkComponents;
   popupParent;
-
-  gridApi;
-  gridColumnApi;
   columnDefs;
 
   constructor(
-    private gatewayService: GatewayService
+    private gatewayService: GatewayService,
+    private gridService: GridService
   ) {
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
     this.popupParent = document.querySelector('body');
-
 
     this.columnDefs = [
       { headerName: 'Id', field: 'sitAgreementsTypesId', type: 'numericColumn', filter: 'agTextColumnFilter', width: 50 },
@@ -46,14 +44,18 @@ export class SitAgreementsTypesComponent implements OnInit {
   }
 
   onGridReady(params) {
-    this.gridApi = params.api;
-    this.gridColumnApi = params.columnApi;
-    this.gridColumnApi.setColumnsVisible(['sitAgreementsTypesId','sitAgreementsTypesG'], false)
+    this.gridService.setDefGridOptionsOnReady(params);
+
+    if (params.columnApi.getColumn('sitAgreementsTypesId')) {
+      params.columnApi.setColumnsVisible(['sitAgreementsTypesId','sitAgreementsTypesG'], false)
+    }
   }
 
   onRowClicked(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitAgreementsTypes');
+    if (event.data['sitAgreementsTypesId']) {
+      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitAgreementsTypes');
       dataSourceResponseWrapper.SetActiveRow(event.data);
+    }
   }
 
   onFirstDataRendered(event) {}

@@ -8,7 +8,7 @@ import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
 import { formatDate } from '@angular/common';
 import { formatNumber } from '@angular/common';
-
+import { GridService } from '@app/_services/grid.service';
 @Component({
   selector: 'app-sit-company-departments',
   templateUrl: './sit-company-departments.component.html',
@@ -21,16 +21,14 @@ export class SitCompanyDepartmentsComponent implements OnInit {
 
   currentUser: User;
   popupParent;
+  columnDefs;
+  groupDefaultExpanded;
   getDataPath;
   autoGroupColumnDef;
-  groupDefaultExpanded;
-
-  gridApi;
-  gridColumnApi;
-  columnDefs;
 
   constructor(
     private gatewayService: GatewayService,
+    private gridService: GridService,
     @Inject(LOCALE_ID) private locale: string
   ) {
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
@@ -62,15 +60,18 @@ export class SitCompanyDepartmentsComponent implements OnInit {
   }
 
   onGridReady(params) {
-    this.gridApi = params.api;
-    this.gridColumnApi = params.columnApi;
-    this.gridColumnApi.setColumnsVisible(['sitCompanyDepartmentsId','sitCompanyDepartmentsG'], false)
+    this.gridService.setDefGridOptionsOnReady(params);
+
+    if (params.columnApi.getColumn('sitCompanyDepartmentsId')) {
+      params.columnApi.setColumnsVisible(['sitCompanyDepartmentsId','sitCompanyDepartmentsG'], false)
+    }
   }
 
   onRowClicked(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitCompanyDepartments');
+    if (event.data['sitCompanyDepartmentsId']) {
+      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitCompanyDepartments');
       dataSourceResponseWrapper.SetActiveRow(event.data);
-
+    }
   }
 
   onFirstDataRendered(params) {
