@@ -51,13 +51,4 @@ export class SitAgreementsTypesComponent implements OnInit {
     }
   }
 
-  onRowClicked(event) {
-    if (event.data['sitAgreementsTypesId']) {
-      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitAgreementsTypes');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-    }
-  }
-
-  onFirstDataRendered(event) {}
-
 }

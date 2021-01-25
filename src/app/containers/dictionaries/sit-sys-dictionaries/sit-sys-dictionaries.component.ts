@@ -19,17 +19,8 @@ export class SitSysDictionariesComponent implements OnInit {
 
   popupParent;
   frameworkComponents;
-
-  gridApi;
-  gridColumnApi;
   columnDefs;
-
-  gridApiDatasources;
-  gridColumnApiDatasources;
   columnDefsDatasources;
-
-  gridApiActions;
-  gridColumnApiActions;
   columnDefsActions;
 
   constructor(
@@ -72,41 +63,19 @@ export class SitSysDictionariesComponent implements OnInit {
 
   onGridReady(params) {
     this.gridService.setDefGridOptionsOnReady(params);
-    this.gridApi = params.api;
-    this.gridColumnApi = params.columnApi;
-    this.gridColumnApi.setColumnsVisible(['sitSysDictionariesId', 'sitSysDictionariesG'], false)
+
+    if (params.columnApi.getColumn('sitSysDictionariesG')) {
+      params.columnApi.setColumnsVisible(['sitSysDictionariesId', 'sitSysDictionariesG'], false)
+    }
+
+    if (params.columnApi.getColumn('sitSysDatasourcesG')) {
+      params.columnApi.setColumnsVisible(['sitSysDatasourcesId', 'sitSysDatasourcesG'], false)
+    }
+    if (params.columnApi.getColumn('sitSysActionsG')) {
+      params.columnApi.setColumnsVisible(['sitSysActionsId', 'sitSysActionsG'], false)
+    }
+
   }
 
-  onGridReadyDatasources(params) {
-    this.gridService.setDefGridOptionsOnReady(params);
-    this.gridApiDatasources = params.api;
-    this.gridColumnApiDatasources = params.columnApi;
-    this.gridColumnApiDatasources.setColumnsVisible(['sitSysDatasourcesId', 'sitSysDatasourcesG'], false)
-  }
-
-  onGridReadyActions(params) {
-    this.gridService.setDefGridOptionsOnReady(params);
-    this.gridApiActions = params.api;
-    this.gridColumnApiActions = params.columnApi;
-    this.gridColumnApiActions.setColumnsVisible(['sitSysActionsId', 'sitSysActionsG'], false)
-  }
-
-  onRowClicked(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitSysDictionaries');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
-
-  onRowClickedDatasources(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitSysDatasources');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
-
-  onRowClickedActions(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitSysActions');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
-
-  onFirstDataRendered(params) {
-  }
 
 }

@@ -47,11 +47,4 @@ export class SitParamsComponent implements OnInit {
     this.gridService.setDefGridOptionsOnReady(params);
   }
 
-  onRowClicked(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitParams');
-    dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
-
-  onFirstDataRendered(params) {}
-
 }

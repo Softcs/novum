@@ -28,25 +28,10 @@ export class SitStocksComponent implements OnInit {
   popupParent;
   frameworkComponents;
   contentColor;
-
-  gridApi;
-  gridColumnApi;
   columnDefs;
-
-  gridApiWMSStocksDet;
-  gridColumnApiWMSStocksDet;
   columnDefsWMSStocksDet;
-
-  gridApiWMSStocks;
-  gridColumnApiWMSStocks;
   columnDefsWMSStocks;
-
-  gridApiLogisticUnits;
-  gridColumnApiLogisticUnits;
   columnDefsLogisticUnits;
-
-  gridApiWMSStocksWithLogisticUnits;
-  gridColumnApiWMSStocksWithLogisticUnits;
   columnDefsWMSStocksWithLogisticUnits;
 
   constructor(
@@ -178,58 +163,10 @@ export class SitStocksComponent implements OnInit {
 
   onGridReady(params) {
     this.gridService.setDefGridOptionsOnReady(params);
-    this.gridApi = params.api;
-    this.gridColumnApi = params.columnApi;
-  }
-  onGridReadyWMSStocksDet(params) {
-    this.gridService.setDefGridOptionsOnReady(params);
-    this.gridApiWMSStocksDet = params.api;
-    this.gridColumnApiWMSStocksDet = params.columnApi;
-  }
-  onGridReadyWMSStocks(params) {
-    this.gridService.setDefGridOptionsOnReady(params);
-    this.gridApiWMSStocks = params.api;
-    this.gridColumnApiWMSStocks = params.columnApi;
-  }
-  onGridReadyLogisticUnits(params) {
-    this.gridService.setDefGridOptionsOnReady(params);
-    this.gridApiLogisticUnits = params.api;
-    this.gridColumnApiLogisticUnits = params.columnApi;
-    this.gridColumnApiLogisticUnits.setColumnsVisible(['sitLogisticUnitsId','sitLogisticUnitsG'],false)
-  }
-  onGridReadyWMSStocksWithLogisticUnits(params) {
-    this.gridService.setDefGridOptionsOnReady(params);
-    this.gridApiWMSStocksWithLogisticUnits = params.api;
-    this.gridColumnApiWMSStocksWithLogisticUnits = params.columnApi;
-  }
+    if (params.columnApi.getColumn('sitLogisticUnitsG')) {
+      params.columnApi.setColumnsVisible(['sitLogisticUnitsId','sitLogisticUnitsG'],false)
+    }
 
-  onRowClicked(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitStocks');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
-  onRowClickedWMSStocksDet(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitWMSStocksDet');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
-  onRowClickedWMSStocks(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitWMSStocks');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
-  onRowClickedLogisticUnits(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitLogisticUnits');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
-  onRowClickedWMSStocksWithLogisticUnits(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitWMSStocksWithLogisticUnits');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
-
-  onFirstDataRendered(params) {
-    var allColumnIds = [];
-    // this.gridColumnApi.getAllColumns().forEach(function(column) {
-    //   allColumnIds.push(column.colId);
-    // });
-    // this.gridColumnApi.autoSizeColumns(allColumnIds, false);
   }
 
   activeRowStocksChanged(activeRow) {

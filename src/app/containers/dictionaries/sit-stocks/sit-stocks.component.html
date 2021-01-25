@@ -26,9 +26,7 @@
                           [columnDefs]="columnDefs"
                           [popupParent]="popupParent"
                           [frameworkComponents]="frameworkComponents"
-                          (rowClicked)="onRowClicked($event)"
                           (gridReady)="onGridReady($event)"
-                          (firstDataRendered)="onFirstDataRendered($event)"
                         >
                         </ag-grid-angular>
                       </sit-data-set-container>
@@ -44,9 +42,7 @@
                           class="ag-theme-balham"
                           [columnDefs]="columnDefsWMSStocksDet"
                           [popupParent]="popupParent"
-                          (rowClicked)="onRowClickedWMSStocksDet($event)"
-                          (gridReady)="onGridReadyWMSStocksDet($event)"
-                          (firstDataRendered)="onFirstDataRendered($event)"
+                          (gridReady)="onGridReady($event)"
                           >
                         </ag-grid-angular>
                       </div>
@@ -96,9 +92,7 @@
                 class="ag-theme-balham"
                 [columnDefs]="columnDefsWMSStocks"
                 [popupParent]="popupParent"
-                (rowClicked)="onRowClickedWMSStocks($event)"
-                (gridReady)="onGridReadyWMSStocks($event)"
-                (firstDataRendered)="onFirstDataRendered($event)"
+                (gridReady)="onGridReady($event)"
                 >
               </ag-grid-angular>
             </sit-data-set-container>
@@ -124,9 +118,7 @@
                       class="ag-theme-balham"
                       [columnDefs]="columnDefsLogisticUnits"
                       [popupParent]="popupParent"
-                      (rowClicked)="onRowClickedLogisticUnits($event)"
-                      (gridReady)="onGridReadyLogisticUnits($event)"
-                      (firstDataRendered)="onFirstDataRendered($event)"
+                      (gridReady)="onGridReady($event)"
                       >
                     </ag-grid-angular>
                   </div>
@@ -154,9 +146,7 @@
                         class="ag-theme-balham"
                         [columnDefs]="columnDefsWMSStocksWithLogisticUnits"
                         [popupParent]="popupParent"
-                        (rowClicked)="onRowClickedWMSStocksWithLogisticUnits($event)"
-                        (gridReady)="onGridReadyWMSStocksWithLogisticUnits($event)"
-                        (firstDataRendered)="onFirstDataRendered($event)"
+                        (gridReady)="onGridReady($event)"
                         >
                       </ag-grid-angular>
                     </sit-data-set-container>

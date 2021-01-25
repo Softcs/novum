@@ -20,9 +20,8 @@
                     class="ag-theme-balham"
                     [columnDefs]="columnDefsCustomers"
                     [popupParent]="popupParent"
-                    (rowClicked)="onRowClicked($event)"
                     (gridReady)="onGridReady($event)"
-                    (firstDataRendered)="onFirstDataRendered($event)">
+                  >
                   </ag-grid-angular>
                 </div>
               </sit-data-set-container>
@@ -42,10 +41,8 @@
                         class="ag-theme-balham"
                         [columnDefs]="columnDefsAgreements"
                         [popupParent]="popupParent"
-                        (rowClicked)="onRowClicked($event)"
-                        (gridReady)="onGridReady($event)"
-                        (firstDataRendered)="onFirstDataRendered($event)"
                         [frameworkComponents]="frameworkComponents"
+                        (gridReady)="onGridReady($event)"
                         >
                       </ag-grid-angular>
                     </div>
@@ -58,7 +55,7 @@
               <as-split-area [size]="35">
                 <div fxFlex fxLayout="column">
                   <div class="sit-grid-title">Załączniki do umów</div>
-                  <sit-data-set-container  ident="sitAttachments" showActionsToolbar="true" (activeRowChanged)="activeRowAttachmentsChanged($event)" fxFlex fxLayout="column">
+                  <sit-data-set-container  ident="sitAttachments" showActionsToolbar="true" fxFlex fxLayout="column">
                     <div class="data-table" fxFlex>
                       <ag-grid-angular
                         #sitSetDataSource
@@ -68,9 +65,8 @@
                         class="ag-theme-balham"
                         [columnDefs]="columnDefsAttachments"
                         [popupParent]="popupParent"
-                        (rowClicked)="onRowClicked($event)"
+                        [frameworkComponents]="frameworkComponents"
                         (gridReady)="onGridReady($event)"
-                        (firstDataRendered)="onFirstDataRendered($event)"
                       >
                       </ag-grid-angular>
                     </div>
@@ -84,7 +80,7 @@
       </as-split-area>
       <as-split-area [size]="40">
         <div fxFill>
-          <sit-data-set-container  ident="sitAttachments" (activeRowChanged)="activeRowAttachmentsChanged($event)" fxFlex fxLayout="column">
+          <sit-data-set-container  ident="sitAttachments" fxFlex fxLayout="column">
             <sit-pdf-viewer #sitControl id="FileName" field="FileName" fxFill></sit-pdf-viewer>
           </sit-data-set-container>
         </div>

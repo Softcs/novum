@@ -41,12 +41,6 @@ export class SitRailConfigurationsComponent implements OnInit {
     this.gridService.setDefGridOptionsOnReady(params);
   }
 
-  onRowClicked(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitRailConfigurations');
-    dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
-
-  onFirstDataRendered(params) { }
 
 
 }

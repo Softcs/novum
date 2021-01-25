@@ -78,16 +78,4 @@ export class SitJobsComponent implements OnInit {
     }
   }
 
-  onRowClicked(event) {
-    if (event.data['sitJobsG']) {
-      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitJobs');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-    }
-
-    if (event.data['sitJobStepsG']) {
-      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitJobSteps');
-      dataSourceResponseWrapper.SetActiveRow(event.data);  }
-    }
-
-  onFirstDataRendered(event) { }
 }

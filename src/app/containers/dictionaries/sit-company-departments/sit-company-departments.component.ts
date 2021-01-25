@@ -66,14 +66,4 @@ export class SitCompanyDepartmentsComponent implements OnInit {
       params.columnApi.setColumnsVisible(['sitCompanyDepartmentsId','sitCompanyDepartmentsG'], false)
     }
   }
-
-  onRowClicked(event) {
-    if (event.data['sitCompanyDepartmentsId']) {
-      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitCompanyDepartments');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-    }
-  }
-
-  onFirstDataRendered(params) {
-  }
 }

@@ -43,10 +43,4 @@ export class SitWarehousesComponent implements OnInit {
     params.columnApi.setColumnsVisible(['sitWarehousesId', 'sitWarehousesG'], false)
   }
 
-  onRowClicked(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitWarehouses');
-    dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
-
-  onFirstDataRendered(params) { }
 }

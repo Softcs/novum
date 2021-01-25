@@ -165,58 +165,22 @@ export class SitWmsDocsComponent implements OnInit {
     }
   }
 
-  onRowClicked(event) {
-    if (event.data['sitDocumentsHeadersG']) {
-      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsHeaders');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-      if (dataSourceResponseWrapper.activeRow['sitDocumentsHeadersG_Invoice'] !== null) {
-        this.printLinked = true;
-      } else { this.printLinked = false };
-    }
-
-    if (event.data['sitDocumentsPositionsG']) {
-      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsPositions');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-    }
-
-    if (event.data['sitDocumentsHeadersHistoryG']) {
-      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsHeadersHistory');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-    }
-
-    if (event.data['sitDocumentsPositionsHistoryG']) {
-      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsPositionsHistory');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-    }
-
-    if (!event.data['sitDocumentsPositionsG'] && event.data['sitProductsId']) {
-      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsPositionsSum');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-    }
-
-    if (event.data['sitDocumentsVATFootersG']) {
-      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsVATFooters');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-    }
-
-    if (event.data['sitAttachmentsG']) {
-      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitAttachments');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-    }
-
-  }
-
-  onFirstDataRendered(params) { }
-
   activateTab(index) {
     this.activeSubTab = index;
     const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsHeaders');
   }
 
   activeRowChangedDocumentsHeaders(activeRow) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsHeaders');
-    // if (activeRow['sitDocumentsHeadersG_Invoice'] !== null) {
-    //   this.printLinked = true;
-    // }
+    if (!activeRow) {
+      this.printLinked = false;
+      return null;
+    }
+
+    if (!activeRow['sitDocumentsHeadersG_Invoice']) {
+      this.printLinked = false
+      return null;
+    }
+
+    this.printLinked = true;
   }
 }

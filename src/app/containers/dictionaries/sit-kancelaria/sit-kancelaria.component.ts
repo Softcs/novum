@@ -86,12 +86,6 @@ export class SitKancelariaComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  activeRowAttachmentsChanged(activeRow) {
-    // this.sitAttachmentsSelected.splice(0, this.sitAttachmentsSelected.length);
-    // this.sitAttachmentsSelected.push(...[activeRow]);
-
-  }
-
   onGridReady(params) {
     this.gridService.setDefGridOptionsOnReady(params);
 
@@ -100,22 +94,5 @@ export class SitKancelariaComponent implements OnInit {
     }
   }
 
-  onRowClicked(event) {
-    if (event.data['sitCustomersG']) {
-      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitCustomers');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-    }
 
-    if (event.data['sitAgreementsG']) {
-      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitAgreements');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-    }
-
-    if (event.data['sitAttachmentsG']) {
-      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitAttachments');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-    }
-  }
-
-  onFirstDataRendered(params) {}
 }

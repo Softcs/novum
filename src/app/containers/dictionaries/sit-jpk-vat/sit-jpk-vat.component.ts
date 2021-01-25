@@ -117,42 +117,6 @@ export class SitJPKVatComponent implements OnInit {
     this.gridService.setDefGridOptionsOnReady(params);
   }
 
-  onRowClicked(event) {
-    if (event.data['sitJPKVATZakupSumG']) {
-      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitJPKVATZakupSum');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-    }
-
-    if (event.data['sitJPKVATZakupCustG']) {
-      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitJPKVATZakupCust');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-    }
-
-    if (event.data['sitJPKVATZakupG']) {
-      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitJPKVATZakup');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-    }
-
-    if (event.data['sitJPKVATSprzedazSumG']) {
-      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitJPKVATSprzedazSum');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-    }
-
-    if (event.data['sitJPKVATSprzedazCustG']) {
-      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitJPKVATSprzedazCust');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-    }
-
-    if (event.data['sitJPKVATSprzedazG']) {
-      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitJPKVATSprzedaz');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-    }
-  }
-
-  onFirstDataRendered(params) {
-
-  }
-
   calcZakupSum(name) {
     const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper("sitJPKVATZakupSum");
     return dataSourceResponseWrapper.rows.map(row => row[name] != null ? row[name] : 0).reduce((s,v) =>s += v,0);

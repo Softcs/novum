@@ -49,27 +49,9 @@ export class SitRozrachunkiInsertGTComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSelectRozrachunki({ selected }) {
-    this.sitRozrachunkiInsertGTselected.splice(0, this.sitRozrachunkiInsertGTselected.length);
-    this.sitRozrachunkiInsertGTselected.push(...selected);
-  }
-
   onGridReady(params) {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
-  }
-
-  onRowClicked(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitParams');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
-
-  onFirstDataRendered(params) {
-    const allColumnIds = [];
-
-    this.gridColumnApi.getAllColumns().forEach(function(column) {
-      allColumnIds.push(column.colId);
-    });
   }
 
 }

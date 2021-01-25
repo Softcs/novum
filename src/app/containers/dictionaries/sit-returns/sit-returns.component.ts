@@ -102,23 +102,5 @@ export class SitReturnsComponent implements OnInit {
     }
   }
 
-  onRowClicked(event) {
-    if (event.data['sitDocumentsHeadersG']) {
-      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsHeaders');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-    }
 
-    if (event.data['sitDocumentsPositionsG']) {
-      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsPositions');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-    }
-
-    if (event.data['sitAttachmentsG']) {
-      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitAttachments');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-    }
-
-  }
-
-  onFirstDataRendered(params) {}
 }

@@ -51,13 +51,6 @@ export class SitProjectsPubComponent implements OnInit {
     this.gridService.setDefGridOptionsOnReady(params);
   }
 
-  onRowClicked(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitProjectsPub');
-    dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
-
-  onFirstDataRendered(params) { }
-
   activeRowProjectsPubChanged(activeRow) {
     this.Link = activeRow?.sitImagesG == null
     ? this.attachmentsService.getUrl(this.currentUser, "noimage", "noimage.jpg") // kiedy brak rekordu

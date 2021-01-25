@@ -49,14 +49,4 @@ export class SitEmployeesComponent implements OnInit {
 
   }
 
-  onRowClicked(event) {
-    if (event.data['sitEmployeesG']) {
-      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitEmployees');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-    }
-  }
-
-  onFirstDataRendered(params) {
-  }
-
 }

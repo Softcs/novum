@@ -53,5 +53,4 @@ export class SitCustomersComponent implements OnInit {
     }
   }
 
-  onFirstDataRendered(params) {}
 }

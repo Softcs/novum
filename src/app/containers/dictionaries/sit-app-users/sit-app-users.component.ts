@@ -78,22 +78,5 @@ export class SitAppUsersComponent implements OnInit {
     }
   }
 
-  onRowClicked(event) {
-    if (event.data['sitAppUsersId']) {
-      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitAppUsers');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-    }
 
-    if (event.data['sitAppUserCompaniesId']) {
-      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitAppUserCompanies');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-    }
-
-    if (event.data['sitRightsGroupUsersId']) {
-      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitRightsGroupUsers');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-    }
-  }
-
-  onFirstDataRendered(event) {}
 }

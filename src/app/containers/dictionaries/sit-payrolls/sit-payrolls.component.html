@@ -19,9 +19,7 @@
                   class="ag-theme-balham"
                   [columnDefs]="columnDefs"
                   [popupParent]="popupParent"
-                  (rowClicked)="onRowClicked($event)"
                   (gridReady)="onGridReady($event)"
-                  (firstDataRendered)="onFirstDataRendered($event)"
                 >
                 </ag-grid-angular>
               </div>
@@ -38,9 +36,7 @@
                 class="ag-theme-balham"
                 [columnDefs]="columnDefsPayrollsAccounting"
                 [popupParent]="popupParent"
-                (rowClicked)="onRowClickedPayrollsAccounting($event)"
-                (gridReady)="onGridReadyPayrollsAccounting($event)"
-                (firstDataRendered)="onFirstDataRendered($event)"
+                (gridReady)="onGridReady($event)"
               >
               </ag-grid-angular>
             </div>
@@ -66,9 +62,7 @@
                   class="ag-theme-balham"
                   [columnDefs]="columnDefsPayrollsCalc"
                   [popupParent]="popupParent"
-                  (rowClicked)="onRowClickedPayrollsCalc($event)"
-                  (gridReady)="onGridReadyPayrollsCalc($event)"
-                  (firstDataRendered)="onFirstDataRendered($event)"
+                  (gridReady)="onGridReady($event)"
                 >
                 </ag-grid-angular>
               </div>
@@ -87,9 +81,7 @@
                     class="ag-theme-balham"
                     [columnDefs]="columnDefsPayrollComponentsCalc"
                     [popupParent]="popupParent"
-                    (rowClicked)="onRowClickedPayrollComponentsCalc($event)"
-                    (gridReady)="onGridReadyPayrollComponentsCalc($event)"
-                    (firstDataRendered)="onFirstDataRendered($event)"
+                    (gridReady)="onGridReady($event)"
                   >
                   </ag-grid-angular>
                 </div>
@@ -108,9 +100,7 @@
                         [columnDefs]="columnDefsPayrollsCalcAccounting"
                         [popupParent]="popupParent"
                         [masterDetail]="true"
-                        (rowClicked)="onRowClickedPayrollsCalcAccounting($event)"
-                        (gridReady)="onGridReadyPayrollsCalcAccounting($event)"
-                        (firstDataRendered)="onFirstDataRendered($event)"
+                        (gridReady)="onGridReady($event)"
                       >
                       </ag-grid-angular>
                     </div>
@@ -127,9 +117,7 @@
                           [columnDefs]="columnDefsPayrollsCalcAccountingDim"
                           [popupParent]="popupParent"
                           [masterDetail]="true"
-                          (rowClicked)="onRowClickedPayrollsCalcAccountingDim($event)"
-                          (gridReady)="onGridReadyPayrollsCalcAccountingDim($event)"
-                          (firstDataRendered)="onFirstDataRendered($event)"
+                          (gridReady)="onGridReady($event)"
                         >
                         </ag-grid-angular>
                       </div>

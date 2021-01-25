@@ -263,19 +263,11 @@ export class SitPubDeliveryDistributionComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onFirstDataRendered(params) {
-  }
-
 
   onGridReady(params) {
     this.gridService.setDefGridOptionsOnReady(params);
 
     params.columnApi.setColumnsVisible(['Publishing'],false)
-  }
-
-  onRowClicked(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitPubDeliveryDistrybution');
-    dataSourceResponseWrapper.SetActiveRow(event.data);
   }
 
 

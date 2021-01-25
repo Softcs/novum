@@ -72,25 +72,4 @@ export class SitDocumentsComponent implements OnInit {
   onGridReady(params) {
     this.gridService.setDefGridOptionsOnReady(params);
   }
-
-  onRowClicked(event) {
-    if (event.data['sitDocumentsHeadersG']) {
-      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsHeaders');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-    }
-
-    if (event.data['sitDocumentsPositionsG']) {
-      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsPositions');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-    }
-
-    if (event.data['VATRatesIdent']) {
-      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsVATFooters');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-    }
-  }
-
-  onFirstDataRendered(params) {
-  }
-
 }

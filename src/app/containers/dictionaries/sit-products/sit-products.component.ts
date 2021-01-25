@@ -25,7 +25,6 @@ export class SitProductsComponent implements OnInit {
   ean;
   frameworkComponents;
   contentColor;
-
   columnDefsProducts;
   popupParent;
 
@@ -73,14 +72,6 @@ export class SitProductsComponent implements OnInit {
     this.gridService.setDefGridOptionsOnReady(params);
   }
 
-  onRowClicked(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitProducts');
-    dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
-
-  onFirstDataRendered(params) {
-
-  }
 
   activeRowProductsChanged(activeRow) {
     this.link = activeRow?.sitImagesG == null

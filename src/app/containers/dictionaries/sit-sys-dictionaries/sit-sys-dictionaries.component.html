@@ -15,9 +15,7 @@
             [columnDefs]="columnDefs"
             [popupParent]="popupParent"
             [frameworkComponents]="frameworkComponents"
-            (rowClicked)="onRowClicked($event)"
             (gridReady)="onGridReady($event)"
-            (firstDataRendered)="onFirstDataRendered($event)"
           >
           </ag-grid-angular>
         </div>
@@ -42,9 +40,7 @@
                   [columnDefs]="columnDefsDatasources"
                   [popupParent]="popupParent"
                   [frameworkComponents]="frameworkComponents"
-                  (rowClicked)="onRowClickedDatasources($event)"
-                  (gridReady)="onGridReadyDatasources($event)"
-                  (firstDataRendered)="onFirstDataRendered($event)"
+                  (gridReady)="onGridReady($event)"
                 >
                 </ag-grid-angular>
               </div>
@@ -65,9 +61,7 @@
                     [columnDefs]="columnDefsActions"
                     [popupParent]="popupParent"
                     [frameworkComponents]="frameworkComponents"
-                    (rowClicked)="onRowClickedActions($event)"
-                    (gridReady)="onGridReadyActions($event)"
-                    (firstDataRendered)="onFirstDataRendered($event)"
+                    (gridReady)="onGridReady($event)"
                   >
                   </ag-grid-angular>
                 </div>
