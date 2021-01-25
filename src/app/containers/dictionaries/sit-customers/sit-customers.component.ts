@@ -53,13 +53,5 @@ export class SitCustomersComponent implements OnInit {
     }
   }
 
-  onRowClicked(event) {
-    if (event.data['sitCustomersId']) {
-      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitCustomers');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-    }
-  }
-
   onFirstDataRendered(params) {}
-
 }

@@ -113,6 +113,7 @@ export class SitDataSetContainerComponent {
   }
 
   private applyCustomPropsGrid(element) {
+    var self = this;
     const gridApi = element["api"];
     if (gridApi == null) {
       return null;
@@ -131,6 +132,11 @@ export class SitDataSetContainerComponent {
 
         rowClassRules["sit-row-active"] = function(params) {
             return params.api.SeidoCustomProperty.activeRow == params.node.data;
+        }
+
+        
+        gridApi.gridOptionsWrapper.gridOptions.onRowClicked = function(event) {
+          self.dataSetResponseWrapper.SetActiveRow(event.data);
         }
       }
 
