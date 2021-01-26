@@ -46,6 +46,7 @@ button {
 }
 
 .mat-form-field {
+  min-width: 50px!important;
   height: 47px;
   .mat-form-field-wrapper {
     height: $input-height;
@@ -68,4 +69,9 @@ button {
 
 sit-refresh-button {
   margin: .25em 0;
+}
+
+
+.right {
+  text-align: right!important;
 }

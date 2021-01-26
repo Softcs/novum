@@ -14,8 +14,16 @@
 
 <mat-form-field appearance="{{ appearance }}" fxFlex [style.fontSize.px]=12>
     <mat-label>{{label}}</mat-label>
-    <input matInput #inputElement [value]="value" [type]="type" [id]="id" [placeholder]="placeholder" [readonly]="readonly"
-      (change)="onChange($event)" (keyup)="onKeyup($event)" (blur)="onBlur($event)">
+    <input matInput #inputElement
+      [value]="value"
+      [type]="type"
+      [id]="id"
+      [placeholder]="placeholder"
+      [readonly]="readonly"
+      (change)="onChange($event)"
+      (keyup)="onKeyup($event)"
+      (blur)="onBlur($event)"
+    >
     <div *ngIf="hasLookup" [ngClass]="{'hasLookup': hasLookup, 'loading': lookupIsLoading}" fxLayoutAlign="center center" >
       <span
          class="material-icons lookupDropDawn"
