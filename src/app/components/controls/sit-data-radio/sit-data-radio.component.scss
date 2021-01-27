@@ -1,71 +1,8 @@
-$input-height: 40px;
-
-.lookup-select-panel-class {
-  margin-top: $input-height!important;
-  margin-left: 20px;
-  font-size: 12px!important;
+.radio-group {
+    display: flex;
+    flex-direction: row;
+    margin: -5px ;
 }
-
-.lookup-select {
-  visibility: collapse;
-  width: 0px!important
-}
-
-button {
-  margin-right: 8px;
-}
-
-.hasLookup {
-  margin-top: -11px;
-  margin-right: -6px;
-  border: solid 1px;
-  border-radius: 5px;
-  border-color: lightgray;
-  background-color: #f5f5f0;
-  width: 23px;
-  height: 30px;
-  cursor: pointer;
-  .mat-select {
-        visibility: collapse;
-  }
-
-  .lookupDropDawn {
-        align-self: center;
-  }
-  &.loading {
-    background-color: transparent;
-    border: none;
-  }
-}
-
-.hasLookup:hover {
-  background-color: #d6d6c2;
-  &.loading {
-    background-color: transparent;
-  }
-}
-
-.mat-form-field {
-  height: 47px;
-  .mat-form-field-wrapper {
-    height: $input-height;
-    padding: 0px 1px 5px;
-    .mat-form-field-infix {
-      width: auto;
-      height: $input-height;
-      padding-top: 7px;
-      display: inline-flex;
-
-      .mat-form-field-label-wrapper {
-        padding-top: 7px;
-      }
-      .mat-select-value, .mat-select-arrow {
-        display: none;
-      }
-    }
-  }
-}
-
-sit-refresh-button {
-  margin: .25em 0;
+.radio-button {
+    margin: 5px;
 }

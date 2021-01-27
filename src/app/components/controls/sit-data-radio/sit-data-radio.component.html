@@ -1,8 +1,10 @@
-
-
-
-<mat-radio-group  #inputElement [(ngModel)]='internalValue' [value]="value" (change)="onChange($event)" >
-  <mat-radio-button *ngFor="let button of buttons" [value]="button.value">
+<mat-radio-group  #inputElement class="radio-group" 
+[(ngModel)]='internalValue' [value]="value" [name]="name" [labelPosition]="labelPosition"
+[selected]="selected" [required]="required" [disabled]="disabled" (change)="onChange($event)" >
+  <mat-radio-button class="radio-button" *ngFor="let button of buttons" [value]="button.value" [checked]="button.checked" 
+  [disableRipple]="button.disableRipple" [colorButton]="button.color" [id]="button.id"[ariaLabelledby]="button.ariaLabelledby"
+  [requiredButton]="button.required" [disabledButton]="button.disabled" [labelPositionButton]="button.labelPosition"
+  [nameButton]="button.name">
     {{button.caption}}
   </mat-radio-button>
 </mat-radio-group>

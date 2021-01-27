@@ -6,15 +6,8 @@
       
       
       <div class="sit-filter-bar">
-        <sit-data-set-container ident="sitFilterCustomers" >
-            <sit-data-input #sitControl id="searchCustomers" field="searchCustomers" label="Filtruj kontrahentów" placeholder="Nazwa, NIP, Identyfikator" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
-            <sit-data-radio #sitControl 
-            id="searchCustomersRadio" 
-            field="searchCustomers" 
-            [buttons]="[{value:'a', caption:'a'},{value:'b', caption:'b'}]" 
-            appearance="outline" 
-            showRefreshButton="true" 
-            ></sit-data-radio>
+        <sit-data-set-container ident="sitFilterCustomers" > 
+          <sit-data-input #sitControl id="searchCustomers" field="searchCustomers" label="Filtruj kontrahentów" placeholder="Nazwa, NIP, Identyfikator" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
         </sit-data-set-container>
       </div>
       <sit-data-set-container  ident="sitCustomers" showActionsToolbar="true" #sitDataSetContainer fxFlex fxLayout="column">

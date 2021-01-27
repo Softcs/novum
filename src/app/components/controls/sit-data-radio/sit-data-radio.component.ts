@@ -9,10 +9,29 @@ import { SitDataBaseComponent } from '../sit-data-base/sit-data-base.component';
 })
 export class SitDataRadioComponent extends SitDataBaseComponent {
   public internalValue: string;
+  public defaultTabIndex: number;
+  public inputId: string;
 
+  @Input() color: string;
+  @Input() disabled: boolean;
+  @Input() labelPosition: 'after';
+  @Input() name: string;
+  @Input() required: boolean;
+  @Input() selected: boolean;
   @Input() refreshOnChange: boolean;
   @Input() lookupDisplayFields: string[] = null;
   @Input() buttons: any[] = null;
+  @Input('aria-describedby') ariaDescribedby: string;
+  @Input('aria-label') ariaLabel: string;
+  @Input('aria-labelledby') ariaLabelledby: string;
+  @Input() checked: boolean;
+  @Input() colorButton: string;
+  @Input() disableRipple: boolean;
+  @Input() disabledButton: boolean;
+  @Input() id: string;
+  @Input() labelPositionButton: 'after';
+  @Input() nameButton: string;
+  @Input() requiredButton: boolean;
 
   constructor(
     _renderer: Renderer2) {
