@@ -1,0 +1,95 @@
+<sit-dict-container ident="sitEmployeesSettlements" #sitDictcontainer fxFill>
+  <div fxLayout="column" fxFill>
+    <as-split direction="horizontal">
+      <as-split-area [size]="70">
+        <as-split direction="vertical">
+          <as-split-area [size]="80">
+            <div fxLayout="column" fxFill class="content">
+              <div class="sit-filter-bar">
+                <sit-data-set-container ident="sitFilter" >
+                  <div fxLayout="row">
+                    <sit-data-input #sitControl field="CostYear" label="Rok" placeholder="" appearance="outline" style="width: 100px;"></sit-data-input>
+                    <sit-data-input #sitControl field="CostMonth" label="Miesiąc" placeholder="" appearance="outline" style="width: 100px;"></sit-data-input>
+                    <sit-data-input #sitControl field="HRDepartmentIdent" label="Dział" placeholder="" appearance="outline" style="width: 200px;"
+                      [lookupDisplayFields] = "['HRDepartmentIdent', 'HRDepartmentName']">
+                    </sit-data-input>
+                    <sit-data-input #sitControl field="search" label="Filtruj" placeholder="" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
+                  </div>
+                </sit-data-set-container>
+              </div>
+              <sit-data-set-container  ident="sitEmployeesSettlements" showActionsToolbar="true" fxFlex fxLayout="column">
+                <div class="data-table" fxFlex>
+                  <ag-grid-angular
+                    #sitSetDataSource
+                    #sitHRDepartmentsGrid
+                    style="width: 100%; height: 100%;"
+                    class="ag-theme-balham"
+                    [columnDefs]="columnDefs"
+                    [popupParent]="popupParent"
+                    [excelStyles]="excelStyles"
+                    (gridReady)="onGridReady($event)"
+                  >
+                  </ag-grid-angular>
+                </div>
+              </sit-data-set-container>
+            </div>
+          </as-split-area>
+          <as-split-area [size]="20">
+            <div fxLayout="column" fxFill>
+              <sit-data-set-container  ident="sitEmployeesSettlementsSumByPayroll" showActionsToolbar="false" fxFlex fxLayout="column">
+                <div class="data-table" fxFlex>
+                  <ag-grid-angular
+                    #sitSetDataSource
+                    #sitHRDepartmentsGrid
+                    style="width: 100%; height: 100%;"
+                    class="ag-theme-balham"
+                    [columnDefs]="columnDefsSumByPayroll"
+                    [popupParent]="popupParent"
+                    (gridReady)="onGridReady($event)"
+                  >
+                  </ag-grid-angular>
+                </div>
+              </sit-data-set-container>
+            </div>
+          </as-split-area>
+        </as-split>
+      </as-split-area>
+      <as-split-area [size]="30">
+        <div fxLayout="column" fxFill class="content">
+          <sit-data-set-container  ident="sitEmployeesSettlements" fxLayout="column">
+            <mat-card>
+              <mat-card-content>
+                <div fxLayout="column">
+                  <div fxLayout="row">
+                    <sit-data-input type="text" #sitControl field="CustIdent" label="Identyfikator" appearance="outline" fxFlex [readonly]=true fxFlex="30"></sit-data-input>
+                    <sit-data-input type="text" #sitControl field="CustName" label="Kontrahent" appearance="outline" fxFlex [readonly]=true fxFlex></sit-data-input>
+                  </div>
+                  <div fxLayout="row">
+                      <sit-data-input type="text" #sitControl field="HRDepartmentIdent" label="Dział" appearance="outline" fxFlex [readonly]=true fxFlex="30"></sit-data-input>
+                      <sit-data-input type="text" #sitControl field="HRDepartmentName" label="Nazwa" appearance="outline" fxFlex [readonly]=true fxFlex></sit-data-input>
+                  </div>
+                  <sit-data-input type="text" #sitControl field="EmployeeName" label="Nazwisko" appearance="outline" fxFlex [readonly]=true fxFlex></sit-data-input>
+                  <sit-data-input type="text" #sitControl field="CalcInfo" label="Szczegóły kalkulacji" appearance="outline" fxFlex [readonly]=true fxFlex></sit-data-input>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </sit-data-set-container>
+          <sit-data-set-container  ident="sitEmployeesSettlementsDet" fxFlex fxLayout="column">
+            <div class="data-table" fxFlex>
+              <ag-grid-angular
+                #sitSetDataSource
+                #sitHRDepartmentsGrid
+                style="width: 100%; height: 100%;"
+                class="ag-theme-balham"
+                [columnDefs]="columnDefsDet"
+                [popupParent]="popupParent"
+                (gridReady)="onGridReady($event)"
+              >
+              </ag-grid-angular>
+            </div>
+          </sit-data-set-container>
+        </div>
+      </as-split-area>
+    </as-split>
+  </div>
+</sit-dict-container>

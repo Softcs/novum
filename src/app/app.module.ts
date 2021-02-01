@@ -140,8 +140,9 @@ import { SitCompanyDepartmentsComponent } from './containers/dictionaries/sit-co
 import { SitActionsToolbarComponent } from './components/controls/sit-actions-toolbar/sit-actions-toolbar.component';
 import { SitProductsUpdateWeightComponent } from './containers/dictionaries/sit-products/actions/sit-products-update-weight/sit-products-update-weight.component';;
 import { SitPubDeliveryDistributionComponent } from './containers/dictionaries/sit-pub-delivery-distribution/sit-pub-delivery-distribution.component';
-import { SitRailDeliveryDistrybutionImportComponent } from './containers/dictionaries/sit-pub-delivery-distribution/actions/sit-rail-delivery-distrybution-import/sit-rail-delivery-distrybution-import.component'
-
+import { SitRailDeliveryDistrybutionImportComponent } from './containers/dictionaries/sit-pub-delivery-distribution/actions/sit-rail-delivery-distrybution-import/sit-rail-delivery-distrybution-import.component';
+import { SitHRDepartmentsComponent } from './containers/dictionaries/sit-hr-departments/sit-hr-departments.component';
+import { SitEmployeesSettlementsComponent } from './containers/dictionaries/sit-employees-settlements/sit-employees-settlements.component';
 @NgModule({
     imports: [
         BrowserModule,
@@ -178,7 +179,8 @@ import { SitRailDeliveryDistrybutionImportComponent } from './containers/diction
 
         //ag-Grid
         AgGridModule.withComponents([]),
-        AngularSplitModule.forRoot(),
+        //AngularSplitModule.forRoot(),
+        AngularSplitModule,
         NgxBarcodeModule,
 
     ],
@@ -276,9 +278,10 @@ import { SitRailDeliveryDistrybutionImportComponent } from './containers/diction
         SitCompanyDepartmentsComponent,
         SitActionsToolbarComponent,
         SitProductsUpdateWeightComponent,
-        SitPubDeliveryDistributionComponent
-,
-        SitRailDeliveryDistrybutionImportComponent
+        SitPubDeliveryDistributionComponent,
+        SitRailDeliveryDistrybutionImportComponent,
+        SitHRDepartmentsComponent,
+        SitEmployeesSettlementsComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },

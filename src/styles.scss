@@ -474,7 +474,15 @@ button:focus {
 }
 // end of lookup fields
 
+.HRDepartmentIdent {
+  display: inline-block;
+  width: 100px;
+}
 
+.HRDepartmentName {
+  display: inline-block;
+  width: 200px;
+}
 .sit-proc-button-spinner {
   position: relative;
   top: -4px;

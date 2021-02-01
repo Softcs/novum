@@ -38,6 +38,7 @@ export class SitPayrollComponentsComponent implements OnInit {
       { headerName: 'Identyfikator', field: 'PayrollComponentIdent', filter: 'agTextColumnFilter', width: 150 },
       { headerName: 'Opis', field: 'PayrollComponentDesc', filter: 'agTextColumnFilter', width: 300 },
       { headerName: 'Ident.zew.', field: 'ExtIdent01', filter: 'agTextColumnFilter', width: 200 },
+      { headerName: 'Kolumna w rozliczeniu', field: 'SettlementsColumnName', filter: 'agTextColumnFilter', width: 200 },
     ];
 
     this.columnDefsAccountingDef = [
