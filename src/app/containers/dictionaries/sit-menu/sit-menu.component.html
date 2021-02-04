@@ -9,22 +9,15 @@
         </sit-data-set-container>
         <sit-data-set-container  ident="sitMenu" showActionsToolbar="true" fxFlex fxLayout="column">
           <div class="data-table" fxFlex>
-            <ag-grid-angular #sitSetDataSource
-              #agGrid
-              id="gridRailConfigurations"
+            <ag-grid-angular
+              #sitSetDataSource
+              #sitMenuGrid
               style="width: 100%; height: 100%;"
               class="ag-theme-balham"
               [columnDefs]="columnDefs"
-              [defaultColDef]="defaultColDef"
-              [rowSelection]="rowSelection"
-              [rowMultiSelectWithClick]="true"
-              [enableCellTextSelection]="true"
-              [enableRangeSelection]="false"
               [popupParent]="popupParent"
               [frameworkComponents]="frameworkComponents"
-              (rowClicked)="onRowClicked($event)"
               (gridReady)="onGridReady($event)"
-              (firstDataRendered)="onFirstDataRendered($event)"
             >
             </ag-grid-angular>
           </div>
@@ -38,22 +31,16 @@
         </sit-data-set-container>
         <sit-data-set-container ident="sitAppUsers" fxFlex fxLayout="column">
           <div class="data-table" fxFill>
-            <ag-grid-angular #sitSetDataSource
-              #agGrid
+            <ag-grid-angular
+              #sitSetDataSource
+              #sitAppUsersGrid
               id="gridRailConfigurations"
               style="width: 100%; height: 100%;"
               class="ag-theme-balham"
               [columnDefs]="columnDefsAppUsers"
-              [defaultColDef]="defaultColDef"
-              [rowSelection]="rowSelection"
-              [rowMultiSelectWithClick]="true"
-              [enableCellTextSelection]="true"
-              [enableRangeSelection]="false"
               [popupParent]="popupParent"
               [frameworkComponents]="frameworkComponents"
-              (rowClicked)="onRowClickedAppUsers($event)"
-              (gridReady)="onGridReadyAppUsers($event)"
-              (firstDataRendered)="onFirstDataRendered($event)"
+              (gridReady)="onGridReady($event)"
             >
             </ag-grid-angular>
           </div>
@@ -69,22 +56,15 @@
       </sit-data-set-container>
       <sit-data-set-container ident="sitMenuItems" showActionsToolbar="true" fxFlex fxLayout="column">
         <div class="data-table" fxFlex>
-          <ag-grid-angular #sitSetDataSource
-            #agGrid
-            id="gridMenuItems"
+          <ag-grid-angular
+            #sitSetDataSource
+            #sitMenuItemsGrid
             style="width: 100%; height: 100%;"
             class="ag-theme-balham"
             [columnDefs]="columnDefsMenuItems"
-            [defaultColDef]="defaultColDef"
-            [rowSelection]="rowSelection"
-            [rowMultiSelectWithClick]="true"
-            [enableCellTextSelection]="true"
-            [enableRangeSelection]="false"
             [popupParent]="popupParent"
             [frameworkComponents]="frameworkComponents"
-            (rowClicked)="onRowClickedMenuItems($event)"
-            (gridReady)="onGridReadyMenuItems($event)"
-            (firstDataRendered)="onFirstDataRendered($event)"
+            (gridReady)="onGridReady($event)"
           >
           </ag-grid-angular>
         </div>

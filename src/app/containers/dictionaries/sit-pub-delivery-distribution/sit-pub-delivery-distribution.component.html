@@ -7,22 +7,16 @@
     </div>
     <sit-data-set-container ident="sitPubDeliveryDistrybution" showActionsToolbar="true" fxFlex fxLayout="column">
       <div class="data-table" fxFlex>
-        <ag-grid-angular #sitSetDataSource
-          #agGrid
-          id="gridPubDeliveryDistrybution"
+        <ag-grid-angular
+          #sitSetDataSource
+          #sitPubDeliveryDistrybutionGrid
           style="width: 100%; height: 100%;"
           class="ag-theme-balham"
           [columnDefs]="columnDefs"
-          [defaultColDef]="defaultColDef"
-          [rowSelection]="rowSelection"
-          [rowMultiSelectWithClick]="true"
-          [enableCellTextSelection]="false"
-          [enableRangeSelection]="true"
           [popupParent]="popupParent"
           [sideBar]="false"
-          (rowClicked)="onRowClicked($event)"
+          [excelStyles]="excelStyles"
           (gridReady)="onGridReady($event)"
-          (firstDataRendered)="onFirstDataRendered($event)"
         >
         </ag-grid-angular>
       </div>

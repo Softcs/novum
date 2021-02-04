@@ -12,21 +12,13 @@
               <div class="data-table" fxFill>
                 <sit-data-set-container ident="sitJPKVATZakupSum" fxFlex>
                   <ag-grid-angular #sitSetDataSource
-                    #agGrid
-                    id="gridZakupSum"
+                    #sitJPKVATZakupSumGrid
                     style="width: 100%; height: 100%;"
                     class="ag-theme-balham"
                     [columnDefs]="columnDefs"
-                    [defaultColDef]="defaultColDef"
-                    [rowSelection]="rowSelection"
-                    [rowMultiSelectWithClick]="true"
-                    [enableCellTextSelection]="true"
-                    [enableRangeSelection]="false"
                     [popupParent]="popupParent"
                     [frameworkComponents]="frameworkComponents"
-                    (rowClicked)="onRowClicked($event)"
                     (gridReady)="onGridReady($event)"
-                    (firstDataRendered)="onFirstDataRendered($event)"
                   >
                   </ag-grid-angular>
                 </sit-data-set-container>
@@ -36,21 +28,13 @@
               <div class="data-table" fxFill>
                 <sit-data-set-container ident="sitJPKVATZakupCust" fxFIll>
                   <ag-grid-angular #sitSetDataSource
-                    #agGrid
-                    id="gridZakupCust"
+                    #sitJPKVATZakupCustGrid
                     style="width: 100%; height: 100%;"
                     class="ag-theme-balham"
                     [columnDefs]="columnDefsZakupCust"
-                    [defaultColDef]="defaultColDef"
-                    [rowSelection]="rowSelection"
-                    [rowMultiSelectWithClick]="true"
-                    [enableCellTextSelection]="true"
-                    [enableRangeSelection]="false"
                     [popupParent]="popupParent"
                     [frameworkComponents]="frameworkComponents"
-                    (rowClicked)="onRowClickedZakupCust($event)"
-                    (gridReady)="onGridReadyZakupCust($event)"
-                    (firstDataRendered)="onFirstDataRendered($event)"
+                    (gridReady)="onGridReady($event)"
                   >
                   </ag-grid-angular>
                 </sit-data-set-container>
@@ -69,22 +53,16 @@
               <div fxFill>
                 <div class="data-table" fxFill>
                   <sit-data-set-container ident="sitJPKVATZakup" fxFill>
-                    <ag-grid-angular #sitSetDataSource
-                      #agGrid
+                    <ag-grid-angular
+                      #sitSetDataSource
+                      #sitJPKVATZakupGrid
                       id="gridZakup"
                       style="width: 100%; height: 100%;"
                       class="ag-theme-balham"
                       [columnDefs]="columnDefsZakup"
-                      [defaultColDef]="defaultColDef"
-                      [rowSelection]="rowSelection"
-                      [rowMultiSelectWithClick]="true"
-                      [enableCellTextSelection]="true"
-                      [enableRangeSelection]="false"
                       [popupParent]="popupParent"
                       [frameworkComponents]="frameworkComponents"
-                      (rowClicked)="onRowClickedZakup($event)"
-                      (gridReady)="onGridReadyZakup($event)"
-                      (firstDataRendered)="onFirstDataRendered($event)"
+                      (gridReady)="onGridReady($event)"
                     >
                     </ag-grid-angular>
                   </sit-data-set-container>
@@ -100,22 +78,15 @@
           <div class="content" fxFlex="50">
               <div class="data-table" fxFill>
                 <sit-data-set-container ident="sitJPKVATSprzedazSum" fxFill>
-                  <ag-grid-angular #sitSetDataSource
-                    #agGrid
-                    id="gridSprzedazSum"
+                  <ag-grid-angular
+                    #sitSetDataSource
+                    #sitJPKVATSprzedazSumGrid
                     style="width: 100%; height: 100%;"
                     class="ag-theme-balham"
                     [columnDefs]="columnDefsSprzedazSum"
-                    [defaultColDef]="defaultColDef"
-                    [rowSelection]="rowSelection"
-                    [rowMultiSelectWithClick]="true"
-                    [enableCellTextSelection]="true"
-                    [enableRangeSelection]="false"
                     [popupParent]="popupParent"
                     [frameworkComponents]="frameworkComponents"
-                    (rowClicked)="onRowClickedSprzedazSum($event)"
-                    (gridReady)="onGridReadySprzedazSum($event)"
-                    (firstDataRendered)="onFirstDataRendered($event)"
+                    (gridReady)="onGridReady($event)"
                   >
                   </ag-grid-angular>
                 </sit-data-set-container>
@@ -124,22 +95,15 @@
           <div class="content" fxFlex="50">
               <div class="data-table" fxFill>
                 <sit-data-set-container ident="sitJPKVATSprzedazCust" fxFill>
-                  <ag-grid-angular #sitSetDataSource
-                    #agGrid
-                    id="gridSprzedazCust"
+                  <ag-grid-angular
+                    #sitSetDataSource
+                    #sitJPKVATSprzedazCustGrid
                     style="width: 100%; height: 100%;"
                     class="ag-theme-balham"
                     [columnDefs]="columnDefsSprzedazCust"
-                    [defaultColDef]="defaultColDef"
-                    [rowSelection]="rowSelection"
-                    [rowMultiSelectWithClick]="true"
-                    [enableCellTextSelection]="true"
-                    [enableRangeSelection]="false"
                     [popupParent]="popupParent"
                     [frameworkComponents]="frameworkComponents"
-                    (rowClicked)="onRowClickedSprzedazCust($event)"
-                    (gridReady)="onGridReadySprzedazCust($event)"
-                    (firstDataRendered)="onFirstDataRendered($event)"
+                    (gridReady)="onGridReady($event)"
                   >
                   </ag-grid-angular>
                 </sit-data-set-container>
@@ -157,23 +121,15 @@
               </div> -->
               <div class="data-table" fxFill>
                 <sit-data-set-container ident="sitJPKVATSprzedaz">
-
-                  <ag-grid-angular #sitSetDataSource
-                    #agGrid
-                    id="gridSprzedaz"
+                  <ag-grid-angular
+                    #sitSetDataSource
+                    #sitJPKVATSprzedazGrid
                     style="width: 100%; height: 100%;"
                     class="ag-theme-balham"
                     [columnDefs]="columnDefsSprzedaz"
-                    [defaultColDef]="defaultColDef"
-                    [rowSelection]="rowSelection"
-                    [rowMultiSelectWithClick]="true"
-                    [enableCellTextSelection]="true"
-                    [enableRangeSelection]="false"
                     [popupParent]="popupParent"
                     [frameworkComponents]="frameworkComponents"
-                    (rowClicked)="onRowClickedSprzedaz($event)"
-                    (gridReady)="onGridReadySprzedaz($event)"
-                    (firstDataRendered)="onFirstDataRendered($event)"
+                    (gridReady)="onGridReady($event)"
                   >
                   </ag-grid-angular>
                 </sit-data-set-container>

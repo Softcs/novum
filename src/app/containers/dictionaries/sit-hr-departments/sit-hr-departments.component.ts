@@ -5,16 +5,15 @@ import { DataSetWrapper } from '@app/_models';
 import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
 import { environment } from '@environments/environment';
 import { User } from '@app/_models';
-import { GatewayService } from '@app/_services';
 import { GridService } from '@app/_services/grid.service';
 
 @Component({
-  selector: 'sit-employees',
-  templateUrl: './sit-employees.component.html',
-  styleUrls: ['./sit-employees.component.scss'],
+  selector: 'sit-hr-departments',
+  templateUrl: './sit-hr-departments.component.html',
+  styleUrls: ['./sit-hr-departments.component.scss'],
   host: {class: 'router-flex'}
 })
-export class SitEmployeesComponent implements OnInit {
+export class SitHRDepartmentsComponent implements OnInit {
   @ViewChild('sitDictcontainer') dictContainer: SitDictContainerComponent;
   @ViewChildren('sitDictcontainer') dictContainers !: QueryList<SitDictContainerComponent>;
 
@@ -23,29 +22,22 @@ export class SitEmployeesComponent implements OnInit {
   popupParent;
 
   constructor(
-    private gatewayService: GatewayService,
     private gridService: GridService
   ) {
-    this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
     this.popupParent = document.querySelector('body');
 
     this.columnDefs = [
-      { headerName: 'Identyfikator', field: 'EmployeeIdent', filter: 'agTextColumnFilter' },
-      { headerName: 'Imię', field: 'FirstName', filter: 'agTextColumnFilter' },
-      { headerName: 'Nazwisko', field: 'LastName', filter: 'agTextColumnFilter' },
-      { headerName: 'PESEL', field: 'PESEL', filter: 'agTextColumnFilter' },
+      { headerName: 'Identyfikator', field: 'HRDepartmentIdent', filter: 'agTextColumnFilter' },
+      { headerName: 'Nazwa', field: 'HRDepartmentName', filter: 'agTextColumnFilter' },
       { headerName: 'Identyfikator zewnętrzny', field: 'ExtIdent01', filter: 'agTextColumnFilter' },
     ];
 
-
-  }
+   }
 
   ngOnInit(): void {
   }
 
   onGridReady(params) {
     this.gridService.setDefGridOptionsOnReady(params);
-
   }
-
 }

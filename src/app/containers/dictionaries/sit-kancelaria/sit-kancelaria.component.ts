@@ -7,7 +7,7 @@ import { User } from '@app/_models';
 import { formatDate } from '@angular/common';
 import { TabService } from '@app/_services/tab.service';
 import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
-
+import { GridService } from '@app/_services/grid.service';
 @Component({
   selector: 'app-sit-kancelaria',
   templateUrl: './sit-kancelaria.component.html',
@@ -21,29 +21,14 @@ export class SitKancelariaComponent implements OnInit {
   activeTab: number;
   Link: string;
   frameworkComponents;
-
-  sitCustomersSelected = [];
-  sitAgreementsSelected = [];
-  sitAttachmentsSelected = [];
-
-  defaultColDef;
-  rowSelection;
   popupParent;
-
-  gridApiCustomers;
-  gridColumnApiCustomers;
   columnDefsCustomers;
-
-  gridApiAgreements;
-  gridColumnApiAgreements;
   columnDefsAgreements;
-
-  gridApiAttachments;
-  gridColumnApiAttachments;
   columnDefsAttachments;
 
   constructor(
     private gatewayService: GatewayService,
+    private gridService: GridService,
     @Inject(LOCALE_ID) private locale: string,
     private tabService: TabService,
   ) {
@@ -54,22 +39,13 @@ export class SitKancelariaComponent implements OnInit {
       gridCheckboxRenderer: GridCheckboxRenderer,
     };
 
-    this.defaultColDef = {
-      flex: 0,
-      sortable: true,
-      filter: true,
-      floatingFilter: false,
-      resizable: true
-    };
     this.popupParent = document.querySelector('body');
-
-    this.rowSelection = 'single';
 
     this.columnDefsCustomers = [
       { headerName: 'Identyfikator', field: 'CustIdent', width: 150 },
-      { headerName: 'Nazwa', field: 'CustName'},
+      { headerName: 'Nazwa', field: 'CustName', tooltipField: 'CustName' },
       { headerName: 'NIP', field: 'VATId', width: 100},
-      { headerName: 'Ulica', field: 'Street',
+      { headerName: 'Ulica', field: 'Street', tooltipField: 'Street',
         valueGetter: function(params) { return params.data.Street + ' ' + params.data.HouseNum }
       },
       { headerName: 'Miasto', field: 'City' },
@@ -83,11 +59,11 @@ export class SitKancelariaComponent implements OnInit {
           filterOptions: ['contains']
         }
       },
-      { headerName: 'Data', field: 'Date', width: 100, type: 'dateColumn',
-        // cellRenderer: (data) => { return  formatDate(data.value, 'yyyy-MM-dd', this.locale)}
+      { headerName: 'Data', field: 'Date', width: 100,
+        cellRenderer: (data) => { return  formatDate(data.value, 'yyyy-MM-dd', this.locale)}
       },
-      { headerName: 'Data do', field: 'DateTo', width: 100, type: 'dateColumn',
-        // cellRenderer: (data) => { return  formatDate(data.value, 'yyyy-MM-dd', this.locale)}
+      { headerName: 'Data do', field: 'DateTo', width: 100,
+        cellRenderer: (data) => { return  formatDate(data.value, 'yyyy-MM-dd', this.locale)}
       },
       { headerName: 'Typ umowy', field: 'AgreementsTypeName', width: 150, filter: 'agTextColumnFilter', floatingFilter: true },
       { headerName: 'Lokalizacja', field: 'LocationName', width: 150, filter: 'agTextColumnFilter', floatingFilter: true },
@@ -110,46 +86,13 @@ export class SitKancelariaComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  activeRowAttachmentsChanged(activeRow) {
-    // this.sitAttachmentsSelected.splice(0, this.sitAttachmentsSelected.length);
-    // this.sitAttachmentsSelected.push(...[activeRow]);
+  onGridReady(params) {
+    this.gridService.setDefGridOptionsOnReady(params);
 
-  }
-
-  onGridReadyCustomers(params) {
-    this.gridApiCustomers = params.api;
-    this.gridColumnApiCustomers = params.columnApi;
-  }
-  onGridReadyAgreements(params) {
-    this.gridApiAgreements = params.api;
-    this.gridColumnApiAgreements = params.columnApi;
-  }
-  onGridReadyAttachments(params) {
-    this.gridApiAttachments = params.api;
-    this.gridColumnApiAttachments = params.columnApi;
-    this.gridColumnApiAttachments.setColumnsVisible(['sitAttachmentsId','sitAttachmentsG','ParentId'],false)
-
+    if (params.columnApi.getColumn('sitAttachmentsG')) {
+      params.columnApi.setColumnsVisible(['sitAttachmentsId','sitAttachmentsG','ParentId'],false)
+    }
   }
 
-  onRowClickedCustomers(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitCustomers');
-    dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
-  onRowClickedAgreements(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitAgreements');
-    dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
-  onRowClickedAttachments(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitAttachments');
-    dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
 
-  onFirstDataRendered(params) {
-    const allColumnIds = [];
-
-    this.gridColumnApiCustomers.getAllColumns().forEach(function(column) {
-      allColumnIds.push(column.colId);
-    });
-    this.gridColumnApiAgreements.autoSizeColumns(allColumnIds, false);
-  }
 }

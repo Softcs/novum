@@ -8,7 +8,7 @@ import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-ren
 import { TabService } from '@app/_services/tab.service';
 import { formatNumber } from '@angular/common';
 import { formatDate } from '@angular/common';
-// import { AllModules } from '@ag-grid-enterprise/all-modules';
+import { GridService } from '@app/_services/grid.service';
 
 @Component({
   selector: 'app-sit-wms-docs',
@@ -25,41 +25,20 @@ export class SitWmsDocsComponent implements OnInit {
   activeTab: number;
   activeSubTab: number;
   printLinked = false;
-
-  defaultColDef;
-  rowSelection;
   popupParent;
   frameworkComponents;
   rowClassRules;
-
-  gridApiDocumentsHeaders;
-  gridColumnApiDocumentsHeaders;
   columnDefsDocumentsHeaders;
-  pinnedBottomRowDataDocumentsHeaders;
-
-  gridApiDocumentsPositions;
-  gridColumnApiDocumentsPositions;
   columnDefsDocumentsPositions;
-
-  gridApiDocumentsPositionsSum;
-  gridColumnApiDocumentsPositionsSum;
   columnDefsDocumentsPositionsSum;
-
-  gridApiDocumentsPositionsHistory;
-  gridColumnApiDocumentsPositionsHisotry;
   columnDefsDocumentsPositionsHistory;
-
-  gridApiDocumentsHeadersHistory;
-  gridColumnApiDocumentsHeadersHistory;
   columnDefsDocumentsHeadersHistory;
-
-  gridApiAttachments;
-  gridColumnApiAttachments;
   columnDefsAttachments;
 
   constructor(
     private gatewayService: GatewayService,
     private tabService: TabService,
+    private gridService: GridService,
     @Inject(LOCALE_ID) private locale: string,
 
     ) {
@@ -69,27 +48,16 @@ export class SitWmsDocsComponent implements OnInit {
 
     this.companyGUID = this.currentUser.company.companyGUID;
     this.popupParent = document.querySelector('body');
-    this.rowSelection = 'single';
     this.frameworkComponents = {
       gridCheckboxRenderer: GridCheckboxRenderer,
     };
 
-    this.defaultColDef = {
-      sortable: true,
-      filter: true,
-      resizable: true,
-      enableValue: true,
-      enableRowGroup: true,
-      enablePivot: true,
-      floatingFilter: false,
-    };
-
     //definicja kolumn nagłówków dowodów
     this.columnDefsDocumentsHeaders = [
-      { headerName: 'Id', field: 'sitDocumentsHeadersId', sortable: true, resizable: true, filter: 'agTextColumnFilter',width: 90 },
-      { headerName: 'GUID', field: 'sitDocumentsHeadersG', sortable: true, resizable: true, filter: 'agTextColumnFilter',width: 150 },
-      { headerName: 'Typ dok.', field: 'DocumentIdent', sortable: true, resizable: true, filter: 'agSetColumnFilter', floatingFilter: false, width: 90 },
-      { headerName: 'Numer', field: 'DocumentNumber', sortable: true, resizable: true, filter: 'agTextColumnFilter' },
+      { headerName: 'Id', field: 'sitDocumentsHeadersId', filter: 'agTextColumnFilter',width: 90 },
+      { headerName: 'GUID', field: 'sitDocumentsHeadersG', filter: 'agTextColumnFilter',width: 150 },
+      { headerName: 'Typ dok.', field: 'DocumentIdent', filter: 'agSetColumnFilter', floatingFilter: false, width: 90 },
+      { headerName: 'Numer', field: 'DocumentNumber', filter: 'agTextColumnFilter' },
       { headerName: 'Data', field: 'DocumentDate', filter: 'agDateColumnFilter',width: 100, floatingFilter: false, sort: 'desc'  },
       { headerName: 'Status WMS', field: 'Status_WMS', filter: 'agSetColumnFilter', width: 160, floatingFilter: true,
         cellStyle: function(params) {
@@ -114,7 +82,7 @@ export class SitWmsDocsComponent implements OnInit {
 
     //definicja kolumn pozycji dowodów
     this.columnDefsDocumentsPositions = [
-      { headerName: 'Lp', field: 'OrdNumber', type: 'numericColumn', sortable: true, resizable: true, suppressMenu: true, width: 40,floatingFilter: false },
+      { headerName: 'Lp', field: 'OrdNumber', type: 'numericColumn', suppressMenu: true, width: 40,floatingFilter: false },
       { headerName: 'Identyfikator', field: 'ProductIdent', filter: 'agTextColumnFilter', width: 120, floatingFilter: true },
       { headerName: 'EAN', field: 'EAN', filter: 'agTextColumnFilter', width: 110, floatingFilter: true },
       { headerName: 'Opis', field: 'PositionDescription', filter: 'agTextColumnFilter', floatingFilter: true },
@@ -131,7 +99,7 @@ export class SitWmsDocsComponent implements OnInit {
 
     //definicja kolumn sum pozycji dowodów
     this.columnDefsDocumentsPositionsSum = [
-      { headerName: 'Lp', field: 'OrdNumber', type: 'numericColumn', sortable: true, resizable: true, suppressMenu: true, width: 40,floatingFilter: false },
+      { headerName: 'Lp', field: 'OrdNumber', type: 'numericColumn', suppressMenu: true, width: 40,floatingFilter: false },
       { headerName: 'Identyfikator', field: 'ProductIdent', filter: 'agTextColumnFilter', width: 120, floatingFilter: true },
       { headerName: 'EAN', field: 'EAN', filter: 'agTextColumnFilter', width: 110, floatingFilter: true },
       { headerName: 'Opis', field: 'PositionDescription', filter: 'agTextColumnFilter', floatingFilter: true },
@@ -144,7 +112,7 @@ export class SitWmsDocsComponent implements OnInit {
     //definicja kolumn historii nagłówków
     this.columnDefsDocumentsHeadersHistory = [
       { headerName: 'Operacja', field: 'OprType', filter: 'agTextColumnFilter',  width: 100 },
-      { headerName: 'Data mod.', field: 'ChangeDate', sortable: true, resizable: true, suppressMenu: true, width: 180, sort: 'desc',
+      { headerName: 'Data mod.', field: 'ChangeDate', suppressMenu: true, width: 180, sort: 'desc',
         cellRenderer: (data) => { return formatDate(data.value, 'yyyy-MM-dd H:mm', this.locale) }
       },
       { headerName: 'Status', field: 'ValueName', filter: 'agTextColumnFilter'},
@@ -154,7 +122,7 @@ export class SitWmsDocsComponent implements OnInit {
     //definicja kolumn historii pozycji
     this.columnDefsDocumentsPositionsHistory = [
       { headerName: 'Operacja', field: 'OprType', filter: 'agTextColumnFilter', width: 100 },
-      { headerName: 'Data mod.', field: 'ChangeDate', sortable: true, resizable: true, suppressMenu: true, width: 180, sort: 'desc',
+      { headerName: 'Data mod.', field: 'ChangeDate', suppressMenu: true, width: 180, sort: 'desc',
         cellRenderer: (data) => { return formatDate(data.value, 'yyyy-MM-dd H:mm', this.locale) }
       },
       { headerName: 'Ilość', field: 'Quantity', type: "numericColumn" }
@@ -175,10 +143,7 @@ export class SitWmsDocsComponent implements OnInit {
     }
   }
 
-
-    ngOnInit(): void {
-    }
-
+  ngOnInit(): void {}
 
   getPrintout() {
     //generuje wydruk w nowej zakładce
@@ -188,90 +153,16 @@ export class SitWmsDocsComponent implements OnInit {
     window.open(url, "_blank");
   }
 
-  onGridReadyDocumentsHeaders(params) {
-    this.gridApiDocumentsHeaders = params.api;
-    this.gridColumnApiDocumentsHeaders = params.columnApi;
-    this.gridColumnApiDocumentsHeaders.setColumnsVisible(['sitDocumentsHeadersId','sitDocumentsHeadersG'],false)
+  onGridReady(params) {
+    this.gridService.setDefGridOptionsOnReady(params);
 
-  }
+    if (params.columnApi.getColumn('sitDocumentsHeadersG')) {
+      params.columnApi.setColumnsVisible(['sitDocumentsHeadersId','sitDocumentsHeadersG'],false)
+    }
 
-  onGridReadyDocumentsHeadersHistory(params) {
-    this.gridColumnApiDocumentsHeadersHistory = params.api;
-    this.gridColumnApiDocumentsHeadersHistory = params.columnApi;
-  }
-
-  onGridReadyDocumentsPositions(params) {
-    this.gridApiDocumentsPositions = params.api;
-    this.gridColumnApiDocumentsPositions = params.columnApi;
-  }
-
-  onGridReadyDocumentsPositionsSum(params) {
-    this.gridApiDocumentsPositionsSum = params.api;
-    this.gridColumnApiDocumentsPositionsSum = params.columnApi;
-  }
-
-  onGridReadyDocumentsPositionsHistory(params) {
-    this.gridApiDocumentsPositionsHistory = params.api;
-    this.gridColumnApiDocumentsPositionsHisotry = params.columnApi;
-  }
-
-  onRowClickedDocumentsHeaders(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsHeaders');
-    dataSourceResponseWrapper.SetActiveRow(event.data);
-    if (dataSourceResponseWrapper.activeRow['sitDocumentsHeadersG_Invoice'] !== null) {
-      this.printLinked = true;
-    } else { this.printLinked = false };
-  }
-
-  onRowClickedDocumentsHeadersHistory(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsHeadersHistory');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
-
-  onRowClickedDocumentsPositions(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsPositions');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
-
-  onRowClickedDocumentsPositionsSum(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsPositionsSum');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
-
-  onRowClickedDocumentsPositionsHistory(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsPositionsHistory');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
-
-  onRowClickedDocumentsVATFooter(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsVATFooters');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
-
-  onGridReadyAttachments(params) {
-    this.gridApiAttachments = params.api;
-    this.gridColumnApiAttachments = params.columnApi;
-    this.gridColumnApiAttachments.setColumnsVisible(['sitAttachmentsId','sitAttachmentsG','ParentId'],false)
-
-  }
-
-  onRowClickedAttachments(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitAttachments');
-    dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
-
-  onFirstDataRendered(params) {
-    const allColumnIds = [];
-    // this.gridColumnApiDocumentsHeaders.getAllColumns().forEach(function(column) {
-    //   allColumnIds.push(column.colId);
-    // });
-    // this.gridColumnApiDocumentsHeaders.autoSizeColumns(allColumnIds, false);
-
-    // this.gridColumnApiDocumentsPositions.getAllColumns().forEach(function(column) {
-    //   allColumnIds.push(column.colId);
-    // });
-    // this.gridColumnApiDocumentsPositions.autoSizeColumns(allColumnIds, false);
-
+    if (params.columnApi.getColumn('sitAttachmentsG')) {
+      params.columnApi.setColumnsVisible(['sitAttachmentId','sitAttachmentsG','ParentId'],false)
+    }
   }
 
   activateTab(index) {
@@ -280,9 +171,16 @@ export class SitWmsDocsComponent implements OnInit {
   }
 
   activeRowChangedDocumentsHeaders(activeRow) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsHeaders');
-    // if (activeRow['sitDocumentsHeadersG_Invoice'] !== null) {
-    //   this.printLinked = true;
-    // }
+    if (!activeRow) {
+      this.printLinked = false;
+      return null;
+    }
+
+    if (!activeRow['sitDocumentsHeadersG_Invoice']) {
+      this.printLinked = false
+      return null;
+    }
+
+    this.printLinked = true;
   }
 }

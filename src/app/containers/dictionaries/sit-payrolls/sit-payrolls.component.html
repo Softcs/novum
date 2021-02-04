@@ -18,15 +18,8 @@
                   style="width: 100%; height: 100%;"
                   class="ag-theme-balham"
                   [columnDefs]="columnDefs"
-                  [defaultColDef]="defaultColDef"
-                  [rowSelection]="rowSelection"
-                  [rowMultiSelectWithClick]="true"
-                  [enableCellTextSelection]="true"
-                  [enableRangeSelection]="false"
                   [popupParent]="popupParent"
-                  (rowClicked)="onRowClicked($event)"
                   (gridReady)="onGridReady($event)"
-                  (firstDataRendered)="onFirstDataRendered($event)"
                 >
                 </ag-grid-angular>
               </div>
@@ -42,15 +35,8 @@
                 style="width: 100%; height: 100%;"
                 class="ag-theme-balham"
                 [columnDefs]="columnDefsPayrollsAccounting"
-                [defaultColDef]="defaultColDef"
-                [rowSelection]="rowSelection"
-                [rowMultiSelectWithClick]="true"
-                [enableCellTextSelection]="true"
-                [enableRangeSelection]="false"
                 [popupParent]="popupParent"
-                (rowClicked)="onRowClickedPayrollsAccounting($event)"
-                (gridReady)="onGridReadyPayrollsAccounting($event)"
-                (firstDataRendered)="onFirstDataRendered($event)"
+                (gridReady)="onGridReady($event)"
               >
               </ag-grid-angular>
             </div>
@@ -75,15 +61,8 @@
                   style="width: 100%; height: 100%;"
                   class="ag-theme-balham"
                   [columnDefs]="columnDefsPayrollsCalc"
-                  [defaultColDef]="defaultColDef"
-                  [rowSelection]="rowSelection"
-                  [rowMultiSelectWithClick]="true"
-                  [enableCellTextSelection]="true"
-                  [enableRangeSelection]="false"
                   [popupParent]="popupParent"
-                  (rowClicked)="onRowClickedPayrollsCalc($event)"
-                  (gridReady)="onGridReadyPayrollsCalc($event)"
-                  (firstDataRendered)="onFirstDataRendered($event)"
+                  (gridReady)="onGridReady($event)"
                 >
                 </ag-grid-angular>
               </div>
@@ -101,15 +80,8 @@
                     style="width: 100%; height: 100%;"
                     class="ag-theme-balham"
                     [columnDefs]="columnDefsPayrollComponentsCalc"
-                    [defaultColDef]="defaultColDef"
-                    [rowSelection]="rowSelection"
-                    [rowMultiSelectWithClick]="true"
-                    [enableCellTextSelection]="true"
-                    [enableRangeSelection]="false"
                     [popupParent]="popupParent"
-                    (rowClicked)="onRowClickedPayrollComponentsCalc($event)"
-                    (gridReady)="onGridReadyPayrollComponentsCalc($event)"
-                    (firstDataRendered)="onFirstDataRendered($event)"
+                    (gridReady)="onGridReady($event)"
                   >
                   </ag-grid-angular>
                 </div>
@@ -126,16 +98,9 @@
                         style="width: 100%; height: 100%;"
                         class="ag-theme-balham"
                         [columnDefs]="columnDefsPayrollsCalcAccounting"
-                        [defaultColDef]="defaultColDef"
-                        [rowSelection]="rowSelection"
-                        [rowMultiSelectWithClick]="true"
-                        [enableCellTextSelection]="false"
-                        [enableRangeSelection]="true"
                         [popupParent]="popupParent"
                         [masterDetail]="true"
-                        (rowClicked)="onRowClickedPayrollsCalcAccounting($event)"
-                        (gridReady)="onGridReadyPayrollsCalcAccounting($event)"
-                        (firstDataRendered)="onFirstDataRendered($event)"
+                        (gridReady)="onGridReady($event)"
                       >
                       </ag-grid-angular>
                     </div>
@@ -150,16 +115,9 @@
                           style="width: 100%; height: 100%;"
                           class="ag-theme-balham"
                           [columnDefs]="columnDefsPayrollsCalcAccountingDim"
-                          [defaultColDef]="defaultColDef"
-                          [rowSelection]="rowSelection"
-                          [rowMultiSelectWithClick]="true"
-                          [enableCellTextSelection]="false"
-                          [enableRangeSelection]="true"
                           [popupParent]="popupParent"
                           [masterDetail]="true"
-                          (rowClicked)="onRowClickedPayrollsCalcAccountingDim($event)"
-                          (gridReady)="onGridReadyPayrollsCalcAccountingDim($event)"
-                          (firstDataRendered)="onFirstDataRendered($event)"
+                          (gridReady)="onGridReady($event)"
                         >
                         </ag-grid-angular>
                       </div>

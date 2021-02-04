@@ -6,7 +6,7 @@ import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
 import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
 import { formatDate } from '@angular/common';
-
+import { GridService } from '@app/_services/grid.service';
 @Component({
   selector: 'app-sit-returns',
   templateUrl: './sit-returns.component.html',
@@ -18,46 +18,25 @@ export class SitReturnsComponent implements OnInit {
   @ViewChildren('sitDictcontainer') dictContainers !: QueryList<SitDictContainerComponent>;
 
   currentUser: User;
-
-  defaultColDef;
-  rowSelection;
   popupParent;
   frameworkComponents;
   rowClassRules;
-
-  gridApiDocumentsHeaders;
-  gridColumnApiDocumentsHeaders;
   columnDefsDocumentsHeaders;
-
-  gridApiDocumentsPositions;
-  gridColumnApiDocumentsPositions;
   columnDefsDocumentsPositions;
-
-  gridApiAttachments;
-  gridColumnApiAttachments;
   columnDefsAttachments;
 
   constructor(
     private gatewayService: GatewayService,
+    private gridService: GridService,
     @Inject(LOCALE_ID) private locale: string,
   )
   {
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
     this.popupParent = document.querySelector('body');
-    this.rowSelection = 'single';
     this.frameworkComponents = {
       gridCheckboxRenderer: GridCheckboxRenderer,
     };
 
-    this.defaultColDef = {
-      sortable: true,
-      filter: true,
-      resizable: true,
-      enableValue: true,
-      enableRowGroup: true,
-      enablePivot: true,
-      floatingFilter: false,
-    };
 
     //definicja kolumn nagłówków dowodów
     this.columnDefsDocumentsHeaders = [
@@ -111,38 +90,17 @@ export class SitReturnsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onGridReadyDocumentsHeaders(params) {
-    this.gridApiDocumentsHeaders = params.api;
-    this.gridColumnApiDocumentsHeaders = params.columnApi;
-    this.gridColumnApiDocumentsHeaders.setColumnsVisible(['sitDocumentsHeadersId','sitDocumentsHeadersG'],false)
+  onGridReady(params) {
+    this.gridService.setDefGridOptionsOnReady(params);
+
+    if (params.columnApi.getColumn('sitDocumentsHeadersG')) {
+      params.columnApi.setColumnsVisible(['sitDocumentsHeadersId','sitDocumentsHeadersG'],false)
+    }
+
+    if (params.columnApi.getColumn('sitAttachmentsG')) {
+      params.columnApi.setColumnsVisible(['sitAttachmentsId','sitAttachmentsG','ParentId'],false)
+    }
   }
 
-  onRowClickedDocumentsHeaders(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsHeaders');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
 
-  onGridReadyDocumentsPositions(params) {
-    this.gridApiDocumentsPositions = params.api;
-    this.gridColumnApiDocumentsPositions = params.columnApi;
-  }
-
-  onRowClickedDocumentsPositions(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsPositions');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
-
-  onGridReadyAttachments(params) {
-    this.gridApiAttachments = params.api;
-    this.gridColumnApiAttachments = params.columnApi;
-    this.gridColumnApiAttachments.setColumnsVisible(['sitAttachmentsId','sitAttachmentsG','ParentId'],false)
-  }
-
-  onRowClickedAttachments(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitAttachments');
-    dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
-
-  onFirstDataRendered(params) {
-  }
 }

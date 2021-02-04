@@ -4,7 +4,7 @@ import { DataSetWrapper } from '@app/_models';
 import { environment } from '@environments/environment';
 import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
-// import { AllModules } from '@ag-grid-enterprise/all-modules';
+import { GridService } from '@app/_services/grid.service';
 
 @Component({
   selector: 'app-sit-documents',
@@ -17,41 +17,19 @@ export class SitDocumentsComponent implements OnInit {
   @ViewChildren('sitDictcontainer') dictContainers !: QueryList<SitDictContainerComponent>;
 
   currentUser: User;
-
-  defaultColDef;
-  rowSelection;
   popupParent;
-
-  gridApiDocumentsHeaders;
-  gridColumnApiDocumentsHeaders;
   columnDefsDocumentsHeaders;
   pinnedBottomRowDataDocumentsHeaders;
-
-  gridApiDocumentsPositions;
-  gridColumnApiDocumentsPositions;
   columnDefsDocumentsPositions;
-
-  gridApiDocumentsVATFooter;
-  gridColumnApiDocumentsVATFooter;
   columnDefsDocumentsVATFooter;
 
   constructor(
-    private gatewayService: GatewayService
+    private gatewayService: GatewayService,
+    private gridService: GridService
     ) {
       this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
       this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
       this.popupParent = document.querySelector('body');
-      this.rowSelection = 'single';
-
-      this.defaultColDef = {
-        sortable: true,
-        filter: true,
-        //floatingFilter: true,
-        resizable: true,
-        enableValue: true,
-        enableRowGroup: true,
-        enablePivot: true,
-      };
 
       //definicja kolumn nagłówków dowodów
       this.columnDefsDocumentsHeaders = [
@@ -65,7 +43,6 @@ export class SitDocumentsComponent implements OnInit {
         { headerName: 'Płatnik', field: 'PayerDesc02', filter: 'agTextColumnFilter' },
         { headerName: 'Opis', field: 'DocumentDescription', filter: 'agTextColumnFilter' },
       ];
-      this.pinnedBottomRowDataDocumentsHeaders = this.createData(1, '');
 
       //definicja kolumn pozycji dowodów
       this.columnDefsDocumentsPositions = [
@@ -92,69 +69,7 @@ export class SitDocumentsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
-
-  onGridReadyDocumentsHeaders(params) {
-    this.gridApiDocumentsHeaders = params.api;
-    this.gridColumnApiDocumentsHeaders = params.columnApi;
-
-  }
-
-  onGridReadyDocumentsPositions(params) {
-    this.gridApiDocumentsPositions = params.api;
-    this.gridColumnApiDocumentsPositions = params.columnApi;
-
-  }
-
-  onGridReadyDocumentsVATFooter(params) {
-    this.gridApiDocumentsVATFooter = params.api;
-    this.gridColumnApiDocumentsVATFooter = params.columnApi;
-
-  }
-
-  onRowClickedDocumentsHeaders(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsHeaders');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
-
-  onRowClickedDocumentsPositions(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsPositions');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
-
-  onRowClickedDocumentsVATFooter(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsVATFooters');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
-
-  onFirstDataRendered(params) {
-    const allColumnIds = [];
-
-    this.gridColumnApiDocumentsHeaders.getAllColumns().forEach(function(column) {
-      allColumnIds.push(column.colId);
-    });
-    this.gridColumnApiDocumentsHeaders.autoSizeColumns(allColumnIds, false);
-
-    this.gridColumnApiDocumentsPositions.getAllColumns().forEach(function(column) {
-      allColumnIds.push(column.colId);
-    });
-    this.gridColumnApiDocumentsHeaders.autoSizeColumns(allColumnIds, false);
-
-    this.gridColumnApiDocumentsVATFooter.getAllColumns().forEach(function(column) {
-      allColumnIds.push(column.colId);
-    });
-    this.gridColumnApiDocumentsHeaders.autoSizeColumns(allColumnIds, false);
-  }
-
-  createData(count, prefix) {
-    let result = [];
-    for (var i = 0; i < count; i++) {
-      result.push({
-        Net: prefix + 0,
-        VAT: prefix + 0,
-        Gross: prefix + 0,
-      });
-    }
-    return result;
+  onGridReady(params) {
+    this.gridService.setDefGridOptionsOnReady(params);
   }
 }

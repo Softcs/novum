@@ -5,7 +5,7 @@ import { environment } from '@environments/environment';
 import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
 import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
-
+import { GridService } from '@app/_services/grid.service';
 @Component({
   selector: 'sit-app-users',
   templateUrl: './sit-app-users.component.html',
@@ -18,36 +18,19 @@ export class SitAppUsersComponent implements OnInit {
 
   currentUser: User;
   frameworkComponents;
-
-  defaultColDef;
-  rowSelection;
   popupParent;
-
-  gridApi;
-  gridColumnApi;
   columnDefs;
-
-  gridApiAppUserCompanies;
-  gridColumnApiAppUserCompanies;
   columnDefsAppUserCompanies;
-
-  gridApiRightsGroupUsers;
-  gridColumnApiRightsGroupUsers;
   columnDefsRightsGroupUsers;
 
   constructor(
-    private gatewayService: GatewayService
+    private gatewayService: GatewayService,
+    private gridService: GridService
   ) {
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
     this.popupParent = document.querySelector('body');
-    this.rowSelection = 'single';
-
-    this.defaultColDef = {
-      // flex: 1,
-      sortable: true,
-      filter: true,
-      floatingFilter: false,
-      resizable: true
+    this.frameworkComponents = {
+      gridCheckboxRenderer: GridCheckboxRenderer,
     };
 
     this.columnDefs = [
@@ -78,48 +61,22 @@ export class SitAppUsersComponent implements OnInit {
       { headerName: 'Nazwa', field: 'RightsGroupName', filter: 'agTextColumnFilter'},
     ];
 
-    this.frameworkComponents = {
-      gridCheckboxRenderer: GridCheckboxRenderer,
-    };
    }
 
   ngOnInit(): void {
   }
 
   onGridReady(params) {
-    this.gridApi = params.api;
-    this.gridColumnApi = params.columnApi;
-    this.gridColumnApi.setColumnsVisible(['sitAppUsersId','sitAppUsersG','sitMenuId'],false)
+    this.gridService.setDefGridOptionsOnReady(params);
 
+    if (params.columnApi.getColumn('sitAppUsersId')) {
+      params.columnApi.setColumnsVisible(['sitAppUsersId','sitAppUsersG','sitMenuId'],false)
+    }
+
+    if (params.columnApi.getColumn('sitAppUserCompaniesId')) {
+      params.columnApi.setColumnsVisible(['sitAppUserCompaniesId','sitAppUserCompaniesG'],false)
+    }
   }
 
-  onGridReadyAppUserCompanies(params) {
-    this.gridApiAppUserCompanies = params.api;
-    this.gridColumnApiAppUserCompanies = params.columnApi;
-    this.gridColumnApiAppUserCompanies.setColumnsVisible(['sitAppUserCompaniesId','sitAppUserCompaniesG'],false)
-  }
 
-  onGridReadyRightsGroupUsers(params) {
-    this.gridApiRightsGroupUsers = params.api;
-    this.gridColumnApiRightsGroupUsers = params.columnApi;
-  }
-
-  onRowClicked(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitAppUsers');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
-
-  onRowClickedAppUserCompanies(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitAppUserCompanies');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
-
-  onRowClickedRightsGroupUsers(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitRightsGroupUsers');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
-
-  onFirstDataRendered(event) {
-
-  }
 }

@@ -11,6 +11,7 @@ import { SitButtonBaseComponent } from '../controls/sit-button-base/sit-button-b
 import { ActionDefinitionWrapper } from '@app/_models/actionDefinitionWrapper';
 import { Subscription } from 'rxjs';
 import { SitActionsToolbarComponent } from '../controls/sit-actions-toolbar/sit-actions-toolbar.component';
+import { GridService } from '@app/_services/grid.service';
 
 @Component({
   selector: 'sit-data-set-container',
@@ -51,6 +52,10 @@ export class SitDataSetContainerComponent {
   afterPropagte: EventEmitter<string> = new EventEmitter<string>();
 
   public dataSetControlsManager: DataSetManager;
+
+  constructor(
+    private gridService: GridService
+  ) {}
 
   clearErrors() {
     this.errors?.splice(0, this.errors?.length);
@@ -107,7 +112,8 @@ export class SitDataSetContainerComponent {
     });
   }
 
-  private appluCustomPropsGrid(element) {
+  private applyCustomPropsGrid(element) {
+    var self = this;
     const gridApi = element["api"];
     if (gridApi == null) {
       return null;
@@ -127,6 +133,11 @@ export class SitDataSetContainerComponent {
         rowClassRules["sit-row-active"] = function(params) {
             return params.api.SeidoCustomProperty.activeRow == params.node.data;
         }
+
+        
+        gridApi.gridOptionsWrapper.gridOptions.onRowClicked = function(event) {
+          self.dataSetResponseWrapper.SetActiveRow(event.data);
+        }
       }
 
       gridApi.SeidoCustomProperty = customProperty;
@@ -135,42 +146,42 @@ export class SitDataSetContainerComponent {
         var prevRow = customProperty.activeRow;
         customProperty.activeRow = row;
         var rowsToUpdate = [];
-  
+
         if (row) {
           rowsToUpdate.push(row);
         }
-  
+
         if (prevRow && row) {
           rowsToUpdate.push(prevRow);
         }
-        this.redrawGridActiveRow(gridApi, prevRow); 
+        this.redrawGridActiveRow(gridApi, prevRow);
         //gridApi.applyTransaction({update:rowsToUpdate});
       });
     }
-    
+
     return customProperty;
   }
 
   public redrawGridActiveRow(gridApi: any, prevRow: any) {
     if (!this.activeRow || !gridApi) {
       return;
-    }  
-    
+    }
+
     let limit = prevRow ? 2 : 1;
-    const fieldName = this.getFieldId(this.ident);      
+    const fieldName = this.getFieldId(this.ident);
     const fieldValue = this.activeRow[fieldName];
     const prevValue = prevRow ? prevRow[fieldName] : null;
-    gridApi.forEachNode( (rowNode) => { 
+    gridApi.forEachNode( (rowNode) => {
       const rowValue = rowNode.data[fieldName];
       if (this.compareStrings(rowValue, fieldValue) || this.compareStrings(rowValue, prevValue)) {
         rowNode.setData(rowNode.data);
         limit--;
       }
-      
+
       if (limit == 0) {
         return false;
       }
-    });    
+    });
   }
 
   public refreshRows(dataSetWrapper: DataSetWrapper, dataSourcesRequest) {
@@ -237,7 +248,7 @@ export class SitDataSetContainerComponent {
     this.errors = dataSetWrapper.errors;
     this.datasSourcesInterface.forEach(element => {
       // agGrid
-      this.appluCustomPropsGrid(element);
+      this.applyCustomPropsGrid(element);
       const gridApi = element["api"];
       if (gridApi) {
         // tree grid - parsowanie kolumny z danymi do drzewa
@@ -278,21 +289,29 @@ export class SitDataSetContainerComponent {
     }
   }
 
-  public prepareControls(dataSetWrapperDefinition: DataSetDefinitionWrapper) {    
+  public prepareControls(dataSetWrapperDefinition: DataSetDefinitionWrapper) {
+
+    this.datasSourcesInterface.forEach(element => {
+      const gridApi = element["api"];
+      if (gridApi) {
+        this.gridService.setDefGridOptions (element);
+      }
+    });
+
     this.actionControlsInterface.forEach(actionControl => {
       actionControl.dataSetResponseWrapper = this.dataSetResponseWrapper;
       actionControl.actionDefinition = dataSetWrapperDefinition?.FindActionDefinition(actionControl.actionIdent);
       actionControl.dataSetManagerSource = this.dataSetControlsManager;
-    });         
+    });
 
     this.pepareControlForButtons(this.refreshButtons);
-    this.pepareControlForButtons(this.filesButtons);  
+    this.pepareControlForButtons(this.filesButtons);
 
     if (this.actionToolbar) {
       this.actionToolbar.dataSetResponseWrapper = this.dataSetResponseWrapper;
       this.actionToolbar.dataSetManagerSource = this.dataSetControlsManager;
       this.actionToolbar.actions = dataSetWrapperDefinition.actions ? dataSetWrapperDefinition.actions.filter(a => a.showInToolbar) : [];
-    } 
+    }
   }
 
   set errors(value: any[]) {

@@ -8,7 +8,7 @@ import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-ren
 import { AttachmentsService } from '@app/_services/attachments.service';
 import { formatNumber } from '@angular/common';
 import { formatDate } from '@angular/common';
-
+import { GridService } from '@app/_services/grid.service';
 
 @Component({
   selector: 'app-sit-products',
@@ -25,35 +25,20 @@ export class SitProductsComponent implements OnInit {
   ean;
   frameworkComponents;
   contentColor;
-
-
-  //modules: any[] = AllModules;
-  gridApiProducts;
-  gridColumnApiProducts;
   columnDefsProducts;
-  defaultColDefProducts;
-  rowSelection;
   popupParent;
-
 
   constructor(
     private gatewayService: GatewayService,
     private attachmentsService: AttachmentsService,
+    private gridService: GridService,
     @Inject(LOCALE_ID) private locale: string
   ) {
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
     this.contentColor = document.documentElement.style.getPropertyValue('$content-background-color');
     this.popupParent = document.querySelector('body');
-    this.rowSelection = 'multi';
     this.frameworkComponents = {
       gridCheckboxRenderer: GridCheckboxRenderer,
-    };
-
-    this.defaultColDefProducts = {
-      sortable: true,
-      filter: true,
-      floatingFilter: false,
-      resizable: true
     };
 
     this.columnDefsProducts = [
@@ -83,23 +68,10 @@ export class SitProductsComponent implements OnInit {
 
   }
 
-  onGridReadyProducts(params) {
-    this.gridApiProducts = params.api;
-    this.gridColumnApiProducts = params.columnApi;
+  onGridReady(params) {
+    this.gridService.setDefGridOptionsOnReady(params);
   }
 
-  onRowClickedProducts(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitProducts');
-    dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
-
-  onFirstDataRendered(params) {
-    var allColumnIds = [];
-    // this.gridColumnApiProducts.getAllColumns().forEach(function(column) {
-    //   allColumnIds.push(column.colId);
-    // });
-    // this.gridColumnApiProducts.autoSizeColumns(allColumnIds, false);
-  }
 
   activeRowProductsChanged(activeRow) {
     this.link = activeRow?.sitImagesG == null

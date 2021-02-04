@@ -1,4 +1,6 @@
-﻿import { SitRailDeliveryDistrybutionImportComponent } from '../containers/dictionaries/sit-pub-delivery-distribution/actions/sit-rail-delivery-distrybution-import/sit-rail-delivery-distrybution-import.component'
+﻿import { SitEmployeesSettlementsComponent } from './../containers/dictionaries/sit-employees-settlements/sit-employees-settlements.component';
+import { SitHRDepartmentsComponent } from '../containers/dictionaries/sit-hr-departments/sit-hr-departments.component';
+import { SitRailDeliveryDistrybutionImportComponent } from '../containers/dictionaries/sit-pub-delivery-distribution/actions/sit-rail-delivery-distrybution-import/sit-rail-delivery-distrybution-import.component'
 import { SitPubDeliveryDistributionComponent } from '../containers/dictionaries/sit-pub-delivery-distribution/sit-pub-delivery-distribution.component';
 import { SitProductsUpdateWeightComponent } from './../containers/dictionaries/sit-products/actions/sit-products-update-weight/sit-products-update-weight.component';
 import { SitCompanyDepartmentsComponent } from './../containers/dictionaries/sit-company-departments/sit-company-departments.component';
@@ -120,7 +122,9 @@ export class FactoryService {
         sitCompanyDepartments: SitCompanyDepartmentsComponent,
         sitProductsUpdateWeight: SitProductsUpdateWeightComponent,
         sitPubDeliveryDistribution: SitPubDeliveryDistributionComponent,
-        sitRailDeliveryDistrybutionImport: SitRailDeliveryDistrybutionImportComponent
+        sitRailDeliveryDistrybutionImport: SitRailDeliveryDistrybutionImportComponent,
+        sitHRDepartments: SitHRDepartmentsComponent,
+        sitEmployeesSettlements: SitEmployeesSettlementsComponent
     };
 
     public GetFactory(ident: string) {

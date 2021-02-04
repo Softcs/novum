@@ -8,7 +8,7 @@ import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
 import { formatDate } from '@angular/common';
 import { formatNumber } from '@angular/common';
-
+import { GridService } from '@app/_services/grid.service';
 
 @Component({
   selector: 'app-sit-payrolls',
@@ -21,48 +21,27 @@ export class SitPayrollsComponent implements OnInit {
   @ViewChildren('sitDictcontainer') dictContainers !: QueryList<SitDictContainerComponent>;
 
   currentUser: User;
-  rowSelection;
   popupParent;
-  defaultColDef;
-
-  gridApi;
-  gridColumnApi;
   columnDefs;
-  gridApiPayrollsCalc;
-  gridColumnApiPayrollsCalc;
   columnDefsPayrollsCalc;
-  gridApiPayrollComponentsCalc;
-  gridColumnApiPayrollComponentsCalc;
   columnDefsPayrollComponentsCalc;
-  gridApiPayrollsCalcAccounting;
-  gridColumnApiPayrollsCalcAccounting;
   columnDefsPayrollsCalcAccounting;
-  gridApiPayrollsAccounting;
-  gridColumnApiPayrollsAccounting;
   columnDefsPayrollsAccounting;
-  gridApiPayrollsCalcAccountingDim;
-  gridColumnApiPayrollsCalcAccountingDim;
   columnDefsPayrollsCalcAccountingDim;
+  gridApiPayrollComponentsCalc;
 
   constructor(
     private gatewayService: GatewayService,
+    private gridService: GridService,
     @Inject(LOCALE_ID) private locale: string
   ) {
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
     this.popupParent = document.querySelector('body');
-    this.rowSelection = 'multi';
-
-    this.defaultColDef = {
-      sortable: true,
-      filter: false,
-      floatingFilter: false,
-      resizable: true,
-      autoHeight: true
-    };
 
     this.columnDefs = [
       { headerName: 'ID', field: 'sitPayrollsId', filter: 'agNumberColumnFilter' },
       { headerName: 'GUID', field: 'sitPayrollsG', filter: 'agTextColumnFilter' },
+      { headerName: 'Kolejność', field: 'OrdId', type: 'numericColumn', filter: 'agNumberColumnFilter' },
       { headerName: 'Nr listy', field: 'PayrollNo',tooltipField: 'PayrollNo', filter: 'agTextColumnFilter', width: 180,
         cellRenderer: function(params) {
           return '<b>' + params.data["PayrollNo"] +'</b><br>' + params.data["PayrollTypeName"] + '</br>'
@@ -316,71 +295,29 @@ this.columnDefsPayrollsCalcAccountingDim = [
   ngOnInit(): void {}
 
   onGridReady(params) {
-    this.gridApi = params.api;
-    this.gridColumnApi = params.columnApi;
-    this.gridColumnApi.setColumnsVisible(['sitPayrollsId','sitPayrollsG'], false)
-  }
+    this.gridService.setDefGridOptionsOnReady(params);
 
-  onRowClicked(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitPayrolls');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
+    if (params.columnApi.getColumn('sitPayrollsG')) {
+      params.columnApi.setColumnsVisible(['sitPayrollsId','sitPayrollsG'], false)
+    }
 
-  onGridReadyPayrollsCalc(params) {
-    this.gridApiPayrollsCalc = params.api;
-    this.gridColumnApiPayrollsCalc = params.columnApi;
-    this.gridColumnApiPayrollsCalc.setColumnsVisible(['sitPayrollsCalcId','sitPayrollsCalcG'], false)
-  }
+    if (params.columnApi.getColumn('sitPayrollsCalcG')) {
+      params.columnApi.setColumnsVisible(['sitPayrollsCalcId','sitPayrollsCalcG'], false)
+    }
 
-  onRowClickedPayrollsCalc(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitPayrollsCalc');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
+    if (params.columnApi.getColumn('sitPayrollComponentsCalcG')) {
+      params.columnApi.setColumnsVisible(['sitPayrollComponentsCalcId','sitPayrollComponentsCalcG'], false)
+      this.gridApiPayrollComponentsCalc = params.colummnApi
+    }
 
-  onGridReadyPayrollComponentsCalc(params) {
-    this.gridApiPayrollComponentsCalc = params.api;
-    this.gridColumnApiPayrollComponentsCalc = params.columnApi;
-    this.gridColumnApiPayrollComponentsCalc.setColumnsVisible(['sitPayrollComponentsCalcId','sitPayrollComponentsCalcG'], false)
-  }
+    if (params.columnApi.getColumn('sitPayrollsCalcAccountingG')) {
+      params.columnApi.setColumnsVisible(['sitPayrollsCalcAccountingId','sitPayrollsCalcAccountingG'], false)
+    }
 
-  onRowClickedPayrollComponentsCalc(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitPayrollComponentsCalc');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
+    if (params.columnApi.getColumn('sitPayrollsCalcAccountingDimG')) {
+      params.columnApi.setColumnsVisible(['sitPayrollsCalcAccountingDimId','sitPayrollsCalcAccountingDimG'], false)
+    }
 
-  onGridReadyPayrollsCalcAccounting(params) {
-    this.gridApiPayrollsCalcAccounting = params.api;
-    this.gridColumnApiPayrollsCalcAccounting = params.columnApi;
-    this.gridColumnApiPayrollsCalcAccounting.setColumnsVisible(['sitPayrollsCalcAccountingId','sitPayrollsCalcAccountingG'], false)
-  }
-
-  onRowClickedPayrollsCalcAccounting(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitPayrollsCalcAccounting');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
-
-  onGridReadyPayrollsCalcAccountingDim(params) {
-    this.gridApiPayrollsCalcAccounting = params.api;
-    this.gridColumnApiPayrollsCalcAccounting = params.columnApi;
-    this.gridColumnApiPayrollsCalcAccounting.setColumnsVisible(['sitPayrollsCalcAccountingDimId','sitPayrollsCalcAccountingDimG'], false)
-  }
-
-  onRowClickedPayrollsCalcAccountingDim(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitPayrollsCalcAccountingDim');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
-
-  onGridReadyPayrollsAccounting(params) {
-    this.gridApiPayrollsAccounting = params.api;
-    this.gridColumnApiPayrollsAccounting = params.columnApi;
-  }
-
-  onRowClickedPayrollsAccounting(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitPayrollsAccounting');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
-
-  onFirstDataRendered(params) {
   }
 
   onTabChanged (tab) {

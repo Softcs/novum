@@ -365,7 +365,7 @@ button:focus {
 
 .sit-row-active {
   //background-color: magenta !important;
-  background-color: #cce6ff !important;
+  background-color: rgb(253, 227, 179)!important//#cce6ff !important;
 }
 
 .sit-grid-title {
@@ -474,7 +474,15 @@ button:focus {
 }
 // end of lookup fields
 
+.HRDepartmentIdent {
+  display: inline-block;
+  width: 100px;
+}
 
+.HRDepartmentName {
+  display: inline-block;
+  width: 200px;
+}
 .sit-proc-button-spinner {
   position: relative;
   top: -4px;
@@ -517,4 +525,21 @@ div.cover{
   display: flex;
   justify-content: flex-end;
   align-items: center;
+}
+
+
+.numberFormat2Dec{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.numberFormatInt{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.numberFormatPercent {
+  display: flex;
+  justify-content: flex-end;
+
 }
