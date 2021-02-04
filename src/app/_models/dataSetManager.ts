@@ -164,7 +164,8 @@ export class DataSetManager {
         }
     }
 
-    public ExdcuteInitInfo(dataSourceIdent: string, 
+    public ExecuteInitInfo(dataSourceIdent: string, 
+                    actionIdent: string, 
                     executeActionCompletedCallback: Function,
                     executeActionExceptionCallback: Function,
                     owner: any,
@@ -184,6 +185,7 @@ export class DataSetManager {
 
         const opr: Operation = this.gatewayService.operationExecuteInitInfo(
             dictIdent,
+            actionIdent,
             dataSourcesRequest,
             dataSourceIdent);
 
@@ -193,16 +195,25 @@ export class DataSetManager {
                 data => {
                     if (data.length === 1) {
                         const response = data[0];
-                        const wasErrors = this.PropagateErrors(dataSourceIdent, response?.Errors);
+                        const wasErrors = this.PropagateErrors(dataSourceIdent, response?.Errors);                       
                         
-                        !wasErrors 
-                                    ? executeActionCompletedCallback ?? executeActionCompletedCallback(owner)
-                                    : executeActionExceptionCallback ?? executeActionExceptionCallback(owner);                        
+                        if (!wasErrors) {
+                            if(executeActionCompletedCallback != null) {
+                                executeActionCompletedCallback(owner,  response.jsonData);
+                            }
+                        }                        
+                        else {                        
+                            if (executeActionExceptionCallback != null) {
+                                executeActionExceptionCallback(owner);
+                            }
+                        }
                     }
                 },
                 error => {
                     console.error("error", error);
-                    executeActionExceptionCallback ?? executeActionExceptionCallback(owner);
+                    if (executeActionExceptionCallback != null) {
+                          executeActionExceptionCallback(owner);
+                    }
                 });
     }
 
@@ -211,8 +222,7 @@ export class DataSetManager {
                          executeActionCompletedCallback: Function,
                          executeActionExceptionCallback: Function,
                          sourceDictIdent: string = null,
-                         activeDataSet: DataSetWrapper = null
-        ) {
+                         activeDataSet: DataSetWrapper = null) {
         const dictIdent = sourceDictIdent ?? this.dictInfo?.ident;
         const dataSourcesRequest: any[] = [];
         const dsWrapper: DataSetWrapper = activeDataSet == null ? this.getDateSourceWrapper(dataSourceIdent) : activeDataSet;

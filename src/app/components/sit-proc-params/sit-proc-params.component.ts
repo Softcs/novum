@@ -59,6 +59,37 @@ export class SitProcParamsComponent implements AfterViewInit {
     return actionExecuteData;
   }
 
+  executInitProc(dataSetContainer: SitDataSetContainerComponent) {
+    this.executing = true;
+    this.dataSetManagerSource.ExecuteInitInfo(
+        this.actionExecuteData.sourceDataSetIdent,
+        this.actionExecuteData.actionIdent,
+        (owner, initRow) => this.initInfoCompleted(owner,dataSetContainer, initRow),
+        this.initInfoException,
+        this
+      );
+  }
+  
+  initInfoCompleted(self, dataSetContainer, initRow) {
+    console.log(initRow);
+    self.executing = false;
+    self.connectDataSetToControls(dataSetContainer, initRow)
+  }
+
+  initInfoException(self) {
+    self.executing = false;
+  }
+
+  connectDataSetToControls(dataSetContainer: SitDataSetContainerComponent, initRow) {
+    this.mainDataSet.GenerateRow(this.actionExecuteData.activeRow, true, null, false, null, initRow);
+    dataSetContainer.setDataSource(this.mainDataSet);
+    dataSetContainer.prepareControls(null);
+    this.executing = false;
+    this.activeRow = this.mainDataSet.activeRow;
+    this.activeRowChange.emit(this.activeRow);
+    this.connectToFilesButton();    
+  }
+
   prepareDataSet() {
     this.actionExecuteData = this.getActionExecuteData();
     this.dictIdent = this.actionExecuteData?.dataSetManagerSource?.dictIdent;
@@ -66,13 +97,11 @@ export class SitProcParamsComponent implements AfterViewInit {
     this.dataSetManager.parentDataSetManager = this.dataSetManagerSource;
     const dataSetContainer = this.dataSetManager.dataSetContainers.first;
     this.mainDataSet = this.dataSetManager.CreateDataSetWrapper(dataSetContainer.ident, this.dataSetManagerSource);
-    this.mainDataSet.GenerateRow(this.actionExecuteData.activeRow);
-    dataSetContainer.setDataSource(this.mainDataSet);
-    dataSetContainer.prepareControls(null);
-    this.activeRow = this.mainDataSet.activeRow;
-    this.activeRowChange.emit(this.activeRow);
-
-    this.connectToFilesButton();
+    !this.actionExecuteData.hasInitProc
+       ? this.connectDataSetToControls(dataSetContainer, null)
+       : this.executInitProc(dataSetContainer);
+    
+    
   }
 
   ngAfterViewInit() {
@@ -88,7 +117,6 @@ export class SitProcParamsComponent implements AfterViewInit {
     } else {
       this.openDiscardDialog();
     }
-
   }
 
   private openDiscardDialog(): void {

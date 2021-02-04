@@ -172,6 +172,19 @@ export class DataSetWrapper {
         });
     }
 
+    private initRowByInitRow(sourceRow, initRow) {
+        if (!initRow) {
+            return;
+        }
+        for( var fieldName in initRow ) {
+            if (!sourceRow.hasOwnProperty(fieldName)) {
+                continue;
+            }
+
+            sourceRow[fieldName] = initRow[fieldName];
+        }
+    }
+
     private initRowByParents(sourceRow, dataSetManagerSource: DataSetManager) {
         const dataSourceDef = dataSetManagerSource?.FindDataSource(this.ident);
         if (!dataSourceDef || !dataSourceDef.hasParents) {
@@ -223,13 +236,16 @@ export class DataSetWrapper {
         });
         
         return result;
-    }   
-
+    }      
+    
     public GenerateRow(
-        sourceRow: any = null, add: boolean = true,
-        editFields: any[] = null,
-        initFromMaster: boolean = false,
-        dataSetManagerSource: DataSetManager = null): any  {
+            sourceRow: any = null, 
+            add: boolean = true,
+            editFields: any[] = null,
+            initFromMaster: boolean = false,
+            dataSetManagerSource: DataSetManager = null,
+            initRow: any = null): any  {
+
         const newRow = {};
         if (this.fields == null) {
             console.error('Fields are empty [' + this.ident + ']');
@@ -246,6 +262,7 @@ export class DataSetWrapper {
         }
 
         this.initRowByEditFields(newRow, editFields);
+        this.initRowByInitRow(newRow, initRow);
 
         if (add) {
             this.AddRow(newRow, true);

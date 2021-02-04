@@ -113,6 +113,7 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
     data.actionIdent = this.actionIdent;
     data.componentParamsIdent = this.componentParamsIdent;
     data.openKind = this.openKind;
+    data.hasInitProc = this.actionDefinition?.hasInitProc;
     return data;
   }
 
