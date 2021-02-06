@@ -15,7 +15,6 @@ export class GridService {
   }
 
   public setDefGridOptions( grid ) {
-
     this.columnDefs = grid.api.getColumnDefs()
 
     this.columnDefs.forEach(columnDef => {
@@ -37,8 +36,6 @@ export class GridService {
     if ( !grid.gridOptions.suppressCopyRowsToClipboard ) {
       grid.gridOptions.suppressCopyRowsToClipboard = true;
     }
-
   }
-
 }
 

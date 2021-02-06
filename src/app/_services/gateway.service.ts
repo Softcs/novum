@@ -56,9 +56,11 @@ export class GatewayService {
         let userO: User = JSON.parse( this.decV(user));
         return userO;
     }
+
     private get getStorage() {
         return this.canUseLocalStorage ? localStorage : sessionStorage;
     }
+
     public saveCurrentUser() {
         if (this.currentUserValue == null) {
             return;
@@ -71,6 +73,7 @@ export class GatewayService {
         user = this.encV(user);
         this.getStorage.setItem('li', user);
     }
+
     private encV(data) {
         let envK = environment.crypt.key;
         var key = CryptoJS.enc.Utf8.parse(envK);
@@ -86,6 +89,7 @@ export class GatewayService {
         data = encrypted.ciphertext.toString(CryptoJS.enc.Base64);
         return data;
     }
+
     private decV(data) {
         if (data == null) {
             return null;
@@ -148,6 +152,7 @@ export class GatewayService {
 
         return opr;
     }
+
     operationRefreshDataSources(dictIdent: string, dataSourcesRequest: any[]): Operation {
         const opr: Operation = new Operation();
         opr.dictident = dictIdent;
@@ -155,6 +160,7 @@ export class GatewayService {
         opr.dataSourcesRequest = dataSourcesRequest;
         return opr;
     }
+
     operationExecuteAction(dictIdent: string, dataSourcesRequest: any[], actionIdent: string, dataSourceIdent: string) {
         const opr: Operation = new Operation();
         opr.dictident = dictIdent;
@@ -162,6 +168,16 @@ export class GatewayService {
         opr.actionIdent = actionIdent;
         opr.dataSourceIdent = dataSourceIdent;
         opr.dataSourcesRequest = dataSourcesRequest;
+        return opr;
+    }
+
+    operationExecuteInitInfo(dictIdent: string, actionIdent, dataSourcesRequest: any[], dataSourceIdent: string) {
+        const opr: Operation = new Operation();
+        opr.dictident = dictIdent;
+        opr.oprType = 60;
+        opr.dataSourceIdent = dataSourceIdent;
+        opr.dataSourcesRequest = dataSourcesRequest;
+        opr.actionIdent = actionIdent;
         return opr;
     }
 
