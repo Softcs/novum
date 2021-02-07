@@ -253,7 +253,7 @@ export class DataSetWrapper {
         }
         this.fields.forEach(field => {
             if (!field.isParam) {
-                this.setFieldValue(field.fieldName, sourceRow != null ? sourceRow[field.fieldName] : null, newRow);
+                this.setFieldValue(field.fieldName, sourceRow != null && sourceRow.hasOwnProperty(field.fieldName) ? sourceRow[field.fieldName] : null, newRow);
             }
         });
 
@@ -289,7 +289,12 @@ export class DataSetWrapper {
         const row = rowToChange ?? this.activeRow;
 
         if (row == null) {
-            throw new Error('Active row is unnassigned');        }
+            throw new Error('Active row is unnassigned');        
+        }
+        
+        if (!row.hasOwnProperty(fieldName)) {
+            row[fieldName] = null;
+        }
 
         if (row[fieldName] === fieldValue) {
             return;
