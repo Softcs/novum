@@ -8,8 +8,8 @@
               <div class="sit-filter-bar">
                 <sit-data-set-container ident="sitFilter" >
                   <div fxLayout="row">
-                    <sit-data-input #sitControl field="CostYear" label="Rok" placeholder="" appearance="outline" style="width: 100px;"></sit-data-input>
-                    <sit-data-input #sitControl field="CostMonth" label="Miesiąc" placeholder="" appearance="outline" style="width: 100px;"></sit-data-input>
+                    <sit-data-input #sitControl field="CostYear" label="Rok" placeholder="" appearance="outline" style="width: 60px;"></sit-data-input>
+                    <sit-data-input #sitControl field="CostMonth" label="Miesiąc" placeholder="" appearance="outline" style="width: 60px;"></sit-data-input>
                     <sit-data-input #sitControl field="HRDepartmentIdent" label="Dział" placeholder="" appearance="outline" style="width: 200px;"
                       [lookupDisplayFields] = "['HRDepartmentIdent', 'HRDepartmentName']">
                     </sit-data-input>
@@ -17,6 +17,7 @@
                   </div>
                 </sit-data-set-container>
               </div>
+              <div class="sit-grid-title">Rozliczenie</div>
               <sit-data-set-container  ident="sitEmployeesSettlements" showActionsToolbar="true" fxFlex fxLayout="column">
                 <div class="data-table" fxFlex>
                   <ag-grid-angular
@@ -36,7 +37,8 @@
           </as-split-area>
           <as-split-area [size]="20">
             <div fxLayout="column" fxFill>
-              <sit-data-set-container  ident="sitEmployeesSettlementsSumByPayroll" showActionsToolbar="false" fxFlex fxLayout="column">
+              <div class="sit-grid-title">Sumy list płac</div>
+              <sit-data-set-container  ident="sitEmployeesSettlementsSumByPayroll" fxFlex fxLayout="column">
                 <div class="data-table" fxFlex>
                   <ag-grid-angular
                     #sitSetDataSource
@@ -56,6 +58,7 @@
       </as-split-area>
       <as-split-area [size]="30">
         <div fxLayout="column" fxFill class="content">
+          <div class="sit-grid-title">Składniki pracownika</div>
           <sit-data-set-container  ident="sitEmployeesSettlements" fxLayout="column">
             <mat-card>
               <mat-card-content>

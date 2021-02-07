@@ -142,7 +142,9 @@ import { SitProductsUpdateWeightComponent } from './containers/dictionaries/sit-
 import { SitPubDeliveryDistributionComponent } from './containers/dictionaries/sit-pub-delivery-distribution/sit-pub-delivery-distribution.component';
 import { SitRailDeliveryDistrybutionImportComponent } from './containers/dictionaries/sit-pub-delivery-distribution/actions/sit-rail-delivery-distrybution-import/sit-rail-delivery-distrybution-import.component';
 import { SitHRDepartmentsComponent } from './containers/dictionaries/sit-hr-departments/sit-hr-departments.component';
-import { SitEmployeesSettlementsComponent } from './containers/dictionaries/sit-employees-settlements/sit-employees-settlements.component';
+import { SitEmployeesSettlementsComponent } from './containers/dictionaries/sit-employees-settlements/sit-employees-settlements.component';;
+import { SitPayrollsCalcDataImportComponent } from './containers/dictionaries/sit-employees-settlements/actions/sit-payrolls-calc-data-import/sit-payrolls-calc-data-import.component';
+import { SitHRParams4InvoicingEditComponent } from './containers/dictionaries/sit-customers/actions/sit-hrparams4-invoicing-edit/sit-hrparams4-invoicing-edit.component'
 @NgModule({
     imports: [
         BrowserModule,
@@ -281,7 +283,9 @@ import { SitEmployeesSettlementsComponent } from './containers/dictionaries/sit-
         SitPubDeliveryDistributionComponent,
         SitRailDeliveryDistrybutionImportComponent,
         SitHRDepartmentsComponent,
-        SitEmployeesSettlementsComponent
+        SitEmployeesSettlementsComponent,
+        SitPayrollsCalcDataImportComponent,
+        SitHRParams4InvoicingEditComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },

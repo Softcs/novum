@@ -35,6 +35,7 @@ export class SitPayrollComponentsComponent implements OnInit {
     this.columnDefs = [
       { headerName: 'ID', field: 'sitPayrollComponentsId', filter: 'agNumberColumnFilter' },
       { headerName: 'GUID', field: 'sitPayrollComponentsG', filter: 'agTextColumnFilter' },
+      { headerName: 'Lp', field: 'OrdId', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 60, sort: 'asc',suppressMenu: true},
       { headerName: 'Identyfikator', field: 'PayrollComponentIdent', filter: 'agTextColumnFilter', width: 150 },
       { headerName: 'Opis', field: 'PayrollComponentDesc', filter: 'agTextColumnFilter', width: 300 },
       { headerName: 'Ident.zew.', field: 'ExtIdent01', filter: 'agTextColumnFilter', width: 200 },

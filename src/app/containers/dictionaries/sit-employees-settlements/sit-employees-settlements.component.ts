@@ -35,35 +35,56 @@ export class SitEmployeesSettlementsComponent implements OnInit {
     this.excelStyles = sitGlobalConfig.excelStyles;
 
     this.columnDefs = [
-      { headerName: 'Nazwisko', field: 'EmployeeName', tooltipField: 'EmployeeName', sort: 'asc', width: 150, pinned: 'left' },
-      { headerName: 'Nr.listy', field: 'PayrollNo', tooltipField: 'PayrollNo', width: 100, },
-      { headerName: 'Okres', field: 'WorkPeriod',  width: 90, },
-      { headerName: 'Opis prac', field: 'WorkDesc', tooltipField: 'WorkDesc',  width: 100, },
-      { headerName: 'Brutto', field: 'Gross', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 100,
+      { headerName: 'Nazwisko', field: 'EmployeeName', tooltipField: 'EmployeeName', sort: 'asc', width: 150, pinned: 'left',
+        cellClass: ['font12','textFormat']
+      },
+      { headerName: 'Nr.listy', field: 'PayrollNo', tooltipField: 'PayrollNo', width: 100,
+        cellClass: ['font12','textFormat']
+      },
+      { headerName: 'Okres', field: 'WorkPeriod',  width: 90,
+        cellClass: ['font12','textFormat']
+      },
+      { headerName: 'Opis prac', field: 'WorkDesc', tooltipField: 'WorkDesc',  width: 100,
+        cellClass: ['font12','textFormat']
+      },
+      { headerName: 'Brutto', field: 'Gross', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90,
+        cellRenderer: function(params) {
+          return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
+        },
+        cellStyle: function(params) { return {backgroundColor: '#ffe6e6'} },
+        cellClass: ['font12','numberFormat2Dec','pinkBackground'],
+      },
+      { headerName: 'Podstawa', field: 'Base', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 95,
         cellRenderer: function(params) {
           return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
         },
         cellClass: ['font12','numberFormat2Dec'],
       },
-      { headerName: 'Premie', field: 'BonusEmp', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 100,
+      { headerName: 'Premie', field: 'BonusEmp', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90,
         cellRenderer: function(params) {
           return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
         },
         cellClass: ['font12','numberFormat2Dec'],
       },
-      { headerName: 'Potrącenia', field: 'DeductionEmp', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,
+      { headerName: 'Prem. nie fakt.', field: 'BonusEmpNoCust', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 110,
         cellRenderer: function(params) {
           return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
         },
         cellClass: ['font12','numberFormat2Dec'],
       },
-      { headerName: 'ZUS', field: 'ZUSFirma', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90,
+      { headerName: 'Potr.', field: 'DeductionEmp', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,
         cellRenderer: function(params) {
           return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
         },
         cellClass: ['font12','numberFormat2Dec'],
       },
-      { headerName: 'PPK', field: 'PPKFirma', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,
+      { headerName: 'ZUS', field: 'ZUSFirma', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,
+        cellRenderer: function(params) {
+          return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
+        },
+        cellClass: ['font12','numberFormat2Dec'],
+      },
+      { headerName: 'PPK', field: 'PPKFirma', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 70,
         cellRenderer: function(params) {
           return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
         },
@@ -97,7 +118,7 @@ export class SitEmployeesSettlementsComponent implements OnInit {
       { headerName: 'Składnik', field: 'PayrollComponentDesc', tooltipField:'PayrollComponentDesc',  width: 270},
       { headerName: 'Wartość', field: 'Value', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 100,
         cellRenderer: function(params) {
-          return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
+          return params.value === null ? null : '<b>'+formatNumber(params.value, locale,'1.2-2')+'</b>'
         }
       },
       { headerName: 'Identyfikator', field: 'PayrollComponentIdent',  width: 130},
@@ -106,7 +127,7 @@ export class SitEmployeesSettlementsComponent implements OnInit {
     this.columnDefsSumByPayroll = [
       { headerName: 'Rok', field: 'CostYear', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 60,suppressMenu: true},
       { headerName: 'Miesiąc', field: 'CostMonth', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 60,suppressMenu: true},
-      { headerName: 'Dział', field: 'HRDepartmentIdent', tooltipField: 'HRDepartmentName', filter: 'agNumberColumnFilter', type: 'agTextColumnFilter', width: 120, sort: 'asc'},
+      { headerName: 'Dział', field: 'HRDepartmentIdent', tooltipField: 'HRDepartmentName', filter: 'agNumberColumnFilter', width: 120, sort: 'asc'},
       { headerName: 'Nr listy', field: 'PayrollNo', tooltipField:'PayrollNo',  width: 150, sort: 'asc'},
       { headerName: 'Brutto', field: 'Gross', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 100,
         cellRenderer: function(params) {
