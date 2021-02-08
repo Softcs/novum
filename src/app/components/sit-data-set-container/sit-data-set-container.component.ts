@@ -302,6 +302,9 @@ export class SitDataSetContainerComponent {
       actionControl.dataSetResponseWrapper = this.dataSetResponseWrapper;
       actionControl.actionDefinition = dataSetWrapperDefinition?.FindActionDefinition(actionControl.actionIdent);
       actionControl.dataSetManagerSource = this.dataSetControlsManager;
+      
+      //console.log("Visibility: " + actionControl.actionDefinition.visibility);
+
     });
 
     this.pepareControlForButtons(this.refreshButtons);
