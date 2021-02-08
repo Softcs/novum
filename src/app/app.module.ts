@@ -147,7 +147,8 @@ import { SitPayrollsCalcDataImportComponent } from './containers/dictionaries/si
 import { SitHRParams4InvoicingEditComponent } from './containers/dictionaries/sit-customers/actions/sit-hrparams4-invoicing-edit/sit-hrparams4-invoicing-edit.component';
 import { SitPayrollComponentsEditComponent } from './containers/dictionaries/sit-payroll-components/actions/sit-payroll-components-edit/sit-payroll-components-edit.component';
 import { SitHRDepartments4CustEditComponent } from './containers/dictionaries/sit-customers/actions/sit-hrdepartments4-cust-edit/sit-hrdepartments4-cust-edit.component';;
-import { SitPLStatementComponent } from './containers/dictionaries/sit-plstatement/sit-plstatement.component'
+import { SitPLStatementComponent } from './containers/dictionaries/sit-plstatement/sit-plstatement.component';
+import { SitRailPLStatementImportComponent } from './containers/dictionaries/sit-plstatement/actions/sit-rail-plstatement-import/sit-rail-plstatement-import.component'
 
 @NgModule({
 
@@ -292,8 +293,9 @@ import { SitPLStatementComponent } from './containers/dictionaries/sit-plstateme
         SitPayrollsCalcDataImportComponent,
         SitHRParams4InvoicingEditComponent,
         SitPayrollComponentsEditComponent,
-        SitHRDepartments4CustEditComponent,
-        SitPLStatementComponent
+        SitHRDepartments4CustEditComponent,
+        SitPLStatementComponent,
+        SitRailPLStatementImportComponent
       ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
