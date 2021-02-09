@@ -303,7 +303,7 @@ export class SitDataSetContainerComponent {
       actionControl.actionDefinition = dataSetWrapperDefinition?.FindActionDefinition(actionControl.actionIdent);
       actionControl.dataSetManagerSource = this.dataSetControlsManager;
       
-      //console.log("Visibility: " + actionControl.actionDefinition.visibility);
+      
 
     });
 
