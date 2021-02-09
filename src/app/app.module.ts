@@ -148,7 +148,8 @@ import { SitHRParams4InvoicingEditComponent } from './containers/dictionaries/si
 import { SitPayrollComponentsEditComponent } from './containers/dictionaries/sit-payroll-components/actions/sit-payroll-components-edit/sit-payroll-components-edit.component';
 import { SitHRDepartments4CustEditComponent } from './containers/dictionaries/sit-customers/actions/sit-hrdepartments4-cust-edit/sit-hrdepartments4-cust-edit.component';;
 import { SitPLStatementComponent } from './containers/dictionaries/sit-plstatement/sit-plstatement.component';
-import { SitRailPLStatementImportComponent } from './containers/dictionaries/sit-plstatement/actions/sit-rail-plstatement-import/sit-rail-plstatement-import.component'
+import { SitRailPLStatementImportComponent } from './containers/dictionaries/sit-plstatement/actions/sit-rail-plstatement-import/sit-rail-plstatement-import.component';
+import { SitPayrollsCalcAccountingDimEditComponent } from './containers/dictionaries/sit-payrolls/actions/sit-payrolls-calc-accounting-dim-edit/sit-payrolls-calc-accounting-dim-edit.component'
 
 @NgModule({
 
@@ -295,7 +296,8 @@ import { SitRailPLStatementImportComponent } from './containers/dictionaries/sit
         SitPayrollComponentsEditComponent,
         SitHRDepartments4CustEditComponent,
         SitPLStatementComponent,
-        SitRailPLStatementImportComponent
+        SitRailPLStatementImportComponent,
+        SitPayrollsCalcAccountingDimEditComponent
       ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
