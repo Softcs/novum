@@ -34,31 +34,32 @@ export class SitAppUsersComponent implements OnInit {
     };
 
     this.columnDefs = [
-      { headerName: 'Id', field: 'sitAppUsersId', type: 'numericColumn', filter: 'agTextColumnFilter', width: 50 },
-      { headerName: 'GUID', field: 'sitAppUsersG', filter: 'agTextColumnFilter', width: 100 },
-      { headerName: 'Login', field: 'UserLogin', filter: 'agTextColumnFilter', width: 200 },
-      { headerName: 'Imię', field: 'Name', filter: 'agTextColumnFilter', width: 200 },
-      { headerName: 'Nazwisko', field: 'SurName', filter: 'agTextColumnFilter', width: 200 },
-      { headerName: 'e-mail', field: 'email', filter: 'agTextColumnFilter', width: 200 },
-      { headerName: 'MenuId', field: 'sitMenuId', type: 'numericColumn', filter: 'agTextColumnFilter', width: 80 },
-      { headerName: 'Menu', field: 'Symbol', filter: 'agTextColumnFilter', width: 100 },
-      { headerName: 'Aktywny', field: 'IsActive', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, cellRenderer: 'gridCheckboxRenderer', cellClass: "grid-cell-centered", width: 100  },
+      { headerName: 'Id', field: 'sitAppUsersId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 50 },
+      { headerName: 'GUID', field: 'sitAppUsersG', width: 100 },
+      { headerName: 'Login', field: 'UserLogin', width: 200 },
+      { headerName: 'Imię', field: 'Name', width: 200 },
+      { headerName: 'Nazwisko', field: 'SurName', width: 200 },
+      { headerName: 'e-mail', field: 'email', width: 200 },
+      { headerName: 'MenuId', field: 'sitMenuId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 80 },
+      { headerName: 'Menu', field: 'Symbol', width: 100 },
+      { headerName: 'Aktywny', field: 'IsActive', cellRenderer: 'gridCheckboxRenderer', cellClass: "grid-cell-centered", width: 100  },
+      { headerName: 'Administrator', field: 'IsAdmin', cellRenderer: 'gridCheckboxRenderer', cellClass: "grid-cell-centered", width: 100  },
 
     ];
 
     this.columnDefsAppUserCompanies = [
-      { headerName: 'sitAppUserCompaniesId', field: 'sitAppUserCompaniesId', type: 'numericColumn', filter: 'agTextColumnFilter', flex: 1 },
-      { headerName: 'sitAppUserCompaniesG', field: 'sitAppUserCompaniesG', filter: 'agTextColumnFilter', flex: 1 },
-      { headerName: 'Identyfikator', field: 'CompanyIdent', filter: 'agTextColumnFilter', flex: 2 },
-      { headerName: 'Nazwa', field: 'CompanyDescription', filter: 'agTextColumnFilter', flex: 3 },
-      { headerName: 'Plik konfig.', field: 'ConfigFile', filter: 'agTextColumnFilter', flex: 1 },
-      { headerName: 'Domyślna', field: 'IsDefault', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, cellRenderer: 'gridCheckboxRenderer', cellClass: "grid-cell-centered", flex: 1  },
+      { headerName: 'sitAppUserCompaniesId', field: 'sitAppUserCompaniesId', type: 'numericColumn', filter: 'agNumberColumnFilter', flex: 1 },
+      { headerName: 'sitAppUserCompaniesG', field: 'sitAppUserCompaniesG', flex: 1 },
+      { headerName: 'Identyfikator', field: 'CompanyIdent', flex: 2 },
+      { headerName: 'Nazwa', field: 'CompanyDescription', flex: 3 },
+      { headerName: 'Plik konfig.', field: 'ConfigFile', flex: 1 },
+      { headerName: 'Domyślna', field: 'IsDefault', cellRenderer: 'gridCheckboxRenderer', cellClass: "grid-cell-centered", flex: 1  },
 
     ];
 
     this.columnDefsRightsGroupUsers = [
-      { headerName: 'Identyfikator', field: 'RightsGroupIdent', filter: 'agTextColumnFilter'},
-      { headerName: 'Nazwa', field: 'RightsGroupName', filter: 'agTextColumnFilter'},
+      { headerName: 'Identyfikator', field: 'RightsGroupIdent'},
+      { headerName: 'Nazwa', field: 'RightsGroupName'},
     ];
 
    }

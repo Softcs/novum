@@ -479,7 +479,6 @@ button:focus {
   display: inline-block;
   width: 200px;
 }
-// end of lookup fields
 
 .HRDepartmentIdent {
   display: inline-block;
@@ -488,8 +487,11 @@ button:focus {
 
 .HRDepartmentName {
   display: inline-block;
-  width: 200px;
+  width: 150px;
 }
+
+
+// end of lookup fields
 .sit-proc-button-spinner {
   position: relative;
   top: -4px;

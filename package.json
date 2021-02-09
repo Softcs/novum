@@ -1,6 +1,6 @@
 {
   "name": "Novum",
-  "version": "2.0.11",
+  "version": "2.0.14",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --open",
@@ -28,9 +28,9 @@
     "@angular/router": "^10.2.4",
     "@fortawesome/fontawesome-free": "^5.15.2",
     "@types/chart.js": "^2.9.30",
-    "ag-grid-angular": "^24.1.0",
-    "ag-grid-community": "^24.1.0",
-    "ag-grid-enterprise": "^24.1.0",
+    "ag-grid-angular": "^25.0.1",
+    "ag-grid-community": "^25.0.1",
+    "ag-grid-enterprise": "^25.0.1",
     "angular-bootstrap-md": "^10.1.1",
     "angular-split": "^5.0.0",
     "animate.css": "^4.1.1",

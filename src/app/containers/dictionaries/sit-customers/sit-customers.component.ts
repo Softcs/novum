@@ -46,7 +46,6 @@ export class SitCustomersComponent implements OnInit {
       { headerName: 'Status WMS', field: 'Status_WMS', width: 100 },
     ];
     this.columnDefsHRDepartments = [
-      { headerName: 'ID', field: '__Identity__', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100 },
       { headerName: 'Identyfikator', field: 'HRDepartmentIdent', width: 150 },
       { headerName: 'Nazwa', field: 'HRDepartmentName', width: 200 },
     ];

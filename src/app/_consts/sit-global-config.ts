@@ -1,4 +1,9 @@
+import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
+
 export const sitGlobalConfig = {
+  frameworkComponents: {
+    gridCheckboxRenderer: GridCheckboxRenderer,
+  },
   excelStyles: [
     {
       id: 'header',

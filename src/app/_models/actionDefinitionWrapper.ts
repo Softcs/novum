@@ -18,6 +18,7 @@ export class ActionDefinitionWrapper {
     public showWhenEmpty: boolean;
     public tooltip: string;
    // public visibility: ActionVisibilityRule;
+    public hasInitProc: boolean;
 
     constructor(source: any) {
         this.createNewRow = source.createNewRow;
@@ -37,6 +38,7 @@ export class ActionDefinitionWrapper {
         this.showWhenEmpty = source.showWhenEmpty;
         this.tooltip = source.tooltip;
         //this.visibility = source.visibility;
+        this.hasInitProc = source.initProc != null;
     }
 
 
