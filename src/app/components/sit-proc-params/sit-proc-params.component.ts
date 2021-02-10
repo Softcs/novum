@@ -59,11 +59,12 @@ export class SitProcParamsComponent implements AfterViewInit {
     return actionExecuteData;
   }
 
-  executInitProc(dataSetContainer: SitDataSetContainerComponent) {
+  executInitProc(dataSetContainer: SitDataSetContainerComponent, row) {
     this.executing = true;
     this.dataSetManagerSource.ExecuteInitInfo(
         this.actionExecuteData.sourceDataSetIdent,
         this.actionExecuteData.actionIdent,
+        row,
         (owner, initRow) => this.initInfoCompleted(owner,dataSetContainer, initRow),
         this.initInfoException,
         this
@@ -71,7 +72,6 @@ export class SitProcParamsComponent implements AfterViewInit {
   }
   
   initInfoCompleted(self, dataSetContainer, initRow) {
-    console.log(initRow);
     self.executing = false;
     self.connectDataSetToControls(dataSetContainer, initRow)
   }
@@ -80,8 +80,8 @@ export class SitProcParamsComponent implements AfterViewInit {
     self.executing = false;
   }
 
-  connectDataSetToControls(dataSetContainer: SitDataSetContainerComponent, initRow) {
-    this.mainDataSet.GenerateRow(this.actionExecuteData.activeRow, true, null, false, null, initRow);
+  connectDataSetToControls(dataSetContainer: SitDataSetContainerComponent, initRow) { 
+    this.mainDataSet.initRowByInitRow(initRow, this.mainDataSet.activeRow);
     dataSetContainer.setDataSource(this.mainDataSet);
     dataSetContainer.prepareControls(null);
     this.executing = false;
@@ -97,9 +97,10 @@ export class SitProcParamsComponent implements AfterViewInit {
     this.dataSetManager.parentDataSetManager = this.dataSetManagerSource;
     const dataSetContainer = this.dataSetManager.dataSetContainers.first;
     this.mainDataSet = this.dataSetManager.CreateDataSetWrapper(dataSetContainer.ident, this.dataSetManagerSource);
+    var actionRow = this.mainDataSet.GenerateRow(this.actionExecuteData.activeRow, true, null, false, null);
     !this.actionExecuteData.hasInitProc
        ? this.connectDataSetToControls(dataSetContainer, null)
-       : this.executInitProc(dataSetContainer);
+       : this.executInitProc(dataSetContainer, actionRow);
     
     
   }

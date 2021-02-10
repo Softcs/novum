@@ -172,7 +172,7 @@ export class DataSetWrapper {
         });
     }
 
-    private initRowByInitRow(sourceRow, initRow) {
+    public initRowByInitRow(initRow, sourceRow) {
         if (!initRow) {
             return;
         }
@@ -262,7 +262,7 @@ export class DataSetWrapper {
         }
 
         this.initRowByEditFields(newRow, editFields);
-        this.initRowByInitRow(newRow, initRow);
+        this.initRowByInitRow(initRow, newRow);
 
         if (add) {
             this.AddRow(newRow, true);
