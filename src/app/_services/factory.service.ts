@@ -1,4 +1,8 @@
-﻿import { SitRailLogComponent } from './../containers/dictionaries/sit-rail-log/sit-rail-log.component';
+import { SitRailLogComponent } from './../containers/dictionaries/sit-rail-log/sit-rail-log.component';
+import { SitPayrollsCalcAccountingDimEditComponent } from './../containers/dictionaries/sit-payrolls/actions/sit-payrolls-calc-accounting-dim-edit/sit-payrolls-calc-accounting-dim-edit.component';
+import { SitPayrollComponentsEditComponent } from './../containers/dictionaries/sit-payroll-components/actions/sit-payroll-components-edit/sit-payroll-components-edit.component';
+import { SitHRParams4InvoicingEditComponent } from './../containers/dictionaries/sit-customers/actions/sit-hrparams4-invoicing-edit/sit-hrparams4-invoicing-edit.component';
+import { SitPayrollsCalcDataImportComponent } from './../containers/dictionaries/sit-employees-settlements/actions/sit-payrolls-calc-data-import/sit-payrolls-calc-data-import.component';
 import { SitEmployeesSettlementsComponent } from './../containers/dictionaries/sit-employees-settlements/sit-employees-settlements.component';
 import { SitHRDepartmentsComponent } from '../containers/dictionaries/sit-hr-departments/sit-hr-departments.component';
 import { SitRailDeliveryDistrybutionImportComponent } from '../containers/dictionaries/sit-pub-delivery-distribution/actions/sit-rail-delivery-distrybution-import/sit-rail-delivery-distrybution-import.component'
@@ -60,7 +64,9 @@ import { SitRailConfigurationsEditComponent } from
 import { SitWmsDocsComponent } from '@app/containers/dictionaries/sit-wms-docs';
 import { SitAppUserCompaniesEditComponent } from '@app/containers/dictionaries/sit-app-users/actions/sit-app-user-companies-edit';
 import { SitRightsGroupsEditComponent } from '@app/containers/dictionaries/sit-rights/actions/sit-rights-groups-edit/sit-rights-groups-edit.component';
-
+import { SitHRDepartments4CustEditComponent } from '@app/containers/dictionaries/sit-customers/actions/sit-hrdepartments4-cust-edit/sit-hrdepartments4-cust-edit.component';
+import { SitPLStatementComponent } from '@app/containers/dictionaries/sit-plstatement/sit-plstatement.component';
+import { SitRailPLStatementImportComponent } from '@app/containers/dictionaries/sit-plstatement/actions/sit-rail-plstatement-import/sit-rail-plstatement-import.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -126,7 +132,14 @@ export class FactoryService {
         sitRailDeliveryDistrybutionImport: SitRailDeliveryDistrybutionImportComponent,
         sitHRDepartments: SitHRDepartmentsComponent,
         sitEmployeesSettlements: SitEmployeesSettlementsComponent,
-        sitRailLog: SitRailLogComponent
+        sitRailLog: SitRailLogComponent,
+        sitPayrollsCalcDataImport: SitPayrollsCalcDataImportComponent,
+        sitHRParams4InvoicingEdit: SitHRParams4InvoicingEditComponent,
+        sitPayrollComponentsEdit: SitPayrollComponentsEditComponent,
+        sitHRDepartments4CustEdit: SitHRDepartments4CustEditComponent,
+        sitPLStatement: SitPLStatementComponent,
+        sitRailPLStatementImport: SitRailPLStatementImportComponent,
+        sitPayrollsCalcAccountingDimEdit: SitPayrollsCalcAccountingDimEditComponent
     };
 
     public GetFactory(ident: string) {

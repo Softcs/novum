@@ -15,6 +15,7 @@ export class ActionDefinitionWrapper {
     public order: Number;
     public showWhenEmpty: boolean;
     public tooltip: string;
+    public hasInitProc: boolean;
 
     constructor(source: any) {
         this.createNewRow = source.createNewRow;
@@ -33,6 +34,7 @@ export class ActionDefinitionWrapper {
         this.order = source.order;
         this.showWhenEmpty = source.showWhenEmpty;
         this.tooltip = source.tooltip;
+        this.hasInitProc = source.initProc != null;
     }
 
 

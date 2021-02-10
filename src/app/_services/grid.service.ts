@@ -15,13 +15,12 @@ export class GridService {
   }
 
   public setDefGridOptions( grid ) {
-
     this.columnDefs = grid.api.getColumnDefs()
 
     this.columnDefs.forEach(columnDef => {
-      if( !columnDef.sortable ) { columnDef.sortable = true; }
-      if( !columnDef.resizable ) { columnDef.resizable = true; }
-      if( !columnDef.autoHeight ) { columnDef.autoHeight = true; }
+      if( !columnDef.hasOwnProperty('sortable') ) { columnDef.sortable = true; }
+      if( !columnDef.hasOwnProperty('resizable') ) { columnDef.resizable = true; }
+      if( !columnDef.hasOwnProperty('autoHeight') ) { columnDef.autoHeight = true; }
     });
 
     grid.api.setColumnDefs(this.columnDefs);
@@ -37,8 +36,6 @@ export class GridService {
     if ( !grid.gridOptions.suppressCopyRowsToClipboard ) {
       grid.gridOptions.suppressCopyRowsToClipboard = true;
     }
-
   }
-
 }
 

@@ -1,0 +1,16 @@
+<sit-proc-params
+  [(actionExecuteData)]="actionExecuteData"
+  >
+  <sit-data-set-container ident="sitHRParams4InvoicingEdit">
+    <div class="sit-proc-params-content" fxLayout="column">
+      <sit-data-input type="date" #sitControl field="DateFrom" label="Od dnia" appearance="outline" fxFlex></sit-data-input>
+      <sit-data-input type="number" #sitControl field="PayrollComponent" label="Składnik" placeholder="0 - podst., 1 - prem., 2 - PPK" appearance="outline" fxFlex></sit-data-input>
+      <sit-data-input type="number" #sitControl field="MarkupKind" label="Rodzaj narzutu" placeholder="0 - %, 1 - Kwota, 2 - Stawka za godz." appearance="outline" fxFlex></sit-data-input>
+      <sit-data-input type="number" #sitControl field="Threshold" label="Próg" appearance="outline" fxFlex></sit-data-input>
+      <sit-data-input type="number" #sitControl field="Value" label="Wartość" appearance="outline" fxFlex></sit-data-input>
+      <sit-data-checkbox #sitControl field="ZUS" label="ZUS"></sit-data-checkbox>
+      <sit-data-checkbox #sitControl field="CustRecr" label="Rekrutacja klienta"></sit-data-checkbox>
+
+    </div>
+  </sit-data-set-container>
+</sit-proc-params>
