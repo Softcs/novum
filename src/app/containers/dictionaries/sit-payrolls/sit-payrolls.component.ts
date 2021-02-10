@@ -41,7 +41,6 @@ export class SitPayrollsComponent implements OnInit {
     this.columnDefs = [
       { headerName: 'ID', field: 'sitPayrollsId', filter: 'agNumberColumnFilter' },
       { headerName: 'GUID', field: 'sitPayrollsG', filter: 'agTextColumnFilter' },
-      { headerName: 'Kolejność', field: 'OrdId', type: 'numericColumn', filter: 'agNumberColumnFilter' },
       { headerName: 'Nr listy', field: 'PayrollNo',tooltipField: 'PayrollNo', filter: 'agTextColumnFilter', width: 180,
         cellRenderer: function(params) {
           return '<b>' + params.data["PayrollNo"] +'</b><br>' + params.data["PayrollTypeName"] + '</br>'
