@@ -1,4 +1,6 @@
-﻿import { SitPayrollComponentsEditComponent } from './../containers/dictionaries/sit-payroll-components/actions/sit-payroll-components-edit/sit-payroll-components-edit.component';
+import { SitRailLogComponent } from './../containers/dictionaries/sit-rail-log/sit-rail-log.component';
+import { SitPayrollsCalcAccountingDimEditComponent } from './../containers/dictionaries/sit-payrolls/actions/sit-payrolls-calc-accounting-dim-edit/sit-payrolls-calc-accounting-dim-edit.component';
+import { SitPayrollComponentsEditComponent } from './../containers/dictionaries/sit-payroll-components/actions/sit-payroll-components-edit/sit-payroll-components-edit.component';
 import { SitHRParams4InvoicingEditComponent } from './../containers/dictionaries/sit-customers/actions/sit-hrparams4-invoicing-edit/sit-hrparams4-invoicing-edit.component';
 import { SitPayrollsCalcDataImportComponent } from './../containers/dictionaries/sit-employees-settlements/actions/sit-payrolls-calc-data-import/sit-payrolls-calc-data-import.component';
 import { SitEmployeesSettlementsComponent } from './../containers/dictionaries/sit-employees-settlements/sit-employees-settlements.component';
@@ -130,12 +132,14 @@ export class FactoryService {
         sitRailDeliveryDistrybutionImport: SitRailDeliveryDistrybutionImportComponent,
         sitHRDepartments: SitHRDepartmentsComponent,
         sitEmployeesSettlements: SitEmployeesSettlementsComponent,
+        sitRailLog: SitRailLogComponent,
         sitPayrollsCalcDataImport: SitPayrollsCalcDataImportComponent,
         sitHRParams4InvoicingEdit: SitHRParams4InvoicingEditComponent,
         sitPayrollComponentsEdit: SitPayrollComponentsEditComponent,
         sitHRDepartments4CustEdit: SitHRDepartments4CustEditComponent,
         sitPLStatement: SitPLStatementComponent,
-        sitRailPLStatementImport: SitRailPLStatementImportComponent
+        sitRailPLStatementImport: SitRailPLStatementImportComponent,
+        sitPayrollsCalcAccountingDimEdit: SitPayrollsCalcAccountingDimEditComponent
     };
 
     public GetFactory(ident: string) {
