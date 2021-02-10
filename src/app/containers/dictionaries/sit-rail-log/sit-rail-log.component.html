@@ -1,0 +1,49 @@
+<sit-dict-container ident="sitRailLog" #sitDictcontainer fxFill>
+  <as-split direction="vertical">
+  <as-split-area [size]="60">
+    <div fxLayout="column" fxFill class="content">
+      <sit-data-set-container ident="sitFilter" fxLayout="row">
+        <div class="sit-filter-bar" fxLayout="row">
+          <sit-data-input #sitControl field="companyIdent" type="text" label="Firma" appearance="outline" style="width: 200px;"></sit-data-input>
+          <sit-data-input #sitControl field="operationIdent" type="text" label="Operacja" appearance="outline" style="width: 200px;"></sit-data-input>
+          <sit-data-input #sitControl field="dateFrom" type="date" label="Data od" appearance="outline" style="width: 130px;"></sit-data-input>
+          <sit-data-input #sitControl field="dateTo" type="date" label="Data do" appearance="outline" style="width: 195px;" showRefreshButton="true"></sit-data-input>
+        </div>
+      </sit-data-set-container>
+      <sit-data-set-container ident="sitRailLog" fxLayout="column" fxFlex>
+        <div class="data-table" fxFlex>
+          <ag-grid-angular
+            #sitSetDataSource
+            #sitWarehousesGrid
+            style="width: 100%; height: 100%;"
+            class="ag-theme-balham sit-grid-fill"
+            [columnDefs]="columnDefs"
+            [popupParent]="popupParent"
+            (gridReady)="onGridReady($event)"
+          >
+          </ag-grid-angular>
+        </div>
+      </sit-data-set-container>
+    </div>
+  </as-split-area>
+  <as-split-area [size]="40">
+    <div fxLayout="column" fxFill>
+      <div class="sit-grid-title">Pozycje komunikatu</div>
+      <sit-data-set-container  ident="sitRailLogDetails" fxFlex>
+        <div class="data-table" fxFill>
+          <ag-grid-angular
+            #sitSetDataSource
+            #sitRailLogGrid
+            style="width: 100%; height: 100%;"
+            class="ag-theme-balham sit-grid-fill"
+            [columnDefs]="columnDefsDetails"
+            [popupParent]="popupParent"
+            (gridReady)="onGridReady($event)"
+          >
+          </ag-grid-angular>
+        </div>
+      </sit-data-set-container>
+    </div>
+  </as-split-area>
+</as-split>
+</sit-dict-container>

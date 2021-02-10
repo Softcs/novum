@@ -485,12 +485,36 @@ button:focus {
   width: 100px;
 }
 
-.HRDepartmentName {
+.CompanyDepartmentIdent {
+  display: inline-block;
+  width: 100px;
+}
+
+.CompanyDepartmentDesc {
   display: inline-block;
   width: 150px;
 }
 
+.ProjectIdent {
+  display: inline-block;
+  width: 150px;
+}
 
+.ProjectName {
+  display: inline-block;
+  width: 100px;
+  word-wrap: break-word;
+}
+
+.DistributionChannelIdent {
+  display: inline-block;
+  width: 100px;
+}
+
+.DistributionChannelDesc {
+  display: inline-block;
+  width: 150px;
+}
 // end of lookup fields
 .sit-proc-button-spinner {
   position: relative;
