@@ -1,0 +1,32 @@
+$input-height: 40px;
+
+.mat-form-field {
+  min-width: 50px!important;
+  height: 47px;
+  .mat-form-field-wrapper {
+    height: $input-height;
+    padding: 0px 1px 5px;
+    .mat-form-field-infix {
+      width: auto;
+      height: $input-height;
+      padding-top: 7px;
+      display: inline-flex;
+
+      .mat-form-field-label-wrapper {
+        padding-top: 7px;
+      }
+      .mat-select-value, .mat-select-arrow {
+        display: none;
+      }
+    }
+  }
+}
+
+sit-refresh-button {
+  margin: .25em 0;
+}
+
+
+.right {
+  text-align: right!important;
+}

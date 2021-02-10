@@ -152,7 +152,8 @@ import { SitPLStatementComponent } from './containers/dictionaries/sit-plstateme
 import { SitRailPLStatementImportComponent } from './containers/dictionaries/sit-plstatement/actions/sit-rail-plstatement-import/sit-rail-plstatement-import.component'
 ;
 import { SitPayrollsCalcAccountingDimEditComponent } from './containers/dictionaries/sit-payrolls/actions/sit-payrolls-calc-accounting-dim-edit/sit-payrolls-calc-accounting-dim-edit.component'
-
+;
+import { SitDataLabelComponent } from './components/sit-data-label/sit-data-label.component'
 @NgModule({
 
   imports: [
@@ -301,7 +302,8 @@ import { SitPayrollsCalcAccountingDimEditComponent } from './containers/dictiona
         SitPLStatementComponent,
         SitRailPLStatementImportComponent,
         SitPayrollsCalcAccountingDimEditComponent
-      ],
+,
+        SitDataLabelComponent      ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
