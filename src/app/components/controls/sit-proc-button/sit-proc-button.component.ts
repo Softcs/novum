@@ -9,7 +9,7 @@ import { FactoryService } from '@app/_services/factory.service';
 import { ProcExpanderService } from '@app/_services/procexpander.service';
 import { ActionDefinitionWrapper } from '@app/_models/actionDefinitionWrapper';
 import { DataSetWrapper } from '@app/_models';
-import { ActionvisibilityService } from '@app/_services/actionvisibility.service';
+import { VisibilityService } from '@app/_services/visibility.service';
 
 @Component({
   selector: 'sit-proc-button',
@@ -65,7 +65,7 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
     private factoryService: FactoryService,
     private procExpanderService: ProcExpanderService,
     public dialog: MatDialog,
-    private actionVisibilityService: ActionvisibilityService
+    private visibilityService: VisibilityService
     ) {
       super(el);
 
@@ -100,7 +100,7 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
         return true;
     }
 
-    if(!this.actionVisibilityService.shouldBeVisible(this.actionDefinition?.visibility, this.dataSetResponseWrapper.activeRow)) {
+    if(!this.visibilityService.shouldBeVisible(this.actionDefinition?.visibility, this.dataSetResponseWrapper.activeRow)) {
       return true;
     }
 

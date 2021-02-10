@@ -4,7 +4,7 @@ import { ActionVisibilityRule } from '@app/_models/actionVisibilityRule';
 @Injectable({
   providedIn: 'root'
 })
-export class ActionvisibilityService {
+export class VisibilityService {
 
   constructor() { }
 
