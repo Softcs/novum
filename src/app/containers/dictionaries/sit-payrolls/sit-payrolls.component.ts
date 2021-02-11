@@ -44,8 +44,9 @@ export class SitPayrollsComponent implements OnInit {
       { headerName: 'Nr listy', field: 'PayrollNo',tooltipField: 'PayrollNo', filter: 'agTextColumnFilter', width: 180,
         cellRenderer: function(params) {
           return '<b>' + params.data["PayrollNo"] +'</b><br>' + params.data["PayrollTypeName"] + '</br>'
-          + '<span style="color: dimgray;">Zaksięgowane: </span><span style="display:inline-block;width:70px;"><b>' + (params.data["Posted"] === 0 ? 'Tak' : 'Nie')  +'</b></span><br>'
-          + '<span style="color: dimgray;">Nr. w FK: </span><span style="display:inline-block;width:70px;"><b>' + params.data["ExtAccountingNo"] +'</b></span><br>'
+          + (params.data["Posted"] === 0 ? '<span style="display:inline-block;width:70px;color: red"><b>Niezaksięgowane'
+            : '<span style="display:inline-block;width:70px;color: green"><b>Zaksięgowane<br>'+params.data["ExtAccountingNo"]+'</b></span><br>')
+
         }
       },
       { headerName: 'Daty', field: 'Date', filter: 'agTextColumnFilter', autoHeight: true, width: 150,
@@ -99,7 +100,7 @@ export class SitPayrollsComponent implements OnInit {
       { headerName: 'GUID', field: 'sitPayrollsCalcG', filter: 'agTextColumnFilter' },
       { headerName: 'Nazwisko', field: 'LastName', tooltipField: 'LastName',filter: 'agTextColumnFilter', width: 150, autoHeight: true, sort: 'asc', pinned: 'left',
         cellRenderer: function(params) {
-        return '<b>' + params.data["LastName"] +'</b><br>' + params.data["FirstName"]
+        return '<b>' + params.data["LastName"] +'</b><br>' + params.data["FirstName"]+'</b><br>' + params.data["PESEL"]
         }
       },
       { headerName: 'Wynagrodzenie', field: 'Gross', filter: 'agNumberColumnFilter', width: 140, autoHeight: true,

@@ -9,17 +9,17 @@ export class VisibilityService {
   constructor() { }
 
   public shouldBeVisible(visibilityRule: ActionVisibilityRule, activeRow: any): boolean {
-    
-    if((visibilityRule != null || visibilityRule != undefined) && (activeRow != null || activeRow != undefined)){
-      
-      if (activeRow[visibilityRule.fieldName] === visibilityRule.value) {
+
+    if(visibilityRule && activeRow){
+
+      if (activeRow[visibilityRule.fieldName].toString() === visibilityRule.value) {
         //console.log("Active row = " + activeRow[visibilityRule.fieldName]);
         return true;
-      }  else 
+      }  else
           return false;
-    } 
+    }
 
-    if (visibilityRule == null || visibilityRule == undefined)
+    if (!visibilityRule)
         return true;
 
     return false;
