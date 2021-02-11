@@ -44,6 +44,8 @@ export class SitPayrollsComponent implements OnInit {
       { headerName: 'Nr listy', field: 'PayrollNo',tooltipField: 'PayrollNo', filter: 'agTextColumnFilter', width: 180,
         cellRenderer: function(params) {
           return '<b>' + params.data["PayrollNo"] +'</b><br>' + params.data["PayrollTypeName"] + '</br>'
+          + '<span style="color: dimgray;">Zaksięgowane: </span><span style="display:inline-block;width:70px;"><b>' + (params.data["Posted"] === 0 ? 'Tak' : 'Nie')  +'</b></span><br>'
+          + '<span style="color: dimgray;">Nr. w FK: </span><span style="display:inline-block;width:70px;"><b>' + params.data["ExtAccountingNo"] +'</b></span><br>'
         }
       },
       { headerName: 'Daty', field: 'Date', filter: 'agTextColumnFilter', autoHeight: true, width: 150,
@@ -95,7 +97,7 @@ export class SitPayrollsComponent implements OnInit {
     this.columnDefsPayrollsCalc = [
       { headerName: 'ID', field: 'sitPayrollsCalcId', filter: 'agNumberColumnFilter' },
       { headerName: 'GUID', field: 'sitPayrollsCalcG', filter: 'agTextColumnFilter' },
-      { headerName: 'Nazwisko', field: 'LastName', filter: 'agTextColumnFilter', width: 150, autoHeight: true, sort: 'asc',
+      { headerName: 'Nazwisko', field: 'LastName', tooltipField: 'LastName',filter: 'agTextColumnFilter', width: 150, autoHeight: true, sort: 'asc', pinned: 'left',
         cellRenderer: function(params) {
         return '<b>' + params.data["LastName"] +'</b><br>' + params.data["FirstName"]
         }
@@ -153,7 +155,7 @@ export class SitPayrollsComponent implements OnInit {
    this.columnDefsPayrollComponentsCalc = [
     { headerName: 'ID', field: 'sitPayrollComponentsCalcId', filter: 'agNumberColumnFilter' },
     { headerName: 'GUID', field: 'sitPayrollComponentsCalcG', filter: 'agTextColumnFilter' },
-    { headerName: 'Składnik', field: 'PayrollComponentDesc', tooltipField: 'PayrollComponentDesc', filter: 'agTextColumnFilter' },
+    { headerName: 'Składnik', field: 'PayrollComponentDesc', tooltipField: 'PayrollComponentDesc', filter: 'agTextColumnFilter', width: 150, pinned: 'left', },
     { headerName: 'Wynagrodzenie', field: 'Gross', filter: 'agNumberColumnFilter', width: 140, autoHeight: true,
       type: 'rightAligned',
       cellRenderer: function(params) {
@@ -305,8 +307,8 @@ this.columnDefsPayrollsCalcAccountingDim = [
     }
 
     if (params.columnApi.getColumn('sitPayrollComponentsCalcG')) {
-      params.columnApi.setColumnsVisible(['sitPayrollComponentsCalcId','sitPayrollComponentsCalcG'], false)
-      this.gridApiPayrollComponentsCalc = params.colummnApi
+      params.columnApi.setColumnsVisible(['sitPayrollComponentsCalcId','sitPayrollComponentsCalcG'], false);
+      this.gridApiPayrollComponentsCalc = params.api;
     }
 
     if (params.columnApi.getColumn('sitPayrollsCalcAccountingG')) {
