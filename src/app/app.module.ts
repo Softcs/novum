@@ -153,7 +153,7 @@ import { SitRailPLStatementImportComponent } from './containers/dictionaries/sit
 ;
 import { SitPayrollsCalcAccountingDimEditComponent } from './containers/dictionaries/sit-payrolls/actions/sit-payrolls-calc-accounting-dim-edit/sit-payrolls-calc-accounting-dim-edit.component'
 ;
-import { SitDataLabelComponent } from './components/sit-data-label/sit-data-label.component'
+import { SitDataLabelComponent } from './components/controls/sit-data-label/sit-data-label.component'
 @NgModule({
 
   imports: [
