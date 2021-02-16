@@ -50,49 +50,49 @@ export class SitEmployeesSettlementsComponent implements OnInit {
       { headerName: 'Opis prac', field: 'WorkDesc', tooltipField: 'WorkDesc',  width: 100,
         cellClass: ['font12','textFormat']
       },
-      { headerName: 'Brutto', field: 'Gross', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90,
-        cellRenderer: function(params) {
-          return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
-        },
-        cellStyle: function(params) { return {backgroundColor: '#ffe6e6'} },
-        cellClass: ['font12','numberFormat2Dec','pinkBackground'],
-      },
-      { headerName: 'Podstawa', field: 'Base', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 95,
-        cellRenderer: function(params) {
-          return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
-        },
-        cellClass: ['font12','numberFormat2Dec'],
-      },
-      { headerName: 'Premie', field: 'BonusEmp', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90,
-        cellRenderer: function(params) {
-          return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
-        },
-        cellClass: ['font12','numberFormat2Dec'],
-      },
-      { headerName: 'Prem. nie fakt.', field: 'BonusEmpNoCust', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 110,
-        cellRenderer: function(params) {
-          return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
-        },
-        cellClass: ['font12','numberFormat2Dec'],
-      },
-      { headerName: 'Potr.', field: 'DeductionEmp', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,
-        cellRenderer: function(params) {
-          return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
-        },
-        cellClass: ['font12','numberFormat2Dec'],
-      },
-      { headerName: 'ZUS', field: 'ZUSFirma', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,
-        cellRenderer: function(params) {
-          return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
-        },
-        cellClass: ['font12','numberFormat2Dec'],
-      },
-      { headerName: 'PPK', field: 'PPKFirma', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 70,
-        cellRenderer: function(params) {
-          return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
-        },
-        cellClass: ['font12','numberFormat2Dec'],
-      },
+      // { headerName: 'Brutto', field: 'Gross', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90,
+      //   cellRenderer: function(params) {
+      //     return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
+      //   },
+      //   cellStyle: function(params) { return {backgroundColor: '#ffe6e6'} },
+      //   cellClass: ['font12','numberFormat2Dec','pinkBackground'],
+      // },
+      // { headerName: 'Podstawa', field: 'Base', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 95,
+      //   cellRenderer: function(params) {
+      //     return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
+      //   },
+      //   cellClass: ['font12','numberFormat2Dec'],
+      // },
+      // { headerName: 'Premie', field: 'BonusEmp', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90,
+      //   cellRenderer: function(params) {
+      //     return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
+      //   },
+      //   cellClass: ['font12','numberFormat2Dec'],
+      // },
+      // { headerName: 'Prem. nie fakt.', field: 'BonusEmpNoCust', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 110,
+      //   cellRenderer: function(params) {
+      //     return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
+      //   },
+      //   cellClass: ['font12','numberFormat2Dec'],
+      // },
+      // { headerName: 'Potr.', field: 'DeductionEmp', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,
+      //   cellRenderer: function(params) {
+      //     return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
+      //   },
+      //   cellClass: ['font12','numberFormat2Dec'],
+      // },
+      // { headerName: 'ZUS', field: 'ZUSFirma', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,
+      //   cellRenderer: function(params) {
+      //     return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
+      //   },
+      //   cellClass: ['font12','numberFormat2Dec'],
+      // },
+      // { headerName: 'PPK', field: 'PPKFirma', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 70,
+      //   cellRenderer: function(params) {
+      //     return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
+      //   },
+      //   cellClass: ['font12','numberFormat2Dec'],
+      // },
       { headerName: 'Koszt pracy', field: 'Cost',  filter: 'agNumberColumnFilter', type: 'numericColumn', width: 120,
         cellRenderer: function(params) {
           return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
