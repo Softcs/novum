@@ -44,6 +44,9 @@ export class SitEmployeesSettlementsComponent implements OnInit {
       { headerName: 'Okres', field: 'WorkPeriod',  width: 90,
         cellClass: ['font12','textFormat']
       },
+      { headerName: 'Rachunek', field: 'ReceiptNo', tooltipField: 'ReceiptNo',  width: 90,
+        cellClass: ['font12','textFormat']
+      },
       { headerName: 'Opis prac', field: 'WorkDesc', tooltipField: 'WorkDesc',  width: 100,
         cellClass: ['font12','textFormat']
       },
