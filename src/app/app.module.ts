@@ -1,4 +1,4 @@
-﻿import { NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule, Title } from '@angular/platform-browser';
 
 import { ReactiveFormsModule } from '@angular/forms';
@@ -143,15 +143,27 @@ import { SitPubDeliveryDistributionComponent } from './containers/dictionaries/s
 import { SitRailDeliveryDistrybutionImportComponent } from './containers/dictionaries/sit-pub-delivery-distribution/actions/sit-rail-delivery-distrybution-import/sit-rail-delivery-distrybution-import.component';
 import { SitHRDepartmentsComponent } from './containers/dictionaries/sit-hr-departments/sit-hr-departments.component';
 import { SitEmployeesSettlementsComponent } from './containers/dictionaries/sit-employees-settlements/sit-employees-settlements.component';;
+import { SitRailLogComponent } from './containers/dictionaries/sit-rail-log/sit-rail-log.component'
 import { SitPayrollsCalcDataImportComponent } from './containers/dictionaries/sit-employees-settlements/actions/sit-payrolls-calc-data-import/sit-payrolls-calc-data-import.component';
 import { SitHRParams4InvoicingEditComponent } from './containers/dictionaries/sit-customers/actions/sit-hrparams4-invoicing-edit/sit-hrparams4-invoicing-edit.component';
 import { SitPayrollComponentsEditComponent } from './containers/dictionaries/sit-payroll-components/actions/sit-payroll-components-edit/sit-payroll-components-edit.component';
 import { SitHRDepartments4CustEditComponent } from './containers/dictionaries/sit-customers/actions/sit-hrdepartments4-cust-edit/sit-hrdepartments4-cust-edit.component';;
 import { SitPLStatementComponent } from './containers/dictionaries/sit-plstatement/sit-plstatement.component';
-import { SitRailPLStatementImportComponent } from './containers/dictionaries/sit-plstatement/actions/sit-rail-plstatement-import/sit-rail-plstatement-import.component';
+import { SitRailPLStatementImportComponent } from './containers/dictionaries/sit-plstatement/actions/sit-rail-plstatement-import/sit-rail-plstatement-import.component'
+;
+import { SitPayrollsCalcAccountingDimEditComponent } from './containers/dictionaries/sit-payrolls/actions/sit-payrolls-calc-accounting-dim-edit/sit-payrolls-calc-accounting-dim-edit.component'
+;
+import { SitDataLabelComponent } from './components/controls/sit-data-label/sit-data-label.component'
+;
+import { SitEmployeesSettlementsCompEditComponent } from './containers/dictionaries/sit-employees-settlements/actions/sit-employees-settlements-comp-edit/sit-employees-settlements-comp-edit.component'
+;
+import { SitPayrollsCalcAccountingEditComponent } from './containers/dictionaries/sit-payrolls/actions/sit-payrolls-calc-accounting-edit/sit-payrolls-calc-accounting-edit.component'
+;
 import { SitUtilConverterFramesComponent } from './containers/dictionaries/sit-util-converter-frames/sit-util-converter-frames.component'
 ;
 import { SitUtilProcGenConverterFrameComponent } from './containers/dictionaries/sit-util-converter-frames/actions/sit-util-proc-gen-converter-frame/sit-util-proc-gen-converter-frame.component'
+
+
 @NgModule({
 
   imports: [
@@ -292,15 +304,21 @@ import { SitUtilProcGenConverterFrameComponent } from './containers/dictionaries
         SitRailDeliveryDistrybutionImportComponent,
         SitHRDepartmentsComponent,
         SitEmployeesSettlementsComponent,
+        SitRailLogComponent,
         SitPayrollsCalcDataImportComponent,
         SitHRParams4InvoicingEditComponent,
         SitPayrollComponentsEditComponent,
         SitHRDepartments4CustEditComponent,
         SitPLStatementComponent,
-        SitRailPLStatementImportComponent,
-        SitUtilConverterFramesComponent
-,
-        SitUtilProcGenConverterFrameComponent      ],
+        SitRailPLStatementImportComponent,
+        SitPayrollsCalcAccountingDimEditComponent,
+        SitDataLabelComponent,
+        SitEmployeesSettlementsCompEditComponent,
+        SitPayrollsCalcAccountingEditComponent,
+        SitUtilConverterFramesComponent,
+        SitUtilProcGenConverterFrameComponent 
+
+    ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },

@@ -1,12 +1,14 @@
 <sit-dict-container ident="sitPayrolls" #sitDictcontainer fxFill>
   <as-split direction="horizontal">
-    <as-split-area [size]="45">
+    <as-split-area [size]="50">
       <as-split direction="vertical">
-        <as-split-area [size]="50">
+        <as-split-area [size]="40">
           <div fxLayout="column" fxFill class="content">
             <div class="sit-filter-bar">
               <sit-data-set-container ident="sitFilterPayrolls" fxLayout="row">
-                <sit-data-input #sitControl field="PayrollNo" label="Nr listy" placeholder="Wybierz numer listy" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
+                <sit-data-input #sitControl field="PayrollNo" label="Nr listy" placeholder="Wybierz numer listy" appearance="outline" showRefreshButton="true" style="width: 300px;"
+                  [lookupDisplayFields] = "['Date','PayrollNo']"
+                ></sit-data-input>
                 <!-- <sit-data-input #sitControl field="searchPayrolls" label="Filtruj" placeholder="" appearance="outline" showRefreshButton="true" style="width: 200px;"></sit-data-input> -->
               </sit-data-set-container>
             </div>
@@ -19,6 +21,7 @@
                   class="ag-theme-balham"
                   [columnDefs]="columnDefs"
                   [popupParent]="popupParent"
+                  [enableCellTextSelection]="true"
                   (gridReady)="onGridReady($event)"
                 >
                 </ag-grid-angular>
@@ -26,27 +29,7 @@
             </sit-data-set-container>
           </div>
         </as-split-area>
-        <as-split-area [size]="50">
-          <sit-data-set-container  ident="sitPayrollsAccounting" fxFlex fxLayout="column">
-            <div class="data-table" fxFlex>
-              <ag-grid-angular #sitSetDataSource
-                #agGrid
-                id="gridPayrollsAccountin"
-                style="width: 100%; height: 100%;"
-                class="ag-theme-balham"
-                [columnDefs]="columnDefsPayrollsAccounting"
-                [popupParent]="popupParent"
-                (gridReady)="onGridReady($event)"
-              >
-              </ag-grid-angular>
-            </div>
-          </sit-data-set-container>
-        </as-split-area>
-      </as-split>
-    </as-split-area>
-    <as-split-area [size]="55">
-      <as-split direction="vertical">
-        <as-split-area [size]="50">
+        <as-split-area [size]="60">
           <div fxLayout="column" fxFill class="content">
             <div class="sit-filter-bar">
               <sit-data-set-container ident="sitFilterPayrollsCalc" fxLayout="row">
@@ -69,65 +52,82 @@
             </sit-data-set-container>
           </div>
         </as-split-area>
-        <as-split-area [size]="50">
-          <mat-tab-group id="tab-group" animationDuration="0ms" (selectedTabChange)="onTabChanged($event);">
-            <mat-tab label="Składniki">
-              <sit-data-set-container  ident="sitPayrollComponentsCalc" fxFill fxLayout="column">
+      </as-split>
+    </as-split-area>
+    <as-split-area [size]="50">
+      <mat-tab-group id="tab-group" animationDuration="0ms" (selectedTabChange)="onTabChanged($event);">
+        <mat-tab label="Składniki">
+          <sit-data-set-container  ident="sitPayrollComponentsCalc" fxFill fxLayout="column">
+            <div class="data-table" fxFlex>
+              <ag-grid-angular #sitSetDataSource
+                #agGrid
+                id="gridPayrollComponentsCalc"
+                style="width: 100%; height: 100%;"
+                class="ag-theme-balham"
+                [columnDefs]="columnDefsPayrollComponentsCalc"
+                [popupParent]="popupParent"
+                (gridReady)="onGridReady($event)"
+              >
+              </ag-grid-angular>
+            </div>
+          </sit-data-set-container>
+        </mat-tab>
+        <mat-tab label="Księgowanie">
+          <as-split direction="vertical">
+            <as-split-area [size]="50">
+              <sit-data-set-container  ident="sitPayrollsCalcAccounting" showActionsToolbar="true" fxFill fxLayout="column">
                 <div class="data-table" fxFlex>
                   <ag-grid-angular #sitSetDataSource
                     #agGrid
-                    id="gridPayrollComponentsCalc"
+                    id="gridPayrollsCalcAccounting"
                     style="width: 100%; height: 100%;"
                     class="ag-theme-balham"
-                    [columnDefs]="columnDefsPayrollComponentsCalc"
+                    [columnDefs]="columnDefsPayrollsCalcAccounting"
                     [popupParent]="popupParent"
+                    [masterDetail]="true"
                     (gridReady)="onGridReady($event)"
                   >
                   </ag-grid-angular>
                 </div>
               </sit-data-set-container>
-            </mat-tab>
-            <mat-tab label="Księgowanie">
-              <as-split direction="vertical">
-                <as-split-area [size]="50">
-                  <sit-data-set-container  ident="sitPayrollsCalcAccounting" fxFill fxLayout="column">
-                    <div class="data-table" fxFlex>
-                      <ag-grid-angular #sitSetDataSource
-                        #agGrid
-                        id="gridPayrollsCalcAccounting"
-                        style="width: 100%; height: 100%;"
-                        class="ag-theme-balham"
-                        [columnDefs]="columnDefsPayrollsCalcAccounting"
-                        [popupParent]="popupParent"
-                        [masterDetail]="true"
-                        (gridReady)="onGridReady($event)"
-                      >
-                      </ag-grid-angular>
-                    </div>
-                  </sit-data-set-container>
-                  </as-split-area>
-                  <as-split-area [size]="50">
-                    <sit-data-set-container  ident="sitPayrollsCalcAccountingDim" fxFill fxLayout="column">
-                      <div class="data-table" fxFlex>
-                        <ag-grid-angular #sitSetDataSource
-                          #agGrid
-                          id="gridPayrollsCalcAccountingDim"
-                          style="width: 100%; height: 100%;"
-                          class="ag-theme-balham"
-                          [columnDefs]="columnDefsPayrollsCalcAccountingDim"
-                          [popupParent]="popupParent"
-                          [masterDetail]="true"
-                          (gridReady)="onGridReady($event)"
-                        >
-                        </ag-grid-angular>
-                      </div>
-                    </sit-data-set-container>
-                    </as-split-area>
-              </as-split>
-            </mat-tab>
-          </mat-tab-group>
-        </as-split-area>
-      </as-split>
+              </as-split-area>
+              <as-split-area [size]="50" fxLayout="column">
+                <div class="sit-grid-title">Rozbicie na wymiary kontrolingowe</div>
+                <sit-data-set-container  ident="sitPayrollsCalcAccountingDim" showActionsToolbar="true" fxFlex fxLayout="column">
+                  <div class="data-table" fxFlex>
+                    <ag-grid-angular #sitSetDataSource
+                      #agGrid
+                      id="gridPayrollsCalcAccountingDim"
+                      style="width: 100%; height: 100%;"
+                      class="ag-theme-balham"
+                      [columnDefs]="columnDefsPayrollsCalcAccountingDim"
+                      [popupParent]="popupParent"
+                      [masterDetail]="true"
+                      (gridReady)="onGridReady($event)"
+                    >
+                    </ag-grid-angular>
+                  </div>
+                </sit-data-set-container>
+                </as-split-area>
+          </as-split>
+        </mat-tab>
+        <mat-tab label="Dowód">
+          <sit-data-set-container  ident="sitPayrollsAccounting" fxFill fxLayout="column">
+            <div class="data-table" fxFlex>
+              <ag-grid-angular #sitSetDataSource
+                #agGrid
+                id="gridPayrollsAccountin"
+                style="width: 100%; height: 100%;"
+                class="ag-theme-balham"
+                [columnDefs]="columnDefsPayrollsAccounting"
+                [popupParent]="popupParent"
+                (gridReady)="onGridReady($event)"
+              >
+              </ag-grid-angular>
+            </div>
+          </sit-data-set-container>
+        </mat-tab>
+      </mat-tab-group>
     </as-split-area>
   </as-split>
 </sit-dict-container>

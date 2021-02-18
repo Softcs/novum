@@ -1,3 +1,5 @@
+import { ActionVisibilityRule } from "./actionVisibilityRule";
+
 export class ActionDefinitionWrapper {
     public createNewRow: boolean;
     public forCurrentRow: boolean;
@@ -15,6 +17,7 @@ export class ActionDefinitionWrapper {
     public order: Number;
     public showWhenEmpty: boolean;
     public tooltip: string;
+    public visibility: ActionVisibilityRule;
     public hasInitProc: boolean;
 
     constructor(source: any) {
@@ -34,6 +37,7 @@ export class ActionDefinitionWrapper {
         this.order = source.order;
         this.showWhenEmpty = source.showWhenEmpty;
         this.tooltip = source.tooltip;
+        this.visibility = source.visibility;
         this.hasInitProc = source.initProc != null;
     }
 

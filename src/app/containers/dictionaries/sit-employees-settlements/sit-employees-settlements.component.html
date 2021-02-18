@@ -57,27 +57,28 @@
         </as-split>
       </as-split-area>
       <as-split-area [size]="30">
-        <div fxLayout="column" fxFill class="content">
+        <div fxLayout="column" fxFill class="content" fxLayoutGap="5px">
           <div class="sit-grid-title">Składniki pracownika</div>
-          <sit-data-set-container  ident="sitEmployeesSettlements" fxLayout="column">
+          <sit-data-set-container ident="sitEmployeesSettlements">
             <mat-card>
+              <mat-card-title>
+                <sit-data-label type="number" #sitControl field="EmployeeName" label=""></sit-data-label>
+              </mat-card-title>
               <mat-card-content>
                 <div fxLayout="column">
                   <div fxLayout="row">
-                    <sit-data-input type="text" #sitControl field="CustIdent" label="Identyfikator" appearance="outline" fxFlex [readonly]=true fxFlex="30"></sit-data-input>
-                    <sit-data-input type="text" #sitControl field="CustName" label="Kontrahent" appearance="outline" fxFlex [readonly]=true fxFlex></sit-data-input>
+                    <sit-data-label type="number" #sitControl field="CustName" label="Kontrahent:"></sit-data-label>&nbsp;
+                    [<sit-data-label type="number" #sitControl field="CustIdent" label=""></sit-data-label>]
                   </div>
                   <div fxLayout="row">
-                      <sit-data-input type="text" #sitControl field="HRDepartmentIdent" label="Dział" appearance="outline" fxFlex [readonly]=true fxFlex="30"></sit-data-input>
-                      <sit-data-input type="text" #sitControl field="HRDepartmentName" label="Nazwa" appearance="outline" fxFlex [readonly]=true fxFlex></sit-data-input>
+                    <sit-data-label type="number" #sitControl field="HRDepartmentName" label="Dział:"></sit-data-label>&nbsp;
+                    [<sit-data-label type="number" #sitControl field="HRDepartmentIdent" label=""></sit-data-label>]
                   </div>
-                  <sit-data-input type="text" #sitControl field="EmployeeName" label="Nazwisko" appearance="outline" fxFlex [readonly]=true fxFlex></sit-data-input>
-                  <sit-data-input type="text" #sitControl field="CalcInfo" label="Szczegóły kalkulacji" appearance="outline" fxFlex [readonly]=true fxFlex></sit-data-input>
                 </div>
               </mat-card-content>
             </mat-card>
           </sit-data-set-container>
-          <sit-data-set-container  ident="sitEmployeesSettlementsDet" fxFlex fxLayout="column">
+          <sit-data-set-container  ident="sitEmployeesSettlementsComp" showActionsToolbar="true" fxFlex fxLayout="column">
             <div class="data-table" fxFlex>
               <ag-grid-angular
                 #sitSetDataSource

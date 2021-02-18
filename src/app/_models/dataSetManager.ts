@@ -60,12 +60,21 @@ export class DataSetManager {
         });
     }
 
-    private getObjectForDataSourceRequest(dataSetResponseWrapper: DataSetWrapper, canRefresh: boolean )  {
+    private getObjectForRequest(ident: string, activeRow: any, refresh: boolean) {
         const  obj = {
-            ident: dataSetResponseWrapper.ident,
-            activeRow: dataSetResponseWrapper.activeRow,
-            refresh: canRefresh
+            ident: ident,
+            activeRow: activeRow,
+            refresh: refresh
         };
+        return obj;
+    }
+
+    private getObjectForDataSourceRequest(dataSetResponseWrapper: DataSetWrapper, canRefresh: boolean )  {
+        const  obj = this.getObjectForRequest(
+            dataSetResponseWrapper.ident,
+            dataSetResponseWrapper.activeRow,
+            canRefresh
+        );
         return obj;
     }
 
@@ -166,6 +175,7 @@ export class DataSetManager {
 
     public ExecuteInitInfo(dataSourceIdent: string, 
                     actionIdent: string, 
+                    generatedRow: any, 
                     executeActionCompletedCallback: Function,
                     executeActionExceptionCallback: Function,
                     owner: any,
@@ -178,9 +188,16 @@ export class DataSetManager {
                 const parentDataSource = this.FindDataSource(parent);
                 if (parentDataSource) {
                     const obj = this.getObjectForDataSourceRequest(parentDataSource, false);
-                    dataSourcesRequest.push(obj);
+                    if (obj.activeRow) {
+                        dataSourcesRequest.push(obj);
+                    }
                 }
             });       
+        }
+
+        if (generatedRow) {
+            const obj = this.getObjectForRequest("generatedRow", generatedRow, false);
+            dataSourcesRequest.push(obj);
         }
 
         const opr: Operation = this.gatewayService.operationExecuteInitInfo(
