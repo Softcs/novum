@@ -36,9 +36,7 @@ export class SitUtilConverterFramesComponent implements OnInit {
         ];
     
     this.columnDefsDB = [          
-      { headerName: 'database_id', field: 'database_id', filter: 'agTextColumnFilter', width: 120 ,
-        cellRenderer: (data) => { return formatDate(data.value, 'yyyy-MM-dd HH:mm', this.locale) }
-      },
+      { headerName: 'database_id', field: 'database_id', type: "numericColumn", filter: 'agNumberColumnFilter', width: 120 },
       { headerName: 'DBName', field: 'DBName', filter: 'agTextColumnFilter', width: 150 },
       { headerName: 'DBVersion', field: 'DBVersion',type: "numericColumn", filter: 'agNumberColumnFilter', width: 100 },
          ]

@@ -66,6 +66,7 @@ import { SitHRDepartments4CustEditComponent } from '@app/containers/dictionaries
 import { SitPLStatementComponent } from '@app/containers/dictionaries/sit-plstatement/sit-plstatement.component';
 import { SitRailPLStatementImportComponent } from '@app/containers/dictionaries/sit-plstatement/actions/sit-rail-plstatement-import/sit-rail-plstatement-import.component';
 import { SitUtilConverterFramesComponent } from '@app/containers/dictionaries/sit-util-converter-frames/sit-util-converter-frames.component';
+import { SitUtilProcGenConverterFrameComponent } from '@app/containers/dictionaries/sit-util-converter-frames/actions/sit-util-proc-gen-converter-frame/sit-util-proc-gen-converter-frame.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -137,7 +138,8 @@ export class FactoryService {
         sitHRDepartments4CustEdit: SitHRDepartments4CustEditComponent,
         sitPLStatement: SitPLStatementComponent,
         sitRailPLStatementImport: SitRailPLStatementImportComponent,
-        sitUtilConverterFrames: SitUtilConverterFramesComponent
+        sitUtilConverterFrames: SitUtilConverterFramesComponent,
+        sitUtilProcGenConverterFrame: SitUtilProcGenConverterFrameComponent
     };
 
     public GetFactory(ident: string) {

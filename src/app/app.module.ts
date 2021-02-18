@@ -150,7 +150,8 @@ import { SitHRDepartments4CustEditComponent } from './containers/dictionaries/si
 import { SitPLStatementComponent } from './containers/dictionaries/sit-plstatement/sit-plstatement.component';
 import { SitRailPLStatementImportComponent } from './containers/dictionaries/sit-plstatement/actions/sit-rail-plstatement-import/sit-rail-plstatement-import.component';
 import { SitUtilConverterFramesComponent } from './containers/dictionaries/sit-util-converter-frames/sit-util-converter-frames.component'
-
+;
+import { SitUtilProcGenConverterFrameComponent } from './containers/dictionaries/sit-util-converter-frames/actions/sit-util-proc-gen-converter-frame/sit-util-proc-gen-converter-frame.component'
 @NgModule({
 
   imports: [
@@ -298,7 +299,8 @@ import { SitUtilConverterFramesComponent } from './containers/dictionaries/sit-u
         SitPLStatementComponent,
         SitRailPLStatementImportComponent,
         SitUtilConverterFramesComponent
-      ],
+,
+        SitUtilProcGenConverterFrameComponent      ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
