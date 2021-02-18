@@ -1,0 +1,17 @@
+<sit-proc-params
+  [(actionExecuteData)]="actionExecuteData"
+  >
+  <sit-data-set-container ident="sitPayrollsCalcAccountingEdit">
+    <div class="sit-proc-params-content" fxLayout="column" style="width: 500px;">
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <sit-data-input #sitControl type="text" field="Account" label="Konto" appearance="outline" style="width: 200px;"
+        ></sit-data-input>
+        <!-- <sit-data-label #sitControl type="text" field="CompanyDepartmentDesc" label="" style="width: 350px; font-size: 12px;"></sit-data-label> -->
+      </div>
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <sit-data-input #sitControl type="number" field="CAmount" label="Kwota Wn" appearance="outline" style="width: 200px;"></sit-data-input>
+        <sit-data-input #sitControl type="number" field="DAmount" label="Kwota Ma" appearance="outline" style="width: 200px;"></sit-data-input>
+      </div>
+    </div>
+  </sit-data-set-container>
+</sit-proc-params>
