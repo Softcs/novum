@@ -4,23 +4,29 @@
   <sit-data-set-container ident="sitPayrollsCalcAccountingDimEdit">
     <div class="sit-proc-params-content" fxLayout="column" style="width: 600px;">
       <sit-data-input #sitControl type="number" field="Amount" label="Kwota" appearance="outline" style="width: 200px;"></sit-data-input>
-      <div fxLayout="row">
+      <div fxLayout="row" fxLayoutAlign="space-between center">
         <sit-data-input #sitControl type="text" field="CompanyDepartmentIdent" label="Dział" appearance="outline" style="width: 200px;"
           [lookupDisplayFields] = "['CompanyDepartmentIdent', 'CompanyDepartmentDesc']"
         ></sit-data-input>
-        <sit-data-input #sitControl type="text" field="CompanyDepartmentDesc" label="Opis" appearance="outline" readonly="true" fxFlex></sit-data-input>
+        <sit-data-label #sitControl type="text" field="CompanyDepartmentDesc" label="" style="width: 350px; font-size: 12px;"></sit-data-label>
       </div>
-      <div fxLayout="row">
+      <div fxLayout="row" fxLayoutAlign="space-between center">
         <sit-data-input #sitControl type="text" field="ProjectIdent" label="Projekt" appearance="outline" style="width: 200px;"
           [lookupDisplayFields] = "['ProjectIdent', 'ProjectName']"
         ></sit-data-input>
-        <sit-data-input #sitControl type="text" field="ProjectName" label="Opis" appearance="outline" readonly="true" fxFlex></sit-data-input>
+        <sit-data-label #sitControl type="text" field="ProjectName" label="" style="width: 350px; font-size: 12px;"></sit-data-label>
       </div>
-      <div fxLayout="row">
+      <div fxLayout="row" fxLayoutAlign="space-between center">
         <sit-data-input #sitControl type="text" field="DistributionChannelIdent" label="Kanał dystrybucji" appearance="outline" style="width: 200px;"
           [lookupDisplayFields] = "['DistributionChannelIdent', 'DistributionChannelDesc']"
         ></sit-data-input>
-        <sit-data-input #sitControl type="text" field="DistributionChannelDesc" label="Opis" appearance="outline" readonly="true" fxFlex></sit-data-input>
+        <sit-data-label #sitControl type="text" field="DistributionChannelDesc" label="" style="width: 350px; font-size: 12px;"></sit-data-label>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="space-between center" >
+        <sit-data-input #sitControl type="text" field="ProductsTypeIdent" label="Typ produktu" appearance="outline" style="width: 200px;"
+          [lookupDisplayFields] = "['ProductsTypeIdent', 'ProductsTypeDesc']"
+        ></sit-data-input>
+        <sit-data-label #sitControl type="text" field="ProductsTypeDesc" label="" style="width: 350px; font-size: 12px;"></sit-data-label>
       </div>
     </div>
   </sit-data-set-container>
