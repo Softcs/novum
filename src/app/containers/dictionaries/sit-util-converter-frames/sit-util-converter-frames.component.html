@@ -1,0 +1,66 @@
+<sit-dict-container ident="sitUtilConverterFrames" #sitDictcontainer fxFill>
+  <div fxLayout="column" fxFill class="content">
+    <as-split direction="horizontal">
+      <as-split-area [size]="40">
+         <sit-data-set-container ident="sitUtilConverterFrames" showActionsToolbar="true" fxLayout="column" fxFill>
+          <div class="data-table" fxFlex>
+            <ag-grid-angular
+              #sitSetDataSource
+              style="width: 100%; height: 100%;"
+              class="ag-theme-balham"
+              [columnDefs]="columnDefs"
+              [popupParent]="popupParent"
+              (gridReady)="onGridReady($event)"
+            >           
+            </ag-grid-angular>
+          </div>
+        </sit-data-set-container> 
+      </as-split-area>
+      <as-split-area [size]="60">
+        <mat-tab-group id="tab-group" animationDuration="0ms" >
+          <mat-tab label="Header">
+        <sit-data-set-container ident="sitUtilConverterFrames" fxLayout="column" fxFill>
+          <div fxLayout="column" fxFill>
+            <sit-data-textarea type="textarea" #sitControl field="FrameHeader" label="Header" appearance="outline" [readonly]=true fxFill></sit-data-textarea>
+           </div>
+        </sit-data-set-container>
+        </mat-tab>
+        <mat-tab label="Body">
+          <sit-data-set-container ident="sitUtilConverterFrames" fxLayout="column" fxFill>
+            <div fxLayout="column" fxFill>
+               <sit-data-textarea type="textarea" #sitControl field="FrameBody" label="Body" appearance="outline" [readonly]=true fxFill></sit-data-textarea>
+            </div>
+          </sit-data-set-container>
+        </mat-tab>
+        <mat-tab label="Footer">
+          <sit-data-set-container ident="sitUtilConverterFrames" fxLayout="column" fxFill>
+            <div fxLayout="column" fxFill>
+              <sit-data-textarea type="textarea" #sitControl field="FrameFooter" label="Footer" appearance="outline" [readonly]=true fxFlex="30"></sit-data-textarea>
+            </div>
+          </sit-data-set-container>
+        </mat-tab>
+        <mat-tab label="Bazy Danych">
+          <div class="content" fxFill fxLayout="column">
+            <div fxFlex="120">
+              <sit-data-set-container ident="sitUtilConverterDBVersions" showActionsToolbar="true" fxFlex fxLayout="column">
+                <div class="data-table" fxFlex>
+                  <ag-grid-angular
+                    #sitSetDataSource
+                    #sitAttachmentsGrid
+                    style="width: 100%; height: 100%;"
+                    class="ag-theme-balham"
+                    [columnDefs]="columnDefsDB"
+                    [popupParent]="popupParent"
+                    (gridReady)="onGridReady($event)"
+                  >
+                  </ag-grid-angular>
+                </div>
+              </sit-data-set-container>
+            </div>
+          </div>
+        </mat-tab>
+        </mat-tab-group>
+      </as-split-area>
+    </as-split>
+  </div>
+</sit-dict-container>
