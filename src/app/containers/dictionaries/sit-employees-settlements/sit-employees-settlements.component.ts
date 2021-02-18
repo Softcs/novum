@@ -36,12 +36,19 @@ export class SitEmployeesSettlementsComponent implements OnInit {
 
     this.columnDefs = [
       { headerName: 'Nazwisko', field: 'EmployeeName', tooltipField: 'EmployeeName', sort: 'asc', width: 150, pinned: 'left',
+        checkboxSelection: true, headerCheckboxSelection: true, headerCheckboxSelectionFilteredOnly: true,
+        cellClass: ['font12','textFormat']
+      },
+      { headerName: 'Ident.', field: 'EmployeeIdent', tooltipField: 'EmployeeIdent', width: 100, pinned: 'left',
         cellClass: ['font12','textFormat']
       },
       { headerName: 'Nr.listy', field: 'PayrollNo', tooltipField: 'PayrollNo', width: 100,
         cellClass: ['font12','textFormat']
       },
       { headerName: 'Okres', field: 'WorkPeriod',  width: 90,
+        cellClass: ['font12','textFormat']
+      },
+      { headerName: 'Miejsce pracy', field: 'HRWorkPlaceName', tooltipField: 'HRWorkPlaceName',  width: 100,
         cellClass: ['font12','textFormat']
       },
       { headerName: 'Rachunek', field: 'ReceiptNo', tooltipField: 'ReceiptNo',  width: 90,

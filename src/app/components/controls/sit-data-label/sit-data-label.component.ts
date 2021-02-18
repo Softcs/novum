@@ -19,7 +19,7 @@ export class SitDataLabelComponent extends SitDataBaseComponent {
     super(_renderer);
 
   }
-/*
+
   public getValue(): string {
     return this.inputElement.nativeElement.value;
   }
@@ -27,7 +27,7 @@ export class SitDataLabelComponent extends SitDataBaseComponent {
   public refreshFieldValue() {
     this.dataSetWrapper.refreshFieldValueInControl(this);
   }
-*/
+
 
 }
 
