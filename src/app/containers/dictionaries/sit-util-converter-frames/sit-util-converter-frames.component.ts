@@ -27,7 +27,7 @@ export class SitUtilConverterFramesComponent implements OnInit {
     this.popupParent = document.querySelector('body');
       
     this.columnDefs = [
-      { headerName: 'Number', field: 'FrameNumber', type: "numericColumn", filter: 'agNumberColumnFilter', width: 100 },
+      { headerName: 'Number', field: 'FrameNumber', type: "numericColumn", filter: 'agNumberColumnFilter', width: 100, sort: 'desc' },
       { headerName: 'Date', field: 'FrameDate', filter: 'agTextColumnFilter', width: 120 ,
         cellRenderer: (data) => { return formatDate(data.value, 'yyyy-MM-dd HH:mm', this.locale) }
       },
