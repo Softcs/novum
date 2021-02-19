@@ -1,7 +1,5 @@
 import { Component, OnInit, ViewChild, ViewChildren, QueryList,LOCALE_ID, Inject } from '@angular/core';
-import { SitDataSetContainerComponent } from '@app/components/sit-data-set-container';
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
-import { DataSetWrapper } from '@app/_models';
 import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
 import { environment } from '@environments/environment';
 import { User } from '@app/_models';
@@ -26,6 +24,7 @@ export class SitEmployeesSettlementsComponent implements OnInit {
   columnDefsDet;
   columnDefsSumByPayroll;
   excelStyles;
+  frameworkComponents;
 
   constructor(
     private gridService: GridService,
@@ -33,6 +32,7 @@ export class SitEmployeesSettlementsComponent implements OnInit {
   ){
     this.popupParent = document.querySelector('body');
     this.excelStyles = sitGlobalConfig.excelStyles;
+    this.frameworkComponents = sitGlobalConfig.frameworkComponents;
 
     this.columnDefs = [
       { headerName: 'Nazwisko', field: 'EmployeeName', tooltipField: 'EmployeeName', sort: 'asc', width: 150, pinned: 'left',
@@ -57,63 +57,81 @@ export class SitEmployeesSettlementsComponent implements OnInit {
       { headerName: 'Opis prac', field: 'WorkDesc', tooltipField: 'WorkDesc',  width: 100,
         cellClass: ['font12','textFormat']
       },
-      // { headerName: 'Brutto', field: 'Gross', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90,
-      //   cellRenderer: function(params) {
-      //     return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
-      //   },
-      //   cellStyle: function(params) { return {backgroundColor: '#ffe6e6'} },
-      //   cellClass: ['font12','numberFormat2Dec','pinkBackground'],
-      // },
-      // { headerName: 'Podstawa', field: 'Base', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 95,
-      //   cellRenderer: function(params) {
-      //     return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
-      //   },
-      //   cellClass: ['font12','numberFormat2Dec'],
-      // },
-      // { headerName: 'Premie', field: 'BonusEmp', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90,
-      //   cellRenderer: function(params) {
-      //     return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
-      //   },
-      //   cellClass: ['font12','numberFormat2Dec'],
-      // },
+      { headerName: 'Status ZUS', field: 'StatusZUSDesc',  width: 100,
+        cellClass: ['font12','textFormat']
+      },
+      { headerName: 'Status PPK', field: 'StatusPPK',  width: 100, cellRenderer: 'gridCheckboxRenderer',
+        cellClass: ['font12','textFormat']
+      },
+      { headerName: 'Brutto', field: 'Gross', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90,
+        cellRenderer: function(params) {
+          return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
+        },
+        cellStyle: function(params) { return {backgroundColor: '#ffe6e6'} },
+        cellClass: ['font12','numberFormat2Dec','pinkBackground'],
+      },
+      { headerName: 'Podstawa', field: 'Base', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 95,
+        cellRenderer: function(params) {
+          return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
+        },
+        cellClass: ['font12','numberFormat2Dec'],
+      },
+      { headerName: 'Premie', field: 'Bonus', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90,
+        cellRenderer: function(params) {
+          return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
+        },
+        cellClass: ['font12','numberFormat2Dec'],
+      },
       // { headerName: 'Prem. nie fakt.', field: 'BonusEmpNoCust', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 110,
       //   cellRenderer: function(params) {
       //     return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
       //   },
       //   cellClass: ['font12','numberFormat2Dec'],
       // },
-      // { headerName: 'Potr.', field: 'DeductionEmp', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,
-      //   cellRenderer: function(params) {
-      //     return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
-      //   },
-      //   cellClass: ['font12','numberFormat2Dec'],
-      // },
-      // { headerName: 'ZUS', field: 'ZUSFirma', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,
-      //   cellRenderer: function(params) {
-      //     return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
-      //   },
-      //   cellClass: ['font12','numberFormat2Dec'],
-      // },
-      // { headerName: 'PPK', field: 'PPKFirma', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 70,
-      //   cellRenderer: function(params) {
-      //     return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
-      //   },
-      //   cellClass: ['font12','numberFormat2Dec'],
-      // },
-      { headerName: 'Koszt pracy', field: 'Cost',  filter: 'agNumberColumnFilter', type: 'numericColumn', width: 120,
+      { headerName: 'Potr.', field: 'Deduction', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,
+        cellRenderer: function(params) {
+          return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
+        },
+        cellClass: ['font12','numberFormat2Dec'],
+      },
+      { headerName: 'ZUS', field: 'ZUSFirma', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80, suppressMenu: true,
+        cellRenderer: function(params) {
+          return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
+        },
+        cellClass: ['font12','numberFormat2Dec'],
+      },
+      { headerName: 'ZUS podst.', field: 'ZUSBase', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80, suppressMenu: true,
+        cellRenderer: function(params) {
+          return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
+        },
+        cellClass: ['font12','numberFormat2Dec'],
+      },
+      { headerName: 'ZUS prem.', field: 'ZUSBonus', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80, suppressMenu: true,
+        cellRenderer: function(params) {
+          return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
+        },
+        cellClass: ['font12','numberFormat2Dec'],
+      },
+      { headerName: 'PPK', field: 'PPK', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 70,suppressMenu: true,
+        cellRenderer: function(params) {
+          return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
+        },
+        cellClass: ['font12','numberFormat2Dec'],
+      },
+      { headerName: 'Koszt pracy', field: 'Cost',  filter: 'agNumberColumnFilter', type: 'numericColumn', width: 100,suppressMenu: true,
         cellRenderer: function(params) {
           return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
         },
         cellStyle: function(params) { return {backgroundColor: '#fcf59f'} },
         cellClass: ['font12','yellowBackground','numberFormat2Dec'],
       },
-      { headerName: 'Narzut', field: 'Markup',  filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90,
+      { headerName: 'Narzut', field: 'Markup',  filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90,suppressMenu: true,
         cellRenderer: function(params) {
           return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
         },
         cellClass: ['font12','numberFormat2Dec'],
       },
-      { headerName: 'Koszt - klient', field: 'CustCost',  filter: 'agNumberColumnFilter', type: 'numericColumn', width: 120,
+      { headerName: 'Koszt - klient', field: 'CustCost',  filter: 'agNumberColumnFilter', type: 'numericColumn', width: 100,suppressMenu: true,
         cellRenderer: function(params) {
           return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
         },

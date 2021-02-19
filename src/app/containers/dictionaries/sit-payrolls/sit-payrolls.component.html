@@ -6,6 +6,8 @@
           <div fxLayout="column" fxFill class="content">
             <div class="sit-filter-bar">
               <sit-data-set-container ident="sitFilterPayrolls" fxLayout="row">
+                <sit-data-input #sitControl field="CostYear" label="Rok" placeholder="" appearance="outline" style="width: 60px;"></sit-data-input>
+                <sit-data-input #sitControl field="CostMonth" label="Miesiąc" placeholder="" appearance="outline" style="width: 60px;"></sit-data-input>
                 <sit-data-input #sitControl field="PayrollNo" label="Nr listy" placeholder="Wybierz numer listy" appearance="outline" showRefreshButton="true" style="width: 300px;"
                   [lookupDisplayFields] = "['Date','PayrollNo']"
                 ></sit-data-input>
