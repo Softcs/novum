@@ -211,7 +211,7 @@ export class SitPayrollsComponent implements OnInit {
     { headerName: 'ID', field: 'sitPayrollsCalcAccountingId', filter: 'agNumberColumnFilter' },
     { headerName: 'GUID', field: 'sitPayrollsCalcAccountingG', filter: 'agTextColumnFilter' },
     { headerName: 'Lp', field: 'PosId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 60, sort: 'asc', suppressMenu: true },
-    { headerName: 'Konto', field: 'Account', filter: 'agTextColumnFilter', width: 150 },
+    { headerName: 'Konto', field: 'Account', tooltipField: 'AccountDesc', filter: 'agTextColumnFilter', width: 150 },
     { headerName: 'Kwota WN', field: 'CAmount', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100,
       cellRenderer: function(params) {
         return params.value === null ? null : formatNumber(params.value, locale,'1.2-2').replace(/[,]/g,' ')

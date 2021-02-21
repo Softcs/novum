@@ -449,7 +449,6 @@ button:focus {
   width: 30px;
   font-weight: bold;
 }
-
 .CountryName {
   display: inline-block;
   width: 200px;
@@ -464,7 +463,6 @@ button:focus {
   display: inline-block;
   width: 80px;
 }
-
 .DocumentName {
   display: inline-block;
   width: 200px;
@@ -474,7 +472,6 @@ button:focus {
   display: inline-block;
   width: 80px;
 }
-
 .CustName {
   display: inline-block;
   width: 200px;
@@ -489,7 +486,6 @@ button:focus {
   display: inline-block;
   width: 100px;
 }
-
 .CompanyDepartmentDesc {
   display: inline-block;
   width: 150px;
@@ -499,7 +495,6 @@ button:focus {
   display: inline-block;
   width: 150px;
 }
-
 .ProjectName {
   display: inline-block;
   width: 100px;
@@ -510,7 +505,6 @@ button:focus {
   display: inline-block;
   width: 100px;
 }
-
 .DistributionChannelDesc {
   display: inline-block;
   width: 150px;
@@ -520,7 +514,17 @@ button:focus {
   display: inline-block;
   width: 70px;
 }
+
+.Account {
+  display: inline-block;
+  width: 100px;
+}
+.AccountDesc {
+  display: inline-block;
+  width: 150px;
+}
 // end of lookup fields
+
 .sit-proc-button-spinner {
   position: relative;
   top: -4px;
