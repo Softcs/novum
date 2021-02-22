@@ -30,6 +30,9 @@ export class DataSetManager {
         dataSourceDefinition.children.forEach(dataSource => {
             const dataSourceDefinitionChild = this.dictInfo.FindDataSource(dataSource.ident);
             const dsWrapper: DataSetWrapper = this.getDateSourceWrapper(dataSource.ident);
+            if (dsWrapper.isLookup) {
+                return;
+            }
             const obj = this.getObjectForDataSourceRequest(dsWrapper, true);
             dataSourcesRequest.push(obj);
             this.prapareDataSource4Request(dataSourceDefinitionChild, dataSourcesRequest);
