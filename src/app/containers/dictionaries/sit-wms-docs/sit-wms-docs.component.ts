@@ -75,7 +75,7 @@ export class SitWmsDocsComponent implements OnInit {
         }
       },
       { headerName: 'NagId SL', field: 'ExtAppIdent01', filter: 'agTextColumnFilter', width: 100, floatingFilter: true },
-      // { headerName: 'XL ID', field: 'ExtAppIdent02', filter: 'agTextColumnFilter',width: 100  },
+      { headerName: 'XL ID', field: 'ExtAppIdent02', filter: 'agTextColumnFilter',width: 60, suppressMenu: true  },
       { headerName: 'Opis zew.', field: 'ExtAppDescription01', tooltipField: 'ExtAppDescription01', filter: 'agTextColumnFilter',width: 200  },
 
     ];
