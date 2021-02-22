@@ -60,6 +60,10 @@ export class SitDataInputComponent extends SitDataBaseComponent {
   }
 
   initLookup() {
+    if (this.readonly) {
+      return;
+    }
+    
     this.lookupSettings = this.dataSetWrapper.getLookupForField(this.field);
     this.hasLookup = this.lookupSettings != null;
     if (this.hasLookup) {
