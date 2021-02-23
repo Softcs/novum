@@ -35,7 +35,7 @@ export class SitDataBaseComponent implements ControlValueAccessor {
     this.afterSetDataSetWrapper();
   }
 
-  constructor(private _renderer: Renderer2) {
+  constructor(protected _renderer: Renderer2) {
 
   }
 

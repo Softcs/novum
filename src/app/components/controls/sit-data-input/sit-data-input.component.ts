@@ -1,4 +1,4 @@
-import { Component, Input,  Renderer2, ViewEncapsulation, ContentChild, ViewChild, NgZone } from '@angular/core';
+import { Component, Input,  Renderer2, ViewEncapsulation, ViewChild, NgZone } from '@angular/core';
 import { SitDataBaseComponent } from '../sit-data-base/sit-data-base.component';
 import { MatFormFieldAppearance  } from '@angular/material/form-field';
 import { SitRefreshButtonComponent } from '../sit-refresh-button/sit-refresh-button.component';
@@ -63,7 +63,7 @@ export class SitDataInputComponent extends SitDataBaseComponent {
     if (this.readonly) {
       return;
     }
-    
+
     this.lookupSettings = this.dataSetWrapper.getLookupForField(this.field);
     this.hasLookup = this.lookupSettings != null;
     if (this.hasLookup) {
