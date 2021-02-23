@@ -22,7 +22,7 @@ import { GridService } from '@app/_services/grid.service';
 export class SitDataSetContainerComponent {
   private _errors: any[];
   private activeRowSubscription: Subscription;
-
+  private identityFieldName: string = "__Identity__";
   @ContentChildren('sitSetDataSource', { descendants: true})
   datasSourcesInterface: QueryList<sitSetDataSetDirective>;
 
@@ -195,15 +195,19 @@ export class SitDataSetContainerComponent {
       return;
     }
 
-    const fieldName = this.getFieldId(dataSetWrapper.ident);
+    var fieldName = this.getFieldId(dataSetWrapper.ident);
     let rowsToUpdate = [];
     const rowsApiToUpdate = [];
-
+ 
     this.datasSourcesInterface.forEach(control => {
       dataSetWrapper.rows.forEach(inputRow => {
-        const fieldValue = inputRow[fieldName];
-        const gridApi = control["api"];
-        if (gridApi) {
+        if(inputRow.hasOwnProperty(this.identityFieldName)) {
+          fieldName = this.identityFieldName;
+        }
+        
+         const fieldValue = inputRow[fieldName];        
+        if (control.hasOwnProperty("api")) {
+          const gridApi = control["api"];
           gridApi.forEachNode( (rowNode) => {
             const rowValue = rowNode.data[fieldName];
             if (this.compareStrings(rowValue, fieldValue)) {
