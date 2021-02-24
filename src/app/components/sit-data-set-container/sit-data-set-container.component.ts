@@ -134,7 +134,7 @@ export class SitDataSetContainerComponent {
             return params.api.SeidoCustomProperty.activeRow == params.node.data;
         }
 
-        
+
         gridApi.gridOptionsWrapper.gridOptions.onRowClicked = function(event) {
           self.dataSetResponseWrapper.SetActiveRow(event.data);
         }
@@ -168,7 +168,8 @@ export class SitDataSetContainerComponent {
     }
 
     let limit = prevRow ? 2 : 1;
-    const fieldName = this.getFieldId(this.ident);
+    //const fieldName = (!this.getFieldId(this.ident));
+    const fieldName = '__Identity__';
     const fieldValue = this.activeRow[fieldName];
     const prevValue = prevRow ? prevRow[fieldName] : null;
     gridApi.forEachNode( (rowNode) => {
@@ -198,14 +199,14 @@ export class SitDataSetContainerComponent {
     var fieldName = this.getFieldId(dataSetWrapper.ident);
     let rowsToUpdate = [];
     const rowsApiToUpdate = [];
- 
+
     this.datasSourcesInterface.forEach(control => {
       dataSetWrapper.rows.forEach(inputRow => {
         if(inputRow.hasOwnProperty(this.identityFieldName)) {
           fieldName = this.identityFieldName;
         }
-        
-         const fieldValue = inputRow[fieldName];        
+
+         const fieldValue = inputRow[fieldName];
         if (control.hasOwnProperty("api")) {
           const gridApi = control["api"];
           gridApi.forEachNode( (rowNode) => {
@@ -306,8 +307,8 @@ export class SitDataSetContainerComponent {
       actionControl.dataSetResponseWrapper = this.dataSetResponseWrapper;
       actionControl.actionDefinition = dataSetWrapperDefinition?.FindActionDefinition(actionControl.actionIdent);
       actionControl.dataSetManagerSource = this.dataSetControlsManager;
-      
-      
+
+
 
     });
 
