@@ -161,7 +161,8 @@ import { SitPayrollsCalcAccountingEditComponent } from './containers/dictionarie
 ;
 import { SitUtilConverterFramesComponent } from './containers/dictionaries/sit-util-converter-frames/sit-util-converter-frames.component'
 ;
-import { SitUtilProcGenConverterFrameComponent } from './containers/dictionaries/sit-util-converter-frames/actions/sit-util-proc-gen-converter-frame/sit-util-proc-gen-converter-frame.component'
+import { SitUtilProcGenConverterFrameComponent } from './containers/dictionaries/sit-util-converter-frames/actions/sit-util-proc-gen-converter-frame/sit-util-proc-gen-converter-frame.component';
+import { SitStatusesComponent } from './containers/dictionaries/sit-statuses/sit-statuses.component'
 
 
 @NgModule({
@@ -316,7 +317,8 @@ import { SitUtilProcGenConverterFrameComponent } from './containers/dictionaries
         SitEmployeesSettlementsCompEditComponent,
         SitPayrollsCalcAccountingEditComponent,
         SitUtilConverterFramesComponent,
-        SitUtilProcGenConverterFrameComponent 
+        SitUtilProcGenConverterFrameComponent,
+        SitStatusesComponent 
 
     ],
     providers: [
