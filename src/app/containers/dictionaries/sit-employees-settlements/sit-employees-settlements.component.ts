@@ -100,13 +100,13 @@ export class SitEmployeesSettlementsComponent implements OnInit {
         },
         cellClass: ['font12','numberFormat2Dec'],
       },
-      { headerName: 'ZUS podst.', field: 'ZUSBase', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80, suppressMenu: true,
+      { headerName: 'ZUS podst.', field: 'ZUSBase', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, suppressMenu: true,
         cellRenderer: function(params) {
           return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
         },
         cellClass: ['font12','numberFormat2Dec'],
       },
-      { headerName: 'ZUS prem.', field: 'ZUSBonus', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80, suppressMenu: true,
+      { headerName: 'ZUS prem.', field: 'ZUSBonus', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, suppressMenu: true,
         cellRenderer: function(params) {
           return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
         },
