@@ -228,6 +228,42 @@
                   </div>
                 </div>
               </mat-tab>
+              <mat-tab label="Przesyłki">
+                <as-split direction="vertical">
+                  <as-split-area [size]="50">
+                    <sit-data-set-container  ident="sitCourierShipmets4Document" showActionsToolbar="true" fxFlex fxLayout="column">
+                      <div class="data-table" fxFlex>
+                        <ag-grid-angular
+                          #sitSetDataSource
+                          #sitAttachmentsGrid
+                          style="width: 100%; height: 100%;"
+                          class="ag-theme-balham"
+                          [columnDefs]="columnDefsShipments"
+                          [popupParent]="popupParent"
+                          (gridReady)="onGridReady($event)"
+                        >
+                        </ag-grid-angular>
+                      </div>
+                    </sit-data-set-container>
+                  </as-split-area>
+                  <as-split-area [size]="50">
+                    <sit-data-set-container  ident="sitCourierShipmentPieces"  fxFlex fxLayout="column">
+                      <div class="data-table" fxFlex>
+                        <ag-grid-angular
+                          #sitSetDataSource
+                          #sitAttachmentsGrid
+                          style="width: 100%; height: 100%;"
+                          class="ag-theme-balham"
+                          [columnDefs]="columnDefsShipmentPieces"
+                          [popupParent]="popupParent"
+                          (gridReady)="onGridReady($event)"
+                        >
+                        </ag-grid-angular>
+                      </div>
+                    </sit-data-set-container>
+                  </as-split-area>
+                </as-split>
+              </mat-tab>
               <mat-tab>
                 <ng-template mat-tab-label><i class="material-icons">print</i></ng-template>
                 <div fxLayout="column" fxFill>
