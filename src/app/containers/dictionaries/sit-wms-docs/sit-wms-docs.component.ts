@@ -34,6 +34,7 @@ export class SitWmsDocsComponent implements OnInit {
   columnDefsDocumentsPositionsHistory;
   columnDefsDocumentsHeadersHistory;
   columnDefsAttachments;
+  detailCellRendererParams;
 
   constructor(
     private gatewayService: GatewayService,
@@ -57,7 +58,7 @@ export class SitWmsDocsComponent implements OnInit {
       { headerName: 'Id', field: 'sitDocumentsHeadersId', filter: 'agTextColumnFilter',width: 90 },
       { headerName: 'GUID', field: 'sitDocumentsHeadersG', filter: 'agTextColumnFilter',width: 150 },
       { headerName: 'Typ dok.', field: 'DocumentIdent', filter: 'agSetColumnFilter', floatingFilter: false, width: 90 },
-      { headerName: 'Numer', field: 'DocumentNumber', filter: 'agTextColumnFilter' },
+      { headerName: 'Numer', field: 'DocumentNumber', filter: 'agTextColumnFilter', cellRenderer: 'agGroupCellRenderer' },
       { headerName: 'Data', field: 'DocumentDate', filter: 'agDateColumnFilter',width: 100, floatingFilter: false, sort: 'desc'  },
       { headerName: 'Status WMS', field: 'Status_WMS', filter: 'agSetColumnFilter', width: 160, floatingFilter: true,
         cellStyle: function(params) {
@@ -118,6 +119,23 @@ export class SitWmsDocsComponent implements OnInit {
       { headerName: 'Status', field: 'ValueName', filter: 'agTextColumnFilter'},
       { headerName: 'Komentarz', field: '__HistoryComments__', filter: 'agTextColumnFilter' },
     ];
+
+    this.detailCellRendererParams = {
+      detailGridOptions: {
+        columnDefs: [
+          { headerName: 'Operacja', field: 'OprType', filter: 'agTextColumnFilter',  width: 100 },
+          { headerName: 'Data mod.', field: 'ChangeDate', suppressMenu: true, width: 180, sort: 'desc',
+            cellRenderer: (data) => { return formatDate(data.value, 'yyyy-MM-dd H:mm', this.locale) }
+          },
+          { headerName: 'Status', field: 'ValueName', filter: 'agTextColumnFilter'},
+          { headerName: 'Komentarz', field: '__HistoryComments__', filter: 'agTextColumnFilter' }
+        ],
+        defaultColDef: { flex: 1 },
+      },
+      getDetailRowData: function (params) {
+        params.successCallback(params.data.callRecords);
+      },
+    };
 
     //definicja kolumn historii pozycji
     this.columnDefsDocumentsPositionsHistory = [
