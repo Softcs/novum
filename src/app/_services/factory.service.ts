@@ -71,6 +71,8 @@ import { SitUtilConverterFramesComponent } from '@app/containers/dictionaries/si
 import { SitUtilProcGenConverterFrameComponent } from '@app/containers/dictionaries/sit-util-converter-frames/actions/sit-util-proc-gen-converter-frame/sit-util-proc-gen-converter-frame.component';
 import { SitEmployeesSettlementsCompEditComponent } from '@app/containers/dictionaries/sit-employees-settlements/actions/sit-employees-settlements-comp-edit/sit-employees-settlements-comp-edit.component';
 import { SitPayrollsCalcAccountingEditComponent } from '@app/containers/dictionaries/sit-payrolls/actions/sit-payrolls-calc-accounting-edit/sit-payrolls-calc-accounting-edit.component';
+import { SitCourierAddPieceToShipmentComponent } from '@app/containers/dictionaries/sit-wms-docs/actions/sit-courier-add-piece-to-shipment/sit-courier-add-piece-to-shipment.component';
+import { SitCourierCreateShipmentsComponent } from '@app/containers/dictionaries/sit-wms-docs/actions/sit-courier-create-shipments/sit-courier-create-shipments.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -147,7 +149,9 @@ export class FactoryService {
         sitUtilProcGenConverterFrame: SitUtilProcGenConverterFrameComponent,
         sitPayrollsCalcAccountingDimEdit: SitPayrollsCalcAccountingDimEditComponent,
         sitEmployeesSettlementsCompEdit: SitEmployeesSettlementsCompEditComponent,
-        sitPayrollsCalcAccountingEdit: SitPayrollsCalcAccountingEditComponent
+        sitPayrollsCalcAccountingEdit: SitPayrollsCalcAccountingEditComponent,
+        sitCourierAddPieceToShipment: SitCourierAddPieceToShipmentComponent,
+        sitCourierCreateShipments: SitCourierCreateShipmentsComponent,
     };
 
     public GetFactory(ident: string) {

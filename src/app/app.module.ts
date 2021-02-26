@@ -161,7 +161,9 @@ import { SitPayrollsCalcAccountingEditComponent } from './containers/dictionarie
 ;
 import { SitUtilConverterFramesComponent } from './containers/dictionaries/sit-util-converter-frames/sit-util-converter-frames.component'
 ;
-import { SitUtilProcGenConverterFrameComponent } from './containers/dictionaries/sit-util-converter-frames/actions/sit-util-proc-gen-converter-frame/sit-util-proc-gen-converter-frame.component'
+import { SitUtilProcGenConverterFrameComponent } from './containers/dictionaries/sit-util-converter-frames/actions/sit-util-proc-gen-converter-frame/sit-util-proc-gen-converter-frame.component';
+import { SitCourierAddPieceToShipmentComponent } from './containers/dictionaries/sit-wms-docs/actions/sit-courier-add-piece-to-shipment/sit-courier-add-piece-to-shipment.component';
+import { SitCourierCreateShipmentsComponent } from './containers/dictionaries/sit-wms-docs/actions/sit-courier-create-shipments/sit-courier-create-shipments.component'
 
 
 @NgModule({
@@ -316,7 +318,9 @@ import { SitUtilProcGenConverterFrameComponent } from './containers/dictionaries
         SitEmployeesSettlementsCompEditComponent,
         SitPayrollsCalcAccountingEditComponent,
         SitUtilConverterFramesComponent,
-        SitUtilProcGenConverterFrameComponent 
+        SitUtilProcGenConverterFrameComponent,
+        SitCourierAddPieceToShipmentComponent,
+        SitCourierCreateShipmentsComponent 
 
     ],
     providers: [

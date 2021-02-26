@@ -42,9 +42,7 @@ export class SitWmsDocsComponent implements OnInit {
     private tabService: TabService,
     private gridService: GridService,
     @Inject(LOCALE_ID) private locale: string,
-
     ) {
-
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
     this.tabService.activeTabIndex.subscribe(x => this.activeTab = x);
 
@@ -141,10 +139,20 @@ export class SitWmsDocsComponent implements OnInit {
     ];
 
     this.columnDefsShipments = [
-      { headerName: 'Identyfikator', field: 'ShipmentIdent' },
-      { headerName: 'Data utworzenia', field: 'CreateDate', width: 120,
-         cellRenderer: (data) => { return formatDate(data.value, 'yyyy-MM-dd HH:mm', this.locale) }
+      { headerName: 'Data utworzenia', field: 'CreateDate', width: 130,
+        cellRenderer: (data) => { return (data.value) ? formatDate(data.value, 'yyyy-MM-dd HH:mm', this.locale) : ''}
       },
+      { headerName: 'Status', field: 'ShipmentStatusDesc', width: 130,},
+      { headerName: 'Identyfikator', field: 'ShipmentIdent4GUI', width: 130},
+    ];
+
+    this.columnDefsShipmentPieces = [
+      { headerName: 'Typ', field: 'ItemType', width: 130,},
+      { headerName: 'Ilość', field: 'ItemQuantity', type: 'numericColumn', width: 70},
+      { headerName: 'Szerokość', field: 'ItemWidth', type: 'numericColumn', width: 100},
+      { headerName: 'Wysokość', field: 'ItemHeight', type: 'numericColumn', width: 100},
+      { headerName: 'Długość', field: 'ItemLength', type: 'numericColumn', width: 100},
+      { headerName: 'Waga', field: 'ItemWeight', type: 'numericColumn', width: 100},
     ]
 
     this.rowClassRules = {

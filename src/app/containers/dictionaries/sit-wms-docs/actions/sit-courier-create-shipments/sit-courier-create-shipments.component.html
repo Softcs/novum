@@ -1,0 +1,27 @@
+<sit-proc-params
+   [(actionExecuteData)]="actionExecuteData"
+  >
+  <sit-data-set-container ident="sitCourierCreateShipments">
+    <div class="sit-proc-params-content" fxLayout="column" style="width: 600px; height:500px">
+      <div fxLayout="row">
+        <sit-data-input type="text" #sitControl field="AddressType" label="Typ adresu" appearance="outline" fxFlex=50></sit-data-input>
+        <sit-data-input type="text" #sitControl field="Country" label="Kraj" appearance="outline" fxFlex></sit-data-input>
+      </div>
+      <sit-data-input type="text" #sitControl field="Name" label="Nazwa" appearance="outline"></sit-data-input>
+      <div fxLayout="row">
+        <sit-data-input type="text" #sitControl field="PostalCode" label="Kod pocztowy" appearance="outline" fxFlex=20></sit-data-input>
+        <sit-data-input type="text" #sitControl field="City" label="Miasto" appearance="outline" fxFlex></sit-data-input>
+      </div>
+      <div fxLayout="row">
+        <sit-data-input type="text" #sitControl field="Street" label="Ulica" appearance="outline" fxFlex></sit-data-input>
+        <sit-data-input type="text" #sitControl field="HouseNumber" label="Numer domu" appearance="outline" fxFlex=20></sit-data-input>
+        <sit-data-input type="text" #sitControl field="ApartmentNumber" label="Numer lokalu" appearance="outline" fxFlex=20></sit-data-input>
+      </div>
+      <sit-data-input type="text" #sitControl field="ContactPerson" label="Osoba kontaktowa" appearance="outline"></sit-data-input>
+      <sit-data-input type="text" #sitControl field="ContactPhone" label="Tel. kontaktowy" appearance="outline"></sit-data-input>
+      <sit-data-input type="text" #sitControl field="ContactEmail" label="Email kontaktowy" appearance="outline"></sit-data-input>
+      <sit-data-input type="date" #sitControl field="ShipmentDate" label="Data wysyłki" appearance="outline"></sit-data-input>
+      <sit-data-input type="text" #sitControl field="Content" label="Zawartość" appearance="outline"></sit-data-input>
+    </div>
+  </sit-data-set-container>
+</sit-proc-params>
