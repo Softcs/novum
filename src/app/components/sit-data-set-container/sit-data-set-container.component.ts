@@ -81,7 +81,9 @@ export class SitDataSetContainerComponent {
   }
 
   private compareStrings(one,two): boolean {
-    return one != null && one.localeCompare(two, undefined, { sensitivity: 'base' }) === 0;
+    return one != null 
+    && typeof one == 'string'
+    && one.localeCompare(two, undefined, { sensitivity: 'base' }) === 0;
   }
 
   private deleteRows(dataSource) {
