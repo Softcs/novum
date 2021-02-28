@@ -37,10 +37,10 @@ export class SitGridCellRendererComponent implements ICellRendererAngularComp {
       valueFormated = valueFormated ? formatDate(params.value, 'yyyy-MM-dd HH:mm', this.locale) : '';
     }
     if ( params.colDef?.type.includes('money') ) {
-      valueFormated = valueFormated ? formatNumber(params.value, this.locale,'1.2-2').replace(/[,]/g,' ') : '';
+      valueFormated = formatNumber(params.value, this.locale,'1.2-2').replace(/[,]/g,' ');
     }
     if ( params.colDef?.type.includes('int') ) {
-      valueFormated = valueFormated ? formatNumber(params.value, this.locale,'1.0-0').replace(/[,]/g,' ') : '';
+      valueFormated = formatNumber(params.value, this.locale,'1.0-0').replace(/[,]/g,' ');
     }
     return valueFormated;
   }
