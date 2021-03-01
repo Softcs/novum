@@ -163,6 +163,9 @@ import { SitUtilConverterFramesComponent } from './containers/dictionaries/sit-u
 ;
 import { SitUtilProcGenConverterFrameComponent } from './containers/dictionaries/sit-util-converter-frames/actions/sit-util-proc-gen-converter-frame/sit-util-proc-gen-converter-frame.component';
 import { SitStatusesComponent } from './containers/dictionaries/sit-statuses/sit-statuses.component'
+import { SitCourierAddPieceToShipmentComponent } from './containers/dictionaries/sit-wms-docs/actions/sit-courier-add-piece-to-shipment/sit-courier-add-piece-to-shipment.component';
+import { SitCourierCreateShipmentsComponent } from './containers/dictionaries/sit-wms-docs/actions/sit-courier-create-shipments/sit-courier-create-shipments.component';
+import { SitGridCellRendererComponent } from './components/controls/sit-grid-cell-renderer/sit-grid-cell-renderer.component'
 
 
 @NgModule({
@@ -318,7 +321,10 @@ import { SitStatusesComponent } from './containers/dictionaries/sit-statuses/sit
         SitPayrollsCalcAccountingEditComponent,
         SitUtilConverterFramesComponent,
         SitUtilProcGenConverterFrameComponent,
-        SitStatusesComponent 
+        SitStatusesComponent,
+        SitCourierAddPieceToShipmentComponent,
+        SitCourierCreateShipmentsComponent,
+        SitGridCellRendererComponent
 
     ],
     providers: [

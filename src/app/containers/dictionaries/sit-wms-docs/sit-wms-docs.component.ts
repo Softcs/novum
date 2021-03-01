@@ -34,15 +34,15 @@ export class SitWmsDocsComponent implements OnInit {
   columnDefsDocumentsPositionsHistory;
   columnDefsDocumentsHeadersHistory;
   columnDefsAttachments;
+  columnDefsShipments;
+  columnDefsShipmentPieces;
 
   constructor(
     private gatewayService: GatewayService,
     private tabService: TabService,
     private gridService: GridService,
     @Inject(LOCALE_ID) private locale: string,
-
     ) {
-
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
     this.tabService.activeTabIndex.subscribe(x => this.activeTab = x);
 
@@ -113,7 +113,7 @@ export class SitWmsDocsComponent implements OnInit {
     this.columnDefsDocumentsHeadersHistory = [
       { headerName: 'Operacja', field: 'OprType', filter: 'agTextColumnFilter',  width: 100 },
       { headerName: 'Data mod.', field: 'ChangeDate', suppressMenu: true, width: 180, sort: 'desc',
-        cellRenderer: (data) => { return formatDate(data.value, 'yyyy-MM-dd H:mm', this.locale) }
+        cellRenderer: (data) => { return formatDate(data.value, 'yyyy-MM-dd HH:mm', this.locale) }
       },
       { headerName: 'Status', field: 'ValueName', filter: 'agTextColumnFilter'},
       { headerName: 'Komentarz', field: '__HistoryComments__', filter: 'agTextColumnFilter' },
@@ -123,7 +123,7 @@ export class SitWmsDocsComponent implements OnInit {
     this.columnDefsDocumentsPositionsHistory = [
       { headerName: 'Operacja', field: 'OprType', filter: 'agTextColumnFilter', width: 100 },
       { headerName: 'Data mod.', field: 'ChangeDate', suppressMenu: true, width: 180, sort: 'desc',
-        cellRenderer: (data) => { return formatDate(data.value, 'yyyy-MM-dd H:mm', this.locale) }
+        cellRenderer: (data) => { return formatDate(data.value, 'yyyy-MM-dd HH:mm', this.locale) }
       },
       { headerName: 'Ilość', field: 'Quantity', type: "numericColumn" }
     ];
@@ -132,11 +132,28 @@ export class SitWmsDocsComponent implements OnInit {
       { headerName: 'ParentId', field: 'ParentId' },
       { headerName: 'sitAttachmentsG', field: 'sitAttachmentsG' },
       { headerName: 'Data dodania', field: 'InsertDate', width: 120,
-         cellRenderer: (data) => { return formatDate(data.value, 'yyyy-MM-dd H:mm', this.locale) }
+         cellRenderer: (data) => { return formatDate(data.value, 'yyyy-MM-dd HH:mm', this.locale) }
       },
       { headerName: 'Nazwa pliku', field: 'FileName', width: 250 },
       { headerName: 'Opis', field: 'AttachmentDesc', width: 250 },
     ];
+
+    this.columnDefsShipments = [
+      { headerName: 'Data utworzenia', field: 'CreateDate', width: 130,
+        cellRenderer: (data) => { return (data.value) ? formatDate(data.value, 'yyyy-MM-dd HH:mm', this.locale) : ''}
+      },
+      { headerName: 'Status', field: 'ShipmentStatusDesc', width: 130,},
+      { headerName: 'Identyfikator', field: 'ShipmentIdent4GUI', width: 130},
+    ];
+
+    this.columnDefsShipmentPieces = [
+      { headerName: 'Typ', field: 'ItemType', width: 130,},
+      { headerName: 'Ilość', field: 'ItemQuantity', type: 'numericColumn', width: 70},
+      { headerName: 'Szerokość', field: 'ItemWidth', type: 'numericColumn', width: 100},
+      { headerName: 'Wysokość', field: 'ItemHeight', type: 'numericColumn', width: 100},
+      { headerName: 'Długość', field: 'ItemLength', type: 'numericColumn', width: 100},
+      { headerName: 'Waga', field: 'ItemWeight', type: 'numericColumn', width: 100},
+    ]
 
     this.rowClassRules = {
       'row-defect': 'data.IsDefect == 1'

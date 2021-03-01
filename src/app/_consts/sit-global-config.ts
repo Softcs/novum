@@ -1,8 +1,10 @@
+import { SitGridCellRendererComponent } from './../components/controls/sit-grid-cell-renderer/sit-grid-cell-renderer.component';
 import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
 
 export const sitGlobalConfig = {
   frameworkComponents: {
     gridCheckboxRenderer: GridCheckboxRenderer,
+    sitGridCellRenderer: SitGridCellRendererComponent
   },
   excelStyles: [
     {

@@ -3,6 +3,6 @@
     (click)="onClick($event)" [disabled]="executing"
     matTooltip="{{tooltip}}">
     <span *ngIf="executing" class="spinner-border spinner-border-sm mr-1 sit-proc-button-spinner"></span>
-    <mat-icon *ngIf="icon && !executing" aria-hidden="false" aria-label="Firma">{{icon}}</mat-icon>
+    <span *ngIf="icon && !executing" class="sit-proc-button-icon"><mat-icon aria-hidden="false" aria-label="Firma">{{icon}}</mat-icon></span>
     <span class="sit-proc-button-caption">{{caption}}</span>
 </button>
