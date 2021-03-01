@@ -32,12 +32,12 @@ export class SitWmsDocsComponent implements OnInit {
   columnDefsDocumentsHeaders;
   columnDefsDocumentsPositions;
   columnDefsDocumentsPositionsSum;
-  columnDefsDocumentsPositionsHistory;
-  columnDefsDocumentsHeadersHistory;
   columnDefsAttachments;
   columnDefsShipments;
   columnDefsShipmentPieces;
-  detailCellRendererParams;
+  detailCellRendererParamsDocHistory;
+  detailCellRendererParamsPosHistory;
+  detailHistoryRowHeight = 188;
 
   constructor(
     private gatewayService: GatewayService,
@@ -56,8 +56,8 @@ export class SitWmsDocsComponent implements OnInit {
     this.columnDefsDocumentsHeaders = [
       { headerName: 'Id', field: 'sitDocumentsHeadersId', filter: 'agTextColumnFilter',width: 90 },
       { headerName: 'GUID', field: 'sitDocumentsHeadersG', filter: 'agTextColumnFilter',width: 150 },
-      { headerName: 'Typ dok.', field: 'DocumentIdent', filter: 'agSetColumnFilter', floatingFilter: false, width: 90 },
-      { headerName: 'Numer', field: 'DocumentNumber', filter: 'agTextColumnFilter', cellRenderer: 'agGroupCellRenderer' },
+      { headerName: 'Typ dok.', field: 'DocumentIdent', filter: 'agSetColumnFilter', floatingFilter: false, width: 90, cellRenderer: 'agGroupCellRenderer' },
+      { headerName: 'Numer', field: 'DocumentNumber', filter: 'agTextColumnFilter' },
       { headerName: 'Data', field: 'DocumentDate', filter: 'agDateColumnFilter',width: 100, floatingFilter: false, sort: 'desc'  },
       { headerName: 'Status WMS', field: 'Status_WMS', filter: 'agSetColumnFilter', width: 160, floatingFilter: true,
         cellStyle: function(params) {
@@ -82,13 +82,13 @@ export class SitWmsDocsComponent implements OnInit {
 
     //definicja kolumn pozycji dowodów
     this.columnDefsDocumentsPositions = [
-      { headerName: 'Lp', field: 'OrdNumber', type: 'numericColumn', suppressMenu: true, width: 40,floatingFilter: false },
+      { headerName: 'Lp', field: 'OrdNumber', type: 'numericColumn', suppressMenu: true, width: 70,floatingFilter: false, cellRenderer: 'agGroupCellRenderer' },
       { headerName: 'Identyfikator', field: 'ProductIdent', filter: 'agTextColumnFilter', width: 120, floatingFilter: true },
       { headerName: 'EAN', field: 'EAN', filter: 'agTextColumnFilter', width: 110, floatingFilter: true },
       { headerName: 'Opis', field: 'PositionDescription', filter: 'agTextColumnFilter', floatingFilter: true },
       { headerName: 'JM', field: 'UnitIdent', filter: 'agNumberColumnFilter', type: 'numericColumn', suppressMenu: true, width: 60 },
-      { headerName: 'Il. start', field: 'QuantityUnitStart', filter: 'agNumberColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
-      { headerName: 'Ilość', field: 'QuantityUnit', filter: 'agNumberColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
+      { headerName: 'Il. start', field: 'QuantityUnitStart', filter: 'agNumberColumnFilter', type: 'numericColumn', suppressMenu: true, width: 70 },
+      { headerName: 'Ilość', field: 'QuantityUnit', filter: 'agNumberColumnFilter', type: 'numericColumn', suppressMenu: true, width: 70 },
       { headerName: 'Waga', field: 'Weight', filter: 'agNumberColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80,
         cellRenderer: function(params) {
         return formatNumber(params.data["Weight"], locale,'1.2-2')
@@ -109,17 +109,7 @@ export class SitWmsDocsComponent implements OnInit {
       { headerName: 'Różnica', field: 'QuantityDiff', filter: 'agNumberColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
     ];
 
-    //definicja kolumn historii nagłówków
-    this.columnDefsDocumentsHeadersHistory = [
-      { headerName: 'Operacja', field: 'OprType', filter: 'agTextColumnFilter',  width: 100 },
-      { headerName: 'Data mod.', field: 'ChangeDate', suppressMenu: true, width: 180, sort: 'desc',
-        cellRenderer: (data) => { return formatDate(data.value, 'yyyy-MM-dd HH:mm', this.locale) }
-      },
-      { headerName: 'Status', field: 'ValueName', filter: 'agTextColumnFilter'},
-      { headerName: 'Komentarz', field: '__HistoryComments__', filter: 'agTextColumnFilter' },
-    ];
-
-    this.detailCellRendererParams = {
+    this.detailCellRendererParamsDocHistory = {
       detailGridOptions: {
         columnDefs: [
           { headerName: 'Operacja', field: 'OprType', flex: 1 },
@@ -132,20 +122,25 @@ export class SitWmsDocsComponent implements OnInit {
       },
 
       getDetailRowData: function (params) {
-     //   setTimeout(function () {
           params.successCallback(params.data.history);
-       // }, 1000);
       },
     };
 
-    //definicja kolumn historii pozycji
-    this.columnDefsDocumentsPositionsHistory = [
-      { headerName: 'Operacja', field: 'OprType', filter: 'agTextColumnFilter', width: 100 },
-      { headerName: 'Data mod.', field: 'ChangeDate', suppressMenu: true, width: 180, sort: 'desc',
-        cellRenderer: (data) => { return formatDate(data.value, 'yyyy-MM-dd HH:mm', this.locale) }
+    this.detailCellRendererParamsPosHistory = {
+      detailGridOptions: {
+        columnDefs: [
+          { headerName: 'Operacja', field: 'OprType', filter: 'agTextColumnFilter', width: 100 },
+          { headerName: 'Data mod.', field: 'ChangeDate', suppressMenu: true, width: 180, sort: 'desc',
+             cellRenderer: (data) => { return formatDate(data.value, 'yyyy-MM-dd HH:mm', this.locale) }
+          },
+          { headerName: 'Ilość', field: 'Quantity', type: "numericColumn" }
+        ],
       },
-      { headerName: 'Ilość', field: 'Quantity', type: "numericColumn" }
-    ];
+
+      getDetailRowData: function (params) {
+          params.successCallback(params.data.history);
+      },
+    };
 
     this.columnDefsAttachments = [
       { headerName: 'ParentId', field: 'ParentId' },
