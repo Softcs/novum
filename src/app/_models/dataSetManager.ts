@@ -243,50 +243,7 @@ export class DataSetManager {
                          executeActionExceptionCallback: Function,
                          sourceDictIdent: string = null,
                          activeDataSet: DataSetWrapper = null) {
-        const dictIdent = sourceDictIdent ?? this.dictInfo?.ident;
-        const dataSourcesRequest: any[] = [];
-        const dsWrapper: DataSetWrapper = activeDataSet == null ? this.getDateSourceWrapper(dataSourceIdent) : activeDataSet;
-        const obj = this.getObjectForDataSourceRequest(dsWrapper, true);
-        dataSourcesRequest.push(obj);
-
-        const opr: Operation = this.gatewayService.operationExecuteAction(
-            dictIdent,
-            dataSourcesRequest,
-            actionIdent,
-            dataSourceIdent);
-
-        this.gatewayService.executeOperation(opr)
-            .pipe(first())
-            .subscribe(
-                data => {
-                    if (data.length === 1) {
-                        const response = data[0];
-                        const wasErrors = this.PropagateErrors(dataSourceIdent, response?.Errors);
-                        this.RefreshOneRows(response.dataSourcesResponse, dataSourcesRequest);
-                        if (!wasErrors) {
-                            if(executeActionCompletedCallback != null) {
-                                executeActionCompletedCallback(owner);
-                            }
-                        }
-
-                        if (response == null || !wasErrors) {
-                            this.ExecuteRefreshAfter(actionIdent, dataSourceIdent);
-                        }
-
-                        if (wasErrors) {
-                            if (executeActionExceptionCallback != null) {
-                                executeActionExceptionCallback(owner);
-                            }
-                        }
-
-                    }
-                },
-                error => {
-                    console.error("error", error);
-                    if (executeActionExceptionCallback != null) {
-                        executeActionExceptionCallback(owner);
-                    }
-                });
+            executeActionCompletedCallback(owner);
     }
 
     public setRefreshDataSources(dataSetsResponse) {

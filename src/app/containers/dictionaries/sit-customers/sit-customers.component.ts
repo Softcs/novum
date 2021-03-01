@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, LOCALE_ID, ViewChildren, QueryList, Inject } from '@angular/core';
+import { Component, ViewChild, LOCALE_ID, ViewChildren, QueryList, Inject } from '@angular/core';
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
 import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
@@ -6,35 +6,23 @@ import { GridService } from '@app/_services/grid.service';
 import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
 import { formatNumber } from '@angular/common';
 import { formatDate } from '@angular/common';
+import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-dict-base.component';
 @Component({
   selector: 'app-sit-customers',
   templateUrl: './sit-customers.component.html',
   styleUrls: ['./sit-customers.component.scss'],
   host: {class: 'router-flex'}
 })
-export class SitCustomersComponent implements OnInit {
+export class SitCustomersComponent extends SitDictBaseComponent {
   @ViewChild('sitDictcontainer') dictContainer: SitDictContainerComponent;
   @ViewChildren('sitDictcontainer') dictContainers !: QueryList<SitDictContainerComponent>;
 
-  currentUser: User;
-
-  popupParent;
-  frameworkComponents;
   columnDefs;
   columnDefsHRDepartments;
   columnDefsHRParams4Invoicing
 
-  constructor(
-    private gatewayService: GatewayService,
-    private gridService: GridService,
-    @Inject(LOCALE_ID) private locale: string
-  ) {
-    this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
-    this.popupParent = document.querySelector('body');
-    this.frameworkComponents = {
-      gridCheckboxRenderer: GridCheckboxRenderer,
-    };
 
+  protected columnsDefinition() {
     this.columnDefs = [
       { headerName: 'ID', field: 'sitCustomersId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100 },
       { headerName: 'GUID', field: 'sitCustomersG', filter: 'agTextColumnFilter', width: 100 },
@@ -70,9 +58,6 @@ export class SitCustomersComponent implements OnInit {
         cellRenderer: 'gridCheckboxRenderer',
       },
     ];
-   }
-
-  ngOnInit(): void {
   }
 
   onGridReady(params) {
