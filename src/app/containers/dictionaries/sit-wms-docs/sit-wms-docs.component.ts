@@ -132,8 +132,11 @@ export class SitWmsDocsComponent implements OnInit {
         ],
         defaultColDef: { flex: 1 },
       },
+      
       getDetailRowData: function (params) {
-        params.successCallback(params.data.callRecords);
+     //   setTimeout(function () {
+          params.successCallback(params.data.history);
+       // }, 1000);
       },
     };
 
@@ -181,11 +184,15 @@ export class SitWmsDocsComponent implements OnInit {
     if (params.columnApi.getColumn('sitAttachmentsG')) {
       params.columnApi.setColumnsVisible(['sitAttachmentId','sitAttachmentsG','ParentId'],false)
     }
+    
+    //this.detailRowData = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsHeadersHistory').rows;
+    //params.gridApi.detailRowData.setRowData(this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsHeadersHistory').rows);
   }
 
   activateTab(index) {
     this.activeSubTab = index;
     const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsHeaders');
+    
   }
 
   activeRowChangedDocumentsHeaders(activeRow) {
