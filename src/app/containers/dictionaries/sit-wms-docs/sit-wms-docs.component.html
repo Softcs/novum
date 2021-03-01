@@ -26,7 +26,10 @@
                         style="width: 100%; height: 100%;"
                         class="ag-theme-balham"
                         [columnDefs]="columnDefsDocumentsHeaders"
+                        [masterDetail]="true"
+                        [detailCellRendererParams]="detailCellRendererParams"
                         [popupParent]="popupParent"
+                        [frameworkComponents]="frameworkComponents"
                         (gridReady)="onGridReady($event)"
                       >
                       </ag-grid-angular>

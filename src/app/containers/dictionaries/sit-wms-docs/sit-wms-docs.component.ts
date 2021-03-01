@@ -9,6 +9,7 @@ import { TabService } from '@app/_services/tab.service';
 import { formatNumber } from '@angular/common';
 import { formatDate } from '@angular/common';
 import { GridService } from '@app/_services/grid.service';
+import { sitGlobalConfig } from '@app/_consts/sit-global-config';
 
 @Component({
   selector: 'app-sit-wms-docs',
@@ -36,6 +37,7 @@ export class SitWmsDocsComponent implements OnInit {
   columnDefsAttachments;
   columnDefsShipments;
   columnDefsShipmentPieces;
+  detailCellRendererParams;
 
   constructor(
     private gatewayService: GatewayService,
@@ -48,16 +50,14 @@ export class SitWmsDocsComponent implements OnInit {
 
     this.companyGUID = this.currentUser.company.companyGUID;
     this.popupParent = document.querySelector('body');
-    this.frameworkComponents = {
-      gridCheckboxRenderer: GridCheckboxRenderer,
-    };
+    this.frameworkComponents = sitGlobalConfig.frameworkComponents;
 
     //definicja kolumn nagłówków dowodów
     this.columnDefsDocumentsHeaders = [
       { headerName: 'Id', field: 'sitDocumentsHeadersId', filter: 'agTextColumnFilter',width: 90 },
       { headerName: 'GUID', field: 'sitDocumentsHeadersG', filter: 'agTextColumnFilter',width: 150 },
       { headerName: 'Typ dok.', field: 'DocumentIdent', filter: 'agSetColumnFilter', floatingFilter: false, width: 90 },
-      { headerName: 'Numer', field: 'DocumentNumber', filter: 'agTextColumnFilter' },
+      { headerName: 'Numer', field: 'DocumentNumber', filter: 'agTextColumnFilter', cellRenderer: 'agGroupCellRenderer' },
       { headerName: 'Data', field: 'DocumentDate', filter: 'agDateColumnFilter',width: 100, floatingFilter: false, sort: 'desc'  },
       { headerName: 'Status WMS', field: 'Status_WMS', filter: 'agSetColumnFilter', width: 160, floatingFilter: true,
         cellStyle: function(params) {
@@ -118,6 +118,25 @@ export class SitWmsDocsComponent implements OnInit {
       { headerName: 'Status', field: 'ValueName', filter: 'agTextColumnFilter'},
       { headerName: 'Komentarz', field: '__HistoryComments__', filter: 'agTextColumnFilter' },
     ];
+
+    this.detailCellRendererParams = {
+      detailGridOptions: {
+        columnDefs: [
+          { headerName: 'Operacja', field: 'OprType', flex: 1 },
+          { headerName: 'Data mod.', field: 'ChangeDate', suppressMenu: true, width: 180, sort: 'desc', flex: 2,
+            cellRenderer: (data) => { return formatDate(data.value, 'yyyy-MM-dd HH:mm', this.locale) }
+          },
+          { headerName: 'Status', field: 'ValueName', filter: 'agTextColumnFilter', flex: 2 },
+          { headerName: 'Komentarz', field: '__HistoryComments__', filter: 'agTextColumnFilter', flex: 3 }
+        ],
+      },
+
+      getDetailRowData: function (params) {
+     //   setTimeout(function () {
+          params.successCallback(params.data.history);
+       // }, 1000);
+      },
+    };
 
     //definicja kolumn historii pozycji
     this.columnDefsDocumentsPositionsHistory = [
@@ -180,11 +199,15 @@ export class SitWmsDocsComponent implements OnInit {
     if (params.columnApi.getColumn('sitAttachmentsG')) {
       params.columnApi.setColumnsVisible(['sitAttachmentId','sitAttachmentsG','ParentId'],false)
     }
+
+    //this.detailRowData = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsHeadersHistory').rows;
+    //params.gridApi.detailRowData.setRowData(this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsHeadersHistory').rows);
   }
 
   activateTab(index) {
     this.activeSubTab = index;
     const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitDocumentsHeaders');
+
   }
 
   activeRowChangedDocumentsHeaders(activeRow) {
