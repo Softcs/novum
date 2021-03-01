@@ -37,7 +37,6 @@ export class SitWmsDocsComponent implements OnInit {
   columnDefsShipmentPieces;
   detailCellRendererParamsDocHistory;
   detailCellRendererParamsPosHistory;
-  detailHistoryRowHeight = 188;
 
   constructor(
     private gatewayService: GatewayService,
