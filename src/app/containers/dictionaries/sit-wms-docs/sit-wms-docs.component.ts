@@ -156,8 +156,6 @@ export class SitWmsDocsComponent implements OnInit {
       },
       { headerName: 'Status', field: 'ShipmentStatusDesc', width: 130,},
       { headerName: 'Identyfikator', field: 'ShipmentIdent4GUI', width: 130},
-      { headerName: 'sitCourierShipmentsId', field: 'sitCourierShipmentsId', width: 130},
-
     ];
 
     this.columnDefsShipmentPieces = [
