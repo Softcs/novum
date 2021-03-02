@@ -4,7 +4,6 @@ import { DataSetWrapper } from '@app/_models';
 import { environment } from '@environments/environment';
 import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
-import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
 import { TabService } from '@app/_services/tab.service';
 import { formatNumber } from '@angular/common';
 import { formatDate } from '@angular/common';
@@ -157,15 +156,17 @@ export class SitWmsDocsComponent implements OnInit {
       },
       { headerName: 'Status', field: 'ShipmentStatusDesc', width: 130,},
       { headerName: 'Identyfikator', field: 'ShipmentIdent4GUI', width: 130},
+      { headerName: 'sitCourierShipmentsId', field: 'sitCourierShipmentsId', width: 130},
+
     ];
 
     this.columnDefsShipmentPieces = [
-      { headerName: 'Typ', field: 'ItemType', width: 130,},
-      { headerName: 'Ilość', field: 'ItemQuantity', type: 'numericColumn', width: 70},
+      { headerName: 'Typ', field: 'ItemDescription', width: 130,},
       { headerName: 'Szerokość', field: 'ItemWidth', type: 'numericColumn', width: 100},
       { headerName: 'Wysokość', field: 'ItemHeight', type: 'numericColumn', width: 100},
       { headerName: 'Długość', field: 'ItemLength', type: 'numericColumn', width: 100},
       { headerName: 'Waga', field: 'ItemWeight', type: 'numericColumn', width: 100},
+      { headerName: 'Ilość', field: 'ItemQuantity', type: 'numericColumn', width: 70},
     ]
 
     this.rowClassRules = {
