@@ -92,7 +92,7 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
       return true;
     }
 
-    if ( ( this.isInsert() || this.isUpdate() || this.isDelete() ) && !this.dataSetResponseWrapper.allParentsHaveRows() ) {
+    if ( !this.dataSetResponseWrapper.allParentsHaveRows() ) {
        return true;
     };
 
