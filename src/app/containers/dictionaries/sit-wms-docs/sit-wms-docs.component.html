@@ -5,7 +5,6 @@
         <as-split-area [size]="55">
           <div fxFill fxLayout="column">
             <as-split direction="vertical">
-              <as-split-area [size]="85">
                 <div fxLayout="column" fxFill>
                   <div class="sit-filter-bar">
                     <sit-data-set-container ident="sitFilterDocumentsHeaders" fxLayout="row">
@@ -27,7 +26,8 @@
                         class="ag-theme-balham"
                         [columnDefs]="columnDefsDocumentsHeaders"
                         [masterDetail]="true"
-                        [detailCellRendererParams]="detailCellRendererParams"
+                        [detailCellRendererParams]="detailCellRendererParamsDocHistory"
+                        [detailRowAutoHeight]="true"
                         [popupParent]="popupParent"
                         [frameworkComponents]="frameworkComponents"
                         (gridReady)="onGridReady($event)"
@@ -36,25 +36,6 @@
                     </div>
                   </sit-data-set-container>
                 </div>
-              </as-split-area>
-              <as-split-area [size]="15">
-                <div fxLayout="column" fxFill>
-                  <sit-data-set-container  ident="sitDocumentsHeadersHistory" fxFill>
-                    <div class="data-table" fxFill>
-                      <ag-grid-angular
-                        #sitSetDataSource
-                        #sitDocumentsHeadersHistoryGrid
-                        style="width: 100%; height: 100%;"
-                        class="ag-theme-balham"
-                        [columnDefs]="columnDefsDocumentsHeadersHistory"
-                        [popupParent]="popupParent"
-                        (gridReady)="onGridReady($event)"
-                      >
-                      </ag-grid-angular>
-                    </div>
-                  </sit-data-set-container>
-                </div>
-              </as-split-area>
             </as-split>
           </div>
         </as-split-area>
@@ -130,7 +111,6 @@
               <mat-tab label="Pozycje">
                 <div fxLayout="column" fxFill>
                   <as-split direction="vertical">
-                    <as-split-area [size]="85">
                       <div fxFill>
                         <sit-data-set-container  ident="sitDocumentsPositions" fxFill>
                           <div fxLayout="column" fxFill>
@@ -141,6 +121,9 @@
                                 style="width: 100%; height: 100%;"
                                 class="ag-theme-balham"
                                 [columnDefs]="columnDefsDocumentsPositions"
+                                [masterDetail]="true"
+                                [detailCellRendererParams]="detailCellRendererParamsPosHistory"
+                                [detailRowAutoHeight]="true"
                                 [popupParent]="popupParent"
                                 [frameworkComponents]="frameworkComponents"
                                 [rowClassRules]="rowClassRules"
@@ -151,28 +134,6 @@
                           </div>
                         </sit-data-set-container>
                       </div>
-                    </as-split-area>
-                    <as-split-area [size]="15">
-                      <div fxFill>
-                      <sit-data-set-container  ident="sitDocumentsPositionsHistory" fxFill>
-                        <div fxLayout="column" fxFill>
-                            <div class="data-table" fxFill>
-                              <ag-grid-angular
-                                #sitSetDataSource
-                                #sitDocumentsPositionsHistoryGrid
-                                id="gridDocumentsPositionsHistory"
-                                style="width: 100%; height: 100%;"
-                                class="ag-theme-balham"
-                                [columnDefs]="columnDefsDocumentsPositionsHistory"
-                                [popupParent]="popupParent"
-                                (gridReady)="onGridReady($event)"
-                              >
-                              </ag-grid-angular>
-                          </div>
-                        </div>
-                      </sit-data-set-container>
-                      </div>
-                    </as-split-area>
                   </as-split>
                 </div>
               </mat-tab>
