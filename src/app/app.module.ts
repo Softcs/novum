@@ -164,7 +164,7 @@ import { SitUtilConverterFramesComponent } from './containers/dictionaries/sit-u
 import { SitUtilProcGenConverterFrameComponent } from './containers/dictionaries/sit-util-converter-frames/actions/sit-util-proc-gen-converter-frame/sit-util-proc-gen-converter-frame.component';
 import { SitCourierAddPieceToShipmentComponent } from './containers/dictionaries/sit-wms-docs/actions/sit-courier-add-piece-to-shipment/sit-courier-add-piece-to-shipment.component';
 import { SitCourierCreateShipmentsComponent } from './containers/dictionaries/sit-wms-docs/actions/sit-courier-create-shipments/sit-courier-create-shipments.component';
-import { SitGridCellRendererComponent } from './components/controls/sit-grid-cell-renderer/sit-grid-cell-renderer.component'
+import { SitGridCellRendererComponent } from './components/controls/sit-grid-cell-renderer/sit-grid-cell-renderer.component';
 
 
 @NgModule({
@@ -322,7 +322,8 @@ import { SitGridCellRendererComponent } from './components/controls/sit-grid-cel
         SitUtilProcGenConverterFrameComponent,
         SitCourierAddPieceToShipmentComponent,
         SitCourierCreateShipmentsComponent,
-        SitGridCellRendererComponent 
+        SitGridCellRendererComponent,
+
 
     ],
     providers: [

@@ -1,3 +1,4 @@
+import { style } from '@angular/animations';
 import { formatDate, formatNumber } from '@angular/common';
 import { Component, Inject, LOCALE_ID } from '@angular/core';
 import { ICellRendererAngularComp } from 'ag-grid-angular';
@@ -10,6 +11,7 @@ import { ICellRendererParams } from 'ag-grid-community';
 })
 export class SitGridCellRendererComponent implements ICellRendererAngularComp {
   params: any;
+  style: string;
   value: any;
 
   constructor(
@@ -19,6 +21,7 @@ export class SitGridCellRendererComponent implements ICellRendererAngularComp {
   agInit(params: any): void {
     this.params = params;
     this.value = this.getValueToDisplay(params);
+    this.style = this.params.style;
   }
 
   refresh(): boolean {
