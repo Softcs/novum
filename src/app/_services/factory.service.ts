@@ -1,3 +1,5 @@
+import { SitAppUsersInCompanyEditComponent } from './../containers/dictionaries/sit-app-users-in-company/actions/sit-app-users-in-company-edit/sit-app-users-in-company-edit.component';
+import { SitAppUsersInCompanyComponent } from './../containers/dictionaries/sit-app-users-in-company/sit-app-users-in-company.component';
 import { SitRailLogComponent } from './../containers/dictionaries/sit-rail-log/sit-rail-log.component';
 import { SitPayrollsCalcAccountingDimEditComponent } from './../containers/dictionaries/sit-payrolls/actions/sit-payrolls-calc-accounting-dim-edit/sit-payrolls-calc-accounting-dim-edit.component';
 import { SitPayrollComponentsEditComponent } from './../containers/dictionaries/sit-payroll-components/actions/sit-payroll-components-edit/sit-payroll-components-edit.component';
@@ -20,7 +22,7 @@ import { SitAgreementsTypesEditComponent } from './../containers/dictionaries/si
 import { SitLocationsComponent } from './../containers/dictionaries/sit-locations/sit-locations.component';
 import { SitAgreementsTypesComponent } from './../containers/dictionaries/sit-agreements-types/sit-agreements-types.component';
 import { SitRightsComponent } from './../containers/dictionaries/sit-rights/sit-rights.component';
-import { SitRightsGroupUsersEditComponent } from './../containers/dictionaries/sit-app-users/actions/sit-rights-group-users-edit/sit-rights-group-users-edit.component';
+import { SitRightsGroupUsersEditComponent } from '../containers/dictionaries/sit-app-users-in-company/actions/sit-rights-group-users-edit/sit-rights-group-users-edit.component';
 import { SitSysActionsEditComponent } from '../containers/dictionaries/sit-sys-dictionaries/actions/sit-sys-actions-edit/sit-sys-actions-edit.component';
 import { SitSysDatasourcesEditComponent } from './../containers/dictionaries/sit-sys-dictionaries/actions/sit-sys-datasources-edit/sit-sys-datasources-edit.component';
 import { SitSysDictionariesEditComponent } from './../containers/dictionaries/sit-sys-dictionaries/actions/sit-sys-dictionaries-edit/sit-sys-dictionaries-edit.component';
@@ -152,6 +154,8 @@ export class FactoryService {
         sitPayrollsCalcAccountingEdit: SitPayrollsCalcAccountingEditComponent,
         sitCourierAddPieceToShipment: SitCourierAddPieceToShipmentComponent,
         sitCourierCreateShipments: SitCourierCreateShipmentsComponent,
+        sitAppUsersInCompany: SitAppUsersInCompanyComponent,
+        sitAppUsersInCompanyEdit: SitAppUsersInCompanyEditComponent,
     };
 
     public GetFactory(ident: string) {

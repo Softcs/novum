@@ -382,7 +382,7 @@ button:focus {
   background-color: #073763;
   width: 100%;
   padding: 3px 10px;
-
+  margin-bottom: 5px;
 }
 
 
@@ -579,4 +579,13 @@ div.cover{
   display: flex;
   justify-content: flex-end;
 
+}
+
+.today {
+  font-weight: bold;
+  background-color: rgb(243, 227, 85)!important;
+}
+
+.dayoff {
+  background-color: lightgray!important;
 }

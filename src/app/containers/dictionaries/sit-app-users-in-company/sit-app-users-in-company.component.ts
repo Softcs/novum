@@ -4,13 +4,15 @@ import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
 import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
 import { GridService } from '@app/_services/grid.service';
+
+
 @Component({
-  selector: 'sit-app-users',
-  templateUrl: './sit-app-users.component.html',
-  styleUrls: ['./sit-app-users.component.scss'],
+  selector: 'app-sit-app-users-in-company',
+  templateUrl: './sit-app-users-in-company.component.html',
+  styleUrls: ['./sit-app-users-in-company.component.scss'],
   host: {class: 'router-flex'}
 })
-export class SitAppUsersComponent implements OnInit {
+export class SitAppUsersInCompanyComponent implements OnInit {
   @ViewChild('sitDictcontainer') dictContainer: SitDictContainerComponent;
   @ViewChildren('sitDictcontainer') dictContainers !: QueryList<SitDictContainerComponent>;
 
@@ -19,6 +21,7 @@ export class SitAppUsersComponent implements OnInit {
   popupParent;
   columnDefs;
   columnDefsAppUserCompanies;
+  columnDefsRightsGroupUsers;
 
   constructor(
     private gatewayService: GatewayService,
@@ -39,8 +42,9 @@ export class SitAppUsersComponent implements OnInit {
       { headerName: 'e-mail', field: 'email', width: 200 },
       { headerName: 'MenuId', field: 'sitMenuId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 80 },
       { headerName: 'Menu', field: 'Symbol', width: 100 },
-      { headerName: 'Aktywny', field: 'IsActive', cellRenderer: 'gridCheckboxRenderer', cellClass: "grid-cell-centered", width: 100, suppressMenu: true  },
-      { headerName: 'Administrator', field: 'IsAdmin', cellRenderer: 'gridCheckboxRenderer', cellClass: "grid-cell-centered", width: 100, suppressMenu: true  },
+      { headerName: 'Aktywny', field: 'IsActive', cellRenderer: 'gridCheckboxRenderer', cellClass: "grid-cell-centered", width: 80, suppressMenu: true  },
+      { headerName: 'Administrator', field: 'IsAdmin', cellRenderer: 'gridCheckboxRenderer', cellClass: "grid-cell-centered", width: 80, suppressMenu: true  },
+      { headerName: 'Pracownik', field: 'EmployeeName', width: 200 },
 
 
     ];
@@ -55,7 +59,11 @@ export class SitAppUsersComponent implements OnInit {
 
     ];
 
-   }
+    this.columnDefsRightsGroupUsers = [
+      { headerName: 'Identyfikator', field: 'RightsGroupIdent'},
+      { headerName: 'Nazwa', field: 'RightsGroupName'},
+    ];
+  }
 
   ngOnInit(): void {
   }
@@ -71,6 +79,5 @@ export class SitAppUsersComponent implements OnInit {
       params.columnApi.setColumnsVisible(['sitAppUserCompaniesId','sitAppUserCompaniesG'],false)
     }
   }
-
 
 }

@@ -1,6 +1,32 @@
-﻿<div fxFill fxLayout="column">
-  <div fxFlex fxLayoutAlign="center center" class="content">
-    <div>Mój pulpit</div>
+﻿<sit-dict-container ident="sitPulpit" #sitDictcontainer fxFill >
+  <div fxFill fxLayout="column">
+    <div fxFlex class="content" fxLayout="row">
+      <div fxFlex=25 fxLayout="column">
+        <div class="sit-grid-title">Lista obecności</div>
+        <sit-data-set-container ident="sitFilterAttendanceList4User" >
+          <div class="sit-filter-bar" fxLayout="row">
+            <sit-data-input #sitControl field="year" label="Rok" placeholder="" appearance="outline" style="width: 100px;" ></sit-data-input>
+            <sit-data-input #sitControl field="month" label="Miesiąc" placeholder="" appearance="outline" style="width: 130px;" showRefreshButton="true"></sit-data-input>
+          </div>
+        </sit-data-set-container>
+        <sit-data-set-container  ident="sitAttendanceList4User" showActionsToolbar="true" fxFlex fxLayout="column">
+          <div class="data-table" fxFlex>
+            <ag-grid-angular
+              #sitSetDataSource
+              #sitHRDepartmentsGrid
+              style="width: 100%; height: 100%;"
+              class="ag-theme-balham"
+              [columnDefs]="columnDefs"
+              [popupParent]="popupParent"
+              [excelStyles]="excelStyles"
+              [rowClassRules]="rowClassRules"
+              [frameworkComponents]="frameworkComponents"
+            >
+            </ag-grid-angular>
+          </div>
+        </sit-data-set-container>
+      </div>
+    </div>
+    <div class="sit-pulpit-bottom-bar">v {{appVersion}} sv {{serverVersion}}</div>
   </div>
-  <div class="sit-pulpit-bottom-bar">v {{appVersion}} sv {{serverVersion}}</div>
-</div>
+</sit-dict-container>
