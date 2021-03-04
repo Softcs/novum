@@ -76,6 +76,8 @@ import { SitPayrollsCalcAccountingEditComponent } from '@app/containers/dictiona
 import { SitCourierAddPieceToShipmentComponent } from '@app/containers/dictionaries/sit-wms-docs/actions/sit-courier-add-piece-to-shipment/sit-courier-add-piece-to-shipment.component';
 import { SitCourierCreateShipmentsComponent } from '@app/containers/dictionaries/sit-wms-docs/actions/sit-courier-create-shipments/sit-courier-create-shipments.component';
 import { SitProductSaleStatusIntervalsEditComponent } from '@app/containers/dictionaries/sit-products/actions/sit-product-sale-status-intervals-edit/sit-product-sale-status-intervals-edit.component';
+import { SitDocumentsTypesComponent } from '@app/containers/dictionaries/sit-documents-types/sit-documents-types.component';
+import { SitDocumentsTypesEditComponent } from '@app/containers/dictionaries/sit-documents-types/actions/sit-documents-types-edit/sit-documents-types-edit.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -158,6 +160,8 @@ export class FactoryService {
         sitAppUsersInCompany: SitAppUsersInCompanyComponent,
         sitAppUsersInCompanyEdit: SitAppUsersInCompanyEditComponent,
         sitProductSaleStatusIntervalsEdit: SitProductSaleStatusIntervalsEditComponent,
+        sitDocumentsTypes: SitDocumentsTypesComponent,
+        sitDocumentsTypesEdit: SitDocumentsTypesEditComponent,
     };
 
     public GetFactory(ident: string) {
