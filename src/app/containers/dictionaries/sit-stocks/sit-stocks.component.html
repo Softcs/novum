@@ -7,8 +7,12 @@
         <mat-tab label="Magazyny">
           <div fxLayout="column" fxFill class="content">
             <sit-data-set-container ident="sitFilterStocks" fxLayout="row">
-              <div class="sit-filter-bar">
-                  <sit-data-input #sitControl id="searchStocks" field="searchStocks" label="Filtruj produkty" placeholder="Identyfikator, nazwa" appearance="outline" style="width: 300px;" showRefreshButton="true"></sit-data-input>
+              <div class="sit-filter-bar" fxLayout="row">
+                  <sit-data-input #sitControl id="searchStocks" field="searchStocks" label="Filtruj produkty" placeholder="Identyfikator, nazwa" appearance="outline" style="width: 300px;"></sit-data-input>
+                  <sit-data-input #sitControl id="searchStocks" field="WarehouseIdent" label="Magazyn" placeholder="" appearance="outline" style="width: 150px;"></sit-data-input>
+                  <sit-data-input #sitControl id="searchStocks" field="SaleStatus" label="Status sprz." placeholder="" appearance="outline" style="width: 200px;" showRefreshButton="true"
+                    [lookupDisplayFields] = "['SaleStatus', 'SaleStatusDescription']"
+                  ></sit-data-input>
               </div>
             </sit-data-set-container>
 
