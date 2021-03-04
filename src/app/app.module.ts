@@ -166,7 +166,8 @@ import { SitStatusesComponent } from './containers/dictionaries/sit-statuses/sit
 import { SitCourierAddPieceToShipmentComponent } from './containers/dictionaries/sit-wms-docs/actions/sit-courier-add-piece-to-shipment/sit-courier-add-piece-to-shipment.component';
 import { SitCourierCreateShipmentsComponent } from './containers/dictionaries/sit-wms-docs/actions/sit-courier-create-shipments/sit-courier-create-shipments.component';
 import { SitGridCellRendererComponent } from './components/controls/sit-grid-cell-renderer/sit-grid-cell-renderer.component';
-import { SitStatusesEditComponent } from './containers/dictionaries/sit-statuses/actions/sit-statuses-edit/sit-statuses-edit.component'
+import { SitStatusesEditComponent } from './containers/dictionaries/sit-statuses/actions/sit-statuses-edit/sit-statuses-edit.component';
+import { SitStatusValuesEditComponent } from './containers/dictionaries/sit-statuses/actions/sit-status-values-edit/sit-status-values-edit.component'
 
 
 @NgModule({
@@ -326,7 +327,8 @@ import { SitStatusesEditComponent } from './containers/dictionaries/sit-statuses
         SitCourierAddPieceToShipmentComponent,
         SitCourierCreateShipmentsComponent,
         SitGridCellRendererComponent,
-        SitStatusesEditComponent
+        SitStatusesEditComponent,
+        SitStatusValuesEditComponent
 
     ],
     providers: [
