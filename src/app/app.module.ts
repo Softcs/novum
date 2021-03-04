@@ -167,6 +167,7 @@ import { SitCourierCreateShipmentsComponent } from './containers/dictionaries/si
 import { SitGridCellRendererComponent } from './components/controls/sit-grid-cell-renderer/sit-grid-cell-renderer.component';
 import { SitAppUsersInCompanyComponent } from './containers/dictionaries/sit-app-users-in-company/sit-app-users-in-company.component';
 import { SitAppUsersInCompanyEditComponent } from './containers/dictionaries/sit-app-users-in-company/actions/sit-app-users-in-company-edit/sit-app-users-in-company-edit.component';
+import { SitProductSaleStatusIntervalsEditComponent } from './containers/dictionaries/sit-products/actions/sit-product-sale-status-intervals-edit/sit-product-sale-status-intervals-edit.component';
 
 
 @NgModule({
@@ -327,6 +328,7 @@ import { SitAppUsersInCompanyEditComponent } from './containers/dictionaries/sit
         SitGridCellRendererComponent,
         SitAppUsersInCompanyComponent,
         SitAppUsersInCompanyEditComponent,
+        SitProductSaleStatusIntervalsEditComponent,
 
 
     ],

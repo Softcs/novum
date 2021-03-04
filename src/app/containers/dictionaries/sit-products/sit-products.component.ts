@@ -25,8 +25,9 @@ export class SitProductsComponent implements OnInit {
   ean;
   frameworkComponents;
   contentColor;
-  columnDefsProducts;
   popupParent;
+  columnDefsProducts;
+  columnDefsSaleStatusIntervals;
 
   constructor(
     private gatewayService: GatewayService,
@@ -42,11 +43,7 @@ export class SitProductsComponent implements OnInit {
     };
 
     this.columnDefsProducts = [
-      { headerName: 'Identyfikator', field: 'ProductIdent', filter: 'agTextColumnFilter', width: 150,
-      // filterParams: {
-      //   filterOptions: ['contains', 'notContains']
-      // },
-      checkboxSelection: false },
+      { headerName: 'Identyfikator', field: 'ProductIdent', filter: 'agTextColumnFilter', width: 150, },
       { headerName: 'EAN', field: 'EAN', filter: 'agTextColumnFilter', width: 120 },
       { headerName: 'Nazwa', field: 'ProductName', tooltipField: 'ProductName', filter: 'agTextColumnFilter', width: 300 },
       { headerName: 'JM', field: 'UnitIdent', filter: 'agTextColumnFilter', width: 60 },
@@ -58,10 +55,17 @@ export class SitProductsComponent implements OnInit {
         }
 
       },
-      { headerName: 'Aktywny', field: 'IsActive', filter: 'agSetColumnFilter', width: 80, cellRenderer: 'gridCheckboxRenderer' }
+      { headerName: 'Aktywny', field: 'IsActive', filter: 'agSetColumnFilter', width: 80, cellRenderer: 'gridCheckboxRenderer', suppressMenu: true },
+      { headerName: 'Status sprz.', field: 'SaleStatus', tooltipField: 'SaleStatusDescription', width: 80, suppressMenu: true},
+
 
     ];
 
+    this.columnDefsSaleStatusIntervals = [
+      { headerName: 'Od dnia', field: 'DateFrom', width: 100,},
+      { headerName: 'Status', field: 'SaleStatus', width: 80,},
+      { headerName: 'Opis', field: 'SaleStatusDescription', width: 150,},
+    ]
 }
 
   ngOnInit(): void {
