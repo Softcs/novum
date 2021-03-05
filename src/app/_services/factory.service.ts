@@ -73,12 +73,15 @@ import { SitUtilConverterFramesComponent } from '@app/containers/dictionaries/si
 import { SitUtilProcGenConverterFrameComponent } from '@app/containers/dictionaries/sit-util-converter-frames/actions/sit-util-proc-gen-converter-frame/sit-util-proc-gen-converter-frame.component';
 import { SitEmployeesSettlementsCompEditComponent } from '@app/containers/dictionaries/sit-employees-settlements/actions/sit-employees-settlements-comp-edit/sit-employees-settlements-comp-edit.component';
 import { SitPayrollsCalcAccountingEditComponent } from '@app/containers/dictionaries/sit-payrolls/actions/sit-payrolls-calc-accounting-edit/sit-payrolls-calc-accounting-edit.component';
+import { SitStatusesComponent } from '@app/containers/dictionaries/sit-statuses/sit-statuses.component';
 import { SitCourierAddPieceToShipmentComponent } from '@app/containers/dictionaries/sit-wms-docs/actions/sit-courier-add-piece-to-shipment/sit-courier-add-piece-to-shipment.component';
 import { SitCourierCreateShipmentsComponent } from '@app/containers/dictionaries/sit-wms-docs/actions/sit-courier-create-shipments/sit-courier-create-shipments.component';
 import { SitProductSaleStatusIntervalsEditComponent } from '@app/containers/dictionaries/sit-products/actions/sit-product-sale-status-intervals-edit/sit-product-sale-status-intervals-edit.component';
 import { SitDocumentsTypesComponent } from '@app/containers/dictionaries/sit-documents-types/sit-documents-types.component';
 import { SitDocumentsTypesEditComponent } from '@app/containers/dictionaries/sit-documents-types/actions/sit-documents-types-edit/sit-documents-types-edit.component';
 import { SitAttendanceListComponent } from '@app/containers/dictionaries/sit-attendance-list/sit-attendance-list.component';
+import { SitStatusesEditComponent } from '@app/containers/dictionaries/sit-statuses/actions/sit-statuses-edit/sit-statuses-edit.component';
+import { SitStatusValuesEditComponent } from '@app/containers/dictionaries/sit-statuses/actions/sit-status-values-edit/sit-status-values-edit.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -156,6 +159,7 @@ export class FactoryService {
         sitPayrollsCalcAccountingDimEdit: SitPayrollsCalcAccountingDimEditComponent,
         sitEmployeesSettlementsCompEdit: SitEmployeesSettlementsCompEditComponent,
         sitPayrollsCalcAccountingEdit: SitPayrollsCalcAccountingEditComponent,
+        sitStatuses: SitStatusesComponent,
         sitCourierAddPieceToShipment: SitCourierAddPieceToShipmentComponent,
         sitCourierCreateShipments: SitCourierCreateShipmentsComponent,
         sitAppUsersInCompany: SitAppUsersInCompanyComponent,
@@ -164,6 +168,8 @@ export class FactoryService {
         sitDocumentsTypes: SitDocumentsTypesComponent,
         sitDocumentsTypesEdit: SitDocumentsTypesEditComponent,
         sitAttendanceList: SitAttendanceListComponent,
+        sitStatusesEdit: SitStatusesEditComponent,
+        sitStatusValuesEdit: SitStatusValuesEditComponent
     };
 
     public GetFactory(ident: string) {

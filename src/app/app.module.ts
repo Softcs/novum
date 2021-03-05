@@ -162,6 +162,7 @@ import { SitPayrollsCalcAccountingEditComponent } from './containers/dictionarie
 import { SitUtilConverterFramesComponent } from './containers/dictionaries/sit-util-converter-frames/sit-util-converter-frames.component'
 ;
 import { SitUtilProcGenConverterFrameComponent } from './containers/dictionaries/sit-util-converter-frames/actions/sit-util-proc-gen-converter-frame/sit-util-proc-gen-converter-frame.component';
+import { SitStatusesComponent } from './containers/dictionaries/sit-statuses/sit-statuses.component'
 import { SitCourierAddPieceToShipmentComponent } from './containers/dictionaries/sit-wms-docs/actions/sit-courier-add-piece-to-shipment/sit-courier-add-piece-to-shipment.component';
 import { SitCourierCreateShipmentsComponent } from './containers/dictionaries/sit-wms-docs/actions/sit-courier-create-shipments/sit-courier-create-shipments.component';
 import { SitGridCellRendererComponent } from './components/controls/sit-grid-cell-renderer/sit-grid-cell-renderer.component';
@@ -171,6 +172,8 @@ import { SitProductSaleStatusIntervalsEditComponent } from './containers/diction
 import { SitDocumentsTypesComponent } from './containers/dictionaries/sit-documents-types/sit-documents-types.component';
 import { SitDocumentsTypesEditComponent } from './containers/dictionaries/sit-documents-types/actions/sit-documents-types-edit/sit-documents-types-edit.component';
 import { SitAttendanceListComponent } from './containers/dictionaries/sit-attendance-list/sit-attendance-list.component';
+import { SitStatusesEditComponent } from './containers/dictionaries/sit-statuses/actions/sit-statuses-edit/sit-statuses-edit.component';
+import { SitStatusValuesEditComponent } from './containers/dictionaries/sit-statuses/actions/sit-status-values-edit/sit-status-values-edit.component'
 
 
 @NgModule({
@@ -326,6 +329,7 @@ import { SitAttendanceListComponent } from './containers/dictionaries/sit-attend
         SitPayrollsCalcAccountingEditComponent,
         SitUtilConverterFramesComponent,
         SitUtilProcGenConverterFrameComponent,
+        SitStatusesComponent,
         SitCourierAddPieceToShipmentComponent,
         SitCourierCreateShipmentsComponent,
         SitGridCellRendererComponent,
@@ -335,7 +339,8 @@ import { SitAttendanceListComponent } from './containers/dictionaries/sit-attend
         SitDocumentsTypesComponent,
         SitDocumentsTypesEditComponent,
         SitAttendanceListComponent,
-
+        SitStatusesEditComponent,
+        SitStatusValuesEditComponent
 
     ],
     providers: [

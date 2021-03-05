@@ -41,6 +41,7 @@ export class SitUtilConverterFramesComponent implements OnInit {
       { headerName: 'DBVersion', field: 'DBVersion',type: "numericColumn", filter: 'agNumberColumnFilter', width: 100 },
          ]
        }
+      
 
   ngOnInit(): void {
   }
