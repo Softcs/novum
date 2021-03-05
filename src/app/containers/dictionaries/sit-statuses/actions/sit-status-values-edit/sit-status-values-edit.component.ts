@@ -6,11 +6,5 @@ import { SitActionParamsForm } from '@app/_interfaces/sitActionParamsForm';
   templateUrl: './sit-status-values-edit.component.html',
   styleUrls: ['./sit-status-values-edit.component.scss']
 })
-export class SitStatusValuesEditComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class SitStatusValuesEditComponent extends SitActionParamsForm {
 }
