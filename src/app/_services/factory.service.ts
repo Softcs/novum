@@ -1,3 +1,4 @@
+import { SitAttendanceListComponent } from './../containers/dictionaries/sit-attendance-list/sit-attendance-list.component';
 import { SitAppUsersInCompanyEditComponent } from './../containers/dictionaries/sit-app-users-in-company/actions/sit-app-users-in-company-edit/sit-app-users-in-company-edit.component';
 import { SitAppUsersInCompanyComponent } from './../containers/dictionaries/sit-app-users-in-company/sit-app-users-in-company.component';
 import { SitRailLogComponent } from './../containers/dictionaries/sit-rail-log/sit-rail-log.component';
@@ -158,6 +159,7 @@ export class FactoryService {
         sitAppUsersInCompany: SitAppUsersInCompanyComponent,
         sitAppUsersInCompanyEdit: SitAppUsersInCompanyEditComponent,
         sitProductSaleStatusIntervalsEdit: SitProductSaleStatusIntervalsEditComponent,
+        sitAttendanceList: SitAttendanceListComponent,
     };
 
     public GetFactory(ident: string) {
