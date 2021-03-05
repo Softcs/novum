@@ -7,7 +7,7 @@
       </div>
     </sit-data-set-container>
     <sit-data-set-container ident="sitAttendanceList" showActionsToolbar="true" fxFlex fxLayout="column" >
-      <div fxLayout="row">
+      <div fxLayout="row" class="sit-params-bar">
         <sit-data-label type="text" #sitControl field="EmployeeName" label="Pracownik:"></sit-data-label>
         <sit-data-label type="text" #sitControl field="Date" label="Data:"></sit-data-label>
       </div>
@@ -23,6 +23,7 @@
           [pivotMode]="true"
           [autoGroupColumnDef]="autoGroupColumnDef"
           [pivotHeaderHeight]='0'
+          [suppressRowClickSelection]="true"
           (gridReady)="onGridReady($event)"
           (cellClicked)="onCellClicked($event)"
         >
