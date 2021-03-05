@@ -41,21 +41,21 @@ export class SitStatusesComponent implements OnInit {
 
     this.columnDefsStatusValues= [
 
-      { headerName: 'ValueIdent', field: 'ValueIdent', type: "numericColumn", filter: 'agNumberColumnFilter', width: 100 },
-      { headerName: 'ValueName', field: 'ValueName', filter: 'agTextColumnFilter', width: 100 },
-      { headerName: 'Order', field: 'Order', type: "numericColumn", filter: 'agNumberColumnFilter', width: 100 },
-      { headerName: 'IsDefault', field: 'IsDefault', filter: 'agTextColumnFilter', width: 100 },
+      { headerName: 'ValueIdent', field: 'ValueIdent', type: "numericColumn", filter: 'agNumberColumnFilter', flex: 1  },
+      { headerName: 'ValueName', field: 'ValueName', filter: 'agTextColumnFilter', flex: 1  },
+      { headerName: 'Order', field: 'Order', type: "numericColumn", filter: 'agNumberColumnFilter', flex: 1  },
+      { headerName: 'IsDefault', field: 'IsDefault', filter: 'agTextColumnFilter', flex: 1  },
 
     ];
     this.columnDefsStatusValuesTransitions = [
 
-      { headerName: 'sitStatusValuesId_From', field: 'sitStatusValuesId_From', type: "numericColumn", filter: 'agNumberColumnFilter', width: 100 },
-      { headerName: 'sitStatusValuesId_To', field: 'sitStatusValuesId_To', type: "numericColumn", filter: 'agNumberColumnFilter', width: 100 },
-      { headerName: 'IsActive', field: 'IsActive', type: "numericColumn", filter: 'agNumberColumnFilter', width: 100 },
-      { headerName: 'ValueIdent as ValueIdent_From', field: 'ValueIdent as ValueIdent_From', type: "numericColumn", filter: 'agNumberColumnFilter', width: 100 },
-      { headerName: 'ValueName as ValueName_From', field: 'ValueName as ValueName_From', filter: 'agTextColumnFilter', width: 100 },
-      { headerName: 'ValueIdent as ValueIdent_To', field: 'ValueIdent as ValueIdent_To', type: "numericColumn", filter: 'agNumberColumnFilter', width: 100 },
-      { headerName: 'ValueName as ValueName_To', field: 'ValueName as ValueName_To', filter: 'agTextColumnFilter', width: 100 },
+      { headerName: 'sitStatusValuesId_From', field: 'sitStatusValuesId_From', type: "numericColumn", filter: 'agNumberColumnFilter', flex: 1  },
+      { headerName: 'sitStatusValuesId_To', field: 'sitStatusValuesId_To', type: "numericColumn", filter: 'agNumberColumnFilter', flex: 1  },
+      { headerName: 'IsActive', field: 'IsActive', type: "numericColumn", filter: 'agNumberColumnFilter', flex: 1  },
+      { headerName: 'ValueIdent as ValueIdent_From', field: 'ValueIdent as ValueIdent_From', type: "numericColumn", filter: 'agNumberColumnFilter', flex: 1  },
+      { headerName: 'ValueName as ValueName_From', field: 'ValueName as ValueName_From', filter: 'agTextColumnFilter', flex: 1 },
+      { headerName: 'ValueIdent as ValueIdent_To', field: 'ValueIdent as ValueIdent_To', type: "numericColumn", filter: 'agNumberColumnFilter', flex: 1  },
+      { headerName: 'ValueName as ValueName_To', field: 'ValueName as ValueName_To', filter: 'agTextColumnFilter', flex: 1  },
 
     ];
 
