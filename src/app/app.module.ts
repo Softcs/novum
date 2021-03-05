@@ -121,6 +121,7 @@ import { SitSysDictionariesComponent } from './containers/dictionaries/sit-sys-d
 import { SitSysDictionariesEditComponent } from './containers/dictionaries/sit-sys-dictionaries/actions/sit-sys-dictionaries-edit/sit-sys-dictionaries-edit.component';
 import { SitSysDatasourcesEditComponent } from './containers/dictionaries/sit-sys-dictionaries/actions/sit-sys-datasources-edit/sit-sys-datasources-edit.component';
 import { SitSysActionsEditComponent } from './containers/dictionaries/sit-sys-dictionaries/actions/sit-sys-actions-edit/sit-sys-actions-edit.component';
+import { SitRightsGroupUsersEditComponent } from './containers/dictionaries/sit-app-users-in-company/actions/sit-rights-group-users-edit/sit-rights-group-users-edit.component';
 import { SitRightsComponent } from './containers/dictionaries/sit-rights/sit-rights.component';
 import { SitTrackCapsDirective } from './_directives/sit-track-caps-directive.directive';
 import { NgxBarcodeModule } from 'ngx-barcode';;
@@ -161,9 +162,9 @@ import { SitPayrollsCalcAccountingEditComponent } from './containers/dictionarie
 import { SitUtilConverterFramesComponent } from './containers/dictionaries/sit-util-converter-frames/sit-util-converter-frames.component'
 ;
 import { SitUtilProcGenConverterFrameComponent } from './containers/dictionaries/sit-util-converter-frames/actions/sit-util-proc-gen-converter-frame/sit-util-proc-gen-converter-frame.component';
+import { SitStatusesComponent } from './containers/dictionaries/sit-statuses/sit-statuses.component'
 import { SitCourierAddPieceToShipmentComponent } from './containers/dictionaries/sit-wms-docs/actions/sit-courier-add-piece-to-shipment/sit-courier-add-piece-to-shipment.component';
 import { SitCourierCreateShipmentsComponent } from './containers/dictionaries/sit-wms-docs/actions/sit-courier-create-shipments/sit-courier-create-shipments.component';
-import { SitDictBaseComponent } from './containers/_base/sit-dict-base/sit-dict-base.component'
 import { SitGridCellRendererComponent } from './components/controls/sit-grid-cell-renderer/sit-grid-cell-renderer.component';
 import { SitAppUsersInCompanyComponent } from './containers/dictionaries/sit-app-users-in-company/sit-app-users-in-company.component';
 import { SitAppUsersInCompanyEditComponent } from './containers/dictionaries/sit-app-users-in-company/actions/sit-app-users-in-company-edit/sit-app-users-in-company-edit.component';
@@ -174,7 +175,6 @@ import { SitAttendanceListComponent } from './containers/dictionaries/sit-attend
 import { SitStatusesEditComponent } from './containers/dictionaries/sit-statuses/actions/sit-statuses-edit/sit-statuses-edit.component';
 import { SitStatusValuesEditComponent } from './containers/dictionaries/sit-statuses/actions/sit-status-values-edit/sit-status-values-edit.component';
 import { SitStatusValuesTransitionsEditComponent } from './containers/dictionaries/sit-statuses/actions/sit-status-values-transitions-edit/sit-status-values-transitions-edit.component'
-import { SitRightsGroupUsersEditComponent } from './containers/dictionaries/sit-app-users/actions/sit-rights-group-users-edit/sit-rights-group-users-edit.component';
 
 
 @NgModule({
@@ -184,6 +184,7 @@ import { SitRightsGroupUsersEditComponent } from './containers/dictionaries/sit-
         ReactiveFormsModule,
         HttpClientModule,
         appRoutingModule,
+
         MatSliderModule,
         MatButtonModule,
         MatIconModule,
@@ -332,7 +333,6 @@ import { SitRightsGroupUsersEditComponent } from './containers/dictionaries/sit-
         SitStatusesComponent,
         SitCourierAddPieceToShipmentComponent,
         SitCourierCreateShipmentsComponent,
-        SitDictBaseComponent,
         SitGridCellRendererComponent,
         SitAppUsersInCompanyComponent,
         SitAppUsersInCompanyEditComponent,
