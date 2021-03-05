@@ -1,1 +1,12 @@
-<p>sit-documents-types-edit works!</p>
+<sit-proc-params
+   [(actionExecuteData)]="actionExecuteData"
+  >
+  <sit-data-set-container ident="sitDocumentsTypesEdit">
+    <div class="sit-proc-params-content" fxLayout="column">
+      <sit-data-input #sitControl type="text" field="DocumentIdent" label="Identyfikator" appearance="outline"></sit-data-input>
+      <sit-data-input #sitControl type="text" field="DocumentName" label="Nazwa" appearance="outline" ></sit-data-input>
+      <sit-data-input #sitControl type="text" field="DocumentDescription" label="Opis" appearance="outline" ></sit-data-input>
+      <sit-data-input #sitControl type="text" field="StockEffect" label="Wpływ na magazyn" appearance="outline" ></sit-data-input>
+    </div>
+  </sit-data-set-container>
+</sit-proc-params>
