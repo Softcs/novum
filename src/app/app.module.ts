@@ -173,7 +173,8 @@ import { SitDocumentsTypesComponent } from './containers/dictionaries/sit-docume
 import { SitDocumentsTypesEditComponent } from './containers/dictionaries/sit-documents-types/actions/sit-documents-types-edit/sit-documents-types-edit.component';
 import { SitAttendanceListComponent } from './containers/dictionaries/sit-attendance-list/sit-attendance-list.component';
 import { SitStatusesEditComponent } from './containers/dictionaries/sit-statuses/actions/sit-statuses-edit/sit-statuses-edit.component';
-import { SitStatusValuesEditComponent } from './containers/dictionaries/sit-statuses/actions/sit-status-values-edit/sit-status-values-edit.component'
+import { SitStatusValuesEditComponent } from './containers/dictionaries/sit-statuses/actions/sit-status-values-edit/sit-status-values-edit.component';
+import { SitStatusValuesTransitionsEditComponent } from './containers/dictionaries/sit-statuses/actions/sit-status-values-transitions-edit/sit-status-values-transitions-edit.component'
 
 
 @NgModule({
@@ -340,7 +341,8 @@ import { SitStatusValuesEditComponent } from './containers/dictionaries/sit-stat
         SitDocumentsTypesEditComponent,
         SitAttendanceListComponent,
         SitStatusesEditComponent,
-        SitStatusValuesEditComponent
+        SitStatusValuesEditComponent,
+        SitStatusValuesTransitionsEditComponent
 
     ],
     providers: [
