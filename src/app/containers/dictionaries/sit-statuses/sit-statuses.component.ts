@@ -29,23 +29,23 @@ export class SitStatusesComponent implements OnInit {
   ) {
     this.popupParent = document.querySelector('body');
 
-    
+
     this.columnDefs = [
 
-      { headerName: 'sitStatusesG', field: 'sitStatusesG', type: "numericColumn", filter: 'agNumberColumnFilter', width: 100 },
-      { headerName: 'StatusIdent', field: 'StatusIdent', type: "numericColumn", filter: 'agNumberColumnFilter', width: 100 },
-      { headerName: 'StatusName', field: 'StatusName', filter: 'agTextColumnFilter', width: 100 },
-      { headerName: 'TableName', field: 'TableName', filter: 'agTextColumnFilter', width: 100 },
-      { headerName: 'ColumnName', field: 'ColumnName', filter: 'agTextColumnFilter', width: 100 },
+      { headerName: 'sitStatusesG', field: 'sitStatusesG', flex: 1 },
+      { headerName: 'StatusIdent', field: 'StatusIdent', flex: 1},
+      { headerName: 'StatusName', field: 'StatusName',toolTip: 'StatusName', flex: 1 },
+      { headerName: 'TableName', field: 'TableName', flex: 1 },
+      { headerName: 'ColumnName', field: 'ColumnName', flex: 1 },
     ];
 
     this.columnDefsStatusValues= [
 
       { headerName: 'ValueIdent', field: 'ValueIdent', type: "numericColumn", filter: 'agNumberColumnFilter', width: 100 },
       { headerName: 'ValueName', field: 'ValueName', filter: 'agTextColumnFilter', width: 100 },
-      { headerName: 'Order', field: 'Order', type: "numericColumn", filter: 'agNumberColumnFilter', width: 100 },       
+      { headerName: 'Order', field: 'Order', type: "numericColumn", filter: 'agNumberColumnFilter', width: 100 },
       { headerName: 'IsDefault', field: 'IsDefault', filter: 'agTextColumnFilter', width: 100 },
-      
+
     ];
     this.columnDefsStatusValuesTransitions = [
 
@@ -56,7 +56,7 @@ export class SitStatusesComponent implements OnInit {
       { headerName: 'ValueName as ValueName_From', field: 'ValueName as ValueName_From', filter: 'agTextColumnFilter', width: 100 },
       { headerName: 'ValueIdent as ValueIdent_To', field: 'ValueIdent as ValueIdent_To', type: "numericColumn", filter: 'agNumberColumnFilter', width: 100 },
       { headerName: 'ValueName as ValueName_To', field: 'ValueName as ValueName_To', filter: 'agTextColumnFilter', width: 100 },
-      
+
     ];
 
 
