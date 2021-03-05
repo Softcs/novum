@@ -77,11 +77,17 @@ export class SitDataSetContainerComponent {
   }
 
   private getFieldId(ident: string) {
-    return ident + 'G';
+    return '__Identity__'; // ident + 'G';
+  }
+
+  private isPivotMode(gridApi) {
+    return gridApi.gridOptionsWrapper.gridOptions.pivotMode;
   }
 
   private compareStrings(one,two): boolean {
-    return one != null && one.localeCompare(two, undefined, { sensitivity: 'base' }) === 0;
+    return one != null 
+    && typeof one == 'string'
+    && one.localeCompare(two, undefined, { sensitivity: 'base' }) === 0;
   }
 
   private deleteRows(dataSource) {
@@ -98,8 +104,8 @@ export class SitDataSetContainerComponent {
       const fieldValue = activeRow[fieldName];
       const gridApi = control["api"];
       const rowsDataApiToDelete = [];
-      if (gridApi) {
-        gridApi.forEachNode((rowNode) => {
+      if (gridApi && !this.isPivotMode(gridApi)) {
+        gridApi.forEachNode((rowNode) => {          
           const rowValue = rowNode.data[fieldName];
           if (this.compareStrings(rowValue, fieldValue)) {
             rowsDataApiToDelete.push(rowNode.data);
@@ -134,10 +140,21 @@ export class SitDataSetContainerComponent {
             return params.api.SeidoCustomProperty.activeRow == params.node.data;
         }
 
-
-        gridApi.gridOptionsWrapper.gridOptions.onRowClicked = function(event) {
-          self.dataSetResponseWrapper.SetActiveRow(event.data);
+        var isPivotMode = this.isPivotMode(gridApi);
+        gridApi.gridOptionsWrapper.gridOptions.onRowClicked = function(event) { 
+          if (!isPivotMode) {
+            self.dataSetResponseWrapper.SetActiveRow(event.data);
+          }
         }
+      
+      
+        gridApi.gridOptionsWrapper.gridOptions.onCellClicked = function(event) {   
+          if (isPivotMode && event.colDef.pivotKeys) {
+            const index = event.colDef.pivotKeys-1;
+            const rowFromCell = event.node.allLeafChildren[index].data;      
+            self.dataSetResponseWrapper.SetActiveRow(rowFromCell);
+          }
+        }      
       }
 
       gridApi.SeidoCustomProperty = customProperty;
@@ -163,13 +180,12 @@ export class SitDataSetContainerComponent {
   }
 
   public redrawGridActiveRow(gridApi: any, prevRow: any) {
-    if (!this.activeRow || !gridApi) {
+    if (!this.activeRow || !gridApi || this.isPivotMode(gridApi)) {
       return;
     }
 
     let limit = prevRow ? 2 : 1;
-    //const fieldName = (!this.getFieldId(this.ident));
-    const fieldName = '__Identity__';
+    const fieldName = this.getFieldId(this.ident);
     const fieldValue = this.activeRow[fieldName];
     const prevValue = prevRow ? prevRow[fieldName] : null;
     gridApi.forEachNode( (rowNode) => {

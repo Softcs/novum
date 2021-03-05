@@ -1,13 +1,10 @@
-import { environment } from '@environments/environment';
 import { Component, OnInit, ViewChild, Inject, LOCALE_ID  } from '@angular/core';
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
-import { DataSetWrapper } from '@app/_models';
 import { GatewayService } from '@app/_services';
 import { User } from '@app/_models';
-import { formatDate } from '@angular/common';
 import { TabService } from '@app/_services/tab.service';
-import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
 import { GridService } from '@app/_services/grid.service';
+import { sitGlobalConfig } from '@app/_consts/sit-global-config';
 @Component({
   selector: 'app-sit-kancelaria',
   templateUrl: './sit-kancelaria.component.html',
@@ -35,9 +32,7 @@ export class SitKancelariaComponent implements OnInit {
 
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
     this.tabService.activeTabIndex.subscribe(x => this.activeTab = x);
-    this.frameworkComponents = {
-      gridCheckboxRenderer: GridCheckboxRenderer,
-    };
+    this.frameworkComponents = sitGlobalConfig.frameworkComponents;
 
     this.popupParent = document.querySelector('body');
 
@@ -59,12 +54,8 @@ export class SitKancelariaComponent implements OnInit {
           filterOptions: ['contains']
         }
       },
-      { headerName: 'Data', field: 'Date', width: 100,
-        cellRenderer: (data) => { return  formatDate(data.value, 'yyyy-MM-dd', this.locale)}
-      },
-      { headerName: 'Data do', field: 'DateTo', width: 100,
-        cellRenderer: (data) => { return  formatDate(data.value, 'yyyy-MM-dd', this.locale)}
-      },
+      { headerName: 'Data', field: 'Date', type: ['dateColumn','date'], width: 100, cellRenderer: 'sitGridCellRenderer' },
+      { headerName: 'Data do', field: 'DateTo',type: ['dateColumn','date'], width: 100, cellRenderer: 'sitGridCellRenderer' },
       { headerName: 'Typ umowy', field: 'AgreementsTypeName', width: 150, filter: 'agTextColumnFilter', floatingFilter: true },
       { headerName: 'Lokalizacja', field: 'LocationName', width: 150, filter: 'agTextColumnFilter', floatingFilter: true },
       { headerName: 'Poufny', field: 'Confidential', sortable: true, filter: 'agTextColumnFilter', width: 80, autoHeight: true, cellRenderer: 'gridCheckboxRenderer' },
@@ -74,14 +65,10 @@ export class SitKancelariaComponent implements OnInit {
     this.columnDefsAttachments = [
       { headerName: 'ParentId', field: 'ParentId' },
       { headerName: 'sitAttachmentsG', field: 'sitAttachmentsG' },
-      { headerName: 'Data dodania', field: 'InsertDate', width: 120,
-         cellRenderer: (data) => { return formatDate(data.value, 'yyyy-MM-dd H:mm', this.locale) }
-      },
+      { headerName: 'Data dodania', field: 'InsertDate', type: ['dateColumn','datetime'], width: 120, cellRenderer: 'sitGridCellRenderer' },
       { headerName: 'Nazwa pliku', field: 'FileName', width: 250 },
       { headerName: 'Opis', field: 'AttachmentDesc', width: 250 },
     ];
-
-
   }
 
   ngOnInit(): void {}

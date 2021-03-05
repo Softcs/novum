@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, ViewChildren, QueryList,LOCALE_ID, Inject
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
 import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
 import { environment } from '@environments/environment';
-import { User } from '@app/_models';
+import { DataSetWrapper, User } from '@app/_models';
 import { GridService } from '@app/_services/grid.service';
 import { formatDate } from '@angular/common';
 import { formatNumber } from '@angular/common';
@@ -22,6 +22,7 @@ export class SitEmployeesSettlementsComponent implements OnInit {
   popupParent;
   columnDefs;
   columnDefsDet;
+  pinnedBottomRowData;
   columnDefsSumByPayroll;
   excelStyles;
   frameworkComponents;
@@ -33,6 +34,7 @@ export class SitEmployeesSettlementsComponent implements OnInit {
     this.popupParent = document.querySelector('body');
     this.excelStyles = sitGlobalConfig.excelStyles;
     this.frameworkComponents = sitGlobalConfig.frameworkComponents;
+    //this.pinnedBottomRowData = this.createData();
 
     this.columnDefs = [
       { headerName: 'Nazwisko', field: 'EmployeeName', tooltipField: 'EmployeeName', sort: 'asc', width: 150, pinned: 'left',
@@ -63,80 +65,74 @@ export class SitEmployeesSettlementsComponent implements OnInit {
       { headerName: 'Status PPK', field: 'StatusPPK',  width: 100, cellRenderer: 'gridCheckboxRenderer',
         cellClass: ['font12','textFormat']
       },
-      { headerName: 'Brutto', field: 'Gross', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90,
-        cellRenderer: function(params) {
-          return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
-        },
+      { headerName: 'Brutto', field: 'Gross', type: ['numericColumn','money'], filter: 'agNumberColumnFilter', width: 90,
+        cellRenderer: 'sitGridCellRenderer',
         cellStyle: function(params) { return {backgroundColor: '#ffe6e6'} },
         cellClass: ['font12','numberFormat2Dec','pinkBackground'],
+        pinnedRowCellRenderer: 'sitGridCellRenderer',
+        pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
       },
-      { headerName: 'Podstawa', field: 'Base', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 95,
-        cellRenderer: function(params) {
-          return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
-        },
+      { headerName: 'Podstawa', field: 'Base', filter: 'agNumberColumnFilter', type: ['numericColumn','money'], width: 95,
+        cellRenderer: 'sitGridCellRenderer',
         cellClass: ['font12','numberFormat2Dec'],
+        pinnedRowCellRenderer: 'sitGridCellRenderer',
+        pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
       },
-      { headerName: 'Premie', field: 'Bonus', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90,
-        cellRenderer: function(params) {
-          return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
-        },
+      { headerName: 'Premie', field: 'Bonus', filter: 'agNumberColumnFilter', type: ['numericColumn','money'], width: 90,
+        cellRenderer: 'sitGridCellRenderer',
         cellClass: ['font12','numberFormat2Dec'],
+        pinnedRowCellRenderer: 'sitGridCellRenderer',
+        pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
       },
-      // { headerName: 'Prem. nie fakt.', field: 'BonusEmpNoCust', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 110,
-      //   cellRenderer: function(params) {
-      //     return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
-      //   },
-      //   cellClass: ['font12','numberFormat2Dec'],
-      // },
-      { headerName: 'Potr.', field: 'Deduction', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,
-        cellRenderer: function(params) {
-          return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
-        },
+      { headerName: 'Potr.', field: 'Deduction', filter: 'agNumberColumnFilter', type: ['numericColumn','money'], width: 80,
+        cellRenderer: 'sitGridCellRenderer',
         cellClass: ['font12','numberFormat2Dec'],
+        pinnedRowCellRenderer: 'sitGridCellRenderer',
+        pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
       },
-      { headerName: 'ZUS', field: 'ZUSFirma', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80, suppressMenu: true,
-        cellRenderer: function(params) {
-          return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
-        },
+      { headerName: 'ZUS', field: 'ZUSFirma', filter: 'agNumberColumnFilter', type: ['numericColumn','money'], width: 80, suppressMenu: true,
+        cellRenderer: 'sitGridCellRenderer',
         cellClass: ['font12','numberFormat2Dec'],
+        pinnedRowCellRenderer: 'sitGridCellRenderer',
+        pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
       },
-      { headerName: 'ZUS podst.', field: 'ZUSBase', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, suppressMenu: true,
-        cellRenderer: function(params) {
-          return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
-        },
+      { headerName: 'ZUS podst.', field: 'ZUSBase', filter: 'agNumberColumnFilter', type: ['numericColumn','money'], width: 90, suppressMenu: true,
+        cellRenderer: 'sitGridCellRenderer',
         cellClass: ['font12','numberFormat2Dec'],
+        pinnedRowCellRenderer: 'sitGridCellRenderer',
+        pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
       },
-      { headerName: 'ZUS prem.', field: 'ZUSBonus', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, suppressMenu: true,
-        cellRenderer: function(params) {
-          return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
-        },
+      { headerName: 'ZUS prem.', field: 'ZUSBonus', filter: 'agNumberColumnFilter', type: ['numericColumn','money'], width: 90, suppressMenu: true,
+        cellRenderer: 'sitGridCellRenderer',
         cellClass: ['font12','numberFormat2Dec'],
+        pinnedRowCellRenderer: 'sitGridCellRenderer',
+        pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
       },
-      { headerName: 'PPK', field: 'PPK', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 70,suppressMenu: true,
-        cellRenderer: function(params) {
-          return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
-        },
+      { headerName: 'PPK', field: 'PPK', filter: 'agNumberColumnFilter', type: ['numericColumn','money'], width: 70,suppressMenu: true,
+        cellRenderer: 'sitGridCellRenderer',
         cellClass: ['font12','numberFormat2Dec'],
+        pinnedRowCellRenderer: 'sitGridCellRenderer',
+        pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
       },
-      { headerName: 'Koszt pracy', field: 'Cost',  filter: 'agNumberColumnFilter', type: 'numericColumn', width: 100,suppressMenu: true,
-        cellRenderer: function(params) {
-          return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
-        },
+      { headerName: 'Koszt pracy', field: 'Cost',  filter: 'agNumberColumnFilter', type: ['numericColumn','money'], width: 100,suppressMenu: true,
+        cellRenderer: 'sitGridCellRenderer',
         cellStyle: function(params) { return {backgroundColor: '#fcf59f'} },
         cellClass: ['font12','yellowBackground','numberFormat2Dec'],
+        pinnedRowCellRenderer: 'sitGridCellRenderer',
+        pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
       },
-      { headerName: 'Narzut', field: 'Markup',  filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90,suppressMenu: true,
-        cellRenderer: function(params) {
-          return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
-        },
+      { headerName: 'Narzut', field: 'Markup',  filter: 'agNumberColumnFilter', type: ['numericColumn','money'], width: 90,suppressMenu: true,
+        cellRenderer: 'sitGridCellRenderer',
         cellClass: ['font12','numberFormat2Dec'],
+        pinnedRowCellRenderer: 'sitGridCellRenderer',
+        pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
       },
-      { headerName: 'Koszt - klient', field: 'CustCost',  filter: 'agNumberColumnFilter', type: 'numericColumn', width: 100,suppressMenu: true,
-        cellRenderer: function(params) {
-          return params.value === null ? null : formatNumber(params.value, locale,'1.2-2')
-        },
+      { headerName: 'Koszt - klient', field: 'CustCost',  filter: 'agNumberColumnFilter', type: ['numericColumn','money'], width: 100,suppressMenu: true,
+        cellRenderer: 'sitGridCellRenderer',
         cellStyle: function(params) { return {backgroundColor: '#cce6ff'} },
         cellClass: ['font12','blueBackground','numberFormat2Dec'],
+        pinnedRowCellRenderer: 'sitGridCellRenderer',
+        pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
       },
 
     ];
@@ -200,5 +196,61 @@ export class SitEmployeesSettlementsComponent implements OnInit {
 
   onGridReady(params) {
     this.gridService.setDefGridOptionsOnReady(params);
+  }
+
+  refreshAfter(dataSourceManager) {
+    this.pinnedBottomRowData = this.createData();
+  }
+
+  createData() {
+    var gross = 0;
+    var cost = 0;
+    var markup = 0;
+    var custCost = 0;
+    var base = 0;
+    var zusBase = 0;
+    var bonus = 0;
+    var zusBonus = 0;
+    var ppk = 0;
+    var deduction = 0;
+    var zusFirma = 0;
+    var result = [];
+
+    if (this.dictContainer) {
+      const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper("sitEmployeesSettlements");
+      if (dataSourceResponseWrapper.rows) {
+        dataSourceResponseWrapper.rows.forEach(function(row){
+          gross = gross + row['Gross'];
+          cost = cost + row['Cost'];
+          markup = markup + row['Markup'];
+          base = base + row['Base'];
+          zusBase = zusBase + row['ZUSBase'];
+          bonus = bonus + row['Bonus'];
+          zusBonus = zusBonus + row['ZUSBonus'];
+          ppk = ppk + row['PPK'];
+          deduction = deduction + row['Deduction'];
+          zusFirma = zusFirma + row['ZUSFirma'];
+          custCost = custCost + row['CustCost'];
+        })
+      }
+    }
+
+    result.push({
+      Gross: gross,
+      Cost: cost,
+      Markup: markup,
+      CustCost: custCost,
+      Base: base,
+      ZUSBase: zusBase,
+      Bonus: bonus,
+      ZUSBonus: zusBonus,
+      PPK: ppk,
+      Deduction: deduction,
+      ZUSFirma: zusFirma,
+      StatusPPK: '',
+    }
+    );
+
+    return result;
   }
 }

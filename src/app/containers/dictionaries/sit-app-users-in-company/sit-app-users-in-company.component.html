@@ -1,0 +1,48 @@
+<sit-dict-container ident="sitAppUsersInCompany" #sitDictcontainer fxFill >
+  <as-split direction="vertical">
+    <as-split-area [size]="60">
+      <div fxFill fxLayout="column">
+        <sit-data-set-container ident="sitFilterAppUsers" >
+          <div class="sit-filter-bar">
+            <sit-data-input #sitControl field="searchAppUsers" label="Filtruj użytkowników" placeholder="Nazwwisko, Imię, e-mail" appearance="outline" style="width: 300px;" showRefreshButton="true"></sit-data-input>
+          </div>
+        </sit-data-set-container>
+        <sit-data-set-container ident="sitAppUsers" showActionsToolbar="true" fxFlex fxLayout="column">
+          <div class="data-table" fxFlex>
+            <ag-grid-angular
+              #sitSetDataSource
+              #sitAppUsersGrid
+              style="width: 100%; height: 100%;"
+              class="ag-theme-balham"
+              [columnDefs]="columnDefs"
+              [popupParent]="popupParent"
+              [frameworkComponents]="frameworkComponents"
+              (gridReady)="onGridReady($event)"
+            >
+            </ag-grid-angular>
+          </div>
+        </sit-data-set-container>
+      </div>
+    </as-split-area>
+    <as-split-area [size]="40">
+      <div fxFill fxLayout="column">
+        <div class="sit-grid-title">Grupy praw użytkownika</div>
+        <sit-data-set-container ident="sitRightsGroupUsers" showActionsToolbar="true" fxFlex fxLayout="column">
+          <div class="data-table" fxFlex>
+              <ag-grid-angular
+                #sitSetDataSource
+                #sitRightsGroupUsersGrid
+                style="width: 100%; height: 100%;"
+                class="ag-theme-balham"
+                [columnDefs]="columnDefsRightsGroupUsers"
+                [popupParent]="popupParent"
+                [frameworkComponents]="frameworkComponents"
+                (gridReady)="onGridReady($event)"
+              >
+              </ag-grid-angular>
+            </div>
+        </sit-data-set-container>
+      </div>
+    </as-split-area>
+  </as-split>
+</sit-dict-container>

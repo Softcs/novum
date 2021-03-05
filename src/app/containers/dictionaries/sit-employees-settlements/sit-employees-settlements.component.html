@@ -1,4 +1,4 @@
-<sit-dict-container ident="sitEmployeesSettlements" #sitDictcontainer fxFill>
+<sit-dict-container #sitDictcontainer ident="sitEmployeesSettlements" (refreshAfter)="refreshAfter($event)" fxFill>
   <div fxLayout="column" fxFill>
     <as-split direction="horizontal">
       <as-split-area [size]="70">
@@ -29,6 +29,7 @@
                     [popupParent]="popupParent"
                     [excelStyles]="excelStyles"
                     [frameworkComponents]="frameworkComponents"
+                    [pinnedBottomRowData]="pinnedBottomRowData"
                     (gridReady)="onGridReady($event)"
                   >
                   </ag-grid-angular>

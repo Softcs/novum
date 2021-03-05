@@ -5,6 +5,7 @@ import { GatewayService } from '@app/_services';
 import { formatDate } from '@angular/common';
 import { formatNumber } from '@angular/common';
 import { GridService } from '@app/_services/grid.service';
+import { sitGlobalConfig } from '@app/_consts/sit-global-config';
 @Component({
   selector: 'sit-pub-delivery-distribution',
   templateUrl: './sit-pub-delivery-distribution.component.html',
@@ -20,12 +21,15 @@ export class SitPubDeliveryDistributionComponent implements OnInit {
   defaultColDef;
   columnDefs;
   excelStyles;
+  frameworkComponents;
 
   constructor(
     private gatewayService: GatewayService,
     private gridService: GridService,
     @Inject(LOCALE_ID) private locale: string
   ) {
+    this.frameworkComponents = sitGlobalConfig.frameworkComponents;
+
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
     this.popupParent = document.querySelector('body');
     this.excelStyles = [
@@ -112,47 +116,48 @@ export class SitPubDeliveryDistributionComponent implements OnInit {
       { headerName: 'Rynki', field: 'Markets',tooltipField: 'Markets' , filter: 'agTextColumnFilter', width: 80, enableRowGroup: true,
         cellClass: ['font12','textFormat']
       },
-      { headerName: 'Data wyd', field: 'ReleaseDateAct', filter: 'agDateColumnFilter', width: 100, enableRowGroup: true,
-        cellRenderer: function(params) { return formatDate(params.value, 'yyyy-MM-dd', locale) },
+      { headerName: 'Data wyd', field: 'ReleaseDateAct', type: 'dateColumn', filter: 'agDateColumnFilter', width: 100, enableRowGroup: true,
+        cellRenderer: 'sitGridCellRenderer',
         cellClass: ['font12','dateFormat']
       },
       { headerName: 'Ceny',
         children: [
-          { headerName: 'Detal.', field: 'DetailPrice', type: 'rightAligned', filter: 'agNumberColumnFilter', autoHeight: true, width: 90,
-            cellRenderer: function(params) { return formatNumber(params.value, locale,'1.2-2') },
+          { headerName: 'Detal.', field: 'DetailPrice', type: ['rightAligned','money'], filter: 'agNumberColumnFilter', autoHeight: true, width: 90, cellRenderer: 'sitGridCellRenderer',
             cellClass: ['font12','numberFormat2Dec']
           },
-          { headerName: 'Zakupu', field: 'PurchacePrice', type: 'rightAligned', filter: 'agNumberColumnFilter', autoHeight: true, width: 90,
-            cellRenderer: function(params) { return formatNumber(params.value, locale,'1.2-2') },
+          { headerName: 'Zakupu', field: 'PurchacePrice', type: ['rightAligned','money'], filter: 'agNumberColumnFilter', autoHeight: true, width: 90, cellRenderer: 'sitGridCellRenderer',
             cellClass: ['font12','numberFormat2Dec']
           },
         ]
       },
-      { headerName: 'Dostawy', field: 'DeliveryQuantity', type: 'numericColumn', filter: 'agNumberColumnFilter', autoHeight: true, width: 100, enableValue: true,
+      { headerName: 'Dostawy', field: 'DeliveryQuantity', type: ['rightAligned','int'], filter: 'agNumberColumnFilter', autoHeight: true, width: 100, enableValue: true,
+        cellRenderer: 'sitGridCellRenderer',
         cellClass: ['font12','numberFormatInt']
       },
-      { headerName: 'Sprzedaż', field: 'SaleQuantity', type: 'rightAligned', filter: 'agNumberColumnFilter', autoHeight: true, width: 100, enableValue: true,
+      { headerName: 'Sprzedaż', field: 'SaleQuantity', type: ['rightAligned','int'], filter: 'agNumberColumnFilter', autoHeight: true, width: 100, enableValue: true,
+        cellRenderer: 'sitGridCellRenderer',
         cellClass: ['font12','numberFormatInt']
       },
       { headerName: '% dost.', field: 'DeliveryPercent', type: 'rightAligned', filter: 'agNumberColumnFilter', autoHeight: true, width: 90,
         cellRenderer: function(params) { return formatNumber(params.value, locale,'1.0-0')+'%' },
         cellClass: ['font12','numberFormatPercent']
       },
-      { headerName: 'Stan ogółem', field: 'AllStock', type: 'rightAligned', filter: 'agNumberColumnFilter', autoHeight: true, width: 110, enableValue: true,
+      { headerName: 'Stan ogółem', field: 'AllStock', type: ['rightAligned','int'], filter: 'agNumberColumnFilter', autoHeight: true, width: 110, enableValue: true,
+        cellRenderer: 'sitGridCellRenderer',
         cellClass: ['font12','numberFormatInt']
       },
-      { headerName: 'Stan A100', field: 'WMSStock', type: 'rightAligned', filter: 'agNumberColumnFilter', autoHeight: true, width: 110, enableValue: true,
+      { headerName: 'Stan A100', field: 'WMSStock', type: ['rightAligned','int'], filter: 'agNumberColumnFilter', autoHeight: true, width: 110, enableValue: true,
+        cellRenderer: 'sitGridCellRenderer',
         cellClass: ['font12','numberFormatInt']
       },
-      { headerName: 'Stan dysp.', field: 'WMSStockAv', type: 'rightAligned', filter: 'agNumberColumnFilter', autoHeight: true, width: 100, enableValue: true,
+      { headerName: 'Stan dysp.', field: 'WMSStockAv', type: ['rightAligned','int'], filter: 'agNumberColumnFilter', autoHeight: true, width: 100, enableValue: true,
+        cellRenderer: 'sitGridCellRenderer',
         cellClass: ['font12','numberFormatInt']
       },
-      // { headerName: 'OtherStock', field: 'OtherStock', type: 'rightAligned', filter: 'agNumberColumnFilter', autoHeight: true, width: 100,
-      //   cellRenderer: function(params) { return formatNumber(params.value, locale,'1.2-2') }
-      // },
       { headerName: 'Rozdysponowano',
         children: [
-          { headerName: 'Ilość', field: 'DistributedQuantity', type: 'rightAligned', filter: 'agNumberColumnFilter', autoHeight: true, width: 90, enableValue: true,
+          { headerName: 'Ilość', field: 'DistributedQuantity', type: ['rightAligned','int'], filter: 'agNumberColumnFilter', autoHeight: true, width: 90, enableValue: true,
+            cellRenderer: 'sitGridCellRenderer',
             cellStyle: function(params) { return {backgroundColor: '#cce6ff'} },
             cellClass: ['font12','blueBackground','numberFormatInt'],
           },
@@ -165,7 +170,8 @@ export class SitPubDeliveryDistributionComponent implements OnInit {
       },
       { headerName: 'Konsygnacja',
         children: [
-          { headerName: 'Ilość', field: 'ConsignmentQuantitySum', type: 'rightAligned', filter: 'agNumberColumnFilter', autoHeight: true, width: 90, enableValue: true,
+          { headerName: 'Ilość', field: 'ConsignmentQuantitySum', type: ['rightAligned','int'], filter: 'agNumberColumnFilter', autoHeight: true, width: 90, enableValue: true,
+            cellRenderer: 'sitGridCellRenderer',
             cellStyle: function(params) { return {backgroundColor: '#ffe6e6'} },
             cellClass: ['font12','pinkBackground','numberFormatInt'],
           },
@@ -178,7 +184,8 @@ export class SitPubDeliveryDistributionComponent implements OnInit {
       },
       { headerName: 'Sprzedaż',
         children: [
-          { headerName: 'Ilość', field: 'SaleQuantitySum', type: 'rightAligned', filter: 'agNumberColumnFilter', autoHeight: true, width: 90, enableValue: true,
+          { headerName: 'Ilość', field: 'SaleQuantitySum', type: ['rightAligned','int'], filter: 'agNumberColumnFilter', autoHeight: true, width: 90, enableValue: true,
+            cellRenderer: 'sitGridCellRenderer',
             cellStyle: function(params) { return {backgroundColor: '#d6f5d6'} },
             cellClass: ['font12','greenBackground','numberFormatInt'],
           },
@@ -191,13 +198,16 @@ export class SitPubDeliveryDistributionComponent implements OnInit {
       },
       { headerName: 'Hania',
         children: [
-          { headerName: 'Konsygn.', field: 'HConsignmentQuantity', type: 'rightAligned', filter: 'agNumberColumnFilter', autoHeight: true, width: 100,
+          { headerName: 'Konsygn.', field: 'HConsignmentQuantity', type: ['rightAligned','int'], filter: 'agNumberColumnFilter', autoHeight: true, width: 100,
+            cellRenderer: 'sitGridCellRenderer',
             cellClass: ['font12','numberFormatInt'],
           },
-          { headerName: 'Sprzedaż', field: 'HSaleQuantity', type: 'rightAligned', filter: 'agNumberColumnFilter', autoHeight: true, width: 100,
+          { headerName: 'Sprzedaż', field: 'HSaleQuantity', type: ['rightAligned','int'], filter: 'agNumberColumnFilter', autoHeight: true, width: 100,
+            cellRenderer: 'sitGridCellRenderer',
             cellClass: ['font12','numberFormatInt',],
           },
-          { headerName: 'PZR', field: 'HPZRQuantity', type: 'rightAligned', filter: 'agNumberColumnFilter', autoHeight: true, width: 100,
+          { headerName: 'PZR', field: 'HPZRQuantity', type: ['rightAligned','int'], filter: 'agNumberColumnFilter', autoHeight: true, width: 100,
+            cellRenderer: 'sitGridCellRenderer',
             cellStyle: function(params) { return {backgroundColor: '#ffe6e6'} },
             cellClass: ['font12','pinkBackground','numberFormatInt'],
           },
@@ -210,13 +220,16 @@ export class SitPubDeliveryDistributionComponent implements OnInit {
       },
       { headerName: 'Zbyszek',
         children: [
-          { headerName: 'Konsygn.', field: 'ZConsignmentQuantity', type: 'rightAligned', filter: 'agNumberColumnFilter', autoHeight: true, width: 100,
+          { headerName: 'Konsygn.', field: 'ZConsignmentQuantity', type: ['rightAligned','int'], filter: 'agNumberColumnFilter', autoHeight: true, width: 100,
+            cellRenderer: 'sitGridCellRenderer',
             cellClass: ['font12','numberFormatInt'],
           },
-          { headerName: 'Sprzedaż', field: 'ZSaleQuantity', type: 'rightAligned', filter: 'agNumberColumnFilter', autoHeight: true, width: 100,
-          cellClass: ['font12','numberFormatInt'],
+          { headerName: 'Sprzedaż', field: 'ZSaleQuantity', type: ['rightAligned','int'], filter: 'agNumberColumnFilter', autoHeight: true, width: 100,
+            cellRenderer: 'sitGridCellRenderer',
+            cellClass: ['font12','numberFormatInt'],
           },
-          { headerName: 'PZR', field: 'ZPZRQuantity', type: 'rightAligned', filter: 'agNumberColumnFilter', autoHeight: true, width: 100,
+          { headerName: 'PZR', field: 'ZPZRQuantity', type: ['rightAligned','int'], filter: 'agNumberColumnFilter', autoHeight: true, width: 100,
+            cellRenderer: 'sitGridCellRenderer',
             cellStyle: function(params) { return {backgroundColor: '#ffe6e6'} },
             cellClass: ['font12','pinkBackground','numberFormatInt'],
           },
@@ -229,13 +242,16 @@ export class SitPubDeliveryDistributionComponent implements OnInit {
       },
       { headerName: 'Dorota',
         children: [
-          { headerName: 'Konsygn.', field: 'DConsignmentQuantity', type: 'rightAligned', filter: 'agNumberColumnFilter', autoHeight: true, width: 100,
+          { headerName: 'Konsygn.', field: 'DConsignmentQuantity', type: ['rightAligned','int'], filter: 'agNumberColumnFilter', autoHeight: true, width: 100,
+            cellRenderer: 'sitGridCellRenderer',
             cellClass: ['font12','numberFormatInt'],
           },
-          { headerName: 'Sprzedaż', field: 'DSaleQuantity', type: 'rightAligned', filter: 'agNumberColumnFilter', autoHeight: true, width: 100,
+          { headerName: 'Sprzedaż', field: 'DSaleQuantity', type: ['rightAligned','int'], filter: 'agNumberColumnFilter', autoHeight: true, width: 100,
+            cellRenderer: 'sitGridCellRenderer',
             cellClass: ['font12','numberFormatInt'],
           },
-          { headerName: 'PZR', field: 'DPZRQuantity', type: 'rightAligned', filter: 'agNumberColumnFilter', autoHeight: true, width: 100,
+          { headerName: 'PZR', field: 'DPZRQuantity', type: ['rightAligned','int'], filter: 'agNumberColumnFilter', autoHeight: true, width: 100,
+            cellRenderer: 'sitGridCellRenderer',
             cellStyle: function(params) { return {backgroundColor: '#ffe6e6'} },
             cellClass: ['font12','pinkBackground','numberFormatInt'],
           },
@@ -248,7 +264,8 @@ export class SitPubDeliveryDistributionComponent implements OnInit {
       },
       { headerName: 'Pozostałe',
         children: [
-          { headerName: 'Sprzedaż', field: 'OSaleQuantity', type: 'rightAligned', filter: 'agNumberColumnFilter', autoHeight: true, width: 100,
+          { headerName: 'Sprzedaż', field: 'OSaleQuantity', type: ['rightAligned','int'], filter: 'agNumberColumnFilter', autoHeight: true, width: 100,
+            cellRenderer: 'sitGridCellRenderer',
             cellClass: ['font12','numberFormatInt'],
            },
         ]

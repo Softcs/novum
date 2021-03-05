@@ -1,0 +1,34 @@
+<sit-dict-container ident="sitAttendanceList" #sitDictcontainer fxFill (refreshAfter)="refreshAfter($event)">
+  <div fxFill fxLayout="column" class="content">
+    <sit-data-set-container ident="sitFilter" >
+      <div class="sit-filter-bar" fxLayout="row">
+        <sit-data-input #sitControl field="year" label="Rok" placeholder="" appearance="outline" style="width: 100px;"></sit-data-input>
+        <sit-data-input #sitControl field="month" label="Miesiąc" placeholder="" appearance="outline" style="width: 120px;" showRefreshButton="true"></sit-data-input>
+      </div>
+    </sit-data-set-container>
+    <sit-data-set-container ident="sitAttendanceList" showActionsToolbar="true" fxFlex fxLayout="column" >
+      <div fxLayout="row" class="sit-params-bar">
+        <sit-data-label type="text" #sitControl field="EmployeeName" label="Pracownik:"></sit-data-label>
+        <sit-data-label type="text" #sitControl field="Date" label="Data:"></sit-data-label>
+      </div>
+      <div class="data-table" fxFlex>
+        <ag-grid-angular
+          #sitSetDataSource
+          #sitAppUsersGrid
+          style="width: 100%; height: 100%;"
+          class="ag-theme-balham"
+          [columnDefs]="columnDefs"
+          [popupParent]="popupParent"
+          [frameworkComponents]="frameworkComponents"
+          [pivotMode]="true"
+          [autoGroupColumnDef]="autoGroupColumnDef"
+          [pivotHeaderHeight]='0'
+          [suppressRowClickSelection]="true"
+          (gridReady)="onGridReady($event)"
+          (cellClicked)="onCellClicked($event)"
+        >
+        </ag-grid-angular>
+      </div>
+    </sit-data-set-container>
+  </div>
+</sit-dict-container>

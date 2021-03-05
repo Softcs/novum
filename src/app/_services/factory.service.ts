@@ -1,3 +1,5 @@
+import { SitAppUsersInCompanyEditComponent } from './../containers/dictionaries/sit-app-users-in-company/actions/sit-app-users-in-company-edit/sit-app-users-in-company-edit.component';
+import { SitAppUsersInCompanyComponent } from './../containers/dictionaries/sit-app-users-in-company/sit-app-users-in-company.component';
 import { SitRailLogComponent } from './../containers/dictionaries/sit-rail-log/sit-rail-log.component';
 import { SitPayrollsCalcAccountingDimEditComponent } from './../containers/dictionaries/sit-payrolls/actions/sit-payrolls-calc-accounting-dim-edit/sit-payrolls-calc-accounting-dim-edit.component';
 import { SitPayrollComponentsEditComponent } from './../containers/dictionaries/sit-payroll-components/actions/sit-payroll-components-edit/sit-payroll-components-edit.component';
@@ -20,7 +22,7 @@ import { SitAgreementsTypesEditComponent } from './../containers/dictionaries/si
 import { SitLocationsComponent } from './../containers/dictionaries/sit-locations/sit-locations.component';
 import { SitAgreementsTypesComponent } from './../containers/dictionaries/sit-agreements-types/sit-agreements-types.component';
 import { SitRightsComponent } from './../containers/dictionaries/sit-rights/sit-rights.component';
-import { SitRightsGroupUsersEditComponent } from './../containers/dictionaries/sit-app-users/actions/sit-rights-group-users-edit/sit-rights-group-users-edit.component';
+import { SitRightsGroupUsersEditComponent } from '../containers/dictionaries/sit-app-users-in-company/actions/sit-rights-group-users-edit/sit-rights-group-users-edit.component';
 import { SitSysActionsEditComponent } from '../containers/dictionaries/sit-sys-dictionaries/actions/sit-sys-actions-edit/sit-sys-actions-edit.component';
 import { SitSysDatasourcesEditComponent } from './../containers/dictionaries/sit-sys-dictionaries/actions/sit-sys-datasources-edit/sit-sys-datasources-edit.component';
 import { SitSysDictionariesEditComponent } from './../containers/dictionaries/sit-sys-dictionaries/actions/sit-sys-dictionaries-edit/sit-sys-dictionaries-edit.component';
@@ -71,8 +73,16 @@ import { SitUtilConverterFramesComponent } from '@app/containers/dictionaries/si
 import { SitUtilProcGenConverterFrameComponent } from '@app/containers/dictionaries/sit-util-converter-frames/actions/sit-util-proc-gen-converter-frame/sit-util-proc-gen-converter-frame.component';
 import { SitEmployeesSettlementsCompEditComponent } from '@app/containers/dictionaries/sit-employees-settlements/actions/sit-employees-settlements-comp-edit/sit-employees-settlements-comp-edit.component';
 import { SitPayrollsCalcAccountingEditComponent } from '@app/containers/dictionaries/sit-payrolls/actions/sit-payrolls-calc-accounting-edit/sit-payrolls-calc-accounting-edit.component';
+import { SitStatusesComponent } from '@app/containers/dictionaries/sit-statuses/sit-statuses.component';
 import { SitCourierAddPieceToShipmentComponent } from '@app/containers/dictionaries/sit-wms-docs/actions/sit-courier-add-piece-to-shipment/sit-courier-add-piece-to-shipment.component';
 import { SitCourierCreateShipmentsComponent } from '@app/containers/dictionaries/sit-wms-docs/actions/sit-courier-create-shipments/sit-courier-create-shipments.component';
+import { SitProductSaleStatusIntervalsEditComponent } from '@app/containers/dictionaries/sit-products/actions/sit-product-sale-status-intervals-edit/sit-product-sale-status-intervals-edit.component';
+import { SitDocumentsTypesComponent } from '@app/containers/dictionaries/sit-documents-types/sit-documents-types.component';
+import { SitDocumentsTypesEditComponent } from '@app/containers/dictionaries/sit-documents-types/actions/sit-documents-types-edit/sit-documents-types-edit.component';
+import { SitAttendanceListComponent } from '@app/containers/dictionaries/sit-attendance-list/sit-attendance-list.component';
+import { SitStatusesEditComponent } from '@app/containers/dictionaries/sit-statuses/actions/sit-statuses-edit/sit-statuses-edit.component';
+import { SitStatusValuesEditComponent } from '@app/containers/dictionaries/sit-statuses/actions/sit-status-values-edit/sit-status-values-edit.component';
+import { SitStatusValuesTransitionsEditComponent } from '@app/containers/dictionaries/sit-statuses/actions/sit-status-values-transitions-edit/sit-status-values-transitions-edit.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -150,8 +160,18 @@ export class FactoryService {
         sitPayrollsCalcAccountingDimEdit: SitPayrollsCalcAccountingDimEditComponent,
         sitEmployeesSettlementsCompEdit: SitEmployeesSettlementsCompEditComponent,
         sitPayrollsCalcAccountingEdit: SitPayrollsCalcAccountingEditComponent,
+        sitStatuses: SitStatusesComponent,
         sitCourierAddPieceToShipment: SitCourierAddPieceToShipmentComponent,
         sitCourierCreateShipments: SitCourierCreateShipmentsComponent,
+        sitAppUsersInCompany: SitAppUsersInCompanyComponent,
+        sitAppUsersInCompanyEdit: SitAppUsersInCompanyEditComponent,
+        sitProductSaleStatusIntervalsEdit: SitProductSaleStatusIntervalsEditComponent,
+        sitDocumentsTypes: SitDocumentsTypesComponent,
+        sitDocumentsTypesEdit: SitDocumentsTypesEditComponent,
+        sitAttendanceList: SitAttendanceListComponent,
+        sitStatusesEdit: SitStatusesEditComponent,
+        sitStatusValuesEdit: SitStatusValuesEditComponent,
+        sitStatusValuesTransitionsEdit: SitStatusValuesTransitionsEditComponent
     };
 
     public GetFactory(ident: string) {

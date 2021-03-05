@@ -75,6 +75,10 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
 
   }
 
+  showWhenEmpty(): boolean {
+    return (this.actionDefinition?.showWhenEmpty);
+  }
+
   isDelete(): boolean {
     return (this.actionDefinition?.kind === 'delete' || this.actionDefinition?.kind === 'D');
   }
@@ -92,15 +96,15 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
       return true;
     }
 
-    if ( ( this.isInsert() || this.isUpdate() || this.isDelete() ) && !this.dataSetResponseWrapper.allParentsHaveRows() ) {
+    if ( !this.dataSetResponseWrapper.allParentsHaveRows() ) {
        return true;
     };
 
-    if ( (this.isUpdate() || this.isDelete()) && this.dataSetResponseWrapper !== undefined && this.dataSetResponseWrapper.rows == null) {
+    if ( (this.isUpdate() || this.isDelete() || !this.showWhenEmpty()) && this.dataSetResponseWrapper !== undefined && this.dataSetResponseWrapper.rows == null) {
         return true;
     }
 
-    if(!this.visibilityService.shouldBeVisible(this.actionDefinition?.visibility, this.dataSetResponseWrapper.activeRow)) {
+    if(!this.visibilityService.shouldBeVisible(this.actionDefinition?.visibility, this.dataSetResponseWrapper.activeRow) && this.dataSetResponseWrapper.activeRow) {
       return true;
     }
 

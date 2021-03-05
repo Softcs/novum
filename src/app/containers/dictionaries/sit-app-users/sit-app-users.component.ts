@@ -1,7 +1,5 @@
 import { Component, OnInit, ViewChild, AfterViewInit, ViewChildren, QueryList  } from '@angular/core';
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
-import { DataSetWrapper } from '@app/_models';
-import { environment } from '@environments/environment';
 import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
 import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
@@ -21,7 +19,6 @@ export class SitAppUsersComponent implements OnInit {
   popupParent;
   columnDefs;
   columnDefsAppUserCompanies;
-  columnDefsRightsGroupUsers;
 
   constructor(
     private gatewayService: GatewayService,
@@ -42,8 +39,9 @@ export class SitAppUsersComponent implements OnInit {
       { headerName: 'e-mail', field: 'email', width: 200 },
       { headerName: 'MenuId', field: 'sitMenuId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 80 },
       { headerName: 'Menu', field: 'Symbol', width: 100 },
-      { headerName: 'Aktywny', field: 'IsActive', cellRenderer: 'gridCheckboxRenderer', cellClass: "grid-cell-centered", width: 100  },
-      { headerName: 'Administrator', field: 'IsAdmin', cellRenderer: 'gridCheckboxRenderer', cellClass: "grid-cell-centered", width: 100  },
+      { headerName: 'Aktywny', field: 'IsActive', cellRenderer: 'gridCheckboxRenderer', cellClass: "grid-cell-centered", width: 100, suppressMenu: true  },
+      { headerName: 'Administrator', field: 'IsAdmin', cellRenderer: 'gridCheckboxRenderer', cellClass: "grid-cell-centered", width: 100, suppressMenu: true  },
+
 
     ];
 
@@ -55,11 +53,6 @@ export class SitAppUsersComponent implements OnInit {
       { headerName: 'Plik konfig.', field: 'ConfigFile', flex: 1 },
       { headerName: 'Domyślna', field: 'IsDefault', cellRenderer: 'gridCheckboxRenderer', cellClass: "grid-cell-centered", flex: 1  },
 
-    ];
-
-    this.columnDefsRightsGroupUsers = [
-      { headerName: 'Identyfikator', field: 'RightsGroupIdent'},
-      { headerName: 'Nazwa', field: 'RightsGroupName'},
     ];
 
    }

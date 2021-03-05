@@ -1,0 +1,24 @@
+<sit-dict-container ident="sitDocumentsTypes" #sitDictcontainer fxFill>
+    <div fxLayout="column" fxFill class="content">
+      <sit-data-set-container ident="sitFilterDocumentsTypes" fxLayout="row">
+        <div class="sit-filter-bar" fxLayout="row">
+            <sit-data-input #sitControl field="searchDocumentsTypes" label="Filtruj typy dokumentów" appearance="outline" style="width: 300px;" showRefreshButton="true"></sit-data-input>
+        </div>
+      </sit-data-set-container>
+      <sit-data-set-container ident="sitDocumentsTypes" showActionsToolbar="true" fxLayout="column" fxFlex>
+        <div class="data-table" fxFlex>
+          <ag-grid-angular
+            #sitSetDataSource
+            #sitDocumentsTypesGrid
+            style="width: 100%; height: 100%;"
+            class="ag-theme-balham"
+            [columnDefs]="columnDefs"
+            [popupParent]="popupParent"
+            (gridReady)="onGridReady($event)"
+          >
+          </ag-grid-angular>
+        </div>
+      </sit-data-set-container>
+    </div>
+  </sit-dict-container>
+  
