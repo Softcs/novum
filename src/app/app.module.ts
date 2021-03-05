@@ -170,6 +170,7 @@ import { SitAppUsersInCompanyEditComponent } from './containers/dictionaries/sit
 import { SitProductSaleStatusIntervalsEditComponent } from './containers/dictionaries/sit-products/actions/sit-product-sale-status-intervals-edit/sit-product-sale-status-intervals-edit.component';
 import { SitDocumentsTypesComponent } from './containers/dictionaries/sit-documents-types/sit-documents-types.component';
 import { SitDocumentsTypesEditComponent } from './containers/dictionaries/sit-documents-types/actions/sit-documents-types-edit/sit-documents-types-edit.component';
+import { SitAttendanceListComponent } from './containers/dictionaries/sit-attendance-list/sit-attendance-list.component';
 
 
 @NgModule({
@@ -333,6 +334,7 @@ import { SitDocumentsTypesEditComponent } from './containers/dictionaries/sit-do
         SitProductSaleStatusIntervalsEditComponent,
         SitDocumentsTypesComponent,
         SitDocumentsTypesEditComponent,
+        SitAttendanceListComponent,
 
 
     ],

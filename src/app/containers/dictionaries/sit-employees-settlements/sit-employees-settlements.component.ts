@@ -7,7 +7,6 @@ import { GridService } from '@app/_services/grid.service';
 import { formatDate } from '@angular/common';
 import { formatNumber } from '@angular/common';
 import { sitGlobalConfig } from '@app/_consts/sit-global-config'
-import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from 'constants';
 
 @Component({
   selector: 'sit-employees-settlements',
@@ -197,8 +196,6 @@ export class SitEmployeesSettlementsComponent implements OnInit {
 
   onGridReady(params) {
     this.gridService.setDefGridOptionsOnReady(params);
-
-
   }
 
   refreshAfter(dataSourceManager) {
