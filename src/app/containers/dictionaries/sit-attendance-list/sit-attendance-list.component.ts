@@ -64,6 +64,5 @@ export class SitAttendanceListComponent implements OnInit {
   }
 
   onCellClicked(e){
-    
   }
 }

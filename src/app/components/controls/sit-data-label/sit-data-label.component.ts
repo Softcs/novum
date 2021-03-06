@@ -12,6 +12,8 @@ export class SitDataLabelComponent extends SitDataBaseComponent {
 
   @Input() type = 'text';
   @Input() label = '';
+  @Input() valueWidth;
+  @Input() labelWidth;
 
   constructor(
     _renderer: Renderer2,

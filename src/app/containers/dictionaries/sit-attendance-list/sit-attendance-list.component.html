@@ -8,8 +8,9 @@
     </sit-data-set-container>
     <sit-data-set-container ident="sitAttendanceList" showActionsToolbar="true" fxFlex fxLayout="column" >
       <div fxLayout="row" class="sit-params-bar">
-        <sit-data-label type="text" #sitControl field="EmployeeName" label="Pracownik:"></sit-data-label>
-        <sit-data-label type="text" #sitControl field="Date" label="Data:"></sit-data-label>
+        <sit-data-label type="text" #sitControl field="EmployeeName" label="Pracownik:" valueWidth="200"></sit-data-label>
+        <sit-data-label type="text" #sitControl field="Date" label="Data:" valueWidth="130"></sit-data-label>
+        <sit-data-label type="text" #sitControl field="AbsenceName" label="Rodzaj nieobecności:"></sit-data-label>
       </div>
       <div class="data-table" fxFlex>
         <ag-grid-angular

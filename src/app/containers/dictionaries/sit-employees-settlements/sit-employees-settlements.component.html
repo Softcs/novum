@@ -66,17 +66,17 @@
             <div fxLayout="column" fxFill fxLayoutGap="5px">
               <mat-card>
                 <mat-card-title>
-                  <sit-data-label type="number" #sitControl field="EmployeeName" label=""></sit-data-label>
+                  <sit-data-label type="number" #sitControl field="EmployeeName" label="" style="font-size: 24px; font-weight: 500;"></sit-data-label>
                 </mat-card-title>
                 <mat-card-content>
                   <div fxLayout="column">
                     <div fxLayout="row">
-                      <sit-data-label type="text" #sitControl field="CustName" label="Kontrahent:"></sit-data-label>&nbsp;
-                      [<sit-data-label type="text" #sitControl field="CustIdent" label=""></sit-data-label>]
+                      <sit-data-label type="text" #sitControl field="CustIdent" label="Kontrahent:" labelWidth="80" valueWidth="70"></sit-data-label>&nbsp;
+                      <sit-data-label type="text" #sitControl field="CustName" label=""></sit-data-label>
                     </div>
                     <div fxLayout="row">
-                      <sit-data-label type="text" #sitControl field="HRDepartmentName" label="Dział:"></sit-data-label>&nbsp;
-                      [<sit-data-label type="text" #sitControl field="HRDepartmentIdent" label=""></sit-data-label>]
+                      <sit-data-label type="text" #sitControl field="HRDepartmentIdent" label="Dział:" labelWidth="80" valueWidth="70"></sit-data-label>&nbsp;
+                      <sit-data-label type="text" #sitControl field="HRDepartmentName" label=""></sit-data-label>
                     </div>
                   </div>
                 </mat-card-content>
