@@ -6,6 +6,7 @@ import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-ren
 import { environment } from '@environments/environment';
 import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
+import { GridService } from '@app/_services/grid.service';
 
 @Component({
   selector: 'sit-employees',
@@ -18,34 +19,21 @@ export class SitEmployeesComponent implements OnInit {
   @ViewChildren('sitDictcontainer') dictContainers !: QueryList<SitDictContainerComponent>;
 
   currentUser: User;
-
-  gridApi;
-  gridColumnApi;
   columnDefs;
-  defaultColDef;
-  rowSelection;
   popupParent;
 
   constructor(
-    private gatewayService: GatewayService
+    private gatewayService: GatewayService,
+    private gridService: GridService
   ) {
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
     this.popupParent = document.querySelector('body');
-    this.rowSelection = 'single';
-
-    this.defaultColDef = {
-      sortable: true,
-      filter: false,
-      floatingFilter: false,
-      resizable: true
-    };
 
     this.columnDefs = [
       { headerName: 'Identyfikator', field: 'EmployeeIdent', filter: 'agTextColumnFilter' },
       { headerName: 'Imię', field: 'FirstName', filter: 'agTextColumnFilter' },
       { headerName: 'Nazwisko', field: 'LastName', filter: 'agTextColumnFilter' },
       { headerName: 'PESEL', field: 'PESEL', filter: 'agTextColumnFilter' },
-      { headerName: 'Kraj', field: 'CountrySymbol', filter: 'agTextColumnFilter' },
       { headerName: 'Identyfikator zewnętrzny', field: 'ExtIdent01', filter: 'agTextColumnFilter' },
     ];
 
@@ -56,16 +44,8 @@ export class SitEmployeesComponent implements OnInit {
   }
 
   onGridReady(params) {
-    this.gridApi = params.api;
-    this.gridColumnApi = params.columnApi;
-  }
+    this.gridService.setDefGridOptionsOnReady(params);
 
-  onRowClicked(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitEmployees');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
-
-  onFirstDataRendered(params) {
   }
 
 }

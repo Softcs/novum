@@ -6,7 +6,7 @@ import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
 //import { AllModules } from '@ag-grid-enterprise/all-modules';
 import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
-
+import { GridService } from '@app/_services/grid.service';
 @Component({
   selector: 'app-sit-params',
   templateUrl: './sit-params.component.html',
@@ -18,34 +18,17 @@ export class SitParamsComponent implements OnInit {
   @ViewChildren('sitDictcontainer') dictContainers !: QueryList<SitDictContainerComponent>;
 
   currentUser: User;
-
-  //modules: any[] = AllModules;
-  defaultColDef;
-  rowSelection;
   popupParent;
   frameworkComponents;
-
-  gridApi;
-  gridColumnApi;
   columnDefs;
-  pinnedBottomRowData;
 
   constructor(
-    private gatewayService: GatewayService
+    private gatewayService: GatewayService,
+    private gridService: GridService
   ) {
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
 
     this.popupParent = document.querySelector('body');
-    this.rowSelection = 'single';
-
-    this.defaultColDef = {
-      sortable: true,
-      filter: true,
-      resizable: true,
-      enableValue: true,
-      enableRowGroup: true,
-      enablePivot: true,
-    };
 
     this.frameworkComponents = {
       gridCheckboxRenderer: GridCheckboxRenderer,
@@ -61,21 +44,7 @@ export class SitParamsComponent implements OnInit {
   }
 
   onGridReady(params) {
-    this.gridApi = params.api;
-    this.gridColumnApi = params.columnApi;
-  }
-
-  onRowClicked(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitParams');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
-
-  onFirstDataRendered(params) {
-    const allColumnIds = [];
-
-    this.gridColumnApi.getAllColumns().forEach(function(column) {
-      allColumnIds.push(column.colId);
-    });
+    this.gridService.setDefGridOptionsOnReady(params);
   }
 
 }

@@ -1,4 +1,4 @@
-﻿import { NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule, Title } from '@angular/platform-browser';
 
 import { ReactiveFormsModule } from '@angular/forms';
@@ -20,7 +20,7 @@ import { SitDictContainerComponent } from './components/sit-dict-container/sit-d
 
 // material
 
-import { MatRadioModule } from '@angular/material/radio'; 
+import { MatRadioModule } from '@angular/material/radio';
 import { MatSliderModule} from '@angular/material/slider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -123,7 +123,7 @@ import { SitSysDictionariesComponent } from './containers/dictionaries/sit-sys-d
 import { SitSysDictionariesEditComponent } from './containers/dictionaries/sit-sys-dictionaries/actions/sit-sys-dictionaries-edit/sit-sys-dictionaries-edit.component';
 import { SitSysDatasourcesEditComponent } from './containers/dictionaries/sit-sys-dictionaries/actions/sit-sys-datasources-edit/sit-sys-datasources-edit.component';
 import { SitSysActionsEditComponent } from './containers/dictionaries/sit-sys-dictionaries/actions/sit-sys-actions-edit/sit-sys-actions-edit.component';
-import { SitRightsGroupUsersEditComponent } from './containers/dictionaries/sit-app-users/actions/sit-rights-group-users-edit/sit-rights-group-users-edit.component';
+import { SitRightsGroupUsersEditComponent } from './containers/dictionaries/sit-app-users-in-company/actions/sit-rights-group-users-edit/sit-rights-group-users-edit.component';
 import { SitRightsComponent } from './containers/dictionaries/sit-rights/sit-rights.component';
 import { SitTrackCapsDirective } from './_directives/sit-track-caps-directive.directive';
 import { NgxBarcodeModule } from 'ngx-barcode';;
@@ -142,12 +142,46 @@ import { SitCompanyDepartmentsComponent } from './containers/dictionaries/sit-co
 import { SitActionsToolbarComponent } from './components/controls/sit-actions-toolbar/sit-actions-toolbar.component';
 import { SitProductsUpdateWeightComponent } from './containers/dictionaries/sit-products/actions/sit-products-update-weight/sit-products-update-weight.component';;
 import { SitPubDeliveryDistributionComponent } from './containers/dictionaries/sit-pub-delivery-distribution/sit-pub-delivery-distribution.component';
-import { SitRailDeliveryDistrybutionImportComponent } from './containers/dictionaries/sit-pub-delivery-distribution/actions/sit-rail-delivery-distrybution-import/sit-rail-delivery-distrybution-import.component'
-
+import { SitRailDeliveryDistrybutionImportComponent } from './containers/dictionaries/sit-pub-delivery-distribution/actions/sit-rail-delivery-distrybution-import/sit-rail-delivery-distrybution-import.component';
+import { SitHRDepartmentsComponent } from './containers/dictionaries/sit-hr-departments/sit-hr-departments.component';
+import { SitEmployeesSettlementsComponent } from './containers/dictionaries/sit-employees-settlements/sit-employees-settlements.component';;
+import { SitRailLogComponent } from './containers/dictionaries/sit-rail-log/sit-rail-log.component'
+import { SitPayrollsCalcDataImportComponent } from './containers/dictionaries/sit-employees-settlements/actions/sit-payrolls-calc-data-import/sit-payrolls-calc-data-import.component';
+import { SitHRParams4InvoicingEditComponent } from './containers/dictionaries/sit-customers/actions/sit-hrparams4-invoicing-edit/sit-hrparams4-invoicing-edit.component';
+import { SitPayrollComponentsEditComponent } from './containers/dictionaries/sit-payroll-components/actions/sit-payroll-components-edit/sit-payroll-components-edit.component';
+import { SitHRDepartments4CustEditComponent } from './containers/dictionaries/sit-customers/actions/sit-hrdepartments4-cust-edit/sit-hrdepartments4-cust-edit.component';;
+import { SitPLStatementComponent } from './containers/dictionaries/sit-plstatement/sit-plstatement.component';
+import { SitRailPLStatementImportComponent } from './containers/dictionaries/sit-plstatement/actions/sit-rail-plstatement-import/sit-rail-plstatement-import.component'
+;
+import { SitPayrollsCalcAccountingDimEditComponent } from './containers/dictionaries/sit-payrolls/actions/sit-payrolls-calc-accounting-dim-edit/sit-payrolls-calc-accounting-dim-edit.component'
+;
+import { SitDataLabelComponent } from './components/controls/sit-data-label/sit-data-label.component'
+;
+import { SitEmployeesSettlementsCompEditComponent } from './containers/dictionaries/sit-employees-settlements/actions/sit-employees-settlements-comp-edit/sit-employees-settlements-comp-edit.component'
+;
+import { SitPayrollsCalcAccountingEditComponent } from './containers/dictionaries/sit-payrolls/actions/sit-payrolls-calc-accounting-edit/sit-payrolls-calc-accounting-edit.component'
+;
+import { SitUtilConverterFramesComponent } from './containers/dictionaries/sit-util-converter-frames/sit-util-converter-frames.component'
+;
+import { SitUtilProcGenConverterFrameComponent } from './containers/dictionaries/sit-util-converter-frames/actions/sit-util-proc-gen-converter-frame/sit-util-proc-gen-converter-frame.component';
+import { SitStatusesComponent } from './containers/dictionaries/sit-statuses/sit-statuses.component'
+import { SitCourierAddPieceToShipmentComponent } from './containers/dictionaries/sit-wms-docs/actions/sit-courier-add-piece-to-shipment/sit-courier-add-piece-to-shipment.component';
+import { SitCourierCreateShipmentsComponent } from './containers/dictionaries/sit-wms-docs/actions/sit-courier-create-shipments/sit-courier-create-shipments.component';
+import { SitGridCellRendererComponent } from './components/controls/sit-grid-cell-renderer/sit-grid-cell-renderer.component';
+import { SitAppUsersInCompanyComponent } from './containers/dictionaries/sit-app-users-in-company/sit-app-users-in-company.component';
+import { SitAppUsersInCompanyEditComponent } from './containers/dictionaries/sit-app-users-in-company/actions/sit-app-users-in-company-edit/sit-app-users-in-company-edit.component';
+import { SitProductSaleStatusIntervalsEditComponent } from './containers/dictionaries/sit-products/actions/sit-product-sale-status-intervals-edit/sit-product-sale-status-intervals-edit.component';
+import { SitDocumentsTypesComponent } from './containers/dictionaries/sit-documents-types/sit-documents-types.component';
+import { SitDocumentsTypesEditComponent } from './containers/dictionaries/sit-documents-types/actions/sit-documents-types-edit/sit-documents-types-edit.component';
+import { SitAttendanceListComponent } from './containers/dictionaries/sit-attendance-list/sit-attendance-list.component';
+import { SitStatusesEditComponent } from './containers/dictionaries/sit-statuses/actions/sit-statuses-edit/sit-statuses-edit.component';
+import { SitStatusValuesEditComponent } from './containers/dictionaries/sit-statuses/actions/sit-status-values-edit/sit-status-values-edit.component';
+import { SitStatusValuesTransitionsEditComponent } from './containers/dictionaries/sit-statuses/actions/sit-status-values-transitions-edit/sit-status-values-transitions-edit.component';
 import { SitDataRadioComponent } from './components/controls/sit-data-radio/sit-data-radio.component'; // there
 
 @NgModule({
-    imports: [
+
+  imports: [
         BrowserModule,
         ReactiveFormsModule,
         HttpClientModule,
@@ -183,7 +217,8 @@ import { SitDataRadioComponent } from './components/controls/sit-data-radio/sit-
 
         //ag-Grid
         AgGridModule.withComponents([]),
-        AngularSplitModule.forRoot(),
+        //AngularSplitModule.forRoot(),
+        AngularSplitModule,
         NgxBarcodeModule,
 
     ],
@@ -281,25 +316,38 @@ import { SitDataRadioComponent } from './components/controls/sit-data-radio/sit-
         SitCompanyDepartmentsComponent,
         SitActionsToolbarComponent,
         SitProductsUpdateWeightComponent,
-        SitPubDeliveryDistributionComponent
-,
-        SitImportCustomerFromImpTableComponent
-,
-        SitEmployeesComponent
-,
-        SitPayrollsComponent
-,
-        SitPayrollComponentsComponent
-,
-        SitPayrollImportComponent
-,
-        SitProcPayrollComponentsAccountingDefEditComponent
-,
-        SitCompanyDepartmentsComponent
-,
+        SitPubDeliveryDistributionComponent,
+        SitRailDeliveryDistrybutionImportComponent,
+        SitHRDepartmentsComponent,
+        SitEmployeesSettlementsComponent,
+        SitRailLogComponent,
+        SitPayrollsCalcDataImportComponent,
+        SitHRParams4InvoicingEditComponent,
+        SitPayrollComponentsEditComponent,
+        SitHRDepartments4CustEditComponent,
+        SitPLStatementComponent,
+        SitRailPLStatementImportComponent,
+        SitPayrollsCalcAccountingDimEditComponent,
+        SitDataLabelComponent,
+        SitEmployeesSettlementsCompEditComponent,
+        SitPayrollsCalcAccountingEditComponent,
+        SitUtilConverterFramesComponent,
+        SitUtilProcGenConverterFrameComponent,
+        SitStatusesComponent,
+        SitCourierAddPieceToShipmentComponent,
+        SitCourierCreateShipmentsComponent,
+        SitGridCellRendererComponent,
+        SitAppUsersInCompanyComponent,
+        SitAppUsersInCompanyEditComponent,
+        SitProductSaleStatusIntervalsEditComponent,
+        SitDocumentsTypesComponent,
+        SitDocumentsTypesEditComponent,
+        SitAttendanceListComponent,
+        SitStatusesEditComponent,
+        SitStatusValuesEditComponent,
+        SitStatusValuesTransitionsEditComponent,
         SitDataRadioComponent,
-        
-        SitRailDeliveryDistrybutionImportComponent
+
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
@@ -358,7 +406,7 @@ import { SitDataRadioComponent } from './components/controls/sit-data-radio/sit-
       SitPayrollImportComponent,
       SitProcPayrollComponentsAccountingDefEditComponent,
       SitCompanyDepartmentsComponent,
-      SitDataRadioComponent 
+      SitDataRadioComponent
 
     ]
 })

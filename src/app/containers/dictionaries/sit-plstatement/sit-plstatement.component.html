@@ -1,0 +1,23 @@
+<sit-dict-container ident="sitPLStatement" #sitDictcontainer fxFill>
+  <div fxLayout="column" fxFill class="content">
+    <sit-data-set-container  ident="sitPLStatementParams" fxLayout="column" style="margin-bottom: 5px">
+      <sit-data-label type="number" #sitControl field="Year" label="Rok:" style="width: 100px;"></sit-data-label>
+    </sit-data-set-container>
+    <sit-data-set-container  ident="sitPLStatement" showActionsToolbar="true" fxFlex fxLayout="column">
+      <div class="data-table" fxFlex>
+        <ag-grid-angular
+          #sitSetDataSource
+          #sitHRDepartmentsGrid
+          style="width: 100%; height: 100%;"
+          class="ag-theme-balham"
+          [columnDefs]="columnDefs"
+          [popupParent]="popupParent"
+          [excelStyles]="excelStyles"
+          (gridReady)="onGridReady($event)"
+
+        >
+        </ag-grid-angular>
+      </div>
+    </sit-data-set-container>
+  </div>
+</sit-dict-container>

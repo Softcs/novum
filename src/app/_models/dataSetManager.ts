@@ -30,6 +30,9 @@ export class DataSetManager {
         dataSourceDefinition.children.forEach(dataSource => {
             const dataSourceDefinitionChild = this.dictInfo.FindDataSource(dataSource.ident);
             const dsWrapper: DataSetWrapper = this.getDateSourceWrapper(dataSource.ident);
+            if (dsWrapper.isLookup) {
+                return;
+            }
             const obj = this.getObjectForDataSourceRequest(dsWrapper, true);
             dataSourcesRequest.push(obj);
             this.prapareDataSource4Request(dataSourceDefinitionChild, dataSourcesRequest);
@@ -60,12 +63,21 @@ export class DataSetManager {
         });
     }
 
-    private getObjectForDataSourceRequest(dataSetResponseWrapper: DataSetWrapper, canRefresh: boolean )  {
+    private getObjectForRequest(ident: string, activeRow: any, refresh: boolean) {
         const  obj = {
-            ident: dataSetResponseWrapper.ident,
-            activeRow: dataSetResponseWrapper.activeRow,
-            refresh: canRefresh
+            ident: ident,
+            activeRow: activeRow,
+            refresh: refresh
         };
+        return obj;
+    }
+
+    private getObjectForDataSourceRequest(dataSetResponseWrapper: DataSetWrapper, canRefresh: boolean )  {
+        const  obj = this.getObjectForRequest(
+            dataSetResponseWrapper.ident,
+            dataSetResponseWrapper.activeRow,
+            canRefresh
+        );
         return obj;
     }
 
@@ -164,13 +176,73 @@ export class DataSetManager {
         }
     }
 
+    public ExecuteInitInfo(dataSourceIdent: string, 
+                    actionIdent: string, 
+                    generatedRow: any, 
+                    executeActionCompletedCallback: Function,
+                    executeActionExceptionCallback: Function,
+                    owner: any,
+                    sourceDictIdent: string = null) {
+        const dictIdent = sourceDictIdent ?? this.dictInfo?.ident;
+        const dataSourcesRequest: any[] = [];
+        const dsWrapper: DataSetWrapper = this.getDateSourceWrapper(dataSourceIdent);
+        if (dsWrapper.parents) {
+            dsWrapper.parents.forEach(parent => {
+                const parentDataSource = this.FindDataSource(parent);
+                if (parentDataSource) {
+                    const obj = this.getObjectForDataSourceRequest(parentDataSource, false);
+                    if (obj.activeRow) {
+                        dataSourcesRequest.push(obj);
+                    }
+                }
+            });       
+        }
+
+        if (generatedRow) {
+            const obj = this.getObjectForRequest("generatedRow", generatedRow, false);
+            dataSourcesRequest.push(obj);
+        }
+
+        const opr: Operation = this.gatewayService.operationExecuteInitInfo(
+            dictIdent,
+            actionIdent,
+            dataSourcesRequest,
+            dataSourceIdent);
+
+        this.gatewayService.executeOperation(opr)
+            .pipe(first())
+            .subscribe(
+                data => {
+                    if (data.length === 1) {
+                        const response = data[0];
+                        const wasErrors = this.PropagateErrors(dataSourceIdent, response?.Errors);                       
+                        
+                        if (!wasErrors) {
+                            if(executeActionCompletedCallback != null) {
+                                executeActionCompletedCallback(owner,  response.jsonData);
+                            }
+                        }                        
+                        else {                        
+                            if (executeActionExceptionCallback != null) {
+                                executeActionExceptionCallback(owner);
+                            }
+                        }
+                    }
+                },
+                error => {
+                    console.error("error", error);
+                    if (executeActionExceptionCallback != null) {
+                          executeActionExceptionCallback(owner);
+                    }
+                });
+    }
+
     public ExecuteAction(actionIdent: string, dataSourceIdent: string,
                          owner: any,
                          executeActionCompletedCallback: Function,
                          executeActionExceptionCallback: Function,
                          sourceDictIdent: string = null,
-                         activeDataSet: DataSetWrapper = null
-        ) {
+                         activeDataSet: DataSetWrapper = null) {
         const dictIdent = sourceDictIdent ?? this.dictInfo?.ident;
         const dataSourcesRequest: any[] = [];
         const dsWrapper: DataSetWrapper = activeDataSet == null ? this.getDateSourceWrapper(dataSourceIdent) : activeDataSet;

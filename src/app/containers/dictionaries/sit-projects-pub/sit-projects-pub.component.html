@@ -11,22 +11,14 @@
       </div>
       <sit-data-set-container ident="sitProjectsPub" showActionsToolbar="true" fxLayout="column" (activeRowChanged)="activeRowProjectsPubChanged($event)" fxFlex>
         <div class="data-table" fxFlex>
-          <ag-grid-angular #sitSetDataSource
-            #agGrid
-            id="gridProjectsPub"
+          <ag-grid-angular
+            #sitSetDataSource
+            #sitProjectsPubGrid
             style="width: 100%; height: 100%;"
             class="ag-theme-balham"
             [columnDefs]="columnDefsProjectsPub"
-            [defaultColDef]="defaultColDef"
-            [rowSelection]="rowSelection"
-            [rowMultiSelectWithClick]="true"
-            [enableCellTextSelection]="true"
-            [suppressRowClickSelection]="true"
-            [enableRangeSelection]="true"
             [popupParent]="popupParent"
-            (rowClicked)="onRowClickedProjectsPub($event)"
-            (gridReady)="onGridReadyProjectsPub($event)"
-            (firstDataRendered)="onFirstDataRendered($event)"
+            (gridReady)="onGridReady($event)"
           >
           </ag-grid-angular>
         </div>

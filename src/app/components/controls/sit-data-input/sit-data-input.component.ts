@@ -1,4 +1,4 @@
-import { Component, Input,  Renderer2, ViewEncapsulation, ContentChild, ViewChild, NgZone } from '@angular/core';
+import { Component, Input,  Renderer2, ViewEncapsulation, ViewChild, NgZone } from '@angular/core';
 import { SitDataBaseComponent } from '../sit-data-base/sit-data-base.component';
 import { MatFormFieldAppearance  } from '@angular/material/form-field';
 import { SitRefreshButtonComponent } from '../sit-refresh-button/sit-refresh-button.component';
@@ -30,6 +30,7 @@ export class SitDataInputComponent extends SitDataBaseComponent {
 
   hasLookup: boolean;
   lookupIsLoading = false;
+  id;
 
   private lookupSettings = null;
   private _lookupRows = new BehaviorSubject<any[]>([]);
@@ -48,6 +49,7 @@ export class SitDataInputComponent extends SitDataBaseComponent {
     super(_renderer);
     this.showRefreshButton = false;
     this.refreshOnChange = true;
+    this.id = this.newGuid();
   }
 
   onChange(event: any) {
@@ -60,6 +62,10 @@ export class SitDataInputComponent extends SitDataBaseComponent {
   }
 
   initLookup() {
+    if (this.readonly) {
+      return;
+    }
+
     this.lookupSettings = this.dataSetWrapper.getLookupForField(this.field);
     this.hasLookup = this.lookupSettings != null;
     if (this.hasLookup) {
@@ -148,5 +154,11 @@ export class SitDataInputComponent extends SitDataBaseComponent {
     }, 500);
   }
   //#endregion lookup
-
+  newGuid() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      var r = Math.random() * 16 | 0,
+      v = c == 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    });
+  }
 }

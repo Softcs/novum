@@ -5,24 +5,25 @@
         <sit-data-input #sitControl field="search" label="Filtruj" placeholder="EAN, nazwa" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
       </sit-data-set-container>
     </div>
+    <sit-data-set-container  ident="sitPubDeliveryDistrybutionParams" fxLayout="row" style="margin-bottom: 5px" style="width: 100%;">
+      <sit-data-label type="text" #sitControl field="DeliveryDateFrom" label="Dostawa od:"></sit-data-label>
+      <sit-data-label type="text" #sitControl field="DeliveryDateTo" label="do:"></sit-data-label>
+      <sit-data-label type="text" #sitControl field="SaleDateFrom" label="Sprzedaż od:"></sit-data-label>
+      <sit-data-label type="text" #sitControl field="SaleDateTo" label="do:" ></sit-data-label>
+    </sit-data-set-container>
     <sit-data-set-container ident="sitPubDeliveryDistrybution" showActionsToolbar="true" fxFlex fxLayout="column">
       <div class="data-table" fxFlex>
-        <ag-grid-angular #sitSetDataSource
-          #agGrid
-          id="gridPubDeliveryDistrybution"
+        <ag-grid-angular
+          #sitSetDataSource
+          #sitPubDeliveryDistrybutionGrid
           style="width: 100%; height: 100%;"
           class="ag-theme-balham"
           [columnDefs]="columnDefs"
-          [defaultColDef]="defaultColDef"
-          [rowSelection]="rowSelection"
-          [rowMultiSelectWithClick]="true"
-          [enableCellTextSelection]="false"
-          [enableRangeSelection]="true"
           [popupParent]="popupParent"
           [sideBar]="false"
-          (rowClicked)="onRowClicked($event)"
+          [excelStyles]="excelStyles"
+          [frameworkComponents]="frameworkComponents"
           (gridReady)="onGridReady($event)"
-          (firstDataRendered)="onFirstDataRendered($event)"
         >
         </ag-grid-angular>
       </div>

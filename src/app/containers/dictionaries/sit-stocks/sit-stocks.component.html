@@ -7,8 +7,12 @@
         <mat-tab label="Magazyny">
           <div fxLayout="column" fxFill class="content">
             <sit-data-set-container ident="sitFilterStocks" fxLayout="row">
-              <div class="sit-filter-bar">
-                  <sit-data-input #sitControl id="searchStocks" field="searchStocks" label="Filtruj produkty" placeholder="Identyfikator, nazwa" appearance="outline" style="width: 300px;" showRefreshButton="true"></sit-data-input>
+              <div class="sit-filter-bar" fxLayout="row">
+                  <sit-data-input #sitControl id="searchStocks" field="searchStocks" label="Filtruj produkty" placeholder="Identyfikator, nazwa" appearance="outline" style="width: 300px;"></sit-data-input>
+                  <sit-data-input #sitControl id="searchStocks" field="WarehouseIdent" label="Magazyn" placeholder="" appearance="outline" style="width: 150px;"></sit-data-input>
+                  <sit-data-input #sitControl id="searchStocks" field="SaleStatus" label="Status sprz." placeholder="" appearance="outline" style="width: 200px;" showRefreshButton="true"
+                    [lookupDisplayFields] = "['SaleStatus', 'SaleStatusDescription']"
+                  ></sit-data-input>
               </div>
             </sit-data-set-container>
 
@@ -24,17 +28,9 @@
                           style="width: 100%; height: 100%;"
                           class="ag-theme-balham"
                           [columnDefs]="columnDefs"
-                          [defaultColDef]="defaultColDef"
-                          [rowSelection]="rowSelection"
-                          [rowMultiSelectWithClick]="true"
-                          [enableCellTextSelection]="true"
-                          [enableRangeSelection]="false"
                           [popupParent]="popupParent"
-                          [sideBar]="false"
                           [frameworkComponents]="frameworkComponents"
-                          (rowClicked)="onRowClicked($event)"
                           (gridReady)="onGridReady($event)"
-                          (firstDataRendered)="onFirstDataRendered($event)"
                         >
                         </ag-grid-angular>
                       </sit-data-set-container>
@@ -49,16 +45,8 @@
                           style="width: 100%; height: 100%;"
                           class="ag-theme-balham"
                           [columnDefs]="columnDefsWMSStocksDet"
-                          [defaultColDef]="defaultColDef"
-                          [rowSelection]="rowSelection"
-                          [rowMultiSelectWithClick]="true"
-                          [enableCellTextSelection]="true"
-                          [enableRangeSelection]="false"
                           [popupParent]="popupParent"
-                          [sideBar]="false"
-                          (rowClicked)="onRowClickedWMSStocksDet($event)"
-                          (gridReady)="onGridReadyWMSStocksDet($event)"
-                          (firstDataRendered)="onFirstDataRendered($event)"
+                          (gridReady)="onGridReady($event)"
                           >
                         </ag-grid-angular>
                       </div>
@@ -100,23 +88,15 @@
               </div>
             </sit-data-set-container>
 
-            <sit-data-set-container  ident="sitWMSStocks" fxFlex>
+            <sit-data-set-container ident="sitWMSStocks" fxFlex>
               <ag-grid-angular #sitSetDataSource
                 #agGrid
                 id="gridWMSStocks"
                 style="width: 100%; height: 100%;"
                 class="ag-theme-balham"
                 [columnDefs]="columnDefsWMSStocks"
-                [defaultColDef]="defaultColDef"
-                [rowSelection]="rowSelection"
-                [rowMultiSelectWithClick]="true"
-                [enableCellTextSelection]="true"
-                [enableRangeSelection]="false"
                 [popupParent]="popupParent"
-                [sideBar]="false"
-                (rowClicked)="onRowClickedWMSStocks($event)"
-                (gridReady)="onGridReadyWMSStocks($event)"
-                (firstDataRendered)="onFirstDataRendered($event)"
+                (gridReady)="onGridReady($event)"
                 >
               </ag-grid-angular>
             </sit-data-set-container>
@@ -141,16 +121,8 @@
                       style="width: 100%; height: 100%;"
                       class="ag-theme-balham"
                       [columnDefs]="columnDefsLogisticUnits"
-                      [defaultColDef]="defaultColDef"
-                      [rowSelection]="rowSelection"
-                      [rowMultiSelectWithClick]="true"
-                      [enableCellTextSelection]="true"
-                      [enableRangeSelection]="false"
                       [popupParent]="popupParent"
-                      [sideBar]="false"
-                      (rowClicked)="onRowClickedLogisticUnits($event)"
-                      (gridReady)="onGridReadyLogisticUnits($event)"
-                      (firstDataRendered)="onFirstDataRendered($event)"
+                      (gridReady)="onGridReady($event)"
                       >
                     </ag-grid-angular>
                   </div>
@@ -177,16 +149,8 @@
                         style="width: 100%; height: 100%;"
                         class="ag-theme-balham"
                         [columnDefs]="columnDefsWMSStocksWithLogisticUnits"
-                        [defaultColDef]="defaultColDef"
-                        [rowSelection]="rowSelection"
-                        [rowMultiSelectWithClick]="true"
-                        [enableCellTextSelection]="true"
-                        [enableRangeSelection]="false"
                         [popupParent]="popupParent"
-                        [sideBar]="false"
-                        (rowClicked)="onRowClickedWMSStocksWithLogisticUnits($event)"
-                        (gridReady)="onGridReadyWMSStocksWithLogisticUnits($event)"
-                        (firstDataRendered)="onFirstDataRendered($event)"
+                        (gridReady)="onGridReady($event)"
                         >
                       </ag-grid-angular>
                     </sit-data-set-container>

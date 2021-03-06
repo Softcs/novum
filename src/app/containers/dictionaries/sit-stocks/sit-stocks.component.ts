@@ -8,6 +8,7 @@ import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-ren
 import { AttachmentsService } from '@app/_services/attachments.service';
 import { formatNumber } from '@angular/common';
 import { formatDate } from '@angular/common';
+import { GridService } from '@app/_services/grid.service';
 
 @Component({
   selector: 'app-sit-stocks',
@@ -24,54 +25,26 @@ export class SitStocksComponent implements OnInit {
   ean;
   locationIdent;
   logisticUnitEAN;
-  defaultColDef;
-  rowSelection;
   popupParent;
   frameworkComponents;
   contentColor;
-
-  gridApi;
-  gridColumnApi;
   columnDefs;
-
-  gridApiWMSStocksDet;
-  gridColumnApiWMSStocksDet;
   columnDefsWMSStocksDet;
-
-  gridApiWMSStocks;
-  gridColumnApiWMSStocks;
   columnDefsWMSStocks;
-
-  gridApiLogisticUnits;
-  gridColumnApiLogisticUnits;
   columnDefsLogisticUnits;
-
-  gridApiWMSStocksWithLogisticUnits;
-  gridColumnApiWMSStocksWithLogisticUnits;
   columnDefsWMSStocksWithLogisticUnits;
 
   constructor(
     private gatewayService: GatewayService,
     private attachmentsService: AttachmentsService,
+    private gridService: GridService,
     @Inject(LOCALE_ID) private locale: string
   ) {
     this.contentColor = document.documentElement.style.getPropertyValue('$content-background-color');
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
     this.popupParent = document.querySelector('body');
-    this.rowSelection = 'single';
     this.frameworkComponents = {
       gridCheckboxRenderer: GridCheckboxRenderer,
-    };
-
-    this.defaultColDef = {
-      sortable: true,
-      filter: true,
-      // floatingFilter: true,
-      resizable: true,
-      enableRowGroup: true,
-      enableValue: true,
-      enablePivot: true,
-      autoHeight: true,
     };
 
     this.columnDefs = [
@@ -101,7 +74,8 @@ export class SitStocksComponent implements OnInit {
 
         ],
       },
-      { headerName: 'Aktywny', field: 'IsActive', filter: 'agSetColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80,cellRenderer: 'gridCheckboxRenderer', floatingFilter: false }
+      { headerName: 'Aktywny', field: 'IsActive', filter: 'agSetColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80,cellRenderer: 'gridCheckboxRenderer', floatingFilter: false },
+      { headerName: 'Status sprz.', field: 'SaleStatus', tooltipField: 'SaleStatusDescription', width: 80, suppressMenu: true},
 
 
     ];
@@ -189,54 +163,11 @@ export class SitStocksComponent implements OnInit {
   }
 
   onGridReady(params) {
-    this.gridApi = params.api;
-    this.gridColumnApi = params.columnApi;
-  }
-  onGridReadyWMSStocksDet(params) {
-    this.gridApiWMSStocksDet = params.api;
-    this.gridColumnApiWMSStocksDet = params.columnApi;
-  }
-  onGridReadyWMSStocks(params) {
-    this.gridApiWMSStocks = params.api;
-    this.gridColumnApiWMSStocks = params.columnApi;
-  }
-  onGridReadyLogisticUnits(params) {
-    this.gridApiLogisticUnits = params.api;
-    this.gridColumnApiLogisticUnits = params.columnApi;
-    this.gridColumnApiLogisticUnits.setColumnsVisible(['sitLogisticUnitsId','sitLogisticUnitsG'],false)
-  }
-  onGridReadyWMSStocksWithLogisticUnits(params) {
-    this.gridApiWMSStocksWithLogisticUnits = params.api;
-    this.gridColumnApiWMSStocksWithLogisticUnits = params.columnApi;
-  }
+    this.gridService.setDefGridOptionsOnReady(params);
+    if (params.columnApi.getColumn('sitLogisticUnitsG')) {
+      params.columnApi.setColumnsVisible(['sitLogisticUnitsId','sitLogisticUnitsG'],false)
+    }
 
-  onRowClicked(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitStocks');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
-  onRowClickedWMSStocksDet(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitWMSStocksDet');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
-  onRowClickedWMSStocks(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitWMSStocks');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
-  onRowClickedLogisticUnits(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitLogisticUnits');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
-  onRowClickedWMSStocksWithLogisticUnits(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitWMSStocksWithLogisticUnits');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
-
-  onFirstDataRendered(params) {
-    var allColumnIds = [];
-    // this.gridColumnApi.getAllColumns().forEach(function(column) {
-    //   allColumnIds.push(column.colId);
-    // });
-    // this.gridColumnApi.autoSizeColumns(allColumnIds, false);
   }
 
   activeRowStocksChanged(activeRow) {

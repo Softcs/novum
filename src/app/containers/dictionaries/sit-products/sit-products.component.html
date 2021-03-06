@@ -2,35 +2,52 @@
   <div fxLayout="column" fxFill class="content">
     <div class="sit-filter-bar">
       <sit-data-set-container ident="sitFilterProducts" fxLayout="row">
-        <sit-data-input #sitControl field="searchProducts" label="Filtruj produkty" placeholder="" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
+        <sit-data-input #sitControl field="Search" label="Filtruj produkty" placeholder="" appearance="outline" style="width: 300px;"></sit-data-input>
+        <sit-data-input #sitControl field="SaleStatus" label="Status sprz." placeholder="" appearance="outline" showRefreshButton="true" style="width: 180px;"
+          [lookupDisplayFields] = "['SaleStatus', 'SaleStatusDescription']"
+        ></sit-data-input>
       </sit-data-set-container>
     </div>
     <div fxLayout="column" fxFlex>
       <as-split direction="horizontal">
         <as-split-area [size]="70">
-          <sit-data-set-container  ident="sitProducts" showActionsToolbar="true" (activeRowChanged)="activeRowProductsChanged($event)" fxFill fxLayout="column">
-            <div class="data-table" fxFlex>
-              <ag-grid-angular #sitSetDataSource
-                #agGrid
-                id="gridProducts"
-                style="width: 100%; height: 100%;"
-                class="ag-theme-balham"
-                [columnDefs]="columnDefsProducts"
-                [defaultColDef]="defaultColDefProducts"
-                [rowSelection]="rowSelection"
-                [rowMultiSelectWithClick]="true"
-                [enableCellTextSelection]="false"
-                [enableRangeSelection]="false"
-                [popupParent]="popupParent"
-                [frameworkComponents]="frameworkComponents"
-                (rowClicked)="onRowClickedProducts($event)"
-                (gridReady)="onGridReadyProducts($event)"
-                (firstDataRendered)="onFirstDataRendered($event)"
-
-              >
-              </ag-grid-angular>
-            </div>
-          </sit-data-set-container>
+          <as-split direction="vertical">
+            <as-split-area [size]="70">
+              <sit-data-set-container  ident="sitProducts" showActionsToolbar="true" (activeRowChanged)="activeRowProductsChanged($event)" fxFill fxLayout="column">
+                <div class="data-table" fxFlex>
+                  <ag-grid-angular
+                    #sitSetDataSource
+                    #sitProductsGrid
+                    style="width: 100%; height: 100%;"
+                    class="ag-theme-balham"
+                    [columnDefs]="columnDefsProducts"
+                    [popupParent]="popupParent"
+                    [frameworkComponents]="frameworkComponents"
+                    (gridReady)="onGridReady($event)"
+                  >
+                  </ag-grid-angular>
+                </div>
+              </sit-data-set-container>
+            </as-split-area>
+            <as-split-area [size]="30">
+              <div class="sit-grid-title">Status sprzedaży</div>
+              <sit-data-set-container  ident="sitProductSaleStatusIntervals" showActionsToolbar="true" fxFill fxLayout="column">
+                <div class="data-table" fxFlex>
+                  <ag-grid-angular
+                    #sitSetDataSource
+                    #sitProductsGrid
+                    style="width: 100%; height: 100%;"
+                    class="ag-theme-balham"
+                    [columnDefs]="columnDefsSaleStatusIntervals"
+                    [popupParent]="popupParent"
+                    [frameworkComponents]="frameworkComponents"
+                    (gridReady)="onGridReady($event)"
+                  >
+                  </ag-grid-angular>
+                </div>
+              </sit-data-set-container>
+            </as-split-area>
+          </as-split>
         </as-split-area>
         <as-split-area [size]="30">
           <div class="content" fxFill fxLayout="column" fxLayoutAlign=" center" >

@@ -9,6 +9,7 @@ import { FactoryService } from '@app/_services/factory.service';
 import { ProcExpanderService } from '@app/_services/procexpander.service';
 import { ActionDefinitionWrapper } from '@app/_models/actionDefinitionWrapper';
 import { DataSetWrapper } from '@app/_models';
+import { VisibilityService } from '@app/_services/visibility.service';
 
 @Component({
   selector: 'sit-proc-button',
@@ -64,6 +65,7 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
     private factoryService: FactoryService,
     private procExpanderService: ProcExpanderService,
     public dialog: MatDialog,
+    private visibilityService: VisibilityService
     ) {
       super(el);
 
@@ -71,6 +73,10 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
 
   ngOnInit(): void {
 
+  }
+
+  showWhenEmpty(): boolean {
+    return (this.actionDefinition?.showWhenEmpty);
   }
 
   isDelete(): boolean {
@@ -90,12 +96,16 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
       return true;
     }
 
-    if ( ( this.isInsert() || this.isUpdate() || this.isDelete() ) && !this.dataSetResponseWrapper.allParentsHaveRows() ) {
+    if ( !this.dataSetResponseWrapper.allParentsHaveRows() ) {
        return true;
     };
 
-    if ( (this.isUpdate() || this.isDelete()) && this.dataSetResponseWrapper !== undefined && this.dataSetResponseWrapper.rows == null) {
+    if ( (this.isUpdate() || this.isDelete() || !this.showWhenEmpty()) && this.dataSetResponseWrapper !== undefined && this.dataSetResponseWrapper.rows == null) {
         return true;
+    }
+
+    if(!this.visibilityService.shouldBeVisible(this.actionDefinition?.visibility, this.dataSetResponseWrapper.activeRow) && this.dataSetResponseWrapper.activeRow) {
+      return true;
     }
 
     return false;
@@ -113,6 +123,7 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
     data.actionIdent = this.actionIdent;
     data.componentParamsIdent = this.componentParamsIdent;
     data.openKind = this.openKind;
+    data.hasInitProc = this.actionDefinition?.hasInitProc;
     return data;
   }
 

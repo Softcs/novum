@@ -8,7 +8,7 @@ import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-ren
 import { AttachmentsService } from '@app/_services/attachments.service';
 import { formatNumber } from '@angular/common';
 import { formatDate } from '@angular/common';
-
+import { GridService } from '@app/_services/grid.service';
 
 @Component({
   selector: 'app-sit-products',
@@ -25,43 +25,25 @@ export class SitProductsComponent implements OnInit {
   ean;
   frameworkComponents;
   contentColor;
-
-
-  //modules: any[] = AllModules;
-  gridApiProducts;
-  gridColumnApiProducts;
-  columnDefsProducts;
-  defaultColDefProducts;
-  rowSelection;
   popupParent;
-
+  columnDefsProducts;
+  columnDefsSaleStatusIntervals;
 
   constructor(
     private gatewayService: GatewayService,
     private attachmentsService: AttachmentsService,
+    private gridService: GridService,
     @Inject(LOCALE_ID) private locale: string
   ) {
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
     this.contentColor = document.documentElement.style.getPropertyValue('$content-background-color');
     this.popupParent = document.querySelector('body');
-    this.rowSelection = 'multi';
     this.frameworkComponents = {
       gridCheckboxRenderer: GridCheckboxRenderer,
     };
 
-    this.defaultColDefProducts = {
-      sortable: true,
-      filter: true,
-      floatingFilter: false,
-      resizable: true
-    };
-
     this.columnDefsProducts = [
-      { headerName: 'Identyfikator', field: 'ProductIdent', filter: 'agTextColumnFilter', width: 150,
-      // filterParams: {
-      //   filterOptions: ['contains', 'notContains']
-      // },
-      checkboxSelection: false },
+      { headerName: 'Identyfikator', field: 'ProductIdent', filter: 'agTextColumnFilter', width: 150, },
       { headerName: 'EAN', field: 'EAN', filter: 'agTextColumnFilter', width: 120 },
       { headerName: 'Nazwa', field: 'ProductName', tooltipField: 'ProductName', filter: 'agTextColumnFilter', width: 300 },
       { headerName: 'JM', field: 'UnitIdent', filter: 'agTextColumnFilter', width: 60 },
@@ -73,33 +55,27 @@ export class SitProductsComponent implements OnInit {
         }
 
       },
-      { headerName: 'Aktywny', field: 'IsActive', filter: 'agSetColumnFilter', width: 80, cellRenderer: 'gridCheckboxRenderer' }
+      { headerName: 'Aktywny', field: 'IsActive', filter: 'agSetColumnFilter', width: 80, cellRenderer: 'gridCheckboxRenderer', suppressMenu: true },
+      { headerName: 'Status sprz.', field: 'SaleStatus', tooltipField: 'SaleStatusDescription', width: 80, suppressMenu: true},
+
 
     ];
 
+    this.columnDefsSaleStatusIntervals = [
+      { headerName: 'Od dnia', field: 'DateFrom', width: 100,},
+      { headerName: 'Status', field: 'SaleStatus', width: 80,},
+      { headerName: 'Opis', field: 'SaleStatusDescription', width: 150,},
+    ]
 }
 
   ngOnInit(): void {
 
   }
 
-  onGridReadyProducts(params) {
-    this.gridApiProducts = params.api;
-    this.gridColumnApiProducts = params.columnApi;
+  onGridReady(params) {
+    this.gridService.setDefGridOptionsOnReady(params);
   }
 
-  onRowClickedProducts(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitProducts');
-    dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
-
-  onFirstDataRendered(params) {
-    var allColumnIds = [];
-    // this.gridColumnApiProducts.getAllColumns().forEach(function(column) {
-    //   allColumnIds.push(column.colId);
-    // });
-    // this.gridColumnApiProducts.autoSizeColumns(allColumnIds, false);
-  }
 
   activeRowProductsChanged(activeRow) {
     this.link = activeRow?.sitImagesG == null

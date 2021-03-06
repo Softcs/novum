@@ -1,0 +1,30 @@
+<sit-proc-params
+[(actionExecuteData)]="actionExecuteData"
+  >
+
+  <sit-data-set-container ident="sitStatusesEdit">
+    <div class="sit-proc-params-content" fxLayout="row" style="height: 400px; width:600px">
+      <div fxFlex="50" fxLayout="column">
+        
+        <div fxLayout="row">
+         <sit-data-input type="text" #sitControl field="sitStatusesG" label="sitStatusesG" appearance="outline" fxFlex></sit-data-input>
+        </div>
+        <div fxLayout="row">
+          <sit-data-input type="text" #sitControl field="StatusIdent" label="StatusIdent" appearance="outline" fxFlex></sit-data-input>
+        </div> 
+        <div fxLayout="row">
+          <sit-data-input type="text" #sitControl field="StatusName" label="StatusName" appearance="outline" fxFlex></sit-data-input>
+        </div> 
+        <div fxLayout="row">
+          <sit-data-input type="text" #sitControl field="TableName" label="TableName" appearance="outline" fxFlex></sit-data-input>
+        </div> 
+        <div fxLayout="row">
+          <sit-data-input type="text" #sitControl field="ColumnName" label="ColumnName" appearance="outline" fxFlex></sit-data-input>
+        </div>
+        
+       
+      </div>
+      
+    </div>
+  </sit-data-set-container>
+</sit-proc-params>

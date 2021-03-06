@@ -11,6 +11,7 @@ import { SitButtonBaseComponent } from '../controls/sit-button-base/sit-button-b
 import { ActionDefinitionWrapper } from '@app/_models/actionDefinitionWrapper';
 import { Subscription } from 'rxjs';
 import { SitActionsToolbarComponent } from '../controls/sit-actions-toolbar/sit-actions-toolbar.component';
+import { GridService } from '@app/_services/grid.service';
 
 @Component({
   selector: 'sit-data-set-container',
@@ -21,7 +22,7 @@ import { SitActionsToolbarComponent } from '../controls/sit-actions-toolbar/sit-
 export class SitDataSetContainerComponent {
   private _errors: any[];
   private activeRowSubscription: Subscription;
-
+  private identityFieldName: string = "__Identity__";
   @ContentChildren('sitSetDataSource', { descendants: true})
   datasSourcesInterface: QueryList<sitSetDataSetDirective>;
 
@@ -52,6 +53,10 @@ export class SitDataSetContainerComponent {
 
   public dataSetControlsManager: DataSetManager;
 
+  constructor(
+    private gridService: GridService
+  ) {}
+
   clearErrors() {
     this.errors?.splice(0, this.errors?.length);
   }
@@ -72,11 +77,17 @@ export class SitDataSetContainerComponent {
   }
 
   private getFieldId(ident: string) {
-    return ident + 'G';
+    return '__Identity__'; // ident + 'G';
+  }
+
+  private isPivotMode(gridApi) {
+    return gridApi.gridOptionsWrapper.gridOptions.pivotMode;
   }
 
   private compareStrings(one,two): boolean {
-    return one != null && one.localeCompare(two, undefined, { sensitivity: 'base' }) === 0;
+    return one != null 
+    && typeof one == 'string'
+    && one.localeCompare(two, undefined, { sensitivity: 'base' }) === 0;
   }
 
   private deleteRows(dataSource) {
@@ -93,8 +104,8 @@ export class SitDataSetContainerComponent {
       const fieldValue = activeRow[fieldName];
       const gridApi = control["api"];
       const rowsDataApiToDelete = [];
-      if (gridApi) {
-        gridApi.forEachNode((rowNode) => {
+      if (gridApi && !this.isPivotMode(gridApi)) {
+        gridApi.forEachNode((rowNode) => {          
           const rowValue = rowNode.data[fieldName];
           if (this.compareStrings(rowValue, fieldValue)) {
             rowsDataApiToDelete.push(rowNode.data);
@@ -107,7 +118,8 @@ export class SitDataSetContainerComponent {
     });
   }
 
-  private appluCustomPropsGrid(element) {
+  private applyCustomPropsGrid(element) {
+    var self = this;
     const gridApi = element["api"];
     if (gridApi == null) {
       return null;
@@ -127,6 +139,22 @@ export class SitDataSetContainerComponent {
         rowClassRules["sit-row-active"] = function(params) {
             return params.api.SeidoCustomProperty.activeRow == params.node.data;
         }
+
+        var isPivotMode = this.isPivotMode(gridApi);
+        gridApi.gridOptionsWrapper.gridOptions.onRowClicked = function(event) { 
+          if (!isPivotMode) {
+            self.dataSetResponseWrapper.SetActiveRow(event.data);
+          }
+        }
+      
+      
+        gridApi.gridOptionsWrapper.gridOptions.onCellClicked = function(event) {   
+          if (isPivotMode && event.colDef.pivotKeys) {
+            const index = event.colDef.pivotKeys-1;
+            const rowFromCell = event.node.allLeafChildren[index].data;      
+            self.dataSetResponseWrapper.SetActiveRow(rowFromCell);
+          }
+        }      
       }
 
       gridApi.SeidoCustomProperty = customProperty;
@@ -135,42 +163,42 @@ export class SitDataSetContainerComponent {
         var prevRow = customProperty.activeRow;
         customProperty.activeRow = row;
         var rowsToUpdate = [];
-  
+
         if (row) {
           rowsToUpdate.push(row);
         }
-  
+
         if (prevRow && row) {
           rowsToUpdate.push(prevRow);
         }
-        this.redrawGridActiveRow(gridApi, prevRow); 
+        this.redrawGridActiveRow(gridApi, prevRow);
         //gridApi.applyTransaction({update:rowsToUpdate});
       });
     }
-    
+
     return customProperty;
   }
 
   public redrawGridActiveRow(gridApi: any, prevRow: any) {
-    if (!this.activeRow || !gridApi) {
+    if (!this.activeRow || !gridApi || this.isPivotMode(gridApi)) {
       return;
-    }  
-    
+    }
+
     let limit = prevRow ? 2 : 1;
-    const fieldName = this.getFieldId(this.ident);      
+    const fieldName = this.getFieldId(this.ident);
     const fieldValue = this.activeRow[fieldName];
     const prevValue = prevRow ? prevRow[fieldName] : null;
-    gridApi.forEachNode( (rowNode) => { 
+    gridApi.forEachNode( (rowNode) => {
       const rowValue = rowNode.data[fieldName];
       if (this.compareStrings(rowValue, fieldValue) || this.compareStrings(rowValue, prevValue)) {
         rowNode.setData(rowNode.data);
         limit--;
       }
-      
+
       if (limit == 0) {
         return false;
       }
-    });    
+    });
   }
 
   public refreshRows(dataSetWrapper: DataSetWrapper, dataSourcesRequest) {
@@ -184,15 +212,19 @@ export class SitDataSetContainerComponent {
       return;
     }
 
-    const fieldName = this.getFieldId(dataSetWrapper.ident);
+    var fieldName = this.getFieldId(dataSetWrapper.ident);
     let rowsToUpdate = [];
     const rowsApiToUpdate = [];
 
     this.datasSourcesInterface.forEach(control => {
       dataSetWrapper.rows.forEach(inputRow => {
-        const fieldValue = inputRow[fieldName];
-        const gridApi = control["api"];
-        if (gridApi) {
+        if(inputRow.hasOwnProperty(this.identityFieldName)) {
+          fieldName = this.identityFieldName;
+        }
+
+         const fieldValue = inputRow[fieldName];
+        if (control.hasOwnProperty("api")) {
+          const gridApi = control["api"];
           gridApi.forEachNode( (rowNode) => {
             const rowValue = rowNode.data[fieldName];
             if (this.compareStrings(rowValue, fieldValue)) {
@@ -237,7 +269,7 @@ export class SitDataSetContainerComponent {
     this.errors = dataSetWrapper.errors;
     this.datasSourcesInterface.forEach(element => {
       // agGrid
-      this.appluCustomPropsGrid(element);
+      this.applyCustomPropsGrid(element);
       const gridApi = element["api"];
       if (gridApi) {
         // tree grid - parsowanie kolumny z danymi do drzewa
@@ -278,21 +310,32 @@ export class SitDataSetContainerComponent {
     }
   }
 
-  public prepareControls(dataSetWrapperDefinition: DataSetDefinitionWrapper) {    
+  public prepareControls(dataSetWrapperDefinition: DataSetDefinitionWrapper) {
+
+    this.datasSourcesInterface.forEach(element => {
+      const gridApi = element["api"];
+      if (gridApi) {
+        this.gridService.setDefGridOptions (element);
+      }
+    });
+
     this.actionControlsInterface.forEach(actionControl => {
       actionControl.dataSetResponseWrapper = this.dataSetResponseWrapper;
       actionControl.actionDefinition = dataSetWrapperDefinition?.FindActionDefinition(actionControl.actionIdent);
       actionControl.dataSetManagerSource = this.dataSetControlsManager;
-    });         
+
+
+
+    });
 
     this.pepareControlForButtons(this.refreshButtons);
-    this.pepareControlForButtons(this.filesButtons);  
+    this.pepareControlForButtons(this.filesButtons);
 
     if (this.actionToolbar) {
       this.actionToolbar.dataSetResponseWrapper = this.dataSetResponseWrapper;
       this.actionToolbar.dataSetManagerSource = this.dataSetControlsManager;
       this.actionToolbar.actions = dataSetWrapperDefinition.actions ? dataSetWrapperDefinition.actions.filter(a => a.showInToolbar) : [];
-    } 
+    }
   }
 
   set errors(value: any[]) {

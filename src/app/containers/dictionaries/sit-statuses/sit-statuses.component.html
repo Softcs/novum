@@ -1,0 +1,95 @@
+<sit-dict-container ident="sitStatuses" #sitDictcontainer fxFill>
+    <as-split direction="horizontal">
+    <as-split-area [size]="50">
+      <as-split direction="vertical">
+            <as-split-area [size]="60">
+              <div fxLayout="column" fxFill class="content">
+                <div class="sit-filter-bar">
+                  <sit-data-set-container ident="sitFilterStatuses" fxLayout="row">
+                     <sit-data-input #sitControl field="searchStatuses" label="Szukaj" placeholder="" appearance="outline" showRefreshButton="true" style="width: 200px;"></sit-data-input> 
+                  </sit-data-set-container>
+
+                </div>  
+                <div class="sit-grid-title">Statusy</div>
+                  <sit-data-set-container ident="sitStatuses" showActionsToolbar="true" fxLayout="column" fxFlex>
+                    <div class="data-table" fxFlex>
+                    <ag-grid-angular
+                      #sitSetDataSource
+                      style="width: 100%; height: 100%;"
+                      class="ag-theme-balham"
+                      [columnDefs]="columnDefs"
+                      [popupParent]="popupParent"
+                      (gridReady)="onGridReady($event)"
+                      >           
+                    </ag-grid-angular>
+                    </div>
+                  </sit-data-set-container> 
+              </div>
+
+            </as-split-area>
+          <as-split-area [size]="40">
+
+
+            <div fxLayout="column" fxFill class="content">
+
+                <div class="sit-filter-bar">
+                     <sit-data-set-container ident="sitFilterStatusValues" fxLayout="row">
+                     <sit-data-input #sitControl field="searchStatusValues" label="Szukaj" placeholder="" appearance="outline" showRefreshButton="true" style="width: 200px;"></sit-data-input> 
+                     </sit-data-set-container>
+                </div>  
+              <div class="sit-grid-title">Wartości statusów</div> 
+              <sit-data-set-container  ident="sitStatusValues" showActionsToolbar="true" fxFlex fxLayout="column">
+                <div class="data-table" fxFlex>
+                  <ag-grid-angular #sitSetDataSource
+                    #agGrid
+                    
+                    style="width: 100%; height: 100%;"
+                    class="ag-theme-balham"
+                    [columnDefs]="columnDefsStatusValues"
+                    [popupParent]="popupParent"
+                    (gridReady)="onGridReady($event)"
+                  >
+                  </ag-grid-angular>
+                </div>
+              </sit-data-set-container>
+            </div>
+          </as-split-area>
+      </as-split>
+    </as-split-area>
+      <as-split-area [size]="50">
+
+
+        <div fxLayout="column" fxFill class="content">
+
+          <div class="sit-filter-bar">
+            <sit-data-set-container ident="sitFilterStatusValuesTransitions" fxLayout="row">
+            <sit-data-input #sitControl field="searchStatusValuesTransitions" label="Szukaj" placeholder="" appearance="outline" showRefreshButton="true" style="width: 200px;"></sit-data-input> 
+            </sit-data-set-container>
+          </div>  
+        <div class="sit-grid-title">Przejścia pomiędzy statusami</div>
+        
+        <sit-data-set-container  ident="sitStatusValuesTransitions" showActionsToolbar="true" fxFlex fxLayout="column">
+        
+          <div class="data-table" fxFlex>
+            <ag-grid-angular #sitSetDataSource
+              #agGrid
+              
+              style="width: 100%; height: 100%;"
+              class="ag-theme-balham"
+              [columnDefs]="columnDefsStatusValuesTransitions"
+              [popupParent]="popupParent"
+              (gridReady)="onGridReady($event)"
+            >
+            </ag-grid-angular>
+          </div>
+        </sit-data-set-container>
+
+        </div>
+      </as-split-area>
+    </as-split>
+
+</sit-dict-container>
+
+  
+
+

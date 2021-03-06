@@ -9,4 +9,5 @@ export class ActionExecuteData {
     dataSetManagerSource: DataSetManager;
     componentParamsIdent: string;
     openKind: string;
+    hasInitProc: boolean;
 }

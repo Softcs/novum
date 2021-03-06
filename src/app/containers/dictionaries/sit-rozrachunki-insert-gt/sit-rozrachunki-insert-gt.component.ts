@@ -18,9 +18,6 @@ export class SitRozrachunkiInsertGTComponent implements OnInit {
 
   sitRozrachunkiInsertGTselected = [];
 
-  //modules = [MenuModule];
-  defaultColDef;
-  rowSelection;
   popupParent;
   frameworkComponents;
 
@@ -32,18 +29,6 @@ export class SitRozrachunkiInsertGTComponent implements OnInit {
 
   constructor() {
     this.popupParent = document.querySelector('body');
-    this.rowSelection = 'single';
-
-    this.defaultColDef = {
-      sortable: true,
-      filter: true,
-      resizable: true,
-      enableValue: true,
-      enableRowGroup: true,
-      enablePivot: true,
-      autoHeight: true,
-      floatingFilter: true
-    };
 
     this.frameworkComponents = {
       gridCheckboxRenderer: GridCheckboxRenderer,
@@ -64,27 +49,9 @@ export class SitRozrachunkiInsertGTComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSelectRozrachunki({ selected }) {
-    this.sitRozrachunkiInsertGTselected.splice(0, this.sitRozrachunkiInsertGTselected.length);
-    this.sitRozrachunkiInsertGTselected.push(...selected);
-  }
-
   onGridReady(params) {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
-  }
-
-  onRowClicked(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitParams');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
-
-  onFirstDataRendered(params) {
-    const allColumnIds = [];
-
-    this.gridColumnApi.getAllColumns().forEach(function(column) {
-      allColumnIds.push(column.colId);
-    });
   }
 
 }

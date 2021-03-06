@@ -1,14 +1,11 @@
 import { Component, OnInit, ViewChild, ViewChildren, QueryList, LOCALE_ID, Inject } from '@angular/core';
-import { SitDataSetContainerComponent } from '@app/components/sit-data-set-container';
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
-import { DataSetWrapper } from '@app/_models';
-import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
-import { environment } from '@environments/environment';
 import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
 import { formatDate } from '@angular/common';
 import { formatNumber } from '@angular/common';
-
+import { GridService } from '@app/_services/grid.service';
+import { sitGlobalConfig } from '@app/_consts/sit-global-config'
 @Component({
   selector: 'app-sit-payroll-components',
   templateUrl: './sit-payroll-components.component.html',
@@ -20,48 +17,39 @@ export class SitPayrollComponentsComponent implements OnInit {
   @ViewChildren('sitDictcontainer') dictContainers !: QueryList<SitDictContainerComponent>;
 
   currentUser: User;
-  rowSelection;
   popupParent;
-  defaultColDef;
-
-  gridApi;
-  gridColumnApi;
+  frameworkComponents;
   columnDefs;
-
-  gridApiAccountingDef;
-  gridColumnApiAccountingDef;
   columnDefsAccountingDef;
 
   constructor(
     private gatewayService: GatewayService,
+    private gridService: GridService,
     @Inject(LOCALE_ID) private locale: string
   ) {
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
     this.popupParent = document.querySelector('body');
-    this.rowSelection = 'single';
-
-    this.defaultColDef = {
-      sortable: true,
-      filter: false,
-      floatingFilter: false,
-      resizable: true
-    };
+    this.frameworkComponents = sitGlobalConfig.frameworkComponents;
 
     this.columnDefs = [
       { headerName: 'ID', field: 'sitPayrollComponentsId', filter: 'agNumberColumnFilter' },
-      { headerName: 'GUID', field: 'sitPayrollComponentsG', filter: 'agTextColumnFilter' },
-      { headerName: 'Identyfikator', field: 'PayrollComponentIdent', filter: 'agTextColumnFilter', width: 150 },
-      { headerName: 'Opis', field: 'PayrollComponentDesc', filter: 'agTextColumnFilter', width: 300 },
-      { headerName: 'Ident.zew.', field: 'ExtIdent01', filter: 'agTextColumnFilter', width: 200 },
+      { headerName: 'GUID', field: 'sitPayrollComponentsG' },
+      { headerName: 'Lp', field: 'OrdId', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 60, sort: 'asc',suppressMenu: true},
+      { headerName: 'Identyfikator', field: 'PayrollComponentIdent', width: 150 },
+      { headerName: 'Opis', field: 'PayrollComponentDesc', width: 300 },
+      { headerName: 'Ident.zew.', field: 'ExtIdent01', width: 200 },
+      { headerName: 'Kolumna w rozliczeniu', field: 'SettlementsColumnName', width: 200 },
     ];
 
     this.columnDefsAccountingDef = [
       { headerName: 'ID', field: 'sitPayrollComponentsAccountingDefId', filter: 'agNumberColumnFilter' },
-      { headerName: 'GUID', field: 'sitPayrollComponentsAccountingDefG', filter: 'agTextColumnFilter' },
-      { headerName: 'Ident.typu listy płac', field: 'PayrollTypeIdent', filter: 'agTextColumnFilter', width: 100 },
-      { headerName: 'Typ listy płac', field: 'PayrollTypeName', filter: 'agTextColumnFilter', width: 200 },
-      { headerName: 'Konto WN', field: 'CAccount', filter: 'agTextColumnFilter', width: 150 },
-      { headerName: 'Konto MA', field: 'DAccount', filter: 'agTextColumnFilter', width: 150 },
+      { headerName: 'GUID', field: 'sitPayrollComponentsAccountingDefG' },
+      { headerName: 'Ident.typu listy płac', field: 'PayrollTypeIdent', width: 100 },
+      { headerName: 'Typ listy płac', field: 'PayrollTypeName', width: 200 },
+      { headerName: 'Konto WN', field: 'CAccount', width: 150 },
+      { headerName: 'Konto MA', field: 'DAccount', width: 150 },
+      { headerName: 'Odwr. znak', field: 'RevSign', cellRenderer: 'gridCheckboxRenderer',width: 90 },
+      { headerName: 'Opis w księgowaniu', field: 'PosDesc', width: 150 },
     ]
 
    }
@@ -73,25 +61,15 @@ export class SitPayrollComponentsComponent implements OnInit {
   }
 
   onGridReady(params) {
-    this.gridApi = params.api;
-    this.gridColumnApi = params.columnApi;
-    this.gridColumnApi.setColumnsVisible(['sitPayrollComponentsId','sitPayrollComponentsG'], false)
-  }
+    this.gridService.setDefGridOptionsOnReady(params);
 
-  onRowClicked(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitPayrollComponents');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
-  }
+    if (params.columnApi.getColumn('sitPayrollComponentsG')) {
+      params.columnApi.setColumnsVisible(['sitPayrollComponentsId','sitPayrollComponentsG'], false)
+    }
 
-  onGridReadyAccountingDef(params) {
-    this.gridApi = params.api;
-    this.gridColumnApi = params.columnApi;
-    this.gridColumnApi.setColumnsVisible(['sitPayrollComponentsAccountingDefId','sitPayrollComponentsAccountingDefG','PayrollTypeIdent'], false)
-  }
-
-  onRowClickedAccountingDef(event) {
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitPayrollComponents');
-      dataSourceResponseWrapper.SetActiveRow(event.data);
+    if (params.columnApi.getColumn('sitPayrollComponentsAccountingDefG')) {
+      params.columnApi.setColumnsVisible(['sitPayrollComponentsAccountingDefId','sitPayrollComponentsAccountingDefG','PayrollTypeIdent'], false)
+    }
   }
 
 
