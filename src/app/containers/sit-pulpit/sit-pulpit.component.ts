@@ -36,8 +36,9 @@ export class SitPulpitComponent {
       this.excelStyles = sitGlobalConfig.excelStyles;
       this.frameworkComponents = sitGlobalConfig.frameworkComponents;
       this.rowClassRules = {
-        'today': 'data.Today === 1',
-        'dayoff': 'data.DayOff === 1'
+        'dayoff': 'data.DayOff === 1',
+        'today': 'data.Today === 1'
+
       }
 
       this.columnDefs = [
