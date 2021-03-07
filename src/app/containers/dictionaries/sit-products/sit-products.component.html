@@ -6,6 +6,9 @@
         <sit-data-input #sitControl field="SaleStatus" label="Status sprz." placeholder="" appearance="outline" showRefreshButton="true" style="width: 180px;"
           [lookupDisplayFields] = "['SaleStatus', 'SaleStatusDescription']"
         ></sit-data-input>
+        <sit-data-radio field="IsActive"
+          [buttons]="[{'caption':'Aktywny','value':1, 'checked':true},{'caption':'Nie aktywny','value':0}]"
+        ></sit-data-radio>
       </sit-data-set-container>
     </div>
     <div fxLayout="column" fxFlex>
