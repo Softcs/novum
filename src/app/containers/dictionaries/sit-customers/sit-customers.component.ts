@@ -12,7 +12,7 @@ import { formatDate } from '@angular/common';
   styleUrls: ['./sit-customers.component.scss'],
   host: {class: 'router-flex'}
 })
-export class SitCustomersComponent implements OnInit {
+export class SitCustomersComponent {
   @ViewChild('sitDictcontainer') dictContainer: SitDictContainerComponent;
   @ViewChildren('sitDictcontainer') dictContainers !: QueryList<SitDictContainerComponent>;
 
@@ -22,7 +22,8 @@ export class SitCustomersComponent implements OnInit {
   frameworkComponents;
   columnDefs;
   columnDefsHRDepartments;
-  columnDefsHRParams4Invoicing
+  columnDefsHRParams4Invoicing;
+  columnDefsCustomerCostCenter;
 
   constructor(
     private gatewayService: GatewayService,
@@ -70,10 +71,11 @@ export class SitCustomersComponent implements OnInit {
         cellRenderer: 'gridCheckboxRenderer',
       },
     ];
+    this.columnDefsCustomerCostCenter = [
+      { headerName: 'MPK', field: 'CustomerCostCenterIdent', filter: 'agTextColumnFilter', width: 150 },
+      { headerName: 'Nazwa', field: 'CustomerCostCenterName', filter: 'agTextColumnFilter', width: 300 },
+    ];
    }
-
-  ngOnInit(): void {
-  }
 
   onGridReady(params) {
     this.gridService.setDefGridOptionsOnReady(params);

@@ -104,6 +104,22 @@
                 </as-split>
               </div>
             </mat-tab>
+            <mat-tab label="MPK">
+              <div fxLayout="column" fxFill>
+                <sit-data-set-container ident="sitCostCenter4Cust" showActionsToolbar="true" #sitDataSetContainer fxFlex fxLayout="column">
+                  <div class="data-table" fxFlex>
+                    <ag-grid-angular
+                          #sitSetDataSource
+                          class="ag-theme-balham sit-grid-fill"
+                          [columnDefs]="columnDefsCustomerCostCenter"
+                          [popupParent]="popupParent"
+                          (gridReady)="onGridReady($event)"
+                        >
+                    </ag-grid-angular>
+                  </div>
+                </sit-data-set-container>  
+              </div>
+            </mat-tab>
           </mat-tab-group>
         </div>
       </as-split-area>
