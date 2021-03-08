@@ -324,16 +324,16 @@ export class SitDataSetContainerComponent {
   }
 
   public afterContentInit() {
-    this.datasSourcesInterface.forEach(element => {
-      this.gridService.setDefGridOptions(element);
+    this.datasSourcesInterface.forEach(element => {          
       if (element["gridReady"]) {
-        element["gridReady"].subscribe((params) => console.log("aaaaaa"));
+        element["gridReady"].subscribe((params) => {
+          this.gridService.setDefGridOptionsOnReady(params);
+        });
       }
     });
   }
 
   public prepareControls(dataSetWrapperDefinition: DataSetDefinitionWrapper) {
-
     this.datasSourcesInterface.forEach(element => {
       const gridApi = element["api"];
       if (gridApi) {
@@ -345,9 +345,6 @@ export class SitDataSetContainerComponent {
       actionControl.dataSetResponseWrapper = this.dataSetResponseWrapper;
       actionControl.actionDefinition = dataSetWrapperDefinition?.FindActionDefinition(actionControl.actionIdent);
       actionControl.dataSetManagerSource = this.dataSetControlsManager;
-
-
-
     });
 
     this.pepareControlForButtons(this.refreshButtons);

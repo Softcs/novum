@@ -15,11 +15,6 @@ import { basename } from 'path';
   host: {class: 'router-flex'}
 })
 export class SitCustomersComponent extends SitDictBaseComponent {
-  
-  columnDefs;
-  columnDefsHRDepartments;
-  columnDefsHRParams4Invoicing
-
   constructor(
     protected gatewayService: GatewayService,
     protected gridService: GridService,
@@ -66,14 +61,5 @@ export class SitCustomersComponent extends SitDictBaseComponent {
         cellRenderer: 'gridCheckboxRenderer',
       },
     ];
-  }
-
-  public gridReady(params): void {
-    super.gridReady(params);
-    this.gridService.setDefGridOptionsOnReady(params);
-
-    if (params.columnApi.getColumn('sitCustomersId')) {
-      params.columnApi.setColumnsVisible(['sitCustomersId','sitCustomersG'], false);
-    }
   }
 }
