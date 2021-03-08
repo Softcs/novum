@@ -26,8 +26,6 @@ export class SitDictContainerComponent implements OnInit, AfterViewInit, AfterCo
 
   constructor(private gatewayService: GatewayService) {
     this.DataSetManager =   new DataSetManager(gatewayService);
-
-
   }
 
   ngAfterViewInit(): void {
@@ -40,6 +38,7 @@ export class SitDictContainerComponent implements OnInit, AfterViewInit, AfterCo
 
   ngAfterContentInit() {
     this.DataSetManager.dataSetContainers = this.dataSetContainers;
+    this.DataSetManager.afterContentInit();    
     this.loadData();
   }
 

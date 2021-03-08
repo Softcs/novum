@@ -442,11 +442,20 @@ export class DataSetManager {
         });
     }
 
+    public afterContentInit() {
+        this.dataSetContainers.forEach(dataSetContainer => {            
+            dataSetContainer.afterContentInit();
+        });
+    }
+
     public AddRow(dataSetWrapper: DataSetWrapper, newRow: any) {
         const dataSetContainers = this.dataSetContainers.filter(ds => ds.ident == dataSetWrapper.ident);
         dataSetContainers.forEach(dataSetContainer => {
             dataSetContainer.AddRow(newRow);
         });
+    }
+
+    public prepareGrid(gridApi, ident) {
     }
 
     set dictInfo(dictInfo: DictInfoWrapper) {

@@ -51,6 +51,7 @@ import { AgGridModule } from 'ag-grid-angular';
 import 'ag-grid-enterprise';
 
 // SIT;
+import { SitDictBaseComponent } from './containers/_base/sit-dict-base/sit-dict-base.component';
 import { SitMenuListItemComponent } from './components/sit-menu-list-item/sit-menu-list-item.component';
 import { NavService } from './_services/nav.service';
 import { sitDSControlDirective, sitDataInputComponentDirective, sitDataCheckboxComponentDirective } from './_directives';
@@ -174,17 +175,14 @@ import { SitDocumentsTypesEditComponent } from './containers/dictionaries/sit-do
 import { SitAttendanceListComponent } from './containers/dictionaries/sit-attendance-list/sit-attendance-list.component';
 import { SitStatusesEditComponent } from './containers/dictionaries/sit-statuses/actions/sit-statuses-edit/sit-statuses-edit.component';
 import { SitStatusValuesEditComponent } from './containers/dictionaries/sit-statuses/actions/sit-status-values-edit/sit-status-values-edit.component';
-import { SitStatusValuesTransitionsEditComponent } from './containers/dictionaries/sit-statuses/actions/sit-status-values-transitions-edit/sit-status-values-transitions-edit.component'
-
+import { SitStatusValuesTransitionsEditComponent } from './containers/dictionaries/sit-statuses/actions/sit-status-values-transitions-edit/sit-status-values-transitions-edit.component';
 
 @NgModule({
-
   imports: [
         BrowserModule,
         ReactiveFormsModule,
         HttpClientModule,
         appRoutingModule,
-
         MatSliderModule,
         MatButtonModule,
         MatIconModule,
@@ -222,6 +220,7 @@ import { SitStatusValuesTransitionsEditComponent } from './containers/dictionari
     declarations: [
         AppComponent,
         HomeComponent,
+        SitDictBaseComponent,
         SitPulpitComponent,
         LoginComponent,
         SitRailConfigurationsComponent,

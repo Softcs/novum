@@ -1,5 +1,5 @@
 import { Component, Input, ContentChildren, ViewChildren,
-  QueryList, Output, EventEmitter, ViewChild} from '@angular/core';
+  QueryList, Output, EventEmitter, ViewChild, AfterContentInit} from '@angular/core';
 import { DataSetWrapper, DataSetManager } from '@app/_models';
 import { SitDataBaseComponent } from '../controls/sit-data-base/sit-data-base.component';
 import { sitSetDataSetDirective } from '@app/_directives/sitSetDataSetDirective';
@@ -23,6 +23,8 @@ export class SitDataSetContainerComponent {
   private _errors: any[];
   private activeRowSubscription: Subscription;
   private identityFieldName: string = "__Identity__";
+  dataSetResponseWrapper: DataSetWrapper;
+
   @ContentChildren('sitSetDataSource', { descendants: true})
   datasSourcesInterface: QueryList<sitSetDataSetDirective>;
 
@@ -41,9 +43,14 @@ export class SitDataSetContainerComponent {
   @ContentChildren(SitFilesButtonComponent, { descendants: true })
   filesButtons!: QueryList<SitFilesButtonComponent>;
 
-  @Input() ident: string;
-  dataSetResponseWrapper: DataSetWrapper;
-  @Input() showActionsToolbar: boolean = false; // czy pokazywac w widoku actions-toolbar
+  @Input() 
+  ident: string;  
+  
+  @Input()
+  showActionsToolbar: boolean = false; // czy pokazywac w widoku actions-toolbar
+
+  @Input()
+  gridColumnsIdent: string; // identyfikator kolumn - jak pusty to bierze ident
 
   @Output()
   activeRowChanged: EventEmitter<any> = new EventEmitter<any>();
@@ -56,7 +63,7 @@ export class SitDataSetContainerComponent {
   constructor(
     private gridService: GridService
   ) {}
-
+  
   clearErrors() {
     this.errors?.splice(0, this.errors?.length);
   }
@@ -118,6 +125,10 @@ export class SitDataSetContainerComponent {
     });
   }
 
+  private prepareGrid(gridApi, ident) {
+    return this.dataSetControlsManager.prepareGrid(gridApi, ident);
+  }
+
   private applyCustomPropsGrid(element) {
     var self = this;
     const gridApi = element["api"];
@@ -130,10 +141,11 @@ export class SitDataSetContainerComponent {
       customProperty = {};
       customProperty.activeRow = null;
       if (gridApi.gridOptionsWrapper) {
+        var gridOptions = gridApi.gridOptionsWrapper.gridOptions;
         var rowClassRules = gridApi.gridOptionsWrapper.rowClassRules();
         if (!rowClassRules) {
           rowClassRules = {};
-          gridApi.gridOptionsWrapper.gridOptions.rowClassRules = rowClassRules;
+          gridOptions.rowClassRules = rowClassRules;
         }
 
         rowClassRules["sit-row-active"] = function(params) {
@@ -141,20 +153,21 @@ export class SitDataSetContainerComponent {
         }
 
         var isPivotMode = this.isPivotMode(gridApi);
-        gridApi.gridOptionsWrapper.gridOptions.onRowClicked = function(event) { 
+        gridOptions.onRowClicked = function(event) { 
           if (!isPivotMode) {
             self.dataSetResponseWrapper.SetActiveRow(event.data);
           }
-        }
+        }      
       
-      
-        gridApi.gridOptionsWrapper.gridOptions.onCellClicked = function(event) {   
+        gridOptions.onCellClicked = function(event) {   
           if (isPivotMode && event.colDef.pivotKeys) {
             const index = event.colDef.pivotKeys-1;
             const rowFromCell = event.node.allLeafChildren[index].data;      
             self.dataSetResponseWrapper.SetActiveRow(rowFromCell);
           }
-        }      
+        } 
+
+        this.prepareGrid(gridApi, this.ident);
       }
 
       gridApi.SeidoCustomProperty = customProperty;
@@ -171,8 +184,8 @@ export class SitDataSetContainerComponent {
         if (prevRow && row) {
           rowsToUpdate.push(prevRow);
         }
+
         this.redrawGridActiveRow(gridApi, prevRow);
-        //gridApi.applyTransaction({update:rowsToUpdate});
       });
     }
 
@@ -310,12 +323,21 @@ export class SitDataSetContainerComponent {
     }
   }
 
+  public afterContentInit() {
+    this.datasSourcesInterface.forEach(element => {
+      this.gridService.setDefGridOptions(element);
+      if (element["gridReady"]) {
+        element["gridReady"].subscribe((params) => console.log("aaaaaa"));
+      }
+    });
+  }
+
   public prepareControls(dataSetWrapperDefinition: DataSetDefinitionWrapper) {
 
     this.datasSourcesInterface.forEach(element => {
       const gridApi = element["api"];
       if (gridApi) {
-        this.gridService.setDefGridOptions (element);
+        this.gridService.setDefGridOptions(element);
       }
     });
 
