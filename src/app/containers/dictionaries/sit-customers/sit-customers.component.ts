@@ -1,13 +1,7 @@
-import { Component, OnInit, ViewChild, LOCALE_ID, ViewChildren, QueryList, Inject } from '@angular/core';
-import { SitDictContainerComponent } from '@app/components/sit-dict-container';
-import { User } from '@app/_models';
-import { GatewayService } from '@app/_services';
-import { GridService } from '@app/_services/grid.service';
-import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
+import { Component } from '@angular/core';
 import { formatNumber } from '@angular/common';
 import { formatDate } from '@angular/common';
 import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-dict-base.component';
-import { basename } from 'path';
 @Component({
   selector: 'app-sit-customers',
   templateUrl: './sit-customers.component.html',
@@ -15,15 +9,7 @@ import { basename } from 'path';
   host: {class: 'router-flex'}
 })
 export class SitCustomersComponent extends SitDictBaseComponent {
-  constructor(
-    protected gatewayService: GatewayService,
-    protected gridService: GridService,
-    @Inject(LOCALE_ID) protected locale: string
-  ) {
-      super(gatewayService, gridService, locale);        
-   }
-
-  public prepareColumnsDefinitnion() {
+   public prepareColumnsDefinitnion() {
     this.gridColumnsDefinition["sitCustomers"] = [
       //{ headerName: 'ID', field: 'sitCustomersId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100 },
       //{ headerName: 'GUID', field: 'sitCustomersG', filter: 'agTextColumnFilter', width: 100 },
