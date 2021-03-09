@@ -11,14 +11,14 @@ import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-di
 export class SitCustomersComponent extends SitDictBaseComponent {
    public prepareColumnsDefinitnion() {
     this.gridColumnsDefinition["sitCustomers"] = [
-      //{ headerName: 'ID', field: 'sitCustomersId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100 },
-      //{ headerName: 'GUID', field: 'sitCustomersG', filter: 'agTextColumnFilter', width: 100 },
+      { headerName: 'ID', field: 'sitCustomersId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, defaultVisiblity: false },
+      { headerName: 'GUID', field: 'sitCustomersG', filter: 'agTextColumnFilter', width: 100, defaultVisiblity: false },
       { headerName: 'Identyfikator', field: 'CustIdent', filter: 'agTextColumnFilter', width: 200 },
       { headerName: 'Nazwa', field: 'CustName', tooltipField: 'CustName', width: 300 },
       { headerName: 'NIP', field: 'VATId', width: 100 },
       { headerName: 'Miasto', field: 'City', width: 100 },
       { headerName: 'Kraj', field: 'CountrySymbol', width: 80 },
-      { headerName: 'Status WMS', field: 'Status_WMS', width: 100 },
+      { headerName: 'Status WMS', field: 'Status_WMS', width: 100 }
     ];
 
     this.gridColumnsDefinition["sitHRDepartments4Cust"] =  [
@@ -27,25 +27,16 @@ export class SitCustomersComponent extends SitDictBaseComponent {
     ];
     
     this.gridColumnsDefinition["sitHRParams4Invoicing"] = [
-      { headerName: 'Od dnia', field: 'DateFrom', filter: 'agTextColumnFilter', autoHeight: true, width: 100, sort: 'desc',suppressMenu: true,
-        cellRenderer: function(params) {
-          return formatDate(params.value, 'yyyy-MM-dd', this.locale)
-        }
-      },
+      { headerName: 'Od dnia', field: 'DateFrom', filter: 'agTextColumnFilter', autoHeight: true, width: 100, sort: 'desc',suppressMenu: true, 
+        renderType: "date"}, // domyslny format yyyy-MM-dd - mozna przeciazyc przez np. renderFormat: "yyyy-MM-dd"
       { headerName: 'Składnik', field: 'PayrollComponentName', width: 110, sort: 'asc',suppressMenu: true, },
       { headerName: 'Rodzaj', field: 'MarkupKindName', width: 100,suppressMenu: true },
       { headerName: 'Próg', field: 'Threshold', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 100, sort: 'asc',suppressMenu: true},
-      { headerName: 'Wartość', field: 'Value', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true,
-        cellRenderer: function(params) {
-          return params.value === null ? null : formatNumber(params.value, this.locale,'1.2-2')
-        }
-      },
-      { headerName: 'ZUS', field: 'ZUS', filter: 'agSetColumnFilter', type: 'numericColumn', suppressMenu: true, width: 60,
-        cellRenderer: 'gridCheckboxRenderer',
-      },
-      { headerName: 'Rekr. klienta', field: 'CustRecr', filter: 'agSetColumnFilter', type: 'numericColumn', suppressMenu: true, width: 100,
-        cellRenderer: 'gridCheckboxRenderer',
-      },
+      { headerName: 'Wartość', field: 'Value', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true,  
+        renderType: "number", renderFormat: '1.2-2'}, // domyslny format 1.2-2 - mozna przeciazyc przez np. renderFormat: 1.2-2"
+      { headerName: 'ZUS', field: 'ZUS', filter: 'agSetColumnFilter', type: 'numericColumn', suppressMenu: true, width: 60, renderType: "checkbox"},
+      { headerName: 'Rekr. klienta', field: 'CustRecr', filter: 'agSetColumnFilter', type: 'numericColumn', suppressMenu: true, width: 100, 
+        renderType: "checkbox"},
     ];
   }
 }

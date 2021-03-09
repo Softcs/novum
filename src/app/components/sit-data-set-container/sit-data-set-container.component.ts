@@ -328,6 +328,7 @@ export class SitDataSetContainerComponent {
       if (element["gridReady"]) {
         element["gridReady"].subscribe((params) => {
           this.gridService.setDefGridOptionsOnReady(params);
+          //params.columnApi.setColumnsVisible(['sitCompanyDepartmentsId','sitCompanyDepartmentsG'], false) 
         });
       }
     });

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChildren, QueryList, ViewChild, ContentChildren, Directive, ElementRef,
+import { Component, OnInit, Input, QueryList, ViewChild, ContentChildren,
           EventEmitter, Output, AfterContentInit, AfterViewInit } from '@angular/core';
 import { GatewayService } from '../../_services/gateway.service';
 import { Operation, DictInfoWrapper, DataSetManager } from '@app/_models';
