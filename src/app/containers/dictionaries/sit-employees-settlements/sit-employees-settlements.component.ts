@@ -59,6 +59,9 @@ export class SitEmployeesSettlementsComponent implements OnInit {
       { headerName: 'Opis prac', field: 'WorkDesc', tooltipField: 'WorkDesc',  width: 100,
         cellClass: ['font12','textFormat']
       },
+      { headerName: 'MPK', field: 'CustomerCostCenterIdent', tooltipField: 'CustomerCostCenterIdent',  width: 100,
+        cellClass: ['font12','textFormat']
+      },
       { headerName: 'Status ZUS', field: 'StatusZUSDesc',  width: 100,
         cellClass: ['font12','textFormat']
       },

@@ -84,6 +84,7 @@ import { SitStatusesEditComponent } from '@app/containers/dictionaries/sit-statu
 import { SitStatusValuesEditComponent } from '@app/containers/dictionaries/sit-statuses/actions/sit-status-values-edit/sit-status-values-edit.component';
 import { SitStatusValuesTransitionsEditComponent } from '@app/containers/dictionaries/sit-statuses/actions/sit-status-values-transitions-edit/sit-status-values-transitions-edit.component';
 import { SitCostcenter4CustEditComponent } from '@app/containers/dictionaries/sit-customers/actions/sit-costcenter4-cust-edit/sit-costcenter4-cust-edit.component';
+import { SitEmployeesSettlementsEditComponent } from '@app/containers/dictionaries/sit-employees-settlements/actions/sit-employees-settlements-edit/sit-employees-settlements-edit.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -173,7 +174,8 @@ export class FactoryService {
         sitStatusesEdit: SitStatusesEditComponent,
         sitStatusValuesEdit: SitStatusValuesEditComponent,
         sitStatusValuesTransitionsEdit: SitStatusValuesTransitionsEditComponent,
-        sitCostCenter4CustEdit: SitCostcenter4CustEditComponent
+        sitCostCenter4CustEdit: SitCostcenter4CustEditComponent,
+        sitEmployeesSettlementsEdit: SitEmployeesSettlementsEditComponent
     };
 
     public GetFactory(ident: string) {
