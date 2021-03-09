@@ -76,7 +76,7 @@ export class SitProductsComponent implements OnInit {
     this.gridService.setDefGridOptionsOnReady(params);
   }
 
-
+  // tego nie ruszac
   activeRowProductsChanged(activeRow) {
     this.link = activeRow?.sitImagesG == null
       ? this.attachmentsService.getUrl(this.currentUser, "noimage", "noimage.jpg") // kiedy brak rekordu

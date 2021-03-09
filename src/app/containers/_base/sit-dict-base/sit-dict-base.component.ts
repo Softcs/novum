@@ -2,6 +2,7 @@ import { formatDate, formatNumber } from '@angular/common';
 import { AfterViewInit, Component, Inject, LOCALE_ID, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
+import { sitGlobalConfig } from '@app/_consts/sit-global-config';
 import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
 import { GridService } from '@app/_services/grid.service';
@@ -16,7 +17,6 @@ export class SitDictBaseComponent implements OnInit, AfterViewInit {
   @ViewChildren('sitDictcontainer') dictContainers !: QueryList<SitDictContainerComponent>;
   
   public popupParent;
-  public frameworkComponents;
   public currentUser: User;
   public gridColumnsDefinition = {};
 
@@ -62,6 +62,7 @@ export class SitDictBaseComponent implements OnInit, AfterViewInit {
               return formatDate(params.value, renderFormat, locale);
             }
           }
+          
           if (column.renderType == "number") {            
             if (!renderFormat) {
               renderFormat = '1.2-2';
@@ -70,7 +71,11 @@ export class SitDictBaseComponent implements OnInit, AfterViewInit {
             column["cellRenderer"] = function(params) {            
               return params.value === null ? null : formatNumber(params.value, locale, renderFormat);
             }
-          }          
+          }  
+
+          if (column.renderType == "sitGridCellRenderer") {
+            column["cellRendererFramework"] = sitGlobalConfig.frameworkComponents
+          }        
         });
 
         gridApi.setColumnDefs(columns);   

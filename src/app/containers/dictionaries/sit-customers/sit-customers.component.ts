@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import { formatNumber } from '@angular/common';
-import { formatDate } from '@angular/common';
 import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-dict-base.component';
 @Component({
   selector: 'app-sit-customers',
