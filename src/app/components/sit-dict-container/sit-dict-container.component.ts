@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChildren, QueryList, ViewChild, ContentChildren, Directive, ElementRef,
+import { Component, OnInit, Input, QueryList, ViewChild, ContentChildren,
           EventEmitter, Output, AfterContentInit, AfterViewInit } from '@angular/core';
 import { GatewayService } from '../../_services/gateway.service';
 import { Operation, DictInfoWrapper, DataSetManager } from '@app/_models';
@@ -26,8 +26,6 @@ export class SitDictContainerComponent implements OnInit, AfterViewInit, AfterCo
 
   constructor(private gatewayService: GatewayService) {
     this.DataSetManager =   new DataSetManager(gatewayService);
-
-
   }
 
   ngAfterViewInit(): void {
@@ -40,6 +38,7 @@ export class SitDictContainerComponent implements OnInit, AfterViewInit, AfterCo
 
   ngAfterContentInit() {
     this.DataSetManager.dataSetContainers = this.dataSetContainers;
+    this.DataSetManager.afterContentInit();    
     this.loadData();
   }
 

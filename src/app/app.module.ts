@@ -52,6 +52,7 @@ import { AgGridModule } from 'ag-grid-angular';
 import 'ag-grid-enterprise';
 
 // SIT;
+import { SitDictBaseComponent } from './containers/_base/sit-dict-base/sit-dict-base.component';
 import { SitMenuListItemComponent } from './components/sit-menu-list-item/sit-menu-list-item.component';
 import { NavService } from './_services/nav.service';
 import { sitDSControlDirective, sitDataInputComponentDirective, sitDataCheckboxComponentDirective } from './_directives';
@@ -181,14 +182,12 @@ import { SitEmployeesSettlementsEditComponent } from './containers/dictionaries/
 
 
 @NgModule({
-
   imports: [
         NgxJsonViewerModule,
         BrowserModule,
         ReactiveFormsModule,
         HttpClientModule,
         appRoutingModule,
-
         MatSliderModule,
         MatButtonModule,
         MatIconModule,
@@ -226,6 +225,7 @@ import { SitEmployeesSettlementsEditComponent } from './containers/dictionaries/
     declarations: [
         AppComponent,
         HomeComponent,
+        SitDictBaseComponent,
         SitPulpitComponent,
         LoginComponent,
         SitRailConfigurationsComponent,
