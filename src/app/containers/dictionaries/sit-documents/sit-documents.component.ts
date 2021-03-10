@@ -1,10 +1,5 @@
-import { Component, OnInit, ViewChild, AfterViewInit, ViewChildren, QueryList  } from '@angular/core';
-import { SitDictContainerComponent } from '@app/components/sit-dict-container';
-import { DataSetWrapper } from '@app/_models';
-import { environment } from '@environments/environment';
-import { User } from '@app/_models';
-import { GatewayService } from '@app/_services';
-import { GridService } from '@app/_services/grid.service';
+import { Component } from '@angular/core';
+import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-dict-base.component';
 
 @Component({
   selector: 'app-sit-documents',
@@ -12,27 +7,12 @@ import { GridService } from '@app/_services/grid.service';
   styleUrls: ['./sit-documents.component.scss'],
   host: {class: 'router-flex'}
 })
-export class SitDocumentsComponent implements OnInit {
-  @ViewChild('sitDictcontainer') dictContainer: SitDictContainerComponent;
-  @ViewChildren('sitDictcontainer') dictContainers !: QueryList<SitDictContainerComponent>;
-
-  currentUser: User;
-  popupParent;
-  columnDefsDocumentsHeaders;
-  pinnedBottomRowDataDocumentsHeaders;
-  columnDefsDocumentsPositions;
-  columnDefsDocumentsVATFooter;
-
-  constructor(
-    private gatewayService: GatewayService,
-    private gridService: GridService
-    ) {
-      this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
-      this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
-      this.popupParent = document.querySelector('body');
+export class SitDocumentsComponent extends SitDictBaseComponent {
+  public prepareColumnsDefinitnion() {
+    
 
       //definicja kolumn nagłówków dowodów
-      this.columnDefsDocumentsHeaders = [
+      this.gridColumnsDefinition["sitDocumentsHeaders"] = [
         { headerName: 'Numer', field: 'DocumentNumber', sortable: true, resizable: true, filter: 'agTextColumnFilter' },
         { headerName: 'Data', field: 'DocumentDate', filter: 'agTextColumnFilter' },
         { headerName: 'Data sprz.', field: 'SalesDate', filter: 'agTextColumnFilter' },
@@ -45,7 +25,7 @@ export class SitDocumentsComponent implements OnInit {
       ];
 
       //definicja kolumn pozycji dowodów
-      this.columnDefsDocumentsPositions = [
+      this.gridColumnsDefinition["sitDocumentsPositions"] = [
         { headerName: 'Lp', field: 'OrdNumber', type: 'numericColumn', sortable: true, resizable: true, suppressMenu: true, width: 50 },
         { headerName: 'Identyfikator', field: 'ProductIdent', filter: 'agTextColumnFilter', width: 130, floatingFilter: true },
         { headerName: 'EAN', field: 'EAN', filter: 'agTextColumnFilter', width: 120, floatingFilter: true },
@@ -56,20 +36,12 @@ export class SitDocumentsComponent implements OnInit {
       ];
 
       //definicja kolumn stopki vat
-      this.columnDefsDocumentsVATFooter = [
+      this.gridColumnsDefinition["sitDocumentsVATFooters"] = [
         { headerName: 'SV', field: 'VATRatesIdent', suppressMenu: true, flex: 1 },
         { headerName: 'Netto', field: 'Net', type: 'numericColumn', suppressMenu: true, flex: 2 },
         { headerName: 'Vat', field: 'VAT', type: 'numericColumn', suppressMenu: true, flex: 2 },
         { headerName: 'Brutto', field: 'Gross', type: 'numericColumn', suppressMenu: true, flex: 2 },
-      ];
+      ]
 
-    }
-
-
-  ngOnInit(): void {
-  }
-
-  onGridReady(params) {
-    this.gridService.setDefGridOptionsOnReady(params);
-  }
+  } 
 }
