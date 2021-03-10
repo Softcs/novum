@@ -15,35 +15,35 @@ import { GridService } from '@app/_services/grid.service';
 export class SitDictBaseComponent implements OnInit, AfterViewInit {
   @ViewChild('sitDictcontainer') dictContainer: SitDictContainerComponent;
   @ViewChildren('sitDictcontainer') dictContainers !: QueryList<SitDictContainerComponent>;
-  
+
   public popupParent;
   public currentUser: User;
   public gridColumnsDefinition = {};
 
-  constructor(    
+  constructor(
     protected gatewayService: GatewayService,
     protected gridService: GridService,
-    @Inject(LOCALE_ID) protected locale: string) { 
+    @Inject(LOCALE_ID) protected locale: string) {
       this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
       this.popupParent = document.querySelector('body');
-   
+
       this.prepareColumnsDefinitnion();
     }
 
   ngAfterViewInit(): void {
-    this.prepareGrid();    
+    this.prepareGrid();
   }
 
   ngOnInit(): void {
-    
+
     this.dictInit()
   }
-  
+
   private prepareGrid() {
-    var gridColumnsDefinition = this.gridColumnsDefinition;    
+    var gridColumnsDefinition = this.gridColumnsDefinition;
     var locale = this.locale;
     this.dictContainer.DataSetManager.prepareGrid = function(gridApi, ident) {
-      if (!gridApi.getColumnDefs() || gridApi.getColumnDefs().length == 0) {          
+      if (!gridApi.getColumnDefs() || gridApi.getColumnDefs().length == 0) {
         var columns = gridColumnsDefinition[ident];
         var renderColumns = columns.filter( c => c.renderType);
         renderColumns.forEach(column => {
@@ -58,36 +58,36 @@ export class SitDictBaseComponent implements OnInit, AfterViewInit {
               renderFormat = 'yyyy-MM-dd';
             }
 
-            column["cellRenderer"] = function(params) {              
+            column["cellRenderer"] = function(params) {
               return formatDate(params.value, renderFormat, locale);
             }
           }
-          
-          if (column.renderType == "number") {            
+
+          if (column.renderType == "number") {
             if (!renderFormat) {
               renderFormat = '1.2-2';
             }
 
-            column["cellRenderer"] = function(params) {            
-              return params.value === null ? null : formatNumber(params.value, locale, renderFormat);
+            column["cellRenderer"] = function(params) {
+              return params.value === null ? null : formatNumber(params.value, locale, renderFormat).replace(/[,]/g,' ');
             }
-          }  
+          }
 
           if (column.renderType == "sitGridCellRenderer") {
             column["cellRendererFramework"] = sitGlobalConfig.frameworkComponents
-          }        
+          }
         });
 
-        gridApi.setColumnDefs(columns);   
+        gridApi.setColumnDefs(columns);
         var hiddenColumns = columns.filter(c => c.defaultVisiblity === false).map(c => c.field);
         gridApi.columnController.setColumnsVisible(hiddenColumns, false);
-      }      
-      gridApi.setPopupParent(this.popupParent);             
-      
+      }
+      gridApi.setPopupParent(this.popupParent);
+
     }
   }
 
-  
+
 
   public dictInit(): void {
 
