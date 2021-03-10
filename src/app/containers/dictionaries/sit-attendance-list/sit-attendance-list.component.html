@@ -8,9 +8,8 @@
     </sit-data-set-container>
     <sit-data-set-container ident="sitAttendanceList" showActionsToolbar="true" fxFlex fxLayout="column" >
       <div fxLayout="row" class="sit-params-bar">
-        <sit-data-label type="text" #sitControl field="EmployeeName" label="Pracownik:" valueWidth="200"></sit-data-label>
-        <sit-data-label type="text" #sitControl field="Date" label="Data:" valueWidth="130"></sit-data-label>
-        <sit-data-label type="text" #sitControl field="AbsenceName" label="Rodzaj nieobecności:"></sit-data-label>
+        <sit-data-label type="text" #sitControl field="Date" label="Data:" valueWidth="100"></sit-data-label>
+        <sit-data-label type="text" #sitControl field="EmployeeName" label="Pracownik:" valueWidth="250"></sit-data-label>
       </div>
       <div class="data-table" fxFlex>
         <ag-grid-angular
@@ -18,14 +17,8 @@
           #sitAppUsersGrid
           style="width: 100%; height: 100%;"
           class="ag-theme-balham"
-          [columnDefs]="columnDefs"
-          [popupParent]="popupParent"
-          [frameworkComponents]="frameworkComponents"
-          [pivotMode]="false"
-          [autoGroupColumnDef]="autoGroupColumnDef"
-          [pivotHeaderHeight]='0'
-          [suppressRowClickSelection]="true"
           (gridReady)="onGridReady($event)"
+          (cellClicked)="onCellClicked($event)"
         >
         </ag-grid-angular>
       </div>
