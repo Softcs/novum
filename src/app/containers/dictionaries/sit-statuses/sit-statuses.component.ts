@@ -1,10 +1,5 @@
-import { Component, OnInit, ViewChild, ViewChildren, QueryList, Inject, LOCALE_ID  } from '@angular/core';
-import { SitDictContainerComponent } from '@app/components/sit-dict-container';
-import { DataSetWrapper } from '@app/_models';
-import { User } from '@app/_models';
-import { GatewayService } from '@app/_services';
-import { GridService } from '@app/_services/grid.service';
-import { formatDate } from '@angular/common';
+import { Component } from '@angular/core';
+import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-dict-base.component';
 
 @Component({
   selector: 'app-sit-statuses',
@@ -12,26 +7,9 @@ import { formatDate } from '@angular/common';
   styleUrls: ['./sit-statuses.component.scss'],
   host: {class: 'router-flex'}
 })
-export class SitStatusesComponent implements OnInit {
-  @ViewChild('sitDictcontainer') dictContainer: SitDictContainerComponent;
-  @ViewChildren('sitDictcontainer') dictContainers !: QueryList<SitDictContainerComponent>;
-
-
-  popupParent;
-  columnDefs;
-  columnDefsStatusValues;
-  columnDefsStatusValuesTransitions;
-
-
-  constructor(
-    private gridService: GridService,
-    @Inject(LOCALE_ID) private locale: string,
-  ) {
-    this.popupParent = document.querySelector('body');
-
-
-    this.columnDefs = [
-
+export class SitStatusesComponent extends SitDictBaseComponent {
+  public prepareColumnsDefinitnion() {
+   this.gridColumnsDefinition["sitStatuses"] = [
       { headerName: 'sitStatusesG', field: 'sitStatusesG', flex: 1 },
       { headerName: 'StatusIdent', field: 'StatusIdent', flex: 1},
       { headerName: 'StatusName', field: 'StatusName',toolTip: 'StatusName', flex: 1 },
@@ -39,7 +17,7 @@ export class SitStatusesComponent implements OnInit {
       { headerName: 'ColumnName', field: 'ColumnName', flex: 1 },
     ];
 
-    this.columnDefsStatusValues= [
+    this.gridColumnsDefinition["sitStatusValues"] = [
 
       { headerName: 'ValueIdent', field: 'ValueIdent', type: "numericColumn", filter: 'agNumberColumnFilter', flex: 1  },
       { headerName: 'ValueName', field: 'ValueName', filter: 'agTextColumnFilter', flex: 1  },
@@ -47,7 +25,8 @@ export class SitStatusesComponent implements OnInit {
       { headerName: 'IsDefault', field: 'IsDefault', filter: 'agTextColumnFilter', flex: 1  },
 
     ];
-    this.columnDefsStatusValuesTransitions = [
+    this.gridColumnsDefinition["sitStatusValuesTransitions"] = [
+
 
       { headerName: 'sitStatusValuesId_From', field: 'sitStatusValuesId_From', type: "numericColumn", filter: 'agNumberColumnFilter', flex: 1  },
       { headerName: 'sitStatusValuesId_To', field: 'sitStatusValuesId_To', type: "numericColumn", filter: 'agNumberColumnFilter', flex: 1  },
@@ -59,14 +38,6 @@ export class SitStatusesComponent implements OnInit {
 
     ];
 
-
-
    }
 
-  ngOnInit(): void {
-  }
-  onGridReady(params) {
-    this.gridService.setDefGridOptionsOnReady(params);
-
-  }
-}
+ }
