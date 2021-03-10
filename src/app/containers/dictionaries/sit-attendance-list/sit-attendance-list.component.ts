@@ -42,10 +42,10 @@ export class SitAttendanceListComponent implements OnInit {
     };
 
     this.columnDefs = [
-      { headerName: 'Nazwisko', field: 'EmployeeName', flex: 4, suppressMenu: true, rowGroup: true,},
+      { headerName: 'Nazwisko', field: 'EmployeeName', flex: 4, suppressMenu: true,},
       // { headerName: '__Identity__', field: '__Identity__',  flex: 4, suppressMenu: true, rowGroup: true, hide: true},
-      { headerName: 'Dzień', field: 'Day', suppressMenu: true, pivot: true  },
-      { headerName: 'Obecny', field: 'Present',  flex: 1, suppressMenu: true,cellRenderer: 'gridCheckboxRenderer', aggFunc: 'sum',},
+      { headerName: 'Dzień', field: 'Day', suppressMenu: true },
+      { headerName: 'Obecność', field: 'Ident',  flex: 1, suppressMenu: true},
     ]
   }
 
@@ -60,7 +60,7 @@ export class SitAttendanceListComponent implements OnInit {
 
   refreshAfter(dataSourceManager) {
     this.dataSourceResponseWrapper = dataSourceManager?.getDateSourceWrapper("sitAttendanceList");
-    console.log(this.dataSourceResponseWrapper.activeRow)
+    console.log(this.dataSourceResponseWrapper.rows)
   }
 
   onCellClicked(e){

@@ -1,3 +1,4 @@
+import { NgxJsonViewerModule } from 'ngx-json-viewer';
 import { NgModule } from '@angular/core';
 import { BrowserModule, Title } from '@angular/platform-browser';
 
@@ -182,6 +183,7 @@ import { SitEmployeesSettlementsEditComponent } from './containers/dictionaries/
 @NgModule({
 
   imports: [
+        NgxJsonViewerModule,
         BrowserModule,
         ReactiveFormsModule,
         HttpClientModule,

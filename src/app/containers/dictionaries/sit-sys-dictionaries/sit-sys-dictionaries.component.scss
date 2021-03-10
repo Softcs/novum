@@ -11,3 +11,13 @@
 #tab-group mat-tab-body {
   flex-grow: 1;
 }
+
+
+div.json{
+  overflow: hidden;
+  height: calc(100vh - 130px);
+}
+
+::ng-deep .ngx-json-viewer{
+  overflow: auto !important;
+}

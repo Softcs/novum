@@ -22,6 +22,7 @@ export class SitSysDictionariesComponent implements OnInit {
   columnDefs;
   columnDefsDatasources;
   columnDefsActions;
+  json;
 
   constructor(
     private gatewayService: GatewayService,
@@ -59,6 +60,10 @@ export class SitSysDictionariesComponent implements OnInit {
    }
 
   ngOnInit(): void {
+  }
+
+  activeRowChanged(activeRow) {
+    this.json = activeRow?.DictionaryInfo == null ? JSON.parse('') :  JSON.parse(activeRow.DictionaryInfo) ;
   }
 
   onGridReady(params) {

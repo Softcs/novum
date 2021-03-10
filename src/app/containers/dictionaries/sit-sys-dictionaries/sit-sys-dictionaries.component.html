@@ -3,7 +3,9 @@
     <div fxLayout="column" fxFlex=40>
       <div class="sit-grid-title">Dictionaries</div>
       <sit-data-set-container ident="sitFilterSysDictionaries" >
-        <sit-data-input #sitControl field="searchSysDictionaries" label="Filtruj" appearance="outline" style="width: 300px" showRefreshButton="true"></sit-data-input>
+        <div class="sit-filter-bar">
+          <sit-data-input #sitControl field="searchSysDictionaries" label="Filtruj" appearance="outline" style="width: 300px" showRefreshButton="true"></sit-data-input>
+        </div>
       </sit-data-set-container>
       <sit-data-set-container ident="sitSysDictionaries" showActionsToolbar="true" fxFlex fxLayout="column">
         <div class="data-table" fxFlex>
@@ -28,7 +30,9 @@
           <div fxLayout="column" fxFlex=50>
             <div class="sit-grid-title">Datasources</div>
             <sit-data-set-container ident="sitFilterSysDatasources" >
-              <sit-data-input #sitControl field="searchSysDatasources" label="Filtruj" appearance="outline" style="width: 300px" showRefreshButton="true"></sit-data-input>
+              <div class="sit-filter-bar">
+                <sit-data-input #sitControl field="searchSysDatasources" label="Filtruj" appearance="outline" style="width: 300px" showRefreshButton="true"></sit-data-input>
+              </div>
             </sit-data-set-container>
             <sit-data-set-container ident="sitSysDatasources" showActionsToolbar="true" fxFlex fxLayout="column">
               <div class="data-table" fxFlex>
@@ -49,7 +53,9 @@
             <div fxLayout="column" fxFlex=50>
               <div class="sit-grid-title">Actions</div>
               <sit-data-set-container ident="sitFilterSysActions" >
-                <sit-data-input #sitControl field="searchSysActions" label="Filtruj" appearance="outline" style="width: 300px" showRefreshButton="true"></sit-data-input>
+                <div class="sit-filter-bar">
+                  <sit-data-input #sitControl field="searchSysActions" label="Filtruj" appearance="outline" style="width: 300px" showRefreshButton="true"></sit-data-input>
+                </div>
               </sit-data-set-container>
               <sit-data-set-container ident="sitSysActions" showActionsToolbar="true" fxFlex fxLayout="column">
                 <div class="data-table" fxFlex>
@@ -74,6 +80,13 @@
           <sit-data-set-container ident="sitSysDictionaries" fxLayout="column" fxFill>
             <div fxLayout="row" fxFill>
               <sit-data-textarea type="textarea" #sitControl field="DictionaryInfo" label="" appearance="outline" [readonly]=true fxFill></sit-data-textarea>
+            </div>
+          </sit-data-set-container>
+        </mat-tab>
+        <mat-tab label="JSON">
+          <sit-data-set-container ident="sitSysDictionaries" fxLayout="column" (activeRowChanged)="activeRowChanged($event)" fxFill>
+            <div class="json">
+              <ngx-json-viewer [json]="json"></ngx-json-viewer>
             </div>
           </sit-data-set-container>
         </mat-tab>
