@@ -20,9 +20,7 @@
                       #sitDocumentsHeadersGrid
                       style="width: 100%; height: 100%;"
                       class="ag-theme-balham"
-                      [columnDefs]="columnDefsDocumentsHeaders"
-                      [popupParent]="popupParent"
-                      (gridReady)="onGridReady($event)"
+                      
                     >
                     </ag-grid-angular>
                   </div>
@@ -38,11 +36,8 @@
                       #sitDocumentsPositionsGrid
                       style="width: 100%; height: 100%;"
                       class="ag-theme-balham"
-                      [columnDefs]="columnDefsDocumentsPositions"
-                      [popupParent]="popupParent"
-                      [frameworkComponents]="frameworkComponents"
                       [rowClassRules]="rowClassRules"
-                      (gridReady)="onGridReady($event)"
+                      
                     >
                     </ag-grid-angular>
                   </div>
@@ -62,9 +57,7 @@
                     #sitAttachmentsGrid
                     style="width: 100%; height: 100%;"
                     class="ag-theme-balham"
-                    [columnDefs]="columnDefsAttachments"
-                    [popupParent]="popupParent"
-                    (gridReady)="onGridReady($event)"
+                    
                   >
                   </ag-grid-angular>
                 </div>
