@@ -11,12 +11,12 @@ import { formatDate } from '@angular/common';
 import { GridService } from '@app/_services/grid.service';
 
 @Component({
-  selector: 'app-sit-stocks',
-  templateUrl: './sit-stocks.component.html',
-  styleUrls: ['./sit-stocks.component.scss'],
+  selector: 'app-wms-sit-stocks',
+  templateUrl: './sit-wms-stocks.component.html',
+  styleUrls: ['./sit-wms-stocks.component.scss'],
   host: {class: 'router-flex'}
 })
-export class SitStocksComponent implements OnInit {
+export class SitWmsStocksComponent implements OnInit {
   @ViewChild('sitDictcontainer') dictContainer: SitDictContainerComponent;
   @ViewChildren('sitDictcontainer') dictContainers !: QueryList<SitDictContainerComponent>;
 
