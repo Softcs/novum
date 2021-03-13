@@ -6,13 +6,20 @@ import { GridService } from '@app/_services/grid.service';
 import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-dict-base.component';
 
 @Component({
-  selector: 'app-sit-stocks',
-  templateUrl: './sit-stocks.component.html',
-  styleUrls: ['./sit-stocks.component.scss'],
+  selector: 'app-wms-sit-stocks',
+  templateUrl: './sit-wms-stocks.component.html',
+  styleUrls: ['./sit-wms-stocks.component.scss'],
   host: {class: 'router-flex'}
 })
+<<<<<<< HEAD:src/app/containers/dictionaries/sit-stocks/sit-stocks.component.ts
 export class SitStocksComponent extends SitDictBaseComponent {
  
+=======
+export class SitWmsStocksComponent implements OnInit {
+  @ViewChild('sitDictcontainer') dictContainer: SitDictContainerComponent;
+  @ViewChildren('sitDictcontainer') dictContainers !: QueryList<SitDictContainerComponent>;
+
+>>>>>>> 9648a74acea46e7ee462f09283fa9383d7e3fdfa:src/app/containers/dictionaries/sit-wms-stocks/sit-wms-stocks.component.ts
   currentUser: User;
   link;
   ean;

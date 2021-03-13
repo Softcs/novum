@@ -30,7 +30,7 @@ import { SitSysDictionariesComponent } from './../containers/dictionaries/sit-sy
 import { SitProjectsPubRegisterWorkTimeComponent } from './../containers/dictionaries/sit-projects-pub/actions/sit-projects-pub-register-work-time/sit-projects-pub-register-work-time.component';
 import { SitWarehousesEditComponent } from './../containers/dictionaries/sit-warehouses/actions/sit-warehouses-edit/sit-warehouses-edit.component';
 import { SitWarehousesComponent } from './../containers/dictionaries/sit-warehouses/sit-warehouses.component';
-import { SitLogisticUnitsEditComponent } from './../containers/dictionaries/sit-stocks/actions/sit-logistic-units-edit/sit-logistic-units-edit.component';
+import { SitLogisticUnitsEditComponent } from '../containers/dictionaries/sit-wms-stocks/actions/sit-logistic-units-edit/sit-logistic-units-edit.component';
 import { SitJobStepsEditComponent } from './../containers/dictionaries/sit-jobs/actions/sit-job-steps-edit/sit-job-steps-edit.component';
 import { SitJobsEditComponent } from './../containers/dictionaries/sit-jobs/actions/sit-jobs-edit/sit-jobs-edit.component';
 import { SitJobsComponent } from './../containers/dictionaries/sit-jobs/sit-jobs.component';
@@ -41,7 +41,7 @@ import { SitAppUsersComponent } from './../containers/dictionaries/sit-app-users
 import { SitReturnsGetdataComponent } from './../containers/dictionaries/sit-returns/actions/sit-returns-getdata/sit-returns-getdata.component';
 import { SitReturnsComponent } from './../containers/dictionaries/sit-returns/sit-returns.component';
 import { SitAttachmentsInsComponent } from './../containers/dictionaries/sit-kancelaria/actions/sit-attachments-ins/sit-attachments-ins.component';
-import { SitStocksComponent } from './../containers/dictionaries/sit-stocks/sit-stocks.component';
+import { SitWmsStocksComponent } from '../containers/dictionaries/sit-wms-stocks/sit-wms-stocks.component';
 import { SitParamsComponent } from './../containers/dictionaries/sit-params/sit-params.component';
 import { SitUserAccountChangePasswordComponent } from './../containers/dictionaries/sit-user-account/actions/sit-user-account-change-password/sit-user-account-change-password.component';
 import { SitCustomersEditComponent } from './../containers/dictionaries/sit-customers/actions/sit-customers-edit/sit-customers-edit.component';
@@ -112,7 +112,7 @@ export class FactoryService {
         sitUserAccoutChangePassword: SitUserAccountChangePasswordComponent,
         sitParams: SitParamsComponent,
         sitParamsEdit: SitParamsEditComponent,
-        sitStocks: SitStocksComponent,
+        sitStocks: SitWmsStocksComponent,
         sitWmsDocs: SitWmsDocsComponent,
         sitAttachmentsIns: SitAttachmentsInsComponent,
         sitReturns: SitReturnsComponent,
