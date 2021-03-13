@@ -26,8 +26,6 @@ export class SitProductsComponent extends SitDictBaseComponent {
     super(gatewayService, gridService, locale);
 
     this.contentColor = document.documentElement.style.getPropertyValue('$content-background-color');
-    this.popupParent = document.querySelector('body');
-
   }
   public prepareColumnsDefinitnion() {   
     this.gridColumnsDefinition["sitProducts"] = [

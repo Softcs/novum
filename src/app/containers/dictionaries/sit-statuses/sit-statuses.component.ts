@@ -18,16 +18,14 @@ export class SitStatusesComponent extends SitDictBaseComponent {
     ];
 
     this.gridColumnsDefinition["sitStatusValues"] = [
-
       { headerName: 'ValueIdent', field: 'ValueIdent', type: "numericColumn", filter: 'agNumberColumnFilter', flex: 1  },
       { headerName: 'ValueName', field: 'ValueName', filter: 'agTextColumnFilter', flex: 1  },
       { headerName: 'Order', field: 'Order', type: "numericColumn", filter: 'agNumberColumnFilter', flex: 1  },
       { headerName: 'IsDefault', field: 'IsDefault', filter: 'agTextColumnFilter', flex: 1  },
 
     ];
+
     this.gridColumnsDefinition["sitStatusValuesTransitions"] = [
-
-
       { headerName: 'sitStatusValuesId_From', field: 'sitStatusValuesId_From', type: "numericColumn", filter: 'agNumberColumnFilter', flex: 1  },
       { headerName: 'sitStatusValuesId_To', field: 'sitStatusValuesId_To', type: "numericColumn", filter: 'agNumberColumnFilter', flex: 1  },
       { headerName: 'IsActive', field: 'IsActive', type: "numericColumn", filter: 'agNumberColumnFilter', flex: 1  },

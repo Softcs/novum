@@ -1,14 +1,9 @@
-import { Component, OnInit, ViewChild, ViewChildren, QueryList, Inject, LOCALE_ID  } from '@angular/core';
-import { SitDictContainerComponent } from '@app/components/sit-dict-container';
-import { DataSetWrapper } from '@app/_models';
+import { Component, Inject, LOCALE_ID  } from '@angular/core';
 import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
-import { environment } from '@environments/environment';
-import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
 import { AttachmentsService } from '@app/_services/attachments.service';
-import { formatNumber } from '@angular/common';
-import { formatDate } from '@angular/common';
 import { GridService } from '@app/_services/grid.service';
+import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-dict-base.component';
 
 @Component({
   selector: 'app-sit-stocks',
@@ -16,48 +11,34 @@ import { GridService } from '@app/_services/grid.service';
   styleUrls: ['./sit-stocks.component.scss'],
   host: {class: 'router-flex'}
 })
-export class SitStocksComponent implements OnInit {
-  @ViewChild('sitDictcontainer') dictContainer: SitDictContainerComponent;
-  @ViewChildren('sitDictcontainer') dictContainers !: QueryList<SitDictContainerComponent>;
-
+export class SitStocksComponent extends SitDictBaseComponent {
+ 
   currentUser: User;
   link;
   ean;
   locationIdent;
   logisticUnitEAN;
-  popupParent;
-  frameworkComponents;
   contentColor;
-  columnDefs;
-  columnDefsWMSStocksDet;
-  columnDefsWMSStocks;
-  columnDefsLogisticUnits;
-  columnDefsWMSStocksWithLogisticUnits;
-
+ 
   constructor(
-    private gatewayService: GatewayService,
+    protected gatewayService: GatewayService,
     private attachmentsService: AttachmentsService,
-    private gridService: GridService,
-    @Inject(LOCALE_ID) private locale: string
+    protected gridService: GridService,
+    @Inject(LOCALE_ID) protected locale: string
   ) {
+    super(gatewayService,gridService,locale);
     this.contentColor = document.documentElement.style.getPropertyValue('$content-background-color');
-    this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
-    this.popupParent = document.querySelector('body');
-    this.frameworkComponents = {
-      gridCheckboxRenderer: GridCheckboxRenderer,
     };
 
-    this.columnDefs = [
+    public prepareColumnsDefinitnion() {   
+      this.gridColumnsDefinition["sitStocks"] = [
       { headerName: 'Produkt / Towar',
         children: [
           { headerName: 'Identyfikator', field: 'ProductIdent', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 150 },
           { headerName: 'EAN', field: 'EAN', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 120 },
           { headerName: 'Nazwa', field: 'ProductName', tooltipField: 'ProductName', filter: 'agTextColumnFilter', width: 300 },
           { headerName: 'Waga', field: 'Weight', type: 'numericColumn', sortable: true, filter: 'agTextColumnFilter', floatingFilter: false, width: 80,
-            cellRenderer: function(params) {
-            return formatNumber(params.data["Weight"], locale,'1.3-3')
-            }
-          },
+          renderType: "number", renderFormat: '1.3-3'},
         ]
       },
       { headerName: 'Stany',
@@ -80,13 +61,13 @@ export class SitStocksComponent implements OnInit {
 
     ];
 
-    this.columnDefsWMSStocksDet = [
+    this.gridColumnsDefinition["sitWMSStocksDet"] = [
       { headerName: 'Lokalizacja', field: 'LocationIdent', sortable: true, filter: 'agTextColumnFilter', floatingFilter: false },
       { headerName: 'Stan - MWS', field: 'Quantity', sortable: true, filter: 'agTextColumnFilter', floatingFilter: false },
       { headerName: "Typ lokalizacji", field: 'LocationTypeDesc', sortable: true, filter: 'agTextColumnFilter', floatingFilter: false },
     ];
 
-    this.columnDefsWMSStocks = [
+    this.gridColumnsDefinition["sitWMSStocks"] = [
       { headerName: 'Produkt / Towar',
         children: [
           { headerName: 'Identyfikator', field: 'ProductIdent', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 150 },
@@ -94,10 +75,7 @@ export class SitStocksComponent implements OnInit {
           { headerName: 'Nazwa', field: 'ProductName', tooltipField: 'ProductName', filter: 'agTextColumnFilter', width: 300 },
           { headerName: 'Waga', field: 'Weight', filter: 'agNumberColumnFilter', width: 80,
             type: 'numericColumn',
-            cellRenderer: function(params) {
-            return formatNumber(params.data["Weight"], locale,'1.3-3')
-            }
-          }
+            renderType: "number", renderFormat: '1.3-3'},
         ]
       },
       { headerName: 'Magazyn',
@@ -121,16 +99,16 @@ export class SitStocksComponent implements OnInit {
       },
     ];
 
-    this.columnDefsLogisticUnits = [
-      { headerName: 'Id', field: 'sitLogisticUnitsId', sortable: true, resizable: true, type: "numericColumn", filter: 'agNumberColumnFilter' },
-      { headerName: 'GUID', field: 'sitLogisticUnitsG', sortable: true, resizable: true, filter: 'agTextColumnFilter' },
+    this.gridColumnsDefinition["sitLogisticUnits"] = [
+      { headerName: 'Id', field: 'sitLogisticUnitsId', sortable: true, resizable: true, type: "numericColumn", filter: 'agNumberColumnFilter',  defaultVisiblity: false },
+      { headerName: 'GUID', field: 'sitLogisticUnitsG', sortable: true, resizable: true, filter: 'agTextColumnFilter',  defaultVisiblity: false },
       { headerName: 'EAN', field: 'LogisticUnitEAN', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 110 },
       { headerName: "Lokalizacja", field: 'LocationIdent', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 150 },
       { headerName: 'Opis', field: 'LogisticUnitDesc', tooltipField: 'LogisticUnitDesc', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 400 },
 
     ];
 
-    this.columnDefsWMSStocksWithLogisticUnits = [
+    this.gridColumnsDefinition["sitWMSStocksWithLogisticUnits"] = [
       { headerName: 'Produkt / Towar',
         children: [
           { headerName: 'Identyfikator', field: 'ProductIdent', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 150 },
@@ -156,17 +134,6 @@ export class SitStocksComponent implements OnInit {
 
     ]
 
-
-  }
-
-  ngOnInit(): void {
-  }
-
-  onGridReady(params) {
-    this.gridService.setDefGridOptionsOnReady(params);
-    if (params.columnApi.getColumn('sitLogisticUnitsG')) {
-      params.columnApi.setColumnsVisible(['sitLogisticUnitsId','sitLogisticUnitsG'],false)
-    }
 
   }
 
