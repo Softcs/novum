@@ -1,40 +1,23 @@
-import { Component, OnInit, ViewChild, ViewChildren, QueryList  } from '@angular/core';
-import { SitDictContainerComponent } from '@app/components/sit-dict-container';
+import { Component, } from '@angular/core';
 import { DataSetWrapper } from '@app/_models';
-import { environment } from '@environments/environment';
 import { User } from '@app/_models';
-import { GatewayService } from '@app/_services';
-import { AttachmentsService } from '@app/_services/attachments.service';
-import { MatSpinner } from '@angular/material/progress-spinner';
-import { GridService } from '@app/_services/grid.service';
+import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-dict-base.component';
+
 @Component({
   selector: 'app-sit-projects-pub',
   templateUrl: './sit-projects-pub.component.html',
   styleUrls: ['./sit-projects-pub.component.scss'],
   host: {class: 'router-flex'}
 })
-export class SitProjectsPubComponent implements OnInit {
-  @ViewChild('sitDictcontainer') dictContainer: SitDictContainerComponent;
-  @ViewChildren('sitDictcontainer') dictContainers !: QueryList<SitDictContainerComponent>;
-  @ViewChild('sitProjectsPub') table: any;
 
+
+export class SitProjectsPubComponent extends SitDictBaseComponent {
+ 
   currentUser: User;
   Link: any;
 
-  popupParent;
-  columnDefsProjectsPub;
-
-
-
-  constructor(
-    private gatewayService: GatewayService,
-    private attachmentsService: AttachmentsService,
-    private gridService: GridService
-    ) {
-      this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
-      this.popupParent = document.querySelector('body');
-
-      this.columnDefsProjectsPub = [
+      public prepareColumnsDefinitnion() {
+        this.gridColumnsDefinition["sitProjectsPub"] = [
         { headerName: 'Projekt', field: 'ProjectIdent', sortable: true, flex: 1, filter: 'agTextColumnFilter', autoHeight: true,
           cellRenderer: function(params) {
             return '<h6>' + params.data["ProjectName"] + '</h6>' + '<b>ID: </b>' + params.data["ProjectIdent"] + ' &nbsp&nbsp<b>EAN: </b>' + params.data["EAN"]
@@ -43,14 +26,7 @@ export class SitProjectsPubComponent implements OnInit {
       ];
 
    }
-
-  ngOnInit(): void {
-  }
-
-  onGridReady(params) {
-    this.gridService.setDefGridOptionsOnReady(params);
-  }
-
+  
   activeRowProjectsPubChanged(activeRow) {
     this.Link = activeRow?.sitImagesG == null
     ? this.attachmentsService.getUrl(this.currentUser, "noimage", "noimage.jpg") // kiedy brak rekordu

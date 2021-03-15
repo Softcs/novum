@@ -115,12 +115,8 @@ export class SitWmsStocksComponent extends SitDictBaseComponent {
         ],
       },
       { headerName: 'Stan', field: 'Quantity', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100 },
-
     ]
-
-
   }
-
   activeRowStocksChanged(activeRow) {
     this.link = activeRow?.sitImagesG == null
       ? this.attachmentsService.getUrl(this.currentUser, "noimage", "noimage.jpg") // kiedy brak rekordu

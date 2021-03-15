@@ -1,9 +1,5 @@
 import { Component, Inject, LOCALE_ID } from '@angular/core';
 import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-dict-base.component';
-import { GatewayService } from '@app/_services';
-import { AttachmentsService } from '@app/_services/attachments.service';
-import { GridService } from '@app/_services/grid.service';
-
 
 @Component({
   selector: 'app-sit-products',

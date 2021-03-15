@@ -1,37 +1,16 @@
-import { Component, OnInit, ViewChild, ViewChildren, QueryList, LOCALE_ID, Inject } from '@angular/core';
-import { SitDictContainerComponent } from '@app/components/sit-dict-container';
-import { User } from '@app/_models';
-import { GatewayService } from '@app/_services';
-import { formatDate } from '@angular/common';
-import { formatNumber } from '@angular/common';
-import { GridService } from '@app/_services/grid.service';
-import { sitGlobalConfig } from '@app/_consts/sit-global-config'
+import { Component } from '@angular/core';
+import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-dict-base.component';
+
 @Component({
   selector: 'app-sit-payroll-components',
   templateUrl: './sit-payroll-components.component.html',
   styleUrls: ['./sit-payroll-components.component.scss'],
   host: {class: 'router-flex'}
 })
-export class SitPayrollComponentsComponent implements OnInit {
-  @ViewChild('sitDictcontainer') dictContainer: SitDictContainerComponent;
-  @ViewChildren('sitDictcontainer') dictContainers !: QueryList<SitDictContainerComponent>;
-
-  currentUser: User;
-  popupParent;
-  frameworkComponents;
-  columnDefs;
-  columnDefsAccountingDef;
-
-  constructor(
-    private gatewayService: GatewayService,
-    private gridService: GridService,
-    @Inject(LOCALE_ID) private locale: string
-  ) {
-    this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
-    this.popupParent = document.querySelector('body');
-    this.frameworkComponents = sitGlobalConfig.frameworkComponents;
-
-    this.columnDefs = [
+export class SitPayrollComponentsComponent extends SitDictBaseComponent {
+  
+  public prepareColumnsDefinitnion() {
+    this.gridColumnsDefinition["sitPayrollComponents"] = [
       { headerName: 'ID', field: 'sitPayrollComponentsId', filter: 'agNumberColumnFilter' },
       { headerName: 'GUID', field: 'sitPayrollComponentsG' },
       { headerName: 'Lp', field: 'OrdId', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 60, sort: 'asc',suppressMenu: true},
@@ -41,7 +20,7 @@ export class SitPayrollComponentsComponent implements OnInit {
       { headerName: 'Kolumna w rozliczeniu', field: 'SettlementsColumnName', width: 200 },
     ];
 
-    this.columnDefsAccountingDef = [
+    this.gridColumnsDefinition["sitPayrollComponentsAccountingDef"] = [
       { headerName: 'ID', field: 'sitPayrollComponentsAccountingDefId', filter: 'agNumberColumnFilter' },
       { headerName: 'GUID', field: 'sitPayrollComponentsAccountingDefG' },
       { headerName: 'Ident.typu listy płac', field: 'PayrollTypeIdent', width: 100 },
@@ -53,9 +32,6 @@ export class SitPayrollComponentsComponent implements OnInit {
     ]
 
    }
-
-  ngOnInit(): void {
-  }
 
   onFirstDataRendered(params) {
   }
