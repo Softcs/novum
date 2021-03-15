@@ -1,3 +1,4 @@
+import { NgxJsonViewerModule } from 'ngx-json-viewer';
 import { NgModule } from '@angular/core';
 import { BrowserModule, Title } from '@angular/platform-browser';
 
@@ -95,7 +96,7 @@ import { SitCustomersEditComponent } from './containers/dictionaries/sit-custome
 import { SitUserAccountChangePasswordComponent } from './containers/dictionaries/sit-user-account/actions/sit-user-account-change-password/sit-user-account-change-password.component';
 import { SitParamsComponent } from './containers/dictionaries/sit-params/sit-params.component';
 import { GridCheckboxRenderer } from './components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
-import { SitStocksComponent } from './containers/dictionaries/sit-stocks/sit-stocks.component';
+import { SitWmsStocksComponent } from './containers/dictionaries/sit-wms-stocks/sit-wms-stocks.component';
 import { SitWmsDocsComponent } from '@app/containers/dictionaries/sit-wms-docs/sit-wms-docs.component';
 import { SitRefreshButtonComponent } from './components/controls/sit-refresh-button/sit-refresh-button.component';
 import { SitFilesButtonComponent } from './components/controls/sit-files-button/sit-files-button.component';;
@@ -114,7 +115,7 @@ import { SitJobsComponent } from './containers/dictionaries/sit-jobs/sit-jobs.co
 import { SitJobsEditComponent } from './containers/dictionaries/sit-jobs/actions/sit-jobs-edit/sit-jobs-edit.component';
 import { SitJobStepsEditComponent } from './containers/dictionaries/sit-jobs/actions/sit-job-steps-edit/sit-job-steps-edit.component';
 import { SitPdfViewerComponent } from './components/controls/sit-pdf-viewer/sit-pdf-viewer.component';
-import { SitLogisticUnitsEditComponent } from './containers/dictionaries/sit-stocks/actions/sit-logistic-units-edit/sit-logistic-units-edit.component';
+import { SitLogisticUnitsEditComponent } from './containers/dictionaries/sit-wms-stocks/actions/sit-logistic-units-edit/sit-logistic-units-edit.component';
 import { SitWarehousesComponent } from './containers/dictionaries/sit-warehouses/sit-warehouses.component';
 import { SitWarehousesEditComponent } from './containers/dictionaries/sit-warehouses/actions/sit-warehouses-edit/sit-warehouses-edit.component';
 import { SitProjectsPubRegisterWorkTimeComponent } from './containers/dictionaries/sit-projects-pub/actions/sit-projects-pub-register-work-time/sit-projects-pub-register-work-time.component';
@@ -176,9 +177,15 @@ import { SitAttendanceListComponent } from './containers/dictionaries/sit-attend
 import { SitStatusesEditComponent } from './containers/dictionaries/sit-statuses/actions/sit-statuses-edit/sit-statuses-edit.component';
 import { SitStatusValuesEditComponent } from './containers/dictionaries/sit-statuses/actions/sit-status-values-edit/sit-status-values-edit.component';
 import { SitStatusValuesTransitionsEditComponent } from './containers/dictionaries/sit-statuses/actions/sit-status-values-transitions-edit/sit-status-values-transitions-edit.component';
+import { SitCostcenter4CustEditComponent } from './containers/dictionaries/sit-customers/actions/sit-costcenter4-cust-edit/sit-costcenter4-cust-edit.component';
+import { SitEmployeesSettlementsEditComponent } from './containers/dictionaries/sit-employees-settlements/actions/sit-employees-settlements-edit/sit-employees-settlements-edit.component';
+import { SitStockForWarehousesAndRestGroupComponent } from './containers/dictionaries/sit-stock-for-warehouses-and-rest-group/sit-stock-for-warehouses-and-rest-group.component';
+import { SitStocksComponent } from './containers/dictionaries/sit-stocks/sit-stocks.component'
+
 
 @NgModule({
   imports: [
+        NgxJsonViewerModule,
         BrowserModule,
         ReactiveFormsModule,
         HttpClientModule,
@@ -271,7 +278,7 @@ import { SitStatusValuesTransitionsEditComponent } from './containers/dictionari
         SitUserAccountChangePasswordComponent,
         SitParamsComponent,
         GridCheckboxRenderer,
-        SitStocksComponent,
+        SitWmsStocksComponent,
         SitWmsDocsComponent,
         SitButtonBaseComponent,
         SitAttachmentsInsComponent ,
@@ -341,7 +348,11 @@ import { SitStatusValuesTransitionsEditComponent } from './containers/dictionari
         SitAttendanceListComponent,
         SitStatusesEditComponent,
         SitStatusValuesEditComponent,
-        SitStatusValuesTransitionsEditComponent
+        SitStatusValuesTransitionsEditComponent,
+        SitCostcenter4CustEditComponent,
+        SitEmployeesSettlementsEditComponent,
+        SitStockForWarehousesAndRestGroupComponent,
+        SitStocksComponent
 
     ],
     providers: [

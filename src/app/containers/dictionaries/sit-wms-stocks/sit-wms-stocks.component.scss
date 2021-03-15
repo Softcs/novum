@@ -10,14 +10,11 @@
 }
 #tab-group mat-tab-body {
   flex-grow: 1;
+
 }
 
-
-div.json{
-  overflow: hidden;
-  height: calc(100vh - 130px);
-}
-
-::ng-deep .ngx-json-viewer{
-  overflow: auto !important;
+img {
+  -webkit-box-shadow: 7px 7px 6px -2px rgba(0,0,0,0.59);
+  -moz-box-shadow: 7px 7px 6px -2px rgba(0,0,0,0.59);
+  box-shadow: 7px 7px 6px -2px rgba(0,0,0,0.59);
 }

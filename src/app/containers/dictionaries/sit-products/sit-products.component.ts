@@ -12,24 +12,11 @@ import { GridService } from '@app/_services/grid.service';
   host: {class: 'router-flex'}
 })
 export class SitProductsComponent extends SitDictBaseComponent {
-  
+
   link;
   ean;
-  contentColor;
-  
-  constructor(
-    protected gatewayService: GatewayService,
-    private attachmentsService: AttachmentsService,
-    protected gridService: GridService,
-    @Inject(LOCALE_ID) protected locale: string
-  ) {
-    super(gatewayService, gridService, locale);
 
-    this.contentColor = document.documentElement.style.getPropertyValue('$content-background-color');
-    this.popupParent = document.querySelector('body');
-
-  }
-  public prepareColumnsDefinitnion() {   
+  public prepareColumnsDefinitnion() {
     this.gridColumnsDefinition["sitProducts"] = [
       { headerName: 'Identyfikator', field: 'ProductIdent', filter: 'agTextColumnFilter', width: 150, },
       { headerName: 'EAN', field: 'EAN', filter: 'agTextColumnFilter', width: 120 },
