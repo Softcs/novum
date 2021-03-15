@@ -179,7 +179,8 @@ import { SitStatusValuesEditComponent } from './containers/dictionaries/sit-stat
 import { SitStatusValuesTransitionsEditComponent } from './containers/dictionaries/sit-statuses/actions/sit-status-values-transitions-edit/sit-status-values-transitions-edit.component';
 import { SitCostcenter4CustEditComponent } from './containers/dictionaries/sit-customers/actions/sit-costcenter4-cust-edit/sit-costcenter4-cust-edit.component';
 import { SitEmployeesSettlementsEditComponent } from './containers/dictionaries/sit-employees-settlements/actions/sit-employees-settlements-edit/sit-employees-settlements-edit.component';
-import { SitStockForWarehousesAndRestGroupComponent } from './containers/dictionaries/sit-stock-for-warehouses-and-rest-group/sit-stock-for-warehouses-and-rest-group.component'
+import { SitStockForWarehousesAndRestGroupComponent } from './containers/dictionaries/sit-stock-for-warehouses-and-rest-group/sit-stock-for-warehouses-and-rest-group.component';
+import { SitStocksComponent } from './containers/dictionaries/sit-stocks/sit-stocks.component'
 
 
 @NgModule({
@@ -350,7 +351,8 @@ import { SitStockForWarehousesAndRestGroupComponent } from './containers/diction
         SitStatusValuesTransitionsEditComponent,
         SitCostcenter4CustEditComponent,
         SitEmployeesSettlementsEditComponent,
-        SitStockForWarehousesAndRestGroupComponent
+        SitStockForWarehousesAndRestGroupComponent,
+        SitStocksComponent
 
     ],
     providers: [

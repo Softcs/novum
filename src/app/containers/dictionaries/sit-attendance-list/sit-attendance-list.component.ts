@@ -177,7 +177,11 @@ export class SitAttendanceListComponent extends SitDictBaseComponent {
 
   refreshAfter(dataSourceManager) {
     this.dataSourceResponseWrapper = dataSourceManager?.getDateSourceWrapper("sitAttendanceList");
-    const days=this.dataSourceResponseWrapper.activeRow['DaysCount'];
+
+    if (!this.dataSourceResponseWrapper.activeRow['DaysCount'])
+      { return };
+
+    const days= this.dataSourceResponseWrapper.activeRow['DaysCount'];
 
     if (days === 31) {
       this.columnApi.setColumnsVisible(['29','30','31'],true);
@@ -216,5 +220,14 @@ export class SitAttendanceListComponent extends SitDictBaseComponent {
       }
       }
     )
+  }
+
+  getPrintout() {
+    //generuje wydruk w nowej zakładce
+    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitFilter');
+    var params = dataSourceResponseWrapper.activeRow;
+    var url;
+    url = this.apiUrl + '/service/show/anonymous/report/' + this.companyGUID + '/05E9CF82-B0D3-4189-9431-3F119A17F5BE';
+    window.open(url, "_blank");
   }
 }

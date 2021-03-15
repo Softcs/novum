@@ -1,4 +1,4 @@
-<sit-dict-container ident="sitStocks" #sitDictcontainer fxFill>
+<sit-dict-container ident="sitWmsStocks" #sitDictcontainer fxFill>
   <div fxLayout="column" fxFill class="content">
     <sit-data-set-container ident="sitStocks" showActionsToolbar="true">
     </sit-data-set-container>
@@ -8,9 +8,9 @@
           <div fxLayout="column" fxFill class="content">
             <sit-data-set-container ident="sitFilterStocks" fxLayout="row">
               <div class="sit-filter-bar" fxLayout="row">
-                  <sit-data-input #sitControl id="searchStocks" field="searchStocks" label="Filtruj produkty" placeholder="Identyfikator, nazwa" appearance="outline" style="width: 300px;"></sit-data-input>
-                  <sit-data-input #sitControl id="searchStocks" field="WarehouseIdent" label="Magazyn" placeholder="" appearance="outline" style="width: 150px;"></sit-data-input>
-                  <sit-data-input #sitControl id="searchStocks" field="SaleStatus" label="Status sprz." placeholder="" appearance="outline" style="width: 200px;" showRefreshButton="true"
+                  <sit-data-input #sitControl field="searchStocks" label="Filtruj produkty" placeholder="Identyfikator, nazwa" appearance="outline" style="width: 300px;"></sit-data-input>
+                  <sit-data-input #sitControl field="WarehouseIdent" label="Magazyn" placeholder="" appearance="outline" style="width: 150px;"></sit-data-input>
+                  <sit-data-input #sitControl field="SaleStatus" label="Status sprz." placeholder="" appearance="outline" style="width: 200px;" showRefreshButton="true"
                     [lookupDisplayFields] = "['SaleStatus', 'SaleStatusDescription']"
                   ></sit-data-input>
               </div>
@@ -24,10 +24,9 @@
                       <sit-data-set-container ident="sitStocks" (activeRowChanged)="activeRowStocksChanged($event)">
                         <ag-grid-angular #sitSetDataSource
                           #agGrid
-                          id="gridStocks"
                           style="width: 100%; height: 100%;"
                           class="ag-theme-balham"
-                          > 
+                          >
                         </ag-grid-angular>
                       </sit-data-set-container>
                     </div>
@@ -37,7 +36,6 @@
                       <div fxFlex="60">
                         <ag-grid-angular #sitSetDataSource
                           #agGrid
-                          id="gridWMSStocksDet"
                           style="width: 100%; height: 100%;"
                           class="ag-theme-balham"
                           >
@@ -77,14 +75,13 @@
           <div fxFill fxLayout="column" class="content">
             <sit-data-set-container ident="sitFilterWMSStocks" fxLayout="row">
               <div class="sit-filter-bar">
-                  <sit-data-input #sitControl id="searchWMSStocks" field="searchWMSStocks" label="Filtruj" placeholder="produkt, lokalizacja" appearance="outline" style="width: 300px;" showRefreshButton="true"></sit-data-input>
+                  <sit-data-input #sitControl field="searchWMSStocks" label="Filtruj" placeholder="produkt, lokalizacja" appearance="outline" style="width: 300px;" showRefreshButton="true"></sit-data-input>
               </div>
             </sit-data-set-container>
 
             <sit-data-set-container ident="sitWMSStocks" fxFlex>
               <ag-grid-angular #sitSetDataSource
                 #agGrid
-                id="gridWMSStocks"
                 style="width: 100%; height: 100%;"
                 class="ag-theme-balham"
                 >
@@ -107,7 +104,6 @@
                   <div class="data-table" fxFlex>
                     <ag-grid-angular #sitSetDataSource
                       #agGrid
-                      id="gridLogisticUnits"
                       style="width: 100%; height: 100%;"
                       class="ag-theme-balham"
                       >
@@ -132,7 +128,6 @@
                     <sit-data-set-container  ident="sitWMSStocksWithLogisticUnits" fxFill>
                       <ag-grid-angular #sitSetDataSource fxFlex
                         #agGrid
-                        id="gridWMSStocksWithLogisticUnits"
                         style="width: 100%; height: 100%;"
                         class="ag-theme-balham"
                         >
@@ -141,7 +136,7 @@
                   </mat-tab>
                   <mat-tab label="Wydruk etykiety">
                     <sit-data-set-container  ident="sitLogisticUnits" fxFill fxLayout="column">
-                      <sit-pdf-viewer #sitControl id="sitLogisticUnitsG" field="sitLogisticUnitsG" fxFill></sit-pdf-viewer>
+                      <sit-pdf-viewer #sitControl field="sitLogisticUnitsG" fxFill></sit-pdf-viewer>
                     </sit-data-set-container>
                   </mat-tab>
                 </mat-tab-group>

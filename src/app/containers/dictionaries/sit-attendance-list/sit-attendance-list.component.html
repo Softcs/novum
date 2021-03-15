@@ -7,14 +7,16 @@
       </div>
     </sit-data-set-container>
     <sit-data-set-container ident="sitAttendanceList" showActionsToolbar="true" fxFlex fxLayout="column" >
-      <div fxLayout="row" class="sit-params-bar">
-        <sit-data-label type="text" #sitControl field="Date" label="Data:" valueWidth="100"></sit-data-label>
-        <sit-data-label type="text" #sitControl field="EmployeeName" label="Pracownik:" valueWidth="250"></sit-data-label>
+      <div fxLayout="row" class="sit-params-bar" fxLayoutAlign="space-between center">
+        <div fxLayout="row" >
+          <sit-data-label type="text" #sitControl field="Date" label="Data:" valueWidth="100"></sit-data-label>
+          <sit-data-label type="text" #sitControl field="EmployeeName" label="Pracownik:" valueWidth="250"></sit-data-label>
+        </div>
+        <button mat-stroked-button color="primary" (click)="getPrintout()"><mat-icon>print</mat-icon> Drukuj listę</button>
       </div>
       <div class="data-table" fxFlex>
         <ag-grid-angular
           #sitSetDataSource
-          #sitAppUsersGrid
           style="width: 100%; height: 100%;"
           class="ag-theme-balham"
           (gridReady)="onGridReady($event)"

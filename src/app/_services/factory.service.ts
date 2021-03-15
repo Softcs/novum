@@ -86,6 +86,7 @@ import { SitStatusValuesTransitionsEditComponent } from '@app/containers/diction
 import { SitCostcenter4CustEditComponent } from '@app/containers/dictionaries/sit-customers/actions/sit-costcenter4-cust-edit/sit-costcenter4-cust-edit.component';
 import { SitEmployeesSettlementsEditComponent } from '@app/containers/dictionaries/sit-employees-settlements/actions/sit-employees-settlements-edit/sit-employees-settlements-edit.component';
 import { SitStockForWarehousesAndRestGroupComponent } from '@app/containers/dictionaries/sit-stock-for-warehouses-and-rest-group/sit-stock-for-warehouses-and-rest-group.component';
+import { SitStocksComponent } from '@app/containers/dictionaries/sit-stocks/sit-stocks.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -112,7 +113,8 @@ export class FactoryService {
         sitUserAccoutChangePassword: SitUserAccountChangePasswordComponent,
         sitParams: SitParamsComponent,
         sitParamsEdit: SitParamsEditComponent,
-        sitStocks: SitWmsStocksComponent,
+        sitWmsStocks: SitWmsStocksComponent,
+        sitStocks: SitStocksComponent,
         sitWmsDocs: SitWmsDocsComponent,
         sitAttachmentsIns: SitAttachmentsInsComponent,
         sitReturns: SitReturnsComponent,
