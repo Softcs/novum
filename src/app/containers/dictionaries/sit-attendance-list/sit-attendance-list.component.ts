@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-dict-base.component';
 import { DataSetWrapper } from '@app/_models';
-import { data } from 'jquery';
+
 @Component({
   selector: 'app-sit-attendance-list',
   templateUrl: './sit-attendance-list.component.html',
@@ -225,9 +225,8 @@ export class SitAttendanceListComponent extends SitDictBaseComponent {
   getPrintout() {
     //generuje wydruk w nowej zakładce
     const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitFilter');
-    var params = dataSourceResponseWrapper.activeRow;
-    var url;
-    url = this.apiUrl + '/service/show/anonymous/report/' + this.companyGUID + '/05E9CF82-B0D3-4189-9431-3F119A17F5BE';
-    window.open(url, "_blank");
+    var url = this.urlService.getSecureRepUrl('22663809-36B6-71D5-4E60-07896B1A4BDA', 'dict', '05E9CF82-B0D3-4189-9431-3F119A17F5BE', dataSourceResponseWrapper.activeRow);
+    window.open(url, '','height=700, width=1400, left=100,top=100');
+
   }
 }
