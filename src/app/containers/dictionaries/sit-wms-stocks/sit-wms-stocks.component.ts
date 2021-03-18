@@ -22,7 +22,7 @@ export class SitWmsStocksComponent extends SitDictBaseComponent {
         { headerName: 'EAN', field: 'EAN', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 120 },
         { headerName: 'Nazwa', field: 'ProductName', tooltipField: 'ProductName', filter: 'agTextColumnFilter', width: 300 },
         { headerName: 'Waga', field: 'Weight', type: 'numericColumn', sortable: true, filter: 'agTextColumnFilter', floatingFilter: false, width: 80,
-        renderType: "number", renderFormat: '1.3-3'},
+          renderType: "number", renderFormat: '1.3-3'},
       ]
     },
     { headerName: 'Stany',
