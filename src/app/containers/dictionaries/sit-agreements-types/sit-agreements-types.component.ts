@@ -9,16 +9,14 @@ import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-di
 })
 export class SitAgreementsTypesComponent extends SitDictBaseComponent {
   public prepareColumnsDefinitnion() {
-   
+
     this.gridColumnsDefinition["sitAgreementsTypes"] = [
-      { headerName: 'Id', field: 'sitAgreementsTypesId', type: 'numericColumn', filter: 'agTextColumnFilter', width: 50 },
-      { headerName: 'GUID', field: 'sitAgreementsTypesG', filter: 'agTextColumnFilter', width: 100 },
+      { headerName: 'Id', field: 'sitAgreementsTypesId', type: 'numericColumn', filter: 'agTextColumnFilter', width: 50, defaultVisiblity: false},
+      { headerName: 'GUID', field: 'sitAgreementsTypesG', filter: 'agTextColumnFilter', width: 100, defaultVisiblity: false },
       { headerName: 'Identyfikator', field: 'AgreementsTypeIdent', filter: 'agTextColumnFilter', width: 200 },
       { headerName: 'Nazwa', field: 'AgreementsTypeName', filter: 'agTextColumnFilter', width: 300 },
-      //{ headerName: 'Aktywny', field: 'IsActive', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, renderType: "checkbox", cellClass: "grid-cell-centered", width: 100  },
-
     ];
-    
+
   }
 
 }
