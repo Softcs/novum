@@ -26,6 +26,7 @@ export class UrlService {
 
   getSecureRepUrl( dictGuid: string, rt: string, rg: string, params: any,){
     let par = new URLSearchParams(params).toString();
+    if (!dictGuid) { return };
     return environment.apiUrl
         + '/service/show/security/report/'
         + this.currentUser.company.companyGUID + '/'

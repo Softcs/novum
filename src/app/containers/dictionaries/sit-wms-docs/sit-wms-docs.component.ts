@@ -23,10 +23,10 @@ export class SitWmsDocsComponent extends SitDictBaseComponent {
 
   public prepareColumnsDefinitnion() {
     this.gridColumnsDefinition['sitDocumentsHeaders'] = [
-      { headerName: 'Id', field: 'sitDocumentsHeadersId', filter: 'agTextColumnFilter',width: 90, defaultVisiblity: false },
-      { headerName: 'GUID', field: 'sitDocumentsHeadersG', filter: 'agTextColumnFilter',width: 150, defaultVisiblity: false },
+      { headerName: 'Id', field: 'sitDocumentsHeadersId',width: 90, defaultVisiblity: false },
+      { headerName: 'GUID', field: 'sitDocumentsHeadersG',width: 150, defaultVisiblity: false },
       { headerName: 'Typ dok.', field: 'DocumentIdent', filter: 'agSetColumnFilter', floatingFilter: false, width: 90, cellRenderer: 'agGroupCellRenderer' },
-      { headerName: 'Numer', field: 'DocumentNumber', filter: 'agTextColumnFilter' },
+      { headerName: 'Numer', field: 'DocumentNumber' },
       { headerName: 'Data', field: 'DocumentDate', filter: 'agDateColumnFilter',width: 100, floatingFilter: false, sort: 'desc'  },
       { headerName: 'Status WMS', field: 'Status_WMS', filter: 'agSetColumnFilter', width: 160, floatingFilter: true,
         cellStyle: function(params) {
@@ -36,37 +36,37 @@ export class SitWmsDocsComponent extends SitDictBaseComponent {
           else { return null; }
         }
       },
-      { headerName: 'Kontrahent', field: 'CustName', filter: 'agTextColumnFilter', tooltipField: 'CustName', floatingFilter: true},
-      { headerName: 'Opis', field: 'DocumentDescription', filter: 'agTextColumnFilter', tooltipField: 'DocumentDescription', floatingFilter: true, width: 120 },
+      { headerName: 'Kontrahent', field: 'CustName', tooltipField: 'CustName', floatingFilter: true},
+      { headerName: 'Opis', field: 'DocumentDescription', tooltipField: 'DocumentDescription', floatingFilter: true, width: 120 },
       { headerName: 'Waga', field: 'Weight', type: 'numericColumn', filter: 'agNumberColumnFilter', tooltipField: 'DocumentDescription', width: 80,
         renderType: "number", renderFormat: '1.2-2'
       },
-      { headerName: 'NagId SL', field: 'ExtAppIdent01', filter: 'agTextColumnFilter', width: 100, floatingFilter: true },
-      { headerName: 'XL ID', field: 'ExtAppIdent02', filter: 'agTextColumnFilter',width: 60, suppressMenu: true  },
-      { headerName: 'Opis zew.', field: 'ExtAppDescription01', tooltipField: 'ExtAppDescription01', filter: 'agTextColumnFilter',width: 200  },
+      { headerName: 'NagId SL', field: 'ExtAppIdent01', width: 100, floatingFilter: true },
+      { headerName: 'XL ID', field: 'ExtAppIdent02',width: 60, suppressMenu: true  },
+      { headerName: 'Opis zew.', field: 'ExtAppDescription01', tooltipField: 'ExtAppDescription01',width: 200  },
     ];
 
     this.gridColumnsDefinition['sitDocumentsPositions'] = [
-      { headerName: 'Lp', field: 'OrdNumber', type: 'numericColumn', suppressMenu: true, width: 70,floatingFilter: false, cellRenderer: 'agGroupCellRenderer' },
-      { headerName: 'Identyfikator', field: 'ProductIdent', filter: 'agTextColumnFilter', width: 120, floatingFilter: true },
-      { headerName: 'EAN', field: 'EAN', filter: 'agTextColumnFilter', width: 110, floatingFilter: true },
-      { headerName: 'Opis', field: 'PositionDescription', filter: 'agTextColumnFilter', floatingFilter: true },
+      { headerName: 'Lp', field: 'OrdNumber', type: 'numericColumn', suppressMenu: true, width: 70, cellRenderer: 'agGroupCellRenderer' },
+      { headerName: 'Identyfikator', field: 'ProductIdent', width: 120},
+      { headerName: 'EAN', field: 'EAN', width: 110, filter: 'agTextColumnFilter', floatingFilter: true },
+      { headerName: 'Opis', field: 'PositionDescription', filter: 'agTextColumnFilter', floatingFilter: true},
       { headerName: 'JM', field: 'UnitIdent', filter: 'agNumberColumnFilter', type: 'numericColumn', suppressMenu: true, width: 60 },
       { headerName: 'Il. start', field: 'QuantityUnitStart', filter: 'agNumberColumnFilter', type: 'numericColumn', suppressMenu: true, width: 70 },
       { headerName: 'Ilość', field: 'QuantityUnit', filter: 'agNumberColumnFilter', type: 'numericColumn', suppressMenu: true, width: 70 },
       { headerName: 'Waga', field: 'Weight', filter: 'agNumberColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80,
         renderType: "number", renderFormat: '1.2-2'
       },
-      { headerName: 'Defekt', field: 'IsDefect', filter: 'agSetColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80,cellRenderer: 'gridCheckboxRenderer', floatingFilter: false }
+      { headerName: 'Defekt', field: 'IsDefect', filter: 'agSetColumnFilter', suppressMenu: true, width: 80, renderType: 'checkbox' }
     ];
 
     this.gridColumnsDefinition['sitDocumentsPositionsSum'] = [
-      { headerName: 'Lp', field: 'OrdNumber', type: 'numericColumn', suppressMenu: true, width: 40,floatingFilter: false },
-      { headerName: 'Identyfikator', field: 'ProductIdent', filter: 'agTextColumnFilter', width: 120, floatingFilter: true },
-      { headerName: 'EAN', field: 'EAN', filter: 'agTextColumnFilter', width: 110, floatingFilter: true },
+      { headerName: 'Lp', field: 'OrdNumber', type: 'numericColumn', suppressMenu: true, width: 40},
+      { headerName: 'Identyfikator', field: 'ProductIdent', width: 120 },
+      { headerName: 'EAN', field: 'EAN', width: 110, filter: 'agTextColumnFilter', floatingFilter: true },
       { headerName: 'Opis', field: 'PositionDescription', filter: 'agTextColumnFilter', floatingFilter: true },
       { headerName: 'JM', field: 'UnitIdent', filter: 'agNumberColumnFilter', type: 'numericColumn', suppressMenu: true, width: 60 },
-      { headerName: 'Il. start', field: 'QuantityUnitStart', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
+      { headerName: 'Il. start', field: 'QuantityUnitStart', type: 'numericColumn', suppressMenu: true, width: 80 },
       { headerName: 'Ilość', field: 'QuantityUnit', filter: 'agNumberColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
       { headerName: 'Różnica', field: 'QuantityDiff', filter: 'agNumberColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
     ];
@@ -78,8 +78,8 @@ export class SitWmsDocsComponent extends SitDictBaseComponent {
           { headerName: 'Data mod.', field: 'ChangeDate', suppressMenu: true, width: 180, sort: 'desc', flex: 2,
             cellRenderer: (data) => { return formatDate(data.value, 'yyyy-MM-dd HH:mm', this.locale) }
           },
-          { headerName: 'Status', field: 'ValueName', filter: 'agTextColumnFilter', flex: 2 },
-          { headerName: 'Komentarz', field: '__HistoryComments__', filter: 'agTextColumnFilter', flex: 3 }
+          { headerName: 'Status', field: 'ValueName', flex: 2 },
+          { headerName: 'Komentarz', field: '__HistoryComments__', flex: 3 }
         ],
       },
 
@@ -91,7 +91,7 @@ export class SitWmsDocsComponent extends SitDictBaseComponent {
     this.detailCellRendererParamsPosHistory = {
       detailGridOptions: {
         columnDefs: [
-          { headerName: 'Operacja', field: 'OprType', filter: 'agTextColumnFilter', width: 100 },
+          { headerName: 'Operacja', field: 'OprType', width: 100 },
           { headerName: 'Data mod.', field: 'ChangeDate', suppressMenu: true, width: 180, sort: 'desc',
              cellRenderer: (data) => { return formatDate(data.value, 'yyyy-MM-dd HH:mm', this.locale) }
           },
@@ -105,8 +105,8 @@ export class SitWmsDocsComponent extends SitDictBaseComponent {
     };
 
     this.gridColumnsDefinition['sitAttachments'] = [
-      { headerName: 'ParentId', field: 'ParentId' },
-      { headerName: 'sitAttachmentsG', field: 'sitAttachmentsG' },
+      { headerName: 'ParentId', field: 'ParentId', defaultVisiblity: false },
+      { headerName: 'sitAttachmentsG', field: 'sitAttachmentsG', defaultVisiblity: false },
       { headerName: 'Data dodania', field: 'InsertDate', width: 120,
          cellRenderer: (data) => { return formatDate(data.value, 'yyyy-MM-dd HH:mm', this.locale) }
       },

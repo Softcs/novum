@@ -11,13 +11,13 @@ export class SitReturnsComponent extends SitDictBaseComponent {
 
   rowClassRules;
 
-    public prepareColumnsDefinitnion() {   
-     
+    public prepareColumnsDefinitnion() {
+
 
     //definicja kolumn nagłówków dowodów
     this.gridColumnsDefinition["sitDocumentsHeaders"] = [
-      { headerName: 'Id', field: 'sitDocumentsHeadersId', sortable: true, resizable: true, filter: 'agTextColumnFilter',width: 90 },
-      { headerName: 'GUID', field: 'sitDocumentsHeadersG', sortable: true, resizable: true, filter: 'agTextColumnFilter',width: 150 },
+      { headerName: 'Id', field: 'sitDocumentsHeadersId', sortable: true, resizable: true, filter: 'agTextColumnFilter',width: 90, defaultVisiblity: false },
+      { headerName: 'GUID', field: 'sitDocumentsHeadersG', sortable: true, resizable: true, filter: 'agTextColumnFilter',width: 150, defaultVisiblity: false },
       { headerName: 'Typ dok.', field: 'DocumentIdent', sortable: true, resizable: true, filter: 'agSetColumnFilter',width: 90 },
       { headerName: 'Status', field: 'DocumentStatus', filter: 'agNumberColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
       { headerName: 'Numer', field: 'DocumentNumber', sortable: true, resizable: true, filter: 'agTextColumnFilter' },
@@ -44,14 +44,14 @@ export class SitReturnsComponent extends SitDictBaseComponent {
         { headerName: 'Ilość', field: 'QuantityUnit', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
         { headerName: 'Ilość klienta', field: 'Quantity4Compare', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
         { headerName: 'Różnica', field: 'QuantityDiff', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
-        { headerName: 'Defekty', field: 'QuantityDefect', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
+        { headerName: 'Defekty', field: 'QuantityDefect', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80, renderType: 'checkbox' },
       ];
 
       this.gridColumnsDefinition["sitAttachments"] = [
         { headerName: 'ParentId', field: 'ParentId' },
         { headerName: 'sitAttachmentsG', field: 'sitAttachmentsG' },
         { headerName: 'Data dodania', field: 'InsertDate', width: 120,
-        renderType: "date", renderFormat: "yyyy-MM-dd HH:mm" 
+        renderType: "date", renderFormat: "yyyy-MM-dd HH:mm"
         },
         { headerName: 'Nazwa pliku', field: 'FileName', width: 250 },
         { headerName: 'Opis', field: 'AttachmentDesc', width: 250 },
