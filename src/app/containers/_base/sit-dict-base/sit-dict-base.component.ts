@@ -6,7 +6,6 @@ import { SitDictContainerComponent } from '@app/components/sit-dict-container';
 import { sitGlobalConfig } from '@app/_consts/sit-global-config';
 import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
-import { AttachmentsService } from '@app/_services/attachments.service';
 import { GridService } from '@app/_services/grid.service';
 import { environment } from '@environments/environment';
 @Component({
@@ -29,7 +28,6 @@ export class SitDictBaseComponent implements OnInit, AfterViewInit {
   constructor(
     protected gatewayService: GatewayService,
     protected gridService: GridService,
-    protected attachmentsService: AttachmentsService,
     protected urlService: UrlService,
     @Inject(LOCALE_ID) protected locale: string) {
       this.gatewayService.currentUser.subscribe(x => this.currentUser = x);

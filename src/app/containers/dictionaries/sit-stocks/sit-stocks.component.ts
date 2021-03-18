@@ -43,8 +43,8 @@ export class SitStocksComponent extends SitDictBaseComponent {
 
   activeRowStocksChanged(activeRow) {
     this.link = activeRow?.sitImagesG == null
-      ? this.attachmentsService.getUrl(this.currentUser, "noimage", "noimage.jpg") // kiedy brak rekordu
-      :  this.attachmentsService.getUrl(this.currentUser, activeRow.sitImagesG, activeRow.FileName) ;
+      ? this.urlService.getAttachmentUrl("noimage", "noimage.jpg") // kiedy brak rekordu
+      :  this.urlService.getAttachmentUrl(activeRow.sitImagesG, activeRow.FileName) ;
 
     this.ean = activeRow !== null ? activeRow.EAN : '';
   }

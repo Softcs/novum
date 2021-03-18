@@ -12,7 +12,7 @@ import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-di
 
 
 export class SitProjectsPubComponent extends SitDictBaseComponent {
- 
+
   currentUser: User;
   Link: any;
 
@@ -26,11 +26,11 @@ export class SitProjectsPubComponent extends SitDictBaseComponent {
       ];
 
    }
-  
+
   activeRowProjectsPubChanged(activeRow) {
     this.Link = activeRow?.sitImagesG == null
-    ? this.attachmentsService.getUrl(this.currentUser, "noimage", "noimage.jpg") // kiedy brak rekordu
-    :  this.attachmentsService.getUrl(this.currentUser, activeRow.sitImagesG, activeRow.FileName) ;
+    ? this.urlService.getAttachmentUrl("noimage", "noimage.jpg") // kiedy brak rekordu
+    :  this.urlService.getAttachmentUrl(activeRow.sitImagesG, activeRow.FileName) ;
 
   }
 
