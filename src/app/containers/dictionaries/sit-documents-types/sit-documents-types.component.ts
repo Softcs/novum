@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { User } from '@app/_models';
-import { GatewayService } from '@app/_services';
-import { GridService } from '@app/_services/grid.service';
+import { Component } from '@angular/core';
+import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-dict-base.component';
 
 @Component({
   selector: 'app-sit-documents-types',
@@ -9,19 +7,12 @@ import { GridService } from '@app/_services/grid.service';
   styleUrls: ['./sit-documents-types.component.scss'],
   host: {class: 'router-flex'}
 })
-export class SitDocumentsTypesComponent {
-  currentUser: User;
-  popupParent;
-  columnDefs;
-
-  constructor(
-    private gatewayService: GatewayService,
-    private gridService: GridService
-  ) {
+export class SitDocumentsTypesComponent extends SitDictBaseComponent{
+  public prepareColumnsDefinitnion() {  
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
     this.popupParent = document.querySelector('body');
 
-    this.columnDefs = [
+    this.gridColumnsDefinition["sitDocumentsTypes"] = [
       { headerName: 'Identyfikator', field: 'DocumentIdent', filter: 'agTextColumnFilter', width: 150 },
       { headerName: 'Nazwa', field: 'DocumentName', filter: 'agTextColumnFilter', width: 300 },
       { headerName: 'Opis', field: 'DocumentDescription', filter: 'agTextColumnFilter', width: 300 },
@@ -29,9 +20,4 @@ export class SitDocumentsTypesComponent {
     ]
 
    }
-
-   onGridReady(params) {
-    this.gridService.setDefGridOptionsOnReady(params);
-  }
-
 }
