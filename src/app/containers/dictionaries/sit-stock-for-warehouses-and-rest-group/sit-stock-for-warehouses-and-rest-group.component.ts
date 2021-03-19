@@ -10,8 +10,8 @@ import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-di
 export class SitStockForWarehousesAndRestGroupComponent extends SitDictBaseComponent {
   public prepareColumnsDefinitnion() {
     this.gridColumnsDefinition["sitStocks"] = [
-      { headerName: 'sitProductsG', field: 'sitProductsG',  width: 150, defaultVisiblity: false },
-      { headerName: 'sitProductsId', field: 'sitProductsId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, defaultVisiblity: false},
+      { headerName: 'sitProductsG', field: 'sitProductsG',  width: 150, defaultVisibility: false },
+      { headerName: 'sitProductsId', field: 'sitProductsId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, defaultVisibility: false},
       { headerName: 'EAN', field: 'EAN', width: 130},
       { headerName: 'Identyfikator', field: 'ProductIdent', width: 130},
       { headerName: 'Nazwa', field: 'ProductName', tooltipField: 'ProductName', width: 200},

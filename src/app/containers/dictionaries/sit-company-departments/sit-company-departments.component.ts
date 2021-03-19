@@ -8,13 +8,13 @@ import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-di
   host: {class: 'router-flex'}
 })
 export class SitCompanyDepartmentsComponent extends SitDictBaseComponent  {
-    
+
   groupDefaultExpanded;
   getDataPath;
   autoGroupColumnDef;
-  
+
   public prepareColumnsDefinitnion() {
-    
+
     this.autoGroupColumnDef = {
       headerName: 'Działy firmy',
       minWidth: 200,
@@ -25,10 +25,10 @@ export class SitCompanyDepartmentsComponent extends SitDictBaseComponent  {
     this.getDataPath = function (data) {
       return data.dataPath;
     };
-     
+
     this.gridColumnsDefinition["sitCompanyDepartments"] = [
-      { headerName: 'ID', field: 'sitCompanyDepartmentsId', filter: 'agNumberColumnFilter',defaultVisiblity: false },
-      { headerName: 'GUID', field: 'sitCompanyDepartmentsG', filter: 'agTextColumnFilter',defaultVisiblity: false },
+      { headerName: 'ID', field: 'sitCompanyDepartmentsId', filter: 'agNumberColumnFilter',defaultVisibility: false },
+      { headerName: 'GUID', field: 'sitCompanyDepartmentsG', filter: 'agTextColumnFilter',defaultVisibility: false },
       // { headerName: 'Identyfikator', field: 'CompanyDepartmentIdent', filter: 'agTextColumnFilter' },
       { headerName: 'Opis', field: 'CompanyDepartmentDesc', filter: 'agTextColumnFilter', width: 300 },
       // { headerName: 'dataPath', field: 'dataPath', filter: 'agTextColumnFilter' },

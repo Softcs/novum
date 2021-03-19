@@ -20,7 +20,7 @@ export class GridService {
     this.columnDefs.forEach(columnDef => {
       if( !columnDef.hasOwnProperty('sortable') ) { columnDef.sortable = true; }
       if( !columnDef.hasOwnProperty('resizable') ) { columnDef.resizable = true; }
-      if( !columnDef.hasOwnProperty('autoHeight') ) { columnDef.autoHeight = true; }
+      //if( !columnDef.hasOwnProperty('autoHeight') ) { columnDef.autoHeight = true; }
     });
 
     grid.api.setColumnDefs(this.columnDefs);

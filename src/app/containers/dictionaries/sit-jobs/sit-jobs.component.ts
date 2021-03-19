@@ -7,11 +7,11 @@ import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-di
   styleUrls: ['./sit-jobs.component.scss'],
   host: {class: 'router-flex'}
 })
-export class SitJobsComponent extends SitDictBaseComponent { 
+export class SitJobsComponent extends SitDictBaseComponent {
   public prepareColumnsDefinitnion() {
     this.gridColumnsDefinition["sitJobs"] = [
-      { headerName: 'Id', field: 'sitJobsId', type: 'numericColumn', filter: 'agTextColumnFilter', width: 50, defaultVisiblity: false },
-      { headerName: 'GUID', field: 'sitJobsG', filter: 'agTextColumnFilter', width: 100, defaultVisiblity: false },
+      { headerName: 'Id', field: 'sitJobsId', type: 'numericColumn', filter: 'agTextColumnFilter', width: 50, defaultVisibility: false },
+      { headerName: 'GUID', field: 'sitJobsG', filter: 'agTextColumnFilter', width: 100, defaultVisibility: false },
       { headerName: 'Identyfikator', field: 'JobIdent', filter: 'agTextColumnFilter' },
       { headerName: 'Nazwa', field: 'JobName', filter: 'agTextColumnFilter', width: 200 },
       { headerName: 'Aktywny', field: 'IsActive', filter: 'agSetColumnFilter', suppressMenu: true, width: 80,renderType: "checkbox" },
@@ -28,8 +28,8 @@ export class SitJobsComponent extends SitDictBaseComponent {
 
 
     this.gridColumnsDefinition["sitJobSteps"] = [
-      { headerName: 'Id', field: 'sitJobStepsId', type: 'numericColumn', filter: 'agTextColumnFilter', width: 50, defaultVisiblity: false },
-      { headerName: 'GUID', field: 'sitJobStepsG', filter: 'agTextColumnFilter', width: 100, defaultVisiblity: false },
+      { headerName: 'Id', field: 'sitJobStepsId', type: 'numericColumn', filter: 'agTextColumnFilter', width: 50, defaultVisibility: false },
+      { headerName: 'GUID', field: 'sitJobStepsG', filter: 'agTextColumnFilter', width: 100, defaultVisibility: false },
       { headerName: 'Kolejność', field: 'StepOrder', type: 'numericColumn', filter: 'agTextColumnFilter', width: 100, sort: 'asc' },
       { headerName: 'Identyfikator', field: 'JobStepIdent', filter: 'agTextColumnFilter', width: 150 },
       { headerName: 'Nazwa', field: 'JobStepName', filter: 'agTextColumnFilter', width: 150 },

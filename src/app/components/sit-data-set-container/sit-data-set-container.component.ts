@@ -43,9 +43,9 @@ export class SitDataSetContainerComponent {
   @ContentChildren(SitFilesButtonComponent, { descendants: true })
   filesButtons!: QueryList<SitFilesButtonComponent>;
 
-  @Input() 
-  ident: string;  
-  
+  @Input()
+  ident: string;
+
   @Input()
   showActionsToolbar: boolean = false; // czy pokazywac w widoku actions-toolbar
 
@@ -63,7 +63,7 @@ export class SitDataSetContainerComponent {
   constructor(
     private gridService: GridService
   ) {}
-  
+
   clearErrors() {
     this.errors?.splice(0, this.errors?.length);
   }
@@ -92,7 +92,7 @@ export class SitDataSetContainerComponent {
   }
 
   private compareStrings(one,two): boolean {
-    return one != null 
+    return one != null
     && typeof one == 'string'
     && one.localeCompare(two, undefined, { sensitivity: 'base' }) === 0;
   }
@@ -112,7 +112,7 @@ export class SitDataSetContainerComponent {
       const gridApi = control["api"];
       const rowsDataApiToDelete = [];
       if (gridApi && !this.isPivotMode(gridApi)) {
-        gridApi.forEachNode((rowNode) => {          
+        gridApi.forEachNode((rowNode) => {
           const rowValue = rowNode.data[fieldName];
           if (this.compareStrings(rowValue, fieldValue)) {
             rowsDataApiToDelete.push(rowNode.data);
@@ -153,19 +153,19 @@ export class SitDataSetContainerComponent {
         }
 
         var isPivotMode = this.isPivotMode(gridApi);
-        gridOptions.onRowClicked = function(event) { 
+        gridOptions.onRowClicked = function(event) {
           if (!isPivotMode) {
             self.dataSetResponseWrapper.SetActiveRow(event.data);
           }
-        }      
-      
-        gridOptions.onCellClicked = function(event) {   
+        }
+
+        gridOptions.onCellClicked = function(event) {
           if (isPivotMode && event.colDef.pivotKeys) {
             const index = event.colDef.pivotKeys-1;
-            const rowFromCell = event.node.allLeafChildren[index].data;      
+            const rowFromCell = event.node.allLeafChildren[index].data;
             self.dataSetResponseWrapper.SetActiveRow(rowFromCell);
           }
-        } 
+        }
 
         this.prepareGrid(gridApi, this.ident);
       }
@@ -324,11 +324,11 @@ export class SitDataSetContainerComponent {
   }
 
   public afterContentInit() {
-    this.datasSourcesInterface.forEach(element => {          
+    this.datasSourcesInterface.forEach(element => {
       if (element["gridReady"]) {
         element["gridReady"].subscribe((params) => {
           this.gridService.setDefGridOptionsOnReady(params);
-          //params.columnApi.setColumnsVisible(['sitCompanyDepartmentsId','sitCompanyDepartmentsG'], false) 
+          //params.columnApi.setColumnsVisible(['sitCompanyDepartmentsId','sitCompanyDepartmentsG'], false)
         });
       }
     });

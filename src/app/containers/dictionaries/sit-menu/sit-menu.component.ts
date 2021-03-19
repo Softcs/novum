@@ -10,14 +10,14 @@ import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-di
 })
 export class SitMenuComponent extends SitDictBaseComponent {
   public prepareColumnsDefinitnion() {
-    
+
     this.gridColumnsDefinition["sitMenu"] = [
       { headerName: 'Symbol', field: 'Symbol', filter: 'agTextColumnFilter' },
       { headerName: 'Nazwa', field: 'Caption', filter: 'agTextColumnFilter' },
     ];
     this.gridColumnsDefinition["sitMenuItems"] = [
-      { headerName: 'Id', field: 'sitMenuItemsId', filter: 'agTextColumnFilter', width: 60, type: 'numericColumn', defaultVisiblity: false },
-      { headerName: 'GUID', field: 'sitMenuItemsG', filter: 'agTextColumnFilter', width: 60, defaultVisiblity: false },
+      { headerName: 'Id', field: 'sitMenuItemsId', filter: 'agTextColumnFilter', width: 60, type: 'numericColumn', defaultVisibility: false },
+      { headerName: 'GUID', field: 'sitMenuItemsG', filter: 'agTextColumnFilter', width: 60, defaultVisibility: false },
       { headerName: 'Grupa', field: 'ParentCaption', filter: 'agTextColumnFilter', width: 100, floatingFilter: true, sort: "asc" },
       { headerName: 'Kolejność', field: 'OrdId', filter: 'agTextColumnFilter', width: 80, type: 'numericColumn', sort: "asc" },
       { headerName: 'Nazwa', field: 'Caption', filter: 'agTextColumnFilter' },

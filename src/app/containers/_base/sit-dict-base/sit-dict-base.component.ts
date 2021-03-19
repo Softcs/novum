@@ -88,7 +88,7 @@ export class SitDictBaseComponent implements OnInit, AfterViewInit {
         });
 
         gridApi.setColumnDefs(columns);
-        var hiddenColumns = columns.filter(c => c.defaultVisiblity === false).map(c => c.field);
+        var hiddenColumns = columns.filter(c => c.defaultVisibility === false).map(c => c.field);
         gridApi.columnController.setColumnsVisible(hiddenColumns, false);
       }
       gridApi.setPopupParent(this.popupParent);

@@ -16,8 +16,8 @@ export class SitReturnsComponent extends SitDictBaseComponent {
 
     //definicja kolumn nagłówków dowodów
     this.gridColumnsDefinition["sitDocumentsHeaders"] = [
-      { headerName: 'Id', field: 'sitDocumentsHeadersId', sortable: true, resizable: true, filter: 'agTextColumnFilter',width: 90, defaultVisiblity: false },
-      { headerName: 'GUID', field: 'sitDocumentsHeadersG', sortable: true, resizable: true, filter: 'agTextColumnFilter',width: 150, defaultVisiblity: false },
+      { headerName: 'Id', field: 'sitDocumentsHeadersId', sortable: true, resizable: true, filter: 'agTextColumnFilter',width: 90, defaultVisibility: false },
+      { headerName: 'GUID', field: 'sitDocumentsHeadersG', sortable: true, resizable: true, filter: 'agTextColumnFilter',width: 150, defaultVisibility: false },
       { headerName: 'Typ dok.', field: 'DocumentIdent', sortable: true, resizable: true, filter: 'agSetColumnFilter',width: 90 },
       { headerName: 'Status', field: 'DocumentStatus', filter: 'agNumberColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
       { headerName: 'Numer', field: 'DocumentNumber', sortable: true, resizable: true, filter: 'agTextColumnFilter' },
