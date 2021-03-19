@@ -1,9 +1,5 @@
 import { Component, Inject, LOCALE_ID } from '@angular/core';
 import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-dict-base.component';
-import { GatewayService } from '@app/_services';
-import { AttachmentsService } from '@app/_services/attachments.service';
-import { GridService } from '@app/_services/grid.service';
-
 
 @Component({
   selector: 'app-sit-products',
@@ -41,8 +37,8 @@ export class SitProductsComponent extends SitDictBaseComponent {
 
   activeRowProductsChanged(activeRow) {
     this.link = activeRow?.sitImagesG == null
-      ? this.attachmentsService.getUrl(this.currentUser, "noimage", "noimage.jpg") // kiedy brak rekordu
-      :  this.attachmentsService.getUrl(this.currentUser, activeRow.sitImagesG, activeRow.FileName) ;
+      ? this.urlService.getAttachmentUrl("noimage", "noimage.jpg") // kiedy brak rekordu
+      :  this.urlService.getAttachmentUrl(activeRow.sitImagesG, activeRow.FileName) ;
 
       this.ean = activeRow !== null ? activeRow.EAN : '';
   }

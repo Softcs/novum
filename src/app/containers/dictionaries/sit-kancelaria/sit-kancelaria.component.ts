@@ -54,8 +54,8 @@ export class SitKancelariaComponent implements OnInit {
           filterOptions: ['contains']
         }
       },
-      { headerName: 'Data', field: 'Date', type: ['dateColumn','date'], width: 100, cellRenderer: 'sitGridCellRenderer' },
-      { headerName: 'Data do', field: 'DateTo',type: ['dateColumn','date'], width: 100, cellRenderer: 'sitGridCellRenderer' },
+      { headerName: 'Data', field: 'Date', type: ['date'], width: 100, cellRenderer: 'sitGridCellRenderer' },
+      { headerName: 'Data do', field: 'DateTo',type: ['date'], width: 100, cellRenderer: 'sitGridCellRenderer' },
       { headerName: 'Typ umowy', field: 'AgreementsTypeName', width: 150, filter: 'agTextColumnFilter', floatingFilter: true },
       { headerName: 'Lokalizacja', field: 'LocationName', width: 150, filter: 'agTextColumnFilter', floatingFilter: true },
       { headerName: 'Poufny', field: 'Confidential', sortable: true, filter: 'agTextColumnFilter', width: 80, autoHeight: true, cellRenderer: 'gridCheckboxRenderer' },
@@ -65,7 +65,7 @@ export class SitKancelariaComponent implements OnInit {
     this.columnDefsAttachments = [
       { headerName: 'ParentId', field: 'ParentId' },
       { headerName: 'sitAttachmentsG', field: 'sitAttachmentsG' },
-      { headerName: 'Data dodania', field: 'InsertDate', type: ['dateColumn','datetime'], width: 120, cellRenderer: 'sitGridCellRenderer' },
+      { headerName: 'Data dodania', field: 'InsertDate', type: ['datetime'], width: 120, cellRenderer: 'sitGridCellRenderer' },
       { headerName: 'Nazwa pliku', field: 'FileName', width: 250 },
       { headerName: 'Opis', field: 'AttachmentDesc', width: 250 },
     ];
