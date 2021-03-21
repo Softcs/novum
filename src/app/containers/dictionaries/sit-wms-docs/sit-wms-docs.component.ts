@@ -23,8 +23,8 @@ export class SitWmsDocsComponent extends SitDictBaseComponent {
 
   public prepareColumnsDefinitnion() {
     this.gridColumnsDefinition['sitDocumentsHeaders'] = [
-      { headerName: 'Id', field: 'sitDocumentsHeadersId',width: 90, defaultVisiblity: false },
-      { headerName: 'GUID', field: 'sitDocumentsHeadersG',width: 150, defaultVisiblity: false },
+      { headerName: 'Id', field: 'sitDocumentsHeadersId',width: 90, defaultVisibility: false },
+      { headerName: 'GUID', field: 'sitDocumentsHeadersG',width: 150, defaultVisibility: false },
       { headerName: 'Typ dok.', field: 'DocumentIdent', filter: 'agSetColumnFilter', floatingFilter: false, width: 90, cellRenderer: 'agGroupCellRenderer' },
       { headerName: 'Numer', field: 'DocumentNumber' },
       { headerName: 'Data', field: 'DocumentDate', filter: 'agDateColumnFilter',width: 100, floatingFilter: false, sort: 'desc'  },
@@ -105,8 +105,8 @@ export class SitWmsDocsComponent extends SitDictBaseComponent {
     };
 
     this.gridColumnsDefinition['sitAttachments'] = [
-      { headerName: 'ParentId', field: 'ParentId', defaultVisiblity: false },
-      { headerName: 'sitAttachmentsG', field: 'sitAttachmentsG', defaultVisiblity: false },
+      { headerName: 'ParentId', field: 'ParentId', defaultVisibility: false },
+      { headerName: 'sitAttachmentsG', field: 'sitAttachmentsG', defaultVisibility: false },
       { headerName: 'Data dodania', field: 'InsertDate', width: 120,
          cellRenderer: (data) => { return formatDate(data.value, 'yyyy-MM-dd HH:mm', this.locale) }
       },

@@ -9,8 +9,8 @@ import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-di
 export class SitCustomersComponent extends SitDictBaseComponent {
    public prepareColumnsDefinitnion() {
     this.gridColumnsDefinition["sitCustomers"] = [
-      { headerName: 'ID', field: 'sitCustomersId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, defaultVisiblity: false },
-      { headerName: 'GUID', field: 'sitCustomersG', width: 100, defaultVisiblity: false },
+      { headerName: 'ID', field: 'sitCustomersId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, defaultVisibility: false },
+      { headerName: 'GUID', field: 'sitCustomersG', width: 100, defaultVisibility: false },
       { headerName: 'Identyfikator', field: 'CustIdent', width: 200 },
       { headerName: 'Nazwa', field: 'CustName', tooltipField: 'CustName', width: 300 },
       { headerName: 'NIP', field: 'VATId', width: 100 },

@@ -8,7 +8,7 @@ import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-di
   host: {class: 'router-flex'}
 })
 export class SitDocumentsTypesComponent extends SitDictBaseComponent {
-  
+
   public prepareColumnsDefinitnion(){
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
     this.popupParent = document.querySelector('body');

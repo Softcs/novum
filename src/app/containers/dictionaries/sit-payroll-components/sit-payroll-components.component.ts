@@ -11,8 +11,8 @@ export class SitPayrollComponentsComponent extends SitDictBaseComponent {
 
   public prepareColumnsDefinitnion() {
     this.gridColumnsDefinition["sitPayrollComponents"] = [
-      { headerName: 'ID', field: 'sitPayrollComponentsId', filter: 'agNumberColumnFilter', defaultVisiblity: false },
-      { headerName: 'GUID', field: 'sitPayrollComponentsG', defaultVisiblity: false },
+      { headerName: 'ID', field: 'sitPayrollComponentsId', filter: 'agNumberColumnFilter', defaultVisibility: false },
+      { headerName: 'GUID', field: 'sitPayrollComponentsG', defaultVisibility: false },
       { headerName: 'Lp', field: 'OrdId', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 60, sort: 'asc',suppressMenu: true},
       { headerName: 'Identyfikator', field: 'PayrollComponentIdent', width: 150 },
       { headerName: 'Opis', field: 'PayrollComponentDesc', width: 300 },
@@ -21,8 +21,8 @@ export class SitPayrollComponentsComponent extends SitDictBaseComponent {
     ];
 
     this.gridColumnsDefinition["sitPayrollComponentsAccountingDef"] = [
-      { headerName: 'ID', field: 'sitPayrollComponentsAccountingDefId', filter: 'agNumberColumnFilter', defaultVisiblity: false },
-      { headerName: 'GUID', field: 'sitPayrollComponentsAccountingDefG', defaultVisiblity: false },
+      { headerName: 'ID', field: 'sitPayrollComponentsAccountingDefId', filter: 'agNumberColumnFilter', defaultVisibility: false },
+      { headerName: 'GUID', field: 'sitPayrollComponentsAccountingDefG', defaultVisibility: false },
       { headerName: 'Ident.typu listy płac', field: 'PayrollTypeIdent', width: 100 },
       { headerName: 'Typ listy płac', field: 'PayrollTypeName', width: 200 },
       { headerName: 'Konto WN', field: 'CAccount', width: 150 },
