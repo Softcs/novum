@@ -41,7 +41,7 @@ export class SitRightsComponent extends SitDictBaseComponent {
       { headerName: 'Prawo', field: 'HasRight', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, cellRenderer: 'gridCheckboxRenderer', cellClass: "grid-cell-centered",width: 80 },
 
     ];
-    this.gridColumnsDefinition["sitSysAcsitRightsGroupUserstions"] = [
+    this.gridColumnsDefinition["sitRightsGroupUsers"] = [
       { headerName: 'Login', field: 'UserLogin', filter: 'agTextColumnFilter'},
       { headerName: 'Imię', field: 'Name', filter: 'agTextColumnFilter'},
       { headerName: 'Nazwisko', field: 'SurName', filter: 'agTextColumnFilter'},
