@@ -1,20 +1,52 @@
 <sit-dict-container ident="sitReports" #sitDictcontainer fxFill>
-    <div fxLayout="column" fxFill class="content">
-      <sit-data-set-container ident="sitFilterReports" fxLayout="row">
-        <div class="sit-filter-bar" fxLayout="row">
-            <sit-data-input #sitControl field="searchReports" label="Filtruj wydruki" appearance="outline" style="width: 300px;" showRefreshButton="true"></sit-data-input>
-        </div>
-      </sit-data-set-container>
-      <sit-data-set-container ident="sitReports" showActionsToolbar="true" fxLayout="column" fxFlex>
-        <div class="data-table" fxFlex>
-          <ag-grid-angular
-            #sitSetDataSource
-            style="width: 100%; height: 100%;"
-            class="ag-theme-balham"
-          >
-          </ag-grid-angular>
-        </div>
-      </sit-data-set-container>
+  <div fxLayout="column" fxFill class="content">
+    <sit-data-set-container ident="sitFilterReports" fxLayout="row">
+      <div class="sit-filter-bar" fxLayout="row">
+          <sit-data-input #sitControl field="searchReports" label="Filtruj wydruki" appearance="outline" style="width: 300px;" showRefreshButton="true"></sit-data-input>
+      </div>
+    </sit-data-set-container>
+    <sit-data-set-container ident="sitReports" showActionsToolbar="true" fxLayout="column" fxFlex>
+      <div class="data-table" fxFlex>
+        <ag-grid-angular
+          #sitSetDataSource
+          style="width: 100%; height: 100%;"
+          class="ag-theme-balham"
+        >
+        </ag-grid-angular>
+      </div>
+    </sit-data-set-container>
+    <div fxLayout="column" fxFlex=50>
+      <mat-tab-group id="tab-group" animationDuration="0ms">
+        <mat-tab label="Dokumenty">
+          <div fxFill fxLayout="column">
+            <sit-data-set-container ident="sitDocumentsTypesReports" showActionsToolbar="true" fxLayout="column" fxFlex>
+              <div class="data-table" fxFlex>
+                <ag-grid-angular
+                  #sitSetDataSource
+                  style="width: 100%; height: 100%;"
+                  class="ag-theme-balham"
+                >
+                </ag-grid-angular>
+              </div>
+            </sit-data-set-container>    
+          </div>
+        </mat-tab>
+        <mat-tab label="Słowniki">
+          <div fxFill fxLayout="column">
+            <sit-data-set-container ident="sitDictionaryReports" showActionsToolbar="true" fxLayout="column" fxFlex>
+              <div class="data-table" fxFlex>
+                <ag-grid-angular
+                  #sitSetDataSource
+                  style="width: 100%; height: 100%;"
+                  class="ag-theme-balham"
+                >
+                </ag-grid-angular>
+              </div>
+            </sit-data-set-container>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
     </div>
-  </sit-dict-container>
+  </div>
+</sit-dict-container>
   
