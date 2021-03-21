@@ -182,7 +182,9 @@ import { SitEmployeesSettlementsEditComponent } from './containers/dictionaries/
 import { SitStockForWarehousesAndRestGroupComponent } from './containers/dictionaries/sit-stock-for-warehouses-and-rest-group/sit-stock-for-warehouses-and-rest-group.component';
 import { SitStocksComponent } from './containers/dictionaries/sit-stocks/sit-stocks.component';
 import { SitReportsComponent } from './containers/dictionaries/sit-reports/sit-reports.component';
-import { SitReportsEditComponent } from './containers/dictionaries/sit-reports/actions/sit-reports-edit/sit-reports-edit.component'
+import { SitReportsEditComponent } from './containers/dictionaries/sit-reports/actions/sit-reports-edit/sit-reports-edit.component';
+import { SitDocumentsTypesReportsEditComponent } from './containers/dictionaries/sit-reports/actions/sit-documents-types-reports-edit/sit-documents-types-reports-edit.component';
+import { SitDictionaryReportsEditComponent } from './containers/dictionaries/sit-reports/actions/sit-dictionary-reports-edit/sit-dictionary-reports-edit.component'
 
 
 @NgModule({
@@ -356,7 +358,9 @@ import { SitReportsEditComponent } from './containers/dictionaries/sit-reports/a
         SitStockForWarehousesAndRestGroupComponent,
         SitStocksComponent,
         SitReportsComponent,
-        SitReportsEditComponent
+        SitReportsEditComponent,
+        SitDocumentsTypesReportsEditComponent,
+        SitDictionaryReportsEditComponent
 
     ],
     providers: [
