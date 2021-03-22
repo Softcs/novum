@@ -36,8 +36,8 @@ export class SitWmsDocsComponent extends SitDictBaseComponent {
           else { return null; }
         }
       },
-      { headerName: 'Kontrahent', field: 'CustName', tooltipField: 'CustName', floatingFilter: true},
-      { headerName: 'Opis', field: 'DocumentDescription', tooltipField: 'DocumentDescription', floatingFilter: true, width: 120 },
+      { headerName: 'Kontrahent', field: 'CustName', tooltipField: 'CustName', filter: 'agTextColumnFilter', floatingFilter: true},
+      { headerName: 'Opis', field: 'DocumentDescription', tooltipField: 'DocumentDescription', filter: 'agTextColumnFilter', floatingFilter: true, width: 120 },
       { headerName: 'Waga', field: 'Weight', type: 'numericColumn', filter: 'agNumberColumnFilter', tooltipField: 'DocumentDescription', width: 80,
         renderType: "number", renderFormat: '1.2-2'
       },

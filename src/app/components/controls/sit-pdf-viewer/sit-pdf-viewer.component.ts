@@ -59,7 +59,7 @@ export class SitPdfViewerComponent  extends SitDataBaseComponent {
   public refreshFieldValue() {
     this.refreshPdfSource();
     this.showPDF = true;
-    if (this.dataSetWrapper.getFieldValue('showPrint') === 0 || this.pdfSrc === null ) {
+    if (this.dataSetWrapper.getFieldValue('showPrint') === 0 || !this.pdfSrc || !this.downloadFileName) {
       this.showPDF = false;
     };
     if (this.pdfSrc !== this.pdfViewer.pdfSrc) {
