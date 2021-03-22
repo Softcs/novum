@@ -22,15 +22,15 @@ export class SitSysDictionariesComponent extends SitDictBaseComponent {
     this.gridColumnsDefinition["sitSysDatasources"] = [
       { headerName: 'Id', type: 'numericColumn', field: 'sitSysDatasourcesId', filter: 'agTextColumnFilter', defaultVisibility: false },
       { headerName: 'GUID', field: 'sitSysDatasourcesG', filter: 'agTextColumnFilter', defaultVisibility: false },
-      { headerName: "Identyfikator", field: 'DatasourceIdent', filter: 'agTextColumnFilter'},
-      { headerName: "Nazwa", field: 'DatasourceName', filter: 'agTextColumnFilter'},
+      { headerName: "Identyfikator", field: 'DatasourceIdent', filter: 'agTextColumnFilter', width: 300},
+      { headerName: "Nazwa", field: 'DatasourceName', filter: 'agTextColumnFilter', width: 300},
 
     ];
     this.gridColumnsDefinition["sitSysActions"] = [
       { headerName: 'Id', type: 'numericColumn', field: 'sitSysActionsId', filter: 'agTextColumnFilter', defaultVisibility: false },
       { headerName: 'GUID', field: 'sitSysActionsG', filter: 'agTextColumnFilter', defaultVisibility: false },
-      { headerName: "Identyfikator", field: 'ActionIdent', filter: 'agTextColumnFilter'},
-      { headerName: "Nazwa", field: 'ActionName', filter: 'agTextColumnFilter'},
+      { headerName: "Identyfikator", field: 'ActionIdent', filter: 'agTextColumnFilter', width: 200},
+      { headerName: "Nazwa", field: 'ActionName', filter: 'agTextColumnFilter', width: 200},
 
     ];
    }

@@ -41,6 +41,21 @@ export class SitStockForWarehousesAndRestGroupComponent extends SitDictBaseCompo
       renderType: "number", renderFormat: '1.0-0'},
       { headerName: 'Pozostałe', field: 'POZO', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 100,
       renderType: "number", renderFormat: '1.0-0'},
+    ],
+
+    this.gridColumnsDefinition["sitSale"] = [
+      { headerName: 'EAN', field: 'EAN', width: 130},
+      { headerName: 'Identyfikator', field: 'ProductIdent', width: 130},
+      { headerName: 'Nazwa', field: 'ProductName', tooltipField: 'ProductName', width: 300},
+      { headerName: 'Status sprz.', field: 'SaleStatus', tooltipField: 'SaleStatusDescription', width: 100},
+      { headerName: 'Magazyn', field: 'WarehouseIdent', width: 100},
+      { headerName: 'Typ dok.', field: 'DocumentIdent', width: 100},
+      { headerName: 'Id.kli.', field: 'CustIdent', width: 100},
+      { headerName: 'Klient', field: 'CustName', tooltipField: 'CustName', width: 300},
+      { headerName: 'Ilość', type: 'numericColumn', field: 'Quantity', width: 100, renderType: 'number',renderFormat: '1.0-0', suppressMenu: true },
+      { headerName: 'Wart. ewid.', type: 'numericColumn', field: 'StandardAmount', width: 100, renderType: 'number', suppressMenu: true },
+      { headerName: 'Wart. netto', type: 'numericColumn', field: 'NetAmonunt', width: 100, renderType: 'number', suppressMenu: true },
     ]
+
   }
 }

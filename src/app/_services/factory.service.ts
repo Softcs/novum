@@ -91,6 +91,7 @@ import { SitReportsComponent } from '@app/containers/dictionaries/sit-reports/si
 import { SitReportsEditComponent } from '@app/containers/dictionaries/sit-reports/actions/sit-reports-edit/sit-reports-edit.component';
 import { SitDocumentsTypesReportsEditComponent } from '@app/containers/dictionaries/sit-reports/actions/sit-documents-types-reports-edit/sit-documents-types-reports-edit.component';
 import { SitDictionaryReportsEditComponent } from '@app/containers/dictionaries/sit-reports/actions/sit-dictionary-reports-edit/sit-dictionary-reports-edit.component';
+import { SitSysDictionariesSynchComponent } from '@app/containers/dictionaries/sit-sys-dictionaries/actions/sit-sys-dictionaries-synch/sit-sys-dictionaries-synch.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -187,7 +188,8 @@ export class FactoryService {
         sitReports: SitReportsComponent,
         sitReportsEdit: SitReportsEditComponent,
         sitDocumentsTypesReportsEdit: SitDocumentsTypesReportsEditComponent,
-        sitDictionaryReportsEdit: SitDictionaryReportsEditComponent
+        sitDictionaryReportsEdit: SitDictionaryReportsEditComponent,
+        sitSysDictionariesSynch: SitSysDictionariesSynchComponent
     };
 
     public GetFactory(ident: string) {
