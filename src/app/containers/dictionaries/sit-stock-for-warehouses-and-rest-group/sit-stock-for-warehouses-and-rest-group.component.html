@@ -30,7 +30,8 @@
       <div fxLayout="column" fxFill class="content">
         <sit-data-set-container ident="sitFilterSale" >
           <div class="sit-filter-bar" fxLayout="row">
-            <sit-data-input #sitControl field="Search" label="Filtruj produkty" placeholder="" appearance="outline" style="width: 300px;"></sit-data-input>
+            <sit-data-input #sitControl field="SearchProduct" label="Filtruj produkty" placeholder="" appearance="outline" style="width: 300px;"></sit-data-input>
+            <sit-data-input #sitControl field="SearchCustomer" label="Filtruj kontrahentów" placeholder="" appearance="outline" style="width: 300px;"></sit-data-input>
             <sit-data-input #sitControl field="SaleStatus" label="Status sprz." placeholder="" appearance="outline" showRefreshButton="true" style="width: 180px;"
               [lookupDisplayFields] = "['SaleStatus', 'SaleStatusDescription']"
             ></sit-data-input>

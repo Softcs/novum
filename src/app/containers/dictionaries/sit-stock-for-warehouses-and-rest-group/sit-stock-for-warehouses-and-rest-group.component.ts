@@ -46,15 +46,18 @@ export class SitStockForWarehousesAndRestGroupComponent extends SitDictBaseCompo
     this.gridColumnsDefinition["sitSale"] = [
       { headerName: 'EAN', field: 'EAN', width: 130},
       { headerName: 'Identyfikator', field: 'ProductIdent', width: 130},
-      { headerName: 'Nazwa', field: 'ProductName', tooltipField: 'ProductName', width: 300},
-      { headerName: 'Status sprz.', field: 'SaleStatus', tooltipField: 'SaleStatusDescription', width: 100},
+      { headerName: 'Nazwa', field: 'ProductName', tooltipField: 'ProductName', width: 200},
+      { headerName: 'St.sprz.', field: 'SaleStatus', tooltipField: 'SaleStatusDescription', width: 80, suppressMenu: true},
       { headerName: 'Magazyn', field: 'WarehouseIdent', width: 100},
-      { headerName: 'Typ dok.', field: 'DocumentIdent', width: 100},
-      { headerName: 'Id.kli.', field: 'CustIdent', width: 100},
-      { headerName: 'Klient', field: 'CustName', tooltipField: 'CustName', width: 300},
+      { headerName: 'Typ dok.', field: 'DocumentIdent', width: 80, suppressMenu: true},
+      { headerName: 'Id.KD.', field: 'DistributionChannelIdent', width: 100},
+      { headerName: 'Kanał dystrybucji', field: 'DistributionChannelDesc', tooltipField: 'DistributionChannelDesc', width: 200},
+      { headerName: 'Id.kli.', field: 'CustIdent', width: 100, suppressMenu: true},
+      { headerName: 'Klient', field: 'CustName', tooltipField: 'CustName', width: 200},
       { headerName: 'Ilość', type: 'numericColumn', field: 'Quantity', width: 100, renderType: 'number',renderFormat: '1.0-0', suppressMenu: true },
       { headerName: 'Wart. ewid.', type: 'numericColumn', field: 'StandardAmount', width: 100, renderType: 'number', suppressMenu: true },
-      { headerName: 'Wart. netto', type: 'numericColumn', field: 'NetAmonunt', width: 100, renderType: 'number', suppressMenu: true },
+      { headerName: 'Wart. netto', type: 'numericColumn', field: 'NetAmount', width: 100, renderType: 'number', suppressMenu: true },
+      { headerName: 'Różnica', type: 'numericColumn', field: 'DiffAmount', width: 100, renderType: 'number', suppressMenu: true },
     ]
 
   }
