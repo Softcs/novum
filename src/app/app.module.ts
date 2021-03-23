@@ -185,7 +185,8 @@ import { SitReportsComponent } from './containers/dictionaries/sit-reports/sit-r
 import { SitReportsEditComponent } from './containers/dictionaries/sit-reports/actions/sit-reports-edit/sit-reports-edit.component';
 import { SitDocumentsTypesReportsEditComponent } from './containers/dictionaries/sit-reports/actions/sit-documents-types-reports-edit/sit-documents-types-reports-edit.component';
 import { SitDictionaryReportsEditComponent } from './containers/dictionaries/sit-reports/actions/sit-dictionary-reports-edit/sit-dictionary-reports-edit.component';
-import { SitSysDictionariesSynchComponent } from './containers/dictionaries/sit-sys-dictionaries/actions/sit-sys-dictionaries-synch/sit-sys-dictionaries-synch.component'
+import { SitSysDictionariesSynchComponent } from './containers/dictionaries/sit-sys-dictionaries/actions/sit-sys-dictionaries-synch/sit-sys-dictionaries-synch.component';
+import { SitStockForWarehousesSaleImportComponent } from './containers/dictionaries/sit-stock-for-warehouses-and-rest-group/actions/sit-stock-for-warehouses-sale-import/sit-stock-for-warehouses-sale-import.component'
 
 
 @NgModule({
@@ -362,7 +363,8 @@ import { SitSysDictionariesSynchComponent } from './containers/dictionaries/sit-
         SitReportsEditComponent,
         SitDocumentsTypesReportsEditComponent,
         SitDictionaryReportsEditComponent,
-        SitSysDictionariesSynchComponent
+        SitSysDictionariesSynchComponent,
+        SitStockForWarehousesSaleImportComponent
 
     ],
     providers: [

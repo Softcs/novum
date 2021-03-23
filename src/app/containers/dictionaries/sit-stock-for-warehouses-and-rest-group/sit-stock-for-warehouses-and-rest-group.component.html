@@ -36,7 +36,11 @@
             ></sit-data-input>
           </div>
         </sit-data-set-container>
-        <sit-data-set-container ident="sitSale" fxFlex fxLayout="column">
+        <sit-data-set-container  ident="sitSaleParams" fxLayout="row" style="margin-bottom: 5px" style="width: 100%;">
+          <sit-data-label type="text" #sitControl field="SaleDateFrom" label="Sprzedaż od:"></sit-data-label>
+          <sit-data-label type="text" #sitControl field="SaleDateTo" label="do:" ></sit-data-label>
+        </sit-data-set-container>
+        <sit-data-set-container ident="sitSale" showActionsToolbar="true" fxFlex fxLayout="column">
           <div class="data-table" fxFlex>
             <ag-grid-angular
               #sitSetDataSource
