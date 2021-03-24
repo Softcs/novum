@@ -4,7 +4,10 @@
   <sit-data-set-container ident="sitCourierCreateShipments">
     <div class="sit-proc-params-content" fxLayout="column" style="width: 600px; height:500px">
       <div fxLayout="row">
-        <sit-data-input type="text" #sitControl field="AddressType" label="Typ adresu" appearance="outline" fxFlex=50></sit-data-input>
+        <sit-data-input type="text" #sitControl field="AddressType" label="Typ adresu" appearance="outline" style="width: 100px;"
+          [lookupDisplayFields] = "['AddressType', 'AddressTypeDescription']"
+        ></sit-data-input>
+        <sit-data-label #sitControl type="text" field="AddressTypeDescription" label="" style="width: 300px; font-size: 14px; display:inline-block; padding: 10px 10px"></sit-data-label>
         <sit-data-input type="text" #sitControl field="Country" label="Kraj" appearance="outline" fxFlex></sit-data-input>
       </div>
       <sit-data-input type="text" #sitControl field="Name" label="Nazwa" appearance="outline"></sit-data-input>

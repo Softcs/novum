@@ -15,6 +15,7 @@ export class SitPdfViewerComponent  extends SitDataBaseComponent {
 
   @Input() dictGuid: string;
   @Input() reportType: string;
+  @Input() showField: string = 'showPrint';
 
   pdfSrc: string;
   downloadFileName: string;
@@ -59,7 +60,7 @@ export class SitPdfViewerComponent  extends SitDataBaseComponent {
   public refreshFieldValue() {
     this.refreshPdfSource();
     this.showPDF = true;
-    if (this.dataSetWrapper.getFieldValue('showPrint') === 0 || !this.pdfSrc || !this.downloadFileName) {
+    if (this.dataSetWrapper.getFieldValue(this.showField) === 0 || !this.pdfSrc || !this.downloadFileName) {
       this.showPDF = false;
     };
     if (this.pdfSrc !== this.pdfViewer.pdfSrc) {
