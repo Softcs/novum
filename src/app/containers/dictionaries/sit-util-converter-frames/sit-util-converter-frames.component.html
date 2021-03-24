@@ -21,44 +21,64 @@
       <as-split-area [size]="60">
         <mat-tab-group id="tab-group" animationDuration="0ms" >
           <mat-tab label="Header">
-        <sit-data-set-container ident="sitUtilConverterFrames" fxLayout="column" fxFill>
-          <div fxLayout="column" fxFill class="content">
-            <sit-data-textarea type="textarea" #sitControl field="FrameHeader" label="Header" appearance="outline" [readonly]=true fxFill></sit-data-textarea>
-           </div>
-        </sit-data-set-container>
-        </mat-tab>
-        <mat-tab label="Body">
-          <sit-data-set-container ident="sitUtilConverterFrames" fxLayout="column" fxFill>
-            <div fxLayout="column" fxFill class="content">
-               <sit-data-textarea type="textarea" #sitControl field="FrameBody" label="Body" appearance="outline" [readonly]=true fxFill></sit-data-textarea>
+            <sit-data-set-container ident="sitUtilConverterFrames" fxLayout="column" fxFill>
+              <div fxLayout="column" fxFill class="content">
+                <sit-data-textarea type="textarea" #sitControl field="FrameHeader" label="Header" appearance="outline" [readonly]=true fxFill></sit-data-textarea>
+              </div>
+            </sit-data-set-container>
+          </mat-tab>
+          <mat-tab label="Body">
+            <sit-data-set-container ident="sitUtilConverterFrames" fxLayout="column" fxFill>
+              <div fxLayout="column" fxFill class="content">
+                <sit-data-textarea type="textarea" #sitControl field="FrameBody" label="Body" appearance="outline" [readonly]=true fxFill></sit-data-textarea>
+              </div>
+            </sit-data-set-container>
+          </mat-tab>
+          <mat-tab label="Footer">
+            <sit-data-set-container ident="sitUtilConverterFrames" fxLayout="column" fxFill>
+              <div fxLayout="column" fxFill class="content">
+                <sit-data-textarea type="textarea" #sitControl field="FrameFooter" label="Footer" appearance="outline" [readonly]=true fxFlex="30"></sit-data-textarea>
+              </div>
+            </sit-data-set-container>
+          </mat-tab>
+          <mat-tab label="Bazy Danych">
+            <div class="content" fxFill fxLayout="column">
+              <div fxFlex="120">
+                <sit-data-set-container ident="sitUtilConverterDBVersions" showActionsToolbar="true" fxFlex fxLayout="column">
+                  <div class="data-table" fxFlex>
+                    <ag-grid-angular
+                      #sitSetDataSource
+                      #sitAttachmentsGrid
+                      style="width: 100%; height: 100%;"
+                      class="ag-theme-balham"
+                    >
+                    </ag-grid-angular>
+                  </div>
+                </sit-data-set-container>
+              </div>
             </div>
-          </sit-data-set-container>
-        </mat-tab>
-        <mat-tab label="Footer">
-          <sit-data-set-container ident="sitUtilConverterFrames" fxLayout="column" fxFill>
-            <div fxLayout="column" fxFill class="content">
-              <sit-data-textarea type="textarea" #sitControl field="FrameFooter" label="Footer" appearance="outline" [readonly]=true fxFlex="30"></sit-data-textarea>
-            </div>
-          </sit-data-set-container>
-        </mat-tab>
-        <mat-tab label="Bazy Danych">
-          <div class="content" fxFill fxLayout="column">
-            <div fxFlex="120">
-              <sit-data-set-container ident="sitUtilConverterDBVersions" showActionsToolbar="true" fxFlex fxLayout="column">
+          </mat-tab>
+          <mat-tab label="Obiekty do skryptu">
+            <div class="content" fxFill fxLayout="column">
+              <sit-data-set-container ident="sitFilterObjectsToScript" fxLayout="row">
+                <div class="sit-filter-bar" fxLayout="row">
+                  <sit-data-input #sitControl field="Search" label="Object name" appearance="outline" style="width: 300px;" showRefreshButton="true"></sit-data-input>
+                  <sit-data-input #sitControl field="__UserName__" label="Login name" appearance="outline" style="width: 300px;" showRefreshButton="true"></sit-data-input>
+                  <sit-data-checkbox #sitControl [refreshOnChange]="true" label="Show all logins" id="ShowAllUsers" field="ShowAllUsers" widht="100px"></sit-data-checkbox>
+                </div>
+              </sit-data-set-container>                
+              <sit-data-set-container ident="sitUtilSQLObjectsToScript" showActionsToolbar="true" fxFlex fxLayout="column">
                 <div class="data-table" fxFlex>
                   <ag-grid-angular
                     #sitSetDataSource
-                    #sitAttachmentsGrid
                     style="width: 100%; height: 100%;"
                     class="ag-theme-balham"
-                    
                   >
                   </ag-grid-angular>
                 </div>
               </sit-data-set-container>
             </div>
-          </div>
-        </mat-tab>
+          </mat-tab>
         </mat-tab-group>
       </as-split-area>
     </as-split>

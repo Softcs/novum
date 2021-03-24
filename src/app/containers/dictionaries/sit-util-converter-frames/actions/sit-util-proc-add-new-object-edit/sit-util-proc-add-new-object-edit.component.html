@@ -1,0 +1,12 @@
+<sit-proc-params
+  [(actionExecuteData)]="actionExecuteData"
+  >
+  <sit-data-set-container ident="sitUtilProcAddNewObjectEdit">
+    <div class="sit-proc-params-content" fxLayout="column" style="width: 300px;height: 400px;">
+      <sit-data-input #sitControl type="text" field="ObjectName" label="Object name" appearance="outline" style="width: 300px"></sit-data-input>
+      <sit-data-input #sitControl type="text" field="ObjectType" label="Object type" appearance="outline" style="width: 300px"></sit-data-input>
+      <sit-data-checkbox #sitControl field="ForScript" label="Dodawać do skryptów"></sit-data-checkbox>
+      <sit-data-checkbox #sitControl field="IsCommonData" label="Obiekt zawierający dane wspólne [G]"></sit-data-checkbox>
+    </div>
+  </sit-data-set-container>
+</sit-proc-params>
