@@ -58,6 +58,7 @@ export class SitStockForWarehousesAndRestGroupComponent extends SitDictBaseCompo
       { headerName: 'Wart. ewid.', type: 'numericColumn', field: 'StandardAmount', width: 100, renderType: 'number', suppressMenu: true },
       { headerName: 'Wart. netto', type: 'numericColumn', field: 'NetAmount', width: 100, renderType: 'number', suppressMenu: true },
       { headerName: 'Różnica', type: 'numericColumn', field: 'DiffAmount', width: 100, renderType: 'number', suppressMenu: true },
+      { headerName: 'Cena ewid.', type: 'numericColumn', field: 'StandardPrice', width: 100, renderType: 'number', suppressMenu: true },
     ]
 
   }
