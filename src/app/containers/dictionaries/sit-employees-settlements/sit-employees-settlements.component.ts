@@ -37,23 +37,27 @@ export class SitEmployeesSettlementsComponent implements OnInit {
     //this.pinnedBottomRowData = this.createData();
 
     this.columnDefs = [
-      { headerName: 'Nazwisko', field: 'EmployeeName', tooltipField: 'EmployeeName', sort: 'asc', width: 150, pinned: 'left',
-        checkboxSelection: true, headerCheckboxSelection: true, headerCheckboxSelectionFilteredOnly: true,
-        cellClass: ['font12','textFormat']
+      { headerName: 'Pracownik',
+        children: [
+          { headerName: 'Nazwisko', field: 'EmployeeName', tooltipField: 'EmployeeName', sort: 'asc', width: 150, pinned: 'left',
+            checkboxSelection: true, headerCheckboxSelection: true, headerCheckboxSelectionFilteredOnly: true,
+            cellClass: ['font12','textFormat']
+          },
+          { headerName: 'Ident.', field: 'EmployeeIdent', tooltipField: 'EmployeeIdent', width: 100, pinned: 'left',
+            cellClass: ['font12','textFormat']
+          },
+        ]
       },
-      { headerName: 'Ident.', field: 'EmployeeIdent', tooltipField: 'EmployeeIdent', width: 100, pinned: 'left',
+      { headerName: 'Okres', field: 'WorkPeriod',  width: 90,
         cellClass: ['font12','textFormat']
       },
       { headerName: 'Nr.listy', field: 'PayrollNo', tooltipField: 'PayrollNo', width: 100,
         cellClass: ['font12','textFormat']
       },
-      { headerName: 'Okres', field: 'WorkPeriod',  width: 90,
+      { headerName: 'Rachunek', field: 'ReceiptNo', tooltipField: 'ReceiptNo',  width: 90,
         cellClass: ['font12','textFormat']
       },
       { headerName: 'Miejsce pracy', field: 'HRWorkPlaceName', tooltipField: 'HRWorkPlaceName',  width: 100,
-        cellClass: ['font12','textFormat']
-      },
-      { headerName: 'Rachunek', field: 'ReceiptNo', tooltipField: 'ReceiptNo',  width: 90,
         cellClass: ['font12','textFormat']
       },
       { headerName: 'Opis prac', field: 'WorkDesc', tooltipField: 'WorkDesc',  width: 100,
@@ -62,75 +66,99 @@ export class SitEmployeesSettlementsComponent implements OnInit {
       { headerName: 'MPK', field: 'CustomerCostCenterIdent', tooltipField: 'CustomerCostCenterIdent',  width: 100,
         cellClass: ['font12','textFormat']
       },
-      { headerName: 'Status ZUS', field: 'StatusZUSDesc',  width: 100,
-        cellClass: ['font12','textFormat']
+      { headerName: 'Statusy',
+        children: [
+          { headerName: 'ZUS', field: 'StatusZUSDesc',  width: 60, suppressMenu: true,
+            cellClass: ['font12','textFormat']
+          },
+          { headerName: 'PPK', field: 'StatusPPK',  width: 60, cellRenderer: 'gridCheckboxRenderer', suppressMenu: true,
+            cellClass: ['font12','textFormat']
+          },
+        ]
       },
-      { headerName: 'Status PPK', field: 'StatusPPK',  width: 100, cellRenderer: 'gridCheckboxRenderer',
-        cellClass: ['font12','textFormat']
+      { headerName: 'Wynagrodzenie',
+        children: [
+          { headerName: 'Brutto', field: 'Gross', type: ['numericColumn','money'], filter: 'agNumberColumnFilter', width: 90,
+            cellRenderer: 'sitGridCellRenderer',
+            cellStyle: function(params) { return {backgroundColor: '#ffe6e6'} },
+            cellClass: ['font12','numberFormat2Dec','pinkBackground'],
+            pinnedRowCellRenderer: 'sitGridCellRenderer',
+            pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
+          },
+          { headerName: 'Podstawa', field: 'Base', filter: 'agNumberColumnFilter', type: ['numericColumn','money'], width: 95,
+            cellRenderer: 'sitGridCellRenderer',
+            cellClass: ['font12','numberFormat2Dec'],
+            pinnedRowCellRenderer: 'sitGridCellRenderer',
+            pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
+          },
+          { headerName: 'Premie', field: 'Bonus', filter: 'agNumberColumnFilter', type: ['numericColumn','money'], width: 90,
+            cellRenderer: 'sitGridCellRenderer',
+            cellClass: ['font12','numberFormat2Dec'],
+            pinnedRowCellRenderer: 'sitGridCellRenderer',
+            pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
+          },
+          { headerName: 'Dodatki', field: 'Additions', filter: 'agNumberColumnFilter', type: ['numericColumn','money'], width: 90,
+            cellRenderer: 'sitGridCellRenderer',
+            cellClass: ['font12','numberFormat2Dec'],
+            pinnedRowCellRenderer: 'sitGridCellRenderer',
+            pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
+          },
+          { headerName: 'Potr.', field: 'Deduction', filter: 'agNumberColumnFilter', type: ['numericColumn','money'], width: 80,
+            cellRenderer: 'sitGridCellRenderer',
+            cellClass: ['font12','numberFormat2Dec'],
+            pinnedRowCellRenderer: 'sitGridCellRenderer',
+            pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
+          },
+        ]
       },
-      { headerName: 'Brutto', field: 'Gross', type: ['numericColumn','money'], filter: 'agNumberColumnFilter', width: 90,
-        cellRenderer: 'sitGridCellRenderer',
-        cellStyle: function(params) { return {backgroundColor: '#ffe6e6'} },
-        cellClass: ['font12','numberFormat2Dec','pinkBackground'],
-        pinnedRowCellRenderer: 'sitGridCellRenderer',
-        pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
+      { headerName: 'ZUS i PPK',
+        children: [
+          { headerName: 'ZUS', field: 'ZUSFirma', filter: 'agNumberColumnFilter', type: ['numericColumn','money'], width: 80, suppressMenu: true,
+            cellRenderer: 'sitGridCellRenderer',
+            cellClass: ['font12','numberFormat2Dec'],
+            pinnedRowCellRenderer: 'sitGridCellRenderer',
+            pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
+          },
+          { headerName: 'ZUS podst.', field: 'ZUSBase', filter: 'agNumberColumnFilter', type: ['numericColumn','money'], width: 90, suppressMenu: true, columnGroupShow: "open",
+            cellRenderer: 'sitGridCellRenderer',
+            cellClass: ['font12','numberFormat2Dec'],
+            pinnedRowCellRenderer: 'sitGridCellRenderer',
+            pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
+          },
+          { headerName: 'ZUS prem.', field: 'ZUSBonus', filter: 'agNumberColumnFilter', type: ['numericColumn','money'], width: 90, suppressMenu: true, columnGroupShow: "open",
+            cellRenderer: 'sitGridCellRenderer',
+            cellClass: ['font12','numberFormat2Dec'],
+            pinnedRowCellRenderer: 'sitGridCellRenderer',
+            pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
+          },
+          { headerName: 'PPK', field: 'PPK', filter: 'agNumberColumnFilter', type: ['numericColumn','money'], width: 70,suppressMenu: true,
+            cellRenderer: 'sitGridCellRenderer',
+            cellClass: ['font12','numberFormat2Dec'],
+            pinnedRowCellRenderer: 'sitGridCellRenderer',
+            pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
+          },
+        ]
       },
-      { headerName: 'Podstawa', field: 'Base', filter: 'agNumberColumnFilter', type: ['numericColumn','money'], width: 95,
-        cellRenderer: 'sitGridCellRenderer',
-        cellClass: ['font12','numberFormat2Dec'],
-        pinnedRowCellRenderer: 'sitGridCellRenderer',
-        pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
-      },
-      { headerName: 'Premie', field: 'Bonus', filter: 'agNumberColumnFilter', type: ['numericColumn','money'], width: 90,
-        cellRenderer: 'sitGridCellRenderer',
-        cellClass: ['font12','numberFormat2Dec'],
-        pinnedRowCellRenderer: 'sitGridCellRenderer',
-        pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
-      },
-      { headerName: 'Potr.', field: 'Deduction', filter: 'agNumberColumnFilter', type: ['numericColumn','money'], width: 80,
-        cellRenderer: 'sitGridCellRenderer',
-        cellClass: ['font12','numberFormat2Dec'],
-        pinnedRowCellRenderer: 'sitGridCellRenderer',
-        pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
-      },
-      { headerName: 'ZUS', field: 'ZUSFirma', filter: 'agNumberColumnFilter', type: ['numericColumn','money'], width: 80, suppressMenu: true,
-        cellRenderer: 'sitGridCellRenderer',
-        cellClass: ['font12','numberFormat2Dec'],
-        pinnedRowCellRenderer: 'sitGridCellRenderer',
-        pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
-      },
-      { headerName: 'ZUS podst.', field: 'ZUSBase', filter: 'agNumberColumnFilter', type: ['numericColumn','money'], width: 90, suppressMenu: true,
-        cellRenderer: 'sitGridCellRenderer',
-        cellClass: ['font12','numberFormat2Dec'],
-        pinnedRowCellRenderer: 'sitGridCellRenderer',
-        pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
-      },
-      { headerName: 'ZUS prem.', field: 'ZUSBonus', filter: 'agNumberColumnFilter', type: ['numericColumn','money'], width: 90, suppressMenu: true,
-        cellRenderer: 'sitGridCellRenderer',
-        cellClass: ['font12','numberFormat2Dec'],
-        pinnedRowCellRenderer: 'sitGridCellRenderer',
-        pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
-      },
-      { headerName: 'PPK', field: 'PPK', filter: 'agNumberColumnFilter', type: ['numericColumn','money'], width: 70,suppressMenu: true,
-        cellRenderer: 'sitGridCellRenderer',
-        cellClass: ['font12','numberFormat2Dec'],
-        pinnedRowCellRenderer: 'sitGridCellRenderer',
-        pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
-      },
-      { headerName: 'Koszt pracy', field: 'Cost',  filter: 'agNumberColumnFilter', type: ['numericColumn','money'], width: 100,suppressMenu: true,
+      { headerName: 'Koszt pracy', field: 'Cost',  filter: 'agNumberColumnFilter', type: ['numericColumn','money'], width: 100, suppressMenu: true,
         cellRenderer: 'sitGridCellRenderer',
         cellStyle: function(params) { return {backgroundColor: '#fcf59f'} },
         cellClass: ['font12','yellowBackground','numberFormat2Dec'],
         pinnedRowCellRenderer: 'sitGridCellRenderer',
         pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
       },
-      { headerName: 'Narzut', field: 'Markup',  filter: 'agNumberColumnFilter', type: ['numericColumn','money'], width: 90,suppressMenu: true,
+      { headerName: 'Dodatki kli.', field: 'AdditionsCust', filter: 'agNumberColumnFilter', type: ['numericColumn','money'], width: 80, suppressMenu: true,
         cellRenderer: 'sitGridCellRenderer',
         cellClass: ['font12','numberFormat2Dec'],
         pinnedRowCellRenderer: 'sitGridCellRenderer',
         pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
       },
-      { headerName: 'Koszt - klient', field: 'CustCost',  filter: 'agNumberColumnFilter', type: ['numericColumn','money'], width: 100,suppressMenu: true,
+      { headerName: 'Narzut', field: 'Markup',  filter: 'agNumberColumnFilter', type: ['numericColumn','money'], width: 90, suppressMenu: true,
+        cellRenderer: 'sitGridCellRenderer',
+        cellClass: ['font12','numberFormat2Dec'],
+        pinnedRowCellRenderer: 'sitGridCellRenderer',
+        pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
+      },
+      { headerName: 'Koszt - klient', field: 'CustCost',  filter: 'agNumberColumnFilter', type: ['numericColumn','money'], width: 100, suppressMenu: true,
         cellRenderer: 'sitGridCellRenderer',
         cellStyle: function(params) { return {backgroundColor: '#cce6ff'} },
         cellClass: ['font12','blueBackground','numberFormat2Dec'],
@@ -217,6 +245,8 @@ export class SitEmployeesSettlementsComponent implements OnInit {
     var ppk = 0;
     var deduction = 0;
     var zusFirma = 0;
+    var additions = 0;
+    var additionsCust = 0;
     var result = [];
 
     if (this.dictContainer) {
@@ -234,6 +264,8 @@ export class SitEmployeesSettlementsComponent implements OnInit {
           deduction = deduction + row['Deduction'];
           zusFirma = zusFirma + row['ZUSFirma'];
           custCost = custCost + row['CustCost'];
+          additions = additions + row['Additions'];
+          additionsCust = additionsCust + row['AdditionsCust'];
         })
       }
     }
@@ -250,6 +282,8 @@ export class SitEmployeesSettlementsComponent implements OnInit {
       PPK: ppk,
       Deduction: deduction,
       ZUSFirma: zusFirma,
+      Additions: additions,
+      AdditionsCust: additionsCust,
       StatusPPK: '',
     }
     );
