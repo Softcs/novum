@@ -1,3 +1,4 @@
+import { NgxJsonViewerModule } from 'ngx-json-viewer';
 import { NgModule } from '@angular/core';
 import { BrowserModule, Title } from '@angular/platform-browser';
 
@@ -53,6 +54,7 @@ import { AgGridModule } from 'ag-grid-angular';
 import 'ag-grid-enterprise';
 
 // SIT;
+import { SitDictBaseComponent } from './containers/_base/sit-dict-base/sit-dict-base.component';
 import { SitMenuListItemComponent } from './components/sit-menu-list-item/sit-menu-list-item.component';
 import { NavService } from './_services/nav.service';
 import { sitDSControlDirective, sitDataInputComponentDirective, sitDataCheckboxComponentDirective } from './_directives';
@@ -96,7 +98,7 @@ import { SitCustomersEditComponent } from './containers/dictionaries/sit-custome
 import { SitUserAccountChangePasswordComponent } from './containers/dictionaries/sit-user-account/actions/sit-user-account-change-password/sit-user-account-change-password.component';
 import { SitParamsComponent } from './containers/dictionaries/sit-params/sit-params.component';
 import { GridCheckboxRenderer } from './components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
-import { SitStocksComponent } from './containers/dictionaries/sit-stocks/sit-stocks.component';
+import { SitWmsStocksComponent } from './containers/dictionaries/sit-wms-stocks/sit-wms-stocks.component';
 import { SitWmsDocsComponent } from '@app/containers/dictionaries/sit-wms-docs/sit-wms-docs.component';
 import { SitRefreshButtonComponent } from './components/controls/sit-refresh-button/sit-refresh-button.component';
 import { SitFilesButtonComponent } from './components/controls/sit-files-button/sit-files-button.component';;
@@ -115,7 +117,7 @@ import { SitJobsComponent } from './containers/dictionaries/sit-jobs/sit-jobs.co
 import { SitJobsEditComponent } from './containers/dictionaries/sit-jobs/actions/sit-jobs-edit/sit-jobs-edit.component';
 import { SitJobStepsEditComponent } from './containers/dictionaries/sit-jobs/actions/sit-job-steps-edit/sit-job-steps-edit.component';
 import { SitPdfViewerComponent } from './components/controls/sit-pdf-viewer/sit-pdf-viewer.component';
-import { SitLogisticUnitsEditComponent } from './containers/dictionaries/sit-stocks/actions/sit-logistic-units-edit/sit-logistic-units-edit.component';
+import { SitLogisticUnitsEditComponent } from './containers/dictionaries/sit-wms-stocks/actions/sit-logistic-units-edit/sit-logistic-units-edit.component';
 import { SitWarehousesComponent } from './containers/dictionaries/sit-warehouses/sit-warehouses.component';
 import { SitWarehousesEditComponent } from './containers/dictionaries/sit-warehouses/actions/sit-warehouses-edit/sit-warehouses-edit.component';
 import { SitProjectsPubRegisterWorkTimeComponent } from './containers/dictionaries/sit-projects-pub/actions/sit-projects-pub-register-work-time/sit-projects-pub-register-work-time.component';
@@ -178,10 +180,22 @@ import { SitStatusesEditComponent } from './containers/dictionaries/sit-statuses
 import { SitStatusValuesEditComponent } from './containers/dictionaries/sit-statuses/actions/sit-status-values-edit/sit-status-values-edit.component';
 import { SitStatusValuesTransitionsEditComponent } from './containers/dictionaries/sit-statuses/actions/sit-status-values-transitions-edit/sit-status-values-transitions-edit.component';
 import { SitDataRadioComponent } from './components/controls/sit-data-radio/sit-data-radio.component'; // there
+import { SitCostcenter4CustEditComponent } from './containers/dictionaries/sit-customers/actions/sit-costcenter4-cust-edit/sit-costcenter4-cust-edit.component';
+import { SitEmployeesSettlementsEditComponent } from './containers/dictionaries/sit-employees-settlements/actions/sit-employees-settlements-edit/sit-employees-settlements-edit.component';
+import { SitStockForWarehousesAndRestGroupComponent } from './containers/dictionaries/sit-stock-for-warehouses-and-rest-group/sit-stock-for-warehouses-and-rest-group.component';
+import { SitStocksComponent } from './containers/dictionaries/sit-stocks/sit-stocks.component';
+import { SitReportsComponent } from './containers/dictionaries/sit-reports/sit-reports.component';
+import { SitReportsEditComponent } from './containers/dictionaries/sit-reports/actions/sit-reports-edit/sit-reports-edit.component';
+import { SitDocumentsTypesReportsEditComponent } from './containers/dictionaries/sit-reports/actions/sit-documents-types-reports-edit/sit-documents-types-reports-edit.component';
+import { SitDictionaryReportsEditComponent } from './containers/dictionaries/sit-reports/actions/sit-dictionary-reports-edit/sit-dictionary-reports-edit.component';
+import { SitSysDictionariesSynchComponent } from './containers/dictionaries/sit-sys-dictionaries/actions/sit-sys-dictionaries-synch/sit-sys-dictionaries-synch.component';
+import { SitStockForWarehousesSaleImportComponent } from './containers/dictionaries/sit-stock-for-warehouses-and-rest-group/actions/sit-stock-for-warehouses-sale-import/sit-stock-for-warehouses-sale-import.component';
+import { SitUtilProcAddNewObjectEditComponent } from './containers/dictionaries/sit-util-converter-frames/actions/sit-util-proc-add-new-object-edit/sit-util-proc-add-new-object-edit.component'
+
 
 @NgModule({
-
   imports: [
+        NgxJsonViewerModule,
         BrowserModule,
         ReactiveFormsModule,
         HttpClientModule,
@@ -225,6 +239,7 @@ import { SitDataRadioComponent } from './components/controls/sit-data-radio/sit-
     declarations: [
         AppComponent,
         HomeComponent,
+        SitDictBaseComponent,
         SitPulpitComponent,
         LoginComponent,
         SitRailConfigurationsComponent,
@@ -275,7 +290,7 @@ import { SitDataRadioComponent } from './components/controls/sit-data-radio/sit-
         SitUserAccountChangePasswordComponent,
         SitParamsComponent,
         GridCheckboxRenderer,
-        SitStocksComponent,
+        SitWmsStocksComponent,
         SitWmsDocsComponent,
         SitButtonBaseComponent,
         SitAttachmentsInsComponent ,
@@ -347,6 +362,17 @@ import { SitDataRadioComponent } from './components/controls/sit-data-radio/sit-
         SitStatusValuesEditComponent,
         SitStatusValuesTransitionsEditComponent,
         SitDataRadioComponent,
+        SitCostcenter4CustEditComponent,
+        SitEmployeesSettlementsEditComponent,
+        SitStockForWarehousesAndRestGroupComponent,
+        SitStocksComponent,
+        SitReportsComponent,
+        SitReportsEditComponent,
+        SitDocumentsTypesReportsEditComponent,
+        SitDictionaryReportsEditComponent,
+        SitSysDictionariesSynchComponent,
+        SitStockForWarehousesSaleImportComponent,
+        SitUtilProcAddNewObjectEditComponent
 
     ],
     providers: [

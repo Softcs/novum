@@ -1,47 +1,23 @@
-import { Component, OnInit, ViewChild, AfterViewInit, ViewChildren, QueryList, Inject, LOCALE_ID  } from '@angular/core';
-import { SitDictContainerComponent } from '@app/components/sit-dict-container';
-import { DataSetWrapper } from '@app/_models';
-import { environment } from '@environments/environment';
-import { User } from '@app/_models';
-import { GatewayService } from '@app/_services';
-import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
-import { formatDate } from '@angular/common';
-import { GridService } from '@app/_services/grid.service';
+import { Component } from '@angular/core';
+import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-dict-base.component';
+
 @Component({
   selector: 'app-sit-returns',
   templateUrl: './sit-returns.component.html',
   styleUrls: ['./sit-returns.component.scss'],
   host: {class: 'router-flex'}
 })
-export class SitReturnsComponent implements OnInit {
-  @ViewChild('sitDictcontainer') dictContainer: SitDictContainerComponent;
-  @ViewChildren('sitDictcontainer') dictContainers !: QueryList<SitDictContainerComponent>;
+export class SitReturnsComponent extends SitDictBaseComponent {
 
-  currentUser: User;
-  popupParent;
-  frameworkComponents;
   rowClassRules;
-  columnDefsDocumentsHeaders;
-  columnDefsDocumentsPositions;
-  columnDefsAttachments;
 
-  constructor(
-    private gatewayService: GatewayService,
-    private gridService: GridService,
-    @Inject(LOCALE_ID) private locale: string,
-  )
-  {
-    this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
-    this.popupParent = document.querySelector('body');
-    this.frameworkComponents = {
-      gridCheckboxRenderer: GridCheckboxRenderer,
-    };
+    public prepareColumnsDefinitnion() {
 
 
     //definicja kolumn nagłówków dowodów
-    this.columnDefsDocumentsHeaders = [
-      { headerName: 'Id', field: 'sitDocumentsHeadersId', sortable: true, resizable: true, filter: 'agTextColumnFilter',width: 90 },
-      { headerName: 'GUID', field: 'sitDocumentsHeadersG', sortable: true, resizable: true, filter: 'agTextColumnFilter',width: 150 },
+    this.gridColumnsDefinition["sitDocumentsHeaders"] = [
+      { headerName: 'Id', field: 'sitDocumentsHeadersId', sortable: true, resizable: true, filter: 'agTextColumnFilter',width: 90, defaultVisibility: false },
+      { headerName: 'GUID', field: 'sitDocumentsHeadersG', sortable: true, resizable: true, filter: 'agTextColumnFilter',width: 150, defaultVisibility: false },
       { headerName: 'Typ dok.', field: 'DocumentIdent', sortable: true, resizable: true, filter: 'agSetColumnFilter',width: 90 },
       { headerName: 'Status', field: 'DocumentStatus', filter: 'agNumberColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
       { headerName: 'Numer', field: 'DocumentNumber', sortable: true, resizable: true, filter: 'agTextColumnFilter' },
@@ -60,7 +36,7 @@ export class SitReturnsComponent implements OnInit {
       { headerName: 'XL ID', field: 'ExtAppIdent02', filter: 'agTextColumnFilter',width: 100  },
     ];
       //definicja kolumn pozycji dowodów
-      this.columnDefsDocumentsPositions = [
+      this.gridColumnsDefinition["sitDocumentsPositions"] = [
         { headerName: 'Identyfikator', field: 'ProductIdent', filter: 'agTextColumnFilter', width: 120, floatingFilter: true },
         { headerName: 'EAN', field: 'EAN', filter: 'agTextColumnFilter', width: 110, floatingFilter: true },
         { headerName: 'Opis', field: 'PositionDescription', filter: 'agTextColumnFilter', floatingFilter: true },
@@ -71,11 +47,11 @@ export class SitReturnsComponent implements OnInit {
         { headerName: 'Defekty', field: 'QuantityDefect', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
       ];
 
-      this.columnDefsAttachments = [
+      this.gridColumnsDefinition["sitAttachments"] = [
         { headerName: 'ParentId', field: 'ParentId' },
         { headerName: 'sitAttachmentsG', field: 'sitAttachmentsG' },
         { headerName: 'Data dodania', field: 'InsertDate', width: 120,
-           cellRenderer: (data) => { return formatDate(data.value, 'yyyy-MM-dd H:mm', this.locale) }
+        renderType: "date", renderFormat: "yyyy-MM-dd HH:mm"
         },
         { headerName: 'Nazwa pliku', field: 'FileName', width: 250 },
         { headerName: 'Opis', field: 'AttachmentDesc', width: 250 },
@@ -87,20 +63,7 @@ export class SitReturnsComponent implements OnInit {
 
    }
 
-  ngOnInit(): void {
-  }
 
-  onGridReady(params) {
-    this.gridService.setDefGridOptionsOnReady(params);
-
-    if (params.columnApi.getColumn('sitDocumentsHeadersG')) {
-      params.columnApi.setColumnsVisible(['sitDocumentsHeadersId','sitDocumentsHeadersG'],false)
-    }
-
-    if (params.columnApi.getColumn('sitAttachmentsG')) {
-      params.columnApi.setColumnsVisible(['sitAttachmentsId','sitAttachmentsG','ParentId'],false)
-    }
-  }
 
 
 }

@@ -1,46 +1,20 @@
-import { Component, OnInit, ViewChild, AfterViewInit, ViewChildren, QueryList  } from '@angular/core';
-import { SitDictContainerComponent } from '@app/components/sit-dict-container';
-import { DataSetWrapper } from '@app/_models';
-import { User } from '@app/_models';
-import { GatewayService } from '@app/_services';
-import { GridService } from '@app/_services/grid.service';
+import { Component  } from '@angular/core';
+import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-dict-base.component';
+
 @Component({
   selector: 'app-sit-warehouses',
   templateUrl: './sit-warehouses.component.html',
   styleUrls: ['./sit-warehouses.component.scss'],
   host: {class: 'router-flex'}
 })
-export class SitWarehousesComponent implements OnInit {
-  @ViewChild('sitDictcontainer') dictContainer: SitDictContainerComponent;
-  @ViewChildren('sitDictcontainer') dictContainers !: QueryList<SitDictContainerComponent>;
-
-  currentUser: User;
-  popupParent;
-  columnDefs;
-
-  constructor(
-    private gatewayService: GatewayService,
-    private gridService: GridService
-  ) {
-    this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
-    this.popupParent = document.querySelector('body');
-
-    this.columnDefs = [
-      { headerName: 'sitWarehousesId', field: 'sitWarehousesId', type: 'numericColumn', sortable: true, filter: 'agNumberColumnFilter'},
-      { headerName: 'sitWarehousesG', field: 'sitWarehousesG', filter: 'agTextColumnFilter' },
+export class SitWarehousesComponent extends SitDictBaseComponent {
+  public prepareColumnsDefinitnion() {
+    this.gridColumnsDefinition["sitWarehouses"] = [
+      { headerName: 'sitWarehousesId', field: 'sitWarehousesId', type: 'numericColumn', sortable: true, filter: 'agNumberColumnFilter', defaultVisibility: false},
+      { headerName: 'sitWarehousesG', field: 'sitWarehousesG', filter: 'agTextColumnFilter', defaultVisibility: false },
       { headerName: 'Identyfikator', field: 'WarehouseIdent', filter: 'agTextColumnFilter', width: 100 },
       { headerName: 'Nazwa', field: 'WarehouseName', filter: 'agTextColumnFilter', width: 200 },
     ]
 
    }
-
-  ngOnInit(): void {
-  }
-
-  onGridReady(params) {
-    this.gridService.setDefGridOptionsOnReady(params);
-
-    params.columnApi.setColumnsVisible(['sitWarehousesId', 'sitWarehousesG'], false)
-  }
-
 }

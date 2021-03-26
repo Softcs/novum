@@ -14,9 +14,6 @@
                 #sitSetDataSource
                 style="width: 100%; height: 100%;"
                 class="ag-theme-balham"
-                [columnDefs]="columnDefs"
-                [popupParent]="popupParent"
-                (gridReady)="onGridReady($event)"
               >
               </ag-grid-angular>
             </div>
@@ -75,9 +72,6 @@
                         <ag-grid-angular
                           #sitSetDataSource
                           class="ag-theme-balham sit-grid-fill"
-                          [columnDefs]="columnDefsHRDepartments"
-                          [popupParent]="popupParent"
-                          (gridReady)="onGridReady($event)"
                         >
                         </ag-grid-angular>
                       </div>
@@ -91,10 +85,6 @@
                           <ag-grid-angular
                             #sitSetDataSource
                             class="ag-theme-balham sit-grid-fill"
-                            [columnDefs]="columnDefsHRParams4Invoicing"
-                            [popupParent]="popupParent"
-                            [frameworkComponents]="frameworkComponents"
-                            (gridReady)="onGridReady($event)"
                           >
                           </ag-grid-angular>
                         </div>
@@ -102,6 +92,24 @@
                     </div>
                   </as-split-area>
                 </as-split>
+              </div>
+            </mat-tab>
+            <mat-tab label="MPK">
+              <div fxLayout="column" fxFill>
+                <sit-data-set-container ident="sitFilterCostCenter4Cust" fxLayout="row">
+                  <div class="sit-filter-bar" fxLayout="row">
+                      <sit-data-input #sitControl field="searchCostCenter4Cust" label="Filtruj MPK" appearance="outline" style="width: 300px;" showRefreshButton="true"></sit-data-input>
+                  </div>
+                </sit-data-set-container>
+                <sit-data-set-container ident="sitCostCenter4Cust" showActionsToolbar="true" #sitDataSetContainer fxFlex fxLayout="column">
+                  <div class="data-table" fxFlex>
+                    <ag-grid-angular
+                          #sitSetDataSource
+                          class="ag-theme-balham sit-grid-fill"
+                        >
+                    </ag-grid-angular>
+                  </div>
+                </sit-data-set-container>
               </div>
             </mat-tab>
           </mat-tab-group>

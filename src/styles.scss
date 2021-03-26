@@ -586,11 +586,16 @@ div.cover{
 
 }
 
+
+.dayoff {
+  background-color: lightgray!important;
+}
 .today {
   font-weight: bold;
   background-color: rgb(243, 227, 85)!important;
 }
-
-.dayoff {
-  background-color: lightgray!important;
+.present {
+  background-color: rgb(203, 252, 203)!important;
+}
+.workday {
 }

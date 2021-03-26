@@ -116,7 +116,7 @@ export class SitPubDeliveryDistributionComponent implements OnInit {
       { headerName: 'Rynki', field: 'Markets',tooltipField: 'Markets' , filter: 'agTextColumnFilter', width: 80, enableRowGroup: true,
         cellClass: ['font12','textFormat']
       },
-      { headerName: 'Data wyd', field: 'ReleaseDateAct', type: 'dateColumn', filter: 'agDateColumnFilter', width: 100, enableRowGroup: true,
+      { headerName: 'Data wyd', field: 'ReleaseDateAct', filter: 'agDateColumnFilter', width: 100, enableRowGroup: true,
         cellRenderer: 'sitGridCellRenderer',
         cellClass: ['font12','dateFormat']
       },

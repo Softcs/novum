@@ -36,12 +36,14 @@ export class SitPulpitComponent {
       this.excelStyles = sitGlobalConfig.excelStyles;
       this.frameworkComponents = sitGlobalConfig.frameworkComponents;
       this.rowClassRules = {
-        'today': 'data.Today === 1',
-        'dayoff': 'data.DayOff === 1'
+        'workday': 'data.DayOff === 0',
+        'dayoff': 'data.DayOff === 1',
+        'today': 'data.Today === 1'
+
       }
 
       this.columnDefs = [
-        { headerName: 'Data', field: 'Date', type: 'dateColumn', suppressMenu: true, sort: 'asc', width: 100 },
+        { headerName: 'Data', field: 'Date', suppressMenu: true, sort: 'asc', width: 100 },
         { headerName: 'Dzień', field: 'DayNameOfWeek', suppressMenu: true, width: 100},
         { headerName: 'Obecny', field: 'Present', cellRenderer: 'gridCheckboxRenderer', suppressMenu: true, width: 80 },
         { headerName: 'Powód nieob.', field: 'AbsenceName', suppressMenu: true, flex: 1 },

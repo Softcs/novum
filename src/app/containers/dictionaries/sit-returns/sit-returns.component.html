@@ -9,8 +9,8 @@
                 <div class="sit-filter-bar">
                   <sit-data-set-container ident="sitFilterDocumentsHeaders" fxLayout="row">
                       <sit-data-input #sitControl id="searchDocumentsHeaders" field="searchDocumentsHeaders" label="Filtruj dokumenty" placeholder="Numer" appearance="outline" style="width: 300px;"></sit-data-input>
-                      <sit-data-input #sitControl id="DateFrom" field="DateFrom" type="date" label="Od" appearance="outline" style="width: 15  0px;"></sit-data-input>
-                      <sit-data-input #sitControl id="DateFrom" field="DateTo" type="date" label="Do" appearance="outline" style="width: 150px;" showRefreshButton="true" ></sit-data-input>
+                      <sit-data-input #sitControl id="DateFrom" field="DateFrom" type="date" label="Od" appearance="outline" style="width: 150px;"></sit-data-input>
+                      <sit-data-input #sitControl id="DateFrom" field="DateTo" type="date" label="Do" appearance="outline" style="width: 200px;" showRefreshButton="true" ></sit-data-input>
                   </sit-data-set-container>
                 </div>
                 <sit-data-set-container ident="sitDocumentsHeaders" showActionsToolbar="true" fxFlex fxLayout="column">
@@ -20,9 +20,7 @@
                       #sitDocumentsHeadersGrid
                       style="width: 100%; height: 100%;"
                       class="ag-theme-balham"
-                      [columnDefs]="columnDefsDocumentsHeaders"
-                      [popupParent]="popupParent"
-                      (gridReady)="onGridReady($event)"
+
                     >
                     </ag-grid-angular>
                   </div>
@@ -38,11 +36,8 @@
                       #sitDocumentsPositionsGrid
                       style="width: 100%; height: 100%;"
                       class="ag-theme-balham"
-                      [columnDefs]="columnDefsDocumentsPositions"
-                      [popupParent]="popupParent"
-                      [frameworkComponents]="frameworkComponents"
                       [rowClassRules]="rowClassRules"
-                      (gridReady)="onGridReady($event)"
+
                     >
                     </ag-grid-angular>
                   </div>
@@ -62,9 +57,7 @@
                     #sitAttachmentsGrid
                     style="width: 100%; height: 100%;"
                     class="ag-theme-balham"
-                    [columnDefs]="columnDefsAttachments"
-                    [popupParent]="popupParent"
-                    (gridReady)="onGridReady($event)"
+
                   >
                   </ag-grid-angular>
                 </div>
@@ -72,7 +65,7 @@
             </div>
             <div fxFlex>
               <sit-data-set-container  ident="sitAttachments"  fxFlex fxLayout="column">
-                <sit-pdf-viewer #sitControl field="FileName" fxFill></sit-pdf-viewer>
+                <sit-pdf-viewer #sitControl reportType="att" field="FileName" fxFill></sit-pdf-viewer>
               </sit-data-set-container>
             </div>
           </div>

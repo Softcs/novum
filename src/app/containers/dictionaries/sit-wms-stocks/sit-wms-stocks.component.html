@@ -1,0 +1,150 @@
+<sit-dict-container ident="sitWmsStocks" #sitDictcontainer fxFill>
+  <div fxLayout="column" fxFill class="content">
+    <sit-data-set-container ident="sitStocks" showActionsToolbar="true">
+    </sit-data-set-container>
+    <div fxFlex fxLayout="column">
+      <mat-tab-group id="tab-group" animationDuration="0ms">
+        <mat-tab label="Magazyny">
+          <div fxLayout="column" fxFill class="content">
+            <sit-data-set-container ident="sitFilterStocks" fxLayout="row">
+              <div class="sit-filter-bar" fxLayout="row">
+                  <sit-data-input #sitControl field="searchStocks" label="Filtruj produkty" placeholder="Identyfikator, nazwa" appearance="outline" style="width: 300px;"></sit-data-input>
+                  <sit-data-input #sitControl field="WarehouseIdent" label="Magazyn" placeholder="" appearance="outline" style="width: 150px;"></sit-data-input>
+                  <sit-data-input #sitControl field="SaleStatus" label="Status sprz." placeholder="" appearance="outline" style="width: 200px;" showRefreshButton="true"
+                    [lookupDisplayFields] = "['SaleStatus', 'SaleStatusDescription']"
+                  ></sit-data-input>
+              </div>
+            </sit-data-set-container>
+
+            <as-split direction="horizontal">
+              <as-split-area [size]="80">
+                <as-split direction="vertical">
+                  <as-split-area [size]="70" fxLayout="column">
+                    <div fxFlex>
+                      <sit-data-set-container ident="sitStocks" (activeRowChanged)="activeRowStocksChanged($event)">
+                        <ag-grid-angular #sitSetDataSource
+                          #agGrid
+                          style="width: 100%; height: 100%;"
+                          class="ag-theme-balham"
+                          >
+                        </ag-grid-angular>
+                      </sit-data-set-container>
+                    </div>
+                  </as-split-area>
+                  <as-split-area [size]="30">
+                    <sit-data-set-container ident="sitWMSStocksDet" (activeRowChanged)="activeRowWMSStocksDetChanged($event)" fxFill>
+                      <div fxFlex="60">
+                        <ag-grid-angular #sitSetDataSource
+                          #agGrid
+                          style="width: 100%; height: 100%;"
+                          class="ag-theme-balham"
+                          >
+                        </ag-grid-angular>
+                      </div>
+                      <div fxFlex fxLayoutAlign="center center" >
+                        <ngx-barcode
+                          [bc-value]="locationIdent"
+                          [bc-display-value]="true"
+                          [bc-height]="50"
+                          [bc-font-size]="20"
+                          [bc-background]="contentColor"
+                        >
+                        </ngx-barcode>
+                      </div>
+                    </sit-data-set-container>
+                  </as-split-area>
+                </as-split>
+              </as-split-area>
+              <as-split-area [size]="20" fxLayout="column">
+                <div class="content" fxFill fxLayout="column" fxLayoutAlign=" center" >
+                  <div fxLayout="row" fxLayoutAlign="start start"><a href="{{link}}" target="_blank"><img src="{{link}}" height="350"></a></div>
+                  <ngx-barcode
+                    [bc-value]="ean"
+                    [bc-display-value]="true"
+                    [bc-height]="50"
+                    [bc-font-size]="20"
+                    [bc-background]="contentColor"
+                  >
+                  </ngx-barcode>
+                </div>
+              </as-split-area>
+            </as-split>
+          </div>
+        </mat-tab>
+        <mat-tab label="Lokalizacje">
+          <div fxFill fxLayout="column" class="content">
+            <sit-data-set-container ident="sitFilterWMSStocks" fxLayout="row">
+              <div class="sit-filter-bar">
+                  <sit-data-input #sitControl field="searchWMSStocks" label="Filtruj" placeholder="produkt, lokalizacja" appearance="outline" style="width: 300px;" showRefreshButton="true"></sit-data-input>
+              </div>
+            </sit-data-set-container>
+
+            <sit-data-set-container ident="sitWMSStocks" fxFlex>
+              <ag-grid-angular #sitSetDataSource
+                #agGrid
+                style="width: 100%; height: 100%;"
+                class="ag-theme-balham"
+                >
+              </ag-grid-angular>
+            </sit-data-set-container>
+          </div>
+        </mat-tab>
+        <mat-tab label="Jednostki logistyczne">
+          <div fxFill fxLayout="column" class="content">
+            <sit-data-set-container ident="sitFilterLogisticUnits" fxLayout="row">
+              <div class="sit-filter-bar" fxLayout="row">
+                <sit-data-checkbox #sitControl [refreshOnChange]="true" label="Pokaż puste" field="searchWithEmpty"></sit-data-checkbox>
+                <sit-data-input #sitControl field="searchLogisticUnits" label="Filtruj jednostki logistyczne" placeholder="EAN, opis" appearance="outline" style="width: 200px;"></sit-data-input>
+                <sit-data-input #sitControl field="searchProduct" label="Filtruj wg. produktu" placeholder="" appearance="outline" style="width: 250px;" showRefreshButton="true"></sit-data-input>
+              </div>
+            </sit-data-set-container>
+            <as-split direction="horizontal">
+              <as-split-area [size]="40" fxLayout="column">
+                <sit-data-set-container ident="sitLogisticUnits" showActionsToolbar="true" (activeRowChanged)="activeRowLogisticUnitsChanged($event)" fxFill fxLayout="column">
+                  <div class="data-table" fxFlex>
+                    <ag-grid-angular #sitSetDataSource
+                      #agGrid
+                      style="width: 100%; height: 100%;"
+                      class="ag-theme-balham"
+                      >
+                    </ag-grid-angular>
+                  </div>
+                  <div fxFlex="15" fxLayoutAlign="center center" >
+                    <ngx-barcode
+                      [bc-value]="logisticUnitEAN"
+                      [bc-display-value]="true"
+                      [bc-height]="30"
+                      [bc-font-size]="20"
+                      [bc-background]="contentColor"
+                    >
+                    </ngx-barcode>
+                  </div>
+
+                </sit-data-set-container>
+              </as-split-area>
+              <as-split-area [size]="60" fxLayout="column">
+                <mat-tab-group id="tab-group" animationDuration="0ms">
+                  <mat-tab label="Pozycje">
+                    <sit-data-set-container  ident="sitWMSStocksWithLogisticUnits" fxFill>
+                      <ag-grid-angular #sitSetDataSource fxFlex
+                        #agGrid
+                        style="width: 100%; height: 100%;"
+                        class="ag-theme-balham"
+                        >
+                      </ag-grid-angular>
+                    </sit-data-set-container>
+                  </mat-tab>
+                  <mat-tab label="Wydruk etykiety">
+                    <sit-data-set-container  ident="sitLogisticUnits" fxFill fxLayout="column">
+                      <sit-pdf-viewer #sitControl reportType="dict" field="sitLogisticUnitsId" dictGuid="6A33F91C-3E95-E988-D9C1-1EE2C471C11E" fxFill></sit-pdf-viewer>
+                    </sit-data-set-container>
+                  </mat-tab>
+                </mat-tab-group>
+              </as-split-area>
+            </as-split>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</sit-dict-container>
