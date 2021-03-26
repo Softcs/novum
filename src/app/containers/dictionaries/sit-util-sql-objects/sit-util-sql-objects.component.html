@@ -1,0 +1,90 @@
+<sit-dict-container ident="sitUtilSqlObjects" #sitDictcontainer fxFill>
+  <div fxLayout="column" fxFill class="content">
+    <as-split direction="horizontal">
+      <as-split-area [size]="40">
+        <div fxFill fxLayout="column">
+          <sit-data-set-container ident="sitFilter" fxLayout="row">
+            <div class="sit-filter-bar" fxLayout="row">
+              <sit-data-input #sitControl field="Search" label="wyszukaj" appearance="outline" style="width: 300px;" showRefreshButton="true"></sit-data-input>
+            </div>
+          </sit-data-set-container>
+          <sit-data-set-container ident="sitUtilSQLObjects" showActionsToolbar="true" fxLayout="column" fxFlex>
+            <div class="data-table" fxFlex>
+              <ag-grid-angular 
+                #sitSetDataSource 
+                style="width: 100%; height: 100%;" 
+                class="ag-theme-balham">
+              </ag-grid-angular>
+            </div>
+          </sit-data-set-container>
+        </div>
+      </as-split-area>
+      <as-split-area [size]="60">
+        <mat-tab-group id="tab-group" animationDuration="0ms">
+          <mat-tab label="Definicje dodatkowe">
+            <sit-data-set-container ident="sitUtilSQLObjects" fxLayout="column" fxFill>
+              <div fxLayout="row" fxFill>
+                <sit-data-textarea type="textarea" #sitControl field="AddColumnDefinition" label="" appearance="outline" [readonly]=true fxFill></sit-data-textarea>
+              </div>
+            </sit-data-set-container>
+          </mat-tab>          
+          <mat-tab label="Wersje obiektu">
+            <div class="content" fxFill fxLayout="column">
+              <div fxFlex="120">
+                <sit-data-set-container ident="sitUtilSQLObjectVersions" showActionsToolbar="true" fxFlex fxLayout="column">
+                  <div class="data-table" fxFlex>
+                    <ag-grid-angular 
+                      #sitSetDataSource #sitAttachmentsGrid
+                      style="width: 100%; height: 100%;" 
+                      class="ag-theme-balham">
+                    </ag-grid-angular>
+                  </div>
+                </sit-data-set-container>
+              </div>
+            </div>
+          </mat-tab>
+          <mat-tab label="Dodatkowe skrypty INS\DEL">
+            <div class="content" fxFill fxLayout="column">
+              <div fxLayout="column" fxFlex=40>
+                <sit-data-set-container ident="sitUtilSQLAddBatches4Object" showActionsToolbar="true" fxFlex fxLayout="column">
+                  <div class="data-table" fxFlex>
+                    <ag-grid-angular 
+                      #sitSetDataSource 
+                      style="width: 100%; height: 100%;"
+                      class="ag-theme-balham">
+                    </ag-grid-angular>
+                  </div>
+                </sit-data-set-container>
+              </div>
+              <div fxLayout="column" fxFlex=60>
+                <sit-data-set-container ident="sitUtilSQLAddBatches4Object" fxLayout="column" fxFill>
+                  <div fxLayout="row" fxFill>
+                    <sit-data-textarea type="textarea" #sitControl field="Data" label="" appearance="outline" [readonly]=true fxFill></sit-data-textarea>
+                  </div>
+                </sit-data-set-container>
+              </div>           
+            </div>
+          </mat-tab>
+          <mat-tab label="Tabele wspólne">
+            <div class="content" fxFill fxLayout="column">
+              <sit-data-set-container ident="sitFilterCheckCommonDataTable" fxLayout="row">
+                <div class="sit-filter-bar" fxLayout="row">
+                  <sit-data-input #sitControl field="Search" label="Object name" appearance="outline" style="width: 300px;" showRefreshButton="false"></sit-data-input>
+                </div>
+              </sit-data-set-container>
+              <sit-data-set-container ident="sitUtilCheckCommonDataTable" showActionsToolbar="true" fxFlex fxLayout="column">
+                <div class="data-table" fxFlex>
+                  <ag-grid-angular 
+                    #sitSetDataSource 
+                    style="width: 100%; height: 100%;" 
+                    class="ag-theme-balham">
+                  </ag-grid-angular>
+                </div>
+              </sit-data-set-container>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </as-split-area>
+    </as-split>
+  </div>
+</sit-dict-container>

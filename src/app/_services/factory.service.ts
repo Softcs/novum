@@ -94,6 +94,10 @@ import { SitDictionaryReportsEditComponent } from '@app/containers/dictionaries/
 import { SitSysDictionariesSynchComponent } from '@app/containers/dictionaries/sit-sys-dictionaries/actions/sit-sys-dictionaries-synch/sit-sys-dictionaries-synch.component';
 import { SitStockForWarehousesSaleImportComponent } from '@app/containers/dictionaries/sit-stock-for-warehouses-and-rest-group/actions/sit-stock-for-warehouses-sale-import/sit-stock-for-warehouses-sale-import.component';
 import { SitUtilProcAddNewObjectEditComponent } from '@app/containers/dictionaries/sit-util-converter-frames/actions/sit-util-proc-add-new-object-edit/sit-util-proc-add-new-object-edit.component';
+import { SitUtilSqlObjectsComponent } from '@app/containers/dictionaries/sit-util-sql-objects/sit-util-sql-objects.component';
+import { SitUtilSqlObjectsEditComponent } from '@app/containers/dictionaries/sit-util-sql-objects/actions/sit-util-sql-objects-edit/sit-util-sql-objects-edit.component';
+import { SitUtilSqlAddBatches4ObjectEditComponent } from '@app/containers/dictionaries/sit-util-sql-objects/actions/sit-util-sql-add-batches4-object-edit/sit-util-sql-add-batches4-object-edit.component';
+import { SitUtilSynchCommonDataTableComponent } from '@app/containers/dictionaries/sit-util-sql-objects/actions/sit-util-synch-common-data-table/sit-util-synch-common-data-table.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -193,7 +197,12 @@ export class FactoryService {
         sitDictionaryReportsEdit: SitDictionaryReportsEditComponent,
         sitSysDictionariesSynch: SitSysDictionariesSynchComponent,
         sitStockForWarehousesSaleImport: SitStockForWarehousesSaleImportComponent,
-        sitUtilProcAddNewObjectEdit: SitUtilProcAddNewObjectEditComponent
+        sitUtilProcAddNewObjectEdit: SitUtilProcAddNewObjectEditComponent,
+        sitUtilSqlObjects: SitUtilSqlObjectsComponent,
+        sitUtilSqlObjectsEdit: SitUtilSqlObjectsEditComponent,
+        sitUtilSqlAddBatches4ObjectEdit: SitUtilSqlAddBatches4ObjectEditComponent,
+        sitUtilSynchCommonDataTable: SitUtilSynchCommonDataTableComponent
+
     };
 
     public GetFactory(ident: string) {

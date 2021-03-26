@@ -187,7 +187,11 @@ import { SitDocumentsTypesReportsEditComponent } from './containers/dictionaries
 import { SitDictionaryReportsEditComponent } from './containers/dictionaries/sit-reports/actions/sit-dictionary-reports-edit/sit-dictionary-reports-edit.component';
 import { SitSysDictionariesSynchComponent } from './containers/dictionaries/sit-sys-dictionaries/actions/sit-sys-dictionaries-synch/sit-sys-dictionaries-synch.component';
 import { SitStockForWarehousesSaleImportComponent } from './containers/dictionaries/sit-stock-for-warehouses-and-rest-group/actions/sit-stock-for-warehouses-sale-import/sit-stock-for-warehouses-sale-import.component';
-import { SitUtilProcAddNewObjectEditComponent } from './containers/dictionaries/sit-util-converter-frames/actions/sit-util-proc-add-new-object-edit/sit-util-proc-add-new-object-edit.component'
+import { SitUtilProcAddNewObjectEditComponent } from './containers/dictionaries/sit-util-converter-frames/actions/sit-util-proc-add-new-object-edit/sit-util-proc-add-new-object-edit.component';
+import { SitUtilSqlObjectsComponent } from './containers/dictionaries/sit-util-sql-objects/sit-util-sql-objects.component';
+import { SitUtilSqlObjectsEditComponent } from './containers/dictionaries/sit-util-sql-objects/actions/sit-util-sql-objects-edit/sit-util-sql-objects-edit.component';
+import { SitUtilSqlAddBatches4ObjectEditComponent } from './containers/dictionaries/sit-util-sql-objects/actions/sit-util-sql-add-batches4-object-edit/sit-util-sql-add-batches4-object-edit.component';
+import { SitUtilSynchCommonDataTableComponent } from './containers/dictionaries/sit-util-sql-objects/actions/sit-util-synch-common-data-table/sit-util-synch-common-data-table.component'
 
 
 @NgModule({
@@ -366,7 +370,11 @@ import { SitUtilProcAddNewObjectEditComponent } from './containers/dictionaries/
         SitDictionaryReportsEditComponent,
         SitSysDictionariesSynchComponent,
         SitStockForWarehousesSaleImportComponent,
-        SitUtilProcAddNewObjectEditComponent
+        SitUtilProcAddNewObjectEditComponent,
+        SitUtilSqlObjectsComponent,
+        SitUtilSqlObjectsEditComponent,
+        SitUtilSqlAddBatches4ObjectEditComponent,
+        SitUtilSynchCommonDataTableComponent
 
     ],
     providers: [

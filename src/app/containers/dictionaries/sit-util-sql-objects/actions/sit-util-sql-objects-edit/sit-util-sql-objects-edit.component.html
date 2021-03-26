@@ -1,0 +1,21 @@
+<sit-proc-params
+  [(actionExecuteData)]="actionExecuteData"
+  >
+  <sit-data-set-container ident="sitUtilSqlObjectsEdit">
+    <div class="sit-proc-params-content" fxLayout="column" style="width: 350px;height: 500px;">
+      <sit-data-checkbox #sitControl field="ForScript" label="Dodawać do skryptów"></sit-data-checkbox>
+      <sit-data-checkbox #sitControl field="IsCommonData" label="Obiekt zawierający dane wspólne [G]"></sit-data-checkbox>
+      <div fxLayout="row" fxFlex>
+        <sit-data-textarea 
+          type="textarea" 
+          #sitControl field="AddColumnDefinition" 
+          label="Dodatkowe definicje kolumn" 
+          appearance="outline" 
+          rows="20" 
+          cols="65" 
+          fxFill>
+        </sit-data-textarea>
+      </div>      
+    </div>
+  </sit-data-set-container>
+</sit-proc-params>
