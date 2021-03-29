@@ -40,15 +40,15 @@ export class SitDataRadioComponent extends SitDataBaseComponent {
   }
 
   onChange(event: any) {
-    super.onChange(this.getValue());
-    this.dataSetWrapper.setFieldValue(this.field, this.getValue());
+    const value = this.getValue();
+    super.onChange(value);
+    this.dataSetWrapper.setFieldValue(this.field, value);
     if (this.refreshOnChange) {
       this.dataSetWrapper.RefreshChildren();
     }
   }
 
   public getValue(): any {
-    console.log( this.internalValue);
     return this.internalValue;
   }
 
