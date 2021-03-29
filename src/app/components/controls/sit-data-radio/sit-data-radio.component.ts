@@ -8,7 +8,7 @@ import { SitDataBaseComponent } from '../sit-data-base/sit-data-base.component';
   encapsulation : ViewEncapsulation.None
 })
 export class SitDataRadioComponent extends SitDataBaseComponent {
-  public internalValue: string;
+  public internalValue = 0;
   public defaultTabIndex: number;
   public inputId: string;
 
@@ -39,7 +39,19 @@ export class SitDataRadioComponent extends SitDataBaseComponent {
     this.refreshOnChange = true;
   }
 
-  onChange(event: any) {
+  private getCheckedValue(): number {
+    if (!this.buttons) {
+      return 0;
+    }
+
+    const buttonChecked = this.buttons.find( b => b.checked);
+    if (buttonChecked) {
+      return buttonChecked.value;
+    }
+    return 0;
+  }
+
+  public onChange(event: any) {
     const value = this.getValue();
     super.onChange(value);
     this.dataSetWrapper.setFieldValue(this.field, value);
@@ -53,6 +65,11 @@ export class SitDataRadioComponent extends SitDataBaseComponent {
   }
 
   public setValue(value: any) {
+    if (value == null) {
+      value = this.getCheckedValue();
+    }
+
+    value = parseInt(value);
     this.value = value;
   }
 
