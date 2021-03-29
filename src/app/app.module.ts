@@ -191,7 +191,8 @@ import { SitUtilProcAddNewObjectEditComponent } from './containers/dictionaries/
 import { SitUtilSqlObjectsComponent } from './containers/dictionaries/sit-util-sql-objects/sit-util-sql-objects.component';
 import { SitUtilSqlObjectsEditComponent } from './containers/dictionaries/sit-util-sql-objects/actions/sit-util-sql-objects-edit/sit-util-sql-objects-edit.component';
 import { SitUtilSqlAddBatches4ObjectEditComponent } from './containers/dictionaries/sit-util-sql-objects/actions/sit-util-sql-add-batches4-object-edit/sit-util-sql-add-batches4-object-edit.component';
-import { SitUtilSynchCommonDataTableComponent } from './containers/dictionaries/sit-util-sql-objects/actions/sit-util-synch-common-data-table/sit-util-synch-common-data-table.component'
+import { SitUtilSynchCommonDataTableComponent } from './containers/dictionaries/sit-util-sql-objects/actions/sit-util-synch-common-data-table/sit-util-synch-common-data-table.component';
+import { SitHRAdditions4InvoicingEditComponent } from './containers/dictionaries/sit-customers/actions/sit-hr-additions4-invoicing-edit/sit-hr-additions4-invoicing-edit.component'
 
 
 @NgModule({
@@ -374,7 +375,8 @@ import { SitUtilSynchCommonDataTableComponent } from './containers/dictionaries/
         SitUtilSqlObjectsComponent,
         SitUtilSqlObjectsEditComponent,
         SitUtilSqlAddBatches4ObjectEditComponent,
-        SitUtilSynchCommonDataTableComponent
+        SitUtilSynchCommonDataTableComponent,
+        SitHRAdditions4InvoicingEditComponent
 
     ],
     providers: [

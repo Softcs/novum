@@ -39,7 +39,7 @@ export class SitEmployeesSettlementsComponent implements OnInit {
     this.columnDefs = [
       { headerName: 'Pracownik',
         children: [
-          { headerName: 'Nazwisko', field: 'EmployeeName', tooltipField: 'EmployeeName', sort: 'asc', width: 150, pinned: 'left',
+          { headerName: 'Nazwisko', field: 'EmployeeName', tooltipField: 'EmployeeName', sort: 'asc', width: 180, pinned: 'left',
             checkboxSelection: true, headerCheckboxSelection: true, headerCheckboxSelectionFilteredOnly: true,
             cellClass: ['font12','textFormat']
           },
@@ -146,7 +146,7 @@ export class SitEmployeesSettlementsComponent implements OnInit {
         pinnedRowCellRenderer: 'sitGridCellRenderer',
         pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
       },
-      { headerName: 'Dodatki kli.', field: 'AdditionsCust', filter: 'agNumberColumnFilter', type: ['numericColumn','money'], width: 80, suppressMenu: true,
+      { headerName: 'Dodatki kli.', field: 'AdditionsCust', filter: 'agNumberColumnFilter', type: ['numericColumn','money'], width: 90, suppressMenu: true,
         cellRenderer: 'sitGridCellRenderer',
         cellClass: ['font12','numberFormat2Dec'],
         pinnedRowCellRenderer: 'sitGridCellRenderer',

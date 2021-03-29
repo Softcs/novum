@@ -78,18 +78,36 @@
                     </sit-data-set-container>
                   </as-split-area>
                   <as-split-area [size]="50">
-                    <div fxLayout="column" fxFill>
-                      <div class="sit-grid-title">Parametry wyliczania faktur APT</div>
-                      <sit-data-set-container ident="sitHRParams4Invoicing" showActionsToolbar="true" #sitDataSetContainer fxFlex fxLayout="column">
-                        <div class="data-table" fxFlex>
-                          <ag-grid-angular
-                            #sitSetDataSource
-                            class="ag-theme-balham sit-grid-fill"
-                          >
-                          </ag-grid-angular>
+                    <mat-tab-group id="tab-group" animationDuration="0ms">
+                      <mat-tab label="Fakturowanie">
+                        <div fxLayout="column" fxFill>
+                          <div class="sit-grid-title">Parametry wyliczania faktur APT</div>
+                          <sit-data-set-container ident="sitHRParams4Invoicing" showActionsToolbar="true" #sitDataSetContainer fxFlex fxLayout="column">
+                            <div class="data-table" fxFlex>
+                              <ag-grid-angular
+                                #sitSetDataSource
+                                class="ag-theme-balham sit-grid-fill"
+                              >
+                              </ag-grid-angular>
+                            </div>
+                          </sit-data-set-container>
                         </div>
-                      </sit-data-set-container>
-                    </div>
+                      </mat-tab>
+                      <mat-tab label="Dodatki">
+                        <div fxLayout="column" fxFill class="content">
+                          <div class="sit-grid-title">Dodatki do narzutów</div>
+                          <sit-data-set-container ident="sitHRAdditions4Invoicing" showActionsToolbar="true" #sitDataSetContainer fxFlex fxLayout="column">
+                            <div class="data-table" fxFlex>
+                              <ag-grid-angular
+                                #sitSetDataSource
+                                class="ag-theme-balham sit-grid-fill"
+                              >
+                              </ag-grid-angular>
+                            </div>
+                          </sit-data-set-container>
+                        </div>
+                      </mat-tab>
+                    </mat-tab-group>
                   </as-split-area>
                 </as-split>
               </div>

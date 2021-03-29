@@ -39,6 +39,18 @@ export class SitCustomersComponent extends SitDictBaseComponent {
     this.gridColumnsDefinition["sitCostCenter4Cust"] = [
       { headerName: 'Identyfikator', field: 'CustomerCostCenterIdent', width: 150 },
       { headerName: 'Nazwa', field: 'CustomerCostCenterName', width: 250 }
-    ]
+    ];
+
+    this.gridColumnsDefinition["sitHRAdditions4Invoicing"] = [
+      { headerName: 'ID', field: 'sitHRAdditions4InvoicingId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, defaultVisibility: false },
+      { headerName: 'GUID', field: 'sitHRAdditions4InvoicingG', width: 100, defaultVisibility: false },
+      { headerName: 'Od dnia', field: 'DateFrom', autoHeight: true, width: 100, sort: 'desc',suppressMenu: true, renderType: "date"}, // domyslny format yyyy-MM-dd - mozna przeciazyc przez np. renderFormat: "yyyy-MM-dd"
+      { headerName: 'Identyfikator', field: 'AdditionIdent', width: 200, sort: 'asc', },
+      { headerName: 'Wartość', field: 'Value', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80, suppressMenu: true,
+        renderType: "number", renderFormat: '1.2-2'}, // domyslny format 1.2-2 - mozna przeciazyc przez np. renderFormat: 1.2-2"
+      { headerName: 'Opis', field: 'AdditionDesc', width: 200 },
+
+    ];
+
   }
 }

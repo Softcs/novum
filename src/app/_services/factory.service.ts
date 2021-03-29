@@ -98,6 +98,7 @@ import { SitUtilSqlObjectsComponent } from '@app/containers/dictionaries/sit-uti
 import { SitUtilSqlObjectsEditComponent } from '@app/containers/dictionaries/sit-util-sql-objects/actions/sit-util-sql-objects-edit/sit-util-sql-objects-edit.component';
 import { SitUtilSqlAddBatches4ObjectEditComponent } from '@app/containers/dictionaries/sit-util-sql-objects/actions/sit-util-sql-add-batches4-object-edit/sit-util-sql-add-batches4-object-edit.component';
 import { SitUtilSynchCommonDataTableComponent } from '@app/containers/dictionaries/sit-util-sql-objects/actions/sit-util-synch-common-data-table/sit-util-synch-common-data-table.component';
+import { SitHRAdditions4InvoicingEditComponent } from '@app/containers/dictionaries/sit-customers/actions/sit-hr-additions4-invoicing-edit/sit-hr-additions4-invoicing-edit.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -201,7 +202,8 @@ export class FactoryService {
         sitUtilSqlObjects: SitUtilSqlObjectsComponent,
         sitUtilSqlObjectsEdit: SitUtilSqlObjectsEditComponent,
         sitUtilSqlAddBatches4ObjectEdit: SitUtilSqlAddBatches4ObjectEditComponent,
-        sitUtilSynchCommonDataTable: SitUtilSynchCommonDataTableComponent
+        sitUtilSynchCommonDataTable: SitUtilSynchCommonDataTableComponent,
+        sitHRAdditions4InvoicingEdit: SitHRAdditions4InvoicingEditComponent,
 
     };
 
