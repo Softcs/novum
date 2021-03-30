@@ -10,12 +10,12 @@ import { SitDataBaseComponent } from '../sit-data-base/sit-data-base.component';
 export class SitDataRadioComponent extends SitDataBaseComponent {
   public internalValue = 0;
   public defaultTabIndex: number;
-  public inputId: string;
+  public id: string;
 
   @Input() color: string;
   @Input() disabled: boolean;
   @Input() labelPosition: 'after';
-  @Input() name: string;
+  @Input() label: string;
   @Input() required: boolean;
   @Input() selected: boolean;
   @Input() refreshOnChange: boolean;
@@ -28,15 +28,16 @@ export class SitDataRadioComponent extends SitDataBaseComponent {
   @Input() colorButton: string;
   @Input() disableRipple: boolean;
   @Input() disabledButton: boolean;
-  @Input() id: string;
   @Input() labelPositionButton: 'after';
   @Input() nameButton: string;
   @Input() requiredButton: boolean;
+  @Input() type: string = 'row';
 
   constructor(
     _renderer: Renderer2) {
     super(_renderer);
     this.refreshOnChange = true;
+    this.id = this.newGuid();
   }
 
   private getCheckedValue(): number {
@@ -75,5 +76,13 @@ export class SitDataRadioComponent extends SitDataBaseComponent {
 
   public refreshFieldValue() {
     this.dataSetWrapper.refreshFieldValueInControl(this);
+  }
+
+  newGuid() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      var r = Math.random() * 16 | 0,
+      v = c == 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    });
   }
 }

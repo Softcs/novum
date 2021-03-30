@@ -1,22 +1,26 @@
-<mat-radio-group  #inputElement class="radio-group"
-  [(ngModel)]='internalValue'
-  [value]="value"
-  [name]="name"
-  [labelPosition]="labelPosition"  
-  [required]="required"
-  [disabled]="disabled"
-  (change)="onChange($event)" >
-  <mat-radio-button class="radio-button" *ngFor="let button of buttons; let i = index"
-    [value]="button.value"
-    [checked]="button.checked"
-    [disableRipple]="button.disableRipple"
-    [colorButton]="button.color"
-    [id]="i"
-    [ariaLabelledby]="button.ariaLabelledby"
-    [requiredButton]="button.required"
-    [disabledButton]="button.disabled"
-    [labelPositionButton]="button.labelPosition"
-    [nameButton]="button.name">
-    {{button.caption}}
-  </mat-radio-button>
-</mat-radio-group>
+<fieldset>
+  <legend>{{label}}</legend>
+  <mat-radio-group #inputElement
+    [ngClass]="{'radio-group-row': type === 'row','radio-group-column': type === 'column'}"
+    [id]="id"
+    [(ngModel)]='internalValue'
+    [value]="value"
+    [labelPosition]="labelPosition"
+    [required]="required"
+    [disabled]="disabled"
+    (change)="onChange($event)"
+  >
+    <mat-radio-button class="radio-button" *ngFor="let button of buttons; let i = index"
+      [value]="button.value"
+      [checked]="button.checked"
+      [disableRipple]="button.disableRipple"
+      [colorButton]="button.color"
+      [ariaLabelledby]="button.ariaLabelledby"
+      [requiredButton]="button.required"
+      [disabledButton]="button.disabled"
+      [labelPositionButton]="button.labelPosition"
+      [nameButton]="button.name">
+      {{button.caption}}
+    </mat-radio-button>
+  </mat-radio-group>
+</fieldset>

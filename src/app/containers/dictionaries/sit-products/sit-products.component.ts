@@ -20,10 +20,9 @@ export class SitProductsComponent extends SitDictBaseComponent {
       { headerName: 'JM', field: 'UnitIdent', filter: 'agTextColumnFilter', width: 60 },
       { headerName: 'Vat', field: 'VATRateIdent', filter: 'agTextColumnFilter', width: 60 },
       { headerName: 'PKWIU', field: 'PKWIU', filter: 'agTextColumnFilter', width: 100 },
-      { headerName: 'Waga kg', field: 'Weight', filter: 'agTextColumnFilter', type: 'numericColumn', width: 90,
-      renderType: "number", renderFormat: '1.3-3'
+      { headerName: 'Waga kg', field: 'Weight', filter: 'agTextColumnFilter', type: 'numericColumn', width: 90, renderType: 'number', renderFormat: '1.3-3'
       },
-      { headerName: 'Aktywny', field: 'IsActive', filter: 'agSetColumnFilter', width: 80, cellRenderer: 'gridCheckboxRenderer', suppressMenu: true },
+      { headerName: 'Aktywny', field: 'IsActive', filter: 'agSetColumnFilter', width: 80, renderType: 'checkbox', suppressMenu: true },
       { headerName: 'Status sprz.', field: 'SaleStatus', tooltipField: 'SaleStatusDescription', width: 80, suppressMenu: true},
 
 

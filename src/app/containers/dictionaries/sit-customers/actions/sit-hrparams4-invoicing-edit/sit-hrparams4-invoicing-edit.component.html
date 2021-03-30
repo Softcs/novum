@@ -4,10 +4,20 @@
   <sit-data-set-container ident="sitHRParams4InvoicingEdit">
     <div class="sit-proc-params-content" fxLayout="column">
       <sit-data-input type="date" #sitControl field="DateFrom" label="Od dnia" appearance="outline" fxFlex></sit-data-input>
-      <sit-data-input type="number" #sitControl field="PayrollComponent" label="Składnik" placeholder="0 - podst., 1 - prem., 2 - PPK" appearance="outline" fxFlex></sit-data-input>
-      <sit-data-input type="number" #sitControl field="MarkupKind" label="Rodzaj narzutu" placeholder="0 - %, 1 - Kwota, 2 - Stawka za godz." appearance="outline" fxFlex></sit-data-input>
-      <sit-data-input type="number" #sitControl field="Threshold" label="Próg" appearance="outline" fxFlex></sit-data-input>
-      <sit-data-input type="number" #sitControl field="Value" label="Wartość" appearance="outline" fxFlex></sit-data-input>
+      <div fxLayout="row">
+        <sit-data-radio #sitControl field="PayrollComponent" type="column" label="Składnik" fxFlex=50
+          [buttons]="[{'caption':'Podstawa','value':0, 'checked':true},{'caption':'Premia','value':1},{'caption':'PPK','value':2}]"
+        ></sit-data-radio>
+        <!-- <sit-data-input type="number" #sitControl field="PayrollComponent" label="Składnik" placeholder="0 - podst., 1 - prem., 2 - PPK" appearance="outline" fxFlex></sit-data-input> -->
+        <sit-data-radio #sitControl field="MarkupKind" type="column" label="Rodzaj narzutu" fxFlex
+          [buttons]="[{'caption':'Narzut %','value':0, 'checked':true},{'caption':'Narzut kwotowy','value':1},{'caption':'Sztywna stawka','value':2}]"
+        ></sit-data-radio>
+        <!-- <sit-data-input type="number" #sitControl field="MarkupKind" label="Rodzaj narzutu" placeholder="0 - %, 1 - Kwota, 2 - Stawka za godz." appearance="outline" fxFlex></sit-data-input> -->
+      </div>
+      <div fxLayout="row">
+        <sit-data-input type="number" #sitControl field="Threshold" label="Próg" appearance="outline" fxFlex></sit-data-input>
+        <sit-data-input type="number" #sitControl field="Value" label="Wartość" appearance="outline" fxFlex></sit-data-input>
+      </div>
       <sit-data-checkbox #sitControl field="ZUS" label="Dla pracowników bez ZUS"></sit-data-checkbox>
       <sit-data-checkbox #sitControl field="CustRecr" label="Rekrutacja klienta"></sit-data-checkbox>
 

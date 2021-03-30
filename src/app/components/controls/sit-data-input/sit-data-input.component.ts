@@ -30,7 +30,7 @@ export class SitDataInputComponent extends SitDataBaseComponent {
 
   hasLookup: boolean;
   lookupIsLoading = false;
-  id;
+  id: string;
 
   private lookupSettings = null;
   private _lookupRows = new BehaviorSubject<any[]>([]);
