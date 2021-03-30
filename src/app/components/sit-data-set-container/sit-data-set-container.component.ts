@@ -108,9 +108,9 @@ export class SitDataSetContainerComponent {
     }
     const fieldName = this.getFieldId(dataSource.ident);
     this.datasSourcesInterface.forEach(control => {
-      const fieldValue = activeRow[fieldName];
-      const gridApi = control["api"];
       const rowsDataApiToDelete = [];
+      const fieldValue = activeRow[fieldName];
+      const gridApi = this.getGridApi(control);      
       if (gridApi && !this.isPivotMode(gridApi)) {
         gridApi.forEachNode((rowNode) => {
           const rowValue = rowNode.data[fieldName];
@@ -129,12 +129,8 @@ export class SitDataSetContainerComponent {
     return this.dataSetControlsManager.prepareGrid(gridApi, ident);
   }
 
-  private applyCustomPropsGrid(element) {
-    var self = this;
-    const gridApi = element["api"];
-    if (gridApi == null) {
-      return null;
-    }
+  private applyCustomPropsGrid(gridApi) {
+    var self = this;    
 
     var customProperty = gridApi.SeidoCustomProperty;
     if (customProperty == null) {
@@ -191,6 +187,11 @@ export class SitDataSetContainerComponent {
 
     return customProperty;
   }
+  private getGridApi(element) {
+     return element && element.hasOwnProperty("api")
+            ? element["api"]
+            : null;
+  }
 
   public redrawGridActiveRow(gridApi: any, prevRow: any) {
     if (!this.activeRow || !gridApi || this.isPivotMode(gridApi)) {
@@ -235,7 +236,7 @@ export class SitDataSetContainerComponent {
           fieldName = this.identityFieldName;
         }
 
-         const fieldValue = inputRow[fieldName];
+        const fieldValue = inputRow[fieldName];
         if (control.hasOwnProperty("api")) {
           const gridApi = control["api"];
           gridApi.forEachNode( (rowNode) => {
@@ -282,18 +283,19 @@ export class SitDataSetContainerComponent {
     this.errors = dataSetWrapper.errors;
     this.datasSourcesInterface.forEach(element => {
       // agGrid
-      this.applyCustomPropsGrid(element);
-      const gridApi = element["api"];
-      if (gridApi) {
-        // tree grid - parsowanie kolumny z danymi do drzewa
-        if (this.dataSetResponseWrapper.rows) {
-          this.dataSetResponseWrapper.rows.forEach(element => {
-            if (element['dataPath']) { element['dataPath'] = JSON.parse(element['dataPath']);}
-          });
-        }
-        // end of tree grid
-        gridApi.setRowData(this.dataSetResponseWrapper.rows);
+      const gridApi = this.getGridApi(element);            
+      if (!gridApi) {
+        return false;
       }
+      this.applyCustomPropsGrid(gridApi);
+      // tree grid - parsowanie kolumny z danymi do drzewa //TODO find diffirent way to do the same except iteration of all rows
+      if (this.dataSetResponseWrapper.rows) {
+        this.dataSetResponseWrapper.rows.forEach(element => {
+          if (element['dataPath']) { element['dataPath'] = JSON.parse(element['dataPath']);}
+        });
+      }
+      // end of tree grid
+      gridApi.setRowData(this.dataSetResponseWrapper.rows);      
     });
     this.refreshFieldValueInControl();
   }
@@ -308,10 +310,13 @@ export class SitDataSetContainerComponent {
 
   public AddRow(newRow: any) {
     this.datasSourcesInterface.forEach(control => {
-        const gridApi = control["api"];
-        if (gridApi) {
-          gridApi.applyTransaction({ add: [newRow] });
+        const gridApi = this.getGridApi(control)
+        
+        if (!gridApi) {
+          return false;          
         }
+
+        gridApi.applyTransaction({ add: [newRow] });
       });
   }
 
@@ -336,16 +341,19 @@ export class SitDataSetContainerComponent {
 
   public prepareControls(dataSetWrapperDefinition: DataSetDefinitionWrapper) {
     this.datasSourcesInterface.forEach(element => {
-      const gridApi = element["api"];
-      if (gridApi) {
-        this.gridService.setDefGridOptions(element);
+      const gridApi = this.getGridApi(element);
+      if (!gridApi) {
+        return false;
       }
+
+      this.gridService.setDefGridOptions(element);
     });
 
     this.actionControlsInterface.forEach(actionControl => {
       actionControl.dataSetResponseWrapper = this.dataSetResponseWrapper;
       actionControl.actionDefinition = dataSetWrapperDefinition?.FindActionDefinition(actionControl.actionIdent);
       actionControl.dataSetManagerSource = this.dataSetControlsManager;
+      actionControl.dataSetContainer = this;
     });
 
     this.pepareControlForButtons(this.refreshButtons);

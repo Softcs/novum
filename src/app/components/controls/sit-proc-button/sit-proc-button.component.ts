@@ -138,11 +138,7 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.changeExecutingState(true);
-        this.dataSetResponseWrapper.ExecuteAction(this.actionIdent,
-          this,
-          this.executeActionCompletedCallback,
-          this.executeActionExceptionCallback);
+        this.executeAction();
       }
     });
     return true;

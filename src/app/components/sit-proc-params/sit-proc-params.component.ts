@@ -100,9 +100,7 @@ export class SitProcParamsComponent implements AfterViewInit {
     var actionRow = this.mainDataSet.GenerateRow(this.actionExecuteData.activeRow, true, null, false, null);
     !this.actionExecuteData.hasInitProc
        ? this.connectDataSetToControls(dataSetContainer, null)
-       : this.executInitProc(dataSetContainer, actionRow);
-    
-    
+       : this.executInitProc(dataSetContainer, actionRow);       
   }
 
   ngAfterViewInit() {
