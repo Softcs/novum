@@ -24,7 +24,6 @@ export class SitDictBaseComponent implements OnInit, AfterViewInit {
   public apiUrl: string;
   public contentColor;
   public gridColumnsDefinition = {};
-  public excelStyles;
 
   constructor(
     protected gatewayService: GatewayService,
@@ -38,7 +37,6 @@ export class SitDictBaseComponent implements OnInit, AfterViewInit {
       this.apiUrl = environment.apiUrl;
       this.contentColor = document.documentElement.style.getPropertyValue('$content-background-color');
       this.prepareColumnsDefinitnion();
-      this.excelStyles = sitGlobalConfig.excelStyles;
     }
 
   ngAfterViewInit(): void {
@@ -58,47 +56,17 @@ export class SitDictBaseComponent implements OnInit, AfterViewInit {
         var columns = gridColumnsDefinition[ident];
         var renderColumns = columns.filter( c => c.renderType);
         renderColumns.forEach(column => {
-          var renderFormat = column["renderFormat"]
-
-          if (column.renderType == "checkbox") {
-            column["cellRendererFramework"] = GridCheckboxRenderer;
-          }
-
-          if (column.renderType == "date") {
-            if (!renderFormat) {
-              renderFormat = 'yyyy-MM-dd';
-            }
-
-            column["cellRenderer"] = function(params) {
-              return formatDate(params.value, renderFormat, locale);
-            }
-          }
-
-          if (column.renderType == "number") {
-            if (!renderFormat) {
-              renderFormat = '1.2-2';
-            }
-
-            column["cellRenderer"] = function(params) {
-              return params.value === null ? null : formatNumber(params.value, locale, renderFormat).replace(/[,]/g,' ');
-            }
-          }
-
-          if (column.renderType == "percent") {
-            if (!renderFormat) {
-              renderFormat = '1.2-2';
-            }
-
-            column["cellRenderer"] = function(params) {
-              return params.value === null ? null : formatNumber(params.value, locale, renderFormat).replace(/[,]/g,' ') + '%';
-            }
-          }
-
-          if (column.renderType == "sitGridCellRenderer") {
-            column["cellRendererFramework"] = sitGlobalConfig.frameworkComponents
-          }
+          formatColumn(column, locale);
         });
 
+        //for children columns
+        var columnsWithChildren = columns.filter( c => c.children);
+        columnsWithChildren.forEach(column => {
+          var renderColumns = column.children.filter( c => c.renderType);
+          renderColumns.forEach(column => {
+            formatColumn(column, locale);
+          })
+        })
         gridApi.setColumnDefs(columns);
         var hiddenColumns = columns.filter(c => c.defaultVisibility === false).map(c => c.field);
         gridApi.columnController.setColumnsVisible(hiddenColumns, false);
@@ -107,8 +75,6 @@ export class SitDictBaseComponent implements OnInit, AfterViewInit {
 
     }
   }
-
-
 
   public dictInit(): void {
 
@@ -122,3 +88,46 @@ export class SitDictBaseComponent implements OnInit, AfterViewInit {
 
   }
 }
+
+function formatColumn(column: any, locale: string) {
+  var renderFormat = column["renderFormat"]
+
+  if (column.renderType == "checkbox") {
+    column["cellRendererFramework"] = GridCheckboxRenderer;
+  }
+
+  if (column.renderType == "date") {
+    if (!renderFormat) {
+      renderFormat = 'yyyy-MM-dd';
+    }
+
+    column["cellRenderer"] = function(params) {
+      return formatDate(params.value, renderFormat, locale);
+    }
+  }
+
+  if (column.renderType == "number") {
+    if (!renderFormat) {
+      renderFormat = '1.2-2';
+    }
+
+    column["cellRenderer"] = function(params) {
+      return params.value === null ? null : formatNumber(params.value, locale, renderFormat).replace(/[,]/g,' ');
+    }
+  }
+
+  if (column.renderType == "percent") {
+    if (!renderFormat) {
+      renderFormat = '1.2-2';
+    }
+
+    column["cellRenderer"] = function(params) {
+      return params.value === null ? null : formatNumber(params.value, locale, renderFormat).replace(/[,]/g,' ') + '%';
+    }
+  }
+
+  if (column.renderType == "sitGridCellRenderer") {
+    column["cellRendererFramework"] = sitGlobalConfig.frameworkComponents
+  }
+}
+
