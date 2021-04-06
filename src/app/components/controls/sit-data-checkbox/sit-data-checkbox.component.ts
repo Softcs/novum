@@ -23,7 +23,7 @@ export class SitDataCheckboxComponent extends SitDataBaseComponent {
 
 onChange(event: MatCheckboxChange){
   if(event.checked){
-    //mapowanie true/false do 0 / 1 na potrzeby zgodnosci typow z db ms sql
+    // mapowanie true/false do 0 / 1 na potrzeby zgodnosci typow z db ms sql
     this.dataSetWrapper.setFieldValue(this.field, '1');
   } else {
     this.dataSetWrapper.setFieldValue(this.field, '0');

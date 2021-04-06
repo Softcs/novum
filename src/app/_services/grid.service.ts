@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { sitGlobalConfig } from '@app/_consts/sit-global-config';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,7 @@ export class GridService {
     });
 
     grid.api.setColumnDefs(this.columnDefs);
+    grid.gridOptions.excelStyles = sitGlobalConfig.excelStyles;
 
     if ( !grid.gridOptions.rowSelection ) {
       grid.gridOptions.rowSelection = 'multiple';

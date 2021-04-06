@@ -13,7 +13,7 @@ import { Guid } from 'guid-typescript';
 
 @Injectable({ providedIn: 'root' })
 export class GatewayService {
-    private currentUserSubject: BehaviorSubject<User>;w    
+    private currentUserSubject: BehaviorSubject<User>;    
     public currentUser: Observable<User>;
     public serverVersion: string;
     public canUseLocalStorage: boolean;

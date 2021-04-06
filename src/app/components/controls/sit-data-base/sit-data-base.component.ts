@@ -56,12 +56,12 @@ export class SitDataBaseComponent implements ControlValueAccessor {
     this._renderer.setProperty(this._inputElement.nativeElement, 'disabled', isDisabled);
   }
 
-  onChange(event: any) {
-    this._onChange(event.target.value);
+  onChange(value: any) {
+    this._onChange(value);
   }
 
-  onKeyup(event: any) {
-    this._onChange(event.target.value);
+  onKeyup(value: any) {
+    this._onChange(value);
   }
 
   writeValue(obj: any): void {

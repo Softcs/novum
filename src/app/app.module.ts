@@ -20,6 +20,8 @@ import { LoginComponent } from './containers/login';
 import { SitDictContainerComponent } from './components/sit-dict-container/sit-dict-container.component';
 
 // material
+
+import { MatRadioModule } from '@angular/material/radio';
 import { MatSliderModule} from '@angular/material/slider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -177,6 +179,7 @@ import { SitAttendanceListComponent } from './containers/dictionaries/sit-attend
 import { SitStatusesEditComponent } from './containers/dictionaries/sit-statuses/actions/sit-statuses-edit/sit-statuses-edit.component';
 import { SitStatusValuesEditComponent } from './containers/dictionaries/sit-statuses/actions/sit-status-values-edit/sit-status-values-edit.component';
 import { SitStatusValuesTransitionsEditComponent } from './containers/dictionaries/sit-statuses/actions/sit-status-values-transitions-edit/sit-status-values-transitions-edit.component';
+import { SitDataRadioComponent } from './components/controls/sit-data-radio/sit-data-radio.component'; // there
 import { SitCostcenter4CustEditComponent } from './containers/dictionaries/sit-customers/actions/sit-costcenter4-cust-edit/sit-costcenter4-cust-edit.component';
 import { SitEmployeesSettlementsEditComponent } from './containers/dictionaries/sit-employees-settlements/actions/sit-employees-settlements-edit/sit-employees-settlements-edit.component';
 import { SitStockForWarehousesAndRestGroupComponent } from './containers/dictionaries/sit-stock-for-warehouses-and-rest-group/sit-stock-for-warehouses-and-rest-group.component';
@@ -202,6 +205,8 @@ import { SitHRAdditions4InvoicingEditComponent } from './containers/dictionaries
         ReactiveFormsModule,
         HttpClientModule,
         appRoutingModule,
+
+        MatRadioModule,
         MatSliderModule,
         MatButtonModule,
         MatIconModule,
@@ -361,6 +366,7 @@ import { SitHRAdditions4InvoicingEditComponent } from './containers/dictionaries
         SitStatusesEditComponent,
         SitStatusValuesEditComponent,
         SitStatusValuesTransitionsEditComponent,
+        SitDataRadioComponent,
         SitCostcenter4CustEditComponent,
         SitEmployeesSettlementsEditComponent,
         SitStockForWarehousesAndRestGroupComponent,
@@ -391,6 +397,52 @@ import { SitHRAdditions4InvoicingEditComponent } from './containers/dictionaries
     ],
     bootstrap: [AppComponent],
     entryComponents: [
+      SitPulpitComponent,
+      SitDialogDiscardComponent,
+      SitDialogConfirmDelComponent,
+      SitJpkVatGetDataComponent,
+      SitMenuEditComponent,
+      SitMenuItemsEditComponent,
+      SitAgreementsEditComponent,
+      SitCustomersEditComponent,
+      SitUserAccountChangePasswordComponent,
+      GridCheckboxRenderer,
+      SitStocksComponent,
+      SitAttachmentsInsComponent,
+      SitReturnsComponent,
+      SitReturnsGetdataComponent,
+      SitAppUsersComponent,
+      SitAppUsersEditComponent,
+      SitAppUserCompaniesEditComponent,
+      SitAppUsersSetPasswordComponent,
+      SitParamsEditComponent,
+      SitJobsComponent,
+      SitJobsEditComponent,
+      SitJobStepsEditComponent,
+      SitLogisticUnitsEditComponent,
+      SitWarehousesComponent,
+      SitWarehousesEditComponent,
+      SitProjectsPubRegisterWorkTimeComponent,
+      SitSysDictionariesComponent,
+      SitSysDictionariesEditComponent,
+      SitSysDatasourcesEditComponent,
+      SitSysActionsEditComponent,
+      SitRightsGroupUsersEditComponent,
+      SitRightsComponent,
+      SitLocationsComponent,
+      SitAgreementsTypesComponent,
+      SitAgreementsTypesEditComponent,
+      SitLocationsEditComponent,
+      SitRightsGroupsEditComponent,
+      SitImportCustomerFromImpTableComponent,
+      SitJPKVatComponent,
+      SitEmployeesComponent,
+      SitPayrollsComponent,
+      SitPayrollComponentsComponent,
+      SitPayrollImportComponent,
+      SitProcPayrollComponentsAccountingDefEditComponent,
+      SitCompanyDepartmentsComponent,
+      SitDataRadioComponent
 
     ]
 })
