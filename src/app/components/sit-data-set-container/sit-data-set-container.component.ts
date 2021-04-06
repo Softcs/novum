@@ -12,6 +12,7 @@ import { ActionDefinitionWrapper } from '@app/_models/actionDefinitionWrapper';
 import { Subscription } from 'rxjs';
 import { SitActionsToolbarComponent } from '../controls/sit-actions-toolbar/sit-actions-toolbar.component';
 import { GridService } from '@app/_services/grid.service';
+import { StringUtils } from '@app/_helpers/string.utisl';
 
 @Component({
   selector: 'sit-data-set-container',
@@ -62,7 +63,8 @@ export class SitDataSetContainerComponent {
   public dataSetControlsManager: DataSetManager;
 
   constructor(
-    private gridService: GridService
+    private gridService: GridService,
+    private stringUtils: StringUtils
   ) {}
 
   clearErrors() {
@@ -84,14 +86,8 @@ export class SitDataSetContainerComponent {
     }
   }
 
-  private getFieldId(ident: string) {
+  public getFieldId(ident: string) {
     return '__Identity__'; // ident + 'G';
-  }
-
-  private compareStrings(one,two): boolean {
-    return one != null
-    && typeof one == 'string'
-    && one.localeCompare(two, undefined, { sensitivity: 'base' }) === 0;
   }
 
   private deleteRows(dataSource) {
@@ -112,98 +108,13 @@ export class SitDataSetContainerComponent {
       if (!this.gridService.isPivotMode(gridApi)) {
         gridApi.forEachNode((rowNode) => {
           const rowValue = rowNode.data[fieldName];
-          if (this.compareStrings(rowValue, fieldValue)) {
+          if (this.stringUtils.compareStrings(rowValue, fieldValue)) {
             rowsDataApiToDelete.push(rowNode.data);
           }
         });
         if (rowsDataApiToDelete) {
           gridApi.applyTransaction({ remove: rowsDataApiToDelete });
         }
-      }
-    });
-  }
-
-  private prepareGrid(gridApi, ident) {
-    return this.gridService.prepareGrid(gridApi, ident, this.dataSetControlsManager.gridColumnsDefinition, this.dataSetControlsManager.popupParent);
-  }
-
-  private applyCustomPropsGrid(gridApi) {
-    var self = this;    
-
-    var customProperty = gridApi.SeidoCustomProperty;
-    if (customProperty == null) {
-      customProperty = {};
-      customProperty.activeRow = null;
-      if (gridApi.gridOptionsWrapper) {
-        var gridOptions = gridApi.gridOptionsWrapper.gridOptions;
-        var rowClassRules = gridApi.gridOptionsWrapper.rowClassRules();
-        if (!rowClassRules) {
-          rowClassRules = {};
-          gridOptions.rowClassRules = rowClassRules;
-        }
-
-        rowClassRules["sit-row-active"] = function(params) {
-            return params.api.SeidoCustomProperty.activeRow == params.node.data;
-        }
-
-        var isPivotMode = this.gridService.isPivotMode(gridApi);
-        gridOptions.onRowClicked = function(event) {
-          if (!isPivotMode) {
-            self.dataSetResponseWrapper.SetActiveRow(event.data);
-          }
-        }
-
-        gridOptions.onCellClicked = function(event) {
-          if (isPivotMode && event.colDef.pivotKeys) {
-            const index = event.colDef.pivotKeys-1;
-            const rowFromCell = event.node.allLeafChildren[index].data;
-            self.dataSetResponseWrapper.SetActiveRow(rowFromCell);
-          }
-        }
-
-        this.prepareGrid(gridApi, this.ident);
-      }
-
-      gridApi.SeidoCustomProperty = customProperty;
-
-      this.activeRowChanged.subscribe( (row) => {
-        var prevRow = customProperty.activeRow;
-        customProperty.activeRow = row;
-        var rowsToUpdate = [];
-
-        if (row) {
-          rowsToUpdate.push(row);
-        }
-
-        if (prevRow && row) {
-          rowsToUpdate.push(prevRow);
-        }
-
-        this.redrawGridActiveRow(gridApi, prevRow);
-      });
-    }
-
-    return customProperty;
-  }
-
-  public redrawGridActiveRow(gridApi: any, prevRow: any) {
-    if (!this.activeRow || !gridApi || this.gridService.isPivotMode(gridApi)) {
-      return;
-    }
-
-    let limit = prevRow ? 2 : 1;
-    const fieldName = this.getFieldId(this.ident);
-    const fieldValue = this.activeRow[fieldName];
-    const prevValue = prevRow ? prevRow[fieldName] : null;
-    gridApi.forEachNode( (rowNode) => {
-      const rowValue = rowNode.data[fieldName];
-      if (this.compareStrings(rowValue, fieldValue) || this.compareStrings(rowValue, prevValue)) {
-        rowNode.setData(rowNode.data);
-        limit--;
-      }
-
-      if (limit == 0) {
-        return false;
       }
     });
   }
@@ -234,7 +145,7 @@ export class SitDataSetContainerComponent {
           const gridApi = control["api"];
           gridApi.forEachNode( (rowNode) => {
             const rowValue = rowNode.data[fieldName];
-            if (this.compareStrings(rowValue, fieldValue)) {
+            if (this.stringUtils.compareStrings(rowValue, fieldValue)) {
               // tslint:disable-next-line: forin
               for (const key in inputRow) {
                 const newValue = inputRow[key];
@@ -279,7 +190,7 @@ export class SitDataSetContainerComponent {
       if (!gridApi) {
         return false;
       }
-      this.applyCustomPropsGrid(gridApi);
+      this.gridService.applyCustomPropsGrid(this, gridApi);
       // tree grid - parsowanie kolumny z danymi do drzewa //TODO find diffirent way to do the same except iteration of all rows
       if (this.dataSetResponseWrapper.rows) {
         this.dataSetResponseWrapper.rows.forEach(element => {
