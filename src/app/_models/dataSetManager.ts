@@ -16,6 +16,8 @@ export class DataSetManager {
     public dataSetDefinitionWrappers: DataSetDefinitionWrapper[];
     public procExpander: SitProcExpanderComponent;
     public parentDataSetManager: DataSetManager;
+    public gridColumnsDefinition = {};
+    public popupParent;
 
     @Output()
     refreshAfter: EventEmitter<DataSetManager> = new EventEmitter<DataSetManager>();
@@ -453,9 +455,6 @@ export class DataSetManager {
         dataSetContainers.forEach(dataSetContainer => {
             dataSetContainer.AddRow(newRow);
         });
-    }
-
-    public prepareGrid(gridApi, ident) {
     }
 
     set dictInfo(dictInfo: DictInfoWrapper) {

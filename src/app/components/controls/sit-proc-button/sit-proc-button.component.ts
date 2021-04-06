@@ -203,7 +203,6 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
 
   private openActionOnExpander(actionExecuteData: ActionExecuteData) {
     this.procExpanderService.openAction(this.dataSetManagerSource.procExpander, this.actionDefinition, actionExecuteData);
-
   }
 
   private openActionOnTab(actionExecuteData: ActionExecuteData) {

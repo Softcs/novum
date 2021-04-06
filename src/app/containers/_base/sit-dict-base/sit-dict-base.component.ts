@@ -12,7 +12,7 @@ import { environment } from '@environments/environment';
   selector: 'sit-dict-base',
   templateUrl: './sit-dict-base.component.html',
   styleUrls: ['./sit-dict-base.component.scss']
-})
+}) 
 export class SitDictBaseComponent implements OnInit, AfterViewInit {
   @ViewChild('sitDictcontainer') dictContainer: SitDictContainerComponent;
   @ViewChildren('sitDictcontainer') dictContainers !: QueryList<SitDictContainerComponent>;
@@ -40,40 +40,12 @@ export class SitDictBaseComponent implements OnInit, AfterViewInit {
     }
 
   ngAfterViewInit(): void {
-    this.prepareGrid();
+    this.dictContainer.DataSetManager.gridColumnsDefinition = this.gridColumnsDefinition;
+    this.dictContainer.DataSetManager.popupParent = this.popupParent;
   }
 
   ngOnInit(): void {
-
     this.dictInit()
-  }
-
-  private prepareGrid() {
-    var gridColumnsDefinition = this.gridColumnsDefinition;
-    var locale = this.locale;
-    this.dictContainer.DataSetManager.prepareGrid = function(gridApi, ident) {
-      if (!gridApi.getColumnDefs() || gridApi.getColumnDefs().length == 0) {
-        var columns = gridColumnsDefinition[ident];
-        var renderColumns = columns.filter( c => c.renderType);
-        renderColumns.forEach(column => {
-          formatColumn(column, locale);
-        });
-
-        //for children columns
-        var columnsWithChildren = columns.filter( c => c.children);
-        columnsWithChildren.forEach(column => {
-          var renderColumns = column.children.filter( c => c.renderType);
-          renderColumns.forEach(column => {
-            formatColumn(column, locale);
-          })
-        })
-        gridApi.setColumnDefs(columns);
-        var hiddenColumns = columns.filter(c => c.defaultVisibility === false).map(c => c.field);
-        gridApi.columnController.setColumnsVisible(hiddenColumns, false);
-      }
-      gridApi.setPopupParent(this.popupParent);
-
-    }
   }
 
   public dictInit(): void {
@@ -88,46 +60,3 @@ export class SitDictBaseComponent implements OnInit, AfterViewInit {
 
   }
 }
-
-function formatColumn(column: any, locale: string) {
-  var renderFormat = column["renderFormat"]
-
-  if (column.renderType == "checkbox") {
-    column["cellRendererFramework"] = GridCheckboxRenderer;
-  }
-
-  if (column.renderType == "date") {
-    if (!renderFormat) {
-      renderFormat = 'yyyy-MM-dd';
-    }
-
-    column["cellRenderer"] = function(params) {
-      return formatDate(params.value, renderFormat, locale);
-    }
-  }
-
-  if (column.renderType == "number") {
-    if (!renderFormat) {
-      renderFormat = '1.2-2';
-    }
-
-    column["cellRenderer"] = function(params) {
-      return params.value === null ? null : formatNumber(params.value, locale, renderFormat).replace(/[,]/g,' ');
-    }
-  }
-
-  if (column.renderType == "percent") {
-    if (!renderFormat) {
-      renderFormat = '1.2-2';
-    }
-
-    column["cellRenderer"] = function(params) {
-      return params.value === null ? null : formatNumber(params.value, locale, renderFormat).replace(/[,]/g,' ') + '%';
-    }
-  }
-
-  if (column.renderType == "sitGridCellRenderer") {
-    column["cellRendererFramework"] = sitGlobalConfig.frameworkComponents
-  }
-}
-

@@ -23,6 +23,7 @@ export class SitDataSetContainerComponent {
   private _errors: any[];
   private activeRowSubscription: Subscription;
   private identityFieldName: string = "__Identity__";
+  private grids: [];
   dataSetResponseWrapper: DataSetWrapper;
 
   @ContentChildren('sitSetDataSource', { descendants: true})
@@ -87,10 +88,6 @@ export class SitDataSetContainerComponent {
     return '__Identity__'; // ident + 'G';
   }
 
-  private isPivotMode(gridApi) {
-    return gridApi.gridOptionsWrapper.gridOptions.pivotMode;
-  }
-
   private compareStrings(one,two): boolean {
     return one != null
     && typeof one == 'string'
@@ -106,12 +103,13 @@ export class SitDataSetContainerComponent {
     if (!activeRow) {
       return;
     }
+    
     const fieldName = this.getFieldId(dataSource.ident);
     this.datasSourcesInterface.forEach(control => {
       const rowsDataApiToDelete = [];
       const fieldValue = activeRow[fieldName];
-      const gridApi = this.getGridApi(control);      
-      if (gridApi && !this.isPivotMode(gridApi)) {
+      const gridApi = this.gridService.getGridApi(control);      
+      if (!this.gridService.isPivotMode(gridApi)) {
         gridApi.forEachNode((rowNode) => {
           const rowValue = rowNode.data[fieldName];
           if (this.compareStrings(rowValue, fieldValue)) {
@@ -126,7 +124,7 @@ export class SitDataSetContainerComponent {
   }
 
   private prepareGrid(gridApi, ident) {
-    return this.dataSetControlsManager.prepareGrid(gridApi, ident);
+    return this.gridService.prepareGrid(gridApi, ident, this.dataSetControlsManager.gridColumnsDefinition, this.dataSetControlsManager.popupParent);
   }
 
   private applyCustomPropsGrid(gridApi) {
@@ -148,7 +146,7 @@ export class SitDataSetContainerComponent {
             return params.api.SeidoCustomProperty.activeRow == params.node.data;
         }
 
-        var isPivotMode = this.isPivotMode(gridApi);
+        var isPivotMode = this.gridService.isPivotMode(gridApi);
         gridOptions.onRowClicked = function(event) {
           if (!isPivotMode) {
             self.dataSetResponseWrapper.SetActiveRow(event.data);
@@ -187,14 +185,9 @@ export class SitDataSetContainerComponent {
 
     return customProperty;
   }
-  private getGridApi(element) {
-     return element && element.hasOwnProperty("api")
-            ? element["api"]
-            : null;
-  }
 
   public redrawGridActiveRow(gridApi: any, prevRow: any) {
-    if (!this.activeRow || !gridApi || this.isPivotMode(gridApi)) {
+    if (!this.activeRow || !gridApi || this.gridService.isPivotMode(gridApi)) {
       return;
     }
 
@@ -255,7 +248,6 @@ export class SitDataSetContainerComponent {
           rowsToUpdate = control.rows.filter(controlRow => controlRow[fieldName] == fieldValue);
         }
 
-
         rowsToUpdate.forEach(row => {
           // tslint:disable-next-line: forin
           for (const key in inputRow) {
@@ -283,7 +275,7 @@ export class SitDataSetContainerComponent {
     this.errors = dataSetWrapper.errors;
     this.datasSourcesInterface.forEach(element => {
       // agGrid
-      const gridApi = this.getGridApi(element);            
+      const gridApi = this.gridService.getGridApi(element);            
       if (!gridApi) {
         return false;
       }
@@ -310,7 +302,7 @@ export class SitDataSetContainerComponent {
 
   public AddRow(newRow: any) {
     this.datasSourcesInterface.forEach(control => {
-        const gridApi = this.getGridApi(control)
+        const gridApi = this.gridService.getGridApi(control)
         
         if (!gridApi) {
           return false;          
@@ -341,7 +333,7 @@ export class SitDataSetContainerComponent {
 
   public prepareControls(dataSetWrapperDefinition: DataSetDefinitionWrapper) {
     this.datasSourcesInterface.forEach(element => {
-      const gridApi = this.getGridApi(element);
+      const gridApi = this.gridService.getGridApi(element);
       if (!gridApi) {
         return false;
       }
