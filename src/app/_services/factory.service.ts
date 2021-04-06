@@ -1,3 +1,4 @@
+import { SitSettlementsComponent } from './../containers/dictionaries/sit-settlements/sit-settlements.component';
 import { SitAppUsersInCompanyEditComponent } from './../containers/dictionaries/sit-app-users-in-company/actions/sit-app-users-in-company-edit/sit-app-users-in-company-edit.component';
 import { SitAppUsersInCompanyComponent } from './../containers/dictionaries/sit-app-users-in-company/sit-app-users-in-company.component';
 import { SitRailLogComponent } from './../containers/dictionaries/sit-rail-log/sit-rail-log.component';
@@ -204,6 +205,7 @@ export class FactoryService {
         sitUtilSqlAddBatches4ObjectEdit: SitUtilSqlAddBatches4ObjectEditComponent,
         sitUtilSynchCommonDataTable: SitUtilSynchCommonDataTableComponent,
         sitHRAdditions4InvoicingEdit: SitHRAdditions4InvoicingEditComponent,
+        sitSettlements: SitSettlementsComponent,
 
     };
 
