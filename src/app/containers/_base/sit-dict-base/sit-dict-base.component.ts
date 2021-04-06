@@ -24,6 +24,7 @@ export class SitDictBaseComponent implements OnInit, AfterViewInit {
   public apiUrl: string;
   public contentColor;
   public gridColumnsDefinition = {};
+  public excelStyles;
 
   constructor(
     protected gatewayService: GatewayService,
@@ -37,6 +38,7 @@ export class SitDictBaseComponent implements OnInit, AfterViewInit {
       this.apiUrl = environment.apiUrl;
       this.contentColor = document.documentElement.style.getPropertyValue('$content-background-color');
       this.prepareColumnsDefinitnion();
+      this.excelStyles = sitGlobalConfig.excelStyles;
     }
 
   ngAfterViewInit(): void {
@@ -79,6 +81,16 @@ export class SitDictBaseComponent implements OnInit, AfterViewInit {
 
             column["cellRenderer"] = function(params) {
               return params.value === null ? null : formatNumber(params.value, locale, renderFormat).replace(/[,]/g,' ');
+            }
+          }
+
+          if (column.renderType == "percent") {
+            if (!renderFormat) {
+              renderFormat = '1.2-2';
+            }
+
+            column["cellRenderer"] = function(params) {
+              return params.value === null ? null : formatNumber(params.value, locale, renderFormat).replace(/[,]/g,' ') + '%';
             }
           }
 
