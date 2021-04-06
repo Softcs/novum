@@ -96,13 +96,13 @@ function formatColumn(column: any, locale: string) {
     column["cellRendererFramework"] = GridCheckboxRenderer;
   }
 
-  if (column.renderType == "date") {
+  if (column.renderType == "date" ) {
     if (!renderFormat) {
       renderFormat = 'yyyy-MM-dd';
     }
 
     column["cellRenderer"] = function(params) {
-      return formatDate(params.value, renderFormat, locale);
+      return params.value ? formatDate(params.value, renderFormat, locale) : '';
     }
   }
 
