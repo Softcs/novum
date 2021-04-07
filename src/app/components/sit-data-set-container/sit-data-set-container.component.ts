@@ -198,7 +198,8 @@ export class SitDataSetContainerComponent {
         });
       }
       // end of tree grid
-      gridApi.setRowData(this.dataSetResponseWrapper.rows);      
+      gridApi.setRowData(this.dataSetResponseWrapper.rows); 
+      this.gridService.refreshSum(gridApi, this.dataSetResponseWrapper.rows);     
     });
     this.refreshFieldValueInControl();
   }

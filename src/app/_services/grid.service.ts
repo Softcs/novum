@@ -74,7 +74,7 @@ export class GridService {
   }
 
   public setDefGridOptions(grid) {
-    this.columnDefs = grid.api.getColumnDefs()
+    this.columnDefs = grid.api.getColumnDefs();
 
     this.columnDefs.forEach(columnDef => {
       if( !columnDef.hasOwnProperty('sortable') ) { columnDef.sortable = true; }
@@ -204,6 +204,25 @@ export class GridService {
         return false;
       }
     });
+  }
+
+  public refreshSum(gridApi, rows) {
+    var columns =    gridApi.gridOptionsWrapper.gridOptions.columnApi.getAllColumns();     
+    var agrColumns = columns.filter( c => c.colDef.agr);
+    if (!agrColumns || agrColumns.length == 0 || !rows || rows.length == 0) {
+      return;
+    }
+
+    var agrRow = {};
+    agrColumns.forEach(c  => agrRow[c.colDef.field] = 0);
+    if (rows.length > 1) {
+      rows.reduce((acc, row) => {
+        agrColumns.forEach(c  => agrRow[c.colDef.field] += row[c.colDef.field]);      
+      }); 
+    } else {
+      agrColumns.forEach(c  => agrRow[c.colDef.field] += rows[0][c.colDef.field])
+    }
+    gridApi.setPinnedBottomRowData([agrRow]);     
   }
 }
 
