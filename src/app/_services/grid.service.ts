@@ -31,7 +31,7 @@ export class GridService {
       }
 
       column["cellRenderer"] = function(params) {
-        return formatDate(params.value, renderFormat, locale);
+        return params.value ? formatDate(params.value, renderFormat, locale) : '';
       }
     }
 
