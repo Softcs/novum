@@ -1,3 +1,4 @@
+import { DataSetDefinitionWrapper } from '@app/_models/dataSetDefinitionWrapper';
 import { Component, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
 import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-dict-base.component';
@@ -14,6 +15,7 @@ export class SitSettlementsComponent extends SitDictBaseComponent {
   @ViewChildren('sitDictcontainer') dictContainers !: QueryList<SitDictContainerComponent>;
 
   pinnedBottomRowData;
+  pinnedBottomRowDataDet;
 
   public prepareColumnsDefinitnion() {
     this.gridColumnsDefinition["sitSettlements"] = [
@@ -28,6 +30,15 @@ export class SitSettlementsComponent extends SitDictBaseComponent {
       { headerName: 'Zob. w wal.', field: 'PayablesCurr', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 130, renderType: 'number', },
       { headerName: 'Nal. w PLN', field: 'Receivables', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 130, renderType: 'number', },
       { headerName: 'Zob. w PLN', field: 'Payables', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 130, renderType: 'number', },
+    ];
+    this.gridColumnsDefinition["sitSettlementsDet"] = [
+      { headerName: 'Typ dok.', field: 'DocumentIdent', filter: 'agTextColumnFilter', width: 80 },
+      { headerName: 'Numer', field: 'DocumentNo', filter: 'agTextColumnFilter', width: 80 },
+      { headerName: 'Numer pełny', field: 'DocumentNumber', tooltipField: 'DocumentNumber', filter: 'agTextColumnFilter', width: 150 },
+      { headerName: 'Data', field: 'Date', width: 100, renderType: 'date', },
+      { headerName: 'Kwota w wal.', field: 'AmountCurr', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 130, renderType: 'number', },
+      { headerName: 'Kwota w PLN', field: 'Amount', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 130, renderType: 'number', },
+      { headerName: 'Opis', field: 'Description', tooltipField: 'Description', filter: 'agTextColumnFilter', width: 300 },
     ];
   }
 
@@ -64,7 +75,30 @@ export class SitSettlementsComponent extends SitDictBaseComponent {
     return result;
   }
 
+  calcSum1(dataSourceManager,ident) {
+    var key = Object.keys(dataSourceManager.dataSetsWrapper).find(k => dataSourceManager.dataSetsWrapper[k].ident === ident);
+    var rows = dataSourceManager.dataSetsWrapper[key].rows;
+    var result = [];
+    var summaryRow = rows.reduce((sum,row) => {
+        Object.keys(row).forEach((key) => {
+          if (typeof row[key] === 'number') {
+            sum[key] += row[key];
+          } else {
+            sum[key] = null;
+          }
+        })
+        return sum;
+    });
+
+    result.push(summaryRow);
+
+    return result;
+  }
+
   refreshAfter(dataSourceManager) {
+    //this.pinnedBottomRowData = this.calcSum1(dataSourceManager,'sitSettlements');
+
     this.pinnedBottomRowData = this.calcSum();
+
   }
 }
