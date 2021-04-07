@@ -17,7 +17,7 @@ export class GridService {
   ) {
   }
 
-  
+
   private formatColumn(column: any, locale: string) {
     var renderFormat = column["renderFormat"];
 
@@ -31,7 +31,7 @@ export class GridService {
       }
 
       column["cellRenderer"] = function(params) {
-        return formatDate(params.value, renderFormat, locale);
+        return params.value ? formatDate(params.value, renderFormat, locale) : null;
       }
     }
 
@@ -97,7 +97,7 @@ export class GridService {
       grid.gridOptions.suppressCopyRowsToClipboard = true;
     }
   }
-  
+
   public isPivotMode(gridApi) {
     return gridApi != null && gridApi.gridOptionsWrapper.gridOptions.pivotMode;
   }
@@ -112,7 +112,7 @@ export class GridService {
   if (!gridApi.getColumnDefs() || gridApi.getColumnDefs().length == 0) {
     var columns = gridColumnsDefinition[ident];
     this.applyRender4Columns(columns);
-    
+
     //for children columns
     var columnsWithChildren = columns.filter(c => c.children);
     columnsWithChildren.forEach(column => {
@@ -123,12 +123,12 @@ export class GridService {
     var hiddenColumns = columns.filter(c => c.defaultVisibility === false).map(c => c.field);
     gridApi.columnController.setColumnsVisible(hiddenColumns, false);
   }
-  
+
   gridApi.setPopupParent(popupParent);
  }
 
  public applyCustomPropsGrid(dataSetContainer: SitDataSetContainerComponent, gridApi) {
-    var self = dataSetContainer;    
+    var self = dataSetContainer;
 
     var customProperty = gridApi.SeidoCustomProperty;
     if (customProperty == null) {
