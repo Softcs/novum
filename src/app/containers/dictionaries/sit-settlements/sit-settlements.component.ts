@@ -36,6 +36,7 @@ export class SitSettlementsComponent extends SitDictBaseComponent {
       { headerName: 'Numer', field: 'DocumentNo', filter: 'agTextColumnFilter', width: 80 },
       { headerName: 'Numer pełny', field: 'DocumentNumber', tooltipField: 'DocumentNumber', filter: 'agTextColumnFilter', width: 150 },
       { headerName: 'Data', field: 'Date', width: 100, renderType: 'date', },
+      { headerName: 'Waluta', field: 'CurrencyIdent', filter: 'agTextColumnFilter', width: 70, suppressMenu: true },
       { headerName: 'Kwota w wal.', field: 'AmountCurr', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 130, renderType: 'number', },
       { headerName: 'Kwota w PLN', field: 'Amount', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 130, renderType: 'number', },
       { headerName: 'Opis', field: 'Description', tooltipField: 'Description', filter: 'agTextColumnFilter', width: 300 },
