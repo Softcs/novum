@@ -207,7 +207,7 @@ export class GridService {
   }
 
   public refreshSum(gridApi, rows) {
-    var columns =    gridApi.gridOptionsWrapper.gridOptions.columnApi.getAllColumns();     
+    var columns =    gridApi.gridOptionsWrapper.gridOptions.columnApi.getAllColumns();
     var agrColumns = columns.filter( c => c.colDef.agr);
     if (!agrColumns || agrColumns.length == 0 || !rows || rows.length == 0) {
       return;
@@ -215,14 +215,10 @@ export class GridService {
 
     var agrRow = {};
     agrColumns.forEach(c  => agrRow[c.colDef.field] = 0);
-    if (rows.length > 1) {
-      rows.reduce((acc, row) => {
-        agrColumns.forEach(c  => agrRow[c.colDef.field] += row[c.colDef.field]);      
-      }); 
-    } else {
-      agrColumns.forEach(c  => agrRow[c.colDef.field] += rows[0][c.colDef.field])
-    }
-    gridApi.setPinnedBottomRowData([agrRow]);     
+    rows.reduce((acc, row) => {
+      agrColumns.forEach(c  => agrRow[c.colDef.field] += row[c.colDef.field]);
+    },0);
+    gridApi.setPinnedBottomRowData([agrRow]);
   }
 }
 
