@@ -63,7 +63,7 @@ export class SitPdfViewerComponent  extends SitDataBaseComponent {
     if (this.dataSetWrapper.getFieldValue(this.showField) === 0 || !this.pdfSrc || !this.downloadFileName) {
       this.showPDF = false;
     };
-    if (this.pdfSrc !== this.pdfViewer.pdfSrc) {
+    if (this.pdfSrc !== this.pdfViewer.pdfSrc || this.showPDF === true) {
       this.pdfViewer.pdfSrc = encodeURIComponent(this.pdfSrc);
       this.pdfViewer.downloadFileName = this.downloadFileName;
       this.pdfViewer.refresh();
