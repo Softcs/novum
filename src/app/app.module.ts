@@ -198,7 +198,8 @@ import { SitUtilSynchCommonDataTableComponent } from './containers/dictionaries/
 import { SitHRAdditions4InvoicingEditComponent } from './containers/dictionaries/sit-customers/actions/sit-hr-additions4-invoicing-edit/sit-hr-additions4-invoicing-edit.component';
 import { SitSettlementsComponent } from './containers/dictionaries/sit-settlements/sit-settlements.component';
 import { SitVacationRequestsComponent } from './containers/dictionaries/sit-vacation-requests/sit-vacation-requests.component';
-import { SitVacationRequestsEditComponent } from './containers/dictionaries/sit-vacation-requests/actions/sit-vacation-requests-edit/sit-vacation-requests-edit.component'
+import { SitVacationRequestsEditComponent } from './containers/dictionaries/sit-vacation-requests/actions/sit-vacation-requests-edit/sit-vacation-requests-edit.component';
+import { SitHRCompanyHierarchyComponent } from './containers/dictionaries/sit-hrcompany-hierarchy/sit-hrcompany-hierarchy.component'
 
 
 @NgModule({
@@ -388,7 +389,8 @@ import { SitVacationRequestsEditComponent } from './containers/dictionaries/sit-
         SitHRAdditions4InvoicingEditComponent,
         SitSettlementsComponent,
         SitVacationRequestsComponent,
-        SitVacationRequestsEditComponent
+        SitVacationRequestsEditComponent,
+        SitHRCompanyHierarchyComponent
 
     ],
     providers: [

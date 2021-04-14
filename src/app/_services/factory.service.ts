@@ -102,6 +102,7 @@ import { SitUtilSynchCommonDataTableComponent } from '@app/containers/dictionari
 import { SitHRAdditions4InvoicingEditComponent } from '@app/containers/dictionaries/sit-customers/actions/sit-hr-additions4-invoicing-edit/sit-hr-additions4-invoicing-edit.component';
 import { SitVacationRequestsComponent } from '@app/containers/dictionaries/sit-vacation-requests/sit-vacation-requests.component';
 import { SitVacationRequestsEditComponent } from '@app/containers/dictionaries/sit-vacation-requests/actions/sit-vacation-requests-edit/sit-vacation-requests-edit.component';
+import { SitHRCompanyHierarchyComponent } from '@app/containers/dictionaries/sit-hrcompany-hierarchy/sit-hrcompany-hierarchy.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -209,7 +210,8 @@ export class FactoryService {
         sitHRAdditions4InvoicingEdit: SitHRAdditions4InvoicingEditComponent,
         sitSettlements: SitSettlementsComponent,
         sitVacationRequests: SitVacationRequestsComponent,
-        sitVacationRequestsEdit: SitVacationRequestsEditComponent
+        sitVacationRequestsEdit: SitVacationRequestsEditComponent,
+        sitHRCompanyHierarchy: SitHRCompanyHierarchyComponent
 
     };
 
