@@ -196,7 +196,9 @@ import { SitUtilSqlObjectsEditComponent } from './containers/dictionaries/sit-ut
 import { SitUtilSqlAddBatches4ObjectEditComponent } from './containers/dictionaries/sit-util-sql-objects/actions/sit-util-sql-add-batches4-object-edit/sit-util-sql-add-batches4-object-edit.component';
 import { SitUtilSynchCommonDataTableComponent } from './containers/dictionaries/sit-util-sql-objects/actions/sit-util-synch-common-data-table/sit-util-synch-common-data-table.component';
 import { SitHRAdditions4InvoicingEditComponent } from './containers/dictionaries/sit-customers/actions/sit-hr-additions4-invoicing-edit/sit-hr-additions4-invoicing-edit.component';
-import { SitSettlementsComponent } from './containers/dictionaries/sit-settlements/sit-settlements.component'
+import { SitSettlementsComponent } from './containers/dictionaries/sit-settlements/sit-settlements.component';
+import { SitVacationRequestsComponent } from './containers/dictionaries/sit-vacation-requests/sit-vacation-requests.component';
+import { SitVacationRequestsEditComponent } from './containers/dictionaries/sit-vacation-requests/actions/sit-vacation-requests-edit/sit-vacation-requests-edit.component'
 
 
 @NgModule({
@@ -384,7 +386,9 @@ import { SitSettlementsComponent } from './containers/dictionaries/sit-settlemen
         SitUtilSqlAddBatches4ObjectEditComponent,
         SitUtilSynchCommonDataTableComponent,
         SitHRAdditions4InvoicingEditComponent,
-        SitSettlementsComponent
+        SitSettlementsComponent,
+        SitVacationRequestsComponent,
+        SitVacationRequestsEditComponent
 
     ],
     providers: [

@@ -20,6 +20,10 @@ export const sitGlobalConfig = {
       },
     },
     {
+      id: 'font11',
+      font: { fontName: "Calibri", size: 12, }
+    },
+    {
       id: 'font12',
       font: { fontName: "Calibri", size: 12, }
     },
