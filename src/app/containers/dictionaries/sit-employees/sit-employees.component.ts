@@ -8,7 +8,7 @@ import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-di
   host: {class: 'router-flex'}
 })
 export class SitEmployeesComponent extends SitDictBaseComponent {
-  
+
   public prepareColumnsDefinitnion() {
     this.gridColumnsDefinition["sitEmployees"] = [
       { headerName: 'Identyfikator', field: 'EmployeeIdent', filter: 'agTextColumnFilter' },
@@ -16,6 +16,8 @@ export class SitEmployeesComponent extends SitDictBaseComponent {
       { headerName: 'Nazwisko', field: 'LastName', filter: 'agTextColumnFilter' },
       { headerName: 'PESEL', field: 'PESEL', filter: 'agTextColumnFilter' },
       { headerName: 'Identyfikator zewnętrzny', field: 'ExtIdent01', filter: 'agTextColumnFilter' },
+      { headerName: 'Stanowisko', field: 'HRCompanyHierarchyDesc', filter: 'agTextColumnFilter' },
+
     ];
   }
 
