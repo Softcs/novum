@@ -30,7 +30,7 @@ export class SitPulpitComponent  extends SitDictBaseComponent {
     this.gridColumnsDefinition["sitAttendanceList4User"] = [
       { headerName: 'Data', field: 'Date', suppressMenu: true, sort: 'asc', width: 100 },
       { headerName: 'Dzień', field: 'DayNameOfWeek', suppressMenu: true, width: 100},
-      { headerName: 'Obecny', field: 'Present', cellRenderer: 'gridCheckboxRenderer', suppressMenu: true, width: 80 },
+      { headerName: 'Obecny', field: 'Present', suppressMenu: true, width: 80, renderType: 'checkbox' },
       { headerName: 'Powód nieob.', field: 'AbsenceName', suppressMenu: true, flex: 1 },
     ],
 
