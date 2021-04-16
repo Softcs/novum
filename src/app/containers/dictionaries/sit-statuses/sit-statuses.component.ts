@@ -10,32 +10,26 @@ import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-di
 export class SitStatusesComponent extends SitDictBaseComponent {
   public prepareColumnsDefinitnion() {
    this.gridColumnsDefinition["sitStatuses"] = [
-      { headerName: 'sitStatusesG', field: 'sitStatusesG', flex: 1 },
-      { headerName: 'StatusIdent', field: 'StatusIdent', flex: 1},
-      { headerName: 'StatusName', field: 'StatusName',toolTip: 'StatusName', flex: 1 },
-      { headerName: 'TableName', field: 'TableName', flex: 1 },
-      { headerName: 'ColumnName', field: 'ColumnName', flex: 1 },
+      { headerName: 'GUID', field: 'sitStatusesG', width: 150 },
+      { headerName: 'Identyfikator', field: 'StatusIdent', flex: 1 },
+      { headerName: 'Nazwa', field: 'StatusName',toolTip: 'Nazwa statusu', width: 250 },
+      { headerName: 'Tabela', field: 'TableName', width: 150 },
+      { headerName: 'Nazwa kolumny', field: 'ColumnName', width: 200 }
     ];
 
     this.gridColumnsDefinition["sitStatusValues"] = [
-      { headerName: 'ValueIdent', field: 'ValueIdent', type: "numericColumn", filter: 'agNumberColumnFilter', flex: 1  },
-      { headerName: 'ValueName', field: 'ValueName', filter: 'agTextColumnFilter', flex: 1  },
-      { headerName: 'Order', field: 'Order', type: "numericColumn", filter: 'agNumberColumnFilter', flex: 1  },
-      { headerName: 'IsDefault', field: 'IsDefault', filter: 'agTextColumnFilter', flex: 1  },
-
+      { headerName: 'Wartość', field: 'ValueIdent', filter: 'agNumberColumnFilter', width: 100   },
+      { headerName: 'Nazwa', field: 'ValueName', filter: 'agTextColumnFilter', width: 250  },
+      { headerName: 'Kolejność', field: 'Order', type: "numericColumn", filter: 'agNumberColumnFilter', width: 100, sort: 'asc' },
+      { headerName: 'Domyślna', field: 'IsDefault', filter: 'agTextColumnFilter', width: 100, renderType: 'checkbox' }
     ];
 
     this.gridColumnsDefinition["sitStatusValuesTransitions"] = [
-      { headerName: 'sitStatusValuesId_From', field: 'sitStatusValuesId_From', type: "numericColumn", filter: 'agNumberColumnFilter', flex: 1  },
-      { headerName: 'sitStatusValuesId_To', field: 'sitStatusValuesId_To', type: "numericColumn", filter: 'agNumberColumnFilter', flex: 1  },
-      { headerName: 'IsActive', field: 'IsActive', type: "numericColumn", filter: 'agNumberColumnFilter', flex: 1  },
-      { headerName: 'ValueIdent as ValueIdent_From', field: 'ValueIdent as ValueIdent_From', type: "numericColumn", filter: 'agNumberColumnFilter', flex: 1  },
-      { headerName: 'ValueName as ValueName_From', field: 'ValueName as ValueName_From', filter: 'agTextColumnFilter', flex: 1 },
-      { headerName: 'ValueIdent as ValueIdent_To', field: 'ValueIdent as ValueIdent_To', type: "numericColumn", filter: 'agNumberColumnFilter', flex: 1  },
-      { headerName: 'ValueName as ValueName_To', field: 'ValueName as ValueName_To', filter: 'agTextColumnFilter', flex: 1  },
-
+      { headerName: 'Wartość początkowa', field: 'ValueIdent_From', filter: 'agTextColumnFilter', width: 100 },
+      { headerName: 'Nazwa', field: 'ValueName_From', filter: 'agTextColumnFilter', width: 250 },
+      { headerName: 'Wartość końcowa', field: 'ValueIdent_To', filter: 'agTextColumnFilter', width: 100 },
+      { headerName: 'Nazwa', field: 'ValueName_To', filter: 'agTextColumnFilter', width: 250 },
+      { headerName: 'Aktywne', field: 'IsActive', renderType: 'checkbox', width: 100 }
     ];
-
-   }
-
- }
+  }
+}

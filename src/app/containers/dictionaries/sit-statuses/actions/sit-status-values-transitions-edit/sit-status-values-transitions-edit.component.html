@@ -1,35 +1,21 @@
 <sit-proc-params
-[(actionExecuteData)]="actionExecuteData"
-  >
-
-  <sit-data-set-container ident="sitStatusValuesTransitionsEdit">
+  [(actionExecuteData)]="actionExecuteData"
+>
+ <sit-data-set-container ident="sitStatusValuesTransitionsEdit">
     <div class="sit-proc-params-content" fxLayout="row" style="height: 400px; width:600px">
       <div fxFlex="50" fxLayout="column">
-        
         <div fxLayout="row">
-         <sit-data-input type="text" #sitControl field="sitStatusValuesId_From" label="sitStatusValuesId_From" appearance="outline" fxFlex></sit-data-input>
+          <sit-data-input type="text" #sitControl field="ValueIdent_From" label="Wartość początkowa" appearance="outline" style="width: 150px"
+            [lookupDisplayFields] = "['ValueIdent', 'ValueName']"></sit-data-input>
+          <sit-data-label type="text" #sitControl field="ValueName_From" label=""></sit-data-label>
         </div>
         <div fxLayout="row">
-          <sit-data-input type="text" #sitControl field="sitStatusValuesId_To" label="sitStatusValuesId_To" appearance="outline" fxFlex></sit-data-input>
-        </div> 
-        <div fxLayout="row">
-          <sit-data-input type="text" #sitControl field="IsActive" label="IsActive" appearance="outline" fxFlex></sit-data-input>
-        </div> 
-        <div fxLayout="row">
-          <sit-data-input type="text" #sitControl field="ValueIdent as ValueIdent_From" label="ValueIdent as ValueIdent_From" appearance="outline" fxFlex></sit-data-input>
-        </div> 
-        <div fxLayout="row">
-            <sit-data-input type="text" #sitControl field="ValueName as ValueName_From" label="ValueName as ValueName_From" appearance="outline" fxFlex></sit-data-input>
-        </div> 
-        <div fxLayout="row">
-            <sit-data-input type="text" #sitControl field="ValueIdent as ValueIdent_To" label="ValueIdent as ValueIdent_To" appearance="outline" fxFlex></sit-data-input>
-        </div> 
-        <div fxLayout="row">
-          <sit-data-input type="text" #sitControl field="ValueName as ValueName_To" label="ValueName as ValueName_To" appearance="outline" fxFlex></sit-data-input>
-        </div>           
-       
+          <sit-data-input type="text" #sitControl field="ValueIdent_To" label="Wartość końcowa" appearance="outline" style="width: 150px"
+            [lookupDisplayFields] = "['ValueIdent', 'ValueName']"></sit-data-input>
+          <sit-data-label type="text" #sitControl field="ValueName_To" label=""></sit-data-label>
+        </div>
+        <sit-data-checkbox #sitControl field="IsActive" label="Aktywne"></sit-data-checkbox>
       </div>
-      
     </div>
   </sit-data-set-container>
 </sit-proc-params>

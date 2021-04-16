@@ -1,27 +1,14 @@
 <sit-proc-params
-[(actionExecuteData)]="actionExecuteData"
-  >
-
+  [(actionExecuteData)]="actionExecuteData"
+>
   <sit-data-set-container ident="sitStatusValuesEdit">
     <div class="sit-proc-params-content" fxLayout="row" style="height: 400px; width:600px">
       <div fxFlex="50" fxLayout="column">
-        
-        <div fxLayout="row">
-         <sit-data-input type="text" #sitControl field="ValueIdent" label="ValueIdent" appearance="outline" fxFlex></sit-data-input>
-        </div>
-        <div fxLayout="row">
-          <sit-data-input type="text" #sitControl field="ValueName" label="ValueName" appearance="outline" fxFlex></sit-data-input>
-        </div> 
-        <div fxLayout="row">
-          <sit-data-input type="text" #sitControl field="Order" label="Order" appearance="outline" fxFlex></sit-data-input>
-        </div> 
-        <div fxLayout="row">
-          <sit-data-input type="text" #sitControl field="IsDefault" label="IsDefault" appearance="outline" fxFlex></sit-data-input>
-        </div> 
-                
-       
+        <sit-data-input type="text" #sitControl field="ValueIdent" label="Identyfikator wartości" appearance="outline" ></sit-data-input>
+        <sit-data-input type="text" #sitControl field="ValueName" label="Nazwa wartości" appearance="outline" ></sit-data-input>
+        <sit-data-input type="text" #sitControl field="Order" label="Kolejność" appearance="outline" ></sit-data-input>
+        <sit-data-checkbox #sitControl field="IsDefault" label="Domyślna"></sit-data-checkbox>
       </div>
-      
     </div>
   </sit-data-set-container>
 </sit-proc-params>
