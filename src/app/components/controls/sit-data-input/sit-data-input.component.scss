@@ -47,6 +47,7 @@ button {
 
 .mat-form-field {
   min-width: 50px!important;
+  width: auto !important;
   height: 47px;
   .mat-form-field-wrapper {
     height: $input-height;
@@ -62,6 +63,8 @@ button {
       }
       .mat-select-value, .mat-select-arrow {
         display: none;
+        max-width: 100%;
+        width: auto;
       }
     }
   }

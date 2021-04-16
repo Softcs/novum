@@ -103,6 +103,7 @@ import { SitHRAdditions4InvoicingEditComponent } from '@app/containers/dictionar
 import { SitVacationRequestsComponent } from '@app/containers/dictionaries/sit-vacation-requests/sit-vacation-requests.component';
 import { SitVacationRequestsEditComponent } from '@app/containers/dictionaries/sit-vacation-requests/actions/sit-vacation-requests-edit/sit-vacation-requests-edit.component';
 import { SitHRCompanyHierarchyComponent } from '@app/containers/dictionaries/sit-hrcompany-hierarchy/sit-hrcompany-hierarchy.component';
+import { SitEmployeesEditComponent } from '@app/containers/dictionaries/sit-employees/actions/sit-employees-edit/sit-employees-edit.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -211,7 +212,8 @@ export class FactoryService {
         sitSettlements: SitSettlementsComponent,
         sitVacationRequests: SitVacationRequestsComponent,
         sitVacationRequestsEdit: SitVacationRequestsEditComponent,
-        sitHRCompanyHierarchy: SitHRCompanyHierarchyComponent
+        sitHRCompanyHierarchy: SitHRCompanyHierarchyComponent,
+        sitEmployeesEdit: SitEmployeesEditComponent,
 
     };
 

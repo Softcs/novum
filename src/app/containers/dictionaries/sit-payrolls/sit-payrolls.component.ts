@@ -203,12 +203,12 @@ export class SitPayrollsComponent extends SitDictBaseComponent {
     { headerName: 'GUID', field: 'sitPayrollsCalcAccountingG', filter: 'agTextColumnFilter', defaultVisibility: false },
     { headerName: 'Lp', field: 'PosId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 60, sort: 'asc', suppressMenu: true },
     { headerName: 'Konto', field: 'Account', tooltipField: 'AccountDesc', filter: 'agTextColumnFilter', width: 150 },
-    { headerName: 'Kwota WN', field: 'CAmount', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100,
+    { headerName: 'Kwota WN', field: 'CAmount', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, agr: 'sum',
       cellRenderer: function(params) {
         return params.value === null ? null : formatNumber(params.value, locale,'1.2-2').replace(/[,]/g,' ')
       }
     },
-    { headerName: 'Kwota MA', field: 'DAmount', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100,
+    { headerName: 'Kwota MA', field: 'DAmount', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, agr: 'sum',
       cellRenderer: function(params) {
         return params.value === null ? null : formatNumber(params.value, locale,'1.2-2').replace(/[,]/g,' ')
       },
@@ -219,12 +219,12 @@ export class SitPayrollsComponent extends SitDictBaseComponent {
   this.gridColumnsDefinition['sitPayrollsAccounting'] = [
     { headerName: 'Lp', field: 'PosId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 60, sort: 'asc', suppressMenu: true },
     { headerName: 'Konto', field: 'Account', filter: 'agTextColumnFilter', width: 150, floatingFilter: true },
-    { headerName: 'Kwota WN', field: 'CAmount', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, floatingFilter: true,
+    { headerName: 'Kwota WN', field: 'CAmount', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, floatingFilter: true, agr: 'sum',
       cellRenderer: function(params) {
         return params.value === null ? null : formatNumber(params.value, locale,'1.2-2').replace(/[,]/g,' ')
       }
     },
-    { headerName: 'Kwota MA', field: 'DAmount', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, floatingFilter: true,
+    { headerName: 'Kwota MA', field: 'DAmount', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, floatingFilter: true, agr: 'sum',
       cellRenderer: function(params) {
         return params.value === null ? null : formatNumber(params.value, locale,'1.2-2').replace(/[,]/g,' ')
       },
@@ -238,13 +238,13 @@ export class SitPayrollsComponent extends SitDictBaseComponent {
     { headerName: 'Lp', field: 'PosId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 60, sort: 'asc', suppressMenu: true,
       cellClass: 'grid-cell-center-right'
     },
-    { headerName: 'Kwota', field: 'Amount', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100,
+    { headerName: 'Kwota', field: 'Amount', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, agr: 'sum', autoHeight: true,
       cellRenderer: function(params) {
         return params.value === null ? null : formatNumber(params.value, locale,'1.2-2').replace(/[,]/g,' ')
       },
       cellClass: 'grid-cell-center-right'
     },
-    { headerName: 'Dział', field: 'CompanyDepartmentIdent', filter: 'agTextColumnFilter',tooltipField: 'CompanyDepartmentDesc',
+    { headerName: 'Dział', field: 'CompanyDepartmentIdent', filter: 'agTextColumnFilter',tooltipField: 'CompanyDepartmentDesc', autoHeight: true,
       cellRenderer: function(params) {
         var ident;
         var desc;

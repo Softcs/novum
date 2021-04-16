@@ -199,7 +199,8 @@ import { SitHRAdditions4InvoicingEditComponent } from './containers/dictionaries
 import { SitSettlementsComponent } from './containers/dictionaries/sit-settlements/sit-settlements.component';
 import { SitVacationRequestsComponent } from './containers/dictionaries/sit-vacation-requests/sit-vacation-requests.component';
 import { SitVacationRequestsEditComponent } from './containers/dictionaries/sit-vacation-requests/actions/sit-vacation-requests-edit/sit-vacation-requests-edit.component';
-import { SitHRCompanyHierarchyComponent } from './containers/dictionaries/sit-hrcompany-hierarchy/sit-hrcompany-hierarchy.component'
+import { SitHRCompanyHierarchyComponent } from './containers/dictionaries/sit-hrcompany-hierarchy/sit-hrcompany-hierarchy.component';
+import { SitEmployeesEditComponent } from './containers/dictionaries/sit-employees/actions/sit-employees-edit/sit-employees-edit.component'
 
 
 @NgModule({
@@ -390,7 +391,8 @@ import { SitHRCompanyHierarchyComponent } from './containers/dictionaries/sit-hr
         SitSettlementsComponent,
         SitVacationRequestsComponent,
         SitVacationRequestsEditComponent,
-        SitHRCompanyHierarchyComponent
+        SitHRCompanyHierarchyComponent,
+        SitEmployeesEditComponent
 
     ],
     providers: [

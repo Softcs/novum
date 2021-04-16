@@ -14,9 +14,13 @@ export class SitEmployeesComponent extends SitDictBaseComponent {
       { headerName: 'Identyfikator', field: 'EmployeeIdent', filter: 'agTextColumnFilter' },
       { headerName: 'Imię', field: 'FirstName', filter: 'agTextColumnFilter' },
       { headerName: 'Nazwisko', field: 'LastName', filter: 'agTextColumnFilter' },
-      { headerName: 'PESEL', field: 'PESEL', filter: 'agTextColumnFilter' },
-      { headerName: 'Identyfikator zewnętrzny', field: 'ExtIdent01', filter: 'agTextColumnFilter' },
+      { headerName: 'PESEL', field: 'PESEL', filter: 'agTextColumnFilter', width: 100 },
       { headerName: 'Stanowisko', field: 'HRCompanyHierarchyDesc', filter: 'agTextColumnFilter' },
+      { headerName: 'Konto księg.', field: 'AccountNo', filter: 'agTextColumnFilter', width: 120 },
+      { headerName: 'Dział', field: 'CompanyDepartmentIdent', tooltipField: 'CompanyDepartmentDesc', filter: 'agTextColumnFilter', width: 100 },
+      { headerName: 'Kanał dystr.', field: 'DistributionChannelIdent', tooltipField: 'DistributionChannelDesc', filter: 'agTextColumnFilter', width: 100 },
+      { headerName: 'Typ prod.', field: 'ProductsTypeIdent', tooltipField: 'ProductsTypeDesc', filter: 'agTextColumnFilter', width: 100 },
+      { headerName: 'Identyfikator zewnętrzny', field: 'ExtIdent01', filter: 'agTextColumnFilter' },
 
     ];
   }
