@@ -1,0 +1,26 @@
+<sit-proc-params
+  [(actionExecuteData)]="actionExecuteData"
+  >
+  <sit-data-set-container ident="sitPayrollsCalcAccountingDimImportFromXLS">
+    <div class="sit-proc-params-content" fxLayout="column" style="width: 600px;height: 500px;">
+      <sit-data-checkbox #sitControl field="rowWithColName" label="Czy dane zawierają nagłówki kolumn"></sit-data-checkbox>
+      <sit-data-textarea fxFlex
+        type="textarea"
+        #sitControl
+        field="data"
+        label="Dane"
+        appearance="outline"
+        rows="20"
+        cols="65"
+        fxFill>
+      </sit-data-textarea>
+      <br>
+      <mat-card>
+        <mat-card-title>Uwaga!</mat-card-title>
+        <mat-card-content>
+          Wklejamy dane z Excela w układzie kolumn:<br>Kwota | Dział | Projekt | Kanał dystrybucji | Typ produktu
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </sit-data-set-container>
+</sit-proc-params>
