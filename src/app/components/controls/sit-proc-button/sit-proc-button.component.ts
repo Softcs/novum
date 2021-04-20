@@ -104,7 +104,7 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
         return true;
     }
 
-    if(!this.visibilityService.shouldBeVisible(this.actionDefinition?.visibility, this.dataSetResponseWrapper) && this.dataSetResponseWrapper.activeRow) {
+    if(!this.visibilityService.shouldBeVisible(this.actionDefinition?.visibility, this.dataSetResponseWrapper) ) {
       return true;
     }
 
