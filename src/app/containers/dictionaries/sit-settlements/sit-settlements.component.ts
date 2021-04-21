@@ -31,7 +31,7 @@ export class SitSettlementsComponent extends SitDictBaseComponent {
 
     this.gridColumnsDefinition["sitSettlementsDet"] = [
       { headerName: 'Typ dok.', field: 'DocumentIdent', filter: 'agTextColumnFilter', width: 80 },
-      { headerName: 'Numer', field: 'DocumentNo', filter: 'agTextColumnFilter', width: 80 },
+      { headerName: 'Numer', field: 'DocumentNo', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 80 },
       { headerName: 'Numer pełny', field: 'DocumentNumber', tooltipField: 'DocumentNumber', filter: 'agTextColumnFilter', width: 150 },
       { headerName: 'Data', field: 'Date', width: 100, renderType: 'date' },
       { headerName: 'Waluta', field: 'CurrencyIdent', filter: 'agTextColumnFilter', width: 70, suppressMenu: true },

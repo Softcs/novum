@@ -1,14 +1,14 @@
 fieldset {
   border-style: solid;
   border-width: 1px;
-  border-radius: 7px;
+  border-radius: 5px;
   border-color: lightgray;
-  padding: 5px 5px 5px;
-  margin: 0px 1px 7px;
+  padding: 5px 5px 0px;
+  margin: -5px 1px 7px;
 
 }
 legend {
-  font-size: 11px;
+  font-size: 10px;
   padding: 0px 3px;
   min-width: 0%;
   margin: 0px;
