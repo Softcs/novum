@@ -22,6 +22,7 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
           },
         ]
       },
+      { headerName: 'Cudzoziemiec', field: 'Foreigner', filter: 'agNumberColumnFilter', renderType: 'checkbox', width: 100, suppressMenu: true },
       { headerName: 'Okres', field: 'WorkPeriod',  width: 90,
         cellClass: ['font11','textFormat']
       },
@@ -206,7 +207,6 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
             renderType: 'number',
             cellClass: ['font11','numberFormat2Dec'],
           },
-
         ]
       },
       { headerName: 'Koszt - klient', field: 'CustCost',  filter: 'agNumberColumnFilter', type: 'numericColumn', width: 100, suppressMenu: true, agr: 'sum',
@@ -225,6 +225,14 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
         renderType: 'number',
         cellClass: ['font11','numberFormat2Dec'],
         pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
+      },
+      { headerName: 'Fak.Nr', field: 'InvoiceNo', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 80,
+        renderType: 'number', renderFormat: '1.0-0',
+        cellClass: ['font11','numberFormat2Dec','pinkBackground'],
+      },
+      { headerName: 'Fak.Poz.', field: 'InvoicePos', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 80,
+        renderType: 'number', renderFormat: '1.0-0',
+        cellClass: ['font11','numberFormat2Dec','pinkBackground'],
       },
 
     ];
