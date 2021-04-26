@@ -39,6 +39,22 @@ export class SitSettlementsComponent extends SitDictBaseComponent {
       { headerName: 'Kwota w PLN', field: 'Amount', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 130, renderType: 'number', agr: "sum" },
       { headerName: 'Opis', field: 'Description', tooltipField: 'Description', filter: 'agTextColumnFilter', width: 300 }
     ];
+
+    this.gridColumnsDefinition["sitSettlementsByAge"] = [
+      { headerName: 'Ident.', field: 'CustIdent', filter: 'agTextColumnFilter', width: 100 },
+      { headerName: 'Nazwa', field: 'CustName', tooltipField: 'CustName', filter: 'agTextColumnFilter', width: 200 },
+      { headerName: 'Nieozn.', field: 'NoPaymentDate', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 130, renderType: 'number', agr: "sum"},
+      { headerName: 'Przed term.', field: 'BeforePaymentDate', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 130, renderType: 'number', agr: "sum"},
+      { headerName: 'P01', field: 'pr01', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 130, renderType: 'number', agr: "sum"},
+      { headerName: 'P02', field: 'pr02', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 130, renderType: 'number', agr: "sum"},
+      { headerName: 'P03', field: 'pr03', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 130, renderType: 'number', agr: "sum"},
+      { headerName: 'P04', field: 'pr04', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 130, renderType: 'number', agr: "sum"},
+      { headerName: 'P05', field: 'pr05', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 130, renderType: 'number', agr: "sum"},
+      { headerName: 'P06', field: 'pr06', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 130, renderType: 'number', agr: "sum"},
+      { headerName: 'Po term.', field: 'AfterPaymentDate', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 130, renderType: 'number', agr: "sum"},
+      { headerName: 'Razem', field: 'SumAll', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 130, renderType: 'number', agr: "sum"},
+
+    ];
   }
 
   }
