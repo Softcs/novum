@@ -2,14 +2,14 @@ import { Component } from '@angular/core';
 import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-dict-base.component';
 
 @Component({
-  selector: 'app-sit-vacation-requests',
-  templateUrl: './sit-vacation-requests.component.html',
-  styleUrls: ['./sit-vacation-requests.component.scss'],
+  selector: 'app-sit-vacation-requests4user',
+  templateUrl: './sit-vacation-requests4user.component.html',
+  styleUrls: ['./sit-vacation-requests4user.component.scss'],
   host: {class: 'router-flex'}
 })
-export class SitVacationRequestsComponent  extends SitDictBaseComponent {
+export class SitVacationRequests4UserComponent extends SitDictBaseComponent {
   public prepareColumnsDefinitnion() {
-    this.gridColumnsDefinition["sitVacationRequests"] = [
+    this.gridColumnsDefinition["sitVacationRequests4User"] = [
       { headerName: 'Nazwisko', field: 'EmployeeName', filter: 'agTextColumnFilter', width: 200 },
       { headerName: 'Data wniosku', field: 'Date', width: 130, renderType: 'date', renderFormat: 'yyy-mm-dd HH:mm'},
       { headerName: 'Rodzaj urlopu', field: 'AbsenceName', filter: 'agTextColumnFilter', width: 200 },

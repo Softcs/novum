@@ -197,11 +197,12 @@ import { SitUtilSqlAddBatches4ObjectEditComponent } from './containers/dictionar
 import { SitUtilSynchCommonDataTableComponent } from './containers/dictionaries/sit-util-sql-objects/actions/sit-util-synch-common-data-table/sit-util-synch-common-data-table.component';
 import { SitHRAdditions4InvoicingEditComponent } from './containers/dictionaries/sit-customers/actions/sit-hr-additions4-invoicing-edit/sit-hr-additions4-invoicing-edit.component';
 import { SitSettlementsComponent } from './containers/dictionaries/sit-settlements/sit-settlements.component';
-import { SitVacationRequestsComponent } from './containers/dictionaries/sit-vacation-requests/sit-vacation-requests.component';
-import { SitVacationRequestsEditComponent } from './containers/dictionaries/sit-vacation-requests/actions/sit-vacation-requests-edit/sit-vacation-requests-edit.component';
-import { SitHRCompanyHierarchyComponent } from './containers/dictionaries/sit-hrcompany-hierarchy/sit-hrcompany-hierarchy.component';
+import { SitVacationRequests4UserComponent } from './containers/dictionaries/sit-vacation-requests4user/sit-vacation-requests4user.component';
+import { SitVacationRequestsEditComponent } from './containers/dictionaries/sit-vacation-requests4user/actions/sit-vacation-requests-edit/sit-vacation-requests-edit.component';
+import { SitHRCompanyHierarchyComponent } from './containers/dictionaries/sit-hr-company-hierarchy/sit-hr-company-hierarchy.component';
 import { SitEmployeesEditComponent } from './containers/dictionaries/sit-employees/actions/sit-employees-edit/sit-employees-edit.component';
-import { SitPayrollsCalcAccountingDimImportFromXLSComponent } from './containers/dictionaries/sit-payrolls/actions/sit-payrolls-calc-accounting-dim-import-from-xls/sit-payrolls-calc-accounting-dim-import-from-xls.component'
+import { SitPayrollsCalcAccountingDimImportFromXLSComponent } from './containers/dictionaries/sit-payrolls/actions/sit-payrolls-calc-accounting-dim-import-from-xls/sit-payrolls-calc-accounting-dim-import-from-xls.component';
+import { SitVacationRequestsComponent } from './containers/dictionaries/sit-vacation-requests/sit-vacation-requests.component'
 
 
 @NgModule({
@@ -390,11 +391,12 @@ import { SitPayrollsCalcAccountingDimImportFromXLSComponent } from './containers
         SitUtilSynchCommonDataTableComponent,
         SitHRAdditions4InvoicingEditComponent,
         SitSettlementsComponent,
-        SitVacationRequestsComponent,
+        SitVacationRequests4UserComponent,
         SitVacationRequestsEditComponent,
         SitHRCompanyHierarchyComponent,
         SitEmployeesEditComponent,
-        SitPayrollsCalcAccountingDimImportFromXLSComponent
+        SitPayrollsCalcAccountingDimImportFromXLSComponent,
+        SitVacationRequestsComponent
 
     ],
     providers: [
