@@ -3,9 +3,9 @@ import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-di
 
 
 @Component({
-  selector: 'app-sit-hrcompany-hierarchy',
-  templateUrl: './sit-hrcompany-hierarchy.component.html',
-  styleUrls: ['./sit-hrcompany-hierarchy.component.scss'],
+  selector: 'app-sit-hr-company-hierarchy',
+  templateUrl: './sit-hr-company-hierarchy.component.html',
+  styleUrls: ['./sit-hr-company-hierarchy.component.scss'],
   host: {class: 'router-flex'}
 })
 export class SitHRCompanyHierarchyComponent  extends SitDictBaseComponent {

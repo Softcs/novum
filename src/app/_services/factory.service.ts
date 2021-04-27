@@ -102,7 +102,7 @@ import { SitUtilSynchCommonDataTableComponent } from '@app/containers/dictionari
 import { SitHRAdditions4InvoicingEditComponent } from '@app/containers/dictionaries/sit-customers/actions/sit-hr-additions4-invoicing-edit/sit-hr-additions4-invoicing-edit.component';
 import { SitVacationRequestsComponent } from '@app/containers/dictionaries/sit-vacation-requests/sit-vacation-requests.component';
 import { SitVacationRequestsEditComponent } from '@app/containers/dictionaries/sit-vacation-requests/actions/sit-vacation-requests-edit/sit-vacation-requests-edit.component';
-import { SitHRCompanyHierarchyComponent } from '@app/containers/dictionaries/sit-hrcompany-hierarchy/sit-hrcompany-hierarchy.component';
+import { SitHRCompanyHierarchyComponent } from '@app/containers/dictionaries/sit-hr-company-hierarchy/sit-hr-company-hierarchy.component';
 import { SitEmployeesEditComponent } from '@app/containers/dictionaries/sit-employees/actions/sit-employees-edit/sit-employees-edit.component';
 import { SitPayrollsCalcAccountingDimImportFromXLSComponent } from '@app/containers/dictionaries/sit-payrolls/actions/sit-payrolls-calc-accounting-dim-import-from-xls/sit-payrolls-calc-accounting-dim-import-from-xls.component';
 
