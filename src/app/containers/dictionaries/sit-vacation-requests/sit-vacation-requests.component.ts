@@ -11,7 +11,7 @@ export class SitVacationRequestsComponent  extends SitDictBaseComponent {
   public prepareColumnsDefinitnion() {
     this.gridColumnsDefinition["sitVacationRequests"] = [
       { headerName: 'Nazwisko', field: 'EmployeeName', filter: 'agTextColumnFilter', width: 200 },
-      { headerName: 'Data wniosku', field: 'Date', width: 130, renderType: 'date', renderFormat: 'yyy-mm-dd HH:mm'},
+      { headerName: 'Data wniosku', field: 'Date', width: 130, renderType: 'date', renderFormat: 'yyyy-MM-dd HH:mm'},
       { headerName: 'Rodzaj urlopu', field: 'AbsenceName', filter: 'agTextColumnFilter', width: 200 },
       { headerName: 'Od dnia', field: 'DateFrom', width: 100, renderType: 'date'},
       { headerName: 'Do dnia', field: 'DateTo', width: 100, renderType: 'date'},
