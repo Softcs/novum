@@ -36,7 +36,7 @@ export class SitPulpitComponent  extends SitDictBaseComponent {
 
     this.gridColumnsDefinition["sitVacationRequests4Accept"] = [
       { headerName: 'Pracownik', field: 'EmployeeName', suppressMenu: true, width: 200 },
-      { headerName: 'Data wniosku', field: 'Date', suppressMenu: true, width: 130, renderType: 'date', renderFormat:'yyyy-mm-dd HH:mm' },
+      { headerName: 'Data wniosku', field: 'Date', suppressMenu: true, width: 130, renderType: 'date', renderFormat:'yyyy-MM-dd HH:mm' },
       { headerName: 'Od dnia', field: 'DateFrom', suppressMenu: true, width: 100 },
       { headerName: 'Do dnia', field: 'DateTo', suppressMenu: true, width: 100 },
       { headerName: 'Dni', field: 'DaysCount', suppressMenu: true, width: 60 },
