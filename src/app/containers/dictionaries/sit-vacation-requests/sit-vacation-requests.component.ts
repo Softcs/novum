@@ -10,8 +10,8 @@ import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-di
 export class SitVacationRequestsComponent  extends SitDictBaseComponent {
   public prepareColumnsDefinitnion() {
     this.gridColumnsDefinition["sitVacationRequests"] = [
-      { headerName: 'Nazwisko', field: 'EmployeeName', filter: 'agTextColumnFilter', width: 200, },
-      { headerName: 'Data wniosku', field: 'Date', width: 130, renderType: 'date', renderFormat: 'yyyy-MM-dd HH:mm'},
+      { headerName: 'Nazwisko', field: 'EmployeeName', filter: 'agTextColumnFilter', width: 200 },
+      { headerName: 'Data wniosku', field: 'Date', width: 130, renderType: 'date', renderFormat: 'yyyy-MM-dd HH:mm', sort: 'desc'},
       { headerName: 'Rodzaj urlopu', field: 'AbsenceName', filter: 'agTextColumnFilter', width: 200 },
       { headerName: 'Od dnia', field: 'DateFrom', width: 100, renderType: 'date'},
       { headerName: 'Do dnia', field: 'DateTo', width: 100, renderType: 'date'},
@@ -28,7 +28,7 @@ export class SitVacationRequestsComponent  extends SitDictBaseComponent {
           + '<br><span style="color: dimgray;">' + (!params.data["ReplacementEmployeeName"] ? '' : params.data["ReplacementEmployeeName"])  + '</span>';
         }
       },
-      { headerName: 'Opis', field: 'Description', tooltipField: 'Description', filter: 'agTextColumnFilter', width: 200},
+      { headerName: 'Opis', field: 'Description', tooltipField: 'Description', filter: 'agTextColumnFilter', wrapText: true, width: 250},
     ];
   }
 }
