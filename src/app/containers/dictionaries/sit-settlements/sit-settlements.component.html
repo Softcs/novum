@@ -10,13 +10,14 @@
                   <div fxLayoutAlign="start center">
                     <sit-data-input #sitControl field="Customer" label="Kontrahent" appearance="outline" style="width: 200px;"></sit-data-input>
                     <sit-data-input #sitControl field="DocumentNumber" label="Numer" appearance="outline" style="width: 200px;"></sit-data-input>
+                    <sit-data-input #sitControl field="CurrencyIdent" label="Waluta" appearance="outline" style="width: 120px;"></sit-data-input>
+                    <sit-data-input #sitControl field="ForDate" type="date" label="Na dzień" appearance="outline" style="width: 200px;" showRefreshButton="true"></sit-data-input>
                   </div>
-                  <div fxLayoutAlign="start center">
+                  <!-- <div fxLayoutAlign="start center">
                     <sit-data-radio #sitControl field="Settled" type="row" label="Stan rozl."
                       [buttons]="[{'caption':'Nierozl.','value': '0', 'checked':true},{'caption':'Rozl.','value': '1'},{'caption':'Wszystkie','value': '2'}]"
                     ></sit-data-radio>
-                    <sit-data-input #sitControl field="CurrencyIdent" label="Waluta" appearance="outline" style="width: 120px;" showRefreshButton="true"></sit-data-input>
-                  </div>
+                  </div> -->
                 </div>
               </sit-data-set-container>
               <sit-data-set-container ident="sitSettlements" showActionsToolbar="true" fxLayout="column" fxFlex>
@@ -62,7 +63,7 @@
                 [buttons]="[{'caption':'Wszystkie','value': '0', 'checked':true},{'caption':'Należności','value': '1'},{'caption':'Zobowiązania','value': '-1'}]"
                 showRefreshButton='true'
               ></sit-data-radio>
-              <sit-refresh-button tooltip="Odśwież"></sit-refresh-button>
+              <sit-data-input #sitControl field="ForDate" type="date" label="Na dzień" appearance="outline" style="width: 200px;" showRefreshButton="true"></sit-data-input>
             </div>
           </sit-data-set-container>
           <sit-data-set-container ident="sitSettlementsByAge" showActionsToolbar="true" fxLayout="column" fxFlex>
