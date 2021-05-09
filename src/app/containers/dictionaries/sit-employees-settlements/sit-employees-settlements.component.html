@@ -5,7 +5,7 @@
         <as-split direction="vertical">
           <as-split-area [size]="80">
             <div fxLayout="column" fxFill class="content">
-              <div class="sit-filter-bar">
+              <div class="sit-filter-bar" fxLayout="row">
                 <sit-data-set-container ident="sitFilter" >
                   <div fxLayout="row">
                     <sit-data-input #sitControl field="CostYear" label="Rok" placeholder="" appearance="outline" style="width: 60px;"></sit-data-input>
@@ -15,6 +15,9 @@
                     </sit-data-input>
                     <sit-data-input #sitControl field="search" label="Filtruj" placeholder="" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
                   </div>
+                </sit-data-set-container>
+                <sit-data-set-container  ident="sitEmployeesSettlements" fxFlex fxLayout="row" fxLayoutAlign="end center">
+                  <button mat-stroked-button color="primary" (click)="getAttachment()" style="width: 120px;"><mat-icon>attach_file</mat-icon>Załącznik</button>
                 </sit-data-set-container>
               </div>
               <div class="sit-grid-title">Rozliczenie</div>

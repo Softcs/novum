@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ViewChildren, QueryList,LOCALE_ID, Inject } from '@angular/core';
 import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-dict-base.component';
+import { DataSetWrapper } from '@app/_models';
 
 @Component({
   selector: 'sit-employees-settlements',
@@ -273,6 +274,16 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
         renderType: 'number',
       },
     ];
+  }
+
+
+  getAttachment() {
+    //generuje załącznik
+    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitEmployeesSettlements');
+    const url = this.urlService.getGenXLSUrl(dataSourceResponseWrapper.activeRow);
+    console.log(url);
+    window.open(url, '_blank');
+
   }
 
   refreshAfter(dataSourceManager) {}

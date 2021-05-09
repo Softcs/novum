@@ -43,4 +43,13 @@ export class UrlService {
         + this.currentUser.company.companyGUID + '/'
         + guid
   }
+
+  getGenXLSUrl(activeRow: any){
+    return environment.apiUrl
+        + '/service/temporary/generate/'
+        + this.currentUser.token + '/'
+        + this.currentUser.connection + '?'
+        + 'download=1' +'&'
+        + 'identity=' + activeRow['__Identity__']
+  }
 }
