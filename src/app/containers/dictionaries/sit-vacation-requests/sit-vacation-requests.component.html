@@ -3,6 +3,8 @@
     <div fxLayoutAlign="space-between center" fxLayout="row">
       <sit-data-set-container ident="sitFilter" fxLayout="row">
         <div class="sit-filter-bar" fxLayout="row">
+          <sit-data-input #sitControl field="Year" type="number" label="Rok" appearance="outline" style="width: 80px;"></sit-data-input>
+          <sit-data-input #sitControl field="Month" type="number" label="Miesiąc" appearance="outline" style="width: 60px;"></sit-data-input>
           <sit-data-input #sitControl field="Search" label="wyszukaj" appearance="outline" style="width: 300px;" showRefreshButton="true"></sit-data-input>
         </div>
       </sit-data-set-container>
