@@ -100,10 +100,12 @@ import { SitUtilSqlObjectsEditComponent } from '@app/containers/dictionaries/sit
 import { SitUtilSqlAddBatches4ObjectEditComponent } from '@app/containers/dictionaries/sit-util-sql-objects/actions/sit-util-sql-add-batches4-object-edit/sit-util-sql-add-batches4-object-edit.component';
 import { SitUtilSynchCommonDataTableComponent } from '@app/containers/dictionaries/sit-util-sql-objects/actions/sit-util-synch-common-data-table/sit-util-synch-common-data-table.component';
 import { SitHRAdditions4InvoicingEditComponent } from '@app/containers/dictionaries/sit-customers/actions/sit-hr-additions4-invoicing-edit/sit-hr-additions4-invoicing-edit.component';
-import { SitVacationRequestsComponent } from '@app/containers/dictionaries/sit-vacation-requests/sit-vacation-requests.component';
-import { SitVacationRequestsEditComponent } from '@app/containers/dictionaries/sit-vacation-requests/actions/sit-vacation-requests-edit/sit-vacation-requests-edit.component';
-import { SitHRCompanyHierarchyComponent } from '@app/containers/dictionaries/sit-hrcompany-hierarchy/sit-hrcompany-hierarchy.component';
+import { SitVacationRequestsEditComponent } from '@app/containers/dictionaries/sit-vacation-requests4user/actions/sit-vacation-requests-edit/sit-vacation-requests-edit.component';
+import { SitHRCompanyHierarchyComponent } from '@app/containers/dictionaries/sit-hr-company-hierarchy/sit-hr-company-hierarchy.component';
 import { SitEmployeesEditComponent } from '@app/containers/dictionaries/sit-employees/actions/sit-employees-edit/sit-employees-edit.component';
+import { SitPayrollsCalcAccountingDimImportFromXLSComponent } from '@app/containers/dictionaries/sit-payrolls/actions/sit-payrolls-calc-accounting-dim-import-from-xls/sit-payrolls-calc-accounting-dim-import-from-xls.component';
+import { SitVacationRequests4UserComponent } from '@app/containers/dictionaries/sit-vacation-requests4user/sit-vacation-requests4user.component';
+import { SitVacationRequestsComponent } from '@app/containers/dictionaries/sit-vacation-requests/sit-vacation-requests.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -211,10 +213,11 @@ export class FactoryService {
         sitHRAdditions4InvoicingEdit: SitHRAdditions4InvoicingEditComponent,
         sitSettlements: SitSettlementsComponent,
         sitVacationRequests: SitVacationRequestsComponent,
+        sitVacationRequests4User: SitVacationRequests4UserComponent,
         sitVacationRequestsEdit: SitVacationRequestsEditComponent,
         sitHRCompanyHierarchy: SitHRCompanyHierarchyComponent,
         sitEmployeesEdit: SitEmployeesEditComponent,
-
+        sitPayrollsCalcAccountingDimImportFromXLS: SitPayrollsCalcAccountingDimImportFromXLSComponent,
     };
 
     public GetFactory(ident: string) {

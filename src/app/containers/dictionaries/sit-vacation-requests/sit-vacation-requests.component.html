@@ -1,16 +1,21 @@
 <sit-dict-container ident="sitVacationRequests" #sitDictcontainer fxFill>
   <div fxLayout="column" fxFill class="content">
-    <sit-data-set-container ident="sitFilter4User" fxLayout="row">
-      <div class="sit-filter-bar" fxLayout="row">
-        <sit-data-input #sitControl field="Search" label="wyszukaj" appearance="outline" style="width: 300px;" showRefreshButton="true"></sit-data-input>
-      </div>
-    </sit-data-set-container>
-    <sit-data-set-container ident="sitVacationRequests4User" showActionsToolbar="true" fxLayout="column" fxFlex>
+    <div fxLayoutAlign="space-between center" fxLayout="row">
+      <sit-data-set-container ident="sitFilter" fxLayout="row">
+        <div class="sit-filter-bar" fxLayout="row">
+          <sit-data-input #sitControl field="Search" label="wyszukaj" appearance="outline" style="width: 300px;" showRefreshButton="true"></sit-data-input>
+        </div>
+      </sit-data-set-container>
+      <button mat-stroked-button color="primary" (click)="getPrintout()"><mat-icon>print</mat-icon> Drukuj wniosek</button>
+    </div>
+    <sit-data-set-container ident="sitVacationRequests" showActionsToolbar="true" fxLayout="column" fxFlex>
       <div class="data-table" fxFlex>
         <ag-grid-angular
           #sitSetDataSource
           style="width: 100%; height: 100%;"
-          class="ag-theme-balham">
+          class="ag-theme-balham"
+          [rowHeight]="60"
+        >
         </ag-grid-angular>
       </div>
     </sit-data-set-container>
