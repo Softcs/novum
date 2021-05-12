@@ -37,6 +37,7 @@ export class SitUtilSqlObjectsComponent extends SitDictBaseComponent {
        { headerName: 'Table name', field: 'TableName', filter: 'agTextColumnFilter', width: 200 },
        { headerName: 'sit_test_job', field: 'sit_test_job_diff', width: 100, renderType: 'checkbox'},
        { headerName: 'sit_test_publicat', field: 'sit_test_publicat_diff', width: 100, renderType: 'checkbox'},
+       { headerName: 'sit_test_chobot', field: 'sit_test_chobot_diff', width: 100, renderType: 'checkbox'},
        { headerName: 'sit', field: 'sit_diff', width: 100, renderType: 'checkbox'},
        { headerName: 'sit_company_template', field: 'sit_company_template_diff', width: 100, renderType: 'checkbox'},
        { headerName: 'sit_job', field: 'sit_job_diff', width: 100, renderType: 'checkbox'},
