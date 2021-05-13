@@ -1,0 +1,17 @@
+<sit-proc-params
+  [(actionExecuteData)]="actionExecuteData"
+  >
+  <sit-data-set-container ident="sitCustomersAttachments4EmpSettDefEdit">
+    <div class="sit-proc-params-content" fxLayout="row" style="height: 300px;">
+      <div fxLayout="column">
+        <sit-data-radio #sitControl field="Kind" type="row" label="Rodzaj umowy"
+          [buttons]="[{'caption':'Um.zlec.','value': '0', 'checked':true},{'caption':'Um.o pracę','value': '1'}]"
+        ></sit-data-radio>
+        <sit-data-input type="text" #sitControl field="TemplateName" label="Nazwa szablony XLS" appearance="outline" style="width: 300px"></sit-data-input>
+        <sit-data-input type="text" #sitControl field="SheetName" label="Nazwa arkusza" appearance="outline" style="width: 300px"></sit-data-input>
+        <sit-data-input type="text" #sitControl field="CellAddress" label="Komórka startowa" appearance="outline" style="width: 300"></sit-data-input>
+        <sit-data-input type="text" #sitControl field="FunctionName" label="Nazwa funkcji SQL" appearance="outline" style="width: 300"></sit-data-input>
+      </div>
+    </div>
+  </sit-data-set-container>
+</sit-proc-params>

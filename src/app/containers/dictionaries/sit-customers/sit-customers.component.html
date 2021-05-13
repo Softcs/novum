@@ -130,6 +130,17 @@
                 </sit-data-set-container>
               </div>
             </mat-tab>
+            <mat-tab label="Def. załączników">
+              <sit-data-set-container ident="sitCustomersAttachments4EmpSettDef" showActionsToolbar="true" #sitDataSetContainer fxFill fxLayout="column">
+                <div class="data-table" fxFlex>
+                  <ag-grid-angular
+                        #sitSetDataSource
+                        class="ag-theme-balham sit-grid-fill"
+                      >
+                  </ag-grid-angular>
+                </div>
+              </sit-data-set-container>
+          </mat-tab>
           </mat-tab-group>
         </div>
       </as-split-area>

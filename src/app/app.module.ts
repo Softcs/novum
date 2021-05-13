@@ -202,7 +202,8 @@ import { SitVacationRequestsEditComponent } from './containers/dictionaries/sit-
 import { SitHRCompanyHierarchyComponent } from './containers/dictionaries/sit-hr-company-hierarchy/sit-hr-company-hierarchy.component';
 import { SitEmployeesEditComponent } from './containers/dictionaries/sit-employees/actions/sit-employees-edit/sit-employees-edit.component';
 import { SitPayrollsCalcAccountingDimImportFromXLSComponent } from './containers/dictionaries/sit-payrolls/actions/sit-payrolls-calc-accounting-dim-import-from-xls/sit-payrolls-calc-accounting-dim-import-from-xls.component';
-import { SitVacationRequestsComponent } from './containers/dictionaries/sit-vacation-requests/sit-vacation-requests.component'
+import { SitVacationRequestsComponent } from './containers/dictionaries/sit-vacation-requests/sit-vacation-requests.component';
+import { SitCustomersAttachments4EmpSettDefEditComponent } from './containers/dictionaries/sit-customers/actions/sit-customers-attachments4-emp-sett-def-edit/sit-customers-attachments4-emp-sett-def-edit.component'
 
 
 @NgModule({
@@ -396,7 +397,8 @@ import { SitVacationRequestsComponent } from './containers/dictionaries/sit-vaca
         SitHRCompanyHierarchyComponent,
         SitEmployeesEditComponent,
         SitPayrollsCalcAccountingDimImportFromXLSComponent,
-        SitVacationRequestsComponent
+        SitVacationRequestsComponent,
+        SitCustomersAttachments4EmpSettDefEditComponent
 
     ],
     providers: [

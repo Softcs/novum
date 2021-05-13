@@ -106,6 +106,7 @@ import { SitEmployeesEditComponent } from '@app/containers/dictionaries/sit-empl
 import { SitPayrollsCalcAccountingDimImportFromXLSComponent } from '@app/containers/dictionaries/sit-payrolls/actions/sit-payrolls-calc-accounting-dim-import-from-xls/sit-payrolls-calc-accounting-dim-import-from-xls.component';
 import { SitVacationRequests4UserComponent } from '@app/containers/dictionaries/sit-vacation-requests4user/sit-vacation-requests4user.component';
 import { SitVacationRequestsComponent } from '@app/containers/dictionaries/sit-vacation-requests/sit-vacation-requests.component';
+import { SitCustomersAttachments4EmpSettDefEditComponent } from '@app/containers/dictionaries/sit-customers/actions/sit-customers-attachments4-emp-sett-def-edit/sit-customers-attachments4-emp-sett-def-edit.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -218,6 +219,7 @@ export class FactoryService {
         sitHRCompanyHierarchy: SitHRCompanyHierarchyComponent,
         sitEmployeesEdit: SitEmployeesEditComponent,
         sitPayrollsCalcAccountingDimImportFromXLS: SitPayrollsCalcAccountingDimImportFromXLSComponent,
+        sitCustomersAttachments4EmpSettDefEdit: SitCustomersAttachments4EmpSettDefEditComponent,
     };
 
     public GetFactory(ident: string) {

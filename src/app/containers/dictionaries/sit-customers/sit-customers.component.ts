@@ -53,5 +53,15 @@ export class SitCustomersComponent extends SitDictBaseComponent {
 
     ];
 
+    this.gridColumnsDefinition["sitCustomersAttachments4EmpSettDef"] = [
+      { headerName: 'ID', field: 'sitCustomersAttachments4EmpSettDefId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, defaultVisibility: false },
+      { headerName: 'GUID', field: 'sitCustomersAttachments4EmpSettDefG', width: 100, defaultVisibility: false },
+      { headerName: 'Rodzaj', field: 'KindName', width: 100 },
+      { headerName: 'Plik wzorca XLS', field: 'TemplateName', width: 200, },
+      { headerName: 'Nazwa arkusza', field: 'SheetName', width: 150, },
+      { headerName: 'Komórka startowa', field: 'CellAddress', width: 100 },
+      { headerName: 'Nazwa funkcji SQL', field: 'FunctionName', width: 200 },
+
+    ]
   }
 }
