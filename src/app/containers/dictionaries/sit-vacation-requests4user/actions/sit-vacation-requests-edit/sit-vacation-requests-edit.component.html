@@ -10,8 +10,11 @@
         <sit-data-input type="date" #sitControl field="DateFrom" label="Od" appearance="outline" fxFlex></sit-data-input>
         <sit-data-input type="date" #sitControl field="DateTo" label="Do" appearance="outline" fxFlex></sit-data-input>
       </div>
-      <sit-data-input type="text" #sitControl field="AbsenceName" label="Rodzaj urlopu" appearance="outline"></sit-data-input>
-      <sit-data-input type="text" #sitControl field="ReplacmentEmployeeName" label="Zastępca" appearance="outline"
+      <div fxLayout="row">
+        <sit-data-input type="text" #sitControl field="AbsenceName" label="Rodzaj urlopu" appearance="outline" fxFlex=70></sit-data-input>
+        <sit-data-checkbox #sitControl field="OnDemand" label="Na żądanie" fxFlex></sit-data-checkbox>
+      </div>
+      <sit-data-input type="text" #sitControl field="ReplacementEmployeeName" label="Zastępca" appearance="outline"
         [lookupDisplayFields] = "['EmployeeName']"
       ></sit-data-input>
       <sit-data-input type="text" #sitControl field="Description" label="Opis" appearance="outline"></sit-data-input>
