@@ -1,0 +1,10 @@
+<sit-proc-params
+   [(actionExecuteData)]="actionExecuteData"
+  >
+  <sit-data-set-container ident="sitPublicationsProductsEdit">
+    <div class="sit-proc-params-content" fxLayout="column">
+      <sit-data-input #sitControl type="text" field="ProductIdent" label="Produkt" appearance="outline" [lookupDisplayFields] = "['ProductIdent', 'ProductName']"></sit-data-input>
+      <sit-data-input #sitControl type="text" field="FormOfReleaseIdent" label="Forma wydania" appearance="outline"  [lookupDisplayFields] = "['FormOfReleaseIdent', 'FormOfReleaseDesc']"></sit-data-input>
+    </div>
+  </sit-data-set-container>
+</sit-proc-params>

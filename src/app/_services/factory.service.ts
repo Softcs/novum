@@ -107,6 +107,16 @@ import { SitPayrollsCalcAccountingDimImportFromXLSComponent } from '@app/contain
 import { SitVacationRequests4UserComponent } from '@app/containers/dictionaries/sit-vacation-requests4user/sit-vacation-requests4user.component';
 import { SitVacationRequestsComponent } from '@app/containers/dictionaries/sit-vacation-requests/sit-vacation-requests.component';
 import { SitCustomersAttachments4EmpSettDefEditComponent } from '@app/containers/dictionaries/sit-customers/actions/sit-customers-attachments4-emp-sett-def-edit/sit-customers-attachments4-emp-sett-def-edit.component';
+import { SitPublicationsComponent } from '@app/containers/dictionaries/sit-publications/sit-publications.component';
+import { SitPublicationsEditComponent } from '@app/containers/dictionaries/sit-publications/actions/sit-publications-edit/sit-publications-edit.component';
+import { SitPublicationsFormsOfReleaseComponent } from '@app/containers/dictionaries/sit-publications-forms-of-release/sit-publications-forms-of-release.component';
+import { SitPublicationsFormsOfReleaseEditComponent } from '@app/containers/dictionaries/sit-publications-forms-Of-Release/actions/sit-publications-forms-of-release-edit/sit-publications-forms-of-release-edit.component';
+import { SitPublicationsProductsEditComponent } from '@app/containers/dictionaries/sit-publications/actions/sit-publications-products-edit/sit-publications-products-edit.component';
+import { SitPublicationsAgreementsComponent } from '@app/containers/dictionaries/sit-publications-agreements/sit-publications-agreements.component';
+import { SitPublicationsAgreementsEditComponent } from '@app/containers/dictionaries/sit-publications-agreements/actions/sit-publications-agreements-edit/sit-publications-agreements-edit.component';
+import { SitAgreementsBenefEditComponent } from '@app/containers/dictionaries/sit-publications-agreements/actions/sit-agreements-benef-edit/sit-agreements-benef-edit.component';
+import { SitAgreementsPublicationsEditComponent } from '@app/containers/dictionaries/sit-publications-agreements/actions/sit-agreements-publications-edit/sit-agreements-publications-edit.component';
+import { SitAgreementsAdvancesEditComponent } from '@app/containers/dictionaries/sit-publications-agreements/actions/sit-agreements-advances-edit/sit-agreements-advances-edit.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -220,6 +230,16 @@ export class FactoryService {
         sitEmployeesEdit: SitEmployeesEditComponent,
         sitPayrollsCalcAccountingDimImportFromXLS: SitPayrollsCalcAccountingDimImportFromXLSComponent,
         sitCustomersAttachments4EmpSettDefEdit: SitCustomersAttachments4EmpSettDefEditComponent,
+        sitPublications: SitPublicationsComponent,
+        sitPublicationsEdit: SitPublicationsEditComponent,
+        sitPublicationsFormsOfRelease: SitPublicationsFormsOfReleaseComponent,
+        sitPublicationsFormsOfReleaseEdit: SitPublicationsFormsOfReleaseEditComponent,
+        sitPublicationsProductsEdit: SitPublicationsProductsEditComponent,
+        sitPublicationsAgreements: SitPublicationsAgreementsComponent,
+        sitPublicationsAgreementsEdit: SitPublicationsAgreementsEditComponent,
+        sitAgreementsBenefEdit: SitAgreementsBenefEditComponent,
+        sitAgreementsPublicationsEdit: SitAgreementsPublicationsEditComponent,
+        sitAgreementsAdvancesEdit: SitAgreementsAdvancesEditComponent,
     };
 
     public GetFactory(ident: string) {

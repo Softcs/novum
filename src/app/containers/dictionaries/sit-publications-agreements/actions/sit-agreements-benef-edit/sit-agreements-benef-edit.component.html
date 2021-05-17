@@ -1,0 +1,15 @@
+<sit-proc-params
+   [(actionExecuteData)]="actionExecuteData"
+  >
+  <sit-data-set-container ident="sitAgreementsBenefEdit">
+    <div class="sit-proc-params-content" fxLayout="column">
+      <sit-data-input #sitControl type="text" field="CustIdent" label="Beneficjent" appearance="outline"  [lookupDisplayFields] = "['CustIdent', 'CustName']"></sit-data-input>
+      <sit-data-input #sitControl type="text" field="CustName" label="Nazwa" appearance="outline" ></sit-data-input>
+      <sit-data-input #sitControl type="number" field="PercentShare" label="Udział procentowy" appearance="outline" ></sit-data-input>
+      <sit-data-radio #sitControl field="BillingType" type="row" label="Typ rozliczenia"
+        [buttons]="[{'caption':'faktura','value': 'FK', 'checked':true},{'caption':'płace','value':'LP'}]"
+      ></sit-data-radio>      
+      <sit-data-checkbox #sitControl field="ForBilling" label="Do rozliczenia"></sit-data-checkbox>
+    </div>
+  </sit-data-set-container>
+</sit-proc-params>

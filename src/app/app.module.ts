@@ -204,6 +204,16 @@ import { SitEmployeesEditComponent } from './containers/dictionaries/sit-employe
 import { SitPayrollsCalcAccountingDimImportFromXLSComponent } from './containers/dictionaries/sit-payrolls/actions/sit-payrolls-calc-accounting-dim-import-from-xls/sit-payrolls-calc-accounting-dim-import-from-xls.component';
 import { SitVacationRequestsComponent } from './containers/dictionaries/sit-vacation-requests/sit-vacation-requests.component';
 import { SitCustomersAttachments4EmpSettDefEditComponent } from './containers/dictionaries/sit-customers/actions/sit-customers-attachments4-emp-sett-def-edit/sit-customers-attachments4-emp-sett-def-edit.component'
+import { SitPublicationsComponent } from './containers/dictionaries/sit-publications/sit-publications.component';
+import { SitPublicationsEditComponent } from './containers/dictionaries/sit-publications/actions/sit-publications-edit/sit-publications-edit.component';
+import { SitPublicationsFormsOfReleaseComponent } from './containers/dictionaries/sit-publications-forms-of-release/sit-publications-forms-of-release.component';
+import { SitPublicationsFormsOfReleaseEditComponent } from './containers/dictionaries/sit-publications-forms-Of-Release/actions/sit-publications-forms-of-release-edit/sit-publications-forms-of-release-edit.component';
+import { SitPublicationsProductsEditComponent } from './containers/dictionaries/sit-publications/actions/sit-publications-products-edit/sit-publications-products-edit.component';
+import { SitPublicationsAgreementsComponent } from './containers/dictionaries/sit-publications-agreements/sit-publications-agreements.component';
+import { SitPublicationsAgreementsEditComponent } from './containers/dictionaries/sit-publications-agreements/actions/sit-publications-agreements-edit/sit-publications-agreements-edit.component';
+import { SitAgreementsBenefEditComponent } from './containers/dictionaries/sit-publications-agreements/actions/sit-agreements-benef-edit/sit-agreements-benef-edit.component';
+import { SitAgreementsPublicationsEditComponent } from './containers/dictionaries/sit-publications-agreements/actions/sit-agreements-publications-edit/sit-agreements-publications-edit.component';
+import { SitAgreementsAdvancesEditComponent } from './containers/dictionaries/sit-publications-agreements/actions/sit-agreements-advances-edit/sit-agreements-advances-edit.component'
 
 
 @NgModule({
@@ -398,7 +408,17 @@ import { SitCustomersAttachments4EmpSettDefEditComponent } from './containers/di
         SitEmployeesEditComponent,
         SitPayrollsCalcAccountingDimImportFromXLSComponent,
         SitVacationRequestsComponent,
-        SitCustomersAttachments4EmpSettDefEditComponent
+        SitCustomersAttachments4EmpSettDefEditComponent,
+        SitPublicationsComponent,
+        SitPublicationsEditComponent,
+        SitPublicationsFormsOfReleaseComponent,
+        SitPublicationsFormsOfReleaseEditComponent,
+        SitPublicationsProductsEditComponent,
+        SitPublicationsAgreementsComponent,
+        SitPublicationsAgreementsEditComponent,
+        SitAgreementsBenefEditComponent,
+        SitAgreementsPublicationsEditComponent,
+        SitAgreementsAdvancesEditComponent
 
     ],
     providers: [
