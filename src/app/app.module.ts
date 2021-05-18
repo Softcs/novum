@@ -217,7 +217,9 @@ import { SitAgreementsAdvancesEditComponent } from './containers/dictionaries/si
 import { SitPublicationsBillingTypesComponent } from './containers/dictionaries/sit-publications-billing-types/sit-publications-billing-types.component';
 import { SitPublicationsBillingTypesEditComponent } from './containers/dictionaries/sit-publications-billing-types/actions/sit-publications-billing-types-edit/sit-publications-billing-types-edit.component';
 import { SitPublicationsBillingDefComponent } from './containers/dictionaries/sit-publications-billing-def/sit-publications-billing-def.component';
-import { SitPublicationsBillingDefEditComponent } from './containers/dictionaries/sit-publications-billing-def/actions/sit-publications-billing-def-edit/sit-publications-billing-def-edit.component'
+import { SitPublicationsBillingDefEditComponent } from './containers/dictionaries/sit-publications-billing-def/actions/sit-publications-billing-def-edit/sit-publications-billing-def-edit.component';
+import { SitPublicationsBillingDefFormsEditComponent } from './containers/dictionaries/sit-publications-billing-def/actions/sit-publications-billing-def-forms-edit/sit-publications-billing-def-forms-edit.component';
+import { SitPublicationsBillingDefThrsEditComponent } from './containers/dictionaries/sit-publications-billing-def/actions/sit-publications-billing-def-thrs-edit/sit-publications-billing-def-thrs-edit.component'
 
 
 @NgModule({
@@ -426,7 +428,9 @@ import { SitPublicationsBillingDefEditComponent } from './containers/dictionarie
         SitPublicationsBillingTypesComponent,
         SitPublicationsBillingTypesEditComponent,
         SitPublicationsBillingDefComponent,
-        SitPublicationsBillingDefEditComponent
+        SitPublicationsBillingDefEditComponent,
+        SitPublicationsBillingDefFormsEditComponent,
+        SitPublicationsBillingDefThrsEditComponent
 
     ],
     providers: [

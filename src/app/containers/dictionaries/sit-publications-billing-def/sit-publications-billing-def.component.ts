@@ -16,6 +16,13 @@ export class SitPublicationsBillingDefComponent extends SitDictBaseComponent {
       { headerName: 'Typ rozlliczenia', field: 'BillingTypeIdent', filter: 'agTextColumnFilter', width: 150 },
       { headerName: 'Data od', field: 'DateFrom', filter: 'agTextColumnFilter', width: 150 },
       { headerName: 'Rodzaj ceny', field: 'PriceTypeName', filter: 'agTextColumnFilter', width: 150 }
-    ]
+    ];
+    this.gridColumnsDefinition["sitPublicationsBillingDefForms"] = [
+      { headerName: 'Forma wydania', field: 'FormOfReleaseIdent', width: 150}
+    ];
+    this.gridColumnsDefinition["sitPublicationsBillingDefThrs"] = [
+      { headerName: 'Próg', field: 'Threshold', width: 150, type: 'numericColumn', renderType: 'number'},
+      { headerName: 'Stawka(% lub kwota)', field: 'Rate', width: 150, type: 'numericColumn', renderType: 'number'}
+    ];
    }
 }
