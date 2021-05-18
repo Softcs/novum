@@ -117,6 +117,10 @@ import { SitPublicationsAgreementsEditComponent } from '@app/containers/dictiona
 import { SitAgreementsBenefEditComponent } from '@app/containers/dictionaries/sit-publications-agreements/actions/sit-agreements-benef-edit/sit-agreements-benef-edit.component';
 import { SitAgreementsPublicationsEditComponent } from '@app/containers/dictionaries/sit-publications-agreements/actions/sit-agreements-publications-edit/sit-agreements-publications-edit.component';
 import { SitAgreementsAdvancesEditComponent } from '@app/containers/dictionaries/sit-publications-agreements/actions/sit-agreements-advances-edit/sit-agreements-advances-edit.component';
+import { SitPublicationsBillingTypesComponent } from '@app/containers/dictionaries/sit-publications-billing-types/sit-publications-billing-types.component';
+import { SitPublicationsBillingTypesEditComponent } from '@app/containers/dictionaries/sit-publications-billing-types/actions/sit-publications-billing-types-edit/sit-publications-billing-types-edit.component';
+import { SitPublicationsBillingDefComponent } from '@app/containers/dictionaries/sit-publications-billing-def/sit-publications-billing-def.component';
+import { SitPublicationsBillingDefEditComponent } from '@app/containers/dictionaries/sit-publications-billing-def/actions/sit-publications-billing-def-edit/sit-publications-billing-def-edit.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -240,6 +244,10 @@ export class FactoryService {
         sitAgreementsBenefEdit: SitAgreementsBenefEditComponent,
         sitAgreementsPublicationsEdit: SitAgreementsPublicationsEditComponent,
         sitAgreementsAdvancesEdit: SitAgreementsAdvancesEditComponent,
+        sitPublicationsBillingTypes: SitPublicationsBillingTypesComponent,
+        sitPublicationsBillingTypesEdit: SitPublicationsBillingTypesEditComponent,
+        sitPublicationsBillingDef: SitPublicationsBillingDefComponent,
+        sitPublicationsBillingDefEdit: SitPublicationsBillingDefEditComponent,
     };
 
     public GetFactory(ident: string) {

@@ -213,7 +213,11 @@ import { SitPublicationsAgreementsComponent } from './containers/dictionaries/si
 import { SitPublicationsAgreementsEditComponent } from './containers/dictionaries/sit-publications-agreements/actions/sit-publications-agreements-edit/sit-publications-agreements-edit.component';
 import { SitAgreementsBenefEditComponent } from './containers/dictionaries/sit-publications-agreements/actions/sit-agreements-benef-edit/sit-agreements-benef-edit.component';
 import { SitAgreementsPublicationsEditComponent } from './containers/dictionaries/sit-publications-agreements/actions/sit-agreements-publications-edit/sit-agreements-publications-edit.component';
-import { SitAgreementsAdvancesEditComponent } from './containers/dictionaries/sit-publications-agreements/actions/sit-agreements-advances-edit/sit-agreements-advances-edit.component'
+import { SitAgreementsAdvancesEditComponent } from './containers/dictionaries/sit-publications-agreements/actions/sit-agreements-advances-edit/sit-agreements-advances-edit.component';
+import { SitPublicationsBillingTypesComponent } from './containers/dictionaries/sit-publications-billing-types/sit-publications-billing-types.component';
+import { SitPublicationsBillingTypesEditComponent } from './containers/dictionaries/sit-publications-billing-types/actions/sit-publications-billing-types-edit/sit-publications-billing-types-edit.component';
+import { SitPublicationsBillingDefComponent } from './containers/dictionaries/sit-publications-billing-def/sit-publications-billing-def.component';
+import { SitPublicationsBillingDefEditComponent } from './containers/dictionaries/sit-publications-billing-def/actions/sit-publications-billing-def-edit/sit-publications-billing-def-edit.component'
 
 
 @NgModule({
@@ -418,7 +422,11 @@ import { SitAgreementsAdvancesEditComponent } from './containers/dictionaries/si
         SitPublicationsAgreementsEditComponent,
         SitAgreementsBenefEditComponent,
         SitAgreementsPublicationsEditComponent,
-        SitAgreementsAdvancesEditComponent
+        SitAgreementsAdvancesEditComponent,
+        SitPublicationsBillingTypesComponent,
+        SitPublicationsBillingTypesEditComponent,
+        SitPublicationsBillingDefComponent,
+        SitPublicationsBillingDefEditComponent
 
     ],
     providers: [
