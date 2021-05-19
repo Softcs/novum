@@ -1,0 +1,30 @@
+<sit-proc-params
+  [(actionExecuteData)]="actionExecuteData"
+  >
+  <sit-data-set-container ident="sitRailDnsEdit">
+    <div class="sit-proc-params-content" fxLayout="column" style="width: 500px;height: 400px;">
+      <sit-data-input #sitControl type="text" field="ClientGuid" label="ClientGuid" appearance="outline"></sit-data-input>
+      <div fxLayout="row">
+        <sit-data-input #sitControl type="text" field="CompanyIdent" label="CompanyIdent" appearance="outline" style="width: 200px" 
+          [lookupDisplayFields] = "['CompanyIdent', 'CompanyDescription']"></sit-data-input>
+        <sit-data-input #sitControl type="text" field="ServerName" label="ServerName" appearance="outline" style="width: 200px"></sit-data-input>      
+      </div>
+      <div fxLayout="row">
+        <sit-data-input #sitControl type="text" field="ConnectionDescription" label="ConnectionDescription" appearance="outline" style="width: 200px" ></sit-data-input>
+				<sit-data-checkbox #sitControl field="IsActive" label="IsActive"></sit-data-checkbox>
+				<sit-data-checkbox #sitControl field="CheckLastActive" label="CheckLastActive"></sit-data-checkbox>				 
+      </div>
+      <div fxLayout="row" fxFlex>
+        <sit-data-textarea #sitControl 
+          type="textarea" 
+          field="ConnectionString" 
+          label="Script" 
+          appearance="outline" 
+          rows="20" 
+          cols="40" 
+          fxFill>
+        </sit-data-textarea>
+      </div>      
+    </div>
+  </sit-data-set-container>
+</sit-proc-params>

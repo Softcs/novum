@@ -11,8 +11,6 @@ export class SitPublicationsAgreementsComponent extends SitDictBaseComponent {
   
   public prepareColumnsDefinitnion(){
     this.gridColumnsDefinition["sitPublicationsAgreements"] = [
-      { headerName: 'Kontrahent', field: 'CustIdent', filter: 'agTextColumnFilter', width: 150 },
-      { headerName: 'Nazwa', field: 'CustName', filter: 'agTextColumnFilter', width: 300 },
       { headerName: 'Numer', field: 'AgreementNo', filter: 'agTextColumnFilter', width: 200 },
       { headerName: 'Data', field: 'Date', filter: 'agTextColumnFilter', width: 100 },
       { headerName: 'Częstotliwość rozliczeń', field: 'BillingFrequencyName', filter: 'agTextColumnFilter', width: 150},
@@ -37,7 +35,7 @@ export class SitPublicationsAgreementsComponent extends SitDictBaseComponent {
       { headerName: 'Tytuł', field: 'Title', width: 300},
       { headerName: 'Beneficjent', field: 'CustIdent', width: 150},
       { headerName: 'Nazwa', field: 'CustName', width: 300},
-      { headerName: 'Kwota zliczki', field: 'Amount', width: 100, type: 'numericColumn', renderType: 'number'},
+      { headerName: 'Kwota zaliczki', field: 'Amount', width: 100, type: 'numericColumn', renderType: 'number'},
       { headerName: 'Kwota rozliczona', field: 'ClearedAmount', width: 100, type: 'numericColumn', renderType: 'number'} 
     ];    
    }
