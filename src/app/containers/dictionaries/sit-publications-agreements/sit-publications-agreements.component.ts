@@ -37,8 +37,8 @@ export class SitPublicationsAgreementsComponent extends SitDictBaseComponent {
       { headerName: 'Tytuł', field: 'Title', width: 300},
       { headerName: 'Beneficjent', field: 'CustIdent', width: 150},
       { headerName: 'Nazwa', field: 'CustName', width: 300},
-      { headerName: 'Kwota zliczki', field: 'Amount', width: 100, type: 'numericColumn'},
-      { headerName: 'Kwota rozliczona', field: 'ClearedAmount', width: 100, type: 'numericColumn'} 
+      { headerName: 'Kwota zliczki', field: 'Amount', width: 100, type: 'numericColumn', renderType: 'number'},
+      { headerName: 'Kwota rozliczona', field: 'ClearedAmount', width: 100, type: 'numericColumn', renderType: 'number'} 
     ];    
    }
 }
