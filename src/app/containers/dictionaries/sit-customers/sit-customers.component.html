@@ -56,7 +56,15 @@
                         <sit-data-input type="text" id="ExtIdent02" #sitControl field="ExtIdent02" label="Identyfikator zewnętrzny 2" [showRefresh]=false appearance="outline"  [readonly]=true fxFlex="30"></sit-data-input>
                       </div>
                       <div fxLayout="row">
-                        <sit-data-input type="text" id="PhoneNumber" #sitControl field="PhoneNumber" label="Nr telefonu" [showRefresh]=false appearance="outline"  [readonly]=true fxFlex="50"></sit-data-input>
+                        <sit-data-input type="text" id="PhoneNumber" #sitControl field="PhoneNumber" label="Nr telefonu" [showRefresh]=false appearance="outline" [readonly]=true fxFlex="50"></sit-data-input>
+                      </div>
+                    </mat-card-content>
+                  </mat-card>
+                  <mat-card>
+                    <mat-card-content>
+                      <div fxLayout="row">
+                        <sit-data-input type="text" #sitControl field="InvoiceDivisionKindDesc" label="Podział na faktury wg." appearance="outline" [readonly]=true fxFlex="50"></sit-data-input>
+                        <sit-data-input type="text" #sitControl field="InvoicePosDivisionKindDesc" label="Podział na pozycje wg." appearance="outline" [readonly]=true fxFlex="50"></sit-data-input>
                       </div>
                     </mat-card-content>
                   </mat-card>

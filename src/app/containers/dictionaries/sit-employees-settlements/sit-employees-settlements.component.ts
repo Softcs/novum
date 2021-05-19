@@ -227,14 +227,15 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
         cellClass: ['font11','numberFormat2Dec'],
         pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
       },
-      { headerName: 'Fak.Nr', field: 'InvoiceNo', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 80,
+      { headerName: 'Fakt.', field: 'InvoiceNo', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 60, suppressMenu: true,
         renderType: 'number', renderFormat: '1.0-0',
         cellClass: ['font11','numberFormat2Dec','pinkBackground'],
       },
-      { headerName: 'Fak.Poz.', field: 'InvoicePos', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 80,
+      { headerName: 'Poz.', field: 'InvoicePos', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 60, suppressMenu: true,
         renderType: 'number', renderFormat: '1.0-0',
         cellClass: ['font11','numberFormat2Dec','pinkBackground'],
       },
+      { headerName: 'Fakt.zew.ID', field: 'InvExtId', type: 'textColumn', filter: 'agTextColumnFilter', width: 80, suppressMenu: true, defaultVisibility: false},
 
     ];
 
