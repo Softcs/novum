@@ -35,14 +35,15 @@ export class SitUtilSqlObjectsComponent extends SitDictBaseComponent {
     
      this.gridColumnsDefinition["sitUtilCheckCommonDataTable"] = [       
        { headerName: 'Table name', field: 'TableName', filter: 'agTextColumnFilter', width: 200 },
-       { headerName: 'sit_test_job', field: 'sit_test_job_diff', width: 100, renderType: 'checkbox'},
-       { headerName: 'sit_test_publicat', field: 'sit_test_publicat_diff', width: 100, renderType: 'checkbox'},
-       { headerName: 'sit_test_chobot', field: 'sit_test_chobot_diff', width: 100, renderType: 'checkbox'},
-       { headerName: 'sit', field: 'sit_diff', width: 100, renderType: 'checkbox'},
-       { headerName: 'sit_company_template', field: 'sit_company_template_diff', width: 100, renderType: 'checkbox'},
-       { headerName: 'sit_job', field: 'sit_job_diff', width: 100, renderType: 'checkbox'},
-       { headerName: 'sit_job_abroad', field: 'sit_job_abroad_diff', width: 100, renderType: 'checkbox'},
-       { headerName: 'sit_publicat', field: 'sit_publicat_diff', width: 100, renderType: 'checkbox'}
+       { headerName: 'sit_test_job', field: 'sit_test_job_diff', width: 150, renderType: 'checkbox'},
+       { headerName: 'sit_test_publicat', field: 'sit_test_publicat_diff', width: 150, renderType: 'checkbox'},
+       { headerName: 'sit_test_chobot', field: 'sit_test_chobot_diff', width: 150, renderType: 'checkbox'},
+       { headerName: 'sit', field: 'sit_diff', width: 150, renderType: 'checkbox'},
+       { headerName: 'sit_company_template', field: 'sit_company_template_diff', width: 150, renderType: 'checkbox'},
+       { headerName: 'sit_job', field: 'sit_job_diff', width: 150, renderType: 'checkbox'},
+       { headerName: 'sit_job_abroad', field: 'sit_job_abroad_diff', width: 150, renderType: 'checkbox'},
+       { headerName: 'sit_publicat', field: 'sit_publicat_diff', width: 150, renderType: 'checkbox'},
+       { headerName: 'sit_chobot', field: 'sit_chobot_diff', width: 150, renderType: 'checkbox'},
       ]
   }
 }

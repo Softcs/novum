@@ -1,0 +1,28 @@
+<sit-dict-container ident="sitAggrDaySales" #sitDictcontainer fxFill>
+    <div fxLayout="column" fxFill class="content">
+      <div class="sit-filter-bar">
+        <sit-data-set-container ident="sitFilterAggrDaySales" fxLayout="row">
+          <sit-data-input #sitControl field="searchWarehouses" label="Magazyn" placeholder="Symbol magazynu" appearance="outline" style="width: 250px;"></sit-data-input>
+          <sit-data-input #sitControl field="searchDocuments" label="Dokument" placeholder="" appearance="outline" style="width: 250px;"></sit-data-input>
+          <sit-data-input #sitControl field="searchProducts" label="Produkt" placeholder="Identyfikator, nazwa" appearance="outline" style="width: 250px;"></sit-data-input>
+          <sit-data-input #sitControl field="searchCustomers" label="Kontrahent" placeholder="" appearance="outline" style="width: 250px;"></sit-data-input>
+          <sit-data-input #sitControl field="searchDateFrom" type="date" label="Od" appearance="outline" style="width: 130px;"></sit-data-input>
+          <sit-data-input #sitControl field="searchDateTo" type="date" label="Do" appearance="outline" style="width: 195px;" showRefreshButton="true" ></sit-data-input>
+        </sit-data-set-container>
+      </div>
+      <sit-data-set-container  ident="sitAggrDaySalesParams" fxLayout="row" style="margin-bottom: 5px" style="width: 100%;">
+        <sit-data-label type="text" #sitControl field="LastValuationDate" label="Ostatni dzień rozliczenia:"></sit-data-label>
+      </sit-data-set-container>
+      <sit-data-set-container ident="sitAggrDaySales" showActionsToolbar="false" fxFlex fxLayout="column">
+        <div class="data-table" fxFlex>
+          <ag-grid-angular
+            #sitSetDataSource
+            style="width: 100%; height: 100%;"
+            class="ag-theme-balham"
+          >
+          </ag-grid-angular>
+        </div>
+      </sit-data-set-container>
+    </div>
+  </sit-dict-container>
+    
