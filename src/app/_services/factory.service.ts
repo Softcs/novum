@@ -126,6 +126,9 @@ import { SitPublicationsBillingDefThrsEditComponent } from '@app/containers/dict
 import { SitRailDnsComponent } from '@app/containers/dictionaries/sit-rail-dns/sit-rail-dns.component';
 import { SitRailDnsEditComponent } from '@app/containers/dictionaries/sit-rail-dns/actions/sit-rail-dns-edit/sit-rail-dns-edit.component';
 import { SitRoyaltiesComponent } from '@app/containers/dictionaries/sit-royalties/sit-royalties.component';
+import { SitAggrDayStockTurnoverComponent } from '@app/containers/dictionaries/sit-aggr-day-stock-turnover/sit-aggr-day-stock-turnover.component';
+import { SitAggrDaySalesComponent } from '@app/containers/dictionaries/sit-aggr-day-sales/sit-aggr-day-sales.component';
+import { SitStocksOnDateComponent } from '@app/containers/dictionaries/sit-stocks-on-date/sit-stocks-on-date.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -258,6 +261,9 @@ export class FactoryService {
         sitRailDns: SitRailDnsComponent,
         sitRailDnsEdit: SitRailDnsEditComponent,
         sitRoyalties: SitRoyaltiesComponent,
+        sitAggrDayStockTurnover: SitAggrDayStockTurnoverComponent,
+        sitAggrDaySales: SitAggrDaySalesComponent,
+        sitStocksOnDate: SitStocksOnDateComponent,
     };
 
     public GetFactory(ident: string) {

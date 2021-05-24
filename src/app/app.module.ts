@@ -222,7 +222,10 @@ import { SitPublicationsBillingDefFormsEditComponent } from './containers/dictio
 import { SitPublicationsBillingDefThrsEditComponent } from './containers/dictionaries/sit-publications-billing-def/actions/sit-publications-billing-def-thrs-edit/sit-publications-billing-def-thrs-edit.component';
 import { SitRailDnsComponent } from './containers/dictionaries/sit-rail-dns/sit-rail-dns.component';
 import { SitRailDnsEditComponent } from './containers/dictionaries/sit-rail-dns/actions/sit-rail-dns-edit/sit-rail-dns-edit.component';
-import { SitRoyaltiesComponent } from './containers/dictionaries/sit-royalties/sit-royalties.component'
+import { SitRoyaltiesComponent } from './containers/dictionaries/sit-royalties/sit-royalties.component';
+import { SitAggrDayStockTurnoverComponent } from './containers/dictionaries/sit-aggr-day-stock-turnover/sit-aggr-day-stock-turnover.component';
+import { SitAggrDaySalesComponent } from './containers/dictionaries/sit-aggr-day-sales/sit-aggr-day-sales.component';
+import { SitStocksOnDateComponent } from './containers/dictionaries/sit-stocks-on-date/sit-stocks-on-date.component'
 
 
 @NgModule({
@@ -436,7 +439,10 @@ import { SitRoyaltiesComponent } from './containers/dictionaries/sit-royalties/s
         SitPublicationsBillingDefThrsEditComponent,
         SitRailDnsComponent,
         SitRailDnsEditComponent,
-        SitRoyaltiesComponent
+        SitRoyaltiesComponent,
+        SitAggrDayStockTurnoverComponent,
+        SitAggrDaySalesComponent,
+        SitStocksOnDateComponent
 
     ],
     providers: [
