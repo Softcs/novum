@@ -1,0 +1,24 @@
+<sit-dict-container ident="sitRoyalties" #sitDictcontainer fxFill>
+  <div class="content" fxLayout="column" fxFill fxLayoutGap="5px">
+    <sit-data-set-container ident="sitFilter" fxLayout="row">
+      <div class="sit-filter-bar" fxLayout="row">
+        <sit-data-input #sitControl field="Customer" label="Beneficjent" placeholder="Identyfikator, Nazwa" appearance="outline" style="width: 300px;"></sit-data-input>
+        <sit-data-input #sitControl field="Product" label="Produkt" placeholder="Identyfikator, Nazwa, EAN" appearance="outline" style="width: 300px;"></sit-data-input>
+        <sit-data-input #sitControl field="DateFrom" type="date" label="Od" appearance="outline" style="width: 130px;"></sit-data-input>
+        <sit-data-input #sitControl field="DateTo" type="date" label="Do" appearance="outline" style="width: 130px;" ></sit-data-input>
+        <sit-data-input #sitControl field="ExRate" type="number" label="Kurs wal." appearance="outline" showRefreshButton="true" style="width: 200px;"></sit-data-input>
+      </div>
+    </sit-data-set-container>
+    <sit-data-set-container  ident="sitRoyalties" showActionsToolbar="true" fxFlex fxLayout="column">
+      <div class="data-table" fxFlex>
+        <ag-grid-angular #sitSetDataSource
+          #agGrid
+          id="gridRightsGroups"
+          style="width: 100%; height: 100%;"
+          class="ag-theme-balham"
+        >
+        </ag-grid-angular>
+      </div>
+    </sit-data-set-container>
+  </div>
+</sit-dict-container>

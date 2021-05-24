@@ -125,6 +125,7 @@ import { SitPublicationsBillingDefFormsEditComponent } from '@app/containers/dic
 import { SitPublicationsBillingDefThrsEditComponent } from '@app/containers/dictionaries/sit-publications-billing-def/actions/sit-publications-billing-def-thrs-edit/sit-publications-billing-def-thrs-edit.component';
 import { SitRailDnsComponent } from '@app/containers/dictionaries/sit-rail-dns/sit-rail-dns.component';
 import { SitRailDnsEditComponent } from '@app/containers/dictionaries/sit-rail-dns/actions/sit-rail-dns-edit/sit-rail-dns-edit.component';
+import { SitRoyaltiesComponent } from '@app/containers/dictionaries/sit-royalties/sit-royalties.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -256,6 +257,7 @@ export class FactoryService {
         sitPublicationsBillingDefThrsEdit: SitPublicationsBillingDefThrsEditComponent,
         sitRailDns: SitRailDnsComponent,
         sitRailDnsEdit: SitRailDnsEditComponent,
+        sitRoyalties: SitRoyaltiesComponent,
     };
 
     public GetFactory(ident: string) {

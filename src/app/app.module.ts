@@ -221,7 +221,8 @@ import { SitPublicationsBillingDefEditComponent } from './containers/dictionarie
 import { SitPublicationsBillingDefFormsEditComponent } from './containers/dictionaries/sit-publications-billing-def/actions/sit-publications-billing-def-forms-edit/sit-publications-billing-def-forms-edit.component';
 import { SitPublicationsBillingDefThrsEditComponent } from './containers/dictionaries/sit-publications-billing-def/actions/sit-publications-billing-def-thrs-edit/sit-publications-billing-def-thrs-edit.component';
 import { SitRailDnsComponent } from './containers/dictionaries/sit-rail-dns/sit-rail-dns.component';
-import { SitRailDnsEditComponent } from './containers/dictionaries/sit-rail-dns/actions/sit-rail-dns-edit/sit-rail-dns-edit.component'
+import { SitRailDnsEditComponent } from './containers/dictionaries/sit-rail-dns/actions/sit-rail-dns-edit/sit-rail-dns-edit.component';
+import { SitRoyaltiesComponent } from './containers/dictionaries/sit-royalties/sit-royalties.component'
 
 
 @NgModule({
@@ -434,7 +435,8 @@ import { SitRailDnsEditComponent } from './containers/dictionaries/sit-rail-dns/
         SitPublicationsBillingDefFormsEditComponent,
         SitPublicationsBillingDefThrsEditComponent,
         SitRailDnsComponent,
-        SitRailDnsEditComponent
+        SitRailDnsEditComponent,
+        SitRoyaltiesComponent
 
     ],
     providers: [
