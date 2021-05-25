@@ -48,7 +48,7 @@ export class SitRoyaltiesComponent extends SitDictBaseComponent {
       { headerName: 'Ident.', field: 'CustIdent', filter: 'agTextColumnFilter', width: 100, },
       { headerName: 'Nazwa', field: 'CustName', filter: 'agTextColumnFilter', width: 250, },
       { headerName: 'Udział %', field: 'PercentShare', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, },
-      { headerName: 'Wart. wal.', field: 'Advance', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, renderType: 'number'},
+      { headerName: 'Wart. wal.', field: 'AmountCurr', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, renderType: 'number'},
       { headerName: 'Zaliczka', field: 'Advance', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, renderType: 'number'},
       { headerName: 'Należność', field: 'RoyDue', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, renderType: 'number'},
       { headerName: 'Do zapłaty', field: 'Payable', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, renderType: 'number'},
