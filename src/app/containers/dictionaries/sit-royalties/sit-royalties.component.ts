@@ -10,43 +10,50 @@ import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-di
 export class SitRoyaltiesComponent extends SitDictBaseComponent {
 
   public prepareColumnsDefinitnion() {
+
     this.gridColumnsDefinition["sitRoyalties"] = [
-      { headerName: 'GUID', field: 'sitRoyaltiesG', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 100, defaultVisibility: false },
-      { headerName: 'Beneficjent',
-        children: [
-          { headerName: 'Ident.', field: 'CustIdent', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 100 },
-          { headerName: 'Nazwa', field: 'CustName', tooltipField: 'CustName', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 200 },
-        ]
-      },
+      { headerName: 'GUID', field: 'sitRoyaltiesG', filter: 'agTextColumnFilter', width: 100, defaultVisibility: false },
       { headerName: 'Okres',
         children: [
-          { headerName: 'Od', field: 'DateFrom', sortable: true, resizable: true, width: 90, renderType: 'date', renderFormat: 'yyyy-MM-dd' },
-          { headerName: 'Do', field: 'DateTo', sortable: true, resizable: true, width: 90, renderType: 'date', renderFormat: 'yyyy-MM-dd' },
+          { headerName: 'Od', field: 'DateFrom', width: 90, renderType: 'date', renderFormat: 'yyyy-MM-dd' },
+          { headerName: 'Do', field: 'DateTo', width: 90, renderType: 'date', renderFormat: 'yyyy-MM-dd' },
         ]
       },
       { headerName: 'Produkt',
         children: [
-          { headerName: 'Ident.', field: 'ProductIdent', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 150 },
-          { headerName: 'EAN', field: 'EAN', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 120 },
-          { headerName: 'Nazwa', field: 'ProductName', tooltipField: 'ProductName', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 200 },
+          { headerName: 'Ident.', field: 'ProductIdent', filter: 'agTextColumnFilter', width: 150 },
+          { headerName: 'EAN', field: 'EAN', filter: 'agTextColumnFilter', width: 120 },
+          { headerName: 'Nazwa', field: 'ProductName', tooltipField: 'ProductName', filter: 'agTextColumnFilter', width: 200 },
         ]
       },
-      { headerName: 'Nakład', field: 'PrintRun', type: 'numericColumn', sortable: true, resizable: true, filter: 'agNumberColumnFilter', renderType: 'number', renderFormat: '1.0-0', width: 70, suppressMenu: true},
-      { headerName: 'Stan', field: 'Stock', type: 'numericColumn', sortable: true, resizable: true, filter: 'agNumberColumnFilter', renderType: 'number', renderFormat: '1.0-0', width: 70, suppressMenu: true},
-      { headerName: 'Sprzedaż', field: 'Sale', type: 'numericColumn', sortable: true, resizable: true, filter: 'agNumberColumnFilter', renderType: 'number', renderFormat: '1.0-0', width: 80, suppressMenu: true},
-      { headerName: 'Gratisy', field: 'Free', type: 'numericColumn', sortable: true, resizable: true, filter: 'agNumberColumnFilter', renderType: 'number', renderFormat: '1.0-0', width: 70, suppressMenu: true},
-      { headerName: 'Defekty', field: 'Damaged', type: 'numericColumn', sortable: true, resizable: true, filter: 'agNumberColumnFilter', renderType: 'number', renderFormat: '1.0-0', width: 70, suppressMenu: true},
-      { headerName: 'Cena', field: 'UnitPrice', type: 'numericColumn', sortable: true, resizable: true, filter: 'agNumberColumnFilter', renderType: 'number', width: 60, suppressMenu: true},
-      { headerName: 'Stawka', field: 'RoyRate', type: 'numericColumn', sortable: true, resizable: true, filter: 'agNumberColumnFilter', renderType: 'number', width: 80, suppressMenu: true},
-      { headerName: 'Rodzaj', field: 'BillingTypeIdent', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 100, suppressMenu: true },
-      { headerName: 'Wart. PLN', field: 'Amount', type: 'numericColumn', sortable: true, resizable: true, filter: 'agNumberColumnFilter', renderType: 'number', width: 90, suppressMenu: true, agr: 'sum'},
-      { headerName: 'Wal.', field: 'CurrencyIdent', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 60, suppressMenu: true },
-      { headerName: 'Kurs wal.', field: 'ExRate', type: 'numericColumn', sortable: true, resizable: true, filter: 'agNumberColumnFilter', renderType: 'number', renderFormat: '1.4-4', width: 80, suppressMenu: true},
-      { headerName: 'Wart. wal.', field: 'AmountCurr', type: 'numericColumn', sortable: true, resizable: true, filter: 'agNumberColumnFilter', renderType: 'number', width: 90, suppressMenu: true, agr: 'sum'},
-      { headerName: 'Zaliczka', field: 'Advance', type: 'numericColumn', sortable: true, resizable: true, filter: 'agNumberColumnFilter', renderType: 'number', width: 90, suppressMenu: true},
-      { headerName: 'Należność', field: 'RoyDue', type: 'numericColumn', sortable: true, resizable: true, filter: 'agNumberColumnFilter', renderType: 'number', width: 90, suppressMenu: true},
-      { headerName: 'Do zapłaty', field: 'Payable', type: 'numericColumn', sortable: true, resizable: true, filter: 'agNumberColumnFilter', renderType: 'number', width: 90, suppressMenu: true},
+      { headerName: 'Nakład', field: 'PrintRun', type: 'numericColumn', filter: 'agNumberColumnFilter', renderType: 'number', renderFormat: '1.0-0', width: 70, suppressMenu: true},
+      { headerName: 'Stan', field: 'Stock', type: 'numericColumn', filter: 'agNumberColumnFilter', renderType: 'number', renderFormat: '1.0-0', width: 70, suppressMenu: true},
+      { headerName: 'Sprzedaż', field: 'Sale', type: 'numericColumn', filter: 'agNumberColumnFilter', renderType: 'number', renderFormat: '1.0-0', width: 80, suppressMenu: true},
+      { headerName: 'Gratisy', field: 'Free', type: 'numericColumn', filter: 'agNumberColumnFilter', renderType: 'number', renderFormat: '1.0-0', width: 70, suppressMenu: true},
+      { headerName: 'Defekty', field: 'Damaged', type: 'numericColumn', filter: 'agNumberColumnFilter', renderType: 'number', renderFormat: '1.0-0', width: 70, suppressMenu: true},
+      { headerName: 'Cena', field: 'UnitPrice', type: 'numericColumn', filter: 'agNumberColumnFilter', renderType: 'number', width: 60, suppressMenu: true},
+      { headerName: 'Stawka', field: 'RoyRate', type: 'numericColumn', filter: 'agNumberColumnFilter', renderType: 'number', width: 80, suppressMenu: true},
+      { headerName: 'Rodzaj', field: 'BillingTypeIdent', filter: 'agTextColumnFilter', width: 100, suppressMenu: true, defaultVisibility: false },
+      { headerName: 'Wart. PLN', field: 'Amount', type: 'numericColumn', filter: 'agNumberColumnFilter', renderType: 'number', width: 90, suppressMenu: true, agr: 'sum'},
+      { headerName: 'Wal.', field: 'CurrencyIdent', filter: 'agTextColumnFilter', width: 60, suppressMenu: true },
+      { headerName: 'Kurs wal.', field: 'ExRate', type: 'numericColumn', filter: 'agNumberColumnFilter', renderType: 'number', renderFormat: '1.4-4', width: 80, suppressMenu: true},
+      { headerName: 'Wart. wal.', field: 'AmountCurr', type: 'numericColumn', filter: 'agNumberColumnFilter', renderType: 'number', width: 90, suppressMenu: true, agr: 'sum'},
+      { headerName: 'Zaliczka', field: 'Advance', type: 'numericColumn', filter: 'agNumberColumnFilter', renderType: 'number', width: 90, suppressMenu: true},
+      { headerName: 'Należność', field: 'RoyDue', type: 'numericColumn', filter: 'agNumberColumnFilter', renderType: 'number', width: 90, suppressMenu: true, agr: 'sum'},
+      { headerName: 'Do zapłaty', field: 'Payable', type: 'numericColumn', filter: 'agNumberColumnFilter', renderType: 'number', width: 90, suppressMenu: true, agr: 'sum'},
 
-    ]
+    ],
+
+    this.gridColumnsDefinition["sitRoyaltiesBenef"] = [
+      { headerName: 'Ident.', field: 'CustIdent', filter: 'agTextColumnFilter', width: 100, },
+      { headerName: 'Nazwa', field: 'CustName', filter: 'agTextColumnFilter', width: 250, },
+      { headerName: 'Udział %', field: 'PercentShare', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, },
+      { headerName: 'Wart. wal.', field: 'Advance', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, renderType: 'number'},
+      { headerName: 'Zaliczka', field: 'Advance', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, renderType: 'number'},
+      { headerName: 'Należność', field: 'RoyDue', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, renderType: 'number'},
+      { headerName: 'Do zapłaty', field: 'Payable', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, renderType: 'number'},
+
+
+    ];
   }
 }
