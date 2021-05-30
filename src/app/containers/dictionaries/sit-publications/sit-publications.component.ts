@@ -13,7 +13,8 @@ export class SitPublicationsComponent extends SitDictBaseComponent {
     this.gridColumnsDefinition["sitPublications"] = [
       { headerName: 'Publikacja', field: 'PublicationIdent', filter: 'agTextColumnFilter', width: 150 },
       { headerName: 'Tytuł', field: 'Title', filter: 'agTextColumnFilter', width: 300 },
-      { headerName: 'Tytuł oryginalny', field: 'OriginalTitle', filter: 'agTextColumnFilter', width: 300 }
+      { headerName: 'Tytuł oryginalny', field: 'OriginalTitle', filter: 'agTextColumnFilter', width: 300 },
+      { headerName: 'Status', field: 'StatusValueName', filter: 'agTextColumnFilter', width: 150 }
     ];
     this.gridColumnsDefinition["sitPublicationsProducts"] = [
       { headerName: 'Identfikator', field: 'ProductIdent', width: 150},

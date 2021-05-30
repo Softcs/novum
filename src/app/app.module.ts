@@ -225,7 +225,10 @@ import { SitRailDnsEditComponent } from './containers/dictionaries/sit-rail-dns/
 import { SitRoyaltiesComponent } from './containers/dictionaries/sit-royalties/sit-royalties.component';
 import { SitAggrDayStockTurnoverComponent } from './containers/dictionaries/sit-aggr-day-stock-turnover/sit-aggr-day-stock-turnover.component';
 import { SitAggrDaySalesComponent } from './containers/dictionaries/sit-aggr-day-sales/sit-aggr-day-sales.component';
-import { SitStocksOnDateComponent } from './containers/dictionaries/sit-stocks-on-date/sit-stocks-on-date.component'
+import { SitStocksOnDateComponent } from './containers/dictionaries/sit-stocks-on-date/sit-stocks-on-date.component';
+import { SitPublicationsChangeStatusEditComponent } from './containers/dictionaries/sit-publications/actions/sit-publications-change-status-edit/sit-publications-change-status-edit.component';
+import { SitPubWmsDocumentsOperatorsComponent } from './containers/dictionaries/sit-pub-wms-documents-operators/sit-pub-wms-documents-operators.component';
+import { SitRailWmsDocumentsOperatorsImportComponent } from './containers/dictionaries/sit-pub-wms-documents-operators/actions/sit-rail-wms-documents-operators-import/sit-rail-wms-documents-operators-import.component';
 
 
 @NgModule({
@@ -442,7 +445,10 @@ import { SitStocksOnDateComponent } from './containers/dictionaries/sit-stocks-o
         SitRoyaltiesComponent,
         SitAggrDayStockTurnoverComponent,
         SitAggrDaySalesComponent,
-        SitStocksOnDateComponent
+        SitStocksOnDateComponent,
+        SitPublicationsChangeStatusEditComponent,
+        SitPubWmsDocumentsOperatorsComponent,
+        SitRailWmsDocumentsOperatorsImportComponent
 
     ],
     providers: [

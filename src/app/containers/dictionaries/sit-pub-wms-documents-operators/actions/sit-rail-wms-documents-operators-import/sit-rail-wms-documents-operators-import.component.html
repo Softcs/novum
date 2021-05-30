@@ -1,0 +1,13 @@
+<sit-proc-params
+   [(actionExecuteData)]="actionExecuteData"
+  >
+  <sit-data-set-container ident="sitRailWmsDocumentsOperatorsImport">
+    <div class="sit-proc-params-content" fxLayout="column" style="width: 400px; height:300px">
+      <div>Data realizacji dokumentu</div>
+      <div fxLayout="row">
+        <sit-data-input type="date" #sitControl field="DateFrom" label="Od" appearance="outline"></sit-data-input>
+        <sit-data-input type="date" #sitControl field="DateTo" label="do" appearance="outline"></sit-data-input>
+      </div>
+    </div>
+  </sit-data-set-container>
+</sit-proc-params>

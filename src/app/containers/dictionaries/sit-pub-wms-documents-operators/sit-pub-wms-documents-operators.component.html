@@ -1,0 +1,24 @@
+<sit-dict-container ident="sitPubWMSDocumentsOperators" #sitDictcontainer fxFill>
+    <div fxLayout="column" fxFill class="content">
+      <div class="sit-filter-bar">
+        <sit-data-set-container ident="sitFilterPubWMSDocumentsOperators" fxLayout="row">
+          <sit-data-input #sitControl field="Search" label="Filtruj" placeholder="NagId, kontrahent, nr dokumentu" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
+        </sit-data-set-container>
+      </div>
+      <sit-data-set-container  ident="sitPubWMSDocumentsOperatorsParams" fxLayout="row" style="margin-bottom: 5px" style="width: 100%;">
+        <sit-data-label type="text" #sitControl field="DateFrom" label="Data od:"></sit-data-label>
+        <sit-data-label type="text" #sitControl field="DateTo" label="do:"></sit-data-label>
+      </sit-data-set-container>
+      <sit-data-set-container ident="sitPubWMSDocumentsOperators" showActionsToolbar="true" fxFlex fxLayout="column">
+        <div class="data-table" fxFlex>
+          <ag-grid-angular
+            #sitSetDataSource
+            style="width: 100%; height: 100%;"
+            class="ag-theme-balham"
+          >
+          </ag-grid-angular>
+        </div>
+      </sit-data-set-container>
+    </div>
+  </sit-dict-container>
+  

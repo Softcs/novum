@@ -129,6 +129,9 @@ import { SitRoyaltiesComponent } from '@app/containers/dictionaries/sit-royaltie
 import { SitAggrDayStockTurnoverComponent } from '@app/containers/dictionaries/sit-aggr-day-stock-turnover/sit-aggr-day-stock-turnover.component';
 import { SitAggrDaySalesComponent } from '@app/containers/dictionaries/sit-aggr-day-sales/sit-aggr-day-sales.component';
 import { SitStocksOnDateComponent } from '@app/containers/dictionaries/sit-stocks-on-date/sit-stocks-on-date.component';
+import { SitPublicationsChangeStatusEditComponent } from '@app/containers/dictionaries/sit-publications/actions/sit-publications-change-status-edit/sit-publications-change-status-edit.component';
+import { SitPubWmsDocumentsOperatorsComponent } from '@app/containers/dictionaries/sit-pub-wms-documents-operators/sit-pub-wms-documents-operators.component';
+import { SitRailWmsDocumentsOperatorsImportComponent } from '@app/containers/dictionaries/sit-pub-wms-documents-operators/actions/sit-rail-wms-documents-operators-import/sit-rail-wms-documents-operators-import.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -264,6 +267,9 @@ export class FactoryService {
         sitAggrDayStockTurnover: SitAggrDayStockTurnoverComponent,
         sitAggrDaySales: SitAggrDaySalesComponent,
         sitStocksOnDate: SitStocksOnDateComponent,
+        sitPublicationsChangeStatusEdit: SitPublicationsChangeStatusEditComponent,
+        sitPubWmsDocumentsOperators: SitPubWmsDocumentsOperatorsComponent,
+        sitRailWmsDocumentsOperatorsImport: SitRailWmsDocumentsOperatorsImportComponent,
     };
 
     public GetFactory(ident: string) {
