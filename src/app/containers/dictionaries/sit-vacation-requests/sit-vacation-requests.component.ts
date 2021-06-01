@@ -18,16 +18,16 @@ export class SitVacationRequestsComponent  extends SitDictBaseComponent {
       { headerName: 'Do dnia', field: 'DateTo', width: 100, renderType: 'date'},
       { headerName: 'Dni', field: 'DaysCount', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 50, suppressMenu: true },
       { headerName: 'Na żądanie', field: 'OnDemand', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 90, suppressMenu: true, renderType:'checkbox' },
-      { headerName: 'Akcept. przełożonego', field: 'ValueName_SupAccept', filter: 'agTextColumnFilter', width: 150, suppressMenu: true,
+      { headerName: 'Akcept. przełożonego', field: 'ValueName_SupAccept', filter: 'agTextColumnFilter', width: 160, suppressMenu: true,
         cellRenderer: function(params) {
           return (params.data["ValueName_SupAccept"] === "Zaakceptowany" ? '<span style="color: green;">' : '<span>') +'<b>' + params.value + '</b></span>'
             + '<br><span style="color: dimgray;">' + (!params.data["SuperiorEmployeeName"] ? '' : params.data["SuperiorEmployeeName"])  + '</span>';
         }
       },
-      { headerName: 'Akcept. zastępcy', field: 'ValueName_RepAccept', filter: 'agTextColumnFilter', width: 150, suppressMenu: true,
+      { headerName: 'Akcept. zastępcy', field: 'ValueName_RepAccept', filter: 'agTextColumnFilter', width: 160, suppressMenu: true,
         cellRenderer: function(params) {
-          return (params.data["ValueName_RepAccept"] === "Zaakceptowany" ? '<span style="color: green;">' : '<span>') + '<b>' + params.value + '</b></span>'
-          + '<br><span style="color: dimgray;">' + (!params.data["ReplacementEmployeeName"] ? '' : params.data["ReplacementEmployeeName"])  + '</span>';
+          return (!params.data["ReplacementEmployeeName"] ? '' : (params.data["ValueName_RepAccept"] === "Zaakceptowany" ? '<span style="color: green;">'
+            : '<span>') + '<b>' + params.value + '</b></span>' + '<br><span style="color: dimgray;">' +  params.data["ReplacementEmployeeName"]  + '</span>')
         }
       },
       { headerName: 'Opis', field: 'Description', tooltipField: 'Description', filter: 'agTextColumnFilter', wrapText: true, width: 250},
