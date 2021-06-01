@@ -12,8 +12,8 @@ export class SitPubWmsDocumentsOperatorsComponent extends SitDictBaseComponent {
   public prepareColumnsDefinitnion(){
     this.gridColumnsDefinition["sitPubWMSDocumentsOperators"] = [
       { headerName: 'Operator', field: 'Operator', filter: 'agTextColumnFilter', width: 150 },
-      { headerName: 'NagId', field: 'ExtAppIdent02', filter: 'agTextColumnFilter', width: 100 },
-      { headerName: 'XlId', field: 'ExtAppIdent01', filter: 'agTextColumnFilter', width: 100 },
+      { headerName: 'NagId', field: 'ExtAppIdent01', filter: 'agTextColumnFilter', width: 100 },
+      { headerName: 'XlId', field: 'ExtAppIdent02', filter: 'agTextColumnFilter', width: 100 },
       { headerName: 'Numer dokumentu', field: 'DocumentNumber', filter: 'agTextColumnFilter', width: 200 },
       { headerName: 'Data dokumentu', field: 'DocumentDate', filter: 'agTextColumnFilter', width: 100 },
       { headerName: 'Opis dokumentu', field: 'DocumentDescription', filter: 'agTextColumnFilter', width: 400 },

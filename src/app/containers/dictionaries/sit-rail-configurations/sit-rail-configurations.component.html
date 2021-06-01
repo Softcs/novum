@@ -2,10 +2,9 @@
   <div fxLayout="row" fxFill>
     <div fxLayout="column" fxFlex="30" fxLayout="column" class="content">
       <sit-data-set-container ident="sitFilter" >
-        <div class="sit-filter-bar">
-          <div style="width: 300px;">
-            <sit-data-input id="searchRailConfigurations" #sitControl field="searchRailConfigurations" label="Filtruj" showRefreshButton=true appearance="outline"></sit-data-input>
-          </div>
+        <div class="sit-filter-bar" fxLayout="row">
+          <sit-data-input #sitControl field="searchCompanyIdent" type="text" label="Firma" appearance="outline" style="width: 150px;"></sit-data-input>
+          <sit-data-input id="searchRailConfigurations" #sitControl field="searchRailConfigurations" label="Filtruj" showRefreshButton=true appearance="outline"></sit-data-input>
         </div>
       </sit-data-set-container>
       <sit-data-set-container ident="sitRailConfigurations" showActionsToolbar="true" fxLayout="column" fxFlex>
