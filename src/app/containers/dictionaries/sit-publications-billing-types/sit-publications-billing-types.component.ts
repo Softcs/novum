@@ -11,7 +11,7 @@ export class SitPublicationsBillingTypesComponent extends SitDictBaseComponent {
   
   public prepareColumnsDefinitnion(){
     this.gridColumnsDefinition["sitPublicationsBillingTypes"] = [
-      { headerName: 'Forma rozliczenia', field: 'BillingTypeIdent', filter: 'agTextColumnFilter', width: 150 },
+      { headerName: 'Typ rozliczenia', field: 'BillingTypeIdent', filter: 'agTextColumnFilter', width: 150 },
       { headerName: 'Opis', field: 'BillingTypeName', filter: 'agTextColumnFilter', width: 300 },
       { headerName: 'Procentowy', field: 'IsPercent', width: 100, renderType: 'checkbox'}
     ]

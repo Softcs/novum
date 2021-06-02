@@ -37,6 +37,11 @@ export class SitPublicationsAgreementsComponent extends SitDictBaseComponent {
       { headerName: 'Nazwa', field: 'CustName', width: 300},
       { headerName: 'Kwota zaliczki', field: 'Amount', width: 100, type: 'numericColumn', renderType: 'number'},
       { headerName: 'Kwota rozliczona', field: 'ClearedAmount', width: 100, type: 'numericColumn', renderType: 'number'} 
-    ];    
+    ];
+    this.gridColumnsDefinition["sitAgreementsPublicationsFormsOfRelease"] = [
+      { headerName: 'Forma wydania', field: 'FormOfReleaseIdent', width: 150},
+      { headerName: 'Opis', field: 'FormOfReleaseDesc', width: 300},
+      { headerName: ' ', field: 'IsActive', width: 100, renderType: 'checkbox'}
+    ];
    }
 }

@@ -13,6 +13,7 @@ export class SitParamsComponent extends SitDictBaseComponent {
     this.gridColumnsDefinition["sitParams"] = [
       { headerName: 'Identyfikator', field: 'ParamIdent', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, flex: 1 },
       { headerName: 'Wartość', field: 'ParamValue', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, flex: 2 },
+      { headerName: 'Tech', field: 'IsTechnical', width: 80, renderType: 'checkbox'}
     ];
   }
 

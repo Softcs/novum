@@ -2,10 +2,16 @@
    [(actionExecuteData)]="actionExecuteData"
   >
   <sit-data-set-container ident="sitParamsEdit">
-    <div class="sit-proc-params-content" fxLayout="column" style="width: 700px;height: 500px;">
-      <sit-data-input type="text" #sitControl field="ParamIdent" label="Identyfikator" appearance="outline"></sit-data-input>
+    <div class="sit-proc-params-content" fxLayout="column" style="width: 700px;height: 500px;" >
+      <div fxLayout="row" fxFlex>
+        <sit-data-input type="text" #sitControl field="ParamIdent" label="Identyfikator" appearance="outline"></sit-data-input>
+        <sit-data-checkbox #sitControl field="IsTechnical" label="Techniczny"></sit-data-checkbox>
+      </div>
       <div fxLayout="row" fxFlex>
         <sit-data-textarea type="textarea" #sitControl field="ParamValue" label="Wartosć" appearance="outline" rows="20" cols="65" fxFill></sit-data-textarea>
+      </div>
+      <div fxLayout="row" fxFlex>
+        <sit-data-textarea type="textarea" #sitControl field="ParamName" label="Opis" appearance="outline" rows="20" cols="65" fxFill></sit-data-textarea>
       </div>
     </div>
   </sit-data-set-container>

@@ -22,10 +22,17 @@
     <div fxLayout="column" fxFlex="60" class="content">
       <sit-data-set-container ident="sitParams" fxFill fxLayout="column">
         <div fxLayout="row">
-          <sit-data-input type="text" id="ParamIdent" #sitControl field="ParamIdent" label="Identyfikator" [showRefresh]=false appearance="outline" fxFlex [readonly]=true></sit-data-input>
+          <sit-data-input type="text" id="ParamIdent" #sitControl field="ParamIdent" label="Identyfikator" [showRefresh]=false appearance="outline" 
+            fxFlex [readonly]=true style="width: 150px" ></sit-data-input>
+          <sit-data-checkbox id="IsTechnical" #sitControl field="IsTechnical" label="Techniczny" readonly="true"></sit-data-checkbox>
         </div>
         <div fxLayout="row" fxFlex>
-          <sit-data-textarea type="textarea" id="ParamValue" #sitControl field="ParamValue" label="Wartosć" appearance="outline" rows="30" cols="150" [readonly]=true fxFill></sit-data-textarea>
+          <sit-data-textarea type="textarea" id="ParamValue" #sitControl field="ParamValue" label="Wartosć" appearance="outline" rows="30" cols="150" 
+            [readonly]=true fxFill></sit-data-textarea>
+        </div>
+        <div fxLayout="row" fxFlex>
+          <sit-data-textarea type="textarea" id="ParamName" #sitControl field="ParamName" label="Opis" appearance="outline" rows="30" cols="150" 
+            [readonly]=true fxFill></sit-data-textarea>
         </div>
       </sit-data-set-container>
     </div>

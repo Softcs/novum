@@ -11,14 +11,16 @@ export class SitPubWmsDocumentsOperatorsComponent extends SitDictBaseComponent {
   
   public prepareColumnsDefinitnion(){
     this.gridColumnsDefinition["sitPubWMSDocumentsOperators"] = [
-      { headerName: 'Operator', field: 'Operator', filter: 'agTextColumnFilter', width: 150 },
-      { headerName: 'NagId', field: 'ExtAppIdent01', filter: 'agTextColumnFilter', width: 100 },
-      { headerName: 'XlId', field: 'ExtAppIdent02', filter: 'agTextColumnFilter', width: 100 },
+      { headerName: 'Operator', field: 'Operator', filter: 'agTextColumnFilter', width: 120 },
+      { headerName: 'NagId', field: 'ExtAppIdent01', filter: 'agTextColumnFilter', width: 80 },
+      { headerName: 'XlId', field: 'ExtAppIdent02', filter: 'agTextColumnFilter', width: 80 },
       { headerName: 'Numer dokumentu', field: 'DocumentNumber', filter: 'agTextColumnFilter', width: 200 },
       { headerName: 'Data dokumentu', field: 'DocumentDate', filter: 'agTextColumnFilter', width: 100 },
-      { headerName: 'Opis dokumentu', field: 'DocumentDescription', filter: 'agTextColumnFilter', width: 400 },
+      { headerName: 'Opis dokumentu', field: 'DocumentDescription', filter: 'agTextColumnFilter', width: 300 },
       { headerName: 'Kontrahent', field: 'CustIdent', filter: 'agTextColumnFilter', width: 120 },
-      { headerName: 'Nazwa kontrahenta', field: 'CustName', filter: 'agTextColumnFilter', width: 300 }
+      { headerName: 'Nazwa kontrahenta', field: 'CustName', filter: 'agTextColumnFilter', width: 300 },
+      { headerName: 'Liczba pozycji', field: 'PositionCount', filter: 'agTextColumnFilter', width: 120, renderType: "number" },
+      { headerName: 'Suma ilości', field: 'QuantitySum', filter: 'agTextColumnFilter', width: 120, renderType: "number" }
     ]
    }
 }

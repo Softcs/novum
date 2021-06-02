@@ -36,6 +36,20 @@
               </sit-data-set-container>    
             </div>
           </mat-tab>
+          <mat-tab label="Formy wydania">
+            <div fxFill fxLayout="column">
+              <sit-data-set-container ident="sitAgreementsPublicationsFormsOfRelease" showActionsToolbar="true" fxLayout="column" fxFlex>
+                <div class="data-table" fxFlex>
+                  <ag-grid-angular
+                    #sitSetDataSource
+                    style="width: 100%; height: 100%;"
+                    class="ag-theme-balham"
+                  >
+                  </ag-grid-angular>
+                </div>
+              </sit-data-set-container>    
+            </div>
+          </mat-tab>
           <mat-tab label="Publikacje">
             <div fxFill fxLayout="column">
               <sit-data-set-container ident="sitAgreementsPublications" showActionsToolbar="true" fxLayout="column" fxFlex>
