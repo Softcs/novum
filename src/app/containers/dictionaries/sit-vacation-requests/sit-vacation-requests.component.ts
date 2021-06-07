@@ -31,6 +31,7 @@ export class SitVacationRequestsComponent  extends SitDictBaseComponent {
         }
       },
       { headerName: 'Opis', field: 'Description', tooltipField: 'Description', filter: 'agTextColumnFilter', wrapText: true, width: 250},
+      { headerName: 'Wydrukowany', field: 'Printed', type: 'numericColumn', tooltipField: 'PrintInfo', filter: 'agNumberColumnFilter', width: 90, suppressMenu: true, renderType:'checkbox' },
     ];
   }
 
