@@ -12,7 +12,7 @@ import { environment } from '@environments/environment';
   selector: 'sit-dict-base',
   templateUrl: './sit-dict-base.component.html',
   styleUrls: ['./sit-dict-base.component.scss']
-}) 
+})
 export class SitDictBaseComponent implements OnInit, AfterViewInit {
   @ViewChild('sitDictcontainer') dictContainer: SitDictContainerComponent;
   @ViewChildren('sitDictcontainer') dictContainers !: QueryList<SitDictContainerComponent>;
