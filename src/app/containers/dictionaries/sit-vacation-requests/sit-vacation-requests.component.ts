@@ -26,13 +26,12 @@ export class SitVacationRequestsComponent  extends SitDictBaseComponent {
     var locale = this.locale;
 
     this.gridColumnsDefinition["sitVacationRequests"] = [
-      { headerName: 'Nazwisko', field: 'EmployeeName', filter: 'agTextColumnFilter', width: 200,
+      { headerName: 'Pracownik', field: 'EmployeeName', filter: 'agTextColumnFilter', width: 200,
         cellRenderer: function(params) {
           return ('<span><b>' + params.value + '</b></span>'
             + '<br><span style="color: dimgray;">' + formatDate(params.data["Date"], 'yyyy-MM-dd HH:mm', locale) + '</span>')
         }
       },
-      //{ headerName: 'Data wniosku', field: 'Date', width: 130, renderType: 'date', renderFormat: 'yyyy-MM-dd HH:mm', sort: 'desc'},
       { headerName: 'Rodzaj urlopu', field: 'AbsenceName', tooltipField: 'AbsenceName', filter: 'agTextColumnFilter', width: 200 },
       { headerName: 'Okres', field: 'DateFrom', width: 100,
         cellRenderer: function(params) {
