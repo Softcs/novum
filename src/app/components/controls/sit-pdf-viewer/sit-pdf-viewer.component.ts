@@ -1,16 +1,16 @@
-import { Component, ViewChild, Renderer2, Input } from '@angular/core';
+import { PDFViewer } from 'pdfjs-dist/web/pdf_viewer';
+import { Component, ViewChild, Renderer2, Input, AfterViewInit } from '@angular/core';
 import { SitDataBaseComponent } from '../sit-data-base/sit-data-base.component';
 import { environment } from '@environments/environment';
 import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
 import { UrlService } from '@app/_services/url.service';
-
 @Component({
   selector: 'sit-pdf-viewer',
   templateUrl: './sit-pdf-viewer.component.html',
   styleUrls: ['./sit-pdf-viewer.component.scss']
 })
-export class SitPdfViewerComponent  extends SitDataBaseComponent {
+export class SitPdfViewerComponent extends SitDataBaseComponent implements AfterViewInit {
   @ViewChild('pdfViewer') pdfViewer;
 
   @Input() dictGuid: string;
@@ -32,6 +32,14 @@ export class SitPdfViewerComponent  extends SitDataBaseComponent {
 
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
     this.companyGUID = this.currentUser.company.companyGUID;
+
+
+  }
+
+  ngAfterViewInit() {
+  //   document.addEventListener('webviewerloaded', function() {
+  //     this.pdfViewer.PDFViewerApplicationOptions.set('printResolution', 300);
+  //  })
   }
 
   private refreshPdfSource() {
