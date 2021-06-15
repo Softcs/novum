@@ -132,6 +132,9 @@ import { SitStocksOnDateComponent } from '@app/containers/dictionaries/sit-stock
 import { SitPublicationsChangeStatusEditComponent } from '@app/containers/dictionaries/sit-publications/actions/sit-publications-change-status-edit/sit-publications-change-status-edit.component';
 import { SitPubWmsDocumentsOperatorsComponent } from '@app/containers/dictionaries/sit-pub-wms-documents-operators/sit-pub-wms-documents-operators.component';
 import { SitRailWmsDocumentsOperatorsImportComponent } from '@app/containers/dictionaries/sit-pub-wms-documents-operators/actions/sit-rail-wms-documents-operators-import/sit-rail-wms-documents-operators-import.component';
+import { SitPublicationsFormsOfReleaseGroupsComponent } from '@app/containers/dictionaries/sit-publications-forms-of-release-groups/sit-publications-forms-of-release-groups.component';
+import { SitPublicationsFormsOfReleaseGroupsEditComponent } from '@app/containers/dictionaries/sit-publications-forms-of-release-groups/actions/sit-publications-forms-of-release-groups-edit/sit-publications-forms-of-release-groups-edit.component';
+import { SitAgreementsBillingTypesEditComponent } from '@app/containers/dictionaries/sit-publications-agreements/actions/sit-agreements-billing-types-edit/sit-agreements-billing-types-edit.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -270,6 +273,9 @@ export class FactoryService {
         sitPublicationsChangeStatusEdit: SitPublicationsChangeStatusEditComponent,
         sitPubWmsDocumentsOperators: SitPubWmsDocumentsOperatorsComponent,
         sitRailWmsDocumentsOperatorsImport: SitRailWmsDocumentsOperatorsImportComponent,
+        sitPublicationsFormsOfReleaseGroups: SitPublicationsFormsOfReleaseGroupsComponent,
+        sitPublicationsFormsOfReleaseGroupsEdit: SitPublicationsFormsOfReleaseGroupsEditComponent,
+        sitAgreementsBillingTypesEdit: SitAgreementsBillingTypesEditComponent
     };
 
     public GetFactory(ident: string) {

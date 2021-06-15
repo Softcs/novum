@@ -3,18 +3,18 @@
   >
   <sit-data-set-container ident="sitPublicationsBillingDefEdit">
     <div class="sit-proc-params-content" fxLayout="column">
-      <sit-data-input #sitControl type="text" field="AgreementNo" label="Numer umowy" appearance="outline" 
+      <sit-data-input #sitControl type="text" field="AgreementNo" label="Numer umowy" appearance="outline"
         [lookupDisplayFields] = "['AgreementNo', 'AgreementDesc']"></sit-data-input>
-      <sit-data-input #sitControl type="text" field="PublicationIdent" label="Publikacja" appearance="outline" 
+      <sit-data-input #sitControl type="text" field="PublicationIdent" label="Publikacja" appearance="outline"
         [lookupDisplayFields] = "['PublicationIdent', 'Title']"></sit-data-input>
-      <sit-data-input #sitControl type="text" field="BillingTypeIdent" label="Forma rozliczenia" appearance="outline" 
-        [lookupDisplayFields] = "['BillingTypeIdent', 'BillingTypeName']"></sit-data-input>
+      <!-- <sit-data-input #sitControl type="text" field="BillingTypeIdent" label="Forma rozliczenia" appearance="outline"
+        [lookupDisplayFields] = "['BillingTypeIdent', 'BillingTypeName']"></sit-data-input> -->
       <sit-data-input type="date" #sitControl field="DateFrom" label="Od dnia" appearance="outline"></sit-data-input>
-      <sit-data-radio #sitControl field="PriceType" type="row" label="Rodzaj ceny"
+      <!-- <sit-data-radio #sitControl field="PriceType" type="row" label="Rodzaj ceny"
         [buttons]="[{'caption':'nie dotyczy','value': '0', 'checked':true},{'caption':'okładkowa bez VAT','value':'1'},{'caption':'okładkowa z VAT','value':'2'},
           {'caption':'zbytu planowana','value':'3'},{'caption':'zbytu rzeczywista','value':'4'}]"
-      ></sit-data-radio>
-      <sit-data-input #sitControl type="text" field="PublicationsBillingDefDesc" label="Opis rozliczenia" appearance="outline"></sit-data-input>        
+      ></sit-data-radio> -->
+      <sit-data-input #sitControl type="text" field="PublicationsBillingDefDesc" label="Opis rozliczenia" appearance="outline"></sit-data-input>
     </div>
   </sit-data-set-container>
 </sit-proc-params>

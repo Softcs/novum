@@ -229,6 +229,9 @@ import { SitStocksOnDateComponent } from './containers/dictionaries/sit-stocks-o
 import { SitPublicationsChangeStatusEditComponent } from './containers/dictionaries/sit-publications/actions/sit-publications-change-status-edit/sit-publications-change-status-edit.component';
 import { SitPubWmsDocumentsOperatorsComponent } from './containers/dictionaries/sit-pub-wms-documents-operators/sit-pub-wms-documents-operators.component';
 import { SitRailWmsDocumentsOperatorsImportComponent } from './containers/dictionaries/sit-pub-wms-documents-operators/actions/sit-rail-wms-documents-operators-import/sit-rail-wms-documents-operators-import.component';
+import { SitPublicationsFormsOfReleaseGroupsComponent } from './containers/dictionaries/sit-publications-forms-of-release-groups/sit-publications-forms-of-release-groups.component';
+import { SitPublicationsFormsOfReleaseGroupsEditComponent } from './containers/dictionaries/sit-publications-forms-of-release-groups/actions/sit-publications-forms-of-release-groups-edit/sit-publications-forms-of-release-groups-edit.component';
+import { SitAgreementsBillingTypesEditComponent } from './containers/dictionaries/sit-publications-agreements/actions/sit-agreements-billing-types-edit/sit-agreements-billing-types-edit.component';
 
 
 @NgModule({
@@ -448,7 +451,10 @@ import { SitRailWmsDocumentsOperatorsImportComponent } from './containers/dictio
         SitStocksOnDateComponent,
         SitPublicationsChangeStatusEditComponent,
         SitPubWmsDocumentsOperatorsComponent,
-        SitRailWmsDocumentsOperatorsImportComponent
+        SitRailWmsDocumentsOperatorsImportComponent,
+        SitPublicationsFormsOfReleaseGroupsComponent,
+        SitPublicationsFormsOfReleaseGroupsEditComponent,
+        SitAgreementsBillingTypesEditComponent
 
     ],
     providers: [

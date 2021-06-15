@@ -8,7 +8,7 @@ import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-di
   host: {class: 'router-flex'}
 })
 export class SitPublicationsAgreementsComponent extends SitDictBaseComponent {
-  
+
   public prepareColumnsDefinitnion(){
     this.gridColumnsDefinition["sitPublicationsAgreements"] = [
       { headerName: 'Numer', field: 'AgreementNo', filter: 'agTextColumnFilter', width: 200 },
@@ -36,12 +36,17 @@ export class SitPublicationsAgreementsComponent extends SitDictBaseComponent {
       { headerName: 'Beneficjent', field: 'CustIdent', width: 150},
       { headerName: 'Nazwa', field: 'CustName', width: 300},
       { headerName: 'Kwota zaliczki', field: 'Amount', width: 100, type: 'numericColumn', renderType: 'number'},
-      { headerName: 'Kwota rozliczona', field: 'ClearedAmount', width: 100, type: 'numericColumn', renderType: 'number'} 
+      { headerName: 'Kwota rozliczona', field: 'ClearedAmount', width: 100, type: 'numericColumn', renderType: 'number'}
     ];
     this.gridColumnsDefinition["sitAgreementsPublicationsFormsOfRelease"] = [
       { headerName: 'Forma wydania', field: 'FormOfReleaseIdent', width: 150},
       { headerName: 'Opis', field: 'FormOfReleaseDesc', width: 300},
       { headerName: ' ', field: 'IsActive', width: 100, renderType: 'checkbox'}
+    ];
+    this.gridColumnsDefinition["sitAgreementsBillingTypes"] = [
+      { headerName: 'Grupa form wydania', field: 'FormsOfReleaseGroupIdent', tolltipField: 'FormsOfReleaseGroupDesc', width: 150},
+      { headerName: 'Typ rozliczenia', field: 'BillingTypeIdent', tolltipField: 'FormsOfReleaseGroupDesc', width: 150},
+      { headerName: 'Rodzaj ceny', field: 'PriceTypeName', tolltipField: 'FormsOfReleaseGroupDesc', width: 150},
     ];
    }
 }

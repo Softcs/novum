@@ -8,11 +8,12 @@ import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-di
   host: {class: 'router-flex'}
 })
 export class SitPublicationsFormsOfReleaseComponent extends SitDictBaseComponent {
-  
+
   public prepareColumnsDefinitnion(){
     this.gridColumnsDefinition["sitPublicationsFormsOfRelease"] = [
       { headerName: 'Forma wydania', field: 'FormOfReleaseIdent', filter: 'agTextColumnFilter', width: 150 },
-      { headerName: 'Opis', field: 'FormOfReleaseDesc', filter: 'agTextColumnFilter', width: 300 }
+      { headerName: 'Opis', field: 'FormOfReleaseDesc', filter: 'agTextColumnFilter', width: 300 },
+      { headerName: 'Grupa', field: 'FormsOfReleaseGroupIdent', filter: 'agTextColumnFilter', width: 150 }
     ]
    }
 }
