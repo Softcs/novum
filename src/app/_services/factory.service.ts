@@ -135,6 +135,7 @@ import { SitRailWmsDocumentsOperatorsImportComponent } from '@app/containers/dic
 import { SitPublicationsFormsOfReleaseGroupsComponent } from '@app/containers/dictionaries/sit-publications-forms-of-release-groups/sit-publications-forms-of-release-groups.component';
 import { SitPublicationsFormsOfReleaseGroupsEditComponent } from '@app/containers/dictionaries/sit-publications-forms-of-release-groups/actions/sit-publications-forms-of-release-groups-edit/sit-publications-forms-of-release-groups-edit.component';
 import { SitAgreementsBillingTypesEditComponent } from '@app/containers/dictionaries/sit-publications-agreements/actions/sit-agreements-billing-types-edit/sit-agreements-billing-types-edit.component';
+import { SitRoyaltyCalcOnePublicationComponent } from '@app/containers/dictionaries/sit-royalties/actions/sit-royalty-calc-one-publication/sit-royalty-calc-one-publication.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -275,7 +276,8 @@ export class FactoryService {
         sitRailWmsDocumentsOperatorsImport: SitRailWmsDocumentsOperatorsImportComponent,
         sitPublicationsFormsOfReleaseGroups: SitPublicationsFormsOfReleaseGroupsComponent,
         sitPublicationsFormsOfReleaseGroupsEdit: SitPublicationsFormsOfReleaseGroupsEditComponent,
-        sitAgreementsBillingTypesEdit: SitAgreementsBillingTypesEditComponent
+        sitAgreementsBillingTypesEdit: SitAgreementsBillingTypesEditComponent,
+        sitRoyaltyCalcOnePublication: SitRoyaltyCalcOnePublicationComponent
     };
 
     public GetFactory(ident: string) {

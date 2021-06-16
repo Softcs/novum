@@ -16,7 +16,8 @@ export class SitPublicationsAgreementsComponent extends SitDictBaseComponent {
       { headerName: 'Częstotliwość rozliczeń', field: 'BillingFrequencyName', filter: 'agTextColumnFilter', width: 150},
       { headerName: 'Czas do zapłaty', field: 'TimeToSettle', filter: 'agTextColumnFilter', type: 'numericColumn', width: 70},
       { headerName: 'Czas do rozliczenia', field: 'TimeToPay', filter: 'agTextColumnFilter', type: 'numericColumn', width: 70},
-      { headerName: 'Waluta', field: 'CurrencyIdent', filter: 'agTextColumnFilter', width: 100 }
+      { headerName: 'Waluta', field: 'CurrencyIdent', filter: 'agTextColumnFilter', width: 100 },
+      { headerName: 'Publikacje', field: 'PublicationsIdents', tooltipField: 'PublicationsIdents', filter: 'agTextColumnFilter', width: 150},
     ];
     this.gridColumnsDefinition["sitAgreementsBenef"] = [
       { headerName: 'Beneficjent', field: 'CustIdent', width: 150},

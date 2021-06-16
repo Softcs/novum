@@ -232,6 +232,7 @@ import { SitRailWmsDocumentsOperatorsImportComponent } from './containers/dictio
 import { SitPublicationsFormsOfReleaseGroupsComponent } from './containers/dictionaries/sit-publications-forms-of-release-groups/sit-publications-forms-of-release-groups.component';
 import { SitPublicationsFormsOfReleaseGroupsEditComponent } from './containers/dictionaries/sit-publications-forms-of-release-groups/actions/sit-publications-forms-of-release-groups-edit/sit-publications-forms-of-release-groups-edit.component';
 import { SitAgreementsBillingTypesEditComponent } from './containers/dictionaries/sit-publications-agreements/actions/sit-agreements-billing-types-edit/sit-agreements-billing-types-edit.component';
+import { SitRoyaltyCalcOnePublicationComponent } from './containers/dictionaries/sit-royalties/actions/sit-royalty-calc-one-publication/sit-royalty-calc-one-publication.component';
 
 
 @NgModule({
@@ -454,7 +455,8 @@ import { SitAgreementsBillingTypesEditComponent } from './containers/dictionarie
         SitRailWmsDocumentsOperatorsImportComponent,
         SitPublicationsFormsOfReleaseGroupsComponent,
         SitPublicationsFormsOfReleaseGroupsEditComponent,
-        SitAgreementsBillingTypesEditComponent
+        SitAgreementsBillingTypesEditComponent,
+        SitRoyaltyCalcOnePublicationComponent
 
     ],
     providers: [

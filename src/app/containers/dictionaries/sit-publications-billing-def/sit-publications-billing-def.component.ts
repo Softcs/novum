@@ -15,6 +15,7 @@ export class SitPublicationsBillingDefComponent extends SitDictBaseComponent {
       { headerName: 'Publikacja', field: 'PublicationIdent', filter: 'agTextColumnFilter', width: 150 },
       { headerName: 'Data od (rozliczenia)', field: 'DateFrom', filter: 'agTextColumnFilter', width: 150 },
       { headerName: 'Data od (umowy)', field: 'AgreementDate', filter: 'agTextColumnFilter', width: 150 },
+      { headerName: 'Formy wydań', field: 'FormOfReleaseIdents', tooltipField: 'FormOfReleaseIdents', filter: 'agTextColumnFilter', width: 150 },
       { headerName: 'Opis rozliczenia', field: 'PublicationsBillingDefDesc', filter: 'agTextColumnFilter', width: 300 },
 
     ];
