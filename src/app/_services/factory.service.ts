@@ -136,6 +136,7 @@ import { SitPublicationsFormsOfReleaseGroupsComponent } from '@app/containers/di
 import { SitPublicationsFormsOfReleaseGroupsEditComponent } from '@app/containers/dictionaries/sit-publications-forms-of-release-groups/actions/sit-publications-forms-of-release-groups-edit/sit-publications-forms-of-release-groups-edit.component';
 import { SitAgreementsBillingTypesEditComponent } from '@app/containers/dictionaries/sit-publications-agreements/actions/sit-agreements-billing-types-edit/sit-agreements-billing-types-edit.component';
 import { SitRoyaltyCalcOnePublicationComponent } from '@app/containers/dictionaries/sit-royalties/actions/sit-royalty-calc-one-publication/sit-royalty-calc-one-publication.component';
+import { SitVacationRequestsCancelEditComponent } from '@app/containers/dictionaries/sit-vacation-requests/actions/sit-vacation-requests-cancel-edit/sit-vacation-requests-cancel-edit.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -277,7 +278,8 @@ export class FactoryService {
         sitPublicationsFormsOfReleaseGroups: SitPublicationsFormsOfReleaseGroupsComponent,
         sitPublicationsFormsOfReleaseGroupsEdit: SitPublicationsFormsOfReleaseGroupsEditComponent,
         sitAgreementsBillingTypesEdit: SitAgreementsBillingTypesEditComponent,
-        sitRoyaltyCalcOnePublication: SitRoyaltyCalcOnePublicationComponent
+        sitRoyaltyCalcOnePublication: SitRoyaltyCalcOnePublicationComponent,
+        sitVacationRequestsCancelEdit: SitVacationRequestsCancelEditComponent
     };
 
     public GetFactory(ident: string) {

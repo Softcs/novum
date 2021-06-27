@@ -3,6 +3,7 @@
     <sit-data-set-container ident="sitFilter4User" fxLayout="row">
       <div class="sit-filter-bar" fxLayout="row">
         <sit-data-input #sitControl field="Search" label="wyszukaj" appearance="outline" style="width: 300px;" showRefreshButton="true"></sit-data-input>
+        <sit-data-checkbox #sitControl [refreshOnChange]="true" label="Pokaż wnioski podwładnych" id="ShowSubordinates" field="ShowSubordinates" widht="100px"></sit-data-checkbox>
       </div>
     </sit-data-set-container>
     <sit-data-set-container ident="sitVacationRequests4User" showActionsToolbar="true" fxLayout="column" fxFlex>
