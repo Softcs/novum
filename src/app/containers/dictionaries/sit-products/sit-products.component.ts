@@ -24,14 +24,24 @@ export class SitProductsComponent extends SitDictBaseComponent {
       },
       { headerName: 'Aktywny', field: 'IsActive', filter: 'agSetColumnFilter', width: 80, renderType: 'checkbox', suppressMenu: true },
       { headerName: 'Status sprz.', field: 'SaleStatus', tooltipField: 'SaleStatusDescription', width: 80, suppressMenu: true},
-
-
     ];
+
     this.gridColumnsDefinition["sitProductSaleStatusIntervals"] = [
       { headerName: 'Od dnia', field: 'DateFrom', width: 100,},
       { headerName: 'Status', field: 'SaleStatus', width: 80,},
       { headerName: 'Opis', field: 'SaleStatusDescription', width: 150,},
-    ]
+    ];
+
+    this.gridColumnsDefinition["sitProductSetHeaders"] = [
+      { headerName: 'Od dnia', field: 'DateFrom', width: 100,},
+    ];
+
+    this.gridColumnsDefinition["sitProductSetPositions"] = [
+      { headerName: 'Identyfikator', field: 'ProductIdent', width: 130,},
+      { headerName: 'Nazwa', field: 'ProductName', width: 200,},
+      { headerName: 'Ilość', field: 'Quantity', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, renderType: 'number', renderFormat: '1.2-2'}
+    ];
+
   }
 
   activeRowProductsChanged(activeRow) {
