@@ -44,7 +44,9 @@ export class SitVacationRequestsComponent  extends SitDictBaseComponent {
       { headerName: 'Na żądanie', field: 'OnDemand', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 90, suppressMenu: true, renderType:'checkbox' },
       { headerName: 'Akcept. przełożonego', field: 'ValueName_SupAccept', filter: 'agTextColumnFilter', width: 160, suppressMenu: true,
         cellRenderer: function(params) {
-          return (params.data["ValueName_SupAccept"] === "Zaakceptowany" ? '<span style="color: green;">' : '<span>') +'<b>' + params.value + '</b></span>'
+          return (params.data["ValueName_SupAccept"] === "Zaakceptowany" ? '<span style="color: green;">' :
+            params.data["ValueName_SupAccept"] === "Anulowany" ? '<span style="color: red;">' :
+            '<span>') +'<b>' + params.value + '</b></span>'
             + '<br><span style="color: dimgray;">' + (!params.data["SuperiorEmployeeName"] ? '' : params.data["SuperiorEmployeeName"])  + '</span>';
         }
       },
