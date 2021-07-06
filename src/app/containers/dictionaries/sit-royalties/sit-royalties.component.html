@@ -4,7 +4,7 @@
       <as-split-area [size]="50" fxLayout="column">
         <sit-data-set-container ident="sitFilter" fxLayout="column">
           <div class="sit-filter-bar" fxLayout="row">
-            <sit-data-input #sitControl field="Publication" label="Publikacja" placeholder="Tytuł" appearance="outline" style="width: 250px;"></sit-data-input>
+            <sit-data-input #sitControl field="Publication" label="Publikacja" placeholder="Tytuł" appearance="outline" style="width: 250px;" showRefreshButton="true"s></sit-data-input>
             <sit-data-input #sitControl field="Customer" label="Beneficjent" placeholder="Identyfikator, Nazwa" appearance="outline" style="width: 250px;"></sit-data-input>
             <!-- <sit-data-input #sitControl field="Product" label="Produkt" placeholder="Identyfikator, Nazwa, EAN" appearance="outline" style="width: 250px;"></sit-data-input> -->
             <sit-data-input #sitControl field="DateFrom" type="date" label="Od" appearance="outline" style="width: 130px;"></sit-data-input>
@@ -25,9 +25,9 @@
           </div>
         </sit-data-set-container>
       </as-split-area>
-      <as-split-area [size]="50">
+      <as-split-area [size]="50" fxLayout="column">
         <div class="sit-grid-title">Szczegółowe rozliczenie okresu</div>
-        <sit-data-set-container  ident="sitRoyalties" fxFill fxLayout="column">
+        <sit-data-set-container  ident="sitRoyalties" fxFlex >
           <div class="data-table" fxFlex>
             <ag-grid-angular #sitSetDataSource
               style="width: 100%; height: 100%;"
