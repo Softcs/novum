@@ -1,0 +1,20 @@
+<sit-proc-params
+  [(actionExecuteData)]="actionExecuteData"
+  >
+  <sit-data-set-container ident="sitDocumentsPositionsEdit">
+    <div class="sit-proc-params-content" fxLayout="column" style="width: 700px;height: 300px;">
+      <div fxLayout="row">
+        <sit-data-input type="number" #sitControl field="OrdNumber" label="LP" appearance="outline" style="width: 50px"></sit-data-input>
+        <sit-data-input #sitControl type="text" field="ProductIdent" label="Produkt" appearance="outline" style="width: 200px" 
+          [lookupDisplayFields] = "['ProductIdent', 'ProductName']"></sit-data-input>
+        <sit-data-input type="text" #sitControl field="PositionDescription" label="Opis" appearance="outline" style="width: 400px"></sit-data-input>
+      </div>
+      <div fxLayout="row">
+        <sit-data-input type="number" #sitControl field="QuantityUnit" label="Ilość" appearance="outline" style="width: 100px"></sit-data-input>
+        <sit-data-label type="text" #sitControl field="UnitIdent" appearance="outline" style="width: 100px"></sit-data-label>
+        <sit-data-input type="number" #sitControl field="PriceAfterDiscount" label="Cena" appearance="outline" style="width: 100px"></sit-data-input>
+        <sit-data-label type="text" #sitControl field="VATRateIdent" appearance="outline" style="width: 100px"></sit-data-label>
+      </div>
+    </div>
+  </sit-data-set-container>
+</sit-proc-params>

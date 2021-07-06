@@ -234,6 +234,8 @@ import { SitPublicationsFormsOfReleaseGroupsEditComponent } from './containers/d
 import { SitAgreementsBillingTypesEditComponent } from './containers/dictionaries/sit-publications-agreements/actions/sit-agreements-billing-types-edit/sit-agreements-billing-types-edit.component';
 import { SitRoyaltyCalcOnePublicationComponent } from './containers/dictionaries/sit-royalties/actions/sit-royalty-calc-one-publication/sit-royalty-calc-one-publication.component';
 import { SitVacationRequestsCancelEditComponent } from './containers/dictionaries/sit-vacation-requests/actions/sit-vacation-requests-cancel-edit/sit-vacation-requests-cancel-edit.component';
+import { SitDocumentsHeadersEditComponent } from './containers/dictionaries/sit-documents/actions/sit-documents-headers-edit/sit-documents-headers-edit.component';
+import { SitDocumentsPositionsEditComponent } from './containers/dictionaries/sit-documents/actions/sit-documents-positions-edit/sit-documents-positions-edit.component';
 
 
 @NgModule({
@@ -458,7 +460,9 @@ import { SitVacationRequestsCancelEditComponent } from './containers/dictionarie
         SitPublicationsFormsOfReleaseGroupsEditComponent,
         SitAgreementsBillingTypesEditComponent,
         SitRoyaltyCalcOnePublicationComponent,
-        SitVacationRequestsCancelEditComponent
+        SitVacationRequestsCancelEditComponent,
+        SitDocumentsHeadersEditComponent,
+        SitDocumentsPositionsEditComponent
 
     ],
     providers: [
