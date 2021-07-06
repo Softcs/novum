@@ -137,6 +137,8 @@ import { SitPublicationsFormsOfReleaseGroupsEditComponent } from '@app/container
 import { SitAgreementsBillingTypesEditComponent } from '@app/containers/dictionaries/sit-publications-agreements/actions/sit-agreements-billing-types-edit/sit-agreements-billing-types-edit.component';
 import { SitRoyaltyCalcOnePublicationComponent } from '@app/containers/dictionaries/sit-royalties/actions/sit-royalty-calc-one-publication/sit-royalty-calc-one-publication.component';
 import { SitVacationRequestsCancelEditComponent } from '@app/containers/dictionaries/sit-vacation-requests/actions/sit-vacation-requests-cancel-edit/sit-vacation-requests-cancel-edit.component';
+import { SitDocumentsHeadersEditComponent } from '@app/containers/dictionaries/sit-documents/actions/sit-documents-headers-edit/sit-documents-headers-edit.component';
+import { SitDocumentsPositionsEditComponent } from '@app/containers/dictionaries/sit-documents/actions/sit-documents-positions-edit/sit-documents-positions-edit.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -279,7 +281,9 @@ export class FactoryService {
         sitPublicationsFormsOfReleaseGroupsEdit: SitPublicationsFormsOfReleaseGroupsEditComponent,
         sitAgreementsBillingTypesEdit: SitAgreementsBillingTypesEditComponent,
         sitRoyaltyCalcOnePublication: SitRoyaltyCalcOnePublicationComponent,
-        sitVacationRequestsCancelEdit: SitVacationRequestsCancelEditComponent
+        sitVacationRequestsCancelEdit: SitVacationRequestsCancelEditComponent,
+        sitDocumentsHeadersEdit: SitDocumentsHeadersEditComponent,
+        sitDocumentsPositionsEdit: SitDocumentsPositionsEditComponent
     };
 
     public GetFactory(ident: string) {

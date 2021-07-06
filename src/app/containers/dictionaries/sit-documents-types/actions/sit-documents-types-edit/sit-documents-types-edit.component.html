@@ -6,7 +6,11 @@
       <sit-data-input #sitControl type="text" field="DocumentIdent" label="Identyfikator" appearance="outline"></sit-data-input>
       <sit-data-input #sitControl type="text" field="DocumentName" label="Nazwa" appearance="outline" ></sit-data-input>
       <sit-data-input #sitControl type="text" field="DocumentDescription" label="Opis" appearance="outline" ></sit-data-input>
-      <sit-data-input #sitControl type="text" field="StockEffect" label="Wpływ na magazyn" appearance="outline" ></sit-data-input>
+      <div fxLayout="row">
+        <sit-data-input #sitControl type="text" field="StockEffect" label="Wpływ na magazyn" appearance="outline" ></sit-data-input>
+        <sit-data-checkbox #sitControl field="IsCor" label="Korekta"></sit-data-checkbox>
+        <sit-data-checkbox #sitControl field="CalcData" label="Przeliczaj dokument"></sit-data-checkbox>
+      </div>
     </div>
   </sit-data-set-container>
 </sit-proc-params>
