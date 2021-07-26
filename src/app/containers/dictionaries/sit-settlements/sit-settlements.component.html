@@ -58,12 +58,14 @@
               <sit-data-input #sitControl field="pr03" label="P03" appearance="outline" style="width: 50px;"></sit-data-input>
               <sit-data-input #sitControl field="pr04" label="P04" appearance="outline" style="width: 50px;"></sit-data-input>
               <sit-data-input #sitControl field="pr05" label="P05" appearance="outline" style="width: 50px;"></sit-data-input>
-              <sit-data-input #sitControl field="pr06" label="P06" appearance="outline" style="width: 100px;"></sit-data-input>
+              <sit-data-input #sitControl field="pr06" label="P06" appearance="outline" style="width: 50px;"></sit-data-input>
               <sit-data-radio #sitControl field="kind" type="row" label="Rodzaj"
                 [buttons]="[{'caption':'Wszystkie','value': '0', 'checked':true},{'caption':'Należności','value': '1'},{'caption':'Zobowiązania','value': '-1'}]"
                 showRefreshButton='true'
               ></sit-data-radio>
               <sit-data-input #sitControl field="ForDate" type="date" label="Na dzień" appearance="outline" style="width: 200px;" showRefreshButton="true"></sit-data-input>
+              <sit-data-input #sitControl field="DepositDateFrom" type="date" label="Wpłaty od" appearance="outline" style="width: 140px;"></sit-data-input>
+              <sit-data-input #sitControl field="DepositDateTo" type="date" label="Wpłaty do" appearance="outline" style="width: 200px;" showRefreshButton="true"></sit-data-input>
             </div>
           </sit-data-set-container>
           <sit-data-set-container ident="sitSettlementsByAge" showActionsToolbar="true" fxLayout="column" fxFlex>

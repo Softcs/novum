@@ -6,11 +6,17 @@
       <sit-data-input #sitControl type="text" field="DocumentIdent" label="Identyfikator" appearance="outline"></sit-data-input>
       <sit-data-input #sitControl type="text" field="DocumentName" label="Nazwa" appearance="outline" ></sit-data-input>
       <sit-data-input #sitControl type="text" field="DocumentDescription" label="Opis" appearance="outline" ></sit-data-input>
+      <sit-data-radio #sitControl field="StockEffect" type="row" label="Oddziaływanie na stan"
+        [buttons]="[{'caption':'brak','value': '0', 'checked':true},{'caption':'przychód','value':'1'},{'caption':'rozchód','value':'-1'}]"
+      ></sit-data-radio>      
       <div fxLayout="row">
-        <sit-data-input #sitControl type="text" field="StockEffect" label="Wpływ na magazyn" appearance="outline" ></sit-data-input>
         <sit-data-checkbox #sitControl field="IsCor" label="Korekta"></sit-data-checkbox>
         <sit-data-checkbox #sitControl field="CalcData" label="Przeliczaj dokument"></sit-data-checkbox>
       </div>
+      <div fxLayout="row">
+        <sit-data-checkbox #sitControl field="UseInDayStockTurnoverAggr" label="Używaj w agregacie obrotów"></sit-data-checkbox>
+        <sit-data-checkbox #sitControl field="UseInDaySalesAggr" label="Używaj w agregacie sprzedaży"></sit-data-checkbox>
+      </div> 
     </div>
   </sit-data-set-container>
 </sit-proc-params>
