@@ -139,6 +139,7 @@ import { SitRoyaltyCalcOnePublicationComponent } from '@app/containers/dictionar
 import { SitVacationRequestsCancelEditComponent } from '@app/containers/dictionaries/sit-vacation-requests/actions/sit-vacation-requests-cancel-edit/sit-vacation-requests-cancel-edit.component';
 import { SitDocumentsHeadersEditComponent } from '@app/containers/dictionaries/sit-documents/actions/sit-documents-headers-edit/sit-documents-headers-edit.component';
 import { SitDocumentsPositionsEditComponent } from '@app/containers/dictionaries/sit-documents/actions/sit-documents-positions-edit/sit-documents-positions-edit.component';
+import { SitCustomers4AgreementsEditComponent } from '@app/containers/dictionaries/sit-kancelaria/actions/sit-customers4-agreements-edit/sit-customers4-agreements-edit.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -283,7 +284,8 @@ export class FactoryService {
         sitRoyaltyCalcOnePublication: SitRoyaltyCalcOnePublicationComponent,
         sitVacationRequestsCancelEdit: SitVacationRequestsCancelEditComponent,
         sitDocumentsHeadersEdit: SitDocumentsHeadersEditComponent,
-        sitDocumentsPositionsEdit: SitDocumentsPositionsEditComponent
+        sitDocumentsPositionsEdit: SitDocumentsPositionsEditComponent,
+        sitCustomers4AgreementsEdit: SitCustomers4AgreementsEditComponent,
     };
 
     public GetFactory(ident: string) {
