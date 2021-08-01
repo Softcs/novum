@@ -53,6 +53,7 @@ export class SitSettlementsComponent extends SitDictBaseComponent {
       { headerName: 'P05', field: 'pr05', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, renderType: 'number', agr: "sum"},
       { headerName: 'P06', field: 'pr06', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, renderType: 'number', agr: "sum"},
       { headerName: 'Po term.', field: 'AfterPaymentDate', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, renderType: 'number', agr: "sum"},
+      { headerName: 'Wpłaty', field: 'DepositAmount', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, renderType: 'number', agr: "sum"},
 
     ];
   }
