@@ -142,6 +142,8 @@ import { SitDocumentsPositionsEditComponent } from '@app/containers/dictionaries
 import { SitCustomers4AgreementsEditComponent } from '@app/containers/dictionaries/sit-kancelaria/actions/sit-customers4-agreements-edit/sit-customers4-agreements-edit.component';
 import { SitMailTemplatesComponent } from '@app/containers/dictionaries/sit-mail-templates/sit-mail-templates.component';
 import { SitMailTemplatesEditComponent } from '@app/containers/dictionaries/sit-mail-templates/actions/sit-mail-templates-edit/sit-mail-templates-edit.component';
+import { SitCourierShipmentsComponent } from '@app/containers/dictionaries/sit-courier-shipments/sit-courier-shipments.component';
+import { SitVacationRequestsChangeSuperiorEditComponent } from '@app/containers/dictionaries/sit-vacation-requests/actions/sit-vacation-requests-change-superior-edit/sit-vacation-requests-change-superior-edit.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -290,6 +292,8 @@ export class FactoryService {
         sitCustomers4AgreementsEdit: SitCustomers4AgreementsEditComponent,
         sitMailTemplates: SitMailTemplatesComponent,
         sitMailTemplatesEdit: SitMailTemplatesEditComponent,
+        sitCourierShipments: SitCourierShipmentsComponent,
+        sitVacationRequestsChangeSuperiorEdit: SitVacationRequestsChangeSuperiorEditComponent,
     };
 
     public GetFactory(ident: string) {

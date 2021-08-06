@@ -239,6 +239,8 @@ import { SitDocumentsPositionsEditComponent } from './containers/dictionaries/si
 import { SitCustomers4AgreementsEditComponent } from './containers/dictionaries/sit-kancelaria/actions/sit-customers4-agreements-edit/sit-customers4-agreements-edit.component';
 import { SitMailTemplatesComponent } from './containers/dictionaries/sit-mail-templates/sit-mail-templates.component';
 import { SitMailTemplatesEditComponent } from './containers/dictionaries/sit-mail-templates/actions/sit-mail-templates-edit/sit-mail-templates-edit.component';
+import { SitCourierShipmentsComponent } from './containers/dictionaries/sit-courier-shipments/sit-courier-shipments.component';
+import { SitVacationRequestsChangeSuperiorEditComponent } from './containers/dictionaries/sit-vacation-requests/actions/sit-vacation-requests-change-superior-edit/sit-vacation-requests-change-superior-edit.component';
 
 
 @NgModule({
@@ -468,7 +470,9 @@ import { SitMailTemplatesEditComponent } from './containers/dictionaries/sit-mai
         SitDocumentsPositionsEditComponent,
         SitCustomers4AgreementsEditComponent,
         SitMailTemplatesComponent,
-        SitMailTemplatesEditComponent
+        SitMailTemplatesEditComponent,
+        SitCourierShipmentsComponent,
+        SitVacationRequestsChangeSuperiorEditComponent
 
     ],
     providers: [

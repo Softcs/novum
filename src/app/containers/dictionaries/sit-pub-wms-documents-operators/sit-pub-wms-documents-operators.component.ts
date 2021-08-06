@@ -14,6 +14,7 @@ export class SitPubWmsDocumentsOperatorsComponent extends SitDictBaseComponent {
       { headerName: 'Operator', field: 'Operator', filter: 'agTextColumnFilter', width: 120 },
       { headerName: 'NagId', field: 'ExtAppIdent01', filter: 'agTextColumnFilter', width: 80 },
       { headerName: 'XlId', field: 'ExtAppIdent02', filter: 'agTextColumnFilter', width: 80 },
+      { headerName: 'Typ dok.', field: 'DocumentIdent', width: 90},      
       { headerName: 'Numer dokumentu', field: 'DocumentNumber', filter: 'agTextColumnFilter', width: 200 },
       { headerName: 'Data dokumentu', field: 'DocumentDate', filter: 'agTextColumnFilter', width: 100 },
       { headerName: 'Opis dokumentu', field: 'DocumentDescription', filter: 'agTextColumnFilter', width: 300 },

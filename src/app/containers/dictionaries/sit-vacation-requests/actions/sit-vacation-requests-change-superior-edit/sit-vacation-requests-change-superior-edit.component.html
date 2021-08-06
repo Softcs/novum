@@ -1,0 +1,10 @@
+<sit-proc-params
+  [(actionExecuteData)]="actionExecuteData"
+  >
+  <sit-data-set-container ident="sitVacationRequestsChangeSuperiorEdit">
+    <div class="sit-proc-params-content" fxLayout="column" style="width: 300px;">
+      <sit-data-input type="text" #sitControl field="SuperiorEmployeeName" label="Przełożony" appearance="outline" 
+      [lookupDisplayFields] = "['EmployeeName']"></sit-data-input>
+    </div>
+  </sit-data-set-container>
+</sit-proc-params>

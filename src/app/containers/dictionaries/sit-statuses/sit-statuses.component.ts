@@ -18,6 +18,7 @@ export class SitStatusesComponent extends SitDictBaseComponent {
     ];
 
     this.gridColumnsDefinition["sitStatusValues"] = [
+      { headerName: 'Id', field: 'sitStatusValuesId',width: 90, defaultVisibility: false},
       { headerName: 'Wartość', field: 'ValueIdent', filter: 'agNumberColumnFilter', width: 100   },
       { headerName: 'Nazwa', field: 'ValueName', filter: 'agTextColumnFilter', width: 250  },
       { headerName: 'Kolejność', field: 'Order', type: "numericColumn", filter: 'agNumberColumnFilter', width: 100, sort: 'asc' },
