@@ -354,6 +354,15 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
       { headerName: 'Identyfikator', field: 'PayrollComponentIdent',  width: 130},
     ];
 
+    this.gridColumnsDefinition['sitEmployeesSettlementsContrComp'] = [
+      { headerName: 'Lp', field: 'OrdId', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 60, sort: 'asc',suppressMenu: true},
+      { headerName: 'Składnik', field: 'PayrollComponentDesc', tooltipField:'PayrollComponentDesc',  width: 270},
+      { headerName: 'Wartość', field: 'Value', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 100,
+        renderType: 'number',
+      },
+      { headerName: 'Identyfikator', field: 'PayrollComponentIdent',  width: 130},
+    ];
+
     this.gridColumnsDefinition['sitEmployeesSettlementsSumByPayroll'] = [
       { headerName: 'Rok', field: 'CostYear', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 60,suppressMenu: true},
       { headerName: 'Miesiąc', field: 'CostMonth', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 60,suppressMenu: true},
