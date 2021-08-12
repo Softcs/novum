@@ -2,56 +2,55 @@
   <div fxLayout="column" fxFill>
     <as-split direction="horizontal">
       <as-split-area [size]="70">
-        <as-split direction="vertical">
-          <as-split-area [size]="80">
-            <div fxLayout="column" fxFill class="content">
-              <div class="sit-filter-bar" fxLayout="row">
-                <sit-data-set-container ident="sitFilter" >
-                  <div fxLayout="row">
-                    <sit-data-input #sitControl field="CostYear" label="Rok" placeholder="" appearance="outline" style="width: 60px;"></sit-data-input>
-                    <sit-data-input #sitControl field="CostMonth" label="Miesiąc" placeholder="" appearance="outline" style="width: 60px;"></sit-data-input>
-                    <sit-data-input #sitControl field="HRDepartmentIdent" label="Dział" placeholder="" appearance="outline" style="width: 200px;"
-                      [lookupDisplayFields] = "['HRDepartmentIdent', 'HRDepartmentName']">
-                    </sit-data-input>
-                    <sit-data-input #sitControl field="search" label="Filtruj" placeholder="" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
+        <div fxLayout="column" fxFill class="content">
+          <div class="sit-filter-bar" fxLayout="row">
+            <sit-data-set-container ident="sitFilter" >
+              <div fxLayout="row">
+                <sit-data-input #sitControl field="CostYear" label="Rok" placeholder="" appearance="outline" style="width: 60px;"></sit-data-input>
+                <sit-data-input #sitControl field="CostMonth" label="Miesiąc" placeholder="" appearance="outline" style="width: 60px;"></sit-data-input>
+                <sit-data-input #sitControl field="HRDepartmentIdent" label="Dział" placeholder="" appearance="outline" style="width: 200px;"
+                  [lookupDisplayFields] = "['HRDepartmentIdent', 'HRDepartmentName']">
+                </sit-data-input>
+                <sit-data-input #sitControl field="search" label="Filtruj" placeholder="" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
+              </div>
+            </sit-data-set-container>
+
+            <sit-data-set-container  ident="sitEmployeesSettlements" fxFlex fxLayout="row" fxLayoutAlign="end center">
+              <button mat-stroked-button color="primary" (click)="getAttachment()" style="width: 120px;"><mat-icon>attach_file</mat-icon>Załącznik</button>
+            </sit-data-set-container>
+          </div>
+          <div class="sit-grid-title">Rozliczenie</div>
+          <div fxFlex>
+            <mat-tab-group id="tab-group" animationDuration="0ms">
+              <mat-tab label="Zlecenia">
+                <sit-data-set-container  ident="sitEmployeesSettlements" showActionsToolbar="true" fxFill fxLayout="column">
+                  <div class="data-table" fxFlex>
+                    <ag-grid-angular
+                      #sitSetDataSource
+                      style="width: 100%; height: 100%;"
+                      class="ag-theme-balham"
+                      [accentedSort]="true"
+                    >
+                    </ag-grid-angular>
                   </div>
                 </sit-data-set-container>
-                <sit-data-set-container  ident="sitEmployeesSettlements" fxFlex fxLayout="row" fxLayoutAlign="end center">
-                  <button mat-stroked-button color="primary" (click)="getAttachment()" style="width: 120px;"><mat-icon>attach_file</mat-icon>Załącznik</button>
+              </mat-tab>
+              <mat-tab label="Umowy o pracę">
+                <sit-data-set-container  ident="sitEmployeesSettlementsContr" showActionsToolbar="true" fxFill fxLayout="column">
+                  <div class="data-table" fxFlex>
+                    <ag-grid-angular
+                      #sitSetDataSource
+                      style="width: 100%; height: 100%;"
+                      class="ag-theme-balham"
+                      [accentedSort]="true"
+                    >
+                    </ag-grid-angular>
+                  </div>
                 </sit-data-set-container>
-              </div>
-              <div class="sit-grid-title">Rozliczenie</div>
-              <sit-data-set-container  ident="sitEmployeesSettlements" showActionsToolbar="true" fxFlex fxLayout="column">
-                <div class="data-table" fxFlex>
-                  <ag-grid-angular
-                    #sitSetDataSource
-                    #sitHRDepartmentsGrid
-                    style="width: 100%; height: 100%;"
-                    class="ag-theme-balham"
-                    [accentedSort]="true"
-                  >
-                  </ag-grid-angular>
-                </div>
-              </sit-data-set-container>
-            </div>
-          </as-split-area>
-          <as-split-area [size]="20">
-            <div fxLayout="column" fxFill>
-              <div class="sit-grid-title">Sumy list płac</div>
-              <sit-data-set-container  ident="sitEmployeesSettlementsSumByPayroll" fxFlex fxLayout="column">
-                <div class="data-table" fxFlex>
-                  <ag-grid-angular
-                    #sitSetDataSource
-                    #sitHRDepartmentsGrid
-                    style="width: 100%; height: 100%;"
-                    class="ag-theme-balham"
-                  >
-                  </ag-grid-angular>
-                </div>
-              </sit-data-set-container>
-            </div>
-          </as-split-area>
-        </as-split>
+              </mat-tab>
+            </mat-tab-group>
+          </div>
+        </div>
       </as-split-area>
       <as-split-area [size]="30">
         <div fxLayout="column" fxFill class="content" fxLayoutGap="5px">

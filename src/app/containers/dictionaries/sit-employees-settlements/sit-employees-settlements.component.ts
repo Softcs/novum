@@ -30,9 +30,6 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
       { headerName: 'Nr.listy', field: 'PayrollNo', tooltipField: 'PayrollNo', width: 100,
         cellClass: ['font11','textFormat']
       },
-      { headerName: 'Rachunek', field: 'ReceiptNo', tooltipField: 'ReceiptNo',  width: 90,
-        cellClass: ['font11','textFormat']
-      },
       { headerName: 'Miejsce pracy', field: 'HRWorkPlaceName', tooltipField: 'HRWorkPlaceName',  width: 100,
         cellClass: ['font11','textFormat']
       },
@@ -235,7 +232,116 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
         renderType: 'number', renderFormat: '1.0-0',
         cellClass: ['font11','numberFormat2Dec','pinkBackground'],
       },
-      { headerName: 'Fakt.zew.ID', field: 'InvExtId', type: 'textColumn', filter: 'agTextColumnFilter', width: 80, suppressMenu: true,},
+      { headerName: 'Fakt.zew.ID', field: 'InvExtId', filter: 'agTextColumnFilter', width: 80, suppressMenu: true,},
+
+    ];
+
+    this.gridColumnsDefinition['sitEmployeesSettlementsContr'] = [
+      { headerName: 'Pracownik',
+        children: [
+          { headerName: 'Nazwisko', field: 'EmployeeName', tooltipField: 'EmployeeName', sort: 'asc', width: 180, pinned: 'left',
+            checkboxSelection: true, headerCheckboxSelection: true, headerCheckboxSelectionFilteredOnly: true,
+            cellClass: ['font11','textFormat']
+          },
+          { headerName: 'Ident.', field: 'EmployeeIdent', tooltipField: 'EmployeeIdent', width: 100, pinned: 'left',
+            cellClass: ['font11','textFormat']
+          },
+        ]
+      },
+      { headerName: 'Cudzoziemiec', field: 'Foreigner', filter: 'agNumberColumnFilter', renderType: 'checkbox', width: 100, suppressMenu: true },
+      { headerName: 'Okres', field: 'WorkPeriod',  width: 90,
+        cellClass: ['font11','textFormat']
+      },
+      { headerName: 'Nr.listy', field: 'PayrollNo', tooltipField: 'PayrollNo', width: 100,
+        cellClass: ['font11','textFormat']
+      },
+      { headerName: 'Miejsce pracy', field: 'HRWorkPlaceName', tooltipField: 'HRWorkPlaceName',  width: 100,
+        cellClass: ['font11','textFormat']
+      },
+      { headerName: 'Opis prac', field: 'WorkDesc', tooltipField: 'WorkDesc',  width: 100,
+        cellClass: ['font11','textFormat']
+      },
+      { headerName: 'MPK', field: 'CustomerCostCenterIdent', tooltipField: 'CustomerCostCenterIdent',  width: 100,
+        cellClass: ['font11','textFormat']
+      },
+      { headerName: 'Umowa od', field: 'ContractFrom',  width: 100,
+        cellClass: ['font11','dateFormat']
+      },
+      { headerName: 'Umowa do', field: 'ContractTo',  width: 100,
+        cellClass: ['font11','dateFormat']
+      },
+      { headerName: 'Etat', field: 'JobTime',  width: 70,
+        cellClass: ['font11','textFormat']
+      },
+      { headerName: 'Dni umowy', field: 'ContractDays', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, suppressMenu: true, agr: 'sum',
+        renderType: 'number', renderFormat: '1.0-0',
+        cellClass: ['font11','numberFormat2Dec'],
+      },
+      { headerName: 'Dni nominal.', field: 'NominalDays', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, suppressMenu: true, agr: 'sum',
+        renderType: 'number', renderFormat: '1.0-0',
+        cellClass: ['font11','numberFormat2Dec'],
+      },
+      { headerName: 'Dni rob.', field: 'WorkDays', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, suppressMenu: true, agr: 'sum',
+        renderType: 'number', renderFormat: '1.0-0',
+        cellClass: ['font11','numberFormat2Dec'],
+      },
+      { headerName: 'Stawka', field: 'H_Rate', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, suppressMenu: true,
+        renderType: 'number', renderFormat: '1.2-2',
+        cellClass: ['font11','numberFormat2Dec'],
+      },
+      { headerName: 'Godziny',
+        children: [
+          { headerName: 'Suma', field: 'H_Sum', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, suppressMenu: true, agr: 'sum',
+            renderType: 'number',
+            cellClass: ['font11','numberFormat2Dec'],
+          },
+          { headerName: 'Godz.1', field: 'H01', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 70, suppressMenu: true, agr: 'sum', columnGroupShow: "open",
+            renderType: 'number',
+            cellClass: ['font11','numberFormat2Dec'],
+          },
+          { headerName: 'St.kli. 1', field: 'CustRate01', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 70, suppressMenu: true, columnGroupShow: "open",
+            renderType: 'number',
+            cellStyle: function(params) { return {backgroundColor: '#d6f5d6'} },
+            cellClass: ['font11','numberFormat2Dec','greenBackground'],
+          },
+          { headerName: 'Godz.2', field: 'H02', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 70, suppressMenu: true, agr: 'sum',columnGroupShow: "open",
+            renderType: 'number',
+            cellClass: ['font11','numberFormat2Dec'],
+          },
+          { headerName: 'St.kli. 2', field: 'CustRate02', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 70, suppressMenu: true, columnGroupShow: "open",
+            renderType: 'number',
+            cellStyle: function(params) { return {backgroundColor: '#d6f5d6'} },
+            cellClass: ['font11','numberFormat2Dec','greenBackground'],
+          },
+          { headerName: 'Godz.3', field: 'H03', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 70, suppressMenu: true, agr: 'sum',columnGroupShow: "open",
+            renderType: 'number',
+            cellClass: ['font11','numberFormat2Dec'],
+          },
+          { headerName: 'St.kli. 3', field: 'CustRate03', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 70, suppressMenu: true, columnGroupShow: "open",
+            renderType: 'number',
+            cellStyle: function(params) { return {backgroundColor: '#d6f5d6'} },
+            cellClass: ['font11','numberFormat2Dec','greenBackground'],
+          },
+          { headerName: 'Godz.4', field: 'H04', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 70, suppressMenu: true, agr: 'sum',columnGroupShow: "open",
+            renderType: 'number',
+            cellClass: ['font11','numberFormat2Dec'],
+          },
+          { headerName: 'St.kli. 4', field: 'CustRate04', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 70, suppressMenu: true, columnGroupShow: "open",
+            renderType: 'number',
+            cellStyle: function(params) { return {backgroundColor: '#d6f5d6'} },
+            cellClass: ['font11','numberFormat2Dec','greenBackground'],
+          },
+          { headerName: 'Godz.5', field: 'H05', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 70, suppressMenu: true, agr: 'sum',columnGroupShow: "open",
+            renderType: 'number',
+            cellClass: ['font11','numberFormat2Dec'],
+          },
+          { headerName: 'St.kli. 5', field: 'CustRate05', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 70, suppressMenu: true, columnGroupShow: "open",
+            renderType: 'number',
+            cellStyle: function(params) { return {backgroundColor: '#d6f5d6'} },
+            cellClass: ['font11','numberFormat2Dec','greenBackground'],
+          },
+        ]
+      },
 
     ];
 
