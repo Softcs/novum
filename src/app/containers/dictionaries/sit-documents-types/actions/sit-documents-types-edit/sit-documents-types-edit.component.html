@@ -12,11 +12,22 @@
       <div fxLayout="row">
         <sit-data-checkbox #sitControl field="IsCor" label="Korekta"></sit-data-checkbox>
         <sit-data-checkbox #sitControl field="CalcData" label="Przeliczaj dokument"></sit-data-checkbox>
+        <sit-data-input #sitControl type="text" field="VATRatesIdent" label="Stała stawka VAT" appearance="outline" [lookupDisplayFields] = "['VATRatesIdent']"></sit-data-input>
       </div>
       <div fxLayout="row">
         <sit-data-checkbox #sitControl field="UseInDayStockTurnoverAggr" label="Używaj w agregacie obrotów"></sit-data-checkbox>
         <sit-data-checkbox #sitControl field="UseInDaySalesAggr" label="Używaj w agregacie sprzedaży"></sit-data-checkbox>
-      </div> 
+      </div>
+      <div fxLayout="row">
+        <sit-data-radio #sitControl field="VATCalcType" type="row" label="Metoda liczenia VAT"
+          [buttons]="[{'caption':'VAT w stopce','value': '1', 'checked':true},{'caption':'Suma VAT pozycji','value':'2'}]" fxFlex="100"
+        ></sit-data-radio>
+      </div>
+      <div fxLayout="row">        
+        <sit-data-radio #sitControl field="PriceType" type="row" label="Rodzaj ceny"
+          [buttons]="[{'caption':'Netto','value': '1', 'checked':true},{'caption':'Brutto','value':'2'}]" fxFlex="100"
+        ></sit-data-radio> 
+      </div>      
     </div>
   </sit-data-set-container>
 </sit-proc-params>

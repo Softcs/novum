@@ -18,7 +18,8 @@ export class SitCourierShipmentsComponent extends SitDictBaseComponent {
         cellRenderer: (data) => { return (data.value) ? formatDate(data.value, 'yyyy-MM-dd HH:mm:ss', this.locale) : ''}
       },
       { headerName: 'Odbiorca', field: 'ReceiverName', width: 300},
-      { headerName: 'Status', field: 'ShipmentStatusDesc', width: 200}
+      { headerName: 'Status', field: 'ShipmentStatusDesc', width: 150},
+      { headerName: 'Odebrana przez', field: 'ReceivedBy', width: 200},
     ];
     this.gridColumnsDefinition["sitCourierDocumentsInShipment"] = [
       { headerName: 'Id', field: 'sitCourierDocumentsInShipmentId',width: 90, defaultVisibility: false},
@@ -40,8 +41,8 @@ export class SitCourierShipmentsComponent extends SitDictBaseComponent {
     ];
     this.gridColumnsDefinition["sitCourierTrackAndTraceInfo"] = [
       { headerName: 'Status', field: 'Status', width: 100},
-      { headerName: 'Opis', field: 'Description', width: 300},
-      { headerName: 'Terminal', field: 'Terminal', width: 300},
+      { headerName: 'Opis', field: 'Description', width: 350},
+      { headerName: 'Terminal', field: 'Terminal', width: 200},
       { headerName: 'Data', field: 'Date', width: 150, sort: 'desc',
         cellRenderer: (data) => { return (data.value) ? formatDate(data.value, 'yyyy-MM-dd HH:mm:ss', this.locale) : ''}
       },

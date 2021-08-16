@@ -40,7 +40,7 @@ export class SitDocumentsComponent extends SitDictBaseComponent {
         { headerName: 'JM', field: 'UnitIdent', filter: 'agNumberColumnFilter', type: 'numericColumn', suppressMenu: true, width: 50 },
         { headerName: 'Ilość', field: 'QuantityUnit', filter: 'agNumberColumnFilter', type: 'numericColumn', suppressMenu: true, width: 60, renderType: 'number' },
         { headerName: 'Cena', field: 'Price', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80, renderType: 'number', defaultVisibility: false },
-        { headerName: 'Rabat %', field: 'DiscountProcent', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80, renderType: 'number', renderFormat: '1.0-0', defaultVisibility: false },
+        { headerName: 'Rabat %', field: 'DiscountPercent', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80, renderType: 'number', renderFormat: '1.0-0', defaultVisibility: false },
         { headerName: 'Rabat kw.', field: 'DiscountAmount', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80, renderType: 'number', defaultVisibility: false },
         { headerName: 'Cena po rab.', field: 'PriceAfterDiscount', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80, renderType: 'number' },
         { headerName: 'SV', field: 'VATRatesIdent', filter: 'agSetColumnFilter', floatingFilter: false, width: 60},

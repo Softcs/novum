@@ -7,6 +7,9 @@
       <sit-data-input #sitControl type="text" field="HRCompanyHierarchyIdent" label="Stanowisko" appearance="outline"
         [lookupDisplayFields] = "['HRCompanyHierarchyIdentLvl', 'HRCompanyHierarchyParentIdent']"
       ></sit-data-input>
+      <sit-data-input #sitControl type="text" field="VacationRequestAcceptEmployeeName" label="Osoba akceptująca urlop" appearance="outline"
+        [lookupDisplayFields] = "['EmployeeName']"
+      ></sit-data-input> 
     </div>
   </sit-data-set-container>
 </sit-proc-params>
