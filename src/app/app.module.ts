@@ -241,6 +241,9 @@ import { SitMailTemplatesComponent } from './containers/dictionaries/sit-mail-te
 import { SitMailTemplatesEditComponent } from './containers/dictionaries/sit-mail-templates/actions/sit-mail-templates-edit/sit-mail-templates-edit.component';
 import { SitCourierShipmentsComponent } from './containers/dictionaries/sit-courier-shipments/sit-courier-shipments.component';
 import { SitVacationRequestsChangeSuperiorEditComponent } from './containers/dictionaries/sit-vacation-requests/actions/sit-vacation-requests-change-superior-edit/sit-vacation-requests-change-superior-edit.component';
+import { SitPubCostAnalysisComponent } from './containers/dictionaries/sit-pub-cost-analysis/sit-pub-cost-analysis.component';
+import { SitProcRailCostAnalysisImportEditComponent } from './containers/dictionaries/sit-pub-cost-analysis/actions/sit-proc-rail-cost-analysis-import-edit/sit-proc-rail-cost-analysis-import-edit.component';
+import { SitEmployeeContractsEditComponent } from './containers/dictionaries/sit-employees/actions/sit-employee-contracts-edit/sit-employee-contracts-edit.component';
 
 
 @NgModule({
@@ -472,7 +475,10 @@ import { SitVacationRequestsChangeSuperiorEditComponent } from './containers/dic
         SitMailTemplatesComponent,
         SitMailTemplatesEditComponent,
         SitCourierShipmentsComponent,
-        SitVacationRequestsChangeSuperiorEditComponent
+        SitVacationRequestsChangeSuperiorEditComponent,
+        SitPubCostAnalysisComponent,
+        SitProcRailCostAnalysisImportEditComponent,
+        SitEmployeeContractsEditComponent
 
     ],
     providers: [
