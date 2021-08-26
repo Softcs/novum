@@ -8,18 +8,7 @@
           </sit-data-set-container>
         </div>
         <sit-data-set-container  ident="sitPubCostAnalysisParams" fxLayout="row" style="margin-bottom: 5px" style="width: 100%;">
-          <sit-data-label type="text" #sitControl field="P01" label="Okresy: P01:"></sit-data-label>
-          <sit-data-label type="text" #sitControl field="P02" label="P02:"></sit-data-label>
-          <sit-data-label type="text" #sitControl field="P03" label="P03:"></sit-data-label>
-          <sit-data-label type="text" #sitControl field="P04" label="P04:"></sit-data-label>
-          <sit-data-label type="text" #sitControl field="P05" label="P05:"></sit-data-label>
-          <sit-data-label type="text" #sitControl field="P06" label="P06:"></sit-data-label>
-          <sit-data-label type="text" #sitControl field="P07" label="P07:"></sit-data-label>
-          <sit-data-label type="text" #sitControl field="P08" label="P08:"></sit-data-label>
-          <sit-data-label type="text" #sitControl field="P09" label="P09:"></sit-data-label>
-          <sit-data-label type="text" #sitControl field="P10" label="P10:"></sit-data-label>
-          <sit-data-label type="text" #sitControl field="P11" label="P11:"></sit-data-label>
-          <sit-data-label type="text" #sitControl field="P12" label="P12:"></sit-data-label>
+          <sit-data-label type="text" #sitControl field="Year" label="Analiza za rok:"></sit-data-label>
         </sit-data-set-container>
         <sit-data-set-container ident="sitPubCostAnalysis" showActionsToolbar="true" fxFlex fxLayout="column">
           <div class="data-table" fxFlex>
@@ -38,11 +27,11 @@
         <div class="sit-filter-bar">
           <sit-data-set-container ident="sitPubCostAnalysisDetailsFilter" fxLayout="row">
             <div fxLayoutAlign="start center">
-              <sit-data-radio #sitControl field="periodId" type="row" label="Okres."
-                [buttons]="[{'caption':'Wszystkie','value': 'ALL', 'checked':true},{'caption':'P01','value': 'P01'},{'caption':'P02','value': 'P02'},
-                {'caption':'P03','value': 'P03'},{'caption':'P04','value': 'P04'},{'caption':'P05','value': 'P05'},{'caption':'P06','value': 'P06'},
-                {'caption':'P07','value': 'P07'},{'caption':'P08','value': 'P08'},{'caption':'P09','value': 'P09'},{'caption':'P10','value': 'P10'},
-                {'caption':'P11','value': 'P11'},{'caption':'P12','value': 'P12'}]"
+              <sit-data-radio #sitControl field="periodId" type="row" label="Okres"
+                [buttons]="[{'caption':'Wszystkie','value': 'ALL', 'checked':true},{'caption':'01','value': 'P01'},{'caption':'02','value': 'P02'},
+                {'caption':'03','value': 'P03'},{'caption':'04','value': 'P04'},{'caption':'P05','value': 'P05'},{'caption':'06','value': 'P06'},
+                {'caption':'07','value': 'P07'},{'caption':'08','value': 'P08'},{'caption':'P09','value': 'P09'},{'caption':'10','value': 'P10'},
+                {'caption':'11','value': 'P11'},{'caption':'12','value': '12'}]"
               ></sit-data-radio>
             </div>  
           </sit-data-set-container>

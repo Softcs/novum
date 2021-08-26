@@ -12,7 +12,7 @@ export class SitPubCostAnalysisComponent extends SitDictBaseComponent {
   
   public prepareColumnsDefinitnion(){
     this.gridColumnsDefinition["sitPubCostAnalysis"] = [
-      { headerName: 'Konto', field: 'Account', filter: 'agTextColumnFilter', width: 100 },
+      { headerName: 'Konto', field: 'Account', filter: 'agTextColumnFilter', width: 100, defaultVisibility: false  },
       { headerName: 'Grupa kosztów', field: 'GroupDesc', filter: 'agTextColumnFilter', width: 300 },
       { headerName: 'Okres 01', field: 'P01', filter: 'agTextColumnFilter', width: 100, renderType: "number", type: 'numericColumn', agr: 'sum' },
       { headerName: 'Okres 02', field: 'P02', filter: 'agTextColumnFilter', width: 100, renderType: "number", type: 'numericColumn', agr: 'sum' },
@@ -31,7 +31,6 @@ export class SitPubCostAnalysisComponent extends SitDictBaseComponent {
     ];
 
     this.gridColumnsDefinition["sitPubCostAnalysisDetails"] = [
-      { headerName: 'Konto', field: 'Account', filter: 'agTextColumnFilter', width: 100, defaultVisibility: false  },
       { headerName: 'Grupa kosztów', field: 'GroupDesc', filter: 'agTextColumnFilter', width: 300, defaultVisibility: false  },
       { headerName: 'Kwota', field: 'Amount', filter: 'agTextColumnFilter', width: 120, renderType: "number", type: 'numericColumn', agr: 'sum' },
       { headerName: 'Kontrahent', field: 'CustIdent', filter: 'agTextColumnFilter', width: 100 },
@@ -40,6 +39,12 @@ export class SitPubCostAnalysisComponent extends SitDictBaseComponent {
       { headerName: 'Numer zewnętrzny', field: 'DocumentExtNumber', filter: 'agTextColumnFilter', width: 150 },
       { headerName: 'Data', field: 'DocumentDate', width: 100,},      
       { headerName: 'Opis dokumentu', field: 'DocumentDesc', filter: 'agTextColumnFilter', width: 400 },
+      { headerName: 'Konto', field: 'Account', filter: 'agTextColumnFilter', width: 100, defaultVisibility: false  },
+      { headerName: 'DP', field: 'DP', filter: 'agTextColumnFilter', width: 100, defaultVisibility: false  },
+      { headerName: 'KD', field: 'KD', filter: 'agTextColumnFilter', width: 100, defaultVisibility: false  },
+      { headerName: 'WD', field: 'WD', filter: 'agTextColumnFilter', width: 100, defaultVisibility: false  },
+      { headerName: 'Projekt', field: 'ProjectIdent', filter: 'agTextColumnFilter', width: 100, defaultVisibility: false  },
+      { headerName: 'ExtAppIdent01', field: 'ExtAppIdent01', filter: 'agTextColumnFilter', width: 100, defaultVisibility: false  },
     ]    
    }
 }
