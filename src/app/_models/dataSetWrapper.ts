@@ -166,6 +166,9 @@ export class DataSetWrapper {
             }
             if (field.setNewGuid) {
                 value = Guid.create().toString();
+                if(row.hasOwnProperty("__Identity__") && field.fieldName && field.fieldName.toLowerCase() == (this.ident+"G").toLowerCase()) {
+                    row["__Identity__"] = value;        
+                }
             }
 
             row[field.fieldName] = value;
