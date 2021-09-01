@@ -9,7 +9,8 @@
         [buttons]="[{'caption':'Okno aplikacji','value': 'app', 'checked':true},{'caption':'Grupa menu','value':'group'}]"
       ></sit-data-radio>
       <sit-data-input type="text" #sitControl field="Link" label="Link" appearance="outline"></sit-data-input>
-      <sit-data-input type="text" #sitControl field="ParentCaption" label="Grupa" appearance="outline"></sit-data-input>
+      <sit-data-input type="text" #sitControl field="ParentCaption" label="Grupa" appearance="outline"
+        [lookupDisplayFields] = "['ParentCaption', 'MenuPath']"></sit-data-input>
       <sit-data-input type="text" #sitControl field="Icon" label="Ikona" appearance="outline"></sit-data-input>
     </div>
   </sit-data-set-container>

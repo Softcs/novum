@@ -24,6 +24,7 @@ export class SitMenuComponent extends SitDictBaseComponent {
       { headerName: 'Rodzaj', field: 'Kind', filter: 'agTextColumnFilter', width: 80 },
       { headerName: 'Link', field: 'Link', filter: 'agTextColumnFilter' },
       { headerName: 'Ikona', field: 'Icon', filter: 'agTextColumnFilter' },
+      { headerName: 'Ścieźka', field: 'MenuPath', filter: 'agTextColumnFilter' },
     ];
     this.gridColumnsDefinition["sitAppUsers"] = [
       { headerName: 'Login', field: 'UserLogin', filter: 'agTextColumnFilter' },

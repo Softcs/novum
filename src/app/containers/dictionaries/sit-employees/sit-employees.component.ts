@@ -25,6 +25,14 @@ export class SitEmployeesComponent extends SitDictBaseComponent {
       { headerName: 'Identyfikator zewnętrzny', field: 'ExtIdent01', filter: 'agTextColumnFilter' },
       { headerName: 'Osoba akceptująca urlop', field: 'VacationRequestAcceptEmployeeName', filter: 'agTextColumnFilter', width: 200, defaultVisibility: false },
     ];
+
+    this.gridColumnsDefinition["sitEmployeeContracts"] = [
+      { headerName: 'Id', field: 'sitEmploymentContractsTypeId',width: 90, defaultVisibility: false}, 
+      { headerName: 'Typ umowy', field: 'EmploymentContractIdent', filter: 'agTextColumnFilter', width: 200},
+      { headerName: 'Numer umowy', field: 'ContractNumber', filter: 'agTextColumnFilter', width: 200},
+      { headerName: 'Data od', field: 'DateFrom', filter: 'agDateColumnFilter',width: 90, floatingFilter: false, sort: 'desc' },      
+      { headerName: 'Data do', field: 'DateTo', filter: 'agDateColumnFilter',width: 90, floatingFilter: false },      
+    ]; 
   }
 
 }

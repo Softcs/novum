@@ -1,0 +1,53 @@
+<sit-dict-container ident="sitPubCostAnalysis" #sitDictcontainer fxFill>
+  <as-split direction="vertical">
+    <as-split-area [size]="60">
+      <div fxLayout="column" fxFill class="content">
+        <div class="sit-filter-bar">
+          <sit-data-set-container ident="sitPubCostAnalysisFilter" fxLayout="row">
+            <sit-data-input #sitControl field="search" label="Filtruj" placeholder="" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
+          </sit-data-set-container>
+        </div>
+        <sit-data-set-container  ident="sitPubCostAnalysisParams" fxLayout="row" style="margin-bottom: 5px" style="width: 100%;">
+          <sit-data-label type="text" #sitControl field="Year" label="Analiza za rok:"></sit-data-label>
+        </sit-data-set-container>
+        <sit-data-set-container ident="sitPubCostAnalysis" showActionsToolbar="true" fxFlex fxLayout="column">
+          <div class="data-table" fxFlex>
+            <ag-grid-angular
+              #sitSetDataSource
+              style="width: 100%; height: 100%;"
+              class="ag-theme-balham"
+            >
+            </ag-grid-angular>
+          </div>
+        </sit-data-set-container>
+      </div>
+    </as-split-area>
+    <as-split-area [size]="40">
+      <div fxLayout="column" fxFill class="content">
+        <div class="sit-filter-bar">
+          <sit-data-set-container ident="sitPubCostAnalysisDetailsFilter" fxLayout="row">
+            <div fxLayoutAlign="start center">
+              <sit-data-radio #sitControl field="periodId" type="row" label="Okres"
+                [buttons]="[{'caption':'Wszystkie','value': 'ALL', 'checked':true},{'caption':'01','value': 'P01'},{'caption':'02','value': 'P02'},
+                {'caption':'03','value': 'P03'},{'caption':'04','value': 'P04'},{'caption':'P05','value': 'P05'},{'caption':'06','value': 'P06'},
+                {'caption':'07','value': 'P07'},{'caption':'08','value': 'P08'},{'caption':'P09','value': 'P09'},{'caption':'10','value': 'P10'},
+                {'caption':'11','value': 'P11'},{'caption':'12','value': '12'}]"
+              ></sit-data-radio>
+            </div>  
+          </sit-data-set-container>
+        </div>
+        <sit-data-set-container ident="sitPubCostAnalysisDetails" showActionsToolbar="true" fxFlex fxLayout="column">
+          <div class="data-table" fxFlex>
+            <ag-grid-angular
+              #sitSetDataSource
+              style="width: 100%; height: 100%;"
+              class="ag-theme-balham"
+            >
+            </ag-grid-angular>
+          </div>
+        </sit-data-set-container>
+      </div>
+    </as-split-area>
+  </as-split>
+</sit-dict-container>
+
