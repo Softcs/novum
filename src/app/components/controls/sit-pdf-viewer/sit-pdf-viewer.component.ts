@@ -1,4 +1,3 @@
-import { PDFViewer } from 'pdfjs-dist/web/pdf_viewer';
 import { Component, ViewChild, Renderer2, Input, AfterViewInit } from '@angular/core';
 import { SitDataBaseComponent } from '../sit-data-base/sit-data-base.component';
 import { environment } from '@environments/environment';
