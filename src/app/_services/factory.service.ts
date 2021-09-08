@@ -147,6 +147,7 @@ import { SitVacationRequestsChangeSuperiorEditComponent } from '@app/containers/
 import { SitPubCostAnalysisComponent } from '@app/containers/dictionaries/sit-pub-cost-analysis/sit-pub-cost-analysis.component';
 import { SitProcRailCostAnalysisImportEditComponent } from '@app/containers/dictionaries/sit-pub-cost-analysis/actions/sit-proc-rail-cost-analysis-import-edit/sit-proc-rail-cost-analysis-import-edit.component';
 import { SitEmployeeContractsEditComponent } from '@app/containers/dictionaries/sit-employees/actions/sit-employee-contracts-edit/sit-employee-contracts-edit.component';
+import { SitCourierBookCourierEditComponent } from '@app/containers/dictionaries/sit-wms-docs/actions/sit-courier-book-courier-edit/sit-courier-book-courier-edit.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -300,6 +301,7 @@ export class FactoryService {
         sitPubCostAnalysis: SitPubCostAnalysisComponent,
         sitProcRailCostAnalysisImportEdit: SitProcRailCostAnalysisImportEditComponent,
         sitEmployeeContractsEdit: SitEmployeeContractsEditComponent,
+        sitCourierBookCourierEdit: SitCourierBookCourierEditComponent,
     };
 
     public GetFactory(ident: string) {

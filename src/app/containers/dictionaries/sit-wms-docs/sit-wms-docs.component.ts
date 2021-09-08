@@ -38,7 +38,7 @@ export class SitWmsDocsComponent extends SitDictBaseComponent {
       },
       { headerName: 'Kontrahent', field: 'CustName', tooltipField: 'CustName', filter: 'agTextColumnFilter', floatingFilter: true},
       { headerName: 'Opis', field: 'DocumentDescription', tooltipField: 'DocumentDescription', filter: 'agTextColumnFilter', floatingFilter: true, width: 120 },
-      { headerName: 'Waga', field: 'Weight', type: 'numericColumn', filter: 'agNumberColumnFilter', tooltipField: 'DocumentDescription', width: 80,
+      { headerName: 'Waga', field: 'WeightStart', type: 'numericColumn', filter: 'agNumberColumnFilter', tooltipField: 'DocumentDescription', width: 80,
         renderType: "number", renderFormat: '1.2-2'
       },
       { headerName: 'NagId SL', field: 'ExtAppIdent01', width: 100, floatingFilter: true },
@@ -120,6 +120,7 @@ export class SitWmsDocsComponent extends SitDictBaseComponent {
       },
       { headerName: 'Status', field: 'ShipmentStatusDesc', width: 130,},
       { headerName: 'Identyfikator', field: 'ShipmentIdent4GUI', width: 130},
+      { headerName: 'Odbiór kuriera', field: 'BookCourierInfo', width: 200},
     ];
 
     this.gridColumnsDefinition['sitCourierShipmentPieces'] = [
