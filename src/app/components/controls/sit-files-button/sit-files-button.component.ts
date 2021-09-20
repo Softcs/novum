@@ -46,7 +46,14 @@ export class SitFilesButtonComponent extends SitButtonBaseComponent {
         },
         (err) => {
           this.changeExecutingState(false);
-          console.log('Upload Error:', err);
+          var error = {
+            message :"Błąd podczas przesyłania pliku: " + this.getFileNames(files) + "\n"+ err,
+            messageKey : "Upload file",
+            errorId : this.fieldFileNames
+          };
+          
+          console.error(error.message);
+          this.dataSetWrapper.getDataSetManager().PropagateErrors(this.dataSetWrapper.ident, [error]);          
         },
         () => {
           this.changeExecutingState(false);
