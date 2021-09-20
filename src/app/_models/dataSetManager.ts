@@ -139,6 +139,10 @@ export class DataSetManager {
     }
 
     private RefreshInternall(dataSourcesRequest: any[]) {
+        if (dataSourcesRequest) {
+            dataSourcesRequest = dataSourcesRequest.filter((v,i) => dataSourcesRequest.findIndex(item => item.ident == v.ident) === i);
+        }
+
         const opr: Operation = this.gatewayService.operationRefreshDataSources(this.dictInfo.ident,
             dataSourcesRequest);
         this.gatewayService.executeOperation(opr)
