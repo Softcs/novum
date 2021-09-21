@@ -36,9 +36,9 @@ export class SitPdfViewerComponent extends SitDataBaseComponent implements After
   }
 
   ngAfterViewInit() {
-  //   document.addEventListener('webviewerloaded', function() {
-  //     this.pdfViewer.PDFViewerApplicationOptions.set('printResolution', 300);
-  //  })
+    document.addEventListener('webviewerloaded', function() {
+      this.pdfViewer.PDFViewerApplicationOptions.set('printResolution', 300);
+   })
   }
 
   private refreshPdfSource() {
