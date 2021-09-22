@@ -27,7 +27,8 @@ export class SitCustomersComponent extends SitDictBaseComponent {
     this.gridColumnsDefinition["sitHRParams4Invoicing"] = [
       { headerName: 'Od dnia', field: 'DateFrom', autoHeight: true, width: 100, sort: 'desc',suppressMenu: true, renderType: "date"}, // domyslny format yyyy-MM-dd - mozna przeciazyc przez np. renderFormat: "yyyy-MM-dd"
       { headerName: 'Składnik', field: 'PayrollComponentName', width: 110, sort: 'asc',suppressMenu: true, },
-      { headerName: 'Rodzaj', field: 'MarkupKindName', width: 100,suppressMenu: true },
+      { headerName: 'Rodzaj', field: 'MarkupKindName', tooltipField: 'MarkupKindName', width: 100,suppressMenu: true },
+      { headerName: 'Opis prac', field: 'WorkDesc', tooltipField: 'WorkDesc', filter: 'agTextColumnFilter', suppressMenu: true, width: 100,},
       { headerName: 'Próg', field: 'Threshold', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 100, sort: 'asc',suppressMenu: true},
       { headerName: 'Wartość', field: 'Value', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true,
         renderType: "number", renderFormat: '1.2-2'}, // domyslny format 1.2-2 - mozna przeciazyc przez np. renderFormat: 1.2-2"
