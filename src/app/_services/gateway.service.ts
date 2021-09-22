@@ -245,20 +245,28 @@ export class GatewayService {
             }));
     }
 
-    public UploadFile(file: File, fileId: string) {
+    private replaceChars(fileName: string) : string {
+        return fileName.replace("+","_")
+                       .replace("/","_")
+                       .replace("\\","_");                       
+    }
+
+    public UploadFile(file: File, fileId: string, ) {
         if (!file || !fileId) {
             return;
         }
+        var fileName = this.replaceChars(file.name);
         const fileData = new FormData();
-        fileData.append(fileId, file);
+        fileData.append(fileId, file, fileName);
         fileData.append('c', this.currentUserValue?.connection);
         const params = new HttpParams();
+
         const options = {
             params,
-            reportProgress: true,
+            reportProgress: true        
         };
-        const url = `/service/upload/files/${this.currentUserValue?.token}/${fileId}/${file.name}`;
+        const url = `/service/upload/files/${this.currentUserValue?.token}/${fileId}/${fileName}`;
         const req = new HttpRequest('POST', `${environment.apiUrl}${url}`, fileData, options);
-        return this.http.request(req);
+        return this.http.request(req);         
     }
 }
