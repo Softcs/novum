@@ -39,7 +39,7 @@ export class SitProcExpanderComponent implements OnInit {
     const panelItem = new sitProcExpanderItem();
     panelItem.actionExecuteData = actionExecuteData;
     panelItem.ident = ident;
-    panelItem.caption = actionDefinition.caption;
+    panelItem.caption = actionDefinition.caption || actionDefinition.tooltip;
     panelItem.componentFactoryIdent = actionExecuteData.componentParamsIdent;
     panelItem.isOpen = true;
     this.items.forEach(item => item.isOpen = false);
