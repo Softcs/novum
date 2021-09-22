@@ -4,10 +4,11 @@ export class ActionExecuteData {
     parent: string;
     tabIdent: string;
     activeRow: any;
+    generatedRow: any;
     actionIdent: string;
     sourceDataSetIdent: string;
     dataSetManagerSource: DataSetManager;
     componentParamsIdent: string;
     openKind: string;
-    hasInitProc: boolean;
+    hasInitProc: boolean;    
 }
