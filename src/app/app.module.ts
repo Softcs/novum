@@ -245,6 +245,7 @@ import { SitPubCostAnalysisComponent } from './containers/dictionaries/sit-pub-c
 import { SitProcRailCostAnalysisImportEditComponent } from './containers/dictionaries/sit-pub-cost-analysis/actions/sit-proc-rail-cost-analysis-import-edit/sit-proc-rail-cost-analysis-import-edit.component';
 import { SitEmployeeContractsEditComponent } from './containers/dictionaries/sit-employees/actions/sit-employee-contracts-edit/sit-employee-contracts-edit.component';
 import { SitCourierBookCourierEditComponent } from './containers/dictionaries/sit-wms-docs/actions/sit-courier-book-courier-edit/sit-courier-book-courier-edit.component';
+import { SitAgreementsChangeStatusEditComponent } from './containers/dictionaries/sit-publications-agreements/actions/sit-agreements-change-status-edit/sit-agreements-change-status-edit.component';
 
 
 @NgModule({
@@ -480,7 +481,8 @@ import { SitCourierBookCourierEditComponent } from './containers/dictionaries/si
         SitPubCostAnalysisComponent,
         SitProcRailCostAnalysisImportEditComponent,
         SitEmployeeContractsEditComponent,
-        SitCourierBookCourierEditComponent
+        SitCourierBookCourierEditComponent,
+        SitAgreementsChangeStatusEditComponent
 
     ],
     providers: [

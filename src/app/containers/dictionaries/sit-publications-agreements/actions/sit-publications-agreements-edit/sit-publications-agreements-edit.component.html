@@ -6,10 +6,15 @@
       <sit-data-radio #sitControl field="BillingFrequency" type="row" label="Częstotliwość rozliczenia"
         [buttons]="[{'caption':'brak','value': '0', 'checked':true},{'caption':'miesiąc','value':'1'},{'caption':'kwartał','value':'2'},
           {'caption':'półrocze','value':'3'},{'caption':'rok','value':'4'}]"
-      ></sit-data-radio>      
-      <sit-data-input #sitControl type="number" field="TimeToSettle" label="Czas do zapłaty" appearance="outline" ></sit-data-input>
-      <sit-data-input #sitControl type="number" field="TimeToPay" label="Czas do rozliczenia" appearance="outline" ></sit-data-input>
-      <sit-data-input #sitControl type="text" field="CurrencyIdent" label="Waluta" appearance="outline"  [lookupDisplayFields] = "['CurrencyIdent', 'CurrencyDesc']"></sit-data-input>
+      ></sit-data-radio>   
+      <div fxLayout="row">   
+        <sit-data-input #sitControl type="number" field="TimeToSettle" label="Czas do zapłaty" appearance="outline" ></sit-data-input>
+        <sit-data-input #sitControl type="number" field="TimeToPay" label="Czas do rozliczenia" appearance="outline" ></sit-data-input>
+      </div>
+      <div fxLayout="row">   
+        <sit-data-input #sitControl type="text" field="CurrencyIdent" label="Waluta" appearance="outline"  [lookupDisplayFields] = "['CurrencyIdent', 'CurrencyDesc']"></sit-data-input>
+        <sit-data-checkbox #sitControl field="IsAdvance" label="Czy jest zaliczka" indeterminate="false"></sit-data-checkbox>
+      </div>
     </div>
   </sit-data-set-container>
 </sit-proc-params>

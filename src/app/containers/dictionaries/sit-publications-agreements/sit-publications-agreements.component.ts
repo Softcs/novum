@@ -18,6 +18,8 @@ export class SitPublicationsAgreementsComponent extends SitDictBaseComponent {
       { headerName: 'Czas do rozliczenia', field: 'TimeToPay', filter: 'agTextColumnFilter', type: 'numericColumn', width: 70},
       { headerName: 'Waluta', field: 'CurrencyIdent', filter: 'agTextColumnFilter', width: 100 },
       { headerName: 'Publikacje', field: 'PublicationsIdents', tooltipField: 'PublicationsIdents', filter: 'agTextColumnFilter', width: 150},
+      { headerName: 'Zaliczka', field: 'IsAdvance', width: 100, renderType: 'checkbox'},
+      { headerName: 'Status', field: 'MainStatus_ValueName', filter: 'agTextColumnFilter', width: 150}
     ];
     this.gridColumnsDefinition["sitAgreementsBenef"] = [
       { headerName: 'Beneficjent', field: 'CustIdent', width: 150},
