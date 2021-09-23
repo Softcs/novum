@@ -124,6 +124,7 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
     data.componentParamsIdent = this.componentParamsIdent;
     data.openKind = this.openKind;
     data.hasInitProc = this.actionDefinition?.hasInitProc;
+
     return data;
   }
 
@@ -158,12 +159,14 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
       this.executeAction();
       return;
     }
-
+    var generatedRow = null;
     if (this.isInsert()) {
-      this.dataSetResponseWrapper.GenerateRow(null, true, this.actionDefinition?.editFields, true, this.dataSetManagerSource);
+      generatedRow = this.dataSetResponseWrapper.GenerateRow(null, true, this.actionDefinition?.editFields, true, this.dataSetManagerSource);
     }
 
     const actionExecuteData = this.getActionExecuteData();
+    actionExecuteData.generatedRow = generatedRow;
+    
     if (this.openKind === 'EXPANDER') {
       this.openActionOnExpander(actionExecuteData);
     } else {

@@ -24,6 +24,7 @@ export class SitProcParamsComponent implements AfterViewInit {
 
   private dataSetManagerSource: DataSetManager;
   private mainDataSet: DataSetWrapper;
+  private sourceDataSet: DataSetWrapper;
   private tabIndex: number;
   public dictIdent: string;
 
@@ -100,7 +101,9 @@ export class SitProcParamsComponent implements AfterViewInit {
     var actionRow = this.mainDataSet.GenerateRow(this.actionExecuteData.activeRow, true, null, false, null);
     !this.actionExecuteData.hasInitProc
        ? this.connectDataSetToControls(dataSetContainer, null)
-       : this.executInitProc(dataSetContainer, actionRow);       
+       : this.executInitProc(dataSetContainer, actionRow); 
+       
+     this.sourceDataSet = this.dataSetManagerSource.getDateSourceWrapper(this.actionExecuteData.sourceDataSetIdent);
   }
 
   ngAfterViewInit() {
@@ -112,7 +115,7 @@ export class SitProcParamsComponent implements AfterViewInit {
 
   discard() {
     if (this.isExpanderOpenKind()) {
-      this.close()
+      this.close(true)
     } else {
       this.openDiscardDialog();
     }
@@ -125,7 +128,7 @@ export class SitProcParamsComponent implements AfterViewInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.close();
+        this.close(false);
       }
     });
   }
@@ -136,7 +139,7 @@ export class SitProcParamsComponent implements AfterViewInit {
 
   onSave(e: string) {
     if (e === 'OK') {
-      this.close();
+      this.close(false);
     }
   }
 
@@ -159,16 +162,21 @@ export class SitProcParamsComponent implements AfterViewInit {
 
   private executeActionExceptionCallback(self) {
     self.executing = false;
-  }
+  }  
 
-  private close() {
+  private close(discard: boolean) {
     this.dataSetContainers?.forEach(container => {
       container.detachEvents();
     });
+
     if (this.isExpanderOpenKind()) {
-      this.actionExecuteData.dataSetManagerSource.procExpander.Close(this.actionExecuteData);
+      this.actionExecuteData.dataSetManagerSource.procExpander.Close(this.actionExecuteData, discard);
     } else {
-      this.tabService.removeTab(this.tabIndex);
+      this.tabService.removeTab(this.tabIndex);      
+    }
+
+    if (discard && this.actionExecuteData?.generatedRow && this.sourceDataSet) {
+      this.sourceDataSet.RemoveRow(this.actionExecuteData.generatedRow);
     }
   }
 

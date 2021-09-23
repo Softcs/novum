@@ -39,22 +39,23 @@ export class SitProcExpanderComponent implements OnInit {
     const panelItem = new sitProcExpanderItem();
     panelItem.actionExecuteData = actionExecuteData;
     panelItem.ident = ident;
-    panelItem.caption = actionDefinition.caption;
+    panelItem.caption = actionDefinition.caption || actionDefinition.tooltip;
     panelItem.componentFactoryIdent = actionExecuteData.componentParamsIdent;
     panelItem.isOpen = true;
     this.items.forEach(item => item.isOpen = false);
     this.items.push(panelItem);
   }
 
-  public Close(actionExecuteData: ActionExecuteData) {
-    const index = this.items.findIndex( p => p.ident == actionExecuteData.actionIdent);
+  public Close(actionExecuteData: ActionExecuteData, discard: boolean) {
+    const item = this.items.find( p => p.ident == actionExecuteData.actionIdent);
+    const index = this.items.indexOf(item);
+    
     if (index !== -1) {
       this.items.splice(index, 1);
-    }
+    }   
   }
 
   public onHeaderClick(item) {
     item.isOpen = !item.isOpen;
   }
-
 }

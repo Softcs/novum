@@ -155,6 +155,26 @@ export class DataSetWrapper {
         }
     }
 
+    public RemoveRow(row: any) {
+        if (row == null) {
+            return;
+        }
+        
+        var changeActiveRow = row == this.activeRow;
+        var index = this._rows.indexOf(row);
+
+        this._rows.splice(index, 1);
+        this.dataSourceManager.RemoveRow(this, row);
+        var newActiveRow = null;
+        newActiveRow = index == this._rows.length 
+              ? this._rows[this._rows.length-1]
+              : this._rows[index];
+        
+        if (changeActiveRow) {
+            this.SetActiveRow(newActiveRow);
+        }
+    }
+
     private initRowByEditFields(row: any, editFields: any[]) {
         if (editFields == null) {
             return;

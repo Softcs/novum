@@ -224,6 +224,18 @@ export class SitDataSetContainerComponent {
       });
   }
 
+  public RemoveRow(newRow: any) {
+    this.datasSourcesInterface.forEach(control => {
+        const gridApi = this.gridService.getGridApi(control)
+        
+        if (!gridApi) {
+          return false;          
+        }
+
+        gridApi.applyTransaction({ remove: [newRow] });
+      });
+  }
+
   private pepareControlForButtons(buttons: QueryList<SitButtonBaseComponent>) {
     if (buttons) {
       buttons.forEach(button => {
