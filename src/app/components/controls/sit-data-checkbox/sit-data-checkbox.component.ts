@@ -11,9 +11,10 @@ import {MatCheckboxChange} from '@angular/material/checkbox';
 export class SitDataCheckboxComponent extends SitDataBaseComponent {
   @Input() label = '';
   @Input() width: string;
-  @Input() refreshOnChange: boolean; 
+  @Input() refreshOnChange: boolean;
+  @Input() labelPosition: 'after';  
   
-  labelPosition: 'before' | 'after' = 'after'; //pozycja etykiety checkboxa, domyslnie za
+  //labelPosition: 'before' | 'after' = 'after'; //pozycja etykiety checkboxa, domyslnie za
 
   constructor(renderer: Renderer2) {
     super(renderer);

@@ -5,9 +5,8 @@
     [name]="id"
     (change)="onChange($event)"
     [disabled]="readonly"
-    [labelPosition]
+    [labelPosition]="labelPosition"
     [checked]="value"
-  >
+  >{{label}}
   </mat-checkbox>
-  <label [for]="id" class="sit-data-checkbox-label"> {{label}}</label>
 </div>
