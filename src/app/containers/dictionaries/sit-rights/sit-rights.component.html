@@ -1,152 +1,159 @@
 <sit-dict-container ident="sitRights" #sitDictcontainer fxFill>
-  <div class="content" fxLayout="row" fxFill fxLayoutGap="5px">
-    <div fxFlex=50 fxLayout="column">
-      <div fxFlex=50 fxLayout="column">
-        <div class="sit-grid-title">Grupy uprawnień</div>
-        <sit-data-set-container ident="sitFilterRightsGroups" fxLayout="row">
-          <div class="sit-filter-bar">
-            <sit-data-input #sitControl field="searchRightsGroups" label="Filtruj grupy" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
+  <as-split direction="horizontal">
+    <as-split-area [size]="35">
+      <as-split direction="vertical">
+        <as-split-area [size]="50">
+          <div fxLayout="column" fxFill class="content">
+            <div class="sit-grid-title">Grupy uprawnień</div>
+            <sit-data-set-container ident="sitFilterRightsGroups" fxLayout="row">
+              <div class="sit-filter-bar">
+                <sit-data-input #sitControl field="searchRightsGroups" label="Filtruj grupy" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
+              </div>
+            </sit-data-set-container>
+            <sit-data-set-container  ident="sitRightsGroups" showActionsToolbar="true" fxFlex fxLayout="column">
+              <div class="data-table" fxFlex>
+                <ag-grid-angular 
+                  #sitSetDataSource
+                  style="width: 100%; height: 100%;"
+                  class="ag-theme-balham"
+                >
+                </ag-grid-angular>
+              </div>
+            </sit-data-set-container>
+          </div>  
+        </as-split-area>
+        <as-split-area [size]="50">
+          <div fxLayout="column" fxFill class="content">      
+            <div class="sit-grid-title">Użytkownicy w grupie</div>
+            <sit-data-set-container  ident="sitRightsGroupUsers" showActionsToolbar="true" fxFlex fxLayout="column">
+              <div class="data-table" fxFlex>
+                <ag-grid-angular
+                  #sitSetDataSource
+                  style="width: 100%; height: 100%;"
+                  class="ag-theme-balham"
+                >
+                </ag-grid-angular>
+              </div>
+            </sit-data-set-container>
           </div>
-        </sit-data-set-container>
-        <sit-data-set-container  ident="sitRightsGroups" showActionsToolbar="true" fxFlex fxLayout="column">
-          <div class="data-table" fxFlex>
-            <ag-grid-angular #sitSetDataSource
-              #agGrid
-              id="gridRightsGroups"
-              style="width: 100%; height: 100%;"
-              class="ag-theme-balham"
-            >
-            </ag-grid-angular>
-          </div>
-        </sit-data-set-container>
-      </div>
-      <div fxFlex fxLayout="column">
-        <div class="sit-grid-title">Użytkownicy w grupie</div>
-        <sit-data-set-container  ident="sitRightsGroupUsers" showActionsToolbar="true" fxFlex fxLayout="column">
-          <div class="data-table" fxFlex>
-            <ag-grid-angular #sitSetDataSource
-              #agGrid
-              id="gridRightsGroupUsers"
-              style="width: 100%; height: 100%;"
-              class="ag-theme-balham"
-            >
-            </ag-grid-angular>
-          </div>
-        </sit-data-set-container>
-
-      </div>
-    </div>
-    <div fxFlex fxLayout="column">
+        </as-split-area>
+      </as-split>
+    </as-split-area>  
+    <as-split-area [size]="65">
       <mat-tab-group id="tab-group" animationDuration="0ms">
         <mat-tab label="Aplikacja">
-          <div fxFill fxLayout="column">
-            <div fxFlex=35 fxLayout="column">
-              <div class="sit-grid-title">Dictionaries</div>
-              <sit-data-set-container ident="sitFilterSysDictionaries" fxLayout="row">
-                <div class="sit-filter-bar">
-                  <sit-data-input #sitControl field="searchDictionaries" label="Filtruj" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
-                </div>
-              </sit-data-set-container>
-              <sit-data-set-container  ident="sitSysDictionaries" showActionsToolbar="true" fxFlex fxLayout="column">
-                <div class="data-table" fxFlex>
-                  <ag-grid-angular #sitSetDataSource
-                    #agGrid
-                    id="gridDictionaries"
-                    style="width: 100%; height: 100%;"
-                    class="ag-theme-balham"
-                  >
-                  </ag-grid-angular>
-                </div>
-              </sit-data-set-container>
-
-            </div>
-            <div fxFlex=35 fxLayout="column">
-              <div class="sit-grid-title">Datasources</div>
-              <sit-data-set-container ident="sitFilterSysDatasources" fxLayout="row">
-                <div class="sit-filter-bar">
-                  <sit-data-input #sitControl field="searchDatasources" label="Filtruj" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
-                </div>
-              </sit-data-set-container>
-              <sit-data-set-container ident="sitSysDatasources" showActionsToolbar="true" fxFlex fxLayout="column">
-                <div class="data-table" fxFlex>
-                  <ag-grid-angular #sitSetDataSource
-                    #agGrid
-                    id="gridDatasources"
-                    style="width: 100%; height: 100%;"
-                    class="ag-theme-balham"
-                  >
-                  </ag-grid-angular>
-                </div>
-              </sit-data-set-container>
-            </div>
-            <div fxFlex fxLayout="column">
-              <div class="sit-grid-title">Actions</div>
-              <sit-data-set-container ident="sitFilterSysActions" fxLayout="row">
-                <div class="sit-filter-bar">
-                  <sit-data-input #sitControl field="searchActions" label="Filtruj" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
-                </div>
-              </sit-data-set-container>
-
-              <sit-data-set-container  ident="sitSysActions" showActionsToolbar="true" fxFlex fxLayout="column">
-                <div class="data-table" fxFlex>
-                  <ag-grid-angular #sitSetDataSource
-                    #agGrid
-                    id="gridActions"
-                    style="width: 100%; height: 100%;"
-                    class="ag-theme-balham"
-                  >
-                  </ag-grid-angular>
-                </div>
-              </sit-data-set-container>
-            </div>
-          </div>
+          <as-split direction="horizontal">
+            <as-split-area [size]="50">
+              <div fxLayout="column" fxFill class="content">
+                <div class="sit-grid-title">Dictionaries</div>
+                <sit-data-set-container ident="sitFilterSysDictionaries" fxLayout="row">
+                  <div class="sit-filter-bar">
+                    <sit-data-input #sitControl field="searchDictionaries" label="Filtruj" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
+                  </div>
+                </sit-data-set-container>
+                <sit-data-set-container  ident="sitSysDictionaries" showActionsToolbar="true" fxFlex fxLayout="column">
+                  <div class="data-table" fxFlex>
+                    <ag-grid-angular 
+                      #sitSetDataSource
+                      style="width: 100%; height: 100%;"
+                      class="ag-theme-balham"
+                    >
+                    </ag-grid-angular>
+                  </div>
+                </sit-data-set-container>
+              </div>
+            </as-split-area>
+            <as-split-area [size]="50">
+              <as-split direction="vertical">
+                <as-split-area [size]="50">
+                  <div fxLayout="column" fxFill class="content">
+                    <div class="sit-grid-title">Datasources</div>
+                    <sit-data-set-container ident="sitFilterSysDatasources" fxLayout="row">
+                      <div class="sit-filter-bar">
+                        <sit-data-input #sitControl field="searchDatasources" label="Filtruj" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
+                      </div>
+                    </sit-data-set-container>
+                    <sit-data-set-container ident="sitSysDatasources" showActionsToolbar="true" fxFlex fxLayout="column">
+                      <div class="data-table" fxFlex>
+                        <ag-grid-angular
+                          #sitSetDataSource
+                          style="width: 100%; height: 100%;"
+                          class="ag-theme-balham"
+                        >
+                        </ag-grid-angular>
+                      </div>
+                    </sit-data-set-container>
+                  </div>
+                </as-split-area>
+                <as-split-area [size]="50">
+                  <div fxLayout="column" fxFill class="content">   
+                    <div class="sit-grid-title">Actions</div>
+                    <sit-data-set-container ident="sitFilterSysActions" fxLayout="row">
+                      <div class="sit-filter-bar">
+                        <sit-data-input #sitControl field="searchActions" label="Filtruj" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
+                      </div>
+                    </sit-data-set-container>
+                    <sit-data-set-container  ident="sitSysActions" showActionsToolbar="true" fxFlex fxLayout="column">
+                      <div class="data-table" fxFlex>
+                        <ag-grid-angular 
+                          #sitSetDataSource
+                          style="width: 100%; height: 100%;"
+                          class="ag-theme-balham"
+                        >
+                        </ag-grid-angular>
+                      </div>
+                    </sit-data-set-container>
+                  </div>
+                </as-split-area>
+              </as-split>                 
+            </as-split-area>
+          </as-split>
         </mat-tab>
         <mat-tab label="Archiwum umów">
-          <div fxLayout="column" fxFill>
-            <div fxFlex="50" fxLayout="column">
-              <div class="sit-grid-title">Lokalizacje</div>
-              <sit-data-set-container ident="sitFilterLocations" fxLayout="row">
-                <div class="sit-filter-bar">
-                  <sit-data-input #sitControl field="searchLocations" label="Filtruj" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
-                </div>
-              </sit-data-set-container>
-
-              <sit-data-set-container  ident="sitLocations" showActionsToolbar="true" fxFlex fxLayout="column">
-                <div class="data-table" fxFlex>
-                  <ag-grid-angular #sitSetDataSource
-                    #agGrid
-                    id="gridLocations"
-                    style="width: 100%; height: 100%;"
-                    class="ag-theme-balham"
-                  >
-                  </ag-grid-angular>
-                </div>
-              </sit-data-set-container>
-            </div>
-            <div fxFlex fxLayout="column">
-              <div class="sit-grid-title">Typy umów</div>
-              <sit-data-set-container ident="sitFilterAgreementsTypes" fxLayout="row">
-                <div class="sit-filter-bar">
-                  <sit-data-input #sitControl field="searchAgreementsTypes" label="Filtruj" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
-                </div>
-              </sit-data-set-container>
-
-              <sit-data-set-container  ident="sitAgreementsTypes" showActionsToolbar="true" fxFlex fxLayout="column">
-                <div class="data-table" fxFlex>
-                  <ag-grid-angular #sitSetDataSource
-                    #agGrid
-                    id="gridAgreementsTypes"
-                    style="width: 100%; height: 100%;"
-                    class="ag-theme-balham"
-                  >
-                  </ag-grid-angular>
-                </div>
-              </sit-data-set-container>
-            </div>
-
-          </div>
+          <as-split direction="vertical">
+            <as-split-area [size]="50">
+              <div fxLayout="column" fxFill class="content">
+                <div class="sit-grid-title">Lokalizacje</div>
+                <sit-data-set-container ident="sitFilterLocations" fxLayout="row">
+                  <div class="sit-filter-bar">
+                    <sit-data-input #sitControl field="searchLocations" label="Filtruj" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
+                  </div>
+                </sit-data-set-container>
+                <sit-data-set-container  ident="sitLocations" showActionsToolbar="true" fxFlex fxLayout="column">
+                  <div class="data-table" fxFlex>
+                    <ag-grid-angular
+                      #sitSetDataSource
+                      style="width: 100%; height: 100%;"
+                      class="ag-theme-balham"
+                    >
+                    </ag-grid-angular>
+                  </div>
+                </sit-data-set-container>
+              </div>
+            </as-split-area>
+            <as-split-area [size]="50">
+              <div fxLayout="column" fxFill class="content"> 
+                <div class="sit-grid-title">Typy umów</div>
+                <sit-data-set-container ident="sitFilterAgreementsTypes" fxLayout="row">
+                  <div class="sit-filter-bar">
+                    <sit-data-input #sitControl field="searchAgreementsTypes" label="Filtruj" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
+                  </div>
+                </sit-data-set-container>
+                <sit-data-set-container  ident="sitAgreementsTypes" showActionsToolbar="true" fxFlex fxLayout="column">
+                  <div class="data-table" fxFlex>
+                    <ag-grid-angular
+                      #sitSetDataSource
+                      style="width: 100%; height: 100%;"
+                      class="ag-theme-balham"
+                    >
+                    </ag-grid-angular>
+                  </div>
+                </sit-data-set-container>
+              </div>
+            </as-split-area>
+          </as-split>
         </mat-tab>
       </mat-tab-group>
-    </div>
-  </div>
+    </as-split-area>
+  </as-split>
 </sit-dict-container>

@@ -1,42 +1,43 @@
 <sit-dict-container ident="sitAppUsers" #sitDictcontainer fxFill >
-  <div fxFill fxLayout="row" fxLayoutGap="5px">
-    <div fxFlex="60" fxLayout="column">
-      <sit-data-set-container ident="sitFilterAppUsers" >
-        <div class="sit-filter-bar">
-          <sit-data-input #sitControl field="searchAppUsers" label="Filtruj użytkowników" placeholder="Nazwwisko, Imię, e-mail" appearance="outline" style="width: 300px;" showRefreshButton="true"></sit-data-input>
-        </div>
-      </sit-data-set-container>
-      <sit-data-set-container ident="sitAppUsers" showActionsToolbar="true" fxFlex fxLayout="column">
-        <div class="data-table" fxFlex>
-          <ag-grid-angular
-            #sitSetDataSource
-            #sitAppUsersGrid
-            style="width: 100%; height: 100%;"
-            class="ag-theme-balham"
-          >
-          </ag-grid-angular>
-        </div>
-      </sit-data-set-container>
-    </div>
-    <div fxFlex fxLayout="column">
-      <div class="sit-grid-title">Firmy użytkownika</div>
-      <sit-data-set-container ident="sitFilterAppUserCompanies" >
-        <div class="sit-filter-bar">
-            <sit-data-input #sitControl field="searchAppUserCompanies" label="Filtruj firmy" placeholder="Identyfikator, Nazwa" appearance="outline" style="width: 300px;" showRefreshButton="true"></sit-data-input>
-        </div>
-      </sit-data-set-container>
-      <sit-data-set-container ident="sitAppUserCompanies" showActionsToolbar="true" fxFlex fxLayout="column">
-        <div class="data-table" fxFlex>
-          <ag-grid-angular
-            #sitSetDataSource
-            #sitAppUserCompaniesGrid
-            id="gridAppUserCompanies"
-            style="width: 100%; height: 100%;"
-            class="ag-theme-balham"
-          >
-          </ag-grid-angular>
-        </div>
-      </sit-data-set-container>
-    </div>
-  </div>
+  <as-split direction="horizontal">
+    <as-split-area [size]="60">
+      <div fxLayout="column" fxFill class="content">
+        <sit-data-set-container ident="sitFilterAppUsers" fxLayout="row">
+          <div class="sit-filter-bar" fxLayout="row">
+            <sit-data-input #sitControl field="searchAppUsers" label="Filtruj użytkowników" placeholder="Nazwwisko, Imię, e-mail" appearance="outline" style="width: 300px;" showRefreshButton="true"></sit-data-input>
+          </div>
+        </sit-data-set-container>
+        <sit-data-set-container ident="sitAppUsers" showActionsToolbar="true" fxLayout="column" fxFlex>
+          <div class="data-table" fxFlex>
+            <ag-grid-angular
+              #sitSetDataSource
+              style="width: 100%; height: 100%;"
+              class="ag-theme-balham"
+            >
+            </ag-grid-angular>
+          </div>
+        </sit-data-set-container>
+      </div>
+    </as-split-area>
+    <as-split-area [size]="40">
+      <div fxLayout="column" fxFill class="content">
+        <div class="sit-grid-title">Firmy użytkownika</div>
+        <sit-data-set-container ident="sitFilterAppUserCompanies" >
+          <div class="sit-filter-bar">
+              <sit-data-input #sitControl field="searchAppUserCompanies" label="Filtruj firmy" placeholder="Identyfikator, Nazwa" appearance="outline" style="width: 300px;" showRefreshButton="true"></sit-data-input>
+          </div>
+        </sit-data-set-container>
+        <sit-data-set-container ident="sitAppUserCompanies" showActionsToolbar="true" fxFlex fxLayout="column">
+          <div class="data-table" fxFlex>
+            <ag-grid-angular
+              #sitSetDataSource
+              style="width: 100%; height: 100%;"
+              class="ag-theme-balham"
+            >
+            </ag-grid-angular>
+          </div>
+        </sit-data-set-container>
+      </div>
+    </as-split-area>
+  </as-split>
 </sit-dict-container>
