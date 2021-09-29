@@ -1,0 +1,48 @@
+<sit-dict-container ident="sitCustomersGroups" #sitDictcontainer fxFill >
+    <as-split direction="horizontal">
+      <as-split-area [size]="50">
+        <div fxFill fxLayout="column">
+          <sit-data-set-container ident="sitFilterCustomersGroups" >
+            <div class="sit-filter-bar">
+              <sit-data-input #sitControl field="searchGroups" label="Filtruj grupy" placeholder="" appearance="outline" style="width: 300px;" showRefreshButton="true"></sit-data-input>
+            </div>
+          </sit-data-set-container>
+          <sit-data-set-container ident="sitCustomersGroups" showActionsToolbar="true" fxFlex fxLayout="column">
+            <div class="data-table" fxFlex>
+              <ag-grid-angular
+                #sitSetDataSource
+                style="width: 100%; height: 100%;"
+                class="ag-theme-balham"
+                [treeData]="true"
+                [getDataPath]="getDataPath"
+                [autoGroupColumnDef]="autoGroupColumnDef"
+                [groupDefaultExpanded]="groupDefaultExpanded"
+              >
+              </ag-grid-angular>
+            </div>
+          </sit-data-set-container>
+        </div>
+      </as-split-area>
+      <as-split-area [size]="50">
+        <div fxFill fxLayout="column">
+          <sit-data-set-container ident="sitFilterCustomerInCustomersGroups" >
+            <div class="sit-filter-bar">
+              <sit-data-input #sitControl field="searchCustomers" label="Filtruj kontrahentów" placeholder="" appearance="outline" style="width: 300px;" showRefreshButton="true"></sit-data-input>
+            </div>
+          </sit-data-set-container>
+          <div class="sit-grid-title">Kontrahenci w grupie</div>
+          <sit-data-set-container ident="sitCustomerInCustomersGroups" showActionsToolbar="true" fxFlex fxLayout="column">
+            <div class="data-table" fxFlex>
+                <ag-grid-angular
+                  #sitSetDataSource
+                  style="width: 100%; height: 100%;"
+                  class="ag-theme-balham"
+                >
+                </ag-grid-angular>
+              </div>
+          </sit-data-set-container>
+        </div>
+      </as-split-area>
+    </as-split>
+  </sit-dict-container>
+  
