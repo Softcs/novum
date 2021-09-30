@@ -274,7 +274,7 @@ export class DataSetManager {
                     if (data.length === 1) {
                         const response = data[0];
                         const wasErrors = this.PropagateErrors(dataSourceIdent, response?.Errors);
-                        this.RefreshOneRows(response.dataSourcesResponse, dataSourcesRequest);
+                        this.RefreshOneRows(response.dataSourcesResponse, dataSourcesRequest, actionIdent, dataSourceIdent);
                         if (!wasErrors) {
                             if(executeActionCompletedCallback != null) {
                                 executeActionCompletedCallback(owner);
@@ -326,8 +326,13 @@ export class DataSetManager {
         return errors != null && errors.length > 0;
     }
 
-    public RefreshOneRows(dataSourcesResponse, dataSourcesRequest) {
+    public RefreshOneRows(dataSourcesResponse, dataSourcesRequest, actionIdent, dataSourceIdent) {
         if (!dataSourcesResponse) {
+            return;
+        }
+        
+        const actionDefinition = this.dictInfo?.FindActionDefinition(actionIdent, dataSourceIdent);
+        if (!actionDefinition || actionDefinition.refreshAfter) {
             return;
         }
 
