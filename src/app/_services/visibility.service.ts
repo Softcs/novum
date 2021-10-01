@@ -32,7 +32,10 @@ export class VisibilityService {
     if (visibilityRule && !activeRow) {
       return false;
     }
-    
-    return activeRow[visibilityRule.fieldName].toString() === visibilityRule.value;     
+    var value = activeRow[visibilityRule.fieldName];
+    if (value === null) {
+      value = "";
+    }
+    return  value.toString() === visibilityRule.value;     
   }
 }
