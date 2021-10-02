@@ -2,6 +2,7 @@ import { DataSetManager, Operation } from '.';
 import { Output, EventEmitter, Directive } from '@angular/core';
 import { Guid } from 'guid-typescript';
 import { _ } from 'ag-grid-community';
+import { RefreshType } from '@app/_consts/RefreshType';
 
 @Directive()
 export class DataSetWrapper {
@@ -78,7 +79,7 @@ export class DataSetWrapper {
             this.activeRow = row;
             this.activeRowChanged.emit(this.activeRow);
             if (refreshChildren) {
-                this.dataSourceManager.RefreshChildren(this);
+                this.dataSourceManager.RefreshChildren(this, RefreshType.ActiveRow);
             }
         }
     }

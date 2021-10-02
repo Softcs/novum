@@ -46,7 +46,12 @@ export class SitPdfViewerComponent extends SitDataBaseComponent implements After
     // załączniki
     if (this.reportType === 'att') {
       this.downloadFileName = this.dataSetWrapper.getFieldValue('FileName');
-      this.pdfSrc = this.urlService.getAttachmentUrl(this.dataSetWrapper.getFieldValue('sitAttachmentsG'), this.downloadFileName)
+      var attachG = this.dataSetWrapper.getFieldValue('sitAttachmentsG');      
+      if (attachG == null) {
+        this.showPDF = false;
+        return;
+      }
+      this.pdfSrc = this.urlService.getAttachmentUrl(this.dataSetWrapper.getFieldValue(attachG), this.downloadFileName)
       return;
     }
     // dowody

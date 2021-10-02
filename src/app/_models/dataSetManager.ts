@@ -5,6 +5,7 @@ import { GatewayService } from '@app/_services';
 import { first } from 'rxjs/operators';
 import { DataSetDefinitionWrapper } from './dataSetDefinitionWrapper';
 import { SitProcExpanderComponent } from '@app/components/controls/sit-proc-expander/sit-proc-expander.component';
+import { RefreshType } from '@app/_consts/RefreshType';
 
 @Directive()
 export class DataSetManager {
@@ -95,7 +96,7 @@ export class DataSetManager {
             if(wrapper == null) {
                 return;
             }
-            const obj = this.getObjectForDataSourceRequest(wrapper, true);
+            const obj = this.getObjectForDataSourceRequest(wrapper, true);            
             dataSourcesRequest.push(obj);
             this.prapareDataSource4Request(dataSourceDefinition, dataSourcesRequest);
         });
@@ -111,7 +112,7 @@ export class DataSetManager {
         this.RefreshInternall(dataSourcesRequest);
     }
 
-    public RefreshChildren(dataSetResponseWrapper: DataSetWrapper) {
+    public RefreshChildren(dataSetResponseWrapper: DataSetWrapper, refreshType: RefreshType = RefreshType.Default) {
         if (this.dictInfo == null) {
             return;
         }
@@ -134,7 +135,12 @@ export class DataSetManager {
                 return;
             }
             this.prapareDataSource4RequestParent(dsDefItem, dataSourcesRequest);
-         });
+        });
+        
+        if (dataSourcesRequest.filter(d => d.refresh).length == 0) {
+            return;
+        }
+
         this.RefreshInternall(dataSourcesRequest);
     }
 
@@ -268,7 +274,7 @@ export class DataSetManager {
                     if (data.length === 1) {
                         const response = data[0];
                         const wasErrors = this.PropagateErrors(dataSourceIdent, response?.Errors);
-                        this.RefreshOneRows(response.dataSourcesResponse, dataSourcesRequest);
+                        this.RefreshOneRows(response.dataSourcesResponse, dataSourcesRequest, actionIdent, dataSourceIdent);
                         if (!wasErrors) {
                             if(executeActionCompletedCallback != null) {
                                 executeActionCompletedCallback(owner);
@@ -320,8 +326,13 @@ export class DataSetManager {
         return errors != null && errors.length > 0;
     }
 
-    public RefreshOneRows(dataSourcesResponse, dataSourcesRequest) {
+    public RefreshOneRows(dataSourcesResponse, dataSourcesRequest, actionIdent, dataSourceIdent) {
         if (!dataSourcesResponse) {
+            return;
+        }
+        
+        const actionDefinition = this.dictInfo?.FindActionDefinition(actionIdent, dataSourceIdent);
+        if (!actionDefinition || actionDefinition.refreshAfter) {
             return;
         }
 
