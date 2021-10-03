@@ -10,8 +10,6 @@ import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-di
 export class SitAppUsersComponent extends SitDictBaseComponent {
 
   public prepareColumnsDefinitnion() {
-    this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
-
     this.gridColumnsDefinition["sitAppUsers"] = [
       { headerName: 'Id', field: 'sitAppUsersId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 50, defaultVisibility: false },
       { headerName: 'GUID', field: 'sitAppUsersG', width: 100, defaultVisibility: false },
@@ -21,10 +19,8 @@ export class SitAppUsersComponent extends SitDictBaseComponent {
       { headerName: 'e-mail', field: 'email', width: 200 },
       { headerName: 'MenuId', field: 'sitMenuId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 80, defaultVisibility: false },
       { headerName: 'Menu', field: 'Symbol', width: 100 },
-      { headerName: 'Aktywny', field: 'IsActive', cellRenderer: 'gridCheckboxRenderer', cellClass: "grid-cell-centered", width: 100, suppressMenu: true  },
-      { headerName: 'Administrator', field: 'IsAdmin', cellRenderer: 'gridCheckboxRenderer', cellClass: "grid-cell-centered", width: 100, suppressMenu: true  },
-
-
+      { headerName: 'Aktywny', field: 'IsActive', renderType: 'checkbox', suppressMenu: true, cellClass: "grid-cell-centered", width: 80 },
+      { headerName: 'Admin', field: 'IsAdmin', renderType: 'checkbox', suppressMenu: true, cellClass: "grid-cell-centered", width: 80 },
     ];
 
     this.gridColumnsDefinition["sitAppUserCompanies"] = [
@@ -33,8 +29,7 @@ export class SitAppUsersComponent extends SitDictBaseComponent {
       { headerName: 'Identyfikator', field: 'CompanyIdent', flex: 2 },
       { headerName: 'Nazwa', field: 'CompanyDescription', flex: 3 },
       { headerName: 'Plik konfig.', field: 'ConfigFile', flex: 1 },
-      { headerName: 'Domyślna', field: 'IsDefault', cellRenderer: 'gridCheckboxRenderer', cellClass: "grid-cell-centered", flex: 1  },
-
+      { headerName: 'Domyślna', field: 'IsDefault', renderType: 'checkbox', cellClass: "grid-cell-centered",width: 100 },
     ];
 
    }
