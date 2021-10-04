@@ -114,6 +114,8 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
         cellClass: ['font11','numberFormat2Dec'],
         pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
       },
+      { headerName: 'St.mies.', field: 'MonthRate', width: 90, suppressMenu: true, renderType: 'checkbox'
+      },
       { headerName: 'Godziny',
         children: [
           { headerName: 'Suma', field: 'H_Sum', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, suppressMenu: true, agr: 'sum',
