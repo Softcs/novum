@@ -1,3 +1,5 @@
+import { SitHRWorkingHoursEditComponent } from './../containers/dictionaries/sit-hr-working-hours/actions/sit-hrworking-hours-edit/sit-hrworking-hours-edit.component';
+import { SitHRWorkingHoursComponent } from './../containers/dictionaries/sit-hr-working-hours/sit-hr-working-hours.component';
 import { SitSettlementsComponent } from './../containers/dictionaries/sit-settlements/sit-settlements.component';
 import { SitAppUsersInCompanyEditComponent } from './../containers/dictionaries/sit-app-users-in-company/actions/sit-app-users-in-company-edit/sit-app-users-in-company-edit.component';
 import { SitAppUsersInCompanyComponent } from './../containers/dictionaries/sit-app-users-in-company/sit-app-users-in-company.component';
@@ -306,6 +308,8 @@ export class FactoryService {
         sitCourierBookCourierEdit: SitCourierBookCourierEditComponent,
         sitAgreementsChangeStatusEdit: SitAgreementsChangeStatusEditComponent,
         sitCustomersGroups: SitCustomersGroupsComponent,
+        sitHRWorkingHours: SitHRWorkingHoursComponent,
+        sitHRWorkingHoursEdit: SitHRWorkingHoursEditComponent
     };
 
     public GetFactory(ident: string) {
