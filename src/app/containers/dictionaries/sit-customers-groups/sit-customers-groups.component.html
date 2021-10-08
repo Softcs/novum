@@ -26,8 +26,11 @@
       <as-split-area [size]="50">
         <div fxFill fxLayout="column">
           <sit-data-set-container ident="sitFilterCustomerInCustomersGroups" >
-            <div class="sit-filter-bar">
+            <div class="sit-filter-bar" fxLayout="row">
               <sit-data-input #sitControl field="searchCustomers" label="Filtruj kontrahentów" placeholder="" appearance="outline" style="width: 300px;" showRefreshButton="true"></sit-data-input>
+              <sit-data-input #sitControl field="forDateCustomers" type="date" label="Na dzień" appearance="outline" style="width: 200px;" showRefreshButton="false"></sit-data-input>
+              <sit-data-checkbox #sitControl field="allDateCustomers" label="Wszystkie wpisy" labelPosition="after" checked="false"></sit-data-checkbox>
+              <sit-data-checkbox #sitControl field="showWithUpLevelCustomers" label="Pokaż w hierarchii" labelPosition="after" checked="true"></sit-data-checkbox>
             </div>
           </sit-data-set-container>
           <div class="sit-grid-title">Kontrahenci w grupie</div>

@@ -18,6 +18,7 @@ export class SitCustomersGroupsComponent extends SitDictBaseComponent {
       headerName: 'Struktura',
       minWidth: 400,
       cellRendererParams: { suppressCount: true },
+      sort:'asc'
     };
     this.groupDefaultExpanded = -1;
 
