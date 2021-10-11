@@ -16,6 +16,9 @@ export class SitSettlementsComponent extends SitDictBaseComponent {
 
   public prepareColumnsDefinitnion() {
     this.gridColumnsDefinition["sitSettlements"] = [
+      { headerName: 'Grupa', field: 'CustomersGroupIdent', filter: 'agTextColumnFilter', width: 100 },
+      { headerName: 'Nazwa grupy', field: 'CustomersGroupName', filter: 'agTextColumnFilter', width: 200 ,defaultVisibility: false},
+      { headerName: 'Handlowiec', field: 'AccountManager', filter: 'agTextColumnFilter', width: 200 ,defaultVisibility: false},
       { headerName: 'Ident.', field: 'CustIdent', filter: 'agTextColumnFilter', width: 100 },
       { headerName: 'Nazwa', field: 'CustName', tooltipField: 'CustName', filter: 'agTextColumnFilter', width: 200 },
       { headerName: 'Numer', field: 'DocumentNumber', tooltipField: 'DocumentNumber', filter: 'agTextColumnFilter', width: 200 },
@@ -41,6 +44,9 @@ export class SitSettlementsComponent extends SitDictBaseComponent {
     ];
 
     this.gridColumnsDefinition["sitSettlementsByAge"] = [
+      { headerName: 'Grupa', field: 'CustomersGroupIdent', filter: 'agTextColumnFilter', width: 100 },
+      { headerName: 'Nazwa grupy', field: 'CustomersGroupName', filter: 'agTextColumnFilter', width: 200 ,defaultVisibility: false},
+      { headerName: 'Handlowiec', field: 'AccountManager', filter: 'agTextColumnFilter', width: 200 ,defaultVisibility: false},
       { headerName: 'Ident.', field: 'CustIdent', filter: 'agTextColumnFilter', width: 100 },
       { headerName: 'Nazwa', field: 'CustName', tooltipField: 'CustName', filter: 'agTextColumnFilter', width: 200 },
       { headerName: 'Nierozl.', field: 'SumAll', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, renderType: 'number', agr: "sum"},
@@ -54,8 +60,7 @@ export class SitSettlementsComponent extends SitDictBaseComponent {
       { headerName: 'P06', field: 'pr06', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, renderType: 'number', agr: "sum"},
       { headerName: 'Po term.', field: 'AfterPaymentDate', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, renderType: 'number', agr: "sum"},
       { headerName: 'Wpłaty', field: 'DepositAmount', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, renderType: 'number', agr: "sum"},
-
     ];
   }
 
-  }
+}
