@@ -249,6 +249,7 @@ import { SitAgreementsChangeStatusEditComponent } from './containers/dictionarie
 import { SitCustomersGroupsComponent } from './containers/dictionaries/sit-customers-groups/sit-customers-groups.component';
 import { SitHRWorkingHoursComponent } from './containers/dictionaries/sit-hr-working-hours/sit-hr-working-hours.component';
 import { SitHRWorkingHoursEditComponent } from './containers/dictionaries/sit-hr-working-hours/actions/sit-hrworking-hours-edit/sit-hrworking-hours-edit.component';
+import { SitEmployeesContractsHRDepartmentsComponent } from './containers/dictionaries/sit-employees-contracts-hr-departments/sit-employees-contracts-hr-departments.component';
 
 
 @NgModule({
@@ -488,7 +489,8 @@ import { SitHRWorkingHoursEditComponent } from './containers/dictionaries/sit-hr
         SitAgreementsChangeStatusEditComponent,
         SitCustomersGroupsComponent,
         SitHRWorkingHoursComponent,
-        SitHRWorkingHoursEditComponent
+        SitHRWorkingHoursEditComponent,
+        SitEmployeesContractsHRDepartmentsComponent
 
     ],
     providers: [
