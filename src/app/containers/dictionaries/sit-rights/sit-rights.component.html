@@ -5,11 +5,14 @@
         <as-split-area [size]="50">
           <div fxLayout="column" fxFill class="content">
             <div class="sit-grid-title">Grupy uprawnień</div>
-            <sit-data-set-container ident="sitFilterRightsGroups" fxLayout="row">
-              <div class="sit-filter-bar">
-                <sit-data-input #sitControl field="searchRightsGroups" label="Filtruj grupy" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
-              </div>
-            </sit-data-set-container>
+            <div class="sit-filter-bar">
+              <sit-data-set-container ident="sitFilterRightsGroups" fxLayout="row">
+                <sit-data-input #sitControl field="searchRightsGroups" label="Filtruj grupy" appearance="outline" showRefreshButton="true" style="width: 250px;"></sit-data-input>
+                <sit-data-input #sitControl field="searchUserLogin" label="Użytkownik" appearance="outline" showRefreshButton="true" style="width: 300px;"
+                  [lookupDisplayFields] = "['UserLogin']"
+                ></sit-data-input>
+              </sit-data-set-container>
+            </div>
             <sit-data-set-container  ident="sitRightsGroups" showActionsToolbar="true" fxFlex fxLayout="column">
               <div class="data-table" fxFlex>
                 <ag-grid-angular 
@@ -153,6 +156,34 @@
             </as-split-area>
           </as-split>
         </mat-tab>
+        <mat-tab label="Rozrachunki">
+          <div fxFill fxLayout="column">
+            <sit-data-set-container ident="sitRightsSettlementsKinds" showActionsToolbar="true" fxLayout="column" fxFlex>
+              <div class="data-table" fxFlex>
+                <ag-grid-angular
+                  #sitSetDataSource
+                  style="width: 100%; height: 100%;"
+                  class="ag-theme-balham"
+                >
+                </ag-grid-angular>
+              </div>
+            </sit-data-set-container>
+          </div>
+        </mat-tab>
+        <mat-tab label="Produkty">
+          <div fxFill fxLayout="column">
+            <sit-data-set-container ident="sitRightsProductsStatusMain" showActionsToolbar="true" fxLayout="column" fxFlex>
+              <div class="data-table" fxFlex>
+                <ag-grid-angular
+                  #sitSetDataSource
+                  style="width: 100%; height: 100%;"
+                  class="ag-theme-balham"
+                >
+                </ag-grid-angular>
+              </div>
+            </sit-data-set-container>
+          </div>
+        </mat-tab>                
       </mat-tab-group>
     </as-split-area>
   </as-split>
