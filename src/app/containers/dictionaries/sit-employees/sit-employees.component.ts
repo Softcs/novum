@@ -11,7 +11,7 @@ export class SitEmployeesComponent extends SitDictBaseComponent {
 
   public prepareColumnsDefinitnion() {
     this.gridColumnsDefinition["sitEmployees"] = [
-      { headerName: 'Id', field: 'sitEmployeesId',width: 90, defaultVisibility: false}, 
+      { headerName: 'Id', field: 'sitEmployeesId',width: 90, defaultVisibility: false},
       { headerName: 'Identyfikator', field: 'EmployeeIdent', filter: 'agTextColumnFilter' },
       { headerName: 'Imię', field: 'FirstName', filter: 'agTextColumnFilter' },
       { headerName: 'Nazwisko', field: 'LastName', filter: 'agTextColumnFilter' },
@@ -27,12 +27,25 @@ export class SitEmployeesComponent extends SitDictBaseComponent {
     ];
 
     this.gridColumnsDefinition["sitEmployeeContracts"] = [
-      { headerName: 'Id', field: 'sitEmploymentContractsTypeId',width: 90, defaultVisibility: false}, 
+      { headerName: 'Id', field: 'sitEmploymentContractsTypeId',width: 90, defaultVisibility: false},
       { headerName: 'Typ umowy', field: 'EmploymentContractIdent', filter: 'agTextColumnFilter', width: 200},
-      { headerName: 'Numer umowy', field: 'ContractNumber', filter: 'agTextColumnFilter', width: 200},
-      { headerName: 'Data od', field: 'DateFrom', filter: 'agDateColumnFilter',width: 90, floatingFilter: false, sort: 'desc' },      
-      { headerName: 'Data do', field: 'DateTo', filter: 'agDateColumnFilter',width: 90, floatingFilter: false },      
-    ]; 
+      { headerName: 'Numer umowy', field: 'ContractNumber', filter: 'agTextColumnFilter', width: 150},
+      { headerName: 'Data od', field: 'DateFrom', filter: 'agDateColumnFilter',width: 90, floatingFilter: false, sort: 'desc', suppressMenu: true },
+      { headerName: 'Data do', field: 'DateTo', filter: 'agDateColumnFilter',width: 90, floatingFilter: false, suppressMenu: true },
+      { headerName: 'Stanowisko', field: 'Position', width: 250,
+        cellClass: ['font11','textFormat']
+      },
+      { headerName: 'Etat', field: 'WorkingHours',  width: 70,
+        cellClass: ['font11','textFormat']
+      },
+      { headerName: 'Stawka', field: 'rate', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, suppressMenu: true,
+        renderType: 'number', renderFormat: '1.2-2',
+        cellClass: ['font11','numberFormat2Dec'],
+      },
+      { headerName: 'Rodzaj st.', field: 'RateTypeName', width: 100,
+        cellClass: ['font11','textFormat']
+      }
+    ];
   }
 
 }

@@ -50,6 +50,9 @@ export class SitEmployeesContractsHRDepartmentsComponent extends SitDictBaseComp
     ],
 
     this.gridColumnsDefinition['sitEmployeesContractsHRDepartmentDet'] = [
+      { headerName: 'Typ umowy', field: 'EmploymentContractName', filter: 'agTextColumnFilter', width: 200,
+        cellClass: ['font11','textFormat']
+      },
       { headerName: 'Nr umowy', field: 'ContractNumber', width: 100,
         cellClass: ['font11','textFormat']
       },
