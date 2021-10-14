@@ -77,6 +77,10 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
             cellClass: ['font11','numberFormat2Dec'],
             pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
           },
+          { headerName: 'W nat.', field: 'InKind', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80, agr: 'sum',
+            renderType: 'number',
+            cellClass: ['font11','numberFormat2Dec'],
+          },
         ]
       },
       { headerName: 'ZUS i PPK',
