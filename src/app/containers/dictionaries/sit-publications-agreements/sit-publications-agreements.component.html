@@ -1,31 +1,119 @@
 <sit-dict-container ident="sitPublicationsAgreements" #sitDictcontainer fxFill>
-    <as-split direction="vertical">
-      <as-split-area [size]="50">
-        <div fxLayout="column" fxFill class="content">
-          <sit-data-set-container ident="sitFilterPublicationsAgreements" fxLayout="row">
-            <div class="sit-filter-bar" fxLayout="row">
-              <sit-data-input #sitControl field="searchAgreements" label="Filtruj umowy" appearance="outline" style="width: 300px;"></sit-data-input>
-              <sit-data-input #sitControl field="searchBenef" label="Beneficjent" appearance="outline" style="width: 300px;" ></sit-data-input>
-              <sit-data-input #sitControl field="searchPublication" label="Publikacja" appearance="outline" style="width: 300px;" showRefreshButton="true"></sit-data-input>
-            </div>
-          </sit-data-set-container>
-          <sit-data-set-container ident="sitPublicationsAgreements" showActionsToolbar="true" fxLayout="column" fxFlex>
-            <div class="data-table" fxFlex>
-              <ag-grid-angular
-                #sitSetDataSource
-                style="width: 100%; height: 100%;"
-                class="ag-theme-balham"
-              >
-              </ag-grid-angular>
-            </div>
-          </sit-data-set-container>
-        </div>
-      </as-split-area>
-      <as-split-area [size]="50">
-        <mat-tab-group id="tab-group" animationDuration="0ms">
-          <mat-tab label="Beneficjenci">
-            <div fxFill fxLayout="column">
-              <sit-data-set-container ident="sitAgreementsBenef" showActionsToolbar="true" fxLayout="column" fxFlex>
+  <div fxLayout="column" fxFill class="content">
+    <sit-data-set-container ident="sitFilterPublicationsAgreements" fxLayout="row">
+      <div class="sit-filter-bar" fxLayout="row">
+        <sit-data-input #sitControl field="searchAgreements" label="Filtruj umowy" appearance="outline" style="width: 300px;"></sit-data-input>
+        <sit-data-input #sitControl field="searchBenef" label="Beneficjent" appearance="outline" style="width: 300px;" ></sit-data-input>
+        <sit-data-input #sitControl field="searchPublication" label="Publikacja" appearance="outline" style="width: 300px;" showRefreshButton="true"></sit-data-input>
+      </div>
+    </sit-data-set-container>
+    <mat-tab-group id="tab-group" animationDuration="0ms">
+      <mat-tab label="Umowy">
+        <as-split direction="vertical">
+          <as-split-area [size]="50">
+            <sit-data-set-container ident="sitPublicationsAgreements" showActionsToolbar="true" fxLayout="column" fxFlex>
+              <div class="data-table" fxFlex>
+                <ag-grid-angular
+                  #sitSetDataSource
+                  style="width: 100%; height: 100%;"
+                  class="ag-theme-balham"
+                >
+                </ag-grid-angular>
+              </div>
+            </sit-data-set-container>
+          </as-split-area>
+          <as-split-area [size]="50">
+            <mat-tab-group id="tab-group" animationDuration="0ms">
+              <mat-tab label="Beneficjenci">
+                <div fxFill fxLayout="column">
+                  <sit-data-set-container ident="sitAgreementsBenef" showActionsToolbar="true" fxLayout="column" fxFlex>
+                    <div class="data-table" fxFlex>
+                      <ag-grid-angular
+                        #sitSetDataSource
+                        style="width: 100%; height: 100%;"
+                        class="ag-theme-balham"
+                      >
+                      </ag-grid-angular>
+                    </div>
+                  </sit-data-set-container>
+                </div>
+              </mat-tab>
+              <mat-tab label="Typy rozliczeń">
+                <div fxFill fxLayout="column">
+                  <sit-data-set-container ident="sitAgreementsBillingTypes" showActionsToolbar="true" fxLayout="column" fxFlex>
+                    <div class="data-table" fxFlex>
+                      <ag-grid-angular
+                        #sitSetDataSource
+                        style="width: 100%; height: 100%;"
+                        class="ag-theme-balham"
+                      >
+                      </ag-grid-angular>
+                    </div>
+                  </sit-data-set-container>
+                </div>
+              </mat-tab>
+              <mat-tab label="Formy wydania">
+                <div fxFill fxLayout="column">
+                  <sit-data-set-container ident="sitAgreementsPublicationsFormsOfRelease" showActionsToolbar="true" fxLayout="column" fxFlex>
+                    <div class="data-table" fxFlex>
+                      <ag-grid-angular
+                        #sitSetDataSource
+                        style="width: 100%; height: 100%;"
+                        class="ag-theme-balham"
+                      >
+                      </ag-grid-angular>
+                    </div>
+                  </sit-data-set-container>
+                </div>
+              </mat-tab>
+              <mat-tab label="Publikacje">
+                <div fxFill fxLayout="column">
+                  <sit-data-set-container ident="sitAgreementsPublications" showActionsToolbar="true" fxLayout="column" fxFlex>
+                    <div class="data-table" fxFlex>
+                      <ag-grid-angular
+                        #sitSetDataSource
+                        style="width: 100%; height: 100%;"
+                        class="ag-theme-balham"
+                      >
+                      </ag-grid-angular>
+                    </div>
+                  </sit-data-set-container>
+                </div>
+              </mat-tab>
+              <mat-tab label="Zaliczki">
+                <div fxFill fxLayout="column">
+                  <sit-data-set-container ident="sitAgreementsAdvances" showActionsToolbar="true" fxLayout="column" fxFlex>
+                    <div class="data-table" fxFlex>
+                      <ag-grid-angular
+                        #sitSetDataSource
+                        style="width: 100%; height: 100%;"
+                        class="ag-theme-balham"
+                      >
+                      </ag-grid-angular>
+                    </div>
+                  </sit-data-set-container>
+                </div>
+              </mat-tab>
+            </mat-tab-group>
+          </as-split-area>
+        </as-split>
+      </mat-tab>
+      <mat-tab label="Załączniki">
+        <as-split direction="horizontal">
+          <as-split-area [size]="30">
+            <div fxLayout="column" fxFill fxLayoutGap="5px"  class="content" >
+              <mat-card>
+                <mat-card-content>
+                  <sit-data-set-container ident="sitPublicationsAgreements" fxLayout="column" fxFill>
+                    <sit-data-label type="text" #sitControl field="AgreementNo" label="Nr umowy:" labelWidth="140"></sit-data-label>
+                    <sit-data-label type="text" #sitControl field="Date" label="Data:" labelWidth="140"></sit-data-label>
+                    <sit-data-label type="text" #sitControl field="CurrencyIdent" label="Waluta:" labelWidth="140"></sit-data-label>
+                    <sit-data-label type="text" #sitControl field="BillingFrequencyName" label="Częstotliwość rozl.:" labelWidth="140"></sit-data-label>
+                    <sit-data-label type="text" #sitControl field="PublicationsIdents" label="Publikacje:" labelWidth="140"></sit-data-label>
+                  </sit-data-set-container>
+                </mat-card-content>
+              </mat-card>
+              <sit-data-set-container ident="sitAttachments" showActionsToolbar="true" fxLayout="column" fxFlex>
                 <div class="data-table" fxFlex>
                   <ag-grid-angular
                     #sitSetDataSource
@@ -36,65 +124,18 @@
                 </div>
               </sit-data-set-container>
             </div>
-          </mat-tab>
-          <mat-tab label="Typy rozliczeń">
-            <div fxFill fxLayout="column">
-              <sit-data-set-container ident="sitAgreementsBillingTypes" showActionsToolbar="true" fxLayout="column" fxFlex>
-                <div class="data-table" fxFlex>
-                  <ag-grid-angular
-                    #sitSetDataSource
-                    style="width: 100%; height: 100%;"
-                    class="ag-theme-balham"
-                  >
-                  </ag-grid-angular>
-                </div>
+          </as-split-area>
+          <as-split-area [size]="70">
+            <div fxFill>
+              <sit-data-set-container  ident="sitAttachments" fxFlex fxLayout="column">
+                <sit-pdf-viewer #sitControl reportType="att" field="FileName" fxFill></sit-pdf-viewer>
               </sit-data-set-container>
             </div>
-          </mat-tab>
-          <mat-tab label="Formy wydania">
-            <div fxFill fxLayout="column">
-              <sit-data-set-container ident="sitAgreementsPublicationsFormsOfRelease" showActionsToolbar="true" fxLayout="column" fxFlex>
-                <div class="data-table" fxFlex>
-                  <ag-grid-angular
-                    #sitSetDataSource
-                    style="width: 100%; height: 100%;"
-                    class="ag-theme-balham"
-                  >
-                  </ag-grid-angular>
-                </div>
-              </sit-data-set-container>
-            </div>
-          </mat-tab>
-          <mat-tab label="Publikacje">
-            <div fxFill fxLayout="column">
-              <sit-data-set-container ident="sitAgreementsPublications" showActionsToolbar="true" fxLayout="column" fxFlex>
-                <div class="data-table" fxFlex>
-                  <ag-grid-angular
-                    #sitSetDataSource
-                    style="width: 100%; height: 100%;"
-                    class="ag-theme-balham"
-                  >
-                  </ag-grid-angular>
-                </div>
-              </sit-data-set-container>
-            </div>
-          </mat-tab>
-          <mat-tab label="Zaliczki">
-            <div fxFill fxLayout="column">
-              <sit-data-set-container ident="sitAgreementsAdvances" showActionsToolbar="true" fxLayout="column" fxFlex>
-                <div class="data-table" fxFlex>
-                  <ag-grid-angular
-                    #sitSetDataSource
-                    style="width: 100%; height: 100%;"
-                    class="ag-theme-balham"
-                  >
-                  </ag-grid-angular>
-                </div>
-              </sit-data-set-container>
-            </div>
-          </mat-tab>
-        </mat-tab-group>
-      </as-split-area>
-    </as-split>
-  </sit-dict-container>
+
+          </as-split-area>
+        </as-split>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</sit-dict-container>
 

@@ -13,20 +13,20 @@ export class SitPublicationsAgreementsComponent extends SitDictBaseComponent {
     this.gridColumnsDefinition["sitPublicationsAgreements"] = [
       { headerName: 'Numer', field: 'AgreementNo', filter: 'agTextColumnFilter', width: 200 },
       { headerName: 'Data', field: 'Date', filter: 'agTextColumnFilter', width: 100 },
-      { headerName: 'Częstotliwość rozliczeń', field: 'BillingFrequencyName', filter: 'agTextColumnFilter', width: 150},
-      { headerName: 'Czas do zapłaty', field: 'TimeToSettle', filter: 'agTextColumnFilter', type: 'numericColumn', width: 70},
-      { headerName: 'Czas do rozliczenia', field: 'TimeToPay', filter: 'agTextColumnFilter', type: 'numericColumn', width: 70},
+      { headerName: 'Częst. rozl.', field: 'BillingFrequencyName', filter: 'agTextColumnFilter', width: 100, suppressMenu: true},
+      { headerName: 'Czas do zapł.', field: 'TimeToSettle', filter: 'agTextColumnFilter', type: 'numericColumn', width: 100, suppressMenu: true},
+      { headerName: 'Czas do rozl.', field: 'TimeToPay', filter: 'agTextColumnFilter', type: 'numericColumn', width: 100, suppressMenu: true},
       { headerName: 'Waluta', field: 'CurrencyIdent', filter: 'agTextColumnFilter', width: 100 },
-      { headerName: 'Publikacje', field: 'PublicationsIdents', tooltipField: 'PublicationsIdents', filter: 'agTextColumnFilter', width: 150},
+      { headerName: 'Publikacje', field: 'PublicationsIdents', tooltipField: 'PublicationsIdents', filter: 'agTextColumnFilter', width: 200},
       { headerName: 'Zaliczka', field: 'IsAdvance', width: 100, renderType: 'checkbox'},
       { headerName: 'Status', field: 'MainStatus_ValueName', filter: 'agTextColumnFilter', width: 150}
     ];
     this.gridColumnsDefinition["sitAgreementsBenef"] = [
       { headerName: 'Beneficjent', field: 'CustIdent', width: 150},
       { headerName: 'Nazwa', field: 'CustName', width: 300},
-      { headerName: 'Procent udziału', field: 'PercentShare', width: 100, type: 'numericColumn'},
-      { headerName: 'Do rozliczenia', field: 'ForBilling', width: 100, renderType: 'checkbox'},
-      { headerName: 'Sposób rozliczenia', field: 'BillingType', width: 150}
+      { headerName: '% udziału', field: 'PercentShare', width: 100, type: 'numericColumn', suppressMenu: true},
+      { headerName: 'Do rozl.', field: 'ForBilling', width: 100, renderType: 'checkbox', suppressMenu: true},
+      { headerName: 'Sposób rozl.', field: 'BillingType', width: 100, suppressMenu: true}
     ];
     this.gridColumnsDefinition["sitAgreementsPublications"] = [
       { headerName: 'Publikacja', field: 'PublicationIdent', width: 150},
@@ -38,8 +38,8 @@ export class SitPublicationsAgreementsComponent extends SitDictBaseComponent {
       { headerName: 'Tytuł', field: 'Title', width: 300},
       { headerName: 'Beneficjent', field: 'CustIdent', width: 150},
       { headerName: 'Nazwa', field: 'CustName', width: 300},
-      { headerName: 'Kwota zaliczki', field: 'Amount', width: 100, type: 'numericColumn', renderType: 'number'},
-      { headerName: 'Kwota rozliczona', field: 'ClearedAmount', width: 100, type: 'numericColumn', renderType: 'number'}
+      { headerName: 'Kwota zal.', field: 'Amount', width: 100, type: 'numericColumn', renderType: 'number', suppressMenu: true},
+      { headerName: 'Kwota rozl.', field: 'ClearedAmount', width: 100, type: 'numericColumn', renderType: 'number', suppressMenu: true}
     ];
     this.gridColumnsDefinition["sitAgreementsPublicationsFormsOfRelease"] = [
       { headerName: 'Forma wydania', field: 'FormOfReleaseIdent', width: 150},
@@ -47,9 +47,16 @@ export class SitPublicationsAgreementsComponent extends SitDictBaseComponent {
       { headerName: ' ', field: 'IsActive', width: 100, renderType: 'checkbox'}
     ];
     this.gridColumnsDefinition["sitAgreementsBillingTypes"] = [
-      { headerName: 'Grupa form wydania', field: 'FormsOfReleaseGroupIdent', tolltipField: 'FormsOfReleaseGroupDesc', width: 150},
+      { headerName: 'Grupa form wydania', field: 'FormsOfReleaseGroupIdent', tolltipField: 'FormsOfReleaseGroupDesc', width: 170},
       { headerName: 'Typ rozliczenia', field: 'BillingTypeIdent', tolltipField: 'FormsOfReleaseGroupDesc', width: 150},
       { headerName: 'Rodzaj ceny', field: 'PriceTypeName', tolltipField: 'FormsOfReleaseGroupDesc', width: 150},
+    ];
+    this.gridColumnsDefinition["sitAttachments"] = [
+      { headerName: 'ParentId', field: 'ParentId', defaultVisibility: false },
+      { headerName: 'sitAttachmentsG', field: 'sitAttachmentsG', defaultVisibility: false },
+      { headerName: 'Data dodania', field: 'InsertDate', width: 120,renderType: 'date' },
+      { headerName: 'Nazwa pliku', field: 'FileName', width: 250 },
+      { headerName: 'Opis', field: 'AttachmentDesc', width: 250 },
     ];
    }
 }
