@@ -1,0 +1,24 @@
+<sit-proc-params
+  [(actionExecuteData)]="actionExecuteData"
+  >
+  <sit-data-set-container ident="sitCustomerBillingHoursEdit">
+    <div class="sit-proc-params-content" fxLayout="column" style="width: 500px;height: 250px;">
+      <div fxLayout="row">
+        <sit-data-input type="date" #sitControl field="RealizationDate" label="Data realizacji" appearance="outline"></sit-data-input>
+      </div>
+			<div fxLayout="row">
+        <sit-data-input #sitControl type="text" field="CustIdent" label="Kontrahent" appearance="outline" style="width: 150px" 
+          [lookupDisplayFields] = "['CustIdent', 'CustName']"></sit-data-input>
+        <sit-data-label type="text" #sitControl field="CustName" appearance="outline"></sit-data-label>
+			</div>      
+      <div fxLayout="row">
+        <sit-data-input type="text" #sitControl field="Description" label="Opis" appearance="outline" fxFill></sit-data-input>
+      </div>			  
+      <div fxLayout="row">
+        <sit-data-input #sitControl type="number" field="Price" label="Cena" appearance="outline" style="width: 300px" ></sit-data-input>
+        <sit-data-input #sitControl type="number" field="Quantity" label="Ilość" appearance="outline" style="width: 300px" ></sit-data-input>
+        <sit-data-input #sitControl type="number" field="Net" label="Netto" appearance="outline" style="width: 300px" ></sit-data-input>
+      </div>      
+    </div>
+  </sit-data-set-container>
+</sit-proc-params>

@@ -250,6 +250,9 @@ import { SitCustomersGroupsComponent } from './containers/dictionaries/sit-custo
 import { SitHRWorkingHoursComponent } from './containers/dictionaries/sit-hr-working-hours/sit-hr-working-hours.component';
 import { SitHRWorkingHoursEditComponent } from './containers/dictionaries/sit-hr-working-hours/actions/sit-hrworking-hours-edit/sit-hrworking-hours-edit.component';
 import { SitEmployeesContractsHRDepartmentsComponent } from './containers/dictionaries/sit-employees-contracts-hr-departments/sit-employees-contracts-hr-departments.component';
+import { SitEmployeeVacationLimitsEditComponent } from './containers/dictionaries/sit-employees/actions/sit-employee-vacation-limits-edit/sit-employee-vacation-limits-edit.component';
+import { SitCustomerBillingHoursComponent } from './containers/dictionaries/sit-customer-billing-hours/sit-customer-billing-hours.component';
+import { SitCustomerBillingHoursEditComponent } from './containers/dictionaries/sit-customer-billing-hours/actions/sit-customer-billing-hours-edit/sit-customer-billing-hours-edit.component';
 
 
 @NgModule({
@@ -490,7 +493,10 @@ import { SitEmployeesContractsHRDepartmentsComponent } from './containers/dictio
         SitCustomersGroupsComponent,
         SitHRWorkingHoursComponent,
         SitHRWorkingHoursEditComponent,
-        SitEmployeesContractsHRDepartmentsComponent
+        SitEmployeesContractsHRDepartmentsComponent,
+        SitEmployeeVacationLimitsEditComponent,
+        SitCustomerBillingHoursComponent,
+        SitCustomerBillingHoursEditComponent
 
     ],
     providers: [

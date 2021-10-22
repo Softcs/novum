@@ -46,6 +46,14 @@ export class SitEmployeesComponent extends SitDictBaseComponent {
         cellClass: ['font11','textFormat']
       }
     ];
+
+    this.gridColumnsDefinition["sitEmployeeVacationLimits"] = [
+      { headerName: 'Id', field: 'ssitEmployeeVacationLimitsId',width: 90, defaultVisibility: false},
+      { headerName: 'Data od', field: 'DateFrom', filter: 'agDateColumnFilter',width: 90, floatingFilter: false, sort: 'desc', suppressMenu: true },
+      { headerName: 'Data do', field: 'DateTo', filter: 'agDateColumnFilter',width: 90, floatingFilter: false, suppressMenu: true },
+      { headerName: 'Limit', field: 'VacationLimit', filter: 'agTextColumnFilter', width: 100 },
+      { headerName: 'Wykorzystany', field: 'ActualLimitUsed', filter: 'agTextColumnFilter', width: 120 },            
+    ];    
   }
 
 }
