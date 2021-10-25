@@ -1,0 +1,38 @@
+<sit-dict-container ident="sitB2bProducts" #sitDictcontainer fxFlexFill>
+  <div fxLayout="column" fxFill class="content">
+    <div class="sit-filter-bar">
+      <sit-data-set-container ident="sitFilterB2BProducts" fxLayout="row">
+        <sit-data-input #sitControl field="search" label="Filtruj produkty" placeholder="Tytuł, autor, EAN, opis" appearance="outline" style="width: 300px;" showRefreshButton="true"></sit-data-input>
+        <sit-data-checkbox #sitControl field="zp" label="Zapowiedzi" labelPosition="after" checked="true" refreshOnChange="true" style="color: orange;" ></sit-data-checkbox>
+        <sit-data-checkbox #sitControl field="nw" label="Nowości" labelPosition="after" checked="true" refreshOnChange="true" style="color: rgb(153, 0, 0);" ></sit-data-checkbox>
+        <sit-data-checkbox #sitControl field="ak" label="Aktywne" labelPosition="after" checked="true" refreshOnChange="true" style="color: rgb(20, 152, 46)" ></sit-data-checkbox>
+        <sit-data-checkbox #sitControl field="wr" label="Wyprzedaże" labelPosition="after" checked="false" refreshOnChange="true" style="color: rgb(11, 23, 255);" ></sit-data-checkbox>
+        <sit-data-checkbox #sitControl field="withStockOnly" label="Tylko ze stanem" labelPosition="after" checked="false" refreshOnChange="true" style="margin: 0px 0px 0px 20px"></sit-data-checkbox>
+      </sit-data-set-container>
+    </div>
+    <div fxLayout="column" fxFlex>
+      <as-split direction="horizontal">
+        <as-split-area [size]="70">
+          <sit-data-set-container  ident="sitB2BProducts" showActionsToolbar="true" (activeRowChanged)="activeRowProductsChanged($event)" fxFill fxLayout="column">
+            <div class="data-table" fxFlex>
+              <ag-grid-angular
+                #sitSetDataSource
+                #sitProductsGrid
+                style="width: 100%; height: 100%;"
+                class="ag-theme-balham"
+              >
+              </ag-grid-angular>
+            </div>
+          </sit-data-set-container>
+        </as-split-area>
+        <as-split-area [size]="30">
+          <div class="content" fxFlex fxLayout="column">
+            <div fxLayout="row" fxLayoutAlign="center"><a href="{{link}}" target="_blank"><img src="{{link}}" height="500"></a></div>
+            <sit-data-textarea type="textarea" #sitControl field="MarketingDesc4WWW" label="Opis" appearance="outline" [readonly]=true fxFlex></sit-data-textarea>
+          </div>
+        </as-split-area>
+      </as-split>
+    </div>
+  </div>
+</sit-dict-container>
+  

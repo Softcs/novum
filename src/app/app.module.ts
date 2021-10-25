@@ -253,6 +253,7 @@ import { SitEmployeesContractsHRDepartmentsComponent } from './containers/dictio
 import { SitEmployeeVacationLimitsEditComponent } from './containers/dictionaries/sit-employees/actions/sit-employee-vacation-limits-edit/sit-employee-vacation-limits-edit.component';
 import { SitCustomerBillingHoursComponent } from './containers/dictionaries/sit-customer-billing-hours/sit-customer-billing-hours.component';
 import { SitCustomerBillingHoursEditComponent } from './containers/dictionaries/sit-customer-billing-hours/actions/sit-customer-billing-hours-edit/sit-customer-billing-hours-edit.component';
+import { SitB2bProductsComponent } from './containers/dictionaries/sit-b2b-products/sit-b2b-products.component';
 
 
 @NgModule({
@@ -496,7 +497,8 @@ import { SitCustomerBillingHoursEditComponent } from './containers/dictionaries/
         SitEmployeesContractsHRDepartmentsComponent,
         SitEmployeeVacationLimitsEditComponent,
         SitCustomerBillingHoursComponent,
-        SitCustomerBillingHoursEditComponent
+        SitCustomerBillingHoursEditComponent,
+        SitB2bProductsComponent
 
     ],
     providers: [
