@@ -23,7 +23,7 @@ export class SitB2bProductsComponent extends SitDictBaseComponent {
       { headerName: 'Tytuł', field: 'ProductName', tooltipField: 'ProductName', filter: 'agTextColumnFilter', width: 300 },
       { headerName: 'Autor', field: 'Author', tooltipField: 'Author', filter: 'agTextColumnFilter', width: 200 },
       { headerName: 'Forma', field: 'FormOfReleaseDesc', tooltipField: 'Author', filter: 'agTextColumnFilter', width: 150 },
-      { headerName: 'Stan', field: 'QuantityQuantityString', filter: 'agTextColumnFilter', width: 80 },
+      { headerName: 'Stan', field: 'QuantityString', filter: 'agTextColumnFilter', width: 80 },
       { headerName: 'Cena netto', field: 'NetPrice', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80, renderType: 'number' },
       { headerName: 'Cena brutto', field: 'GrossPrice', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80, renderType: 'number' },
       { headerName: 'Status', field: 'ValueName_Main', filter: 'agSetColumnFilter', width: 100, floatingFilter: false, 

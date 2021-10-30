@@ -157,6 +157,7 @@ import { SitEmployeeVacationLimitsEditComponent } from '@app/containers/dictiona
 import { SitCustomerBillingHoursComponent } from '@app/containers/dictionaries/sit-customer-billing-hours/sit-customer-billing-hours.component';
 import { SitCustomerBillingHoursEditComponent } from '@app/containers/dictionaries/sit-customer-billing-hours/actions/sit-customer-billing-hours-edit/sit-customer-billing-hours-edit.component';
 import { SitB2bProductsComponent } from '@app/containers/dictionaries/sit-b2b-products/sit-b2b-products.component';
+import { SitWmsProductsComponent } from '@app/containers/dictionaries/sit-wms-products/sit-wms-products.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -319,7 +320,8 @@ export class FactoryService {
         sitEmployeeVacationLimitsEdit: SitEmployeeVacationLimitsEditComponent,
         sitCustomerBillingHours: SitCustomerBillingHoursComponent,
         sitCustomerBillingHoursEdit: SitCustomerBillingHoursEditComponent,
-        sitB2bProducts: SitB2bProductsComponent
+        sitB2bProducts: SitB2bProductsComponent,
+        sitWmsProducts: SitWmsProductsComponent
     };
 
     public GetFactory(ident: string) {
