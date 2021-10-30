@@ -27,6 +27,7 @@ const routes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuard], data: {title: 'Home'} },
     { path: 'sitPulpit', component: SitPulpitComponent, canActivate: [AuthGuard], data: {title: 'Pulpit'} },
     { path: 'login', component: LoginComponent, data: {title: 'Logowanie'} },
+    { path: 'login_pub', component: LoginComponent, data: {title: 'Logowanie'} },
     { path: 'test', component: testDict, canActivate: [AuthGuard] },
     { path: 'sitMenu', component: SitMenuComponent, canActivate: [AuthGuard], data: {title: 'Definicja Menu'}},
     { path: 'sitRailConfigurations', component: SitRailConfigurationsComponent, canActivate: [AuthGuard],
