@@ -6,6 +6,7 @@ import { MatAutocomplete } from '@angular/material/autocomplete';
 import { LookupService } from '@app/_services/lookup.service';
 import { MatSelect } from '@angular/material/select';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
+import { OnCFService } from '@app/_services/oncf.service';
 
 @Component({
   selector: 'sit-data-input',
@@ -44,16 +45,17 @@ export class SitDataInputComponent extends SitDataBaseComponent {
 
   constructor(
     _renderer: Renderer2,
+    oncfService: OnCFService,
     private lookupService: LookupService,
     private ngZone: NgZone) {
-    super(_renderer);
+    super(_renderer, oncfService);
     this.showRefreshButton = false;
     this.refreshOnChange = true;
     this.id = this.newGuid();
   }
 
-  onChange(event: any) {
-    super.onChange(this.getValue());
+  onChange(event: any) {    
+    super.onChange(this.getValue());    
     this._onFilterKeyEnter(event);
   }
 

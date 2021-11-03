@@ -1,4 +1,5 @@
 import { Component, Input,  Renderer2, ViewEncapsulation} from '@angular/core';
+import { OnCFService } from '@app/_services/oncf.service';
 import { SitDataBaseComponent } from '../sit-data-base/sit-data-base.component';
 
 @Component({
@@ -34,8 +35,9 @@ export class SitDataRadioComponent extends SitDataBaseComponent {
   @Input() type: string = 'row';
 
   constructor(
-    _renderer: Renderer2) {
-    super(_renderer);
+    renderer: Renderer2,
+    oncfService: OnCFService) {
+    super(renderer, oncfService);
     this.refreshOnChange = true;
     this.id = this.newGuid();
   }

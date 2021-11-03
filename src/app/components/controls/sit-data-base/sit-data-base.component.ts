@@ -2,6 +2,7 @@ import { Component, OnInit, Input, ViewChild, ElementRef, Renderer2 } from '@ang
 import { DataSetWrapper } from '@app/_models';
 import { ControlValueAccessor } from '@angular/forms';
 import { EventManager } from '@angular/platform-browser';
+import { OnCFService } from '@app/_services/oncf.service';
 
 @Component({
   selector: 'sit-data-base',
@@ -35,8 +36,9 @@ export class SitDataBaseComponent implements ControlValueAccessor {
     this.afterSetDataSetWrapper();
   }
 
-  constructor(protected _renderer: Renderer2) {
-
+  constructor(    
+    protected _renderer: Renderer2,
+    protected _oncfService: OnCFService) {      
   }
 
   get inputElement(): ElementRef {

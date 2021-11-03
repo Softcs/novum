@@ -4,6 +4,7 @@ import { environment } from '@environments/environment';
 import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
 import { UrlService } from '@app/_services/url.service';
+import { OnCFService } from '@app/_services/oncf.service';
 @Component({
   selector: 'sit-pdf-viewer',
   templateUrl: './sit-pdf-viewer.component.html',
@@ -23,11 +24,12 @@ export class SitPdfViewerComponent extends SitDataBaseComponent implements After
   showPDF = true;
 
   constructor(
-      _renderer: Renderer2,
+      renderer: Renderer2,
+      oncfService: OnCFService,
       private gatewayService: GatewayService,
-      private urlService: UrlService
+      private urlService: UrlService      
       ) {
-    super(_renderer);
+    super(renderer, oncfService);
 
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
     this.companyGUID = this.currentUser.company.companyGUID;

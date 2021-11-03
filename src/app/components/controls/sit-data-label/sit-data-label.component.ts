@@ -1,5 +1,6 @@
 import { Component, NgZone, Renderer2, ViewEncapsulation, Input } from '@angular/core';
 import { MatFormFieldAppearance } from '@angular/material/form-field';
+import { OnCFService } from '@app/_services/oncf.service';
 import { SitDataBaseComponent } from '../sit-data-base/sit-data-base.component';
 
 @Component({
@@ -17,8 +18,9 @@ export class SitDataLabelComponent extends SitDataBaseComponent {
 
   constructor(
     _renderer: Renderer2,
+    protected _oncfService: OnCFService,
     private ngZone: NgZone) {
-    super(_renderer);
+    super(_renderer, _oncfService);
 
   }
 
