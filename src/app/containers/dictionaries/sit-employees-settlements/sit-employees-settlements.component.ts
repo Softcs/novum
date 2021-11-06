@@ -249,10 +249,26 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
         cellClass: ['font11','blueBackground','numberFormat2Dec'],
         pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
       },
-      { headerName: 'Narzut', field: 'Markup',  filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, suppressMenu: true, agr: 'sum',
-        renderType: 'number',
-        cellClass: ['font11','numberFormat2Dec'],
-        pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
+      { headerName: 'Narzut',
+        children: [
+          { headerName: 'Suma', field: 'Markup',  filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, suppressMenu: true, agr: 'sum',
+            renderType: 'number',
+            cellClass: ['font11','numberFormat2Dec'],
+            pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
+          },
+          { headerName: 'Podstawa', field: 'MarkupBase', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 70, suppressMenu: true, agr: 'sum', columnGroupShow: "open",
+            renderType: 'number',
+            cellClass: ['font11','numberFormat2Dec'],
+          },
+          { headerName: 'Premia', field: 'MarkupBonus', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 70, suppressMenu: true, agr: 'sum', columnGroupShow: "open",
+            renderType: 'number',
+            cellClass: ['font11','numberFormat2Dec'],
+          },
+          { headerName: 'PPK', field: 'MarkupPPK', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 70, suppressMenu: true, agr: 'sum', columnGroupShow: "open",
+            renderType: 'number',
+            cellClass: ['font11','numberFormat2Dec'],
+          },
+        ]
       },
       { headerName: 'Fakt.', field: 'InvoiceNo', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 60, suppressMenu: true,
         renderType: 'number', renderFormat: '1.0-0',
