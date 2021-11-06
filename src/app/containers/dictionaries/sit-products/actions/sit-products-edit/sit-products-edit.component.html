@@ -1,0 +1,39 @@
+<sit-proc-params
+  [(actionExecuteData)]="actionExecuteData"
+  >
+  <sit-data-set-container ident="sitProductsEdit">
+    <div class="sit-proc-params-content" fxLayout="column" style="width: 650px;height: 350px;">
+      <div fxLayout="row" >
+        <sit-data-input type="text" #sitControl field="ProductIdent" label="Identyfikator" appearance="outline" style="width: 200px"></sit-data-input>
+        <sit-data-input type="text" #sitControl field="ProductName" label="Nazwa" appearance="outline" style="width: 400px"></sit-data-input>
+      </div>
+      <sit-data-input type="text" #sitControl field="ProductDescription" label="Opis" appearance="outline" style="width: 600px"></sit-data-input>
+      <div fxLayout="row" >
+        <sit-data-input type="text" #sitControl field="EAN" label="EAN" appearance="outline" style="width: 150px"></sit-data-input>
+        <sit-data-input type="text" #sitControl field="PKWIU" label="PKWIU" appearance="outline" style="width: 150px"></sit-data-input>
+        <sit-data-input type="text" #sitControl field="UnitIdent" label="Jednostka" appearance="outline" style="width: 100px"></sit-data-input>
+        <sit-data-input type="text" #sitControl field="VATRatesIdent" label="Stawka VAT" appearance="outline" style="width: 100px"></sit-data-input>
+        <sit-data-input type="number" #sitControl field="Weight" label="Waga" appearance="outline" style="width: 100px"></sit-data-input>
+      </div>
+      <div fxLayout="row" >
+        <sit-data-checkbox #sitControl field="IsActive" label="Aktywna" style="width: 110px"></sit-data-checkbox>
+        <sit-data-checkbox #sitControl field="IsB2B" label="Używaj w B2B" style="width: 110px"></sit-data-checkbox>        
+        <sit-data-checkbox #sitControl field="ForStock" label="Ze stanem" style="width: 110px"></sit-data-checkbox>        
+        <sit-data-checkbox #sitControl field="UseBatch" label="Używaj partii" style="width: 110px"></sit-data-checkbox>        
+      </div>
+      <div fxLayout="row" >
+        <sit-data-input type="date" #sitControl field="RegisterDate" label="Data rejestracji" appearance="outline" style="width: 130px"></sit-data-input>
+        <sit-data-input type="text" #sitControl field="GroupIdent" label="Grupa" appearance="outline" style="width: 100px"></sit-data-input>
+        <sit-data-input type="text" #sitControl field="ExtAppIdent01" label="Id zew 01" appearance="outline" style="width: 100px"></sit-data-input>
+        <sit-data-input type="text" #sitControl field="ExtAppIdent02" label="Id zew 02" appearance="outline" style="width: 100px"></sit-data-input>
+      </div>
+      <div fxLayout="row" >
+        <sit-data-input type="number" #sitControl field="NetPrice" label="Cena netto" appearance="outline" style="width: 100px"></sit-data-input>
+        <sit-data-input type="number" #sitControl field="GrossPrice" label="Cena brutto" appearance="outline" style="width: 100px"></sit-data-input>
+        <sit-data-input type="number" #sitControl field="StandardPrice" label="Cena std." appearance="outline" style="width: 100px"></sit-data-input>
+        <sit-data-input type="number" #sitControl field="B2BNetPrice" label="Cena netto B2B" appearance="outline" style="width: 100px"></sit-data-input>
+        <sit-data-input type="number" #sitControl field="B2BGrossPrice" label="Cena brutto B2B" appearance="outline" style="width: 100px"></sit-data-input>
+      </div> 
+    </div>
+  </sit-data-set-container>
+</sit-proc-params>
