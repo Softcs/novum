@@ -2,17 +2,23 @@
   <div fxLayout="column" fxFill class="content">
     <div class="sit-filter-bar">
       <sit-data-set-container ident="sitFilterProducts" fxLayout="row">
-        <sit-data-input #sitControl field="Search" label="Filtruj produkty" placeholder="" appearance="outline" style="width: 300px;"></sit-data-input>
+        <sit-data-input #sitControl field="Search" label="Filtruj produkty" placeholder="Identyfikator, nazwa, EAN"  appearance="outline" style="width: 300px;"></sit-data-input>
         <sit-data-input #sitControl field="SaleStatus" label="Status sprz." placeholder="" appearance="outline" showRefreshButton="true" style="width: 180px;"
           [lookupDisplayFields] = "['SaleStatus', 'SaleStatusDescription']"
         ></sit-data-input>
+        <sit-data-checkbox #sitControl field="wp" label="W przyg." labelPosition="after" checked="true" refreshOnChange="true" style="color: violet;" ></sit-data-checkbox>
+        <sit-data-checkbox #sitControl field="zp" label="Zapowiedzi" labelPosition="after" checked="true" refreshOnChange="true" style="color: orange;" ></sit-data-checkbox>
+        <sit-data-checkbox #sitControl field="nw" label="Nowości" labelPosition="after" checked="true" refreshOnChange="true" style="color: rgb(153, 0, 0);" ></sit-data-checkbox>
+        <sit-data-checkbox #sitControl field="ak" label="Aktywne" labelPosition="after" checked="true" refreshOnChange="true" style="color: rgb(20, 152, 46)" ></sit-data-checkbox>
+        <sit-data-checkbox #sitControl field="wr" label="Wyprzedaże" labelPosition="after" checked="false" refreshOnChange="true" style="color: rgb(11, 23, 255);" ></sit-data-checkbox>
+        <sit-data-checkbox #sitControl field="wc" label="Wycofane" labelPosition="after" checked="false" refreshOnChange="true" style="color: black;" ></sit-data-checkbox>
       </sit-data-set-container>
     </div>
     <div fxLayout="column" fxFlex>
       <as-split direction="horizontal">
-        <as-split-area [size]="70">
+        <as-split-area [size]="60">
           <as-split direction="vertical">
-            <as-split-area [size]="70">
+            <as-split-area [size]="100">
               <sit-data-set-container  ident="sitProducts" showActionsToolbar="true" (activeRowChanged)="activeRowProductsChanged($event)" fxFill fxLayout="column">
                 <div class="data-table" fxFlex>
                   <ag-grid-angular
@@ -20,42 +26,100 @@
                     #sitProductsGrid
                     style="width: 100%; height: 100%;"
                     class="ag-theme-balham"
-
                   >
                   </ag-grid-angular>
                 </div>
               </sit-data-set-container>
             </as-split-area>
-            <as-split-area [size]="30">
-              <div class="sit-grid-title">Status sprzedaży</div>
-              <sit-data-set-container  ident="sitProductSaleStatusIntervals" showActionsToolbar="true" fxFill fxLayout="column">
-                <div class="data-table" fxFlex>
-                  <ag-grid-angular
-                    #sitSetDataSource
-                    #sitProductsGrid
-                    style="width: 100%; height: 100%;"
-                    class="ag-theme-balham"
-
-                  >
-                  </ag-grid-angular>
-                </div>
-              </sit-data-set-container>
+            <as-split-area [size]="0">
             </as-split-area>
           </as-split>
         </as-split-area>
-        <as-split-area [size]="30">
+        <as-split-area [size]="40">
           <mat-tab-group id="tab-group" animationDuration="0ms">
             <mat-tab label="Zdjęcie">
               <div class="content" fxFill fxLayout="column" fxLayoutAlign=" center" >
                 <div fxLayout="row" fxLayoutAlign="start start"><a href="{{link}}" target="_blank"><img src="{{link}}" height="500"></a></div>
-                <br>
-                <ngx-barcode [bc-value]="ean" [bc-display-value]="true" [bc-height]="30"  [bc-font-size]="15" [bc-background]="contentColor"></ngx-barcode>
               </div>
             </mat-tab>
-            <mat-tab label="Składowe kompletu">
-              <as-split direction ="vertical" fxLayout="column">
-                <as-split-area [size]="30">
-                  <sit-data-set-container  ident="sitProductSetHeaders" showActionsToolbar="true" fxFill fxLayout="column">
+            <mat-tab label="Publikacja">
+              <sit-data-set-container  ident="sitProducts4Pub" showActionsToolbar="true" fxFill fxLayout="column">
+                <div fxLayout="column" fxFlex fxLayoutGap="5px" class="content">
+                  <mat-card>
+                    <mat-card-content>
+                      <div fxLayout="row">
+                        <sit-data-input #sitControl [readonly]=true type="text" field="EAN" label="EAN" appearance="outline" style="width: 150px"></sit-data-input>
+                        <sit-data-input #sitControl [readonly]=true type="text" field="ISBN" label="ISBN" appearance="outline" style="width: 150px"></sit-data-input>
+                        <sit-data-input #sitControl [readonly]=true type="text" field="PremiereDate" label="Data premiery" appearance="outline" style="width: 110px"></sit-data-input>
+                        <sit-data-input #sitControl [readonly]=true type="text" field="FormOfReleaseDesc" label="Forma wydania" appearance="outline" style="width: 150px" fxFlex></sit-data-input>
+                      </div>
+                      <div fxLayout="row">
+                        <sit-data-input #sitControl [readonly]=true type="text" field="Author" label="Autor" appearance="outline" fxFlex="33"></sit-data-input>
+                        <sit-data-input #sitControl [readonly]=true type="text" field="Translator" label="Tłumacz" appearance="outline" fxFlex="33"></sit-data-input>
+                        <sit-data-input #sitControl [readonly]=true type="text" field="Illustrator" label="Ilustrator" appearance="outline" fxFlex></sit-data-input>
+                      </div>                      
+                    </mat-card-content>
+                  </mat-card>
+                  <mat-card>
+                    <mat-card-content>
+                      <mat-card-title>Format</mat-card-title>
+                      <div fxLayout="row">
+                        <sit-data-input #sitControl [readonly]=true type="text" field="NumberOfPages" label="Ilość stron" appearance="outline" style="width: 100px"></sit-data-input>
+                        <sit-data-input #sitControl [readonly]=true type="text" field="FormatBase" label="Podstawa" appearance="outline" style="width: 100px"></sit-data-input>
+                        <sit-data-input #sitControl [readonly]=true type="text" field="FormatHeight" label="Wysokość" appearance="outline" style="width: 100px"></sit-data-input>
+                        <sit-data-input #sitControl [readonly]=true type="text" field="BindingSpineThickness" label="Grubość grzbietu" appearance="outline" style="width: 100px"></sit-data-input>
+                        <sit-data-input #sitControl [readonly]=true type="text" field="BindingType" label="Typ oprawy" appearance="outline" style="width: 150px"></sit-data-input>
+                      </div>  
+                    </mat-card-content>
+                  </mat-card>
+                  <mat-card>
+                    <mat-card-content>
+                      <div fxLayout="column" fxFlex>                      
+                        <mat-card-title>Opisy</mat-card-title>
+                        <div fxLayout="row" fxFlex>
+                          <sit-data-textarea type="textarea" #sitControl field="MarketingDesc4WWW" label="Opis na WWW" appearance="outline" [readonly]=true style="height: 300px" fxFlex></sit-data-textarea>
+                        </div>
+                      </div>
+                    </mat-card-content>
+                  </mat-card>                  
+                </div>
+              </sit-data-set-container>
+            </mat-tab>
+            <mat-tab label="Konfiguracja">
+              <mat-tab-group id="tab-group" animationDuration="0ms">
+                <mat-tab label="Komplety">
+                  <as-split direction ="vertical" fxLayout="column">
+                    <as-split-area [size]="30">
+                      <sit-data-set-container  ident="sitProductSetHeaders" showActionsToolbar="true" fxFill fxLayout="column">
+                        <div class="data-table" fxFlex>
+                          <ag-grid-angular
+                            #sitSetDataSource
+                            #sitProductsGrid
+                            style="width: 100%; height: 100%;"
+                            class="ag-theme-balham"
+                          >
+                          </ag-grid-angular>
+                        </div>
+                      </sit-data-set-container>
+                    </as-split-area>
+                    <as-split-area [size]="70">
+                      <sit-data-set-container  ident="sitProductSetPositions" showActionsToolbar="true" fxFill fxLayout="column">
+                        <div class="data-table" fxFlex>
+                          <ag-grid-angular
+                            #sitSetDataSource
+                            #sitProductsGrid
+                            style="width: 100%; height: 100%;"
+                            class="ag-theme-balham"
+                          >
+                          </ag-grid-angular>
+                        </div>
+                      </sit-data-set-container>
+                    </as-split-area>
+                  </as-split>
+                </mat-tab>
+                <mat-tab label="Sprzedaż">
+                  <div class="sit-grid-title">Status sprzedaży</div>
+                  <sit-data-set-container  ident="sitProductSaleStatusIntervals" showActionsToolbar="true" fxFill fxLayout="column">
                     <div class="data-table" fxFlex>
                       <ag-grid-angular
                         #sitSetDataSource
@@ -66,21 +130,8 @@
                       </ag-grid-angular>
                     </div>
                   </sit-data-set-container>
-                </as-split-area>
-                <as-split-area [size]="70">
-                  <sit-data-set-container  ident="sitProductSetPositions" showActionsToolbar="true" fxFill fxLayout="column">
-                    <div class="data-table" fxFlex>
-                      <ag-grid-angular
-                        #sitSetDataSource
-                        #sitProductsGrid
-                        style="width: 100%; height: 100%;"
-                        class="ag-theme-balham"
-                      >
-                      </ag-grid-angular>
-                    </div>
-                  </sit-data-set-container>
-                </as-split-area>
-              </as-split>
+                </mat-tab>
+              </mat-tab-group>
             </mat-tab>
           </mat-tab-group>
         </as-split-area>

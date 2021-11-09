@@ -158,6 +158,8 @@ import { SitCustomerBillingHoursComponent } from '@app/containers/dictionaries/s
 import { SitCustomerBillingHoursEditComponent } from '@app/containers/dictionaries/sit-customer-billing-hours/actions/sit-customer-billing-hours-edit/sit-customer-billing-hours-edit.component';
 import { SitB2bProductsComponent } from '@app/containers/dictionaries/sit-b2b-products/sit-b2b-products.component';
 import { SitWmsProductsComponent } from '@app/containers/dictionaries/sit-wms-products/sit-wms-products.component';
+import { SitProductsEditComponent } from '@app/containers/dictionaries/sit-products/actions/sit-products-edit/sit-products-edit.component';
+import { SitProducts4PubEditComponent } from '@app/containers/dictionaries/sit-products/actions/sit-products4-pub-edit/sit-products4-pub-edit.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -321,7 +323,9 @@ export class FactoryService {
         sitCustomerBillingHours: SitCustomerBillingHoursComponent,
         sitCustomerBillingHoursEdit: SitCustomerBillingHoursEditComponent,
         sitB2bProducts: SitB2bProductsComponent,
-        sitWmsProducts: SitWmsProductsComponent
+        sitWmsProducts: SitWmsProductsComponent,
+        sitProductsEdit: SitProductsEditComponent,
+        sitProducts4PubEdit: SitProducts4PubEditComponent
     };
 
     public GetFactory(ident: string) {
