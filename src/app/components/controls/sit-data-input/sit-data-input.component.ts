@@ -2,7 +2,6 @@ import { Component, Input,  Renderer2, ViewEncapsulation, ViewChild, NgZone } fr
 import { SitDataBaseComponent } from '../sit-data-base/sit-data-base.component';
 import { MatFormFieldAppearance  } from '@angular/material/form-field';
 import { SitRefreshButtonComponent } from '../sit-refresh-button/sit-refresh-button.component';
-import { MatAutocomplete } from '@angular/material/autocomplete';
 import { LookupService } from '@app/_services/lookup.service';
 import { MatSelect } from '@angular/material/select';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
@@ -44,14 +43,15 @@ export class SitDataInputComponent extends SitDataBaseComponent {
   }
 
   constructor(
-    _renderer: Renderer2,
+    renderer: Renderer2,
     oncfService: OnCFService,
     private lookupService: LookupService,
-    private ngZone: NgZone) {
-    super(_renderer, oncfService);
-    this.showRefreshButton = false;
-    this.refreshOnChange = true;
-    this.id = this.newGuid();
+    private ngZone: NgZone) {    
+      super(renderer, oncfService);
+
+      this.showRefreshButton = false;
+      this.refreshOnChange = true;
+      this.id = this.newGuid();
   }
 
   onChange(event: any) {    

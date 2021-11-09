@@ -3,7 +3,7 @@ import { DataSetWrapper } from '@app/_models';
 
 @Injectable({ providedIn: 'root' })
 export class OnCFService {
-    valueChange(fieldValue, dataSetWrapper: DataSetWrapper) {
-
+    valueChange(field: string, fieldValue, dataSetWrapper: DataSetWrapper) {
+        console.log(`Field ${field} value ${fieldValue}`);
     }
 }

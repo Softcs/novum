@@ -60,6 +60,7 @@ export class SitDataBaseComponent implements ControlValueAccessor {
 
   onChange(value: any) {
     this._onChange(value);
+    this._oncfService.valueChange(this.field, value, this.dataSetWrapper)
   }
 
   onKeyup(value: any) {
