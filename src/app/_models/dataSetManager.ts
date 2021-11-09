@@ -231,7 +231,11 @@ export class DataSetManager {
                         
                         if (!wasErrors) {
                             if(executeActionCompletedCallback != null) {
-                                executeActionCompletedCallback(owner,  response.jsonData);
+                                var initRow = response.jsonData;
+                                if (initRow && initRow.Result != null && initRow.Result instanceof Array && initRow.Result.length > 0) {
+                                    initRow = initRow.Result[0]; 
+                                }
+                                executeActionCompletedCallback(owner,  initRow);
                             }
                         }                        
                         else {                        
