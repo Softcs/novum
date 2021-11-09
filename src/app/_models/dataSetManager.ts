@@ -257,9 +257,11 @@ export class DataSetManager {
                          activeDataSet: DataSetWrapper = null) {
         const dictIdent = sourceDictIdent ?? this.dictInfo?.ident;
         const dataSourcesRequest: any[] = [];
-        const dsWrapper: DataSetWrapper = activeDataSet == null ? this.getDateSourceWrapper(dataSourceIdent) : activeDataSet;
+        const dsSourceWrapper = this.getDateSourceWrapper(dataSourceIdent);
+        const dsWrapper: DataSetWrapper = activeDataSet == null ? dsSourceWrapper : activeDataSet;
         const obj = this.getObjectForDataSourceRequest(dsWrapper, true);
         dataSourcesRequest.push(obj);
+        this.prapareDataSource4RequestParent(dsSourceWrapper, dataSourcesRequest);
 
         const opr: Operation = this.gatewayService.operationExecuteAction(
             dictIdent,
