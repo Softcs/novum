@@ -52,8 +52,16 @@ export class SitEmployeesComponent extends SitDictBaseComponent {
       { headerName: 'Data od', field: 'DateFrom', filter: 'agDateColumnFilter',width: 90, floatingFilter: false, sort: 'desc', suppressMenu: true },
       { headerName: 'Data do', field: 'DateTo', filter: 'agDateColumnFilter',width: 90, floatingFilter: false, suppressMenu: true },
       { headerName: 'Limit', field: 'VacationLimit', filter: 'agTextColumnFilter', width: 100 },
+    ];
+
+    this.gridColumnsDefinition["sitEmployeeVacationLimitsUsed"] = [
+      { headerName: 'Rok', field: 'Year', filter: 'agTextColumnFilter', width: 100, sort: 'desc'},
+      { headerName: 'Data od', field: 'DateFrom', filter: 'agDateColumnFilter',width: 90, floatingFilter: false, sort: 'desc', suppressMenu: true },
+      { headerName: 'Data do', field: 'DateTo', filter: 'agDateColumnFilter',width: 90, floatingFilter: false, suppressMenu: true },
+      { headerName: 'Limit', field: 'VacationLimit', filter: 'agTextColumnFilter', width: 120 },
+      { headerName: 'Wyliczony', field: 'CalculatedLimit', filter: 'agTextColumnFilter', width: 120 },
       { headerName: 'Wykorzystany', field: 'ActualLimitUsed', filter: 'agTextColumnFilter', width: 120 },            
-    ];    
+    ];  
   }
 
 }
