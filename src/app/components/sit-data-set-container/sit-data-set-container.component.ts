@@ -86,8 +86,11 @@ export class SitDataSetContainerComponent {
     }
   }
 
-  public getFieldId(ident: string) {
-    return '__Identity__'; // ident + 'G';
+  public getFieldId(ident: string = null) {
+    return this.dataSetResponseWrapper.getFieldId();
+  }
+  public getFieldIdValue(row : any = null) {    
+    return this.dataSetResponseWrapper.getFieldIdValue(row);
   }
 
   private deleteRows(dataSource) {

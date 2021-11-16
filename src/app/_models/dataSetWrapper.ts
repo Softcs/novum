@@ -13,6 +13,8 @@ export class DataSetWrapper {
     public fields: [any];
     public connectedLookups: any;
     public isLookup = false;
+    public hasOnCF = false;
+    public onCFFields: any = {};
 
     @Output()
     activeRowChanged: EventEmitter<any> = new EventEmitter<any>();
@@ -35,6 +37,7 @@ export class DataSetWrapper {
         this.fields = null;
         this.readFields(dataSetManagerSource);
         this.readLookups(dataSetManagerSource);
+        this.readOnCF(dataSetManagerSource);
     }
 
     get rows(): any[] {
@@ -82,6 +85,24 @@ export class DataSetWrapper {
                 this.dataSourceManager.RefreshChildren(this, RefreshType.ActiveRow);
             }
         }
+    }
+
+    private readOnCF(dataSetManagerSource: DataSetManager) {
+        let dataSourceDef = this.getDataSource();
+        if (dataSourceDef == null) {
+            dataSourceDef = dataSetManagerSource?.FindDataSource(this.ident);
+        }
+
+        this.hasOnCF = dataSourceDef != null 
+                       && dataSourceDef.onCFSettings 
+                       && dataSourceDef.onCFSettings.isEnabled;
+
+        if (this.hasOnCF) {
+            delete dataSourceDef.onCFSettings.sqlObject;
+            dataSourceDef.onCFSettings.fields.forEach(onCfField => {
+                this.onCFFields[onCfField.fieldName] = true;
+            });
+        }                        
     }
 
     private readLookups(dataSetManagerSource: DataSetManager) {
@@ -357,9 +378,16 @@ export class DataSetWrapper {
         return this.connectedLookups[field];
     }
 
-
-
     public getDataSetManager() {
         return this.dataSourceManager;
     }
+
+    public getFieldId() {
+        return '__Identity__';
+      }
+      public getFieldIdValue(row : any = null) {
+        const fieldName = this.getFieldId();
+        const fieldValue = row == null ? this.activeRow[fieldName] : row[fieldName];
+        return fieldValue;
+      }
 }
