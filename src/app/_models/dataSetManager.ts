@@ -231,7 +231,11 @@ export class DataSetManager {
                         
                         if (!wasErrors) {
                             if(executeActionCompletedCallback != null) {
-                                executeActionCompletedCallback(owner,  response.jsonData);
+                                var initRow = response.jsonData;
+                                if (initRow && initRow.Result != null && initRow.Result instanceof Array && initRow.Result.length > 0) {
+                                    initRow = initRow.Result[0]; 
+                                }
+                                executeActionCompletedCallback(owner,  initRow);
                             }
                         }                        
                         else {                        
@@ -257,9 +261,11 @@ export class DataSetManager {
                          activeDataSet: DataSetWrapper = null) {
         const dictIdent = sourceDictIdent ?? this.dictInfo?.ident;
         const dataSourcesRequest: any[] = [];
-        const dsWrapper: DataSetWrapper = activeDataSet == null ? this.getDateSourceWrapper(dataSourceIdent) : activeDataSet;
+        const dsSourceWrapper = this.getDateSourceWrapper(dataSourceIdent);
+        const dsWrapper: DataSetWrapper = activeDataSet == null ? dsSourceWrapper : activeDataSet;
         const obj = this.getObjectForDataSourceRequest(dsWrapper, true);
         dataSourcesRequest.push(obj);
+        this.prapareDataSource4RequestParent(dsSourceWrapper, dataSourcesRequest);
 
         const opr: Operation = this.gatewayService.operationExecuteAction(
             dictIdent,

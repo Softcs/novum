@@ -255,6 +255,8 @@ import { SitCustomerBillingHoursComponent } from './containers/dictionaries/sit-
 import { SitCustomerBillingHoursEditComponent } from './containers/dictionaries/sit-customer-billing-hours/actions/sit-customer-billing-hours-edit/sit-customer-billing-hours-edit.component';
 import { SitB2bProductsComponent } from './containers/dictionaries/sit-b2b-products/sit-b2b-products.component';
 import { SitWmsProductsComponent } from './containers/dictionaries/sit-wms-products/sit-wms-products.component';
+import { SitProductsEditComponent } from './containers/dictionaries/sit-products/actions/sit-products-edit/sit-products-edit.component';
+import { SitProducts4PubEditComponent } from './containers/dictionaries/sit-products/actions/sit-products4-pub-edit/sit-products4-pub-edit.component';
 
 
 @NgModule({
@@ -500,7 +502,9 @@ import { SitWmsProductsComponent } from './containers/dictionaries/sit-wms-produ
         SitCustomerBillingHoursComponent,
         SitCustomerBillingHoursEditComponent,
         SitB2bProductsComponent,
-        SitWmsProductsComponent
+        SitWmsProductsComponent,
+        SitProductsEditComponent,
+        SitProducts4PubEditComponent
 
     ],
     providers: [
