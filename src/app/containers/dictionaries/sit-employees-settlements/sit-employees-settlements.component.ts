@@ -67,6 +67,11 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
             cellClass: ['font11','numberFormat2Dec'],
             pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
           },
+          { headerName: 'Prem. nie kli.', field: 'BonusNoCust', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 110, agr: 'sum',
+            renderType: 'number',
+            cellClass: ['font11','numberFormat2Dec'],
+            pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
+          },
           { headerName: 'Dodatki', field: 'Additions', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, agr: 'sum',
             renderType: 'number',
             cellClass: ['font11','numberFormat2Dec'],
