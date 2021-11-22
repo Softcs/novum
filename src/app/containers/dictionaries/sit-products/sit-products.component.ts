@@ -58,6 +58,15 @@ export class SitProductsComponent extends SitDictBaseComponent {
       { headerName: 'Ilość', field: 'Quantity', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, renderType: 'number', renderFormat: '1.2-2'}
     ];
 
+    this.gridColumnsDefinition["sitProductLock4DocumentsTypes"] = [
+      { headerName: 'Id', field: 'sitProductLock4DocumentsTypesId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 50, defaultVisibility: false },
+      { headerName: 'GUID', field: 'sitProductLock4DocumentsTypesG', width: 100, defaultVisibility: false }, 
+      { headerName: 'Od dnia', field: 'DateFrom', width: 100,},
+      { headerName: 'Do dnia', field: 'DateFrom', width: 100,},
+      { headerName: 'Dokument', field: 'DocumentIdent', width: 100,},
+      { headerName: 'Opis', field: 'LockDescription', width: 300,},
+    ];
+
   }
 
   activeRowProductsChanged(activeRow) {
