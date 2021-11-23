@@ -181,6 +181,16 @@ export class GatewayService {
         return opr;
     }
 
+    operationOnCF(dictIdent: string, dataSourceIdent: string, startField: string, dataSourceRequest: any) {
+        const opr: Operation = new Operation();
+        opr.dictident = dictIdent;
+        opr.oprType = 70;
+        opr.dataSourceIdent = dataSourceIdent;
+        opr.dataSourcesRequest = [dataSourceRequest];
+        opr.startField = startField;
+        return opr;
+    }
+
     fillOperation(opr: Operation) {
         if (opr.loginInfo == null) {
             opr.loginInfo = new LoginInfo();

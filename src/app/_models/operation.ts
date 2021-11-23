@@ -7,6 +7,7 @@ export class Operation {
     dataSourcesRequest: any[];
     dataSourceIdent: string;
     actionIdent: string;
+    startField: string;
     connection: string;
 }
 

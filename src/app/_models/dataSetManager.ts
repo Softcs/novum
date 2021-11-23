@@ -75,7 +75,7 @@ export class DataSetManager {
         return obj;
     }
 
-    private getObjectForDataSourceRequest(dataSetResponseWrapper: DataSetWrapper, canRefresh: boolean )  {
+    public getObjectForDataSourceRequest(dataSetResponseWrapper: DataSetWrapper, canRefresh: boolean )  {
         const  obj = this.getObjectForRequest(
             dataSetResponseWrapper.ident,
             dataSetResponseWrapper.activeRow,
@@ -305,7 +305,7 @@ export class DataSetManager {
                         executeActionExceptionCallback(owner);
                     }
                 });
-    }
+    }    
 
     public setRefreshDataSources(dataSetsResponse) {
         if (dataSetsResponse == null) {
