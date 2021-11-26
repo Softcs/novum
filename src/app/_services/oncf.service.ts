@@ -18,8 +18,7 @@ export class OnCFService {
         }
         var dataSetManager = dataSetWrapper.getDataSetManager();
         var rowId = dataSetWrapper.getFieldIdValue();
-        this.rowsChecker[rowId] = Guid.create();
-        console.log(`Field ${field} value ${fieldValue}, rowId ${this.rowsChecker[rowId]}`); //todo remove        
+        this.rowsChecker[rowId] = Guid.create();        
         this.executeOnCF(
             dataSetManager,            
             dataSetWrapper.ident,
@@ -29,19 +28,18 @@ export class OnCFService {
     }    
 
     private executeOnCF(dataSetManager:DataSetManager, dataSourceIdent: string, startField: string, dsWrapper: DataSetWrapper) {
-        var dataSetRequest = dataSetManager.getObjectForDataSourceRequest(dsWrapper, true);
+        var dataSetRequest = dataSetManager.getObjectForDataSourceRequest(dsWrapper, true);        
         const opr: Operation = this.gatewayService.operationOnCF(dataSetManager.dictIdent, dataSourceIdent, startField, dataSetRequest);
+        dataSetManager.ExecuteOnCF(opr,            
+            (initRow) => this.onCFCompleted(dsWrapper, initRow),
+            this.onCFException);
+    }
 
-        this.gatewayService.executeOperation(opr)
-        .pipe(first())
-        .subscribe(
-            data => {
-                if (data.length === 1) {
-                    console.log(data)
-                }
-            },
-            error => {
-                console.error("error", error);
-            });
+    private onCFCompleted(dsWrapper, initRow) {
+        dsWrapper.initRowByInitRow(initRow, dsWrapper.activeRow);
+    }
+
+    private onCFException(self) {
+
     }
 }

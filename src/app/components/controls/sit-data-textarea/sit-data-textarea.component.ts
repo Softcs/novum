@@ -23,7 +23,7 @@ export class SitDataTextareaComponent extends SitDataBaseComponent {
     return this.inputElement.nativeElement.value;
   }
   _onFilterKeyEnter(event: any) {
-    this.dataSetWrapper.setFieldValue(this.field, this.getValue());
+    super.onChange(this.getValue());
     this.dataSetWrapper.RefreshChildren();
   }
 

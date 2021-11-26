@@ -57,7 +57,7 @@ export class SitDataRadioComponent extends SitDataBaseComponent {
   public onChange(event: any) {
     const value = this.getValue();
     super.onChange(value);
-    this.dataSetWrapper.setFieldValue(this.field, value);
+    this.dataSetWrapper.setFieldValue(this.field, value, null, false);
     if (this.refreshOnChange) {
       this.dataSetWrapper.RefreshChildren();
     }

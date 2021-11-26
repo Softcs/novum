@@ -31,7 +31,7 @@ export class SitFilesButtonComponent extends SitButtonBaseComponent {
 
   onHandleFileInput($event) {
     const files = this.hiddenInput.nativeElement['files'];
-    this.dataSetWrapper?.setFieldValue(this.fieldFileNames, this.getFileNames(files));
+    this.dataSetWrapper?.setFieldValue(this.fieldFileNames, this.getFileNames(files), null, false);
     if (files) {
       this.changeExecutingState(true);
       const fileId = this.getFileId();

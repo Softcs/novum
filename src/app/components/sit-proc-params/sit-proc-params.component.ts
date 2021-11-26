@@ -6,6 +6,7 @@ import { SitDataSetContainerComponent } from '../sit-data-set-container';
 import { DataSetManager, DataSetWrapper } from '@app/_models';
 import { GatewayService } from '@app/_services';
 import { ActionExecuteData } from '@app/_models/actionExecuteData';
+import { OnCFService } from '@app/_services/oncf.service';
 
 
 @Component({
@@ -37,8 +38,9 @@ export class SitProcParamsComponent implements AfterViewInit {
     gatewayService: GatewayService,
     private tabService: TabService,
     public dialog: MatDialog,
+    protected _oncfService: OnCFService
   ) {
-    this.dataSetManager = new DataSetManager(gatewayService);
+    this.dataSetManager = new DataSetManager(gatewayService, _oncfService);
     
     this.tabService.activeTabIndex.subscribe( i => {
       if (!this.tabIndex) {

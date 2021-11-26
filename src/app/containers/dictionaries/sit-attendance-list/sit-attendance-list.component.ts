@@ -245,9 +245,9 @@ export class SitAttendanceListComponent extends SitDictBaseComponent {
   onCellClicked(e){
     this.dataSourceResponseWrapper.rows.forEach (row => {
       if (e.colDef.colId === 'EmployeeName') {
-        this.dataSourceResponseWrapper.setFieldValue('Date','',row)
+        this.dataSourceResponseWrapper.setFieldValue('Date', '', row, false)
       } else {
-        this.dataSourceResponseWrapper.setFieldValue('Date',row['Year']+'-'+row['Month']+'-'+e.colDef.colId, row)
+        this.dataSourceResponseWrapper.setFieldValue('Date', row['Year']+'-'+row['Month']+'-'+e.colDef.colId, row, false)
       }
       }
     )

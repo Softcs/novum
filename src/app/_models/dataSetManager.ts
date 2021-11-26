@@ -6,6 +6,7 @@ import { first } from 'rxjs/operators';
 import { DataSetDefinitionWrapper } from './dataSetDefinitionWrapper';
 import { SitProcExpanderComponent } from '@app/components/controls/sit-proc-expander/sit-proc-expander.component';
 import { RefreshType } from '@app/_consts/RefreshType';
+import { OnCFService } from '@app/_services/oncf.service';
 
 @Directive()
 export class DataSetManager {
@@ -23,7 +24,7 @@ export class DataSetManager {
     @Output()
     refreshAfter: EventEmitter<DataSetManager> = new EventEmitter<DataSetManager>();
 
-    constructor(private gatewayService: GatewayService) {
+    constructor(private gatewayService: GatewayService, protected _oncfService: OnCFService) {
         this.dataSetsWrapper = [];
     }
     private prapareDataSource4Request(dataSourceDefinition: any, dataSourcesRequest: any[]) {
@@ -188,6 +189,46 @@ export class DataSetManager {
         }
     }
 
+    public ExecuteOnCF(opr: Operation,        
+        executeActionCompletedCallback: Function,
+        executeActionExceptionCallback: Function) {
+        this.gatewayService.executeOperation(opr)
+        .pipe(first())
+        .subscribe(
+            data => {
+                if (data.length === 1) {
+                    const response = data[0];
+                    const wasErrors = this.PropagateErrors(opr.dataSourceIdent, response?.Errors);                       
+                    
+                    if (!wasErrors) {
+                        if(executeActionCompletedCallback != null) {
+                            var initRow = response.jsonData;
+                            if (initRow && initRow.Result != null && initRow.Result instanceof Array && initRow.Result.length > 0) {
+                                initRow = initRow.Result[0]; 
+                            }
+                            executeActionCompletedCallback(initRow);
+                            const dataSetContainers = this.findDataSetContainers(opr.dataSourceIdent);
+                            dataSetContainers.forEach(cont => {                            
+                                cont.refreshFieldValueInControl();
+                            });
+
+                        }
+                    }                        
+                    else {                        
+                        if (executeActionExceptionCallback != null) {
+                            executeActionExceptionCallback();
+                        }
+                    }
+                }
+            },
+            error => {
+                console.error("error", error);
+                if (executeActionExceptionCallback != null) {
+                      executeActionExceptionCallback();
+                }
+            });
+    }
+
     public ExecuteInitInfo(dataSourceIdent: string, 
                     actionIdent: string, 
                     generatedRow: any, 
@@ -348,7 +389,7 @@ export class DataSetManager {
                 console.error('DataSource: ' + dataSet.ident + ' not found!');
             }
 
-            const dataSetResponseWrapper = new DataSetWrapper(dataSet.ident, null, null);
+            const dataSetResponseWrapper = new DataSetWrapper(dataSet.ident, null, null, this._oncfService);
             dataSetResponseWrapper.setInputDataSource(dataSet);
 
             dataSetContainers.forEach(cont => {
@@ -437,7 +478,7 @@ export class DataSetManager {
     public CreateDataSetWrapper(ident: string, dataSetManagerSource: DataSetManager): DataSetWrapper {
         let dataSetResponseWrapper = this.getDateSourceWrapper(ident);
         if (dataSetResponseWrapper == null) {
-            dataSetResponseWrapper = new DataSetWrapper(ident, this, dataSetManagerSource);
+            dataSetResponseWrapper = new DataSetWrapper(ident, this, dataSetManagerSource, this._oncfService);
             this.dataSetsWrapper.push(dataSetResponseWrapper);
         }
         return dataSetResponseWrapper;

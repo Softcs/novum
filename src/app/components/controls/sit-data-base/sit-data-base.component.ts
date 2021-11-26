@@ -37,8 +37,7 @@ export class SitDataBaseComponent implements ControlValueAccessor {
   }
 
   constructor(    
-    protected _renderer: Renderer2,
-    protected _oncfService: OnCFService) {      
+    protected _renderer: Renderer2) {      
   }
 
   get inputElement(): ElementRef {
@@ -59,8 +58,8 @@ export class SitDataBaseComponent implements ControlValueAccessor {
   }
 
   onChange(value: any) {
-    this._onChange(value);
-    this._oncfService.valueChange(this.field, value, this.dataSetWrapper)
+    this._onChange(value);    
+    this.dataSetWrapper.setFieldValue(this.field, this.getValue(), null, false);    
   }
 
   onKeyup(value: any) {

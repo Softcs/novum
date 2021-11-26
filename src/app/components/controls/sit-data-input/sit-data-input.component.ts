@@ -84,7 +84,7 @@ export class SitDataInputComponent extends SitDataBaseComponent {
   }
 
   _onFilterKeyEnter(event: any) {
-    this.dataSetWrapper.setFieldValue(this.field, this.getValue());
+    super.onChange(this.getValue());
     if (this.refreshOnChange) {
       this.dataSetWrapper.RefreshChildren();
     }
@@ -127,7 +127,7 @@ export class SitDataInputComponent extends SitDataBaseComponent {
 
       this.lookupSettings.valuesTo.forEach(valueTo => {
         const fieldValue = row[valueTo.source];
-        this.dataSetWrapper.setFieldValue(valueTo.target, fieldValue);
+        this.dataSetWrapper.setFieldValue(valueTo.target, fieldValue, null, false);
       });
     }
   }
@@ -151,7 +151,7 @@ export class SitDataInputComponent extends SitDataBaseComponent {
     if (!this.hasLookup) { return; }
     clearTimeout(this.lookupTimeout);
     this.lookupTimeout = setTimeout(() => {
-      this.dataSetWrapper.setFieldValue(this.field, this.getValue());
+      super.onChange(this.getValue());
       this.onLookupOpen();
     }, 500);
   }

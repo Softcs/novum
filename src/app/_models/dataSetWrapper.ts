@@ -3,6 +3,7 @@ import { Output, EventEmitter, Directive } from '@angular/core';
 import { Guid } from 'guid-typescript';
 import { _ } from 'ag-grid-community';
 import { RefreshType } from '@app/_consts/RefreshType';
+import { OnCFService } from '@app/_services/oncf.service';
 
 @Directive()
 export class DataSetWrapper {
@@ -31,7 +32,8 @@ export class DataSetWrapper {
     constructor(
         public ident: string,
         public dataSourceManager: DataSetManager,
-        private dataSetManagerSource: DataSetManager
+        private dataSetManagerSource: DataSetManager,
+        protected _oncfService: OnCFService
         ) {
         this._rows = null;
         this.fields = null;
@@ -325,12 +327,12 @@ export class DataSetWrapper {
         lookupSettings.valuesTo.forEach(valueTo => {
             if (usedFields.indexOf(valueTo.target) === -1) {
                 usedFields.push(valueTo.target);
-                this.setFieldValue(valueTo.target, null, rowToChange);
+                this.setFieldValue(valueTo.target, null, rowToChange, false);
             }
         });
     }
 
-    public setFieldValue(fieldName: string, fieldValue: any, rowToChange: any = null) {
+    public setFieldValue(fieldName: string, fieldValue: any, rowToChange: any = null, blockOnCF = true) {
         const row = rowToChange ?? this.activeRow;
 
         if (row == null) {
@@ -349,6 +351,9 @@ export class DataSetWrapper {
         if (!Boolean(fieldValue)) {
             const usedFields = [fieldName];
             this.clearLookupsFieldsForField(fieldName, usedFields, row);
+        }
+        if (!blockOnCF) {
+            this._oncfService.valueChange(fieldName, fieldValue, this);
         }
 
         this.afterSetFieldValue.emit(fieldName);
