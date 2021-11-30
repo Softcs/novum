@@ -26,5 +26,10 @@ export class SitAppUsersInCompanyComponent extends SitDictBaseComponent {
       { headerName: 'Identyfikator', field: 'RightsGroupIdent'},
       { headerName: 'Nazwa', field: 'RightsGroupName'},
     ];
+
+    this.gridColumnsDefinition["sitHRDepartmentsUsers"] = [
+      { headerName: 'Identyfikator', field: 'HRDepartmentIdent', width: 150},
+      { headerName: 'Nazwa', field: 'HRDepartmentName', width: 300},
+    ];
   }
 }

@@ -44,6 +44,7 @@ export class SitWmsDocsComponent extends SitDictBaseComponent {
       { headerName: 'NagId SL', field: 'ExtAppIdent01', width: 100, floatingFilter: true },
       { headerName: 'XL ID', field: 'ExtAppIdent02',width: 60, suppressMenu: true  },
       { headerName: 'Opis zew.', field: 'ExtAppDescription01', tooltipField: 'ExtAppDescription01',width: 200  },
+      { headerName: 'Załącznik', field: 'IsAtt', filter: 'agSetColumnFilter', width: 80, renderType: 'checkbox', suppressMenu: true, defaultVisibility: false},      
     ];
 
     this.gridColumnsDefinition['sitDocumentsPositions'] = [

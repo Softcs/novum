@@ -18,7 +18,10 @@ export class SitPublicationsAgreementsComponent extends SitDictBaseComponent {
       { headerName: 'Czas do rozl.', field: 'TimeToPay', filter: 'agTextColumnFilter', type: 'numericColumn', width: 100, suppressMenu: true},
       { headerName: 'Waluta', field: 'CurrencyIdent', filter: 'agTextColumnFilter', width: 100 },
       { headerName: 'Publikacje', field: 'PublicationsIdents', tooltipField: 'PublicationsIdents', filter: 'agTextColumnFilter', width: 200},
-      { headerName: 'Zaliczka', field: 'IsAdvance', width: 100, renderType: 'checkbox'},
+      { headerName: 'Zaliczka', field: 'IsAdvance', width: 100, renderType: 'checkbox', suppressMenu: true},
+      { headerName: 'Wyprz.do tant.', field: 'IncSale', width: 110, renderType: 'checkbox', suppressMenu: true},
+      { headerName: '% od remind.', field: 'RemindersRate', width: 100, type: 'numericColumn', suppressMenu: true},
+      { headerName: 'Min.tant./cena', field: 'MinPriceDesc', filter: 'agTextColumnFilter', width: 150},
       { headerName: 'Status', field: 'MainStatus_ValueName', filter: 'agTextColumnFilter', width: 150}
     ];
     this.gridColumnsDefinition["sitAgreementsBenef"] = [

@@ -56,7 +56,7 @@ export class SitEmployeesContractsHRDepartmentsComponent extends SitDictBaseComp
       { headerName: 'Nr umowy', field: 'ContractNumber', width: 150,
         cellClass: ['font11','textFormat']
       },
-      { headerName: 'Umowa od', field: 'DateFrom',  width: 100,
+      { headerName: 'Umowa od', field: 'DateFrom',  width: 100, sort: 'asc',
         cellClass: ['font11','dateFormat']
       },
       { headerName: 'Umowa do', field: 'DateTo',  width: 100,
