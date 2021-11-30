@@ -46,16 +46,16 @@ export class SitDataInputComponent extends SitDataBaseComponent {
     renderer: Renderer2,
     oncfService: OnCFService,
     private lookupService: LookupService,
-    private ngZone: NgZone) {    
-      super(renderer, oncfService);
+    private ngZone: NgZone) {
+      super(renderer);
 
       this.showRefreshButton = false;
       this.refreshOnChange = true;
       this.id = this.newGuid();
   }
 
-  onChange(event: any) {    
-    super.onChange(this.getValue());    
+  onChange(event: any) {
+    super.onChange(this.getValue());
     this._onFilterKeyEnter(event);
   }
 

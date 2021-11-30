@@ -20,7 +20,7 @@ export class SitDataLabelComponent extends SitDataBaseComponent {
     _renderer: Renderer2,
     protected _oncfService: OnCFService,
     private ngZone: NgZone) {
-    super(_renderer, _oncfService);
+    super(_renderer);
 
   }
 

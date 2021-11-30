@@ -37,7 +37,7 @@ export class SitDataRadioComponent extends SitDataBaseComponent {
   constructor(
     renderer: Renderer2,
     oncfService: OnCFService) {
-    super(renderer, oncfService);
+    super(renderer);
     this.refreshOnChange = true;
     this.id = this.newGuid();
   }

@@ -27,7 +27,10 @@ export class SitEmployeesContractsHRDepartmentsComponent extends SitDictBaseComp
       { headerName: 'Stanowisko', field: 'Position', tooltipField: 'Position',  width: 250,
         cellClass: ['font11','textFormat']
       },
-      { headerName: 'Umowa od', field: 'ContractFrom',  width: 100,
+      { headerName: 'Miejsce pracy', field: 'HRWorkPlaceName', tooltipField: 'HRWorkPlaceName',  width: 250,
+        cellClass: ['font11','textFormat']
+      },
+      { headerName: 'Umowa od', field: 'ContractFrom',  width: 100, sort: 'asc',
         cellClass: ['font11','dateFormat']
       },
       { headerName: 'Umowa do', field: 'ContractTo',  width: 100,
@@ -63,6 +66,9 @@ export class SitEmployeesContractsHRDepartmentsComponent extends SitDictBaseComp
         cellClass: ['font11','dateFormat']
       },
       { headerName: 'Stanowisko', field: 'Position', width: 250,
+        cellClass: ['font11','textFormat']
+      },
+      { headerName: 'Miejsce pracy', field: 'HRWorkPlaceName', width: 250,
         cellClass: ['font11','textFormat']
       },
       { headerName: 'Etat', field: 'WorkingHours',  width: 70,

@@ -29,7 +29,7 @@ export class SitPdfViewerComponent extends SitDataBaseComponent implements After
       private gatewayService: GatewayService,
       private urlService: UrlService      
       ) {
-    super(renderer, oncfService);
+    super(renderer);
 
     this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
     this.companyGUID = this.currentUser.company.companyGUID;

@@ -14,13 +14,13 @@ export class SitDataCheckboxComponent extends SitDataBaseComponent {
   @Input() label = '';
   @Input() width: string;
   @Input() refreshOnChange: boolean;
-  @Input() labelPosition: 'after';  
-  indeterminate: boolean;  
-  
+  @Input() labelPosition: 'after';
+  indeterminate: boolean;
+
   //labelPosition: 'before' | 'after' = 'after'; //pozycja etykiety checkboxa, domyslnie za
 
   constructor(renderer: Renderer2, oncfService: OnCFService) {
-    super(renderer, oncfService);
+    super(renderer);
     this.refreshOnChange = false;
     this.registerOnChange(this.onChange);
   }
