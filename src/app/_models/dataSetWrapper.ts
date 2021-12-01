@@ -343,11 +343,16 @@ export class DataSetWrapper {
             row[fieldName] = null;
         }
 
+        if (typeof(fieldValue) == 'string' && fieldValue.trim() == '') {
+            fieldValue = null;
+        }
+
         if (row[fieldName] === fieldValue) {
             return;
         }
 
         row[fieldName] = fieldValue;
+        
         if (!Boolean(fieldValue)) {
             const usedFields = [fieldName];
             this.clearLookupsFieldsForField(fieldName, usedFields, row);
