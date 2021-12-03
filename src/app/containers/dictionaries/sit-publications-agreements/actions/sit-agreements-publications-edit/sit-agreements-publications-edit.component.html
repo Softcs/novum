@@ -5,6 +5,19 @@
     <div class="sit-proc-params-content" fxLayout="column">
       <sit-data-input #sitControl type="text" field="PublicationIdent" label="Publikacja" appearance="outline"  
         [lookupDisplayFields] = "['PublicationIdent', 'Title']"></sit-data-input>
+      <sit-data-radio #sitControl field="RightsDateFromType" type="row" label="Rodzaj daty rozpoczęcia licencji"
+        [buttons]="[{'caption':'zawarcia umowy','value': '0', 'checked':true},{'caption':'otrzymania rękopisu','value':'1'},{'caption':'przyjęcia utworu','value':'2'},
+          {'caption':'inna','value':'3'}]"
+      ></sit-data-radio>
+      <sit-data-input type="date" #sitControl field="RightsDateFrom" label="Data rozpoczęcia licencji" appearance="outline" style="width: 150px"></sit-data-input>
+      <div fxLayout="row">
+        <sit-data-input #sitControl type="number" field="RightsPeriodInYears" label="Czas trwania licencji (lata)" appearance="outline" style="width: 300px"></sit-data-input>
+        <sit-data-input type="date" #sitControl field="RightsDateTo" label="Data zakończenia licencji" appearance="outline" style="width: 150px"></sit-data-input>
+      </div>
+      <div fxLayout="row">
+        <sit-data-input #sitControl type="number" field="SellAfterRightsPeriodInMonths" label="Czas sprzedaży po zakończeniu licencji (miesiące)" appearance="outline" style="width: 300px"></sit-data-input>
+        <sit-data-input type="date" #sitControl field="RightsToSellDateTo" label="Data wygaśnięcia praw do sprzedaży" appearance="outline" style="width: 150px"></sit-data-input>
+      </div>       
     </div>
   </sit-data-set-container>
 </sit-proc-params>
