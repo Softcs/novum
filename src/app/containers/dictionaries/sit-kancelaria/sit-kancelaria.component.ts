@@ -54,8 +54,8 @@ export class SitKancelariaComponent implements OnInit {
           filterOptions: ['contains']
         }
       },
-      { headerName: 'Numer zew.', field: 'AgreementNumberExt01',width: 150, defaultVisibility: false },      
-      { headerName: 'Data', field: 'Date', type: ['date'], width: 100, cellRenderer: 'sitGridCellRenderer' },
+      { headerName: 'Numer zew.', field: 'AgreementNumberExt01',width: 150, defaultVisibility: false },
+      { headerName: 'Data zawarcia', field: 'Date', type: ['date'], width: 100, cellRenderer: 'sitGridCellRenderer', suppressMenu: true },
       { headerName: 'Data do', field: 'DateTo',type: ['date'], width: 100, cellRenderer: 'sitGridCellRenderer' },
       { headerName: 'Typ umowy', field: 'AgreementsTypeName', width: 150, filter: 'agTextColumnFilter', floatingFilter: true },
       { headerName: 'Lokalizacja', field: 'LocationName', width: 150, filter: 'agTextColumnFilter', floatingFilter: true },
