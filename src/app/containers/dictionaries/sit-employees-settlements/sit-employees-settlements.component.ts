@@ -405,10 +405,10 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
       { headerName: 'MPK', field: 'CustomerCostCenterIdent', tooltipField: 'CustomerCostCenterIdent',  width: 100,
         cellClass: ['font11','textFormat']
       },
-      { headerName: 'Umowa od', field: 'ContractFrom',  width: 100,
+      { headerName: 'Okres od', field: 'ContractFrom',  width: 100,
         cellClass: ['font11','dateFormat']
       },
-      { headerName: 'Umowa do', field: 'ContractTo',  width: 100,
+      { headerName: 'Okres do', field: 'ContractTo',  width: 100,
         cellClass: ['font11','dateFormat']
       },
       { headerName: 'Etat', field: 'JobTime',  width: 70,
@@ -429,6 +429,30 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
       { headerName: 'Stawka', field: 'H_Rate', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, suppressMenu: true,
         renderType: 'number', renderFormat: '1.2-2',
         cellClass: ['font11','numberFormat2Dec'],
+      },
+      { headerName: 'Wyn. nom', field: 'Base', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, suppressMenu: true,
+        renderType: 'number', renderFormat: '1.2-2',
+        cellClass: ['font11','numberFormat2Dec'],
+      },
+      { headerName: 'Wynagrodzenie', headerTooltip: 'Wynagrodzenie',
+      children: [
+        { headerName: 'Suma', field: 'SumPay', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, suppressMenu: true, agr: 'sum',
+          renderType: 'number',
+          cellClass: ['font11','numberFormat2Dec'],
+        },
+        { headerName: 'Zasadnicze', field: 'Gross', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, suppressMenu: true, columnGroupShow: "open", agr: 'sum',
+          renderType: 'number', renderFormat: '1.2-2',
+          cellClass: ['font11','numberFormat2Dec'],
+        },
+        { headerName: 'Urlop wyp.',headerTooltip: 'Urlop wypoczynkowy', field: 'VacPay', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, suppressMenu: true, columnGroupShow: "open", agr: 'sum',
+          renderType: 'number', renderFormat: '1.2-2',
+          cellClass: ['font11','numberFormat2Dec'],
+        },
+        { headerName: 'Chorobowe', field: 'SickPay', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, suppressMenu: true, columnGroupShow: "open", agr: 'sum',
+          renderType: 'number', renderFormat: '1.2-2',
+          cellClass: ['font11','numberFormat2Dec'],
+        },
+       ]
       },
       { headerName: 'Godziny',
         children: [
