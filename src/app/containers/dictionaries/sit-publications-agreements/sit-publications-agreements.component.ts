@@ -17,18 +17,18 @@ export class SitPublicationsAgreementsComponent extends SitDictBaseComponent {
       { headerName: 'Data zawarcia', field: 'Date', filter: 'agTextColumnFilter', width: 100, renderType: 'date', suppressMenu: true},
       { headerName: 'Zakres umowy', field: 'AgreementsScopeDesc', tooltipField: 'AgreementsScopeDesc', filter: 'agTextColumnFilter', width: 150},
       { headerName: 'Publikacje', field: 'PublicationsIdents', tooltipField: 'PublicationsIdents', filter: 'agTextColumnFilter', width: 200},
-      { headerName: 'Okres lic.', headerTooltip: 'Okres trwania licencji w latach.', field: 'RightsPeriodInYears', width: 80, type: 'numericColumn', renderType: 'number', suppressMenu: true},
+      { headerName: 'Okres lic.', headerTooltip: 'Okres trwania licencji w latach.', field: 'RightsPeriodInYears', width: 80, type: 'numericColumn', renderType: 'number', renderFormat: '1.0-0', suppressMenu: true},
       { headerName: 'Częst. rozl.', headerTooltip: 'Częstotliwość rozliczania tantiem', field: 'BillingFrequencyName', filter: 'agTextColumnFilter', width: 100, suppressMenu: true},
-      { headerName: 'Na rozl.', headerTooltip: 'Ile mamy czasu na rozliczenie w dniach', field: 'TimeToPay', filter: 'agTextColumnFilter', type: 'numericColumn', width: 80, suppressMenu: true},
-      { headerName: 'Do zapł.', headerTooltip: 'Ile mamy czasu do zapłaty w dniach', field: 'TimeToSettle', filter: 'agTextColumnFilter', type: 'numericColumn', width: 80, suppressMenu: true},
+      { headerName: 'Na rozl.', headerTooltip: 'Ile mamy czasu na rozliczenie w dniach', field: 'TimeToPay',  type: 'numericColumn', width: 80, suppressMenu: true},
+      { headerName: 'Do zapł.', headerTooltip: 'Ile mamy czasu do zapłaty w dniach', field: 'TimeToSettle',  type: 'numericColumn', width: 80, suppressMenu: true},
       { headerName: 'Waluta', field: 'CurrencyIdent', filter: 'agTextColumnFilter', width: 70, suppressMenu: true},
       { headerName: 'Zaliczka', field: 'IsAdvance', headerTooltip: 'Czy wypłacana jest zaliczka.', width: 80, renderType: 'checkbox', suppressMenu: true},
       { headerName: 'Sprzedaż po wyg. lic.', headerTooltip: 'Prawo do sprzedaży po wygaśnięciu licencji', field: 'SellAfterRightsKindDesc', tooltipField: 'SellAfterRightsKindDesc', filter: 'agTextColumnFilter', width: 180},
-      { headerName: 'Okres', headerTooltip: 'Okres przez jaki mamy prawo do sprzedaży po wygaśnięciu licencji - mies.', field: 'SellAfterRightsPeriodInMonths', width: 60, type: 'numericColumn', renderType: 'number', suppressMenu: true},
+      { headerName: 'Okres', headerTooltip: 'Okres przez jaki mamy prawo do sprzedaży po wygaśnięciu licencji - mies.', field: 'SellAfterRightsPeriodInMonths', width: 60, type: 'numericColumn', renderType: 'number', renderFormat: '1.0-0', suppressMenu: true},
       { headerName: 'Min.tant. / cena', field: 'MinPriceDesc', filter: 'agTextColumnFilter', width: 150},
       { headerName: 'Wyprz.do tant.', headerTooltip: 'Czy wyprzedaż jest wliczana do tantiem.', field: 'IncSale', width: 110, renderType: 'checkbox', suppressMenu: true},
-      { headerName: 'Reminders', field: 'Reminders', headerTooltip: 'Czy umowa przewiduje reminders.', width: 80, renderType: 'checkbox', suppressMenu: true},
-      { headerName: '% od remind.', headerTooltip: '% tantiem od reminders', field: 'RemindersRate', width: 100, type: 'numericColumn', suppressMenu: true},
+      { headerName: 'Remainders', field: 'Remainders', headerTooltip: 'Czy umowa przewiduje remainders.', width: 80, renderType: 'checkbox', suppressMenu: true},
+      { headerName: '% od remaind.', headerTooltip: '% tantiem od remainders', field: 'RemaindersRate', width: 100, type: 'numericColumn', suppressMenu: true},
       { headerName: 'Status', field: 'MainStatus_ValueName', filter: 'agTextColumnFilter', width: 150}
     ];
     this.gridColumnsDefinition["sitAgreementsBenef"] = [
@@ -48,9 +48,7 @@ export class SitPublicationsAgreementsComponent extends SitDictBaseComponent {
       { headerName: 'Tytuł oryginalny', field: 'OriginalTitle', width: 300},
       { headerName: 'Typ daty licencji', field: 'RightsDateFromTypeDesc', width: 150},
       { headerName: 'Początek licencji', field: 'RightsDateFrom', filter: 'agTextColumnFilter', width: 120, renderType: 'date'},
-      { headerName: 'Lat', field: 'RightsPeriodInYears', width: 80, type: 'numericColumn', suppressMenu: true},
       { headerName: 'Koniec licencji', field: 'RightsDateTo', filter: 'agTextColumnFilter', width: 120, renderType: 'date'},
-      { headerName: 'Miesięcy', field: 'SellAfterRightsPeriodInMonths', width: 80, type: 'numericColumn', suppressMenu: true},
       { headerName: 'Sprzedaż do', field: 'RightsToSellDateTo', filter: 'agTextColumnFilter', width: 120, renderType: 'date'},
     ];
     this.gridColumnsDefinition["sitAgreementsAdvances"] = [
