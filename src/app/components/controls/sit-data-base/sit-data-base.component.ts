@@ -17,6 +17,7 @@ export class SitDataBaseComponent implements ControlValueAccessor {
   @Input() field = '';
   @Input() id: string = null;
   @Input() readonly = false;
+  
   @ViewChild('inputElement') private _inputElement: ElementRef;
 
   get dataSetWrapper(): DataSetWrapper {

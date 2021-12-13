@@ -191,11 +191,20 @@ export class DataSetManager {
 
     public ExecuteOnCF(opr: Operation,        
         executeActionCompletedCallback: Function,
-        executeActionExceptionCallback: Function) {
-        this.gatewayService.executeOperation(opr)
+        executeActionExceptionCallback: Function,
+        executeBeforeCallback: Function,
+        executeFinallyCallback: Function) {
+        
+        if (executeBeforeCallback) {
+            console.info("OnCF before");            
+            executeBeforeCallback();            
+        }
+
+        this.gatewayService.executeOperation(opr)        
         .pipe(first())
         .subscribe(
             data => {
+                console.info("OnCF starting");
                 if (data.length === 1) {
                     const response = data[0];
                     const wasErrors = this.PropagateErrors(opr.dataSourceIdent, response?.Errors);                       
@@ -220,13 +229,21 @@ export class DataSetManager {
                         }
                     }
                 }
+                console.info("OnCF completed");
             },
             error => {
                 console.error("error", error);
                 if (executeActionExceptionCallback != null) {
                       executeActionExceptionCallback();
                 }
-            });
+            },
+        )
+        .add(() => {            
+            console.info("OnCF finally");
+            if (executeFinallyCallback != null) {
+                executeFinallyCallback();
+            }
+        })
     }
 
     public ExecuteInitInfo(dataSourceIdent: string, 

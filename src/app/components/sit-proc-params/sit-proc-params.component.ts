@@ -63,7 +63,7 @@ export class SitProcParamsComponent implements AfterViewInit {
   }
 
   executInitProc(dataSetContainer: SitDataSetContainerComponent, row) {
-    this.executing = true;
+    this.lockExecuting();
     this.dataSetManagerSource.ExecuteInitInfo(
         this.actionExecuteData.sourceDataSetIdent,
         this.actionExecuteData.actionIdent,
@@ -74,20 +74,20 @@ export class SitProcParamsComponent implements AfterViewInit {
       );
   }
   
-  initInfoCompleted(self, dataSetContainer, initRow) {
-    self.executing = false;
+  initInfoCompleted(self, dataSetContainer, initRow) {    
     self.connectDataSetToControls(dataSetContainer, initRow)
+    self.unlockExecuting();
   }
 
   initInfoException(self) {
-    self.executing = false;
+    self.unlockExecuting();
   }
 
   connectDataSetToControls(dataSetContainer: SitDataSetContainerComponent, initRow) { 
     this.mainDataSet.initRowByInitRow(initRow, this.mainDataSet.activeRow);
     dataSetContainer.setDataSource(this.mainDataSet);
     dataSetContainer.prepareControls(null);
-    this.executing = false;
+    this.unlockExecuting();
     this.activeRow = this.mainDataSet.activeRow;
     this.activeRowChange.emit(this.activeRow);
     this.connectToFilesButton();    
@@ -100,7 +100,21 @@ export class SitProcParamsComponent implements AfterViewInit {
     this.dataSetManager.parentDataSetManager = this.dataSetManagerSource;
     const dataSetContainer = this.dataSetManager.dataSetContainers.first;
     this.mainDataSet = this.dataSetManager.CreateDataSetWrapper(dataSetContainer.ident, this.dataSetManagerSource);
+    
+    this.mainDataSet.rowIsLocked.subscribe(row => {
+      if (this.mainDataSet.activeRow == row) {
+        this.lockExecuting();
+      }
+    });
+
+    this.mainDataSet.rowIsUnLocked.subscribe(row => {
+      if (this.mainDataSet.activeRow == row) {
+        this.unlockExecuting();
+      }
+    });
+
     var actionRow = this.mainDataSet.GenerateRow(this.actionExecuteData.activeRow, true, null, false, null);
+
     !this.actionExecuteData.hasInitProc
        ? this.connectDataSetToControls(dataSetContainer, null)
        : this.executInitProc(dataSetContainer, actionRow); 
@@ -139,6 +153,14 @@ export class SitProcParamsComponent implements AfterViewInit {
     return this.actionExecuteData.openKind === 'EXPANDER';
   }
 
+  private lockExecuting() {
+    this.executing = true;
+  }
+
+  private unlockExecuting() {
+    this.executing = false;
+  }
+
   onSave(e: string) {
     if (e === 'OK') {
       this.close(false);
@@ -146,7 +168,7 @@ export class SitProcParamsComponent implements AfterViewInit {
   }
 
   executeAction(): void {
-    this.executing = true;
+    this.lockExecuting();
     this.dataSetManagerSource.ExecuteAction(
       this.actionExecuteData.actionIdent,
       this.actionExecuteData.sourceDataSetIdent,
@@ -158,12 +180,12 @@ export class SitProcParamsComponent implements AfterViewInit {
   }
 
   private executeActionCompletedCallback(self) {
-    self.executing = false;
+    self.unlockExecuting();
     self.close(self.tabIndex);
   }
 
   private executeActionExceptionCallback(self) {
-    self.executing = false;
+    self.unlockExecuting();
   }  
 
   private close(discard: boolean) {

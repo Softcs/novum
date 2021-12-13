@@ -12,34 +12,41 @@ export class OnCFService {
 
     }
 
-    valueChange(field: string, fieldValue, dataSetWrapper: DataSetWrapper) {
-        if (!dataSetWrapper || !dataSetWrapper.hasOnCF || !dataSetWrapper.onCFFields[field]) {
+    valueChange(fieldName: string, fieldValue, dataSetWrapper: DataSetWrapper) {
+        if (!dataSetWrapper || !dataSetWrapper.hasOnCF || !dataSetWrapper.onCFFields[fieldName]) {
             return;
-        }
+        }        
         var dataSetManager = dataSetWrapper.getDataSetManager();
         var rowId = dataSetWrapper.getFieldIdValue();
         this.rowsChecker[rowId] = Guid.create();        
         this.executeOnCF(
             dataSetManager,            
             dataSetWrapper.ident,
-            field,
+            fieldName,
             dataSetWrapper
         );
     }    
 
-    private executeOnCF(dataSetManager:DataSetManager, dataSourceIdent: string, startField: string, dsWrapper: DataSetWrapper) {
+    private executeOnCF(dataSetManager:DataSetManager, 
+                        dataSourceIdent: string, 
+                        startField: string, 
+                        dsWrapper: DataSetWrapper) {
+        var activeRow = dsWrapper.activeRow;
         var dataSetRequest = dataSetManager.getObjectForDataSourceRequest(dsWrapper, true);        
         const opr: Operation = this.gatewayService.operationOnCF(dataSetManager.dictIdent, dataSourceIdent, startField, dataSetRequest);
+        
         dataSetManager.ExecuteOnCF(opr,            
-            (initRow) => this.onCFCompleted(dsWrapper, initRow),
-            this.onCFException);
+            (initRow) => this.onCFCompleted(dsWrapper, initRow, activeRow),
+            this.onCFException,
+            () => dsWrapper.lockPostRecord(activeRow), 
+            () => dsWrapper.onCFFinally(activeRow));
     }
 
-    private onCFCompleted(dsWrapper, initRow) {
+    private onCFCompleted(dsWrapper, initRow, activeRow) {
         dsWrapper.initRowByInitRow(initRow, dsWrapper.activeRow);
     }
 
     private onCFException(self) {
 
-    }
+    }   
 }

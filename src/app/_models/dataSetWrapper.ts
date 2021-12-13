@@ -28,6 +28,15 @@ export class DataSetWrapper {
 
     @Output()
     afterSetFieldValue: EventEmitter<string> = new EventEmitter<string>();
+    
+    @Output()
+    beforeSetFieldValue: EventEmitter<string> = new EventEmitter<string>();    
+    
+    @Output()
+    rowIsLocked: EventEmitter<any> = new EventEmitter<any>();    
+    
+    @Output()
+    rowIsUnLocked: EventEmitter<any> = new EventEmitter<any>();    
 
     constructor(
         public ident: string,
@@ -332,9 +341,48 @@ export class DataSetWrapper {
         });
     }
 
-    public setFieldValue(fieldName: string, fieldValue: any, rowToChange: any = null, blockOnCF = true) {
-        const row = rowToChange ?? this.activeRow;
+    public lockPostRecord(row: any) {
+        if (!row) {
+            return true;
+        }
 
+        if(!row["__locked__"]) {
+            row["__locked__"] = 1;
+            this.rowIsLocked.emit(row);
+        }
+        else {
+            row["__locked__"] += 1;
+        }
+        return true;
+    }
+
+    public unlockPostRecord(row: any): boolean{
+        if (!row) {
+            return true;
+        }
+
+        if(!row["__locked__"]) {
+            row["__locked__"] = 0;
+        }
+        else {
+            row["__locked__"] -= 1;
+        }
+
+        if (row["__locked__"] == 0) {
+            this.rowIsUnLocked.emit(row);
+            return true;
+        }
+
+        return false;
+    }
+
+    public onCFFinally(row) {
+        this.unlockPostRecord(row);
+    }
+
+    public setFieldValue(fieldName: string, fieldValue: any, rowToChange: any = null, blockOnCF = true) {                                
+        this.beforeSetFieldValue.emit(fieldName);                
+        const row = rowToChange ?? this.activeRow;        
         if (row == null) {
             throw new Error('Active row is unnassigned');        
         }
@@ -377,7 +425,7 @@ export class DataSetWrapper {
 
     public refreshFieldValueInControl(control) {
         const fieldValue = this.getFieldValue(control.field);
-        control.dataSetWrapper = this;
+        control.dataSetWrapper = this;        
         control.setValue(fieldValue);
     }
 
@@ -395,9 +443,10 @@ export class DataSetWrapper {
     public getFieldId() {
         return '__Identity__';
       }
-      public getFieldIdValue(row : any = null) {
+    public getFieldIdValue(row : any = null) {
         const fieldName = this.getFieldId();
         const fieldValue = row == null ? this.activeRow[fieldName] : row[fieldName];
         return fieldValue;
       }
+
 }
