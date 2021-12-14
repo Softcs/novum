@@ -31,6 +31,8 @@ export class SitProcParamsComponent implements AfterViewInit {
 
   public executing = false;
   public saveDisabled = false;
+  public operationInProgress = false;
+  private runExecuteActionAfterOperation = false;
 
   public dataSetManager: DataSetManager;
 
@@ -103,13 +105,16 @@ export class SitProcParamsComponent implements AfterViewInit {
     
     this.mainDataSet.rowIsLocked.subscribe(row => {
       if (this.mainDataSet.activeRow == row) {
-        this.lockExecuting();
+        this.lockOperationProgress();
       }
     });
 
     this.mainDataSet.rowIsUnLocked.subscribe(row => {
       if (this.mainDataSet.activeRow == row) {
-        this.unlockExecuting();
+        this.unlockOperationProgress();
+        if (this.runExecuteActionAfterOperation) {
+          this.executeAction();
+        }
       }
     });
 
@@ -161,14 +166,29 @@ export class SitProcParamsComponent implements AfterViewInit {
     this.executing = false;
   }
 
+  private lockOperationProgress() {
+    this.operationInProgress = true;
+  }
+
+  private unlockOperationProgress() {
+    this.operationInProgress = false;
+  }
+
   onSave(e: string) {
     if (e === 'OK') {
       this.close(false);
     }
   }
-
+  executeActionClickEvent() : void {
+    this.lockExecuting();    
+    if (!this.operationInProgress) {
+      this.executeAction();  
+    } else {
+      this.runExecuteActionAfterOperation = true;
+    }
+  }
   executeAction(): void {
-    this.lockExecuting();
+    this.lockExecuting();    
     this.dataSetManagerSource.ExecuteAction(
       this.actionExecuteData.actionIdent,
       this.actionExecuteData.sourceDataSetIdent,

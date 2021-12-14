@@ -2,17 +2,20 @@
   <div fxLayout="column">
     <div fxFlex>
       <ng-content></ng-content>
-    </div>
-    <div class="sit-proc-params-bottom-bar">
+    </div>    
+    <div class="sit-proc-params-bottom-bar">     
       <div fxLayout="row" fxFill fxLayoutAlign="start center" >
           <div style="padding: 0px 20px;">
-            <button [disabled]="executing || saveDisabled" mat-raised-button color="primary" (click)="executeAction()">
+            <button [disabled]="executing || saveDisabled" mat-raised-button color="primary" (click)="executeActionClickEvent()">
               <span *ngIf="executing" class="spinner-border spinner-border-sm mr-1"></span>
               Zapisz
             </button>
           </div>
           <div>
             <button mat-raised-button color="primary" (click)="discard()"  style="width: 80px;">Anuluj</button>
+          </div>
+          <div class="in-progress-bar">            
+            <span *ngIf="operationInProgress" class="spinner-border spinner-border-sm mr-1 operationInProgress"></span>
           </div>
       </div>
     </div>
