@@ -1,7 +1,6 @@
 import { Component, Input, Renderer2 } from '@angular/core';
 import { SitDataBaseComponent } from '../sit-data-base/sit-data-base.component';
 import {MatCheckboxChange} from '@angular/material/checkbox';
-import { basename } from 'path';
 import { OnCFService } from '@app/_services/oncf.service';
 
 @Component({
@@ -18,7 +17,6 @@ export class SitDataCheckboxComponent extends SitDataBaseComponent {
   indeterminate: boolean;
 
   //labelPosition: 'before' | 'after' = 'after'; //pozycja etykiety checkboxa, domyslnie za
-
   constructor(renderer: Renderer2, oncfService: OnCFService) {
     super(renderer);
     this.refreshOnChange = false;

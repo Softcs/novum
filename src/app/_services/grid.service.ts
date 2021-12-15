@@ -1,6 +1,7 @@
 import { formatDate, formatNumber } from '@angular/common';
 import { Inject, Injectable, LOCALE_ID } from '@angular/core';
 import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
+import { SitDataCheckboxComponent } from '@app/components/controls/sit-data-checkbox/sit-data-checkbox.component';
 import { SitDataSetContainerComponent } from '@app/components/sit-data-set-container';
 import { sitGlobalConfig } from '@app/_consts/sit-global-config';
 import { StringUtils } from '@app/_helpers/string.utisl';
@@ -22,7 +23,16 @@ export class GridService {
     var renderFormat = column["renderFormat"];
 
     if (column.renderType == "checkbox") {
-      column["cellRendererFramework"] = GridCheckboxRenderer;
+      column["cellRenderer"] = function(params) {
+        var input = document.createElement("input");
+            input.type = "checkbox";
+            input.checked = params.value;
+            input.indeterminate =  params.value == null;
+            input.addEventListener("click", function(event) {
+              event.preventDefault();
+            });
+        return input;
+      }
     }
 
     if (column.renderType == "date") {
@@ -54,7 +64,7 @@ export class GridService {
         return params.value === null ? null : formatNumber(params.value, locale, renderFormat).replace(/[,]/g,' ') + '%';
       }
     }
-
+   
     if (column.renderType == "sitGridCellRenderer") {
       column["cellRendererFramework"] = sitGlobalConfig.frameworkComponents
     }
