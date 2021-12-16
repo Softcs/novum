@@ -1,0 +1,34 @@
+<sit-dict-container #sitDictcontainer ident="sitHRBatches4Invoicing" (refreshAfter)="refreshAfter($event)" fxFill>
+  <div fxLayout="column" fxFill class="content">
+    <div class="sit-filter-bar" fxLayout="row">
+      <sit-data-set-container ident="sitFilter" >
+        <div fxLayout="row">
+          <sit-data-input #sitControl field="search" label="Filtruj" placeholder="" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
+        </div>
+      </sit-data-set-container>
+    </div>
+    <as-split direction="horizontal">
+      <as-split-area [size]="30">
+        <sit-data-set-container  ident="sitHRBatches4Invoicing" showActionsToolbar="true" fxFill fxLayout="column">
+          <div class="data-table" fxFlex>
+            <ag-grid-angular
+              #sitSetDataSource
+              style="width: 100%; height: 100%;"
+              class="ag-theme-balham"
+              [accentedSort]="true"
+            >
+            </ag-grid-angular>
+          </div>
+        </sit-data-set-container>
+      </as-split-area>
+      <as-split-area [size]="70">
+        <div fxLayout="row" fxFill>
+          <sit-data-set-container  ident="sitHRBatches4Invoicing"  fxFill fxLayout="column">
+            <sit-data-textarea type="textarea" #sitControl field="SQLBatch" label="SQL batch" appearance="outline" [readonly]=true fxFill></sit-data-textarea>
+          </sit-data-set-container>
+        </div>
+
+      </as-split-area>
+    </as-split>
+  </div>
+</sit-dict-container>

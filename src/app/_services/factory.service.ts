@@ -1,3 +1,4 @@
+import { SitHRBatches4InvoicingComponent } from './../containers/dictionaries/sit-hr-batches4-invoicing/sit-hrbatches4-invoicing.component';
 import { SitHRWorkingHoursEditComponent } from './../containers/dictionaries/sit-hr-working-hours/actions/sit-hrworking-hours-edit/sit-hrworking-hours-edit.component';
 import { SitHRWorkingHoursComponent } from './../containers/dictionaries/sit-hr-working-hours/sit-hr-working-hours.component';
 import { SitSettlementsComponent } from './../containers/dictionaries/sit-settlements/sit-settlements.component';
@@ -325,7 +326,8 @@ export class FactoryService {
         sitB2bProducts: SitB2bProductsComponent,
         sitWmsProducts: SitWmsProductsComponent,
         sitProductsEdit: SitProductsEditComponent,
-        sitProducts4PubEdit: SitProducts4PubEditComponent
+        sitProducts4PubEdit: SitProducts4PubEditComponent,
+        sitHRBatches4Invoicing: SitHRBatches4InvoicingComponent
     };
 
     public GetFactory(ident: string) {
