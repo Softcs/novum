@@ -1,4 +1,4 @@
-import { SitHRBatches4InvoicingComponent } from './../containers/dictionaries/sit-hr-batches4-invoicing/sit-hrbatches4-invoicing.component';
+import { SitHRBatches4InvoicingComponent } from '../containers/dictionaries/sit-hr-batches4-invoicing/sit-hr-batches4-invoicing.component';
 import { SitHRWorkingHoursEditComponent } from './../containers/dictionaries/sit-hr-working-hours/actions/sit-hrworking-hours-edit/sit-hrworking-hours-edit.component';
 import { SitHRWorkingHoursComponent } from './../containers/dictionaries/sit-hr-working-hours/sit-hr-working-hours.component';
 import { SitSettlementsComponent } from './../containers/dictionaries/sit-settlements/sit-settlements.component';
@@ -161,6 +161,7 @@ import { SitB2bProductsComponent } from '@app/containers/dictionaries/sit-b2b-pr
 import { SitWmsProductsComponent } from '@app/containers/dictionaries/sit-wms-products/sit-wms-products.component';
 import { SitProductsEditComponent } from '@app/containers/dictionaries/sit-products/actions/sit-products-edit/sit-products-edit.component';
 import { SitProducts4PubEditComponent } from '@app/containers/dictionaries/sit-products/actions/sit-products4-pub-edit/sit-products4-pub-edit.component';
+import { SitHRBatches4InvoicingEditComponent } from '@app/containers/dictionaries/sit-hr-batches4-invoicing/actions/sit-hr-batches4-invoicing-edit/sit-hr-batches4-invoicing-edit.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -327,7 +328,8 @@ export class FactoryService {
         sitWmsProducts: SitWmsProductsComponent,
         sitProductsEdit: SitProductsEditComponent,
         sitProducts4PubEdit: SitProducts4PubEditComponent,
-        sitHRBatches4Invoicing: SitHRBatches4InvoicingComponent
+        sitHRBatches4Invoicing: SitHRBatches4InvoicingComponent,
+        sitHRBatches4InvoicingEdit: SitHRBatches4InvoicingEditComponent
     };
 
     public GetFactory(ident: string) {
