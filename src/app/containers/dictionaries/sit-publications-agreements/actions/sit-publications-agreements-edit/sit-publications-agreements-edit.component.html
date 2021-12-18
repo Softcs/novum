@@ -16,10 +16,10 @@
           matTooltip="Czy jest zaliczka?" matTooltipPosition="right" matTooltipHideDelay="100"></sit-data-checkbox>
       </div>
       <div fxLayout="row">
-        <sit-data-radio #sitControl field="SellAfterRightsKind" type="row" label="Prawo do sprzedaży po wygaśnięciu lic." fxFlex=60
+        <sit-data-radio (click)="onClick($event)" #sitControl field="SellAfterRightsKind" type="row" label="Prawo do sprzedaży po wygaśnięciu lic." fxFlex=60
           [buttons]="[{'caption':'brak','value': '0', 'checked':true},{'caption':'okres','value':'1'},{'caption':'do wyczerpania zapasu','value':'2'}]"
           matTooltip="Czy mamy prawo do sprzedaży po wygaśnięciu licencji" matTooltipPosition="right" matTooltipHideDelay="100"></sit-data-radio>
-        <sit-data-input #sitControl type="number" field="SellAfterRightsPeriodInMonths" label="Okres - mies." appearance="outline" fxFlex=50
+        <sit-data-input *ngIf="sellAfterRightsKind" #sitControl type="number" field="SellAfterRightsPeriodInMonths" label="Okres - mies." appearance="outline" fxFlex=50
           matTooltip="Podajemy okres przez jaki mamy prawo sprzedawać tytuł po zakończeniu licencji w miesiącach." matTooltipPosition="right" matTooltipHideDelay="100"></sit-data-input>
       </div>
       <div fxLayout="row" fxLayoutAlign="start center">
@@ -45,12 +45,12 @@
         ></sit-data-radio>
       </div>
       <div fxLayout="row">
-        <sit-data-input #sitControl type="number" field="TimeToPay" label="Czas na rozliczenie" appearance="outline"  fxFlex=50
-          matTooltip="Ile mam czasu na przygotowanie rozliczenia."
+        <sit-data-input #sitControl type="number" field="TimeToPay" label="Czas na rozliczenie - dni" appearance="outline"  fxFlex=50
+          matTooltip="Ile mam czasu na przygotowanie rozliczenia, w dniach."
           matTooltipPosition="right"
           matTooltipHideDelay="100"></sit-data-input>
-        <sit-data-input #sitControl type="number" field="TimeToSettle" label="Czas do zapłaty" appearance="outline"  fxFlex
-          matTooltip="Ile mam czasu na zapłatę tantiem."
+        <sit-data-input #sitControl type="number" field="TimeToSettle" label="Czas do zapłaty - dni" appearance="outline"  fxFlex
+          matTooltip="Ile mam czasu na zapłatę tantiem, w dniach."
           matTooltipPosition="right"
           matTooltipHideDelay="100"></sit-data-input>
       </div>

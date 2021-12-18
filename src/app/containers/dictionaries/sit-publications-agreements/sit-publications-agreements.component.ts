@@ -26,7 +26,7 @@ export class SitPublicationsAgreementsComponent extends SitDictBaseComponent {
       { headerName: 'Sprzedaż po wyg. lic.', headerTooltip: 'Prawo do sprzedaży po wygaśnięciu licencji', field: 'SellAfterRightsKindDesc', tooltipField: 'SellAfterRightsKindDesc', filter: 'agTextColumnFilter', width: 180},
       { headerName: 'Okres', headerTooltip: 'Okres przez jaki mamy prawo do sprzedaży po wygaśnięciu licencji - mies.', field: 'SellAfterRightsPeriodInMonths', width: 60, type: 'numericColumn', renderType: 'number', renderFormat: '1.0-0', suppressMenu: true},
       { headerName: 'Min.tant. / cena', field: 'MinPriceDesc', filter: 'agTextColumnFilter', width: 150},
-      { headerName: 'Wyprz.do tant.', headerTooltip: 'Czy wyprzedaż jest wliczana do tantiem.', field: 'IncSale', width: 110, renderType: 'checkbox', suppressMenu: true},
+      { headerName: 'Tant.od wyprz.', headerTooltip: 'Czy są liczone tantiemy od wyprzedaży.', field: 'IncSale', width: 110, renderType: 'checkbox', suppressMenu: true},
       { headerName: 'Remainders', field: 'Remainders', headerTooltip: 'Czy umowa przewiduje remainders.', width: 80, renderType: 'checkbox', suppressMenu: true},
       { headerName: '% od remaind.', headerTooltip: '% tantiem od remainders', field: 'RemaindersRate', width: 100, type: 'numericColumn', suppressMenu: true},
       { headerName: 'Status', field: 'MainStatus_ValueName', filter: 'agTextColumnFilter', width: 150}
