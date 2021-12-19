@@ -162,6 +162,7 @@ import { SitWmsProductsComponent } from '@app/containers/dictionaries/sit-wms-pr
 import { SitProductsEditComponent } from '@app/containers/dictionaries/sit-products/actions/sit-products-edit/sit-products-edit.component';
 import { SitProducts4PubEditComponent } from '@app/containers/dictionaries/sit-products/actions/sit-products4-pub-edit/sit-products4-pub-edit.component';
 import { SitHRBatches4InvoicingEditComponent } from '@app/containers/dictionaries/sit-hr-batches4-invoicing/actions/sit-hr-batches4-invoicing-edit/sit-hr-batches4-invoicing-edit.component';
+import { SitUtilProcConvertUpdateFrameBodyComponent } from '@app/containers/dictionaries/sit-util-converter-frames/actions/sit-util-proc-convert-update-frame-body/sit-util-proc-convert-update-frame-body.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -329,7 +330,8 @@ export class FactoryService {
         sitProductsEdit: SitProductsEditComponent,
         sitProducts4PubEdit: SitProducts4PubEditComponent,
         sitHRBatches4Invoicing: SitHRBatches4InvoicingComponent,
-        sitHRBatches4InvoicingEdit: SitHRBatches4InvoicingEditComponent
+        sitHRBatches4InvoicingEdit: SitHRBatches4InvoicingEditComponent,
+        sitUtilProcConvertUpdateFrameBody: SitUtilProcConvertUpdateFrameBodyComponent
     };
 
     public GetFactory(ident: string) {

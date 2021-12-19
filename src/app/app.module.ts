@@ -259,6 +259,7 @@ import { SitProductsEditComponent } from './containers/dictionaries/sit-products
 import { SitProducts4PubEditComponent } from './containers/dictionaries/sit-products/actions/sit-products4-pub-edit/sit-products4-pub-edit.component';
 import { SitHRBatches4InvoicingComponent } from './containers/dictionaries/sit-hr-batches4-invoicing/sit-hr-batches4-invoicing.component';
 import { SitHRBatches4InvoicingEditComponent } from './containers/dictionaries/sit-hr-batches4-invoicing/actions/sit-hr-batches4-invoicing-edit/sit-hr-batches4-invoicing-edit.component';
+import { SitUtilProcConvertUpdateFrameBodyComponent } from './containers/dictionaries/sit-util-converter-frames/actions/sit-util-proc-convert-update-frame-body/sit-util-proc-convert-update-frame-body.component';
 
 
 @NgModule({
@@ -508,7 +509,8 @@ import { SitHRBatches4InvoicingEditComponent } from './containers/dictionaries/s
         SitProductsEditComponent,
         SitProducts4PubEditComponent,
         SitHRBatches4InvoicingComponent,
-        SitHRBatches4InvoicingEditComponent
+        SitHRBatches4InvoicingEditComponent,
+        SitUtilProcConvertUpdateFrameBodyComponent
 
     ],
     providers: [
