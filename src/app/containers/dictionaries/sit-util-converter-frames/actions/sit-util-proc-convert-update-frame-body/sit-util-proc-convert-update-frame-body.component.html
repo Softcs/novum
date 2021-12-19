@@ -1,0 +1,16 @@
+<sit-proc-params
+   [(actionExecuteData)]="actionExecuteData"
+  >
+  <sit-data-set-container ident="sitUtilProcConvertUpdateFrameBody">
+    <div class="sit-proc-params-content" fxLayout="column" style="width: 800px; height: 600px;">
+      <div class="sit-form-section-title"><strong>Modyfikacja ramki musi mieć formę 'sp_executesql' - schemat poniżej.</strong></div>
+      <div>set @sql = '</div>
+      <div>  ...</div>
+      <div>  ';</div>
+      <div>  exec sp_executesql @sql;</div>
+      <div fxLayout="row" fxFlex>
+        <sit-data-textarea type="textarea" #sitControl field="FrameBody" label="Frame body" appearance="outline" rows="20" cols="150" fxFill></sit-data-textarea>
+      </div>
+    </div>
+  </sit-data-set-container>
+</sit-proc-params>
