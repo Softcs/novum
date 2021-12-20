@@ -3,9 +3,12 @@
   >
   <sit-data-set-container ident="sitHRDepartments4CustEdit">
     <div class="sit-proc-params-content" fxLayout="column">
-      <sit-data-input type="text" #sitControl field="HRDepartmentIdent" label="Dział" appearance="outline" fxFlex
-        [lookupDisplayFields] = "['HRDepartmentIdent', 'HRDepartmentName']">
-      </sit-data-input>
+      <div fxLayout="column">
+        <sit-data-input *ngIf="this.isInsert" type="text" #sitControl field="HRDepartmentIdent" label="Dział" appearance="outline" fxFlex
+          [lookupDisplayFields] = "['HRDepartmentIdent', 'HRDepartmentName']">
+        </sit-data-input>
+        <sit-data-input type="text" #sitControl field="HRBatches4InvoicingIdent" label="Procedura przeliczająca UOP" appearance="outline" fxFlex></sit-data-input>
+      </div>
     </div>
   </sit-data-set-container>
 </sit-proc-params>

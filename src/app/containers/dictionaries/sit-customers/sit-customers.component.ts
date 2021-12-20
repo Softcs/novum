@@ -22,6 +22,7 @@ export class SitCustomersComponent extends SitDictBaseComponent {
     this.gridColumnsDefinition["sitHRDepartments4Cust"] =  [
       { headerName: 'Identyfikator', field: 'HRDepartmentIdent', width: 150 },
       { headerName: 'Nazwa', field: 'HRDepartmentName', width: 200 },
+      { headerName: 'Proc.przel.UOP', field: 'HRBatches4InvoicingIdent', width: 200 },
     ];
 
     this.gridColumnsDefinition["sitHRParams4Invoicing"] = [

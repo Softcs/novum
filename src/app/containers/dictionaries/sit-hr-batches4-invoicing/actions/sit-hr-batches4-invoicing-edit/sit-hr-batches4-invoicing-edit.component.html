@@ -1,0 +1,13 @@
+<sit-proc-params
+   [(actionExecuteData)]="actionExecuteData"
+  >
+  <sit-data-set-container ident="sitHRBatches4InvoicingEdit">
+    <div class="sit-proc-params-content" fxLayout="column" style="width: 800px; height: 600px;">
+      <sit-data-input type="text" #sitControl field="HRBatches4InvoicingIdent" label="Identyfikator" appearance="outline" style="width: 300px"></sit-data-input>
+      <div fxLayout="row" fxFlex>
+        <sit-data-textarea type="textarea" #sitControl field="SQLBatch" label="SQL batch" appearance="outline" rows="20" cols="150" fxFill></sit-data-textarea>
+      </div>
+
+    </div>
+  </sit-data-set-container>
+</sit-proc-params>
