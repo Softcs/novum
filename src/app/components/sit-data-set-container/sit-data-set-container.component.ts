@@ -1,5 +1,5 @@
 import { Component, Input, ContentChildren, ViewChildren,
-  QueryList, Output, EventEmitter, ViewChild, AfterContentInit} from '@angular/core';
+  QueryList, Output, EventEmitter, ViewChild, AfterContentInit, AfterViewInit} from '@angular/core';
 import { DataSetWrapper, DataSetManager } from '@app/_models';
 import { SitDataBaseComponent } from '../controls/sit-data-base/sit-data-base.component';
 import { sitSetDataSetDirective } from '@app/_directives/sitSetDataSetDirective';
@@ -20,7 +20,7 @@ import { StringUtils } from '@app/_helpers/string.utisl';
   styleUrls: ['./sit-data-set-container.component.scss']
 })
 
-export class SitDataSetContainerComponent {
+export class SitDataSetContainerComponent implements AfterViewInit{
   private _errors: any[];
   private activeRowSubscription: Subscription;
   private identityFieldName: string = "__Identity__";
@@ -66,6 +66,12 @@ export class SitDataSetContainerComponent {
     private gridService: GridService,
     private stringUtils: StringUtils
   ) {}
+
+  ngAfterViewInit(): void {
+     this.databaseControlsInterface.changes.subscribe(change => {
+        this.refreshFieldValueInControl(true);
+     });
+  }
 
   clearErrors() {
     this.errors?.splice(0, this.errors?.length);
@@ -207,10 +213,14 @@ export class SitDataSetContainerComponent {
     this.refreshFieldValueInControl();
   }
 
-  public refreshFieldValueInControl(): void {
+  public refreshFieldValueInControl(skipInited : boolean = false): void {
     if (this.databaseControlsInterface != null) {
-      this.databaseControlsInterface.forEach(element => {
-        this.dataSetResponseWrapper.refreshFieldValueInControl(element);
+      this.databaseControlsInterface.forEach(control => {
+        if (skipInited && control.dataSetWrapper != null) {
+          return false;
+        }
+
+        this.dataSetResponseWrapper.refreshFieldValueInControl(control);        
       });
     }
   }

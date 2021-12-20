@@ -195,16 +195,14 @@ export class DataSetManager {
         executeBeforeCallback: Function,
         executeFinallyCallback: Function) {
         
-        if (executeBeforeCallback) {
-            console.info("OnCF before");            
+        if (executeBeforeCallback) {                    
             executeBeforeCallback();            
         }
 
         this.gatewayService.executeOperation(opr)        
         .pipe(first())
         .subscribe(
-            data => {
-                console.info("OnCF starting");
+            data => {                
                 if (data.length === 1) {
                     const response = data[0];
                     const wasErrors = this.PropagateErrors(opr.dataSourceIdent, response?.Errors);                       
@@ -228,8 +226,7 @@ export class DataSetManager {
                             executeActionExceptionCallback();
                         }
                     }
-                }
-                console.info("OnCF completed");
+                }                
             },
             error => {
                 console.error("error", error);
@@ -238,8 +235,7 @@ export class DataSetManager {
                 }
             },
         )
-        .add(() => {            
-            console.info("OnCF finally");
+        .add(() => {                        
             if (executeFinallyCallback != null) {
                 executeFinallyCallback();
             }
