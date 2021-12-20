@@ -23,7 +23,7 @@ export class SitPublicationsAgreementsComponent extends SitDictBaseComponent {
       { headerName: 'Do zapł.', headerTooltip: 'Ile mamy czasu do zapłaty w dniach', field: 'TimeToSettle',  type: 'numericColumn', width: 80, suppressMenu: true},
       { headerName: 'Waluta', field: 'CurrencyIdent', filter: 'agTextColumnFilter', width: 70, suppressMenu: true},
       { headerName: 'Zaliczka', field: 'IsAdvance', headerTooltip: 'Czy wypłacana jest zaliczka.', width: 80, renderType: 'checkbox', suppressMenu: true},
-      { headerName: 'Sprzedaż po wyg. lic.', headerTooltip: 'Prawo do sprzedaży po wygaśnięciu licencji', field: 'SellAfterRightsKindDesc', tooltipField: 'SellAfterRightsKindDesc', filter: 'agTextColumnFilter', width: 180},
+      { headerName: 'Sprz. po wyg. lic.', headerTooltip: 'Prawo do sprzedaży po wygaśnięciu licencji', field: 'SellAfterRightsKindDesc', tooltipField: 'SellAfterRightsKindDesc', filter: 'agTextColumnFilter', width: 160},
       { headerName: 'Okres', headerTooltip: 'Okres przez jaki mamy prawo do sprzedaży po wygaśnięciu licencji - mies.', field: 'SellAfterRightsPeriodInMonths', width: 60, type: 'numericColumn', renderType: 'number', renderFormat: '1.0-0', suppressMenu: true},
       { headerName: 'Min.tant. / cena', field: 'MinPriceDesc', filter: 'agTextColumnFilter', width: 150},
       { headerName: 'Tant.od wyprz.', headerTooltip: 'Czy są liczone tantiemy od wyprzedaży.', field: 'IncSale', width: 110, renderType: 'checkbox', suppressMenu: true},
