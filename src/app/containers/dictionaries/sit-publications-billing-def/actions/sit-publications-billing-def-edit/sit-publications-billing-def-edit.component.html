@@ -15,7 +15,9 @@
           {'caption':'zbytu planowana','value':'3'},{'caption':'zbytu rzeczywista','value':'4'}]"
       ></sit-data-radio> -->
       <sit-data-input #sitControl type="text" field="PublicationsBillingDefDesc" label="Opis rozliczenia" appearance="outline"></sit-data-input>
-      <sit-data-checkbox #sitControl field="CalcAsGroup" label="Rozliczaj jako grupę"></sit-data-checkbox>
+      <sit-data-checkbox #sitControl field="CalcAsGroup" label="Rozliczaj jako grupę"
+        matTooltip="Progi będą liczone wspólnie dla wszystkich form wydań podpiętych do tej definicji." matTooltipPosition="right" matTooltipHideDelay="100">
+      </sit-data-checkbox>
     </div>
   </sit-data-set-container>
 </sit-proc-params>

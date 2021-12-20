@@ -13,8 +13,9 @@ export class SitPublicationsBillingDefComponent extends SitDictBaseComponent {
     this.gridColumnsDefinition["sitPublicationsBillingDef"] = [
       { headerName: 'Numer umowy', field: 'AgreementNo', filter: 'agTextColumnFilter', width: 150 },
       { headerName: 'Publikacja', field: 'PublicationIdent', filter: 'agTextColumnFilter', width: 150 },
-      { headerName: 'Data od (rozliczenia)', field: 'DateFrom', filter: 'agTextColumnFilter', width: 150 },
-      { headerName: 'Data od (umowy)', field: 'AgreementDate', filter: 'agTextColumnFilter', width: 150 },
+      { headerName: 'Od dnia', field: 'DateFrom', filter: 'agTextColumnFilter', width: 150 },
+      { headerName: 'Data zaw.umowy', field: 'AgreementDate', filter: 'agTextColumnFilter', width: 150 },
+      { headerName: 'Rozl.jako grupę', field: 'CalcAsGroup', headerTooltip: 'Rozliczaj jako grupę.', width: 80, renderType: 'checkbox', suppressMenu: true},
       { headerName: 'Formy wydań', field: 'FormOfReleaseIdents', tooltipField: 'FormOfReleaseIdents', filter: 'agTextColumnFilter', width: 150 },
       { headerName: 'Opis rozliczenia', field: 'PublicationsBillingDefDesc', filter: 'agTextColumnFilter', width: 300 },
 
