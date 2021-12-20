@@ -6,23 +6,7 @@ import { SitActionParamsForm } from '@app/_interfaces/sitActionParamsForm';
   templateUrl: './sit-publications-agreements-edit.component.html',
   styleUrls: ['./sit-publications-agreements-edit.component.scss']
 })
-export class SitPublicationsAgreementsEditComponent extends SitActionParamsForm  implements OnInit {
+export class SitPublicationsAgreementsEditComponent extends SitActionParamsForm {
 
-  sellAfterRightsKind: boolean;
 
-  constructor(){
-    super();
-    console.log(this);
-    this.sellAfterRightsKind = true;
-  }
-
-  ngOnInit(): void {
-    this.sellAfterRightsKind = (this.actionExecuteData.activeRow['SellAfterRightsKind']===1) ? true : false;
-    console.log(this.sellAfterRightsKind);
-  }
-
-  onClick($event): void {
-    this.sellAfterRightsKind = (this.actionExecuteData.activeRow['SellAfterRightsKind']===1) ? true : false;
-    console.log(this.sellAfterRightsKind);
-  }
 }
