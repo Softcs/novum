@@ -27,11 +27,5 @@ export class SitDataLabelComponent extends SitDataBaseComponent {
   public getValue(): string {
     return this.inputElement.nativeElement.value;
   }
-
-  public refreshFieldValue() {
-    this.dataSetWrapper.refreshFieldValueInControl(this);
-  }
-
-
 }
 

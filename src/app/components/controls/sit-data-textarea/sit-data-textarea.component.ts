@@ -30,8 +30,4 @@ export class SitDataTextareaComponent extends SitDataBaseComponent {
   onRefreshClick(event: any) {
     this.dataSetWrapper.RefreshChildren();
   }
-
-  public refreshFieldValue() {
-    this.dataSetWrapper.refreshFieldValueInControl(this);
-  }
 }

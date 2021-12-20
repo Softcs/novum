@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ElementRef, Renderer2 } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef, Renderer2, AfterViewInit } from '@angular/core';
 import { DataSetWrapper } from '@app/_models';
 import { ControlValueAccessor } from '@angular/forms';
 import { EventManager } from '@angular/platform-browser';
@@ -9,7 +9,7 @@ import { OnCFService } from '@app/_services/oncf.service';
   templateUrl: './sit-data-base.component.html',
   styleUrls: ['./sit-data-base.component.scss']
 })
-export class SitDataBaseComponent implements ControlValueAccessor {
+export class SitDataBaseComponent implements ControlValueAccessor, AfterViewInit {
   private _dataSetWrapper: DataSetWrapper;
 
   @Input() value = '';
@@ -39,6 +39,10 @@ export class SitDataBaseComponent implements ControlValueAccessor {
 
   constructor(    
     protected _renderer: Renderer2) {      
+  }  
+
+  ngAfterViewInit(): void {
+    
   }
 
   get inputElement(): ElementRef {
@@ -95,6 +99,7 @@ export class SitDataBaseComponent implements ControlValueAccessor {
   }
 
   public refreshFieldValue() {
+    this.dataSetWrapper?.refreshFieldValueInControl(this);
   }
 
   public afterSetDataSetWrapper() {

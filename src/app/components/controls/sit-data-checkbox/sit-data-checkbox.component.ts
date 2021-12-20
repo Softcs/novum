@@ -2,6 +2,7 @@ import { Component, Input, Renderer2 } from '@angular/core';
 import { SitDataBaseComponent } from '../sit-data-base/sit-data-base.component';
 import {MatCheckboxChange} from '@angular/material/checkbox';
 import { OnCFService } from '@app/_services/oncf.service';
+import { basename } from 'path';
 
 @Component({
   selector: 'sit-data-checkbox',
@@ -33,11 +34,7 @@ export class SitDataCheckboxComponent extends SitDataBaseComponent {
     if (this.refreshOnChange) {
       this.dataSetWrapper.RefreshChildren();
     }
-  }
-
-  public refreshFieldValue() {
-    this.dataSetWrapper.refreshFieldValueInControl(this);
-  }
+  }  
 
   public setValue(value: any) {
     if (value === null) {

@@ -90,9 +90,7 @@ export class SitDataInputComponent extends SitDataBaseComponent {
     }
   }
 
-  public refreshFieldValue() {
-    this.dataSetWrapper.refreshFieldValueInControl(this);
-  }
+
 
   public afterSetDataSetWrapper() {
     this.refreshButton?.setDataSetWrapper(this.dataSetWrapper);
