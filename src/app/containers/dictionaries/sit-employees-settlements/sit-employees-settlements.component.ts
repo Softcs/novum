@@ -513,7 +513,15 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
             renderType: 'number',
             cellClass: ['font11','numberFormat2Dec'],
           },
-        ]
+        ],
+      },
+      { headerName: 'Koszt - klient', field: 'CustCost', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 100, suppressMenu: true, agr: 'sum',
+        renderType: 'number',
+        cellClass: ['font11','numberFormat2Dec'],
+      },
+      { headerName: 'Netto - klient', field: 'CustNet', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 100, suppressMenu: true, agr: 'sum',
+        renderType: 'number',
+        cellClass: ['font11','numberFormat2Dec'],
       },
 
     ];
