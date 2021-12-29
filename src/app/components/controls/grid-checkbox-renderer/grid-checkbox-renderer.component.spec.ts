@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync as  } from '@angular/core/testing';
 
 import { GridCheckboxRendererComponent } from './grid-checkbox-renderer.component';
 
@@ -6,7 +6,7 @@ describe('GridCheckboxRendererComponent', () => {
   let component: GridCheckboxRendererComponent;
   let fixture: ComponentFixture<GridCheckboxRendererComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ GridCheckboxRendererComponent ]
     })

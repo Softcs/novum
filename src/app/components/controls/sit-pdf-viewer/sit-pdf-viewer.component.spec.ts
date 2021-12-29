@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync as  } from '@angular/core/testing';
 
 import { SitPdfViewerComponent } from './sit-pdf-viewer.component';
 
@@ -6,7 +6,7 @@ describe('SitPdfViewerComponent', () => {
   let component: SitPdfViewerComponent;
   let fixture: ComponentFixture<SitPdfViewerComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ SitPdfViewerComponent ]
     })

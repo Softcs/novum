@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync as  } from '@angular/core/testing';
 
 import { SitParamsComponent } from './sit-params.component';
 
@@ -6,7 +6,7 @@ describe('SitParamsComponent', () => {
   let component: SitParamsComponent;
   let fixture: ComponentFixture<SitParamsComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ SitParamsComponent ]
     })

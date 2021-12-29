@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync as  } from '@angular/core/testing';
 
 import { SitDialogConfirmDelComponent } from './sit-dialog-confirm-del.component';
 
@@ -6,7 +6,7 @@ describe('SitDialogConfirmDelComponent', () => {
   let component: SitDialogConfirmDelComponent;
   let fixture: ComponentFixture<SitDialogConfirmDelComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ SitDialogConfirmDelComponent ]
     })
