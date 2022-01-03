@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync as  } from '@angular/core/testing';
 
 import { SitProcExpanderItemBodyComponent } from './sit-proc-expander-item-body.component';
 
@@ -6,7 +6,7 @@ describe('SitProcExpanderItemBodyComponent', () => {
   let component: SitProcExpanderItemBodyComponent;
   let fixture: ComponentFixture<SitProcExpanderItemBodyComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ SitProcExpanderItemBodyComponent ]
     })

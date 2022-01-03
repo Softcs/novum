@@ -263,13 +263,12 @@ import { SitUtilProcConvertUpdateFrameBodyComponent } from './containers/diction
 
 
 @NgModule({
-  imports: [
+    imports: [
         NgxJsonViewerModule,
         BrowserModule,
         ReactiveFormsModule,
         HttpClientModule,
         appRoutingModule,
-
         MatRadioModule,
         MatSliderModule,
         MatButtonModule,
@@ -292,18 +291,15 @@ import { SitUtilProcConvertUpdateFrameBodyComponent } from './containers/diction
         MatTooltipModule,
         MatDialogModule,
         MatProgressSpinnerModule,
-
         FormsModule,
         LayoutModule,
         PdfJsViewerModule,
         FlexLayoutModule,
-
         //ag-Grid
         AgGridModule.withComponents([]),
         //AngularSplitModule.forRoot(),
         AngularSplitModule,
         NgxBarcodeModule,
-
     ],
     declarations: [
         AppComponent,
@@ -331,7 +327,7 @@ import { SitUtilProcConvertUpdateFrameBodyComponent } from './containers/diction
         SitProcButtonComponent,
         SitRefreshButtonComponent,
         SitFilesButtonComponent,
-        SitWhiteListVATComponent ,
+        SitWhiteListVATComponent,
         SitJPKVatComponent,
         SitChangeCompanyComponent,
         SitProjectsPubComponent,
@@ -362,12 +358,12 @@ import { SitUtilProcConvertUpdateFrameBodyComponent } from './containers/diction
         SitWmsStocksComponent,
         SitWmsDocsComponent,
         SitButtonBaseComponent,
-        SitAttachmentsInsComponent ,
-        SitReturnsComponent ,
-        SitReturnsGetdataComponent ,
-        SitAppUsersComponent ,
-        SitAppUsersEditComponent ,
-        SitAppUserCompaniesEditComponent ,
+        SitAttachmentsInsComponent,
+        SitReturnsComponent,
+        SitReturnsGetdataComponent,
+        SitAppUsersComponent,
+        SitAppUsersEditComponent,
+        SitAppUserCompaniesEditComponent,
         SitAppUsersSetPasswordComponent,
         SitParamsEditComponent,
         SitJobsComponent,
@@ -511,67 +507,16 @@ import { SitUtilProcConvertUpdateFrameBodyComponent } from './containers/diction
         SitHRBatches4InvoicingComponent,
         SitHRBatches4InvoicingEditComponent,
         SitUtilProcConvertUpdateFrameBodyComponent
-
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-
         // provider used to create fake backend
         fakeBackendProvider,
         NavService,
         Title,
         LookupService
     ],
-    bootstrap: [AppComponent],
-    entryComponents: [
-      SitPulpitComponent,
-      SitDialogDiscardComponent,
-      SitDialogConfirmDelComponent,
-      SitJpkVatGetDataComponent,
-      SitMenuEditComponent,
-      SitMenuItemsEditComponent,
-      SitAgreementsEditComponent,
-      SitCustomersEditComponent,
-      SitUserAccountChangePasswordComponent,
-      GridCheckboxRenderer,
-      SitStocksComponent,
-      SitAttachmentsInsComponent,
-      SitReturnsComponent,
-      SitReturnsGetdataComponent,
-      SitAppUsersComponent,
-      SitAppUsersEditComponent,
-      SitAppUserCompaniesEditComponent,
-      SitAppUsersSetPasswordComponent,
-      SitParamsEditComponent,
-      SitJobsComponent,
-      SitJobsEditComponent,
-      SitJobStepsEditComponent,
-      SitLogisticUnitsEditComponent,
-      SitWarehousesComponent,
-      SitWarehousesEditComponent,
-      SitProjectsPubRegisterWorkTimeComponent,
-      SitSysDictionariesComponent,
-      SitSysDictionariesEditComponent,
-      SitSysDatasourcesEditComponent,
-      SitSysActionsEditComponent,
-      SitRightsGroupUsersEditComponent,
-      SitRightsComponent,
-      SitLocationsComponent,
-      SitAgreementsTypesComponent,
-      SitAgreementsTypesEditComponent,
-      SitLocationsEditComponent,
-      SitRightsGroupsEditComponent,
-      SitImportCustomerFromImpTableComponent,
-      SitJPKVatComponent,
-      SitEmployeesComponent,
-      SitPayrollsComponent,
-      SitPayrollComponentsComponent,
-      SitPayrollImportComponent,
-      SitProcPayrollComponentsAccountingDefEditComponent,
-      SitCompanyDepartmentsComponent,
-      SitDataRadioComponent
-
-    ]
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

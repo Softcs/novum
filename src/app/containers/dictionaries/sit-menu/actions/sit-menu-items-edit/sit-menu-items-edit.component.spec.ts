@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync as  } from '@angular/core/testing';
 
 import { SitMenuItemsEditComponent } from './sit-menu-items-edit.component';
 
@@ -6,7 +6,7 @@ describe('SitMenuItemsEditComponent', () => {
   let component: SitMenuItemsEditComponent;
   let fixture: ComponentFixture<SitMenuItemsEditComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ SitMenuItemsEditComponent ]
     })
