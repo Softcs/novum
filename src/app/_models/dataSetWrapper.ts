@@ -153,6 +153,10 @@ export class DataSetWrapper {
         return this.fields.find(f => f.fieldName == fieldName);
     }
 
+    public findActionDefinition(actionIdent: string) {
+        return this.actions.find(a => a.ident == actionIdent);
+    }
+
     public setInputDataSource(inputDataSource: any) {
         this.ident = inputDataSource.ident;
         this.rows = inputDataSource.rows;
@@ -171,8 +175,7 @@ export class DataSetWrapper {
     public LookupAfterPropagte() {
         this.lookupAfterPropagte.emit(this.ident);
     }
-
-    public ExecuteAction(actionIdent: string,
+    public ExecuteAction(actionDefinition: ActionDefinitionWrapper,
                          owner: any,
                          executeActionCompletedCallback: Function,
                          executeActionExceptionCallback: Function,
@@ -182,7 +185,7 @@ export class DataSetWrapper {
             console.error('ExecuteAction data source manager is undefinde!');
             return;
         }
-        this.dataSourceManager.ExecuteAction(actionIdent, this.ident, owner,
+        this.dataSourceManager.ExecuteAction(actionDefinition, this.ident, owner,
             executeActionCompletedCallback, executeActionExceptionCallback, sourceDictIdent);
     }
 
@@ -224,7 +227,7 @@ export class DataSetWrapper {
         }
     }
 
-    private initRowByEditFields(row: any, editFields: any[]) {
+    public initRowByEditFields(row: any, editFields: any[], blockOnCF: boolean = true) {
         if (editFields == null) {
             return;
         }
@@ -239,8 +242,7 @@ export class DataSetWrapper {
                     row["__Identity__"] = value;
                 }
             }
-
-            row[field.fieldName] = value;
+            this.setFieldValue(field.fieldName, value, row, blockOnCF);
         });
     }
 

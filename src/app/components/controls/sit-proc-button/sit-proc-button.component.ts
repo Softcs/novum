@@ -124,6 +124,7 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
     data.componentParamsIdent = this.componentParamsIdent;
     data.openKind = this.openKind;
     data.hasInitProc = this.actionDefinition?.hasInitProc;
+    data.actionDefinition = this.actionDefinition;
 
     return data;
   }
@@ -166,7 +167,7 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
 
     const actionExecuteData = this.getActionExecuteData();
     actionExecuteData.generatedRow = generatedRow;
-    
+
     if (this.openKind === 'EXPANDER') {
       this.openActionOnExpander(actionExecuteData);
     } else {
@@ -177,7 +178,7 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
 
   private executeAction(): void {
     this.changeExecutingState(true);
-    this.dataSetResponseWrapper.ExecuteAction(this.actionIdent,
+    this.dataSetResponseWrapper.ExecuteAction(this.actionDefinition,
       this,
       this.executeActionCompletedCallback,
       this.executeActionExceptionCallback);

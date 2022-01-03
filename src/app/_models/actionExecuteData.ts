@@ -1,3 +1,4 @@
+import { ActionDefinitionWrapper } from './actionDefinitionWrapper';
 import { DataSetManager } from './dataSetManager';
 
 export class ActionExecuteData {
@@ -10,5 +11,6 @@ export class ActionExecuteData {
     dataSetManagerSource: DataSetManager;
     componentParamsIdent: string;
     openKind: string;
-    hasInitProc: boolean;    
+    hasInitProc: boolean;
+    actionDefinition: ActionDefinitionWrapper;
 }

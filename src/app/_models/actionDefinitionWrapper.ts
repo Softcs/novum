@@ -19,6 +19,7 @@ export class ActionDefinitionWrapper {
     public tooltip: string;
     public visibility: ActionVisibilityRule;
     public hasInitProc: boolean;
+    public operationType: string;
 
     constructor(source: any) {
         this.createNewRow = source.createNewRow;
@@ -39,6 +40,7 @@ export class ActionDefinitionWrapper {
         this.tooltip = source.tooltip;
         this.visibility = source.visibility;
         this.hasInitProc = source.initProc != null;
+        this.operationType = source.operationType;
     }
 
 

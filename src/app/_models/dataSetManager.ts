@@ -7,6 +7,7 @@ import { DataSetDefinitionWrapper } from './dataSetDefinitionWrapper';
 import { SitProcExpanderComponent } from '@app/components/controls/sit-proc-expander/sit-proc-expander.component';
 import { RefreshType } from '@app/_consts/RefreshType';
 import { OnCFService } from '@app/_services/oncf.service';
+import { ActionDefinitionWrapper } from './actionDefinitionWrapper';
 
 @Directive()
 export class DataSetManager {
@@ -307,16 +308,27 @@ export class DataSetManager {
                 });
     }
 
-    public ExecuteAction(actionIdent: string, dataSourceIdent: string,
+    public ExecuteAction(actionDefinition: ActionDefinitionWrapper,
+                         dataSourceIdent: string,
                          owner: any,
                          executeActionCompletedCallback: Function,
                          executeActionExceptionCallback: Function,
                          sourceDictIdent: string = null,
                          activeDataSet: DataSetWrapper = null) {
+        const actionIdent = actionDefinition.ident;
         const dictIdent = sourceDictIdent ?? this.dictInfo?.ident;
         const dataSourcesRequest: any[] = [];
         const dsSourceWrapper = this.getDateSourceWrapper(dataSourceIdent);
         const dsWrapper: DataSetWrapper = activeDataSet == null ? dsSourceWrapper : activeDataSet;
+
+        if (actionDefinition.kind == "SetValue") {
+            dsWrapper.initRowByEditFields(null, actionDefinition.editFields, false);
+            if(executeActionCompletedCallback != null) {
+                executeActionCompletedCallback(owner);
+            }
+            return;
+        }
+
         const obj = this.getObjectForDataSourceRequest(dsWrapper, true);
         dataSourcesRequest.push(obj);
         this.prapareDataSource4RequestParent(dsSourceWrapper, dataSourcesRequest);
@@ -414,7 +426,6 @@ export class DataSetManager {
     }
 
     public PropagateDataSources(dataSetToReload: string[] = null) {
-
         if (!this.dataSetContainers) {
             return;
         }
@@ -432,6 +443,7 @@ export class DataSetManager {
                 console.error('DataSource: ' + dataSourceContainer.ident + ' not found!');
             }
         });
+
         this.DataSourceAfterPropagte(dataSetToReload);
         this.LookupDataSourceAfterPropagate(dataSetToReload);
         this.refreshAfter.emit(this);
@@ -449,6 +461,7 @@ export class DataSetManager {
             }
         });
     }
+
     public DataSourceAfterPropagte(dataSetToReload: string[]) {
         this.dataSetsWrapper.forEach(dataSourceWrapper => {
             if (dataSetToReload != null && dataSetToReload.indexOf(dataSourceWrapper.ident) === -1) {

@@ -70,7 +70,7 @@ export class SitProcParamsComponent implements AfterViewInit {
         this.actionExecuteData.sourceDataSetIdent,
         this.actionExecuteData.actionIdent,
         row,
-        (owner, initRow) => this.initInfoCompleted(owner,dataSetContainer, initRow),
+        (owner, initRow) => this.initInfoCompleted(owner, dataSetContainer, initRow),
         this.initInfoException,
         this
       );
@@ -190,7 +190,7 @@ export class SitProcParamsComponent implements AfterViewInit {
   executeAction(): void {
     this.lockExecuting();
     this.dataSetManagerSource.ExecuteAction(
-      this.actionExecuteData.actionIdent,
+      this.actionExecuteData.actionDefinition,
       this.actionExecuteData.sourceDataSetIdent,
       this,
       this.executeActionCompletedCallback,
