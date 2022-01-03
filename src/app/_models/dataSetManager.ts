@@ -97,7 +97,7 @@ export class DataSetManager {
             if(wrapper == null) {
                 return;
             }
-            const obj = this.getObjectForDataSourceRequest(wrapper, true);            
+            const obj = this.getObjectForDataSourceRequest(wrapper, true);
             dataSourcesRequest.push(obj);
             this.prapareDataSource4Request(dataSourceDefinition, dataSourcesRequest);
         });
@@ -137,7 +137,7 @@ export class DataSetManager {
             }
             this.prapareDataSource4RequestParent(dsDefItem, dataSourcesRequest);
         });
-        
+
         if (dataSourcesRequest.filter(d => d.refresh).length == 0) {
             return;
         }
@@ -189,44 +189,44 @@ export class DataSetManager {
         }
     }
 
-    public ExecuteOnCF(opr: Operation,        
+    public ExecuteOnCF(opr: Operation,
         executeActionCompletedCallback: Function,
         executeActionExceptionCallback: Function,
         executeBeforeCallback: Function,
         executeFinallyCallback: Function) {
-        
-        if (executeBeforeCallback) {                    
-            executeBeforeCallback();            
+
+        if (executeBeforeCallback) {
+            executeBeforeCallback();
         }
 
-        this.gatewayService.executeOperation(opr)        
+        this.gatewayService.executeOperation(opr)
         .pipe(first())
         .subscribe(
-            data => {                
+            data => {
                 if (data.length === 1) {
                     const response = data[0];
-                    const wasErrors = this.PropagateErrors(opr.dataSourceIdent, response?.Errors);                       
-                    
+                    const wasErrors = this.PropagateErrors(opr.dataSourceIdent, response?.Errors);
+
                     if (!wasErrors) {
                         if(executeActionCompletedCallback != null) {
                             var initRow = response.jsonData;
                             if (initRow && initRow.Result != null && initRow.Result instanceof Array && initRow.Result.length > 0) {
-                                initRow = initRow.Result[0]; 
+                                initRow = initRow.Result[0];
                             }
                             executeActionCompletedCallback(initRow);
                             const dataSetContainers = this.findDataSetContainers(opr.dataSourceIdent);
-                            dataSetContainers.forEach(cont => {                            
+                            dataSetContainers.forEach(cont => {
                                 cont.refreshFieldValueInControl();
                             });
 
                         }
-                    }                        
-                    else {                        
+                    }
+                    else {
                         if (executeActionExceptionCallback != null) {
                             executeActionExceptionCallback();
                         }
                     }
-                }                
+                }
             },
             error => {
                 console.error("error", error);
@@ -235,16 +235,16 @@ export class DataSetManager {
                 }
             },
         )
-        .add(() => {                        
+        .add(() => {
             if (executeFinallyCallback != null) {
                 executeFinallyCallback();
             }
         })
     }
 
-    public ExecuteInitInfo(dataSourceIdent: string, 
-                    actionIdent: string, 
-                    generatedRow: any, 
+    public ExecuteInitInfo(dataSourceIdent: string,
+                    actionIdent: string,
+                    generatedRow: any,
                     executeActionCompletedCallback: Function,
                     executeActionExceptionCallback: Function,
                     owner: any,
@@ -261,7 +261,7 @@ export class DataSetManager {
                         dataSourcesRequest.push(obj);
                     }
                 }
-            });       
+            });
         }
 
         if (generatedRow) {
@@ -281,18 +281,18 @@ export class DataSetManager {
                 data => {
                     if (data.length === 1) {
                         const response = data[0];
-                        const wasErrors = this.PropagateErrors(dataSourceIdent, response?.Errors);                       
-                        
+                        const wasErrors = this.PropagateErrors(dataSourceIdent, response?.Errors);
+
                         if (!wasErrors) {
                             if(executeActionCompletedCallback != null) {
                                 var initRow = response.jsonData;
                                 if (initRow && initRow.Result != null && initRow.Result instanceof Array && initRow.Result.length > 0) {
-                                    initRow = initRow.Result[0]; 
+                                    initRow = initRow.Result[0];
                                 }
                                 executeActionCompletedCallback(owner,  initRow);
                             }
-                        }                        
-                        else {                        
+                        }
+                        else {
                             if (executeActionExceptionCallback != null) {
                                 executeActionExceptionCallback(owner);
                             }
@@ -359,7 +359,7 @@ export class DataSetManager {
                         executeActionExceptionCallback(owner);
                     }
                 });
-    }    
+    }
 
     public setRefreshDataSources(dataSetsResponse) {
         if (dataSetsResponse == null) {
@@ -390,7 +390,7 @@ export class DataSetManager {
         if (!dataSourcesResponse) {
             return;
         }
-        
+
         const actionDefinition = this.dictInfo?.FindActionDefinition(actionIdent, dataSourceIdent);
         if (!actionDefinition || actionDefinition.refreshAfter) {
             return;
@@ -520,7 +520,7 @@ export class DataSetManager {
     }
 
     public afterContentInit() {
-        this.dataSetContainers.forEach(dataSetContainer => {            
+        this.dataSetContainers.forEach(dataSetContainer => {
             dataSetContainer.afterContentInit();
         });
     }
@@ -554,6 +554,10 @@ export class DataSetManager {
 
     findDataSetContainers(ident: string) {
         return this.dataSetContainers.filter(dataSet => dataSet.ident === ident);
+    }
+
+    findDataSetDefinitionWrapper(ident: string) {
+        return this.dataSetDefinitionWrappers.find(ds => ds.ident === ident);
     }
 
     get dictIdent(): string {

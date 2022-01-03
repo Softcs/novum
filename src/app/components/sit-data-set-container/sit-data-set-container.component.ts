@@ -95,7 +95,7 @@ export class SitDataSetContainerComponent implements AfterViewInit{
   public getFieldId(ident: string = null) {
     return this.dataSetResponseWrapper.getFieldId();
   }
-  public getFieldIdValue(row : any = null) {    
+  public getFieldIdValue(row : any = null) {
     return this.dataSetResponseWrapper.getFieldIdValue(row);
   }
 
@@ -108,12 +108,12 @@ export class SitDataSetContainerComponent implements AfterViewInit{
     if (!activeRow) {
       return;
     }
-    
+
     const fieldName = this.getFieldId(dataSource.ident);
     this.datasSourcesInterface.forEach(control => {
       const rowsDataApiToDelete = [];
       const fieldValue = activeRow[fieldName];
-      const gridApi = this.gridService.getGridApi(control);      
+      const gridApi = this.gridService.getGridApi(control);
       if (!this.gridService.isPivotMode(gridApi)) {
         gridApi.forEachNode((rowNode) => {
           const rowValue = rowNode.data[fieldName];
@@ -195,7 +195,7 @@ export class SitDataSetContainerComponent implements AfterViewInit{
     this.errors = dataSetWrapper.errors;
     this.datasSourcesInterface.forEach(element => {
       // agGrid
-      const gridApi = this.gridService.getGridApi(element);            
+      const gridApi = this.gridService.getGridApi(element);
       if (!gridApi) {
         return false;
       }
@@ -207,8 +207,8 @@ export class SitDataSetContainerComponent implements AfterViewInit{
         });
       }
       // end of tree grid
-      gridApi.setRowData(this.dataSetResponseWrapper.rows); 
-      this.gridService.refreshSum(gridApi, this.dataSetResponseWrapper.rows);     
+      gridApi.setRowData(this.dataSetResponseWrapper.rows);
+      this.gridService.refreshSum(gridApi, this.dataSetResponseWrapper.rows);
     });
     this.refreshFieldValueInControl();
   }
@@ -220,7 +220,7 @@ export class SitDataSetContainerComponent implements AfterViewInit{
           return false;
         }
 
-        this.dataSetResponseWrapper.refreshFieldValueInControl(control);        
+        this.dataSetResponseWrapper.refreshFieldValueInControl(control);
       });
     }
   }
@@ -228,9 +228,9 @@ export class SitDataSetContainerComponent implements AfterViewInit{
   public AddRow(newRow: any) {
     this.datasSourcesInterface.forEach(control => {
         const gridApi = this.gridService.getGridApi(control)
-        
+
         if (!gridApi) {
-          return false;          
+          return false;
         }
 
         gridApi.applyTransaction({ add: [newRow] });
@@ -240,9 +240,9 @@ export class SitDataSetContainerComponent implements AfterViewInit{
   public RemoveRow(newRow: any) {
     this.datasSourcesInterface.forEach(control => {
         const gridApi = this.gridService.getGridApi(control)
-        
+
         if (!gridApi) {
-          return false;          
+          return false;
         }
 
         gridApi.applyTransaction({ remove: [newRow] });
@@ -268,7 +268,7 @@ export class SitDataSetContainerComponent implements AfterViewInit{
     });
   }
 
-  public prepareControls(dataSetWrapperDefinition: DataSetDefinitionWrapper) {
+  public prepareControls(dataSetWrapperDefinition: DataSetDefinitionWrapper, allowActionFromLocalDefinition: boolean = false) {
     this.datasSourcesInterface.forEach(element => {
       const gridApi = this.gridService.getGridApi(element);
       if (!gridApi) {
@@ -280,7 +280,7 @@ export class SitDataSetContainerComponent implements AfterViewInit{
 
     this.actionControlsInterface.forEach(actionControl => {
       actionControl.dataSetResponseWrapper = this.dataSetResponseWrapper;
-      actionControl.actionDefinition = dataSetWrapperDefinition?.FindActionDefinition(actionControl.actionIdent);
+      actionControl.actionDefinition = this.getActionDefinitionForControl(actionControl.actionIdent, dataSetWrapperDefinition, allowActionFromLocalDefinition);
       actionControl.dataSetManagerSource = this.dataSetControlsManager;
       actionControl.dataSetContainer = this;
     });
@@ -293,6 +293,18 @@ export class SitDataSetContainerComponent implements AfterViewInit{
       this.actionToolbar.dataSetManagerSource = this.dataSetControlsManager;
       this.actionToolbar.actions = dataSetWrapperDefinition.actions ? dataSetWrapperDefinition.actions.filter(a => a.showInToolbar) : [];
     }
+  }
+
+  private getActionDefinitionForControl(actionIdent: string, dataSetWrapperDefinition: DataSetDefinitionWrapper, allowActionFromLocalDefinition): ActionDefinitionWrapper {
+    var actionDefinition = null;
+    if (allowActionFromLocalDefinition) {
+      var localWrapper = this.dataSetResponseWrapper.getDataSetManagerSource()?.findDataSetDefinitionWrapper(this.dataSetResponseWrapper.ident);
+      actionDefinition = localWrapper.FindActionDefinition(actionIdent);
+    }
+    if (!actionDefinition) {
+      actionDefinition = dataSetWrapperDefinition?.FindActionDefinition(actionIdent);
+    }
+    return actionDefinition;
   }
 
   set errors(value: any[]) {
@@ -325,7 +337,3 @@ export class SitDataSetContainerComponent implements AfterViewInit{
     });
   }
 }
-
-
-
-

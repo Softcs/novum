@@ -4,6 +4,7 @@ import { Guid } from 'guid-typescript';
 import { _ } from 'ag-grid-community';
 import { RefreshType } from '@app/_consts/RefreshType';
 import { OnCFService } from '@app/_services/oncf.service';
+import { ActionDefinitionWrapper } from './actionDefinitionWrapper';
 
 @Directive()
 export class DataSetWrapper {
@@ -12,6 +13,7 @@ export class DataSetWrapper {
     public activeRow: any;
     public errors: [any];
     public fields: [any];
+    public actions: [ActionDefinitionWrapper];
     public connectedLookups: any;
     public isLookup = false;
     public hasOnCF = false;
@@ -28,15 +30,15 @@ export class DataSetWrapper {
 
     @Output()
     afterSetFieldValue: EventEmitter<string> = new EventEmitter<string>();
-    
+
     @Output()
-    beforeSetFieldValue: EventEmitter<string> = new EventEmitter<string>();    
-    
+    beforeSetFieldValue: EventEmitter<string> = new EventEmitter<string>();
+
     @Output()
-    rowIsLocked: EventEmitter<any> = new EventEmitter<any>();    
-    
+    rowIsLocked: EventEmitter<any> = new EventEmitter<any>();
+
     @Output()
-    rowIsUnLocked: EventEmitter<any> = new EventEmitter<any>();    
+    rowIsUnLocked: EventEmitter<any> = new EventEmitter<any>();
 
     constructor(
         public ident: string,
@@ -46,9 +48,11 @@ export class DataSetWrapper {
         ) {
         this._rows = null;
         this.fields = null;
-        this.readFields(dataSetManagerSource);
-        this.readLookups(dataSetManagerSource);
-        this.readOnCF(dataSetManagerSource);
+        this.actions = null;
+        this.readFields();
+        this.readLookups();
+        this.readOnCF();
+        this.readActions()
     }
 
     get rows(): any[] {
@@ -68,7 +72,7 @@ export class DataSetWrapper {
         if (!dataSourceDef || !dataSourceDef.hasParents) {
             return null;
         }
-        
+
         return dataSourceDef.parents;
     }
 
@@ -78,6 +82,10 @@ export class DataSetWrapper {
         }
         this._dataSource = this.dataSourceManager?.FindDataSource(this.ident);
         return this._dataSource;
+    }
+
+    public getDataSetManagerSource(): DataSetManager {
+        return this.dataSetManagerSource;
     }
 
     public Refresh() {
@@ -98,14 +106,22 @@ export class DataSetWrapper {
         }
     }
 
-    private readOnCF(dataSetManagerSource: DataSetManager) {
+    private readActions() {
         let dataSourceDef = this.getDataSource();
         if (dataSourceDef == null) {
-            dataSourceDef = dataSetManagerSource?.FindDataSource(this.ident);
+            return;
+        }
+        this.actions = dataSourceDef?.actions;
+    }
+
+    private readOnCF() {
+        let dataSourceDef = this.getDataSource();
+        if (dataSourceDef == null) {
+            return;
         }
 
-        this.hasOnCF = dataSourceDef != null 
-                       && dataSourceDef.onCFSettings 
+        this.hasOnCF = dataSourceDef != null
+                       && dataSourceDef.onCFSettings
                        && dataSourceDef.onCFSettings.isEnabled;
 
         if (this.hasOnCF) {
@@ -113,22 +129,22 @@ export class DataSetWrapper {
             dataSourceDef.onCFSettings.fields.forEach(onCfField => {
                 this.onCFFields[onCfField.fieldName] = true;
             });
-        }                        
+        }
     }
 
-    private readLookups(dataSetManagerSource: DataSetManager) {
+    private readLookups() {
         let dataSourceDef = this.getDataSource();
         if (dataSourceDef == null) {
-            dataSourceDef = dataSetManagerSource?.FindDataSource(this.ident);
+            return;
         }
         this.connectedLookups = dataSourceDef?.connectedLookups;
         this.isLookup = dataSourceDef?.isLookup;
     }
 
-    private readFields(dataSetManagerSource: DataSetManager) {
+    private readFields() {
         let dataSourceDef = this.getDataSource();
         if (dataSourceDef == null) {
-            dataSourceDef = dataSetManagerSource?.FindDataSource(this.ident);
+            return;
         }
         this.fields = dataSourceDef?.fields;
     }
@@ -192,17 +208,17 @@ export class DataSetWrapper {
         if (row == null) {
             return;
         }
-        
+
         var changeActiveRow = row == this.activeRow;
         var index = this._rows.indexOf(row);
 
         this._rows.splice(index, 1);
         this.dataSourceManager.RemoveRow(this, row);
         var newActiveRow = null;
-        newActiveRow = index == this._rows.length 
+        newActiveRow = index == this._rows.length
               ? this._rows[this._rows.length-1]
               : this._rows[index];
-        
+
         if (changeActiveRow) {
             this.SetActiveRow(newActiveRow);
         }
@@ -220,7 +236,7 @@ export class DataSetWrapper {
             if (field.setNewGuid) {
                 value = Guid.create().toString();
                 if(row.hasOwnProperty("__Identity__") && field.fieldName && field.fieldName.toLowerCase() == (this.ident+"G").toLowerCase()) {
-                    row["__Identity__"] = value;        
+                    row["__Identity__"] = value;
                 }
             }
 
@@ -290,12 +306,12 @@ export class DataSetWrapper {
                 return false;
             }
         });
-        
+
         return result;
-    }      
-    
+    }
+
     public GenerateRow(
-            sourceRow: any = null, 
+            sourceRow: any = null,
             add: boolean = true,
             editFields: any[] = null,
             initFromMaster: boolean = false,
@@ -380,13 +396,13 @@ export class DataSetWrapper {
         this.unlockPostRecord(row);
     }
 
-    public setFieldValue(fieldName: string, fieldValue: any, rowToChange: any = null, blockOnCF = true) {                                
-        this.beforeSetFieldValue.emit(fieldName);                
-        const row = rowToChange ?? this.activeRow;        
+    public setFieldValue(fieldName: string, fieldValue: any, rowToChange: any = null, blockOnCF = true) {
+        this.beforeSetFieldValue.emit(fieldName);
+        const row = rowToChange ?? this.activeRow;
         if (row == null) {
-            throw new Error('Active row is unnassigned');        
+            throw new Error('Active row is unnassigned');
         }
-        
+
         if (!row.hasOwnProperty(fieldName)) {
             row[fieldName] = null;
         }
@@ -400,7 +416,7 @@ export class DataSetWrapper {
         }
 
         row[fieldName] = fieldValue;
-        
+
         if (!Boolean(fieldValue)) {
             const usedFields = [fieldName];
             this.clearLookupsFieldsForField(fieldName, usedFields, row);
@@ -425,7 +441,7 @@ export class DataSetWrapper {
 
     public refreshFieldValueInControl(control) {
         const fieldValue = this.getFieldValue(control.field);
-        control.dataSetWrapper = this;        
+        control.dataSetWrapper = this;
         control.setValue(fieldValue);
     }
 

@@ -19,7 +19,7 @@ export class SitProcParamsComponent implements AfterViewInit {
   @ContentChildren(SitDataSetContainerComponent, { descendants: true })
   dataSetContainers !: QueryList<SitDataSetContainerComponent>;
 
-  @Input() actionExecuteData: ActionExecuteData  = null;
+  @Input() actionExecuteData: ActionExecuteData = null;
   @Input() activeRow = null;
   @Output() activeRowChange = new EventEmitter<any[]>();
 
@@ -43,7 +43,7 @@ export class SitProcParamsComponent implements AfterViewInit {
     protected _oncfService: OnCFService
   ) {
     this.dataSetManager = new DataSetManager(gatewayService, _oncfService);
-    
+
     this.tabService.activeTabIndex.subscribe( i => {
       if (!this.tabIndex) {
         this.tabIndex = i;
@@ -55,7 +55,7 @@ export class SitProcParamsComponent implements AfterViewInit {
     if (this.actionExecuteData) {
       return this.actionExecuteData;
     }
-    
+
     if (!this.tabIndex) {
       return null;
     }
@@ -75,8 +75,8 @@ export class SitProcParamsComponent implements AfterViewInit {
         this
       );
   }
-  
-  initInfoCompleted(self, dataSetContainer, initRow) {    
+
+  initInfoCompleted(self, dataSetContainer, initRow) {
     self.connectDataSetToControls(dataSetContainer, initRow)
     self.unlockExecuting();
   }
@@ -85,14 +85,14 @@ export class SitProcParamsComponent implements AfterViewInit {
     self.unlockExecuting();
   }
 
-  connectDataSetToControls(dataSetContainer: SitDataSetContainerComponent, initRow) { 
+  connectDataSetToControls(dataSetContainer: SitDataSetContainerComponent, initRow) {
     this.mainDataSet.initRowByInitRow(initRow, this.mainDataSet.activeRow);
     dataSetContainer.setDataSource(this.mainDataSet);
-    dataSetContainer.prepareControls(null);
+    dataSetContainer.prepareControls(null, true);
     this.unlockExecuting();
     this.activeRow = this.mainDataSet.activeRow;
     this.activeRowChange.emit(this.activeRow);
-    this.connectToFilesButton();    
+    this.connectToFilesButton();
   }
 
   prepareDataSet() {
@@ -102,7 +102,7 @@ export class SitProcParamsComponent implements AfterViewInit {
     this.dataSetManager.parentDataSetManager = this.dataSetManagerSource;
     const dataSetContainer = this.dataSetManager.dataSetContainers.first;
     this.mainDataSet = this.dataSetManager.CreateDataSetWrapper(dataSetContainer.ident, this.dataSetManagerSource);
-    
+
     this.mainDataSet.rowIsLocked.subscribe(row => {
       if (this.mainDataSet.activeRow == row) {
         this.lockOperationProgress();
@@ -122,8 +122,8 @@ export class SitProcParamsComponent implements AfterViewInit {
 
     !this.actionExecuteData.hasInitProc
        ? this.connectDataSetToControls(dataSetContainer, null)
-       : this.executInitProc(dataSetContainer, actionRow); 
-       
+       : this.executInitProc(dataSetContainer, actionRow);
+
      this.sourceDataSet = this.dataSetManagerSource.getDateSourceWrapper(this.actionExecuteData.sourceDataSetIdent);
   }
 
@@ -180,15 +180,15 @@ export class SitProcParamsComponent implements AfterViewInit {
     }
   }
   executeActionClickEvent() : void {
-    this.lockExecuting();    
+    this.lockExecuting();
     if (!this.operationInProgress) {
-      this.executeAction();  
+      this.executeAction();
     } else {
       this.runExecuteActionAfterOperation = true;
     }
   }
   executeAction(): void {
-    this.lockExecuting();    
+    this.lockExecuting();
     this.dataSetManagerSource.ExecuteAction(
       this.actionExecuteData.actionIdent,
       this.actionExecuteData.sourceDataSetIdent,
@@ -206,7 +206,7 @@ export class SitProcParamsComponent implements AfterViewInit {
 
   private executeActionExceptionCallback(self) {
     self.unlockExecuting();
-  }  
+  }
 
   private close(discard: boolean) {
     this.dataSetContainers?.forEach(container => {
@@ -216,7 +216,7 @@ export class SitProcParamsComponent implements AfterViewInit {
     if (this.isExpanderOpenKind()) {
       this.actionExecuteData.dataSetManagerSource.procExpander.Close(this.actionExecuteData, discard);
     } else {
-      this.tabService.removeTab(this.tabIndex);      
+      this.tabService.removeTab(this.tabIndex);
     }
 
     if (discard && this.actionExecuteData?.generatedRow && this.sourceDataSet) {

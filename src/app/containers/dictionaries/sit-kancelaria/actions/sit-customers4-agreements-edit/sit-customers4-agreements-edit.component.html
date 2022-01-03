@@ -8,10 +8,10 @@
           <sit-data-input type="text" #sitControl field="VATId" label="NIP" appearance="outline" style="width: 150px"></sit-data-input>
           <sit-data-input type="text" #sitControl field="REGON" label="REGON" appearance="outline" style="width: 150"></sit-data-input>
           <sit-data-input type="text" #sitControl field="KRS" label="KRS" appearance="outline" style="width: 150"></sit-data-input>
-          <sit-proc-button #sitAction actionDefinition = "importFromGUS"></sit-proc-button>
         </div>
         <div fxLayout="row">
           <sit-data-checkbox #sitControl field="ImportFromGUS" label="Test importu z GUS"></sit-data-checkbox>
+          <sit-proc-button #sitAction actionIdent="importFromGUS"></sit-proc-button>
         </div>
 
         <div fxLayout="row">
