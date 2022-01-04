@@ -515,6 +515,23 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
           },
         ],
       },
+      { headerName: 'Narzut',
+        children: [
+          { headerName: 'Suma', field: 'Markup',  filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, suppressMenu: true, agr: 'sum',
+            renderType: 'number',
+            cellClass: ['font11','numberFormat2Dec'],
+            pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
+          },
+          { headerName: 'Podstawa', field: 'MarkupBase', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 70, suppressMenu: true, agr: 'sum', columnGroupShow: "open",
+            renderType: 'number',
+            cellClass: ['font11','numberFormat2Dec'],
+          },
+          { headerName: 'Premia', field: 'MarkupBonus', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 70, suppressMenu: true, agr: 'sum', columnGroupShow: "open",
+            renderType: 'number',
+            cellClass: ['font11','numberFormat2Dec'],
+          },
+        ]
+      },
       { headerName: 'Koszt - klient', field: 'CustCost', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 100, suppressMenu: true, agr: 'sum',
         renderType: 'number',
         cellClass: ['font11','numberFormat2Dec'],
