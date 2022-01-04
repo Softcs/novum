@@ -1,11 +1,11 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync as  } from '@angular/core/testing';
 import { SitProcParamsComponent } from './sit-proc-params.component';
 
 describe('SitDictEditFormComponent', () => {
   let component: SitProcParamsComponent;
   let fixture: ComponentFixture<SitProcParamsComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ SitProcParamsComponent ]
     })

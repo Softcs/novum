@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync as  } from '@angular/core/testing';
 
 import { SitJpkVatGetDataComponent } from './sit-jpk-vat-get-data.component';
 
@@ -6,7 +6,7 @@ describe('SitJpkVatGetDataComponent', () => {
   let component: SitJpkVatGetDataComponent;
   let fixture: ComponentFixture<SitJpkVatGetDataComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ SitJpkVatGetDataComponent ]
     })
