@@ -49,6 +49,7 @@ export class SitWmsStocksComponent extends SitDictBaseComponent {
       { headerName: 'Lokalizacja', field: 'LocationIdent', sortable: true, filter: 'agTextColumnFilter', floatingFilter: false },
       { headerName: 'Stan - MWS', field: 'Quantity', sortable: true, filter: 'agTextColumnFilter', floatingFilter: false },
       { headerName: "Typ lokalizacji", field: 'LocationTypeDesc', sortable: true, filter: 'agTextColumnFilter', floatingFilter: false },
+      { headerName: "Paleta", field: 'LogisticUnitEAN', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 150, defaultVisibility: false},
     ];
 
     this.gridColumnsDefinition["sitWMSStocks"] = [
@@ -73,7 +74,7 @@ export class SitWmsStocksComponent extends SitDictBaseComponent {
         children: [
           { headerName: "Ident.", field: 'LocationIdent', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 150 },
           { headerName: "Typ", field: 'LocationTypeDesc', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 150 },
-
+          { headerName: "Paleta", field: 'LogisticUnitEAN', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 150, columnGroupShow: 'open'},
         ],
       },
       { headerName: 'Stan',
