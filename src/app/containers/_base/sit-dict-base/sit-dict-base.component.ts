@@ -59,4 +59,8 @@ export class SitDictBaseComponent implements OnInit, AfterViewInit {
   public prepareColumnsDefinitnion() {
 
   }
+
+  public getStringValue(value: any) {
+    return value === null || value === undefined ? '' : value;
+  }
 }
