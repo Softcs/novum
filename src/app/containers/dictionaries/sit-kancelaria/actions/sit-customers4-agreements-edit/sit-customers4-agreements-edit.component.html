@@ -5,10 +5,9 @@
     <div class="sit-proc-params-content" fxLayout="row" style="height: 500px; width: 500px;">
       <div fxLayout="column" fxFill>
         Podaj NIP, żeby pobrać dane kontrahenta z GUS.
-        <div fxLayout="row">
+        <div fxLayout="row" fxLayoutAlign="start center">
           <sit-data-input type="text" #sitControl field="VATId" label="NIP" appearance="outline" style="width: 150px" fxFLex=50></sit-data-input>
-          <sit-data-checkbox #sitControl field="ImportFromGUS" label="Test importu z GUS" fxFlex></sit-data-checkbox>
-          <sit-proc-button #sitAction actionIdent="importFromGUS"></sit-proc-button>
+          <sit-proc-button #sitAction actionIdent="importFromGUS" color="primary" ></sit-proc-button>
         </div>
         <div fxLayout="row">
           <sit-data-input type="text" #sitControl field="CustIdent" label="Identyfikator" appearance="outline" fxFlex></sit-data-input>
