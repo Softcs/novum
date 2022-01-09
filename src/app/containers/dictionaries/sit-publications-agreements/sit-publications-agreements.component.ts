@@ -22,12 +22,12 @@ export class SitPublicationsAgreementsComponent extends SitDictBaseComponent {
       { headerName: 'Na rozl.', headerTooltip: 'Ile mamy czasu na rozliczenie w dniach', field: 'TimeToPay',  type: 'numericColumn', width: 80, suppressMenu: true},
       { headerName: 'Do zapł.', headerTooltip: 'Ile mamy czasu do zapłaty w dniach', field: 'TimeToSettle',  type: 'numericColumn', width: 80, suppressMenu: true},
       { headerName: 'Waluta', field: 'CurrencyIdent', filter: 'agTextColumnFilter', width: 70, suppressMenu: true},
-      { headerName: 'Zaliczka', field: 'IsAdvance', headerTooltip: 'Czy wypłacana jest zaliczka.', width: 80, renderType: 'checkbox', suppressMenu: true},
+      { headerName: 'Zaliczka', field: 'IsAdvance', headerTooltip: 'Czy wypłacana jest zaliczka.', width: 80, renderType: 'checkbox', suppressMenu: true, cellClass: "grid-cell-centered"},
       { headerName: 'Sprz. po wyg. lic.', headerTooltip: 'Prawo do sprzedaży po wygaśnięciu licencji', field: 'SellAfterRightsKindDesc', tooltipField: 'SellAfterRightsKindDesc', filter: 'agTextColumnFilter', width: 160},
       { headerName: 'Okres', headerTooltip: 'Okres przez jaki mamy prawo do sprzedaży po wygaśnięciu licencji - mies.', field: 'SellAfterRightsPeriodInMonths', width: 60, type: 'numericColumn', renderType: 'number', renderFormat: '1.0-0', suppressMenu: true},
       { headerName: 'Min.tant. / cena', field: 'MinPriceDesc', filter: 'agTextColumnFilter', width: 150},
-      { headerName: 'Tant.od wyprz.', headerTooltip: 'Czy są liczone tantiemy od wyprzedaży.', field: 'IncSale', width: 110, renderType: 'checkbox', suppressMenu: true},
-      { headerName: 'Remainders', field: 'Remainders', headerTooltip: 'Czy umowa przewiduje remainders.', width: 80, renderType: 'checkbox', suppressMenu: true},
+      { headerName: 'Tant.od wyprz.', headerTooltip: 'Czy są liczone tantiemy od wyprzedaży.', field: 'IncSale', width: 110, renderType: 'checkbox', suppressMenu: true, cellClass: "grid-cell-centered"},
+      { headerName: 'Remainders', field: 'Remainders', headerTooltip: 'Czy umowa przewiduje remainders.', width: 80, renderType: 'checkbox', suppressMenu: true, cellClass: "grid-cell-centered"},
       { headerName: '% od remaind.', headerTooltip: '% tantiem od remainders', field: 'RemaindersRate', width: 100, type: 'numericColumn', suppressMenu: true},
       { headerName: 'Status', field: 'MainStatus_ValueName', filter: 'agTextColumnFilter', width: 150}
     ];
@@ -37,7 +37,7 @@ export class SitPublicationsAgreementsComponent extends SitDictBaseComponent {
       { headerName: 'Beneficjent', field: 'CustIdent', width: 150},
       { headerName: 'Nazwa', field: 'CustName', width: 300},
       { headerName: '% udziału', field: 'PercentShare', width: 100, type: 'numericColumn', suppressMenu: true},
-      { headerName: 'Do rozl.', field: 'ForBilling', width: 100, renderType: 'checkbox', suppressMenu: true},
+      { headerName: 'Do rozl.', field: 'ForBilling', width: 100, renderType: 'checkbox', suppressMenu: true, cellClass: "grid-cell-centered"},
       { headerName: 'Sposób rozl.', field: 'BillingType', width: 100, suppressMenu: true}
     ];
     this.gridColumnsDefinition["sitAgreementsPublications"] = [
@@ -46,7 +46,7 @@ export class SitPublicationsAgreementsComponent extends SitDictBaseComponent {
       { headerName: 'Publikacja', field: 'PublicationIdent', width: 150},
       { headerName: 'Tytuł', field: 'Title', width: 300},
       { headerName: 'Tytuł oryginalny', field: 'OriginalTitle', width: 300},
-      { headerName: 'Typ daty licencji', field: 'RightsDateFromTypeDesc', width: 150},
+      { headerName: 'Typ daty licencji', field: 'RightsDateFromTypeIdent', width: 150},
       { headerName: 'Początek licencji', field: 'RightsDateFrom', filter: 'agTextColumnFilter', width: 120, renderType: 'date'},
       { headerName: 'Koniec licencji', field: 'RightsDateTo', filter: 'agTextColumnFilter', width: 120, renderType: 'date'},
       { headerName: 'Sprzedaż do', field: 'RightsToSellDateTo', filter: 'agTextColumnFilter', width: 120, renderType: 'date'},
@@ -66,7 +66,7 @@ export class SitPublicationsAgreementsComponent extends SitDictBaseComponent {
       { headerName: 'GUID', field: 'sitAgreementsPublicationsFormsOfReleaseG', width: 100, defaultVisibility: false},
       { headerName: 'Forma wydania', field: 'FormOfReleaseIdent', width: 150},
       { headerName: 'Opis', field: 'FormOfReleaseDesc', width: 300},
-      { headerName: ' ', field: 'IsActive', width: 100, renderType: 'checkbox'}
+      { headerName: ' ', field: 'IsActive', width: 100, renderType: 'checkbox', cellClass: "grid-cell-centered"}
     ];
     this.gridColumnsDefinition["sitAgreementsBillingTypes"] = [
       { headerName: 'Id', field: 'sitAgreementsBillingTypesId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 50, defaultVisibility: false},
