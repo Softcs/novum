@@ -35,27 +35,26 @@ export class SitReturnsComponent extends SitDictBaseComponent {
       { headerName: 'NagId SL', field: 'ExtAppIdent01', filter: 'agTextColumnFilter',width: 100 },
       { headerName: 'XL ID', field: 'ExtAppIdent02', filter: 'agTextColumnFilter',width: 100  },
     ];
-      //definicja kolumn pozycji dowodów
-      this.gridColumnsDefinition["sitDocumentsPositions"] = [
-        { headerName: 'Identyfikator', field: 'ProductIdent', filter: 'agTextColumnFilter', width: 120, floatingFilter: true },
-        { headerName: 'EAN', field: 'EAN', filter: 'agTextColumnFilter', width: 110, floatingFilter: true },
-        { headerName: 'Opis', field: 'PositionDescription', filter: 'agTextColumnFilter', floatingFilter: true },
-        { headerName: 'JM', field: 'UnitIdent', filter: 'agTextColumnFilter', suppressMenu: true, width: 60 },
-        { headerName: 'Ilość', field: 'QuantityUnit', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
-        { headerName: 'Ilość klienta', field: 'Quantity4Compare', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
-        { headerName: 'Różnica', field: 'QuantityDiff', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
-        { headerName: 'Defekty', field: 'QuantityDefect', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
-      ];
 
-      this.gridColumnsDefinition["sitAttachments"] = [
-        { headerName: 'ParentId', field: 'ParentId' },
-        { headerName: 'sitAttachmentsG', field: 'sitAttachmentsG' },
-        { headerName: 'Data dodania', field: 'InsertDate', width: 120,
-        renderType: "date", renderFormat: "yyyy-MM-dd HH:mm"
-        },
-        { headerName: 'Nazwa pliku', field: 'FileName', width: 250 },
-        { headerName: 'Opis', field: 'AttachmentDesc', width: 250 },
-      ];
+      //definicja kolumn pozycji dowodów
+    this.gridColumnsDefinition["sitDocumentsPositions"] = [
+      { headerName: 'Identyfikator', field: 'ProductIdent', filter: 'agTextColumnFilter', width: 120, floatingFilter: true },
+      { headerName: 'EAN', field: 'EAN', filter: 'agTextColumnFilter', width: 110, floatingFilter: true },
+      { headerName: 'Opis', field: 'PositionDescription', filter: 'agTextColumnFilter', floatingFilter: true },
+      { headerName: 'JM', field: 'UnitIdent', filter: 'agTextColumnFilter', suppressMenu: true, width: 60 },
+      { headerName: 'Ilość', field: 'QuantityUnit', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
+      { headerName: 'Ilość klienta', field: 'Quantity4Compare', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
+      { headerName: 'Różnica', field: 'QuantityDiff', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
+      { headerName: 'Defekty', field: 'QuantityDefect', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80 },
+    ];
+
+    this.gridColumnsDefinition["sitAttachments"] = [
+      { headerName: 'ParentId', field: 'ParentId' },
+      { headerName: 'sitAttachmentsG', field: 'sitAttachmentsG' },
+      { headerName: 'Data dodania', field: 'InsertDate', width: 120, renderType: "date", renderFormat: "yyyy-MM-dd HH:mm"},
+      { headerName: 'Nazwa pliku', field: 'FileName', width: 250 },
+      { headerName: 'Opis', field: 'AttachmentDesc', width: 250 },
+    ];
 
       this.rowClassRules = {
         'row-defect': 'data.QuantityDiff != 0'

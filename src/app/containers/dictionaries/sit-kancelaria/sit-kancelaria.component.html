@@ -1,8 +1,8 @@
 <sit-dict-container ident="sitKancelaria" #sitDictcontainer fxFlexFill >
   <div fxLayout="row" fxFlexFill class="content">
-    <as-split direction="horizontal">
+    <as-split direction="horizontal" #sitSplit>
       <as-split-area [size]="60">
-        <as-split direction="vertical">
+        <as-split #sitSplit direction="vertical">
           <as-split-area [size]="30">
             <div fxFill fxLayout="column">
               <sit-data-set-container ident="sitFilterCustomers" >
@@ -26,7 +26,7 @@
             </div>
           </as-split-area>
           <as-split-area [size]="70">
-            <as-split direction="horizontal">
+            <as-split #sitSplit direction="horizontal">
               <as-split-area [size]="65">
                 <div fxLayout="column" fxFill>
                   <div class="sit-grid-title">Umowy</div>
