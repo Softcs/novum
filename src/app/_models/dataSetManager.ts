@@ -8,6 +8,7 @@ import { SitProcExpanderComponent } from '@app/components/controls/sit-proc-expa
 import { RefreshType } from '@app/_consts/RefreshType';
 import { OnCFService } from '@app/_services/oncf.service';
 import { ActionDefinitionWrapper } from './actionDefinitionWrapper';
+import { SplitComponent } from 'angular-split';
 
 @Directive()
 export class DataSetManager {
@@ -21,6 +22,7 @@ export class DataSetManager {
     public parentDataSetManager: DataSetManager;
     public gridColumnsDefinition = {};
     public popupParent;
+    public splitters: QueryList<SplitComponent>;
 
     @Output()
     refreshAfter: EventEmitter<DataSetManager> = new EventEmitter<DataSetManager>();
@@ -525,11 +527,34 @@ export class DataSetManager {
         return dataSource;
     }
 
+    private prepareSplitters() {
+        if (this.splitters == null) {
+            return;
+        }
+
+        this.splitters.forEach(splitter => {
+            var areas = splitter.getVisibleAreaSizes();
+            splitter.gutterClick.subscribe((e: { gutterNum: number; sizes: Array<number> }) => {
+                if (e.gutterNum === 1) {
+                     if (e.sizes[1] > 0) {
+                       e.sizes[0] = e.sizes[0] + e.sizes[1];
+                       e.sizes[1] = 0;
+                       splitter.setVisibleAreaSizes(e.sizes);
+                    } else  {
+                        splitter.setVisibleAreaSizes(areas);
+                    }
+                };
+            });
+        });
+    }
+
     public prepareControls() {
         this.dataSetContainers.forEach(dataSetContainer => {
             const dsDefWrapper = this.dataSetDefinitionWrappers.find(ds => ds.ident === dataSetContainer.ident);
             dataSetContainer.prepareControls(dsDefWrapper);
         });
+
+        this.prepareSplitters();
     }
 
     public afterContentInit() {
