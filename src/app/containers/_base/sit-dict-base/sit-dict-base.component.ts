@@ -17,7 +17,7 @@ import { SplitComponent } from 'angular-split';
 export class SitDictBaseComponent implements OnInit, AfterViewInit {
   @ViewChild('sitDictcontainer') dictContainer: SitDictContainerComponent;
   @ViewChildren('sitDictcontainer') dictContainers !: QueryList<SitDictContainerComponent>;
-  @ViewChildren('sitSplit') dictSplitters !: QueryList<SplitComponent>;
+  @ViewChildren('sitSpliter') dictSplitters !: QueryList<SplitComponent>;
 
   public popupParent;
   public currentUser: User;

@@ -536,9 +536,9 @@ export class DataSetManager {
             var areas = splitter.getVisibleAreaSizes();
             splitter.gutterClick.subscribe((e: { gutterNum: number; sizes: Array<number> }) => {
                 if (e.gutterNum === 1) {
-                     if (e.sizes[0] > 0) {
-                       e.sizes[1] = e.sizes[0] + e.sizes[1];
-                       e.sizes[0] = 0;
+                     if (e.sizes[1] > 0) {
+                       e.sizes[0] = e.sizes[0] + e.sizes[1];
+                       e.sizes[1] = 0;
                        splitter.setVisibleAreaSizes(e.sizes);
                     } else  {
                         splitter.setVisibleAreaSizes(areas);
