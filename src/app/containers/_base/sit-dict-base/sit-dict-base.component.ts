@@ -8,6 +8,7 @@ import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
 import { GridService } from '@app/_services/grid.service';
 import { environment } from '@environments/environment';
+import { SplitComponent } from 'angular-split';
 @Component({
   selector: 'sit-dict-base',
   templateUrl: './sit-dict-base.component.html',
@@ -16,6 +17,7 @@ import { environment } from '@environments/environment';
 export class SitDictBaseComponent implements OnInit, AfterViewInit {
   @ViewChild('sitDictcontainer') dictContainer: SitDictContainerComponent;
   @ViewChildren('sitDictcontainer') dictContainers !: QueryList<SitDictContainerComponent>;
+  @ViewChildren('sitSpliter') dictSplitters !: QueryList<SplitComponent>;
 
   public popupParent;
   public currentUser: User;
@@ -42,6 +44,7 @@ export class SitDictBaseComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.dictContainer.DataSetManager.gridColumnsDefinition = this.gridColumnsDefinition;
     this.dictContainer.DataSetManager.popupParent = this.popupParent;
+    this.dictContainer.DataSetManager.splitters = this.dictSplitters;
   }
 
   ngOnInit(): void {
@@ -58,5 +61,9 @@ export class SitDictBaseComponent implements OnInit, AfterViewInit {
 
   public prepareColumnsDefinitnion() {
 
+  }
+
+  public getStringValue(value: any) {
+    return value === null || value === undefined ? '' : value;
   }
 }

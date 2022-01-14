@@ -2,6 +2,16 @@ export const environment = {
     appVersion: require('../../package.json').version + '-dev',
     serverVersion: '',
     production: false,
+    optimization: false,
+    outputHashing: "none",
+    sourceMap: true,
+    namedChunks: false,
+    aot: true,
+    extractLicenses: false,
+    statsJson: false,
+    progress: true,
+    vendorChunk: true,
+    buildOptimizer: false,
     apiUrl: 'https://ws-test.seidoit.pl',
     crypt: {
         key: "72E93D2A56DB44C3914C811983C6C08E",
@@ -9,7 +19,7 @@ export const environment = {
     },
     routingOverride : {
         "publicat.l-seidoit.pl": {
-            "login": "login_pub"           
+            "login": "login_pub"
         }
     }
 };

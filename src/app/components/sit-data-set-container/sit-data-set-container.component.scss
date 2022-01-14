@@ -5,10 +5,10 @@
 }
 
 .sit-msg-container {
-  position: absolute;
-  left: 20px;
-  top: 5px;
-  z-index: 1000;
+  position: fixed;
+  right: 20px;
+  top: 50px;
+  z-index: 999;
 }
 
 .sit-msg-box {
@@ -30,16 +30,17 @@
   width: 0px;
   height: 0px;
   position: absolute;
-  border-left: 15px solid transparent;
-  border-right: 15px solid $messagebox-background-color;
+  border-right: 15px solid transparent;
+  border-left: 15px solid $messagebox-background-color;
   border-top: 15px solid $messagebox-background-color;
   border-bottom: 15px solid transparent;
-  left: -16px;
+  right: -16px;
   top: 0px;
 }
 
 .error-header{
   color: red;
+  width: 60px;
 }
 
 .sit-msg-error{
