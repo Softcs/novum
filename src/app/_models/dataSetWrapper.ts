@@ -18,6 +18,7 @@ export class DataSetWrapper {
     public isLookup = false;
     public hasOnCF = false;
     public onCFFields: any = {};
+    public hasActionForSelectedRows = false;
 
     @Output()
     activeRowChanged: EventEmitter<any> = new EventEmitter<any>();
@@ -112,6 +113,7 @@ export class DataSetWrapper {
             return;
         }
         this.actions = dataSourceDef?.actions;
+        this.hasActionForSelectedRows = this.actions?.find( a => a.forSelectedRows) != null;
     }
 
     private readOnCF() {

@@ -11,13 +11,18 @@ import { StringUtils } from '@app/_helpers/string.utisl';
 })
 export class GridService {
   columnDefs;
-
+  defaultColumns = {
+    flex: 1,
+    minWidth: 100,
+    resizable: true,
+    headerCheckboxSelection: this.isFirstColumn,
+    checkboxSelection: this.isFirstColumn,
+  };
   constructor(
     @Inject(LOCALE_ID) protected locale: string,
     private stringUtils: StringUtils
   ) {
   }
-
 
   private formatColumn(column: any, locale: string) {
     var renderFormat = column["renderFormat"];
@@ -64,7 +69,7 @@ export class GridService {
         return params.value === null ? null : formatNumber(params.value, locale, renderFormat).replace(/[,]/g,' ') + '%';
       }
     }
-   
+
     if (column.renderType == "sitGridCellRenderer") {
       column["cellRendererFramework"] = sitGlobalConfig.frameworkComponents
     }
@@ -77,6 +82,17 @@ export class GridService {
     });
   }
 
+  public isFirstColumn(params) {
+    var displayedColumns = params.columnApi.getAllDisplayedColumns();
+    var thisIsFirstColumn = displayedColumns[0] === params.column;
+    return thisIsFirstColumn;
+  }
+
+  public selectionOptionInit(gridOptions) {
+    gridOptions.defaultColDef = this.defaultColumns;
+    gridOptions.rowSelection = 'multiple';
+    gridOptions.suppressRowClickSelection = true;
+  }
 
   public setDefGridOptionsOnReady(grid) {
     grid.api.gridOptionsWrapper.gridOptions.tooltipShowDelay = 0;
@@ -85,7 +101,6 @@ export class GridService {
 
   public setDefGridOptions(grid) {
     this.columnDefs = grid.api.getColumnDefs();
-
     this.columnDefs.forEach(columnDef => {
       if( !columnDef.hasOwnProperty('sortable') ) { columnDef.sortable = true; }
       if( !columnDef.hasOwnProperty('resizable') ) { columnDef.resizable = true; }
@@ -100,12 +115,14 @@ export class GridService {
     }
 
     if ( !grid.gridOptions.rowMultiSelectWithClick ) {
-      grid.gridOptions.rowMultiSelectWithClick = false;
+      grid.gridOptions.rowMultiSelectWithClick = true;
     }
 
     if ( !grid.gridOptions.suppressCopyRowsToClipboard ) {
       grid.gridOptions.suppressCopyRowsToClipboard = true;
     }
+
+
   }
 
   public isPivotMode(gridApi) {
@@ -118,7 +135,10 @@ export class GridService {
            : null;
  }
 
- public prepareGrid(gridApi, ident, gridColumnsDefinition, popupParent) {
+ public prepareGrid(gridApi, ident, gridColumnsDefinition, popupParent, gridOptions) {
+   if (gridOptions) {
+     this.selectionOptionInit(gridOptions);
+   }
   if (!gridApi.getColumnDefs() || gridApi.getColumnDefs().length == 0) {
     var columns = gridColumnsDefinition[ident];
     this.applyRender4Columns(columns);
@@ -144,8 +164,8 @@ export class GridService {
     if (customProperty == null) {
       customProperty = {};
       customProperty.activeRow = null;
-      if (gridApi.gridOptionsWrapper) {
-        var gridOptions = gridApi.gridOptionsWrapper.gridOptions;
+      var gridOptions = gridApi.gridOptionsWrapper ? gridApi.gridOptionsWrapper.gridOptions : null;
+      if (gridOptions) {
         var rowClassRules = gridApi.gridOptionsWrapper.rowClassRules();
         if (!rowClassRules) {
           rowClassRules = {};
@@ -171,7 +191,7 @@ export class GridService {
           }
         }
 
-        this.prepareGrid(gridApi, dataSetContainer.ident, dataSetContainer.dataSetControlsManager.gridColumnsDefinition, dataSetContainer.dataSetControlsManager.popupParent);
+        this.prepareGrid(gridApi, dataSetContainer.ident, dataSetContainer.dataSetControlsManager.gridColumnsDefinition, dataSetContainer.dataSetControlsManager.popupParent, gridOptions);
       }
 
       gridApi.SeidoCustomProperty = customProperty;
@@ -231,4 +251,3 @@ export class GridService {
     gridApi.setPinnedBottomRowData([agrRow]);
   }
 }
-

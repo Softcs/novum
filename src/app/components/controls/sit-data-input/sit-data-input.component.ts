@@ -90,8 +90,6 @@ export class SitDataInputComponent extends SitDataBaseComponent {
     }
   }
 
-
-
   public afterSetDataSetWrapper() {
     this.refreshButton?.setDataSetWrapper(this.dataSetWrapper);
     this.initLookup();

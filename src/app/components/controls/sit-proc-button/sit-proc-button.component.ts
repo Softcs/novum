@@ -16,7 +16,7 @@ import { VisibilityService } from '@app/_services/visibility.service';
   templateUrl: './sit-proc-button.component.html',
   styleUrls: ['./sit-proc-button.component.scss']
 })
-export class SitProcButtonComponent extends SitActionDirective implements OnInit {
+export class SitProcButtonComponent extends SitActionDirective {
   executing = false;
   @Input() color: string;
   @Input() caption: string;
@@ -31,7 +31,6 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
 
   public set actionDefinition(action: ActionDefinitionWrapper) {
     super.actionDefinition = action;
-
     this.actionIdent = action?.ident;
     this.caption = action?.caption;
     this.componentParamsIdent = action?.componentParamsIdent;
@@ -46,16 +45,6 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
     return super.actionDefinition;
   }
 
-  // public set dataSetResponseWrapper(value: DataSetWrapper)
-  // {
-  //   super.dataSetResponseWrapper = value;
-  // }
-
-  // public get dataSetResponseWrapper(): DataSetWrapper
-  // {
-  //   return null;
-  // }
-
   private tabLink: string;
 
   constructor(
@@ -68,11 +57,6 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
     private visibilityService: VisibilityService
     ) {
       super(el);
-
-  }
-
-  ngOnInit(): void {
-
   }
 
   showWhenEmpty(): boolean {
@@ -89,6 +73,14 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
 
   isUpdate(): boolean {
     return (this.actionDefinition?.kind === 'update' || this.actionDefinition?.kind === 'U');
+  }
+
+  public get forSelectedRows(): boolean {
+    return (this.actionDefinition?.forSelectedRows);
+  }
+
+  public get runOneByOne(): boolean {
+    return (this.actionDefinition?.runOneByOne);
   }
 
   public get isShouldBeHidden(): boolean {

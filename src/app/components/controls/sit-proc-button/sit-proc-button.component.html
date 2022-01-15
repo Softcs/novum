@@ -1,4 +1,5 @@
-<button #button mat-stroked-button *ngIf="!isShouldBeHidden" class="small"
+<button #button mat-stroked-button *ngIf="!isShouldBeHidden"
+    [ngClass]="{'small': true, 'forSelectedRows': forSelectedRows, 'runOneByOne': runOneByOnes}"
     color="{{color}}"
     (click)="onClick($event)" [disabled]="executing"
     matTooltip="{{tooltip}}">

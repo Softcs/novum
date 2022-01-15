@@ -3,6 +3,8 @@ import { ActionVisibilityRule } from "./actionVisibilityRule";
 export class ActionDefinitionWrapper {
     public createNewRow: boolean;
     public forCurrentRow: boolean;
+    public forSelectedRows: boolean;
+    public runOneByOne: boolean;
     public ident: string;
     public kind: string;
     public refreshAfter: boolean;
@@ -25,6 +27,7 @@ export class ActionDefinitionWrapper {
         this.createNewRow = source.createNewRow;
         this.ident = source.ident;
         this.forCurrentRow = source.forCurrentRow;
+        this.forSelectedRows = source.forSelectedRows;
         this.kind = source.kind;
         this.refreshAfter = source.refreshAfter;
         this.showInToolbar = source.showInToolbar;
