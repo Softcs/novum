@@ -45,7 +45,7 @@ export class SitProjectsPubComponent extends SitDictBaseComponent {
   }
 
   get activeRowProjectsPub() {
-    return this.dictContainer?.activeRow('sitProjectsPub')
+    return this.dictContainer?.activeRow('sitProjectsPubOneRow')
   }
 
   printProject() {
