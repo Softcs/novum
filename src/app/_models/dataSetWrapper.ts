@@ -10,6 +10,7 @@ import { DataSetDefinitionWrapper } from './dataSetDefinitionWrapper';
 @Directive()
 export class DataSetWrapper {
     private _rows: any[];
+    private _selectedRows: any[];
     private _dataSource: any;
     private _dataSetDefinitionWrapper: DataSetDefinitionWrapper;
     public activeRow: any;
@@ -43,6 +44,9 @@ export class DataSetWrapper {
     @Output()
     rowIsUnLocked: EventEmitter<any> = new EventEmitter<any>();
 
+    @Output()
+    selectedRowsChanged: EventEmitter<any[]> = new EventEmitter<any[]>();
+
     constructor(
         public ident: string,
         public dataSourceManager: DataSetManager,
@@ -64,6 +68,19 @@ export class DataSetWrapper {
 
     set rows(value) {
         this._rows = value;
+    }
+
+    public get selectedRows(): any[] {
+        return this._selectedRows;
+    }
+
+    public set selectedRows(value: any[]) {
+        this._selectedRows = value;
+        this.selectedRowsChanged.emit(this._selectedRows);
+    }
+
+    public get hasSelectedRows(): boolean {
+        return this._selectedRows != null && this._selectedRows.length > 0;
     }
 
     get hasLookups(): boolean {

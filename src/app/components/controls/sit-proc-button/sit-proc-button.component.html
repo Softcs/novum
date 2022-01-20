@@ -1,7 +1,7 @@
 <button #button mat-stroked-button *ngIf="!isShouldBeHidden"
-    [ngClass]="{'small': true, 'forSelectedRows': forSelectedRows, 'runOneByOne': runOneByOnes}"
+    [ngClass]="{'small': true, 'forSelectedRows': forSelectedRows}"
     color="{{color}}"
-    (click)="onClick($event)" [disabled]="executing"
+    (click)="onClick($event)" [disabled]="isDisabled"
     matTooltip="{{tooltip}}">
     <span *ngIf="executing" class="spinner-border spinner-border-sm mr-1 sit-proc-button-spinner"></span>
     <span *ngIf="icon && !executing" class="sit-proc-button-icon"><mat-icon aria-hidden="false" aria-label="Firma">{{icon}}</mat-icon></span>

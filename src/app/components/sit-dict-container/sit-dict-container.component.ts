@@ -39,7 +39,7 @@ export class SitDictContainerComponent implements OnInit, AfterViewInit, AfterCo
 
   ngAfterContentInit() {
     this.DataSetManager.dataSetContainers = this.dataSetContainers;
-    this.DataSetManager.afterContentInit();    
+    this.DataSetManager.afterContentInit();
     this.loadData();
   }
 

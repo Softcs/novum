@@ -75,6 +75,14 @@ export class SitProcButtonComponent extends SitActionDirective {
     return (this.actionDefinition?.isUpdate);
   }
 
+  public get isDisabled() {
+    var disabled = this.executing
+    if (!this.actionDefinition.forSelectedRows && this.dataSetResponseWrapper.hasSelectedRows) {
+      return true;
+    }
+    return disabled;
+  }
+
   public get isShouldBeHidden(): boolean {
     if (!this.actionDefinition || !this.dataSetResponseWrapper) {
       return true;

@@ -3,6 +3,8 @@ import { Inject, Injectable, LOCALE_ID } from '@angular/core';
 import { SitDataSetContainerComponent } from '@app/components/sit-data-set-container';
 import { sitGlobalConfig } from '@app/_consts/sit-global-config';
 import { StringUtils } from '@app/_helpers/string.utisl';
+import { DataSetWrapper } from '@app/_models';
+import { DataSetDefinitionWrapper } from '@app/_models/dataSetDefinitionWrapper';
 
 @Injectable({
   providedIn: 'root'
@@ -86,11 +88,21 @@ export class GridService {
     return thisIsFirstColumn;
   }
 
-  public selectionOptionInit(gridOptions) {
+  public onSelectionChanged(dataSetWrapper: DataSetWrapper, gridOptions) {
+    const selectedRows = gridOptions.api.getSelectedRows();
+    console.log("selectedRows", selectedRows.length);
+    dataSetWrapper.selectedRows = selectedRows;
+  }
+
+  public selectionOptionInit(dataSetWrapper: DataSetWrapper, gridOptions) {
+    var self = this;
     gridOptions.defaultColDef = this.defaultColumns;
     gridOptions.suppressRowClickSelection = true;
     gridOptions.rowSelection = 'multiple';
     gridOptions.rowMultiSelectWithClick = true;
+    gridOptions.onSelectionChanged = () => {
+      self.onSelectionChanged(dataSetWrapper, gridOptions);
+    }
   }
 
   public setDefGridOptionsOnReady(grid) {
@@ -112,7 +124,6 @@ export class GridService {
     if ( !grid.gridOptions.suppressCopyRowsToClipboard ) {
       grid.gridOptions.suppressCopyRowsToClipboard = true;
     }
-
   }
 
   public isPivotMode(gridApi) {
@@ -125,9 +136,9 @@ export class GridService {
            : null;
  }
 
- public prepareGrid(gridApi, ident, gridColumnsDefinition, popupParent, gridOptions, activateSelectedMode: boolean) {
+ public prepareGrid(dataSetWrapper: DataSetWrapper, gridApi, ident, gridColumnsDefinition, popupParent, gridOptions, activateSelectedMode: boolean) {
    if (gridOptions && activateSelectedMode) {
-     this.selectionOptionInit(gridOptions);
+     this.selectionOptionInit(dataSetWrapper, gridOptions);
    }
   if (!gridApi.getColumnDefs() || gridApi.getColumnDefs().length == 0) {
     var columns = gridColumnsDefinition[ident];
@@ -181,7 +192,7 @@ export class GridService {
           }
         }
 
-        this.prepareGrid(gridApi, dataSetContainer.ident, dataSetContainer.dataSetControlsManager.gridColumnsDefinition, dataSetContainer.dataSetControlsManager.popupParent, gridOptions, activateSelectedMode);
+        this.prepareGrid(dataSetContainer.dataSetResponseWrapper, gridApi, dataSetContainer.ident, dataSetContainer.dataSetControlsManager.gridColumnsDefinition, dataSetContainer.dataSetControlsManager.popupParent, gridOptions, activateSelectedMode);
       }
 
       gridApi.SeidoCustomProperty = customProperty;
