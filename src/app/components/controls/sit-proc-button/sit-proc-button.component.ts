@@ -64,23 +64,15 @@ export class SitProcButtonComponent extends SitActionDirective {
   }
 
   isDelete(): boolean {
-    return (this.actionDefinition?.kind === 'delete' || this.actionDefinition?.kind === 'D');
+    return (this.actionDefinition?.isDelete);
   }
 
   isInsert(): boolean {
-    return (this.actionDefinition?.kind === 'insert' || this.actionDefinition?.kind === 'I');
+    return (this.actionDefinition?.isInsert);
   }
 
   isUpdate(): boolean {
-    return (this.actionDefinition?.kind === 'update' || this.actionDefinition?.kind === 'U');
-  }
-
-  public get forSelectedRows(): boolean {
-    return (this.actionDefinition?.forSelectedRows);
-  }
-
-  public get runOneByOne(): boolean {
-    return (this.actionDefinition?.runOneByOne);
+    return (this.actionDefinition?.isUpdate);
   }
 
   public get isShouldBeHidden(): boolean {

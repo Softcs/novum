@@ -199,7 +199,8 @@ export class SitDataSetContainerComponent implements AfterViewInit{
       if (!gridApi) {
         return false;
       }
-      this.gridService.applyCustomPropsGrid(this, gridApi);
+
+      this.gridService.applyCustomPropsGrid(this, gridApi, this.dataSetResponseWrapper.hasActionForSelectedRows);
       // tree grid - parsowanie kolumny z danymi do drzewa //TODO find diffirent way to do the same except iteration of all rows
       if (this.dataSetResponseWrapper.rows) {
         this.dataSetResponseWrapper.rows.forEach(element => {

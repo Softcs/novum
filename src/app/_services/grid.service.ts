@@ -1,7 +1,5 @@
 import { formatDate, formatNumber } from '@angular/common';
 import { Inject, Injectable, LOCALE_ID } from '@angular/core';
-import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
-import { SitDataCheckboxComponent } from '@app/components/controls/sit-data-checkbox/sit-data-checkbox.component';
 import { SitDataSetContainerComponent } from '@app/components/sit-data-set-container';
 import { sitGlobalConfig } from '@app/_consts/sit-global-config';
 import { StringUtils } from '@app/_helpers/string.utisl';
@@ -90,8 +88,9 @@ export class GridService {
 
   public selectionOptionInit(gridOptions) {
     gridOptions.defaultColDef = this.defaultColumns;
-    gridOptions.rowSelection = 'multiple';
     gridOptions.suppressRowClickSelection = true;
+    gridOptions.rowSelection = 'multiple';
+    gridOptions.rowMultiSelectWithClick = true;
   }
 
   public setDefGridOptionsOnReady(grid) {
@@ -110,18 +109,9 @@ export class GridService {
     grid.api.setColumnDefs(this.columnDefs);
     grid.gridOptions.excelStyles = sitGlobalConfig.excelStyles;
 
-    if ( !grid.gridOptions.rowSelection ) {
-      grid.gridOptions.rowSelection = 'multiple';
-    }
-
-    if ( !grid.gridOptions.rowMultiSelectWithClick ) {
-      grid.gridOptions.rowMultiSelectWithClick = true;
-    }
-
     if ( !grid.gridOptions.suppressCopyRowsToClipboard ) {
       grid.gridOptions.suppressCopyRowsToClipboard = true;
     }
-
 
   }
 
@@ -135,8 +125,8 @@ export class GridService {
            : null;
  }
 
- public prepareGrid(gridApi, ident, gridColumnsDefinition, popupParent, gridOptions) {
-   if (gridOptions) {
+ public prepareGrid(gridApi, ident, gridColumnsDefinition, popupParent, gridOptions, activateSelectedMode: boolean) {
+   if (gridOptions && activateSelectedMode) {
      this.selectionOptionInit(gridOptions);
    }
   if (!gridApi.getColumnDefs() || gridApi.getColumnDefs().length == 0) {
@@ -157,7 +147,7 @@ export class GridService {
   gridApi.setPopupParent(popupParent);
  }
 
- public applyCustomPropsGrid(dataSetContainer: SitDataSetContainerComponent, gridApi) {
+ public applyCustomPropsGrid(dataSetContainer: SitDataSetContainerComponent, gridApi, activateSelectedMode: boolean) {
     var self = dataSetContainer;
 
     var customProperty = gridApi.SeidoCustomProperty;
@@ -191,7 +181,7 @@ export class GridService {
           }
         }
 
-        this.prepareGrid(gridApi, dataSetContainer.ident, dataSetContainer.dataSetControlsManager.gridColumnsDefinition, dataSetContainer.dataSetControlsManager.popupParent, gridOptions);
+        this.prepareGrid(gridApi, dataSetContainer.ident, dataSetContainer.dataSetControlsManager.gridColumnsDefinition, dataSetContainer.dataSetControlsManager.popupParent, gridOptions, activateSelectedMode);
       }
 
       gridApi.SeidoCustomProperty = customProperty;

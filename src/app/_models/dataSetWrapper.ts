@@ -5,15 +5,17 @@ import { _ } from 'ag-grid-community';
 import { RefreshType } from '@app/_consts/RefreshType';
 import { OnCFService } from '@app/_services/oncf.service';
 import { ActionDefinitionWrapper } from './actionDefinitionWrapper';
+import { DataSetDefinitionWrapper } from './dataSetDefinitionWrapper';
 
 @Directive()
 export class DataSetWrapper {
     private _rows: any[];
     private _dataSource: any;
+    private _dataSetDefinitionWrapper: DataSetDefinitionWrapper;
     public activeRow: any;
     public errors: [any];
     public fields: [any];
-    public actions: [ActionDefinitionWrapper];
+    public actions: ActionDefinitionWrapper[]
     public connectedLookups: any;
     public isLookup = false;
     public hasOnCF = false;
@@ -85,6 +87,14 @@ export class DataSetWrapper {
         return this._dataSource;
     }
 
+    public get dataSetDefinitionWrapper(): DataSetDefinitionWrapper {
+        if (this._dataSetDefinitionWrapper) {
+            return this._dataSetDefinitionWrapper;
+        }
+        this._dataSetDefinitionWrapper = this.dataSourceManager?.findDataSetDefinitionWrapper(this.ident);
+        return this._dataSetDefinitionWrapper;
+    }
+
     public getDataSetManagerSource(): DataSetManager {
         return this.dataSetManagerSource;
     }
@@ -108,11 +118,12 @@ export class DataSetWrapper {
     }
 
     private readActions() {
-        let dataSourceDef = this.getDataSource();
-        if (dataSourceDef == null) {
+        let dataSetWrapper = this.dataSetDefinitionWrapper;
+        if (dataSetWrapper == null) {
             return;
         }
-        this.actions = dataSourceDef?.actions;
+
+        this.actions = dataSetWrapper?.actions;
         this.hasActionForSelectedRows = this.actions?.find( a => a.forSelectedRows) != null;
     }
 
