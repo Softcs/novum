@@ -90,7 +90,6 @@ export class GridService {
 
   public onSelectionChanged(dataSetWrapper: DataSetWrapper, gridOptions) {
     const selectedRows = gridOptions.api.getSelectedRows();
-    console.log("selectedRows", selectedRows.length);
     dataSetWrapper.selectedRows = selectedRows;
   }
 

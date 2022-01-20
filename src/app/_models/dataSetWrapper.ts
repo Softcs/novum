@@ -83,6 +83,10 @@ export class DataSetWrapper {
         return this._selectedRows != null && this._selectedRows.length > 0;
     }
 
+    public get isOnlyActiveRowIsSelected() : boolean {
+        return this.hasSelectedRows && this.selectedRows.length == 1 && this.selectedRows[0] == this.activeRow;
+    }
+
     get hasLookups(): boolean {
         return this.connectedLookups != null;
     }

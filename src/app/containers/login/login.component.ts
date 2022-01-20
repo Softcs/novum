@@ -81,8 +81,8 @@ export class LoginComponent implements OnInit {
         const oprLogin = this.gatewayService.login(userName, password, null);
         this.gatewayService.executeOperation(oprLogin)
             .pipe(first())
-            .subscribe(
-                data => {
+            .subscribe({
+                next: (data) => {
                     if (data.length === 1) {
                         const response = data[0];
                         if (!this.checkErrors(response)) {
@@ -100,10 +100,11 @@ export class LoginComponent implements OnInit {
                         }
                     }
                 },
-                error => {
+                error: (error) => {
                     this.error = error;
                     this.loading = false;
-                });
+                }
+            });
     }
 
     showPassword() {
@@ -130,4 +131,3 @@ export class LoginComponent implements OnInit {
     //   const modalDialog = this.matDialog.open(SitChangeCompanyComponent, dialogConfig);
     // }
 }
-

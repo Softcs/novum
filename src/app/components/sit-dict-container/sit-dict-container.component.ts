@@ -51,8 +51,8 @@ export class SitDictContainerComponent implements OnInit, AfterViewInit, AfterCo
     const oprDictInfo: Operation =  this.gatewayService.operationGetDictInfo(this.ident);
     this.gatewayService.executeOperation(oprDictInfo)
       .pipe(first())
-      .subscribe(
-        data => {
+      .subscribe({
+        next: (data) => {
           if (data.length === 1) {
             this.dictInfo = new DictInfoWrapper(data[0].dictInfo);
             if (this.dictInfo != null && !this.dictInfo.hasRights) {
@@ -66,9 +66,10 @@ export class SitDictContainerComponent implements OnInit, AfterViewInit, AfterCo
             this.prepareControls();
           }
         },
-        error => {
+        error: (error) => {
           console.error("error", error);
-        });
+        }
+      });
   }
 
   get caption() {
