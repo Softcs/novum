@@ -11,8 +11,7 @@
               ></sit-data-input>
           </div>
         </sit-data-set-container>
-
-        <as-split direction="horizontal">
+        <as-split #sitSpliter direction="horizontal">
           <as-split-area [size]="80">
             <div fxFlex>
               <sit-data-set-container ident="sitStocks" (activeRowChanged)="activeRowStocksChanged($event)">
