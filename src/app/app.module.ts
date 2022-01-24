@@ -260,6 +260,9 @@ import { SitProducts4PubEditComponent } from './containers/dictionaries/sit-prod
 import { SitHRBatches4InvoicingComponent } from './containers/dictionaries/sit-hr-batches4-invoicing/sit-hr-batches4-invoicing.component';
 import { SitHRBatches4InvoicingEditComponent } from './containers/dictionaries/sit-hr-batches4-invoicing/actions/sit-hr-batches4-invoicing-edit/sit-hr-batches4-invoicing-edit.component';
 import { SitUtilProcConvertUpdateFrameBodyComponent } from './containers/dictionaries/sit-util-converter-frames/actions/sit-util-proc-convert-update-frame-body/sit-util-proc-convert-update-frame-body.component';
+import { SitDialogConfirmSeletedRowsComponent } from './components/sit-dialog-confirm-selected-rows';
+import { SitActionsSelectedProgressComponent } from './components/controls/sit-actions-selected-progress/sit-actions-selected-progress.component';
+import { SitActionsSelectedProgressItemComponent } from './components/controls/sit-actions-selected-progress/sit-actions-selected-progress-item/sit-actions-selected-progress-item.component';
 
 
 @NgModule({
@@ -336,6 +339,7 @@ import { SitUtilProcConvertUpdateFrameBodyComponent } from './containers/diction
         SitDialogDiscardComponent,
         SitProcParamsComponent,
         SitDialogConfirmDelComponent,
+        SitDialogConfirmSeletedRowsComponent,
         SitDataCheckboxComponent,
         SitDataTextareaComponent,
         sitDataTextareaComponentDirectiveDirective,
@@ -395,6 +399,8 @@ import { SitUtilProcConvertUpdateFrameBodyComponent } from './containers/diction
         SitProcPayrollComponentsAccountingDefEditComponent,
         SitCompanyDepartmentsComponent,
         SitActionsToolbarComponent,
+        SitActionsSelectedProgressComponent,
+        SitActionsSelectedProgressItemComponent,
         SitProductsUpdateWeightComponent,
         SitPubDeliveryDistributionComponent,
         SitRailDeliveryDistrybutionImportComponent,

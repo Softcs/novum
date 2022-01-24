@@ -43,7 +43,8 @@ export class ActionDefinitionWrapper {
         this.visibility = source.visibility;
         this.hasInitProc = source.initProc != null;
         this.operationType = source.operationType;
-        this.executionMode = source.executionMode ?? ActionExecutionKind.Default;
+        var typedexecutionMode = source.executionMode as keyof typeof ActionExecutionKind;
+        this.executionMode = source.executionMode ? ActionExecutionKind[typedexecutionMode] : ActionExecutionKind.OnlyForCurrent;
     }
 
     public get isDelete(): boolean {
@@ -59,6 +60,14 @@ export class ActionDefinitionWrapper {
     }
 
     public get executionModeCalculated() : ActionExecutionKind {
+        if (this._executionModeCalculated) {
+            return this._executionModeCalculated;
+        }
+
+        if (this.executionMode == null) {
+            this.executionMode = ActionExecutionKind.OnlyForCurrent;
+        }
+
         if (this.executionMode == ActionExecutionKind.Default) {
             if (this._executionModeCalculated == null) {
                 if (this.isDelete) {
@@ -69,6 +78,8 @@ export class ActionDefinitionWrapper {
                     this._executionModeCalculated = ActionExecutionKind.RunOneByOne;
                 }
             }
+        } else {
+            this._executionModeCalculated = this.executionMode;
         }
         return this._executionModeCalculated;
     }

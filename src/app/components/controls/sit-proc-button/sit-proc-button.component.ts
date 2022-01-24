@@ -10,6 +10,7 @@ import { ProcExpanderService } from '@app/_services/procexpander.service';
 import { ActionDefinitionWrapper } from '@app/_models/actionDefinitionWrapper';
 import { DataSetWrapper } from '@app/_models';
 import { VisibilityService } from '@app/_services/visibility.service';
+import { SitDialogConfirmSeletedRowsComponent } from '@app/components/sit-dialog-confirm-selected-rows';
 
 @Component({
   selector: 'sit-proc-button',
@@ -121,30 +122,57 @@ export class SitProcButtonComponent extends SitActionDirective {
     return data;
   }
 
-  invokeDeleteAction(): boolean {
+  invokeDeleteAction(showConfirmation: boolean): boolean {
     if (!this.isDelete()) {
       return false;
     }
+    if (showConfirmation) {
+      const dialogRef = this.dialog.open(SitDialogConfirmDelComponent, {
+        width: '250px', height: '150px'
+      });
 
-    const dialogRef = this.dialog.open(SitDialogConfirmDelComponent, {
-      width: '250px', height: '150px'
-    });
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          this.executeAction();
+        }
+      });
+    } else {
+      this.executeAction();
+    }
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.executeAction();
-      }
-    });
     return true;
   }
 
   onClick($event) {
+    if (!this.dataSetResponseWrapper.hasSelectedRows) {
+        //this.onClickInternal(false);
+        return;
+    }
+
+    const dialogRef = this.dialog.open(SitDialogConfirmSeletedRowsComponent, {
+      width: '450px', height: '180px', panelClass: 'sit-selected-rows-confirmation',
+      data: {
+        rowsCount: this.dataSetResponseWrapper.selectedRows.length,
+        caption: this.actionDefinition.tooltip
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log("Execute action");
+        this.onClickInternal(true);
+      }
+    });
+  }
+
+  onClickInternal(fromSelected: boolean) {
     if (!this.actionDefinition) {
       console.error(`Action "${this.actionIdent}" could not be found!`);
       this.changeExecutingState(false);
       return;
     }
-    if (this.invokeDeleteAction()) {
+
+    if (this.invokeDeleteAction(fromSelected)) {
       return;
     }
 
@@ -152,6 +180,7 @@ export class SitProcButtonComponent extends SitActionDirective {
       this.executeAction();
       return;
     }
+
     var generatedRow = null;
     if (this.isInsert()) {
       generatedRow = this.dataSetResponseWrapper.GenerateRow(null, true, this.actionDefinition?.editFields, true, this.dataSetManagerSource);
@@ -165,7 +194,6 @@ export class SitProcButtonComponent extends SitActionDirective {
     } else {
      this.openActionOnTab(actionExecuteData);
     }
-
   }
 
   private executeAction(): void {
