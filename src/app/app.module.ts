@@ -260,6 +260,7 @@ import { SitProducts4PubEditComponent } from './containers/dictionaries/sit-prod
 import { SitHRBatches4InvoicingComponent } from './containers/dictionaries/sit-hr-batches4-invoicing/sit-hr-batches4-invoicing.component';
 import { SitHRBatches4InvoicingEditComponent } from './containers/dictionaries/sit-hr-batches4-invoicing/actions/sit-hr-batches4-invoicing-edit/sit-hr-batches4-invoicing-edit.component';
 import { SitUtilProcConvertUpdateFrameBodyComponent } from './containers/dictionaries/sit-util-converter-frames/actions/sit-util-proc-convert-update-frame-body/sit-util-proc-convert-update-frame-body.component';
+import { SitProductWarehousesConfigEditComponent } from './containers/dictionaries/sit-products/actions/sit-product-warehouses-config-edit/sit-product-warehouses-config-edit.component';
 
 
 @NgModule({
@@ -506,7 +507,8 @@ import { SitUtilProcConvertUpdateFrameBodyComponent } from './containers/diction
         SitProducts4PubEditComponent,
         SitHRBatches4InvoicingComponent,
         SitHRBatches4InvoicingEditComponent,
-        SitUtilProcConvertUpdateFrameBodyComponent
+        SitUtilProcConvertUpdateFrameBodyComponent,
+        SitProductWarehousesConfigEditComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },

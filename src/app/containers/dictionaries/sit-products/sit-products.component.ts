@@ -43,6 +43,8 @@ export class SitProductsComponent extends SitDictBaseComponent {
     ];
 
     this.gridColumnsDefinition["sitProductSaleStatusIntervals"] = [
+      { headerName: 'Id', field: 'sitProductSaleStatusIntervalsId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 50, defaultVisibility: false },
+      { headerName: 'GUID', field: 'sitProductSaleStatusIntervalsG', width: 100, defaultVisibility: false }, 
       { headerName: 'Od dnia', field: 'DateFrom', width: 100,},
       { headerName: 'Status', field: 'SaleStatus', width: 80,},
       { headerName: 'Opis', field: 'SaleStatusDescription', width: 150,},
@@ -67,6 +69,13 @@ export class SitProductsComponent extends SitDictBaseComponent {
       { headerName: 'Opis', field: 'LockDescription', width: 300,},
     ];
 
+    this.gridColumnsDefinition["sitProductWarehousesConfig"] = [
+      { headerName: 'Id', field: 'sitProductWarehousesConfigId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 50, defaultVisibility: false },
+      { headerName: 'GUID', field: 'sitProductWarehousesConfigG', width: 100, defaultVisibility: false }, 
+      { headerName: 'Magazyn', field: 'WarehouseIdent', width: 100,},
+      { headerName: 'Opis', field: 'WarehouseName', width: 200,},
+      { headerName: 'Stan min', field: 'MinimumLevel', width: 90, renderType: 'number'},
+    ];
   }
 
   activeRowProductsChanged(activeRow) {

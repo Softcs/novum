@@ -11,7 +11,7 @@
       </sit-data-set-container>
     </div>
     <div fxLayout="column" fxFlex>
-      <as-split direction="horizontal">
+      <as-split #sitSpliter direction="horizontal">
         <as-split-area [size]="70">
           <sit-data-set-container  ident="sitB2BProducts" showActionsToolbar="true" (activeRowChanged)="activeRowProductsChanged($event)" fxFill fxLayout="column">
             <div class="data-table" fxFlex>

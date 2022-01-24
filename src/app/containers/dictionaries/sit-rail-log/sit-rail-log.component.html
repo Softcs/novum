@@ -4,11 +4,12 @@
     <div fxLayout="column" fxFill class="content">
       <sit-data-set-container ident="sitFilter" fxLayout="row">
         <div class="sit-filter-bar" fxLayout="row">
-          <sit-data-input #sitControl field="companyIdent" type="text" label="Firma" appearance="outline" style="width: 200px;"></sit-data-input>
-          <sit-data-input #sitControl field="operationIdent" type="text" label="Operacja" appearance="outline" style="width: 200px;"></sit-data-input>
-          <sit-data-input #sitControl field="dateFrom" type="datetime-local" label="Data od" appearance="outline" style="width: 170px;"></sit-data-input>
-          <sit-data-input #sitControl field="dateTo" type="datetime-local" label="Data do" appearance="outline" style="width: 230px;" showRefreshButton="true"></sit-data-input>
-          <sit-data-checkbox #sitControl field="ShowDetails" label="Pokaż szczegóły" labelPosition="after" checked="false"></sit-data-checkbox>
+          <sit-data-input #sitControl field="companyIdent" type="text" label="Firma" appearance="outline" style="width: 200px;" [refreshOnChange]="false"></sit-data-input>
+          <sit-data-input #sitControl field="operationIdent" type="text" label="Operacja" appearance="outline" style="width: 200px;" [refreshOnChange]="false"></sit-data-input>
+          <sit-data-input #sitControl field="dateFrom" type="datetime-local" label="Data od" appearance="outline" style="width: 170px;" [refreshOnChange]="false"></sit-data-input>
+          <sit-data-input #sitControl field="dateTo" type="datetime-local" label="Data do" appearance="outline" style="width: 230px;"
+            [refreshOnChange]="false" showRefreshButton="true"></sit-data-input>
+          <sit-data-checkbox #sitControl field="showDetails" label="Pokaż szczegóły" labelPosition="after" checked="false"></sit-data-checkbox>
           <sit-data-checkbox #sitControl field="errorOnly" label="Tylko błędy" labelPosition="after" checked="false"></sit-data-checkbox>
         </div>
       </sit-data-set-container>

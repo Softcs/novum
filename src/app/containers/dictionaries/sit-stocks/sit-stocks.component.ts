@@ -1,4 +1,4 @@
-import { Component  } from '@angular/core';
+import { Component } from '@angular/core';
 import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-dict-base.component';
 
 @Component({
@@ -25,7 +25,8 @@ export class SitStocksComponent extends SitDictBaseComponent {
       },
       { headerName: 'Stany',
         children: [
-          { headerName: 'Mag', field: 'Quantity', type: 'numericColumn', filter: 'agTextColumnFilter', width: 100 },
+          { headerName: 'Mag', field: 'Quantity', type: 'numericColumn', filter: 'agTextColumnFilter', sortable: true, width: 100 },
+          { headerName: 'Min', field: 'MinimumLevel', type: 'numericColumn', filter: 'agTextColumnFilter', sortable: true, width: 100, columnGroupShow: 'open'},          
         ]
       },
       { headerName: 'Magazyn',
@@ -35,7 +36,8 @@ export class SitStocksComponent extends SitDictBaseComponent {
 
         ],
       },
-      { headerName: 'Aktywny', field: 'IsActive', filter: 'agSetColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80,cellRenderer: 'gridCheckboxRenderer', floatingFilter: false },
+      { headerName: 'Aktywny', field: 'IsActive', filter: 'agSetColumnFilter',  suppressMenu: true, width: 80, renderType: 'checkbox', floatingFilter: false, 
+        cellClass: "grid-cell-centered"},
       { headerName: 'Status sprz.', field: 'SaleStatus', tooltipField: 'SaleStatusDescription', width: 80, suppressMenu: true},
     ];
 
