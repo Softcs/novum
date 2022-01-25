@@ -58,6 +58,7 @@ export class SitPublicationsAgreementsComponent extends SitDictBaseComponent {
       { headerName: 'Tytuł', field: 'Title', width: 300},
       { headerName: 'Beneficjent', field: 'CustIdent', width: 150},
       { headerName: 'Nazwa', field: 'CustName', width: 300},
+      { headerName: 'Waluta', field: 'CurrencyIdent', filter: 'agTextColumnFilter', width: 70, suppressMenu: true},      
       { headerName: 'Kwota zal.', field: 'Amount', width: 100, type: 'numericColumn', renderType: 'number', suppressMenu: true},
       { headerName: 'Kwota rozl.', field: 'ClearedAmount', width: 100, type: 'numericColumn', renderType: 'number', suppressMenu: true}
     ];

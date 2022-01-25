@@ -3,10 +3,14 @@
     <div class="sit-filter-bar">
       <sit-data-set-container ident="sitFilterB2BProducts" fxLayout="row">
         <sit-data-input #sitControl field="search" label="Filtruj produkty" placeholder="Tytuł, autor, EAN, opis" appearance="outline" style="width: 300px;" showRefreshButton="true"></sit-data-input>
-        <sit-data-checkbox #sitControl field="zp" label="Zapowiedzi" labelPosition="after" checked="true" refreshOnChange="true" style="color: orange;" ></sit-data-checkbox>
-        <sit-data-checkbox #sitControl field="nw" label="Nowości" labelPosition="after" checked="true" refreshOnChange="true" style="color: rgb(153, 0, 0);" ></sit-data-checkbox>
-        <sit-data-checkbox #sitControl field="ak" label="Aktywne" labelPosition="after" checked="true" refreshOnChange="true" style="color: rgb(20, 152, 46)" ></sit-data-checkbox>
-        <sit-data-checkbox #sitControl field="wr" label="Wyprzedaże" labelPosition="after" checked="false" refreshOnChange="true" style="color: rgb(11, 23, 255);" ></sit-data-checkbox>
+        <sit-data-checkbox *ngIf="this.activeRow('sitFilterB2BProducts')?.zpIsVisible == 1"  #sitControl field="zp" label="Zapowiedzi" labelPosition="after" 
+          checked="true" [refreshOnChange]="true" style="color: orange;" ></sit-data-checkbox>
+        <sit-data-checkbox *ngIf="this.activeRow('sitFilterB2BProducts')?.nwIsVisible == 1"  #sitControl field="nw" label="Nowości" labelPosition="after" 
+          checked="true" [refreshOnChange]="true" style="color: rgb(153, 0, 0);" ></sit-data-checkbox>
+        <sit-data-checkbox *ngIf="this.activeRow('sitFilterB2BProducts')?.akIsVisible == 1"  #sitControl field="ak" label="Aktywne" labelPosition="after" 
+          checked="true" [refreshOnChange]="true" style="color: rgb(20, 152, 46)" ></sit-data-checkbox>
+        <sit-data-checkbox *ngIf="this.activeRow('sitFilterB2BProducts')?.wrIsVisible == 1"  #sitControl field="wr" label="Wyprzedaże" labelPosition="after" 
+          checked="true" [refreshOnChange]="true" style="color: rgb(11, 23, 255);" ></sit-data-checkbox>
         <sit-data-checkbox #sitControl field="withStockOnly" label="Tylko ze stanem" labelPosition="after" checked="false" refreshOnChange="true" style="margin: 0px 0px 0px 20px"></sit-data-checkbox>
       </sit-data-set-container>
     </div>
