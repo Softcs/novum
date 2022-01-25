@@ -12,7 +12,7 @@ export class SitPublicationsBillingDefComponent extends SitDictBaseComponent {
   public prepareColumnsDefinitnion(){
     this.gridColumnsDefinition["sitPublicationsBillingDef"] = [
       { headerName: 'Numer umowy', field: 'AgreementNo', filter: 'agTextColumnFilter', width: 150 },
-      { headerName: 'Publikacja', field: 'PublicationIdent', filter: 'agTextColumnFilter', width: 150 },
+      { headerName: 'Publikacja', field: 'PublicationIdent', tooltipField: 'PublicationIdent', filter: 'agTextColumnFilter', width: 150 },
       { headerName: 'Od dnia', field: 'DateFrom', filter: 'agTextColumnFilter', width: 150 },
       { headerName: 'Data zaw.umowy', field: 'AgreementDate', filter: 'agTextColumnFilter', width: 150 },
       { headerName: 'Rozl.jako grupę', field: 'CalcAsGroup', headerTooltip: 'Rozliczaj jako grupę.', width: 80, renderType: 'checkbox', suppressMenu: true},
