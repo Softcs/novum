@@ -164,6 +164,7 @@ import { SitProducts4PubEditComponent } from '@app/containers/dictionaries/sit-p
 import { SitHRBatches4InvoicingEditComponent } from '@app/containers/dictionaries/sit-hr-batches4-invoicing/actions/sit-hr-batches4-invoicing-edit/sit-hr-batches4-invoicing-edit.component';
 import { SitUtilProcConvertUpdateFrameBodyComponent } from '@app/containers/dictionaries/sit-util-converter-frames/actions/sit-util-proc-convert-update-frame-body/sit-util-proc-convert-update-frame-body.component';
 import { SitProductWarehousesConfigEditComponent } from '@app/containers/dictionaries/sit-products/actions/sit-product-warehouses-config-edit/sit-product-warehouses-config-edit.component';
+import { SitAnalysisBankStatementPosComponent } from '@app/containers/dictionaries/sit-analysis-bank-statement-pos/sit-analysis-bank-statement-pos.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -334,7 +335,7 @@ export class FactoryService {
         sitHRBatches4InvoicingEdit: SitHRBatches4InvoicingEditComponent,
         sitUtilProcConvertUpdateFrameBody: SitUtilProcConvertUpdateFrameBodyComponent,
         sitProductWarehousesConfigEdit: SitProductWarehousesConfigEditComponent,
-        
+        sitAnalysisBankStatementPos: SitAnalysisBankStatementPosComponent,
     };
 
     public GetFactory(ident: string) {
