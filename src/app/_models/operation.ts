@@ -9,5 +9,5 @@ export class Operation {
     actionIdent: string;
     startField: string;
     connection: string;
+    selectedRows: any[]
 }
-

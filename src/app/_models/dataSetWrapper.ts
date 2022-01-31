@@ -220,7 +220,7 @@ export class DataSetWrapper {
             return;
         }
         this.dataSourceManager.ExecuteAction(actionDefinition, this.ident, owner,
-            executeActionCompletedCallback, executeActionExceptionCallback, sourceDictIdent);
+            executeActionCompletedCallback, executeActionExceptionCallback, sourceDictIdent, null, this.selectedRows);
     }
 
     private initRows() {
