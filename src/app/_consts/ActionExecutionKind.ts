@@ -1,6 +1,6 @@
 export enum ActionExecutionKind {
-    Default,
-    RunOneByOne,
-    OnlyForCurrent,
-    AllInOne
+    Default = 0,
+    RunOneByOne = 1,
+    OnlyForCurrent = 2,
+    AllInOne = 3
 }

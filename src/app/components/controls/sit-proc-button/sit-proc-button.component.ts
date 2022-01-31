@@ -172,7 +172,7 @@ export class SitProcButtonComponent extends SitActionDirective {
       return;
     }
 
-    if (this.invokeDeleteAction(fromSelected)) {
+    if (this.invokeDeleteAction(!fromSelected)) {
       return;
     }
 

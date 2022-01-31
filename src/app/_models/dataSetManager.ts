@@ -9,6 +9,7 @@ import { RefreshType } from '@app/_consts/RefreshType';
 import { OnCFService } from '@app/_services/oncf.service';
 import { ActionDefinitionWrapper } from './actionDefinitionWrapper';
 import { SplitComponent } from 'angular-split';
+import { ActionExecutionKind } from '@app/_consts/ActionExecutionKind';
 
 @Directive()
 export class DataSetManager {
@@ -330,6 +331,10 @@ export class DataSetManager {
         const dataSourcesRequest: any[] = [];
         const dsSourceWrapper = this.getDateSourceWrapper(dataSourceIdent);
         const dsWrapper: DataSetWrapper = activeDataSet == null ? dsSourceWrapper : activeDataSet;
+
+        if (actionDefinition.executionModeCalculated != ActionExecutionKind.AllInOne) {
+            selectedRows = null;
+        }
 
         if (actionDefinition.kind == "SetValue") {
             dsWrapper.initRowByEditFields(null, actionDefinition.editFields, false);

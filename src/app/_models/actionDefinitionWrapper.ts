@@ -48,15 +48,15 @@ export class ActionDefinitionWrapper {
     }
 
     public get isDelete(): boolean {
-    return (this.kind === 'delete' || this.kind === 'D');
+        return (this.kind === 'delete' || this.kind === 'D');
     }
 
     public get isInsert(): boolean {
-    return (this.kind === 'insert' || this.kind === 'I');
+        return (this.kind === 'insert' || this.kind === 'I');
     }
 
     public get isUpdate(): boolean {
-    return (this.kind === 'update' || this.kind === 'U');
+        return (this.kind === 'update' || this.kind === 'U');
     }
 
     public get executionModeCalculated() : ActionExecutionKind {
