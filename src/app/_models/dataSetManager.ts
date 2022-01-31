@@ -83,10 +83,10 @@ export class DataSetManager {
         return obj;
     }
 
-    public getObjectForDataSourceRequest(dataSetResponseWrapper: DataSetWrapper, canRefresh: boolean )  {
+    public getObjectForDataSourceRequest(dataSetResponseWrapper: DataSetWrapper, canRefresh: boolean, row: any = null )  {
         const  obj = this.getObjectForRequest(
             dataSetResponseWrapper.ident,
-            dataSetResponseWrapper.activeRow,
+            !row ? dataSetResponseWrapper.activeRow : row,
             canRefresh
         );
         return obj;
@@ -325,7 +325,8 @@ export class DataSetManager {
                          executeActionExceptionCallback: Function,
                          sourceDictIdent: string = null,
                          activeDataSet: DataSetWrapper = null,
-                         selectedRows: any[]) {
+                         selectedRows: any[] = null,
+                         row: any = null) {
         const actionIdent = actionDefinition.ident;
         const dictIdent = sourceDictIdent ?? this.dictInfo?.ident;
         const dataSourcesRequest: any[] = [];

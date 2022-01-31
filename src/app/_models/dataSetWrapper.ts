@@ -213,14 +213,16 @@ export class DataSetWrapper {
                          owner: any,
                          executeActionCompletedCallback: Function,
                          executeActionExceptionCallback: Function,
-                         sourceDictIdent: string = null
+                         sourceDictIdent: string = null,
+                         row: any = null
     ) {
         if (this.dataSourceManager == null) {
             console.error('ExecuteAction data source manager is undefinde!');
             return;
         }
+
         this.dataSourceManager.ExecuteAction(actionDefinition, this.ident, owner,
-            executeActionCompletedCallback, executeActionExceptionCallback, sourceDictIdent, null, this.selectedRows);
+            executeActionCompletedCallback, executeActionExceptionCallback, sourceDictIdent, null, this.selectedRows, row);
     }
 
     private initRows() {

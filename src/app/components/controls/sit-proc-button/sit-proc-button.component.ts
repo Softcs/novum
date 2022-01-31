@@ -11,6 +11,7 @@ import { ActionDefinitionWrapper } from '@app/_models/actionDefinitionWrapper';
 import { DataSetWrapper } from '@app/_models';
 import { VisibilityService } from '@app/_services/visibility.service';
 import { SitDialogConfirmSeletedRowsComponent } from '@app/components/sit-dialog-confirm-selected-rows';
+import { ActionExecutionKind } from '@app/_consts/ActionExecutionKind';
 
 @Component({
   selector: 'sit-proc-button',
@@ -144,8 +145,8 @@ export class SitProcButtonComponent extends SitActionDirective {
   }
 
   onClick($event) {
-    if (!this.dataSetResponseWrapper.hasSelectedRows) {
-        //this.onClickInternal(false);
+    if (!this.dataSetResponseWrapper.hasSelectedRows || this.actionDefinition.isOnlyForCurrent) {
+        this.onClickInternal(false);
         return;
     }
 
@@ -198,10 +199,39 @@ export class SitProcButtonComponent extends SitActionDirective {
 
   private executeAction(): void {
     this.changeExecutingState(true);
+    var runActionWithProgress = this.dataSetResponseWrapper.hasSelectedRows && this.actionDefinition.isRunOneByOne;
+
+    if (!runActionWithProgress) {
+      this.dataSetResponseWrapper.ExecuteAction(this.actionDefinition,
+        this,
+        this.executeActionCompletedCallback,
+        this.executeActionExceptionCallback);
+    } else {
+      var selectedRows = [...this.dataSetResponseWrapper.selectedRows];
+      this.runActionOneByOne(selectedRows, selectedRows[0]);
+    }
+  }
+
+  private runActionOneByOne(selectedRows: any[], row: any) {
     this.dataSetResponseWrapper.ExecuteAction(this.actionDefinition,
       this,
-      this.executeActionCompletedCallback,
-      this.executeActionExceptionCallback);
+      (sender) => {
+
+      },
+      (sender) => {
+        this.executeActionForSelectedExceptionCallback(sender);
+      },
+      null,
+      row);
+  }
+
+  private executeActionForSelectedCompletedCallback(self) {
+
+  }
+
+  private executeActionForSelectedExceptionCallback(self) {
+    self.changeExecutingState(false);
+    self.afterCompleted.emit('Error');
   }
 
   setDisabledState?(isDisabled: boolean): void {

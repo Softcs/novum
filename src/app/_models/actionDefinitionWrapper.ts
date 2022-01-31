@@ -59,6 +59,14 @@ export class ActionDefinitionWrapper {
         return (this.kind === 'update' || this.kind === 'U');
     }
 
+    public get isOnlyForCurrent(): boolean {
+        return this.executionModeCalculated == ActionExecutionKind.OnlyForCurrent;
+    }
+
+    public get isRunOneByOne(): boolean {
+        return this.executionModeCalculated == ActionExecutionKind.RunOneByOne;
+    }
+
     public get executionModeCalculated() : ActionExecutionKind {
         if (this._executionModeCalculated) {
             return this._executionModeCalculated;
