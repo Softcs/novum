@@ -323,7 +323,8 @@ export class DataSetManager {
                          executeActionCompletedCallback: Function,
                          executeActionExceptionCallback: Function,
                          sourceDictIdent: string = null,
-                         activeDataSet: DataSetWrapper = null) {
+                         activeDataSet: DataSetWrapper = null,
+                         selectedRows: any[]) {
         const actionIdent = actionDefinition.ident;
         const dictIdent = sourceDictIdent ?? this.dictInfo?.ident;
         const dataSourcesRequest: any[] = [];
@@ -346,7 +347,8 @@ export class DataSetManager {
             dictIdent,
             dataSourcesRequest,
             actionIdent,
-            dataSourceIdent);
+            dataSourceIdent,
+            selectedRows);
 
         this.gatewayService.executeOperation(opr)
             .pipe(first())

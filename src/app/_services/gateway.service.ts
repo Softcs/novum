@@ -13,16 +13,16 @@ import { Guid } from 'guid-typescript';
 
 @Injectable({ providedIn: 'root' })
 export class GatewayService {
-    private currentUserSubject: BehaviorSubject<User>;    
+    private currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
     public serverVersion: string;
     public canUseLocalStorage: boolean;
-    
+
 
     constructor(private http: HttpClient) {
         this.currentUserSubject = new BehaviorSubject<User>(this.readCurrentUser());
         this.currentUser = this.currentUserSubject.asObservable();
-        
+
         this.serverVersion = "";
     }
 
@@ -161,13 +161,14 @@ export class GatewayService {
         return opr;
     }
 
-    operationExecuteAction(dictIdent: string, dataSourcesRequest: any[], actionIdent: string, dataSourceIdent: string) {
+    operationExecuteAction(dictIdent: string, dataSourcesRequest: any[], actionIdent: string, dataSourceIdent: string, selectedRows: any[]) {
         const opr: Operation = new Operation();
         opr.dictident = dictIdent;
         opr.oprType = 50;
         opr.actionIdent = actionIdent;
         opr.dataSourceIdent = dataSourceIdent;
         opr.dataSourcesRequest = dataSourcesRequest;
+        opr.selectedRows = selectedRows;
         return opr;
     }
 
@@ -220,7 +221,7 @@ export class GatewayService {
                 railResponse = this.decV(railResponse.d);
                 railResponse = JSON.parse(railResponse);
                 if (railResponse != null && railResponse.length > 0) {
-                    this.serverVersion = railResponse[0].serverVersion;                    
+                    this.serverVersion = railResponse[0].serverVersion;
                     if(railResponse[0].Errors != null) {
                         railResponse[0].Errors.forEach(error => {
                             console.error(error.message);
@@ -258,7 +259,7 @@ export class GatewayService {
     private replaceChars(fileName: string) : string {
         return fileName.replace("+","_")
                        .replace("/","_")
-                       .replace("\\","_");                       
+                       .replace("\\","_");
     }
 
     public UploadFile(file: File, fileId: string, ) {
@@ -273,10 +274,10 @@ export class GatewayService {
 
         const options = {
             params,
-            reportProgress: true        
+            reportProgress: true
         };
         const url = `/service/upload/files/${this.currentUserValue?.token}/${fileId}/${fileName}`;
         const req = new HttpRequest('POST', `${environment.apiUrl}${url}`, fileData, options);
-        return this.http.request(req);         
+        return this.http.request(req);
     }
 }
