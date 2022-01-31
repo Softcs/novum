@@ -13,7 +13,10 @@
           class="ag-theme-balham"
           [pivotMode]="true"
           [sideBar]="true"
-          rowGroupPanelShow = "always"
+          [suppressAggFuncInHeader]="true"
+          [defaultColDef]="defaultColDef"
+          [autoGroupColumnDef]="autoGroupColumnDef"
+          [pivotRowTotals]="pivotRowTotals"
         >
         </ag-grid-angular>
       </div>
