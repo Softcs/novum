@@ -72,6 +72,11 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
             cellClass: ['font11','numberFormat2Dec'],
             pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
           },
+          { headerName: 'Bony', field: 'Vouchers', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, agr: 'sum',
+            renderType: 'number',
+            cellClass: ['font11','numberFormat2Dec'],
+            pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
+          },
           { headerName: 'Dodatki', field: 'Additions', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, agr: 'sum',
             renderType: 'number',
             cellClass: ['font11','numberFormat2Dec'],
@@ -101,6 +106,11 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
             pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
           },
           { headerName: 'ZUS prem.', field: 'ZUSBonus', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, suppressMenu: true, columnGroupShow: "open", agr: 'sum',
+            renderType: 'number',
+            cellClass: ['font11','numberFormat2Dec'],
+            pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
+          },
+          { headerName: 'ZUS bony', field: 'ZUSVouchers', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, suppressMenu: true, columnGroupShow: "open", agr: 'sum',
             renderType: 'number',
             cellClass: ['font11','numberFormat2Dec'],
             pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
