@@ -14,6 +14,8 @@ export class SitPubPrintCostAnalysisComponent extends SitDictBaseComponent {
   public defaultColDef;
   public autoGroupColumnDef;
   public pivotRowTotals;
+  public pivotColumnGroupTotals;
+
   constructor(
     protected gatewayService: GatewayService,
     protected gridService: GridService,
@@ -32,6 +34,7 @@ export class SitPubPrintCostAnalysisComponent extends SitDictBaseComponent {
         sort: 'asc'
       };
       this.pivotRowTotals = 'after';
+      this.pivotColumnGroupTotals = 'before';
     };
 
   public prepareColumnsDefinitnion(){
