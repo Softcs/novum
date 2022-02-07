@@ -44,6 +44,7 @@ export class SitAnalysisBankStatementPosComponent extends SitDictBaseComponent {
       { headerName: 'Nazwa', field: 'CustName', filter: 'agTextColumnFilter', width: 200 },
       { headerName: 'Data', field: 'BankStatementDate', filter: 'agTextColumnFilter', width: 100 },
       { headerName: 'Opis dokumentu', field: 'PositionDescription', filter: 'agTextColumnFilter', width: 300, defaultVisibility: false },
+      { headerName: 'Waluta', field: 'CurrencyIdent', filter: 'agTextColumnFilter', width: 100 },          
       { headerName: 'Rok', field: 'Year', filter: 'agTextColumnFilter', width: 100,
         pivot: true, enablePivot: true },  
       { headerName: 'Rok-miesiąc', field: 'YearMonth', filter: 'agTextColumnFilter', width: 100,

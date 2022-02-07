@@ -2,8 +2,8 @@
     <div fxLayout="column" fxFill class="content">
       <div class="sit-filter-bar">
         <sit-data-set-container ident="sitPubPrintCostAnalysisFilter" fxLayout="row">
-          <sit-data-input #sitControl field="searchDateFrom" type="date" label="Od" appearance="outline" style="width: 130px;"></sit-data-input>
-          <sit-data-input #sitControl field="searchDateTo" type="date" label="Do" appearance="outline" style="width: 130px;"></sit-data-input>
+          <sit-data-input #sitControl field="searchDateFrom" type="date" label="Od" appearance="outline" style="width: 130px;" [refreshOnChange]="false"></sit-data-input>
+          <sit-data-input #sitControl field="searchDateTo" type="date" label="Do" appearance="outline" style="width: 130px;" [refreshOnChange]="false"></sit-data-input>
           <sit-data-input #sitControl field="search" label="Dokument" placeholder="Opis, numer" appearance="outline" style="width: 200px;"></sit-data-input>
           <sit-data-input #sitControl field="searchProject" label="Projekt" placeholder="Symbol, tytuł" appearance="outline" style="width: 200px;"></sit-data-input>
           <sit-data-input #sitControl field="searchCustomer" label="Kontrahent" placeholder="Logo, nazwa" appearance="outline" [showRefreshButton]="true" style="width: 250px;"></sit-data-input>
@@ -21,6 +21,7 @@
             [defaultColDef]="defaultColDef"
             [autoGroupColumnDef]="autoGroupColumnDef"
             [pivotRowTotals]="pivotRowTotals"
+            [groupIncludeTotalFooter]="true"
           >
           </ag-grid-angular>
         </div>
