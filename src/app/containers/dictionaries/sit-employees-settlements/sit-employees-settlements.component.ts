@@ -23,7 +23,7 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
           },
         ]
       },
-      { headerName: 'Cudzoziemiec', field: 'Foreigner', filter: 'agNumberColumnFilter', renderType: 'checkbox', width: 100, suppressMenu: true },
+      { headerName: 'Cudzoziemiec', field: 'Foreigner', filter: 'agNumberColumnFilter', renderType: 'checkbox',cellClass: 'grid-cell-centered',  width: 100, suppressMenu: true },
       { headerName: 'Okres', field: 'WorkPeriod',  width: 90,
         cellClass: ['font11','textFormat']
       },
@@ -45,7 +45,7 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
             cellClass: ['font11','textFormat']
           },
           { headerName: 'PPK', field: 'StatusPPK',  width: 60, renderType: 'checkbox', suppressMenu: true,
-            cellClass: ['font11','textFormat']
+            cellClass: ['font11','textFormat','grid-cell-centered']
           },
         ]
       },
@@ -133,7 +133,7 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
         cellClass: ['font11','numberFormat2Dec'],
         pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
       },
-      { headerName: 'St.mies.', field: 'MonthRate', width: 90, suppressMenu: true, renderType: 'checkbox'
+      { headerName: 'St.mies.', field: 'MonthRate', width: 90, suppressMenu: true, renderType: 'checkbox', cellClass: "grid-cell-centered"
       },
       { headerName: 'Godziny',
         children: [
@@ -399,7 +399,7 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
           },
         ]
       },
-      { headerName: 'Cudzoziemiec', field: 'Foreigner', filter: 'agNumberColumnFilter', renderType: 'checkbox', width: 100, suppressMenu: true },
+      { headerName: 'Cudzoziemiec', field: 'Foreigner', filter: 'agNumberColumnFilter', renderType: 'checkbox', cellClass: "grid-cell-centered", width: 100, suppressMenu: true },
       { headerName: 'Okres', field: 'WorkPeriod',  width: 90,
         cellClass: ['font11','textFormat']
       },

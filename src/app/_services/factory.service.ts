@@ -166,6 +166,8 @@ import { SitUtilProcConvertUpdateFrameBodyComponent } from '@app/containers/dict
 import { SitProductWarehousesConfigEditComponent } from '@app/containers/dictionaries/sit-products/actions/sit-product-warehouses-config-edit/sit-product-warehouses-config-edit.component';
 import { SitAnalysisBankStatementPosComponent } from '@app/containers/dictionaries/sit-analysis-bank-statement-pos/sit-analysis-bank-statement-pos.component';
 import { SitPubPrintCostAnalysisComponent } from '@app/containers/dictionaries/sit-pub-print-cost-analysis/sit-pub-print-cost-analysis.component';
+import { SitParams4EmployeesSettlementsComponent } from '@app/containers/dictionaries/sit-params4-employees-settlements/sit-params4-employees-settlements.component';
+import { SitParams4EmployeesSettlementsEditComponent } from '@app/containers/dictionaries/sit-params4-employees-settlements/actions/sit-params4-employees-settlements-edit/sit-params4-employees-settlements-edit.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -337,7 +339,9 @@ export class FactoryService {
         sitUtilProcConvertUpdateFrameBody: SitUtilProcConvertUpdateFrameBodyComponent,
         sitProductWarehousesConfigEdit: SitProductWarehousesConfigEditComponent,
         sitAnalysisBankStatementPos: SitAnalysisBankStatementPosComponent,
-        sitPubPrintCostAnalysis: SitPubPrintCostAnalysisComponent
+        sitPubPrintCostAnalysis: SitPubPrintCostAnalysisComponent,
+        sitParams4EmployeesSettlements: SitParams4EmployeesSettlementsComponent,
+        sitParams4EmployeesSettlementsEdit: SitParams4EmployeesSettlementsEditComponent,
     };
 
     public GetFactory(ident: string) {
