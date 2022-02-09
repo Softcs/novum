@@ -10,6 +10,10 @@
       <sit-data-input #sitControl type="text" field="VacationRequestAcceptEmployeeName" label="Osoba akceptująca urlop" appearance="outline"
         [lookupDisplayFields] = "['EmployeeName']"
       ></sit-data-input> 
+      <div fxLayout="row">
+        <sit-data-input #sitControl type="text" field="PhoneNumber" label="Numer telefonu" appearance="outline" fxFlex=50></sit-data-input>
+        <sit-data-input #sitControl type="text" field="MobileNumber" label="Numer telefonu komórkowego" appearance="outline" fxFlex></sit-data-input>
+      </div> 
     </div>
   </sit-data-set-container>
 </sit-proc-params>
