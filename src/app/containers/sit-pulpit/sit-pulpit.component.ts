@@ -66,16 +66,16 @@ export class SitPulpitComponent  extends SitDictBaseComponent {
     ],
 
     this.gridColumnsDefinition["sitEmployeeContacts"] = [
-      { headerName: 'Pracownik', field: 'email', tooltipField: 'EmployeeName', filter: 'agTextColumnFilter', width: 200,
+      { headerName: 'Pracownik', field: 'email', tooltipField: 'EmployeeName', filter: 'agTextColumnFilter', width: 210,
         cellRenderer: function(params) {
           return ('<span><b>' + (params.data["EmployeeName"] ? params.data["EmployeeName"] : '')  + '</b></span>'
-            + '<br><span style="color: dimgray;">' + (params.data["email"] ? params.data["email"] : '') + '</span>')
+            + '<br><span style="color: dimgray;">' + (params.data["email"] ? '<a href=mailto:'+params.data["email"]+'>'+params.data["email"]+'</a>' : '') + '</span>')
         }
       },
-      { headerName: 'Telefon', field: 'PhoneNumber', width: 150,
+      { headerName: 'Telefon', field: 'PhoneNumber', flex: 1,
         cellRenderer: function(params) {
-          return ('<span>tel.&nbsp;&nbsp;' + (params.value ? params.value : '') + '</span>'
-            + '<br><span>kom.&nbsp;' + (params.data["MobileNumber"] ? params.data["MobileNumber"] : '') + '</span>')
+          return ('<span><img src="assets/phone-small.png" /> ' + (params.value ? params.value : '') + '</span>'
+            + '<br><span><img src="assets/mobile-phone-small.png" /> ' + (params.data["MobileNumber"] ? params.data["MobileNumber"] : '') + '</span>')
         }
       },
       { headerName: 'sortOrder', field: 'EmployeeName', suppressMenu: true, width: 60, sort: 'asc', defaultVisibility: false },      
