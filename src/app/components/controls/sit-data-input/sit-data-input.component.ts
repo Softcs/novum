@@ -50,7 +50,7 @@ export class SitDataInputComponent extends SitDataBaseComponent {
       super(renderer);
 
       this.showRefreshButton = false;
-      this.refreshOnChange = true;
+      this.refreshOnChange = false;
       this.id = this.newGuid();
   }
 
