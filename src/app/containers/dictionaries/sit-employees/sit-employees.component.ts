@@ -16,7 +16,7 @@ export class SitEmployeesComponent extends SitDictBaseComponent {
       { headerName: 'Imię', field: 'FirstName', filter: 'agTextColumnFilter' },
       { headerName: 'Nazwisko', field: 'LastName', filter: 'agTextColumnFilter' },
       { headerName: 'PESEL', field: 'PESEL', filter: 'agTextColumnFilter', width: 100 },
-      { headerName: 'Cudzoziemiec', field: 'Foreigner', filter: 'agNumberColumnFilter', renderType: 'checkbox', width: 100, suppressMenu: true },
+      { headerName: 'Cudzoziemiec', field: 'Foreigner', filter: 'agNumberColumnFilter', renderType: 'checkbox', width: 100, suppressMenu: true, cellClass: "grid-cell-centered" },
       { headerName: 'Stanowisko', field: 'HRCompanyHierarchyDesc', filter: 'agTextColumnFilter' },
       { headerName: 'Konto księg.', field: 'AccountNo', filter: 'agTextColumnFilter', width: 120 },
       { headerName: 'Dział', field: 'CompanyDepartmentIdent', tooltipField: 'CompanyDepartmentDesc', filter: 'agTextColumnFilter', width: 100 },
@@ -24,6 +24,8 @@ export class SitEmployeesComponent extends SitDictBaseComponent {
       { headerName: 'Typ prod.', field: 'ProductsTypeIdent', tooltipField: 'ProductsTypeDesc', filter: 'agTextColumnFilter', width: 100 },
       { headerName: 'Identyfikator zewnętrzny', field: 'ExtIdent01', filter: 'agTextColumnFilter' },
       { headerName: 'Osoba akceptująca urlop', field: 'VacationRequestAcceptEmployeeName', filter: 'agTextColumnFilter', width: 200, defaultVisibility: false },
+      { headerName: 'Telefon', field: 'PhoneNumber', filter: 'agTextColumnFilter', width: 100, defaultVisibility: false },
+      { headerName: 'Komórka', field: 'MobileNumber', filter: 'agTextColumnFilter', width: 100, defaultVisibility: false },
     ];
 
     this.gridColumnsDefinition["sitEmployeeContracts"] = [

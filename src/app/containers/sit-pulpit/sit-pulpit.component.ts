@@ -43,7 +43,7 @@ export class SitPulpitComponent  extends SitDictBaseComponent {
     this.gridColumnsDefinition["sitAttendanceList4User"] = [
       { headerName: 'Data', field: 'Date', suppressMenu: true, sort: 'asc', width: 100 },
       { headerName: 'Dzień', field: 'DayNameOfWeek', suppressMenu: true, width: 100},
-      { headerName: 'Obecny', field: 'Present', suppressMenu: true, width: 80, renderType: 'checkbox' },
+      { headerName: 'Obecny', field: 'Present', suppressMenu: true, width: 80, renderType: 'checkbox', cellClass: "grid-cell-centered"},
       { headerName: 'Powód nieob.', field: 'AbsenceName', suppressMenu: true, flex: 1 },
     ],
 
@@ -63,6 +63,22 @@ export class SitPulpitComponent  extends SitDictBaseComponent {
       },
       { headerName: 'Dni', field: 'DaysCount', suppressMenu: true, width: 60 },
       { headerName: 'Zastępca', field: 'ReplacmentEmployeeName', suppressMenu: true, width: 200 },
-      ]
-    }
+    ],
+
+    this.gridColumnsDefinition["sitEmployeeContacts"] = [
+      { headerName: 'Pracownik', field: 'email', tooltipField: 'EmployeeName', filter: 'agTextColumnFilter', width: 200,
+        cellRenderer: function(params) {
+          return ('<span><b>' + (params.data["EmployeeName"] ? params.data["EmployeeName"] : '')  + '</b></span>'
+            + '<br><span style="color: dimgray;">' + (params.data["email"] ? params.data["email"] : '') + '</span>')
+        }
+      },
+      { headerName: 'Telefon', field: 'PhoneNumber', width: 150,
+        cellRenderer: function(params) {
+          return ('<span>tel.&nbsp;&nbsp;' + (params.value ? params.value : '') + '</span>'
+            + '<br><span>kom.&nbsp;' + (params.data["MobileNumber"] ? params.data["MobileNumber"] : '') + '</span>')
+        }
+      },
+      { headerName: 'sortOrder', field: 'EmployeeName', suppressMenu: true, width: 60, sort: 'asc', defaultVisibility: false },      
+    ]    
+  }
 }
