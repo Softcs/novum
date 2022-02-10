@@ -66,7 +66,7 @@ export class SitPulpitComponent  extends SitDictBaseComponent {
     ],
 
     this.gridColumnsDefinition["sitEmployeeContacts"] = [
-      { headerName: 'Pracownik', field: 'email', tooltipField: 'EmployeeName', filter: 'agTextColumnFilter', width: 210,
+      { headerName: 'Pracownik', field: 'email', tooltipField: 'HRCompanyHierarchyDesc', filter: 'agTextColumnFilter', width: 210,
         cellRenderer: function(params) {
           return ('<span><b>' + (params.data["EmployeeName"] ? params.data["EmployeeName"] : '')  + '</b></span>'
             + '<br><span style="color: dimgray;">' + (params.data["email"] ? '<a href=mailto:'+params.data["email"]+'>'+params.data["email"]+'</a>' : '') + '</span>')
