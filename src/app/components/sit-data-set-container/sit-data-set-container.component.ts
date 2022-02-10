@@ -269,6 +269,10 @@ export class SitDataSetContainerComponent implements AfterViewInit{
   }
 
   public prepareControls(dataSetWrapperDefinition: DataSetDefinitionWrapper, allowActionFromLocalDefinition: boolean = false) {
+    if (!dataSetWrapperDefinition) {
+      return;
+    }
+
     this.datasSourcesInterface.forEach(element => {
       const gridApi = this.gridService.getGridApi(element);
       if (!gridApi) {
