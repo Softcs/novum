@@ -2,24 +2,30 @@
   <div fxLayout="column" fxFill class="content">
     <div class="sit-filter-bar">
       <sit-data-set-container ident="sitFilterProducts" fxLayout="row">
-        <sit-data-input #sitControl field="Search" label="Filtruj produkty" placeholder="Identyfikator, nazwa, EAN"  appearance="outline" style="width: 300px;"></sit-data-input>
+        <sit-data-input #sitControl field="Search" label="Filtruj produkty" placeholder="Identyfikator, nazwa, EAN" appearance="outline" style="width: 300px;"></sit-data-input>
         <sit-data-input #sitControl field="SaleStatus" label="Status sprz." placeholder="" appearance="outline" showRefreshButton="true" style="width: 180px;"
           [lookupDisplayFields] = "['SaleStatus', 'SaleStatusDescription']"
         ></sit-data-input>
-        <sit-data-checkbox #sitControl field="wp" label="W przyg." labelPosition="after" checked="true" refreshOnChange="true" style="color: violet;" ></sit-data-checkbox>
-        <sit-data-checkbox #sitControl field="zp" label="Zapowiedzi" labelPosition="after" checked="true" refreshOnChange="true" style="color: orange;" ></sit-data-checkbox>
-        <sit-data-checkbox #sitControl field="nw" label="Nowości" labelPosition="after" checked="true" refreshOnChange="true" style="color: rgb(153, 0, 0);" ></sit-data-checkbox>
-        <sit-data-checkbox #sitControl field="ak" label="Aktywne" labelPosition="after" checked="true" refreshOnChange="true" style="color: rgb(20, 152, 46)" ></sit-data-checkbox>
-        <sit-data-checkbox #sitControl field="wr" label="Wyprzedaże" labelPosition="after" checked="false" refreshOnChange="true" style="color: rgb(11, 23, 255);" ></sit-data-checkbox>
-        <sit-data-checkbox #sitControl field="wc" label="Wycofane" labelPosition="after" checked="false" refreshOnChange="true" style="color: black;" ></sit-data-checkbox>
+        <sit-data-checkbox *ngIf="this.activeRow('sitFilterProducts')?.wpIsVisible == 1" #sitControl field="wp" label="W przyg." labelPosition="after" 
+          checked="true" [refreshOnChange]="true" style="color: violet;" ></sit-data-checkbox>
+        <sit-data-checkbox *ngIf="this.activeRow('sitFilterProducts')?.zpIsVisible == 1"  #sitControl field="zp" label="Zapowiedzi" labelPosition="after" 
+          checked="true" [refreshOnChange]="true" style="color: orange;" ></sit-data-checkbox>
+        <sit-data-checkbox *ngIf="this.activeRow('sitFilterProducts')?.nwIsVisible == 1"  #sitControl field="nw" label="Nowości" labelPosition="after" 
+          checked="true" [refreshOnChange]="true" style="color: rgb(153, 0, 0);" ></sit-data-checkbox>
+        <sit-data-checkbox *ngIf="this.activeRow('sitFilterProducts')?.akIsVisible == 1"  #sitControl field="ak" label="Aktywne" labelPosition="after" 
+          checked="true" [refreshOnChange]="true" style="color: rgb(20, 152, 46)" ></sit-data-checkbox>
+        <sit-data-checkbox *ngIf="this.activeRow('sitFilterProducts')?.wrIsVisible == 1"  #sitControl field="wr" label="Wyprzedaże" labelPosition="after" 
+          checked="false" [refreshOnChange]="true" style="color: rgb(11, 23, 255);" ></sit-data-checkbox>
+        <sit-data-checkbox *ngIf="this.activeRow('sitFilterProducts')?.wcIsVisible == 1"  #sitControl field="wc" label="Wycofane" labelPosition="after" 
+          checked="false" [refreshOnChange]="true" style="color: black;" ></sit-data-checkbox>
       </sit-data-set-container>
     </div>
     <div fxLayout="column" fxFlex>
-      <as-split direction="horizontal">
+      <as-split #sitSpliter direction="horizontal">
         <as-split-area [size]="60">
           <as-split direction="vertical">
             <as-split-area [size]="100">
-              <sit-data-set-container  ident="sitProducts" showActionsToolbar="true" (activeRowChanged)="activeRowProductsChanged($event)" fxFill fxLayout="column">
+              <sit-data-set-container  ident="sitProducts" [showActionsToolbar]="true" (activeRowChanged)="activeRowProductsChanged($event)" fxFill fxLayout="column">
                 <div class="data-table" fxFlex>
                   <ag-grid-angular
                     #sitSetDataSource
@@ -90,7 +96,7 @@
                 <mat-tab label="Komplety">
                   <as-split direction ="vertical" fxLayout="column">
                     <as-split-area [size]="30">
-                      <sit-data-set-container  ident="sitProductSetHeaders" showActionsToolbar="true" fxFill fxLayout="column">
+                      <sit-data-set-container  ident="sitProductSetHeaders" [showActionsToolbar]="true" fxFill fxLayout="column">
                         <div class="data-table" fxFlex>
                           <ag-grid-angular
                             #sitSetDataSource
@@ -103,7 +109,7 @@
                       </sit-data-set-container>
                     </as-split-area>
                     <as-split-area [size]="70">
-                      <sit-data-set-container  ident="sitProductSetPositions" showActionsToolbar="true" fxFill fxLayout="column">
+                      <sit-data-set-container  ident="sitProductSetPositions" [showActionsToolbar]="true" fxFill fxLayout="column">
                         <div class="data-table" fxFlex>
                           <ag-grid-angular
                             #sitSetDataSource
@@ -132,8 +138,22 @@
                   </sit-data-set-container>
                 </mat-tab>
                 <mat-tab label="Blokady">
-                  <div class="sit-grid-title">Blokady na dokumeentach</div>
-                  <sit-data-set-container  ident="sitProductLock4DocumentsTypes" showActionsToolbar="false" fxFill fxLayout="column">
+                  <div class="sit-grid-title">Blokady na dokumentach</div>
+                  <sit-data-set-container  ident="sitProductLock4DocumentsTypes" fxFill fxLayout="column">
+                    <div class="data-table" fxFlex>
+                      <ag-grid-angular
+                        #sitSetDataSource
+                        #sitProductsGrid
+                        style="width: 100%; height: 100%;"
+                        class="ag-theme-balham"
+                      >
+                      </ag-grid-angular>
+                    </div>
+                  </sit-data-set-container>
+                </mat-tab>
+                <mat-tab label="Magazyny">
+                  <div class="sit-grid-title">Konfiguracja na magazynach</div>
+                  <sit-data-set-container  ident="sitProductWarehousesConfig" [showActionsToolbar]="true" fxFill fxLayout="column">
                     <div class="data-table" fxFlex>
                       <ag-grid-angular
                         #sitSetDataSource

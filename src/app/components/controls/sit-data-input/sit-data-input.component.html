@@ -23,6 +23,7 @@
       [readonly]="readonly"
       (change)="onChange($event)"
       (keyup)="onKeyup($event)"
+      (keyup.enter)="onKeyupEnter($event)"
       (blur)="onBlur($event)"
       autocomplete="off"
     >

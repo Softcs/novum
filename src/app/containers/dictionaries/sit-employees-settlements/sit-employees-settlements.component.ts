@@ -23,7 +23,7 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
           },
         ]
       },
-      { headerName: 'Cudzoziemiec', field: 'Foreigner', filter: 'agNumberColumnFilter', renderType: 'checkbox', width: 100, suppressMenu: true },
+      { headerName: 'Cudzoziemiec', field: 'Foreigner', filter: 'agNumberColumnFilter', renderType: 'checkbox',cellClass: 'grid-cell-centered',  width: 100, suppressMenu: true },
       { headerName: 'Okres', field: 'WorkPeriod',  width: 90,
         cellClass: ['font11','textFormat']
       },
@@ -45,7 +45,7 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
             cellClass: ['font11','textFormat']
           },
           { headerName: 'PPK', field: 'StatusPPK',  width: 60, renderType: 'checkbox', suppressMenu: true,
-            cellClass: ['font11','textFormat']
+            cellClass: ['font11','textFormat','grid-cell-centered']
           },
         ]
       },
@@ -68,6 +68,11 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
             pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
           },
           { headerName: 'Prem. nie kli.', field: 'BonusNoCust', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 110, agr: 'sum',
+            renderType: 'number',
+            cellClass: ['font11','numberFormat2Dec'],
+            pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
+          },
+          { headerName: 'Bony', field: 'Vouchers', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, agr: 'sum',
             renderType: 'number',
             cellClass: ['font11','numberFormat2Dec'],
             pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
@@ -105,6 +110,11 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
             cellClass: ['font11','numberFormat2Dec'],
             pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
           },
+          { headerName: 'ZUS bony', field: 'ZUSVouchers', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, suppressMenu: true, columnGroupShow: "open", agr: 'sum',
+            renderType: 'number',
+            cellClass: ['font11','numberFormat2Dec'],
+            pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
+          },
           { headerName: 'PPK', field: 'PPK', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 70,suppressMenu: true, agr: 'sum',
             renderType: 'number',
             cellClass: ['font11','numberFormat2Dec'],
@@ -123,7 +133,7 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
         cellClass: ['font11','numberFormat2Dec'],
         pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
       },
-      { headerName: 'St.mies.', field: 'MonthRate', width: 90, suppressMenu: true, renderType: 'checkbox'
+      { headerName: 'St.mies.', field: 'MonthRate', width: 90, suppressMenu: true, renderType: 'checkbox', cellClass: "grid-cell-centered"
       },
       { headerName: 'Godziny',
         children: [
@@ -389,7 +399,7 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
           },
         ]
       },
-      { headerName: 'Cudzoziemiec', field: 'Foreigner', filter: 'agNumberColumnFilter', renderType: 'checkbox', width: 100, suppressMenu: true },
+      { headerName: 'Cudzoziemiec', field: 'Foreigner', filter: 'agNumberColumnFilter', renderType: 'checkbox', cellClass: "grid-cell-centered", width: 100, suppressMenu: true },
       { headerName: 'Okres', field: 'WorkPeriod',  width: 90,
         cellClass: ['font11','textFormat']
       },
@@ -418,11 +428,11 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
         renderType: 'number', renderFormat: '1.0-0',
         cellClass: ['font11','numberFormat2Dec'],
       },
-      { headerName: 'Dni nominal.', field: 'NominalDays', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, suppressMenu: true, agr: 'sum',
+      { headerName: 'Dni rob. z um.', field: 'NominalDays', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, suppressMenu: true, agr: 'sum',
         renderType: 'number', renderFormat: '1.0-0',
         cellClass: ['font11','numberFormat2Dec'],
       },
-      { headerName: 'Dni rob.', field: 'WorkDays', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, suppressMenu: true, agr: 'sum',
+      { headerName: 'Dni przpr.', field: 'WorkDays', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, suppressMenu: true, agr: 'sum',
         renderType: 'number', renderFormat: '1.0-0',
         cellClass: ['font11','numberFormat2Dec'],
       },
@@ -524,6 +534,22 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
           renderType: 'number', renderFormat: '1.2-2',
           cellClass: ['font11','numberFormat2Dec'],
         },
+        { headerName: 'Rez. url.', field: 'VacRes', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80, suppressMenu: true, agr: 'sum', columnGroupShow: "open",
+          renderType: 'number',
+          cellClass: ['font11','numberFormat2Dec'],
+        },          
+        { headerName: 'PFRON etaty', field: 'PFRONJobsNo', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 100, suppressMenu: true, agr: 'sum', columnGroupShow: "open",
+          renderType: 'number',
+          cellClass: ['font11','numberFormat2Dec'],
+        },          
+        { headerName: 'PFRON', field: 'PFRON', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80, suppressMenu: true, agr: 'sum', columnGroupShow: "open",
+          renderType: 'number',
+          cellClass: ['font11','numberFormat2Dec'],
+        },          
+        { headerName: 'PFRON CIT', field: 'PFRONCIT', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 100, suppressMenu: true, agr: 'sum', columnGroupShow: "open",
+          renderType: 'number',
+          cellClass: ['font11','numberFormat2Dec'],
+        },          
 
        ]
       },
@@ -560,6 +586,18 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
             cellClass: ['font11','numberFormat2Dec'],
           },
           { headerName: 'Urlop wup.', field: 'CustRate05', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80, suppressMenu: true, agr: 'sum', columnGroupShow: "open",
+            renderType: 'number',
+            cellClass: ['font11','numberFormat2Dec'],
+          },
+          { headerName: 'PPK', field: 'PPK', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80, suppressMenu: true, agr: 'sum', columnGroupShow: "open",
+            renderType: 'number',
+            cellClass: ['font11','numberFormat2Dec'],
+          },
+          { headerName: 'Rez. url.', field: 'CustVacRes', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80, suppressMenu: true, agr: 'sum', columnGroupShow: "open",
+            renderType: 'number',
+            cellClass: ['font11','numberFormat2Dec'],
+          },
+          { headerName: 'PFRON', field: 'CustPFRON', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80, suppressMenu: true, agr: 'sum', columnGroupShow: "open",
             renderType: 'number',
             cellClass: ['font11','numberFormat2Dec'],
           },
