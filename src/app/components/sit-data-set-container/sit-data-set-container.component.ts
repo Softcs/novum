@@ -266,13 +266,10 @@ export class SitDataSetContainerComponent implements AfterViewInit{
         });
       }
     });
+
   }
 
   public prepareControls(dataSetWrapperDefinition: DataSetDefinitionWrapper, allowActionFromLocalDefinition: boolean = false) {
-    if (!dataSetWrapperDefinition) {
-      return;
-    }
-
     this.datasSourcesInterface.forEach(element => {
       const gridApi = this.gridService.getGridApi(element);
       if (!gridApi) {
@@ -295,7 +292,7 @@ export class SitDataSetContainerComponent implements AfterViewInit{
     if (this.actionToolbar) {
       this.actionToolbar.dataSetResponseWrapper = this.dataSetResponseWrapper;
       this.actionToolbar.dataSetManagerSource = this.dataSetControlsManager;
-      this.actionToolbar.actions = dataSetWrapperDefinition.actions ? dataSetWrapperDefinition.actions.filter(a => a.showInToolbar) : [];
+      this.actionToolbar.actions = dataSetWrapperDefinition && dataSetWrapperDefinition.actions ? dataSetWrapperDefinition.actions.filter(a => a.showInToolbar) : [];
     }
   }
 
