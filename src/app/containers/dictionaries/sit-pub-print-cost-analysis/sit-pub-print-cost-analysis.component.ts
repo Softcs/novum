@@ -55,7 +55,9 @@ export class SitPubPrintCostAnalysisComponent extends SitDictBaseComponent {
       { headerName: 'Rok-miesiąc', field: 'YearMonth', filter: 'agTextColumnFilter', width: 100,
         enablePivot: true },  
       { headerName: 'Kwota', field: 'Net', filter: 'agTextColumnFilter', width: 120, renderType: "number", type: 'numericColumn', 
-        aggFunc: 'sum', enableValue: true },        
+        aggFunc: 'sum', enableValue: true },
+      { headerName: 'Ilość (PW)', field: 'Quantity', filter: 'agTextColumnFilter', width: 120, renderType: "number", type: 'numericColumn', 
+        aggFunc: 'sum', enableValue: true },
     ];
  
    }
