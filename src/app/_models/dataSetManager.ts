@@ -338,14 +338,14 @@ export class DataSetManager {
         }
 
         if (actionDefinition.kind == "SetValue") {
-            dsWrapper.initRowByEditFields(null, actionDefinition.editFields, false);
+            dsWrapper.initRowByEditFields(row, actionDefinition.editFields, false);
             if(executeActionCompletedCallback != null) {
                 executeActionCompletedCallback(owner);
             }
             return;
         }
 
-        const obj = this.getObjectForDataSourceRequest(dsWrapper, true);
+        const obj = this.getObjectForDataSourceRequest(dsWrapper, true, row);
         dataSourcesRequest.push(obj);
         this.prapareDataSource4RequestParent(dsSourceWrapper, dataSourcesRequest);
 
@@ -611,7 +611,7 @@ export class DataSetManager {
     }
 
     findDataSetDefinitionWrapper(ident: string) {
-        return this.dataSetDefinitionWrappers.find(ds => ds.ident === ident);
+        return this.dataSetDefinitionWrappers?.find(ds => ds.ident === ident);
     }
 
     get dictIdent(): string {

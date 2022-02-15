@@ -21,7 +21,7 @@ import { StringUtils } from '@app/_helpers/string.utisl';
 })
 
 export class SitDataSetContainerComponent implements AfterViewInit{
-  private _errors: any[];
+  private _errors: any[] = [];
   private activeRowSubscription: Subscription;
   private identityFieldName: string = "__Identity__";
   private grids: [];
@@ -86,7 +86,7 @@ export class SitDataSetContainerComponent implements AfterViewInit{
   }
 
   public setErrors(errors: any[]) {
-    this.errors = errors;
+    this.errors.push(errors);
     if (this.errors) {
       console.log('Errors', this.errors);
     }

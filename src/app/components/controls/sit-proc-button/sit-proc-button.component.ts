@@ -208,18 +208,29 @@ export class SitProcButtonComponent extends SitActionDirective {
         this.executeActionExceptionCallback);
     } else {
       var selectedRows = [...this.dataSetResponseWrapper.selectedRows];
-      this.runActionOneByOne(selectedRows, selectedRows[0]);
+      this.runActionOneByOne(selectedRows, 0);
     }
   }
 
-  private runActionOneByOne(selectedRows: any[], row: any) {
+  private runActionOneByOneForward(selectedRows: any[], rowIndex: number, self: any) {
+    rowIndex++;
+    if (rowIndex >= selectedRows.length) {
+      self.changeExecutingState(false);
+      return;
+    }
+    self.runActionOneByOne(selectedRows, rowIndex)
+  }
+
+  private runActionOneByOne(selectedRows: any[], rowIndex: number) {
+    var row = selectedRows[rowIndex];
     this.dataSetResponseWrapper.ExecuteAction(this.actionDefinition,
       this,
       (sender) => {
-
+        this.runActionOneByOneForward(selectedRows, rowIndex, sender);
       },
       (sender) => {
         this.executeActionForSelectedExceptionCallback(sender);
+        this.runActionOneByOneForward(selectedRows, rowIndex, sender);
       },
       null,
       row);
@@ -230,7 +241,7 @@ export class SitProcButtonComponent extends SitActionDirective {
   }
 
   private executeActionForSelectedExceptionCallback(self) {
-    self.changeExecutingState(false);
+    //self.changeExecutingState(false);
     self.afterCompleted.emit('Error');
   }
 
