@@ -448,7 +448,7 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
         renderType: 'number', renderFormat: '1.2-2',
         cellClass: ['font11','numberFormat2Dec'],
       },
-      { headerName: 'Wyn. nom', field: 'Base', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, suppressMenu: true,
+      { headerName: 'Wyn. nom', field: 'Base', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, suppressMenu: true, agr: 'sum',
         renderType: 'number', renderFormat: '1.2-2',
         cellClass: ['font11','numberFormat2Dec'],
       },
