@@ -52,4 +52,14 @@ export class UrlService {
         + 'download=1' +'&'
         + 'identity=' + activeRow['__Identity__']
   }
+
+  getImportTemplateUrl(templateFileName:  string, templateFullFileName: string): string {
+    return environment.apiUrl
+        + '/service/attachments/get/'
+        + this.currentUser.token + '/'
+        + this.currentUser.connection 
+        + '/importTemplates/download/'
+        + templateFileName + '/'
+        + (templateFullFileName ? templateFullFileName : "noFileName");
+  }  
 }
