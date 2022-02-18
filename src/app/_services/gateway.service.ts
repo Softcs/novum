@@ -13,16 +13,16 @@ import { Guid } from 'guid-typescript';
 
 @Injectable({ providedIn: 'root' })
 export class GatewayService {
-    private currentUserSubject: BehaviorSubject<User>;    
+    private currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
     public serverVersion: string;
     public canUseLocalStorage: boolean;
-    
+
 
     constructor(private http: HttpClient) {
         this.currentUserSubject = new BehaviorSubject<User>(this.readCurrentUser());
         this.currentUser = this.currentUserSubject.asObservable();
-        
+
         this.serverVersion = "";
     }
 
@@ -220,7 +220,7 @@ export class GatewayService {
                 railResponse = this.decV(railResponse.d);
                 railResponse = JSON.parse(railResponse);
                 if (railResponse != null && railResponse.length > 0) {
-                    this.serverVersion = railResponse[0].serverVersion;                    
+                    this.serverVersion = railResponse[0].serverVersion;
                     if(railResponse[0].Errors != null) {
                         railResponse[0].Errors.forEach(error => {
                             console.error(error.message);
@@ -258,10 +258,10 @@ export class GatewayService {
     private replaceChars(fileName: string) : string {
         return fileName.replace("+","_")
                        .replace("/","_")
-                       .replace("\\","_");                       
+                       .replace("\\","_");
     }
 
-    public UploadFile(file: File, fileId: string, ) {
+    public UploadFile(file: File, fileId: string, pathIdent: string ) {
         if (!file || !fileId) {
             return;
         }
@@ -273,10 +273,14 @@ export class GatewayService {
 
         const options = {
             params,
-            reportProgress: true        
+            reportProgress: true
         };
-        const url = `/service/upload/files/${this.currentUserValue?.token}/${fileId}/${fileName}`;
+
+        if (pathIdent) {
+            pathIdent += '/';
+        }
+        const url = `/service/upload/files/${this.currentUserValue?.token}/${pathIdent}${fileId}/${fileName}`;
         const req = new HttpRequest('POST', `${environment.apiUrl}${url}`, fileData, options);
-        return this.http.request(req);         
+        return this.http.request(req);
     }
 }
