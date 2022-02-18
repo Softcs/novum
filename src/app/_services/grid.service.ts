@@ -64,7 +64,7 @@ export class GridService {
         return params.value === null ? null : formatNumber(params.value, locale, renderFormat).replace(/[,]/g,' ') + '%';
       }
     }
-   
+
     if (column.renderType == "sitGridCellRenderer") {
       column["cellRendererFramework"] = sitGlobalConfig.frameworkComponents
     }
@@ -234,4 +234,3 @@ export class GridService {
     gridApi.setPinnedBottomRowData([agrRow]);
   }
 }
-
