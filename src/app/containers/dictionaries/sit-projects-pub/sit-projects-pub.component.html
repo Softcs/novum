@@ -1,19 +1,16 @@
-<sit-dict-container ident="sitProjectsPub" #sitDictcontainer fxFlexFill>
+<sit-dict-container ident="sitProjectsPub" #sitDictcontainer fxFill>
   <div fxLayout="row" fxFill fxLayoutGap="5px">
     <div fxLayout="column" fxFlex="35%" class="content">
-
-      <div class="sit-filter-bar">
-        <sit-data-set-container ident="sitFilterProjectsPub" >
-          <div style="width: 100%;">
-            <sit-data-input #sitControl  field="searchProjectsPub" label="Filtruj projekty" placeholder="Projekt, Nazwa, EAN" appearance="outline" style="width: 100%;" showRefreshButton="true"></sit-data-input>
-          </div>
-        </sit-data-set-container>
-      </div>
+      <sit-data-set-container ident="sitFilterProjectsPub" fxLayout="row">
+        <div class="sit-filter-bar" fxLayout="row">
+          <sit-data-input #sitControl  field="searchProjectsPub" label="Filtruj projekty" placeholder="Projekt, Nazwa, EAN" appearance="outline" 
+            style="width: 100%;" showRefreshButton="true"></sit-data-input>
+        </div>
+      </sit-data-set-container>
       <sit-data-set-container ident="sitProjectsPub" showActionsToolbar="true" fxLayout="column" (activeRowChanged)="activeRowProjectsPubChanged($event)" fxFlex>
         <div class="data-table" fxFlex>
           <ag-grid-angular
             #sitSetDataSource
-            #sitProjectsPubGrid
             style="width: 100%; height: 100%;"
             class="ag-theme-balham"
           >
@@ -22,353 +19,356 @@
       </sit-data-set-container>
     </div>
     <div fxLayout="column" fxFlex="65%" class="content">
-      <div *ngIf="!showProjectPanel()" fxLayout="column" fxFlex class="content" class="right-panel" fxLayoutAlign="start center">Wpisz w filtr symbol projektu, nazwę projektu lub EAN.</div>
-
-      <div *ngIf="showProjectPanel()" fxLayoutAlign="end center"><button mat-stroked-button color="primary" (click)="printProject()"><mat-icon>print</mat-icon> Drukuj projekt</button></div>
-      <div id="projectData" *ngIf="showProjectPanel()" fxLayout="column" fxFlex class="content" class="right-panel">
-          <div *ngIf="activeRowProjectsPub?.ProjectIdent !== undefined" fxLayout="column">
-            <div fxLayout="row" fxFlex>
-              <div fxLayout="row" fxFlex="40">
-                <div class="label-short">Projekt:</div><div fxFlex class="text">{{ activeRowProjectsPub?.ProjectIdent }}</div>
-              </div>
-              <div fxLayout="row" fxFlex="30">
-                <div class="label-short">ISBN:</div><div fxFlex class="text">{{ activeRowProjectsPub?.ISBN }}</div>
-              </div>
-              <div fxLayout="row" fxFlex="30">
-                <div class="label-short">EAN:</div><div fxFlex class="text">{{ activeRowProjectsPub?.EAN }}</div>
-              </div>
-            </div>
-            <br>
-            <div fxLayout="row" fxFlex fxLayoutAlign="center center"><h3>{{ activeRowProjectsPub?.ProjectName }}</h3></div>
-            <br>
-
-            <div fxLayout="row" fxLayoutAlign="start start" >
-              <div>
-                <div class="cover" fxLayout="row" fxLayoutAlign="start start"><img src="{{Link}}"></div>
-              </div>
-              <div fxLayout="column" fxFlex>
-                <div fxLayout="row" fxFlex fxLayoutAlign="center center" class ="title">Informacje podstawowe</div>
-
-                <div fxLayout="row"><div class="label">Autor tekstu</div><div fxFlex class="text">{{ activeRowProjectsPub?.Author }}</div></div>
-                <div fxLayout="row"><div class="label">Autor ilustracji</div><div fxFlex  class="text">{{ activeRowProjectsPub?.Illustrator }}</div></div>
-                <div fxLayout="row"><div class="label">Wydawnictwo aktualne</div><div fxFlex  class="text">{{ activeRowProjectsPub?.ProductsTypeDesc }}</div></div>
-                <div fxLayout="row"><div class="label">Cena detaliczna</div><div fxFlex  class="text">{{ activeRowProjectsPub?.CoverPrice | number : "1.2-2" }}</div></div>
-                <div fxLayout="row"><div class="label">Menedżer</div><div fxFlex  class="text">{{ activeRowProjectsPub?.Manager }}</div></div>
-                <div fxLayout="row"><div class="label">Grafik</div><div fxFlex  class="text">{{ activeRowProjectsPub?.GraphicDesigner }}</div></div>
-                <div fxLayout="row"><div class="label">Redaktor</div><div fxFlex  class="text">{{ activeRowProjectsPub?.Editor }}</div></div>
-                <div fxLayout="row"><div class="label">Tłumacz</div><div fxFlex  class="text">{{ activeRowProjectsPub?.Translator }}</div></div>
-              </div>
-            </div>
-            <br>
-            <div fxLayout="row" fxFlex fxLayoutAlign="center center" class ="title">Terminy</div>
-
-            <div fxLayout="row">
-              <div fxLayout="row" fxFlex="50">
-                <div class="label" style="width:200px;">Początek prac</div><div fxFlex class="text">{{ activeRowProjectsPub?.StartDate | date: 'yyyy-MM-dd'}}</div>
-              </div>
-              <div fxLayout="row" fxFlex="50">
-                <div class="label" style="width:200px;">Koniec prac</div><div fxFlex class="text">{{ activeRowProjectsPub?.EndDate | date: 'yyyy-MM-dd'}}</div>
-              </div>
-            </div>
-            <div fxLayout="row">
-              <div fxLayout="row" fxFlex="50">
-                <div class="label" style="width:200px;">Planowana data wydania</div><div fxFlex class="text">{{ activeRowProjectsPub?.ReleaseDatePlan | date: 'yyyy-MM-dd'}}</div>
-              </div>
-              <div fxLayout="row" fxFlex="50">
-                <div class="label" style="width:200px;">Rzeczywista data wydania</div><div fxFlex class="text">{{ activeRowProjectsPub?.ReleaseDateAct | date: 'yyyy-MM-dd'}}</div>
-              </div>
-            </div>
-            <div fxLayout="row">
-              <div fxLayout="row" fxFlex="50">
-                <div class="label" style="width:200px;">Data premiery</div><div fxFlex  class="text">{{ activeRowProjectsPub?.PremiereDate | date: 'yyyy-MM-dd'}}</div>
-              </div>
-              <div fxLayout="row" fxFlex="50">
-                <div class="label" style="width:200px;">Data zamknięcia PDF</div><div fxFlex  class="text">{{ activeRowProjectsPub?.PDFOrdDate | date: 'yyyy-MM-dd'}}</div>
-              </div>
-            </div>
-
-            <div fxLayout="row">
-              <div fxLayout="row" fxFlex="50">
-                <div class="label" style="width:200px;">Data wysłania plików</div><div fxFlex  class="text">{{ activeRowProjectsPub?.MatDelivDate | date: 'yyyy-MM-dd'}}</div>
-              </div>
-              <div fxLayout="row" fxFlex="50">
-                <div class="label" style="width:200px;">Data wysłania ozalidów</div><div fxFlex  class="text">{{ activeRowProjectsPub?.OzalidDelivDate | date: 'yyyy-MM-dd'}}</div>
-              </div>
-            </div>
-
-            <!-- <div fxLayout="row" fxFlex fxLayoutAlign="center center" class ="title">Okładka</div> -->
-
-            <br>
-            <div fxLayout="row" fxFlex fxLayoutAlign="center center" class ="title">Dane techniczne</div>
-            <div fxLayout="row" fxFlex>
-              <div fxLayout="column" fxFlex="50" fxLayoutAlign="start stretch">
-                <div fxFlex fxLayoutAlign="center center" class="subtitle">Oprawa</div>
-                <div fxLayout="row" fxFlex>
-                  <div class="label" style="width:200px;">Typ</div><div fxFlex  class="text">{{ activeRowProjectsPub?.BindingType }}</div>
+      <sit-data-set-container ident="sitProjectsPubOneRow" showActionsToolbar="false" fxLayout="column" fxFlex>
+        <div *ngIf="showProjectPanel()" fxLayoutAlign="end center">
+          <button mat-stroked-button color="primary" (click)="printProject()"><mat-icon>print</mat-icon> Drukuj projekt</button>
+        </div>
+        <div id="projectData" *ngIf="showProjectPanel()" fxLayout="column" fxFlex class="content" class="right-panel">
+            <div *ngIf="activeRowProjectsPub?.ProjectIdent !== undefined" fxLayout="column">
+              <div fxLayout="row" fxFlex>
+                <div fxLayout="row" fxFlex="40">
+                  <div class="label-short">Projekt:</div><div fxFlex class="text">{{ activeRowProjectsPub?.ProjectIdent }}</div>
                 </div>
-                <div fxLayout="row" fxFlex>
-                  <div class="label" style="width:200px;">Grzbiet</div><div fxFlex  class="text">{{ activeRowProjectsPub?.BindingSpine}}</div>
+                <div fxLayout="row" fxFlex="30">
+                  <div class="label-short">ISBN:</div><div fxFlex class="text">{{ activeRowProjectsPub?.ISBN }}</div>
                 </div>
-                <div fxLayout="row" fxFlex>
-                  <div class="label" style="width:200px;">Druk</div><div fxFlex  class="text">{{ activeRowProjectsPub?.BindingPrint}}</div>
+                <div fxLayout="row" fxFlex="30">
+                  <div class="label-short">EAN:</div><div fxFlex class="text">{{ activeRowProjectsPub?.EAN }}</div>
                 </div>
               </div>
-
-              <div fxLayout="column" fxFlex="50">
-                <div fxFlex fxLayoutAlign="center start" class="subtitle">Wnętrze</div>
-                <div fxLayout="row" fxFlex>
-                  <div class="label" style="width:200px;">Druk</div><div fxFlex  class="text">{{ activeRowProjectsPub?.InsidePrint}}</div>
-                </div>
-                <div fxLayout="row" fxFlex>
-                  <div class="label" style="width:200px;">Papier</div><div fxFlex  class="text">{{ activeRowProjectsPub?.InsidePaper}}</div>
-                </div>
-                <div fxLayout="row" fxFlex>
-                  <div class="label" style="width:200px;">Format podstawa</div><div fxFlex  class="text">{{ activeRowProjectsPub?.FormatBase}}</div>
-                </div>
-                <div fxLayout="row" fxFlex>
-                  <div class="label" style="width:200px;">Format wysokość</div><div fxFlex  class="text">{{ activeRowProjectsPub?.FormatHeight}}</div>
-                </div>
-                <div fxLayout="row" fxFlex>
-                  <div class="label" style="width:200px;">Liczba stron</div><div fxFlex  class="text">{{ activeRowProjectsPub?.NumberOfPages}}</div>
-                </div>
-              </div>
-            </div>
-
-            <div fxLayout="row" fxFlex>
-              <div fxLayout="column" fxFlex="50">
-                <div fxFlex fxLayoutAlign="center center" class="subtitle">Oprawa - dodatki</div>
-                <div *ngIf="activeRowProjectsPub?.NumberOfPages == 1" fxLayout="row" fxFlex>
-                  <div class="label" style="width:200px;">Banderola</div>
-                  <!-- <sit-data-checkbox id="BindingAccStreamer" #sitControl field="BindingAccStreamer" label=""></sit-data-checkbox> -->
-                </div>
-                <div *ngIf="activeRowProjectsPub?.BindingAccGlitter == 1" fxLayout="row" fxFlex>
-                  <div class="label" style="width:200px;">Brokat</div>
-                  <!-- <sit-data-checkbox id="BindingAccGlitter" #sitControl field="BindingAccGlitter" label=""></sit-data-checkbox> -->
-                </div>
-                <div *ngIf="activeRowProjectsPub?.BindingAccExclusiveCase == 1" fxLayout="row" fxFlex>
-                  <div class="label" style="width:200px;">Ekskluzywne etui</div>
-                  <!-- <sit-data-checkbox id="BindingAccExclusiveCase" #sitControl field="BindingAccExclusiveCase" label=""></sit-data-checkbox> -->
-                </div>
-                <div *ngIf="activeRowProjectsPub?.BindingAccLocalFoil == 1" fxLayout="row" fxFlex>
-                  <div class="label" style="width:200px;">Folia miejscowa</div>
-                  <!-- <sit-data-checkbox id="BindingAccLocalFoil" #sitControl field="BindingAccLocalFoil" label=""></sit-data-checkbox> -->
-                </div>
-                <div *ngIf="activeRowProjectsPub?.BindingAccSponge == 1" fxLayout="row" fxFlex>
-                  <div class="label" style="width:200px;">Gąbka</div>
-                  <!-- <sit-data-checkbox id="BindingAccSponge" #sitControl field="BindingAccSponge" label=""></sit-data-checkbox> -->
-                </div>
-                <div *ngIf="activeRowProjectsPub?.BindingAccHarmonica == 1" fxLayout="row" fxFlex>
-                  <div class="label" style="width:200px;">Harmonijka</div>
-                  <!-- <sit-data-checkbox id="BindingAccHarmonica" #sitControl field="BindingAccHarmonica" label=""></sit-data-checkbox> -->
-                </div>
-                <div *ngIf="activeRowProjectsPub?.BindingAccHologram == 1" fxLayout="row" fxFlex>
-                  <div class="label" style="width:200px;">Hologram</div>
-                  <!-- <sit-data-checkbox id="BindingAccHologram" #sitControl field="BindingAccHologram" label=""></sit-data-checkbox> -->
-                </div>
-                <div *ngIf="activeRowProjectsPub?.BindingAccLocalVarnishing == 1" fxLayout="row" fxFlex>
-                  <div class="label" style="width:200px;">Lakierowanie miejscowe</div>
-                  <!-- <sit-data-checkbox id="BindingAccLocalVarnishing" #sitControl field="BindingAccLocalVarnishing" label=""></sit-data-checkbox> -->
-                </div>
-                <div *ngIf="activeRowProjectsPub?.BindingAccWrapper == 1" fxLayout="row" fxFlex>
-                  <div class="label" style="width:200px;">Obwoluta</div>
-                  <!-- <sit-data-checkbox id="BindingAccWrapper" #sitControl field="BindingAccWrapper" label=""></sit-data-checkbox> -->
-                </div>
-                <div *ngIf="activeRowProjectsPub?.BindingAccStapleEye == 1" fxLayout="row" fxFlex>
-                  <div class="label" style="width:200px;">Oczko na zszywkach</div>
-                  <!-- <sit-data-checkbox id="BindingAccStapleEye" #sitControl field="BindingAccStapleEye" label=""></sit-data-checkbox> -->
-                </div>
-                <div *ngIf="activeRowProjectsPub?.BindingAccBox == 1" fxLayout="row" fxFlex>
-                  <div class="label" style="width:200px;">Pudełko</div>
-                  <!-- <sit-data-checkbox id="BindingAccBox" #sitControl field="BindingAccBox" label=""></sit-data-checkbox> -->
-                </div>
-                <div *ngIf="activeRowProjectsPub?.BindingAccBinder == 1" fxLayout="row" fxFlex>
-                  <div class="label" style="width:200px;">Segregator</div>
-                  <!-- <sit-data-checkbox id="BindingAccBinder" #sitControl field="BindingAccBinder" label=""></sit-data-checkbox> -->
-                </div>
-                <div *ngIf="activeRowProjectsPub?.BindingAccLeather == 1" fxLayout="row" fxFlex>
-                  <div class="label" style="width:200px;">Oprawa skórzana</div>
-                  <!-- <sit-data-checkbox id="BindingAccLeather" #sitControl field="BindingAccLeather" label=""></sit-data-checkbox> -->
-                </div>
-                <div *ngIf="activeRowProjectsPub?.BindingAccWings == 1" fxLayout="row" fxFlex>
-                  <div class="label" style="width:200px;">Oprawa ze skrzydełkami</div>
-                  <!-- <sit-data-checkbox id="BindingAccWings" #sitControl field="BindingAccWings" label=""></sit-data-checkbox> -->
-                </div>
-                <div *ngIf="activeRowProjectsPub?.BindingAccDieCut == 1" fxLayout="row" fxFlex>
-                  <div class="label" style="width:200px;">Oprawa sztancowa</div>
-                  <!-- <sit-data-checkbox id="BindingAccDieCut" #sitControl field="BindingAccDieCut" label=""></sit-data-checkbox> -->
-                </div>
-                <div *ngIf="activeRowProjectsPub?.BindingAccRibbon == 1" fxLayout="row" fxFlex>
-                  <div class="label" style="width:200px;">Tasiemka - zakładka</div>
-                  <!-- <sit-data-checkbox id="BindingAccRibbon" #sitControl field="BindingAccRibbon" label=""></sit-data-checkbox> -->
-                </div>
-                <div *ngIf="activeRowProjectsPub?.BindingAcc3DPic == 1" fxLayout="row" fxFlex>
-                  <div class="label" style="width:200px;">Trójwymiarowy obrazek</div>
-                  <!-- <sit-data-checkbox id="BindingAcc3DPic" #sitControl field="BindingAcc3DPic" label=""></sit-data-checkbox> -->
-                </div>
-                <div *ngIf="activeRowProjectsPub?.BindingAccHandle == 1" fxLayout="row" fxFlex>
-                  <div class="label" style="width:200px;">Uchwyt</div>
-                  <!-- <sit-data-checkbox id="BindingAccHandle" #sitControl field="BindingAccHandle" label=""></sit-data-checkbox> -->
-                </div>
-
-              </div>
-
-              <div fxLayout="column" fxFlex="50" fxLayoutAlign="none">
-                <div fxFlex fxLayoutAlign="center start" class="subtitle">Wnętrze - dodatki</div>
-                <div *ngIf="activeRowProjectsPub?.InsideAccStreamer == 1" fxLayout="row" fxFlex>
-                  <div class="label" style="width:200px;">Brokat</div>
-                  <!-- <sit-data-checkbox id="InsideAccStreamer" #sitControl field="InsideAccStreamer" label=""></sit-data-checkbox> -->
-                </div>
-                <div *ngIf="activeRowProjectsPub?.InsideAccCDA == 1" fxLayout="row" fxFlex>
-                  <div class="label" style="width:200px;">Audio CD</div>
-                  <!-- <sit-data-checkbox id="InsideAccCDA" #sitControl field="InsideAccCDA" label=""></sit-data-checkbox> -->
-                </div>
-                <div *ngIf="activeRowProjectsPub?.InsideAccCDF == 1" fxLayout="row" fxFlex>
-                  <div class="label" style="width:200px;">Film na CD</div>
-                  <!-- <sit-data-checkbox id="InsideAccCDF" #sitControl field="InsideAccCDF" label=""></sit-data-checkbox> -->
-                </div>
-                <div *ngIf="activeRowProjectsPub?.InsideAccCDR == 1" fxLayout="row" fxFlex>
-                  <div class="label" style="width:200px;">CD Rom</div>
-                  <!-- <sit-data-checkbox id="InsideAccCDR" #sitControl field="InsideAccCDR" label=""></sit-data-checkbox> -->
-                </div>
-                <div *ngIf="activeRowProjectsPub?.InsideAccSep == 1" fxLayout="row" fxFlex>
-                  <div class="label" style="width:200px;">Dziel.stron na el.</div>
-                  <!-- <sit-data-checkbox id="InsideAccSep" #sitControl field="InsideAccSep" label=""></sit-data-checkbox> -->
-                </div>
-                <div *ngIf="activeRowProjectsPub?.InsideAccGad == 1" fxLayout="row" fxFlex>
-                  <div class="label" style="width:200px;">Gadżet</div>
-                  <!-- <sit-data-checkbox id="InsideAccGad" #sitControl field="InsideAccGad" label=""></sit-data-checkbox> -->
-                </div>
-                <div *ngIf="activeRowProjectsPub?.InsideAccHarmonica == 1" fxLayout="row" fxFlex>
-                  <div class="label" style="width:200px;">Harmonijka</div>
-                  <!-- <sit-data-checkbox id="InsideAccHarmonica" #sitControl field="InsideAccHarmonica" label=""></sit-data-checkbox> -->
-                </div>
-                <div *ngIf="activeRowProjectsPub?.InsideAccDieCutInd == 1" fxLayout="row" fxFlex>
-                  <div class="label" style="width:200px;">Ind.sztancowany</div>
-                  <!-- <sit-data-checkbox id="InsideAccDieCutInd" #sitControl field="InsideAccDieCutInd" label=""></sit-data-checkbox> -->
-                </div>
-                <div *ngIf="activeRowProjectsPub?.InsideAccMagnet == 1" fxLayout="row" fxFlex>
-                  <div class="label" style="width:200px;">Magnesiki</div>
-                  <!-- <sit-data-checkbox id="InsideAccMagnet" #sitControl field="InsideAccMagnet" label=""></sit-data-checkbox> -->
-                </div>
-                <div *ngIf="activeRowProjectsPub?.InsideAccSticker == 1" fxLayout="row" fxFlex>
-                  <div class="label" style="width:200px;">Nalepki</div>
-                  <!-- <sit-data-checkbox id="InsideAccSticker" #sitControl field="InsideAccSticker" label=""></sit-data-checkbox> -->
-                </div>
-                <div *ngIf="activeRowProjectsPub?.InsideAccRoundCorners == 1" fxLayout="row" fxFlex>
-                  <div class="label" style="width:200px;">Zaokr.narożniki</div>
-                  <!-- <sit-data-checkbox id="InsideAccRoundCorners" #sitControl field="InsideAccRoundCorners" label=""></sit-data-checkbox> -->
-                </div>
-                <div *ngIf="activeRowProjectsPub?.InsideAccPoster == 1" fxLayout="row" fxFlex>
-                  <div class="label" style="width:200px;">Plakat</div>
-                  <!-- <sit-data-checkbox id="InsideAccPoster" #sitControl field="InsideAccPoster" label=""></sit-data-checkbox> -->
-                </div>
-                <div *ngIf="activeRowProjectsPub?.InsideAccPopUp == 1" fxLayout="row" fxFlex>
-                  <div class="label" style="width:200px;">Pop-up</div>
-                  <!-- <sit-data-checkbox id="InsideAccPopUp" #sitControl field="InsideAccPopUp" label=""></sit-data-checkbox> -->
-                </div>
-                <div *ngIf="activeRowProjectsPub?.InsideAccMusicBox == 1" fxLayout="row" fxFlex>
-                  <div class="label" style="width:200px;">Pozytywka</div>
-                  <!-- <sit-data-checkbox id="InsideAccMusicBox" #sitControl field="InsideAccMusicBox" label=""></sit-data-checkbox> -->
-                </div>
-                <div *ngIf="activeRowProjectsPub?.InsideAccPuzzle == 1" fxLayout="row" fxFlex>
-                  <div class="label" style="width:200px;">Puzzle</div>
-                  <!-- <sit-data-checkbox id="InsideAccPuzzle" #sitControl field="InsideAccPuzzle" label=""></sit-data-checkbox> -->
-                </div>
-                <div *ngIf="activeRowProjectsPub?.InsideAccSpiral == 1" fxLayout="row" fxFlex>
-                  <div class="label" style="width:200px;">Spirala</div>
-                  <!-- <sit-data-checkbox id="InsideAccSpiral" #sitControl field="InsideAccSpiral" label=""></sit-data-checkbox> -->
-                </div>
-                <div *ngIf="activeRowProjectsPub?.InsideAccDieCut == 1" fxLayout="row" fxFlex>
-                  <div class="label" style="width:200px;">Sztanca</div>
-                  <!-- <sit-data-checkbox id="InsideAccDieCut" #sitControl field="InsideAccDieCut" label=""></sit-data-checkbox> -->
-                </div>
-                <div *ngIf="activeRowProjectsPub?.InsideAccInsert == 1" fxLayout="row" fxFlex>
-                  <div class="label" style="width:200px;">Wkładki (papier)</div>
-                  <!-- <sit-data-checkbox id="InsideAccInsert" #sitControl field="InsideAccInsert" label=""></sit-data-checkbox> -->
-                </div>
-
-
-              </div>
-            </div>
-            <br>
-
-            <div *ngIf="activeRowProjectsPub?.ShowMarketing == '1'" fxLayout="row" fxFlex fxLayoutAlign="center center" class ="title">Założenia marketingowe</div>
-
-            <div fxLayout="column" fxFlex *ngIf="activeRowProjectsPub?.MarketingDistFeat !== ''">
-              <div fxFlex fxLayoutAlign="center start" class="subtitle">Cechy wyróżniające produkt na tle konkurencji</div>
-              <div class="text">{{ activeRowProjectsPub?.MarketingDistFeat }}</div>
               <br>
-            </div>
-            <div fxLayout="column" fxFlex *ngIf="activeRowProjectsPub?.MarketingTargetCust !== ''">
-              <div fxFlex fxLayoutAlign="center start" class="subtitle">Klient docelowy (jeśli istotne, rozróżnić: czytelnik/kupujący)</div>
-              <div class="text">{{ activeRowProjectsPub?.MarketingTargetCust }}</div>
+              <div fxLayout="row" fxFlex fxLayoutAlign="center center"><h3>{{ activeRowProjectsPub?.ProjectName }}</h3></div>
               <br>
-            </div>
-            <div fxLayout="column" fxFlex *ngIf="activeRowProjectsPub?.MarketingProdDevConcept !== ''">
-              <div fxFlex fxLayoutAlign="center start" class="subtitle">Koncepcja rozwoju produktu</div>
-              <div class="text">{{ activeRowProjectsPub?.MarketingProdDevConcept }}</div>
-              <br>
-            </div>
-            <div fxLayout="column" fxFlex *ngIf="activeRowProjectsPub?.MarketingBenefits !== ''">
-              <div fxFlex fxLayoutAlign="center start" class="subtitle">Korzyści, jakie daje produkt, klientowi docelowemu (w punktach: cecha powiązana z korzyścią)</div>
-              <div class="text">{{ activeRowProjectsPub?.MarketingBenefits }}</div>
-              <br>
-            </div>
-            <div fxLayout="column" fxFlex *ngIf="activeRowProjectsPub?.MarketingSubject !== ''">
-              <div fxFlex fxLayoutAlign="center start" class="subtitle">Temat i treść, ogólne założenia</div>
-              <div class="text">{{ activeRowProjectsPub?.MarketingSubject }}</div>
-              <br>
-            </div>
-            <div fxLayout="column" fxFlex *ngIf="activeRowProjectsPub?.MarketingDisplay !== ''">
-              <div fxFlex fxLayoutAlign="center start" class="subtitle">Wskazania na produkty własne i konkurencyjne z tej samej grupy towarowej</div>
-              <div class="text">{{ activeRowProjectsPub?.MarketingDisplay }}</div>
-              <br>
-            </div>
-            <div fxLayout="column" fxFlex *ngIf="activeRowProjectsPub?.MarketingDesc4WWW !== ''">
-              <div fxFlex fxLayoutAlign="center start" class="subtitle">Opis na stronę internetową, dla handlowca</div>
-              <div class="text">{{ activeRowProjectsPub?.MarketingDesc4WWW }}</div>
-              <br>
-            </div>
 
-            <div *ngIf="activeRowProjectsPub?.ShowProd == '1'" fxLayout="row" fxFlex fxLayoutAlign="center center" class ="title">Założenia produkcyjne</div>
+              <div fxLayout="row" fxLayoutAlign="start start" >
+                <div>
+                  <div class="cover" fxLayout="row" fxLayoutAlign="start start"><img src="{{Link}}"></div>
+                </div>
+                <div fxLayout="column" fxFlex>
+                  <div fxLayout="row" fxFlex fxLayoutAlign="center center" class ="title">Informacje podstawowe</div>
 
-            <div fxLayout="column" fxFlex *ngIf="activeRowProjectsPub?.Ilustrations !== ''">
-              <div fxFlex fxLayoutAlign="center start" class="subtitle">Ilustracje</div>
-              <div class="text">{{ activeRowProjectsPub?.Ilustrations }}</div>
+                  <div fxLayout="row"><div class="label">Autor tekstu</div><div fxFlex class="text">{{ activeRowProjectsPub?.Author }}</div></div>
+                  <div fxLayout="row"><div class="label">Autor ilustracji</div><div fxFlex  class="text">{{ activeRowProjectsPub?.Illustrator }}</div></div>
+                  <div fxLayout="row"><div class="label">Wydawnictwo aktualne</div><div fxFlex  class="text">{{ activeRowProjectsPub?.ProductsTypeDesc }}</div></div>
+                  <div fxLayout="row"><div class="label">Cena detaliczna</div><div fxFlex  class="text">{{ activeRowProjectsPub?.CoverPrice | number : "1.2-2" }}</div></div>
+                  <div fxLayout="row"><div class="label">Menedżer</div><div fxFlex  class="text">{{ activeRowProjectsPub?.Manager }}</div></div>
+                  <div fxLayout="row"><div class="label">Grafik</div><div fxFlex  class="text">{{ activeRowProjectsPub?.GraphicDesigner }}</div></div>
+                  <div fxLayout="row"><div class="label">Redaktor</div><div fxFlex  class="text">{{ activeRowProjectsPub?.Editor }}</div></div>
+                  <div fxLayout="row"><div class="label">Tłumacz</div><div fxFlex  class="text">{{ activeRowProjectsPub?.Translator }}</div></div>
+                </div>
+              </div>
               <br>
-            </div>
-            <div fxLayout="column" fxFlex *ngIf="activeRowProjectsPub?.InsideLayout !== ''">
-              <div fxFlex fxLayoutAlign="center start" class="subtitle">Layout wnętrza</div>
-              <div class="text">{{ activeRowProjectsPub?.InsideLayout }}</div>
-              <br>
-            </div>
-            <div fxLayout="column" fxFlex *ngIf="activeRowProjectsPub?.Cover !== ''">
-              <div fxFlex fxLayoutAlign="center start" class="subtitle">Okładka</div>
-              <div class="text">{{ activeRowProjectsPub?.Cover }}</div>
-              <br>
-            </div>
-            <div fxLayout="column" fxFlex *ngIf="activeRowProjectsPub?.Text !== ''">
-              <div fxFlex fxLayoutAlign="center start" class="subtitle">Tekst</div>
-              <div class="text">{{ activeRowProjectsPub?.Text }}</div>
-              <br>
-            </div>
-            <div fxLayout="column" fxFlex *ngIf="activeRowProjectsPub?.BookLayout !== ''">
-              <div fxFlex fxLayoutAlign="center start" class="subtitle">Układ książki</div>
-              <div class="text">{{ activeRowProjectsPub?.BookLayout }}</div>
-              <br>
-            </div>
-            <div fxLayout="column" fxFlex *ngIf="activeRowProjectsPub?.Corrections !== ''">
-              <div fxLayout="row" fxFlex fxLayoutAlign="center center" class ="title">Poprawki</div>
-              <div class="text">{{ activeRowProjectsPub?.Corrections }}</div>
-            </div>
-            <br>
-            <!--<div fxLayout="column" fxFlex *ngIf="activeRowProjectsPub?.ProjectDescription !== ''">
-              <div fxLayout="row" fxFlex fxLayoutAlign="center center" class ="title">Opis projektu</div>
-              <div class="text">{{ activeRowProjectsPub?.ProjectDescription }}</div>
-            </div> -->
+              <div fxLayout="row" fxFlex fxLayoutAlign="center center" class ="title">Terminy</div>
 
-      </div>
-      </div>
+              <div fxLayout="row">
+                <div fxLayout="row" fxFlex="50">
+                  <div class="label" style="width:200px;">Początek prac</div><div fxFlex class="text">{{ activeRowProjectsPub?.StartDate | date: 'yyyy-MM-dd'}}</div>
+                </div>
+                <div fxLayout="row" fxFlex="50">
+                  <div class="label" style="width:200px;">Koniec prac</div><div fxFlex class="text">{{ activeRowProjectsPub?.EndDate | date: 'yyyy-MM-dd'}}</div>
+                </div>
+              </div>
+              <div fxLayout="row">
+                <div fxLayout="row" fxFlex="50">
+                  <div class="label" style="width:200px;">Planowana data wydania</div><div fxFlex class="text">{{ activeRowProjectsPub?.ReleaseDatePlan | date: 'yyyy-MM-dd'}}</div>
+                </div>
+                <div fxLayout="row" fxFlex="50">
+                  <div class="label" style="width:200px;">Rzeczywista data wydania</div><div fxFlex class="text">{{ activeRowProjectsPub?.ReleaseDateAct | date: 'yyyy-MM-dd'}}</div>
+                </div>
+              </div>
+              <div fxLayout="row">
+                <div fxLayout="row" fxFlex="50">
+                  <div class="label" style="width:200px;">Data premiery</div><div fxFlex  class="text">{{ activeRowProjectsPub?.PremiereDate | date: 'yyyy-MM-dd'}}</div>
+                </div>
+                <div fxLayout="row" fxFlex="50">
+                  <div class="label" style="width:200px;">Data zamknięcia PDF</div><div fxFlex  class="text">{{ activeRowProjectsPub?.PDFOrdDate | date: 'yyyy-MM-dd'}}</div>
+                </div>
+              </div>
+
+              <div fxLayout="row">
+                <div fxLayout="row" fxFlex="50">
+                  <div class="label" style="width:200px;">Data wysłania plików</div><div fxFlex  class="text">{{ activeRowProjectsPub?.MatDelivDate | date: 'yyyy-MM-dd'}}</div>
+                </div>
+                <div fxLayout="row" fxFlex="50">
+                  <div class="label" style="width:200px;">Data wysłania ozalidów</div><div fxFlex  class="text">{{ activeRowProjectsPub?.OzalidDelivDate | date: 'yyyy-MM-dd'}}</div>
+                </div>
+              </div>
+
+              <!-- <div fxLayout="row" fxFlex fxLayoutAlign="center center" class ="title">Okładka</div> -->
+
+              <br>
+              <div fxLayout="row" fxFlex fxLayoutAlign="center center" class ="title">Dane techniczne</div>
+              <div fxLayout="row" fxFlex>
+                <div fxLayout="column" fxFlex="50" fxLayoutAlign="start stretch">
+                  <div fxFlex fxLayoutAlign="center center" class="subtitle">Oprawa</div>
+                  <div fxLayout="row" fxFlex>
+                    <div class="label" style="width:200px;">Typ</div><div fxFlex  class="text">{{ activeRowProjectsPub?.BindingType }}</div>
+                  </div>
+                  <div fxLayout="row" fxFlex>
+                    <div class="label" style="width:200px;">Grzbiet</div><div fxFlex  class="text">{{ activeRowProjectsPub?.BindingSpine}}</div>
+                  </div>
+                  <div fxLayout="row" fxFlex>
+                    <div class="label" style="width:200px;">Druk</div><div fxFlex  class="text">{{ activeRowProjectsPub?.BindingPrint}}</div>
+                  </div>
+                </div>
+
+                <div fxLayout="column" fxFlex="50">
+                  <div fxFlex fxLayoutAlign="center start" class="subtitle">Wnętrze</div>
+                  <div fxLayout="row" fxFlex>
+                    <div class="label" style="width:200px;">Druk</div><div fxFlex  class="text">{{ activeRowProjectsPub?.InsidePrint}}</div>
+                  </div>
+                  <div fxLayout="row" fxFlex>
+                    <div class="label" style="width:200px;">Papier</div><div fxFlex  class="text">{{ activeRowProjectsPub?.InsidePaper}}</div>
+                  </div>
+                  <div fxLayout="row" fxFlex>
+                    <div class="label" style="width:200px;">Format podstawa</div><div fxFlex  class="text">{{ activeRowProjectsPub?.FormatBase}}</div>
+                  </div>
+                  <div fxLayout="row" fxFlex>
+                    <div class="label" style="width:200px;">Format wysokość</div><div fxFlex  class="text">{{ activeRowProjectsPub?.FormatHeight}}</div>
+                  </div>
+                  <div fxLayout="row" fxFlex>
+                    <div class="label" style="width:200px;">Liczba stron</div><div fxFlex  class="text">{{ activeRowProjectsPub?.NumberOfPages}}</div>
+                  </div>
+                </div>
+              </div>
+
+              <div fxLayout="row" fxFlex>
+                <div fxLayout="column" fxFlex="50">
+                  <div fxFlex fxLayoutAlign="center center" class="subtitle">Oprawa - dodatki</div>
+                  <div *ngIf="activeRowProjectsPub?.NumberOfPages == 1" fxLayout="row" fxFlex>
+                    <div class="label" style="width:200px;">Banderola</div>
+                    <!-- <sit-data-checkbox id="BindingAccStreamer" #sitControl field="BindingAccStreamer" label=""></sit-data-checkbox> -->
+                  </div>
+                  <div *ngIf="activeRowProjectsPub?.BindingAccGlitter == 1" fxLayout="row" fxFlex>
+                    <div class="label" style="width:200px;">Brokat</div>
+                    <!-- <sit-data-checkbox id="BindingAccGlitter" #sitControl field="BindingAccGlitter" label=""></sit-data-checkbox> -->
+                  </div>
+                  <div *ngIf="activeRowProjectsPub?.BindingAccExclusiveCase == 1" fxLayout="row" fxFlex>
+                    <div class="label" style="width:200px;">Ekskluzywne etui</div>
+                    <!-- <sit-data-checkbox id="BindingAccExclusiveCase" #sitControl field="BindingAccExclusiveCase" label=""></sit-data-checkbox> -->
+                  </div>
+                  <div *ngIf="activeRowProjectsPub?.BindingAccLocalFoil == 1" fxLayout="row" fxFlex>
+                    <div class="label" style="width:200px;">Folia miejscowa</div>
+                    <!-- <sit-data-checkbox id="BindingAccLocalFoil" #sitControl field="BindingAccLocalFoil" label=""></sit-data-checkbox> -->
+                  </div>
+                  <div *ngIf="activeRowProjectsPub?.BindingAccSponge == 1" fxLayout="row" fxFlex>
+                    <div class="label" style="width:200px;">Gąbka</div>
+                    <!-- <sit-data-checkbox id="BindingAccSponge" #sitControl field="BindingAccSponge" label=""></sit-data-checkbox> -->
+                  </div>
+                  <div *ngIf="activeRowProjectsPub?.BindingAccHarmonica == 1" fxLayout="row" fxFlex>
+                    <div class="label" style="width:200px;">Harmonijka</div>
+                    <!-- <sit-data-checkbox id="BindingAccHarmonica" #sitControl field="BindingAccHarmonica" label=""></sit-data-checkbox> -->
+                  </div>
+                  <div *ngIf="activeRowProjectsPub?.BindingAccHologram == 1" fxLayout="row" fxFlex>
+                    <div class="label" style="width:200px;">Hologram</div>
+                    <!-- <sit-data-checkbox id="BindingAccHologram" #sitControl field="BindingAccHologram" label=""></sit-data-checkbox> -->
+                  </div>
+                  <div *ngIf="activeRowProjectsPub?.BindingAccLocalVarnishing == 1" fxLayout="row" fxFlex>
+                    <div class="label" style="width:200px;">Lakierowanie miejscowe</div>
+                    <!-- <sit-data-checkbox id="BindingAccLocalVarnishing" #sitControl field="BindingAccLocalVarnishing" label=""></sit-data-checkbox> -->
+                  </div>
+                  <div *ngIf="activeRowProjectsPub?.BindingAccWrapper == 1" fxLayout="row" fxFlex>
+                    <div class="label" style="width:200px;">Obwoluta</div>
+                    <!-- <sit-data-checkbox id="BindingAccWrapper" #sitControl field="BindingAccWrapper" label=""></sit-data-checkbox> -->
+                  </div>
+                  <div *ngIf="activeRowProjectsPub?.BindingAccStapleEye == 1" fxLayout="row" fxFlex>
+                    <div class="label" style="width:200px;">Oczko na zszywkach</div>
+                    <!-- <sit-data-checkbox id="BindingAccStapleEye" #sitControl field="BindingAccStapleEye" label=""></sit-data-checkbox> -->
+                  </div>
+                  <div *ngIf="activeRowProjectsPub?.BindingAccBox == 1" fxLayout="row" fxFlex>
+                    <div class="label" style="width:200px;">Pudełko</div>
+                    <!-- <sit-data-checkbox id="BindingAccBox" #sitControl field="BindingAccBox" label=""></sit-data-checkbox> -->
+                  </div>
+                  <div *ngIf="activeRowProjectsPub?.BindingAccBinder == 1" fxLayout="row" fxFlex>
+                    <div class="label" style="width:200px;">Segregator</div>
+                    <!-- <sit-data-checkbox id="BindingAccBinder" #sitControl field="BindingAccBinder" label=""></sit-data-checkbox> -->
+                  </div>
+                  <div *ngIf="activeRowProjectsPub?.BindingAccLeather == 1" fxLayout="row" fxFlex>
+                    <div class="label" style="width:200px;">Oprawa skórzana</div>
+                    <!-- <sit-data-checkbox id="BindingAccLeather" #sitControl field="BindingAccLeather" label=""></sit-data-checkbox> -->
+                  </div>
+                  <div *ngIf="activeRowProjectsPub?.BindingAccWings == 1" fxLayout="row" fxFlex>
+                    <div class="label" style="width:200px;">Oprawa ze skrzydełkami</div>
+                    <!-- <sit-data-checkbox id="BindingAccWings" #sitControl field="BindingAccWings" label=""></sit-data-checkbox> -->
+                  </div>
+                  <div *ngIf="activeRowProjectsPub?.BindingAccDieCut == 1" fxLayout="row" fxFlex>
+                    <div class="label" style="width:200px;">Oprawa sztancowa</div>
+                    <!-- <sit-data-checkbox id="BindingAccDieCut" #sitControl field="BindingAccDieCut" label=""></sit-data-checkbox> -->
+                  </div>
+                  <div *ngIf="activeRowProjectsPub?.BindingAccRibbon == 1" fxLayout="row" fxFlex>
+                    <div class="label" style="width:200px;">Tasiemka - zakładka</div>
+                    <!-- <sit-data-checkbox id="BindingAccRibbon" #sitControl field="BindingAccRibbon" label=""></sit-data-checkbox> -->
+                  </div>
+                  <div *ngIf="activeRowProjectsPub?.BindingAcc3DPic == 1" fxLayout="row" fxFlex>
+                    <div class="label" style="width:200px;">Trójwymiarowy obrazek</div>
+                    <!-- <sit-data-checkbox id="BindingAcc3DPic" #sitControl field="BindingAcc3DPic" label=""></sit-data-checkbox> -->
+                  </div>
+                  <div *ngIf="activeRowProjectsPub?.BindingAccHandle == 1" fxLayout="row" fxFlex>
+                    <div class="label" style="width:200px;">Uchwyt</div>
+                    <!-- <sit-data-checkbox id="BindingAccHandle" #sitControl field="BindingAccHandle" label=""></sit-data-checkbox> -->
+                  </div>
+
+                </div>
+
+                <div fxLayout="column" fxFlex="50" fxLayoutAlign="none">
+                  <div fxFlex fxLayoutAlign="center start" class="subtitle">Wnętrze - dodatki</div>
+                  <div *ngIf="activeRowProjectsPub?.InsideAccStreamer == 1" fxLayout="row" fxFlex>
+                    <div class="label" style="width:200px;">Brokat</div>
+                    <!-- <sit-data-checkbox id="InsideAccStreamer" #sitControl field="InsideAccStreamer" label=""></sit-data-checkbox> -->
+                  </div>
+                  <div *ngIf="activeRowProjectsPub?.InsideAccCDA == 1" fxLayout="row" fxFlex>
+                    <div class="label" style="width:200px;">Audio CD</div>
+                    <!-- <sit-data-checkbox id="InsideAccCDA" #sitControl field="InsideAccCDA" label=""></sit-data-checkbox> -->
+                  </div>
+                  <div *ngIf="activeRowProjectsPub?.InsideAccCDF == 1" fxLayout="row" fxFlex>
+                    <div class="label" style="width:200px;">Film na CD</div>
+                    <!-- <sit-data-checkbox id="InsideAccCDF" #sitControl field="InsideAccCDF" label=""></sit-data-checkbox> -->
+                  </div>
+                  <div *ngIf="activeRowProjectsPub?.InsideAccCDR == 1" fxLayout="row" fxFlex>
+                    <div class="label" style="width:200px;">CD Rom</div>
+                    <!-- <sit-data-checkbox id="InsideAccCDR" #sitControl field="InsideAccCDR" label=""></sit-data-checkbox> -->
+                  </div>
+                  <div *ngIf="activeRowProjectsPub?.InsideAccSep == 1" fxLayout="row" fxFlex>
+                    <div class="label" style="width:200px;">Dziel.stron na el.</div>
+                    <!-- <sit-data-checkbox id="InsideAccSep" #sitControl field="InsideAccSep" label=""></sit-data-checkbox> -->
+                  </div>
+                  <div *ngIf="activeRowProjectsPub?.InsideAccGad == 1" fxLayout="row" fxFlex>
+                    <div class="label" style="width:200px;">Gadżet</div>
+                    <!-- <sit-data-checkbox id="InsideAccGad" #sitControl field="InsideAccGad" label=""></sit-data-checkbox> -->
+                  </div>
+                  <div *ngIf="activeRowProjectsPub?.InsideAccHarmonica == 1" fxLayout="row" fxFlex>
+                    <div class="label" style="width:200px;">Harmonijka</div>
+                    <!-- <sit-data-checkbox id="InsideAccHarmonica" #sitControl field="InsideAccHarmonica" label=""></sit-data-checkbox> -->
+                  </div>
+                  <div *ngIf="activeRowProjectsPub?.InsideAccDieCutInd == 1" fxLayout="row" fxFlex>
+                    <div class="label" style="width:200px;">Ind.sztancowany</div>
+                    <!-- <sit-data-checkbox id="InsideAccDieCutInd" #sitControl field="InsideAccDieCutInd" label=""></sit-data-checkbox> -->
+                  </div>
+                  <div *ngIf="activeRowProjectsPub?.InsideAccMagnet == 1" fxLayout="row" fxFlex>
+                    <div class="label" style="width:200px;">Magnesiki</div>
+                    <!-- <sit-data-checkbox id="InsideAccMagnet" #sitControl field="InsideAccMagnet" label=""></sit-data-checkbox> -->
+                  </div>
+                  <div *ngIf="activeRowProjectsPub?.InsideAccSticker == 1" fxLayout="row" fxFlex>
+                    <div class="label" style="width:200px;">Nalepki</div>
+                    <!-- <sit-data-checkbox id="InsideAccSticker" #sitControl field="InsideAccSticker" label=""></sit-data-checkbox> -->
+                  </div>
+                  <div *ngIf="activeRowProjectsPub?.InsideAccRoundCorners == 1" fxLayout="row" fxFlex>
+                    <div class="label" style="width:200px;">Zaokr.narożniki</div>
+                    <!-- <sit-data-checkbox id="InsideAccRoundCorners" #sitControl field="InsideAccRoundCorners" label=""></sit-data-checkbox> -->
+                  </div>
+                  <div *ngIf="activeRowProjectsPub?.InsideAccPoster == 1" fxLayout="row" fxFlex>
+                    <div class="label" style="width:200px;">Plakat</div>
+                    <!-- <sit-data-checkbox id="InsideAccPoster" #sitControl field="InsideAccPoster" label=""></sit-data-checkbox> -->
+                  </div>
+                  <div *ngIf="activeRowProjectsPub?.InsideAccPopUp == 1" fxLayout="row" fxFlex>
+                    <div class="label" style="width:200px;">Pop-up</div>
+                    <!-- <sit-data-checkbox id="InsideAccPopUp" #sitControl field="InsideAccPopUp" label=""></sit-data-checkbox> -->
+                  </div>
+                  <div *ngIf="activeRowProjectsPub?.InsideAccMusicBox == 1" fxLayout="row" fxFlex>
+                    <div class="label" style="width:200px;">Pozytywka</div>
+                    <!-- <sit-data-checkbox id="InsideAccMusicBox" #sitControl field="InsideAccMusicBox" label=""></sit-data-checkbox> -->
+                  </div>
+                  <div *ngIf="activeRowProjectsPub?.InsideAccPuzzle == 1" fxLayout="row" fxFlex>
+                    <div class="label" style="width:200px;">Puzzle</div>
+                    <!-- <sit-data-checkbox id="InsideAccPuzzle" #sitControl field="InsideAccPuzzle" label=""></sit-data-checkbox> -->
+                  </div>
+                  <div *ngIf="activeRowProjectsPub?.InsideAccSpiral == 1" fxLayout="row" fxFlex>
+                    <div class="label" style="width:200px;">Spirala</div>
+                    <!-- <sit-data-checkbox id="InsideAccSpiral" #sitControl field="InsideAccSpiral" label=""></sit-data-checkbox> -->
+                  </div>
+                  <div *ngIf="activeRowProjectsPub?.InsideAccDieCut == 1" fxLayout="row" fxFlex>
+                    <div class="label" style="width:200px;">Sztanca</div>
+                    <!-- <sit-data-checkbox id="InsideAccDieCut" #sitControl field="InsideAccDieCut" label=""></sit-data-checkbox> -->
+                  </div>
+                  <div *ngIf="activeRowProjectsPub?.InsideAccInsert == 1" fxLayout="row" fxFlex>
+                    <div class="label" style="width:200px;">Wkładki (papier)</div>
+                    <!-- <sit-data-checkbox id="InsideAccInsert" #sitControl field="InsideAccInsert" label=""></sit-data-checkbox> -->
+                  </div>
+
+
+                </div>
+              </div>
+              <br>
+
+              <div *ngIf="activeRowProjectsPub?.ShowMarketing == '1'" fxLayout="row" fxFlex fxLayoutAlign="center center" class ="title">Założenia marketingowe</div>
+
+              <div fxLayout="column" fxFlex *ngIf="activeRowProjectsPub?.MarketingDistFeat !== ''">
+                <div fxFlex fxLayoutAlign="center start" class="subtitle">Cechy wyróżniające produkt na tle konkurencji</div>
+                <div class="text">{{ activeRowProjectsPub?.MarketingDistFeat }}</div>
+                <br>
+              </div>
+              <div fxLayout="column" fxFlex *ngIf="activeRowProjectsPub?.MarketingTargetCust !== ''">
+                <div fxFlex fxLayoutAlign="center start" class="subtitle">Klient docelowy (jeśli istotne, rozróżnić: czytelnik/kupujący)</div>
+                <div class="text">{{ activeRowProjectsPub?.MarketingTargetCust }}</div>
+                <br>
+              </div>
+              <div fxLayout="column" fxFlex *ngIf="activeRowProjectsPub?.MarketingProdDevConcept !== ''">
+                <div fxFlex fxLayoutAlign="center start" class="subtitle">Koncepcja rozwoju produktu</div>
+                <div class="text">{{ activeRowProjectsPub?.MarketingProdDevConcept }}</div>
+                <br>
+              </div>
+              <div fxLayout="column" fxFlex *ngIf="activeRowProjectsPub?.MarketingBenefits !== ''">
+                <div fxFlex fxLayoutAlign="center start" class="subtitle">Korzyści, jakie daje produkt, klientowi docelowemu (w punktach: cecha powiązana z korzyścią)</div>
+                <div class="text">{{ activeRowProjectsPub?.MarketingBenefits }}</div>
+                <br>
+              </div>
+              <div fxLayout="column" fxFlex *ngIf="activeRowProjectsPub?.MarketingSubject !== ''">
+                <div fxFlex fxLayoutAlign="center start" class="subtitle">Temat i treść, ogólne założenia</div>
+                <div class="text">{{ activeRowProjectsPub?.MarketingSubject }}</div>
+                <br>
+              </div>
+              <div fxLayout="column" fxFlex *ngIf="activeRowProjectsPub?.MarketingDisplay !== ''">
+                <div fxFlex fxLayoutAlign="center start" class="subtitle">Wskazania na produkty własne i konkurencyjne z tej samej grupy towarowej</div>
+                <div class="text">{{ activeRowProjectsPub?.MarketingDisplay }}</div>
+                <br>
+              </div>
+              <div fxLayout="column" fxFlex *ngIf="activeRowProjectsPub?.MarketingDesc4WWW !== ''">
+                <div fxFlex fxLayoutAlign="center start" class="subtitle">Opis na stronę internetową, dla handlowca</div>
+                <div class="text">{{ activeRowProjectsPub?.MarketingDesc4WWW }}</div>
+                <br>
+              </div>
+
+              <div *ngIf="activeRowProjectsPub?.ShowProd == '1'" fxLayout="row" fxFlex fxLayoutAlign="center center" class ="title">Założenia produkcyjne</div>
+
+              <div fxLayout="column" fxFlex *ngIf="activeRowProjectsPub?.Ilustrations !== ''">
+                <div fxFlex fxLayoutAlign="center start" class="subtitle">Ilustracje</div>
+                <div class="text">{{ activeRowProjectsPub?.Ilustrations }}</div>
+                <br>
+              </div>
+              <div fxLayout="column" fxFlex *ngIf="activeRowProjectsPub?.InsideLayout !== ''">
+                <div fxFlex fxLayoutAlign="center start" class="subtitle">Layout wnętrza</div>
+                <div class="text">{{ activeRowProjectsPub?.InsideLayout }}</div>
+                <br>
+              </div>
+              <div fxLayout="column" fxFlex *ngIf="activeRowProjectsPub?.Cover !== ''">
+                <div fxFlex fxLayoutAlign="center start" class="subtitle">Okładka</div>
+                <div class="text">{{ activeRowProjectsPub?.Cover }}</div>
+                <br>
+              </div>
+              <div fxLayout="column" fxFlex *ngIf="activeRowProjectsPub?.Text !== ''">
+                <div fxFlex fxLayoutAlign="center start" class="subtitle">Tekst</div>
+                <div class="text">{{ activeRowProjectsPub?.Text }}</div>
+                <br>
+              </div>
+              <div fxLayout="column" fxFlex *ngIf="activeRowProjectsPub?.BookLayout !== ''">
+                <div fxFlex fxLayoutAlign="center start" class="subtitle">Układ książki</div>
+                <div class="text">{{ activeRowProjectsPub?.BookLayout }}</div>
+                <br>
+              </div>
+              <div fxLayout="column" fxFlex *ngIf="activeRowProjectsPub?.Corrections !== ''">
+                <div fxLayout="row" fxFlex fxLayoutAlign="center center" class ="title">Poprawki</div>
+                <div class="text">{{ activeRowProjectsPub?.Corrections }}</div>
+              </div>
+              <br>
+              <!--<div fxLayout="column" fxFlex *ngIf="activeRowProjectsPub?.ProjectDescription !== ''">
+                <div fxLayout="row" fxFlex fxLayoutAlign="center center" class ="title">Opis projektu</div>
+                <div class="text">{{ activeRowProjectsPub?.ProjectDescription }}</div>
+              </div> -->
+
+        </div>
+        </div>
+
+      </sit-data-set-container>
     </div>
   </div>
 </sit-dict-container>

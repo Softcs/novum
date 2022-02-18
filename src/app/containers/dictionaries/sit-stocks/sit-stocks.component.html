@@ -4,15 +4,15 @@
       <div fxLayout="column" fxFill class="content">
         <sit-data-set-container ident="sitFilterStocks" fxLayout="row">
           <div class="sit-filter-bar" fxLayout="row">
-              <sit-data-input #sitControl field="searchStocks" label="Filtruj produkty" placeholder="Identyfikator, nazwa" appearance="outline" style="width: 300px;"></sit-data-input>
-              <sit-data-input #sitControl field="WarehouseIdent" label="Magazyn" placeholder="" appearance="outline" style="width: 150px;"></sit-data-input>
-              <sit-data-input #sitControl field="SaleStatus" label="Status sprz." placeholder="" appearance="outline" style="width: 200px;" showRefreshButton="true"
-                [lookupDisplayFields] = "['SaleStatus', 'SaleStatusDescription']"
-              ></sit-data-input>
+            <sit-data-input #sitControl field="searchStocks" label="Filtruj produkty" placeholder="Identyfikator, nazwa" appearance="outline" style="width: 300px;"></sit-data-input>
+            <sit-data-input #sitControl field="WarehouseIdent" label="Magazyn" placeholder="" appearance="outline" style="width: 150px;"></sit-data-input>
+            <sit-data-input #sitControl field="SaleStatus" label="Status sprz." placeholder="" appearance="outline" style="width: 200px;" [showRefreshButton]="true"
+              [lookupDisplayFields] = "['SaleStatus', 'SaleStatusDescription']"
+            ></sit-data-input>
+            <sit-data-checkbox #sitControl field="WithMinimumLevelOnly" label="Ze stanem min" labelPosition="after" checked="false"></sit-data-checkbox>
           </div>
         </sit-data-set-container>
-
-        <as-split direction="horizontal">
+        <as-split #sitSpliter direction="horizontal">
           <as-split-area [size]="80">
             <div fxFlex>
               <sit-data-set-container ident="sitStocks" (activeRowChanged)="activeRowStocksChanged($event)">

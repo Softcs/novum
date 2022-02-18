@@ -3,8 +3,10 @@
   >
   <sit-data-set-container ident="sitAgreementsBillingTypesEdit">
     <div class="sit-proc-params-content" fxLayout="column">
-      <sit-data-input #sitControl type="text" field="FormsOfReleaseGroupIdent" label="Grupa form wydania" appearance="outline"></sit-data-input>
-      <sit-data-input #sitControl type="text" field="BillingTypeIdent" label="Typ rozliczenia" appearance="outline" ></sit-data-input>
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <sit-data-input #sitControl type="text" field="FormsOfReleaseGroupIdent" label="Grupa form wydania" appearance="outline" fxFlex=30></sit-data-input>
+        <sit-data-input #sitControl type="text" field="BillingTypeIdent" label="Typ rozliczenia" appearance="outline" fxFlex=30></sit-data-input>
+      </div>
       <sit-data-radio #sitControl field="PriceType" type="row" label="Rodzaj ceny"
         [buttons]="[{'caption':'nie dotyczy','value': '0', 'checked':true},{'caption':'okładkowa bez VAT','value':'1'},{'caption':'okładkowa z VAT','value':'2'},
           {'caption':'zbytu planowana','value':'3'},{'caption':'zbytu rzeczywista','value':'4'}]"

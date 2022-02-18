@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Inject, LOCALE_ID } from '@angular/core';
 import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-dict-base.component';
+import { GatewayService } from '@app/_services';
+import { GridService } from '@app/_services/grid.service';
+import { UrlService } from '@app/_services/url.service';
 
 @Component({
   selector: 'app-sit-util-sql-objects',
@@ -8,13 +11,29 @@ import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-di
   host: {class: 'router-flex'}
 })
 export class SitUtilSqlObjectsComponent extends SitDictBaseComponent {
+  public autoGroupColumnDef;
+
+  constructor(
+    protected gatewayService: GatewayService,
+    protected gridService: GridService,
+    protected urlService: UrlService,
+    @Inject(LOCALE_ID) protected locale: string) {
+      super(gatewayService, gridService, urlService, locale)
+
+      this.autoGroupColumnDef = { 
+        cellRendererParams: {
+          suppressCount: true
+        }
+      }
+    };
+
   public prepareColumnsDefinitnion() {
    this.gridColumnsDefinition["sitUtilSQLObjects"] = [
 
       { headerName: 'Object name', field: 'ObjectName', filter: 'agTextColumnFilter', width: 400 },
       { headerName: 'Object type', field: 'Type', filter: 'agTextColumnFilter', width: 100 },
-      { headerName: 'For script', field: 'ForScript', width: 100, renderType: 'checkbox'},  
-      { headerName: 'Is common', field: 'IsCommonData', width: 100, renderType: 'checkbox'}      
+      { headerName: 'For script', field: 'ForScript', width: 100, renderType: 'checkbox', cellClass: "grid-cell-centered"},  
+      { headerName: 'Is common', field: 'IsCommonData', width: 100, renderType: 'checkbox', cellClass: "grid-cell-centered"}      
     ];
     
    this.gridColumnsDefinition["sitUtilSQLObjectVersions"] = [       
@@ -44,6 +63,15 @@ export class SitUtilSqlObjectsComponent extends SitDictBaseComponent {
        { headerName: 'sit_job_abroad', field: 'sit_job_abroad_diff', width: 150, renderType: 'checkbox'},
        { headerName: 'sit_publicat', field: 'sit_publicat_diff', width: 150, renderType: 'checkbox'},
        { headerName: 'sit_chobot', field: 'sit_chobot_diff', width: 150, renderType: 'checkbox'},
-      ]
+      ];
+
+      this.gridColumnsDefinition["sitUtilCheckCommonDataTablePivot"] = [       
+        { headerName: 'Table name', field: 'TableName', filter: 'agTextColumnFilter', width: 200,
+          rowGroup: true, enableRowGroup: true, enablePivot: true },
+        { headerName: 'DB name', field: 'dbName', filter: 'agTextColumnFilter', width: 100, sort: 'desc', 
+          pivot: true, enablePivot: true },
+        { headerName: 'diff', field: 'diff', width: 150, renderType: 'checkbox', cellClass: "grid-cell-centered",
+          aggFunc: 'min', enableValue: true },
+       ]
   }
 }

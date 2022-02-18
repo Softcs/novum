@@ -66,4 +66,8 @@ export class SitDictBaseComponent implements OnInit, AfterViewInit {
   public getStringValue(value: any) {
     return value === null || value === undefined ? '' : value;
   }
+
+  public activeRow(ident: string) {
+    return this.dictContainer?.activeRow(ident);
+  }
 }

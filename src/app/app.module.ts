@@ -263,6 +263,11 @@ import { SitUtilProcConvertUpdateFrameBodyComponent } from './containers/diction
 import { SitDialogConfirmSeletedRowsComponent } from './components/sit-dialog-confirm-selected-rows';
 import { SitActionsSelectedProgressComponent } from './components/controls/sit-actions-selected-progress/sit-actions-selected-progress.component';
 import { SitActionsSelectedProgressItemComponent } from './components/controls/sit-actions-selected-progress/sit-actions-selected-progress-item/sit-actions-selected-progress-item.component';
+import { SitProductWarehousesConfigEditComponent } from './containers/dictionaries/sit-products/actions/sit-product-warehouses-config-edit/sit-product-warehouses-config-edit.component';
+import { SitAnalysisBankStatementPosComponent } from './containers/dictionaries/sit-analysis-bank-statement-pos/sit-analysis-bank-statement-pos.component';
+import { SitPubPrintCostAnalysisComponent } from './containers/dictionaries/sit-pub-print-cost-analysis/sit-pub-print-cost-analysis.component';
+import { SitParams4EmployeesSettlementsComponent } from './containers/dictionaries//sit-params4-employees-settlements/sit-params4-employees-settlements.component';
+import { SitParams4EmployeesSettlementsEditComponent } from './containers/dictionaries/sit-params4-employees-settlements/actions/sit-params4-employees-settlements-edit/sit-params4-employees-settlements-edit.component';
 
 
 @NgModule({
@@ -512,7 +517,12 @@ import { SitActionsSelectedProgressItemComponent } from './components/controls/s
         SitProducts4PubEditComponent,
         SitHRBatches4InvoicingComponent,
         SitHRBatches4InvoicingEditComponent,
-        SitUtilProcConvertUpdateFrameBodyComponent
+        SitUtilProcConvertUpdateFrameBodyComponent,
+        SitProductWarehousesConfigEditComponent,
+        SitAnalysisBankStatementPosComponent,
+        SitPubPrintCostAnalysisComponent,
+        SitParams4EmployeesSettlementsComponent,
+        SitParams4EmployeesSettlementsEditComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
