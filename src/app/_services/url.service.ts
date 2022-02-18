@@ -38,28 +38,14 @@ export class UrlService {
   }
 
   getAnonymousRepUrl( guid: string ){
-    return environment.apiUrl
-        + '/service/show/anonymous/report/'
-        + this.currentUser.company.companyGUID + '/'
-        + guid
+    return `${environment.apiUrl}/service/show/anonymous/report/${this.currentUser.company.companyGUID}/${guid}`;
   }
 
   getGenXLSUrl(activeRow: any){
-    return environment.apiUrl
-        + '/service/temporary/generate/'
-        + this.currentUser.token + '/'
-        + this.currentUser.connection + '?'
-        + 'download=1' +'&'
-        + 'identity=' + activeRow['__Identity__']
+    return `${environment.apiUrl}/service/temporary/generate/${this.currentUser.token}/${this.currentUser.connection}?download=1&identity=${activeRow['__Identity__']}`;
   }
 
   getImportTemplateUrl(templateFileName:  string, templateFullFileName: string): string {
-    return environment.apiUrl
-        + '/service/attachments/get/'
-        + this.currentUser.token + '/'
-        + this.currentUser.connection 
-        + '/importTemplates/download/'
-        + templateFileName + '/'
-        + (templateFullFileName ? templateFullFileName : "noFileName");
-  }  
+    return `${environment.apiUrl}/service/attachments/get/${this.currentUser.token}/${this.currentUser.connection}/importTemplates/download/${templateFileName}/${templateFullFileName ? templateFullFileName : "noFileName"}`;
+  }
 }
