@@ -4,10 +4,11 @@
   <sit-data-set-container ident="sitImportFromFile">
     <div class="sit-proc-params-content" fxLayout="column">
       <div fxLayout="row">
-        <button mat-stroked-button color="primary" (click)="getTemplate()" style="width: 240px;"><mat-icon>attach_file</mat-icon>Pobierz wzorzec importu</button>
+        <button mat-stroked-button color="primary" (click)="getTemplate()" style="width: 220px;"><mat-icon>attach_file</mat-icon>Pobierz wzorzec importu</button>
+        <sit-data-checkbox #sitControl field="delExistingRows" label="Usuń istniejące wiersze przed importem"></sit-data-checkbox>
       </div>
       <div fxLayout="row">
-        <sit-files-button #sitSimpleButton fieldIdent="sitImportsG" fieldFileNames="fileName"></sit-files-button >
+        <sit-files-button #sitSimpleButton fieldIdent="sitImportsG" fieldFileNames="fileName" pathIdent="pathIdent"></sit-files-button >
         <sit-data-input #sitControl type="text" field="fileName" label="Nazwa pliku" appearance="outline" style="width: 500px;"></sit-data-input>
       </div>
     </div>

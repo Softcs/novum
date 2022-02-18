@@ -266,6 +266,8 @@ import { SitPubPrintCostAnalysisComponent } from './containers/dictionaries/sit-
 import { SitParams4EmployeesSettlementsComponent } from './containers/dictionaries//sit-params4-employees-settlements/sit-params4-employees-settlements.component';
 import { SitParams4EmployeesSettlementsEditComponent } from './containers/dictionaries/sit-params4-employees-settlements/actions/sit-params4-employees-settlements-edit/sit-params4-employees-settlements-edit.component';
 import { SitImportFromFileComponent } from './containers/dictionaries/_common/actions/sit-import-from-file/sit-import-from-file.component';
+import { SitImportsTemplatesComponent } from './containers/dictionaries/sit-imports-templates/sit-imports-templates.component';
+import { SitImportsTemplatesEditComponent } from './containers/dictionaries/sit-imports-templates/actions/sit-imports-templates-edit/sit-imports-templates-edit.component';
 
 
 @NgModule({
@@ -518,7 +520,9 @@ import { SitImportFromFileComponent } from './containers/dictionaries/_common/ac
         SitPubPrintCostAnalysisComponent,
         SitParams4EmployeesSettlementsComponent,
         SitParams4EmployeesSettlementsEditComponent,
-        SitImportFromFileComponent
+        SitImportFromFileComponent,
+        SitImportsTemplatesComponent,
+        SitImportsTemplatesEditComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
