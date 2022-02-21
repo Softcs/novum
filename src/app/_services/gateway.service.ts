@@ -278,7 +278,8 @@ export class GatewayService {
 
         if (pathIdent) {
             pathIdent += '/';
-        }
+        } else {pathIdent = '';}
+        
         const url = `/service/upload/files/${this.currentUserValue?.token}/${pathIdent}${fileId}/${fileName}`;
         const req = new HttpRequest('POST', `${environment.apiUrl}${url}`, fileData, options);
         return this.http.request(req);
