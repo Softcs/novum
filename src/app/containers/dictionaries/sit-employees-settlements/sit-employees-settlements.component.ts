@@ -1,3 +1,4 @@
+import { formatDate } from '@angular/common';
 import { Component, OnInit, ViewChild, ViewChildren, QueryList,LOCALE_ID, Inject } from '@angular/core';
 import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-dict-base.component';
 import { DataSetWrapper } from '@app/_models';
@@ -9,6 +10,8 @@ import { DataSetWrapper } from '@app/_models';
   host: {class: 'router-flex'}
 })
 export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
+
+  detailCellRendererParams;
 
   public prepareColumnsDefinitnion() {
     this.gridColumnsDefinition['sitEmployeesSettlements'] = [
@@ -392,7 +395,7 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
         children: [
           { headerName: 'Nazwisko', field: 'EmployeeName', tooltipField: 'EmployeeName', sort: 'asc', width: 180, pinned: 'left',
             checkboxSelection: true, headerCheckboxSelection: true, headerCheckboxSelectionFilteredOnly: true,
-            cellClass: ['font11','textFormat']
+            cellClass: ['font11','textFormat'],cellRenderer: 'agGroupCellRenderer'
           },
           { headerName: 'Ident.', field: 'EmployeeIdent', tooltipField: 'EmployeeIdent', width: 100, pinned: 'left',
             cellClass: ['font11','textFormat']
@@ -551,7 +554,7 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
           renderType: 'number', renderFormat: '1.2-2',
           cellClass: ['font11','numberFormat2Dec'],
         },
-        { headerName: 'ZUS dod. podst.', field: 'ZUSAddBase', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 100, suppressMenu: true, agr: 'sum', columnGroupShow: "open",
+        { headerName: 'ZUS dod. podst.', headerTooltip: 'ZUS dodatkowy - podstawa', field: 'ZUSAddBase', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 100, suppressMenu: true, agr: 'sum', columnGroupShow: "open",
           renderType: 'number',
           cellClass: ['font11','numberFormat2Dec'],
         },            
@@ -696,7 +699,21 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
         renderType: 'number',
       },
     ];
-  }
+
+    this.detailCellRendererParams = {
+      detailGridOptions: {
+        columnDefs: [
+          { headerName: 'Etat', field: 'JobTime', width: 50, suppressMenu: true },
+          { headerName: 'Dni umowy', field: 'ContractDays', type: 'numericColumn', suppressMenu: true,  width: 100},
+          { headerName: 'Dni url. nieusp.', headerTooltip: 'Dni urlopu nieusprawiedliwionego',field: 'VacDaysN', type: 'numericColumn', suppressMenu: true,  width: 100},
+        ],
+      },
+  
+      getDetailRowData: function (params) {
+          params.successCallback(params.data.Details);
+      },
+    };
+  };
 
 
   getAttachment() {
