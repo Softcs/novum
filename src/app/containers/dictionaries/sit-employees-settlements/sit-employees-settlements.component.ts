@@ -393,7 +393,7 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
     this.gridColumnsDefinition['sitEmployeesSettlementsContr'] = [
       { headerName: 'Pracownik',
         children: [
-          { headerName: 'Nazwisko', field: 'EmployeeName', tooltipField: 'EmployeeName', sort: 'asc', width: 180, pinned: 'left',
+          { headerName: 'Nazwisko', field: 'EmployeeName', tooltipField: 'EmployeeName', sort: 'asc', width: 220, pinned: 'left',
             checkboxSelection: true, headerCheckboxSelection: true, headerCheckboxSelectionFilteredOnly: true,
             cellClass: ['font11','textFormat'],cellRenderer: 'agGroupCellRenderer'
           },
