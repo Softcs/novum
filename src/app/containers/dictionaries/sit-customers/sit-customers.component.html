@@ -1,154 +1,188 @@
 <sit-dict-container ident="sitCustomers" #sitDictcontainer fxFill>
   <div fxLayout="column" fxFill >
     <as-split direction="horizontal">
-      <as-split-area [size]="55">
+      <as-split-area [size]="25">
         <div fxLayout="column" fxFill class="content">
           <div class="sit-filter-bar">
             <sit-data-set-container ident="sitFilterCustomers" >
                 <sit-data-input #sitControl id="searchCustomers" field="searchCustomers" label="Filtruj kontrahentów" placeholder="Nazwa, NIP, Identyfikator" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
             </sit-data-set-container>
           </div>
-          <sit-data-set-container ident="sitCustomers" showActionsToolbar="true" #sitDataSetContainer fxFlex fxLayout="column">
+          <sit-data-set-container ident="sitCustomers" [showActionsToolbar]="true" #sitDataSetContainer fxFlex fxLayout="column">
             <div class="data-table" fxFlex>
               <ag-grid-angular
                 #sitSetDataSource
                 style="width: 100%; height: 100%;"
                 class="ag-theme-balham"
+                [rowHeight]="60"
               >
               </ag-grid-angular>
             </div>
           </sit-data-set-container>
         </div>
       </as-split-area>
-      <as-split-area [size]="45">
+      <as-split-area [size]="75">
         <div fxLayout="column" fxFill>
           <mat-tab-group id="tab-group" animationDuration="0ms">
-            <mat-tab label="Podstawowe">
-              <sit-data-set-container  ident="sitCustomers" fxFlex>
-                <div fxLayout="column" fxFill fxLayoutGap="5px" class="content">
-                  <mat-card>
+            <mat-tab label="Dane podstawowe">
+              <sit-data-set-container ident="sitCustomersOneRow" fxFill>
+                <div fxLayout="row" fxFlex="60">
+                  <div fxLayout="column" fxFill fxLayoutGap="5px" class="content">
+                    <mat-card>
+                      <mat-card-content>
+                        <div fxLayout="row">
+                          <sit-data-checkbox id="IsRecipient" #sitControl field="IsRecipient" label="Odbiorca" readonly="true"></sit-data-checkbox>
+                          <sit-data-checkbox id="IsSupplier" #sitControl field="IsSupplier" label="Dostawca" readonly="true"></sit-data-checkbox>
+                        </div>
+                        <div fxLayout="row">
+                          <sit-data-input type="text" id="CustIdent" #sitControl field="CustIdent" label="Identyfikator" [showRefresh]=false appearance="outline" fxFlex [readonly]=true></sit-data-input>
+                          <sit-data-input type="text" id="VATId" #sitControl field="VATId" label="NIP" [showRefresh]=false appearance="outline" style="width: 150px" [readonly]=true></sit-data-input>
+                          <sit-data-input type="text" id="REGON" #sitControl field="REGON" label="REGON" [showRefresh]=false appearance="outline" style="width: 150px" [readonly]=true></sit-data-input>
+                          <sit-data-input type="text" id="KRS" #sitControl field="KRS" label="KRS" [showRefresh]=false appearance="outline" style="width: 150px" [readonly]=true></sit-data-input>
+                        </div>
+                        <div fxLayout="row">
+                          <sit-data-input type="text" id="CustName" #sitControl field="CustName" label="Nazwa" [showRefresh]=false appearance="outline" style="width: 100%" [readonly]=true></sit-data-input>
+                        </div>
+                        <div fxLayout="row">
+                          <sit-data-input type="text" id="CountrySymbol" #sitControl field="CountrySymbol" label="Kraj" [showRefresh]=false appearance="outline"  style="width: 100px"  [readonly]=true></sit-data-input>
+                          <sit-data-input type="text" id="PostCode" #sitControl field="PostCode" label="Kod pocztowy" [showRefresh]=false appearance="outline" style="width: 100px" [readonly]=true></sit-data-input>
+                          <sit-data-input type="text" id="City" #sitControl field="City" label="Miasto" [showRefresh]=false appearance="outline"  fxFlex  [readonly]=true></sit-data-input>
+                        </div>
+                        <div fxLayout="row">
+                          <sit-data-input type="text" id="Street" #sitControl field="Street" label="Ulica" [showRefresh]=false appearance="outline" fxFlex [readonly]=true></sit-data-input>
+                          <sit-data-input type="text" id="HouseNum" #sitControl field="HouseNum" label="Numer" [showRefresh]=false appearance="outline" style="width: 100px" [readonly]=true></sit-data-input>
+                        </div>
+                        <div fxLayout="row">
+                          <sit-data-input type="text" id="CustIdent_Payer" #sitControl field="CustIdent_Payer" label="Płatnik" [showRefresh]=false appearance="outline" fxFlex [readonly]=true></sit-data-input>
+                          <sit-data-input type="text" id="CustName_Payer" #sitControl field="CustName_Payer" label="Nazwa" [showRefresh]=false appearance="outline" style="width: 450px" [readonly]=true></sit-data-input>
+                        </div>
+                        <div fxLayout="row">
+                          <sit-data-input type="text" id="PhoneNumber" #sitControl field="PhoneNumber" label="Nr telefonu" [showRefresh]=false appearance="outline" [readonly]=true fxFlex="30"></sit-data-input>
+                          <sit-data-input type="text" id="AccountManager" #sitControl field="AccountManager" label="Opiekun" [showRefresh]=false appearance="outline" [readonly]=true fxFlex="30"></sit-data-input>
+                        </div>
+                        <div fxLayout="row">
+                          <sit-data-input type="text" id="OldCustName" #sitControl field="OldCustName" label="Stara nazwa" [showRefresh]=false appearance="outline"  [readonly]=true fxFlex="40"></sit-data-input>
+                          <sit-data-input type="text" id="ExtIdent" #sitControl field="ExtIdent" label="Identyfikator zewnętrzny" [showRefresh]=false appearance="outline"  [readonly]=true fxFlex="30"></sit-data-input>
+                          <sit-data-input type="text" id="ExtIdent02" #sitControl field="ExtIdent02" label="Identyfikator zewnętrzny 2" [showRefresh]=false appearance="outline"  [readonly]=true fxFlex="30"></sit-data-input>
+                        </div>
+                      </mat-card-content>
+                    </mat-card>
+                    <mat-card>
+                      <mat-card-content>
+                        <div fxLayout="row">
+                          <sit-data-input type="text" #sitControl field="InvoiceDivisionKindDesc" label="Podział na faktury wg." appearance="outline" [readonly]=true fxFlex="50"></sit-data-input>
+                          <sit-data-input type="text" #sitControl field="InvoicePosDivisionKindDesc" label="Podział na pozycje wg." appearance="outline" [readonly]=true fxFlex="50"></sit-data-input>
+                        </div>
+                      </mat-card-content>
+                    </mat-card>
+                    <mat-card fxFlex>
+                      <mat-card-content>
+                      </mat-card-content>
+                    </mat-card>
+                  </div>
+                </div>
+                <div fxLayout="row" fxFlex="40">
+                  <mat-card fxFill>
                     <mat-card-content>
-                      <div fxLayout="row">
-                        <sit-data-checkbox id="IsRecipient" #sitControl field="IsRecipient" label="Odbiorca" readonly="true"></sit-data-checkbox>
-                        <sit-data-checkbox id="IsSupplier" #sitControl field="IsSupplier" label="Dostawca" readonly="true"></sit-data-checkbox>
-                      </div>
-                      <div fxLayout="row">
-                        <sit-data-input type="text" id="CustIdent" #sitControl field="CustIdent" label="Identyfikator" [showRefresh]=false appearance="outline" fxFlex [readonly]=true></sit-data-input>
-                        <sit-data-input type="text" id="VATId" #sitControl field="VATId" label="NIP" [showRefresh]=false appearance="outline" style="width: 150px" [readonly]=true></sit-data-input>
-                        <sit-data-input type="text" id="REGON" #sitControl field="REGON" label="REGON" [showRefresh]=false appearance="outline" style="width: 150px" [readonly]=true></sit-data-input>
-                        <sit-data-input type="text" id="KRS" #sitControl field="KRS" label="KRS" [showRefresh]=false appearance="outline" style="width: 150px" [readonly]=true></sit-data-input>
-                      </div>
-                      <div fxLayout="row">
-                        <sit-data-input type="text" id="CustName" #sitControl field="CustName" label="Nazwa" [showRefresh]=false appearance="outline" style="width: 100%" [readonly]=true></sit-data-input>
-                      </div>
-                      <div fxLayout="row">
-                        <sit-data-input type="text" id="CountrySymbol" #sitControl field="CountrySymbol" label="Kraj" [showRefresh]=false appearance="outline"  style="width: 100px"  [readonly]=true></sit-data-input>
-                        <sit-data-input type="text" id="PostCode" #sitControl field="PostCode" label="Kod pocztowy" [showRefresh]=false appearance="outline" style="width: 100px" [readonly]=true></sit-data-input>
-                        <sit-data-input type="text" id="City" #sitControl field="City" label="Miasto" [showRefresh]=false appearance="outline"  fxFlex  [readonly]=true></sit-data-input>
-                      </div>
-                      <div fxLayout="row">
-                        <sit-data-input type="text" id="Street" #sitControl field="Street" label="Ulica" [showRefresh]=false appearance="outline" fxFlex [readonly]=true></sit-data-input>
-                        <sit-data-input type="text" id="HouseNum" #sitControl field="HouseNum" label="Numer" [showRefresh]=false appearance="outline" style="width: 100px" [readonly]=true></sit-data-input>
-                      </div>
-                      <div fxLayout="row">
-                        <sit-data-input type="text" id="OldCustName" #sitControl field="OldCustName" label="Stara nazwa" [showRefresh]=false appearance="outline"  [readonly]=true fxFlex="40"></sit-data-input>
-                        <sit-data-input type="text" id="ExtIdent" #sitControl field="ExtIdent" label="Identyfikator zewnętrzny" [showRefresh]=false appearance="outline"  [readonly]=true fxFlex="30"></sit-data-input>
-                        <sit-data-input type="text" id="ExtIdent02" #sitControl field="ExtIdent02" label="Identyfikator zewnętrzny 2" [showRefresh]=false appearance="outline"  [readonly]=true fxFlex="30"></sit-data-input>
-                      </div>
-                      <div fxLayout="row">
-                        <sit-data-input type="text" id="PhoneNumber" #sitControl field="PhoneNumber" label="Nr telefonu" [showRefresh]=false appearance="outline" [readonly]=true fxFlex="50"></sit-data-input>
-                      </div>
-                    </mat-card-content>
-                  </mat-card>
-                  <mat-card>
-                    <mat-card-content>
-                      <div fxLayout="row">
-                        <sit-data-input type="text" #sitControl field="InvoiceDivisionKindDesc" label="Podział na faktury wg." appearance="outline" [readonly]=true fxFlex="50"></sit-data-input>
-                        <sit-data-input type="text" #sitControl field="InvoicePosDivisionKindDesc" label="Podział na pozycje wg." appearance="outline" [readonly]=true fxFlex="50"></sit-data-input>
-                      </div>
                     </mat-card-content>
                   </mat-card>
                 </div>
               </sit-data-set-container>
             </mat-tab>
-            <mat-tab label="Działy HR">
-              <div fxLayout="column" fxFill>
-                <as-split direction="vertical">
-                  <as-split-area [size]="50">
-                    <sit-data-set-container ident="sitHRDepartments4Cust" showActionsToolbar="true" #sitDataSetContainer fxFlex fxLayout="column">
+            <mat-tab label="Konfiguracja">
+              <mat-tab-group id="tab-group" animationDuration="0ms">
+                <mat-tab label="Działy HR">
+                  <div fxLayout="column" fxFill>
+                    <as-split direction="vertical">
+                      <as-split-area [size]="50">
+                        <sit-data-set-container ident="sitHRDepartments4Cust" showActionsToolbar="true" #sitDataSetContainer fxFlex fxLayout="column">
+                          <div class="data-table" fxFlex>
+                            <ag-grid-angular
+                              #sitSetDataSource
+                              class="ag-theme-balham sit-grid-fill"
+                            >
+                            </ag-grid-angular>
+                          </div>
+                        </sit-data-set-container>
+                      </as-split-area>
+                      <as-split-area [size]="50">
+                        <mat-tab-group id="tab-group" animationDuration="0ms">
+                          <mat-tab label="Fakturowanie">
+                            <div fxLayout="column" fxFill>
+                              <div class="sit-grid-title">Parametry wyliczania faktur APT</div>
+                              <sit-data-set-container ident="sitHRParams4Invoicing" showActionsToolbar="true" #sitDataSetContainer fxFlex fxLayout="column">
+                                <div class="data-table" fxFlex>
+                                  <ag-grid-angular
+                                    #sitSetDataSource
+                                    class="ag-theme-balham sit-grid-fill"
+                                  >
+                                  </ag-grid-angular>
+                                </div>
+                              </sit-data-set-container>
+                            </div>
+                          </mat-tab>
+                          <mat-tab label="Dodatki">
+                            <div fxLayout="column" fxFill>
+                              <div class="sit-grid-title">Dodatki do narzutów</div>
+                              <sit-data-set-container ident="sitHRAdditions4Invoicing" showActionsToolbar="true" #sitDataSetContainer fxFlex fxLayout="column">
+                                <div class="data-table" fxFlex>
+                                  <ag-grid-angular
+                                    #sitSetDataSource
+                                    class="ag-theme-balham sit-grid-fill"
+                                  >
+                                  </ag-grid-angular>
+                                </div>
+                              </sit-data-set-container>
+                            </div>
+                          </mat-tab>
+                        </mat-tab-group>
+                      </as-split-area>
+                    </as-split>
+                  </div>
+                </mat-tab>
+                <mat-tab label="MPK">
+                  <div fxLayout="column" fxFill>
+                    <sit-data-set-container ident="sitFilterCostCenter4Cust" fxLayout="row">
+                      <div class="sit-filter-bar" fxLayout="row">
+                          <sit-data-input #sitControl field="searchCostCenter4Cust" label="Filtruj MPK" appearance="outline" style="width: 300px;" [showRefreshButton]="true"></sit-data-input>
+                      </div>
+                    </sit-data-set-container>
+                    <sit-data-set-container ident="sitCostCenter4Cust" [showActionsToolbar]="true" #sitDataSetContainer fxFlex fxLayout="column">
                       <div class="data-table" fxFlex>
                         <ag-grid-angular
-                          #sitSetDataSource
-                          class="ag-theme-balham sit-grid-fill"
-                        >
+                              #sitSetDataSource
+                              class="ag-theme-balham sit-grid-fill"
+                            >
                         </ag-grid-angular>
                       </div>
                     </sit-data-set-container>
-                  </as-split-area>
-                  <as-split-area [size]="50">
-                    <mat-tab-group id="tab-group" animationDuration="0ms">
-                      <mat-tab label="Fakturowanie">
-                        <div fxLayout="column" fxFill>
-                          <div class="sit-grid-title">Parametry wyliczania faktur APT</div>
-                          <sit-data-set-container ident="sitHRParams4Invoicing" showActionsToolbar="true" #sitDataSetContainer fxFlex fxLayout="column">
-                            <div class="data-table" fxFlex>
-                              <ag-grid-angular
-                                #sitSetDataSource
-                                class="ag-theme-balham sit-grid-fill"
-                              >
-                              </ag-grid-angular>
-                            </div>
-                          </sit-data-set-container>
-                        </div>
-                      </mat-tab>
-                      <mat-tab label="Dodatki">
-                        <div fxLayout="column" fxFill>
-                          <div class="sit-grid-title">Dodatki do narzutów</div>
-                          <sit-data-set-container ident="sitHRAdditions4Invoicing" showActionsToolbar="true" #sitDataSetContainer fxFlex fxLayout="column">
-                            <div class="data-table" fxFlex>
-                              <ag-grid-angular
-                                #sitSetDataSource
-                                class="ag-theme-balham sit-grid-fill"
-                              >
-                              </ag-grid-angular>
-                            </div>
-                          </sit-data-set-container>
-                        </div>
-                      </mat-tab>
-                    </mat-tab-group>
-                  </as-split-area>
-                </as-split>
-              </div>
-            </mat-tab>
-            <mat-tab label="MPK">
-              <div fxLayout="column" fxFill>
-                <sit-data-set-container ident="sitFilterCostCenter4Cust" fxLayout="row">
-                  <div class="sit-filter-bar" fxLayout="row">
-                      <sit-data-input #sitControl field="searchCostCenter4Cust" label="Filtruj MPK" appearance="outline" style="width: 300px;" showRefreshButton="true"></sit-data-input>
                   </div>
-                </sit-data-set-container>
-                <sit-data-set-container ident="sitCostCenter4Cust" showActionsToolbar="true" #sitDataSetContainer fxFlex fxLayout="column">
-                  <div class="data-table" fxFlex>
-                    <ag-grid-angular
-                          #sitSetDataSource
-                          class="ag-theme-balham sit-grid-fill"
-                        >
-                    </ag-grid-angular>
-                  </div>
-                </sit-data-set-container>
-              </div>
+                </mat-tab>
+                <mat-tab label="Def. załączników">
+                  <sit-data-set-container ident="sitCustomersAttachments4EmpSettDef" [showActionsToolbar]="true" #sitDataSetContainer fxFill fxLayout="column">
+                    <div class="data-table" fxFlex>
+                      <ag-grid-angular
+                            #sitSetDataSource
+                            class="ag-theme-balham sit-grid-fill"
+                          >
+                      </ag-grid-angular>
+                    </div>
+                  </sit-data-set-container>
+                </mat-tab>
+                <mat-tab label="E-dokumenty">
+                  <sit-data-set-container ident="sitCustomerEDocs" [showActionsToolbar]="true" #sitDataSetContainer fxFill fxLayout="column">
+                    <div class="data-table" fxFlex>
+                      <ag-grid-angular
+                            #sitSetDataSource
+                            style="width: 100%; height: 100%;"
+                            class="ag-theme-balham"
+                          >
+                      </ag-grid-angular>
+                    </div>
+                  </sit-data-set-container>
+                </mat-tab> 
+              </mat-tab-group>
             </mat-tab>
-            <mat-tab label="Def. załączników">
-              <sit-data-set-container ident="sitCustomersAttachments4EmpSettDef" showActionsToolbar="true" #sitDataSetContainer fxFill fxLayout="column">
-                <div class="data-table" fxFlex>
-                  <ag-grid-angular
-                        #sitSetDataSource
-                        class="ag-theme-balham sit-grid-fill"
-                      >
-                  </ag-grid-angular>
-                </div>
-              </sit-data-set-container>
-          </mat-tab>
           </mat-tab-group>
         </div>
       </as-split-area>

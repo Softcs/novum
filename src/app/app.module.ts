@@ -268,6 +268,7 @@ import { SitParams4EmployeesSettlementsEditComponent } from './containers/dictio
 import { SitImportFromFileComponent } from './containers/dictionaries/_common/actions/sit-import-from-file/sit-import-from-file.component';
 import { SitImportsTemplatesComponent } from './containers/dictionaries/sit-imports-templates/sit-imports-templates.component';
 import { SitImportsTemplatesEditComponent } from './containers/dictionaries/sit-imports-templates/actions/sit-imports-templates-edit/sit-imports-templates-edit.component';
+import { SitCustomerEDocsEditComponent } from './containers/dictionaries/sit-customers/actions/sit-customer-edocs-edit/sit-customer-edocs-edit.component';
 
 
 @NgModule({
@@ -522,7 +523,8 @@ import { SitImportsTemplatesEditComponent } from './containers/dictionaries/sit-
         SitParams4EmployeesSettlementsEditComponent,
         SitImportFromFileComponent,
         SitImportsTemplatesComponent,
-        SitImportsTemplatesEditComponent
+        SitImportsTemplatesEditComponent,
+        SitCustomerEDocsEditComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },

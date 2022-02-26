@@ -2,17 +2,18 @@
   [(actionExecuteData)]="actionExecuteData"
   >
   <sit-data-set-container ident="sitCustomersEdit">
-    <div class="sit-proc-params-content" fxLayout="row" style="height: 700px;">
-      <div fxFlex="50" fxLayout="column">
+    <div class="sit-proc-params-content" fxLayout="row" style="height: 500px; width: 700px;">
+      <div fxLayout="column" fxFill>
         <div fxLayout="row">
           <sit-data-checkbox #sitControl field="IsRecipient" label="Odbiorca"></sit-data-checkbox>
           <sit-data-checkbox #sitControl field="IsSupplier" label="Dostawca"></sit-data-checkbox>
+          <sit-proc-button #sitAction actionIdent="importFromGUS" color="primary"></sit-proc-button>
         </div>
         <div fxLayout="row">
           <sit-data-input type="text" #sitControl field="CustIdent" label="Identyfikator" appearance="outline" fxFlex></sit-data-input>
-          <sit-data-input type="text" #sitControl field="VATId" label="NIP" appearance="outline" style="width: 150px"></sit-data-input>
-          <sit-data-input type="text" #sitControl field="REGON" label="REGON" appearance="outline" style="width: 150"></sit-data-input>
-          <sit-data-input type="text" #sitControl field="KRS" label="KRS" appearance="outline" style="width: 150"></sit-data-input>
+          <sit-data-input type="text" #sitControl field="VATId" label="NIP" appearance="outline" style="width: 130px"></sit-data-input>
+          <sit-data-input type="text" #sitControl field="REGON" label="REGON" appearance="outline" style="width: 130px"></sit-data-input>
+          <sit-data-input type="text" #sitControl field="KRS" label="KRS" appearance="outline" style="width: 130px"></sit-data-input>
         </div>
         <div>
           <sit-data-input type="text" #sitControl field="CustName" label="Nazwa" appearance="outline" fxFlex></sit-data-input>
@@ -21,7 +22,7 @@
         </div>
         <div fxLayout="row">
           <sit-data-input type="text" #sitControl field="CountrySymbol" label="Kraj" appearance="outline"  style="width: 100px"
-           [lookupDisplayFields] = "['CountrySymbol', 'CountryName']"
+            [lookupDisplayFields] = "['CountrySymbol', 'CountryName']"
           ></sit-data-input>
           <sit-data-input type="text" #sitControl field="PostCode" label="Kod pocztowy" appearance="outline" style="width: 100px"></sit-data-input>
           <sit-data-input type="text" #sitControl field="City" label="Miasto" appearance="outline" fxFlex></sit-data-input>
@@ -31,10 +32,17 @@
           <sit-data-input type="text" #sitControl field="HouseNum" label="Numer" appearance="outline" style="width: 100px"></sit-data-input>
         </div>
         <div fxLayout="row">
-          <sit-data-input type="text" #sitControl field="PhoneNumber" label="Nr telefonu" appearance="outline" fxFlex="50"></sit-data-input>
+          <sit-data-input type="text" #sitControl field="CustIdent_Payer" label="Płatnik" appearance="outline" fxFlex="33"
+            [lookupDisplayFields] = "['CustIdent', 'CustName']"
+          ></sit-data-input>
+          <sit-data-input type="text" #sitControl field="PhoneNumber" label="Nr telefonu" appearance="outline" fxFlex="33"></sit-data-input>
+          <sit-data-input type="text" #sitControl field="AccountManager" label="Opiekun" appearance="outline" fxFlex
+            [lookupDisplayFields] = "['EmployeeName']"
+          ></sit-data-input>
         </div>
         <div fxLayout="row">
-          <sit-data-input type="text" #sitControl field="ExtIdent" label="Identyfikator zewnętrzny" appearance="outline" fxFlex="50"></sit-data-input>
+          <sit-data-input type="text" #sitControl field="OldCustName" label="Stara nazwa" appearance="outline" fxFlex="33"></sit-data-input>
+          <sit-data-input type="text" #sitControl field="ExtIdent" label="Identyfikator zewnętrzny" appearance="outline" fxFlex="33"></sit-data-input>
           <sit-data-input type="text" #sitControl field="ExtIdent02" label="Identyfikator zewnętrzny 2" appearance="outline" fxFlex></sit-data-input>
         </div>
         <div fxLayout="row">
@@ -46,7 +54,6 @@
           ></sit-data-radio>
         </div>
       </div>
-      <div fxFlex="50"></div>
     </div>
   </sit-data-set-container>
 </sit-proc-params>
