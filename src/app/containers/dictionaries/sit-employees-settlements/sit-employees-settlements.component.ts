@@ -393,7 +393,7 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
     this.gridColumnsDefinition['sitEmployeesSettlementsContr'] = [
       { headerName: 'Pracownik',
         children: [
-          { headerName: 'Nazwisko', field: 'EmployeeName', tooltipField: 'EmployeeName', sort: 'asc', width: 180, pinned: 'left',
+          { headerName: 'Nazwisko', field: 'EmployeeName', tooltipField: 'EmployeeName', sort: 'asc', width: 210, pinned: 'left',
             checkboxSelection: true, headerCheckboxSelection: true, headerCheckboxSelectionFilteredOnly: true,
             cellClass: ['font11','textFormat'],cellRenderer: 'agGroupCellRenderer'
           },
@@ -406,6 +406,7 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
       { headerName: 'Okres', field: 'WorkPeriod',  width: 90,
         cellClass: ['font11','textFormat']
       },
+      { headerName: 'Rekr. kli.', field: 'ClientRecruitment', filter: 'agNumberColumnFilter', renderType: 'checkbox', cellClass: "grid-cell-centered", width: 80, suppressMenu: true },
       { headerName: 'St. niep.', field: 'DisabLvl', filter: 'agNumberColumnFilter', width: 70, cellClass: "grid-cell-centered", suppressMenu: true },
       { headerName: 'Nr.listy', field: 'PayrollNo', tooltipField: 'PayrollNo', width: 100,
         cellClass: ['font11','textFormat']
@@ -424,9 +425,6 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
       },
       { headerName: 'Okres do', field: 'ContractTo',  width: 100,
         cellClass: ['font11','dateFormat']
-      },
-      { headerName: 'Etat', field: 'JobTime',  width: 70,
-        cellClass: ['font11','textFormat']
       },
       { headerName: 'Dni umowy', field: 'ContractDays', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, suppressMenu: true, agr: 'sum',
         renderType: 'number', renderFormat: '1.0-0',
@@ -554,6 +552,10 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
           renderType: 'number', renderFormat: '1.2-2',
           cellClass: ['font11','numberFormat2Dec'],
         },
+        { headerName: 'Dodatki', headerTooltip: 'Dodatkowe składniki', field: 'Additions', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 100, suppressMenu: true, agr: 'sum', columnGroupShow: "open",
+          renderType: 'number',
+          cellClass: ['font11','numberFormat2Dec'],
+        },            
         { headerName: 'ZUS dod. podst.', headerTooltip: 'ZUS dodatkowy - podstawa', field: 'ZUSAddBase', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 100, suppressMenu: true, agr: 'sum', columnGroupShow: "open",
           renderType: 'number',
           cellClass: ['font11','numberFormat2Dec'],
@@ -623,10 +625,18 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
             renderType: 'number',
             cellClass: ['font11','numberFormat2Dec'],
           },
+          { headerName: 'Chorobowe', field: 'CustRate09', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, suppressMenu: true, agr: 'sum', columnGroupShow: "open",
+            renderType: 'number',
+            cellClass: ['font11','numberFormat2Dec'],
+          },
           { headerName: 'Ryczałty', field: 'CustLumpSum', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, suppressMenu: true, columnGroupShow: "open", agr: 'sum',
             renderType: 'number', renderFormat: '1.2-2',
             cellClass: ['font11','numberFormat2Dec'],
           },
+          { headerName: 'Dodatki', headerTooltip: 'Dodatkowe składniki', field: 'AdditionsCust', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 100, suppressMenu: true, agr: 'sum', columnGroupShow: "open",
+            renderType: 'number',
+           cellClass: ['font11','numberFormat2Dec'],
+          },                      
           { headerName: 'ZUS dod.', field: 'ZUSAdd', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80, suppressMenu: true, agr: 'sum', columnGroupShow: "open",
             renderType: 'number',
             cellClass: ['font11','numberFormat2Dec'],
