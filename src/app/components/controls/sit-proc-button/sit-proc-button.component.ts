@@ -8,10 +8,7 @@ import { ActionExecuteData } from '@app/_models/actionExecuteData';
 import { FactoryService } from '@app/_services/factory.service';
 import { ProcExpanderService } from '@app/_services/procexpander.service';
 import { ActionDefinitionWrapper } from '@app/_models/actionDefinitionWrapper';
-import { DataSetWrapper } from '@app/_models';
 import { VisibilityService } from '@app/_services/visibility.service';
-import { SitDialogConfirmSeletedRowsComponent } from '@app/components/sit-dialog-confirm-selected-rows';
-import { ActionExecutionKind } from '@app/_consts/ActionExecutionKind';
 import { MultiActionService } from '@app/_services/multi-action.service';
 
 @Component({
@@ -151,17 +148,21 @@ export class SitProcButtonComponent extends SitActionDirective {
         this.onClickInternal(false);
         return;
     }
+    this.multiActionsService.showProgressDialog(this.actionDefinition.tooltip,
+      this.dataSetResponseWrapper.selectedRows, (closeResult) => {
+        console.log("Close Res", closeResult);
+      })
 
-    this.multiActionsService.showConfirmDialog(
-      this.actionDefinition.tooltip,
-      this.dataSetResponseWrapper.selectedRows,
-      (closeResult) => {
-        console.log("Execute action");
-        this.onClickInternal(true);
-      },
-      (closeResult) => {
-        console.log("Cancel");
-      });
+
+    // this.multiActionsService.showConfirmDialog(
+    //   this.actionDefinition.tooltip,
+    //   this.dataSetResponseWrapper.selectedRows,
+    //   (closeResult) => {
+    //     this.onClickInternal(true);
+    //   },
+    //   (closeResult) => {
+    //     console.log("Cancel");
+    //   });
   }
 
   onClickInternal(fromSelected: boolean) {

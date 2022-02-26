@@ -268,6 +268,7 @@ import { SitAnalysisBankStatementPosComponent } from './containers/dictionaries/
 import { SitPubPrintCostAnalysisComponent } from './containers/dictionaries/sit-pub-print-cost-analysis/sit-pub-print-cost-analysis.component';
 import { SitParams4EmployeesSettlementsComponent } from './containers/dictionaries//sit-params4-employees-settlements/sit-params4-employees-settlements.component';
 import { SitParams4EmployeesSettlementsEditComponent } from './containers/dictionaries/sit-params4-employees-settlements/actions/sit-params4-employees-settlements-edit/sit-params4-employees-settlements-edit.component';
+import { SitDialogActionProgressComponent } from './components/sit-dialog-action-progress/sit-dialog-action-progress.component';
 
 
 @NgModule({
@@ -345,6 +346,7 @@ import { SitParams4EmployeesSettlementsEditComponent } from './containers/dictio
         SitProcParamsComponent,
         SitDialogConfirmDelComponent,
         SitDialogConfirmSeletedRowsComponent,
+        SitDialogActionProgressComponent,
         SitDataCheckboxComponent,
         SitDataTextareaComponent,
         sitDataTextareaComponentDirectiveDirective,
