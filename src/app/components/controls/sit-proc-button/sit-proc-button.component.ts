@@ -56,9 +56,9 @@ export class SitProcButtonComponent extends SitActionDirective {
     private tabService: TabService,
     private factoryService: FactoryService,
     private procExpanderService: ProcExpanderService,
-    public dialog: MatDialog,
     private visibilityService: VisibilityService,
-    private multiActionsService: MultiActionService
+    private multiActionsService: MultiActionService,
+    public dialog: MatDialog
     ) {
       super(el);
   }
@@ -152,20 +152,16 @@ export class SitProcButtonComponent extends SitActionDirective {
         return;
     }
 
-    const dialogRef = this.dialog.open(SitDialogConfirmSeletedRowsComponent, {
-      width: '450px', height: '180px', panelClass: 'sit-selected-rows-confirmation',
-      data: {
-        rowsCount: this.dataSetResponseWrapper.selectedRows.length,
-        caption: this.actionDefinition.tooltip
-      }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
+    this.multiActionsService.showConfirmDialog(
+      this.actionDefinition.tooltip,
+      this.dataSetResponseWrapper.selectedRows,
+      (closeResult) => {
         console.log("Execute action");
         this.onClickInternal(true);
-      }
-    });
+      },
+      (closeResult) => {
+        console.log("Cancel");
+      });
   }
 
   onClickInternal(fromSelected: boolean) {
