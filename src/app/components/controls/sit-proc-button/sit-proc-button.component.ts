@@ -12,6 +12,7 @@ import { DataSetWrapper } from '@app/_models';
 import { VisibilityService } from '@app/_services/visibility.service';
 import { SitDialogConfirmSeletedRowsComponent } from '@app/components/sit-dialog-confirm-selected-rows';
 import { ActionExecutionKind } from '@app/_consts/ActionExecutionKind';
+import { MultiActionService } from '@app/_services/multi-action.service';
 
 @Component({
   selector: 'sit-proc-button',
@@ -56,7 +57,8 @@ export class SitProcButtonComponent extends SitActionDirective {
     private factoryService: FactoryService,
     private procExpanderService: ProcExpanderService,
     public dialog: MatDialog,
-    private visibilityService: VisibilityService
+    private visibilityService: VisibilityService,
+    private multiActionsService: MultiActionService
     ) {
       super(el);
   }
@@ -208,32 +210,14 @@ export class SitProcButtonComponent extends SitActionDirective {
         this.executeActionExceptionCallback);
     } else {
       var selectedRows = [...this.dataSetResponseWrapper.selectedRows];
-      this.runActionOneByOne(selectedRows, 0);
-    }
-  }
-
-  private runActionOneByOneForward(selectedRows: any[], rowIndex: number, self: any) {
-    rowIndex++;
-    if (rowIndex >= selectedRows.length) {
-      self.changeExecutingState(false);
-      return;
-    }
-    self.runActionOneByOne(selectedRows, rowIndex)
-  }
-
-  private runActionOneByOne(selectedRows: any[], rowIndex: number) {
-    var row = selectedRows[rowIndex];
-    this.dataSetResponseWrapper.ExecuteAction(this.actionDefinition,
-      this,
-      (sender) => {
-        this.runActionOneByOneForward(selectedRows, rowIndex, sender);
+      this.multiActionsService.setProperties(this, this.dataSetResponseWrapper, this.actionDefinition);
+      this.multiActionsService.runActionOneByOne(selectedRows, 0, (sender) => {
+        console.log("Error");
       },
       (sender) => {
-        this.executeActionForSelectedExceptionCallback(sender);
-        this.runActionOneByOneForward(selectedRows, rowIndex, sender);
-      },
-      null,
-      row);
+        sender.executeActionCompletedCallback(sender);
+      });
+    }
   }
 
   private executeActionForSelectedCompletedCallback(self) {

@@ -86,7 +86,7 @@ export class SitDataSetContainerComponent implements AfterViewInit{
   }
 
   public setErrors(errors: any[]) {
-    this.errors.push(errors);
+    this.errors = errors;
     if (this.errors) {
       console.log('Errors', this.errors);
     }
