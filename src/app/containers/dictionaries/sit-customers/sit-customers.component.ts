@@ -33,11 +33,12 @@ export class SitCustomersComponent extends SitDictBaseComponent {
       { headerName: 'Próg', field: 'Threshold', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 100, sort: 'asc',suppressMenu: true},
       { headerName: 'Wartość', field: 'Value', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true,
         renderType: "number", renderFormat: '1.2-2'}, // domyslny format 1.2-2 - mozna przeciazyc przez np. renderFormat: 1.2-2"
-      { headerName: 'Zawsze licz ZUS', field: 'AlwaysCalcZUS', filter: 'agSetColumnFilter', type: 'numericColumn', suppressMenu: true, width: 110, renderType: "checkbox"},
-      { headerName: 'Bez ZUS', field: 'ZUS', filter: 'agSetColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80, renderType: "checkbox"},
-      { headerName: 'Rekr. klienta', field: 'CustRecr', filter: 'agSetColumnFilter', type: 'numericColumn', suppressMenu: true, width: 100, renderType: "checkbox"},
-      { headerName: 'Nie dodawaj premii do netto', field: 'NoBonusInCustNet', filter: 'agSetColumnFilter', type: 'numericColumn', suppressMenu: true, width: 100, renderType: "checkbox"},
-      { headerName: 'Nie dodawaj PPK do netto', field: 'NoPPKInCustNet', filter: 'agSetColumnFilter', type: 'numericColumn', suppressMenu: true, width: 100, renderType: "checkbox"},
+      { headerName: 'Zawsze licz ZUS', headerTooltip:'Zawsze licz ZUS',field: 'AlwaysCalcZUS', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 110, renderType: "checkbox"},
+      { headerName: 'Zawsze licz PPK', headerTooltip:'Zawsze licz PPK', field: 'AlwaysCalcPPK', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 110, renderType: "checkbox"},
+      { headerName: 'Bez ZUS', field: 'ZUS', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 80, renderType: "checkbox"},
+      { headerName: 'Rekr. klienta', field: 'CustRecr', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 100, renderType: "checkbox"},
+      { headerName: 'Nie dodawaj premii do netto', headerTooltip:'Nie dodawaj premii do netto', field: 'NoBonusInCustNet', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 100, renderType: "checkbox"},
+      { headerName: 'Nie dodawaj PPK do netto', headerTooltip:'Nie dodawaj PPK do netto', field: 'NoPPKInCustNet', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 100, renderType: "checkbox"},
     ];
 
     this.gridColumnsDefinition["sitCostCenter4Cust"] = [
