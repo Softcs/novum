@@ -106,9 +106,6 @@ export class GridService {
     if ( !grid.gridOptions.suppressCopyRowsToClipboard ) {
       grid.gridOptions.suppressCopyRowsToClipboard = true;
     }
-
-    grid.gridOptions.accentedSort = true;
-
   }
 
   public isPivotMode(gridApi) {
@@ -149,6 +146,9 @@ export class GridService {
       customProperty.activeRow = null;
       if (gridApi.gridOptionsWrapper) {
         var gridOptions = gridApi.gridOptionsWrapper.gridOptions;
+
+        gridOptions.accentedSort = true;
+
         var rowClassRules = gridApi.gridOptionsWrapper.rowClassRules();
         if (!rowClassRules) {
           rowClassRules = {};
