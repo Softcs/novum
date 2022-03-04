@@ -1,0 +1,26 @@
+<sit-proc-params
+  [(actionExecuteData)]="actionExecuteData"
+  >
+  <sit-data-set-container ident="sitImportsTemplatesEdit">
+    <div class="sit-proc-params-content" fxLayout="column" style="width: 350px;height: 400px;">
+      <div fxLayout="row">
+        <sit-data-input #sitControl type="text" field="ImportTemplateIdent" label="Identyfikator szablonu" appearance="outline" fxFlex="70"></sit-data-input>
+        <sit-data-checkbox #sitControl field="DelExistingRows" label="Usuń wiersze" fxFlex="30"></sit-data-checkbox>
+      </div>
+      <sit-data-input #sitControl type="text" field="ImportTemplateName" label="Opis" appearance="outline" ></sit-data-input>
+      <sit-data-input #sitControl type="text" field="TemplateFileName" label="Plik wzorca importu" appearance="outline" ></sit-data-input>
+      <sit-data-input #sitControl type="text" field="ImportProcName" label="Procedura importująca" appearance="outline"></sit-data-input>
+      <div fxLayout="row" fxFlex> 
+        <sit-data-textarea 
+          type="textarea" 
+          #sitControl field="ColumnDefinition" 
+          label="Definicja kolumn" 
+          appearance="outline" 
+          rows="20" 
+          cols="65" 
+          fxFill>
+        </sit-data-textarea>
+      </div>
+    </div>    
+  </sit-data-set-container>
+</sit-proc-params>

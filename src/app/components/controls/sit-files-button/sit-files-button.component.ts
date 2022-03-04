@@ -16,6 +16,7 @@ export class SitFilesButtonComponent extends SitButtonBaseComponent {
 
   @Input() fieldFileNames: string;
   @Input() fieldIdent: string;
+  @Input() pathIdent: string;
 
   constructor(private gatewayService: GatewayService)  {
     super();
@@ -35,28 +36,31 @@ export class SitFilesButtonComponent extends SitButtonBaseComponent {
     if (files) {
       this.changeExecutingState(true);
       const fileId = this.getFileId();
-      this.gatewayService.UploadFile(files[0], fileId).subscribe(
-        event => {
-          if (event.type == HttpEventType.UploadProgress) {
-            const percentDone = Math.round(100 * event.loaded / event.total);
-            console.log(`File is ${percentDone}% loaded.`);
-          } else if (event instanceof HttpResponse) {
-            console.log('File is completely loaded!');
+      const pathIdent = this.getPathIdent();
+
+      this.gatewayService.UploadFile(files[0], fileId, pathIdent).subscribe({
+          next: (event) => {
+            if (event.type == HttpEventType.UploadProgress) {
+              const percentDone = Math.round(100 * event.loaded / event.total);
+              console.log(`File is ${percentDone}% loaded.`);
+            } else if (event instanceof HttpResponse) {
+              console.log('File is completely loaded!');
+            }
+          },
+          error: (err) => {
+            this.changeExecutingState(false);
+            var error = {
+              message :"Błąd podczas przesyłania pliku: " + this.getFileNames(files) + "\n"+ err,
+              messageKey : "Upload file",
+              errorId : this.fieldFileNames
+            };
+
+            console.error(error.message);
+            this.dataSetWrapper.getDataSetManager().PropagateErrors(this.dataSetWrapper.ident, [error]);
+          },
+          complete: () => {
+            this.changeExecutingState(false);
           }
-        },
-        (err) => {
-          this.changeExecutingState(false);
-          var error = {
-            message :"Błąd podczas przesyłania pliku: " + this.getFileNames(files) + "\n"+ err,
-            messageKey : "Upload file",
-            errorId : this.fieldFileNames
-          };
-          
-          console.error(error.message);
-          this.dataSetWrapper.getDataSetManager().PropagateErrors(this.dataSetWrapper.ident, [error]);          
-        },
-        () => {
-          this.changeExecutingState(false);
         }
       );
     }
@@ -64,6 +68,13 @@ export class SitFilesButtonComponent extends SitButtonBaseComponent {
 
   private getFileId() {
     return this.dataSetWrapper.getFieldValue(this.fieldIdent);
+  }
+
+  private getPathIdent() {
+    if (!this.pathIdent) {
+      return null;
+    }
+    return this.dataSetWrapper.getFieldValue(this.pathIdent);
   }
 
   private getFileNames(files: File[]) {

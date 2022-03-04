@@ -7,6 +7,7 @@ import { GatewayService } from '@app/_services';
 import { Company } from '@app/_models/company';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
+import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-sit-change-company',
   templateUrl: './sit-change-company.component.html',
@@ -17,13 +18,16 @@ export class SitChangeCompanyComponent implements OnInit {
   @ViewChild('sitDictcontainer') dictContainer: SitDictContainerComponent;
 
   companies: any[];
+  currentUser: User;
+  
   constructor(
     private router: Router,
     private gatewayService: GatewayService,
+    private titleService: Title,
     public dialogRef: MatDialogRef<SitChangeCompanyComponent>
   )
   {
-
+ 
   }
 
   ngOnInit(): void {
@@ -42,6 +46,12 @@ export class SitChangeCompanyComponent implements OnInit {
                                                                companyRow.sitCompaniesG,
                                                                companyRow.ConfigFile);
     this.gatewayService.saveCurrentUser();
+
+    this.gatewayService.currentUser.subscribe(x => {
+      this.currentUser = x;
+      this.titleService.setTitle(this.currentUser.company.companyDescription);
+    });
+
     this.dialogRef.close();
     this.router.navigate(['/login']);
   }

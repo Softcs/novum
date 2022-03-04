@@ -1,0 +1,27 @@
+<sit-dict-container ident="sitImportsTemplates" #sitDictcontainer fxFill>
+    <as-split #sitSpliter direction="vertical">
+      <as-split-area [size]="60">
+        <div fxLayout="column" fxFill class="content">
+          <sit-data-set-container ident="sitImportsTemplatesFilter" fxLayout="row">
+            <div class="sit-filter-bar" fxLayout="row">
+                <sit-data-input #sitControl field="search" label="Filtruj" appearance="outline" style="width: 300px;" [showRefreshButton]="true"></sit-data-input>
+            </div>
+          </sit-data-set-container>
+          <sit-data-set-container ident="sitImportsTemplates" [showActionsToolbar]="true" fxLayout="column" fxFlex>
+            <div class="data-table" fxFlex>
+              <ag-grid-angular
+                #sitSetDataSource
+                style="width: 100%; height: 100%;"
+                class="ag-theme-balham"
+              >
+              </ag-grid-angular>
+            </div>
+          </sit-data-set-container>
+        </div>
+      </as-split-area>
+      <as-split-area [size]="40">
+      </as-split-area>
+    </as-split>
+  </sit-dict-container>
+  
+  

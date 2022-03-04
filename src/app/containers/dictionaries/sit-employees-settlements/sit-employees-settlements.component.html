@@ -17,7 +17,7 @@
     </div>
     <mat-tab-group id="tab-group" animationDuration="0ms">
       <mat-tab label="Zlecenia">
-        <as-split direction="horizontal">
+        <as-split #sitSpliter direction="horizontal">
           <as-split-area [size]="70">
             <sit-data-set-container  ident="sitEmployeesSettlements" showActionsToolbar="true" fxFill fxLayout="column">
               <div class="data-table" fxFlex>
@@ -79,7 +79,7 @@
         </as-split>
       </mat-tab>
       <mat-tab label="Umowy o pracę">
-        <as-split direction="horizontal">
+        <as-split #sitSpliter direction="horizontal">
           <as-split-area [size]="70">
             <sit-data-set-container  ident="sitEmployeesSettlementsContr" showActionsToolbar="true" fxFill fxLayout="column">
               <div class="data-table" fxFlex>
@@ -88,6 +88,9 @@
                   style="width: 100%; height: 100%;"
                   class="ag-theme-balham"
                   [accentedSort]="true"
+                  [masterDetail]="true"
+                  [detailCellRendererParams]="detailCellRendererParams"
+                  [detailRowAutoHeight]="true"
                 >
                 </ag-grid-angular>
               </div>

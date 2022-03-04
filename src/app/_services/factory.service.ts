@@ -168,6 +168,10 @@ import { SitAnalysisBankStatementPosComponent } from '@app/containers/dictionari
 import { SitPubPrintCostAnalysisComponent } from '@app/containers/dictionaries/sit-pub-print-cost-analysis/sit-pub-print-cost-analysis.component';
 import { SitParams4EmployeesSettlementsComponent } from '@app/containers/dictionaries/sit-params4-employees-settlements/sit-params4-employees-settlements.component';
 import { SitParams4EmployeesSettlementsEditComponent } from '@app/containers/dictionaries/sit-params4-employees-settlements/actions/sit-params4-employees-settlements-edit/sit-params4-employees-settlements-edit.component';
+import { SitImportFromFileComponent } from '@app/containers/dictionaries/_common/actions/sit-import-from-file/sit-import-from-file.component';
+import { SitImportsTemplatesComponent } from '@app/containers/dictionaries/sit-imports-templates/sit-imports-templates.component';
+import { SitImportsTemplatesEditComponent } from '@app/containers/dictionaries/sit-imports-templates/actions/sit-imports-templates-edit/sit-imports-templates-edit.component';
+import { SitCustomerEDocsEditComponent } from '@app/containers/dictionaries/sit-customers/actions/sit-customer-edocs-edit/sit-customer-edocs-edit.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -342,6 +346,10 @@ export class FactoryService {
         sitPubPrintCostAnalysis: SitPubPrintCostAnalysisComponent,
         sitParams4EmployeesSettlements: SitParams4EmployeesSettlementsComponent,
         sitParams4EmployeesSettlementsEdit: SitParams4EmployeesSettlementsEditComponent,
+        sitImportFromFile: SitImportFromFileComponent,
+        sitImportsTemplates: SitImportsTemplatesComponent,
+        sitImportsTemplatesEdit: SitImportsTemplatesEditComponent,
+        sitCustomerEDocsEdit: SitCustomerEDocsEditComponent,
     };
 
     public GetFactory(ident: string) {

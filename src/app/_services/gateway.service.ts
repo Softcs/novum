@@ -262,7 +262,7 @@ export class GatewayService {
                        .replace("\\","_");
     }
 
-    public UploadFile(file: File, fileId: string, ) {
+    public UploadFile(file: File, fileId: string, pathIdent: string ) {
         if (!file || !fileId) {
             return;
         }
@@ -276,7 +276,12 @@ export class GatewayService {
             params,
             reportProgress: true
         };
-        const url = `/service/upload/files/${this.currentUserValue?.token}/${fileId}/${fileName}`;
+
+        if (pathIdent) {
+            pathIdent += '/';
+        } else {pathIdent = '';}
+        
+        const url = `/service/upload/files/${this.currentUserValue?.token}/${pathIdent}${fileId}/${fileName}`;
         const req = new HttpRequest('POST', `${environment.apiUrl}${url}`, fileData, options);
         return this.http.request(req);
     }

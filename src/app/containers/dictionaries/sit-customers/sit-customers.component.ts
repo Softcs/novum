@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-dict-base.component';
+
 @Component({
   selector: 'app-sit-customers',
   templateUrl: './sit-customers.component.html',
@@ -11,12 +12,14 @@ export class SitCustomersComponent extends SitDictBaseComponent {
     this.gridColumnsDefinition["sitCustomers"] = [
       { headerName: 'ID', field: 'sitCustomersId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, defaultVisibility: false },
       { headerName: 'GUID', field: 'sitCustomersG', width: 100, defaultVisibility: false },
-      { headerName: 'Identyfikator', field: 'CustIdent', width: 200 },
-      { headerName: 'Nazwa', field: 'CustName', tooltipField: 'CustName', width: 300 },
-      { headerName: 'NIP', field: 'VATId', width: 100 },
-      { headerName: 'Miasto', field: 'City', width: 100 },
-      { headerName: 'Kraj', field: 'CountrySymbol', width: 80 },
-      { headerName: 'Status WMS', field: 'Status_WMS', width: 100 }
+      { headerName: 'Kontrahent', field: 'CustIdent', filter: 'agTextColumnFilter', flex: 1,
+        cellRenderer: function(params) {
+          return '<table style="width:100%"><tr><td style="width:50%">ID: ' + params.data["CustIdent"] +'</td>'
+              +(params.data["VATId"] === '' ? '' : '<td style="text-align:right">NIP: ' + params.data["VATId"] +'</td>')
+              +'</tr>'
+            + '<tr><td colspan="2"><b>' + params.data["CustName"] +'</b></td></tr></table>'
+        }
+      },
     ];
 
     this.gridColumnsDefinition["sitHRDepartments4Cust"] =  [
@@ -33,11 +36,12 @@ export class SitCustomersComponent extends SitDictBaseComponent {
       { headerName: 'Próg', field: 'Threshold', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 100, sort: 'asc',suppressMenu: true},
       { headerName: 'Wartość', field: 'Value', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true,
         renderType: "number", renderFormat: '1.2-2'}, // domyslny format 1.2-2 - mozna przeciazyc przez np. renderFormat: 1.2-2"
-      { headerName: 'Zawsze licz ZUS', field: 'AlwaysCalcZUS', filter: 'agSetColumnFilter', type: 'numericColumn', suppressMenu: true, width: 110, renderType: "checkbox"},
-      { headerName: 'Bez ZUS', field: 'ZUS', filter: 'agSetColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80, renderType: "checkbox"},
-      { headerName: 'Rekr. klienta', field: 'CustRecr', filter: 'agSetColumnFilter', type: 'numericColumn', suppressMenu: true, width: 100, renderType: "checkbox"},
-      { headerName: 'Nie dodawaj premii do netto', field: 'NoBonusInCustNet', filter: 'agSetColumnFilter', type: 'numericColumn', suppressMenu: true, width: 100, renderType: "checkbox"},
-      { headerName: 'Nie dodawaj PPK do netto', field: 'NoPPKInCustNet', filter: 'agSetColumnFilter', type: 'numericColumn', suppressMenu: true, width: 100, renderType: "checkbox"},
+      { headerName: 'Zawsze licz ZUS', headerTooltip:'Zawsze licz ZUS',field: 'AlwaysCalcZUS', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 110, renderType: "checkbox"},
+      { headerName: 'Zawsze licz PPK', headerTooltip:'Zawsze licz PPK', field: 'AlwaysCalcPPK', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 110, renderType: "checkbox"},
+      { headerName: 'Bez ZUS', field: 'ZUS', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 80, renderType: "checkbox"},
+      { headerName: 'Rekr. klienta', field: 'CustRecr', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 100, renderType: "checkbox"},
+      { headerName: 'Nie dodawaj premii do netto', headerTooltip:'Nie dodawaj premii do netto', field: 'NoBonusInCustNet', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 100, renderType: "checkbox"},
+      { headerName: 'Nie dodawaj PPK do netto', headerTooltip:'Nie dodawaj PPK do netto', field: 'NoPPKInCustNet', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 100, renderType: "checkbox"},
     ];
 
     this.gridColumnsDefinition["sitCostCenter4Cust"] = [
@@ -65,6 +69,17 @@ export class SitCustomersComponent extends SitDictBaseComponent {
       { headerName: 'Komórka startowa', field: 'CellAddress', width: 100 },
       { headerName: 'Nazwa funkcji SQL', field: 'FunctionName', width: 200 },
 
-    ]
+    ];
+
+    this.gridColumnsDefinition["sitCustomerEDocs"] = [
+      { headerName: 'ID', field: 'sitCustomerEDocsId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, defaultVisibility: false },
+      { headerName: 'GUID', field: 'sitCustomerEDocsG', width: 100, defaultVisibility: false },
+      { headerName: 'Dokument', field: 'DocumentIdent', width: 100 },
+      { headerName: 'Aktywny', field: 'IsActive', width: 80, renderType: 'checkbox', suppressMenu: true, cellClass: "grid-cell-centered"},
+      { headerName: 'Format danych', field: 'FileFormat', width: 130, },
+      { headerName: 'Dołącz PDF', field: 'SendPDFReport', width: 100, renderType: 'checkbox', suppressMenu: true, cellClass: "grid-cell-centered"},
+      { headerName: 'Parametry wysyłki', field: 'ConnectionInfo', width: 400 },
+
+    ];    
   }
 }

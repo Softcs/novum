@@ -269,6 +269,10 @@ import { SitPubPrintCostAnalysisComponent } from './containers/dictionaries/sit-
 import { SitParams4EmployeesSettlementsComponent } from './containers/dictionaries//sit-params4-employees-settlements/sit-params4-employees-settlements.component';
 import { SitParams4EmployeesSettlementsEditComponent } from './containers/dictionaries/sit-params4-employees-settlements/actions/sit-params4-employees-settlements-edit/sit-params4-employees-settlements-edit.component';
 import { SitDialogActionProgressComponent } from './components/sit-dialog-action-progress/sit-dialog-action-progress.component';
+import { SitImportFromFileComponent } from './containers/dictionaries/_common/actions/sit-import-from-file/sit-import-from-file.component';
+import { SitImportsTemplatesComponent } from './containers/dictionaries/sit-imports-templates/sit-imports-templates.component';
+import { SitImportsTemplatesEditComponent } from './containers/dictionaries/sit-imports-templates/actions/sit-imports-templates-edit/sit-imports-templates-edit.component';
+import { SitCustomerEDocsEditComponent } from './containers/dictionaries/sit-customers/actions/sit-customer-edocs-edit/sit-customer-edocs-edit.component';
 
 
 @NgModule({
@@ -524,7 +528,11 @@ import { SitDialogActionProgressComponent } from './components/sit-dialog-action
         SitAnalysisBankStatementPosComponent,
         SitPubPrintCostAnalysisComponent,
         SitParams4EmployeesSettlementsComponent,
-        SitParams4EmployeesSettlementsEditComponent
+        SitParams4EmployeesSettlementsEditComponent,
+        SitImportFromFileComponent,
+        SitImportsTemplatesComponent,
+        SitImportsTemplatesEditComponent,
+        SitCustomerEDocsEditComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
