@@ -172,6 +172,7 @@ import { SitImportFromFileComponent } from '@app/containers/dictionaries/_common
 import { SitImportsTemplatesComponent } from '@app/containers/dictionaries/sit-imports-templates/sit-imports-templates.component';
 import { SitImportsTemplatesEditComponent } from '@app/containers/dictionaries/sit-imports-templates/actions/sit-imports-templates-edit/sit-imports-templates-edit.component';
 import { SitCustomerEDocsEditComponent } from '@app/containers/dictionaries/sit-customers/actions/sit-customer-edocs-edit/sit-customer-edocs-edit.component';
+import { SitChangeStatusComponent } from '@app/containers/dictionaries/_common/actions/sit-change-status/sit-change-status.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -350,6 +351,7 @@ export class FactoryService {
         sitImportsTemplates: SitImportsTemplatesComponent,
         sitImportsTemplatesEdit: SitImportsTemplatesEditComponent,
         sitCustomerEDocsEdit: SitCustomerEDocsEditComponent,
+        sitChangeStatus: SitChangeStatusComponent,
     };
 
     public GetFactory(ident: string) {
