@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { SitDialogActionProgressComponent } from '@app/components/sit-dialog-action-progress/sit-dialog-action-progress.component';
 import { SitDialogConfirmSeletedRowsComponent } from '@app/components/sit-dialog-confirm-selected-rows';
-
 import { DataSetWrapper } from '@app/_models';
 import { ActionDefinitionWrapper } from '@app/_models/actionDefinitionWrapper';
-import { NumberFilterModel } from 'ag-grid-community';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +13,8 @@ export class MultiActionService {
   private dataSetWrapper: DataSetWrapper;
   private actionDefinition: ActionDefinitionWrapper;
   private cancelInvoke : boolean = false;
+  private dialogDataProgress : MatDialogRef<SitDialogConfirmSeletedRowsComponent>;
+
   constructor(public dialog: MatDialog) { }
 
   private runActionOneByOneForward(selectedRows: any[], rowIndex: number, owner: any, exceptionCallback: Function, exceptionFinally: Function): void {
@@ -21,9 +22,13 @@ export class MultiActionService {
       exceptionFinally(owner);
       return;
     }
+
     rowIndex++;
-    if (rowIndex >= selectedRows.length && exceptionFinally) {
-      exceptionFinally(owner);
+    if (rowIndex >= selectedRows.length) {
+      if (exceptionFinally) {
+        exceptionFinally(owner);
+      }
+      this.closeProgressDialog(true);
       return;
     }
 
@@ -84,7 +89,7 @@ export class MultiActionService {
         confirm: true
       }
     });
-
+    this.cancelInvoke = false;
     dialogRef.afterClosed().subscribe(result => {
       result ? closeOKCallBack(true) : closeFailedCallBack(false);
     });
@@ -94,25 +99,32 @@ export class MultiActionService {
                             selectedRows: any[],
                             closeCanceCallBack: Function,
                             width: string = '450px',
-                            height: string = '180px',
+                            height: string = '205px',
                             panelClass: string = 'sit-selected-rows-confirmation') {
 
-    const dialogRef = this.dialog.open(SitDialogConfirmSeletedRowsComponent, {
+    this.dialogDataProgress = this.dialog.open(SitDialogActionProgressComponent, {
       width: width, height: height, panelClass: panelClass,
       data: {
       rowsCount: selectedRows.length,
       caption: caption,
+      currentRowIndex: 1,
       progress: true
       }
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    this.dialogDataProgress.afterClosed().subscribe(result => {
       closeCanceCallBack(result);
+      this.cancelInvoke = true;
     });
  }
 
  public updateProgressDialog(rowIndex) {
+    this.dialogDataProgress.componentInstance.data.currentRowIndex = rowIndex + 1;
 
+ }
+
+ private closeProgressDialog(result) {
+    this.dialogDataProgress.close(result);
  }
 
   private executeActionForSelectedExceptionCallback(self) {

@@ -148,21 +148,16 @@ export class SitProcButtonComponent extends SitActionDirective {
         this.onClickInternal(false);
         return;
     }
-    this.multiActionsService.showProgressDialog(this.actionDefinition.tooltip,
-      this.dataSetResponseWrapper.selectedRows, (closeResult) => {
-        console.log("Close Res", closeResult);
-      })
 
-
-    // this.multiActionsService.showConfirmDialog(
-    //   this.actionDefinition.tooltip,
-    //   this.dataSetResponseWrapper.selectedRows,
-    //   (closeResult) => {
-    //     this.onClickInternal(true);
-    //   },
-    //   (closeResult) => {
-    //     console.log("Cancel");
-    //   });
+    this.multiActionsService.showConfirmDialog(
+      this.actionDefinition.tooltip,
+      this.dataSetResponseWrapper.selectedRows,
+      (closeResult) => {
+        this.onClickInternal(true);
+      },
+      (closeResult) => {
+        console.log("Cancel");
+      });
   }
 
   onClickInternal(fromSelected: boolean) {
@@ -209,7 +204,7 @@ export class SitProcButtonComponent extends SitActionDirective {
       var selectedRows = [...this.dataSetResponseWrapper.selectedRows];
       this.multiActionsService.setProperties(this, this.dataSetResponseWrapper, this.actionDefinition);
       this.multiActionsService.runActionOneByOne(selectedRows, 0, (sender) => {
-        console.log("Error");
+        this.executeActionExceptionCallback(sender);
       },
       (sender) => {
         sender.executeActionCompletedCallback(sender);
@@ -239,6 +234,7 @@ export class SitProcButtonComponent extends SitActionDirective {
 
   private executeActionCompletedCallback(self) {
     self.changeExecutingState(false);
+    self.dataSetResponseWrapper.clearSelectedRows();
     self.afterCompleted.emit('OK');
   }
 

@@ -76,7 +76,7 @@ export class DataSetWrapper {
 
     public set selectedRows(value: any[]) {
         this._selectedRows = value;
-        this.selectedRowsChanged.emit(this._selectedRows);
+        this.selectedRowsChangedInvoke();
     }
 
     public get hasSelectedRows(): boolean {
@@ -496,11 +496,43 @@ export class DataSetWrapper {
 
     public getFieldId() {
         return '__Identity__';
-      }
+    }
+
     public getFieldIdValue(row : any = null) {
         const fieldName = this.getFieldId();
         const fieldValue = row == null ? this.activeRow[fieldName] : row[fieldName];
         return fieldValue;
-      }
+    }
+
+    public clearSelectedRows() {
+        if (!this.selectedRows) {
+            return;
+        }
+
+        this.selectedRows.length = 0;
+    }
+
+    public removeSelectedRow(row) {
+        if (!this.selectedRows) {
+            return;
+        }
+
+        var rowIndex = this.selectedRows.indexOf(row);
+        if (rowIndex != -1) {
+            this.selectedRows.splice(rowIndex, 1);
+            this.selectedRowsChangedInvoke();
+        }
+    }
+
+    public selectedRowsChangedInvoke() {
+        this.selectedRowsChanged.emit(this._selectedRows);
+    }
+
+    public isSelectedRow(row) {
+        if (!this.selectedRows) {
+            return false;
+        }
+        return this.selectedRows.indexOf(row) != -1;
+    }
 
 }

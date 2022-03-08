@@ -123,6 +123,7 @@ export class SitDataSetContainerComponent implements AfterViewInit{
         });
         if (rowsDataApiToDelete) {
           gridApi.applyTransaction({ remove: rowsDataApiToDelete });
+          this.dataSetResponseWrapper.removeSelectedRow(rowsDataApiToDelete);
         }
       }
     });
