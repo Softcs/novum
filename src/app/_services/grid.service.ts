@@ -5,6 +5,7 @@ import { SitDataCheckboxComponent } from '@app/components/controls/sit-data-chec
 import { SitDataSetContainerComponent } from '@app/components/sit-data-set-container';
 import { sitGlobalConfig } from '@app/_consts/sit-global-config';
 import { StringUtils } from '@app/_helpers/string.utisl';
+import { AG_GRID_LOCALE_PL } from 'src/assets/locale_grid_pl';
 
 @Injectable({
   providedIn: 'root'
@@ -81,6 +82,19 @@ export class GridService {
   public setDefGridOptionsOnReady(grid) {
     grid.api.gridOptionsWrapper.gridOptions.tooltipShowDelay = 0;
     //grid.api.gridOptionsWrapper.gridOptions.enableBrowserTooltips = true
+    this.setLocale(grid);
+  }
+
+  public afterViewInit(grid) {
+    if (!grid) {
+      return;
+    }
+
+    this.setLocale(grid.gridOptionsWrapper.gridOptions)
+  }
+
+  public setLocale(gridOptions) {
+    gridOptions.localeText = AG_GRID_LOCALE_PL;
   }
 
   public setDefGridOptions(grid) {
