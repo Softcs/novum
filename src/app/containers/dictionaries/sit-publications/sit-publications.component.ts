@@ -11,12 +11,16 @@ export class SitPublicationsComponent extends SitDictBaseComponent {
   
   public prepareColumnsDefinitnion(){
     this.gridColumnsDefinition["sitPublications"] = [
+      { headerName: 'Id', field: 'sitPublicationsId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 50, defaultVisibility: false },
+      { headerName: 'GUID', field: 'sitPublicationsG', width: 100, defaultVisibility: false },  
       { headerName: 'Publikacja', field: 'PublicationIdent', filter: 'agTextColumnFilter', width: 300 },
       { headerName: 'Tytuł', field: 'Title', filter: 'agTextColumnFilter', width: 300 },
       { headerName: 'Tytuł oryginalny', field: 'OriginalTitle', filter: 'agTextColumnFilter', width: 300 },
       { headerName: 'Status', field: 'StatusValueName', filter: 'agTextColumnFilter', width: 150 }
     ];
     this.gridColumnsDefinition["sitPublicationsProducts"] = [
+      { headerName: 'Id', field: 'sitPublicationsProductsId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 50, defaultVisibility: false },
+      { headerName: 'GUID', field: 'sitPublicationsProductsG', width: 100, defaultVisibility: false }, 
       { headerName: 'Identfikator', field: 'ProductIdent', width: 150},
       { headerName: 'Nazwa', field: 'ProductName', width: 300},
       { headerName: 'Forma wydania', field: 'FormOfReleaseIdent', width: 300}
