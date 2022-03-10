@@ -5,11 +5,18 @@ import { sitGlobalConfig } from '@app/_consts/sit-global-config';
 import { StringUtils } from '@app/_helpers/string.utisl';
 import { DataSetWrapper } from '@app/_models';
 import { DataSetDefinitionWrapper } from '@app/_models/dataSetDefinitionWrapper';
+import { GetContextMenuItemsParams, MenuItemDef } from 'ag-grid-community';
+import { param } from 'jquery';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GridService {
+  selectionColumnName = '__selection__';
+
+  isSelectionAvailable: boolean = false;
+  isSelectionEnabled: boolean = false;
+
   columnDefs;
   defaultColumns = {
     headerCheckboxSelection: this.isFirstColumn,
@@ -93,17 +100,17 @@ export class GridService {
 
   public selectionOptionInit(dataSetWrapper: DataSetWrapper, gridOptions, columns) {
     var self = this;
-    gridOptions.defaultColDef = this.defaultColumns;
+    //gridOptions.defaultColDef = this.defaultColumns;
+
     if (columns != null) {
       var column = {
+        headerName: this.selectionColumnName,
+        field: this.selectionColumnName,
         width: 40,
-        headerCheckboxSelection: true,
-        headerCheckboxSelectionFilteredOnly: true,
-        checkboxSelection: true
+        defaultVisibility: false
       }
       columns.unshift(column);
     }
-
 
     gridOptions.suppressRowClickSelection = true;
     gridOptions.rowSelection = 'multiple';
@@ -111,6 +118,11 @@ export class GridService {
     gridOptions.onSelectionChanged = () => {
       self.onSelectionChanged(dataSetWrapper, gridOptions);
     }
+
+    var self = this;
+    gridOptions.getContextMenuItems = (params: GetContextMenuItemsParams) => {
+      return this.getContextMenuItems(params, self);
+    };
   }
 
   public setDefGridOptionsOnReady(grid) {
@@ -149,6 +161,7 @@ export class GridService {
     var columns = gridColumnsDefinition[ident];
 
     if (gridOptions && activateSelectedMode) {
+      this.isSelectionAvailable = true;
       this.selectionOptionInit(dataSetWrapper, gridOptions, columns);
     }
 
@@ -264,5 +277,29 @@ export class GridService {
       agrColumns.forEach(c  => agrRow[c.colDef.field] += row[c.colDef.field]);
     },0);
     gridApi.setPinnedBottomRowData([agrRow]);
+  }
+
+  private getContextMenuItems(params: GetContextMenuItemsParams, gridService: GridService): (string | MenuItemDef)[] {
+    var self = gridService;
+
+    var items: (string | MenuItemDef)[] = [
+      'separator',
+      {
+        name: !self.isSelectionEnabled ? 'Tryb zaznaczania rekordów' : 'Wyłącz zaznaczanie rekordów',
+        action: function () {
+          self.isSelectionEnabled = !self.isSelectionEnabled;
+          var col = params.columnApi.getColumn(self.selectionColumnName);
+          col["colDef"].headerCheckboxSelection = self.isSelectionEnabled;
+          col["colDef"].headerCheckboxSelectionFilteredOnly = self.isSelectionEnabled;
+          col["colDef"].checkboxSelection = self.isSelectionEnabled;
+          params.columnApi.setColumnVisible(col, self.isSelectionEnabled);
+          if (!self.isSelectionEnabled) {
+            params.api.deselectAll();
+          }
+        }
+      }];
+
+      items.unshift(...params.defaultItems);
+      return items;
   }
 }
