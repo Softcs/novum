@@ -150,7 +150,7 @@ export class SitProcButtonComponent extends SitActionDirective {
     }
 
     this.multiActionsService.showConfirmDialog(
-      this.actionDefinition.tooltip,
+      this.actionDefinition.caption ? this.actionDefinition.caption : this.actionDefinition.tooltip,
       this.dataSetResponseWrapper.selectedRows,
       (closeResult) => {
         this.onClickInternal(true);

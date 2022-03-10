@@ -83,7 +83,7 @@ export class ActionDefinitionWrapper {
                 } else if (this.isInsert || this.isUpdate) {
                     this._executionModeCalculated = ActionExecutionKind.OnlyForCurrent;
                 } else {
-                    this._executionModeCalculated = ActionExecutionKind.RunOneByOne;
+                    this._executionModeCalculated = ActionExecutionKind.OnlyForCurrent;
                 }
             }
         } else {
