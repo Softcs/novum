@@ -26,6 +26,7 @@ export class SitCustomersComponent extends SitDictBaseComponent {
       { headerName: 'Identyfikator', field: 'HRDepartmentIdent', width: 150 },
       { headerName: 'Nazwa', field: 'HRDepartmentName', width: 200 },
       { headerName: 'Proc.przel.UOP', field: 'HRBatches4InvoicingIdent', width: 200 },
+      { headerName: 'Rez url.', headerTooltip:'Licz rezerwę urlopową', field: 'CalcVacRes', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 70, renderType: "checkbox"},
     ];
 
     this.gridColumnsDefinition["sitHRParams4Invoicing"] = [
