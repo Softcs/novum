@@ -12,12 +12,10 @@ import { DataSetDefinitionWrapper } from '@app/_models/dataSetDefinitionWrapper'
 export class GridService {
   columnDefs;
   defaultColumns = {
-    flex: 1,
-    minWidth: 100,
-    resizable: true,
     headerCheckboxSelection: this.isFirstColumn,
     checkboxSelection: this.isFirstColumn,
   };
+
   constructor(
     @Inject(LOCALE_ID) protected locale: string,
     private stringUtils: StringUtils
@@ -93,9 +91,20 @@ export class GridService {
     dataSetWrapper.selectedRows = selectedRows;
   }
 
-  public selectionOptionInit(dataSetWrapper: DataSetWrapper, gridOptions) {
+  public selectionOptionInit(dataSetWrapper: DataSetWrapper, gridOptions, columns) {
     var self = this;
     gridOptions.defaultColDef = this.defaultColumns;
+    if (columns != null) {
+      var column = {
+        width: 40,
+        headerCheckboxSelection: true,
+        headerCheckboxSelectionFilteredOnly: true,
+        checkboxSelection: true
+      }
+      columns.unshift(column);
+    }
+
+
     gridOptions.suppressRowClickSelection = true;
     gridOptions.rowSelection = 'multiple';
     gridOptions.rowMultiSelectWithClick = true;
@@ -136,11 +145,13 @@ export class GridService {
  }
 
  public prepareGrid(dataSetWrapper: DataSetWrapper, gridApi, ident, gridColumnsDefinition, popupParent, gridOptions, activateSelectedMode: boolean) {
-   if (gridOptions && activateSelectedMode) {
-     this.selectionOptionInit(dataSetWrapper, gridOptions);
-   }
   if (!gridApi.getColumnDefs() || gridApi.getColumnDefs().length == 0) {
     var columns = gridColumnsDefinition[ident];
+
+    if (gridOptions && activateSelectedMode) {
+      this.selectionOptionInit(dataSetWrapper, gridOptions, columns);
+    }
+
     this.applyRender4Columns(columns);
 
     //for children columns
