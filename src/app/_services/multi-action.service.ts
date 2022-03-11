@@ -4,6 +4,8 @@ import { SitDialogActionProgressComponent } from '@app/components/sit-dialog-act
 import { SitDialogConfirmSeletedRowsComponent } from '@app/components/sit-dialog-confirm-selected-rows';
 import { DataSetWrapper } from '@app/_models';
 import { ActionDefinitionWrapper } from '@app/_models/actionDefinitionWrapper';
+import { ActionVisibilityRule } from '@app/_models/actionVisibilityRule';
+import { VisibilityService } from './visibility.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +17,12 @@ export class MultiActionService {
   private cancelInvoke : boolean = false;
   private dialogDataProgress : MatDialogRef<SitDialogConfirmSeletedRowsComponent>;
 
-  constructor(public dialog: MatDialog) { }
+  constructor(
+    public dialog: MatDialog,
+    private visibilityService: VisibilityService
+    ) { }
 
-  private runActionOneByOneForward(selectedRows: any[], rowIndex: number, owner: any, exceptionCallback: Function, exceptionFinally: Function): void {
+  private runActionOneByOneForward(selectedRows: any[], rowIndex: number, owner: any, visibility:ActionVisibilityRule, exceptionCallback: Function, exceptionFinally: Function): void {
     if (this.cancelInvoke) {
       exceptionFinally(owner);
       return;
@@ -32,7 +37,7 @@ export class MultiActionService {
       return;
     }
 
-    this.runActionOneByOne(selectedRows, rowIndex, exceptionCallback, exceptionFinally);
+    this.runActionOneByOne(selectedRows, rowIndex, visibility, exceptionCallback, exceptionFinally);
   }
 
   public setProperties(owner: any,
@@ -45,11 +50,14 @@ export class MultiActionService {
 
   public runActionOneByOne(selectedRows: any[],
                            rowIndex: number,
+                           visibility:ActionVisibilityRule,
                            exceptionCallback: Function,
                            exceptionFinally: Function
                            ) {
     var row = selectedRows[rowIndex];
     if (rowIndex == 0) {
+      selectedRows = this.applyVisibility(selectedRows, visibility, this.dataSetWrapper);
+
       this.showProgressDialog(this.actionDefinition.tooltip, selectedRows, (cancelResult) => {
         this.cancelInvoke = true;
       });
@@ -61,30 +69,42 @@ export class MultiActionService {
       this.actionDefinition,
       this.owner,
       (owner) => {
-        this.runActionOneByOneForward(selectedRows, rowIndex, owner, exceptionCallback, exceptionFinally);
+        this.runActionOneByOneForward(selectedRows, rowIndex, owner, visibility, exceptionCallback, exceptionFinally);
       },
       (owner) => {
         if (exceptionCallback) {
           exceptionCallback(this.owner);
         }
 
-        this.runActionOneByOneForward(selectedRows, rowIndex, owner, exceptionCallback, exceptionFinally);
+        this.runActionOneByOneForward(selectedRows, rowIndex, owner, visibility, exceptionCallback, exceptionFinally);
       },
       null,
       row);
   }
 
+  public applyVisibility(selectedRows: any[], visibility:ActionVisibilityRule, dataSetResponseWrapper: DataSetWrapper) {
+    if (!selectedRows || !visibility) {
+      return selectedRows;
+    }
+
+    var result = selectedRows.filter(r => this.visibilityService.shouldBeVisible(visibility, dataSetResponseWrapper, r));
+    return result;
+  }
+
   public showConfirmDialog(caption: string,
                            selectedRows: any[],
+                           visibility:ActionVisibilityRule,
+                           dataSetResponseWrapper: DataSetWrapper,
                            closeOKCallBack: Function,
                            closeFailedCallBack: Function,
                            width: string = '450px',
                            height: string = '180px',
                            panelClass: string = 'sit-selected-rows-confirmation') {
+    var rows = this.applyVisibility(selectedRows, visibility, dataSetResponseWrapper);
     const dialogRef = this.dialog.open(SitDialogConfirmSeletedRowsComponent, {
       width: width, height: height, panelClass: panelClass,
       data: {
-        rowsCount: selectedRows.length,
+        rowsCount: rows.length,
         caption: caption,
         confirm: true
       }

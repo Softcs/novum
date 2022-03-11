@@ -152,6 +152,8 @@ export class SitProcButtonComponent extends SitActionDirective {
     this.multiActionsService.showConfirmDialog(
       this.actionDefinition.caption ? this.actionDefinition.caption : this.actionDefinition.tooltip,
       this.dataSetResponseWrapper.selectedRows,
+      this.actionDefinition?.visibility,
+      this.dataSetResponseWrapper,
       (closeResult) => {
         this.onClickInternal(true);
       },
@@ -203,7 +205,7 @@ export class SitProcButtonComponent extends SitActionDirective {
     } else {
       var selectedRows = [...this.dataSetResponseWrapper.selectedRows];
       this.multiActionsService.setProperties(this, this.dataSetResponseWrapper, this.actionDefinition);
-      this.multiActionsService.runActionOneByOne(selectedRows, 0, (sender) => {
+      this.multiActionsService.runActionOneByOne(selectedRows, 0, this.actionDefinition?.visibility, (sender) => {
         this.executeActionExceptionCallback(sender);
       },
       (sender) => {

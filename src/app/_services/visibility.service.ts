@@ -8,13 +8,16 @@ import { ActionVisibilityRule } from '@app/_models/actionVisibilityRule';
 export class VisibilityService {
 
   constructor() { }
-  public shouldBeVisible(visibilityRule: ActionVisibilityRule, dataSetWrapper: DataSetWrapper): boolean {
+
+
+
+  public shouldBeVisible(visibilityRule: ActionVisibilityRule, dataSetWrapper: DataSetWrapper, dataSetWrapperRow: any = null): boolean {
     if (!visibilityRule) {
         return true;
-    }    
+    }
     var row = null;
     if (!visibilityRule.dataSourceIdent) {
-          row = dataSetWrapper.activeRow;
+          row = !dataSetWrapperRow ? dataSetWrapper.activeRow : dataSetWrapperRow;
     } else {
       var dataSetManager = dataSetWrapper.dataSourceManager;
       dataSetWrapper =  dataSetManager.getDateSourceWrapper(visibilityRule.dataSourceIdent);
@@ -22,9 +25,9 @@ export class VisibilityService {
         console.error(`Visiblity - dataSet: ${visibilityRule.dataSourceIdent} could not be found`);
         return false;
       }
-      row = dataSetWrapper.activeRow;      
+      row = dataSetWrapper.activeRow;
     }
-    
+
     return this.shouldBeVisible4row(visibilityRule, row);
   }
 
@@ -36,6 +39,6 @@ export class VisibilityService {
     if (value === null) {
       value = "";
     }
-    return  value.toString() === visibilityRule.value;     
+    return  value.toString() === visibilityRule.value;
   }
 }
