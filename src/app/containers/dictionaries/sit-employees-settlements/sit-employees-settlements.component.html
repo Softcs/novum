@@ -15,7 +15,9 @@
         <button mat-stroked-button color="primary" (click)="getAttachment()" style="width: 120px;"><mat-icon>attach_file</mat-icon>Załącznik</button>
       </sit-data-set-container>
     </div>
-    <mat-tab-group id="tab-group" animationDuration="0ms">
+    <mat-tab-group id="tab-group" animationDuration="0ms"
+      [(selectedIndex)]="selectedTabIndex"
+      (selectedTabChange)="tabChanged($event)">
       <mat-tab label="Zlecenia">
         <as-split #sitSpliter direction="horizontal">
           <as-split-area [size]="70">

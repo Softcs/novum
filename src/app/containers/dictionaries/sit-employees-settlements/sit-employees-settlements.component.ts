@@ -12,6 +12,7 @@ import { DataSetWrapper } from '@app/_models';
 export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
 
   detailCellRendererParams;
+  selectedTabIndex: number=0;
 
   public prepareColumnsDefinitnion() {
     this.gridColumnsDefinition['sitEmployeesSettlements'] = [
@@ -556,10 +557,10 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
           renderType: 'number',
           cellClass: ['font11','numberFormat2Dec'],
         },            
-        { headerName: 'ZUS dod. podst.', headerTooltip: 'ZUS dodatkowy - podstawa', field: 'ZUSAddBase', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 100, suppressMenu: true, agr: 'sum', columnGroupShow: "open",
-          renderType: 'number',
-          cellClass: ['font11','numberFormat2Dec'],
-        },            
+        // { headerName: 'ZUS dod. podst.', headerTooltip: 'ZUS dodatkowy - podstawa', field: 'ZUSAddBase', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 100, suppressMenu: true, agr: 'sum', columnGroupShow: "open",
+        //   renderType: 'number',
+        //   cellClass: ['font11','numberFormat2Dec'],
+        // },            
       ]
     },
     { headerName: 'Rez. url.', field: 'VacRes', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80, suppressMenu: true, agr: 'sum', columnGroupShow: "open",
@@ -728,13 +729,21 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
 
   getAttachment() {
     //generuje załącznik
-    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitEmployeesSettlements');
+    this.selectedTabIndex === 0 ? console.log('sitEmployeesSettlements') : console.log('sitEmployeesSettlementsContr') 
+    
+    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper(this.selectedTabIndex === 0 ? 'sitEmployeesSettlements' : 'sitEmployeesSettlementsContr')
+
     const url = this.urlService.getGenXLSUrl(dataSourceResponseWrapper.activeRow);
     console.log(url);
-    window.open(url, '_blank');
+    if (url) {
+      window.open(url, '_blank');
+    } else return;
 
   }
 
+  tabChanged($e){
+
+  }
   refreshAfter(dataSourceManager) {}
 
 
