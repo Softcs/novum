@@ -1,10 +1,10 @@
 import { formatDate, formatNumber } from '@angular/common';
 import { Inject, Injectable, LOCALE_ID } from '@angular/core';
 import { SitDataSetContainerComponent } from '@app/components/sit-data-set-container';
+import { GridConstans } from '@app/_consts/GridConstans';
 import { sitGlobalConfig } from '@app/_consts/sit-global-config';
 import { StringUtils } from '@app/_helpers/string.utisl';
 import { DataSetWrapper } from '@app/_models';
-import { DataSetDefinitionWrapper } from '@app/_models/dataSetDefinitionWrapper';
 import { GetContextMenuItemsParams, MenuItemDef } from 'ag-grid-community';
 import { param } from 'jquery';
 
@@ -12,11 +12,6 @@ import { param } from 'jquery';
   providedIn: 'root'
 })
 export class GridService {
-  selectionColumnName = '__selection__';
-
-  isSelectionAvailable: boolean = false;
-  isSelectionEnabled: boolean = false;
-
   columnDefs;
   defaultColumns = {
     headerCheckboxSelection: this.isFirstColumn,
@@ -100,12 +95,11 @@ export class GridService {
 
   public selectionOptionInit(dataSetWrapper: DataSetWrapper, gridOptions, columns) {
     var self = this;
-    //gridOptions.defaultColDef = this.defaultColumns;
 
     if (columns != null) {
       var column = {
-        headerName: this.selectionColumnName,
-        field: this.selectionColumnName,
+        headerName: GridConstans.selectionColumnName,
+        field: GridConstans.selectionColumnName,
         width: 40,
         defaultVisibility: false
       }
@@ -119,9 +113,8 @@ export class GridService {
       self.onSelectionChanged(dataSetWrapper, gridOptions);
     }
 
-    var self = this;
     gridOptions.getContextMenuItems = (params: GetContextMenuItemsParams) => {
-      return this.getContextMenuItems(params, self);
+      return this.getContextMenuItems(params, dataSetWrapper);
     };
   }
 
@@ -161,7 +154,7 @@ export class GridService {
     var columns = gridColumnsDefinition[ident];
 
     if (gridOptions && activateSelectedMode) {
-      this.isSelectionAvailable = true;
+      dataSetWrapper.isSelectionAvailable = true;
       this.selectionOptionInit(dataSetWrapper, gridOptions, columns);
     }
 
@@ -279,21 +272,19 @@ export class GridService {
     gridApi.setPinnedBottomRowData([agrRow]);
   }
 
-  private getContextMenuItems(params: GetContextMenuItemsParams, gridService: GridService): (string | MenuItemDef)[] {
-    var self = gridService;
-
+  private getContextMenuItems(params: GetContextMenuItemsParams, dataSetWrapper: DataSetWrapper): (string | MenuItemDef)[] {
     var items: (string | MenuItemDef)[] = [
       'separator',
       {
-        name: !self.isSelectionEnabled ? 'Tryb zaznaczania rekordów' : 'Wyłącz zaznaczanie rekordów',
+        name: !dataSetWrapper.isSelectionEnabled ? 'Tryb zaznaczania rekordów' : 'Wyłącz zaznaczanie rekordów',
         action: function () {
-          self.isSelectionEnabled = !self.isSelectionEnabled;
-          var col = params.columnApi.getColumn(self.selectionColumnName);
-          col["colDef"].headerCheckboxSelection = self.isSelectionEnabled;
-          col["colDef"].headerCheckboxSelectionFilteredOnly = self.isSelectionEnabled;
-          col["colDef"].checkboxSelection = self.isSelectionEnabled;
-          params.columnApi.setColumnVisible(col, self.isSelectionEnabled);
-          if (!self.isSelectionEnabled) {
+          dataSetWrapper.isSelectionEnabled = !dataSetWrapper.isSelectionEnabled;
+          var col = params.columnApi.getColumn(GridConstans.selectionColumnName);
+          col["colDef"].headerCheckboxSelection = dataSetWrapper.isSelectionEnabled;
+          col["colDef"].headerCheckboxSelectionFilteredOnly = dataSetWrapper.isSelectionEnabled;
+          col["colDef"].checkboxSelection = dataSetWrapper.isSelectionEnabled;
+          params.columnApi.setColumnVisible(col, dataSetWrapper.isSelectionEnabled);
+          if (!dataSetWrapper.isSelectionEnabled) {
             params.api.deselectAll();
           }
         }

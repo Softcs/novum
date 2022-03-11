@@ -22,6 +22,8 @@ export class DataSetWrapper {
     public hasOnCF = false;
     public onCFFields: any = {};
     public hasActionForSelectedRows = false;
+    public isSelectionAvailable: boolean = false;
+    public isSelectionEnabled: boolean = false;
 
     @Output()
     activeRowChanged: EventEmitter<any> = new EventEmitter<any>();
