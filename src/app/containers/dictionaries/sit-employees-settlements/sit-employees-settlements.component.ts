@@ -19,7 +19,6 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
       { headerName: 'Pracownik',
         children: [
           { headerName: 'Nazwisko', field: 'EmployeeName', tooltipField: 'EmployeeName', sort: 'asc', width: 180, pinned: 'left',
-            checkboxSelection: true, headerCheckboxSelection: true, headerCheckboxSelectionFilteredOnly: true,
             cellClass: ['font11','textFormat']
           },
           { headerName: 'Ident.', field: 'EmployeeIdent', tooltipField: 'EmployeeIdent', width: 100, pinned: 'left',
@@ -395,7 +394,6 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
       { headerName: 'Pracownik',
         children: [
           { headerName: 'Nazwisko', field: 'EmployeeName', tooltipField: 'EmployeeName', sort: 'asc', width: 210, pinned: 'left',
-            checkboxSelection: true, headerCheckboxSelection: true, headerCheckboxSelectionFilteredOnly: true,
             cellClass: ['font11','textFormat'],cellRenderer: 'agGroupCellRenderer'
           },
           { headerName: 'Ident.', field: 'EmployeeIdent', tooltipField: 'EmployeeIdent', width: 100, pinned: 'left',
