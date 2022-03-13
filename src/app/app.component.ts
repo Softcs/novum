@@ -12,7 +12,8 @@ LicenseManager.setLicenseKey("CompanyName=SEIDO IT SP Z O O,LicensedApplication=
 
 @Component({
   selector: 'app',
-  templateUrl: 'app.component.html'
+  templateUrl: 'app.component.html',
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, AfterViewInit {
 

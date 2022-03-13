@@ -161,13 +161,14 @@ export class GatewayService {
         return opr;
     }
 
-    operationExecuteAction(dictIdent: string, dataSourcesRequest: any[], actionIdent: string, dataSourceIdent: string) {
+    operationExecuteAction(dictIdent: string, dataSourcesRequest: any[], actionIdent: string, dataSourceIdent: string, selectedRows: any[]) {
         const opr: Operation = new Operation();
         opr.dictident = dictIdent;
         opr.oprType = 50;
         opr.actionIdent = actionIdent;
         opr.dataSourceIdent = dataSourceIdent;
         opr.dataSourcesRequest = dataSourcesRequest;
+        opr.selectedRows = selectedRows;
         return opr;
     }
 

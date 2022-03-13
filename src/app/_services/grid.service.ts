@@ -1,24 +1,29 @@
 import { formatDate, formatNumber } from '@angular/common';
 import { Inject, Injectable, LOCALE_ID } from '@angular/core';
-import { GridCheckboxRenderer } from '@app/components/controls/grid-checkbox-renderer/grid-checkbox-renderer.component';
-import { SitDataCheckboxComponent } from '@app/components/controls/sit-data-checkbox/sit-data-checkbox.component';
 import { SitDataSetContainerComponent } from '@app/components/sit-data-set-container';
+import { GridConstans } from '@app/_consts/GridConstans';
 import { sitGlobalConfig } from '@app/_consts/sit-global-config';
 import { StringUtils } from '@app/_helpers/string.utisl';
 import { AG_GRID_LOCALE_PL } from 'src/assets/locale_grid_pl';
+import { DataSetWrapper } from '@app/_models';
+import { GetContextMenuItemsParams, MenuItemDef } from 'ag-grid-community';
+import { param } from 'jquery';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GridService {
   columnDefs;
+  defaultColumns = {
+    headerCheckboxSelection: this.isFirstColumn,
+    checkboxSelection: this.isFirstColumn,
+  };
 
   constructor(
     @Inject(LOCALE_ID) protected locale: string,
     private stringUtils: StringUtils
   ) {
   }
-
 
   private formatColumn(column: any, locale: string) {
     var renderFormat = column["renderFormat"];
@@ -78,6 +83,41 @@ export class GridService {
     });
   }
 
+  public isFirstColumn(params) {
+    var displayedColumns = params.columnApi.getAllDisplayedColumns();
+    var thisIsFirstColumn = displayedColumns[0] === params.column;
+    return thisIsFirstColumn;
+  }
+
+  public onSelectionChanged(dataSetWrapper: DataSetWrapper, gridOptions) {
+    const selectedRows = gridOptions.api.getSelectedRows();
+    dataSetWrapper.selectedRows = selectedRows;
+  }
+
+  public selectionOptionInit(dataSetWrapper: DataSetWrapper, gridOptions, columns) {
+    var self = this;
+
+    if (columns != null) {
+      var column = {
+        headerName: GridConstans.selectionColumnName,
+        field: GridConstans.selectionColumnName,
+        width: 40,
+        defaultVisibility: false
+      }
+      columns.unshift(column);
+    }
+
+    gridOptions.suppressRowClickSelection = true;
+    gridOptions.rowSelection = 'multiple';
+    gridOptions.rowMultiSelectWithClick = true;
+    gridOptions.onSelectionChanged = () => {
+      self.onSelectionChanged(dataSetWrapper, gridOptions);
+    }
+
+    gridOptions.getContextMenuItems = (params: GetContextMenuItemsParams) => {
+      return this.getContextMenuItems(params, dataSetWrapper);
+    };
+  }
 
   public setDefGridOptionsOnReady(grid) {
     grid.api.gridOptionsWrapper.gridOptions.tooltipShowDelay = 0;
@@ -99,7 +139,6 @@ export class GridService {
 
   public setDefGridOptions(grid) {
     this.columnDefs = grid.api.getColumnDefs();
-
     this.columnDefs.forEach(columnDef => {
       if( !columnDef.hasOwnProperty('sortable') ) { columnDef.sortable = true; }
       if( !columnDef.hasOwnProperty('resizable') ) { columnDef.resizable = true; }
@@ -108,14 +147,6 @@ export class GridService {
 
     grid.api.setColumnDefs(this.columnDefs);
     grid.gridOptions.excelStyles = sitGlobalConfig.excelStyles;
-
-    if ( !grid.gridOptions.rowSelection ) {
-      grid.gridOptions.rowSelection = 'multiple';
-    }
-
-    if ( !grid.gridOptions.rowMultiSelectWithClick ) {
-      grid.gridOptions.rowMultiSelectWithClick = false;
-    }
 
     if ( !grid.gridOptions.suppressCopyRowsToClipboard ) {
       grid.gridOptions.suppressCopyRowsToClipboard = true;
@@ -132,9 +163,15 @@ export class GridService {
            : null;
  }
 
- public prepareGrid(gridApi, ident, gridColumnsDefinition, popupParent) {
+ public prepareGrid(dataSetWrapper: DataSetWrapper, gridApi, ident, gridColumnsDefinition, popupParent, gridOptions, activateSelectedMode: boolean) {
   if (!gridApi.getColumnDefs() || gridApi.getColumnDefs().length == 0) {
     var columns = gridColumnsDefinition[ident];
+
+    if (gridOptions && activateSelectedMode) {
+      dataSetWrapper.isSelectionAvailable = true;
+      this.selectionOptionInit(dataSetWrapper, gridOptions, columns);
+    }
+
     this.applyRender4Columns(columns);
 
     //for children columns
@@ -151,14 +188,15 @@ export class GridService {
   gridApi.setPopupParent(popupParent);
  }
 
- public applyCustomPropsGrid(dataSetContainer: SitDataSetContainerComponent, gridApi) {
+ public applyCustomPropsGrid(dataSetContainer: SitDataSetContainerComponent, gridApi, activateSelectedMode: boolean) {
     var self = dataSetContainer;
 
     var customProperty = gridApi.SeidoCustomProperty;
     if (customProperty == null) {
       customProperty = {};
       customProperty.activeRow = null;
-      if (gridApi.gridOptionsWrapper) {
+      var gridOptions = gridApi.gridOptionsWrapper ? gridApi.gridOptionsWrapper.gridOptions : null;
+      if (gridOptions) {
         var gridOptions = gridApi.gridOptionsWrapper.gridOptions;
 
         gridOptions.accentedSort = true;
@@ -188,7 +226,7 @@ export class GridService {
           }
         }
 
-        this.prepareGrid(gridApi, dataSetContainer.ident, dataSetContainer.dataSetControlsManager.gridColumnsDefinition, dataSetContainer.dataSetControlsManager.popupParent);
+        this.prepareGrid(dataSetContainer.dataSetResponseWrapper, gridApi, dataSetContainer.ident, dataSetContainer.dataSetControlsManager.gridColumnsDefinition, dataSetContainer.dataSetControlsManager.popupParent, gridOptions, activateSelectedMode);
       }
 
       gridApi.SeidoCustomProperty = customProperty;
@@ -246,5 +284,27 @@ export class GridService {
       agrColumns.forEach(c  => agrRow[c.colDef.field] += row[c.colDef.field]);
     },0);
     gridApi.setPinnedBottomRowData([agrRow]);
+  }
+
+  private getContextMenuItems(params: GetContextMenuItemsParams, dataSetWrapper: DataSetWrapper): (string | MenuItemDef)[] {
+    var items: (string | MenuItemDef)[] = [
+      'separator',
+      {
+        name: !dataSetWrapper.isSelectionEnabled ? 'Tryb zaznaczania rekordów' : 'Wyłącz zaznaczanie rekordów',
+        action: function () {
+          dataSetWrapper.isSelectionEnabled = !dataSetWrapper.isSelectionEnabled;
+          var col = params.columnApi.getColumn(GridConstans.selectionColumnName);
+          col["colDef"].headerCheckboxSelection = dataSetWrapper.isSelectionEnabled;
+          col["colDef"].headerCheckboxSelectionFilteredOnly = dataSetWrapper.isSelectionEnabled;
+          col["colDef"].checkboxSelection = dataSetWrapper.isSelectionEnabled;
+          params.columnApi.setColumnVisible(col, dataSetWrapper.isSelectionEnabled);
+          if (!dataSetWrapper.isSelectionEnabled) {
+            params.api.deselectAll();
+          }
+        }
+      }];
+
+      items.unshift(...params.defaultItems);
+      return items;
   }
 }

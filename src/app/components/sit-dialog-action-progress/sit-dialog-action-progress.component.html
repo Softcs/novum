@@ -1,0 +1,7 @@
+<div fxFlexFill fxLayout="column" fxLayoutAlign="center center" class="sit-dialog">
+    <div mat-dialog-content>Wykonywanie akcji <br><b>{{data.caption}}</b> dla <b>{{data.rowsCount}}</b> rekordów.</div>
+    <div mat-dialog-content>Rekord <br><b>{{data.currentRowIndex}}</b> / <b>{{data.rowsCount}}</b></div>
+    <p></p>
+    <div mat-dialog-actions>
+      <button mat-raised-button color="primary" [mat-dialog-close]="true">Anuluj</button>
+    </div></div>

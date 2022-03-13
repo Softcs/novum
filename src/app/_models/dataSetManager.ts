@@ -9,6 +9,7 @@ import { RefreshType } from '@app/_consts/RefreshType';
 import { OnCFService } from '@app/_services/oncf.service';
 import { ActionDefinitionWrapper } from './actionDefinitionWrapper';
 import { SplitComponent } from 'angular-split';
+import { ActionExecutionKind } from '@app/_consts/ActionExecutionKind';
 
 @Directive()
 export class DataSetManager {
@@ -23,6 +24,9 @@ export class DataSetManager {
     public gridColumnsDefinition = {};
     public popupParent;
     public splitters: QueryList<SplitComponent>;
+
+    @Output()
+    refreshBefore: EventEmitter<DataSetManager> = new EventEmitter<DataSetManager>();
 
     @Output()
     refreshAfter: EventEmitter<DataSetManager> = new EventEmitter<DataSetManager>();
@@ -79,10 +83,10 @@ export class DataSetManager {
         return obj;
     }
 
-    public getObjectForDataSourceRequest(dataSetResponseWrapper: DataSetWrapper, canRefresh: boolean )  {
+    public getObjectForDataSourceRequest(dataSetResponseWrapper: DataSetWrapper, canRefresh: boolean, row: any = null )  {
         const  obj = this.getObjectForRequest(
             dataSetResponseWrapper.ident,
-            dataSetResponseWrapper.activeRow,
+            !row ? dataSetResponseWrapper.activeRow : row,
             canRefresh
         );
         return obj;
@@ -153,12 +157,14 @@ export class DataSetManager {
             dataSourcesRequest = dataSourcesRequest.filter((v,i) => dataSourcesRequest.findIndex(item => item.ident == v.ident) === i);
         }
 
+        this.refreshBefore.emit(this);
+
         const opr: Operation = this.gatewayService.operationRefreshDataSources(this.dictInfo.ident,
             dataSourcesRequest);
         this.gatewayService.executeOperation(opr)
             .pipe(first())
-            .subscribe(
-                data => {
+            .subscribe({
+                next: (data) => {
                     if (data.length === 1) {
                         const dataSetsResponse = data[0].dataSourcesResponse;
                         this.setRefreshDataSources(dataSetsResponse);
@@ -166,9 +172,9 @@ export class DataSetManager {
                         this.PropagateDataSources(dataSetToReload);
                     }
                 },
-                error => {
-                    console.error("error", error);
-                });
+                error: (e) => console.error(e),
+                complete: null//() => console.info('complete')
+            });
     }
 
     public ExecuteRefreshAfter(actionIdent: string, dataSourceIdent: string) {
@@ -204,8 +210,8 @@ export class DataSetManager {
 
         this.gatewayService.executeOperation(opr)
         .pipe(first())
-        .subscribe(
-            data => {
+        .subscribe({
+            next: (data) => {
                 if (data.length === 1) {
                     const response = data[0];
                     const wasErrors = this.PropagateErrors(opr.dataSourceIdent, response?.Errors);
@@ -231,12 +237,13 @@ export class DataSetManager {
                     }
                 }
             },
-            error => {
-                console.error("error", error);
-                if (executeActionExceptionCallback != null) {
-                      executeActionExceptionCallback();
+            error: (e) => {
+                    console.error("error", e);
+                    if (executeActionExceptionCallback != null) {
+                        executeActionExceptionCallback();
+                    }
                 }
-            },
+            }
         )
         .add(() => {
             if (executeFinallyCallback != null) {
@@ -280,8 +287,8 @@ export class DataSetManager {
 
         this.gatewayService.executeOperation(opr)
             .pipe(first())
-            .subscribe(
-                data => {
+            .subscribe({
+                next: (data) => {
                     if (data.length === 1) {
                         const response = data[0];
                         const wasErrors = this.PropagateErrors(dataSourceIdent, response?.Errors);
@@ -302,12 +309,13 @@ export class DataSetManager {
                         }
                     }
                 },
-                error => {
-                    console.error("error", error);
+                error: (e) => {
+                    console.error("error", e);
                     if (executeActionExceptionCallback != null) {
                           executeActionExceptionCallback(owner);
                     }
-                });
+                }
+            });
     }
 
     public ExecuteAction(actionDefinition: ActionDefinitionWrapper,
@@ -316,22 +324,28 @@ export class DataSetManager {
                          executeActionCompletedCallback: Function,
                          executeActionExceptionCallback: Function,
                          sourceDictIdent: string = null,
-                         activeDataSet: DataSetWrapper = null) {
+                         activeDataSet: DataSetWrapper = null,
+                         selectedRows: any[] = null,
+                         row: any = null) {
         const actionIdent = actionDefinition.ident;
         const dictIdent = sourceDictIdent ?? this.dictInfo?.ident;
         const dataSourcesRequest: any[] = [];
         const dsSourceWrapper = this.getDateSourceWrapper(dataSourceIdent);
         const dsWrapper: DataSetWrapper = activeDataSet == null ? dsSourceWrapper : activeDataSet;
 
+        if (actionDefinition.executionModeCalculated != ActionExecutionKind.AllInOne) {
+            selectedRows = null;
+        }
+
         if (actionDefinition.kind == "SetValue") {
-            dsWrapper.initRowByEditFields(null, actionDefinition.editFields, false);
+            dsWrapper.initRowByEditFields(row, actionDefinition.editFields, false);
             if(executeActionCompletedCallback != null) {
                 executeActionCompletedCallback(owner);
             }
             return;
         }
 
-        const obj = this.getObjectForDataSourceRequest(dsWrapper, true);
+        const obj = this.getObjectForDataSourceRequest(dsWrapper, true, row);
         dataSourcesRequest.push(obj);
         this.prapareDataSource4RequestParent(dsSourceWrapper, dataSourcesRequest);
 
@@ -339,12 +353,13 @@ export class DataSetManager {
             dictIdent,
             dataSourcesRequest,
             actionIdent,
-            dataSourceIdent);
+            dataSourceIdent,
+            selectedRows);
 
         this.gatewayService.executeOperation(opr)
             .pipe(first())
-            .subscribe(
-                data => {
+            .subscribe({
+                next: (data) => {
                     if (data.length === 1) {
                         const response = data[0];
                         const wasErrors = this.PropagateErrors(dataSourceIdent, response?.Errors);
@@ -367,12 +382,13 @@ export class DataSetManager {
 
                     }
                 },
-                error => {
+                error: (error) => {
                     console.error("error", error);
                     if (executeActionExceptionCallback != null) {
                         executeActionExceptionCallback(owner);
                     }
-                });
+            }
+        });
     }
 
     public setRefreshDataSources(dataSetsResponse) {
@@ -595,7 +611,7 @@ export class DataSetManager {
     }
 
     findDataSetDefinitionWrapper(ident: string) {
-        return this.dataSetDefinitionWrappers.find(ds => ds.ident === ident);
+        return this.dataSetDefinitionWrappers?.find(ds => ds.ident === ident);
     }
 
     get dictIdent(): string {

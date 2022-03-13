@@ -20,8 +20,8 @@ import { StringUtils } from '@app/_helpers/string.utisl';
   styleUrls: ['./sit-data-set-container.component.scss']
 })
 
-export class SitDataSetContainerComponent implements AfterViewInit {
-  private _errors: any[];
+export class SitDataSetContainerComponent implements AfterViewInit{
+  private _errors: any[] = [];
   private activeRowSubscription: Subscription;
   private identityFieldName: string = "__Identity__";
   private grids: [];
@@ -127,6 +127,7 @@ export class SitDataSetContainerComponent implements AfterViewInit {
         });
         if (rowsDataApiToDelete) {
           gridApi.applyTransaction({ remove: rowsDataApiToDelete });
+          this.dataSetResponseWrapper.removeSelectedRow(rowsDataApiToDelete);
         }
       }
     });
@@ -203,7 +204,8 @@ export class SitDataSetContainerComponent implements AfterViewInit {
       if (!gridApi) {
         return false;
       }
-      this.gridService.applyCustomPropsGrid(this, gridApi);
+
+      this.gridService.applyCustomPropsGrid(this, gridApi, this.dataSetResponseWrapper.hasActionForSelectedRows);
       // tree grid - parsowanie kolumny z danymi do drzewa //TODO find diffirent way to do the same except iteration of all rows
       if (this.dataSetResponseWrapper.rows) {
         this.dataSetResponseWrapper.rows.forEach(element => {

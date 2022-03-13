@@ -8,15 +8,15 @@ import { ActionExecuteData } from '@app/_models/actionExecuteData';
 import { FactoryService } from '@app/_services/factory.service';
 import { ProcExpanderService } from '@app/_services/procexpander.service';
 import { ActionDefinitionWrapper } from '@app/_models/actionDefinitionWrapper';
-import { DataSetWrapper } from '@app/_models';
 import { VisibilityService } from '@app/_services/visibility.service';
+import { MultiActionService } from '@app/_services/multi-action.service';
 
 @Component({
   selector: 'sit-proc-button',
   templateUrl: './sit-proc-button.component.html',
   styleUrls: ['./sit-proc-button.component.scss']
 })
-export class SitProcButtonComponent extends SitActionDirective implements OnInit {
+export class SitProcButtonComponent extends SitActionDirective {
   executing = false;
   @Input() color: string;
   @Input() caption: string;
@@ -31,7 +31,6 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
 
   public set actionDefinition(action: ActionDefinitionWrapper) {
     super.actionDefinition = action;
-
     this.actionIdent = action?.ident;
     this.caption = action?.caption;
     this.componentParamsIdent = action?.componentParamsIdent;
@@ -46,16 +45,6 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
     return super.actionDefinition;
   }
 
-  // public set dataSetResponseWrapper(value: DataSetWrapper)
-  // {
-  //   super.dataSetResponseWrapper = value;
-  // }
-
-  // public get dataSetResponseWrapper(): DataSetWrapper
-  // {
-  //   return null;
-  // }
-
   private tabLink: string;
 
   constructor(
@@ -64,15 +53,11 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
     private tabService: TabService,
     private factoryService: FactoryService,
     private procExpanderService: ProcExpanderService,
-    public dialog: MatDialog,
-    private visibilityService: VisibilityService
+    private visibilityService: VisibilityService,
+    private multiActionsService: MultiActionService,
+    public dialog: MatDialog
     ) {
       super(el);
-
-  }
-
-  ngOnInit(): void {
-
   }
 
   showWhenEmpty(): boolean {
@@ -80,15 +65,23 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
   }
 
   isDelete(): boolean {
-    return (this.actionDefinition?.kind === 'delete' || this.actionDefinition?.kind === 'D');
+    return (this.actionDefinition?.isDelete);
   }
 
   isInsert(): boolean {
-    return (this.actionDefinition?.kind === 'insert' || this.actionDefinition?.kind === 'I');
+    return (this.actionDefinition?.isInsert);
   }
 
   isUpdate(): boolean {
-    return (this.actionDefinition?.kind === 'update' || this.actionDefinition?.kind === 'U');
+    return (this.actionDefinition?.isUpdate);
+  }
+
+  public get isDisabled() {
+    var disabled = this.executing
+    if (!this.actionDefinition.forSelectedRows && this.dataSetResponseWrapper.hasSelectedRows) {
+      return true;
+    }
+    return disabled;
   }
 
   public get isShouldBeHidden(): boolean {
@@ -129,30 +122,54 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
     return data;
   }
 
-  invokeDeleteAction(): boolean {
+  invokeDeleteAction(showConfirmation: boolean): boolean {
     if (!this.isDelete()) {
       return false;
     }
+    if (showConfirmation) {
+      const dialogRef = this.dialog.open(SitDialogConfirmDelComponent, {
+        width: '250px', height: '150px'
+      });
 
-    const dialogRef = this.dialog.open(SitDialogConfirmDelComponent, {
-      width: '250px', height: '150px'
-    });
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          this.executeAction();
+        }
+      });
+    } else {
+      this.executeAction();
+    }
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.executeAction();
-      }
-    });
     return true;
   }
 
   onClick($event) {
+    if (!this.dataSetResponseWrapper.hasSelectedRows || this.actionDefinition.isOnlyForCurrent) {
+        this.onClickInternal(false);
+        return;
+    }
+
+    this.multiActionsService.showConfirmDialog(
+      this.actionDefinition.caption ? this.actionDefinition.caption : this.actionDefinition.tooltip,
+      this.dataSetResponseWrapper.selectedRows,
+      this.actionDefinition?.visibility,
+      this.dataSetResponseWrapper,
+      (closeResult) => {
+        this.onClickInternal(true);
+      },
+      (closeResult) => {
+        console.log("Cancel");
+      });
+  }
+
+  onClickInternal(fromSelected: boolean) {
     if (!this.actionDefinition) {
       console.error(`Action "${this.actionIdent}" could not be found!`);
       this.changeExecutingState(false);
       return;
     }
-    if (this.invokeDeleteAction()) {
+
+    if (this.invokeDeleteAction(!fromSelected)) {
       return;
     }
 
@@ -160,6 +177,7 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
       this.executeAction();
       return;
     }
+
     var generatedRow = null;
     if (this.isInsert()) {
       generatedRow = this.dataSetResponseWrapper.GenerateRow(null, true, this.actionDefinition?.editFields, true, this.dataSetManagerSource);
@@ -173,15 +191,36 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
     } else {
      this.openActionOnTab(actionExecuteData);
     }
-
   }
 
   private executeAction(): void {
     this.changeExecutingState(true);
-    this.dataSetResponseWrapper.ExecuteAction(this.actionDefinition,
-      this,
-      this.executeActionCompletedCallback,
-      this.executeActionExceptionCallback);
+    var runActionWithProgress = this.dataSetResponseWrapper.hasSelectedRows && this.actionDefinition.isRunOneByOne;
+
+    if (!runActionWithProgress) {
+      this.dataSetResponseWrapper.ExecuteAction(this.actionDefinition,
+        this,
+        this.executeActionCompletedCallback,
+        this.executeActionExceptionCallback);
+    } else {
+      var selectedRows = [...this.dataSetResponseWrapper.selectedRows];
+      this.multiActionsService.setProperties(this, this.dataSetResponseWrapper, this.actionDefinition);
+      this.multiActionsService.runActionOneByOne(selectedRows, 0, this.actionDefinition?.visibility, (sender) => {
+        this.executeActionExceptionCallback(sender);
+      },
+      (sender) => {
+        sender.executeActionCompletedCallback(sender);
+      });
+    }
+  }
+
+  private executeActionForSelectedCompletedCallback(self) {
+
+  }
+
+  private executeActionForSelectedExceptionCallback(self) {
+    //self.changeExecutingState(false);
+    self.afterCompleted.emit('Error');
   }
 
   setDisabledState?(isDisabled: boolean): void {
@@ -197,6 +236,7 @@ export class SitProcButtonComponent extends SitActionDirective implements OnInit
 
   private executeActionCompletedCallback(self) {
     self.changeExecutingState(false);
+    self.dataSetResponseWrapper.clearSelectedRows();
     self.afterCompleted.emit('OK');
   }
 

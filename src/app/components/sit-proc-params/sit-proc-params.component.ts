@@ -196,7 +196,8 @@ export class SitProcParamsComponent implements AfterViewInit {
       this.executeActionCompletedCallback,
       this.executeActionExceptionCallback,
       this.dictIdent,
-      this.mainDataSet);
+      this.mainDataSet,
+      this.mainDataSet.selectedRows);
   }
 
   private executeActionCompletedCallback(self) {

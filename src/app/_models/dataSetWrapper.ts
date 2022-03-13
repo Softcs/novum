@@ -5,19 +5,25 @@ import { _ } from 'ag-grid-community';
 import { RefreshType } from '@app/_consts/RefreshType';
 import { OnCFService } from '@app/_services/oncf.service';
 import { ActionDefinitionWrapper } from './actionDefinitionWrapper';
+import { DataSetDefinitionWrapper } from './dataSetDefinitionWrapper';
 
 @Directive()
 export class DataSetWrapper {
     private _rows: any[];
+    private _selectedRows: any[];
     private _dataSource: any;
+    private _dataSetDefinitionWrapper: DataSetDefinitionWrapper;
     public activeRow: any;
     public errors: [any];
     public fields: [any];
-    public actions: [ActionDefinitionWrapper];
+    public actions: ActionDefinitionWrapper[]
     public connectedLookups: any;
     public isLookup = false;
     public hasOnCF = false;
     public onCFFields: any = {};
+    public hasActionForSelectedRows = false;
+    public isSelectionAvailable: boolean = false;
+    public isSelectionEnabled: boolean = false;
 
     @Output()
     activeRowChanged: EventEmitter<any> = new EventEmitter<any>();
@@ -39,6 +45,9 @@ export class DataSetWrapper {
 
     @Output()
     rowIsUnLocked: EventEmitter<any> = new EventEmitter<any>();
+
+    @Output()
+    selectedRowsChanged: EventEmitter<any[]> = new EventEmitter<any[]>();
 
     constructor(
         public ident: string,
@@ -63,6 +72,23 @@ export class DataSetWrapper {
         this._rows = value;
     }
 
+    public get selectedRows(): any[] {
+        return this._selectedRows;
+    }
+
+    public set selectedRows(value: any[]) {
+        this._selectedRows = value;
+        this.selectedRowsChangedInvoke();
+    }
+
+    public get hasSelectedRows(): boolean {
+        return this._selectedRows != null && this._selectedRows.length > 0;
+    }
+
+    public get isOnlyActiveRowIsSelected() : boolean {
+        return this.hasSelectedRows && this.selectedRows.length == 1 && this.selectedRows[0] == this.activeRow;
+    }
+
     get hasLookups(): boolean {
         return this.connectedLookups != null;
     }
@@ -82,6 +108,14 @@ export class DataSetWrapper {
         }
         this._dataSource = this.dataSourceManager?.FindDataSource(this.ident);
         return this._dataSource;
+    }
+
+    public get dataSetDefinitionWrapper(): DataSetDefinitionWrapper {
+        if (this._dataSetDefinitionWrapper) {
+            return this._dataSetDefinitionWrapper;
+        }
+        this._dataSetDefinitionWrapper = this.dataSourceManager?.findDataSetDefinitionWrapper(this.ident);
+        return this._dataSetDefinitionWrapper;
     }
 
     public getDataSetManagerSource(): DataSetManager {
@@ -107,11 +141,13 @@ export class DataSetWrapper {
     }
 
     private readActions() {
-        let dataSourceDef = this.getDataSource();
-        if (dataSourceDef == null) {
+        let dataSetWrapper = this.dataSetDefinitionWrapper;
+        if (dataSetWrapper == null) {
             return;
         }
-        this.actions = dataSourceDef?.actions;
+
+        this.actions = dataSetWrapper?.actions;
+        this.hasActionForSelectedRows = this.actions?.find( a => a.forSelectedRows) != null;
     }
 
     private readOnCF() {
@@ -179,14 +215,16 @@ export class DataSetWrapper {
                          owner: any,
                          executeActionCompletedCallback: Function,
                          executeActionExceptionCallback: Function,
-                         sourceDictIdent: string = null
+                         sourceDictIdent: string = null,
+                         row: any = null
     ) {
         if (this.dataSourceManager == null) {
             console.error('ExecuteAction data source manager is undefinde!');
             return;
         }
+
         this.dataSourceManager.ExecuteAction(actionDefinition, this.ident, owner,
-            executeActionCompletedCallback, executeActionExceptionCallback, sourceDictIdent);
+            executeActionCompletedCallback, executeActionExceptionCallback, sourceDictIdent, null, this.selectedRows, row);
     }
 
     private initRows() {
@@ -460,11 +498,43 @@ export class DataSetWrapper {
 
     public getFieldId() {
         return '__Identity__';
-      }
+    }
+
     public getFieldIdValue(row : any = null) {
         const fieldName = this.getFieldId();
         const fieldValue = row == null ? this.activeRow[fieldName] : row[fieldName];
         return fieldValue;
-      }
+    }
+
+    public clearSelectedRows() {
+        if (!this.selectedRows) {
+            return;
+        }
+
+        this.selectedRows.length = 0;
+    }
+
+    public removeSelectedRow(row) {
+        if (!this.selectedRows) {
+            return;
+        }
+
+        var rowIndex = this.selectedRows.indexOf(row);
+        if (rowIndex != -1) {
+            this.selectedRows.splice(rowIndex, 1);
+            this.selectedRowsChangedInvoke();
+        }
+    }
+
+    public selectedRowsChangedInvoke() {
+        this.selectedRowsChanged.emit(this._selectedRows);
+    }
+
+    public isSelectedRow(row) {
+        if (!this.selectedRows) {
+            return false;
+        }
+        return this.selectedRows.indexOf(row) != -1;
+    }
 
 }

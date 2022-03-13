@@ -260,11 +260,15 @@ import { SitProducts4PubEditComponent } from './containers/dictionaries/sit-prod
 import { SitHRBatches4InvoicingComponent } from './containers/dictionaries/sit-hr-batches4-invoicing/sit-hr-batches4-invoicing.component';
 import { SitHRBatches4InvoicingEditComponent } from './containers/dictionaries/sit-hr-batches4-invoicing/actions/sit-hr-batches4-invoicing-edit/sit-hr-batches4-invoicing-edit.component';
 import { SitUtilProcConvertUpdateFrameBodyComponent } from './containers/dictionaries/sit-util-converter-frames/actions/sit-util-proc-convert-update-frame-body/sit-util-proc-convert-update-frame-body.component';
+import { SitDialogConfirmSeletedRowsComponent } from './components/sit-dialog-confirm-selected-rows';
+import { SitActionsSelectedProgressComponent } from './components/controls/sit-actions-selected-progress/sit-actions-selected-progress.component';
+import { SitActionsSelectedProgressItemComponent } from './components/controls/sit-actions-selected-progress/sit-actions-selected-progress-item/sit-actions-selected-progress-item.component';
 import { SitProductWarehousesConfigEditComponent } from './containers/dictionaries/sit-products/actions/sit-product-warehouses-config-edit/sit-product-warehouses-config-edit.component';
 import { SitAnalysisBankStatementPosComponent } from './containers/dictionaries/sit-analysis-bank-statement-pos/sit-analysis-bank-statement-pos.component';
 import { SitPubPrintCostAnalysisComponent } from './containers/dictionaries/sit-pub-print-cost-analysis/sit-pub-print-cost-analysis.component';
 import { SitParams4EmployeesSettlementsComponent } from './containers/dictionaries//sit-params4-employees-settlements/sit-params4-employees-settlements.component';
 import { SitParams4EmployeesSettlementsEditComponent } from './containers/dictionaries/sit-params4-employees-settlements/actions/sit-params4-employees-settlements-edit/sit-params4-employees-settlements-edit.component';
+import { SitDialogActionProgressComponent } from './components/sit-dialog-action-progress/sit-dialog-action-progress.component';
 import { SitImportFromFileComponent } from './containers/dictionaries/_common/actions/sit-import-from-file/sit-import-from-file.component';
 import { SitImportsTemplatesComponent } from './containers/dictionaries/sit-imports-templates/sit-imports-templates.component';
 import { SitImportsTemplatesEditComponent } from './containers/dictionaries/sit-imports-templates/actions/sit-imports-templates-edit/sit-imports-templates-edit.component';
@@ -346,6 +350,8 @@ import { SitChangeStatusComponent } from './containers/dictionaries/_common/acti
         SitDialogDiscardComponent,
         SitProcParamsComponent,
         SitDialogConfirmDelComponent,
+        SitDialogConfirmSeletedRowsComponent,
+        SitDialogActionProgressComponent,
         SitDataCheckboxComponent,
         SitDataTextareaComponent,
         sitDataTextareaComponentDirectiveDirective,
@@ -405,6 +411,8 @@ import { SitChangeStatusComponent } from './containers/dictionaries/_common/acti
         SitProcPayrollComponentsAccountingDefEditComponent,
         SitCompanyDepartmentsComponent,
         SitActionsToolbarComponent,
+        SitActionsSelectedProgressComponent,
+        SitActionsSelectedProgressItemComponent,
         SitProductsUpdateWeightComponent,
         SitPubDeliveryDistributionComponent,
         SitRailDeliveryDistrybutionImportComponent,
