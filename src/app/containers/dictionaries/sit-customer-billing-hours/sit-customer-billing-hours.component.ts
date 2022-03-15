@@ -18,7 +18,8 @@ export class SitCustomerBillingHoursComponent extends SitDictBaseComponent {
       { headerName: 'Opis', field: 'Description', filter: 'agTextColumnFilter', width: 400 },
       { headerName: 'Ilość', field: 'Quantity', filter: 'agTextColumnFilter', width: 100, type: 'numericColumn', renderType: 'number', agr: 'sum' },
       { headerName: 'Cena', field: 'Price', filter: 'agTextColumnFilter', width: 100, type: 'numericColumn', renderType: 'number' },
-      { headerName: 'Netto', field: 'Net', filter: 'agTextColumnFilter', width: 100, type: 'numericColumn', renderType: 'number', agr: 'sum' }
+      { headerName: 'Netto', field: 'Net', filter: 'agTextColumnFilter', width: 100, type: 'numericColumn', renderType: 'number', agr: 'sum' },
+      { headerName: 'Osoba', field: 'UserName', filter: 'agTextColumnFilter', width: 200 },
     ];
 
   }
