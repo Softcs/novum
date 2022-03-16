@@ -19,7 +19,7 @@ export class SitPublicationsAgreementsComponent extends SitDictBaseComponent {
       { headerName: 'Publikacje', field: 'PublicationsIdents', tooltipField: 'PublicationsIdents', filter: 'agTextColumnFilter', width: 200},
       { headerName: 'Okres lic.', headerTooltip: 'Okres trwania licencji w latach.', field: 'RightsPeriodInYears', width: 80, type: 'numericColumn', renderType: 'number', renderFormat: '1.0-0', suppressMenu: true},
       { headerName: 'Częst. rozl.', headerTooltip: 'Częstotliwość rozliczania tantiem', field: 'BillingFrequencyName', filter: 'agTextColumnFilter', width: 100, suppressMenu: true},
-      { headerName: 'Na rozl.', headerTooltip: 'Ile mamy czasu na rozliczenie w dniach', field: 'TimeToPay',  type: 'numericColumn', width: 80, suppressMenu: true},
+      { headerName: 'Na rozl.', headerTooltip: 'Ile mamy czasu na przesłanie rozliczenia i zapłatę w dniach', field: 'TimeToPay',  type: 'numericColumn', width: 80, suppressMenu: true},
       { headerName: 'Do zapł.', headerTooltip: 'Ile mamy czasu do zapłaty w dniach', field: 'TimeToSettle',  type: 'numericColumn', width: 80, suppressMenu: true},
       { headerName: 'Waluta', field: 'CurrencyIdent', filter: 'agTextColumnFilter', width: 70, suppressMenu: true},
       { headerName: 'Zaliczka', field: 'IsAdvance', headerTooltip: 'Czy wypłacana jest zaliczka.', width: 80, renderType: 'checkbox', suppressMenu: true, cellClass: "grid-cell-centered"},
