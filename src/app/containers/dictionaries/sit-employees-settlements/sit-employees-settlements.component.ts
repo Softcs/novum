@@ -507,6 +507,11 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
           renderType: 'number', renderFormat: '1.2-2',
           cellClass: ['font11','numberFormat2Dec'],
         },
+        { headerName: 'Prem. nie kli.', field: 'BonusNoCust', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 110, agr: 'sum',
+          renderType: 'number',
+          cellClass: ['font11','numberFormat2Dec'],
+          pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
+        },
         // { headerName: 'Nadgodziny', field: 'Overtime', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, suppressMenu: true, columnGroupShow: "open", agr: 'sum',
         //   renderType: 'number', renderFormat: '1.2-2',
         //   cellClass: ['font11','numberFormat2Dec'],
