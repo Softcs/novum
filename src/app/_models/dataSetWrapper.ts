@@ -77,6 +77,9 @@ export class DataSetWrapper {
     }
 
     public set selectedRows(value: any[]) {
+        if (value != null && value.length == 0) {
+            value = null;
+        }
         this._selectedRows = value;
         this.selectedRowsChangedInvoke();
     }
