@@ -495,7 +495,7 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
       },
       { headerName: 'Wynagrodzenie', headerTooltip: 'Wynagrodzenie',
       children: [
-        { headerName: 'Suma', field: 'SumPay', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, suppressMenu: true, agr: 'sum',
+        { headerName: 'Brutto', field: 'SumPay', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, suppressMenu: true, agr: 'sum',
           renderType: 'number',
           cellClass: ['font11','numberFormat2Dec'],
         },
@@ -539,7 +539,7 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
           renderType: 'number', renderFormat: '1.2-2',
           cellClass: ['font11','numberFormat2Dec'],
         },
-        { headerName: 'Urlop wyp.',headerTooltip: 'Urlop wypoczynkowy', field: 'VacPay', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90,columnGroupShow: "open", suppressMenu: true, columnGroupShow: "open", agr: 'sum',
+        { headerName: 'Urlop wyp.',headerTooltip: 'Urlop wypoczynkowy', field: 'VacPay', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90,columnGroupShow: "open", suppressMenu: true, agr: 'sum',
           renderType: 'number', renderFormat: '1.2-2',
           cellClass: ['font11','numberFormat2Dec'],
         },
