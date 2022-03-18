@@ -10,6 +10,7 @@ import { OnCFService } from '@app/_services/oncf.service';
 import { ActionDefinitionWrapper } from './actionDefinitionWrapper';
 import { SplitComponent } from 'angular-split';
 import { ActionExecutionKind } from '@app/_consts/ActionExecutionKind';
+import { MultiActionService } from '@app/_services/multi-action.service';
 
 @Directive()
 export class DataSetManager {
@@ -31,7 +32,7 @@ export class DataSetManager {
     @Output()
     refreshAfter: EventEmitter<DataSetManager> = new EventEmitter<DataSetManager>();
 
-    constructor(private gatewayService: GatewayService, protected _oncfService: OnCFService) {
+    constructor(private gatewayService: GatewayService, protected _oncfService: OnCFService, protected _multiService: MultiActionService) {
         this.dataSetsWrapper = [];
     }
     private prapareDataSource4Request(dataSourceDefinition: any, dataSourcesRequest: any[]) {
@@ -335,6 +336,8 @@ export class DataSetManager {
 
         if (actionDefinition.executionModeCalculated != ActionExecutionKind.AllInOne) {
             selectedRows = null;
+        } else {
+            selectedRows = this._multiService.applyVisibility(selectedRows, actionDefinition.visibility, dsSourceWrapper);
         }
 
         if (actionDefinition.kind == "SetValue") {

@@ -6,6 +6,7 @@ import { first } from 'rxjs/operators';
 import { SitDataSetContainerComponent } from '../sit-data-set-container';
 import { SitProcExpanderComponent } from '../controls/sit-proc-expander/sit-proc-expander.component';
 import { OnCFService } from '@app/_services/oncf.service';
+import { MultiActionService } from '@app/_services/multi-action.service';
 @Component({
   selector: 'sit-dict-container',
   templateUrl: './sit-dict-container.component.html',
@@ -25,8 +26,8 @@ export class SitDictContainerComponent implements OnInit, AfterViewInit, AfterCo
 
   @Output() refreshAfter: EventEmitter<DataSetManager> = new EventEmitter<DataSetManager>();
 
-  constructor(private gatewayService: GatewayService, protected _oncfService: OnCFService) {
-    this.DataSetManager =   new DataSetManager(gatewayService, _oncfService);
+  constructor(private gatewayService: GatewayService, protected _oncfService: OnCFService, protected _multiService: MultiActionService) {
+    this.DataSetManager =   new DataSetManager(gatewayService, _oncfService, _multiService);
   }
 
   ngAfterViewInit(): void {
