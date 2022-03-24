@@ -25,7 +25,7 @@ export class SitCustomersComponent extends SitDictBaseComponent {
     this.gridColumnsDefinition["sitHRDepartments4Cust"] =  [
       { headerName: 'Identyfikator', field: 'HRDepartmentIdent', width: 150 },
       { headerName: 'Nazwa', field: 'HRDepartmentName', width: 200 },
-      { headerName: 'Proc.przel.UOP', field: 'HRBatches4InvoicingIdent', width: 200 },
+      { headerName: 'Proc.przel.UOP', headerTooltip: 'Procedura przeliczająca UOP', field: 'HRBatches4InvoicingIdent', width: 200 },
       { headerName: 'Rez url.', headerTooltip:'Licz rezerwę urlopową', field: 'CalcVacRes', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 70, renderType: "checkbox"},
     ];
 
@@ -81,6 +81,21 @@ export class SitCustomersComponent extends SitDictBaseComponent {
       { headerName: 'Dołącz PDF', field: 'SendPDFReport', width: 100, renderType: 'checkbox', suppressMenu: true, cellClass: "grid-cell-centered"},
       { headerName: 'Parametry wysyłki', field: 'ConnectionInfo', width: 400 },
 
+    ];
+
+    this.gridColumnsDefinition["sitHRParams4InvoicingContr"] = [
+      { headerName: 'Od dnia', field: 'DateFrom', width: 100, sort: 'desc',suppressMenu: true, renderType: "date"}, // domyslny format yyyy-MM-dd - mozna przeciazyc przez np. renderFormat: "yyyy-MM-dd"
+      { headerName: 'Zasadnicze', field: 'BaseRate', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
+      { headerName: 'Nocne', field: 'NightRate', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
+      { headerName: 'Nadgodziny', field: 'OvertimeRate', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
+      { headerName: 'Premie', field: 'BonusRate', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
+      { headerName: 'Urlop', field: 'VacRate', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
+      { headerName: 'Urlop dod.', field: 'VacAddRate', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
+      { headerName: 'Chorobowe', field: 'SickRate', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
+      { headerName: 'PFRON', field: 'PFRONRate', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
+      { headerName: 'Ryczałt', field: 'LumpSumRate', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
+      { headerName: 'ZUS dod.', field: 'ZUSAddRate', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
+      { headerName: 'PPK', field: 'PPKRate', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
     ];    
   }
 }

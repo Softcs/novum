@@ -173,6 +173,7 @@ import { SitImportsTemplatesComponent } from '@app/containers/dictionaries/sit-i
 import { SitImportsTemplatesEditComponent } from '@app/containers/dictionaries/sit-imports-templates/actions/sit-imports-templates-edit/sit-imports-templates-edit.component';
 import { SitCustomerEDocsEditComponent } from '@app/containers/dictionaries/sit-customers/actions/sit-customer-edocs-edit/sit-customer-edocs-edit.component';
 import { SitChangeStatusComponent } from '@app/containers/dictionaries/_common/actions/sit-change-status/sit-change-status.component';
+import { SitHRParams4InvoicingContrEditComponent } from '@app/containers/dictionaries/sit-customers/actions/sit-hrparams4-invoicing-contr-edit/sit-hrparams4-invoicing-contr-edit.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -352,6 +353,7 @@ export class FactoryService {
         sitImportsTemplatesEdit: SitImportsTemplatesEditComponent,
         sitCustomerEDocsEdit: SitCustomerEDocsEditComponent,
         sitChangeStatus: SitChangeStatusComponent,
+        sitHRParams4InvoicingContrEdit: SitHRParams4InvoicingContrEditComponent,
     };
 
     public GetFactory(ident: string) {

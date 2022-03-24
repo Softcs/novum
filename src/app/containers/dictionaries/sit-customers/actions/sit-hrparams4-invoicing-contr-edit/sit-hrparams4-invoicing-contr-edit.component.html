@@ -1,0 +1,28 @@
+<sit-proc-params
+  [(actionExecuteData)]="actionExecuteData"
+  >
+  <sit-data-set-container ident="sitHRParams4InvoicingContrEdit">
+    <div class="sit-proc-params-content" fxLayout="column">
+      <div class="sit-form-section-title">Narzuty %</div>
+      <sit-data-input type="date" #sitControl field="DateFrom" label="Od dnia" appearance="outline"></sit-data-input>
+      <br>
+      <div fxLayout="row">
+        <div fxLayout="column">
+          <sit-data-input type="number" #sitControl field="BaseRate" label="Zasadnicze" appearance="outline"></sit-data-input>
+          <sit-data-input type="number" #sitControl field="NightRate" label="Nocne" appearance="outline"></sit-data-input>
+          <sit-data-input type="number" #sitControl field="OvertimeRate" label="Nadgodziny" appearance="outline"></sit-data-input>
+          <sit-data-input type="number" #sitControl field="BonusRate" label="Premie" appearance="outline"></sit-data-input>
+          <sit-data-input type="number" #sitControl field="VacRate" label="Urlop" appearance="outline"></sit-data-input>
+          <sit-data-input type="number" #sitControl field="VacAddRate" label="Dodatkowy urlop" appearance="outline"></sit-data-input>
+        </div>
+        <div fxLayout="column">
+          <sit-data-input type="number" #sitControl field="SickRate" label="Chorobowe" appearance="outline"></sit-data-input>
+          <sit-data-input type="number" #sitControl field="PFRONRate" label="PFRON" appearance="outline"></sit-data-input>
+          <sit-data-input type="number" #sitControl field="LumpSumRate" label="Ryczałty" appearance="outline"></sit-data-input>
+          <sit-data-input type="number" #sitControl field="ZUSAddRate" label="Dodatkowy ZUS" appearance="outline"></sit-data-input>
+          <sit-data-input type="number" #sitControl field="PPKRate" label="PPK" appearance="outline"></sit-data-input>
+        </div>
+      </div>
+    </div>
+  </sit-data-set-container>
+</sit-proc-params>
