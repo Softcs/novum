@@ -274,6 +274,7 @@ import { SitImportsTemplatesComponent } from './containers/dictionaries/sit-impo
 import { SitImportsTemplatesEditComponent } from './containers/dictionaries/sit-imports-templates/actions/sit-imports-templates-edit/sit-imports-templates-edit.component';
 import { SitCustomerEDocsEditComponent } from './containers/dictionaries/sit-customers/actions/sit-customer-edocs-edit/sit-customer-edocs-edit.component';
 import { SitChangeStatusComponent } from './containers/dictionaries/_common/actions/sit-change-status/sit-change-status.component';
+import { SitHRParams4InvoicingContrEditComponent } from './containers/dictionaries/sit-customers/actions/sit-hrparams4-invoicing-contr-edit/sit-hrparams4-invoicing-contr-edit.component';
 
 
 @NgModule({
@@ -534,7 +535,8 @@ import { SitChangeStatusComponent } from './containers/dictionaries/_common/acti
         SitImportsTemplatesComponent,
         SitImportsTemplatesEditComponent,
         SitCustomerEDocsEditComponent,
-        SitChangeStatusComponent
+        SitChangeStatusComponent,
+        SitHRParams4InvoicingContrEditComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
