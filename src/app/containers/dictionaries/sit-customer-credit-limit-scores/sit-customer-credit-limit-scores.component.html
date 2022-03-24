@@ -1,0 +1,137 @@
+<sit-dict-container ident="sitCustomerCreditLimitScores" #sitDictcontainer fxFill>
+  <div fxLayout="column" fxFill >
+    <as-split direction="horizontal">
+      <as-split-area [size]="35">
+        <div fxLayout="column" fxFill class="content">
+          <div class="sit-filter-bar">
+            <sit-data-set-container ident="sitFilterCustomerCreditLimitScores" fxLayout="row">
+                <sit-data-input #sitControl id="search" field="search" label="Filtruj kontrahentów" placeholder="Nazwa, Identyfikator" appearance="outline" style="width: 300px;"></sit-data-input>
+                <sit-data-input #sitControl field="dateFrom" type="date" label="Od" appearance="outline" style="width: 130px;"></sit-data-input>
+                <sit-data-input #sitControl field="dateTo" type="date" label="Do" appearance="outline" style="width: 195px;" [showRefreshButton]="true" ></sit-data-input>
+            </sit-data-set-container>
+          </div>
+          <sit-data-set-container ident="sitCustomerCreditLimitScores" [showActionsToolbar]="true" #sitDataSetContainer fxFlex fxLayout="column">
+            <div class="data-table" fxFlex>
+              <ag-grid-angular
+                #sitSetDataSource
+                style="width: 100%; height: 100%;"
+                class="ag-theme-balham"
+                [rowHeight]="60"
+              >
+              </ag-grid-angular>
+            </div>
+          </sit-data-set-container>
+        </div>
+      </as-split-area>
+      <as-split-area [size]="65">
+        <div fxLayout="column" fxFill class="content" fxLayoutGap="5px">
+          <div fxLayout="row" fxFlex class="content">
+            <sit-data-set-container ident="sitCustomerCreditLimitScores" fxFlex="60">
+              <div fxLayout="column" fxFill fxLayoutGap="5px" class="content">
+                <mat-card>
+                  <mat-card-content>
+                    <div fxLayout="row">
+                      <sit-data-input type="text" id="ScoreDate" #sitControl field="ScoreDate" label="Data oceny" appearance="outline" [readonly]=true style="width: 100px"></sit-data-input>
+                      <sit-data-input type="text" id="CustIdent" #sitControl field="CustIdent" label="Identyfikator" appearance="outline" fxFlex [readonly]=true></sit-data-input>
+                      <sit-data-input type="text" id="VATId" #sitControl field="VATId" label="NIP" appearance="outline" style="width: 150px" [readonly]=true></sit-data-input>
+                    </div>
+                    <div fxLayout="row">
+                      <sit-data-input type="text" id="CustName" #sitControl field="CustName" label="Nazwa" appearance="outline" style="width: 100%" [readonly]=true></sit-data-input>
+                    </div>
+                    <div fxLayout="row">
+                      <sit-data-input type="text" id="CustomersGroupIdent" #sitControl field="CustomersGroupIdent" label="Rynek" appearance="outline" style="width: 200px"[readonly]=true></sit-data-input>
+                      <sit-data-input type="text" id="CustomersGroupName" #sitControl field="HouseNum" label="Opis" appearance="outline" [readonly]=true fxFlex></sit-data-input>
+                    </div>
+                    <div fxLayout="row">
+                      <sit-data-input type="text" id="CountrySymbol" #sitControl field="CountrySymbol" label="Kraj" [showRefresh]=false appearance="outline"  style="width: 100px"  [readonly]=true></sit-data-input>
+                      <sit-data-input type="text" id="PostCode" #sitControl field="PostCode" label="Kod pocztowy" [showRefresh]=false appearance="outline" style="width: 100px" [readonly]=true></sit-data-input>
+                      <sit-data-input type="text" id="City" #sitControl field="City" label="Miasto" [showRefresh]=false appearance="outline"  fxFlex  [readonly]=true></sit-data-input>
+                    </div>
+                    <div fxLayout="row">
+                      <sit-data-input type="text" id="Street" #sitControl field="Street" label="Ulica" [showRefresh]=false appearance="outline" fxFlex [readonly]=true></sit-data-input>
+                      <sit-data-input type="text" id="HouseNum" #sitControl field="HouseNum" label="Numer" [showRefresh]=false appearance="outline" style="width: 100px" [readonly]=true></sit-data-input>
+                    </div>
+                    <div fxLayout="row">
+                      <sit-data-input type="number" id="PreviousCreditLimit" #sitControl field="PreviousCreditLimit" label="Dotychczasowy limit kredytu" appearance="outline" [readonly]=true fxFlex="30"></sit-data-input>
+                      <sit-data-input type="number" id="StockAmountForDate" #sitControl field="StockAmountForDate" label="Wartość zapasu konsygnacyjnego" appearance="outline" [readonly]=true fxFlex="30"></sit-data-input>
+                    </div>     
+                    <div fxLayout="row">
+                      <sit-data-input type="text" id="PreviousPaymentType" #sitControl field="PreviousPaymentType" label="Dotychczasowy termin płatności" appearance="outline" [readonly]=true fxFlex="30"></sit-data-input>
+                      <sit-data-input type="number" id="StockStandardAmountForDate" #sitControl field="StockStandardAmountForDate" label="Wartość magazynowa" appearance="outline" [readonly]=true fxFlex="30"></sit-data-input>
+                    </div>      
+                    <div fxLayout="row">
+                      <div fxFlex="30"></div>
+                      <sit-data-label type="date" #sitControl field="StockDate" label="Wartość magazynu na dzień:" ></sit-data-label>
+                    </div>                    
+                  </mat-card-content>
+                </mat-card>
+                <mat-card>
+                  <mat-card-content>
+                    <div fxLayout="row">
+                      <sit-data-input type="number" #sitControl field="CreditLimit" label="Proponowany limit kredytu kupieckiego" appearance="outline" [readonly]=true fxFlex="50"></sit-data-input>
+                      <sit-data-input type="text" #sitControl field="CreditLimitDateTo" label="Termin obowiązywania limitu" appearance="outline" [readonly]=true fxFlex="50"></sit-data-input>
+                    </div>
+                  </mat-card-content>
+                </mat-card>
+              </div>
+            </sit-data-set-container>
+            <sit-data-set-container ident="sitCustomerCreditLimitScoresSettlements" fxFlex>
+              <div fxLayout="column" fxFill fxLayoutGap="5px" class="content">
+                <mat-card>
+                  <mat-card-content>
+                    <div fxLayout="column">
+                      <sit-data-label type="date" #sitControl field="SettlementsForDate" label="Należności i zobowiąznia na dzień:"></sit-data-label>
+                      <div fxLayout="row">
+                        <sit-data-input type="number" #sitControl field="Payables" label="Zobowiązania ogółem" appearance="outline" [readonly]=true fxFlex="50"></sit-data-input>
+                        <sit-data-input type="number" #sitControl field="ReceivablesExpired" label="Należności przeterminowane" appearance="outline" [readonly]=true fxFlex="50"></sit-data-input>
+                      </div>
+                      <div fxLayout="row">
+                        <sit-data-input type="number" #sitControl field="Receivables" label="Należności ogółem" appearance="outline" [readonly]=true fxFlex="50"></sit-data-input>
+                        <sit-data-input type="number" #sitControl field="ReceivablesExpired14" label="1-14" appearance="outline" [readonly]=true fxFlex="50"></sit-data-input>
+                      </div>
+                      <div fxLayout="row">
+                        <sit-data-input type="number" #sitControl field="ReceivablesCurrent" label="Należności bieżące" appearance="outline" [readonly]=true fxFlex="50"></sit-data-input>
+                        <sit-data-input type="number" #sitControl field="ReceivablesExpired30" label="15-30" appearance="outline" [readonly]=true fxFlex="50"></sit-data-input>
+                      </div>
+                      <div fxLayout="row">
+                        <sit-data-input type="number" #sitControl field="ReceivablesUnmarked" label="Należności nieoznaczone" appearance="outline" [readonly]=true fxFlex="50"></sit-data-input>
+                        <sit-data-input type="number" #sitControl field="ReceivablesExpired45" label="31-45" appearance="outline" [readonly]=true fxFlex="50"></sit-data-input>
+                      </div>
+                      <div fxLayout="row">
+                        <div fxFlex="50"></div>
+                        <sit-data-input type="number" #sitControl field="ReceivablesExpired60" label="46-60" appearance="outline" [readonly]=true fxFlex="50"></sit-data-input>
+                      </div>
+                      <div fxLayout="row">
+                        <div fxFlex="50"></div>
+                        <sit-data-input type="number" #sitControl field="ReceivablesExpired120" label="61-120" appearance="outline" [readonly]=true fxFlex="50"></sit-data-input>
+                      </div>
+                      <div fxLayout="row">
+                        <div fxFlex="50"></div>
+                        <sit-data-input type="number" #sitControl field="ReceivablesExpired180" label="121-180" appearance="outline" [readonly]=true fxFlex="50"></sit-data-input>
+                      </div>
+                      <div fxLayout="row">
+                        <div fxFlex="50"></div>
+                        <sit-data-input type="number" #sitControl field="ReceivablesExpiredMoreThen180" label="> 180" appearance="outline" [readonly]=true fxFlex="50"></sit-data-input>
+                      </div>
+                    </div>
+                  </mat-card-content> 
+                </mat-card>
+              </div>
+            </sit-data-set-container>
+          </div>
+          <sit-data-set-container ident="sitCustomerCreditLimitScoresSalesAndPays" [showActionsToolbar]="false" #sitDataSetContainer fxFlex fxLayout="column">
+            <div class="sit-grid-title">Sprzedaż i wpłaty</div>
+            <div class="data-table" fxFlex>
+              <ag-grid-angular
+                #sitSetDataSource
+                style="width: 100%; height: 100%;"
+                class="ag-theme-balham"
+              >
+              </ag-grid-angular>
+            </div>
+          </sit-data-set-container>
+        </div>
+      </as-split-area>
+    </as-split>
+  </div>
+</sit-dict-container>

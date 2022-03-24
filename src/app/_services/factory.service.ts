@@ -173,6 +173,9 @@ import { SitImportsTemplatesComponent } from '@app/containers/dictionaries/sit-i
 import { SitImportsTemplatesEditComponent } from '@app/containers/dictionaries/sit-imports-templates/actions/sit-imports-templates-edit/sit-imports-templates-edit.component';
 import { SitCustomerEDocsEditComponent } from '@app/containers/dictionaries/sit-customers/actions/sit-customer-edocs-edit/sit-customer-edocs-edit.component';
 import { SitChangeStatusComponent } from '@app/containers/dictionaries/_common/actions/sit-change-status/sit-change-status.component';
+import { SitCustomerCreditLimitScoresComponent } from '@app/containers/dictionaries/sit-customer-credit-limit-scores/sit-customer-credit-limit-scores.component';
+import { SitCustomerCreditLimitScoresEditComponent } from '@app/containers/dictionaries/sit-customer-credit-limit-scores/actions/sit-customer-credit-limit-scores-edit/sit-customer-credit-limit-scores-edit.component';
+import { SitCustomerCreditLimitScoresGenComponent } from '@app/containers/dictionaries/sit-customer-credit-limit-scores/actions/sit-customer-credit-limit-scores-gen/sit-customer-credit-limit-scores-gen.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -352,6 +355,9 @@ export class FactoryService {
         sitImportsTemplatesEdit: SitImportsTemplatesEditComponent,
         sitCustomerEDocsEdit: SitCustomerEDocsEditComponent,
         sitChangeStatus: SitChangeStatusComponent,
+        sitCustomerCreditLimitScores: SitCustomerCreditLimitScoresComponent,
+        sitCustomerCreditLimitScoresEdit: SitCustomerCreditLimitScoresEditComponent,
+        sitCustomerCreditLimitScoresGen: SitCustomerCreditLimitScoresGenComponent,
     };
 
     public GetFactory(ident: string) {
