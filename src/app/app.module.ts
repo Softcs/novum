@@ -277,6 +277,7 @@ import { SitChangeStatusComponent } from './containers/dictionaries/_common/acti
 import { SitCustomerCreditLimitScoresComponent } from './containers/dictionaries/sit-customer-credit-limit-scores/sit-customer-credit-limit-scores.component';
 import { SitCustomerCreditLimitScoresEditComponent } from './containers/dictionaries/sit-customer-credit-limit-scores/actions/sit-customer-credit-limit-scores-edit/sit-customer-credit-limit-scores-edit.component';
 import { SitCustomerCreditLimitScoresGenComponent } from './containers/dictionaries/sit-customer-credit-limit-scores/actions/sit-customer-credit-limit-scores-gen/sit-customer-credit-limit-scores-gen.component';
+import { SitHRParams4InvoicingContrEditComponent } from './containers/dictionaries/sit-customers/actions/sit-hrparams4-invoicing-contr-edit/sit-hrparams4-invoicing-contr-edit.component';
 
 
 @NgModule({
@@ -540,7 +541,8 @@ import { SitCustomerCreditLimitScoresGenComponent } from './containers/dictionar
         SitChangeStatusComponent,
         SitCustomerCreditLimitScoresComponent,
         SitCustomerCreditLimitScoresEditComponent,
-        SitCustomerCreditLimitScoresGenComponent
+        SitCustomerCreditLimitScoresGenComponent,
+        SitHRParams4InvoicingContrEditComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },

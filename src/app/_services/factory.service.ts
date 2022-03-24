@@ -176,6 +176,7 @@ import { SitChangeStatusComponent } from '@app/containers/dictionaries/_common/a
 import { SitCustomerCreditLimitScoresComponent } from '@app/containers/dictionaries/sit-customer-credit-limit-scores/sit-customer-credit-limit-scores.component';
 import { SitCustomerCreditLimitScoresEditComponent } from '@app/containers/dictionaries/sit-customer-credit-limit-scores/actions/sit-customer-credit-limit-scores-edit/sit-customer-credit-limit-scores-edit.component';
 import { SitCustomerCreditLimitScoresGenComponent } from '@app/containers/dictionaries/sit-customer-credit-limit-scores/actions/sit-customer-credit-limit-scores-gen/sit-customer-credit-limit-scores-gen.component';
+import { SitHRParams4InvoicingContrEditComponent } from '@app/containers/dictionaries/sit-customers/actions/sit-hrparams4-invoicing-contr-edit/sit-hrparams4-invoicing-contr-edit.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -358,6 +359,7 @@ export class FactoryService {
         sitCustomerCreditLimitScores: SitCustomerCreditLimitScoresComponent,
         sitCustomerCreditLimitScoresEdit: SitCustomerCreditLimitScoresEditComponent,
         sitCustomerCreditLimitScoresGen: SitCustomerCreditLimitScoresGenComponent,
+        sitHRParams4InvoicingContrEdit: SitHRParams4InvoicingContrEditComponent,
     };
 
     public GetFactory(ident: string) {
