@@ -500,7 +500,7 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
       { headerName: 'Wynagrodzenie', headerTooltip: 'Wynagrodzenie',
       children: [
         { headerName: 'Brutto', field: 'SumPay', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, suppressMenu: true, agr: 'sum',
-          cellStyle: function(params) { return {backgroundColor: '#ffe6e6'} },  
+          cellStyle: function(params) { return (params.data["GrossOK"] === 1 ? {backgroundColor: '#ffe6e6', 'font-weight': 'bold'} : {color: 'red', backgroundColor: '#ffe6e6','font-weight': 'bold'}) },  
           renderType: 'number',
           cellClass: ['font11','numberFormat2Dec'],
         },
@@ -610,6 +610,7 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
         children: [
           { headerName: 'Suma', field: 'CustCost',  filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, suppressMenu: true, agr: 'sum',
             renderType: 'number',
+            cellStyle: function(params) { return {backgroundColor: '#fcf59f','font-weight': 'bold'} },  
             cellClass: ['font11','numberFormat2Dec'],
             pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
           },
@@ -700,7 +701,7 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
         ]
       },
       { headerName: 'Netto - klient', field: 'CustNet', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 100, suppressMenu: true, agr: 'sum',
-        cellStyle: function(params) { return {backgroundColor: '#cce6ff'} },  
+        cellStyle: function(params) { return {backgroundColor: '#cce6ff','font-weight': 'bold'} },  
         renderType: 'number',
         cellClass: ['font11','numberFormat2Dec'],
       },
@@ -714,15 +715,19 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
         renderType: 'number',
       },
       { headerName: 'Identyfikator', field: 'PayrollComponentIdent',  width: 130},
+      { headerName: 'Kolumna', field: 'SettlementsColumnName', tooltipField:'SettlementsColumnName', width: 130},
     ];
 
     this.gridColumnsDefinition['sitEmployeesSettlementsContrComp'] = [
       { headerName: 'Lp', field: 'OrdId', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 60, sort: 'asc',suppressMenu: true},
-      { headerName: 'Składnik', field: 'PayrollComponentDesc', tooltipField:'PayrollComponentDesc',  width: 270},
+      { headerName: 'Składnik', field: 'PayrollComponentDesc', tooltipField:'PayrollComponentDesc',  width: 270,},
       { headerName: 'Wartość', field: 'Value', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 100,
         renderType: 'number',
       },
-      { headerName: 'Identyfikator', field: 'PayrollComponentIdent',  width: 130},
+      { headerName: 'Identyfikator', field: 'PayrollComponentIdent',  width: 130,
+        cellStyle: function(params) { return (params.data["IsBinded"] === 1 ? {color: 'green'} : {color: 'red'}) },  
+      },
+      { headerName: 'Kolumna', field: 'SettlementsColumnName', tooltipField:'SettlementsColumnName', width: 130},
     ];
 
     this.gridColumnsDefinition['sitEmployeesSettlementsSumByPayroll'] = [
