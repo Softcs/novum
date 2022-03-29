@@ -13,4 +13,5 @@ export class ActionExecuteData {
     openKind: string;
     hasInitProc: boolean;
     actionDefinition: ActionDefinitionWrapper;
+    selectedRows: any[];
 }

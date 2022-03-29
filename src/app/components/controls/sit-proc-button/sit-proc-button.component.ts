@@ -118,6 +118,7 @@ export class SitProcButtonComponent extends SitActionDirective {
     data.openKind = this.openKind;
     data.hasInitProc = this.actionDefinition?.hasInitProc;
     data.actionDefinition = this.actionDefinition;
+    data.selectedRows = this.dataSetResponseWrapper?.selectedRows;
 
     return data;
   }
