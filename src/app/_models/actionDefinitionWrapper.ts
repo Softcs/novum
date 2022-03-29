@@ -86,9 +86,15 @@ export class ActionDefinitionWrapper {
                     this._executionModeCalculated = ActionExecutionKind.OnlyForCurrent;
                 }
             }
-        } else {
+        }
+        else
+        if (this.executionMode == ActionExecutionKind.RunOneByOne && this.componentParamsIdent) {
+            this._executionModeCalculated = ActionExecutionKind.OnlyForCurrent;
+        }
+        else {
             this._executionModeCalculated = this.executionMode;
         }
+
         return this._executionModeCalculated;
     }
 
