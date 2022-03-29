@@ -177,6 +177,7 @@ import { SitCustomerCreditLimitScoresComponent } from '@app/containers/dictionar
 import { SitCustomerCreditLimitScoresEditComponent } from '@app/containers/dictionaries/sit-customer-credit-limit-scores/actions/sit-customer-credit-limit-scores-edit/sit-customer-credit-limit-scores-edit.component';
 import { SitCustomerCreditLimitScoresGenComponent } from '@app/containers/dictionaries/sit-customer-credit-limit-scores/actions/sit-customer-credit-limit-scores-gen/sit-customer-credit-limit-scores-gen.component';
 import { SitHRParams4InvoicingContrEditComponent } from '@app/containers/dictionaries/sit-customers/actions/sit-hrparams4-invoicing-contr-edit/sit-hrparams4-invoicing-contr-edit.component';
+import { SitEmployeesSettlementsCustomerCostCenterEditComponent } from '@app/containers/dictionaries/sit-employees-settlements/actions/sit-employees-settlements-customer-cost-center-edit/sit-employees-settlements-customer-cost-center-edit.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -360,6 +361,7 @@ export class FactoryService {
         sitCustomerCreditLimitScoresEdit: SitCustomerCreditLimitScoresEditComponent,
         sitCustomerCreditLimitScoresGen: SitCustomerCreditLimitScoresGenComponent,
         sitHRParams4InvoicingContrEdit: SitHRParams4InvoicingContrEditComponent,
+        sitEmployeesSettlementsCustomerCostCenterEdit: SitEmployeesSettlementsCustomerCostCenterEditComponent,
     };
 
     public GetFactory(ident: string) {
