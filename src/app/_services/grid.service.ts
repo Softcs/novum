@@ -107,15 +107,12 @@ export class GridService {
       columns.unshift(column);
     }
 
-    gridOptions.suppressRowClickSelection = true;
-    gridOptions.rowSelection = 'multiple';
-    gridOptions.rowMultiSelectWithClick = true;
     gridOptions.onSelectionChanged = () => {
       self.onSelectionChanged(dataSetWrapper, gridOptions);
     }
 
     gridOptions.getContextMenuItems = (params: GetContextMenuItemsParams) => {
-      return this.getContextMenuItems(params, dataSetWrapper);
+      return this.getContextMenuItems(params, dataSetWrapper, gridOptions);
     };
   }
 
@@ -286,7 +283,7 @@ export class GridService {
     gridApi.setPinnedBottomRowData([agrRow]);
   }
 
-  private getContextMenuItems(params: GetContextMenuItemsParams, dataSetWrapper: DataSetWrapper): (string | MenuItemDef)[] {
+  private getContextMenuItems(params: GetContextMenuItemsParams, dataSetWrapper: DataSetWrapper, gridOptions): (string | MenuItemDef)[] {
     var items: (string | MenuItemDef)[] = [
       'separator',
       {
@@ -298,6 +295,11 @@ export class GridService {
           col["colDef"].headerCheckboxSelectionFilteredOnly = dataSetWrapper.isSelectionEnabled;
           col["colDef"].checkboxSelection = dataSetWrapper.isSelectionEnabled;
           params.columnApi.setColumnVisible(col, dataSetWrapper.isSelectionEnabled);
+
+          gridOptions.suppressRowClickSelection = dataSetWrapper.isSelectionEnabled;
+          gridOptions.rowMultiSelectWithClick = dataSetWrapper.isSelectionEnabled;
+          gridOptions.rowSelection = dataSetWrapper.isSelectionEnabled ? 'multiple' : 'none';
+
           if (!dataSetWrapper.isSelectionEnabled) {
             params.api.deselectAll();
           }
