@@ -203,6 +203,9 @@ export class SitProcParamsComponent implements AfterViewInit {
   }
 
   private executeActionCompletedCallback(self) {
+    if (self.sourceDataSet) {
+      self.sourceDataSet.clearSelectedRows();
+    }
     self.unlockExecuting();
     self.close(self.tabIndex);
   }
