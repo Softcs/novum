@@ -1,11 +1,9 @@
-import { Component, OnInit, ViewChild, ViewChildren, QueryList, LOCALE_ID, Inject } from '@angular/core';
-import { SitDictContainerComponent } from '@app/components/sit-dict-container';
-import { User } from '@app/_models';
-import { GatewayService } from '@app/_services';
-import { formatDate } from '@angular/common';
 import { formatNumber } from '@angular/common';
+import { Component, Inject, LOCALE_ID } from '@angular/core';
+import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-dict-base.component';
+import { GatewayService } from '@app/_services';
 import { GridService } from '@app/_services/grid.service';
-import { sitGlobalConfig } from '@app/_consts/sit-global-config'
+import { UrlService } from '@app/_services/url.service';
 
 @Component({
   selector: 'app-sit-plstatement',
@@ -13,27 +11,21 @@ import { sitGlobalConfig } from '@app/_consts/sit-global-config'
   styleUrls: ['./sit-plstatement.component.scss'],
   host: {class: 'router-flex'}
 })
-export class SitPLStatementComponent implements OnInit {
-  @ViewChild('sitDictcontainer') dictContainer: SitDictContainerComponent;
-  @ViewChildren('sitDictcontainer') dictContainers !: QueryList<SitDictContainerComponent>;
-
-  currentUser: User;
-  popupParent;
-  defaultColDef;
-  columnDefs;
-  excelStyles;
+export class SitPLStatementComponent extends SitDictBaseComponent {
 
   constructor(
-    private gatewayService: GatewayService,
-    private gridService: GridService,
-    @Inject(LOCALE_ID) private locale: string
-  ) {
-    this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
-    this.popupParent = document.querySelector('body');
-    this.excelStyles = sitGlobalConfig.excelStyles;
+    protected gatewayService: GatewayService,
+    protected gridService: GridService,
+    protected urlService: UrlService,
+    @Inject(LOCALE_ID) protected locale: string
+  ){
+    super(gatewayService, gridService, urlService, locale);
+  }
+  public prepareColumnsDefinitnion() {
+    var locale = this.locale;
 
-    this.columnDefs = [
-      { headerName: 'Lp', field: 'ord', sort: 'asc', width: 60, suppressMenu: true,
+    this.gridColumnsDefinition["sitPLStatement"] = [
+      { headerName: 'Lp', field: 'ord', sort: 'asc', width: 60, suppressMenu: true, defaultVisibility: false,
         cellClass: ['font12','textFormat']
       },
       { headerName: 'Poz.', field: 'Position', sort: 'asc', width: 60, suppressMenu: true, sortable: false, pinned: 'left',
@@ -48,7 +40,7 @@ export class SitPLStatementComponent implements OnInit {
         },
         cellClass: ['font12','textFormat']
       },
-      { headerName: 'Sty.', field: '01',  width: 100, suppressMenu: true, sortable: false,
+      { headerName: 'Styczeń', field: '01',  width: 100, suppressMenu: true, sortable: false,
         cellRenderer: function(params) {
           return params.data['style_DataType'] === 'percent' ?
               params.data['style_Bold'] === 0 ? formatNumber(params.value, locale,'1.0-0')+'%' : '<b>'+formatNumber(params.value, locale,'1.0-0')+'%</b>'
@@ -56,7 +48,7 @@ export class SitPLStatementComponent implements OnInit {
         },
         cellClass: ['font12','numberFormat2Dec']
       },
-      { headerName: 'Lut.', field: '02',  width: 100, suppressMenu: true, sortable: false,
+      { headerName: 'Luty', field: '02',  width: 100, suppressMenu: true, sortable: false,
         cellRenderer: function(params) {
           return params.data['style_DataType'] === 'percent' ?
               params.data['style_Bold'] === 0 ? formatNumber(params.value, locale,'1.0-0')+'%' : '<b>'+formatNumber(params.value, locale,'1.0-0')+'%</b>'
@@ -64,7 +56,7 @@ export class SitPLStatementComponent implements OnInit {
         },
         cellClass: ['font12','numberFormat2Dec']
       },
-      { headerName: 'Mar.', field: '03',  width: 100, suppressMenu: true, sortable: false,
+      { headerName: 'Marzec', field: '03',  width: 100, suppressMenu: true, sortable: false,
         cellRenderer: function(params) {
           return params.data['style_DataType'] === 'percent' ?
               params.data['style_Bold'] === 0 ? formatNumber(params.value, locale,'1.0-0')+'%' : '<b>'+formatNumber(params.value, locale,'1.0-0')+'%</b>'
@@ -72,7 +64,7 @@ export class SitPLStatementComponent implements OnInit {
         },
         cellClass: ['font12','numberFormat2Dec']
       },
-      { headerName: 'Kwi.', field: '04',  width: 100, suppressMenu: true, sortable: false,
+      { headerName: 'Kwiecień', field: '04',  width: 100, suppressMenu: true, sortable: false,
         cellRenderer: function(params) {
           return params.data['style_DataType'] === 'percent' ?
               params.data['style_Bold'] === 0 ? formatNumber(params.value, locale,'1.0-0')+'%' : '<b>'+formatNumber(params.value, locale,'1.0-0')+'%</b>'
@@ -88,7 +80,7 @@ export class SitPLStatementComponent implements OnInit {
         },
         cellClass: ['font12','numberFormat2Dec']
       },
-      { headerName: 'Cze.', field: '06',  width: 100, suppressMenu: true, sortable: false,
+      { headerName: 'Czerwiec', field: '06',  width: 100, suppressMenu: true, sortable: false,
         cellRenderer: function(params) {
           return params.data['style_DataType'] === 'percent' ?
               params.data['style_Bold'] === 0 ? formatNumber(params.value, locale,'1.0-0')+'%' : '<b>'+formatNumber(params.value, locale,'1.0-0')+'%</b>'
@@ -96,7 +88,7 @@ export class SitPLStatementComponent implements OnInit {
         },
         cellClass: ['font12','numberFormat2Dec']
       },
-      { headerName: 'Lip.', field: '07',  width: 100, suppressMenu: true, sortable: false,
+      { headerName: 'Lipiec', field: '07',  width: 100, suppressMenu: true, sortable: false,
         cellRenderer: function(params) {
           return params.data['style_DataType'] === 'percent' ?
               params.data['style_Bold'] === 0 ? formatNumber(params.value, locale,'1.0-0')+'%' : '<b>'+formatNumber(params.value, locale,'1.0-0')+'%</b>'
@@ -104,7 +96,7 @@ export class SitPLStatementComponent implements OnInit {
         },
         cellClass: ['font12','numberFormat2Dec']
       },
-      { headerName: 'Sie.', field: '08',  width: 100, suppressMenu: true, sortable: false,
+      { headerName: 'Sierpień', field: '08',  width: 100, suppressMenu: true, sortable: false,
         cellRenderer: function(params) {
           return params.data['style_DataType'] === 'percent' ?
               params.data['style_Bold'] === 0 ? formatNumber(params.value, locale,'1.0-0')+'%' : '<b>'+formatNumber(params.value, locale,'1.0-0')+'%</b>'
@@ -112,7 +104,7 @@ export class SitPLStatementComponent implements OnInit {
         },
         cellClass: ['font12','numberFormat2Dec']
       },
-      { headerName: 'Wrz.', field: '09',  width: 100, suppressMenu: true, sortable: false,
+      { headerName: 'Wrzesień', field: '09',  width: 100, suppressMenu: true, sortable: false,
         cellRenderer: function(params) {
           return params.data['style_DataType'] === 'percent' ?
               params.data['style_Bold'] === 0 ? formatNumber(params.value, locale,'1.0-0')+'%' : '<b>'+formatNumber(params.value, locale,'1.0-0')+'%</b>'
@@ -120,7 +112,7 @@ export class SitPLStatementComponent implements OnInit {
         },
         cellClass: ['font12','numberFormat2Dec']
       },
-      { headerName: 'Paź.', field: '10',  width: 100, suppressMenu: true, sortable: false,
+      { headerName: 'Październik', field: '10',  width: 100, suppressMenu: true, sortable: false,
         cellRenderer: function(params) {
           return params.data['style_DataType'] === 'percent' ?
               params.data['style_Bold'] === 0 ? formatNumber(params.value, locale,'1.0-0')+'%' : '<b>'+formatNumber(params.value, locale,'1.0-0')+'%</b>'
@@ -128,7 +120,7 @@ export class SitPLStatementComponent implements OnInit {
         },
         cellClass: ['font12','numberFormat2Dec']
       },
-      { headerName: 'Lis.', field: '11',  width: 100, suppressMenu: true, sortable: false,
+      { headerName: 'Listopad', field: '11',  width: 100, suppressMenu: true, sortable: false,
         cellRenderer: function(params) {
           return params.data['style_DataType'] === 'percent' ?
               params.data['style_Bold'] === 0 ? formatNumber(params.value, locale,'1.0-0')+'%' : '<b>'+formatNumber(params.value, locale,'1.0-0')+'%</b>'
@@ -136,7 +128,7 @@ export class SitPLStatementComponent implements OnInit {
         },
         cellClass: ['font12','numberFormat2Dec']
       },
-      { headerName: 'Gru.', field: '12',  width: 100, suppressMenu: true, sortable: false,
+      { headerName: 'Grudzień', field: '12',  width: 100, suppressMenu: true, sortable: false,
         cellRenderer: function(params) {
           return params.data['style_DataType'] === 'percent' ?
               params.data['style_Bold'] === 0 ? formatNumber(params.value, locale,'1.0-0')+'%' : '<b>'+formatNumber(params.value, locale,'1.0-0')+'%</b>'
@@ -171,15 +163,8 @@ export class SitPLStatementComponent implements OnInit {
 
   }
 
-  ngOnInit(): void {
-  }
-
-  onGridReady(params) {
-    this.gridService.setDefGridOptionsOnReady(params);
-
-    if (params.columnApi.getColumn('ord')) {
-      params.columnApi.setColumnsVisible(['ord'],false)
-     }
-  }
-
 }
+function locale(value: any, locale: any, arg2: string) {
+  throw new Error('Function not implemented.');
+}
+
