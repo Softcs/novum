@@ -279,6 +279,7 @@ import { SitCustomerCreditLimitScoresEditComponent } from './containers/dictiona
 import { SitCustomerCreditLimitScoresGenComponent } from './containers/dictionaries/sit-customer-credit-limit-scores/actions/sit-customer-credit-limit-scores-gen/sit-customer-credit-limit-scores-gen.component';
 import { SitHRParams4InvoicingContrEditComponent } from './containers/dictionaries/sit-customers/actions/sit-hrparams4-invoicing-contr-edit/sit-hrparams4-invoicing-contr-edit.component';
 import { SitEmployeesSettlementsCustomerCostCenterEditComponent } from './containers/dictionaries/sit-employees-settlements/actions/sit-employees-settlements-customer-cost-center-edit/sit-employees-settlements-customer-cost-center-edit.component';
+import { SitHrPfronDataImportComponent } from './containers/dictionaries/sit-employees-settlements/actions/sit-hr-pfron-data-import/sit-hr-pfron-data-import.component';
 
 
 @NgModule({
@@ -544,7 +545,8 @@ import { SitEmployeesSettlementsCustomerCostCenterEditComponent } from './contai
         SitCustomerCreditLimitScoresEditComponent,
         SitCustomerCreditLimitScoresGenComponent,
         SitHRParams4InvoicingContrEditComponent,
-        SitEmployeesSettlementsCustomerCostCenterEditComponent
+        SitEmployeesSettlementsCustomerCostCenterEditComponent,
+        SitHrPfronDataImportComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },

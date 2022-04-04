@@ -3,8 +3,8 @@
     <div class="sit-filter-bar" fxLayout="row">
       <sit-data-set-container ident="sitFilter" >
         <div fxLayout="row">
-          <sit-data-input #sitControl field="CostYear" label="Rok" placeholder="" appearance="outline" style="width: 60px;"></sit-data-input>
-          <sit-data-input #sitControl field="CostMonth" label="Miesiąc" placeholder="" appearance="outline" style="width: 60px;"></sit-data-input>
+          <sit-data-input #sitControl field="CostYear" type="number" label="Rok" placeholder="" appearance="outline" style="width: 65px;"></sit-data-input>
+          <sit-data-input #sitControl field="CostMonth" type="number" label="Miesiąc" placeholder="" appearance="outline" style="width: 60px;"></sit-data-input>
           <sit-data-input #sitControl field="HRDepartmentIdent" label="Dział" placeholder="" appearance="outline" style="width: 200px;"
             [lookupDisplayFields] = "['HRDepartmentIdent', 'HRDepartmentName']">
           </sit-data-input>
@@ -39,7 +39,7 @@
                 <div fxLayout="column" fxFill fxLayoutGap="5px">
                   <mat-card>
                     <mat-card-title>
-                      <sit-data-label type="number" #sitControl field="EmployeeName" label="" style="font-size: 24px; font-weight: 500;"></sit-data-label>
+                      <sit-data-label #sitControl field="EmployeeName" label="" style="font-size: 24px; font-weight: 500;"></sit-data-label>
                     </mat-card-title>
                     <mat-card-content>
                       <div fxLayout="column">
@@ -103,7 +103,7 @@
                 <div fxLayout="column" fxFill fxLayoutGap="5px">
                   <mat-card>
                     <mat-card-title>
-                      <sit-data-label type="number" #sitControl field="EmployeeName" label="" style="font-size: 24px; font-weight: 500;"></sit-data-label>
+                      <sit-data-label type="text" #sitControl field="EmployeeName" label="" style="font-size: 24px; font-weight: 500;"></sit-data-label>
                     </mat-card-title>
                     <mat-card-content>
                       <div fxLayout="column">
@@ -151,6 +151,37 @@
             </sit-data-set-container>
           </as-split-area>
           <as-split-area [size]="20">
+            <sit-data-set-container ident="sitHRPFRON">
+              <div fxLayout="column" fxFill fxLayoutGap="5px">
+                <mat-card>
+                  <mat-card-title>
+                    <sit-data-label #sitControl field="CostPeriod" label="" style="font-size: 24px; font-weight: 500;"></sit-data-label>
+                  </mat-card-title>
+                  <mat-card-content>
+                    <div fxLayout="column">
+                        <sit-data-label type="text" #sitControl field="AverageSalary" label="Przeciętne wyn.:" labelWidth="150" valueWidth="80" type="number" style="text-align:right;"></sit-data-label>
+                        <br>
+                        <sit-data-label type="text" #sitControl field="PFRONMc" label="PFRON za mies.:" labelWidth="150" valueWidth="80" type="number" style="text-align:right;"></sit-data-label>
+                        <br>
+                        <sit-data-label type="text" #sitControl field="SumAvgJobsNoDis" label="Śr. etaty niepełnospr.:" labelWidth="150" valueWidth="80" type="number" style="text-align:right;"></sit-data-label>
+                        <br>
+                        <sit-data-label type="text" #sitControl field="SumAvgJobsNoDisS" label="Śr. etaty niep. szcz.:" labelWidth="150" valueWidth="80" type="number" style="text-align:right;"></sit-data-label>
+                        <br>
+                        <sit-data-label type="text" #sitControl field="PerPerson" label="Kwota na osobę:" labelWidth="150" valueWidth="80" type="number" style="text-align:right;"></sit-data-label>
+                        <br>
+                        <sit-data-label type="text" #sitControl field="PFRONDek1" label="Dekl. 1:" labelWidth="150" valueWidth="80" type="number" style="text-align:right;"></sit-data-label>
+                        <br>
+                        <sit-data-label type="text" #sitControl field="PFRONDek2" label="Dekl. 2:" labelWidth="150" valueWidth="80" type="number" style="text-align:right;"></sit-data-label>
+                        
+                      </div>
+                  </mat-card-content>
+                </mat-card>
+                <mat-card fxFlex>
+                  <mat-card-content>
+                  </mat-card-content>
+                </mat-card>
+              </div>
+            </sit-data-set-container>            
           </as-split-area>
         </as-split>
       </mat-tab>

@@ -178,6 +178,7 @@ import { SitCustomerCreditLimitScoresEditComponent } from '@app/containers/dicti
 import { SitCustomerCreditLimitScoresGenComponent } from '@app/containers/dictionaries/sit-customer-credit-limit-scores/actions/sit-customer-credit-limit-scores-gen/sit-customer-credit-limit-scores-gen.component';
 import { SitHRParams4InvoicingContrEditComponent } from '@app/containers/dictionaries/sit-customers/actions/sit-hrparams4-invoicing-contr-edit/sit-hrparams4-invoicing-contr-edit.component';
 import { SitEmployeesSettlementsCustomerCostCenterEditComponent } from '@app/containers/dictionaries/sit-employees-settlements/actions/sit-employees-settlements-customer-cost-center-edit/sit-employees-settlements-customer-cost-center-edit.component';
+import { SitHrPfronDataImportComponent } from '@app/containers/dictionaries/sit-employees-settlements/actions/sit-hr-pfron-data-import/sit-hr-pfron-data-import.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -362,6 +363,7 @@ export class FactoryService {
         sitCustomerCreditLimitScoresGen: SitCustomerCreditLimitScoresGenComponent,
         sitHRParams4InvoicingContrEdit: SitHRParams4InvoicingContrEditComponent,
         sitEmployeesSettlementsCustomerCostCenterEdit: SitEmployeesSettlementsCustomerCostCenterEditComponent,
+        sitHRPFRONDataImport: SitHrPfronDataImportComponent,
     };
 
     public GetFactory(ident: string) {
