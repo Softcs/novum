@@ -18,10 +18,10 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
     this.gridColumnsDefinition['sitEmployeesSettlements'] = [
       { headerName: 'Pracownik',
         children: [
-          { headerName: 'Nazwisko', field: 'EmployeeName', tooltipField: 'EmployeeName', sort: 'asc', width: 180, pinned: 'left',
+          { headerName: 'Nazwisko', field: 'EmployeeName', tooltipField: 'EmployeeName', sortable: true, resizable: true, sort: 'asc', width: 180, pinned: 'left',
             cellClass: ['font11','textFormat']
           },
-          { headerName: 'Ident.', field: 'EmployeeIdent', tooltipField: 'EmployeeIdent', width: 100, pinned: 'left',
+          { headerName: 'Ident.', field: 'EmployeeIdent', tooltipField: 'EmployeeIdent', sortable: true, resizable: true, width: 100, pinned: 'left',
             cellClass: ['font11','textFormat']
           },
         ]
@@ -44,53 +44,53 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
       },
       { headerName: 'Statusy',
         children: [
-          { headerName: 'ZUS', field: 'StatusZUSDesc',  width: 60, suppressMenu: true,
+          { headerName: 'ZUS', field: 'StatusZUSDesc',  width: 60, suppressMenu: true, sortable: true, resizable: true,
             cellClass: ['font11','textFormat']
           },
-          { headerName: 'PPK', field: 'StatusPPK',  width: 60, renderType: 'checkbox', suppressMenu: true,
+          { headerName: 'PPK', field: 'StatusPPK',  width: 60, renderType: 'checkbox', suppressMenu: true, sortable: true, resizable: true,
             cellClass: ['font11','textFormat','grid-cell-centered']
           },
         ]
       },
       { headerName: 'Wynagrodzenie',
         children: [
-          { headerName: 'Brutto', field: 'Gross', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 90, agr: 'sum',
+          { headerName: 'Brutto', field: 'Gross', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 90, agr: 'sum', sortable: true, resizable: true,
             renderType: 'number',
             cellStyle: function(params) { return {backgroundColor: '#ffe6e6'} },
             cellClass: ['font11','numberFormat2Dec','pinkBackground'],
             // pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
           },
-          { headerName: 'Podstawa', field: 'Base', filter: 'agNumberColumnFilter', type: 'numericColumn', columnGroupShow: "open", width: 95, agr: 'sum',
+          { headerName: 'Podstawa', field: 'Base', filter: 'agNumberColumnFilter', type: 'numericColumn', columnGroupShow: "open", width: 95, agr: 'sum', sortable: true, resizable: true,
             renderType: 'number',
             cellClass: ['font11','numberFormat2Dec'],
             pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
           },
-          { headerName: 'Premie', field: 'Bonus', filter: 'agNumberColumnFilter', type: 'numericColumn',columnGroupShow: "open", width: 90, agr: 'sum',
+          { headerName: 'Premie', field: 'Bonus', filter: 'agNumberColumnFilter', type: 'numericColumn',columnGroupShow: "open", width: 90, agr: 'sum', sortable: true, resizable: true,
             renderType: 'number',
             cellClass: ['font11','numberFormat2Dec'],
             pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
           },
-          { headerName: 'Prem. nie kli.', field: 'BonusNoCust', filter: 'agNumberColumnFilter', type: 'numericColumn',columnGroupShow: "open", width: 110, agr: 'sum',
+          { headerName: 'Prem. nie kli.', field: 'BonusNoCust', filter: 'agNumberColumnFilter', type: 'numericColumn',columnGroupShow: "open", width: 110, agr: 'sum', sortable: true, resizable: true,
             renderType: 'number',
             cellClass: ['font11','numberFormat2Dec'],
             pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
           },
-          { headerName: 'Bony', field: 'Vouchers', filter: 'agNumberColumnFilter', type: 'numericColumn',columnGroupShow: "open", width: 90, agr: 'sum',
+          { headerName: 'Bony', field: 'Vouchers', filter: 'agNumberColumnFilter', type: 'numericColumn',columnGroupShow: "open", width: 90, agr: 'sum', sortable: true, resizable: true,
             renderType: 'number',
             cellClass: ['font11','numberFormat2Dec'],
             pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
           },
-          { headerName: 'Dodatki', field: 'Additions', filter: 'agNumberColumnFilter', type: 'numericColumn',columnGroupShow: "open", width: 90, agr: 'sum',
+          { headerName: 'Dodatki', field: 'Additions', filter: 'agNumberColumnFilter', type: 'numericColumn',columnGroupShow: "open", width: 90, agr: 'sum', sortable: true, resizable: true,
             renderType: 'number',
             cellClass: ['font11','numberFormat2Dec'],
             pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
           },
-          { headerName: 'Potr.', field: 'Deduction', filter: 'agNumberColumnFilter', type: 'numericColumn',columnGroupShow: "open", width: 80, agr: 'sum',
+          { headerName: 'Potr.', field: 'Deduction', filter: 'agNumberColumnFilter', type: 'numericColumn',columnGroupShow: "open", width: 80, agr: 'sum', sortable: true, resizable: true,
             renderType: 'number',
             cellClass: ['font11','numberFormat2Dec'],
             pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
           },
-          { headerName: 'W nat.', field: 'InKind', filter: 'agNumberColumnFilter', type: 'numericColumn',columnGroupShow: "open", width: 80, agr: 'sum',
+          { headerName: 'W nat.', field: 'InKind', filter: 'agNumberColumnFilter', type: 'numericColumn',columnGroupShow: "open", width: 80, agr: 'sum', sortable: true, resizable: true,
             renderType: 'number',
             cellClass: ['font11','numberFormat2Dec'],
           },
@@ -98,27 +98,27 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
       },
       { headerName: 'ZUS i PPK',
         children: [
-          { headerName: 'ZUS', field: 'ZUSFirma', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80, suppressMenu: true, agr: 'sum',
+          { headerName: 'ZUS', field: 'ZUSFirma', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80, suppressMenu: true, agr: 'sum', sortable: true, resizable: true,
             renderType: 'number',
             cellClass: ['font11','numberFormat2Dec'],
             pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
           },
-          { headerName: 'ZUS podst.', field: 'ZUSBase', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, suppressMenu: true, columnGroupShow: "open", agr: 'sum',
+          { headerName: 'ZUS podst.', field: 'ZUSBase', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, suppressMenu: true, columnGroupShow: "open", agr: 'sum', sortable: true, resizable: true,
             renderType: 'number',
             cellClass: ['font11','numberFormat2Dec'],
             pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
           },
-          { headerName: 'ZUS prem.', field: 'ZUSBonus', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, suppressMenu: true, columnGroupShow: "open", agr: 'sum',
+          { headerName: 'ZUS prem.', field: 'ZUSBonus', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, suppressMenu: true, columnGroupShow: "open", agr: 'sum', sortable: true, resizable: true,
             renderType: 'number',
             cellClass: ['font11','numberFormat2Dec'],
             pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
           },
-          { headerName: 'ZUS bony', field: 'ZUSVouchers', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, suppressMenu: true, columnGroupShow: "open", agr: 'sum',
+          { headerName: 'ZUS bony', field: 'ZUSVouchers', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, suppressMenu: true, columnGroupShow: "open", agr: 'sum', sortable: true, resizable: true,
             renderType: 'number',
             cellClass: ['font11','numberFormat2Dec'],
             pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
           },
-          { headerName: 'PPK', field: 'PPK', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 70,suppressMenu: true, agr: 'sum',
+          { headerName: 'PPK', field: 'PPK', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 70,suppressMenu: true, agr: 'sum', sortable: true, resizable: true,
             renderType: 'number',
             cellClass: ['font11','numberFormat2Dec'],
             pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
@@ -393,10 +393,10 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
     this.gridColumnsDefinition['sitEmployeesSettlementsContr'] = [
       { headerName: 'Pracownik',
         children: [
-          { headerName: 'Nazwisko', field: 'EmployeeName', tooltipField: 'EmployeeName', sort: 'asc', width: 210, pinned: 'left',
+          { headerName: 'Nazwisko', field: 'EmployeeName', tooltipField: 'EmployeeName', sort: 'asc', width: 210, pinned: 'left', sortable: true, resizable: true,
             cellClass: ['font11','textFormat'],cellRenderer: 'agGroupCellRenderer'
           },
-          { headerName: 'Ident.', field: 'EmployeeIdent', tooltipField: 'EmployeeIdent', width: 100, pinned: 'left',
+          { headerName: 'Ident.', field: 'EmployeeIdent', tooltipField: 'EmployeeIdent', width: 100, pinned: 'left', sortable: true, resizable: true,
             cellClass: ['font11','textFormat']
           },
         ]
@@ -758,6 +758,80 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
       },
     ];
 
+    this.gridColumnsDefinition['sitHRPFRON'] = [
+      { headerName: 'Okres', field: 'CostPeriod', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 70,suppressMenu: true, pinned: 'left'},
+      { headerName: 'Dział', headerTooltip: 'Dział', children: [
+          { headerName: 'Sym.', field: 'HRDepartmentIdent', tooltipField:'HRDepartmentName', sortable: true, resizable: true, width: 100, sort: 'asc',suppressMenu: true, pinned: 'left'},
+          { headerName: 'Nazwa', field: 'HRDepartmentName', tooltipField:'HRDepartmentName', sortable: true, resizable: true, width: 180, suppressMenu: true, columnGroupShow: "open", pinned: 'left'},
+        ]
+      },
+      { headerName: 'Oddział', headerTooltip: 'Oddział', children: [
+          { headerName: 'Sym.', field: 'CompanyDepartmentIdent', tooltipField:'CompanyDepartmentDesc',  width: 60, suppressMenu: true, sortable: true, resizable: true},
+          { headerName: 'Nazwa', field: 'CompanyDepartmentDesc', tooltipField:'CompanyDepartmentDesc',  width: 160, suppressMenu: true, sortable: true, resizable: true, columnGroupShow: "open"},
+        ]
+      },
+      { headerName: 'Kanał dystr.', headerTooltip: 'Kanał dystrybucji', children: [
+          { headerName: 'Sym.', field: 'DistributionChannelIdent', tooltipField:'DistributionChannelDesc',  width: 60, suppressMenu: true, sortable: true, resizable: true},
+          { headerName: 'Nazwa', field: 'DistributionChannelDesc', tooltipField:'DistributionChannelDesc',  width: 160, suppressMenu: true, sortable: true, resizable: true, columnGroupShow: "open"},
+        ]
+      },
+      { headerName: 'Produkt', headerTooltip: 'Produkt', children: [
+          { headerName: 'Sym.', field: 'ProductsTypeIdent', tooltipField:'ProductsTypeDesc',  width: 60, suppressMenu: true, sortable: true, resizable: true},
+          { headerName: 'Nazwa', field: 'ProductsTypeDesc', tooltipField:'ProductsTypeDesc',  width: 160, suppressMenu: true, sortable: true, resizable: true, columnGroupShow: "open"},
+        ]
+      },
+      { headerName: 'Koszt', headerTooltip: 'Rodzaj kosztu', children: [
+          { headerName: 'Sym.', field: 'CostTypeIdent', tooltipField:'CostTypeDesc',  width: 60, suppressMenu: true, sortable: true, resizable: true},
+          { headerName: 'Nazwa', field: 'CostTypeDesc', tooltipField:'CostTypeDesc',  width: 160, suppressMenu: true, sortable: true, resizable: true, columnGroupShow: 'open'},
+        ]
+      },
+      { headerName: 'Dni', field: 'Days', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 50,suppressMenu: true},
+      { headerName: 'Dni kal.', field: 'CalendarDays', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 70,suppressMenu: true},
+      { headerName: 'Etaty', headerTooltip: 'Etaty', children: [
+        { headerName: 'Suma',headerTooltip: 'Suma wszystkich etatów', field: 'JobsNo', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80, resizable: true, suppressMenu: true, renderType: 'number', agr: 'sum',
+          cellStyle: function(params) { return {backgroundColor: '#cce6ff'}},  
+        },
+        { headerName: 'Średnia',headerTooltip: 'Średnia dzienna ilość etatów', field: 'AvgJobsNo', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,resizable: true, suppressMenu: true, renderType: 'number',agr: 'sum' ,
+            cellStyle: function(params) { return {backgroundColor: '#cce6ff'} }}  
+        ]
+      },
+      { headerName: 'Etaty niepełnosprawni', headerTooltip: 'Etaty wg stopnia niepełnosprawności', children: [
+          { headerName: 'Suma', field: 'SumDis', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80, resizable: true, suppressMenu: true, renderType: 'number', agr: 'sum',
+            cellStyle: function(params) { return {backgroundColor: '#fcf59f'}},
+          },
+          { headerName: 'Lekki', headerTooltip: 'Lekki', field: 'JobsNo1', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,resizable: true,suppressMenu: true, renderType: 'number', agr: 'sum', columnGroupShow: 'open'},
+          { headerName: 'Lek. szcz.', headerTooltip: 'Lekki szczególny', field: 'JobsNo1S', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,resizable: true,suppressMenu: true, renderType: 'number', agr: 'sum', columnGroupShow: 'open'},
+          { headerName: 'Umiar.', headerTooltip: 'Umiarkowany', field: 'JobsNo2', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 70,resizable: true,suppressMenu: true, renderType: 'number', agr: 'sum', columnGroupShow: 'open'},
+          { headerName: 'Um. szcz.', headerTooltip: 'Umiarkowany szczególny', field: 'JobsNo2S', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 70,resizable: true,suppressMenu: true, renderType: 'number', agr: 'sum', columnGroupShow: 'open'},
+          { headerName: 'Znacz.', headerTooltip: 'Znaczny', field: 'JobsNo3', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 70,resizable: true,suppressMenu: true, renderType: 'number', agr: 'sum', columnGroupShow: 'open'},
+          { headerName: 'Zn. szcz.', headerTooltip: 'Znaczny szczególny', field: 'JobsNo3S', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 70,resizable: true,suppressMenu: true, renderType: 'number', agr: 'sum', columnGroupShow: 'open'},
+        ]
+      },
+      { headerName: 'Średnie etaty niepełnospr.', headerTooltip: 'Średnie etaty wg stopnia niepełnosprawności', children: [
+          { headerName: 'Suma', field: 'SumAvgDis', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80, resizable: true, suppressMenu: true, renderType: 'number', agr: 'sum',
+            cellStyle: function(params) { return {backgroundColor: '#fcf59f'}},
+          },
+          { headerName: 'Lekki', headerTooltip: 'Lekki', field: 'AvgJobsNo1', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,resizable: true,suppressMenu: true, renderType: 'number', agr: 'sum', columnGroupShow: 'open'},
+          { headerName: 'Lek. szcz.', headerTooltip: 'Lekki szczególny', field: 'AvgJobsNo1S', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,resizable: true,suppressMenu: true, renderType: 'number', agr: 'sum', columnGroupShow: 'open'},
+          { headerName: 'Umiar.', headerTooltip: 'Umiarkowany', field: 'AvgJobsNo2', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 70,resizable: true,suppressMenu: true, renderType: 'number', agr: 'sum', columnGroupShow: 'open'},
+          { headerName: 'Um. szcz.', headerTooltip: 'Umiarkowany szczególny', field: 'AvgJobsNo2S', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 70,resizable: true,suppressMenu: true, renderType: 'number', agr: 'sum', columnGroupShow: 'open'},
+          { headerName: 'Znacz.', headerTooltip: 'Znaczny', field: 'AvgJobsNo3', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 70,resizable: true,suppressMenu: true, renderType: 'number', agr: 'sum', columnGroupShow: 'open'},
+          { headerName: 'Zn. szcz.', headerTooltip: 'Znaczny szczególny', field: 'AvgJobsNo3S', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 70,resizable: true,suppressMenu: true, renderType: 'number', agr: 'sum', columnGroupShow: 'open'},
+          { headerName: 'Um. szcz. przel.', headerTooltip: 'Umiarkowany szczególny przeliczony', field: 'AvgJobsNo2SCalc', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90,resizable: true,suppressMenu: true, renderType: 'number', agr: 'sum', columnGroupShow: 'open'},
+          { headerName: 'Zn. szcz. przel.', headerTooltip: 'Znaczny szczególny przeliczony', field: 'AvgJobsNo3SCalc', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90,resizable: true,suppressMenu: true, renderType: 'number', agr: 'sum', columnGroupShow: 'open'},
+        ]
+      },
+      { headerName: 'PFRON', headerTooltip: 'PFRON', children: [
+          { headerName: 'Należny', headerTooltip: 'PFRON należny', field: 'PFRON', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,resizable: true,suppressMenu: true, renderType: 'number', agr: 'sum'},
+          { headerName: 'Niepełnospr.', headerTooltip: 'PFRON od niepełnosprawnych', field: 'PFRONDis', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,resizable: true,suppressMenu: true, renderType: 'number', agr: 'sum'},
+          { headerName: 'Różnica', headerTooltip: 'PFRON - róożnica', field: 'PFRONDiff', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,resizable: true,suppressMenu: true, renderType: 'number', agr: 'sum'},
+        ]
+      },
+      { headerName: 'Nie licz PFRON', field: 'NoPFRON',  width: 100, renderType: 'checkbox', suppressMenu: true, sortable: true, resizable: true,
+        cellClass: ['font11','textFormat','grid-cell-centered']
+      },
+
+    ]
     this.detailCellRendererParams = {
       detailGridOptions: {
         columnDefs: [
