@@ -1,0 +1,23 @@
+<sit-proc-params
+  [(actionExecuteData)]="actionExecuteData"
+  >
+  <sit-data-set-container ident="sitFlatsRentScheduleReceivablesEdit">
+    <div class="sit-proc-params-content" fxLayout="column" style="width: 500px;height: 250px;">
+      <div fxLayout="row">
+        <sit-data-input type="text" #sitControl field="ReceivableType" label="Typ należności" appearance="outline" fxFlex>></sit-data-input>
+				<sit-data-input type="date" #sitControl field="PaymentDate" label="Data płatności" appearance="outline" style="width: 130px"></sit-data-input>
+      </div>
+      <div fxLayout="row">
+				<sit-data-input type="date" #sitControl field="PeriodFrom" label="Za okres od" appearance="outline" style="width: 130px"></sit-data-input>
+				<sit-data-input type="date" #sitControl field="PeriodTo" label="okre do" appearance="outline" style="width: 130px"></sit-data-input>
+      </div>
+      <div fxLayout="row">
+        <sit-data-input type="text" #sitControl field="ReceivableDescription" label="Ops należności" appearance="outline" fxFlex>></sit-data-input>
+      </div>			
+      <div fxLayout="row">
+				<sit-data-input type="number" #sitControl field="Amount" label="Kwota" appearance="outline" style="width: 130px"></sit-data-input>
+				<sit-data-input type="text" #sitControl field="UtilityIdent" label="Medium" appearance="outline" fxFlex></sit-data-input>
+      </div>
+    </div>
+  </sit-data-set-container>
+</sit-proc-params>

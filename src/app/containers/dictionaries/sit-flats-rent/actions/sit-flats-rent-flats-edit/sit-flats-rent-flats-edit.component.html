@@ -1,0 +1,15 @@
+<sit-proc-params
+  [(actionExecuteData)]="actionExecuteData"
+  >
+  <sit-data-set-container ident="sitFlatsRentFlatsEdit">
+    <div class="sit-proc-params-content" fxLayout="column" style="width: 500px;height: 250px;">
+      <div fxLayout="row">
+        <sit-data-input type="text" #sitControl field="FlatIdent" label="Mieszkanie" appearance="outline" style="width: 150px"></sit-data-input>
+				<sit-data-input type="text" #sitControl field="FlatName" label="Opis" appearance="outline" fxFlex></sit-data-input>
+      </div>
+      <div fxLayout="row">
+        <sit-data-input type="text" #sitControl field="Address" label="Adres" appearance="outline" fxFlex></sit-data-input>
+      </div>			  
+    </div>
+  </sit-data-set-container>
+</sit-proc-params>

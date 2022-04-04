@@ -177,6 +177,17 @@ import { SitCustomerCreditLimitScoresComponent } from '@app/containers/dictionar
 import { SitCustomerCreditLimitScoresEditComponent } from '@app/containers/dictionaries/sit-customer-credit-limit-scores/actions/sit-customer-credit-limit-scores-edit/sit-customer-credit-limit-scores-edit.component';
 import { SitCustomerCreditLimitScoresGenComponent } from '@app/containers/dictionaries/sit-customer-credit-limit-scores/actions/sit-customer-credit-limit-scores-gen/sit-customer-credit-limit-scores-gen.component';
 import { SitHRParams4InvoicingContrEditComponent } from '@app/containers/dictionaries/sit-customers/actions/sit-hrparams4-invoicing-contr-edit/sit-hrparams4-invoicing-contr-edit.component';
+import { SitFlatsRentComponent } from '@app/containers/dictionaries/sit-flats-rent/sit-flats-rent.component';
+import { SitFlatsRentFlatsEditComponent } from '@app/containers/dictionaries/sit-flats-rent/actions/sit-flats-rent-flats-edit/sit-flats-rent-flats-edit.component';
+import { SitFlatsRentTenancyAgreementsEditComponent } from '@app/containers/dictionaries/sit-flats-rent/actions/sit-flats-rent-tenancy-agreements-edit/sit-flats-rent-tenancy-agreements-edit.component';
+import { SitFlatsRentTenantsEditComponent } from '@app/containers/dictionaries/sit-flats-rent/actions/sit-flats-rent-tenants-edit/sit-flats-rent-tenants-edit.component';
+import { SitFlatsRentUtilitiesEditComponent } from '@app/containers/dictionaries/sit-flats-rent/actions/sit-flats-rent-utilities-edit/sit-flats-rent-utilities-edit.component';
+import { SitFlatsRentUtilitiesTypesEditComponent } from '@app/containers/dictionaries/sit-flats-rent/actions/sit-flats-rent-utilities-types-edit/sit-flats-rent-utilities-types-edit.component';
+import { SitFlatsRentUtilitiesProvidersEditComponent } from '@app/containers/dictionaries/sit-flats-rent/actions/sit-flats-rent-utilities-providers-edit/sit-flats-rent-utilities-providers-edit.component';
+import { SitBankStatementPositionsComponent } from '@app/containers/dictionaries/sit-bank-statement-positions/sit-bank-statement-positions.component';
+import { SitFlatsRentRentPositionsEditComponent } from '@app/containers/dictionaries/sit-flats-rent/actions/sit-flats-rent-rent-positions-edit/sit-flats-rent-rent-positions-edit.component';
+import { SitFlatsRentScheduleReceivablesEditComponent } from '@app/containers/dictionaries/sit-flats-rent/actions/sit-flats-rent-schedule-receivables-edit/sit-flats-rent-schedule-receivables-edit.component';
+import { SitFlatsRentGenScheduleFromRentPositionsComponent } from '@app/containers/dictionaries/sit-flats-rent/actions/sit-flats-rent-gen-schedule-from-rent-positions/sit-flats-rent-gen-schedule-from-rent-positions.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -360,6 +371,17 @@ export class FactoryService {
         sitCustomerCreditLimitScoresEdit: SitCustomerCreditLimitScoresEditComponent,
         sitCustomerCreditLimitScoresGen: SitCustomerCreditLimitScoresGenComponent,
         sitHRParams4InvoicingContrEdit: SitHRParams4InvoicingContrEditComponent,
+        sitFlatsRent: SitFlatsRentComponent,
+        sitFlatsRentFlatsEdit: SitFlatsRentFlatsEditComponent,
+        sitFlatsRentTenancyAgreementsEdit: SitFlatsRentTenancyAgreementsEditComponent,
+        sitFlatsRentTenantsEdit: SitFlatsRentTenantsEditComponent,
+        sitFlatsRentUtilitiesEdit: SitFlatsRentUtilitiesEditComponent,
+        sitFlatsRentUtilitiesTypesEdit: SitFlatsRentUtilitiesTypesEditComponent,
+        sitFlatsRentUtilitiesProvidersEdit: SitFlatsRentUtilitiesProvidersEditComponent,
+        sitBankStatementPositions: SitBankStatementPositionsComponent,
+        sitFlatsRentRentPositionsEdit: SitFlatsRentRentPositionsEditComponent,
+        sitFlatsRentScheduleReceivablesEdit: SitFlatsRentScheduleReceivablesEditComponent,
+        sitFlatsRentGenScheduleFromRentPositions: SitFlatsRentGenScheduleFromRentPositionsComponent,
     };
 
     public GetFactory(ident: string) {

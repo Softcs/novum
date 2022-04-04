@@ -1,0 +1,200 @@
+<sit-dict-container ident="sitFlatsRent" #sitDictcontainer fxFill>
+    <div fxLayout="column" fxFill >
+      <as-split #sitSpliter direction="horizontal">
+        <as-split-area [size]="25">
+          <div fxLayout="column" fxFill class="content">
+            <div class="sit-filter-bar">
+              <sit-data-set-container ident="sitFlatsRentFilterFlats" fxLayout="row">
+                <sit-data-input #sitControl id="searchFlats" field="searchFlats" label="Filtruj mieszkania" placeholder="Nazwa, Identyfikator" appearance="outline" 
+								[showRefreshButton]="true"  style="width: 300px;"></sit-data-input>
+              </sit-data-set-container>
+            </div>
+            <sit-data-set-container ident="sitFlatsRentFlats" [showActionsToolbar]="true" #sitDataSetContainer fxFlex fxLayout="column">
+              <div class="data-table" fxFlex>
+                <ag-grid-angular
+                  #sitSetDataSource
+                  style="width: 100%; height: 100%;"
+                  class="ag-theme-balham"
+                  [rowHeight]="60"
+                >
+                </ag-grid-angular>
+              </div>
+            </sit-data-set-container>
+						<div class="sit-filter-bar">
+              <sit-data-set-container ident="sitFlatsRentFilterTenancyAgreements" fxLayout="row">
+                <sit-data-input #sitControl id="searchAgreements" field="searchAgreements" label="Filtruj umowy" placeholder="Nazwa, Identyfikator" appearance="outline" 
+								[showRefreshButton]="true"  style="width: 300px;"></sit-data-input>
+              </sit-data-set-container>
+            </div>
+            <sit-data-set-container ident="sitFlatsRentTenancyAgreements" [showActionsToolbar]="true" #sitDataSetContainer fxFlex fxLayout="column">
+              <div class="data-table" fxFlex>
+                <ag-grid-angular
+                  #sitSetDataSource
+                  style="width: 100%; height: 100%;"
+                  class="ag-theme-balham"
+                  [rowHeight]="60"
+                >
+                </ag-grid-angular>
+              </div>
+            </sit-data-set-container>
+          </div>
+        </as-split-area>
+        <as-split-area [size]="75">
+          <div fxLayout="column" fxFill>
+            <mat-tab-group id="tab-group" animationDuration="0ms">
+              <mat-tab label="Dane mieszkania">
+                <div fxLayout="column" fxFill class="content">
+                  <div class="sit-grid-title">Media</div>
+                  <sit-data-set-container ident="sitFlatsRentUtilities" [showActionsToolbar]="true" #sitDataSetContainer fxFlex fxLayout="column">
+                    <div class="data-table" fxFlex>
+                      <ag-grid-angular
+                        #sitSetDataSource
+                        style="width: 100%; height: 100%;"
+                        class="ag-theme-balham"
+                      >
+                      </ag-grid-angular>
+                    </div>
+                  </sit-data-set-container>
+                </div>
+              </mat-tab>
+              <mat-tab label="Dane umowy">
+                <mat-tab-group id="tab-group" animationDuration="0ms">
+                  <mat-tab label="Parametry">
+                    <div fxLayout="column" fxFill class="content">
+                      <div fxFill fxLayout="column">
+                        <div class="content" fxFlex="50" fxLayout="column">
+                          <div class="sit-grid-title">Najemcy</div>
+                          <div class="sit-filter-bar">
+                            <sit-data-set-container ident="sitFlatsRentFilterTenants" fxLayout="row">
+                              <sit-data-input #sitControl id="searchTenants" field="searchTenants" label="Filtruj najemców" placeholder="Nazwa, mail" appearance="outline" 
+                              [showRefreshButton]="true" style="width: 300px;"></sit-data-input>
+                            </sit-data-set-container>
+                          </div>
+                          <sit-data-set-container  ident="sitFlatsRentTenants" [showActionsToolbar]="true" fxFlex fxLayout="column">
+                            <div class="data-table" fxFlex>
+                              <ag-grid-angular
+                                #sitSetDataSource
+                                style="width: 100%; height: 100%;"
+                                class="ag-theme-balham"
+                              >
+                              </ag-grid-angular>
+                            </div>
+                          </sit-data-set-container>
+                        </div>
+                        <div class="content" fxFlex="50" fxLayout="column">
+                          <div class="sit-grid-title">Pozycje czynszu</div>
+                          <sit-data-set-container  ident="sitFlatsRentRentPositions" [showActionsToolbar]="true" fxFlex fxLayout="column">
+                            <div class="data-table" fxFlex>
+                              <ag-grid-angular
+                                #sitSetDataSource
+                                style="width: 100%; height: 100%;"
+                                class="ag-theme-balham"
+                              >
+                              </ag-grid-angular>
+                            </div>
+                          </sit-data-set-container>
+                        </div> 
+                      </div>
+                    </div>
+                  </mat-tab>
+                  <mat-tab label="Rozliczenie">
+                    <div fxLayout="column" fxFill class="content">
+                      <div fxFill fxLayout="column">
+                        <div class="content" fxFlex="50" fxLayout="column">
+                          <div class="sit-grid-title">Harmonogram należonści</div>
+                          <div class="sit-filter-bar">
+                            <sit-data-set-container ident="sitFlatsRentFilterScheduleReceivables" fxLayout="row">
+                              <sit-data-input #sitControl id="searchReceivables" field="searchReceivables" label="Filtruj" placeholder="Typ, medium" appearance="outline" 
+                                 style="width: 300px;"></sit-data-input>
+                              <sit-data-input #sitControl field="searchReceivablesDateFrom" type="date" label="Płatność od" appearance="outline" style="width: 130px;"></sit-data-input>
+                              <sit-data-input #sitControl field="searchReceivablesDateTo" type="date" label="Do" appearance="outline" style="width: 195px;" [showRefreshButton]="true" ></sit-data-input>
+                            </sit-data-set-container>
+                          </div>
+                          <sit-data-set-container  ident="sitFlatsRentScheduleReceivables" [showActionsToolbar]="true" fxFlex fxLayout="column">
+                            <div class="data-table" fxFlex>
+                              <ag-grid-angular
+                                #sitSetDataSource
+                                style="width: 100%; height: 100%;"
+                                class="ag-theme-balham"
+                              >
+                              </ag-grid-angular>
+                            </div>
+                          </sit-data-set-container>
+                        </div>
+                        <div class="content" fxFlex="50" fxLayout="column">
+                          <div class="sit-grid-title">Należności</div>
+                        </div> 
+                      </div>
+                    </div>
+                  </mat-tab> 
+                  <mat-tab label="Załączniki">
+                    <div fxLayout="column" fxFill class="content">
+                      <div class="content" fxFlex fxLayout="row">
+                        <div fxFlex="40" fxLayout="column">
+                          <sit-data-set-container ident="sitAttachments" [showActionsToolbar]="true" fxFlex fxLayout="column">
+                            <div class="data-table" fxFlex>
+                              <ag-grid-angular
+                                #sitSetDataSource
+                                #sitAttachmentsGrid
+                                style="width: 100%; height: 100%;"
+                                class="ag-theme-balham"
+                              >
+                              </ag-grid-angular>
+                            </div>
+                          </sit-data-set-container>
+                        </div>
+                        <div fxFlex>
+                          <sit-data-set-container  ident="sitAttachments"  fxFill fxLayout="column">
+                            <sit-pdf-viewer #sitControl reportType="att" field="FileName" fxFill></sit-pdf-viewer>
+                          </sit-data-set-container>
+                        </div>
+                      </div>
+                    </div>
+                  </mat-tab>
+                </mat-tab-group>
+              </mat-tab>
+              <mat-tab label="Konfiguracja">
+                <div fxLayout="column" fxFill class="content">
+                  <div class="sit-grid-title">Typy mediów</div>
+                  <div class="sit-filter-bar">
+                    <sit-data-set-container ident="sitFlatsRentFilterUtilitiesTypes" fxLayout="row">
+                      <sit-data-input #sitControl id="searchUtilitiesTypes" field="searchUtilitiesTypes" label="Filtruj typu mediów" placeholder="Nazwa, Identyfikator" appearance="outline" 
+                      [showRefreshButton]="true"  style="width: 300px;"></sit-data-input>
+                    </sit-data-set-container>
+                  </div>
+                  <sit-data-set-container ident="sitFlatsRentUtilitiesTypes" [showActionsToolbar]="true" #sitDataSetContainer fxFlex fxLayout="column">
+                    <div class="data-table" fxFlex>
+                      <ag-grid-angular
+                        #sitSetDataSource
+                        style="width: 100%; height: 100%;"
+                        class="ag-theme-balham"
+                      >
+                      </ag-grid-angular>
+                    </div>
+                  </sit-data-set-container>
+                  <div class="sit-grid-title">Dostawcy mediów</div>
+                  <div class="sit-filter-bar">
+                    <sit-data-set-container ident="sitFlatsRentFilterUtilitiesProviders" fxLayout="row">
+                      <sit-data-input #sitControl id="searchUtilitiesProviders" field="searchUtilitiesProviders" label="Filtruj dostawców" 
+                        placeholder="Nazwa, Identyfikator" appearance="outline" [showRefreshButton]="true"  style="width: 300px;"></sit-data-input>
+                    </sit-data-set-container>
+                  </div>
+                  <sit-data-set-container ident="sitFlatsRentUtilitiesProviders" [showActionsToolbar]="true" #sitDataSetContainer fxFlex fxLayout="column">
+                    <div class="data-table" fxFlex>
+                      <ag-grid-angular
+                        #sitSetDataSource
+                        style="width: 100%; height: 100%;"
+                        class="ag-theme-balham"
+                      >
+                      </ag-grid-angular>
+                    </div>
+                  </sit-data-set-container>
+                </div>
+              </mat-tab>
+            </mat-tab-group>
+          </div>  
+        </as-split-area>
+      </as-split>
+    </div>
+  </sit-dict-container>
+  
