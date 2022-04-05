@@ -38,7 +38,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatListModule } from '@angular/material/list';
 import { MatCardModule } from '@angular/material/card';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { MatTabsModule } from '@angular/material/tabs';
+import { MatTab, MatTabGroup, MatTabsModule } from '@angular/material/tabs';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -551,7 +551,9 @@ import { SitHRParams4InvoicingContrEditComponent } from './containers/dictionari
         fakeBackendProvider,
         NavService,
         Title,
-        LookupService
+        LookupService,
+        MatTab,
+        MatTabGroup
     ],
     bootstrap: [AppComponent]
 })
