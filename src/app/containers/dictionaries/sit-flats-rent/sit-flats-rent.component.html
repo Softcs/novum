@@ -3,6 +3,7 @@
       <as-split #sitSpliter direction="horizontal">
         <as-split-area [size]="25">
           <div fxLayout="column" fxFill class="content">
+            <div class="sit-grid-title">Mieszkania</div>
             <div class="sit-filter-bar">
               <sit-data-set-container ident="sitFlatsRentFilterFlats" fxLayout="row">
                 <sit-data-input #sitControl id="searchFlats" field="searchFlats" label="Filtruj mieszkania" placeholder="Nazwa, Identyfikator" appearance="outline" 
@@ -20,6 +21,7 @@
                 </ag-grid-angular>
               </div>
             </sit-data-set-container>
+            <div class="sit-grid-title">Umowy</div>
 						<div class="sit-filter-bar">
               <sit-data-set-container ident="sitFlatsRentFilterTenancyAgreements" fxLayout="row">
                 <sit-data-input #sitControl id="searchAgreements" field="searchAgreements" label="Filtruj umowy" placeholder="Nazwa, Identyfikator" appearance="outline" 
@@ -55,6 +57,34 @@
                       </ag-grid-angular>
                     </div>
                   </sit-data-set-container>
+                  <div fxLayout="row" fxFlex class="content">
+                    <div fxLayout="column" fxFlex class="content">
+                      <div class="sit-grid-title">Liczniki</div>
+                      <sit-data-set-container ident="sitFlatsRentMeters" [showActionsToolbar]="true" #sitDataSetContainer fxFlex fxLayout="column">
+                        <div class="data-table" fxFlex>
+                          <ag-grid-angular
+                            #sitSetDataSource
+                            style="width: 100%; height: 100%;"
+                            class="ag-theme-balham"
+                          >
+                          </ag-grid-angular>
+                        </div>
+                      </sit-data-set-container>
+                    </div>
+                    <div fxLayout="column" fxFlex="40" class="content">
+                      <div class="sit-grid-title">Odczyty liczników</div>
+                      <sit-data-set-container ident="sitFlatsRentMetersReadings" [showActionsToolbar]="true" #sitDataSetContainer fxFlex fxLayout="column">
+                        <div class="data-table" fxFlex>
+                          <ag-grid-angular
+                            #sitSetDataSource
+                            style="width: 100%; height: 100%;"
+                            class="ag-theme-balham"
+                          >
+                          </ag-grid-angular>
+                        </div>
+                      </sit-data-set-container>
+                    </div>
+                  </div>
                 </div>
               </mat-tab>
               <mat-tab label="Dane umowy">

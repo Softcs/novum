@@ -289,6 +289,8 @@ import { SitBankStatementPositionsComponent } from './containers/dictionaries/si
 import { SitFlatsRentRentPositionsEditComponent } from './containers/dictionaries/sit-flats-rent/actions/sit-flats-rent-rent-positions-edit/sit-flats-rent-rent-positions-edit.component';
 import { SitFlatsRentScheduleReceivablesEditComponent } from './containers/dictionaries/sit-flats-rent/actions/sit-flats-rent-schedule-receivables-edit/sit-flats-rent-schedule-receivables-edit.component';
 import { SitFlatsRentGenScheduleFromRentPositionsComponent } from './containers/dictionaries/sit-flats-rent/actions/sit-flats-rent-gen-schedule-from-rent-positions/sit-flats-rent-gen-schedule-from-rent-positions.component';
+import { SitFlatsRentMetersEditComponent } from './containers/dictionaries/sit-flats-rent/actions/sit-flats-rent-meters-edit/sit-flats-rent-meters-edit.component';
+import { SitFlatsRentMetersReadingsEditComponent } from './containers/dictionaries/sit-flats-rent/actions/sit-flats-rent-meters-readings-edit/sit-flats-rent-meters-readings-edit.component';
 
 
 @NgModule({
@@ -564,7 +566,9 @@ import { SitFlatsRentGenScheduleFromRentPositionsComponent } from './containers/
         SitBankStatementPositionsComponent,
         SitFlatsRentRentPositionsEditComponent,
         SitFlatsRentScheduleReceivablesEditComponent,
-        SitFlatsRentGenScheduleFromRentPositionsComponent
+        SitFlatsRentGenScheduleFromRentPositionsComponent,
+        SitFlatsRentMetersEditComponent,
+        SitFlatsRentMetersReadingsEditComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },

@@ -101,6 +101,24 @@ export class SitFlatsRentComponent extends SitDictBaseComponent {
       { headerName: 'Kwota', field: 'Amount', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 100, renderType: 'number', agr: 'sum' },
       { headerName: 'Medium', field: 'UtilityIdent', filter: 'agTextColumnFilter', width: 300 },
     ];
+
+    this.gridColumnsDefinition["sitFlatsRentMeters"] = [
+      { headerName: 'ID', field: 'sitFlatsRentMetersId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, defaultVisibility: false },
+      { headerName: 'GUID', field: 'sitFlatsRentMetersG', width: 100, defaultVisibility: false },
+      { headerName: 'Numer', field: 'MeterNumber', filter: 'agTextColumnFilter', width: 130 },
+      { headerName: 'Opis', field: 'MeterDescription', filter: 'agTextColumnFilter', width: 300 },
+      { headerName: 'Data od', field: 'DateFrom', filter: 'agTextColumnFilter', width: 120},
+      { headerName: 'Data do', field: 'DateTo', filter: 'agTextColumnFilter', width: 120},
+      { headerName: 'Medium', field: 'UtilityIdent', filter: 'agTextColumnFilter', width: 150 },
+    ];
+
+    this.gridColumnsDefinition["sitFlatsRentMetersReadings"] = [
+      { headerName: 'ID', field: 'sitFlatsRentMetersReadingsId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, defaultVisibility: false },
+      { headerName: 'GUID', field: 'sitFlatsRentMetersReadingsG', width: 100, defaultVisibility: false },
+      { headerName: 'Data odczytu', field: 'ReadingDate', filter: 'agTextColumnFilter', width: 120},
+      { headerName: 'Jednostka', field: 'Unit', filter: 'agTextColumnFilter', width: 150 },
+      { headerName: 'Stan', field: 'Quantity', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 100, renderType: 'number' },
+    ];    
   }
 }
 

@@ -188,6 +188,8 @@ import { SitBankStatementPositionsComponent } from '@app/containers/dictionaries
 import { SitFlatsRentRentPositionsEditComponent } from '@app/containers/dictionaries/sit-flats-rent/actions/sit-flats-rent-rent-positions-edit/sit-flats-rent-rent-positions-edit.component';
 import { SitFlatsRentScheduleReceivablesEditComponent } from '@app/containers/dictionaries/sit-flats-rent/actions/sit-flats-rent-schedule-receivables-edit/sit-flats-rent-schedule-receivables-edit.component';
 import { SitFlatsRentGenScheduleFromRentPositionsComponent } from '@app/containers/dictionaries/sit-flats-rent/actions/sit-flats-rent-gen-schedule-from-rent-positions/sit-flats-rent-gen-schedule-from-rent-positions.component';
+import { SitFlatsRentMetersEditComponent } from '@app/containers/dictionaries/sit-flats-rent/actions/sit-flats-rent-meters-edit/sit-flats-rent-meters-edit.component';
+import { SitFlatsRentMetersReadingsEditComponent } from '@app/containers/dictionaries/sit-flats-rent/actions/sit-flats-rent-meters-readings-edit/sit-flats-rent-meters-readings-edit.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -382,6 +384,8 @@ export class FactoryService {
         sitFlatsRentRentPositionsEdit: SitFlatsRentRentPositionsEditComponent,
         sitFlatsRentScheduleReceivablesEdit: SitFlatsRentScheduleReceivablesEditComponent,
         sitFlatsRentGenScheduleFromRentPositions: SitFlatsRentGenScheduleFromRentPositionsComponent,
+        sitFlatsRentMetersEdit: SitFlatsRentMetersEditComponent,
+        sitFlatsRentMetersReadingsEdit: SitFlatsRentMetersReadingsEditComponent,
     };
 
     public GetFactory(ident: string) {
