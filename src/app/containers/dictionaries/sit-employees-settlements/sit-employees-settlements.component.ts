@@ -823,7 +823,7 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
       },
       { headerName: 'PFRON', headerTooltip: 'PFRON', children: [
           { headerName: 'Należny', headerTooltip: 'PFRON należny', field: 'PFRON', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 100,resizable: true,suppressMenu: true, renderType: 'number', agr: 'sum'},
-          { headerName: 'Niepełnospr.', headerTooltip: 'PFRON od niepełnosprawnych', field: 'PFRONDis', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 100,resizable: true,suppressMenu: true, renderType: 'number', agr: 'sum'},
+          { headerName: 'Ulga', headerTooltip: 'PFRON od niepełnosprawnych', field: 'PFRONDis', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 100,resizable: true,suppressMenu: true, renderType: 'number', agr: 'sum'},
           { headerName: 'Różnica', headerTooltip: 'PFRON - róożnica', field: 'PFRONDiff', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,resizable: true,suppressMenu: true, renderType: 'number', agr: 'sum'},
         ]
       },
