@@ -75,7 +75,7 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
             cellClass: ['font11','numberFormat2Dec'],
             pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
           },
-          { headerName: 'Bony', field: 'Vouchers', filter: 'agNumberColumnFilter', type: 'numericColumn',columnGroupShow: "open", width: 90, agr: 'sum', sortable: true, resizable: true,
+          { headerName: 'Bony', field: 'Vouchers', filter: 'agNumberColumnFilter', type: 'numericColumn',columnGroupShow: "open", width: 80, agr: 'sum', sortable: true, resizable: true,
             renderType: 'number',
             cellClass: ['font11','numberFormat2Dec'],
             pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
@@ -419,6 +419,9 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
       { headerName: 'MPK', field: 'CustomerCostCenterIdent', tooltipField: 'CustomerCostCenterIdent',  width: 100, suppressMenu: true,
         cellClass: ['font11','textFormat']
       },
+      { headerName: 'ID u kli.', field: 'CustEmployeeIdent', tooltipField: 'CustEmployeeIdent',  width: 80, suppressMenu: true,
+        cellClass: ['font11','textFormat']
+      },
       // { headerName: 'Okres od', field: 'ContractFrom',  width: 100,
       //   cellClass: ['font11','dateFormat']
       // },
@@ -584,6 +587,14 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
           renderType: 'number',
           cellClass: ['font11','numberFormat2Dec'],
         },            
+        { headerName: 'Dod.nie brutto', headerTooltip: 'Dodatkowe składniki niewchodzące do brutto', field: 'AdditionCustOther', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 100, suppressMenu: true, agr: 'sum', columnGroupShow: "open",
+          renderType: 'number',
+          cellClass: ['font11','numberFormat2Dec'],
+        },            
+        { headerName: 'Bony', headerTooltip: 'Bony', field: 'Vouchers', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 100, suppressMenu: true, agr: 'sum', columnGroupShow: "open",
+          renderType: 'number',
+          cellClass: ['font11','numberFormat2Dec'],
+        },            
         // { headerName: 'ZUS dod. podst.', headerTooltip: 'ZUS dodatkowy - podstawa', field: 'ZUSAddBase', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 100, suppressMenu: true, agr: 'sum', columnGroupShow: "open",
         //   renderType: 'number',
         //   cellClass: ['font11','numberFormat2Dec'],
@@ -682,6 +693,14 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
             renderType: 'number',
            cellClass: ['font11','numberFormat2Dec'],
           },                      
+          { headerName: 'Dod.nie brutto', headerTooltip: 'Dodatkowe składniki niewchodzące do brutto', field: 'AdditionCustOther', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 100, suppressMenu: true, agr: 'sum', columnGroupShow: "open",
+            renderType: 'number',
+            cellClass: ['font11','numberFormat2Dec'],
+          },            
+          { headerName: 'Bony', headerTooltip: 'Bony', field: 'Vouchers', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 100, suppressMenu: true, agr: 'sum', columnGroupShow: "open",
+            renderType: 'number',
+            cellClass: ['font11','numberFormat2Dec'],
+          },            
           { headerName: 'ZUS dod.', field: 'ZUSAdd', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80, suppressMenu: true, agr: 'sum', columnGroupShow: "open",
             renderType: 'number',
             cellClass: ['font11','numberFormat2Dec'],
