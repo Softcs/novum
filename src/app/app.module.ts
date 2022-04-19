@@ -278,6 +278,21 @@ import { SitCustomerCreditLimitScoresComponent } from './containers/dictionaries
 import { SitCustomerCreditLimitScoresEditComponent } from './containers/dictionaries/sit-customer-credit-limit-scores/actions/sit-customer-credit-limit-scores-edit/sit-customer-credit-limit-scores-edit.component';
 import { SitCustomerCreditLimitScoresGenComponent } from './containers/dictionaries/sit-customer-credit-limit-scores/actions/sit-customer-credit-limit-scores-gen/sit-customer-credit-limit-scores-gen.component';
 import { SitHRParams4InvoicingContrEditComponent } from './containers/dictionaries/sit-customers/actions/sit-hrparams4-invoicing-contr-edit/sit-hrparams4-invoicing-contr-edit.component';
+import { SitEmployeesSettlementsCustomerCostCenterEditComponent } from './containers/dictionaries/sit-employees-settlements/actions/sit-employees-settlements-customer-cost-center-edit/sit-employees-settlements-customer-cost-center-edit.component';
+import { SitHrPfronDataImportComponent } from './containers/dictionaries/sit-employees-settlements/actions/sit-hr-pfron-data-import/sit-hr-pfron-data-import.component';
+import { SitFlatsRentComponent } from './containers/dictionaries/sit-flats-rent/sit-flats-rent.component';
+import { SitFlatsRentFlatsEditComponent } from './containers/dictionaries/sit-flats-rent/actions/sit-flats-rent-flats-edit/sit-flats-rent-flats-edit.component';
+import { SitFlatsRentTenancyAgreementsEditComponent } from './containers/dictionaries/sit-flats-rent/actions/sit-flats-rent-tenancy-agreements-edit/sit-flats-rent-tenancy-agreements-edit.component';
+import { SitFlatsRentTenantsEditComponent } from './containers/dictionaries/sit-flats-rent/actions/sit-flats-rent-tenants-edit/sit-flats-rent-tenants-edit.component';
+import { SitFlatsRentUtilitiesEditComponent } from './containers/dictionaries/sit-flats-rent/actions/sit-flats-rent-utilities-edit/sit-flats-rent-utilities-edit.component';
+import { SitFlatsRentUtilitiesTypesEditComponent } from './containers/dictionaries/sit-flats-rent/actions/sit-flats-rent-utilities-types-edit/sit-flats-rent-utilities-types-edit.component';
+import { SitFlatsRentUtilitiesProvidersEditComponent } from './containers/dictionaries/sit-flats-rent/actions/sit-flats-rent-utilities-providers-edit/sit-flats-rent-utilities-providers-edit.component';
+import { SitBankStatementPositionsComponent } from './containers/dictionaries/sit-bank-statement-positions/sit-bank-statement-positions.component';
+import { SitFlatsRentRentPositionsEditComponent } from './containers/dictionaries/sit-flats-rent/actions/sit-flats-rent-rent-positions-edit/sit-flats-rent-rent-positions-edit.component';
+import { SitFlatsRentScheduleReceivablesEditComponent } from './containers/dictionaries/sit-flats-rent/actions/sit-flats-rent-schedule-receivables-edit/sit-flats-rent-schedule-receivables-edit.component';
+import { SitFlatsRentGenScheduleFromRentPositionsComponent } from './containers/dictionaries/sit-flats-rent/actions/sit-flats-rent-gen-schedule-from-rent-positions/sit-flats-rent-gen-schedule-from-rent-positions.component';
+import { SitFlatsRentMetersEditComponent } from './containers/dictionaries/sit-flats-rent/actions/sit-flats-rent-meters-edit/sit-flats-rent-meters-edit.component';
+import { SitFlatsRentMetersReadingsEditComponent } from './containers/dictionaries/sit-flats-rent/actions/sit-flats-rent-meters-readings-edit/sit-flats-rent-meters-readings-edit.component';
 
 
 @NgModule({
@@ -542,7 +557,22 @@ import { SitHRParams4InvoicingContrEditComponent } from './containers/dictionari
         SitCustomerCreditLimitScoresComponent,
         SitCustomerCreditLimitScoresEditComponent,
         SitCustomerCreditLimitScoresGenComponent,
-        SitHRParams4InvoicingContrEditComponent
+        SitHRParams4InvoicingContrEditComponent,
+        SitEmployeesSettlementsCustomerCostCenterEditComponent,
+        SitHrPfronDataImportComponent,
+        SitFlatsRentComponent,
+        SitFlatsRentFlatsEditComponent,
+        SitFlatsRentTenancyAgreementsEditComponent,
+        SitFlatsRentTenantsEditComponent,
+        SitFlatsRentUtilitiesEditComponent,
+        SitFlatsRentUtilitiesTypesEditComponent,
+        SitFlatsRentUtilitiesProvidersEditComponent,
+        SitBankStatementPositionsComponent,
+        SitFlatsRentRentPositionsEditComponent,
+        SitFlatsRentScheduleReceivablesEditComponent,
+        SitFlatsRentGenScheduleFromRentPositionsComponent,
+        SitFlatsRentMetersEditComponent,
+        SitFlatsRentMetersReadingsEditComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },

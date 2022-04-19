@@ -6,7 +6,7 @@
   </div> -->
   <div style="display: flex; flex-direction: row; margin: 2px 2px 2px 0px; justify-content: center;">
     <button mat-flat-button matTooltip="Wybierz firmę" color="primary" (click)="openModalChangeCompany()"  *ngIf="currentUser">
-      <mat-icon aria-hidden="false" aria-label="Firma">corporate_fare</mat-icon> {{ currentUser.company?.companyDescription }}
+      <mat-icon aria-hidden="false" aria-label="Firma">corporate_fare</mat-icon> {{ currentUser?.company?.companyDescription }}
     </button>
   </div>
   <div class="fill-space">
@@ -19,7 +19,7 @@
   </div>
   <div style="display: flex; flex-direction: row; color: white; margin: 2px 2px 2px 0px; padding: 3px 0px 0px 0px;">
     <span style="font-size: 14px; padding-right: 5px;"><B style="color: #C4C4C2">Login:</B>
-      <a matTooltip="Edytuj konto" style="text-decoration: none;" (click)="onClicUser()"> {{ currentUser.username }}</a>
+      <a matTooltip="Edytuj konto" style="text-decoration: none;" (click)="onClicUser()"> {{ currentUser?.username }}</a>
     </span>
   </div>
   <div style="display: flex; flex-direction: row;margin: 2px 2px 2px 0px; justify-content: center;">

@@ -13,7 +13,6 @@ export class SitParams4EmployeesSettlementsComponent extends SitDictBaseComponen
     this.gridColumnsDefinition["sitParams4EmployeesSettlements"] = [
       { headerName: 'GUID', field: '__Identity__', width: 100, defaultVisibility: false },
       { headerName: 'Od dnia', field: 'DateFrom', width: 100 },
-      { headerName: 'Do dnia', field: 'DateTo', width: 100 },
       { headerName: 'ZUS', field: 'ZUS', width: 120, type: 'numericColumn', agr: 'sum', renderType: 'number'},
       { headerName: 'ZUS - emeryt', field: 'ZUSEmer', width: 120, type: 'numericColumn', agr: 'sum', renderType: 'number'},
       { headerName: 'PPK', field: 'PPK', width: 100, type: 'numericColumn', agr: 'sum', renderType: 'number'},

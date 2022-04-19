@@ -55,7 +55,7 @@ export class SitDataSetContainerComponent implements AfterViewInit{
   @Input()
   gridColumnsIdent: string; // identyfikator kolumn - jak pusty to bierze ident
 
-  public hasRights: boolean = false;
+  public hasRights: boolean = true;
 
   @Output()
   activeRowChanged: EventEmitter<any> = new EventEmitter<any>();
@@ -197,13 +197,17 @@ export class SitDataSetContainerComponent implements AfterViewInit{
   }
 
   public noDataSetAction() {
-    this.hasRights = false;
+    this.setRights(false);
     this.hideTabWithoutRights();
     console.warn('DataSource: ' + this.ident + ' not found!');
   }
 
+  public setRights(hasRights) {
+    this.hasRights = hasRights;
+  }
+
   public setDataSource(dataSetWrapper: DataSetWrapper) {
-    this.hasRights = dataSetWrapper != null;
+    this.setRights(dataSetWrapper != null);
     this.dataSetResponseWrapper = dataSetWrapper;
 
     if (!this.activeRowSubscription) {
@@ -388,6 +392,6 @@ export class SitDataSetContainerComponent implements AfterViewInit{
       console.log(this.parentTab.textLabel, this.ident, this.hasRights)
       this.parentTab.disabled = true;
     }
-    this.parentTabGroup._elementRef.hide();
+   // this.parentTabGroup._elementRef.hide(); dazj
   }
 }

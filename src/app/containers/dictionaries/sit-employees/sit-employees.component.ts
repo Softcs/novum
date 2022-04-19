@@ -63,6 +63,11 @@ export class SitEmployeesComponent extends SitDictBaseComponent {
       { headerName: 'Limit', field: 'VacationLimit', filter: 'agTextColumnFilter', width: 120 },
       { headerName: 'Wyliczony', field: 'CalculatedLimit', filter: 'agTextColumnFilter', width: 120 },
       { headerName: 'Wykorzystany', field: 'ActualLimitUsed', filter: 'agTextColumnFilter', width: 120 },            
+    ];
+
+    this.gridColumnsDefinition["sitEmployeesCust"] = [
+      { headerName: 'Klient', field: 'CustName', tooltipField: 'CustName', filter: 'agTextColumnFilter', width: 200,},
+      { headerName: 'ID u klienta', field: 'EmployeeIdent', filter: 'agTextColumnFilter', width: 110,},            
     ];  
   }
 

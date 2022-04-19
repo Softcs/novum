@@ -7,14 +7,8 @@
       <div class="data-table" fxFlex>
         <ag-grid-angular
           #sitSetDataSource
-          #sitHRDepartmentsGrid
           style="width: 100%; height: 100%;"
           class="ag-theme-balham"
-          [columnDefs]="columnDefs"
-          [popupParent]="popupParent"
-          [excelStyles]="excelStyles"
-          (gridReady)="onGridReady($event)"
-
         >
         </ag-grid-angular>
       </div>
