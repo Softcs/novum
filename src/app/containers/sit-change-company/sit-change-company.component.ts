@@ -19,7 +19,7 @@ export class SitChangeCompanyComponent implements OnInit {
 
   companies: any[];
   currentUser: User;
-  
+
   constructor(
     private router: Router,
     private gatewayService: GatewayService,
@@ -27,7 +27,7 @@ export class SitChangeCompanyComponent implements OnInit {
     public dialogRef: MatDialogRef<SitChangeCompanyComponent>
   )
   {
- 
+
   }
 
   ngOnInit(): void {
@@ -49,7 +49,7 @@ export class SitChangeCompanyComponent implements OnInit {
 
     this.gatewayService.currentUser.subscribe(x => {
       this.currentUser = x;
-      this.titleService.setTitle(this.currentUser.company.companyDescription);
+      this.titleService.setTitle(this.currentUser?.company?.companyDescription);
     });
 
     this.dialogRef.close();

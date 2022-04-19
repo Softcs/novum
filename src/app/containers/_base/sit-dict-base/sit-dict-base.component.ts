@@ -34,8 +34,8 @@ export class SitDictBaseComponent implements OnInit, AfterViewInit {
     @Inject(LOCALE_ID) protected locale: string) {
       this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
       this.popupParent = document.querySelector('body');
-      this.companyGUID = this.currentUser.company.companyGUID;
-      this.token = this.currentUser.token;
+      this.companyGUID = this.currentUser?.company?.companyGUID;
+      this.token = this.currentUser?.token;
       this.apiUrl = environment.apiUrl;
       this.contentColor = document.documentElement.style.getPropertyValue('$content-background-color');
       this.prepareColumnsDefinitnion();

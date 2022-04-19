@@ -17,9 +17,8 @@
 </ng-container>
 
 <!-- Toolbar z akcjami -->
-<sit-actions-toolbar #sitActionToolbar *ngIf="showActionsToolbar">
+<sit-actions-toolbar #sitActionToolbar *ngIf="showActionsToolbar && hasRights">
 </sit-actions-toolbar>
 
-<!-- <ng-content *ngIf="hasRights"> -->
-<ng-content>
+<ng-content *ngIf="hasRights">
 </ng-content>

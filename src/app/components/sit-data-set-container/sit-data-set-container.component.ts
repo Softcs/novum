@@ -54,7 +54,7 @@ export class SitDataSetContainerComponent implements AfterViewInit{
   @Input()
   gridColumnsIdent: string; // identyfikator kolumn - jak pusty to bierze ident
 
-  public hasRights: boolean = false;
+  public hasRights: boolean = true;
 
   @Output()
   activeRowChanged: EventEmitter<any> = new EventEmitter<any>();
@@ -191,9 +191,13 @@ export class SitDataSetContainerComponent implements AfterViewInit{
     });
   }
 
-  public setDataSource(dataSetWrapper: DataSetWrapper) {
-    this.hasRights = dataSetWrapper != null;
+  public setRights(hasRights) {
+    this.hasRights = hasRights;
+  }
 
+  public setDataSource(dataSetWrapper: DataSetWrapper) {
+    this.setRights(dataSetWrapper != null);
+    console.log(this.ident, this.hasRights);
     this.dataSetResponseWrapper = dataSetWrapper;
 
     if (!this.activeRowSubscription) {

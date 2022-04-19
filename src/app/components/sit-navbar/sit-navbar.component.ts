@@ -35,7 +35,8 @@ export class SitNavbarComponent {
   ) {
     this.gatewayService.currentUser.subscribe(x => {
       this.currentUser = x;
-      this.titleService.setTitle(this.currentUser.company.companyDescription);
+      var title = this.currentUser?.company?.companyDescription;
+      this.titleService.setTitle(title ? title : '');
     });
 
     this.tabService.activeTabIndex.subscribe( i => {
