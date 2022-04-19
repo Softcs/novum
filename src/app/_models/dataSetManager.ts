@@ -461,7 +461,8 @@ export class DataSetManager {
             if (dataSetResponseWrapper != null) {
                 dataSourceContainer.setDataSource(dataSetResponseWrapper);
             } else {
-                console.error('DataSource: ' + dataSourceContainer.ident + ' not found!');
+                dataSourceContainer.setRights(false);
+                console.warn('DataSource: ' + dataSourceContainer.ident + ' not found!');
             }
         });
 

@@ -197,7 +197,6 @@ export class SitDataSetContainerComponent implements AfterViewInit{
 
   public setDataSource(dataSetWrapper: DataSetWrapper) {
     this.setRights(dataSetWrapper != null);
-    console.log(this.ident, this.hasRights);
     this.dataSetResponseWrapper = dataSetWrapper;
 
     if (!this.activeRowSubscription) {
