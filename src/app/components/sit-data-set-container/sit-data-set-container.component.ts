@@ -388,10 +388,16 @@ export class SitDataSetContainerComponent implements AfterViewInit{
 
   private hideTabWithoutRights() {
     var rights = this.checkTabRights();
-    if (!rights) {
-      console.log(this.parentTab.textLabel, this.ident, this.hasRights)
+    if (!rights && this.parentTab && this.parentTab._closestTabGroup) {
       this.parentTab.disabled = true;
+      // console.log(this.parentTab.textLabel, this.ident, this.hasRights)
+      // this.parentTabGroup._elementRef.nativeElement.remove();
+      // console.log(this.parentTabGroup);
+      // console.log(this.parentTab);
+      var index = this.parentTab._closestTabGroup._tabs._results.indexOf(this.parentTab);
+      if (index > -1) {
+        this.parentTab._closestTabGroup._tabs._results.splice(index, 1);
+      }
     }
-   // this.parentTabGroup._elementRef.hide(); dazj
   }
 }
