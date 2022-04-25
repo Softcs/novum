@@ -720,6 +720,15 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
         renderType: 'number',
         cellClass: ['font11','numberFormat2Dec'],
       },
+      { headerName: 'Fakt.', field: 'InvoiceNo', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 60, suppressMenu: true,
+        renderType: 'number', renderFormat: '1.0-0',
+        cellClass: ['font11','numberFormat2Dec','pinkBackground'],
+      },
+      { headerName: 'Poz.', field: 'InvoicePos', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 60, suppressMenu: true,
+        renderType: 'number', renderFormat: '1.0-0',
+        cellClass: ['font11','numberFormat2Dec','pinkBackground'],
+      },
+      { headerName: 'Fakt.zew.ID', field: 'InvExtId', filter: 'agTextColumnFilter', width: 80, suppressMenu: true,},
 
     ];
 
