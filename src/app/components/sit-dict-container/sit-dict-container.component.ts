@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, QueryList, ViewChild, ContentChildren,
-          EventEmitter, Output, AfterContentInit, AfterViewInit } from '@angular/core';
+          EventEmitter, Output, AfterContentInit, AfterViewInit, Inject } from '@angular/core';
 import { GatewayService } from '../../_services/gateway.service';
 import { Operation, DictInfoWrapper, DataSetManager } from '@app/_models';
 import { first } from 'rxjs/operators';
@@ -7,6 +7,9 @@ import { SitDataSetContainerComponent } from '../sit-data-set-container';
 import { SitProcExpanderComponent } from '../controls/sit-proc-expander/sit-proc-expander.component';
 import { OnCFService } from '@app/_services/oncf.service';
 import { MultiActionService } from '@app/_services/multi-action.service';
+import { MatTab } from '@angular/material/tabs';
+
+
 @Component({
   selector: 'sit-dict-container',
   templateUrl: './sit-dict-container.component.html',
@@ -18,7 +21,10 @@ import { MultiActionService } from '@app/_services/multi-action.service';
 export class SitDictContainerComponent implements OnInit, AfterViewInit, AfterContentInit {
   @ContentChildren(SitDataSetContainerComponent, { descendants: true })
   dataSetContainers !: QueryList<SitDataSetContainerComponent>;
+
   @ViewChild(SitProcExpanderComponent) procExpander: SitProcExpanderComponent;
+
+  // @ContentChildren(SitTabComponent, { descendants: true }) tabs !: QueryList<SitTabComponent>;
 
   @Input() ident: string;
   private dictInfo: DictInfoWrapper;
@@ -26,7 +32,10 @@ export class SitDictContainerComponent implements OnInit, AfterViewInit, AfterCo
 
   @Output() refreshAfter: EventEmitter<DataSetManager> = new EventEmitter<DataSetManager>();
 
-  constructor(private gatewayService: GatewayService, protected _oncfService: OnCFService, protected _multiService: MultiActionService) {
+  constructor(
+    private gatewayService: GatewayService,
+    protected _oncfService: OnCFService,
+    protected _multiService: MultiActionService) {
     this.DataSetManager =   new DataSetManager(gatewayService, _oncfService, _multiService);
   }
 
@@ -42,6 +51,10 @@ export class SitDictContainerComponent implements OnInit, AfterViewInit, AfterCo
     this.DataSetManager.dataSetContainers = this.dataSetContainers;
     this.DataSetManager.afterContentInit();
     this.loadData();
+
+    // console.log(this.tabs.length);
+    // var tab =  this.tabs.first;
+    // tab.content
   }
 
   private prepareControls() {

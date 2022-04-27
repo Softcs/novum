@@ -1,5 +1,5 @@
 import { Component, Input, ContentChildren, ViewChildren,
-  QueryList, Output, EventEmitter, ViewChild, AfterViewInit} from '@angular/core';
+  QueryList, Output, EventEmitter, ViewChild, AfterViewInit, Inject, ViewContainerRef} from '@angular/core';
 import { DataSetWrapper, DataSetManager } from '@app/_models';
 import { SitDataBaseComponent } from '../controls/sit-data-base/sit-data-base.component';
 import { sitSetDataSetDirective } from '@app/_directives/sitSetDataSetDirective';
@@ -13,6 +13,7 @@ import { Subscription } from 'rxjs';
 import { SitActionsToolbarComponent } from '../controls/sit-actions-toolbar/sit-actions-toolbar.component';
 import { GridService } from '@app/_services/grid.service';
 import { StringUtils } from '@app/_helpers/string.utisl';
+import { MatTab, MatTabGroup } from '@angular/material/tabs';
 
 @Component({
   selector: 'sit-data-set-container',
@@ -66,8 +67,12 @@ export class SitDataSetContainerComponent implements AfterViewInit{
 
   constructor(
     private gridService: GridService,
-    private stringUtils: StringUtils
-  ) {}
+    private stringUtils: StringUtils,
+    private parentTab: MatTab,
+    private parentTabGroup: MatTabGroup
+  ) {
+    this.registerInTab();
+  }
 
   ngAfterViewInit(): void {
      this.databaseControlsInterface.changes.subscribe(change => {
@@ -189,6 +194,12 @@ export class SitDataSetContainerComponent implements AfterViewInit{
         });
       });
     });
+  }
+
+  public noDataSetAction() {
+    this.setRights(false);
+    this.hideTabWithoutRights();
+    console.warn('DataSource: ' + this.ident + ' not found!');
   }
 
   public setRights(hasRights) {
@@ -349,5 +360,44 @@ export class SitDataSetContainerComponent implements AfterViewInit{
     this.databaseControlsInterface.forEach(control => {
       control.detachEvents();
     });
+  }
+
+  public registerInTab() {
+    var dataSets = this.getDataSetsInTab();
+    if (dataSets.indexOf(this) == -1) {
+      dataSets.push(this);
+    }
+  }
+
+  private getDataSetsInTab(): SitDataSetContainerComponent[] {
+    if (!this.parentTab["sitDataSets"]) {
+      this.parentTab["sitDataSets"] = [];
+    }
+
+    return this.parentTab["sitDataSets"];
+  }
+
+  private checkTabRights() {
+    var dataSets = this.getDataSetsInTab();
+    var rights = false;
+    dataSets.forEach(ds => {
+      rights = rights || ds.hasRights;
+    });
+    return rights
+  }
+
+  private hideTabWithoutRights() {
+    var rights = this.checkTabRights();
+    if (!rights && this.parentTab && this.parentTab._closestTabGroup) {
+      this.parentTab.disabled = true;
+      // console.log(this.parentTab.textLabel, this.ident, this.hasRights)
+      // this.parentTabGroup._elementRef.nativeElement.remove();
+      // console.log(this.parentTabGroup);
+      // console.log(this.parentTab);
+      var index = this.parentTab._closestTabGroup._tabs._results.indexOf(this.parentTab);
+      if (index > -1) {
+        this.parentTab._closestTabGroup._tabs._results.splice(index, 1);
+      }
+    }
   }
 }
