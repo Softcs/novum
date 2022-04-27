@@ -192,6 +192,12 @@ import { SitFlatsRentScheduleReceivablesEditComponent } from '@app/containers/di
 import { SitFlatsRentGenScheduleFromRentPositionsComponent } from '@app/containers/dictionaries/sit-flats-rent/actions/sit-flats-rent-gen-schedule-from-rent-positions/sit-flats-rent-gen-schedule-from-rent-positions.component';
 import { SitFlatsRentMetersEditComponent } from '@app/containers/dictionaries/sit-flats-rent/actions/sit-flats-rent-meters-edit/sit-flats-rent-meters-edit.component';
 import { SitFlatsRentMetersReadingsEditComponent } from '@app/containers/dictionaries/sit-flats-rent/actions/sit-flats-rent-meters-readings-edit/sit-flats-rent-meters-readings-edit.component';
+import { SitAcceptancePathsDefComponent } from '@app/containers/dictionaries/sit-acceptance-paths-def/sit-acceptance-paths-def.component';
+import { SitAcceptancePathsDefEditComponent } from '@app/containers/dictionaries/sit-acceptance-paths-def/actions/sit-acceptance-paths-def-edit/sit-acceptance-paths-def-edit.component';
+import { SitAcceptanceStepsDefEditComponent } from '@app/containers/dictionaries/sit-acceptance-paths-def/actions/sit-acceptance-steps-def-edit/sit-acceptance-steps-def-edit.component';
+import { SitAcceptanceStepPersonsDefEditComponent } from '@app/containers/dictionaries/sit-acceptance-paths-def/actions/sit-acceptance-step-persons-def-edit/sit-acceptance-step-persons-def-edit.component';
+import { SitAcceptanceTablesEditComponent } from '@app/containers/dictionaries/sit-acceptance-paths-def/actions/sit-acceptance-tables-edit/sit-acceptance-tables-edit.component';
+import { SitCustomerCreditLimitScoresAcceptComponent } from '@app/containers/dictionaries/sit-customer-credit-limit-scores/actions/sit-customer-credit-limit-scores-accept/sit-customer-credit-limit-scores-accept.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -390,6 +396,12 @@ export class FactoryService {
         sitFlatsRentGenScheduleFromRentPositions: SitFlatsRentGenScheduleFromRentPositionsComponent,
         sitFlatsRentMetersEdit: SitFlatsRentMetersEditComponent,
         sitFlatsRentMetersReadingsEdit: SitFlatsRentMetersReadingsEditComponent,
+        sitAcceptancePathsDef: SitAcceptancePathsDefComponent,
+        sitAcceptancePathsDefEdit: SitAcceptancePathsDefEditComponent,
+        sitAcceptanceStepsDefEdit: SitAcceptanceStepsDefEditComponent,
+        sitAcceptanceStepPersonsDefEdit: SitAcceptanceStepPersonsDefEditComponent,
+        sitAcceptanceTablesEdit: SitAcceptanceTablesEditComponent,
+        sitCustomerCreditLimitScoresAccept: SitCustomerCreditLimitScoresAcceptComponent,
     };
 
     public GetFactory(ident: string) {

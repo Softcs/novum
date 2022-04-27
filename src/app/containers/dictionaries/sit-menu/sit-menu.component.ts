@@ -18,13 +18,13 @@ export class SitMenuComponent extends SitDictBaseComponent {
     this.gridColumnsDefinition["sitMenuItems"] = [
       { headerName: 'Id', field: 'sitMenuItemsId', filter: 'agTextColumnFilter', width: 60, type: 'numericColumn', defaultVisibility: false },
       { headerName: 'GUID', field: 'sitMenuItemsG', filter: 'agTextColumnFilter', width: 60, defaultVisibility: false },
-      { headerName: 'Grupa', field: 'ParentCaption', filter: 'agTextColumnFilter', width: 100, floatingFilter: true, sort: "asc" },
+      { headerName: 'Grupa', field: 'ParentCaption', filter: 'agTextColumnFilter', width: 200, floatingFilter: true, sort: "asc" },
       { headerName: 'Kolejność', field: 'OrdId', filter: 'agTextColumnFilter', width: 80, type: 'numericColumn', sort: "asc" },
       { headerName: 'Nazwa', field: 'Caption', filter: 'agTextColumnFilter' },
       { headerName: 'Rodzaj', field: 'Kind', filter: 'agTextColumnFilter', width: 80 },
       { headerName: 'Link', field: 'Link', filter: 'agTextColumnFilter' },
       { headerName: 'Ikona', field: 'Icon', filter: 'agTextColumnFilter' },
-      { headerName: 'Ścieźka', field: 'MenuPath', filter: 'agTextColumnFilter' },
+      { headerName: 'Ścieżka', field: 'MenuPath', filter: 'agTextColumnFilter', defaultVisibility: false },
     ];
     this.gridColumnsDefinition["sitAppUsers"] = [
       { headerName: 'Login', field: 'UserLogin', filter: 'agTextColumnFilter' },
