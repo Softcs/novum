@@ -1,0 +1,71 @@
+<sit-dict-container ident="sitAcceptancePathsDef" #sitDictcontainer fxFill>
+    <as-split #sitSpliter direction="vertical">
+      <as-split-area [size]="50">
+        <div fxLayout="row" fxFlex class="content">
+          <div fxLayout="column" fxFlex class="content">
+            <div class="sit-grid-title">Akceptacje</div>
+            <sit-data-set-container ident="sitAcceptancePathsDefFilter" fxLayout="row">
+              <div class="sit-filter-bar" fxLayout="row">
+                <sit-data-input #sitControl field="search" label="Filtruj" appearance="outline" style="width: 300px;" [showRefreshButton]="true"></sit-data-input>
+              </div>
+            </sit-data-set-container>
+            <sit-data-set-container ident="sitAcceptancePathsDef" [showActionsToolbar]="true" #sitDataSetContainer fxLayout="column" fxFlex>
+              <div class="data-table" fxFlex>
+                <ag-grid-angular
+                  #sitSetDataSource
+                  style="width: 100%; height: 100%;"
+                  class="ag-theme-balham"
+                >
+                </ag-grid-angular>
+              </div>
+            </sit-data-set-container>
+          </div>
+          <div fxFlex fxLayout="column" class="content">
+						<div class="sit-grid-title">Tabele akceptacji</div>
+						<sit-data-set-container ident="sitAcceptanceTables" [showActionsToolbar]="true" #sitDataSetContainer fxLayout="column" fxFlex>
+							<div class="data-table" fxFlex>
+								<ag-grid-angular
+									#sitSetDataSource
+									style="width: 100%; height: 100%;"
+									class="ag-theme-balham"
+								>
+								</ag-grid-angular>
+							</div>
+						</sit-data-set-container>    
+					</div>
+        </div>
+      </as-split-area>
+      <as-split-area [size]="50">
+				<div fxLayout="row" fxFlex class="content">
+					<div fxFlex fxLayout="column" class="content">
+						<div class="sit-grid-title">Kroki akceptacji</div>
+						<sit-data-set-container ident="sitAcceptanceStepsDef" [showActionsToolbar]="true" #sitDataSetContainer fxLayout="column" fxFlex>
+							<div class="data-table" fxFlex>
+								<ag-grid-angular
+									#sitSetDataSource
+									style="width: 100%; height: 100%;"
+									class="ag-theme-balham"
+								>
+								</ag-grid-angular>
+							</div>
+						</sit-data-set-container>    
+					</div>
+					<div fxFlex="40" fxLayout="column" class="content">
+						<div class="sit-grid-title">Akceptujący</div>
+						<sit-data-set-container ident="sitAcceptanceStepPersonsDef" [showActionsToolbar]="true" #sitDataSetContainer fxLayout="column" fxFlex>
+							<div class="data-table" fxFlex>
+								<ag-grid-angular
+									#sitSetDataSource
+									style="width: 100%; height: 100%;"
+									class="ag-theme-balham"
+								>
+								</ag-grid-angular>
+							</div>
+						</sit-data-set-container>    
+					</div>					
+				</div>
+      </as-split-area>
+    </as-split>
+  </sit-dict-container>
+    
+  

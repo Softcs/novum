@@ -29,7 +29,8 @@ export class SitPublicationsAgreementsComponent extends SitDictBaseComponent {
       { headerName: 'Tant.od wyprz.', headerTooltip: 'Czy są liczone tantiemy od wyprzedaży.', field: 'IncSale', width: 110, renderType: 'checkbox', suppressMenu: true, cellClass: "grid-cell-centered"},
       { headerName: 'Remainders', field: 'Remainders', headerTooltip: 'Czy umowa przewiduje remainders.', width: 80, renderType: 'checkbox', suppressMenu: true, cellClass: "grid-cell-centered"},
       { headerName: '% od remaind.', headerTooltip: '% tantiem od remainders', field: 'RemaindersRate', width: 100, type: 'numericColumn', suppressMenu: true},
-      { headerName: 'Status', field: 'MainStatus_ValueName', filter: 'agTextColumnFilter', width: 150}
+      { headerName: 'Status', field: 'MainStatus_ValueName', filter: 'agTextColumnFilter', width: 150},
+      { headerName: 'Zatwierdzone przez', field: 'UserLogin_Confirmed', filter: 'agTextColumnFilter', width: 200, defaultVisibility: false}
     ];
     this.gridColumnsDefinition["sitAgreementsBenef"] = [
       { headerName: 'Id', field: 'sitAgreementsBenefId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 50, defaultVisibility: false},
