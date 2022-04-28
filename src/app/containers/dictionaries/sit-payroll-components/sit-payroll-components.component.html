@@ -21,19 +21,34 @@
       </div>
     </as-split-area>
     <as-split-area [size]="40">
-      <div fxLayout="column" fxFill class="content">
-        <sit-data-set-container  ident="sitPayrollComponentsAccountingDef" showActionsToolbar="true" fxFlex fxLayout="column">
-          <div class="data-table" fxFlex>
-            <ag-grid-angular #sitSetDataSource
-              #agGrid
-              id="gridPayrollComponentsAccountingDef"
-              style="width: 100%; height: 100%;"
-              class="ag-theme-balham"
-            >
-            </ag-grid-angular>
+      <mat-tab-group id="tab-group" animationDuration="0ms">
+        <mat-tab label="Def. księgowania">
+          <div fxLayout="column" fxFill class="content">
+            <sit-data-set-container  ident="sitPayrollComponentsAccountingDef" showActionsToolbar="true" fxFlex fxLayout="column">
+              <div class="data-table" fxFlex>
+                <ag-grid-angular #sitSetDataSource
+                  style="width: 100%; height: 100%;"
+                  class="ag-theme-balham"
+                >
+                </ag-grid-angular>
+              </div>
+            </sit-data-set-container>
           </div>
-        </sit-data-set-container>
-      </div>
+        </mat-tab>
+        <mat-tab label="Kolumna w rozl. prac.">
+          <div fxLayout="column" fxFill class="content">
+            <sit-data-set-container  ident="sitPayrollComponentsSettlementsColumns" showActionsToolbar="true" fxFlex fxLayout="column">
+              <div class="data-table" fxFlex>
+                <ag-grid-angular #sitSetDataSource
+                  style="width: 100%; height: 100%;"
+                  class="ag-theme-balham"
+                >
+                </ag-grid-angular>
+              </div>
+            </sit-data-set-container>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
     </as-split-area>
   </as-split>
 </sit-dict-container>

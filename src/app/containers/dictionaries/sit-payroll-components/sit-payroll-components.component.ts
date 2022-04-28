@@ -29,7 +29,15 @@ export class SitPayrollComponentsComponent extends SitDictBaseComponent {
       { headerName: 'Konto MA', field: 'DAccount', width: 150 },
       { headerName: 'Odwr. znak', field: 'RevSign', cellRenderer: 'gridCheckboxRenderer',width: 90 },
       { headerName: 'Opis w księgowaniu', field: 'PosDesc', width: 150 },
-    ]
+    ];
+
+    this.gridColumnsDefinition["sitPayrollComponentsSettlementsColumns"] = [
+      { headerName: 'ID', field: 'sitPayrollComponentsSettlementsColumnsId', filter: 'agNumberColumnFilter', defaultVisibility: false },
+      { headerName: 'GUID', field: 'sitPayrollComponentsSettlementsColumnsG', defaultVisibility: false },
+      { headerName: 'Dział HR', field: 'HRDepartmentIdent', width: 100 },
+      { headerName: 'Nazwa', field: 'HRDepartmentName', tooltipField: 'HRDepartmentName', width: 140 },
+      { headerName: 'Kolumna w rozliczeniu', field: 'SettlementsColumnName', width: 200 },
+    ]    
    }
 
 }

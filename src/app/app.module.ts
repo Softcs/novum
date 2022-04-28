@@ -299,6 +299,7 @@ import { SitAcceptanceStepsDefEditComponent } from './containers/dictionaries/si
 import { SitAcceptanceStepPersonsDefEditComponent } from './containers/dictionaries/sit-acceptance-paths-def/actions/sit-acceptance-step-persons-def-edit/sit-acceptance-step-persons-def-edit.component';
 import { SitAcceptanceTablesEditComponent } from './containers/dictionaries/sit-acceptance-paths-def/actions/sit-acceptance-tables-edit/sit-acceptance-tables-edit.component';
 import { SitCustomerCreditLimitScoresAcceptComponent } from './containers/dictionaries/sit-customer-credit-limit-scores/actions/sit-customer-credit-limit-scores-accept/sit-customer-credit-limit-scores-accept.component';
+import { SitPayrollComponentsSettlementsColumnsEditComponent } from './containers/dictionaries/sit-payroll-components/actions/sit-payroll-components-settlements-columns-edit/sit-payroll-components-settlements-columns-edit.component';
 
 
 @NgModule({
@@ -584,7 +585,8 @@ import { SitCustomerCreditLimitScoresAcceptComponent } from './containers/dictio
         SitAcceptanceStepsDefEditComponent,
         SitAcceptanceStepPersonsDefEditComponent,
         SitAcceptanceTablesEditComponent,
-        SitCustomerCreditLimitScoresAcceptComponent
+        SitCustomerCreditLimitScoresAcceptComponent,
+        SitPayrollComponentsSettlementsColumnsEditComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },

@@ -198,6 +198,7 @@ import { SitAcceptanceStepsDefEditComponent } from '@app/containers/dictionaries
 import { SitAcceptanceStepPersonsDefEditComponent } from '@app/containers/dictionaries/sit-acceptance-paths-def/actions/sit-acceptance-step-persons-def-edit/sit-acceptance-step-persons-def-edit.component';
 import { SitAcceptanceTablesEditComponent } from '@app/containers/dictionaries/sit-acceptance-paths-def/actions/sit-acceptance-tables-edit/sit-acceptance-tables-edit.component';
 import { SitCustomerCreditLimitScoresAcceptComponent } from '@app/containers/dictionaries/sit-customer-credit-limit-scores/actions/sit-customer-credit-limit-scores-accept/sit-customer-credit-limit-scores-accept.component';
+import { SitPayrollComponentsSettlementsColumnsEditComponent } from '@app/containers/dictionaries/sit-payroll-components/actions/sit-payroll-components-settlements-columns-edit/sit-payroll-components-settlements-columns-edit.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -402,6 +403,7 @@ export class FactoryService {
         sitAcceptanceStepPersonsDefEdit: SitAcceptanceStepPersonsDefEditComponent,
         sitAcceptanceTablesEdit: SitAcceptanceTablesEditComponent,
         sitCustomerCreditLimitScoresAccept: SitCustomerCreditLimitScoresAcceptComponent,
+        sitPayrollComponentsSettlementsColumnsEdit: SitPayrollComponentsSettlementsColumnsEditComponent
     };
 
     public GetFactory(ident: string) {
