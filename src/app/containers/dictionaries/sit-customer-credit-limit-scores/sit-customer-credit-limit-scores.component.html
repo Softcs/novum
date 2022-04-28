@@ -60,7 +60,7 @@
                         </div>      
                         <div fxLayout="row">
                           <div fxFlex="30"></div>
-                          <sit-data-label type="date" #sitControl field="StockDate" label="Wartość magazynu na dzień:" ></sit-data-label>
+                          <sit-data-label type="text" #sitControl field="StockDate" label="Wartość magazynu na dzień:" ></sit-data-label>
                         </div>                    
                       </mat-card-content>
                     </mat-card>
@@ -79,7 +79,7 @@
                     <mat-card>
                       <mat-card-content>
                         <div fxLayout="column">
-                          <sit-data-label type="date" #sitControl field="SettlementsForDate" label="Należności i zobowiąznia na dzień:"></sit-data-label>
+                          <sit-data-label type="text" #sitControl field="SettlementsForDate" label="Należności i zobowiąznia na dzień:"></sit-data-label>
                           <div fxLayout="row">
                             <sit-data-input type="number" #sitControl field="Payables" label="Zobowiązania ogółem" appearance="outline" [readonly]=true fxFlex="50"></sit-data-input>
                             <sit-data-input type="number" #sitControl field="ReceivablesExpired" label="Należności przeterminowane" appearance="outline" [readonly]=true fxFlex="50"></sit-data-input>
