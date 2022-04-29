@@ -519,6 +519,10 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
           renderType: 'number', renderFormat: '1.2-2',
           cellClass: ['font11','numberFormat2Dec'],
         },
+        { headerName: 'Premie bez narzutu', field: 'BonusNoMarkup', headerTooltip: 'Premie bez narzutu', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, suppressMenu: true, columnGroupShow: "open", agr: 'sum', sortable: true, resizable: true,
+          renderType: 'number', renderFormat: '1.2-2',
+          cellClass: ['font11','numberFormat2Dec'],
+        },
         { headerName: 'Prem. nie kli.', field: 'BonusNoCust', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 110, columnGroupShow: "open", agr: 'sum', sortable: true, resizable: true,
           renderType: 'number',
           cellClass: ['font11','numberFormat2Dec'],
@@ -653,10 +657,14 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
             renderType: 'number',
             cellClass: ['font11','numberFormat2Dec'],
           },
-          { headerName: 'Premia', field: 'MarkupBonus', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80, suppressMenu: true, agr: 'sum', columnGroupShow: "open", sortable: true, resizable: true,
+          { headerName: 'Premie', field: 'MarkupBonus', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80, suppressMenu: true, agr: 'sum', columnGroupShow: "open", sortable: true, resizable: true,
             renderType: 'number',
             cellClass: ['font11','numberFormat2Dec'],
           },
+          { headerName: 'Premie bez narzutu', field: 'BonusNoMarkupCust', headerTooltip: 'Premie bez narzutu', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, suppressMenu: true, columnGroupShow: "open", agr: 'sum', sortable: true, resizable: true,
+            renderType: 'number', renderFormat: '1.2-2',
+            cellClass: ['font11','numberFormat2Dec'],
+          },          
           { headerName: '50', field: 'CustRate01', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80, suppressMenu: true, agr: 'sum', columnGroupShow: "open", sortable: true, resizable: true,
             renderType: 'number',
             cellClass: ['font11','numberFormat2Dec'],
@@ -855,7 +863,7 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
         { headerName: 'Suma',headerTooltip: 'Suma wszystkich etatów', field: 'JobsNo', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80, resizable: true, suppressMenu: true, renderType: 'number', agr: 'sum',
           cellStyle: function(params) { return {backgroundColor: '#cce6ff'}},  
         },
-        { headerName: 'Średnia',headerTooltip: 'Średnia dzienna ilość etatów', field: 'AvgJobsNo', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,resizable: true, suppressMenu: true, renderType: 'number',agr: 'sum' ,
+        { headerName: 'Średnia',headerTooltip: 'Średnia dzienna ilość etatów', field: 'AvgJobsNo', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,resizable: true, suppressMenu: true, renderType: 'number',agr: 'sum', renderFormat: '1.3-3' ,
             cellStyle: function(params) { return {backgroundColor: '#cce6ff'} }}  
         ]
       },
@@ -872,17 +880,17 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
         ]
       },
       { headerName: 'Średnie etaty niepełnospr.', headerTooltip: 'Średnie etaty wg stopnia niepełnosprawności', children: [
-          { headerName: 'Suma', field: 'SumAvgDis', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80, resizable: true, suppressMenu: true, renderType: 'number', agr: 'sum',
+          { headerName: 'Suma', field: 'SumAvgDis', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80, resizable: true, suppressMenu: true, renderType: 'number', agr: 'sum', renderFormat: '1.3-3',
             cellStyle: function(params) { return {backgroundColor: '#fcf59f'}},
           },
-          { headerName: 'Lekki', headerTooltip: 'Lekki', field: 'AvgJobsNo1', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,resizable: true,suppressMenu: true, renderType: 'number', agr: 'sum', columnGroupShow: 'open'},
-          { headerName: 'Lek. szcz.', headerTooltip: 'Lekki szczególny', field: 'AvgJobsNo1S', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,resizable: true,suppressMenu: true, renderType: 'number', agr: 'sum', columnGroupShow: 'open'},
-          { headerName: 'Umiar.', headerTooltip: 'Umiarkowany', field: 'AvgJobsNo2', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 70,resizable: true,suppressMenu: true, renderType: 'number', agr: 'sum', columnGroupShow: 'open'},
-          { headerName: 'Um. szcz.', headerTooltip: 'Umiarkowany szczególny', field: 'AvgJobsNo2S', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 70,resizable: true,suppressMenu: true, renderType: 'number', agr: 'sum', columnGroupShow: 'open'},
-          { headerName: 'Znacz.', headerTooltip: 'Znaczny', field: 'AvgJobsNo3', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 70,resizable: true,suppressMenu: true, renderType: 'number', agr: 'sum', columnGroupShow: 'open'},
-          { headerName: 'Zn. szcz.', headerTooltip: 'Znaczny szczególny', field: 'AvgJobsNo3S', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 70,resizable: true,suppressMenu: true, renderType: 'number', agr: 'sum', columnGroupShow: 'open'},
-          { headerName: 'Um. szcz. przel.', headerTooltip: 'Umiarkowany szczególny przeliczony', field: 'AvgJobsNo2SCalc', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90,resizable: true,suppressMenu: true, renderType: 'number', agr: 'sum', columnGroupShow: 'open'},
-          { headerName: 'Zn. szcz. przel.', headerTooltip: 'Znaczny szczególny przeliczony', field: 'AvgJobsNo3SCalc', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90,resizable: true,suppressMenu: true, renderType: 'number', agr: 'sum', columnGroupShow: 'open'},
+          { headerName: 'Lekki', headerTooltip: 'Lekki', field: 'AvgJobsNo1', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,resizable: true,suppressMenu: true, renderType: 'number', agr: 'sum', columnGroupShow: 'open', renderFormat: '1.3-3'},
+          { headerName: 'Lek. szcz.', headerTooltip: 'Lekki szczególny', field: 'AvgJobsNo1S', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,resizable: true,suppressMenu: true, renderType: 'number', agr: 'sum', columnGroupShow: 'open', renderFormat: '1.3-3'},
+          { headerName: 'Umiar.', headerTooltip: 'Umiarkowany', field: 'AvgJobsNo2', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 70,resizable: true,suppressMenu: true, renderType: 'number', agr: 'sum', columnGroupShow: 'open', renderFormat: '1.3-3'},
+          { headerName: 'Um. szcz.', headerTooltip: 'Umiarkowany szczególny', field: 'AvgJobsNo2S', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 70,resizable: true,suppressMenu: true, renderType: 'number', agr: 'sum', columnGroupShow: 'open', renderFormat: '1.3-3'},
+          { headerName: 'Znacz.', headerTooltip: 'Znaczny', field: 'AvgJobsNo3', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 70,resizable: true,suppressMenu: true, renderType: 'number', agr: 'sum', columnGroupShow: 'open', renderFormat: '1.3-3'},
+          { headerName: 'Zn. szcz.', headerTooltip: 'Znaczny szczególny', field: 'AvgJobsNo3S', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 70,resizable: true,suppressMenu: true, renderType: 'number', agr: 'sum', columnGroupShow: 'open', renderFormat: '1.3-3'},
+          { headerName: 'Um. szcz. przel.', headerTooltip: 'Umiarkowany szczególny przeliczony', field: 'AvgJobsNo2SCalc', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90,resizable: true,suppressMenu: true, renderType: 'number', agr: 'sum', columnGroupShow: 'open', renderFormat: '1.3-3'},
+          { headerName: 'Zn. szcz. przel.', headerTooltip: 'Znaczny szczególny przeliczony', field: 'AvgJobsNo3SCalc', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90,resizable: true,suppressMenu: true, renderType: 'number', agr: 'sum', columnGroupShow: 'open', renderFormat: '1.3-3'},
         ]
       },
       { headerName: 'PFRON', headerTooltip: 'PFRON', children: [
@@ -891,9 +899,7 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
           { headerName: 'Różnica', headerTooltip: 'PFRON - róożnica', field: 'PFRONDiff', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,resizable: true,suppressMenu: true, renderType: 'number', agr: 'sum'},
         ]
       },
-      { headerName: 'Nie licz PFRON', field: 'NoPFRON',  width: 100, renderType: 'checkbox', suppressMenu: true, sortable: true, resizable: true,
-        cellClass: ['font11','textFormat','grid-cell-centered']
-      },
+
 
     ]
     this.detailCellRendererParams = {
