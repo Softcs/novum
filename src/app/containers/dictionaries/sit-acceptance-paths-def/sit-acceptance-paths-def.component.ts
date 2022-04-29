@@ -22,6 +22,7 @@ export class SitAcceptancePathsDefComponent extends SitDictBaseComponent {
       { headerName: 'Id', field: 'sitAcceptanceTablesId', type: 'numericColumn', filter: 'agTextColumnFilter', width: 50, defaultVisibility: false },
       { headerName: 'GUID', field: 'sitAcceptanceTablesG', filter: 'agTextColumnFilter', width: 100, defaultVisibility: false },
       { headerName: 'Tabela', field: 'TableName', filter: 'agTextColumnFilter', width: 300 },
+      { headerName: 'Aktywny', field: 'IsActive', filter: 'agSetColumnFilter',  suppressMenu: true, width: 80,renderType: "checkbox", cellClass: "grid-cell-centered" },
     ];
 
     this.gridColumnsDefinition["sitAcceptanceStepsDef"] = [
