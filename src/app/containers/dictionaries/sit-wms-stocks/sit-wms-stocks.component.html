@@ -101,25 +101,26 @@
             <as-split direction="horizontal">
               <as-split-area [size]="40" fxLayout="column">
                 <sit-data-set-container ident="sitLogisticUnits" showActionsToolbar="true" (activeRowChanged)="activeRowLogisticUnitsChanged($event)" fxFill fxLayout="column">
-                  <div class="data-table" fxFlex>
-                    <ag-grid-angular #sitSetDataSource
-                      #agGrid
-                      style="width: 100%; height: 100%;"
-                      class="ag-theme-balham"
+                  <div class="container" fxFill fxLayout="column">
+                    <div class="data-table" fxFlex>
+                      <ag-grid-angular #sitSetDataSource
+                        #agGrid
+                        style="width: 100%; height: 100%;"
+                        class="ag-theme-balham"
+                        >
+                      </ag-grid-angular>
+                    </div>
+                    <div fxFlex="15" fxLayoutAlign="center center" >
+                      <ngx-barcode
+                        [bc-value]="logisticUnitEAN"
+                        [bc-display-value]="true"
+                        [bc-height]="30"
+                        [bc-font-size]="20"
+                        [bc-background]="contentColor"
                       >
-                    </ag-grid-angular>
-                  </div>
-                  <div fxFlex="15" fxLayoutAlign="center center" >
-                    <ngx-barcode
-                      [bc-value]="logisticUnitEAN"
-                      [bc-display-value]="true"
-                      [bc-height]="30"
-                      [bc-font-size]="20"
-                      [bc-background]="contentColor"
-                    >
-                    </ngx-barcode>
-                  </div>
-
+                      </ngx-barcode>
+                    </div>
+                </div>
                 </sit-data-set-container>
               </as-split-area>
               <as-split-area [size]="60" fxLayout="column">

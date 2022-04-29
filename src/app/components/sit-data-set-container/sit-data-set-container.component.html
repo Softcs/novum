@@ -20,5 +20,5 @@
 <sit-actions-toolbar #sitActionToolbar *ngIf="showActionsToolbar && hasRights">
 </sit-actions-toolbar>
 
-<ng-content>
+<ng-content *ngIf="hasRights">
 </ng-content>
