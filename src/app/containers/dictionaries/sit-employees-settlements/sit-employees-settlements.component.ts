@@ -503,7 +503,7 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
       { headerName: 'Wynagrodzenie', headerTooltip: 'Wynagrodzenie',
       children: [
         { headerName: 'Brutto', field: 'SumPay', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, suppressMenu: true, agr: 'sum', sortable: true, resizable: true,
-          cellStyle: function(params) { return (params.data["GrossOK"] === 1 ? {backgroundColor: '#ffe6e6', 'font-weight': 'bold'} : {color: 'red', backgroundColor: '#ffe6e6','font-weight': 'bold'}) },  
+          cellStyle: function(params) { return (params.data["GrossOK"] === 0? {color: 'red', backgroundColor: '#ffe6e6','font-weight': 'bold'} : {backgroundColor: '#ffe6e6', 'font-weight': 'bold'}) },  
           renderType: 'number',
           cellClass: ['font11','numberFormat2Dec'],
         },
