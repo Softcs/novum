@@ -25,9 +25,10 @@
         <div fxLayout="column" fxFill>
           <mat-tab-group id="tab-group" animationDuration="0ms">
             <mat-tab label="Dane podstawowe">
-              <sit-data-set-container ident="sitCustomersOneRow" fxFill>
-                <div fxLayout="row" fxFlex="60">
-                  <div fxLayout="column" fxFill fxLayoutGap="5px" class="content">
+              <div fxLayout="row" fxFill>
+                <div fxLayout="column" fxFlex="60">
+                  <sit-data-set-container ident="sitCustomersOneRow" fxFill>
+                    <div fxLayout="column" fxFill fxLayoutGap="5px" class="content">
                     <mat-card>
                       <mat-card-content>
                         <div fxLayout="row">
@@ -80,14 +81,15 @@
                       </mat-card-content>
                     </mat-card>
                   </div>
+                </sit-data-set-container>
                 </div>
-                <div fxLayout="row" fxFlex="40">
+                <div fxLayout="column" fxFlex>
                   <mat-card fxFill>
                     <mat-card-content>
                     </mat-card-content>
                   </mat-card>
                 </div>
-              </sit-data-set-container>
+              </div>
             </mat-tab>
             <mat-tab label="Konfiguracja">
               <mat-tab-group id="tab-group" animationDuration="0ms">
