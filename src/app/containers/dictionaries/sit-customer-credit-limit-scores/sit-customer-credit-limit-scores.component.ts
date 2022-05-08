@@ -12,13 +12,20 @@ export class SitCustomerCreditLimitScoresComponent extends SitDictBaseComponent 
     this.gridColumnsDefinition["sitCustomerCreditLimitScores"] = [
       { headerName: 'ID', field: 'sitCustomerCreditLimitScoresId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, defaultVisibility: false },
       { headerName: 'GUID', field: 'sitCustomerCreditLimitScoresG', width: 100, defaultVisibility: false },
-      { headerName: 'Data oceny', field: 'ScoreDate', filter: 'agDateColumnFilter',width: 110, floatingFilter: false, },     
+      { headerName: 'Data oceny', field: 'ScoreDate', filter: 'agDateColumnFilter',width: 110, floatingFilter: false, 
+        cellRenderer: function(params) {
+          return '<table style="width:100%"><tr><td style="width:50%">' + params.data["ScoreDate"] + '</td></tr>'
+            + '<tr><td>' + params.data["AcceptanceDesc"] + '</td></tr></table>'
+        }
+      },     
       { headerName: 'Kontrahent', field: 'CustIdent', filter: 'agTextColumnFilter', flex: 1,
         cellRenderer: function(params) {
-          return '<table style="width:100%"><tr><td style="width:50%">ID: ' + params.data["CustIdent"] +'</td>'
-              +(params.data["VATId"] === '' ? '' : '<td style="text-align:right">NIP: ' + params.data["VATId"] +'</td>')
-              +'</tr>'
-            + '<tr><td colspan="2"><b>' + params.data["CustName"] +'</b></td></tr></table>'
+          return '<table style="width:100%"><tr>'
+              + '<td style="width:50%">ID: ' + params.data["CustIdent"] + '</td>'
+              + (params.data["VATId"] === '' ? '' : '<td style="width:25%">NIP: ' + params.data["VATId"] +'</td>')
+              + '<td style="text-align:right">' + params.data["ExportedDescription"] + '</td>'
+            + '</tr>'
+            + '<tr><td colspan="3"><b>' + params.data["CustName"] + '</b></td></tr></table>'
         }
       },
     ];

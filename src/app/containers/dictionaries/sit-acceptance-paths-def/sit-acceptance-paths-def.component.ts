@@ -34,7 +34,7 @@ export class SitAcceptancePathsDefComponent extends SitDictBaseComponent {
       { headerName: 'Źródło osób akceptujących', field: 'AcceptingPersonSourceDesc', filter: 'agTextColumnFilter', width: 150 },
       { headerName: 'Warunek generacji kroku', field: 'StepGenCondition', filter: 'agTextColumnFilter', width: 200 },
       { headerName: 'Funkcja sprawdzająca przed akceptacją', field: 'AcceptCheckFunction', filter: 'agTextColumnFilter', width: 200 },
-
+      { headerName: 'Edycja', field: 'CanEdit', filter: 'agSetColumnFilter',  suppressMenu: true, width: 80,renderType: "checkbox", cellClass: "grid-cell-centered" },
     ];
 
     this.gridColumnsDefinition["sitAcceptanceStepPersonsDef"] = [
