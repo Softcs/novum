@@ -85,6 +85,8 @@ export class SitCustomersComponent extends SitDictBaseComponent {
     this.gridColumnsDefinition["sitHRParams4InvoicingContr"] = [
       { headerName: 'Rez url.', headerTooltip:'Licz rezerwę urlopową', field: 'CalcVacRes', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 70, renderType: "checkbox"},
       { headerName: 'PFRON', headerTooltip:'Licz PFRON', field: 'CalcPFRON', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 70, renderType: "checkbox"},
+      { headerName: 'Ryz. url.', headerTooltip:'Licz ryzyko urlopowe', field: 'CalcPFRON', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 70, renderType: "checkbox"},
+      { headerName: 'Wsp.ryz.', field: 'SickRiskFactor',headerTooltip:'Współczynnik do wyliczenia ryzyka urlopowego', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
       { headerName: 'Od dnia', field: 'DateFrom', width: 100, sort: 'desc',suppressMenu: true, renderType: "date"}, // domyslny format yyyy-MM-dd - mozna przeciazyc przez np. renderFormat: "yyyy-MM-dd"
       { headerName: 'Zasadnicze', field: 'BaseRate', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
       { headerName: 'Nocne', field: 'NightRate', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},

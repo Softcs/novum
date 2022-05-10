@@ -10,6 +10,10 @@
         <sit-data-checkbox #sitControl field="CalcPFRON" label="Licz PFRON"></sit-data-checkbox>
       </div>
       <div fxLayout="row">
+        <sit-data-checkbox #sitControl field="CalcSickRisk" label="Licz ryzyko chorobowe"></sit-data-checkbox>
+        <sit-data-input type="number" #sitControl field="SickRiskFactor" label="Współczynnik" appearance="outline"></sit-data-input>
+      </div>
+      <div fxLayout="row">
         <div fxLayout="column">
           <sit-data-input type="number" #sitControl field="BaseRate" label="Zasadnicze" appearance="outline"></sit-data-input>
           <sit-data-input type="number" #sitControl field="NightRate" label="Nocne" appearance="outline"></sit-data-input>
