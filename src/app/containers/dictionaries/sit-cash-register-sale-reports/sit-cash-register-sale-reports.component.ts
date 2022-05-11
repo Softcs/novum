@@ -35,7 +35,19 @@ export class SitCashRegisterSaleReportsComponent extends SitDictBaseComponent {
       { headerName: 'Netto', field: 'Net', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80, renderType: 'number', agr: 'sum' },
       { headerName: 'Vat', field: 'VAT', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80, renderType: 'number', agr: 'sum' },
       { headerName: 'Brutto', field: 'Gross', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80, renderType: 'number', agr: 'sum' },
-    ];    
+    ];
+
+    this.gridColumnsDefinition["sitCashRegisterSaleWithStock"] = [
+      { headerName: 'ID', field: 'sitProductsId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, defaultVisibility: false },
+      { headerName: 'GUID', field: 'sitProductsG', width: 100, defaultVisibility: false },
+      { headerName: 'Produkt', field: 'ProductIdent', filter: 'agTextColumnFilter', width: 130, },
+      { headerName: 'EAN', field: 'EAN', filter: 'agTextColumnFilter', width: 120, },
+      { headerName: 'Nazwa produktu', field: 'ProductName', filter: 'agTextColumnFilter', },
+      { headerName: 'Stan', field: 'QuantityStock', filter: 'agNumberColumnFilter', type: 'numericColumn', suppressMenu: true, width: 100, renderType: 'number' },
+      { headerName: 'Sprzedaż', field: 'QuantityReport', filter: 'agNumberColumnFilter', type: 'numericColumn', suppressMenu: true, width: 100, renderType: 'number' },
+      { headerName: 'Dostępne', field: 'StockAvailable4Sale', filter: 'agNumberColumnFilter', type: 'numericColumn', suppressMenu: true, width: 100, renderType: 'number' },
+    ]; 
+
   }
 }
 

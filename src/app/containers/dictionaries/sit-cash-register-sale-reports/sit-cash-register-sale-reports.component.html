@@ -1,44 +1,77 @@
 <sit-dict-container ident="sitCashRegisterSaleReports" #sitDictcontainer fxFill>
-    <div fxLayout="column" fxFill >
-      <as-split direction="horizontal">
-        <as-split-area [size]="50">
-          <div fxLayout="column" fxFill class="content">
-            <div class="sit-filter-bar">
-              <sit-data-set-container ident="sitCashRegisterSaleReportsHeadersFilter" fxLayout="column">
-                <div fxLayout="row">
-                  <sit-data-input #sitControl field="searchDateFrom" type="date" label="Od" appearance="outline" style="width: 130px;"></sit-data-input>
-                  <sit-data-input #sitControl field="searchDateTo" type="date" label="Do" appearance="outline" style="width: 195px;" [showRefreshButton]="true" ></sit-data-input>
-                </div>
-              </sit-data-set-container>
-            </div>
-            <sit-data-set-container ident="sitCashRegisterSaleReportsHeaders" [showActionsToolbar]="true" #sitDataSetContainer fxFlex fxLayout="column">
-              <div class="data-table" fxFlex>
-                <ag-grid-angular
-                  #sitSetDataSource
-                  style="width: 100%; height: 100%;"
-                  class="ag-theme-balham"
-                  [rowHeight]="60"
-                >
-                </ag-grid-angular>
+  <div fxLayout="column" fxFill >
+    <mat-tab-group id="tab-group" animationDuration="0ms">
+      <mat-tab label="Raporty kas fiskalnych">
+        <as-split #sitSpliter direction="horizontal">
+          <as-split-area [size]="50">
+            <div fxLayout="column" fxFill class="content">
+              <div class="sit-filter-bar">
+                <sit-data-set-container ident="sitCashRegisterSaleReportsHeadersFilter" fxLayout="column">
+                  <div fxLayout="row">
+                    <sit-data-input #sitControl field="searchDateFrom" type="date" label="Od" appearance="outline" style="width: 130px;"></sit-data-input>
+                    <sit-data-input #sitControl field="searchDateTo" type="date" label="Do" appearance="outline" style="width: 195px;" [showRefreshButton]="true" ></sit-data-input>
+                  </div>
+                </sit-data-set-container>
               </div>
-            </sit-data-set-container>
-          </div>
-        </as-split-area>
-        <as-split-area [size]="50">
-          <div fxLayout="column" fxFill class="content">
-            <sit-data-set-container ident="sitCashRegisterSaleReportsPositions" [showActionsToolbar]="false" #sitDataSetContainer fxFill fxLayout="column">
-              <div class="data-table" fxFlex>
-                <ag-grid-angular
+              <sit-data-set-container ident="sitCashRegisterSaleReportsHeaders" [showActionsToolbar]="true" #sitDataSetContainer fxFlex fxLayout="column">
+                <div class="data-table" fxFlex>
+                  <ag-grid-angular
                     #sitSetDataSource
                     style="width: 100%; height: 100%;"
                     class="ag-theme-balham"
-                >
-                </ag-grid-angular>
-              </div>
-            </sit-data-set-container>
-          </div>
-        </as-split-area>
-      </as-split>
-    </div>
-  </sit-dict-container>
-  
+                    [rowHeight]="60"
+                  >
+                  </ag-grid-angular>
+                </div>
+              </sit-data-set-container>
+            </div>
+          </as-split-area>
+          <as-split-area [size]="50">
+            <div fxLayout="column" fxFill class="content">
+              <sit-data-set-container ident="sitCashRegisterSaleReportsPositions" [showActionsToolbar]="false" #sitDataSetContainer fxFill fxLayout="column">
+                <div class="data-table" fxFlex>
+                  <ag-grid-angular
+                      #sitSetDataSource
+                      style="width: 100%; height: 100%;"
+                      class="ag-theme-balham"
+                  >
+                  </ag-grid-angular>
+                </div>
+              </sit-data-set-container>
+            </div>
+          </as-split-area>
+        </as-split>
+      </mat-tab>
+      <mat-tab label="Analiza sprzedaży ze stanem">
+        <div fxLayout="column" fxFill class="content">
+          <sit-data-set-container ident="sitCashRegisterSaleWithStockFilter" fxLayout="row">
+            <div class="sit-filter-bar" fxLayout="row">
+              <sit-data-input #sitControl field="search" label="Wyszukaj produkt" placeholder="Produkt, nazwa, EAN" appearance="outline" style="width: 200px;"></sit-data-input>
+              <sit-data-input #sitControl field="WarehouseIdent" label="Magazyn" placeholder="" appearance="outline" style="width: 180px;"
+                [lookupDisplayFields] = "['WarehouseIdent', 'WarehouseName']"
+              ></sit-data-input>
+              <sit-data-radio #sitControl field="withStockOnly" type="row" label="Stany"
+                [buttons]="[{'caption':'Wszystkie','value': '0', 'checked':true},{'caption':'Ze stanem','value': '1'},{'caption':'Bez stanu','value': '2'}]"
+              ></sit-data-radio>
+              <sit-data-radio #sitControl field="withSalesOnly" type="row" label="Sprzedaż"
+                [buttons]="[{'caption':'Wszystkie','value': '0', 'checked':true},{'caption':'Ze sprzedażą','value': '1'},{'caption':'Bez sprzedaży','value': '2'}]"
+              ></sit-data-radio>
+              <sit-data-input #sitControl field="searchSaleDateFrom" type="date" label="Sprzedaż od" appearance="outline" style="width: 140px;"></sit-data-input>
+              <sit-data-input #sitControl field="searchSaleDateTo" type="date" label="Sprzedaż do" appearance="outline" style="width: 200px;" [showRefreshButton]="true"></sit-data-input>
+            </div>
+          </sit-data-set-container>
+          <sit-data-set-container ident="sitCashRegisterSaleWithStock" [showActionsToolbar]="false" fxLayout="column" fxFlex>
+            <div class="data-table" fxFlex>
+              <ag-grid-angular
+                #sitSetDataSource
+                style="width: 100%; height: 100%;"
+                class="ag-theme-balham"
+              >
+              </ag-grid-angular>
+            </div>
+          </sit-data-set-container>
+        </div>
+      </mat-tab>      
+    </mat-tab-group>      
+  </div>
+</sit-dict-container>
