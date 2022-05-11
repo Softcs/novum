@@ -1,0 +1,44 @@
+<sit-dict-container ident="sitCashRegisterSaleReports" #sitDictcontainer fxFill>
+    <div fxLayout="column" fxFill >
+      <as-split direction="horizontal">
+        <as-split-area [size]="50">
+          <div fxLayout="column" fxFill class="content">
+            <div class="sit-filter-bar">
+              <sit-data-set-container ident="sitCashRegisterSaleReportsHeadersFilter" fxLayout="column">
+                <div fxLayout="row">
+                  <sit-data-input #sitControl field="searchDateFrom" type="date" label="Od" appearance="outline" style="width: 130px;"></sit-data-input>
+                  <sit-data-input #sitControl field="searchDateTo" type="date" label="Do" appearance="outline" style="width: 195px;" [showRefreshButton]="true" ></sit-data-input>
+                </div>
+              </sit-data-set-container>
+            </div>
+            <sit-data-set-container ident="sitCashRegisterSaleReportsHeaders" [showActionsToolbar]="true" #sitDataSetContainer fxFlex fxLayout="column">
+              <div class="data-table" fxFlex>
+                <ag-grid-angular
+                  #sitSetDataSource
+                  style="width: 100%; height: 100%;"
+                  class="ag-theme-balham"
+                  [rowHeight]="60"
+                >
+                </ag-grid-angular>
+              </div>
+            </sit-data-set-container>
+          </div>
+        </as-split-area>
+        <as-split-area [size]="50">
+          <div fxLayout="column" fxFill class="content">
+            <sit-data-set-container ident="sitCashRegisterSaleReportsPositions" [showActionsToolbar]="false" #sitDataSetContainer fxFill fxLayout="column">
+              <div class="data-table" fxFlex>
+                <ag-grid-angular
+                    #sitSetDataSource
+                    style="width: 100%; height: 100%;"
+                    class="ag-theme-balham"
+                >
+                </ag-grid-angular>
+              </div>
+            </sit-data-set-container>
+          </div>
+        </as-split-area>
+      </as-split>
+    </div>
+  </sit-dict-container>
+  

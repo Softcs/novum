@@ -199,6 +199,8 @@ import { SitAcceptanceStepPersonsDefEditComponent } from '@app/containers/dictio
 import { SitAcceptanceTablesEditComponent } from '@app/containers/dictionaries/sit-acceptance-paths-def/actions/sit-acceptance-tables-edit/sit-acceptance-tables-edit.component';
 import { SitCustomerCreditLimitScoresAcceptComponent } from '@app/containers/dictionaries/sit-customer-credit-limit-scores/actions/sit-customer-credit-limit-scores-accept/sit-customer-credit-limit-scores-accept.component';
 import { SitPayrollComponentsSettlementsColumnsEditComponent } from '@app/containers/dictionaries/sit-payroll-components/actions/sit-payroll-components-settlements-columns-edit/sit-payroll-components-settlements-columns-edit.component';
+import { SitCashRegisterSaleReportsComponent } from '@app/containers/dictionaries/sit-cash-register-sale-reports/sit-cash-register-sale-reports.component';
+import { SitCashRegisterSaleReportsImportComponent } from '@app/containers/dictionaries/sit-cash-register-sale-reports/actions/sit-cash-register-sale-reports-import/sit-cash-register-sale-reports-import.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -403,7 +405,9 @@ export class FactoryService {
         sitAcceptanceStepPersonsDefEdit: SitAcceptanceStepPersonsDefEditComponent,
         sitAcceptanceTablesEdit: SitAcceptanceTablesEditComponent,
         sitCustomerCreditLimitScoresAccept: SitCustomerCreditLimitScoresAcceptComponent,
-        sitPayrollComponentsSettlementsColumnsEdit: SitPayrollComponentsSettlementsColumnsEditComponent
+        sitPayrollComponentsSettlementsColumnsEdit: SitPayrollComponentsSettlementsColumnsEditComponent,
+        sitCashRegisterSaleReports: SitCashRegisterSaleReportsComponent,
+        sitCashRegisterSaleReportsImport: SitCashRegisterSaleReportsImportComponent,
     };
 
     public GetFactory(ident: string) {

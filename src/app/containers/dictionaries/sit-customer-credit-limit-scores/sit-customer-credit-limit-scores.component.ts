@@ -74,6 +74,16 @@ export class SitCustomerCreditLimitScoresComponent extends SitDictBaseComponent 
       { headerName: 'Komentarz', field: 'Comment', width: 300 },
     ];
 
+    this.gridColumnsDefinition["sitCustomerCreditLimitScoresStatus"] = [
+      { headerName: 'ID', field: 'sitCustomersId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, defaultVisibility: false },
+      { headerName: 'GUID', field: 'sitCustomersG', width: 100, defaultVisibility: false },
+      { headerName: 'Kontrahent', field: 'CustIdent', width: 120 },
+      { headerName: 'Nazwa', field: 'CustName', width: 300 },
+      { headerName: 'Data obowiązywania', field: 'CreditLimitDateTo', filter: 'agDateColumnFilter', width: 160, floatingFilter: false, renderType: "date", 
+        renderFormat: "yyyy-MM-dd"},   
+      { headerName: 'Status', field: 'LimitDescription', width: 150 },
+    ];    
+
   }
 }
 

@@ -300,6 +300,8 @@ import { SitAcceptanceStepPersonsDefEditComponent } from './containers/dictionar
 import { SitAcceptanceTablesEditComponent } from './containers/dictionaries/sit-acceptance-paths-def/actions/sit-acceptance-tables-edit/sit-acceptance-tables-edit.component';
 import { SitCustomerCreditLimitScoresAcceptComponent } from './containers/dictionaries/sit-customer-credit-limit-scores/actions/sit-customer-credit-limit-scores-accept/sit-customer-credit-limit-scores-accept.component';
 import { SitPayrollComponentsSettlementsColumnsEditComponent } from './containers/dictionaries/sit-payroll-components/actions/sit-payroll-components-settlements-columns-edit/sit-payroll-components-settlements-columns-edit.component';
+import { SitCashRegisterSaleReportsComponent } from './containers/dictionaries/sit-cash-register-sale-reports/sit-cash-register-sale-reports.component';
+import { SitCashRegisterSaleReportsImportComponent } from './containers/dictionaries/sit-cash-register-sale-reports/actions/sit-cash-register-sale-reports-import/sit-cash-register-sale-reports-import.component';
 
 
 @NgModule({
@@ -586,7 +588,9 @@ import { SitPayrollComponentsSettlementsColumnsEditComponent } from './container
         SitAcceptanceStepPersonsDefEditComponent,
         SitAcceptanceTablesEditComponent,
         SitCustomerCreditLimitScoresAcceptComponent,
-        SitPayrollComponentsSettlementsColumnsEditComponent
+        SitPayrollComponentsSettlementsColumnsEditComponent,
+        SitCashRegisterSaleReportsComponent,
+        SitCashRegisterSaleReportsImportComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },

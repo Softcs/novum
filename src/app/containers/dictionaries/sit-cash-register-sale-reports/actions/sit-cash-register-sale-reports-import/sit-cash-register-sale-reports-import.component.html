@@ -1,0 +1,25 @@
+<sit-proc-params
+  [(actionExecuteData)]="actionExecuteData"
+  >
+  <sit-data-set-container ident="sitCashRegisterSaleReportsImport">
+    <div class="sit-proc-params-content" fxLayout="column">
+      <div fxLayout="row">
+        <sit-data-input #sitControl type="text" field="CashRegisterIdent" label="Identyfikator kasy" appearance="outline" style="width: 150px" ></sit-data-input>
+        <sit-data-input #sitControl type="text" field="WarehouseIdent" label="Magazyn" appearance="outline" style="width: 150px" 
+          [lookupDisplayFields] = "['Warehouse Ident', 'WarehouseName']"></sit-data-input>
+			</div>
+      <div fxLayout="row">
+        <sit-data-input type="date" #sitControl field="ReportDate" label="Data raportu" appearance="outline"></sit-data-input>
+        <sit-data-input #sitControl type="text" field="ReportDescription" label="Opis" appearance="outline" fxFlex></sit-data-input>
+      </div>			
+      <div fxLayout="row">
+        <sit-data-input type="date" #sitControl field="SaleDateFrom" label="Sprzedaż od" appearance="outline"></sit-data-input>
+        <sit-data-input type="date" #sitControl field="SaleDateTo" label="Sprzedaż do" appearance="outline"></sit-data-input>
+      </div>			
+      <div fxLayout="row">
+        <sit-files-button #sitSimpleButton fieldIdent="sitImportsG" fieldFileNames="fileName" pathIdent="pathIdent"></sit-files-button >
+        <sit-data-input #sitControl type="text" field="fileName" label="Nazwa pliku" appearance="outline" style="width: 500px;"></sit-data-input>
+      </div>
+    </div>
+  </sit-data-set-container>
+</sit-proc-params>
