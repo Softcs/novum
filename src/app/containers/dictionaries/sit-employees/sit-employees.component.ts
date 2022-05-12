@@ -50,17 +50,21 @@ export class SitEmployeesComponent extends SitDictBaseComponent {
     ];
 
     this.gridColumnsDefinition["sitEmployeeVacationLimits"] = [
-      { headerName: 'Id', field: 'ssitEmployeeVacationLimitsId',width: 90, defaultVisibility: false},
-      { headerName: 'Data od', field: 'DateFrom', filter: 'agDateColumnFilter',width: 90, floatingFilter: false, sort: 'desc', suppressMenu: true },
-      { headerName: 'Data do', field: 'DateTo', filter: 'agDateColumnFilter',width: 90, floatingFilter: false, suppressMenu: true },
-      { headerName: 'Limit', field: 'VacationLimit', filter: 'agTextColumnFilter', width: 100 },
+      { headerName: 'Id', field: 'sitEmployeeVacationLimitsId',width: 90, defaultVisibility: false},
+      { headerName: 'Typ urlopu', field: 'AbsenceIdent', filter: 'agTextColumnFilter', width: 220 },
+      { headerName: 'Rok', field: 'Year', filter: 'agTextColumnFilter', width: 90, sort: 'desc' },
+      { headerName: 'Aktualny', field: 'VacationLimit', filter: 'agTextColumnFilter', width: 130 },
+      { headerName: 'Zaległy', field: 'VacationOverdue', filter: 'agTextColumnFilter', width: 130 },
+      { headerName: 'Do wykorzystania', field: 'ActualLimit', filter: 'agTextColumnFilter', width: 130 },            
+      { headerName: 'Wykorzystany', field: 'ActualLimitUsed', filter: 'agTextColumnFilter', width: 130 },            
+      { headerName: 'Planowany', field: 'VacationPlanned', filter: 'agTextColumnFilter', width: 130 },            
+      { headerName: 'Pozostało', field: 'VacationForUse', filter: 'agTextColumnFilter', width: 130 },            
     ];
 
     this.gridColumnsDefinition["sitEmployeeVacationLimitsUsed"] = [
+      { headerName: 'Id', field: 'sitEmployeeVacationLimitsId',width: 90, defaultVisibility: false},      
       { headerName: 'Rok', field: 'Year', filter: 'agTextColumnFilter', width: 100, sort: 'desc'},
-      { headerName: 'Data od', field: 'DateFrom', filter: 'agDateColumnFilter',width: 90, floatingFilter: false, sort: 'desc', suppressMenu: true },
-      { headerName: 'Data do', field: 'DateTo', filter: 'agDateColumnFilter',width: 90, floatingFilter: false, suppressMenu: true },
-      { headerName: 'Limit', field: 'VacationLimit', filter: 'agTextColumnFilter', width: 120 },
+      { headerName: 'Limit', field: 'ActualLimit', filter: 'agTextColumnFilter', width: 120 },
       { headerName: 'Wyliczony', field: 'CalculatedLimit', filter: 'agTextColumnFilter', width: 120 },
       { headerName: 'Wykorzystany', field: 'ActualLimitUsed', filter: 'agTextColumnFilter', width: 120 },            
     ];
