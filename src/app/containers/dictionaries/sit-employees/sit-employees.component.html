@@ -1,16 +1,16 @@
 <sit-dict-container ident="sitEmployees" #sitDictcontainer fxFill>
-  <as-split direction="vertical">
+  <as-split #sitSpliter direction="vertical">
     <as-split-area [size]="60">
       <div fxLayout="row" fxFill fxLayoutGap="5px">
         <div fxLayout="column" fxFill class="content">
           <!-- Filtry sitEmployees -->
           <sit-data-set-container ident="sitFilterEmployees" >
             <div class="sit-filter-bar" fxLayout="row">
-              <sit-data-input #sitControl id="searchEmployees" field="searchEmployees" label="Filtruj pracowników" placeholder="Imię, nazwisko, PESEL, identyfikator" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
-              <sit-data-checkbox #sitControl field="activeOnly" label="Tylko z umową" labelPosition="after" checked="true" refreshOnChange="true"></sit-data-checkbox>
+              <sit-data-input #sitControl id="searchEmployees" field="searchEmployees" label="Filtruj pracowników" placeholder="Imię, nazwisko, PESEL, identyfikator" appearance="outline" [showRefreshButton]="true" style="width: 300px;"></sit-data-input>
+              <sit-data-checkbox #sitControl field="activeOnly" label="Tylko z umową" labelPosition="after" checked="true" [refreshOnChange]="true"></sit-data-checkbox>
             </div>
           </sit-data-set-container>
-          <sit-data-set-container  ident="sitEmployees" showActionsToolbar="true" fxFlex fxLayout="column">
+          <sit-data-set-container  ident="sitEmployees" [showActionsToolbar]="true" fxFlex fxLayout="column">
             <div class="data-table" fxFlex>
               <ag-grid-angular
                 #sitSetDataSource
@@ -28,7 +28,7 @@
       <mat-tab-group id="tab-group" animationDuration="0ms">
         <mat-tab label="Umowy">
           <div fxFill fxLayout="column">
-            <sit-data-set-container ident="sitEmployeeContracts" showActionsToolbar="true" fxLayout="column" fxFlex>
+            <sit-data-set-container ident="sitEmployeeContracts" [showActionsToolbar]="true" fxLayout="column" fxFlex>
               <div class="data-table" fxFlex>
                 <ag-grid-angular
                   #sitSetDataSource
@@ -41,47 +41,27 @@
           </div>
         </mat-tab>
         <mat-tab label="Urlopy">
-          <mat-tab-group id="tab-group" animationDuration="0ms">
-            <mat-tab label="Wykorzystanie">
-              <div fxFill fxLayout="column">
-                <sit-data-set-container ident="sitFilterEmployeeVacationLimitsUsed" >
-                  <div class="sit-filter-bar" fxLayout="row">
-                    <sit-data-input #sitControl id="year" field="year" label="Rok" placeholder="" appearance="outline" showRefreshButton="true" style="width: 200px;"></sit-data-input>
-                    <sit-data-checkbox #sitControl field="showAllYears" label="Wszystkie lata" labelPosition="after" checked="false" refreshOnChange="true"></sit-data-checkbox>
-                    <sit-data-checkbox #sitControl field="showDetails" label="Szczegóły wyliczenia" labelPosition="after" checked="false" refreshOnChange="true"></sit-data-checkbox>
-                  </div>
-                </sit-data-set-container>                
-                <sit-data-set-container ident="sitEmployeeVacationLimitsUsed" showActionsToolbar="false" fxLayout="column" fxFlex>
-                  <div class="data-table" fxFlex>
-                    <ag-grid-angular
-                      #sitSetDataSource
-                      style="width: 100%; height: 100%;"
-                      class="ag-theme-balham"
-                    >
-                    </ag-grid-angular>
-                  </div>
-                </sit-data-set-container>
+          <div fxFill fxLayout="column">
+            <sit-data-set-container ident="sitEmployeeVacationLimitsFilter" >
+              <div class="sit-filter-bar" fxLayout="row">
+                <sit-data-checkbox #sitControl field="showAllYears" label="Wszystkie lata" labelPosition="after" checked="false" [refreshOnChange]="true"></sit-data-checkbox>
               </div>
-            </mat-tab>
-            <mat-tab label="Limity">
-              <div fxFill fxLayout="column">
-                <sit-data-set-container ident="sitEmployeeVacationLimits" showActionsToolbar="true" fxLayout="column" fxFlex>
-                  <div class="data-table" fxFlex>
-                    <ag-grid-angular
-                      #sitSetDataSource
-                      style="width: 100%; height: 100%;"
-                      class="ag-theme-balham"
-                    >
-                    </ag-grid-angular>
-                  </div>
-                </sit-data-set-container>
+            </sit-data-set-container>                
+            <sit-data-set-container ident="sitEmployeeVacationLimits" [showActionsToolbar]="true" fxLayout="column" fxFlex>
+              <div class="data-table" fxFlex>
+                <ag-grid-angular
+                  #sitSetDataSource
+                  style="width: 100%; height: 100%;"
+                  class="ag-theme-balham"
+                >
+                </ag-grid-angular>
               </div>
-            </mat-tab> 
-          </mat-tab-group>
+            </sit-data-set-container>
+          </div>
         </mat-tab>
         <mat-tab label="Dane u klienta">
           <div fxFill fxLayout="column">
-            <sit-data-set-container ident="sitEmployeesCust" showActionsToolbar="true" fxLayout="column" fxFlex>
+            <sit-data-set-container ident="sitEmployeesCust" [showActionsToolbar]="false" fxLayout="column" fxFlex>
               <div class="data-table" fxFlex>
                 <ag-grid-angular
                   #sitSetDataSource
