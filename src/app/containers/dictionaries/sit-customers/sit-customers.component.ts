@@ -83,21 +83,27 @@ export class SitCustomersComponent extends SitDictBaseComponent {
     ];
 
     this.gridColumnsDefinition["sitHRParams4InvoicingContr"] = [
+      { headerName: 'Od dnia', field: 'DateFrom', width: 100, sort: 'desc',suppressMenu: true, renderType: "date"}, // domyslny format yyyy-MM-dd - mozna przeciazyc przez np. renderFormat: "yyyy-MM-dd"
       { headerName: 'Rez url.', headerTooltip:'Licz rezerwę urlopową', field: 'CalcVacRes', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 70, renderType: "checkbox"},
       { headerName: 'PFRON', headerTooltip:'Licz PFRON', field: 'CalcPFRON', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 70, renderType: "checkbox"},
-      { headerName: 'Ryz. url.', headerTooltip:'Licz ryzyko urlopowe', field: 'CalcPFRON', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 70, renderType: "checkbox"},
+      { headerName: 'Ryz. chor.', headerTooltip:'Licz ryzyko chorobowe', field: 'CalcSickRisk', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 70, renderType: "checkbox"},
       { headerName: 'Wsp.ryz.', field: 'SickRiskFactor',headerTooltip:'Współczynnik do wyliczenia ryzyka urlopowego', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
-      { headerName: 'Od dnia', field: 'DateFrom', width: 100, sort: 'desc',suppressMenu: true, renderType: "date"}, // domyslny format yyyy-MM-dd - mozna przeciazyc przez np. renderFormat: "yyyy-MM-dd"
-      { headerName: 'Zasadnicze', field: 'BaseRate', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
-      { headerName: 'Nocne', field: 'NightRate', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
-      { headerName: 'Nadgodziny', field: 'OvertimeRate', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
-      { headerName: 'Premie', field: 'BonusRate', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
-      { headerName: 'Urlop', field: 'VacRate', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
-      { headerName: 'Urlop dod.', field: 'VacAddRate', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
-      { headerName: 'Chorobowe', field: 'SickRate', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
+      { headerName: 'Zasadnicze', field: 'BaseRate',headerTooltip:'Zasadnicze', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
+      { headerName: 'Nocne', field: 'NightRate',headerTooltip:'Nocne', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
+      { headerName: 'Nadgodziny', field: 'OvertimeRate',headerTooltip:'Nadgodziny', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
+      { headerName: 'Premie', field: 'BonusRate', headerTooltip:'Premie',filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
+      { headerName: 'Urlop', field: 'VacRate',headerTooltip:'Urlop', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
+      { headerName: 'Urlop dod.', field: 'VacAddRate',headerTooltip:'Urlop dodatkowy', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
+      { headerName: 'Chorobowe', field: 'SickRate', headerTooltip:'Chorobowe',filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
+      { headerName: 'Nagr./bony', field: 'VouchersRate',headerTooltip:'Nagrody i bony', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
+      { headerName: 'Ryczałt', field: 'LumpSumRate',headerTooltip:'Ryczałt', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
+      { headerName: 'Zakw.', field: 'Addition01Rate',headerTooltip:'Dofinansowanie do zakwaterowania', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
+      { headerName: 'Ubezp.', field: 'Addition05Rate',headerTooltip:'Dofinansowanie do ubezpiecznia', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
+      { headerName: 'Med.', field: 'Addition06Rate', headerTooltip:'Dofinansowanie do pakietów medycznych',filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
+      { headerName: 'Posiłki', field: 'Addition02Rate',headerTooltip:'Dofinansowanie do posiłków', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
+      { headerName: 'Inne', field: 'AdditionsRate',headerTooltip:'Inne dodatki', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
+      { headerName: 'ZUS dod.', field: 'ZUSAddRate',headerTooltip:'Dodatkowy ZUS', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
       { headerName: 'PFRON', field: 'PFRONRate', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
-      { headerName: 'Ryczałt', field: 'LumpSumRate', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
-      { headerName: 'ZUS dod.', field: 'ZUSAddRate', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
       { headerName: 'PPK', field: 'PPKRate', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
     ];    
   }
