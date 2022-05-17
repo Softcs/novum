@@ -150,6 +150,10 @@
                   <div fxLayout="row">
                     <sit-data-input #sitControl id="search" field="search" label="Filtruj kontrahentów" placeholder="Nazwa, Identyfikator" appearance="outline" 
                       style="width: 360px;" [showRefreshButton]="true" ></sit-data-input>
+                      <sit-data-radio #sitControl field="limitStatus" type="row" label="Status"
+                      [buttons]="[{'caption':'Wszystkie','value': '0'},{'caption':'Brak limitu','value': '1', 'checked':true},
+                      {'caption':'Limit nieaktualny','value': '2'},{'caption':'Limit aktualny','value': '3'}]"
+                    ></sit-data-radio>
                   </div>
                 </sit-data-set-container>
               </div>            
