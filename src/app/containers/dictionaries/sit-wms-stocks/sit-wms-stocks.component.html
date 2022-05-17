@@ -32,7 +32,7 @@
                     </div>
                   </as-split-area>
                   <as-split-area [size]="30">
-                    <sit-data-set-container ident="sitWMSStocksDet" (activeRowChanged)="activeRowWMSStocksDetChanged($event)" fxFill>
+                    <sit-data-set-container ident="sitWMSStocksDet" (activeRowChanged)="activeRowWMSStocksDetChanged($event)" fxLayout="row" fxFill>
                       <div fxFlex="60">
                         <ag-grid-angular #sitSetDataSource
                           #agGrid
