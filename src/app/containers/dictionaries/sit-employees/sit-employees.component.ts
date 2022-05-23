@@ -61,12 +61,17 @@ export class SitEmployeesComponent extends SitDictBaseComponent {
       { headerName: 'Pozostało', field: 'VacationForUse', filter: 'agTextColumnFilter', width: 130 },            
     ];
 
-    this.gridColumnsDefinition["sitEmployeeVacationLimitsUsed"] = [
-      { headerName: 'Id', field: 'sitEmployeeVacationLimitsId',width: 90, defaultVisibility: false},      
-      { headerName: 'Rok', field: 'Year', filter: 'agTextColumnFilter', width: 100, sort: 'desc'},
-      { headerName: 'Limit', field: 'ActualLimit', filter: 'agTextColumnFilter', width: 120 },
-      { headerName: 'Wyliczony', field: 'CalculatedLimit', filter: 'agTextColumnFilter', width: 120 },
-      { headerName: 'Wykorzystany', field: 'ActualLimitUsed', filter: 'agTextColumnFilter', width: 120 },            
+    this.gridColumnsDefinition["sitEmployeesExtAppExport"] = [
+      { headerName: 'Id', field: 'sitEmployeeId',width: 90, defaultVisibility: false},      
+      { headerName: 'Identyfikator', field: 'EmployeeIdent', filter: 'agTextColumnFilter', width: 120 },
+      { headerName: 'Imię', field: 'FirstName', filter: 'agTextColumnFilter' },
+      { headerName: 'Nazwisko', field: 'LastName', filter: 'agTextColumnFilter' },
+      { headerName: 'PESEL', field: 'PESEL', filter: 'agTextColumnFilter', width: 100 },
+      { headerName: 'Cudzoziemiec', field: 'Foreigner', filter: 'agNumberColumnFilter', renderType: 'checkbox', width: 100, suppressMenu: true, cellClass: "grid-cell-centered" },
+      { headerName: 'Id zew. 01', field: 'ExtIdent01', filter: 'agTextColumnFilter', width: 100 },
+      { headerName: 'Id zew. 02', field: 'ExtAppIdent02', filter: 'agTextColumnFilter', width: 100 },
+      { headerName: 'Id statusu', field: 'StatusValueIdent_ExtAppExport', filter: 'agTextColumnFilter', width: 100 },
+      { headerName: 'Nazwa statusu', field: 'StatusValueName_ExtAppExport', filter: 'agTextColumnFilter', width: 250 },
     ];
 
     this.gridColumnsDefinition["sitEmployeesCust"] = [
