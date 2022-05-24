@@ -3,16 +3,22 @@
   >
   <sit-data-set-container ident="sitEmployeesEdit">
     <div class="sit-proc-params-content" fxLayout="column">
-      <sit-data-label type="number" #sitControl field="EmployeeName" label="Pracownik:"></sit-data-label>
+      <sit-data-label type="text" #sitControl field="EmployeeName" label="Pracownik:"></sit-data-label>
       <sit-data-input #sitControl type="text" field="HRCompanyHierarchyIdent" label="Stanowisko" appearance="outline"
         [lookupDisplayFields] = "['HRCompanyHierarchyIdentLvl', 'HRCompanyHierarchyParentIdent']"
       ></sit-data-input>
       <sit-data-input #sitControl type="text" field="VacationRequestAcceptEmployeeName" label="Osoba akceptująca urlop" appearance="outline"
         [lookupDisplayFields] = "['EmployeeName']"
       ></sit-data-input> 
+      <sit-data-input #sitControl type="text" field="SuperiorEmployeeName" label="Przełożony" appearance="outline"
+        [lookupDisplayFields] = "['EmployeeName']"
+      ></sit-data-input> 
       <div fxLayout="row">
         <sit-data-input #sitControl type="text" field="PhoneNumber" label="Numer telefonu" appearance="outline" fxFlex=50></sit-data-input>
         <sit-data-input #sitControl type="text" field="MobileNumber" label="Numer telefonu komórkowego" appearance="outline" fxFlex></sit-data-input>
+      </div> 
+      <div fxLayout="row">
+        <sit-data-input #sitControl type="text" field="Email" label="Email" appearance="outline" fxFlex></sit-data-input>
       </div> 
     </div>
   </sit-data-set-container>
