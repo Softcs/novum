@@ -1,6 +1,6 @@
 {
   "name": "Novum",
-  "version": "2.1.146",
+  "version": "2.1.148",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --open",

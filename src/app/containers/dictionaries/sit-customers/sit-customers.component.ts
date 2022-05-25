@@ -84,6 +84,7 @@ export class SitCustomersComponent extends SitDictBaseComponent {
 
     this.gridColumnsDefinition["sitHRParams4InvoicingContr"] = [
       { headerName: 'Od dnia', field: 'DateFrom', width: 100, sort: 'desc',suppressMenu: true, renderType: "date"}, // domyslny format yyyy-MM-dd - mozna przeciazyc przez np. renderFormat: "yyyy-MM-dd"
+      { headerName: 'Rekr.kli.', headerTooltip:'Rekrutacja klienta', field: 'CustRecr', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 70, renderType: "checkbox"},
       { headerName: 'Rez url.', headerTooltip:'Licz rezerwę urlopową', field: 'CalcVacRes', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 70, renderType: "checkbox"},
       { headerName: 'PFRON', headerTooltip:'Licz PFRON', field: 'CalcPFRON', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 70, renderType: "checkbox"},
       { headerName: 'Ryz. chor.', headerTooltip:'Licz ryzyko chorobowe', field: 'CalcSickRisk', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 70, renderType: "checkbox"},
@@ -105,6 +106,8 @@ export class SitCustomersComponent extends SitDictBaseComponent {
       { headerName: 'ZUS dod.', field: 'ZUSAddRate',headerTooltip:'Dodatkowy ZUS', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
       { headerName: 'PFRON', field: 'PFRONRate', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
       { headerName: 'PPK', field: 'PPKRate', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
+      { headerName: 'Posi.bez VAT', headerTooltip:'Posiłki bez VAT', field: 'MealsNoVAT', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 70, renderType: "checkbox"},
+      { headerName: '% VAT`', field: 'MealsVATRate', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 60,suppressMenu: true},
     ];    
   }
 }

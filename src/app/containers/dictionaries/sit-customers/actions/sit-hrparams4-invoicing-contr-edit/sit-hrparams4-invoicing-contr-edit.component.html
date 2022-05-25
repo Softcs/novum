@@ -4,7 +4,10 @@
   <sit-data-set-container ident="sitHRParams4InvoicingContrEdit">
     <div class="sit-proc-params-content" fxLayout="column">
       <div class="sit-form-section-title">Narzuty %</div>
-      <sit-data-input type="date" #sitControl field="DateFrom" label="Od dnia" appearance="outline" style="width: 130px;"></sit-data-input>
+      <div fxLayout="row">
+        <sit-data-input type="date" #sitControl field="DateFrom" label="Od dnia" appearance="outline" style="width: 130px;"></sit-data-input>
+        <sit-data-checkbox #sitControl field="CustRecr" label="Rekrutacja klienta"></sit-data-checkbox>
+      </div>
       <div fxLayout="row">
         <sit-data-checkbox #sitControl field="CalcVacRes" label="Licz rezerwę urlopową"></sit-data-checkbox>
         <sit-data-checkbox #sitControl field="CalcPFRON" label="Licz PFRON"></sit-data-checkbox>
@@ -19,6 +22,7 @@
           <sit-data-input type="number" #sitControl field="BonusRate" label="Premie" appearance="outline"></sit-data-input>
           <sit-data-input type="number" #sitControl field="VacRate" label="Urlop" appearance="outline"></sit-data-input>
           <sit-data-input type="number" #sitControl field="VacAddRate" label="Dodatkowy urlop" appearance="outline"></sit-data-input>
+          <sit-data-checkbox #sitControl field="MealsNoVAT" label="Posiłki bez VAT"></sit-data-checkbox>
         </div>
         <div fxLayout="column">
           <sit-data-input type="number" #sitControl field="SickRate" label="Chorobowe" appearance="outline"></sit-data-input>
@@ -27,6 +31,7 @@
           <sit-data-input type="number" #sitControl field="Addition01Rate" label="Dof.do zakwaterowania" appearance="outline"></sit-data-input>
           <sit-data-input type="number" #sitControl field="Addition05Rate" label="Dof.do ubezpieczenia" appearance="outline"></sit-data-input>
           <sit-data-input type="number" #sitControl field="Addition06Rate" label="Dof. do op. medycznej" appearance="outline"></sit-data-input>
+          <sit-data-input type="number" #sitControl field="MealsVATRate" label="% VAT - posiłki" appearance="outline"></sit-data-input>
         </div>
         <div>
           <sit-data-input type="number" #sitControl field="Addition02Rate" label="Dof.do posiłków" appearance="outline"></sit-data-input>

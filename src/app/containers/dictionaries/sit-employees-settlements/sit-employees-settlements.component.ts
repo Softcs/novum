@@ -611,7 +611,7 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
           renderType: 'number',
           cellClass: ['font11','numberFormat2Dec'],
         },         
-        { headerName: 'Zwroty', headerTooltip: 'Zwroty za badania lekarskie, okulary, delegacje do posiłków', field: 'Addition03', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 100, suppressMenu: true, agr: 'sum', columnGroupShow: "open", sortable: true, resizable: true,
+        { headerName: 'Zwroty', headerTooltip: 'Zwroty za badania lekarskie, okulary, delegacje', field: 'Addition03', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 100, suppressMenu: true, agr: 'sum', columnGroupShow: "open", sortable: true, resizable: true,
           renderType: 'number',
           cellClass: ['font11','numberFormat2Dec'],
         },
