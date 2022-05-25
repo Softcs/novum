@@ -9,6 +9,8 @@ import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-di
 })
 export class SitEmployeesComponent extends SitDictBaseComponent {
 
+  json;
+
   public prepareColumnsDefinitnion() {
     this.gridColumnsDefinition["sitEmployees"] = [
       { headerName: 'Id', field: 'sitEmployeesId',width: 90, defaultVisibility: false},
@@ -63,15 +65,15 @@ export class SitEmployeesComponent extends SitDictBaseComponent {
 
     this.gridColumnsDefinition["sitEmployeesExtAppExport"] = [
       { headerName: 'Id', field: 'sitEmployeeId',width: 90, defaultVisibility: false},      
-      { headerName: 'Identyfikator', field: 'EmployeeIdent', filter: 'agTextColumnFilter', width: 120 },
-      { headerName: 'Imię', field: 'FirstName', filter: 'agTextColumnFilter' },
-      { headerName: 'Nazwisko', field: 'LastName', filter: 'agTextColumnFilter' },
-      { headerName: 'PESEL', field: 'PESEL', filter: 'agTextColumnFilter', width: 100 },
-      { headerName: 'Cudzoziemiec', field: 'Foreigner', filter: 'agNumberColumnFilter', renderType: 'checkbox', width: 100, suppressMenu: true, cellClass: "grid-cell-centered" },
+      { headerName: 'Identyfikator', field: 'EmployeeIdent', filter: 'agTextColumnFilter', width: 110 },
+      { headerName: 'Imię', field: 'FirstName', filter: 'agTextColumnFilter', width: 120  },
+      { headerName: 'Nazwisko', field: 'LastName', filter: 'agTextColumnFilter', width: 120  },
+      { headerName: 'PESEL', field: 'PESEL', filter: 'agTextColumnFilter', width: 100, defaultVisibility: false },
+      { headerName: 'Cudzoziemiec', field: 'Foreigner', filter: 'agNumberColumnFilter', renderType: 'checkbox', width: 100, suppressMenu: true, cellClass: "grid-cell-centered", defaultVisibility: false },
       { headerName: 'Id zew. 01', field: 'ExtIdent01', filter: 'agTextColumnFilter', width: 100 },
       { headerName: 'Id zew. 02', field: 'ExtAppIdent02', filter: 'agTextColumnFilter', width: 100 },
       { headerName: 'Id statusu', field: 'StatusValueIdent_ExtAppExport', filter: 'agTextColumnFilter', width: 100 },
-      { headerName: 'Nazwa statusu', field: 'StatusValueName_ExtAppExport', filter: 'agTextColumnFilter', width: 250 },
+      { headerName: 'Nazwa statusu', field: 'StatusValueName_ExtAppExport', filter: 'agTextColumnFilter', width: 150 },
     ];
 
     this.gridColumnsDefinition["sitEmployeesCust"] = [
@@ -80,4 +82,7 @@ export class SitEmployeesComponent extends SitDictBaseComponent {
     ];  
   }
 
+  activeRowChanged(activeRow) {
+    this.json = activeRow?.DataForExport == null ? JSON.parse('{}') :  JSON.parse(activeRow.DataForExport) ;
+  }
 }
