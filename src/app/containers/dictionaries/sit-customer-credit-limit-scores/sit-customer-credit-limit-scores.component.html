@@ -145,14 +145,16 @@
           </mat-tab>
           <mat-tab label="Statusy limitów">
             <div fxLayout="column" fxFill class="content">
-              <div class="sit-filter-bar">
-                <sit-data-set-container ident="sitFilterCustomerCreditLimitScoresStatus" fxLayout="column">
-                  <div fxLayout="row">
-                    <sit-data-input #sitControl id="search" field="search" label="Filtruj kontrahentów" placeholder="Nazwa, Identyfikator" appearance="outline" 
-                      style="width: 360px;" [showRefreshButton]="true" ></sit-data-input>
-                  </div>
-                </sit-data-set-container>
-              </div>            
+              <sit-data-set-container ident="sitFilterCustomerCreditLimitScoresStatus" fxLayout="row">
+                <div class="sit-filter-bar" fxLayout="row">
+                  <sit-data-input #sitControl id="search" field="search" label="Filtruj kontrahentów" placeholder="Nazwa, Identyfikator" appearance="outline" 
+                    style="width: 360px;" [showRefreshButton]="true" ></sit-data-input>
+                  <sit-data-radio #sitControl field="limitStatus" type="row" label="Status"
+                    [buttons]="[{'caption':'Wszystkie','value': '0'},{'caption':'Brak limitu','value': '1', 'checked':true},
+                    {'caption':'Limit nieaktualny','value': '2'},{'caption':'Limit aktualny','value': '3'}]"
+                  ></sit-data-radio>
+                </div>
+              </sit-data-set-container>
               <sit-data-set-container ident="sitCustomerCreditLimitScoresStatus" [showActionsToolbar]="false" #sitDataSetContainer fxFill fxLayout="column">
                 <div class="data-table" fxFlex>
                   <ag-grid-angular

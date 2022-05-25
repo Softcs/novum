@@ -26,15 +26,15 @@ export class SitCashRegisterSaleReportsComponent extends SitDictBaseComponent {
     this.gridColumnsDefinition["sitCashRegisterSaleReportsPositions"] = [
       { headerName: 'ID', field: 'sitCashRegisterSaleReportsPositionsId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, defaultVisibility: false },
       { headerName: 'GUID', field: 'sitCashRegisterSaleReportsPositionsG', width: 100, defaultVisibility: false },
-      { headerName: 'Lp', field: 'OrdNumber', type: 'numericColumn', sortable: true, resizable: true, suppressMenu: true, width: 50 },
+      { headerName: 'Lp', field: 'OrdNumber', type: 'numericColumn', sortable: true, resizable: true, suppressMenu: true, width: 60, sort: 'asc' },
       { headerName: 'Produkt', field: 'ProductIdent', filter: 'agTextColumnFilter', width: 130, },
       { headerName: 'EAN', field: 'EAN', filter: 'agTextColumnFilter', width: 120, },
-      { headerName: 'Nazwa produktu', field: 'PositionDescription', filter: 'agTextColumnFilter', },
-      { headerName: 'Ilość', field: 'Quantity', filter: 'agNumberColumnFilter', type: 'numericColumn', suppressMenu: true, width: 60, renderType: 'number' },
+      { headerName: 'Nazwa produktu', field: 'ProductName', filter: 'agTextColumnFilter', width: 200,},
+      { headerName: 'Ilość', field: 'Quantity', filter: 'agNumberColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80, renderType: 'number' },
       { headerName: 'Cena', field: 'Price', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80, renderType: 'number' },
-      { headerName: 'Netto', field: 'Net', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80, renderType: 'number', agr: 'sum' },
+      { headerName: 'Netto', field: 'Net', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 100, renderType: 'number', agr: 'sum' },
       { headerName: 'Vat', field: 'VAT', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80, renderType: 'number', agr: 'sum' },
-      { headerName: 'Brutto', field: 'Gross', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80, renderType: 'number', agr: 'sum' },
+      { headerName: 'Brutto', field: 'Gross', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 100, renderType: 'number', agr: 'sum' },
     ];
 
     this.gridColumnsDefinition["sitCashRegisterSaleWithStock"] = [

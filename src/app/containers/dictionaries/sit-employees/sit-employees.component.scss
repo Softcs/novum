@@ -1,14 +1,24 @@
 #wrapper{
-    min-height: 100%;
-    height: 100%;
-    box-sizing: border-box;/*new*/
-    //background-color: rgba(255, 255, 255, 0.733);
-  }
+  min-height: 100%;
+  height: 100%;
+  box-sizing: border-box;/*new*/
+  //background-color: rgba(255, 255, 255, 0.733);
+}
   
-  #tab-group{
-    height: 100%;
-  }
-  #tab-group mat-tab-body {
-    flex-grow: 1;
-  }
+#tab-group{
+  height: 100%;
+}
+
+#tab-group mat-tab-body {
+  flex-grow: 1;
+}
   
+div.json{
+  overflow: hidden;
+  height: calc(100vh - 130px);
+}
+  
+::ng-deep .ngx-json-viewer{
+  overflow: auto !important;
+}
+   

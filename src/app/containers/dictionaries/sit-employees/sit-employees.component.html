@@ -1,79 +1,121 @@
 <sit-dict-container ident="sitEmployees" #sitDictcontainer fxFill>
-  <as-split #sitSpliter direction="vertical">
-    <as-split-area [size]="60">
-      <div fxLayout="row" fxFill fxLayoutGap="5px">
+  <div fxLayout="column" fxFill >
+    <mat-tab-group id="tab-group" animationDuration="0ms">
+      <mat-tab label="Dane pracowników">
+        <as-split #sitSpliter direction="vertical">
+          <as-split-area [size]="60">
+            <div fxLayout="row" fxFill fxLayoutGap="5px">
+              <div fxLayout="column" fxFill class="content">
+                <sit-data-set-container ident="sitFilterEmployees" >
+                  <div class="sit-filter-bar" fxLayout="row">
+                    <sit-data-input #sitControl id="searchEmployees" field="searchEmployees" label="Filtruj pracowników" placeholder="Imię, nazwisko, PESEL, identyfikator" appearance="outline" [showRefreshButton]="true" style="width: 300px;"></sit-data-input>
+                    <sit-data-checkbox #sitControl field="activeOnly" label="Tylko z aktywną umową" labelPosition="after" checked="true" [refreshOnChange]="true"></sit-data-checkbox>
+                  </div>
+                </sit-data-set-container>
+                <sit-data-set-container  ident="sitEmployees" [showActionsToolbar]="true" fxFlex fxLayout="column">
+                  <div class="data-table" fxFlex>
+                    <ag-grid-angular
+                      #sitSetDataSource
+                      #sitEmployeesGrid
+                      style="width: 100%; height: 100%;"
+                      class="ag-theme-balham"
+                    >
+                    </ag-grid-angular>
+                  </div>
+                </sit-data-set-container>
+              </div>
+            </div>
+          </as-split-area>
+          <as-split-area [size]="40">
+            <mat-tab-group id="tab-group" animationDuration="0ms">
+              <mat-tab label="Umowy">
+                <div fxFill fxLayout="column">
+                  <sit-data-set-container ident="sitEmployeeContracts" [showActionsToolbar]="true" fxLayout="column" fxFlex>
+                    <div class="data-table" fxFlex>
+                      <ag-grid-angular
+                        #sitSetDataSource
+                        style="width: 100%; height: 100%;"
+                        class="ag-theme-balham"
+                      >
+                      </ag-grid-angular>
+                    </div>
+                  </sit-data-set-container>
+                </div>
+              </mat-tab>
+              <mat-tab label="Urlopy">
+                <div fxFill fxLayout="column">
+                  <sit-data-set-container ident="sitEmployeeVacationLimitsFilter" >
+                    <div class="sit-filter-bar" fxLayout="row">
+                      <sit-data-checkbox #sitControl field="showAllYears" label="Wszystkie lata" labelPosition="after" checked="false" [refreshOnChange]="true"></sit-data-checkbox>
+                    </div>
+                  </sit-data-set-container>                
+                  <sit-data-set-container ident="sitEmployeeVacationLimits" [showActionsToolbar]="true" fxLayout="column" fxFlex>
+                    <div class="data-table" fxFlex>
+                      <ag-grid-angular
+                        #sitSetDataSource
+                        style="width: 100%; height: 100%;"
+                        class="ag-theme-balham"
+                      >
+                      </ag-grid-angular>
+                    </div>
+                  </sit-data-set-container>
+                </div>
+              </mat-tab>
+              <mat-tab label="Dane u klienta">
+                <div fxFill fxLayout="column">
+                  <sit-data-set-container ident="sitEmployeesCust" [showActionsToolbar]="false" fxLayout="column" fxFlex>
+                    <div class="data-table" fxFlex>
+                      <ag-grid-angular
+                        #sitSetDataSource
+                        style="width: 100%; height: 100%;"
+                        class="ag-theme-balham"
+                      >
+                      </ag-grid-angular>
+                    </div>
+                  </sit-data-set-container>
+                </div>
+              </mat-tab> 
+            </mat-tab-group>
+          </as-split-area>
+        </as-split>
+      </mat-tab>
+      <mat-tab label="Export danych">
         <div fxLayout="column" fxFill class="content">
-          <!-- Filtry sitEmployees -->
-          <sit-data-set-container ident="sitFilterEmployees" >
-            <div class="sit-filter-bar" fxLayout="row">
-              <sit-data-input #sitControl id="searchEmployees" field="searchEmployees" label="Filtruj pracowników" placeholder="Imię, nazwisko, PESEL, identyfikator" appearance="outline" [showRefreshButton]="true" style="width: 300px;"></sit-data-input>
-              <sit-data-checkbox #sitControl field="activeOnly" label="Tylko z umową" labelPosition="after" checked="true" [refreshOnChange]="true"></sit-data-checkbox>
-            </div>
-          </sit-data-set-container>
-          <sit-data-set-container  ident="sitEmployees" [showActionsToolbar]="true" fxFlex fxLayout="column">
-            <div class="data-table" fxFlex>
-              <ag-grid-angular
-                #sitSetDataSource
-                #sitEmployeesGrid
-                style="width: 100%; height: 100%;"
-                class="ag-theme-balham"
-              >
-              </ag-grid-angular>
-            </div>
-          </sit-data-set-container>
+          <as-split #sitSpliter direction="horizontal">
+            <as-split-area [size]="60">
+              <div fxLayout="column" fxFill class="content">
+                <sit-data-set-container ident="sitEmployeesExtAppExportFilter" fxLayout="row">
+                  <div class="sit-filter-bar" fxLayout="row">
+                    <sit-data-input #sitControl field="searchExtAppExport" label="Filtruj pracowników" placeholder="Identyfikator, nazwisko, PESEL" appearance="outline" 
+                      style="width: 300px;" [showRefreshButton]="true" ></sit-data-input>
+                  </div>
+                </sit-data-set-container>
+                <sit-data-set-container ident="sitEmployeesExtAppExport" [showActionsToolbar]="false" fxLayout="column" fxFlex>
+                  <div class="data-table" fxFlex>
+                    <ag-grid-angular
+                      #sitSetDataSource
+                      style="width: 100%; height: 100%;"
+                      class="ag-theme-balham"
+                    >
+                    </ag-grid-angular>
+                  </div>
+                </sit-data-set-container>
+              </div>
+            </as-split-area>
+            <as-split-area [size]="40">
+              <mat-tab-group id="tab-group" animationDuration="0ms">
+                <mat-tab label="Dane do exportu">
+                  <sit-data-set-container ident="sitEmployeesExtAppExport" fxLayout="column" (activeRowChanged)="activeRowChanged($event)" fxFill>
+                    <div class="json">
+                      <ngx-json-viewer [json]="json"></ngx-json-viewer>
+                    </div>
+                  </sit-data-set-container>
+                </mat-tab>
+              </mat-tab-group>               
+            </as-split-area>
+          </as-split>
         </div>
-      </div>
-    </as-split-area>
-    <as-split-area [size]="40">
-      <mat-tab-group id="tab-group" animationDuration="0ms">
-        <mat-tab label="Umowy">
-          <div fxFill fxLayout="column">
-            <sit-data-set-container ident="sitEmployeeContracts" [showActionsToolbar]="true" fxLayout="column" fxFlex>
-              <div class="data-table" fxFlex>
-                <ag-grid-angular
-                  #sitSetDataSource
-                  style="width: 100%; height: 100%;"
-                  class="ag-theme-balham"
-                >
-                </ag-grid-angular>
-              </div>
-            </sit-data-set-container>
-          </div>
-        </mat-tab>
-        <mat-tab label="Urlopy">
-          <div fxFill fxLayout="column">
-            <sit-data-set-container ident="sitEmployeeVacationLimitsFilter" >
-              <div class="sit-filter-bar" fxLayout="row">
-                <sit-data-checkbox #sitControl field="showAllYears" label="Wszystkie lata" labelPosition="after" checked="false" [refreshOnChange]="true"></sit-data-checkbox>
-              </div>
-            </sit-data-set-container>                
-            <sit-data-set-container ident="sitEmployeeVacationLimits" [showActionsToolbar]="true" fxLayout="column" fxFlex>
-              <div class="data-table" fxFlex>
-                <ag-grid-angular
-                  #sitSetDataSource
-                  style="width: 100%; height: 100%;"
-                  class="ag-theme-balham"
-                >
-                </ag-grid-angular>
-              </div>
-            </sit-data-set-container>
-          </div>
-        </mat-tab>
-        <mat-tab label="Dane u klienta">
-          <div fxFill fxLayout="column">
-            <sit-data-set-container ident="sitEmployeesCust" [showActionsToolbar]="false" fxLayout="column" fxFlex>
-              <div class="data-table" fxFlex>
-                <ag-grid-angular
-                  #sitSetDataSource
-                  style="width: 100%; height: 100%;"
-                  class="ag-theme-balham"
-                >
-                </ag-grid-angular>
-              </div>
-            </sit-data-set-container>
-          </div>
-        </mat-tab> 
-      </mat-tab-group>
-    </as-split-area>
-  </as-split>
+      </mat-tab>                  
+    </mat-tab-group>      
+  </div>
 </sit-dict-container>
