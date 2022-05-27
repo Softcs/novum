@@ -201,6 +201,7 @@ import { SitCustomerCreditLimitScoresAcceptComponent } from '@app/containers/dic
 import { SitPayrollComponentsSettlementsColumnsEditComponent } from '@app/containers/dictionaries/sit-payroll-components/actions/sit-payroll-components-settlements-columns-edit/sit-payroll-components-settlements-columns-edit.component';
 import { SitCashRegisterSaleReportsComponent } from '@app/containers/dictionaries/sit-cash-register-sale-reports/sit-cash-register-sale-reports.component';
 import { SitCashRegisterSaleReportsImportComponent } from '@app/containers/dictionaries/sit-cash-register-sale-reports/actions/sit-cash-register-sale-reports-import/sit-cash-register-sale-reports-import.component';
+import { SitSimpleMethodConfigurationsEditComponent } from '@app/containers/dictionaries/sit-rail-configurations/actions/sit-simple-method-configurations-edit/sit-simple-method-configurations-edit.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -408,6 +409,7 @@ export class FactoryService {
         sitPayrollComponentsSettlementsColumnsEdit: SitPayrollComponentsSettlementsColumnsEditComponent,
         sitCashRegisterSaleReports: SitCashRegisterSaleReportsComponent,
         sitCashRegisterSaleReportsImport: SitCashRegisterSaleReportsImportComponent,
+        sitSimpleMethodConfigurationsEdit: SitSimpleMethodConfigurationsEditComponent
     };
 
     public GetFactory(ident: string) {
