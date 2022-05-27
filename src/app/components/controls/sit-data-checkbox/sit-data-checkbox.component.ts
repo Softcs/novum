@@ -16,7 +16,7 @@ export class SitDataCheckboxComponent extends SitDataBaseComponent {
   @Input() refreshOnChange: boolean;
   @Input() labelPosition: 'after';
   indeterminate: boolean = false;
-
+  checked: boolean = false;
   //labelPosition: 'before' | 'after' = 'after'; //pozycja etykiety checkboxa, domyslnie za
   constructor(renderer: Renderer2, oncfService: OnCFService) {
     super(renderer);
@@ -40,6 +40,9 @@ export class SitDataCheckboxComponent extends SitDataBaseComponent {
     if (value === null) {
       this.indeterminate = true;
     }
+
+    this.checked = value == 1;
+
     super.setValue(value);
   }
 }

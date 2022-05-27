@@ -302,6 +302,8 @@ import { SitCustomerCreditLimitScoresAcceptComponent } from './containers/dictio
 import { SitPayrollComponentsSettlementsColumnsEditComponent } from './containers/dictionaries/sit-payroll-components/actions/sit-payroll-components-settlements-columns-edit/sit-payroll-components-settlements-columns-edit.component';
 import { SitCashRegisterSaleReportsComponent } from './containers/dictionaries/sit-cash-register-sale-reports/sit-cash-register-sale-reports.component';
 import { SitCashRegisterSaleReportsImportComponent } from './containers/dictionaries/sit-cash-register-sale-reports/actions/sit-cash-register-sale-reports-import/sit-cash-register-sale-reports-import.component';
+import { SitSimpleMethodConfigurationsEditComponent } from './containers/dictionaries/sit-rail-configurations/actions/sit-simple-method-configurations-edit/sit-simple-method-configurations-edit.component';
+import { SitWsUsersEditComponent } from './containers/dictionaries/sit-rail-dns/actions/sit-ws-users-edit/sit-ws-users-edit.component';
 
 
 @NgModule({
@@ -590,7 +592,9 @@ import { SitCashRegisterSaleReportsImportComponent } from './containers/dictiona
         SitCustomerCreditLimitScoresAcceptComponent,
         SitPayrollComponentsSettlementsColumnsEditComponent,
         SitCashRegisterSaleReportsComponent,
-        SitCashRegisterSaleReportsImportComponent
+        SitCashRegisterSaleReportsImportComponent,
+        SitSimpleMethodConfigurationsEditComponent,
+        SitWsUsersEditComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
