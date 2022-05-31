@@ -39,9 +39,11 @@ export class SitDataCheckboxComponent extends SitDataBaseComponent {
   public setValue(value: any) {
     if (value === null) {
       this.indeterminate = true;
+      this.checked = null;
     }
-
-    this.checked = value == 1;
+    else {
+      this.checked = value == 1;
+    }
 
     super.setValue(value);
   }
