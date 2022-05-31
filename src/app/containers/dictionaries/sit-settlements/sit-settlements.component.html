@@ -2,7 +2,7 @@
   <div fxLayout="column" fxFill>
     <mat-tab-group id="tab-group" animationDuration="0ms">
       <mat-tab label="Rozrachunki">
-        <as-split direction="vertical">
+        <as-split #sitSpliter direction="vertical">
           <as-split-area [size]="70">
             <div fxLayout="column" fxFill class="content">
               <sit-data-set-container ident="sitFilter" fxLayout="row">
@@ -11,7 +11,9 @@
                     <sit-data-input #sitControl field="Customer" label="Kontrahent" appearance="outline" style="width: 200px;"></sit-data-input>
                     <sit-data-input #sitControl field="DocumentNumber" label="Numer" appearance="outline" style="width: 200px;"></sit-data-input>
                     <sit-data-input #sitControl field="CurrencyIdent" label="Waluta" appearance="outline" style="width: 120px;"></sit-data-input>
-                    <sit-data-input #sitControl field="ForDate" type="date" label="Na dzień" appearance="outline" style="width: 200px;" showRefreshButton="true"></sit-data-input>
+                    <sit-data-input #sitControl field="ForDate" type="date" label="Na dzień" appearance="outline" style="width: 200px;" [showRefreshButton]="true"></sit-data-input>
+                    <sit-data-input #sitControl field="PaymentDateFrom" type="date" label="Data płatności od" appearance="outline" style="width: 140px;" ></sit-data-input>
+                    <sit-data-input #sitControl field="PaymentDateTo" type="date" label="Data płatności do" appearance="outline" style="width: 200px;" [showRefreshButton]="true"></sit-data-input>
                   </div>
                   <!-- <div fxLayoutAlign="start center">
                     <sit-data-radio #sitControl field="Settled" type="row" label="Stan rozl."
@@ -20,7 +22,7 @@
                   </div> -->
                 </div>
               </sit-data-set-container>
-              <sit-data-set-container ident="sitSettlements" showActionsToolbar="true" fxLayout="column" fxFlex>
+              <sit-data-set-container ident="sitSettlements" [showActionsToolbar]="false" fxLayout="column" fxFlex>
                 <div class="data-table" fxFlex>
                   <ag-grid-angular
                     #sitSetDataSource
@@ -68,7 +70,7 @@
               <sit-data-input #sitControl field="DepositDateTo" type="date" label="Wpłaty do" appearance="outline" style="width: 200px;" showRefreshButton="true"></sit-data-input>
             </div>
           </sit-data-set-container>
-          <sit-data-set-container ident="sitSettlementsByAge" showActionsToolbar="true" fxLayout="column" fxFlex>
+          <sit-data-set-container ident="sitSettlementsByAge" [showActionsToolbar]="false" fxLayout="column" fxFlex>
             <div class="data-table" fxFlex>
               <ag-grid-angular
                 #sitSetDataSource
