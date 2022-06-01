@@ -405,6 +405,9 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
       { headerName: 'Okres', field: 'WorkPeriod',  width: 70, suppressMenu: true,
         cellClass: ['font11','textFormat']
       },
+      { headerName: 'Okres kor.',headerTooltip: 'Okres korygowany', field: 'WorkPeriodOrg',  width: 80, suppressMenu: true,
+        cellClass: ['font11','textFormat']
+      },
       { headerName: 'Rekr. kli.', field: 'ClientRecruitment', headerTooltip: 'Rekrutacja klienta', filter: 'agNumberColumnFilter', renderType: 'checkbox', cellClass: "grid-cell-centered", width: 70, suppressMenu: true },
       { headerName: 'St. niep.', field: 'DisabLvl', headerTooltip: 'Stopień niepełnosprawności', filter: 'agNumberColumnFilter', width: 70, cellClass: "grid-cell-centered", suppressMenu: true },
       { headerName: 'Nr.listy', field: 'PayrollNo', tooltipField: 'PayrollNo', width: 100,
