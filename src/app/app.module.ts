@@ -304,6 +304,7 @@ import { SitCashRegisterSaleReportsComponent } from './containers/dictionaries/s
 import { SitCashRegisterSaleReportsImportComponent } from './containers/dictionaries/sit-cash-register-sale-reports/actions/sit-cash-register-sale-reports-import/sit-cash-register-sale-reports-import.component';
 import { SitSimpleMethodConfigurationsEditComponent } from './containers/dictionaries/sit-rail-configurations/actions/sit-simple-method-configurations-edit/sit-simple-method-configurations-edit.component';
 import { SitWsUsersEditComponent } from './containers/dictionaries/sit-rail-dns/actions/sit-ws-users-edit/sit-ws-users-edit.component';
+import { SitCashRegisterSaleReportsExportComponent } from './containers/dictionaries/sit-cash-register-sale-reports/actions/sit-cash-register-sale-reports-export/sit-cash-register-sale-reports-export.component';
 
 
 @NgModule({
@@ -594,7 +595,8 @@ import { SitWsUsersEditComponent } from './containers/dictionaries/sit-rail-dns/
         SitCashRegisterSaleReportsComponent,
         SitCashRegisterSaleReportsImportComponent,
         SitSimpleMethodConfigurationsEditComponent,
-        SitWsUsersEditComponent
+        SitWsUsersEditComponent,
+        SitCashRegisterSaleReportsExportComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
