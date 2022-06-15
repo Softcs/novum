@@ -4,7 +4,8 @@
   <sit-data-set-container ident="sitCashRegisterSaleReportsImport">
     <div class="sit-proc-params-content" fxLayout="column">
       <div fxLayout="row">
-        <sit-data-input #sitControl type="text" field="CashRegisterIdent" label="Identyfikator kasy" appearance="outline" style="width: 150px" ></sit-data-input>
+        <sit-data-input #sitControl type="text" field="CashRegisterIdent" label="Identyfikator kasy" appearance="outline" style="width: 150px" 
+          [lookupDisplayFields] = "['CashRegisterIdent', 'CashRegisterName']"></sit-data-input>
         <sit-data-input #sitControl type="text" field="WarehouseIdent" label="Magazyn" appearance="outline" style="width: 150px" 
           [lookupDisplayFields] = "['WarehouseIdent', 'WarehouseName']"></sit-data-input>
 			</div>
