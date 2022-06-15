@@ -391,6 +391,8 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
     ];
 
     this.gridColumnsDefinition['sitEmployeesSettlementsContr'] = [
+      { headerName: 'Id', field: 'sitEmployeesSettlementsId', type: 'numericColumn', filter: 'agTextColumnFilter', width: 50, defaultVisibility: false },
+      { headerName: 'GUID', field: 'sitEmployeesSettlementsG', filter: 'agTextColumnFilter', width: 100, defaultVisibility: false },
       { headerName: 'Pracownik',
         children: [
           { headerName: 'Nazwisko', field: 'EmployeeName', tooltipField: 'EmployeeName', sort: 'asc', width: 210, pinned: 'left', sortable: true, resizable: true,
@@ -927,6 +929,8 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
           { headerName: 'Etat', field: 'JobTime', width: 50, suppressMenu: true },
           { headerName: 'Dni umowy', field: 'ContractDays', type: 'numericColumn', suppressMenu: true,  width: 100},
           { headerName: 'Dni url. nieusp.', headerTooltip: 'Dni urlopu nieusprawiedliwionego',field: 'VacDaysN', type: 'numericColumn', suppressMenu: true,  width: 100},
+          { headerName: 'Stawka', headerTooltip: '',field: 'H_Rate', type: 'numericColumn', suppressMenu: true, width: 100},
+          { headerName: 'Rodzaj', headerTooltip: '',field: 'RateType', type: 'numericColumn', suppressMenu: true,  width: 100},
         ],
       },
   
