@@ -16,7 +16,9 @@ export class SitPublicationsComponent extends SitDictBaseComponent {
       { headerName: 'Publikacja', field: 'PublicationIdent', filter: 'agTextColumnFilter', width: 300 },
       { headerName: 'Tytuł', field: 'Title', filter: 'agTextColumnFilter', width: 300 },
       { headerName: 'Tytuł oryginalny', field: 'OriginalTitle', filter: 'agTextColumnFilter', width: 300 },
-      { headerName: 'Status', field: 'StatusValueName', filter: 'agTextColumnFilter', width: 150 }
+      { headerName: 'Status', field: 'StatusValueName', filter: 'agTextColumnFilter', width: 150 },
+      { headerName: 'Temat id', field: 'PublicationSubjectIdent', filter: 'agTextColumnFilter', width: 150, defaultVisibility: false },
+      { headerName: 'Tematyka', field: 'PublicationSubjectName', filter: 'agTextColumnFilter', width: 250 },
     ];
     this.gridColumnsDefinition["sitPublicationsProducts"] = [
       { headerName: 'Id', field: 'sitPublicationsProductsId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 50, defaultVisibility: false },

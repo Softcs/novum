@@ -1,13 +1,13 @@
 <sit-dict-container ident="sitPublicationsFormsOfReleaseGroups" #sitDictcontainer fxFill>
-  <as-split direction="vertical">
-    <as-split-area [size]="60">
-      <div fxLayout="column" fxFill class="content">
-        <sit-data-set-container ident="sitFilter" fxLayout="row">
+  <mat-tab-group id="tab-group" animationDuration="0ms">
+    <mat-tab label="Grupy form wydania">
+      <div fxLayout="column" fxFill class="content"> 
+        <sit-data-set-container ident="sitFilter" >
           <div class="sit-filter-bar" fxLayout="row">
-              <sit-data-input #sitControl field="search" label="Filtruj" appearance="outline" style="width: 300px;" showRefreshButton="true"></sit-data-input>
+            <sit-data-input #sitControl field="search" label="Filtruj" appearance="outline" style="width: 300px;" [showRefreshButton]="true"></sit-data-input>
           </div>
         </sit-data-set-container>
-        <sit-data-set-container ident="sitPublicationsFormsOfReleaseGroups" showActionsToolbar="true" fxLayout="column" fxFlex>
+        <sit-data-set-container ident="sitPublicationsFormsOfReleaseGroups" [showActionsToolbar]="true" fxLayout="column" fxFlex>
           <div class="data-table" fxFlex>
             <ag-grid-angular
               #sitSetDataSource
@@ -18,9 +18,26 @@
           </div>
         </sit-data-set-container>
       </div>
-    </as-split-area>
-    <as-split-area [size]="40">
-    </as-split-area>
-  </as-split>
+    </mat-tab>
+    <mat-tab label="Tematy publikacji">
+      <div fxLayout="column" fxFill class="content"> 
+        <sit-data-set-container ident="sitPublicationSubjectsFilter" >
+          <div class="sit-filter-bar" fxLayout="row">
+            <sit-data-input #sitControl field="searchPublicationSubjects" label="Filtruj" appearance="outline" style="width: 300px;" [showRefreshButton]="true"></sit-data-input>
+          </div>
+        </sit-data-set-container>
+        <sit-data-set-container ident="sitPublicationSubjects" [showActionsToolbar]="true" fxLayout="column" fxFlex>
+          <div class="data-table" fxFlex>
+            <ag-grid-angular
+              #sitSetDataSource
+              style="width: 100%; height: 100%;"
+              class="ag-theme-balham"
+            >
+            </ag-grid-angular>
+          </div>
+        </sit-data-set-container>
+      </div>
+    </mat-tab>        
+  </mat-tab-group>  
 </sit-dict-container>
 

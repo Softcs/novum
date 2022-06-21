@@ -204,6 +204,7 @@ import { SitCashRegisterSaleReportsImportComponent } from '@app/containers/dicti
 import { SitSimpleMethodConfigurationsEditComponent } from '@app/containers/dictionaries/sit-rail-configurations/actions/sit-simple-method-configurations-edit/sit-simple-method-configurations-edit.component';
 import { SitWsUsersEditComponent } from '@app/containers/dictionaries/sit-rail-dns/actions/sit-ws-users-edit/sit-ws-users-edit.component';
 import { SitCashRegisterSaleReportsExportComponent } from '@app/containers/dictionaries/sit-cash-register-sale-reports/actions/sit-cash-register-sale-reports-export/sit-cash-register-sale-reports-export.component';
+import { SitPublicationSubjectsEditComponent } from '@app/containers/dictionaries/sit-publications-forms-of-release-groups/actions/sit-publication-subjects-edit/sit-publication-subjects-edit.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -414,6 +415,7 @@ export class FactoryService {
         sitSimpleMethodConfigurationsEdit: SitSimpleMethodConfigurationsEditComponent,
         sitWsUsersEdit: SitWsUsersEditComponent,
         sitCashRegisterSaleReportsExport: SitCashRegisterSaleReportsExportComponent,
+        sitPublicationSubjectsEdit: SitPublicationSubjectsEditComponent,
     };
 
     public GetFactory(ident: string) {
