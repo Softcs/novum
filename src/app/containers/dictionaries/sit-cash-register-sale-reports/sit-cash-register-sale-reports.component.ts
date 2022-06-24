@@ -43,11 +43,25 @@ export class SitCashRegisterSaleReportsComponent extends SitDictBaseComponent {
       { headerName: 'Produkt', field: 'ProductIdent', filter: 'agTextColumnFilter', width: 130, },
       { headerName: 'EAN', field: 'EAN', filter: 'agTextColumnFilter', width: 120, },
       { headerName: 'Nazwa produktu', field: 'ProductName', filter: 'agTextColumnFilter', },
-      { headerName: 'Stan', field: 'QuantityStock', filter: 'agNumberColumnFilter', type: 'numericColumn', suppressMenu: true, width: 100, renderType: 'number' },
+      { headerName: 'Stan aktualny', field: 'QuantityStock', filter: 'agNumberColumnFilter', type: 'numericColumn', suppressMenu: true, width: 100, renderType: 'number' },
       { headerName: 'Sprzedaż', field: 'QuantityReport', filter: 'agNumberColumnFilter', type: 'numericColumn', suppressMenu: true, width: 100, renderType: 'number' },
       { headerName: 'Dostępne', field: 'StockAvailable4Sale', filter: 'agNumberColumnFilter', type: 'numericColumn', suppressMenu: true, width: 100, renderType: 'number' },
+      { headerName: 'Stan początkowy', field: 'StockOfDateFrom', filter: 'agNumberColumnFilter', type: 'numericColumn', suppressMenu: true, width: 120, 
+        renderType: 'number', headerTooltip: 'Stan na pierwszy dzień sprzedaży',
+        cellStyle: function(params) { return {backgroundColor: '#d6f5d6'} }},
+      { headerName: 'Przych. w okresie', field: 'IncomeInPeriod', filter: 'agNumberColumnFilter', type: 'numericColumn', suppressMenu: true, 
+        width: 120, renderType: 'number',
+        cellStyle: function(params) { return {backgroundColor: '#d6f5d6'} } },
+      { headerName: 'Stan dost. w okresie', field: 'QuantityAvailableInPeriod', filter: 'agNumberColumnFilter', type: 'numericColumn', 
+        suppressMenu: true, width: 120, renderType: 'number', headerTooltip: 'Suma stanu początkowego i przychodów',
+        cellStyle: function(params) { return {backgroundColor: '#d6f5d6'} } },
+      { headerName: 'Sprzedaż_', field: 'QuantityReport', filter: 'agNumberColumnFilter', type: 'numericColumn', suppressMenu: true, width: 120, 
+        renderType: 'number',
+        cellStyle: function(params) { return {backgroundColor: '#d6f5d6'} } },
+      { headerName: 'Dostępne_', field: 'StockAvailable4Sale2', filter: 'agNumberColumnFilter', type: 'numericColumn', suppressMenu: true, width: 120, 
+        renderType: 'number', headerTooltip: 'Różnica stanu dostępnego w okresie i sprzedaży',
+        cellStyle: function(params) { return {backgroundColor: '#d6f5d6'} } },
     ]; 
 
   }
 }
-
