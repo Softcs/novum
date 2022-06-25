@@ -111,6 +111,20 @@
                     </div>
                   </sit-data-set-container>
                 </mat-tab>
+                <mat-tab label="Historia zmian statusu">
+                  <div fxFill fxLayout="column">
+                    <sit-data-set-container ident="sitEmployeesExtAppExportStatusChange" [showActionsToolbar]="false" fxLayout="column" fxFlex>
+                      <div class="data-table" fxFlex>
+                        <ag-grid-angular
+                          #sitSetDataSource
+                          style="width: 100%; height: 100%;"
+                          class="ag-theme-balham"
+                        >
+                        </ag-grid-angular>
+                      </div>
+                    </sit-data-set-container>
+                  </div>
+                </mat-tab> 
               </mat-tab-group>               
             </as-split-area>
           </as-split>

@@ -80,6 +80,17 @@ export class SitEmployeesComponent extends SitDictBaseComponent {
       { headerName: 'Klient', field: 'CustName', tooltipField: 'CustName', filter: 'agTextColumnFilter', width: 200,},
       { headerName: 'ID u klienta', field: 'EmployeeIdent', filter: 'agTextColumnFilter', width: 110,},            
     ];  
+
+    this.gridColumnsDefinition["sitEmployeesExtAppExportStatusChange"] = [
+      { headerName: 'Id', field: 'sitEmployeesHistoryId',width: 90, defaultVisibility: false},      
+      { headerName: 'Data modyfikacji', field: 'ChangeDate', filter: 'agDateColumnFilter', width: 140, renderType: "date", 
+        renderFormat: "yyyy-MM-dd H:mm:ss", sort: 'desc' },
+      { headerName: 'Login', field: 'UserLogin', filter: 'agTextColumnFilter', width: 120, defaultVisibility: false },
+      { headerName: 'Status z', field: 'StatusValueIdentFrom', filter: 'agTextColumnFilter', width: 90 },
+      { headerName: 'Status na', field: 'StatusValueIdentTo', filter: 'agTextColumnFilter', width: 90 },
+      { headerName: 'Komentarz', field: '__HistoryComments__', filter: 'agNumberColumnFilter', flex: 1},
+    ];
+
   }
 
   activeRowChanged(activeRow) {
