@@ -79,7 +79,32 @@ export class SitCustomersComponent extends SitDictBaseComponent {
       { headerName: 'Format danych', field: 'FileFormat', width: 130, },
       { headerName: 'Dołącz PDF', field: 'SendPDFReport', width: 100, renderType: 'checkbox', suppressMenu: true, cellClass: "grid-cell-centered"},
       { headerName: 'Parametry wysyłki', field: 'ConnectionInfo', width: 400 },
+    ];
 
+    this.gridColumnsDefinition["sitCustomerB2BProductsConfig"] = [
+      { headerName: 'ID', field: 'sitCustomerB2BProductsConfigId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, defaultVisibility: false },
+      { headerName: 'GUID', field: 'sitCustomerB2BProductsConfigG', width: 100, defaultVisibility: false },
+      { headerName: 'Aktywny', field: 'IsActive', width: 80, suppressMenu: true,},
+    ];
+
+    this.gridColumnsDefinition["sitCustomerB2BProducts"] = [
+      { headerName: 'ID', field: 'sitCustomerB2BProductsId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, defaultVisibility: false },
+      { headerName: 'GUID', field: 'sitCustomerB2BProductsG', width: 100, defaultVisibility: false },
+      { headerName: 'Aktywny', field: 'IsActive', width: 80, renderType: 'checkbox', suppressMenu: true, cellClass: "grid-cell-centered"},
+      { headerName: 'Identyfikator', field: 'ProductIdent', filter: 'agTextColumnFilter', width: 150, },
+      { headerName: 'EAN', field: 'EAN', filter: 'agTextColumnFilter', width: 120 },
+      { headerName: 'Nazwa', field: 'ProductName', tooltipField: 'ProductName', filter: 'agTextColumnFilter', width: 300 },
+      { headerName: 'Status', field: 'StatusValueName_Main', filter: 'agSetColumnFilter', width: 140, floatingFilter: false, 
+        cellStyle: function(params) {
+          if (params.value === 'W przygotowaniu') { return { color: 'violet', 'font-weight': 600 }; }
+          else if (params.value === 'Zapowiedź') { return { color: 'orange', 'font-weight': 600 }; }
+          else if (params.value === 'Nowość') { return { color: 'rgb(153, 0, 0)', 'font-weight': 600 }; }
+          else if (params.value === 'Aktywna') { return { color: 'rgb(20, 152, 46)', 'font-weight': 600 }; }
+          else if (params.value === 'Wyprzedaż') { return { color: 'rgb(11, 23, 255)', 'font-weight': 600 }; }
+          else if (params.value === 'Wycofana') { return { color: 'black', 'font-weight': 600 }; }          
+          else { return null; }
+        }
+      },       
     ];
 
     this.gridColumnsDefinition["sitHRParams4InvoicingContr"] = [

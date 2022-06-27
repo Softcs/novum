@@ -306,6 +306,8 @@ import { SitSimpleMethodConfigurationsEditComponent } from './containers/diction
 import { SitWsUsersEditComponent } from './containers/dictionaries/sit-rail-dns/actions/sit-ws-users-edit/sit-ws-users-edit.component';
 import { SitCashRegisterSaleReportsExportComponent } from './containers/dictionaries/sit-cash-register-sale-reports/actions/sit-cash-register-sale-reports-export/sit-cash-register-sale-reports-export.component';
 import { SitPublicationSubjectsEditComponent } from './containers/dictionaries/sit-publications-forms-of-release-groups/actions/sit-publication-subjects-edit/sit-publication-subjects-edit.component';
+import { SitCustomerB2bProductsConfigEditComponent } from './containers/dictionaries/sit-customers/actions/sit-customer-b2b-products-config-edit/sit-customer-b2b-products-config-edit.component';
+import { SitCustomerB2bProductsEditComponent } from './containers/dictionaries/sit-customers/actions/sit-customer-b2b-products-edit/sit-customer-b2b-products-edit.component';
 
 
 @NgModule({
@@ -598,7 +600,9 @@ import { SitPublicationSubjectsEditComponent } from './containers/dictionaries/s
         SitSimpleMethodConfigurationsEditComponent,
         SitWsUsersEditComponent,
         SitCashRegisterSaleReportsExportComponent,
-        SitPublicationSubjectsEditComponent
+        SitPublicationSubjectsEditComponent,
+        SitCustomerB2bProductsConfigEditComponent,
+        SitCustomerB2bProductsEditComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
