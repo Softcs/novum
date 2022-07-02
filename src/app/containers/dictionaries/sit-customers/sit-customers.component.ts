@@ -84,7 +84,9 @@ export class SitCustomersComponent extends SitDictBaseComponent {
     this.gridColumnsDefinition["sitCustomerB2BProductsConfig"] = [
       { headerName: 'ID', field: 'sitCustomerB2BProductsConfigId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, defaultVisibility: false },
       { headerName: 'GUID', field: 'sitCustomerB2BProductsConfigG', width: 100, defaultVisibility: false },
-      { headerName: 'Aktywny', field: 'IsActive', width: 80, suppressMenu: true,},
+      { headerName: 'Aktywny', field: 'IsActive', width: 80, suppressMenu: true},
+      { headerName: 'Funkcja generująca katalog', field: 'ProductCatalogFormatFunction', width: 200, },
+      { headerName: 'Funkcja generująca stany', field: 'InventoryReportFormatFunction', width: 200, },      
     ];
 
     this.gridColumnsDefinition["sitCustomerB2BProducts"] = [
