@@ -106,7 +106,11 @@ export class SitCustomersComponent extends SitDictBaseComponent {
           else if (params.value === 'Wycofana') { return { color: 'black', 'font-weight': 600 }; }          
           else { return null; }
         }
-      },       
+      },
+      { headerName: 'Prod. akt.', field: 'IsActive_Product', filter: 'agSetColumnFilter', width: 80, renderType: 'checkbox', suppressMenu: true, cellClass: "grid-cell-centered" },
+      { headerName: 'B2B', field: 'IsB2B', filter: 'agSetColumnFilter', width: 80, renderType: 'checkbox', suppressMenu: true, cellClass: "grid-cell-centered", defaultVisibility: true },
+      { headerName: 'Status sprz.', field: 'SaleStatus', tooltipField: 'SaleStatusDescription', width: 80, suppressMenu: true},
+
     ];
 
     this.gridColumnsDefinition["sitHRParams4InvoicingContr"] = [
