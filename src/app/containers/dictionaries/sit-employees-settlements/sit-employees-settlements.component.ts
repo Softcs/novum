@@ -927,9 +927,10 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
       detailGridOptions: {
         columnDefs: [
           { headerName: 'Etat', field: 'JobTime', width: 50, suppressMenu: true },
-          { headerName: 'Dni umowy', field: 'ContractDays', type: 'numericColumn', suppressMenu: true,  width: 100},
+          { headerName: 'Dni umowy',headerTooltip: 'Dni kalendarzowe umowy', field: 'ContractDays', type: 'numericColumn', suppressMenu: true,  width: 100},
+          { headerName: 'Dni rob.',headerTooltip: 'Dni robocze umowy', field: 'NominalDays', type: 'numericColumn', suppressMenu: true,  width: 100},
           { headerName: 'Dni url. nieusp.', headerTooltip: 'Dni urlopu nieusprawiedliwionego',field: 'VacDaysN', type: 'numericColumn', suppressMenu: true,  width: 100},
-          { headerName: 'Stawka', headerTooltip: '',field: 'H_Rate', type: 'numericColumn', suppressMenu: true, width: 100},
+          { headerName: 'Stawka', headerTooltip: '',field: 'H_Rate', type: 'numericColumn', suppressMenu: true, width: 80},
           { headerName: 'Rodzaj', headerTooltip: '',field: 'RateType', type: 'numericColumn', suppressMenu: true,  width: 100},
         ],
       },
