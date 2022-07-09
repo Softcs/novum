@@ -67,6 +67,9 @@ export class SitCashRegisterSaleReportsComponent extends SitDictBaseComponent {
       { headerName: 'Dostępne_', field: 'StockAvailable4Sale2', filter: 'agNumberColumnFilter', type: 'numericColumn', suppressMenu: true, width: 120, 
         renderType: 'number', headerTooltip: 'Różnica stanu dostępnego w okresie i sprzedaży',
         cellStyle: function(params) { return {backgroundColor: '#d6f5d6'} } },
+      { headerName: 'Stan WMS', field: 'QuantityMainStock', filter: 'agNumberColumnFilter', type: 'numericColumn', suppressMenu: true, width: 120, 
+        renderType: 'number', headerTooltip: 'Stan magazynu głównego',
+        cellStyle: function(params) { return {backgroundColor: '#d6f5d6'} } },
     ]; 
 
   }

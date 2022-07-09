@@ -308,6 +308,8 @@ import { SitCashRegisterSaleReportsExportComponent } from './containers/dictiona
 import { SitPublicationSubjectsEditComponent } from './containers/dictionaries/sit-publications-forms-of-release-groups/actions/sit-publication-subjects-edit/sit-publication-subjects-edit.component';
 import { SitCustomerB2bProductsConfigEditComponent } from './containers/dictionaries/sit-customers/actions/sit-customer-b2b-products-config-edit/sit-customer-b2b-products-config-edit.component';
 import { SitCustomerB2bProductsEditComponent } from './containers/dictionaries/sit-customers/actions/sit-customer-b2b-products-edit/sit-customer-b2b-products-edit.component';
+import { SitPublicationAudienceEditComponent } from './containers/dictionaries/sit-publications-forms-of-release-groups/actions/sit-publication-audience-edit/sit-publication-audience-edit.component';
+import { SitProduct4PubCollectionsEditComponent } from './containers/dictionaries/sit-publications-forms-of-release-groups/actions/sit-product4-pub-collections-edit/sit-product4-pub-collections-edit.component';
 
 
 @NgModule({
@@ -602,7 +604,9 @@ import { SitCustomerB2bProductsEditComponent } from './containers/dictionaries/s
         SitCashRegisterSaleReportsExportComponent,
         SitPublicationSubjectsEditComponent,
         SitCustomerB2bProductsConfigEditComponent,
-        SitCustomerB2bProductsEditComponent
+        SitCustomerB2bProductsEditComponent,
+        SitPublicationAudienceEditComponent,
+        SitProduct4PubCollectionsEditComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },

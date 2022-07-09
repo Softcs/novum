@@ -207,6 +207,8 @@ import { SitCashRegisterSaleReportsExportComponent } from '@app/containers/dicti
 import { SitPublicationSubjectsEditComponent } from '@app/containers/dictionaries/sit-publications-forms-of-release-groups/actions/sit-publication-subjects-edit/sit-publication-subjects-edit.component';
 import { SitCustomerB2bProductsConfigEditComponent } from '@app/containers/dictionaries/sit-customers/actions/sit-customer-b2b-products-config-edit/sit-customer-b2b-products-config-edit.component';
 import { SitCustomerB2bProductsEditComponent } from '@app/containers/dictionaries/sit-customers/actions/sit-customer-b2b-products-edit/sit-customer-b2b-products-edit.component';
+import { SitPublicationAudienceEditComponent } from '@app/containers/dictionaries/sit-publications-forms-of-release-groups/actions/sit-publication-audience-edit/sit-publication-audience-edit.component';
+import { SitProduct4PubCollectionsEditComponent } from '@app/containers/dictionaries/sit-publications-forms-of-release-groups/actions/sit-product4-pub-collections-edit/sit-product4-pub-collections-edit.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -420,6 +422,9 @@ export class FactoryService {
         sitPublicationSubjectsEdit: SitPublicationSubjectsEditComponent,
         sitCustomerB2bProductsConfigEdit: SitCustomerB2bProductsConfigEditComponent,
         sitCustomerB2bProductsEdit: SitCustomerB2bProductsEditComponent,
+        sitPublicationAudienceEdit: SitPublicationAudienceEditComponent,
+        sitProduct4PubCollectionsEdit: SitProduct4PubCollectionsEditComponent
+
     };
 
     public GetFactory(ident: string) {
