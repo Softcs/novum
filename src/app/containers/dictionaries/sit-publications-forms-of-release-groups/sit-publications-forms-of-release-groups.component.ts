@@ -21,7 +21,7 @@ export class SitPublicationsFormsOfReleaseGroupsComponent extends SitDictBaseCom
       { headerName: 'Id', field: 'sitPublicationSubjectsId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 50, defaultVisibility: false },
       { headerName: 'GUID', field: 'sitPublicationSubjectsG', width: 100, defaultVisibility: false },  
       { headerName: 'Identyfikator', field: 'PublicationSubjectIdent', filter: 'agTextColumnFilter', width: 150 },
-      { headerName: 'Opis', field: 'PublicationSubjectName', filter: 'agTextColumnFilter', width: 300 },
+      { headerName: 'Opis', field: 'PublicationSubjectName', filter: 'agTextColumnFilter', width: 350 },
       { headerName: 'Id zew 01', field: 'ExtAppIdent01', filter: 'agTextColumnFilter', width: 100, defaultVisibility: false },
       { headerName: 'Id zew 02', field: 'ExtAppIdent02', filter: 'agTextColumnFilter', width: 100, defaultVisibility: false },
     ];
@@ -38,7 +38,7 @@ export class SitPublicationsFormsOfReleaseGroupsComponent extends SitDictBaseCom
     this.gridColumnsDefinition["sitProduct4PubCollections"] = [
       { headerName: 'Id', field: 'sitProduct4PubCollectionsId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 50, defaultVisibility: false },
       { headerName: 'GUID', field: 'sitProduct4PubCollectionsG', width: 100, defaultVisibility: false },  
-      { headerName: 'Identyfikator', field: 'CollectionIdent', filter: 'agTextColumnFilter', width: 150 },
+      { headerName: 'Identyfikator', field: 'CollectionIdent', filter: 'agTextColumnFilter', width: 300 },
       { headerName: 'Opis', field: 'CollectionName', filter: 'agTextColumnFilter', width: 300 },
       { headerName: 'Id zew 01', field: 'ExtAppIdent01', filter: 'agTextColumnFilter', width: 100, defaultVisibility: false },
       { headerName: 'Id zew 02', field: 'ExtAppIdent02', filter: 'agTextColumnFilter', width: 100, defaultVisibility: false },

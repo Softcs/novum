@@ -5,13 +5,15 @@
     <div class="sit-proc-params-content" fxLayout="column">
       <sit-data-input #sitControl type="text" field="PublicationIdent" label="Publikacja" appearance="outline"></sit-data-input>
       <sit-data-input #sitControl type="text" field="Title" label="Tytuł" appearance="outline" ></sit-data-input>
+      <sit-data-input #sitControl type="text" field="OriginalTitle" label="Tytuł oryginalny" appearance="outline" ></sit-data-input>
+      <sit-data-input type="text" #sitControl field="PublicationSubjectName" label="Tematyka" appearance="outline"
+        [lookupDisplayFields] = "['PublicationSubjectIdent', 'PublicationSubjectName']"></sit-data-input>
       <div fxLayout="row">
-        <sit-data-input type="text" #sitControl field="PublicationSubjectName" label="Tematyka" appearance="outline" fxFlex="60"
-          [lookupDisplayFields] = "['PublicationSubjectIdent', 'PublicationSubjectName']"></sit-data-input>
+        <sit-data-input type="text" #sitControl field="AudienceName" label="Grupa wiekowa" appearance="outline" fxFlex="60"
+          [lookupDisplayFields] = "['AudienceIdent', 'AudienceName']"></sit-data-input>
         <sit-data-input type="text" #sitControl field="LanguageName_Original" label="Język oryginału" appearance="outline" fxFlex="40"
           [lookupDisplayFields] = "['LanguageName']"></sit-data-input>
-      </div>      
-      <sit-data-input #sitControl type="text" field="OriginalTitle" label="Tytuł oryginalny" appearance="outline" ></sit-data-input>
+      </div>
     </div>
   </sit-data-set-container>
 </sit-proc-params>
