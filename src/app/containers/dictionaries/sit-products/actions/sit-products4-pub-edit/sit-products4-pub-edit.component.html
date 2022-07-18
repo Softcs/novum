@@ -9,6 +9,10 @@
       <div fxLayout="row" >
         <sit-data-input type="text" #sitControl field="CollectionName" label="Kolekcja" appearance="outline" style="width: 250px"></sit-data-input>
       </div>
+      <div fxLayout="row">
+        <sit-data-checkbox *ngIf="this.activeRow?.CanBlockPreviewAutoStatus == 1" #sitControl field="BlockPreviewAutoStatus" 
+          label="Wstrzymaj zapowiedź" fxFlex=50></sit-data-checkbox>
+      </div>
     </div>
   </sit-data-set-container>
 </sit-proc-params>
