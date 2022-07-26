@@ -41,8 +41,8 @@ export class SitB2bProductsComponent extends SitDictBaseComponent {
 
   activeRowProductsChanged(activeRow) {
     this.link = activeRow?.sitImagesG == null
-      ? this.urlService.getAttachmentUrl("noimage", "noimage.jpg") // kiedy brak rekordu
-      :  this.urlService.getAttachmentUrl(activeRow.sitImagesG, activeRow.FileName) ;
+      ? this.urlService.getImageUrl("noimage", "noimage.jpg") // kiedy brak rekordu
+      :  this.urlService.getImageUrl(activeRow.sitImagesG, activeRow.FileName) ;
 
       this.ean = activeRow !== null ? activeRow.EAN : '';
   }

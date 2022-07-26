@@ -29,8 +29,8 @@ export class SitProjectsPubComponent extends SitDictBaseComponent {
 
   activeRowProjectsPubChanged(activeRow) {
     this.Link = activeRow?.sitImagesG == null
-    ? this.urlService.getAttachmentUrl("noimage", "noimage.jpg") // kiedy brak rekordu
-    :  this.urlService.getAttachmentUrl(activeRow.sitImagesG, activeRow.FileName) ;
+    ? this.urlService.getImageUrl("noimage", "noimage.jpg") // kiedy brak rekordu
+    :  this.urlService.getImageUrl(activeRow.sitImagesG, activeRow.FileName) ;
 
   }
 
