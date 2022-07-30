@@ -209,6 +209,7 @@ import { SitCustomerB2bProductsConfigEditComponent } from '@app/containers/dicti
 import { SitCustomerB2bProductsEditComponent } from '@app/containers/dictionaries/sit-customers/actions/sit-customer-b2b-products-edit/sit-customer-b2b-products-edit.component';
 import { SitPublicationAudienceEditComponent } from '@app/containers/dictionaries/sit-publications-forms-of-release-groups/actions/sit-publication-audience-edit/sit-publication-audience-edit.component';
 import { SitProduct4PubCollectionsEditComponent } from '@app/containers/dictionaries/sit-publications-forms-of-release-groups/actions/sit-product4-pub-collections-edit/sit-product4-pub-collections-edit.component';
+import { SitAbsenceReasonsEditComponent } from '@app/containers/dictionaries/sit-hr-working-hours/actions/sit-absence-reasons-edit/sit-absence-reasons-edit.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -423,7 +424,8 @@ export class FactoryService {
         sitCustomerB2bProductsConfigEdit: SitCustomerB2bProductsConfigEditComponent,
         sitCustomerB2bProductsEdit: SitCustomerB2bProductsEditComponent,
         sitPublicationAudienceEdit: SitPublicationAudienceEditComponent,
-        sitProduct4PubCollectionsEdit: SitProduct4PubCollectionsEditComponent
+        sitProduct4PubCollectionsEdit: SitProduct4PubCollectionsEditComponent,
+        sitAbsenceReasonsEdit: SitAbsenceReasonsEditComponent,
 
     };
 

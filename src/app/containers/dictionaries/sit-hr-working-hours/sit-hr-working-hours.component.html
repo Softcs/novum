@@ -1,20 +1,61 @@
 <sit-dict-container ident="sitHRWorkingHours" #sitDictcontainer fxFill>
-  <div fxLayout="column" fxFill class="content">
-    <div class="sit-filter-bar">
-      <sit-data-set-container ident="sitFilter" >
-          <sit-data-input #sitControl field="year" label="Rok" placeholder="" appearance="outline" showRefreshButton="true" style="width: 200px;"></sit-data-input>
-      </sit-data-set-container>
-    </div>
-    <sit-data-set-container  ident="sitHRWorkingHours" showActionsToolbar="true" fxFlex fxLayout="column">
-      <div class="data-table" fxFlex>
-        <ag-grid-angular
-          #sitSetDataSource
-          #sitHRDepartmentsGrid
-          style="width: 100%; height: 100%;"
-          class="ag-theme-balham"
-        >
-        </ag-grid-angular>
+  <mat-tab-group id="tab-group" animationDuration="0ms">
+    <mat-tab label="Powody nieobecności">  
+      <div fxLayout="column" fxFill class="content">
+        <sit-data-set-container ident="sitAbsenceReasonsFilter" >
+          <div class="sit-filter-bar" fxLayout="row">
+            <sit-data-input #sitControl field="searchAbsenceReasons" label="Filtruj" appearance="outline" [showRefreshButton]="true" style="width: 300px;"></sit-data-input>
+          </div>
+        </sit-data-set-container>
+        <sit-data-set-container ident="sitAbsenceReasons" [showActionsToolbar]="true" fxFlex fxLayout="column">
+          <div class="data-table" fxFlex>
+            <ag-grid-angular
+              #sitSetDataSource
+              style="width: 100%; height: 100%;"
+              class="ag-theme-balham"
+            >
+            </ag-grid-angular>
+          </div>
+        </sit-data-set-container>
       </div>
-    </sit-data-set-container>
-  </div>
+    </mat-tab>
+    <mat-tab label="Wymiar czasu pracy">
+      <div fxLayout="column" fxFill class="content">
+        <sit-data-set-container ident="sitHRWorkingHoursFilter" >
+          <div class="sit-filter-bar" fxLayout="row">
+            <sit-data-input #sitControl field="year" label="Rok" appearance="outline" [showRefreshButton]="true" style="width: 200px;"></sit-data-input>
+          </div>
+        </sit-data-set-container>
+        <sit-data-set-container ident="sitHRWorkingHours" [showActionsToolbar]="true" fxFlex fxLayout="column">
+          <div class="data-table" fxFlex>
+            <ag-grid-angular
+              #sitSetDataSource
+              style="width: 100%; height: 100%;"
+              class="ag-theme-balham"
+            >
+            </ag-grid-angular>
+          </div>
+        </sit-data-set-container>
+      </div>      
+    </mat-tab> 
+    <mat-tab label="Wymiary etatu">
+      <div fxLayout="column" fxFill class="content">
+        <sit-data-set-container ident="sitJobTimesFilter" >
+          <div class="sit-filter-bar" fxLayout="row">
+            <sit-data-input #sitControl field="searchJobTimes" label="Filtruj" appearance="outline" [showRefreshButton]="true" style="width: 300px;"></sit-data-input>
+          </div>
+        </sit-data-set-container>
+        <sit-data-set-container ident="sitJobTimes" [showActionsToolbar]="false" fxFlex fxLayout="column">
+          <div class="data-table" fxFlex>
+            <ag-grid-angular
+              #sitSetDataSource
+              style="width: 100%; height: 100%;"
+              class="ag-theme-balham"
+            >
+            </ag-grid-angular>
+          </div>
+        </sit-data-set-container>
+      </div>      
+    </mat-tab>
+  </mat-tab-group>        
 </sit-dict-container>
