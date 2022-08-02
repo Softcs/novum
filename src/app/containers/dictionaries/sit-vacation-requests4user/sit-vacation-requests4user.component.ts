@@ -71,12 +71,12 @@ export class SitVacationRequests4UserComponent extends SitDictBaseComponent {
             +'<tr>'
               +'<td style="width:33%">Aktualny: ' + params.data["VacationLimit"] +'</td>'
               +'<td style="width:33%">Zaległy: ' + params.data["VacationOverdue"] +'</td>'
-              +'<td style="width:34%">Do wykorzystania: ' + params.data["ActualLimit"] +'</td>'
+              +'<td style="width:34%">Razem w roku: ' + params.data["ActualLimit"] +'</td>'
             +'</tr>'
             +'<tr>'
               +'<td style="width:33%">Wykorzystany: ' + params.data["ActualLimitUsed"] +'</td>'
               +'<td style="width:33%">Planowany: ' + params.data["VacationPlanned"] +'</td>'
-              +'<td style="width:34%">Pozostały: ' + params.data["VacationForUse"] +'</td>'
+              +'<td style="width:34%"><b>Do wykorzystania: ' + params.data["VacationForUse"] +'</b></td>'
           +'</tr>'
         }
       },
@@ -94,12 +94,12 @@ export class SitVacationRequests4UserComponent extends SitDictBaseComponent {
             +'<tr>'
               +'<td style="width:33%">Aktualny: ' + params.data["VacationLimit"] +'</td>'
               +'<td style="width:33%">Zaległy: ' + params.data["VacationOverdue"] +'</td>'
-              +'<td style="width:34%">Do wykorzystania: ' + params.data["ActualLimit"] +'</td>'
+              +'<td style="width:34%">Razem w roku: ' + params.data["ActualLimit"] +'</td>'
             +'</tr>'
             +'<tr>'
               +'<td style="width:33%">Wykorzystany: ' + params.data["ActualLimitUsed"] +'</td>'
               +'<td style="width:33%">Planowany: ' + params.data["VacationPlanned"] +'</td>'
-              +'<td style="width:34%">Pozostały: ' + params.data["VacationForUse"] +'</td>'
+              +'<td style="width:34%"><b>Do wykorzystania: ' + params.data["VacationForUse"] +'</b></td>'
           +'</tr>'
         }
       },
