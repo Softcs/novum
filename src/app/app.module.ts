@@ -300,6 +300,17 @@ import { SitAcceptanceStepPersonsDefEditComponent } from './containers/dictionar
 import { SitAcceptanceTablesEditComponent } from './containers/dictionaries/sit-acceptance-paths-def/actions/sit-acceptance-tables-edit/sit-acceptance-tables-edit.component';
 import { SitCustomerCreditLimitScoresAcceptComponent } from './containers/dictionaries/sit-customer-credit-limit-scores/actions/sit-customer-credit-limit-scores-accept/sit-customer-credit-limit-scores-accept.component';
 import { SitPayrollComponentsSettlementsColumnsEditComponent } from './containers/dictionaries/sit-payroll-components/actions/sit-payroll-components-settlements-columns-edit/sit-payroll-components-settlements-columns-edit.component';
+import { SitCashRegisterSaleReportsComponent } from './containers/dictionaries/sit-cash-register-sale-reports/sit-cash-register-sale-reports.component';
+import { SitCashRegisterSaleReportsImportComponent } from './containers/dictionaries/sit-cash-register-sale-reports/actions/sit-cash-register-sale-reports-import/sit-cash-register-sale-reports-import.component';
+import { SitSimpleMethodConfigurationsEditComponent } from './containers/dictionaries/sit-rail-configurations/actions/sit-simple-method-configurations-edit/sit-simple-method-configurations-edit.component';
+import { SitWsUsersEditComponent } from './containers/dictionaries/sit-rail-dns/actions/sit-ws-users-edit/sit-ws-users-edit.component';
+import { SitCashRegisterSaleReportsExportComponent } from './containers/dictionaries/sit-cash-register-sale-reports/actions/sit-cash-register-sale-reports-export/sit-cash-register-sale-reports-export.component';
+import { SitPublicationSubjectsEditComponent } from './containers/dictionaries/sit-publications-forms-of-release-groups/actions/sit-publication-subjects-edit/sit-publication-subjects-edit.component';
+import { SitCustomerB2bProductsConfigEditComponent } from './containers/dictionaries/sit-customers/actions/sit-customer-b2b-products-config-edit/sit-customer-b2b-products-config-edit.component';
+import { SitCustomerB2bProductsEditComponent } from './containers/dictionaries/sit-customers/actions/sit-customer-b2b-products-edit/sit-customer-b2b-products-edit.component';
+import { SitPublicationAudienceEditComponent } from './containers/dictionaries/sit-publications-forms-of-release-groups/actions/sit-publication-audience-edit/sit-publication-audience-edit.component';
+import { SitProduct4PubCollectionsEditComponent } from './containers/dictionaries/sit-publications-forms-of-release-groups/actions/sit-product4-pub-collections-edit/sit-product4-pub-collections-edit.component';
+import { SitAbsenceReasonsEditComponent } from './containers/dictionaries/sit-hr-working-hours/actions/sit-absence-reasons-edit/sit-absence-reasons-edit.component';
 
 
 @NgModule({
@@ -586,7 +597,18 @@ import { SitPayrollComponentsSettlementsColumnsEditComponent } from './container
         SitAcceptanceStepPersonsDefEditComponent,
         SitAcceptanceTablesEditComponent,
         SitCustomerCreditLimitScoresAcceptComponent,
-        SitPayrollComponentsSettlementsColumnsEditComponent
+        SitPayrollComponentsSettlementsColumnsEditComponent,
+        SitCashRegisterSaleReportsComponent,
+        SitCashRegisterSaleReportsImportComponent,
+        SitSimpleMethodConfigurationsEditComponent,
+        SitWsUsersEditComponent,
+        SitCashRegisterSaleReportsExportComponent,
+        SitPublicationSubjectsEditComponent,
+        SitCustomerB2bProductsConfigEditComponent,
+        SitCustomerB2bProductsEditComponent,
+        SitPublicationAudienceEditComponent,
+        SitProduct4PubCollectionsEditComponent,
+        SitAbsenceReasonsEditComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },

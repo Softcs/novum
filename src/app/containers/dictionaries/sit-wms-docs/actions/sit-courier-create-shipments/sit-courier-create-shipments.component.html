@@ -20,11 +20,18 @@
         <sit-data-input type="text" #sitControl field="HouseNumber" label="Numer domu" appearance="outline" fxFlex=20></sit-data-input>
         <sit-data-input type="text" #sitControl field="ApartmentNumber" label="Numer lokalu" appearance="outline" fxFlex=20></sit-data-input>
       </div>
-      <sit-data-input type="text" #sitControl field="ContactPerson" label="Osoba kontaktowa" appearance="outline"></sit-data-input>
-      <sit-data-input type="text" #sitControl field="ContactPhone" label="Tel. kontaktowy" appearance="outline"></sit-data-input>
+      <div fxLayout="row">
+        <sit-data-input type="text" #sitControl field="ContactPerson" label="Osoba kontaktowa" appearance="outline" fxFlex=50></sit-data-input>
+        <sit-data-input type="text" #sitControl field="ContactPhone" label="Tel. kontaktowy" appearance="outline" fxFlex=50></sit-data-input>
+      </div>
       <sit-data-input type="text" #sitControl field="ContactEmail" label="Email kontaktowy" appearance="outline"></sit-data-input>
-      <sit-data-input type="date" #sitControl field="ShipmentDate" label="Data wysyłki" appearance="outline"></sit-data-input>
+      <div fxLayout="row">
+        <sit-data-input type="date" #sitControl field="ShipmentDate" label="Data wysyłki" appearance="outline" style="width: 130px;"></sit-data-input>
+        <sit-data-checkbox #sitControl field="Insurance" label="Ubezpieczenie przesyłki"></sit-data-checkbox>
+        <sit-data-input type="number" #sitControl field="InsuranceValue" label="Kwota ubezpieczenia" appearance="outline" style="width: 130px;"></sit-data-input>
+      </div>
       <sit-data-input type="text" #sitControl field="Content" label="Zawartość" appearance="outline"></sit-data-input>
+      <sit-data-checkbox #sitControl field="ReturnOnDelivery" label="Zwrot dokumentów (ROD)"></sit-data-checkbox>
     </div>
   </sit-data-set-container>
 </sit-proc-params>

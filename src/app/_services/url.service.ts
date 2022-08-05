@@ -24,6 +24,16 @@ export class UrlService {
         + (fileName ? fileName : "noFileName");
   }
 
+  getImageUrl( sitAttachmentsG:  string, fileName: string): string {
+    return environment.apiUrl
+        + '/service/attachments/get/'
+        + this.currentUser.token + '/'
+        + this.currentUser.connection + '/'
+        + 'images/get/'
+        + sitAttachmentsG + '/'
+        + (fileName ? fileName : "noFileName");
+  }
+
   getSecureRepUrl( dictGuid: string, rt: string, rg: string, params: any,){
     let par = new URLSearchParams(params).toString();
     if (!dictGuid) { return };

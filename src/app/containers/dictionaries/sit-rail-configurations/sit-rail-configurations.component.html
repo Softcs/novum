@@ -1,46 +1,66 @@
 ﻿<sit-dict-container ident="sitRailConfigurations" #sitDictcontainer fxFill>
-  <div fxLayout="row" fxFill>
-    <div fxLayout="column" fxFlex="30" fxLayout="column" class="content">
-      <sit-data-set-container ident="sitFilter" >
-        <div class="sit-filter-bar" fxLayout="row">
-          <sit-data-input #sitControl field="searchCompanyIdent" type="text" label="Firma" appearance="outline" style="width: 150px;"></sit-data-input>
-          <sit-data-input id="searchRailConfigurations" #sitControl field="searchRailConfigurations" label="Filtruj" showRefreshButton=true appearance="outline"></sit-data-input>
+  <mat-tab-group id="tab-group" animationDuration="0ms">
+    <mat-tab label="Rail">
+      <div fxLayout="row" fxFill>
+        <div fxLayout="column" fxFlex="30" fxLayout="column" class="content">
+          <sit-data-set-container ident="sitFilter" >
+            <div class="sit-filter-bar" fxLayout="row">
+              <sit-data-input #sitControl field="searchCompanyIdent" type="text" label="Firma" appearance="outline" style="width: 150px;"></sit-data-input>
+              <sit-data-input id="searchRailConfigurations" #sitControl field="searchRailConfigurations" label="Filtruj" showRefreshButton=true appearance="outline"></sit-data-input>
+            </div>
+          </sit-data-set-container>
+          <sit-data-set-container ident="sitRailConfigurations" showActionsToolbar="true" fxLayout="column" fxFlex>
+            <div class="data-table" fxFlex>
+              <ag-grid-angular
+                #sitSetDataSource
+                #sitRailConfigurationsGrid
+                style="width: 100%; height: 100%;"
+                class="ag-theme-balham"
+              >
+              </ag-grid-angular>
+            </div>
+          </sit-data-set-container>
         </div>
-      </sit-data-set-container>
-      <sit-data-set-container ident="sitRailConfigurations" showActionsToolbar="true" fxLayout="column" fxFlex>
-        <div class="data-table" fxFlex>
-          <ag-grid-angular
-            #sitSetDataSource
-            #sitRailConfigurationsGrid
-            style="width: 100%; height: 100%;"
-            class="ag-theme-balham"
-          >
-          </ag-grid-angular>
+        <div fxLayout="column" fxFlex="70" class="content">
+          <sit-data-set-container ident="sitRailConfigurations" fxLayout="column" fxFill>
+            <div fxLayout="row">
+              <sit-data-checkbox #sitControl field="IsActive" label="Aktywny" readonly="true"></sit-data-checkbox>
+              <sit-data-input type="text" #sitControl field="CompanyIdent" label="Firma" appearance="outline" [readonly]=true></sit-data-input>
+              <sit-data-input type="text" #sitControl field="UserLogin" label="Użytkownik" appearance="outline" [readonly]=true></sit-data-input>
+              <sit-data-input type="number" #sitControl field="Timeout" label="Timeout" appearance="outline" [readonly]=true></sit-data-input>
+              <sit-data-input type="text" #sitControl field="Source" label="Źródło" appearance="outline" [readonly]=true></sit-data-input>
+              <sit-data-input type="number" #sitControl field="LogLevel" label="Poziom loga" appearance="outline" [readonly]=true></sit-data-input>
+            </div>
+            <sit-data-input type="text" #sitControl field="ClientGuid" label="GUID Rail'a" appearance="outline" [readonly]=true style="width: 100%;"></sit-data-input>
+            <sit-data-input type="text" #sitControl field="OperationIdent" label="Identyfikator operacji" appearance="outline" [readonly]=true style="width: 100%;"></sit-data-input>
+            <sit-data-input type="text" #sitControl field="TransformProcedure" label="Procedura transformująca" appearance="outline" [readonly]=true style="width: 100%;"></sit-data-input>
+            <sit-data-input type="text" #sitControl field="ConvertFunctionForParams" label="Funkcja konwertująca parametry" appearance="outline" [readonly]=true style="width: 100%;"></sit-data-input>
+            <div fxLayout="row" fxFlex>
+              <sit-data-textarea type="textarea" #sitControl field="Data" label="Dane" appearance="outline" [readonly]=true fxFill></sit-data-textarea>
+            </div>
+          </sit-data-set-container>
         </div>
-      </sit-data-set-container>
-    </div>
-    <div fxLayout="column" fxFlex="70" class="content">
-      <sit-data-set-container ident="sitRailConfigurations" fxLayout="column" fxFill>
-        <div fxLayout="row">
-          <sit-data-checkbox #sitControl field="IsActive" label="Aktywny" readonly="true"></sit-data-checkbox>
-          <!-- <sit-data-input type="text" #sitControl field="sitCompaniesG" label="ID firmy" appearance="outline" [readonly]=true style="width: 100px"></sit-data-input> -->
-          <sit-data-input type="text" #sitControl field="CompanyIdent" label="Firma" appearance="outline" [readonly]=true></sit-data-input>
-            <!-- <sit-data-input type="text" #sitControl field="sitWSUsersG" label="User Id" appearance="outline" [readonly]=true style="width: 100px"></sit-data-input> -->
-          <sit-data-input type="text" #sitControl field="UserLogin" label="Użytkownik" appearance="outline" [readonly]=true></sit-data-input>
-          <sit-data-input type="number" #sitControl field="Timeout" label="Timeout" appearance="outline" [readonly]=true></sit-data-input>
-          <sit-data-input type="text" #sitControl field="Source" label="Źródło" appearance="outline" [readonly]=true></sit-data-input>
-          <sit-data-input type="number" #sitControl field="LogLevel" label="Poziom loga" appearance="outline" [readonly]=true></sit-data-input>
-
-        </div>
-
-        <sit-data-input type="text" #sitControl field="ClientGuid" label="GUID Rail'a" appearance="outline" [readonly]=true style="width: 100%;"></sit-data-input>
-        <sit-data-input type="text" #sitControl field="OperationIdent" label="Identyfikator operacji" appearance="outline" [readonly]=true style="width: 100%;"></sit-data-input>
-        <sit-data-input type="text" #sitControl field="TransformProcedure" label="Procedura transformująca" appearance="outline" [readonly]=true style="width: 100%;"></sit-data-input>
-        <sit-data-input type="text" #sitControl field="ConvertFunctionForParams" label="Funkcja konwertująca parametry" appearance="outline" [readonly]=true style="width: 100%;"></sit-data-input>
-        <div fxLayout="row" fxFlex>
-          <sit-data-textarea type="textarea" #sitControl field="Data" label="Dane" appearance="outline" [readonly]=true fxFill></sit-data-textarea>
-        </div>
-      </sit-data-set-container>
-    </div>
-  </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Simple">
+      <div fxLayout="column" fxFill class="content">
+        <sit-data-set-container ident="sitSimpleMethodConfigurationsFilter" fxLayout="column">
+          <div class="sit-filter-bar" fxLayout="row">
+            <sit-data-input #sitControl field="companyIdentSimpleMethodConfigurations" label="Firma" appearance="outline" style="width: 150px;"></sit-data-input>
+            <sit-data-input #sitControl field="searchSimpleMethodConfigurations" label="Filtruj" [showRefreshButton]=true appearance="outline"></sit-data-input>
+          </div>
+        </sit-data-set-container>
+        <sit-data-set-container ident="sitSimpleMethodConfigurations" [showActionsToolbar]="true" fxLayout="column" fxFlex>
+          <div class="data-table" fxFlex>
+            <ag-grid-angular
+              #sitSetDataSource
+              style="width: 100%; height: 100%;"
+              class="ag-theme-balham"
+            >
+            </ag-grid-angular>
+          </div>
+        </sit-data-set-container>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
 </sit-dict-container>

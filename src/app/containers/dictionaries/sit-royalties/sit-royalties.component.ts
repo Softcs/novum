@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-dict-base.component';
+import { DataSetWrapper } from '@app/_models/dataSetWrapper';
 
 @Component({
   selector: 'app-sit-royalties',
@@ -84,6 +85,13 @@ export class SitRoyaltiesComponent extends SitDictBaseComponent {
       },
     }
   }
+  
+  getPrintout() {
+    //generuje wydruk w nowej zakładce
+    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitRoyaltiesHeaders');
+    var url = this.urlService.getSecureRepUrl('DFCE133B-62D1-263D-9AE3-DCC06502804D', 'dict', '2D770473-E648-ECA7-E003-38737DEF5DDB', dataSourceResponseWrapper.activeRow);
+    window.open(url, '','height=700, width=1400, left=100,top=100');
 
+  }
 
 }

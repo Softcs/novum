@@ -9,6 +9,8 @@ import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-di
 })
 export class SitEmployeesComponent extends SitDictBaseComponent {
 
+  json;
+
   public prepareColumnsDefinitnion() {
     this.gridColumnsDefinition["sitEmployees"] = [
       { headerName: 'Id', field: 'sitEmployeesId',width: 90, defaultVisibility: false},
@@ -50,25 +52,48 @@ export class SitEmployeesComponent extends SitDictBaseComponent {
     ];
 
     this.gridColumnsDefinition["sitEmployeeVacationLimits"] = [
-      { headerName: 'Id', field: 'ssitEmployeeVacationLimitsId',width: 90, defaultVisibility: false},
-      { headerName: 'Data od', field: 'DateFrom', filter: 'agDateColumnFilter',width: 90, floatingFilter: false, sort: 'desc', suppressMenu: true },
-      { headerName: 'Data do', field: 'DateTo', filter: 'agDateColumnFilter',width: 90, floatingFilter: false, suppressMenu: true },
-      { headerName: 'Limit', field: 'VacationLimit', filter: 'agTextColumnFilter', width: 100 },
+      { headerName: 'Id', field: 'sitEmployeeVacationLimitsId',width: 90, defaultVisibility: false},
+      { headerName: 'Typ urlopu', field: 'AbsenceIdent', filter: 'agTextColumnFilter', width: 220 },
+      { headerName: 'Rok', field: 'Year', filter: 'agTextColumnFilter', width: 90, sort: 'desc' },
+      { headerName: 'Aktualny', field: 'VacationLimit', filter: 'agTextColumnFilter', width: 130 },
+      { headerName: 'Zaległy', field: 'VacationOverdue', filter: 'agTextColumnFilter', width: 130 },
+      { headerName: 'Do wykorzystania', field: 'ActualLimit', filter: 'agTextColumnFilter', width: 130 },            
+      { headerName: 'Wykorzystany', field: 'ActualLimitUsed', filter: 'agTextColumnFilter', width: 130 },            
+      { headerName: 'Planowany', field: 'VacationPlanned', filter: 'agTextColumnFilter', width: 130 },            
+      { headerName: 'Pozostało', field: 'VacationForUse', filter: 'agTextColumnFilter', width: 130 },            
     ];
 
-    this.gridColumnsDefinition["sitEmployeeVacationLimitsUsed"] = [
-      { headerName: 'Rok', field: 'Year', filter: 'agTextColumnFilter', width: 100, sort: 'desc'},
-      { headerName: 'Data od', field: 'DateFrom', filter: 'agDateColumnFilter',width: 90, floatingFilter: false, sort: 'desc', suppressMenu: true },
-      { headerName: 'Data do', field: 'DateTo', filter: 'agDateColumnFilter',width: 90, floatingFilter: false, suppressMenu: true },
-      { headerName: 'Limit', field: 'VacationLimit', filter: 'agTextColumnFilter', width: 120 },
-      { headerName: 'Wyliczony', field: 'CalculatedLimit', filter: 'agTextColumnFilter', width: 120 },
-      { headerName: 'Wykorzystany', field: 'ActualLimitUsed', filter: 'agTextColumnFilter', width: 120 },            
+    this.gridColumnsDefinition["sitEmployeesExtAppExport"] = [
+      { headerName: 'Id', field: 'sitEmployeeId',width: 90, defaultVisibility: false},      
+      { headerName: 'Identyfikator', field: 'EmployeeIdent', filter: 'agTextColumnFilter', width: 110 },
+      { headerName: 'Imię', field: 'FirstName', filter: 'agTextColumnFilter', width: 120  },
+      { headerName: 'Nazwisko', field: 'LastName', filter: 'agTextColumnFilter', width: 120  },
+      { headerName: 'PESEL', field: 'PESEL', filter: 'agTextColumnFilter', width: 100, defaultVisibility: false },
+      { headerName: 'Cudzoziemiec', field: 'Foreigner', filter: 'agNumberColumnFilter', renderType: 'checkbox', width: 100, suppressMenu: true, cellClass: "grid-cell-centered", defaultVisibility: false },
+      { headerName: 'Id zew. 01', field: 'ExtIdent01', filter: 'agTextColumnFilter', width: 100 },
+      { headerName: 'Id zew. 02', field: 'ExtAppIdent02', filter: 'agTextColumnFilter', width: 100 },
+      { headerName: 'Id statusu', field: 'StatusValueIdent_ExtAppExport', filter: 'agTextColumnFilter', width: 100 },
+      { headerName: 'Nazwa statusu', field: 'StatusValueName_ExtAppExport', filter: 'agTextColumnFilter', width: 150 },
     ];
 
     this.gridColumnsDefinition["sitEmployeesCust"] = [
       { headerName: 'Klient', field: 'CustName', tooltipField: 'CustName', filter: 'agTextColumnFilter', width: 200,},
       { headerName: 'ID u klienta', field: 'EmployeeIdent', filter: 'agTextColumnFilter', width: 110,},            
     ];  
+
+    this.gridColumnsDefinition["sitEmployeesExtAppExportStatusChange"] = [
+      { headerName: 'Id', field: 'sitEmployeesHistoryId',width: 90, defaultVisibility: false},      
+      { headerName: 'Data modyfikacji', field: 'ChangeDate', filter: 'agDateColumnFilter', width: 140, renderType: "date", 
+        renderFormat: "yyyy-MM-dd H:mm:ss", sort: 'desc' },
+      { headerName: 'Login', field: 'UserLogin', filter: 'agTextColumnFilter', width: 120, defaultVisibility: false },
+      { headerName: 'Status z', field: 'StatusValueIdentFrom', filter: 'agTextColumnFilter', width: 90 },
+      { headerName: 'Status na', field: 'StatusValueIdentTo', filter: 'agTextColumnFilter', width: 90 },
+      { headerName: 'Komentarz', field: '__HistoryComments__', filter: 'agNumberColumnFilter', flex: 1},
+    ];
+
   }
 
+  activeRowChanged(activeRow) {
+    this.json = activeRow?.DataForExport == null ? JSON.parse('{}') :  JSON.parse(activeRow.DataForExport) ;
+  }
 }

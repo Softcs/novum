@@ -1,13 +1,14 @@
 <sit-dict-container ident="sitJobs" #sitDictcontainer fxFill >
 <div fxFill fxLayout="column">
     <sit-data-set-container ident="sitFilterJobs" fxLayout="row">
-      <div class="sit-filter-bar">
-        <sit-data-input #sitControl id="searchJobs" field="searchJobs" label="Filtruj zadania" placeholder="" appearance="outline" showRefreshButton="true" style="width: 300px;" ></sit-data-input>
+      <div class="sit-filter-bar" fxLayout="row">
+        <sit-data-input #sitControl field="searchCompanyIdent" type="text" label="Firma" appearance="outline" style="width: 150px;"></sit-data-input>
+        <sit-data-input #sitControl id="searchJobs" field="searchJobs" label="Filtruj zadania" placeholder="" appearance="outline" [showRefreshButton]="true" style="width: 300px;" ></sit-data-input>
       </div>
     </sit-data-set-container>
-    <as-split direction="vertical">
+    <as-split #sitSpliter direction="vertical">
       <as-split-area [size]="50">
-        <sit-data-set-container ident="sitJobs" showActionsToolbar="true" fxFill fxLayout="column" class="content">
+        <sit-data-set-container ident="sitJobs" [showActionsToolbar]="true" fxFill fxLayout="column" class="content">
           <div class="data-table" fxFlex>
             <ag-grid-angular
               #sitSetDataSource
@@ -20,7 +21,7 @@
         </sit-data-set-container>
       </as-split-area>
       <as-split-area [size]="50">
-        <sit-data-set-container  ident="sitJobSteps" showActionsToolbar="true" fxFill fxLayout="column">
+        <sit-data-set-container  ident="sitJobSteps" [showActionsToolbar]="true" fxFill fxLayout="column">
           <div class="data-table" fxFlex>
             <ag-grid-angular
               #sitSetDataSource

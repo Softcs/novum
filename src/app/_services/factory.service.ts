@@ -199,6 +199,17 @@ import { SitAcceptanceStepPersonsDefEditComponent } from '@app/containers/dictio
 import { SitAcceptanceTablesEditComponent } from '@app/containers/dictionaries/sit-acceptance-paths-def/actions/sit-acceptance-tables-edit/sit-acceptance-tables-edit.component';
 import { SitCustomerCreditLimitScoresAcceptComponent } from '@app/containers/dictionaries/sit-customer-credit-limit-scores/actions/sit-customer-credit-limit-scores-accept/sit-customer-credit-limit-scores-accept.component';
 import { SitPayrollComponentsSettlementsColumnsEditComponent } from '@app/containers/dictionaries/sit-payroll-components/actions/sit-payroll-components-settlements-columns-edit/sit-payroll-components-settlements-columns-edit.component';
+import { SitCashRegisterSaleReportsComponent } from '@app/containers/dictionaries/sit-cash-register-sale-reports/sit-cash-register-sale-reports.component';
+import { SitCashRegisterSaleReportsImportComponent } from '@app/containers/dictionaries/sit-cash-register-sale-reports/actions/sit-cash-register-sale-reports-import/sit-cash-register-sale-reports-import.component';
+import { SitSimpleMethodConfigurationsEditComponent } from '@app/containers/dictionaries/sit-rail-configurations/actions/sit-simple-method-configurations-edit/sit-simple-method-configurations-edit.component';
+import { SitWsUsersEditComponent } from '@app/containers/dictionaries/sit-rail-dns/actions/sit-ws-users-edit/sit-ws-users-edit.component';
+import { SitCashRegisterSaleReportsExportComponent } from '@app/containers/dictionaries/sit-cash-register-sale-reports/actions/sit-cash-register-sale-reports-export/sit-cash-register-sale-reports-export.component';
+import { SitPublicationSubjectsEditComponent } from '@app/containers/dictionaries/sit-publications-forms-of-release-groups/actions/sit-publication-subjects-edit/sit-publication-subjects-edit.component';
+import { SitCustomerB2bProductsConfigEditComponent } from '@app/containers/dictionaries/sit-customers/actions/sit-customer-b2b-products-config-edit/sit-customer-b2b-products-config-edit.component';
+import { SitCustomerB2bProductsEditComponent } from '@app/containers/dictionaries/sit-customers/actions/sit-customer-b2b-products-edit/sit-customer-b2b-products-edit.component';
+import { SitPublicationAudienceEditComponent } from '@app/containers/dictionaries/sit-publications-forms-of-release-groups/actions/sit-publication-audience-edit/sit-publication-audience-edit.component';
+import { SitProduct4PubCollectionsEditComponent } from '@app/containers/dictionaries/sit-publications-forms-of-release-groups/actions/sit-product4-pub-collections-edit/sit-product4-pub-collections-edit.component';
+import { SitAbsenceReasonsEditComponent } from '@app/containers/dictionaries/sit-hr-working-hours/actions/sit-absence-reasons-edit/sit-absence-reasons-edit.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -403,7 +414,19 @@ export class FactoryService {
         sitAcceptanceStepPersonsDefEdit: SitAcceptanceStepPersonsDefEditComponent,
         sitAcceptanceTablesEdit: SitAcceptanceTablesEditComponent,
         sitCustomerCreditLimitScoresAccept: SitCustomerCreditLimitScoresAcceptComponent,
-        sitPayrollComponentsSettlementsColumnsEdit: SitPayrollComponentsSettlementsColumnsEditComponent
+        sitPayrollComponentsSettlementsColumnsEdit: SitPayrollComponentsSettlementsColumnsEditComponent,
+        sitCashRegisterSaleReports: SitCashRegisterSaleReportsComponent,
+        sitCashRegisterSaleReportsImport: SitCashRegisterSaleReportsImportComponent,
+        sitSimpleMethodConfigurationsEdit: SitSimpleMethodConfigurationsEditComponent,
+        sitWsUsersEdit: SitWsUsersEditComponent,
+        sitCashRegisterSaleReportsExport: SitCashRegisterSaleReportsExportComponent,
+        sitPublicationSubjectsEdit: SitPublicationSubjectsEditComponent,
+        sitCustomerB2bProductsConfigEdit: SitCustomerB2bProductsConfigEditComponent,
+        sitCustomerB2bProductsEdit: SitCustomerB2bProductsEditComponent,
+        sitPublicationAudienceEdit: SitPublicationAudienceEditComponent,
+        sitProduct4PubCollectionsEdit: SitProduct4PubCollectionsEditComponent,
+        sitAbsenceReasonsEdit: SitAbsenceReasonsEditComponent,
+
     };
 
     public GetFactory(ident: string) {

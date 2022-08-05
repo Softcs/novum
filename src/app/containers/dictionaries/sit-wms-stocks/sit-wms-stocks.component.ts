@@ -27,9 +27,9 @@ export class SitWmsStocksComponent extends SitDictBaseComponent {
     },
     { headerName: 'Stany',
       children: [
-        { headerName: 'ERP', field: 'Quantity', type: 'numericColumn', filter: 'agTextColumnFilter', width: 100 },
-        { headerName: 'MWS', field: 'QuantityExt', type: 'numericColumn', filter: 'agTextColumnFilter', width: 100 },
-        { headerName: 'Różnica.', field: 'QuantityDiff', type: 'numericColumn', filter: 'agTextColumnFilter', width: 100 },
+        { headerName: 'ERP', field: 'Quantity', type: 'numericColumn', filter: 'agTextColumnFilter', width: 100, sortable: true, resizable: true, },
+        { headerName: 'MWS', field: 'QuantityExt', type: 'numericColumn', filter: 'agTextColumnFilter', width: 100, sortable: true, resizable: true, },
+        { headerName: 'Różnica.', field: 'QuantityDiff', type: 'numericColumn', filter: 'agTextColumnFilter', width: 100, sortable: true, resizable: true, },
       ]
     },
     { headerName: 'Magazyn',
@@ -58,7 +58,7 @@ export class SitWmsStocksComponent extends SitDictBaseComponent {
           { headerName: 'Identyfikator', field: 'ProductIdent', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 150 },
           { headerName: 'EAN', field: 'EAN', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 120 },
           { headerName: 'Nazwa', field: 'ProductName', tooltipField: 'ProductName', filter: 'agTextColumnFilter', width: 300 },
-          { headerName: 'Waga', field: 'Weight', filter: 'agNumberColumnFilter', width: 80,
+          { headerName: 'Waga', field: 'Weight', filter: 'agNumberColumnFilter', width: 80,sortable: true, resizable: true,
             type: 'numericColumn',
             renderType: "number", renderFormat: '1.3-3'},
         ]
@@ -120,8 +120,8 @@ export class SitWmsStocksComponent extends SitDictBaseComponent {
   }
   activeRowStocksChanged(activeRow) {
     this.link = activeRow?.sitImagesG == null
-      ? this.urlService.getAttachmentUrl("noimage", "noimage.jpg") // kiedy brak rekordu
-      :  this.urlService.getAttachmentUrl(activeRow.sitImagesG, activeRow.FileName) ;
+      ? this.urlService.getImageUrl("noimage", "noimage.jpg") // kiedy brak rekordu
+      :  this.urlService.getImageUrl(activeRow.sitImagesG, activeRow.FileName) ;
 
     this.ean = activeRow !== null ? activeRow.EAN : '';
   }

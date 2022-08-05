@@ -16,7 +16,8 @@ export class SitRightsComponent extends SitDictBaseComponent {
       { headerName: 'Identyfikator', field: 'RightsGroupIdent', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 100 },
       { headerName: 'Nazwa grupy', field: 'RightsGroupName', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 200 },
       { headerName: 'Poufne umowy', field: 'ConfidentialAgreements', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, renderType: 'checkbox', cellClass: "grid-cell-centered",width: 120 },
-      { headerName: 'Prawa do wierszy: kartoteki', field: 'UseRights4ProductsStatusMain', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, renderType: 'checkbox', cellClass: "grid-cell-centered",width: 120, defaultVisibility: false },
+      { headerName: 'Prawa do wierszy: status kartoteki', field: 'UseRights4ProductsStatusMain', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, renderType: 'checkbox', cellClass: "grid-cell-centered",width: 120, defaultVisibility: false },
+      { headerName: 'Prawa do wierszy: opiekun kontrahenta', field: 'UseRights4CustomersAccountManager', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, renderType: 'checkbox', cellClass: "grid-cell-centered",width: 120, defaultVisibility: false },
     ]
     this.gridColumnsDefinition["sitSysDictionaries"] = [
       { headerName: 'Id', type: 'numericColumn', field: 'sitSysDictionariesId', filter: 'agTextColumnFilter', defaultVisibility: false },

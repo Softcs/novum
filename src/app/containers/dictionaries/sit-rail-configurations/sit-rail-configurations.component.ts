@@ -11,9 +11,20 @@ export class SitRailConfigurationsComponent extends SitDictBaseComponent {
   
   public prepareColumnsDefinitnion() {
     this.gridColumnsDefinition["sitRailConfigurations"] = [
-      { headerName: 'CompanyIdent', field: 'CompanyIdent', sortable: true, flex: 2, filter: 'agTextColumnFilter', autoHeight: true },
-      { headerName: 'OperationIdent', field: 'OperationIdent', sortable: true, flex: 2, filter: 'agTextColumnFilter', autoHeight: true },
-      { headerName: 'IsActive', field: 'IsActive', sortable: true, flex: 1, filter: 'agTextColumnFilter', autoHeight: true, cellRenderer: 'gridCheckboxRenderer', cellClass: "grid-cell-centered"  },
+      { headerName: 'Id firmy', field: 'CompanyIdent', sortable: true, flex: 2, filter: 'agTextColumnFilter', autoHeight: true },
+      { headerName: 'Identyfikator operacji', field: 'OperationIdent', sortable: true, flex: 2, filter: 'agTextColumnFilter', autoHeight: true },
+      { headerName: 'Aktywna', field: 'IsActive', sortable: true, flex: 1, filter: 'agTextColumnFilter', autoHeight: true, renderType: 'checkbox', cellClass: "grid-cell-centered"  },
+    ];
+
+    this.gridColumnsDefinition["sitSimpleMethodConfigurations"] = [
+      { headerName: 'Id firmy', field: 'CompanyIdent', sortable: true, width: 150 , filter: 'agTextColumnFilter', autoHeight: true },
+      { headerName: 'Nazwa firmy', field: 'CompanyDescription', sortable: true, width: 200, filter: 'agTextColumnFilter', autoHeight: true },
+      { headerName: 'Użytkownik', field: 'UserLogin', filter: 'agTextColumnFilter', width: 150 },
+      { headerName: 'Identyfikator operacji', field: 'OperationIdent', sortable: true, width: 200, filter: 'agTextColumnFilter', autoHeight: true },
+      { headerName: 'Aktywna', field: 'IsActive', sortable: true, width: 100, filter: 'agTextColumnFilter', autoHeight: true, renderType: 'checkbox', cellClass: "grid-cell-centered"},
+      { headerName: 'Procedura transformująca', field: 'TransformProcedure', filter: 'agTextColumnFilter', width: 300, },
+      { headerName: 'Źródło', field: 'Source', filter: 'agTextColumnFilter', width: 100 },
+      { headerName: 'Timeout', field: 'Timeout', filter: 'agTextColumnFilter', width: 100 },
     ];
 
   }

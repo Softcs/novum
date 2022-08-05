@@ -66,6 +66,7 @@ export class SitPulpitComponent  extends SitDictBaseComponent {
     ],
 
     this.gridColumnsDefinition["sitEmployeeContacts"] = [
+      { headerName: "LP", valueGetter: "node.rowIndex + 1", width: 40, },
       { headerName: 'Pracownik', field: 'email', tooltipField: 'HRCompanyHierarchyDesc', filter: 'agTextColumnFilter', width: 250,
         cellRenderer: function(params) {
           return ('<span><b>' + (params.data["EmployeeName"] ? params.data["EmployeeName"] : '')  + '</b></span>'
@@ -74,8 +75,11 @@ export class SitPulpitComponent  extends SitDictBaseComponent {
       },
       { headerName: 'Telefon', field: 'PhoneNumber', flex: 1,
         cellRenderer: function(params) {
-          return ('<span><img src="assets/phone-small.png" /> ' + (params.value ? params.value : '') + '</span>'
-            + '<br><span><img src="assets/mobile-phone-small.png" /> ' + (params.data["MobileNumber"] ? params.data["MobileNumber"] : '') + '</span>')
+          return '<table style="width:100%"><tr>'
+              + '<td style="width:30%">&nbsp;' + (params.value ? '<img src="assets/phone-small.png" /> ' + params.value : '')  + '</td>'
+              + '<td style="width:70%">&nbsp;' + (params.data["MobileNumber"] ? '<img src="assets/mobile-phone-small.png" /> ' + params.data["MobileNumber"] : '') +'</td>'
+            + '</tr>'
+            + '<tr><td colspan="2"><b>' + (params.data["HRCompanyHierarchyDesc"] ? params.data["HRCompanyHierarchyDesc"] : '') + '</b></td></tr></table>'
         }
       },
       { headerName: 'sortOrder', field: 'EmployeeName', suppressMenu: true, width: 60, sort: 'asc', defaultVisibility: false },      
