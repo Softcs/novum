@@ -210,6 +210,12 @@ import { SitCustomerB2bProductsEditComponent } from '@app/containers/dictionarie
 import { SitPublicationAudienceEditComponent } from '@app/containers/dictionaries/sit-publications-forms-of-release-groups/actions/sit-publication-audience-edit/sit-publication-audience-edit.component';
 import { SitProduct4PubCollectionsEditComponent } from '@app/containers/dictionaries/sit-publications-forms-of-release-groups/actions/sit-product4-pub-collections-edit/sit-product4-pub-collections-edit.component';
 import { SitAbsenceReasonsEditComponent } from '@app/containers/dictionaries/sit-hr-working-hours/actions/sit-absence-reasons-edit/sit-absence-reasons-edit.component';
+import { SitSysCommonDataTablesComponent } from '@app/containers/dictionaries/sit-sys-common-data-tables/sit-sys-common-data-tables.component';
+import { SitCountriesEditComponent } from '@app/containers/dictionaries/sit-sys-common-data-tables/actions/sit-countries-edit/sit-countries-edit.component';
+import { SitCurrenciesEditComponent } from '@app/containers/dictionaries/sit-sys-common-data-tables/actions/sit-currencies-edit/sit-currencies-edit.component';
+import { SitDocumentsLinksTypesEditComponent } from '@app/containers/dictionaries/sit-sys-common-data-tables/actions/sit-documents-links-types-edit/sit-documents-links-types-edit.component';
+import { SitJobTimesEditComponent } from '@app/containers/dictionaries/sit-sys-common-data-tables/actions/sit-job-times-edit/sit-job-times-edit.component';
+import { SitLanguagesEditComponent } from '@app/containers/dictionaries/sit-sys-common-data-tables/actions/sit-languages-edit/sit-languages-edit.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -426,6 +432,13 @@ export class FactoryService {
         sitPublicationAudienceEdit: SitPublicationAudienceEditComponent,
         sitProduct4PubCollectionsEdit: SitProduct4PubCollectionsEditComponent,
         sitAbsenceReasonsEdit: SitAbsenceReasonsEditComponent,
+        sitSysCommonDataTables: SitSysCommonDataTablesComponent,
+        sitCountriesEdit: SitCountriesEditComponent,
+        sitCurrenciesEdit: SitCurrenciesEditComponent,
+        sitDocumentsLinksTypesEdit: SitDocumentsLinksTypesEditComponent,
+        sitJobTimesEdit: SitJobTimesEditComponent,
+        sitLanguagesEdit: SitLanguagesEditComponent,
+
 
     };
 
