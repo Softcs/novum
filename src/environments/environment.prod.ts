@@ -9,7 +9,7 @@ export const environment = {
     },
     rroutingOverride : {
         "publicat.l-seidoit.pl": {
-            "login": "login_pub"           
+            "login": "login_pub"
         }
     }
 };

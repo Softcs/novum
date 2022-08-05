@@ -53,6 +53,7 @@ export class SitChangeCompanyComponent implements OnInit {
     });
 
     this.dialogRef.close();
+    this.gatewayService.companyChanged.emit(this.gatewayService.currentUserValue?.company);
     this.router.navigate(['/login']);
   }
 

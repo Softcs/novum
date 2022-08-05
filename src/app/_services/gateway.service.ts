@@ -1,10 +1,10 @@
-﻿import { Injectable } from '@angular/core';
+﻿import { EventEmitter, Injectable, Output } from '@angular/core';
 import { HttpClient, HttpParams, HttpRequest } from '@angular/common/http';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { map, first } from 'rxjs/operators';
 
 import { environment } from '@environments/environment';
-import { User, Operation } from '@app/_models';
+import { User, Operation, DataSetManager } from '@app/_models';
 import * as CryptoJS from 'crypto-js';
 import { OperationCrypt } from '@app/_models/operationCrypt';
 import { LoginInfo } from '@app/_models/loginInfo';
@@ -15,8 +15,12 @@ import { Guid } from 'guid-typescript';
 export class GatewayService {
     private currentUserSubject: BehaviorSubject<User>;
     public currentUser: Observable<User>;
+
     public serverVersion: string;
     public canUseLocalStorage: boolean;
+
+    @Output()
+    companyChanged: EventEmitter<Company> = new EventEmitter<Company>();
 
 
     constructor(private http: HttpClient) {

@@ -7,6 +7,7 @@ import { NavService } from '../../_services/nav.service';
 import { SitDataSetContainerComponent } from '@app/components/sit-data-set-container';
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
 import { DataSetWrapper } from '@app/_models';
+import { Company } from '@app/_models/company';
 
 
 @Component({
@@ -26,7 +27,8 @@ export class SitSideMenuComponent implements OnInit {
     private gatewayService: GatewayService,
     private navService: NavService
   ) {
-    this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
+    this.gatewayService.currentUser.subscribe(x => this.changeUser(x));
+    this.gatewayService.companyChanged.subscribe(x => this.companyChanged(x));
   }
 
   ngOnInit() {
@@ -51,9 +53,17 @@ export class SitSideMenuComponent implements OnInit {
   }
 
 
-
   logout() {
     this.gatewayService.logout();
     this.router.navigate(['/login']);
+  }
+
+  changeUser(newUser: User) {
+    this.currentUser = newUser;
+
+  }
+
+  companyChanged(newCompany: Company) {
+    this.dictContainer?.loadData();
   }
 }
