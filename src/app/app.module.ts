@@ -311,6 +311,12 @@ import { SitCustomerB2bProductsEditComponent } from './containers/dictionaries/s
 import { SitPublicationAudienceEditComponent } from './containers/dictionaries/sit-publications-forms-of-release-groups/actions/sit-publication-audience-edit/sit-publication-audience-edit.component';
 import { SitProduct4PubCollectionsEditComponent } from './containers/dictionaries/sit-publications-forms-of-release-groups/actions/sit-product4-pub-collections-edit/sit-product4-pub-collections-edit.component';
 import { SitAbsenceReasonsEditComponent } from './containers/dictionaries/sit-hr-working-hours/actions/sit-absence-reasons-edit/sit-absence-reasons-edit.component';
+import { SitSysCommonDataTablesComponent } from './containers/dictionaries/sit-sys-common-data-tables/sit-sys-common-data-tables.component';
+import { SitCountriesEditComponent } from './containers/dictionaries/sit-sys-common-data-tables/actions/sit-countries-edit/sit-countries-edit.component';
+import { SitCurrenciesEditComponent } from './containers/dictionaries/sit-sys-common-data-tables/actions/sit-currencies-edit/sit-currencies-edit.component';
+import { SitDocumentsLinksTypesEditComponent } from './containers/dictionaries/sit-sys-common-data-tables/actions/sit-documents-links-types-edit/sit-documents-links-types-edit.component';
+import { SitJobTimesEditComponent } from './containers/dictionaries/sit-sys-common-data-tables/actions/sit-job-times-edit/sit-job-times-edit.component';
+import { SitLanguagesEditComponent } from './containers/dictionaries/sit-sys-common-data-tables/actions/sit-languages-edit/sit-languages-edit.component';
 
 
 @NgModule({
@@ -608,7 +614,13 @@ import { SitAbsenceReasonsEditComponent } from './containers/dictionaries/sit-hr
         SitCustomerB2bProductsEditComponent,
         SitPublicationAudienceEditComponent,
         SitProduct4PubCollectionsEditComponent,
-        SitAbsenceReasonsEditComponent
+        SitAbsenceReasonsEditComponent,
+        SitSysCommonDataTablesComponent,
+        SitCountriesEditComponent,
+        SitCurrenciesEditComponent,
+        SitDocumentsLinksTypesEditComponent,
+        SitJobTimesEditComponent,
+        SitLanguagesEditComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },

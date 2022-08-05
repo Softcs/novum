@@ -22,7 +22,7 @@ export class SitStatusesComponent extends SitDictBaseComponent {
       { headerName: 'Wartość', field: 'ValueIdent', filter: 'agNumberColumnFilter', width: 100   },
       { headerName: 'Nazwa', field: 'ValueName', filter: 'agTextColumnFilter', width: 250  },
       { headerName: 'Kolejność', field: 'Order', type: "numericColumn", filter: 'agNumberColumnFilter', width: 100, sort: 'asc' },
-      { headerName: 'Domyślna', field: 'IsDefault', filter: 'agTextColumnFilter', width: 100, renderType: 'checkbox' }
+      { headerName: 'Domyślna', field: 'IsDefault', filter: 'agTextColumnFilter', width: 100, renderType: 'checkbox', cellClass: 'grid-cell-centered' }
     ];
 
     this.gridColumnsDefinition["sitStatusValuesTransitions"] = [
@@ -30,7 +30,7 @@ export class SitStatusesComponent extends SitDictBaseComponent {
       { headerName: 'Nazwa', field: 'ValueName_From', filter: 'agTextColumnFilter', width: 250 },
       { headerName: 'Wartość końcowa', field: 'ValueIdent_To', filter: 'agTextColumnFilter', width: 100 },
       { headerName: 'Nazwa', field: 'ValueName_To', filter: 'agTextColumnFilter', width: 250 },
-      { headerName: 'Aktywne', field: 'IsActive', renderType: 'checkbox', width: 100 }
+      { headerName: 'Aktywne', field: 'IsActive', renderType: 'checkbox', width: 100, cellClass: 'grid-cell-centered' }
     ];
   }
 }
