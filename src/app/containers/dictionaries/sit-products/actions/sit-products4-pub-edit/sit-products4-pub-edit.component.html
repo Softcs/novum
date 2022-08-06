@@ -4,7 +4,8 @@
   <sit-data-set-container ident="sitProducts4PubEdit">
     <div class="sit-proc-params-content" fxLayout="column" style="width: 650px;height: 350px;">
       <div fxLayout="row" >
-        <sit-data-input type="text" #sitControl field="FormOfReleaseDesc" label="Forma wydania" appearance="outline" style="width: 200px"></sit-data-input>
+        <sit-data-input *ngIf="this.activeRow?.CanEditFromPub == 1" type="text" #sitControl field="FormOfReleaseDesc" label="Forma wydania" 
+          appearance="outline" style="width: 200px"></sit-data-input>
       </div>
       <div fxLayout="row" >
         <sit-data-input type="text" #sitControl field="CollectionName" label="Kolekcja" appearance="outline" style="width: 250px"></sit-data-input>

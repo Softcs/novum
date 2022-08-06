@@ -1,30 +1,19 @@
 <sit-dict-container ident="sitPublications" #sitDictcontainer fxFill>
-    <as-split direction="vertical">
-      <as-split-area [size]="50">
-        <div fxLayout="column" fxFill class="content">
-          <sit-data-set-container ident="sitFilterPublications" fxLayout="row">
-            <div class="sit-filter-bar" fxLayout="row">
-              <sit-data-input #sitControl field="searchPublications" label="Filtruj publikacje" appearance="outline" style="width: 300px;" showRefreshButton="true"></sit-data-input>
-              <sit-data-checkbox #sitControl field="searchShowArch" label="Pokaż archiwalne" labelPosition="after" checked="false"></sit-data-checkbox>
-            </div>
-          </sit-data-set-container>
-          <sit-data-set-container ident="sitPublications" showActionsToolbar="true" fxLayout="column" fxFlex>
-            <div class="data-table" fxFlex>
-              <ag-grid-angular
-                #sitSetDataSource
-                style="width: 100%; height: 100%;"
-                class="ag-theme-balham"
-              >
-              </ag-grid-angular>
-            </div>
-          </sit-data-set-container>
-        </div>
-      </as-split-area>
-      <as-split-area [size]="50">
-        <mat-tab-group id="tab-group" animationDuration="0ms">
-          <mat-tab label="Produkty">
-            <div fxFill fxLayout="column">
-              <sit-data-set-container ident="sitPublicationsProducts" showActionsToolbar="true" fxLayout="column" fxFlex>
+    <as-split #sitSpliter direction="vertical">
+      <as-split-area [size]="40">
+        <as-split #sitSpliter direction="horizontal">
+          <as-split-area [size]="60">
+            <div fxLayout="column" fxFill class="content">
+              <sit-data-set-container ident="sitPublicationsFilter" fxLayout="row">
+                <div class="sit-filter-bar" fxLayout="row">
+                  <sit-data-input #sitControl field="searchPublications" label="Filtruj publikacje" appearance="outline" style="width: 250px;" 
+                    placeholder="Publikacja, tytuł, tytuł oryginalny" [showRefreshButton]="false"></sit-data-input>
+                  <sit-data-input #sitControl field="searchPublicationsProducts" label="Filtruj produkty" appearance="outline" style="width: 300px;" 
+                  placeholder="Identyfikator, nazwa, EAN" [showRefreshButton]="true"></sit-data-input>
+                  <sit-data-checkbox #sitControl field="searchShowArch" label="Pokaż archiwalne" labelPosition="after" checked="false"></sit-data-checkbox>
+                </div>
+              </sit-data-set-container>
+              <sit-data-set-container ident="sitPublications" [showActionsToolbar]="true" fxLayout="column" fxFlex>
                 <div class="data-table" fxFlex>
                   <ag-grid-angular
                     #sitSetDataSource
@@ -33,8 +22,103 @@
                   >
                   </ag-grid-angular>
                 </div>
-              </sit-data-set-container>    
+              </sit-data-set-container>
             </div>
+          </as-split-area>
+          <as-split-area [size]="40">
+            <sit-data-set-container  ident="sitPublications" [showActionsToolbar]="false" fxFill fxLayout="column">
+              <div fxLayout="column" fxFill fxLayoutGap="5px" class="content">
+                <mat-card>
+                  <mat-card-content>
+                    <mat-card-title>Publikacja</mat-card-title>
+                    <sit-data-label type="text" #sitControl field="PublicationIdent" label="" labelWidth="0" 
+                      style="font-weight: bold; font-size: large;"></sit-data-label>
+                    <sit-data-label type="text" #sitControl field="Title" label="" labelWidth="0" style="font-weight: bold;"></sit-data-label>
+                    <sit-data-label type="text" #sitControl field="OriginalTitle" label="" labelWidth="0" style="font-style: italic;"></sit-data-label>
+                  </mat-card-content>
+                </mat-card>
+                <mat-card fxFlex>
+                  <mat-card-content>
+                    <sit-data-label type="text" #sitControl field="PublicationSubjectName" label="Tematyka:" labelWidth="120"></sit-data-label>
+                    <div fxLayout="row">
+                      <sit-data-label type="text" #sitControl field="AudienceName" label="Grupa wiekowa:" labelWidth="120" fxFlex="60"></sit-data-label>
+                      <sit-data-label type="text" #sitControl field="LanguageName_Original" label="Język oryginału:" labelWidth="120"  fxFlex="40"></sit-data-label>
+                    </div>
+                  </mat-card-content>
+                </mat-card>
+              </div>
+            </sit-data-set-container>
+          </as-split-area>
+        </as-split>  
+      </as-split-area>
+      <as-split-area [size]="60">
+        <mat-tab-group id="tab-group" animationDuration="0ms">
+          <mat-tab label="Produkty">
+            <as-split #sitSpliter direction="horizontal">
+              <as-split-area [size]="40">
+                <div fxFill fxLayout="column">
+                  <sit-data-set-container ident="sitPublicationsProducts" [showActionsToolbar]="true" fxLayout="column" fxFlex>
+                    <div class="data-table" fxFlex>
+                      <ag-grid-angular
+                        #sitSetDataSource
+                        style="width: 100%; height: 100%;"
+                        class="ag-theme-balham"
+                      >
+                      </ag-grid-angular>
+                    </div>
+                  </sit-data-set-container>    
+                </div>
+              </as-split-area>
+              <as-split-area [size]="60">
+                <mat-tab-group id="tab-group" animationDuration="0ms">
+                  <mat-tab label="Informacje">
+                    <sit-data-set-container  ident="sitProducts4Pub" [showActionsToolbar]="true" fxFill fxLayout="column">
+                      <div fxLayout="column" fxFlex fxLayoutGap="5px" class="content">
+                        <mat-card>
+                          <mat-card-content>
+                            <sit-data-label type="text" #sitControl field="ProductName" label="" labelWidth="0" 
+                              style="font-weight: bold; font-size: large;"></sit-data-label>
+                            <div fxLayout="row">
+                              <sit-data-label type="text" #sitControl field="Author" label="Autor:" labelWidth="80" style="font-weight: bold;"></sit-data-label>
+                              <sit-data-label type="text" #sitControl field="Translator" label="Tłumacz:" labelWidth="80" style="font-weight: bold;"></sit-data-label>
+                              <sit-data-label type="text" #sitControl field="Illustrator" label="Ilustrator:" labelWidth="80" style="font-weight: bold;"></sit-data-label>
+                            </div>
+                            <sit-data-label type="text" #sitControl field="CollectionName" label="Kolekcja:" labelWidth="80" 
+                              style="font-weight: bold; font-style: italic;"></sit-data-label>
+                          </mat-card-content>
+                        </mat-card>
+                        <div fxLayout="row" fxFlex fxLayoutGap="5px">
+                          <mat-card fxFlex="35">
+                            <mat-card-content>
+                              <sit-data-label type="text" #sitControl field="PremiereDate" label="Data premiery:" labelWidth="110" ></sit-data-label>
+                              <sit-data-label type="text" #sitControl field="RegisterDate" label="Data wydania:" labelWidth="110" ></sit-data-label>
+                              <sit-data-label type="text" #sitControl field="FormOfReleaseDesc" label="Forma wydania:" labelWidth="110" ></sit-data-label>
+                              <sit-data-label type="text" #sitControl field="EAN" label="EAN:" labelWidth="80" ></sit-data-label>
+                              <sit-data-label type="text" #sitControl field="ISBN" label="ISBN:" labelWidth="80" ></sit-data-label>
+                            </mat-card-content>
+                          </mat-card>
+                          <mat-card fxFlex="45">
+                            <mat-card-content>
+                              <mat-card-title>Format</mat-card-title>
+                              <sit-data-label type="text" #sitControl field="NumberOfPages" label="Ilość stron:" labelWidth="80" ></sit-data-label>
+                              <sit-data-label type="text" #sitControl field="FormatBase" label="Podstawa:" labelWidth="80" ></sit-data-label>
+                              <sit-data-label type="text" #sitControl field="FormatHeight" label="Wysokość:" labelWidth="80" ></sit-data-label>
+                              <sit-data-label type="text" #sitControl field="BindingSpineThickness" label="Grubość grzbietu:" labelWidth="130" ></sit-data-label>
+                              <sit-data-label type="text" #sitControl field="BindingType" label="Typ oprawy:" labelWidth="130" ></sit-data-label>
+                            </mat-card-content>
+                          </mat-card>
+                        </div>
+                      </div>
+                    </sit-data-set-container>
+                  </mat-tab>
+                  <mat-tab label="Okładka">
+                    <div class="content" fxFill fxLayout="column" fxLayoutAlign=" center" >
+                      <div fxLayout="row" fxLayoutAlign="start start"><a href="{{link}}" target="_blank"><img src="{{link}}" height="500"></a></div>
+                    </div>
+                  </mat-tab>
+                </mat-tab-group>
+              </as-split-area>
+            </as-split>  
           </mat-tab>
         </mat-tab-group>        
       </as-split-area>
