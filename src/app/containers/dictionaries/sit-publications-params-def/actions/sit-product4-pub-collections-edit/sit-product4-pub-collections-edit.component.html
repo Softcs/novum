@@ -1,0 +1,14 @@
+<sit-proc-params
+   [(actionExecuteData)]="actionExecuteData"
+  >
+  <sit-data-set-container ident="sitProduct4PubCollectionsEdit">
+    <div class="sit-proc-params-content" fxLayout="column">
+      <sit-data-input #sitControl type="text" field="CollectionIdent" label="Identyfikator" appearance="outline"></sit-data-input>
+      <sit-data-input #sitControl type="text" field="CollectionName" label="Opis" appearance="outline" ></sit-data-input>
+      <div fxLayout="row" >
+        <sit-data-input #sitControl type="text" field="ExtAppIdent01" label="Id zew. 01" appearance="outline" fxFlex=50></sit-data-input>
+        <sit-data-input #sitControl type="text" field="ExtAppIdent02" label="Id zew. 02" appearance="outline" fxFlex=50></sit-data-input>
+      </div>
+    </div>    
+  </sit-data-set-container>
+</sit-proc-params>

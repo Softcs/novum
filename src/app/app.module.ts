@@ -311,6 +311,7 @@ import { SitCustomerB2bProductsEditComponent } from './containers/dictionaries/s
 import { SitPublicationAudienceEditComponent } from './containers/dictionaries/sit-publications-forms-of-release-groups/actions/sit-publication-audience-edit/sit-publication-audience-edit.component';
 import { SitProduct4PubCollectionsEditComponent } from './containers/dictionaries/sit-publications-forms-of-release-groups/actions/sit-product4-pub-collections-edit/sit-product4-pub-collections-edit.component';
 import { SitAbsenceReasonsEditComponent } from './containers/dictionaries/sit-hr-working-hours/actions/sit-absence-reasons-edit/sit-absence-reasons-edit.component';
+import { SitPublicationsParamsDefComponent } from './containers/dictionaries/sit-publications-params-def/sit-publications-params-def.component';
 
 
 @NgModule({
@@ -608,7 +609,8 @@ import { SitAbsenceReasonsEditComponent } from './containers/dictionaries/sit-hr
         SitCustomerB2bProductsEditComponent,
         SitPublicationAudienceEditComponent,
         SitProduct4PubCollectionsEditComponent,
-        SitAbsenceReasonsEditComponent
+        SitAbsenceReasonsEditComponent,
+        SitPublicationsParamsDefComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },

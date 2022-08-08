@@ -211,6 +211,9 @@ import { SitPublicationAudienceEditComponent } from '@app/containers/dictionarie
 import { SitProduct4PubCollectionsEditComponent } from '@app/containers/dictionaries/sit-publications-forms-of-release-groups/actions/sit-product4-pub-collections-edit/sit-product4-pub-collections-edit.component';
 import { SitAbsenceReasonsEditComponent } from '@app/containers/dictionaries/sit-hr-working-hours/actions/sit-absence-reasons-edit/sit-absence-reasons-edit.component';
 
+import { SitPublicationsParamsDefComponent } from '@app/containers/dictionaries/sit-publications-params-def/sit-publications-params-def.component';
+
+
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
     constructor() { }
@@ -426,6 +429,8 @@ export class FactoryService {
         sitPublicationAudienceEdit: SitPublicationAudienceEditComponent,
         sitProduct4PubCollectionsEdit: SitProduct4PubCollectionsEditComponent,
         sitAbsenceReasonsEdit: SitAbsenceReasonsEditComponent,
+
+        sitPublicationsParamsDef: SitPublicationsParamsDefComponent,
 
     };
 
