@@ -11,9 +11,9 @@ import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-di
 export class SitPublicationsParamsDefComponent extends SitDictBaseComponent {
 
   public prepareColumnsDefinitnion() {
-    this.gridColumnsDefinition["sitPublicationsParamsDef"] = [
-      { headerName: 'Id', field: 'sitPublicationsParamsDefId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 50, defaultVisibility: false },
-      { headerName: 'GUID', field: 'sitPublicationsParamsDefG', width: 100, defaultVisibility: false },
+    this.gridColumnsDefinition["sitPublicationsFormsOfReleaseGroups"] = [
+      { headerName: 'Id', field: 'sitPublicationsFormsOfReleaseGroupsId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 50, defaultVisibility: false },
+      { headerName: 'GUID', field: 'sitPublicationsFormsOfReleaseGroupsG', width: 100, defaultVisibility: false },
       { headerName: 'Grupa formy wydania', field: 'FormsOfReleaseGroupIdent', filter: 'agTextColumnFilter', width: 200 },
       { headerName: 'Opis', field: 'FormsOfReleaseGroupDesc', filter: 'agTextColumnFilter', width: 300 }
     ];
