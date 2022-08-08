@@ -20,6 +20,7 @@ export class SitPublicationsComponent extends SitDictBaseComponent {
       { headerName: 'Tytuł', field: 'Title', filter: 'agTextColumnFilter', width: 350 },
       { headerName: 'Status', field: 'StatusValueName', filter: 'agTextColumnFilter', width: 150 },
     ];
+
     this.gridColumnsDefinition["sitPublicationsProducts"] = [
       { headerName: 'Id', field: 'sitPublicationsProductsId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 50, defaultVisibility: false },
       { headerName: 'GUID', field: 'sitPublicationsProductsG', width: 100, defaultVisibility: false }, 
@@ -38,6 +39,18 @@ export class SitPublicationsComponent extends SitDictBaseComponent {
         }
       },       
     ];
+
+    this.gridColumnsDefinition["sitPublicationProductProjects"] = [
+      { headerName: 'Id', field: 'sitProjectsId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 50, defaultVisibility: false },
+      { headerName: 'GUID', field: 'sitProjectsG', width: 100, defaultVisibility: false },  
+      { headerName: 'Projekt', field: 'ProjectIdent', filter: 'agTextColumnFilter', width: 150 },
+      { headerName: 'Nazwa', field: 'ProjectName', filter: 'agTextColumnFilter', width: 300 },
+      { headerName: 'Data plan.', field: 'ReleaseDatePlan', filter: 'agTextColumnFilter', width: 120 },
+      { headerName: 'Data rzecz.', field: 'ReleaseDateAct', filter: 'agTextColumnFilter', width: 120 },
+      { headerName: 'Nakład', field: 'Circulation', filter: 'agTextColumnFilter', width: 100 },
+      { headerName: 'Manager', field: 'Manager', filter: 'agTextColumnFilter', width: 150 },
+    ];
+
    }
 
    activeRowProductsChanged(activeRow) {
