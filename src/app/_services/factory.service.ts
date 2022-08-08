@@ -136,7 +136,7 @@ import { SitPublicationsChangeStatusEditComponent } from '@app/containers/dictio
 import { SitPubWmsDocumentsOperatorsComponent } from '@app/containers/dictionaries/sit-pub-wms-documents-operators/sit-pub-wms-documents-operators.component';
 import { SitRailWmsDocumentsOperatorsImportComponent } from '@app/containers/dictionaries/sit-pub-wms-documents-operators/actions/sit-rail-wms-documents-operators-import/sit-rail-wms-documents-operators-import.component';
 import { SitPublicationsFormsOfReleaseGroupsComponent } from '@app/containers/dictionaries/sit-publications-forms-of-release-groups/sit-publications-forms-of-release-groups.component';
-import { SitPublicationsFormsOfReleaseGroupsEditComponent } from '@app/containers/dictionaries/sit-publications-forms-of-release-groups/actions/sit-publications-forms-of-release-groups-edit/sit-publications-forms-of-release-groups-edit.component';
+import { SitPublicationsFormsOfReleaseGroupsEditComponent } from '@app/containers/dictionaries/sit-publications-params-def/actions/sit-publications-forms-of-release-groups-edit/sit-publications-forms-of-release-groups-edit.component';
 import { SitAgreementsBillingTypesEditComponent } from '@app/containers/dictionaries/sit-publications-agreements/actions/sit-agreements-billing-types-edit/sit-agreements-billing-types-edit.component';
 import { SitRoyaltyCalcOnePublicationComponent } from '@app/containers/dictionaries/sit-royalties/actions/sit-royalty-calc-one-publication/sit-royalty-calc-one-publication.component';
 import { SitVacationRequestsCancelEditComponent } from '@app/containers/dictionaries/sit-vacation-requests/actions/sit-vacation-requests-cancel-edit/sit-vacation-requests-cancel-edit.component';
@@ -204,11 +204,11 @@ import { SitCashRegisterSaleReportsImportComponent } from '@app/containers/dicti
 import { SitSimpleMethodConfigurationsEditComponent } from '@app/containers/dictionaries/sit-rail-configurations/actions/sit-simple-method-configurations-edit/sit-simple-method-configurations-edit.component';
 import { SitWsUsersEditComponent } from '@app/containers/dictionaries/sit-rail-dns/actions/sit-ws-users-edit/sit-ws-users-edit.component';
 import { SitCashRegisterSaleReportsExportComponent } from '@app/containers/dictionaries/sit-cash-register-sale-reports/actions/sit-cash-register-sale-reports-export/sit-cash-register-sale-reports-export.component';
-import { SitPublicationSubjectsEditComponent } from '@app/containers/dictionaries/sit-publications-forms-of-release-groups/actions/sit-publication-subjects-edit/sit-publication-subjects-edit.component';
+import { SitPublicationSubjectsEditComponent } from '@app/containers/dictionaries/sit-publications-params-def/actions/sit-publication-subjects-edit/sit-publication-subjects-edit.component';
 import { SitCustomerB2bProductsConfigEditComponent } from '@app/containers/dictionaries/sit-customers/actions/sit-customer-b2b-products-config-edit/sit-customer-b2b-products-config-edit.component';
 import { SitCustomerB2bProductsEditComponent } from '@app/containers/dictionaries/sit-customers/actions/sit-customer-b2b-products-edit/sit-customer-b2b-products-edit.component';
-import { SitPublicationAudienceEditComponent } from '@app/containers/dictionaries/sit-publications-forms-of-release-groups/actions/sit-publication-audience-edit/sit-publication-audience-edit.component';
-import { SitProduct4PubCollectionsEditComponent } from '@app/containers/dictionaries/sit-publications-forms-of-release-groups/actions/sit-product4-pub-collections-edit/sit-product4-pub-collections-edit.component';
+import { SitPublicationAudienceEditComponent } from '@app/containers/dictionaries/sit-publications-params-def/actions/sit-publication-audience-edit/sit-publication-audience-edit.component';
+import { SitProduct4PubCollectionsEditComponent } from '@app/containers/dictionaries/sit-publications-params-def/actions/sit-product4-pub-collections-edit/sit-product4-pub-collections-edit.component';
 import { SitAbsenceReasonsEditComponent } from '@app/containers/dictionaries/sit-hr-working-hours/actions/sit-absence-reasons-edit/sit-absence-reasons-edit.component';
 import { SitSysCommonDataTablesComponent } from '@app/containers/dictionaries/sit-sys-common-data-tables/sit-sys-common-data-tables.component';
 import { SitCountriesEditComponent } from '@app/containers/dictionaries/sit-sys-common-data-tables/actions/sit-countries-edit/sit-countries-edit.component';
@@ -221,6 +221,9 @@ import { SitWmsPackingContainerProductsEditComponent } from '@app/containers/dic
 import { SitWmsPackingContainersEditComponent } from '@app/containers/dictionaries/sit-wms-packing/actions/sit-wms-packing-containers-edit/sit-wms-packing-containers-edit.component';
 import { SitWmsPackingDocumentsEditComponent } from '@app/containers/dictionaries/sit-wms-packing/actions/sit-wms-packing-documents-edit/sit-wms-packing-documents-edit.component';
 import { SitWmsPackingEditComponent } from '@app/containers/dictionaries/sit-wms-packing/actions/sit-wms-packing-edit/sit-wms-packing-edit.component';
+
+import { SitPublicationsParamsDefComponent } from '@app/containers/dictionaries/sit-publications-params-def/sit-publications-params-def.component';
+
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -448,6 +451,8 @@ export class FactoryService {
         sitWmsPackingDocumentsEdit: SitWmsPackingDocumentsEditComponent,
         sitWmsPackingContainersEdit: SitWmsPackingContainersEditComponent,
         sitWmsPackingContainerProductsEdit: SitWmsPackingContainerProductsEditComponent,
+
+        sitPublicationsParamsDef: SitPublicationsParamsDefComponent,
 
     };
 
