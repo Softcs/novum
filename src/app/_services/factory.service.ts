@@ -216,6 +216,7 @@ import { SitCurrenciesEditComponent } from '@app/containers/dictionaries/sit-sys
 import { SitDocumentsLinksTypesEditComponent } from '@app/containers/dictionaries/sit-sys-common-data-tables/actions/sit-documents-links-types-edit/sit-documents-links-types-edit.component';
 import { SitJobTimesEditComponent } from '@app/containers/dictionaries/sit-sys-common-data-tables/actions/sit-job-times-edit/sit-job-times-edit.component';
 import { SitLanguagesEditComponent } from '@app/containers/dictionaries/sit-sys-common-data-tables/actions/sit-languages-edit/sit-languages-edit.component';
+import { SitWmsPackingComponent } from '@app/containers/dictionaries/sit-wms-packing/sit-wms-packing.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -438,7 +439,7 @@ export class FactoryService {
         sitDocumentsLinksTypesEdit: SitDocumentsLinksTypesEditComponent,
         sitJobTimesEdit: SitJobTimesEditComponent,
         sitLanguagesEdit: SitLanguagesEditComponent,
-
+        sitWmsPacking: SitWmsPackingComponent,
 
     };
 

@@ -317,6 +317,7 @@ import { SitCurrenciesEditComponent } from './containers/dictionaries/sit-sys-co
 import { SitDocumentsLinksTypesEditComponent } from './containers/dictionaries/sit-sys-common-data-tables/actions/sit-documents-links-types-edit/sit-documents-links-types-edit.component';
 import { SitJobTimesEditComponent } from './containers/dictionaries/sit-sys-common-data-tables/actions/sit-job-times-edit/sit-job-times-edit.component';
 import { SitLanguagesEditComponent } from './containers/dictionaries/sit-sys-common-data-tables/actions/sit-languages-edit/sit-languages-edit.component';
+import { SitWmsPackingComponent } from './containers/dictionaries/sit-wms-packing/sit-wms-packing.component';
 
 
 @NgModule({
@@ -620,7 +621,8 @@ import { SitLanguagesEditComponent } from './containers/dictionaries/sit-sys-com
         SitCurrenciesEditComponent,
         SitDocumentsLinksTypesEditComponent,
         SitJobTimesEditComponent,
-        SitLanguagesEditComponent
+        SitLanguagesEditComponent,
+        SitWmsPackingComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
