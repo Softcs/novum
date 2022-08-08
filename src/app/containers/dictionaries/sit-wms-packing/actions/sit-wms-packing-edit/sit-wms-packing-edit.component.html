@@ -1,0 +1,14 @@
+<sit-proc-params
+   [(actionExecuteData)]="actionExecuteData"
+  >
+  <sit-data-set-container ident="sitWmsPackingEdit">
+    <div class="sit-proc-params-content" fxLayout="column">
+      <sit-data-input #sitControl type="text" field="PackingNumber" label="Numer" appearance="outline"></sit-data-input>
+      <div fxLayout="row">
+        <sit-data-input type="date" #sitControl field="PackingDate" label="Data" appearance="outline" fxFlex="40"></sit-data-input>
+        <sit-data-input type="text" #sitControl field="CustIdent" label="Kontrahent" appearance="outline" fxFlex="60"
+          [lookupDisplayFields] = "['CustIdent', 'CustName']"></sit-data-input>
+      </div>
+    </div>
+  </sit-data-set-container>
+</sit-proc-params>

@@ -31,24 +31,24 @@ export class SitWmsPackingComponent extends SitDictBaseComponent {
     this.gridColumnsDefinition["sitWMSPackingContainers"] = [
       { headerName: 'Id', field: 'sitWMSPackingContainersId',width: 90, defaultVisibility: false },
       { headerName: 'GUID', field: 'sitWMSPackingContainersG', width: 100, defaultVisibility: false },  
-      { headerName: 'Nośnik', field: 'ContainerTypeName', width: 80},
+      { headerName: 'Nośnik', field: 'ContainerTypeName', width: 150},
       { headerName: 'Numer', field: 'ContainerNumber', width: 200},
     ];
 
     this.gridColumnsDefinition["sitWMSPackingContainerProducts"] = [
       { headerName: 'Id', field: 'sitWMSPackingContainerProductsId',width: 90, defaultVisibility: false },
       { headerName: 'GUID', field: 'sitWMSPackingContainerProductsG', width: 100, defaultVisibility: false },  
-      { headerName: 'Produkt', field: 'ProductIdent', width: 80},
-      { headerName: 'EAN', field: 'EAN', width: 80},
+      { headerName: 'Produkt', field: 'ProductIdent', width: 120},
+      { headerName: 'EAN', field: 'EAN', width: 120},
       { headerName: 'Nazwa', field: 'ProductName', width: 200},
-      { headerName: 'Ilość', field: 'Quantity', width: 200},
+      { headerName: 'Ilość', field: 'Quantity', width: 100},
     ];
 
     this.gridColumnsDefinition["sitWMSPackingDocumentsPositions"] = [
-      { headerName: 'Produkt', field: 'ProductIdent', width: 80},
-      { headerName: 'EAN', field: 'EAN', width: 80},
+      { headerName: 'Produkt', field: 'ProductIdent', width: 120},
+      { headerName: 'EAN', field: 'EAN', width: 120},
       { headerName: 'Nazwa', field: 'ProductName', width: 200},
-      { headerName: 'Ilość', field: 'Quantity', width: 200},
+      { headerName: 'Ilość', field: 'Quantity', width: 100},
     ];
 
    }  

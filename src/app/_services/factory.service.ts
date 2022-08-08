@@ -217,6 +217,10 @@ import { SitDocumentsLinksTypesEditComponent } from '@app/containers/dictionarie
 import { SitJobTimesEditComponent } from '@app/containers/dictionaries/sit-sys-common-data-tables/actions/sit-job-times-edit/sit-job-times-edit.component';
 import { SitLanguagesEditComponent } from '@app/containers/dictionaries/sit-sys-common-data-tables/actions/sit-languages-edit/sit-languages-edit.component';
 import { SitWmsPackingComponent } from '@app/containers/dictionaries/sit-wms-packing/sit-wms-packing.component';
+import { SitWmsPackingContainerProductsEditComponent } from '@app/containers/dictionaries/sit-wms-packing/actions/sit-wms-packing-container-products-edit/sit-wms-packing-container-products-edit.component';
+import { SitWmsPackingContainersEditComponent } from '@app/containers/dictionaries/sit-wms-packing/actions/sit-wms-packing-containers-edit/sit-wms-packing-containers-edit.component';
+import { SitWmsPackingDocumentsEditComponent } from '@app/containers/dictionaries/sit-wms-packing/actions/sit-wms-packing-documents-edit/sit-wms-packing-documents-edit.component';
+import { SitWmsPackingEditComponent } from '@app/containers/dictionaries/sit-wms-packing/actions/sit-wms-packing-edit/sit-wms-packing-edit.component';
 
 @Injectable({ providedIn: 'root' })
 export class FactoryService {
@@ -440,6 +444,10 @@ export class FactoryService {
         sitJobTimesEdit: SitJobTimesEditComponent,
         sitLanguagesEdit: SitLanguagesEditComponent,
         sitWmsPacking: SitWmsPackingComponent,
+        sitWmsPackingEdit: SitWmsPackingEditComponent,
+        sitWmsPackingDocumentsEdit: SitWmsPackingDocumentsEditComponent,
+        sitWmsPackingContainersEdit: SitWmsPackingContainersEditComponent,
+        sitWmsPackingContainerProductsEdit: SitWmsPackingContainerProductsEditComponent,
 
     };
 

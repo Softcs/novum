@@ -318,6 +318,10 @@ import { SitDocumentsLinksTypesEditComponent } from './containers/dictionaries/s
 import { SitJobTimesEditComponent } from './containers/dictionaries/sit-sys-common-data-tables/actions/sit-job-times-edit/sit-job-times-edit.component';
 import { SitLanguagesEditComponent } from './containers/dictionaries/sit-sys-common-data-tables/actions/sit-languages-edit/sit-languages-edit.component';
 import { SitWmsPackingComponent } from './containers/dictionaries/sit-wms-packing/sit-wms-packing.component';
+import { SitWmsPackingEditComponent } from './containers/dictionaries/sit-wms-packing/actions/sit-wms-packing-edit/sit-wms-packing-edit.component';
+import { SitWmsPackingDocumentsEditComponent } from './containers/dictionaries/sit-wms-packing/actions/sit-wms-packing-documents-edit/sit-wms-packing-documents-edit.component';
+import { SitWmsPackingContainersEditComponent } from './containers/dictionaries/sit-wms-packing/actions/sit-wms-packing-containers-edit/sit-wms-packing-containers-edit.component';
+import { SitWmsPackingContainerProductsEditComponent } from './containers/dictionaries/sit-wms-packing/actions/sit-wms-packing-container-products-edit/sit-wms-packing-container-products-edit.component';
 
 
 @NgModule({
@@ -622,7 +626,11 @@ import { SitWmsPackingComponent } from './containers/dictionaries/sit-wms-packin
         SitDocumentsLinksTypesEditComponent,
         SitJobTimesEditComponent,
         SitLanguagesEditComponent,
-        SitWmsPackingComponent
+        SitWmsPackingComponent,
+        SitWmsPackingEditComponent,
+        SitWmsPackingDocumentsEditComponent,
+        SitWmsPackingContainersEditComponent,
+        SitWmsPackingContainerProductsEditComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
