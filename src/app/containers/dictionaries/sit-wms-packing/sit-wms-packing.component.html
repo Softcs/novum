@@ -43,6 +43,19 @@
     </as-split-area>
     <as-split-area [size]="30">
       <div fxLayout="column" fxFill class="content">
+        <div class="sit-grid-title">Skanuj produkt</div>
+        <sit-data-set-container ident="sitWMSPackingBarcodeScan" fxLayout="row">
+          <div class="sit-filter-bar" fxLayout="column">
+            <sit-data-checkbox #sitControl field="scanOneByOne" label="Skanuj po jednej sztuce" labelPosition="after" checked="false"></sit-data-checkbox>
+            <div fxLayout="row">
+              <sit-data-input #sitControl field="ean" label="EAN" appearance="outline" style="width: 200px;" [showRefreshButton]="false" ></sit-data-input>
+              <sit-data-input #sitControl field="quantity" label="Ilość" appearance="outline" style="width: 100px;" [showRefreshButton]="false" [readonly]="true"></sit-data-input>
+            </div>
+            <sit-data-label #sitControl type="text" field="productIdent" label="Produkt:" labelWidth="70"></sit-data-label>
+            <sit-data-label #sitControl type="text" field="productName" label="Nazwa:" labelWidth="70"></sit-data-label>
+            <sit-data-label #sitControl type="text" field="comment" label="" labelWidth="0" style="color: red; font-size: 20px;"></sit-data-label>
+          </div>
+        </sit-data-set-container>
         <div class="sit-grid-title">Produkty na nośniku</div>
         <sit-data-set-container ident="sitWMSPackingContainerProducts" [showActionsToolbar]="true" fxLayout="column" fxFlex>
           <div class="data-table" fxFlex>
