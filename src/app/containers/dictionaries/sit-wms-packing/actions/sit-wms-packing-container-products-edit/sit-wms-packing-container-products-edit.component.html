@@ -3,8 +3,12 @@
   >
   <sit-data-set-container ident="sitWmsPackingContainerProductsEdit">
     <div class="sit-proc-params-content" fxLayout="column">
-      <sit-data-input type="text" #sitControl field="ProductIdent" label="Produkt" appearance="outline"
-        [lookupDisplayFields] = "['ProductIdent', 'ProductName']"></sit-data-input>
+      <div fxLayout="row">
+        <sit-data-input type="text" #sitControl field="EAN" label="Produkt" appearance="outline"
+          [lookupDisplayFields] = "['EAN', 'Quantity']"></sit-data-input>
+        <sit-data-label #sitControl type="text" field="ProductIdent" label="" labelWidth="10"></sit-data-label>
+      </div>
+      <sit-data-label #sitControl type="text" field="ProductName" label=" " labelWidth="0"></sit-data-label>
       <sit-data-input type="number" #sitControl field="Quantity" label="Ilość" appearance="outline" style="width: 100px"></sit-data-input>
     </div>
   </sit-data-set-container>

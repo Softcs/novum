@@ -3,7 +3,7 @@
   >
   <sit-data-set-container ident="sitWmsPackingContainersEdit">
     <div class="sit-proc-params-content" fxLayout="column">
-      <sit-data-input #sitControl type="text" field="ContainerNumber" label="Numer" appearance="outline"></sit-data-input>
+      <sit-data-label #sitControl type="text" field="ContainerNumber" label="Numer:" labelWidth="70"></sit-data-label>
       <sit-data-input type="text" #sitControl field="ContainerTypeIdent" label="Typ pojemnika" appearance="outline"
         [lookupDisplayFields] = "['ContainerTypeIdent', 'ContainerTypeName']"></sit-data-input>
     </div>
