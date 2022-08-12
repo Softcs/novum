@@ -2,7 +2,7 @@
    [(actionExecuteData)]="actionExecuteData"
   >
   <sit-data-set-container ident="sitCourierCreateShipments">
-    <div class="sit-proc-params-content" fxLayout="column" style="width: 600px; height:500px">
+    <div class="sit-proc-params-content" fxLayout="column" style="width: 600px; height:510px">
       <div fxLayout="row">
         <sit-data-input type="text" #sitControl field="AddressType" label="Typ adresu" appearance="outline" style="width: 100px;"
           [lookupDisplayFields] = "['AddressType', 'AddressTypeDescription']"
@@ -31,6 +31,7 @@
         <sit-data-input type="number" #sitControl field="InsuranceValue" label="Kwota ubezpieczenia" appearance="outline" style="width: 130px;"></sit-data-input>
       </div>
       <sit-data-input type="text" #sitControl field="Content" label="Zawartość" appearance="outline"></sit-data-input>
+      <sit-data-input type="text" #sitControl field="Comment" label="Uwagi" appearance="outline"></sit-data-input>
       <sit-data-checkbox #sitControl field="ReturnOnDelivery" label="Zwrot dokumentów (ROD)"></sit-data-checkbox>
     </div>
   </sit-data-set-container>
