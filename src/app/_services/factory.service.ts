@@ -223,6 +223,8 @@ import { SitWmsPackingDocumentsEditComponent } from '@app/containers/dictionarie
 import { SitWmsPackingEditComponent } from '@app/containers/dictionaries/sit-wms-packing/actions/sit-wms-packing-edit/sit-wms-packing-edit.component';
 
 import { SitPublicationsParamsDefComponent } from '@app/containers/dictionaries/sit-publications-params-def/sit-publications-params-def.component';
+import { SitWmsPackingContainersTypesEditComponent } from '@app/containers/dictionaries/sit-wms-params-def/actions/sit-wms-packing-containers-types-edit/sit-wms-packing-containers-types-edit.component';
+import { SitWmsParamsDefComponent } from '@app/containers/dictionaries/sit-wms-params-def/sit-wms-params-def.component';
 
 
 @Injectable({ providedIn: 'root' })
@@ -451,9 +453,9 @@ export class FactoryService {
         sitWmsPackingDocumentsEdit: SitWmsPackingDocumentsEditComponent,
         sitWmsPackingContainersEdit: SitWmsPackingContainersEditComponent,
         sitWmsPackingContainerProductsEdit: SitWmsPackingContainerProductsEditComponent,
-
         sitPublicationsParamsDef: SitPublicationsParamsDefComponent,
-
+        sitWmsParamsDef: SitWmsParamsDefComponent,
+        sitWmsPackingContainersTypesEdit: SitWmsPackingContainersTypesEditComponent,
     };
 
     public GetFactory(ident: string) {

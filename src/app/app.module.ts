@@ -323,6 +323,8 @@ import { SitWmsPackingDocumentsEditComponent } from './containers/dictionaries/s
 import { SitWmsPackingContainersEditComponent } from './containers/dictionaries/sit-wms-packing/actions/sit-wms-packing-containers-edit/sit-wms-packing-containers-edit.component';
 import { SitWmsPackingContainerProductsEditComponent } from './containers/dictionaries/sit-wms-packing/actions/sit-wms-packing-container-products-edit/sit-wms-packing-container-products-edit.component';
 import { SitPublicationsParamsDefComponent } from './containers/dictionaries/sit-publications-params-def/sit-publications-params-def.component';
+import { SitWmsParamsDefComponent } from './containers/dictionaries/sit-wms-params-def/sit-wms-params-def.component';
+import { SitWmsPackingContainersTypesEditComponent } from './containers/dictionaries/sit-wms-params-def/actions/sit-wms-packing-containers-types-edit/sit-wms-packing-containers-types-edit.component';
 
 @NgModule({
     imports: [
@@ -631,7 +633,9 @@ import { SitPublicationsParamsDefComponent } from './containers/dictionaries/sit
         SitWmsPackingDocumentsEditComponent,
         SitWmsPackingContainersEditComponent,
         SitWmsPackingContainerProductsEditComponent,
-        SitPublicationsParamsDefComponent
+        SitPublicationsParamsDefComponent,
+        SitWmsParamsDefComponent,
+        SitWmsPackingContainersTypesEditComponent
 
     ],
     providers: [

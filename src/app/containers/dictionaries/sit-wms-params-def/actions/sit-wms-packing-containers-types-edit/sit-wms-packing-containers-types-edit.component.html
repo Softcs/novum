@@ -1,0 +1,14 @@
+<sit-proc-params
+   [(actionExecuteData)]="actionExecuteData"
+  >
+  <sit-data-set-container ident="sitWmsPackingContainersTypesEdit">
+    <div class="sit-proc-params-content" fxLayout="column">
+      <sit-data-input #sitControl type="text" field="ContainerTypeIdent" label="Typ pojemnika" appearance="outline"></sit-data-input>
+      <sit-data-input #sitControl type="text" field="ContainerTypeName" label="Nazwa" appearance="outline" ></sit-data-input>
+      <div fxLayout="row">
+        <sit-data-input #sitControl type="text" field="NumberPrefix" label="Prefix dla numeru" appearance="outline"></sit-data-input>
+        <sit-data-input #sitControl type="numeric" field="WeightLimit" label="Maksymalna waga" appearance="outline" ></sit-data-input>
+      </div>
+    </div>
+  </sit-data-set-container>
+</sit-proc-params>
