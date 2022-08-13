@@ -17,6 +17,7 @@ export class SitSysDictionariesComponent extends SitDictBaseComponent {
       { headerName: 'GUID', field: 'sitSysDictionariesG', filter: 'agTextColumnFilter', defaultVisibility: false },
       { headerName: "Identyfikator", field: 'DictionaryIdent', filter: 'agTextColumnFilter'},
       { headerName: "Nazwa", field: 'DictionaryName', filter: 'agTextColumnFilter'},
+      { headerName: 'All synch', field: 'IsAllSynch', width: 100, renderType: 'checkbox', cellClass: "grid-cell-centered", suppressMenu: true},
 
     ];
     this.gridColumnsDefinition["sitSysDatasources"] = [
