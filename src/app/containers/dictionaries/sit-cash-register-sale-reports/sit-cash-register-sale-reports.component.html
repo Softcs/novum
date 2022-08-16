@@ -8,6 +8,7 @@
               <div class="sit-filter-bar">
                 <sit-data-set-container ident="sitCashRegisterSaleReportsHeadersFilter" fxLayout="column">
                   <div fxLayout="row">
+                    <sit-data-input #sitControl field="searchWarehouseIdent" type="text" label="Magazyn" appearance="outline" style="width: 130px;"></sit-data-input>
                     <sit-data-input #sitControl field="searchDateFrom" type="date" label="Od" appearance="outline" style="width: 130px;"></sit-data-input>
                     <sit-data-input #sitControl field="searchDateTo" type="date" label="Do" appearance="outline" style="width: 195px;" [showRefreshButton]="true" ></sit-data-input>
                   </div>

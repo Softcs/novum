@@ -46,11 +46,13 @@
         <div class="sit-grid-title">Skanuj produkt</div>
         <sit-data-set-container ident="sitWMSPackingBarcodeScan" fxLayout="row">
           <div class="sit-filter-bar" fxLayout="column">
-            <sit-data-checkbox #sitControl field="scanOneByOne" label="Skanuj po jednej sztuce" labelPosition="after" ></sit-data-checkbox>
+            <div fxLayout="row">
+              <sit-data-checkbox #sitControl field="scanOneByOne" label="Skanuj po jednej sztuce" labelPosition="after" style="width: 200px;" ></sit-data-checkbox>
+              <sit-data-label #sitControl type="text" field="containerWeight" label="Waga pojemnika:" labelWidth="220"></sit-data-label>
+            </div>
             <div fxLayout="row">
               <sit-data-input #sitControl field="ean" label="EAN" appearance="outline" style="width: 200px;" [showRefreshButton]="false" ></sit-data-input>
-              <sit-data-input #sitControl field="quantity" label="Ilość" appearance="outline" style="width: 100px;" [showRefreshButton]="false" [readonly]="true"></sit-data-input>
-              <sit-data-input #sitControl field="containerWeight" label="Waga pojemnika" appearance="outline" style="width: 120px;" [showRefreshButton]="false" [readonly]="true"></sit-data-input>
+              <sit-data-label #sitControl type="text" field="quantity" label="Ilość dodana do pojemnika:" labelWidth="220"></sit-data-label>
             </div>
             <sit-data-label #sitControl type="text" field="productIdent" label="Produkt:" labelWidth="70"></sit-data-label>
             <sit-data-label #sitControl type="text" field="productName" label="Nazwa:" labelWidth="70"></sit-data-label>

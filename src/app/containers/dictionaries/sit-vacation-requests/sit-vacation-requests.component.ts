@@ -41,7 +41,7 @@ export class SitVacationRequestsComponent  extends SitDictBaseComponent {
       },
       //{ headerName: 'Do dnia', field: 'DateTo', width: 100, renderType: 'date'},
       { headerName: 'Dni', field: 'DaysCount', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 50, suppressMenu: true },
-      { headerName: 'Na żądanie', field: 'OnDemand', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 90, suppressMenu: true, renderType:'checkbox' },
+      { headerName: 'Na żądanie', field: 'OnDemand', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 90, suppressMenu: true, renderType:'checkbox', cellClass: "grid-cell-centered" },
       { headerName: 'Akcept. przełożonego', field: 'ValueName_SupAccept', filter: 'agTextColumnFilter', width: 160, suppressMenu: true,
         cellRenderer: function(params) {
           return (params.data["ValueName_SupAccept"] === "Zaakceptowany" ? '<span style="color: green;">' :
@@ -57,7 +57,8 @@ export class SitVacationRequestsComponent  extends SitDictBaseComponent {
         }
       },
       { headerName: 'Opis', field: 'Description', tooltipField: 'Description', filter: 'agTextColumnFilter', wrapText: true, width: 250},
-      { headerName: 'Wydrukowany', field: 'Printed', type: 'numericColumn', tooltipField: 'PrintInfo', filter: 'agNumberColumnFilter', width: 100, suppressMenu: true, renderType:'checkbox' },
+      { headerName: 'Wydrukowany', field: 'Printed', type: 'numericColumn', tooltipField: 'PrintInfo', filter: 'agNumberColumnFilter', width: 100, suppressMenu: true, 
+        renderType:'checkbox', cellClass: "grid-cell-centered"},
     ];
   }
 

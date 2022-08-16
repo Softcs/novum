@@ -1,5 +1,6 @@
 import { Component} from '@angular/core';
 import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-dict-base.component';
+import { formatNumber } from '@angular/common';
 
 @Component({
   selector: 'app-sit-cash-register-sale-reports',
@@ -9,6 +10,8 @@ import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-di
 })
 export class SitCashRegisterSaleReportsComponent extends SitDictBaseComponent {
   public prepareColumnsDefinitnion() {
+    var locale = this.locale;
+
     this.gridColumnsDefinition["sitCashRegisterSaleReportsHeaders"] = [
       { headerName: 'ID', field: 'sitCashRegisterSaleReportsHeadersId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, defaultVisibility: false },
       { headerName: 'GUID', field: 'sitCashRegisterSaleReportsHeadersG', width: 100, defaultVisibility: false },
@@ -16,11 +19,27 @@ export class SitCashRegisterSaleReportsComponent extends SitDictBaseComponent {
       { headerName: 'Magazyn', field: 'WarehouseIdent', width: 100 },
       { headerName: 'Nazwa magazynu', field: 'WarehouseName', width: 200 },
       { headerName: 'Data raportu', field: 'ReportDate', filter: 'agDateColumnFilter', width: 120, floatingFilter: false, renderType: "date", 
-        renderFormat: "yyyy-MM-dd"},   
+        renderFormat: "yyyy-MM-dd", suppressMenu: true},   
       { headerName: 'Sprzedaż od', field: 'SaleDateFrom', filter: 'agDateColumnFilter', width: 120, floatingFilter: false, renderType: "date", 
-        renderFormat: "yyyy-MM-dd"},   
+        renderFormat: "yyyy-MM-dd", suppressMenu: true},   
       { headerName: 'Sprzedaż do', field: 'SaleDateTo', filter: 'agDateColumnFilter', width: 120, floatingFilter: false, renderType: "date", 
-        renderFormat: "yyyy-MM-dd"},   
+        renderFormat: "yyyy-MM-dd", suppressMenu: true},
+      { headerName: 'Netto', field: 'Net', filter: 'agTextColumnFilter', width: 160, suppressMenu: true, defaultVisibility: false, type: 'rightAligned',
+        cellRenderer: function(params) {
+          return formatNumber(params.data["Net"], locale,'1.2-2').replace(/[,]/g,' ')
+        }
+      },
+      { headerName: 'VAT', field: 'VAT', filter: 'agTextColumnFilter', width: 160, suppressMenu: true, defaultVisibility: false, type: 'rightAligned',
+        cellRenderer: function(params) {
+          return formatNumber(params.data["VAT"], locale,'1.2-2').replace(/[,]/g,' ')
+        }
+      },
+      { headerName: 'Brutto', field: 'Gross', filter: 'agTextColumnFilter', width: 160, suppressMenu: true, defaultVisibility: false, type: 'rightAligned',
+        cellRenderer: function(params) {
+          return formatNumber(params.data["Gross"], locale,'1.2-2').replace(/[,]/g,' ')
+        }
+      },
+
     ];    
 
     this.gridColumnsDefinition["sitCashRegisterSaleReportsPositions"] = [
