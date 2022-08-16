@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-dict-base.component';
+import { DataSetWrapper } from '@app/_models/dataSetWrapper';
 
 @Component({
   selector: 'app-sit-wms-packing',
@@ -64,5 +65,13 @@ export class SitWmsPackingComponent extends SitDictBaseComponent {
       },
     ];
 
-   }  
+   }
+
+  getPrintout() {
+    //generuje wydruk w nowej zakładce
+    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitWMSPackingContainers');
+    var url = this.urlService.getSecureRepUrl('130EE8CE-65B8-637D-88B6-99AD9E88926D', 'dict', 'C9C2266D-9667-AA13-04F0-E0AFF77B18EE', dataSourceResponseWrapper.activeRow);
+    window.open(url, '','height=700, width=1400, left=100,top=100');
+
+  }   
 }
