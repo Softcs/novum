@@ -325,6 +325,7 @@ import { SitWmsPackingContainerProductsEditComponent } from './containers/dictio
 import { SitPublicationsParamsDefComponent } from './containers/dictionaries/sit-publications-params-def/sit-publications-params-def.component';
 import { SitWmsParamsDefComponent } from './containers/dictionaries/sit-wms-params-def/sit-wms-params-def.component';
 import { SitWmsPackingContainersTypesEditComponent } from './containers/dictionaries/sit-wms-params-def/actions/sit-wms-packing-containers-types-edit/sit-wms-packing-containers-types-edit.component';
+import { SitEmployeeAbsencesEditComponent } from './containers/dictionaries/sit-employees/actions/sit-employee-absences-edit/sit-employee-absences-edit.component';
 
 @NgModule({
     imports: [
@@ -635,7 +636,8 @@ import { SitWmsPackingContainersTypesEditComponent } from './containers/dictiona
         SitWmsPackingContainerProductsEditComponent,
         SitPublicationsParamsDefComponent,
         SitWmsParamsDefComponent,
-        SitWmsPackingContainersTypesEditComponent
+        SitWmsPackingContainersTypesEditComponent,
+        SitEmployeeAbsencesEditComponent
 
     ],
     providers: [

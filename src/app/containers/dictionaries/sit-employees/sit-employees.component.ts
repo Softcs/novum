@@ -53,6 +53,7 @@ export class SitEmployeesComponent extends SitDictBaseComponent {
 
     this.gridColumnsDefinition["sitEmployeeVacationLimits"] = [
       { headerName: 'Id', field: 'sitEmployeeVacationLimitsId',width: 90, defaultVisibility: false},
+      { headerName: 'GUID', field: 'sitEmployeeVacationLimitsG', width: 100, defaultVisibility: false },
       { headerName: 'Typ urlopu', field: 'AbsenceIdent', filter: 'agTextColumnFilter', width: 220 },
       { headerName: 'Rok', field: 'Year', filter: 'agTextColumnFilter', width: 90, sort: 'desc' },
       { headerName: 'Aktualny', field: 'VacationLimit', filter: 'agTextColumnFilter', width: 130 },
@@ -63,8 +64,16 @@ export class SitEmployeesComponent extends SitDictBaseComponent {
       { headerName: 'Pozostało', field: 'VacationForUse', filter: 'agTextColumnFilter', width: 130 },            
     ];
 
+    this.gridColumnsDefinition["sitEmployeeAbsences"] = [
+      { headerName: 'Id', field: 'sitEmployeeAbsencesId',width: 90, defaultVisibility: false},
+      { headerName: 'GUID', field: 'sitEmployeeAbsencesG', width: 100, defaultVisibility: false },
+      { headerName: 'Typ urlopu', field: 'AbsenceName', filter: 'agTextColumnFilter', width: 220 },
+      { headerName: 'Data od', field: 'DateFrom', filter: 'agDateColumnFilter',width: 90, floatingFilter: false, sort: 'desc', suppressMenu: true },
+      { headerName: 'Data do', field: 'DateTo', filter: 'agDateColumnFilter',width: 90, floatingFilter: false, suppressMenu: true },
+    ];    
+
     this.gridColumnsDefinition["sitEmployeesExtAppExport"] = [
-      { headerName: 'Id', field: 'sitEmployeeId',width: 90, defaultVisibility: false},      
+      { headerName: 'Id', field: 'sitEmployeesId',width: 90, defaultVisibility: false},      
       { headerName: 'Identyfikator', field: 'EmployeeIdent', filter: 'agTextColumnFilter', width: 110 },
       { headerName: 'Imię', field: 'FirstName', filter: 'agTextColumnFilter', width: 120  },
       { headerName: 'Nazwisko', field: 'LastName', filter: 'agTextColumnFilter', width: 120  },

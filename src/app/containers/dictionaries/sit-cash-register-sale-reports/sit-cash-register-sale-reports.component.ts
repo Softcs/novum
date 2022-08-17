@@ -24,17 +24,17 @@ export class SitCashRegisterSaleReportsComponent extends SitDictBaseComponent {
         renderFormat: "yyyy-MM-dd", suppressMenu: true},   
       { headerName: 'Sprzedaż do', field: 'SaleDateTo', filter: 'agDateColumnFilter', width: 120, floatingFilter: false, renderType: "date", 
         renderFormat: "yyyy-MM-dd", suppressMenu: true},
-      { headerName: 'Netto', field: 'Net', filter: 'agTextColumnFilter', width: 160, suppressMenu: true, defaultVisibility: false, type: 'rightAligned',
+      { headerName: 'Netto', field: 'Net', filter: 'agTextColumnFilter', width: 160, suppressMenu: true, defaultVisibility: false, agr: 'sum', type: 'rightAligned',
         cellRenderer: function(params) {
           return formatNumber(params.data["Net"], locale,'1.2-2').replace(/[,]/g,' ')
         }
       },
-      { headerName: 'VAT', field: 'VAT', filter: 'agTextColumnFilter', width: 160, suppressMenu: true, defaultVisibility: false, type: 'rightAligned',
+      { headerName: 'VAT', field: 'VAT', filter: 'agTextColumnFilter', width: 160, suppressMenu: true, defaultVisibility: false, agr: 'sum', type: 'rightAligned',
         cellRenderer: function(params) {
           return formatNumber(params.data["VAT"], locale,'1.2-2').replace(/[,]/g,' ')
         }
       },
-      { headerName: 'Brutto', field: 'Gross', filter: 'agTextColumnFilter', width: 160, suppressMenu: true, defaultVisibility: false, type: 'rightAligned',
+      { headerName: 'Brutto', field: 'Gross', filter: 'agTextColumnFilter', width: 160, suppressMenu: true, defaultVisibility: false, agr: 'sum', type: 'rightAligned',
         cellRenderer: function(params) {
           return formatNumber(params.data["Gross"], locale,'1.2-2').replace(/[,]/g,' ')
         }
