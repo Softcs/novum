@@ -11,9 +11,11 @@ export class SitMailTemplatesComponent extends SitDictBaseComponent {
 
   public prepareColumnsDefinitnion(){
     this.gridColumnsDefinition["sitMailTemplates"] = [
+      { headerName: 'Id', field: 'sitMailTemplatesId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 50, defaultVisibility: false },
+      { headerName: 'GUID', field: 'sitMailTemplatesG', width: 100, defaultVisibility: false },  
       { headerName: 'Identyfikator szablonu', field: 'MailTemplateIdent', filter: 'agTextColumnFilter', width: 150 },
       { headerName: 'Opis', field: 'MailTemplateName', filter: 'agTextColumnFilter', width: 250 },
-      { headerName: 'Aktywny', field: 'IsActive', filter: 'agSetColumnFilter', suppressMenu: true, width: 80,renderType: "checkbox" },      
+      { headerName: 'Aktywny', field: 'IsActive', filter: 'agSetColumnFilter', suppressMenu: true, width: 80,renderType: "checkbox", cellClass: "grid-cell-centered" },      
       { headerName: 'Profil', field: 'ProfileName', filter: 'agTextColumnFilter', width: 100 },
       { headerName: 'Temat', field: 'Subject', filter: 'agTextColumnFilter', width: 200 },
       { headerName: 'Odbiorca', field: 'Recipients', filter: 'agTextColumnFilter', width: 200 },
