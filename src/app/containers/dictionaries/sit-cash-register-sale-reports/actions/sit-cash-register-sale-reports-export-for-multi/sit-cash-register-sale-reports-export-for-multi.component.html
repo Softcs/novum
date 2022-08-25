@@ -1,0 +1,26 @@
+<sit-proc-params
+  [(actionExecuteData)]="actionExecuteData"
+  >
+  <sit-data-set-container ident="sitCashRegisterSaleReportsExportForMulti">
+    <div class="sit-proc-params-content" fxLayout="column">
+      <div fxLayout="row">
+        <sit-data-input #sitControl type="text" field="CustIdent" label="Kontrahent" appearance="outline" style="width: 150px" 
+          [lookupDisplayFields] = "['CustIdent', 'CustName']"></sit-data-input>
+				<sit-data-label type="text" #sitControl field="CustName" label=""></sit-data-label>
+			</div>
+      <div fxLayout="row">
+        <sit-data-input #sitControl type="text" field="WarehouseIdent" label="Magazyn" appearance="outline" style="width: 150px" 
+          [lookupDisplayFields] = "['WarehouseIdent', 'WarehouseName']"></sit-data-input>
+				<sit-data-label type="text" #sitControl field="WarehouseName" label=""></sit-data-label>
+			</div>
+      <div fxLayout="row">
+        <sit-data-input type="date" #sitControl field="ReportDate" label="Data raportu" appearance="outline"></sit-data-input>
+        <sit-data-input #sitControl type="text" field="ReportDescription" label="Opis" appearance="outline" fxFlex></sit-data-input>
+      </div>			
+      <div fxLayout="row">
+        <sit-data-input type="date" #sitControl field="SaleDateFrom" label="Sprzedaż od" appearance="outline"></sit-data-input>
+        <sit-data-input type="date" #sitControl field="SaleDateTo" label="Sprzedaż do" appearance="outline"></sit-data-input>
+      </div>			
+    </div>
+  </sit-data-set-container>
+</sit-proc-params>

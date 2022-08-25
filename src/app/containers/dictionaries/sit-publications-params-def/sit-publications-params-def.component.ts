@@ -9,8 +9,24 @@ import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-di
   host: {class: 'router-flex'}
 })
 export class SitPublicationsParamsDefComponent extends SitDictBaseComponent {
+  groupDefaultExpanded;
+  getDataPath;
+  autoGroupColumnDef;  
 
   public prepareColumnsDefinitnion() {
+
+    this.autoGroupColumnDef = {
+      headerName: 'Struktura',
+      minWidth: 400,
+      cellRendererParams: { suppressCount: true },
+      sort:'asc'
+    };
+    this.groupDefaultExpanded = 0;
+
+    this.getDataPath = function (data) {
+      return data.dataPath;
+    };
+
     this.gridColumnsDefinition["sitPublicationsFormsOfReleaseGroups"] = [
       { headerName: 'Id', field: 'sitPublicationsFormsOfReleaseGroupsId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 50, defaultVisibility: false },
       { headerName: 'GUID', field: 'sitPublicationsFormsOfReleaseGroupsG', width: 100, defaultVisibility: false },
@@ -25,6 +41,13 @@ export class SitPublicationsParamsDefComponent extends SitDictBaseComponent {
       { headerName: 'Opis', field: 'PublicationSubjectName', filter: 'agTextColumnFilter', width: 350 },
       { headerName: 'Id zew 01', field: 'ExtAppIdent01', filter: 'agTextColumnFilter', width: 100, defaultVisibility: false },
       { headerName: 'Id zew 02', field: 'ExtAppIdent02', filter: 'agTextColumnFilter', width: 100, defaultVisibility: false },
+    ];
+
+    this.gridColumnsDefinition["sitThemaCodeList"] = [
+      { headerName: 'Id', field: 'sitThemaCodeListId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 50, defaultVisibility: false },
+      { headerName: 'GUID', field: 'sitThemaCodeListG', width: 100, defaultVisibility: false },
+      { headerName: 'Opis', field: 'CodeDescription', width: 300, sortable: false, filter: 'agTextColumnFilter', floatingFilter: true},
+      { headerName: 'Info dodatkowe', field: 'CodeNotes', width: 500, sortable: false, filter: 'agTextColumnFilter', floatingFilter: true},
     ];
 
     this.gridColumnsDefinition["sitPublicationAudience"] = [

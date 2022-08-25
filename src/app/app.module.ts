@@ -326,6 +326,7 @@ import { SitPublicationsParamsDefComponent } from './containers/dictionaries/sit
 import { SitWmsParamsDefComponent } from './containers/dictionaries/sit-wms-params-def/sit-wms-params-def.component';
 import { SitWmsPackingContainersTypesEditComponent } from './containers/dictionaries/sit-wms-params-def/actions/sit-wms-packing-containers-types-edit/sit-wms-packing-containers-types-edit.component';
 import { SitEmployeeAbsencesEditComponent } from './containers/dictionaries/sit-employees/actions/sit-employee-absences-edit/sit-employee-absences-edit.component';
+import { SitCashRegisterSaleReportsExportForMultiComponent } from './containers/dictionaries/sit-cash-register-sale-reports/actions/sit-cash-register-sale-reports-export-for-multi/sit-cash-register-sale-reports-export-for-multi.component';
 
 @NgModule({
     imports: [
@@ -637,7 +638,8 @@ import { SitEmployeeAbsencesEditComponent } from './containers/dictionaries/sit-
         SitPublicationsParamsDefComponent,
         SitWmsParamsDefComponent,
         SitWmsPackingContainersTypesEditComponent,
-        SitEmployeeAbsencesEditComponent
+        SitEmployeeAbsencesEditComponent,
+        SitCashRegisterSaleReportsExportForMultiComponent
 
     ],
     providers: [
