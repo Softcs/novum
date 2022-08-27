@@ -8,11 +8,27 @@ import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-di
   host: {class: 'router-flex'}
 })
 export class SitPublicationsComponent extends SitDictBaseComponent {
-
   link;
   ean;
-  
+  groupDefaultExpanded;
+  getDataPath;
+  autoGroupColumnDef;
+
   public prepareColumnsDefinitnion(){
+
+    this.autoGroupColumnDef = {
+      headerName: 'Struktura',
+      minWidth: 400,
+      cellRendererParams: { suppressCount: true },
+      sort:'asc'
+    };
+
+    this.groupDefaultExpanded = 0;
+
+    this.getDataPath = function (data) {
+      return data.dataPath;
+    };
+
     this.gridColumnsDefinition["sitPublications"] = [
       { headerName: 'Id', field: 'sitPublicationsId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 50, defaultVisibility: false },
       { headerName: 'GUID', field: 'sitPublicationsG', width: 100, defaultVisibility: false },  
@@ -50,6 +66,15 @@ export class SitPublicationsComponent extends SitDictBaseComponent {
       { headerName: 'Data rzecz.', field: 'ReleaseDateAct', filter: 'agTextColumnFilter', width: 120 },
       { headerName: 'Nakład', field: 'Circulation', filter: 'agTextColumnFilter', width: 100 },
       { headerName: 'Manager', field: 'Manager', filter: 'agTextColumnFilter', width: 150 },
+    ];
+
+    this.gridColumnsDefinition["sitPublicationThemaCodes"] = [
+      { headerName: 'Id', field: 'sitThemaCodeListId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 50, defaultVisibility: false },
+      { headerName: 'GUID', field: 'sitThemaCodeListG', width: 100, defaultVisibility: false },
+      { headerName: 'Partie', field: 'UseBatch', filter: 'agSetColumnFilter', width: 80, renderType: 'checkbox', suppressMenu: true, defaultVisibility: false },
+      { headerName: ' ', field: 'IsActive', width: 100, renderType: 'checkbox', cellClass: "grid-cell-centered"},
+      { headerName: 'Opis', field: 'CodeDescription', width: 300, sortable: false, filter: 'agTextColumnFilter', floatingFilter: true},
+      { headerName: 'Info dodatkowe', field: 'CodeNotes', width: 500, sortable: false, filter: 'agTextColumnFilter', floatingFilter: true, tooltipField: 'CodeNotes'},
     ];
 
    }

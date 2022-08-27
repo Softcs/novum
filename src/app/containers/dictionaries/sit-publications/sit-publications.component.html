@@ -134,6 +134,29 @@
             </as-split-area>
           </as-split>  
         </mat-tab>
+        <mat-tab label="Klasyfikacja Thema">
+          <div fxFill fxLayout="column">
+            <sit-data-set-container ident="sitPublicationThemaCodesFilter" >
+              <div class="sit-filter-bar" fxLayout="row">
+                <sit-data-checkbox #sitControl field="searchAllCodes" label="Wszystkie pozycje" labelPosition="after" checked="false" [refreshOnChange]="true" ></sit-data-checkbox>
+              </div>
+            </sit-data-set-container>                
+            <sit-data-set-container ident="sitPublicationThemaCodes" [showActionsToolbar]="true" fxLayout="column" fxFlex>
+              <div class="data-table" fxFlex>
+                <ag-grid-angular
+                  #sitSetDataSource
+                  style="width: 100%; height: 100%;"
+                  class="ag-theme-balham"
+                  [treeData]="true"
+                  [getDataPath]="getDataPath"
+                  [autoGroupColumnDef]="autoGroupColumnDef"
+                  [groupDefaultExpanded]="groupDefaultExpanded"
+                >
+                </ag-grid-angular>
+              </div>
+            </sit-data-set-container>
+          </div>
+        </mat-tab>
       </mat-tab-group>        
     </as-split-area>
   </as-split>
