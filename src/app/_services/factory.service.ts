@@ -226,6 +226,7 @@ import { SitPublicationsParamsDefComponent } from '@app/containers/dictionaries/
 import { SitWmsPackingContainersTypesEditComponent } from '@app/containers/dictionaries/sit-wms-params-def/actions/sit-wms-packing-containers-types-edit/sit-wms-packing-containers-types-edit.component';
 import { SitWmsParamsDefComponent } from '@app/containers/dictionaries/sit-wms-params-def/sit-wms-params-def.component';
 import { SitEmployeeAbsencesEditComponent } from '@app/containers/dictionaries/sit-employees/actions/sit-employee-absences-edit/sit-employee-absences-edit.component';
+import { SitCashRegisterSaleReportsExportForMultiComponent } from '@app/containers/dictionaries/sit-cash-register-sale-reports/actions/sit-cash-register-sale-reports-export-for-multi/sit-cash-register-sale-reports-export-for-multi.component';
 
 
 @Injectable({ providedIn: 'root' })
@@ -457,7 +458,8 @@ export class FactoryService {
         sitPublicationsParamsDef: SitPublicationsParamsDefComponent,
         sitWmsParamsDef: SitWmsParamsDefComponent,
         sitWmsPackingContainersTypesEdit: SitWmsPackingContainersTypesEditComponent,
-        sitEmployeeAbsencesEdit: SitEmployeeAbsencesEditComponent
+        sitEmployeeAbsencesEdit: SitEmployeeAbsencesEditComponent,
+        sitCashRegisterSaleReportsExportForMulti: SitCashRegisterSaleReportsExportForMultiComponent,
     };
 
     public GetFactory(ident: string) {
