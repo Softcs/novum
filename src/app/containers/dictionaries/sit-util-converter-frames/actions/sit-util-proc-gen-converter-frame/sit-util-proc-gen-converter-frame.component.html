@@ -5,11 +5,13 @@
     <div class="sit-proc-params-content" fxLayout="column" style="width: 300px;height: 400px;">
       <sit-data-input #sitControl type="text" field="LoginName" label="Login" appearance="outline" style="width: 300px"></sit-data-input>
       <sit-data-checkbox #sitControl field="MarkAsScripted" label="Oznacz jako zeskryptowany"></sit-data-checkbox>
+      <sit-data-radio #sitControl field="ObjectsToScriptKind" type="row" label="Obiekty wymienione na liście poniżej" 
+        [buttons]="[{'caption':'twórz z nich ramkę','value': '1', 'checked':true},{'caption':'pomiń przy tworzeniu ramki','value':'0'}]"></sit-data-radio>
       <div fxLayout="row" fxFlex>
         <sit-data-textarea 
           type="textarea" 
           #sitControl field="ObjectsToScript" 
-          label="Lista obiektów do ramki; rozdzelone średnikiem" 
+          label="Lista obiektów do ramki; rozdzielone średnikiem" 
           appearance="outline" 
           rows="20" 
           cols="65" 
