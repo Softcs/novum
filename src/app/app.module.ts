@@ -206,8 +206,7 @@ import { SitVacationRequestsComponent } from './containers/dictionaries/sit-vaca
 import { SitCustomersAttachments4EmpSettDefEditComponent } from './containers/dictionaries/sit-customers/actions/sit-customers-attachments4-emp-sett-def-edit/sit-customers-attachments4-emp-sett-def-edit.component'
 import { SitPublicationsComponent } from './containers/dictionaries/sit-publications/sit-publications.component';
 import { SitPublicationsEditComponent } from './containers/dictionaries/sit-publications/actions/sit-publications-edit/sit-publications-edit.component';
-import { SitPublicationsFormsOfReleaseComponent } from './containers/dictionaries/sit-publications-forms-of-release/sit-publications-forms-of-release.component';
-import { SitPublicationsFormsOfReleaseEditComponent } from './containers/dictionaries/sit-publications-forms-Of-Release/actions/sit-publications-forms-of-release-edit/sit-publications-forms-of-release-edit.component';
+import { SitPublicationsFormsOfReleaseEditComponent } from './containers/dictionaries/sit-publications-params-def/actions/sit-publications-forms-of-release-edit/sit-publications-forms-of-release-edit.component';
 import { SitPublicationsProductsEditComponent } from './containers/dictionaries/sit-publications/actions/sit-publications-products-edit/sit-publications-products-edit.component';
 import { SitPublicationsAgreementsComponent } from './containers/dictionaries/sit-publications-agreements/sit-publications-agreements.component';
 import { SitPublicationsAgreementsEditComponent } from './containers/dictionaries/sit-publications-agreements/actions/sit-publications-agreements-edit/sit-publications-agreements-edit.component';
@@ -229,7 +228,6 @@ import { SitStocksOnDateComponent } from './containers/dictionaries/sit-stocks-o
 import { SitPublicationsChangeStatusEditComponent } from './containers/dictionaries/sit-publications/actions/sit-publications-change-status-edit/sit-publications-change-status-edit.component';
 import { SitPubWmsDocumentsOperatorsComponent } from './containers/dictionaries/sit-pub-wms-documents-operators/sit-pub-wms-documents-operators.component';
 import { SitRailWmsDocumentsOperatorsImportComponent } from './containers/dictionaries/sit-pub-wms-documents-operators/actions/sit-rail-wms-documents-operators-import/sit-rail-wms-documents-operators-import.component';
-import { SitPublicationsFormsOfReleaseGroupsComponent } from './containers/dictionaries/sit-publications-forms-of-release-groups/sit-publications-forms-of-release-groups.component';
 import { SitPublicationsFormsOfReleaseGroupsEditComponent } from './containers/dictionaries/sit-publications-params-def/actions/sit-publications-forms-of-release-groups-edit/sit-publications-forms-of-release-groups-edit.component';
 import { SitAgreementsBillingTypesEditComponent } from './containers/dictionaries/sit-publications-agreements/actions/sit-agreements-billing-types-edit/sit-agreements-billing-types-edit.component';
 import { SitRoyaltyCalcOnePublicationComponent } from './containers/dictionaries/sit-royalties/actions/sit-royalty-calc-one-publication/sit-royalty-calc-one-publication.component';
@@ -523,7 +521,6 @@ import { SitCashRegisterSaleReportsExportForMultiComponent } from './containers/
         SitCustomersAttachments4EmpSettDefEditComponent,
         SitPublicationsComponent,
         SitPublicationsEditComponent,
-        SitPublicationsFormsOfReleaseComponent,
         SitPublicationsFormsOfReleaseEditComponent,
         SitPublicationsProductsEditComponent,
         SitPublicationsAgreementsComponent,
@@ -546,7 +543,6 @@ import { SitCashRegisterSaleReportsExportForMultiComponent } from './containers/
         SitPublicationsChangeStatusEditComponent,
         SitPubWmsDocumentsOperatorsComponent,
         SitRailWmsDocumentsOperatorsImportComponent,
-        SitPublicationsFormsOfReleaseGroupsComponent,
         SitPublicationsFormsOfReleaseGroupsEditComponent,
         SitAgreementsBillingTypesEditComponent,
         SitRoyaltyCalcOnePublicationComponent,
