@@ -135,7 +135,11 @@ export class GridService {
   }
 
   public setDefGridOptions(grid) {
-    this.columnDefs = grid.api.getColumnDefs();
+    this.columnDefs = grid?.api?.getColumnDefs();
+    if (!this.columnDefs) {
+      return;
+    }
+
     this.columnDefs.forEach(columnDef => {
       if( !columnDef.hasOwnProperty('sortable') ) { columnDef.sortable = true; }
       if( !columnDef.hasOwnProperty('resizable') ) { columnDef.resizable = true; }
@@ -151,7 +155,7 @@ export class GridService {
   }
 
   public isPivotMode(gridApi) {
-    return gridApi != null && gridApi.gridOptionsWrapper.gridOptions.pivotMode;
+    return gridApi != null && gridApi.gridOptionsWrapper?.gridOptions?.pivotMode;
   }
 
   public getGridApi(element) {
@@ -269,6 +273,10 @@ export class GridService {
   }
 
   public refreshSum(gridApi, rows) {
+    if (!gridApi || !gridApi.gridOptionsWrapper || !gridApi.gridOptionsWrapper.gridOptions) {
+      return;
+    }
+
     var columns =    gridApi.gridOptionsWrapper.gridOptions.columnApi.getAllColumns();
     var agrColumns = columns.filter( c => c.colDef.agr);
     if (!agrColumns || agrColumns.length == 0 || !rows || rows.length == 0) {
