@@ -245,8 +245,9 @@ import { SitEmployeeContractsEditComponent } from './containers/dictionaries/sit
 import { SitCourierBookCourierEditComponent } from './containers/dictionaries/sit-wms-docs/actions/sit-courier-book-courier-edit/sit-courier-book-courier-edit.component';
 import { SitAgreementsChangeStatusEditComponent } from './containers/dictionaries/sit-publications-agreements/actions/sit-agreements-change-status-edit/sit-agreements-change-status-edit.component';
 import { SitCustomersGroupsComponent } from './containers/dictionaries/sit-customers-groups/sit-customers-groups.component';
-import { SitHRWorkingHoursComponent } from './containers/dictionaries/sit-hr-working-hours/sit-hr-working-hours.component';
-import { SitHRWorkingHoursEditComponent } from './containers/dictionaries/sit-hr-working-hours/actions/sit-hrworking-hours-edit/sit-hrworking-hours-edit.component';
+//import { SitHRWorkingHoursComponent } from './containers/dictionaries/sit-hr-working-hours/sit-hr-working-hours.component';
+import { SitHRParamsDefComponent }      from './containers/dictionaries/sit-hr-params-def/sit-hr-params-def.component';
+import { SitHRWorkingHoursEditComponent } from './containers/dictionaries/sit-sys-common-data-tables/actions/sit-hrworking-hours-edit/sit-hrworking-hours-edit.component';
 import { SitEmployeesContractsHRDepartmentsComponent } from './containers/dictionaries/sit-employees-contracts-hr-departments/sit-employees-contracts-hr-departments.component';
 import { SitEmployeeVacationLimitsEditComponent } from './containers/dictionaries/sit-employees/actions/sit-employee-vacation-limits-edit/sit-employee-vacation-limits-edit.component';
 import { SitCustomerBillingHoursComponent } from './containers/dictionaries/sit-customer-billing-hours/sit-customer-billing-hours.component';
@@ -308,7 +309,7 @@ import { SitCustomerB2bProductsConfigEditComponent } from './containers/dictiona
 import { SitCustomerB2bProductsEditComponent } from './containers/dictionaries/sit-customers/actions/sit-customer-b2b-products-edit/sit-customer-b2b-products-edit.component';
 import { SitPublicationAudienceEditComponent } from './containers/dictionaries/sit-publications-params-def/actions/sit-publication-audience-edit/sit-publication-audience-edit.component';
 import { SitProduct4PubCollectionsEditComponent } from './containers/dictionaries/sit-publications-params-def/actions/sit-product4-pub-collections-edit/sit-product4-pub-collections-edit.component';
-import { SitAbsenceReasonsEditComponent } from './containers/dictionaries/sit-hr-working-hours/actions/sit-absence-reasons-edit/sit-absence-reasons-edit.component';
+import { SitAbsenceReasonsEditComponent } from './containers/dictionaries/sit-hr-params-def/actions/sit-absence-reasons-edit/sit-absence-reasons-edit.component';
 import { SitSysCommonDataTablesComponent } from './containers/dictionaries/sit-sys-common-data-tables/sit-sys-common-data-tables.component';
 import { SitCountriesEditComponent } from './containers/dictionaries/sit-sys-common-data-tables/actions/sit-countries-edit/sit-countries-edit.component';
 import { SitCurrenciesEditComponent } from './containers/dictionaries/sit-sys-common-data-tables/actions/sit-currencies-edit/sit-currencies-edit.component';
@@ -560,7 +561,7 @@ import { SitCashRegisterSaleReportsExportForMultiComponent } from './containers/
         SitCourierBookCourierEditComponent,
         SitAgreementsChangeStatusEditComponent,
         SitCustomersGroupsComponent,
-        SitHRWorkingHoursComponent,
+        SitHRParamsDefComponent,
         SitHRWorkingHoursEditComponent,
         SitEmployeesContractsHRDepartmentsComponent,
         SitEmployeeVacationLimitsEditComponent,

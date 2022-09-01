@@ -1,6 +1,6 @@
 import { SitHRBatches4InvoicingComponent } from '../containers/dictionaries/sit-hr-batches4-invoicing/sit-hr-batches4-invoicing.component';
-import { SitHRWorkingHoursEditComponent } from './../containers/dictionaries/sit-hr-working-hours/actions/sit-hrworking-hours-edit/sit-hrworking-hours-edit.component';
-import { SitHRWorkingHoursComponent } from './../containers/dictionaries/sit-hr-working-hours/sit-hr-working-hours.component';
+import { SitHRWorkingHoursEditComponent } from './../containers/dictionaries/sit-sys-common-data-tables/actions/sit-hrworking-hours-edit/sit-hrworking-hours-edit.component';
+import { SitHRParamsDefComponent }        from './../containers/dictionaries/sit-hr-params-def/sit-hr-params-def.component';
 import { SitSettlementsComponent } from './../containers/dictionaries/sit-settlements/sit-settlements.component';
 import { SitAppUsersInCompanyEditComponent } from './../containers/dictionaries/sit-app-users-in-company/actions/sit-app-users-in-company-edit/sit-app-users-in-company-edit.component';
 import { SitAppUsersInCompanyComponent } from './../containers/dictionaries/sit-app-users-in-company/sit-app-users-in-company.component';
@@ -207,7 +207,7 @@ import { SitCustomerB2bProductsConfigEditComponent } from '@app/containers/dicti
 import { SitCustomerB2bProductsEditComponent } from '@app/containers/dictionaries/sit-customers/actions/sit-customer-b2b-products-edit/sit-customer-b2b-products-edit.component';
 import { SitPublicationAudienceEditComponent } from '@app/containers/dictionaries/sit-publications-params-def/actions/sit-publication-audience-edit/sit-publication-audience-edit.component';
 import { SitProduct4PubCollectionsEditComponent } from '@app/containers/dictionaries/sit-publications-params-def/actions/sit-product4-pub-collections-edit/sit-product4-pub-collections-edit.component';
-import { SitAbsenceReasonsEditComponent } from '@app/containers/dictionaries/sit-hr-working-hours/actions/sit-absence-reasons-edit/sit-absence-reasons-edit.component';
+import { SitAbsenceReasonsEditComponent } from '@app/containers/dictionaries/sit-hr-params-def/actions/sit-absence-reasons-edit/sit-absence-reasons-edit.component';
 import { SitSysCommonDataTablesComponent } from '@app/containers/dictionaries/sit-sys-common-data-tables/sit-sys-common-data-tables.component';
 import { SitCountriesEditComponent } from '@app/containers/dictionaries/sit-sys-common-data-tables/actions/sit-countries-edit/sit-countries-edit.component';
 import { SitCurrenciesEditComponent } from '@app/containers/dictionaries/sit-sys-common-data-tables/actions/sit-currencies-edit/sit-currencies-edit.component';
@@ -380,7 +380,7 @@ export class FactoryService {
         sitCourierBookCourierEdit: SitCourierBookCourierEditComponent,
         sitAgreementsChangeStatusEdit: SitAgreementsChangeStatusEditComponent,
         sitCustomersGroups: SitCustomersGroupsComponent,
-        sitHRWorkingHours: SitHRWorkingHoursComponent,
+        sitHRParamsDef: SitHRParamsDefComponent,
         sitHRWorkingHoursEdit: SitHRWorkingHoursEditComponent,
         sitEmployeesContractsHRDepartments: SitEmployeesContractsHRDepartmentsComponent,
         sitEmployeeVacationLimitsEdit: SitEmployeeVacationLimitsEditComponent,

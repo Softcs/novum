@@ -1,6 +1,6 @@
-<sit-dict-container ident="sitHRWorkingHours" #sitDictcontainer fxFill>
+<sit-dict-container ngClass="sitHRParamsDef" ident="sitHRWorkingHours" #sitDictcontainer fxFill>
   <mat-tab-group id="tab-group" animationDuration="0ms">
-    <mat-tab label="Powody nieobecności">  
+    <mat-tab label="Powody nieobecności">
       <div fxLayout="column" fxFill class="content">
         <sit-data-set-container ident="sitAbsenceReasonsFilter" >
           <div class="sit-filter-bar" fxLayout="row">
@@ -36,8 +36,8 @@
             </ag-grid-angular>
           </div>
         </sit-data-set-container>
-      </div>      
-    </mat-tab> 
+      </div>
+    </mat-tab>
     <mat-tab label="Wymiary etatu">
       <div fxLayout="column" fxFill class="content">
         <sit-data-set-container ident="sitJobTimesFilter" >
@@ -55,7 +55,7 @@
             </ag-grid-angular>
           </div>
         </sit-data-set-container>
-      </div>      
+      </div>
     </mat-tab>
-  </mat-tab-group>        
+  </mat-tab-group>
 </sit-dict-container>
