@@ -2,17 +2,22 @@ import { Component } from '@angular/core';
 import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-dict-base.component';
 
 @Component({
-  selector: 'app-sit-hr-working-hours',
-  templateUrl: './sit-hr-working-hours.component.html',
-  styleUrls: ['./sit-hr-working-hours.component.scss'],
+  //selector: 'app-sit-hr-working-hours',
+  selector: 'app-sit-hr-params-def',
+  templateUrl: './sit-hr-params-def.component.html',
+  styleUrls: ['./sit-hr-params-def.component.scss'],
   host: {class: 'router-flex'}
 })
-export class SitHRWorkingHoursComponent extends SitDictBaseComponent {
+export class SitHRParamsDefComponent extends SitDictBaseComponent {
+
+  sitHRCompanyHierarchyGroupDefaultExpanded;
+  sitHRCompanyHierarchyGetDataPath;
+  sitHRCompanyHierarchyAutoGroupColumnDef;
 
   public prepareColumnsDefinitnion() {
     this.gridColumnsDefinition["sitAbsenceReasons"] = [
       { headerName: 'Id', field: 'sitAbsenceReasonsId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 50, defaultVisibility: false },
-      { headerName: 'GUID', field: 'sitAbsenceReasonsG', width: 100, defaultVisibility: false },  
+      { headerName: 'GUID', field: 'sitAbsenceReasonsG', width: 100, defaultVisibility: false },
       { headerName: 'Rodzic', field: 'AbsenceIdent_Parent', filter: 'agTextColumnFilter', width: 180, sort: 'asc' },
       { headerName: 'Identyfikator', field: 'AbsenceIdent', filter: 'agTextColumnFilter', width: 180, sort: 'asc' },
       { headerName: 'Opis', field: 'AbsenceName', filter: 'agTextColumnFilter', width: 350 },
@@ -25,7 +30,7 @@ export class SitHRWorkingHoursComponent extends SitDictBaseComponent {
 
     this.gridColumnsDefinition["sitHRWorkingHours"] = [
       { headerName: 'Id', field: 'sitHRWorkingHoursId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 50, defaultVisibility: false },
-      { headerName: 'GUID', field: 'sitHRWorkingHoursG', width: 100, defaultVisibility: false },  
+      { headerName: 'GUID', field: 'sitHRWorkingHoursG', width: 100, defaultVisibility: false },
       { headerName: 'Rok', field: 'Year', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 80, sort: 'asc', suppressMenu: true },
       { headerName: 'Mieisąc', field: 'Month', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, sort: 'asc', suppressMenu: true },
       { headerName: 'Godz. prac.', field: 'WorkingHours', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 90, suppressMenu: true},
@@ -35,11 +40,36 @@ export class SitHRWorkingHoursComponent extends SitDictBaseComponent {
     ];
 
     this.gridColumnsDefinition["sitJobTimes"] = [
-      { headerName: 'GUID', field: 'sitJobTimesG', width: 100, defaultVisibility: false },  
+      { headerName: 'GUID', field: 'sitJobTimesG', width: 100, defaultVisibility: false },
       { headerName: 'Identyfikator', field: 'JobTimeIdent', filter: 'agNumberColumnFilter', width: 100, sort: 'asc', suppressMenu: true },
       { headerName: 'Opis', field: 'JobTimeDesc', filter: 'agNumberColumnFilter', width: 200, suppressMenu: true },
       { headerName: 'Mnożnik', field: 'Multiplier', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 80, renderType: 'number', renderFormat: '1.4-4',},
     ];
+
+    this.gridColumnsDefinition["sitHRDepartments"] = [
+      { headerName: 'Identyfikator', field: 'HRDepartmentIdent', filter: 'agTextColumnFilter' },
+      { headerName: 'Nazwa', field: 'HRDepartmentName', filter: 'agTextColumnFilter' },
+      { headerName: 'Identyfikator zewnętrzny', field: 'ExtIdent01', filter: 'agTextColumnFilter' },
+    ];
+
+// * * * * * sitHRCompanyHierarchy * * * * *
+
+    this.sitHRCompanyHierarchyAutoGroupColumnDef = {
+      headerName: 'Struktura',
+      minWidth: 400,
+      cellRendererParams: { suppressCount: true },
+    };
+    this.sitHRCompanyHierarchyGroupDefaultExpanded = -1;
+
+    this.sitHRCompanyHierarchyGetDataPath = function (data) {
+      return data.dataPath;
+    };
+
+    this.gridColumnsDefinition["sitHRCompanyHierarchy"] = [
+      { headerName: 'Opis', field: 'HRCompanyHierarchyDesc', filter: 'agTextColumnFilter', width: 300 },
+    ];
+
+// * * * * * sitHRCompanyHierarchy * * * * *
 
   }
 }

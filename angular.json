@@ -81,7 +81,7 @@
                   "with": "src/environments/environment.dev.ts"
                 }
               ],
-              "optimization": true,
+              "optimization": false,
               "outputHashing": "all",
               "namedChunks": false,
               "extractLicenses": true,

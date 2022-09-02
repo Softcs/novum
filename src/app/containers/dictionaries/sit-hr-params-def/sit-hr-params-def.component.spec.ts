@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SitHrWorkingHoursComponent } from './sit-hr-working-hours.component';
+import { SitHRParamsDefComponent } from './sit-hr-params-def.component';
 
-describe('SitHrWorkingHoursComponent', () => {
-  let component: SitHrWorkingHoursComponent;
-  let fixture: ComponentFixture<SitHrWorkingHoursComponent>;
+describe('SitHRParamsDefComponent', () => {
+  let component: SitHRParamsDefComponent;
+  let fixture: ComponentFixture<SitHRParamsDefComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SitHrWorkingHoursComponent ]
+      declarations: [ SitHRParamsDefComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SitHrWorkingHoursComponent);
+    fixture = TestBed.createComponent(SitHRParamsDefComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
