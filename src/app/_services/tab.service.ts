@@ -79,7 +79,6 @@ export class TabService {
       };
 
       this.titleService.setTitle(title ? title : '');
-    }
   }
 
   public companyChanged(newCompanyGUID: string) {
