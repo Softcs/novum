@@ -8,6 +8,7 @@ import { SitDataSetContainerComponent } from '@app/components/sit-data-set-conta
 import { SitDictContainerComponent } from '@app/components/sit-dict-container';
 import { DataSetWrapper } from '@app/_models';
 import { Company } from '@app/_models/company';
+import { TabService } from '@app/_services/tab.service';
 
 
 @Component({
@@ -25,7 +26,8 @@ export class SitSideMenuComponent implements OnInit {
   constructor(
     private router: Router,
     private gatewayService: GatewayService,
-    private navService: NavService
+    private navService: NavService,
+    private tabService: TabService
   ) {
     this.gatewayService.currentUser.subscribe(x => this.changeUser(x));
     this.gatewayService.companyChanged.subscribe(x => this.companyChanged(x));
@@ -65,5 +67,6 @@ export class SitSideMenuComponent implements OnInit {
 
   companyChanged(newCompany: Company) {
     this.dictContainer?.loadData();
+    this.tabService.companyChanged(newCompany.companyGUID);
   }
 }

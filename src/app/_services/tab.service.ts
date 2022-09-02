@@ -3,23 +3,28 @@ import { Tab } from '@app/_models/tab.model';
 import { SitPulpitComponent } from '@app/containers/sit-pulpit';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { IStoredTabs } from '@app/_interfaces/IStoredTabs';
+import { Title } from '@angular/platform-browser';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TabService {
   private storedTabs: { [id: string] : IStoredTabs; } = {};
-  private tabIndex: number;
+  private _tabIndex: number;
   private defaultTab: Tab = new Tab(SitPulpitComponent, 'Pulpit', { parent: 'AppComponent' });
 
+  public get tabIndex() {
+    return this._tabIndex;
+  }
 
   public tabs: Tab[] = [this.defaultTab];
 
   public tabSub = new BehaviorSubject<Tab[]>(this.tabs);
 
   public activeTabIndex: Subject<number>;
+  tabService: any;
 
-  constructor() {
+  constructor(private titleService: Title,) {
     this.activeTabIndex = new Subject<number>();
     this.activeTabIndex.next(-1);
   }
@@ -27,9 +32,11 @@ export class TabService {
   private storeTabs(companyGUID: string) {
     this.storedTabs[companyGUID] =  {
          tabs : [...this.tabs],
-        activeTabIndex : this.tabIndex
+         activeTabIndex : this.tabIndex
     }
-    this.activeTabIndex.next(0);
+
+    this.tabs.length = 0;
+    this.tabSub.next([]);
   }
 
   private restoreTabs(companyGUID: string) {
@@ -40,8 +47,8 @@ export class TabService {
       this.addTab(this.defaultTab);
     } else {
       this.tabs = tabs;
-      this.tabSub.next(tabs);
-      this.activeTabIndex.next(def.activeTabIndex);
+      this._tabIndex = def.activeTabIndex;
+      this.tabSub.next(this.tabs);
     }
   }
 
@@ -52,7 +59,7 @@ export class TabService {
   }
 
   public changeTab(index: number) {
-    this.tabIndex = index;
+    this._tabIndex = index;
     this.activeTabIndex.next(this.tabIndex);
   }
 
@@ -63,8 +70,23 @@ export class TabService {
     this.activeTabIndex.next(tab.id - 1);
   }
 
-  public companyChanged(newCompanyGUID: string, oldCompanyGUID: string) {
-    this.storeTabs(newCompanyGUID);
-    this.restoreTabs(oldCompanyGUID);
+  public companyChangedActivate(newIndex: number) {
+      this._tabIndex = newIndex;
+      var title = null;
+
+      if (newIndex < this.tabs?.length) {
+        title = this.tabs[newIndex].title;
+      };
+
+      this.titleService.setTitle(title ? title : '');
+    }
+  }
+
+  public companyChanged(newCompanyGUID: string) {
+    this.restoreTabs(newCompanyGUID);
+  }
+
+  public companyChanging(oldCompanyGUID: string) {
+    this.storeTabs(oldCompanyGUID);
   }
 }

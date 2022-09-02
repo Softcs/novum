@@ -56,7 +56,7 @@ export class SitChangeCompanyComponent implements OnInit {
     });
 
     this.dialogRef.close();
-    this.tabService.companyChanged(this.gatewayService.currentUserValue.company?.companyGUID,oldCompanyGUID);
+    this.tabService.companyChanging(oldCompanyGUID);
     this.gatewayService.companyChanged.emit(this.gatewayService.currentUserValue?.company);
 
     this.router.navigate(['/login']);
