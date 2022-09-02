@@ -72,6 +72,11 @@ export class SitUtilSqlObjectsComponent extends SitDictBaseComponent {
           pivot: true, enablePivot: true },
         { headerName: 'diff', field: 'diff', width: 150, renderType: 'checkbox', cellClass: "grid-cell-centered",
           aggFunc: 'min', enableValue: true },
-       ]
+      ]
+      
+      this.gridColumnsDefinition["sitUtilSQLObjectRoutineColumns"] = [       
+        { headerName: 'Nazwa kolumny', field: 'ColumnName', filter: 'agNumberColumnFilter', width: 150 },
+        { headerName: 'Typ danych', field: 'DataType', filter: 'agNumberColumnFilter', width: 150 }
+      ];
   }
 }
