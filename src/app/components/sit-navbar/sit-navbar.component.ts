@@ -42,7 +42,6 @@ export class SitNavbarComponent {
     this.tabService.activeTabIndex.subscribe( i => {
       this.ref.detectChanges()
       this.selectedTabIndex = i;
-      this.title = this.tabService.tabs[this.selectedTabIndex].title;
     });
 
   }

@@ -8,6 +8,7 @@ import { Company } from '@app/_models/company';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { Title } from '@angular/platform-browser';
+import { TabService } from '@app/_services/tab.service';
 @Component({
   selector: 'app-sit-change-company',
   templateUrl: './sit-change-company.component.html',
@@ -24,6 +25,7 @@ export class SitChangeCompanyComponent implements OnInit {
     private router: Router,
     private gatewayService: GatewayService,
     private titleService: Title,
+    private tabService: TabService,
     public dialogRef: MatDialogRef<SitChangeCompanyComponent>
   )
   {
@@ -41,6 +43,7 @@ export class SitChangeCompanyComponent implements OnInit {
 
   onClick(companyRow) {
     this.gatewayService.currentUserValue.connection = companyRow.ConfigFile;
+    var oldCompanyGUID = this.gatewayService.currentUserValue?.company?.companyGUID;
     this.gatewayService.currentUserValue.company = new Company(companyRow.CompanyIdent,
                                                                companyRow.CompanyDescription,
                                                                companyRow.sitCompaniesG,
@@ -53,7 +56,9 @@ export class SitChangeCompanyComponent implements OnInit {
     });
 
     this.dialogRef.close();
+    this.tabService.companyChanging(oldCompanyGUID);
     this.gatewayService.companyChanged.emit(this.gatewayService.currentUserValue?.company);
+
     this.router.navigate(['/login']);
   }
 

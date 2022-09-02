@@ -21,12 +21,14 @@ export class HomeComponent
     ) {
       this.tabService.tabSub.subscribe(tabs => {
         this.tabs = tabs;
+        this.tabService.activeTabIndex.next(this.tabService.tabIndex);
       });
 
       this.tabService.activeTabIndex.subscribe( i => {
         this.ref.detectChanges()
         this.selectedTabIndex = i;
-      });    
+        this.tabService.companyChangedActivate(i);
+      });
     }
 
 
