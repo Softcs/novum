@@ -32,7 +32,7 @@ export class SitHRParamsDefComponent extends SitDictBaseComponent {
       { headerName: 'Id', field: 'sitHRWorkingHoursId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 50, defaultVisibility: false },
       { headerName: 'GUID', field: 'sitHRWorkingHoursG', width: 100, defaultVisibility: false },
       { headerName: 'Rok', field: 'Year', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 80, sort: 'asc', suppressMenu: true },
-      { headerName: 'Mieisąc', field: 'Month', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, sort: 'asc', suppressMenu: true },
+      { headerName: 'Miesiąc', field: 'Month', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, sort: 'asc', suppressMenu: true },
       { headerName: 'Godz. prac.', field: 'WorkingHours', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 90, suppressMenu: true},
       { headerName: 'Dni prac.', field: 'WorkingDays', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 90, suppressMenu: true},
       { headerName: 'Dni wolne', field: 'NonWorkingDays', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 90, suppressMenu: true},
@@ -41,15 +41,21 @@ export class SitHRParamsDefComponent extends SitDictBaseComponent {
 
     this.gridColumnsDefinition["sitJobTimes"] = [
       { headerName: 'GUID', field: 'sitJobTimesG', width: 100, defaultVisibility: false },
-      { headerName: 'Identyfikator', field: 'JobTimeIdent', filter: 'agNumberColumnFilter', width: 100, sort: 'asc', suppressMenu: true },
+      { headerName: 'Identyfikator', field: 'JobTimeIdent', filter: 'agNumberColumnFilter', width: 100, sort: 'asc'},
       { headerName: 'Opis', field: 'JobTimeDesc', filter: 'agNumberColumnFilter', width: 200, suppressMenu: true },
-      { headerName: 'Mnożnik', field: 'Multiplier', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 80, renderType: 'number', renderFormat: '1.4-4',},
+      { headerName: 'Mnożnik', field: 'Multiplier', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 80, renderType: 'number', 
+        renderFormat: '1.4-4', suppressMenu: true },
     ];
 
     this.gridColumnsDefinition["sitHRDepartments"] = [
+      { headerName: 'Id', field: 'sitHRDepartmentsId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 50, defaultVisibility: false },
+      { headerName: 'GUID', field: 'sitHRDepartmentsG', width: 100, defaultVisibility: false },
       { headerName: 'Identyfikator', field: 'HRDepartmentIdent', filter: 'agTextColumnFilter' },
       { headerName: 'Nazwa', field: 'HRDepartmentName', filter: 'agTextColumnFilter' },
-      { headerName: 'Identyfikator zewnętrzny', field: 'ExtIdent01', filter: 'agTextColumnFilter' },
+      { headerName: 'Branch', field: 'Branch', filter: 'agTextColumnFilter', width: 100 },
+      { headerName: 'Wewnętrzny', field: 'IsInternal', width: 100, renderType: 'checkbox', suppressMenu: true, cellClass: "grid-cell-centered"},
+      { headerName: 'Id zew. 01', field: 'ExtIdent01', filter: 'agTextColumnFilter', defaultVisibility: false  },
+      { headerName: 'Id zew. 02', field: 'ExtAppIdent02', filter: 'agTextColumnFilter', defaultVisibility: false  },
     ];
 
 // * * * * * sitHRCompanyHierarchy * * * * *
