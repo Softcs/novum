@@ -96,7 +96,7 @@ export class SitCustomersComponent extends SitDictBaseComponent {
       { headerName: 'Identyfikator', field: 'ProductIdent', filter: 'agTextColumnFilter', width: 150, },
       { headerName: 'EAN', field: 'EAN', filter: 'agTextColumnFilter', width: 120 },
       { headerName: 'Nazwa', field: 'ProductName', tooltipField: 'ProductName', filter: 'agTextColumnFilter', width: 300 },
-      { headerName: 'Status', field: 'StatusValueName_Main', filter: 'agSetColumnFilter', width: 140, floatingFilter: false, 
+      { headerName: 'Status prod', field: 'ProductStatusValueName_Main', filter: 'agSetColumnFilter', width: 140, floatingFilter: false, 
         cellStyle: function(params) {
           if (params.value === 'W przygotowaniu') { return { color: 'violet', 'font-weight': 600 }; }
           else if (params.value === 'Zapowiedź') { return { color: 'orange', 'font-weight': 600 }; }
@@ -110,6 +110,7 @@ export class SitCustomersComponent extends SitDictBaseComponent {
       { headerName: 'Prod. akt.', field: 'IsActive_Product', filter: 'agSetColumnFilter', width: 80, renderType: 'checkbox', suppressMenu: true, cellClass: "grid-cell-centered" },
       { headerName: 'B2B', field: 'IsB2B', filter: 'agSetColumnFilter', width: 80, renderType: 'checkbox', suppressMenu: true, cellClass: "grid-cell-centered", defaultVisibility: true },
       { headerName: 'Status sprz.', field: 'SaleStatus', tooltipField: 'SaleStatusDescription', width: 80, suppressMenu: true},
+      { headerName: 'Status wys.', field: 'StatusValueIdent_Main', tooltipField: 'StatusValueName_Main', width: 80, suppressMenu: true},
 
     ];
 

@@ -219,12 +219,12 @@ import { SitWmsPackingContainerProductsEditComponent } from '@app/containers/dic
 import { SitWmsPackingContainersEditComponent } from '@app/containers/dictionaries/sit-wms-packing/actions/sit-wms-packing-containers-edit/sit-wms-packing-containers-edit.component';
 import { SitWmsPackingDocumentsEditComponent } from '@app/containers/dictionaries/sit-wms-packing/actions/sit-wms-packing-documents-edit/sit-wms-packing-documents-edit.component';
 import { SitWmsPackingEditComponent } from '@app/containers/dictionaries/sit-wms-packing/actions/sit-wms-packing-edit/sit-wms-packing-edit.component';
-
 import { SitPublicationsParamsDefComponent } from '@app/containers/dictionaries/sit-publications-params-def/sit-publications-params-def.component';
 import { SitWmsPackingContainersTypesEditComponent } from '@app/containers/dictionaries/sit-wms-params-def/actions/sit-wms-packing-containers-types-edit/sit-wms-packing-containers-types-edit.component';
 import { SitWmsParamsDefComponent } from '@app/containers/dictionaries/sit-wms-params-def/sit-wms-params-def.component';
 import { SitEmployeeAbsencesEditComponent } from '@app/containers/dictionaries/sit-employees/actions/sit-employee-absences-edit/sit-employee-absences-edit.component';
 import { SitCashRegisterSaleReportsExportForMultiComponent } from '@app/containers/dictionaries/sit-cash-register-sale-reports/actions/sit-cash-register-sale-reports-export-for-multi/sit-cash-register-sale-reports-export-for-multi.component';
+import { SitHRDepartmentsEditComponent } from '@app/containers/dictionaries/sit-hr-params-def/actions/sit-hr-departments-edit/sit-hr-departments-edit.component';
 
 
 @Injectable({ providedIn: 'root' })
@@ -456,6 +456,7 @@ export class FactoryService {
         sitWmsPackingContainersTypesEdit: SitWmsPackingContainersTypesEditComponent,
         sitEmployeeAbsencesEdit: SitEmployeeAbsencesEditComponent,
         sitCashRegisterSaleReportsExportForMulti: SitCashRegisterSaleReportsExportForMultiComponent,
+        sitHRDepartmentsEdit: SitHRDepartmentsEditComponent
     };
 
     public GetFactory(ident: string) {

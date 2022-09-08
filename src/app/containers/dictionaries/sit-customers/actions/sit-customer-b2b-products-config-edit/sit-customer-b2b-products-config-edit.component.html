@@ -2,12 +2,23 @@
   [(actionExecuteData)]="actionExecuteData"
   >
   <sit-data-set-container ident="sitCustomerB2bProductsConfigEdit">
-    <div class="sit-proc-params-content" fxLayout="column">
+    <div class="sit-proc-params-content" fxLayout="column" style="width: 300px;height: 300px;">
       <div fxLayout="row">
         <sit-data-checkbox #sitControl field="IsActive" label="Aktywne" fxFlex="30"></sit-data-checkbox>
       </div>
-      <sit-data-input type="text" #sitControl field="ProductCatalogFormatFunction" label="Funkcja generująca katalog" appearance="outline" fxFlex></sit-data-input>
-      <sit-data-input type="text" #sitControl field="InventoryReportFormatFunction" label="Funkcja generująca stany" appearance="outline" fxFlex></sit-data-input>      
+      <sit-data-input type="text" #sitControl field="ProductCatalogFormatFunction" label="Funkcja generująca katalog" appearance="outline" ></sit-data-input>
+      <sit-data-input type="text" #sitControl field="InventoryReportFormatFunction" label="Funkcja generująca stany" appearance="outline" ></sit-data-input>      
+      <div fxLayout="row" fxFlex>
+        <sit-data-textarea 
+          type="textarea" 
+          #sitControl field="Config" 
+          label="Konfiguracja" 
+          appearance="outline" 
+          rows="20" 
+          cols="65" 
+          fxFill>
+        </sit-data-textarea>
+      </div>  
     </div>
   </sit-data-set-container>
 </sit-proc-params>
