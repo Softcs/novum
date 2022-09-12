@@ -5,11 +5,11 @@
         <div fxFill fxLayout="column">
           <sit-data-set-container ident="sitFilter" fxLayout="row">
             <div class="sit-filter-bar" fxLayout="row">
-              <sit-data-input #sitControl field="Search" label="wyszukaj" appearance="outline" style="width: 300px;" showRefreshButton="true"></sit-data-input>
+              <sit-data-input #sitControl field="Search" label="wyszukaj" appearance="outline" style="width: 300px;" [showRefreshButton]="true"></sit-data-input>
               <sit-data-checkbox #sitControl field="TabOnly" label="Tylko tabele" labelPosition="after" checked="false"></sit-data-checkbox>
             </div>
           </sit-data-set-container>
-          <sit-data-set-container ident="sitUtilSQLObjects" showActionsToolbar="true" fxLayout="column" fxFlex>
+          <sit-data-set-container ident="sitUtilSQLObjects" [showActionsToolbar]="true" fxLayout="column" fxFlex>
             <div class="data-table" fxFlex>
               <ag-grid-angular 
                 #sitSetDataSource 
@@ -32,7 +32,7 @@
           <mat-tab label="Wersje obiektu">
             <div class="content" fxFill fxLayout="column">
               <div fxFlex="120">
-                <sit-data-set-container ident="sitUtilSQLObjectVersions" showActionsToolbar="true" fxFlex fxLayout="column">
+                <sit-data-set-container ident="sitUtilSQLObjectVersions" [showActionsToolbar]="true" fxFlex fxLayout="column">
                   <div class="data-table" fxFlex>
                     <ag-grid-angular 
                       #sitSetDataSource #sitAttachmentsGrid
@@ -47,7 +47,7 @@
           <mat-tab label="Dodatkowe skrypty INS\DEL">
             <div class="content" fxFill fxLayout="column">
               <div fxLayout="column" fxFlex=40>
-                <sit-data-set-container ident="sitUtilSQLAddBatches4Object" showActionsToolbar="true" fxFlex fxLayout="column">
+                <sit-data-set-container ident="sitUtilSQLAddBatches4Object" [showActionsToolbar]="true" fxFlex fxLayout="column">
                   <div class="data-table" fxFlex>
                     <ag-grid-angular 
                       #sitSetDataSource 
@@ -66,6 +66,21 @@
               </div>           
             </div>
           </mat-tab>
+          <mat-tab label="Pola funkcji">
+            <div class="content" fxFill fxLayout="column">
+              <div fxFlex="120">
+                <sit-data-set-container ident="sitUtilSQLObjectRoutineColumns" [showActionsToolbar]="false" fxFlex fxLayout="column">
+                  <div class="data-table" fxFlex>
+                    <ag-grid-angular 
+                      #sitSetDataSource 
+                      style="width: 100%; height: 100%;" 
+                      class="ag-theme-balham">
+                    </ag-grid-angular>
+                  </div>
+                </sit-data-set-container>
+              </div>
+            </div>
+          </mat-tab>          
           <mat-tab label="Tabele wspólne">
             <div class="content" fxFill fxLayout="column">
               <sit-data-set-container ident="sitFilterCheckCommonDataTable" fxLayout="row">

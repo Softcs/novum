@@ -1,0 +1,18 @@
+<sit-proc-params
+   [(actionExecuteData)]="actionExecuteData"
+  >
+  <sit-data-set-container ident="sitHRDepartmentsEdit">
+    <div class="sit-proc-params-content" fxLayout="column">
+      <sit-data-input #sitControl type="text" field="HRDepartmentIdent" label="Identyfikator" appearance="outline"></sit-data-input>
+      <sit-data-input #sitControl type="text" field="HRDepartmentName" label="Opis" appearance="outline" ></sit-data-input>
+      <div fxLayout="row">
+        <sit-data-input #sitControl type="text" field="Branch" label="Branch" appearance="outline" fxFlex=50></sit-data-input>
+        <sit-data-checkbox #sitControl field="IsInternal" label="Wewnętrzny" fxFlex=50 ></sit-data-checkbox>
+      </div>
+      <div fxLayout="row">
+        <sit-data-input #sitControl type="text" field="ExtIdent01" label="Id zew. 01" appearance="outline" fxFlex=50></sit-data-input>
+        <sit-data-input #sitControl type="text" field="ExtAppIdent02" label="Id zew. 02" appearance="outline" fxFlex=50></sit-data-input>
+      </div>
+    </div>    
+  </sit-data-set-container>
+</sit-proc-params>

@@ -784,6 +784,10 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
           },
         ]
       },
+      { headerName: 'Rabat', field: 'Discount',  filter: 'agNumberColumnFilter', type: 'numericColumn', width: 100, suppressMenu: true, agr: 'sum',
+        renderType: 'number',
+        cellClass: ['font11','blueBackground','numberFormat2Dec'],
+      },      
       { headerName: 'Netto - klient', field: 'CustNet', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 100, suppressMenu: true, agr: 'sum',
         cellStyle: function(params) { return {backgroundColor: '#cce6ff','font-weight': 'bold'} },  
         renderType: 'number',
@@ -936,7 +940,7 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
       },
   
       getDetailRowData: function (params) {
-          params.successCallback(params.data.Details);
+          params.successCallback(params.data.Det);
       },
     };
   };
