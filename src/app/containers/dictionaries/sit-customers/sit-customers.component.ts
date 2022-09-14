@@ -125,6 +125,7 @@ export class SitCustomersComponent extends SitDictBaseComponent {
       { headerName: 'Nocne', field: 'NightRate',headerTooltip:'Nocne', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
       { headerName: 'Nadgodziny', field: 'OvertimeRate',headerTooltip:'Nadgodziny', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
       { headerName: 'Premie', field: 'BonusRate', headerTooltip:'Premie',filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
+      { headerName: 'Premie1', field: 'Bonus1Rate', headerTooltip:'Premie1',filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
       { headerName: 'Urlop', field: 'VacRate',headerTooltip:'Urlop', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
       { headerName: 'Urlop dod.', field: 'VacAddRate',headerTooltip:'Urlop dodatkowy', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
       { headerName: 'Rez.urlop.', field: 'VacResRate',headerTooltip:'Rezerwa urlopowa', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
