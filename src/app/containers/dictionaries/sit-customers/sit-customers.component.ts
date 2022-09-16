@@ -121,6 +121,7 @@ export class SitCustomersComponent extends SitDictBaseComponent {
       { headerName: 'PFRON', headerTooltip:'Licz PFRON', field: 'CalcPFRON', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 70, renderType: "checkbox"},
       { headerName: 'Ryz. chor.', headerTooltip:'Licz ryzyko chorobowe', field: 'CalcSickRisk', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 70, renderType: "checkbox"},
       { headerName: 'Wsp.ryz.', field: 'SickRiskFactor',headerTooltip:'Współczynnik do wyliczenia ryzyka urlopowego', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
+      { headerName: 'Osobno', headerTooltip:'Licz osobno ZUS i narzut', field: 'CalcSeparate', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 70, renderType: "checkbox"},
       { headerName: 'Zasadnicze', field: 'BaseRate',headerTooltip:'Zasadnicze', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
       { headerName: 'Nocne', field: 'NightRate',headerTooltip:'Nocne', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
       { headerName: 'Nadgodziny', field: 'OvertimeRate',headerTooltip:'Nadgodziny', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},

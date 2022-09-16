@@ -14,6 +14,12 @@
         <sit-data-checkbox #sitControl field="CalcSickRisk" label="Licz ryzyko chorobowe"></sit-data-checkbox>
         <sit-data-input type="number" #sitControl field="SickRiskFactor" label="Współczynnik" appearance="outline" style="width: 80px;"></sit-data-input>
       </div>
+      <div fxLayout="row">
+        <sit-data-checkbox #sitControl field="CalcSeparate" label="Licz osobno ZUS i narzut"
+          matTooltip="Po zaznaczeniu system osobno wyliczy ZUS i narzut i doda je do kosztu pracownika (normalnie liczy narzut od kosztu + ZUS)." 
+          matTooltipPosition="right"
+          matTooltipHideDelay="100"></sit-data-checkbox>
+      </div>
       <div fxLayout="row" fxLayoutGap="5px">
         <div fxLayout="column" >
           <sit-data-input type="number" #sitControl field="BaseRate" label="Zasadnicze" appearance="outline"></sit-data-input>
