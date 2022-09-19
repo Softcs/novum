@@ -1,4 +1,7 @@
 <sit-proc-expander ></sit-proc-expander>
-<div class='container-cols'>
+<div class='container-cols' *ngIf="!loading">
     <ng-content  class="container-cols"></ng-content>
+</div>
+<div class='spinner-container' *ngIf="loading">
+    <div class="spinner spinner-border spinner-border-sm text-muted"></div>
 </div>

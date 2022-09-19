@@ -314,7 +314,8 @@ export class GridService {
         }
       }];
 
-      items.unshift(...params.defaultItems);
+      !params.defaultItems ? items.unshift(...params.defaultItems) : items.length = 0;
+
       return items;
   }
 }
