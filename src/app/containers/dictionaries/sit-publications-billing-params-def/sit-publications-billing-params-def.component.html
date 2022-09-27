@@ -1,0 +1,43 @@
+<sit-dict-container ngClass="sitPublicationsBillingParamsDef" ident="sitPublicationsBillingParamsDef" #sitDictcontainer fxFill>
+  <mat-tab-group id="tab-group" animationDuration="0ms">
+    <mat-tab label="Typy rozliczeń">
+      <div fxLayout="column" fxFill class="content">
+        <sit-data-set-container ident="sitPublicationsBillingTypesFilter" fxLayout="row">
+          <div class="sit-filter-bar" fxLayout="row">
+              <sit-data-input #sitControl field="searchBillingType" label="Filtruj typy rozliczeń" appearance="outline" style="width: 300px;" showRefreshButton="true"></sit-data-input>
+          </div>
+        </sit-data-set-container>
+        <sit-data-set-container ident="sitPublicationsBillingTypes" showActionsToolbar="true" fxLayout="column" fxFlex>
+          <div class="data-table" fxFlex>
+            <ag-grid-angular
+              #sitSetDataSource
+              style="width: 100%; height: 100%;"
+              class="ag-theme-balham"
+            >
+            </ag-grid-angular>
+          </div>
+        </sit-data-set-container>
+      </div>
+    </mat-tab>
+    <mat-tab label="Role beneficjentów">
+      <div fxLayout="column" fxFill class="content">
+        <sit-data-set-container ident="sitAgreementsBenefRolesFilter" >
+          <div class="sit-filter-bar" fxLayout="row">
+            <sit-data-input #sitControl field="searchBenefRole" label="Filtruj" appearance="outline" style="width: 300px;" [showRefreshButton]="true"></sit-data-input>
+          </div>
+        </sit-data-set-container>
+        <sit-data-set-container ident="sitAgreementsBenefRoles" [showActionsToolbar]="true" fxLayout="column" fxFlex>
+          <div class="data-table" fxFlex>
+            <ag-grid-angular
+              #sitSetDataSource
+              style="width: 100%; height: 100%;"
+              class="ag-theme-balham"
+            >
+            </ag-grid-angular>
+          </div>
+        </sit-data-set-container>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</sit-dict-container>
+  
