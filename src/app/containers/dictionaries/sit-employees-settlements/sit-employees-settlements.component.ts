@@ -426,6 +426,9 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
       { headerName: 'Opis prac', field: 'WorkDesc', tooltipField: 'WorkDesc',  width: 100, suppressMenu: true,
         cellClass: ['font11','textFormat']
       },
+      { headerName: 'Kod zawodu', field: 'ProfessionCode', tooltipField: 'ProfessionName',  width: 100, suppressMenu: true,
+        cellClass: ['font11','textFormat']
+      },
       { headerName: 'MPK', field: 'CustomerCostCenterIdent', tooltipField: 'CustomerCostCenterIdent',  width: 100, suppressMenu: true,
         cellClass: ['font11','textFormat']
       },
