@@ -417,6 +417,9 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
       },
       { headerName: 'Rekr. kli.', field: 'ClientRecruitment', headerTooltip: 'Rekrutacja klienta', filter: 'agNumberColumnFilter', renderType: 'checkbox', cellClass: "grid-cell-centered", width: 70, suppressMenu: true },
       { headerName: 'St. niep.', field: 'DisabLvl', headerTooltip: 'Stopień niepełnosprawności', filter: 'agNumberColumnFilter', width: 70, cellClass: "grid-cell-centered", suppressMenu: true },
+      { headerName: 'ZUS', field: 'StatusZUSDesc', tooltipField: 'StatusZUSDesc', width: 60, suppressMenu: true, sortable: true, resizable: true,
+        cellClass: ['font11','textFormat']
+      },
       { headerName: 'Nr.listy', field: 'PayrollNo', tooltipField: 'PayrollNo', width: 100,
         cellClass: ['font11','textFormat']
       },
@@ -424,6 +427,9 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
         cellClass: ['font11','textFormat']
       },
       { headerName: 'Opis prac', field: 'WorkDesc', tooltipField: 'WorkDesc',  width: 100, suppressMenu: true,
+        cellClass: ['font11','textFormat']
+      },
+      { headerName: 'Kod zawodu', field: 'ProfessionCode', tooltipField: 'ProfessionName',  width: 100, suppressMenu: true,
         cellClass: ['font11','textFormat']
       },
       { headerName: 'MPK', field: 'CustomerCostCenterIdent', tooltipField: 'CustomerCostCenterIdent',  width: 100, suppressMenu: true,
