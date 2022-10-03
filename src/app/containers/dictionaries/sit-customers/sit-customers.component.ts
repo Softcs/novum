@@ -117,6 +117,7 @@ export class SitCustomersComponent extends SitDictBaseComponent {
     this.gridColumnsDefinition["sitHRParams4InvoicingContr"] = [
       { headerName: 'Od dnia', field: 'DateFrom', width: 100, sort: 'desc',suppressMenu: true, renderType: "date"}, // domyslny format yyyy-MM-dd - mozna przeciazyc przez np. renderFormat: "yyyy-MM-dd"
       { headerName: 'Rekr.kli.', headerTooltip:'Rekrutacja klienta', field: 'CustRecr', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 70, renderType: "checkbox"},
+      { headerName: 'Kod zaw.', field: 'ProfessionCode', tooltipField: 'ProfessionName', filter: 'agTextColumnFilter', suppressMenu: true, width: 80,},
       { headerName: 'Rez url.', headerTooltip:'Licz rezerwę urlopową', field: 'CalcVacRes', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 70, renderType: "checkbox"},
       { headerName: 'PFRON', headerTooltip:'Licz PFRON', field: 'CalcPFRON', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 70, renderType: "checkbox"},
       { headerName: 'Ryz. chor.', headerTooltip:'Licz ryzyko chorobowe', field: 'CalcSickRisk', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 70, renderType: "checkbox"},
