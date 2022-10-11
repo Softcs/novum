@@ -11,10 +11,10 @@
           <sit-data-label #sitControl type="text" field="AgreementsScopeDesc" label=""></sit-data-label>
         </div>
         <div fxLayout="row" fxLayoutAlign="start center">
-          <sit-data-input #sitControl type="number" field="RightsPeriodInYears" label="Czas trwania licencji - lata" appearance="outline" fxFlex=50
+          <sit-data-checkbox #sitControl field="IsRightsPeriod" label="Czy podany jest okres licencji?"
+            matTooltip="Czy jest okres licencji?" matTooltipPosition="right" matTooltipHideDelay="100"></sit-data-checkbox>
+          <sit-data-input #sitControl type="number" field="RightsPeriodInYears" label="Czas trwania licencji - lata" appearance="outline" fxFlex=40
             matTooltip="Podajemy czas trwania licencji w latach np. 5, 10 lat." matTooltipPosition="right" matTooltipHideDelay="100"></sit-data-input>
-          <sit-data-checkbox #sitControl field="IsAdvance" label="Czy wypłacana jest zaliczka?"
-            matTooltip="Czy jest zaliczka?" matTooltipPosition="right" matTooltipHideDelay="100"></sit-data-checkbox>
         </div>
         <div fxLayout="row">
           <sit-data-radio #sitControl field="SellAfterRightsKind" type="row" label="Prawo do sprzedaży po wygaśnięciu lic." fxFlex=60
@@ -27,6 +27,8 @@
           <sit-data-radio #sitControl field="MinPrice" type="row" label="Min tantiemy / cena" fxFlex=50
             [buttons]="[{'caption':'brak','value': '0', 'checked':true},{'caption':'tantiemy','value':'1'},{'caption':'cena','value':'2'}]"
             matTooltip="Czy są tantiemy minimalne?" matTooltipPosition="right" matTooltipHideDelay="100"></sit-data-radio>
+          <sit-data-checkbox #sitControl field="IsAdvance" label="Czy wypłacana jest zaliczka?"
+            matTooltip="Czy jest zaliczka?" matTooltipPosition="right" matTooltipHideDelay="100"></sit-data-checkbox>
         </div>
 
         <div class="sit-form-section-title">Rozliczenie</div>
