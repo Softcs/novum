@@ -7,7 +7,9 @@ import { TabService } from '@app/_services/tab.service';
 import { Tab } from '@app/_models/tab.model';
 import { FactoryService } from '@app/_services/factory.service';
 @Component({
+  //selector: '[sit-menu-list-item]',
   selector: 'sit-menu-list-item',
+  host: {class: 'sit-menu-list-item'},
   templateUrl: './sit-menu-list-item.component.html',
   styleUrls: ['./sit-menu-list-item.component.scss'],
   animations: [
@@ -38,6 +40,10 @@ export class SitMenuListItemComponent {
   }
 
   onItemSelected(item: NavItem) {
+
+// console.log('item: ', item);
+
+
     let createNew = true;
     if ((!item.children || !item.children.length) && item.kind == "app") {
       for ( let i = 0; i < this.tabService.tabs.length; i++ ) {

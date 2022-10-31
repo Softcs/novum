@@ -1,24 +1,66 @@
-﻿<div class="container-cols">
-  <mat-toolbar *ngIf="currentUser" class="toolbarTopNav" color="primary">
-    <mat-toolbar-row >
-      <div style="display: flex; flex-direction: row; color: white;margin: 2px 2px 2px 0px; justify-content: center;">
-        <button mat-flat-button matTooltip="Menu" color="primary" (click)="appDrawer.toggle()" *ngIf="currentUser"><mat-icon>menu</mat-icon></button>
-      </div>
-      <sit-navbar style="width: 100%"></sit-navbar>
-    </mat-toolbar-row>
-  </mat-toolbar>
+﻿<div class="container-cols container-main">
 
-  <mat-drawer-container autosize class="container-cols">
+
+  <sit-navbar
+    [appDrawerParent]="appDrawer"
+    *ngIf="currentUser"
+  >
+  </sit-navbar>
+
+
+<!-- mat-drawer-container jest wyłącznie pojemnikiem dla <mat-drawer #appDrawer> (wysuwanego menu) + reszty kontetntu -->
+
+  <!-- <mat-drawer-container autosize class="container-cols"> -->
+  <!-- fxFlex = flex-basis: 1e-9px; = https://stackoverflow.com/questions/49238319/flex-layout-what-does-flex-basis-1e-09px-mean -->
+  <!-- <mat-drawer-container fxFlex fxLayout="column" class="container-cols"> -->
+  <!-- <mat-drawer-container ngClass="mat-drawer-container xxxx"> -->
+  <mat-drawer-container  ngClass="mat-drawer-container" fxFlex fxLayout="column">
+
     <mat-drawer #appDrawer class="sidenav" mode="overlay" >
       <sit-side-menu></sit-side-menu>
     </mat-drawer>
+
+
+
+
+    <!-- <div fxFlexFill fxLayout="column">
+      <div fxFlex fxLayout="column" style="max-height: 100%; overflow: auto;">
+
+        <router-outlet></router-outlet>
+
+      </div>
+    </div> -->
+
+
+
+
+<!-- element router-outlet jest natywnie "otacznany" <mat-drawer-content> więc dodaję jawnie w celu panowania np w postaci dodania class -->
+
+    <mat-drawer-content ngClass="container-content-main" fxFlex fxLayout="column">
+      <router-outlet></router-outlet>
+    </mat-drawer-content>
+
+
+
+
+
+  </mat-drawer-container>
+
+  <!-- <div class="container-cols mat-drawer-container mat-drawer-transition">
+
+    <mat-drawer #appDrawer class="sidenav" mode="overlay" >
+      <sit-side-menu></sit-side-menu>
+    </mat-drawer>
+
     <div fxFlexFill fxLayout="column">
       <div fxFlex fxLayout="column" style="max-height: 100%; overflow: auto;">
         <router-outlet></router-outlet>
       </div>
     </div>
-  </mat-drawer-container>
-  <!-- <mat-toolbar class="toolbarBottomNav">
-    <span style="color: black; font-size: 10px;">Powered by Seido IT Sp. z o.o.</span>
-  </mat-toolbar> -->
+
+  </div> -->
+
+
+
+
 </div>

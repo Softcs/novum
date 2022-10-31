@@ -13,6 +13,7 @@ import { TabService } from '@app/_services/tab.service';
 
 @Component({
   selector: 'sit-side-menu',
+  host: {class: 'sit-side-menu'},
   templateUrl: './sit-side-menu.component.html',
   styleUrls: ['./sit-side-menu.component.scss']
 })

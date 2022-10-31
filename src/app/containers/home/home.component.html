@@ -1,20 +1,47 @@
-﻿<mat-tab-group animationDuration="0ms" style="height: 100%"
-class="main-tab-group mt-1"
-[(selectedIndex)]="selectedTabIndex"
-(selectedTabChange)="tabChanged($event)">
-<mat-tab *ngFor="let tab of tabs; let tabIndex = index">
-  <ng-template mat-tab-label>
-    <div fxLayout="row" fxLayoutAlign="space-between center" style="width:100%;">
-      <div *ngIf="tab.title != 'Pulpit'" fxFlex class="sit-tab-title">{{ tab.title }}</div>
-      <div *ngIf="tab.title == 'Pulpit'" fxFlex fxLayoutAlign="center center"><i class="material-icons">home</i></div>
-      <div *ngIf="showClose(tabIndex)" class="sit-close-tab">
-        <!-- <mat-icon class="close-tab-icon" (click)="removeTab(tabIndex)" >close</mat-icon> -->
-        <button type="button" class="close" aria-label="Close" (click)="removeTab(tabIndex)"><span aria-hidden="true">×</span></button>
+﻿<mat-tab-group
+  animationDuration="0"
+  class="main-tab-group home-tab-content-container"
+  [(selectedIndex)]="selectedTabIndex"
+  (selectedTabChange)="tabChanged($event)"
+>
+
+  <mat-tab *ngFor="let tab of tabs; let tabIndex = index">
+
+    <ng-template mat-tab-label>
+      <!-- <div fxLayout="row" fxLayoutAlign="space-between center" style="width:100%;" ngClass="home-tab-label-content-template"> -->
+      <div fxLayout="row" fxLayoutAlign="space-between center" ngClass="home-tab-label-content-template">
+
+        <div *ngIf="tab.title != 'Pulpit'" fxFlex class="sit-tab-title">{{ tab.title }}</div>
+        <div *ngIf="tab.title == 'Pulpit'" fxFlex fxLayoutAlign="center center" matTooltip="Home">
+          <i class="material-icons">home</i>
+          <!-- <i class="fa fa-home" aria-hidden="true"></i> -->
+        </div>
+
+        <i
+          *ngIf="tab.title != 'Pulpit'"
+          class="fa fa-times close-tab-icon"
+          aria-hidden="true"
+          aria-label="Close"
+          (click)="removeTab(tabIndex)"
+        >
+        </i>
+
+        <!-- <div *ngIf="showClose(tabIndex)" class="sit-close-tab">
+          <mat-icon class="close-tab-icon" (click)="removeTab(tabIndex)" >close</mat-icon> -->
+          <!-- <button type="button" class="close" aria-label="Close" (click)="removeTab(tabIndex)">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div> -->
+
       </div>
+    </ng-template>
+
+    <span>vvvvvvvvvvvvvvvvvvvvvvv</span>
+
+    <div class="sit-tab-content">
+      <app-tab-content [tab]="tab" fxFill></app-tab-content>
     </div>
-  </ng-template>
-  <div class="sit-tab-content">
-    <app-tab-content [tab]="tab" fxFill></app-tab-content>
-  </div>
-</mat-tab>
+
+  </mat-tab>
+
 </mat-tab-group>

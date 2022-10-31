@@ -1,16 +1,55 @@
-button:focus {
-    outline: none;
+// jc
+@import "./../../../theme";
+
+.toolbar-top-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: $app-menu-background-color;
+  color: $app-menu-color;
+  justify-content: center;
+  height: 38px;
+
+  > div {
+    // border: 1px solid white;
+    vertical-align: middle;
   }
 
-
+  .menu-title {
+    text-align: center;
+    font-size: 1.3em;
+  }
   .fill-space{
     flex: 1 1 auto;
   }
 
-  a {
-    color: white;
+  .user-info {
+    padding: 0 .8em;
+
+    a {
+      color: white;
+      text-decoration: none;
+    }
+    a:hover {
+      color: lightgray;
+      text-decoration: underline;
+    }
   }
 
-  a:hover {
-    color: lightgray;
+  .seido-logo {
+    overflow: hidden;
+    max-height: 100%;
+
+    img {
+      height: 33px;
+      display: inline-block;
+      vertical-align: text-top;
+    }
   }
+}
+
+.menu-button {
+  padding: 0 .8em;
+  // font-size: .8em;
+  cursor: pointer;
+}

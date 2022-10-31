@@ -1,28 +1,40 @@
-<div fxFlexFill fxLayout="row">
+<div
+  class="sid-navbar toolbar-top-nav"
+>
+
   <!-- <div style="display: flex; flex-direction: row; margin: 2px 2px 2px 0px; justify-content: center;">
     <button mat-flat-button matTooltip="Strona główna" color="primary"  routerLink="/" *ngIf="currentUser" style="width: 50px;">
       <mat-icon aria-hidden="false" aria-label="Home">home</mat-icon>
     </button>
   </div> -->
-  <div style="display: flex; flex-direction: row; margin: 2px 2px 2px 0px; justify-content: center;">
-    <button mat-flat-button matTooltip="Wybierz firmę" color="primary" (click)="openModalChangeCompany()"  *ngIf="currentUser">
-      <mat-icon aria-hidden="false" aria-label="Firma">corporate_fare</mat-icon> {{ currentUser?.company?.companyDescription }}
-    </button>
+
+  <div class="menu-button" matTooltip="Menu" color="primary" (click)="appDrawerParent.toggle()" *ngIf="currentUser">
+    <i class="fa fa-bars" aria-hidden="true"></i>
   </div>
-  <div class="fill-space">
-    <div fxFlex style="color: white; margin: 2px 2px 2px 0px; padding: 3px 0px 0px 0px; text-align: center;">
+
+  <div class="menu-button" matTooltip="Wybierz firmę" color="primary" (click)="openModalChangeCompany()"  *ngIf="currentUser">
+    <i class="fa fa-server" aria-hidden="true" aria-label="Firma"></i>
+    {{ currentUser?.company?.companyDescription }}
+  </div>
+
+
+  <div class="fill-space menu-title">
+    <div>
       {{ title }}
     </div>
   </div>
-  <div style="display: flex; flex-direction: row; margin: 2px 2px 2px 0px; justify-content: center; width: 140px;">
-    <img src="assets/seido_logo_orange.png" height="40">
+
+  <div class="seido-logo">
+    <img src="assets/seido_logo_orange.png" alt="Logo SeidoIt">
   </div>
-  <div style="display: flex; flex-direction: row; color: white; margin: 2px 2px 2px 0px; padding: 3px 0px 0px 0px;">
-    <span style="font-size: 14px; padding-right: 5px;"><B style="color: #C4C4C2">Login:</B>
-      <a matTooltip="Edytuj konto" style="text-decoration: none;" (click)="onClicUser()"> {{ currentUser?.username }}</a>
-    </span>
+
+  <div class="user-info">
+    <span>Login:</span>
+    <a matTooltip="Edytuj konto" (click)="onClicUser()"> {{ currentUser?.username }}</a>
   </div>
-  <div style="display: flex; flex-direction: row;margin: 2px 2px 2px 0px; justify-content: center;">
-      <button mat-flat-button matTooltip="Wyloguj" color="primary" (click)="logout()" *ngIf="currentUser"><mat-icon aria-hidden="false" aria-label="Example user verified icon">power_settings_new</mat-icon></button>
+
+  <div class="menu-button" matTooltip="Wyloguj" color="primary" (click)="logout()" *ngIf="currentUser">
+    <i class="fa fa-power-off" aria-hidden="true" aria-label="logout"></i>
   </div>
+
 </div>

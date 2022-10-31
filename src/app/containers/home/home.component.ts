@@ -4,9 +4,12 @@ import { TabService } from '@app/_services/tab.service';
 import { Tab } from '@app/_models/tab.model';
 
 @Component({
+  selector: '[container-home-component]',
   templateUrl: 'home.component.html',
   styleUrls: ['./home.component.scss'],
-  host: {class: 'router-flex'}
+  host: {
+    class: 'router-flex home-component-container',
+  },
 })
 export class HomeComponent
 {
@@ -19,6 +22,7 @@ export class HomeComponent
       private ref: ChangeDetectorRef,
       private tabService: TabService
     ) {
+
       this.tabService.tabSub.subscribe(tabs => {
         this.tabs = tabs;
         this.tabService.activeTabIndex.next(this.tabService.tabIndex);

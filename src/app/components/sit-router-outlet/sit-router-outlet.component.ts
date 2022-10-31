@@ -28,6 +28,12 @@ export class SitRouterOutlet implements OnInit, OnDestroy {
         private changeDetector: ChangeDetectorRef
     ) {
 
+// console.log('this: ', this);
+// console.log('this.original: ', this.original);
+// console.log('location: ', location);
+
+
+
     }
 
     public ngOnInit() {
