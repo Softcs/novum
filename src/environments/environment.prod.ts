@@ -7,7 +7,7 @@ export const environment = {
         key: "72E93D2A56DB44C3914C811983C6C08E",
         iv: "7061737323313233"
     },
-    rroutingOverride : {
+    routingOverride : {
         "publicat.l-seidoit.pl": {
             "login": "login_pub"
         }
