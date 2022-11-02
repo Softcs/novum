@@ -15,11 +15,10 @@ export class SitPublicationsBillingDefComponent extends SitDictBaseComponent {
       { headerName: 'GUID', field: 'sitPublicationsBillingDefG', width: 100, defaultVisibility: false },       
       { headerName: 'Numer umowy', field: 'AgreementNo', filter: 'agTextColumnFilter', width: 150 },
       { headerName: 'Publikacja', field: 'PublicationIdent', tooltipField: 'PublicationIdent', filter: 'agTextColumnFilter', width: 150 },
-      { headerName: 'Od dnia', field: 'DateFrom', filter: 'agTextColumnFilter', width: 150 },
-      { headerName: 'Data zaw.umowy', field: 'AgreementDate', filter: 'agTextColumnFilter', width: 150 },
-      { headerName: 'Rozl.jako grupę', field: 'CalcAsGroup', headerTooltip: 'Rozliczaj jako grupę.', width: 80, renderType: 'checkbox', suppressMenu: true},
+      { headerName: 'Od dnia', field: 'DateFrom', filter: 'agTextColumnFilter', width: 120 },
+      { headerName: 'Do dnia', field: 'DateTo', filter: 'agTextColumnFilter', width: 120 },
+      { headerName: 'Rozl.jako grupę', field: 'CalcAsGroup', headerTooltip: 'Rozliczaj jako grupę.', width: 80, renderType: 'checkbox', suppressMenu: true, cellClass: "grid-cell-centered"},
       { headerName: 'Formy wydań', field: 'FormOfReleaseIdents', tooltipField: 'FormOfReleaseIdents', filter: 'agTextColumnFilter', width: 150 },
-      { headerName: 'Opis rozliczenia', field: 'PublicationsBillingDefDesc', filter: 'agTextColumnFilter', width: 300 },
       { headerName: 'Status', field: 'StatusValueName', filter: 'agTextColumnFilter', width: 150 }
     ];
     this.gridColumnsDefinition["sitPublicationsBillingDefForms"] = [
