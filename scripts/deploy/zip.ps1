@@ -1,4 +1,4 @@
-﻿$fileName = "RailClient_";
+﻿$fileName = "Novum_";
 $version = $args[0];
 $distPath = $args[1];
 $versionPath = $args[2];
