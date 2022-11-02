@@ -30,6 +30,7 @@ export class SitAppUsersComponent extends SitDictBaseComponent {
       { headerName: 'Nazwa', field: 'CompanyDescription', flex: 3 },
       { headerName: 'Plik konfig.', field: 'ConfigFile', flex: 1 },
       { headerName: 'Domyślna', field: 'IsDefault', renderType: 'checkbox', cellClass: "grid-cell-centered",width: 100 },
+      { headerName: 'Aktywna', field: 'IsActive', renderType: 'checkbox', cellClass: "grid-cell-centered",width: 100 },
     ];
 
    }

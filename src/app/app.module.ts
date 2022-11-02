@@ -329,6 +329,7 @@ import { SitCashRegisterSaleReportsExportForMultiComponent } from './containers/
 import { SitHRDepartmentsEditComponent } from './containers/dictionaries/sit-hr-params-def/actions/sit-hr-departments-edit/sit-hr-departments-edit.component';
 import { SitPublicationsBillingParamsDefComponent } from './containers/dictionaries/sit-publications-billing-params-def/sit-publications-billing-params-def.component';
 import { SitAgreementsBenefRolesEditComponent } from './containers/dictionaries/sit-publications-billing-params-def/actions/sit-agreements-benef-roles-edit/sit-agreements-benef-roles-edit.component';
+import { SitAppUsersInCompanyAddUserComponent } from './containers/dictionaries/sit-app-users-in-company/actions/sit-app-users-in-company-add-user/sit-app-users-in-company-add-user.component';
 
 @NgModule({
     imports: [
@@ -642,7 +643,8 @@ import { SitAgreementsBenefRolesEditComponent } from './containers/dictionaries/
         SitCashRegisterSaleReportsExportForMultiComponent,
         SitHRDepartmentsEditComponent,
         SitPublicationsBillingParamsDefComponent,
-        SitAgreementsBenefRolesEditComponent
+        SitAgreementsBenefRolesEditComponent,
+        SitAppUsersInCompanyAddUserComponent
 
     ],
     providers: [
