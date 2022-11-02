@@ -855,6 +855,12 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
       { headerName: 'Kolumna', field: 'SettlementsColumnName', tooltipField:'SettlementsColumnName', width: 130},
     ];
 
+    this.gridColumnsDefinition['sitEmployeesSettlementsCalcInfo'] = [
+      { headerName: 'Lp', field: '__Identity__', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 60, sort: 'asc',suppressMenu: true},
+      { headerName: 'Składnik', field: 'Component', tooltipField:'Component',  width: 270,},
+      { headerName: 'Wartość', field: 'Value', filter: 'agNumberColumnFilter', width: 100,}
+    ];
+
     this.gridColumnsDefinition['sitEmployeesSettlementsSumByPayroll'] = [
       { headerName: 'Rok', field: 'CostYear', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 60,suppressMenu: true},
       { headerName: 'Miesiąc', field: 'CostMonth', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 60,suppressMenu: true},
