@@ -858,7 +858,7 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
     this.gridColumnsDefinition['sitEmployeesSettlementsCalcInfo'] = [
       { headerName: 'Lp', field: '__Identity__', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 60, sort: 'asc',suppressMenu: true},
       { headerName: 'Składnik', field: 'Component', tooltipField:'Component',  width: 270,},
-      { headerName: 'Wartość', field: 'Value', filter: 'agNumberColumnFilter', width: 100,}
+      { headerName: 'Wartość', field: 'Value', width: 100,}
     ];
 
     this.gridColumnsDefinition['sitEmployeesSettlementsSumByPayroll'] = [
