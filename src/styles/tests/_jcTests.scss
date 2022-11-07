@@ -12,6 +12,10 @@ body {
   max-width: 1920px;
 }
 
+.mat-drawer-container {
+  background-color: transparent;
+}
+
 .mat-tab-body-wrapper {
   border: 5px solid aqua;
 }
@@ -20,15 +24,18 @@ body {
   border: 5px dotted red;
 }
 
-.mat-tab-labels {
-  // border: 3px double green;
-}
-.mat-tab-label {
-  // border: 1px solid blue;
-}
-.mat-tab-label-content {
-  // border: 1px solid red;
-}
+// .mat-tab-labels {
+//   border: 3px double green;
+// }
+
+// .mat-tab-label {
+//   border: 1px solid blue;
+// }
+
+// .mat-tab-label-content {
+//   border: 1px solid red;
+// }
+
 .sit-data-set-container {
   border: 1px solid #6f0;
 }
@@ -159,10 +166,10 @@ mat-toolbar {
   // margin: 1px;
 }
 
-.mat-drawer-container {
-}
-.mat-drawer-content {
-}
+// .mat-drawer-container {
+// }
+// .mat-drawer-content {
+// }
 
 .mat-drawer-content>div>div {
   display: flex;

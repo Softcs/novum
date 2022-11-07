@@ -1,4 +1,4 @@
-﻿<div fxFlexFill fxLayoutAlign="center center" >
+﻿<div fxFlexFill fxLayoutAlign="center center" ngClass="login-card-container">
     <div class="card" style="max-width: 400px;">
         <h4 class="card-header">
           <div style="width: 100%; text-align: center;">
@@ -7,6 +7,9 @@
         </h4>
         <div class="card-body">
             <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+                <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+
                 <div class="form-group">
                     <label for="username">Username</label>
                     <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
@@ -16,7 +19,7 @@
                 </div>
                 <div class="form-group" (capsLock)="capsOn=$event">
                     <label for="password">Password</label>
-                    <div id="input-container" fxLayout="row" fxLayoutAlign="start center">
+                    <div id="input-container" fxLayout="row" fxLayoutAlign="start center" ngClass="pass-container">
                       <input id="input" type="{{passType}}" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
                       <mat-icon id="input-img" (click)="showPassword()" class="show-password">{{eyeIcon}}</mat-icon>
                     </div>
@@ -33,7 +36,7 @@
                     <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                     Login
                 </button>
-                <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+                <!-- <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div> -->
             </form>
         </div>
     </div>

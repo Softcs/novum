@@ -1,16 +1,16 @@
 @import "./../../theme";
 
-html {
-  height: 100%;
-  margin: 0 auto;
-  max-width: 1920px;
-  border: 3px solid red;
-}
+// html {
+//   // height: 100%;
+//   // margin: 0 auto;
+//   // max-width: 1920px;
+//   // border: 3px solid red;
+// }
 
 body {
   background-color: $background-color;
-  min-height: calc(100%);
-  height: calc(100%);
+  // min-height: calc(100%);
+  // height: calc(100%);
 
 }
 
@@ -47,7 +47,7 @@ body {
   //min-height: 100%;
   padding: 0px;
   margin: 0px;
-  background-color: $background-color;
+  // background-color: $background-color;
 
 }
 
@@ -206,7 +206,7 @@ body {
   display: flex;
   flex: 1 1 auto;
   flex-direction: column;
-  background-color: transparent;
+  // background-color: transparent;
 }
 
 .sidenav {

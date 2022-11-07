@@ -58,7 +58,8 @@ export class LoginComponent implements OnInit {
             return false;
         }
 
-        this.error = data.Errors[0].message;
+        // this.error = data.Errors[0].message;
+        this.error = "Błędne dane logowania!";
         return true;
     }
 
@@ -110,14 +111,14 @@ export class LoginComponent implements OnInit {
     showPassword() {
       if (this.passType === 'password') {
           this.passType = 'text';
-          this.eyeIcon = 'visibility'
+          this.eyeIcon = 'visibility';
          }
       else {
         this.passType = 'password';
-        this.eyeIcon = 'visibility_off'
+        this.eyeIcon = 'visibility_off';
       }
 
-      console.log(this.passType)
+    //   console.log(this.passType)
     }
 
     // openModalChangeCompany() {

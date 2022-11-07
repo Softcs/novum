@@ -1,13 +1,68 @@
 @import "../../../theme";
 
-.card-header {
+
+.card {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
   background-color: $edit-form-background-color;
+  background-clip: border-box;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: .25rem;
+
+  word-wrap: break-word;
+}
+
+.card-header {
+  padding: .75rem 1.25rem;
+  margin-bottom: 0;
+  border-bottom: 1px solid rgba(0,0,0,.125);
+}
+
+.card-header:first-child {
+  border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
 }
 
 .card-body {
-  background-color: $edit-form-background-color;
-
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  padding: 1.25rem;
 }
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.alert {
+  margin-top: 1rem;
+}
+
+.pass-container {
+  position:relative;
+  width: 100%; 
+}
+
+.show-password {
+  position:absolute;
+  bottom:7px;
+  right:5px;
+  width:24px;
+  height:24px;  
+}
+
+
+// .card-header {
+//   background-color: $edit-form-background-color;
+// }
+
+// .card-body {
+//   background-color: $edit-form-background-color;
+
+// }
 
 .rememberme {
   width: 18px;
@@ -16,29 +71,29 @@
   margin-left: 10px;
 }
 
-.show-password {
-  cursor: pointer;
-}
+// .show-password {
+//   cursor: pointer;
+// }
 
-#input-container {
-  position:relative;
-  // direction: rtl;
-  width: 100%;
-}
-#input {
-  margin:0;
-  padding-right: 30px;
-  width: 100%;
-}
-#input-img {
-  position:absolute;
-  bottom:7px;
-  right:5px;
-  width:24px;
-  height:24px;
-}
+// #input-container {
+//   position:relative;
+//   // direction: rtl;
+//   width: 100%;
+// }
+// #input {
+//   margin:0;
+//   padding-right: 30px;
+//   width: 100%;
+// }
+// #input-img {
+//   position:absolute;
+//   bottom:7px;
+//   right:5px;
+//   width:24px;
+//   height:24px;
+// }
 
-.capslock {
-  width: 100%;
-  text-align: center;
-}
+// .capslock {
+//   width: 100%;
+//   text-align: center;
+// }
