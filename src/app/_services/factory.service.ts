@@ -229,6 +229,7 @@ import { SitPublicationsBillingParamsDefComponent } from '@app/containers/dictio
 import { SitAgreementsBenefRolesEditComponent } from '@app/containers/dictionaries/sit-publications-billing-params-def/actions/sit-agreements-benef-roles-edit/sit-agreements-benef-roles-edit.component';
 import { SitAppUsersInCompanyAddUserComponent } from '@app/containers/dictionaries/sit-app-users-in-company/actions/sit-app-users-in-company-add-user/sit-app-users-in-company-add-user.component';
 import { SitPublicationsBillingDefCopyWithinAgreementComponent } from '@app/containers/dictionaries/sit-publications-billing-def/actions/sit-publications-billing-def-copy-within-agreement/sit-publications-billing-def-copy-within-agreement.component';
+import { SitRoyaltyCalcOnePublicationFromDateComponent } from '@app/containers/dictionaries/sit-publications/actions/sit-royalty-calc-one-publication-from-date/sit-royalty-calc-one-publication-from-date.component';
 
 
 @Injectable({ providedIn: 'root' })
@@ -465,6 +466,7 @@ export class FactoryService {
         sitAgreementsBenefRolesEdit: SitAgreementsBenefRolesEditComponent,
         sitAppUsersInCompanyAddUser: SitAppUsersInCompanyAddUserComponent,
         sitPublicationsBillingDefCopyWithinAgreement: SitPublicationsBillingDefCopyWithinAgreementComponent,
+        sitRoyaltyCalcOnePublicationFromDate: SitRoyaltyCalcOnePublicationFromDateComponent,
     };
 
     public GetFactory(ident: string) {

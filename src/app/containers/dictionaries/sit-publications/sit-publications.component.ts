@@ -71,12 +71,17 @@ export class SitPublicationsComponent extends SitDictBaseComponent {
     this.gridColumnsDefinition["sitPublicationThemaCodes"] = [
       { headerName: 'Id', field: 'sitThemaCodeListId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 50, defaultVisibility: false },
       { headerName: 'GUID', field: 'sitThemaCodeListG', width: 100, defaultVisibility: false },
-      { headerName: 'Partie', field: 'UseBatch', filter: 'agSetColumnFilter', width: 80, renderType: 'checkbox', suppressMenu: true, defaultVisibility: false },
-      { headerName: ' ', field: 'IsActive', width: 100, renderType: 'checkbox', cellClass: "grid-cell-centered"},
+      { headerName: ' ', field: 'IsActive', width: 100, sortable: false, renderType: 'checkbox', cellClass: "grid-cell-centered"},
       { headerName: 'Opis', field: 'CodeDescription', width: 300, sortable: false, filter: 'agTextColumnFilter', floatingFilter: true},
       { headerName: 'Info dodatkowe', field: 'CodeNotes', width: 500, sortable: false, filter: 'agTextColumnFilter', floatingFilter: true, tooltipField: 'CodeNotes'},
     ];
 
+    this.gridColumnsDefinition["sitRoyaltyPeriodsForPublication"] = [
+      { headerName: 'Data od', field: 'DateFrom', filter: 'agTextColumnFilter', width: 100, sortable: false, sort: 'desc' },
+      { headerName: 'Data do', field: 'DateTo', filter: 'agTextColumnFilter', width: 100, sortable: false },
+      { headerName: 'Naliczono', field: 'RoyaltiesExists', width: 100, renderType: 'checkbox', cellClass: "grid-cell-centered", floatingFilter: false, sortable: false},
+      { headerName: 'Błędne nalicznie', field: 'RoyaltiesError', width: 130, renderType: 'checkbox', cellClass: "grid-cell-centered", floatingFilter: false, sortable: false},
+    ];    
    }
 
    activeRowProductsChanged(activeRow) {
