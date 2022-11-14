@@ -1,11 +1,11 @@
 {
   "name": "Novum",
-  "version": "2.1.212",
+  "version": "2.1.213",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --open",
     "prebuild": "npm --no-git-tag-version version patch",
-    "build": "ng build",
+    "build": "ng build --configuration=production",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
