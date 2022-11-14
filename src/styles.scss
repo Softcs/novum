@@ -1,5 +1,8 @@
+@import "./styles/reset";
+
 /* You can add global styles to this file, and also import other style files */
 @import "./theme";
+
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 // @import "@angular/material/prebuilt-themes/indigo-pink.css";
 
@@ -22,6 +25,12 @@
   @include ag-theme-balham();
 }
 
+.ag-theme-balham,
+.mat-tab-group {
+  font-family: inherit;
+}
+
+
 @media print {
   body {
     min-width: auto !important;
@@ -32,7 +41,6 @@
   text-align: center;
 }
 
-@import "./styles/reset";
 
 @import "./styles/bootstrap/forms";
 @import "./styles/bootstrap/alert";
