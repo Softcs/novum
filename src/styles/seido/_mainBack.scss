@@ -264,11 +264,11 @@ mat-toolbar-row,mat-toolbar-single-row{
   background-color: $tab-header-color;
 }
 
-.mat-tab-link{
-//   padding: 0px 0px 0px 10px!important;
-// //  height: 35px !important;
-//   min-width: 50px !important;
-}
+// .mat-tab-link{
+// //   padding: 0px 0px 0px 10px!important;
+// // //  height: 35px !important;
+// //   min-width: 50px !important;
+// }
 
 a.mat-tab-link {
   text-decoration: none;
@@ -279,21 +279,21 @@ a:hover.mat-tab-link {
   color: $tab-font-color;
 }
 
-.mat-tab-label{
-  // padding: 0px 7px !important;
-  // height: 35px !important;
-  // //border-right: 1px solid $background-color;
-  // min-width: 50px !important;
-}
+// .mat-tab-label{
+//   // padding: 0px 7px !important;
+//   // height: 35px !important;
+//   // //border-right: 1px solid $background-color;
+//   // min-width: 50px !important;
+// }
 
-.mat-tab-label.mat-tab-label-active{
-  // color: $tab-font-color !important;
-}
+// .mat-tab-label.mat-tab-label-active{
+//   // color: $tab-font-color !important;
+// }
 
 /* nazwa aktywnej zakładki zawsze wyróżniona */
 div[role="tab"][aria-selected="true"] {
   // opacity: 1;
-  // background-color: $tab-header-selected-color;
+  background-color: $tab-header-selected-color;
 }
 
 .mat-tab-label-content {

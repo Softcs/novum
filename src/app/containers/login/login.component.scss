@@ -1,6 +1,15 @@
 @import "../../../theme";
 
 
+
+.login-card-container {
+
+  button {
+    font-size: 1.2em;
+    padding: 0.4em 1.6em;
+  }
+}
+
 .card {
   position: relative;
   display: -ms-flexbox;
@@ -9,12 +18,15 @@
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: $edit-form-background-color;
+  // background-color: $edit-form-background-color;
+  background-color: rgba(255,255,255, .8);
   background-clip: border-box;
   border: 1px solid rgba(0,0,0,.125);
   border-radius: .25rem;
 
   word-wrap: break-word;
+  max-width: 400px;
+  box-shadow: 1px 1px 6px rgba(0,0,0, 0.2);
 }
 
 .card-header {
@@ -24,7 +36,8 @@
 }
 
 .card-header:first-child {
-  border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
+  // border-radius: calc(.25rem - 1px) calc(.25rem - 1px) 0 0;
+  border-radius: 1rem 1rem 0 0;
 }
 
 .card-body {
@@ -37,22 +50,27 @@
   margin-bottom: 1rem;
 }
 
-.alert {
-  margin-top: 1rem;
-}
+// .alert {
+//   margin-top: 1rem;
+// }
 
 .pass-container {
   position:relative;
-  width: 100%; 
+  // width: 100%; 
 }
 
 .show-password {
   position:absolute;
-  bottom:7px;
-  right:5px;
-  width:24px;
-  height:24px;  
+  right: .3em;
 }
+
+// .show-password {
+//   position:absolute;
+//   bottom:7px;
+//   right:5px;
+//   width:24px;
+//   height:24px;  
+// }
 
 
 // .card-header {
@@ -64,16 +82,24 @@
 
 // }
 
+// .rememberme {
+//   width: 18px;
+//   height: 18px;
+//   display: inline-block;
+//   margin-left: 10px;
+// }
+
 .rememberme {
-  width: 18px;
-  height: 18px;
+  width: 1.1em;
+  height: 1.1em;
   display: inline-block;
-  margin-left: 10px;
+  margin-left: 0.5em;
 }
 
-// .show-password {
-//   cursor: pointer;
-// }
+.show-password {
+  cursor: pointer;
+}
+
 
 // #input-container {
 //   position:relative;

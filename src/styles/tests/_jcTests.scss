@@ -51,9 +51,15 @@ body {
     height: 2.3em;
     padding: 0 .8em;
     min-width: auto;
-    &:hover{
+    
+    &.mat-tab-label-active,
+    &:hover {
       opacity: 1;
     }
+
+    // &:hover{
+    //   opacity: 1;
+    // }
 
     .close-tab-icon {
       margin-left: 0.2em;

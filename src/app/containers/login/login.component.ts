@@ -53,6 +53,7 @@ export class LoginComponent implements OnInit {
 
     // convenience getter for easy access to form fields
     get f() { return this.loginForm.controls; }
+    
     private checkErrors(data: any):boolean {
         if(data == null || data.Errors == null || data.Errors.length === 0) {
             return false;
@@ -118,7 +119,8 @@ export class LoginComponent implements OnInit {
         this.eyeIcon = 'visibility_off';
       }
 
-    //   console.log(this.passType)
+// console.log(this.passType)
+
     }
 
     // openModalChangeCompany() {
