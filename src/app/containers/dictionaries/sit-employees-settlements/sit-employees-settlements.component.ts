@@ -470,6 +470,10 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
             renderType: 'number', renderFormat: '1.0-0',
             cellClass: ['font11','numberFormat2Dec'],
           },
+          { headerName: 'Chor.rob.', field: 'SickWorkDays', headerTooltip: 'Dni robocze chorobowego', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80, suppressMenu: true, agr: 'sum', sortable: true, resizable: true,
+            renderType: 'number', renderFormat: '1.0-0',
+            cellClass: ['font11','numberFormat2Dec'],
+          },          
         ]
       },
       { headerName: 'Godziny',
