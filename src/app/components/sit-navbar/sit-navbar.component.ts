@@ -1,5 +1,6 @@
 import { SitChangeCompanyComponent } from './../../containers/sit-change-company/sit-change-company.component';
-import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, ChangeDetectorRef, Input } from '@angular/core';
+// import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, ChangeDetectorRef, Input } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ElementRef, ChangeDetectorRef, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { GatewayService } from '@app/_services';
 import { User } from '@app/_models';
@@ -17,7 +18,7 @@ import { FactoryService } from '@app/_services/factory.service';
   styleUrls: ['./sit-navbar.component.scss']
 })
 export class SitNavbarComponent {
-  @ViewChild('appDrawer') appDrawer: ElementRef;
+  // @ViewChild('appDrawer') appDrawer: ElementRef;
   @Input() appDrawerParent: any;
   currentUser: User;
   caption: string;
@@ -26,7 +27,7 @@ export class SitNavbarComponent {
   selectedTabIndex: number;
 
   ngAfterViewInit() {
-    this.navService.appDrawer = this.appDrawer;
+    // this.navService.appDrawer = this.appDrawer;
   }
 
   constructor(
