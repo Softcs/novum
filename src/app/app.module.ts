@@ -332,6 +332,9 @@ import { SitAgreementsBenefRolesEditComponent } from './containers/dictionaries/
 import { SitAppUsersInCompanyAddUserComponent } from './containers/dictionaries/sit-app-users-in-company/actions/sit-app-users-in-company-add-user/sit-app-users-in-company-add-user.component';
 import { SitPublicationsBillingDefCopyWithinAgreementComponent } from './containers/dictionaries/sit-publications-billing-def/actions/sit-publications-billing-def-copy-within-agreement/sit-publications-billing-def-copy-within-agreement.component';
 import { SitRoyaltyCalcOnePublicationFromDateComponent } from './containers/dictionaries/sit-publications/actions/sit-royalty-calc-one-publication-from-date/sit-royalty-calc-one-publication-from-date.component';
+import { SitB2cConfigComponent } from './containers/dictionaries/sit-b2c-config/sit-b2c-config.component';
+import { SitB2cConfigEditComponent } from './containers/dictionaries/sit-b2c-config/actions/sit-b2c-config-edit/sit-b2c-config-edit.component';
+import { SitB2cProductsEditComponent } from './containers/dictionaries/sit-b2c-config/actions/sit-b2c-products-edit/sit-b2c-products-edit.component';
 
 @NgModule({
     imports: [
@@ -648,7 +651,10 @@ import { SitRoyaltyCalcOnePublicationFromDateComponent } from './containers/dict
         SitAgreementsBenefRolesEditComponent,
         SitAppUsersInCompanyAddUserComponent,
         SitPublicationsBillingDefCopyWithinAgreementComponent,
-        SitRoyaltyCalcOnePublicationFromDateComponent
+        SitRoyaltyCalcOnePublicationFromDateComponent,
+        SitB2cConfigComponent,
+        SitB2cConfigEditComponent,
+        SitB2cProductsEditComponent
 
     ],
     providers: [

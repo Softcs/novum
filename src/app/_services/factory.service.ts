@@ -230,6 +230,9 @@ import { SitAgreementsBenefRolesEditComponent } from '@app/containers/dictionari
 import { SitAppUsersInCompanyAddUserComponent } from '@app/containers/dictionaries/sit-app-users-in-company/actions/sit-app-users-in-company-add-user/sit-app-users-in-company-add-user.component';
 import { SitPublicationsBillingDefCopyWithinAgreementComponent } from '@app/containers/dictionaries/sit-publications-billing-def/actions/sit-publications-billing-def-copy-within-agreement/sit-publications-billing-def-copy-within-agreement.component';
 import { SitRoyaltyCalcOnePublicationFromDateComponent } from '@app/containers/dictionaries/sit-publications/actions/sit-royalty-calc-one-publication-from-date/sit-royalty-calc-one-publication-from-date.component';
+import { SitB2cConfigComponent } from '@app/containers/dictionaries/sit-b2c-config/sit-b2c-config.component';
+import { SitB2cConfigEditComponent } from '@app/containers/dictionaries/sit-b2c-config/actions/sit-b2c-config-edit/sit-b2c-config-edit.component';
+import { SitB2cProductsEditComponent } from '@app/containers/dictionaries/sit-b2c-config/actions/sit-b2c-products-edit/sit-b2c-products-edit.component';
 
 
 @Injectable({ providedIn: 'root' })
@@ -467,6 +470,9 @@ export class FactoryService {
         sitAppUsersInCompanyAddUser: SitAppUsersInCompanyAddUserComponent,
         sitPublicationsBillingDefCopyWithinAgreement: SitPublicationsBillingDefCopyWithinAgreementComponent,
         sitRoyaltyCalcOnePublicationFromDate: SitRoyaltyCalcOnePublicationFromDateComponent,
+        sitB2cConfig: SitB2cConfigComponent,
+        sitB2cConfigEdit: SitB2cConfigEditComponent,
+        sitB2cProductsEdit: SitB2cProductsEditComponent,
     };
 
     public GetFactory(ident: string) {
