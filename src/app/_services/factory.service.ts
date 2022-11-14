@@ -228,6 +228,7 @@ import { SitHRDepartmentsEditComponent } from '@app/containers/dictionaries/sit-
 import { SitPublicationsBillingParamsDefComponent } from '@app/containers/dictionaries/sit-publications-billing-params-def/sit-publications-billing-params-def.component';
 import { SitAgreementsBenefRolesEditComponent } from '@app/containers/dictionaries/sit-publications-billing-params-def/actions/sit-agreements-benef-roles-edit/sit-agreements-benef-roles-edit.component';
 import { SitAppUsersInCompanyAddUserComponent } from '@app/containers/dictionaries/sit-app-users-in-company/actions/sit-app-users-in-company-add-user/sit-app-users-in-company-add-user.component';
+import { SitPublicationsBillingDefCopyWithinAgreementComponent } from '@app/containers/dictionaries/sit-publications-billing-def/actions/sit-publications-billing-def-copy-within-agreement/sit-publications-billing-def-copy-within-agreement.component';
 
 
 @Injectable({ providedIn: 'root' })
@@ -463,6 +464,7 @@ export class FactoryService {
         sitPublicationsBillingParamsDef: SitPublicationsBillingParamsDefComponent,
         sitAgreementsBenefRolesEdit: SitAgreementsBenefRolesEditComponent,
         sitAppUsersInCompanyAddUser: SitAppUsersInCompanyAddUserComponent,
+        sitPublicationsBillingDefCopyWithinAgreement: SitPublicationsBillingDefCopyWithinAgreementComponent,
     };
 
     public GetFactory(ident: string) {
