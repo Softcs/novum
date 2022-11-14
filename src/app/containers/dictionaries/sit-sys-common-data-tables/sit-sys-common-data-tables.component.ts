@@ -100,6 +100,7 @@ export class SitSysCommonDataTablesComponent extends SitDictBaseComponent {
       { headerName: 'Id', field: 'sitStatusesId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 50, defaultVisibility: false },
       { headerName: 'GUID', field: 'sitStatusesG', width: 300, defaultVisibility: true, 
         cellStyle: function(params) { return {backgroundColor: '#d6f5d6'} } },  
+      { headerName: 'Identyfikator', field: 'StatusIdent',toolTip: 'Nazwa statusu', width: 250 },
       { headerName: 'Nazwa', field: 'StatusName',toolTip: 'Nazwa statusu', width: 250 },
       { headerName: 'Tabela', field: 'TableName', width: 150 },
       { headerName: 'Nazwa kolumny', field: 'ColumnName', width: 200 }

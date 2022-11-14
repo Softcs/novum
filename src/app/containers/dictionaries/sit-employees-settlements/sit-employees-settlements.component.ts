@@ -70,6 +70,11 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
             cellClass: ['font11','numberFormat2Dec'],
             pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
           },
+          { headerName: 'Premie1', field: 'Bonus1', filter: 'agNumberColumnFilter', type: 'numericColumn',columnGroupShow: "open", width: 90, agr: 'sum', sortable: true, resizable: true,
+            renderType: 'number',
+            cellClass: ['font11','numberFormat2Dec'],
+            pinnedRowCellRendererParams: { style: { 'font-weight': 'bold' } }
+          },
           { headerName: 'Prem. nie kli.', field: 'BonusNoCust', filter: 'agNumberColumnFilter', type: 'numericColumn',columnGroupShow: "open", width: 110, agr: 'sum', sortable: true, resizable: true,
             renderType: 'number',
             cellClass: ['font11','numberFormat2Dec'],
@@ -412,6 +417,9 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
       },
       { headerName: 'Rekr. kli.', field: 'ClientRecruitment', headerTooltip: 'Rekrutacja klienta', filter: 'agNumberColumnFilter', renderType: 'checkbox', cellClass: "grid-cell-centered", width: 70, suppressMenu: true },
       { headerName: 'St. niep.', field: 'DisabLvl', headerTooltip: 'Stopień niepełnosprawności', filter: 'agNumberColumnFilter', width: 70, cellClass: "grid-cell-centered", suppressMenu: true },
+      { headerName: 'ZUS', field: 'StatusZUSDesc', tooltipField: 'StatusZUSDesc', width: 60, suppressMenu: true, sortable: true, resizable: true,
+        cellClass: ['font11','textFormat']
+      },
       { headerName: 'Nr.listy', field: 'PayrollNo', tooltipField: 'PayrollNo', width: 100,
         cellClass: ['font11','textFormat']
       },
@@ -419,6 +427,9 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
         cellClass: ['font11','textFormat']
       },
       { headerName: 'Opis prac', field: 'WorkDesc', tooltipField: 'WorkDesc',  width: 100, suppressMenu: true,
+        cellClass: ['font11','textFormat']
+      },
+      { headerName: 'Kod zawodu', field: 'ProfessionCode', tooltipField: 'ProfessionName',  width: 100, suppressMenu: true,
         cellClass: ['font11','textFormat']
       },
       { headerName: 'MPK', field: 'CustomerCostCenterIdent', tooltipField: 'CustomerCostCenterIdent',  width: 100, suppressMenu: true,
@@ -528,6 +539,11 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
           renderType: 'number', renderFormat: '1.2-2',
           cellClass: ['font11','numberFormat2Dec'],
         },
+        { headerName: 'Premie1', field: 'Bonus1', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, suppressMenu: true, columnGroupShow: "open", agr: 'sum', sortable: true, resizable: true,
+          renderType: 'number', renderFormat: '1.2-2',
+          cellClass: ['font11','numberFormat2Dec'],
+        },
+
         { headerName: 'Premie bez narzutu', field: 'BonusNoMarkup', headerTooltip: 'Premie bez narzutu', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 90, suppressMenu: true, columnGroupShow: "open", agr: 'sum', sortable: true, resizable: true,
           renderType: 'number', renderFormat: '1.2-2',
           cellClass: ['font11','numberFormat2Dec'],
@@ -628,6 +644,10 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
           renderType: 'number',
           cellClass: ['font11','numberFormat2Dec'],
         },                  
+        { headerName: 'Dyżur', headerTooltip: 'Dyżur', field: 'StandbyPay', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 100, suppressMenu: true, agr: 'sum', columnGroupShow: "open", sortable: true, resizable: true,
+          renderType: 'number',
+          cellClass: ['font11','numberFormat2Dec'],
+        },                  
         { headerName: 'Dodatki inne', headerTooltip: 'Dodatkowe składniki inne', field: 'Additions', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 100, suppressMenu: true, agr: 'sum', columnGroupShow: "open", sortable: true, resizable: true,
           renderType: 'number',
           cellClass: ['font11','numberFormat2Dec'],
@@ -667,6 +687,10 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
             cellClass: ['font11','numberFormat2Dec'],
           },
           { headerName: 'Premie', field: 'MarkupBonus', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80, suppressMenu: true, agr: 'sum', columnGroupShow: "open", sortable: true, resizable: true,
+            renderType: 'number',
+            cellClass: ['font11','numberFormat2Dec'],
+          },
+          { headerName: 'Premie1', field: 'CustBonus1', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80, suppressMenu: true, agr: 'sum', columnGroupShow: "open", sortable: true, resizable: true,
             renderType: 'number',
             cellClass: ['font11','numberFormat2Dec'],
           },
@@ -757,7 +781,11 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
           { headerName: 'Odprawy', headerTooltip: 'Odprawy', field: 'AdditionCust07', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 100, suppressMenu: true, agr: 'sum', columnGroupShow: "open", sortable: true, resizable: true,
             renderType: 'number',
             cellClass: ['font11','numberFormat2Dec'],
-          },            
+          },
+          { headerName: 'Dyżur', headerTooltip: 'Dyżur', field: 'CustStandbyPay', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 100, suppressMenu: true, agr: 'sum', columnGroupShow: "open", sortable: true, resizable: true,
+            renderType: 'number',
+            cellClass: ['font11','numberFormat2Dec'],
+          },             
           { headerName: 'Dodatki inne', headerTooltip: 'Dodatkowe składniki inne', field: 'AdditionsCust', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 100, suppressMenu: true, agr: 'sum', columnGroupShow: "open", sortable: true, resizable: true,
             renderType: 'number',
            cellClass: ['font11','numberFormat2Dec'],
@@ -784,6 +812,10 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
           },
         ]
       },
+      { headerName: 'Rabat', field: 'Discount',  filter: 'agNumberColumnFilter', type: 'numericColumn', width: 100, suppressMenu: true, agr: 'sum',
+        renderType: 'number',
+        cellClass: ['font11','blueBackground','numberFormat2Dec'],
+      },      
       { headerName: 'Netto - klient', field: 'CustNet', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 100, suppressMenu: true, agr: 'sum',
         cellStyle: function(params) { return {backgroundColor: '#cce6ff','font-weight': 'bold'} },  
         renderType: 'number',
@@ -821,6 +853,12 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
         cellStyle: function(params) { return (params.data["IsBinded"] === 1 ? {color: 'green'} : {color: 'red'}) },  
       },
       { headerName: 'Kolumna', field: 'SettlementsColumnName', tooltipField:'SettlementsColumnName', width: 130},
+    ];
+
+    this.gridColumnsDefinition['sitEmployeesSettlementsCalcInfo'] = [
+      { headerName: 'Lp', field: '__Identity__', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 60, sort: 'asc',suppressMenu: true},
+      { headerName: 'Składnik', field: 'Component', tooltipField:'Component',  width: 270,},
+      { headerName: 'Wartość', field: 'Value', width: 100,}
     ];
 
     this.gridColumnsDefinition['sitEmployeesSettlementsSumByPayroll'] = [
@@ -936,7 +974,7 @@ export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
       },
   
       getDetailRowData: function (params) {
-          params.successCallback(params.data.Details);
+          params.successCallback(params.data.Det);
       },
     };
   };

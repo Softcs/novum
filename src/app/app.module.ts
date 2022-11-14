@@ -214,7 +214,7 @@ import { SitAgreementsBenefEditComponent } from './containers/dictionaries/sit-p
 import { SitAgreementsPublicationsEditComponent } from './containers/dictionaries/sit-publications-agreements/actions/sit-agreements-publications-edit/sit-agreements-publications-edit.component';
 import { SitAgreementsAdvancesEditComponent } from './containers/dictionaries/sit-publications-agreements/actions/sit-agreements-advances-edit/sit-agreements-advances-edit.component';
 import { SitPublicationsBillingTypesComponent } from './containers/dictionaries/sit-publications-billing-types/sit-publications-billing-types.component';
-import { SitPublicationsBillingTypesEditComponent } from './containers/dictionaries/sit-publications-billing-types/actions/sit-publications-billing-types-edit/sit-publications-billing-types-edit.component';
+import { SitPublicationsBillingTypesEditComponent } from './containers/dictionaries/sit-publications-billing-params-def/actions/sit-publications-billing-types-edit/sit-publications-billing-types-edit.component';
 import { SitPublicationsBillingDefComponent } from './containers/dictionaries/sit-publications-billing-def/sit-publications-billing-def.component';
 import { SitPublicationsBillingDefEditComponent } from './containers/dictionaries/sit-publications-billing-def/actions/sit-publications-billing-def-edit/sit-publications-billing-def-edit.component';
 import { SitPublicationsBillingDefFormsEditComponent } from './containers/dictionaries/sit-publications-billing-def/actions/sit-publications-billing-def-forms-edit/sit-publications-billing-def-forms-edit.component';
@@ -326,6 +326,11 @@ import { SitWmsParamsDefComponent } from './containers/dictionaries/sit-wms-para
 import { SitWmsPackingContainersTypesEditComponent } from './containers/dictionaries/sit-wms-params-def/actions/sit-wms-packing-containers-types-edit/sit-wms-packing-containers-types-edit.component';
 import { SitEmployeeAbsencesEditComponent } from './containers/dictionaries/sit-employees/actions/sit-employee-absences-edit/sit-employee-absences-edit.component';
 import { SitCashRegisterSaleReportsExportForMultiComponent } from './containers/dictionaries/sit-cash-register-sale-reports/actions/sit-cash-register-sale-reports-export-for-multi/sit-cash-register-sale-reports-export-for-multi.component';
+import { SitHRDepartmentsEditComponent } from './containers/dictionaries/sit-hr-params-def/actions/sit-hr-departments-edit/sit-hr-departments-edit.component';
+import { SitPublicationsBillingParamsDefComponent } from './containers/dictionaries/sit-publications-billing-params-def/sit-publications-billing-params-def.component';
+import { SitAgreementsBenefRolesEditComponent } from './containers/dictionaries/sit-publications-billing-params-def/actions/sit-agreements-benef-roles-edit/sit-agreements-benef-roles-edit.component';
+import { SitAppUsersInCompanyAddUserComponent } from './containers/dictionaries/sit-app-users-in-company/actions/sit-app-users-in-company-add-user/sit-app-users-in-company-add-user.component';
+import { SitPublicationsBillingDefCopyWithinAgreementComponent } from './containers/dictionaries/sit-publications-billing-def/actions/sit-publications-billing-def-copy-within-agreement/sit-publications-billing-def-copy-within-agreement.component';
 
 @NgModule({
     imports: [
@@ -636,7 +641,12 @@ import { SitCashRegisterSaleReportsExportForMultiComponent } from './containers/
         SitWmsParamsDefComponent,
         SitWmsPackingContainersTypesEditComponent,
         SitEmployeeAbsencesEditComponent,
-        SitCashRegisterSaleReportsExportForMultiComponent
+        SitCashRegisterSaleReportsExportForMultiComponent,
+        SitHRDepartmentsEditComponent,
+        SitPublicationsBillingParamsDefComponent,
+        SitAgreementsBenefRolesEditComponent,
+        SitAppUsersInCompanyAddUserComponent,
+        SitPublicationsBillingDefCopyWithinAgreementComponent
 
     ],
     providers: [

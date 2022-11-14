@@ -14,26 +14,36 @@
         <sit-data-checkbox #sitControl field="CalcSickRisk" label="Licz ryzyko chorobowe"></sit-data-checkbox>
         <sit-data-input type="number" #sitControl field="SickRiskFactor" label="Współczynnik" appearance="outline" style="width: 80px;"></sit-data-input>
       </div>
+      <div fxLayout="row">
+        <sit-data-checkbox #sitControl field="CalcSeparate" label="Licz osobno ZUS i narzut"
+          matTooltip="Po zaznaczeniu system osobno wyliczy ZUS i narzut i doda je do kosztu pracownika (normalnie liczy narzut od kosztu + ZUS)." 
+          matTooltipPosition="right"
+          matTooltipHideDelay="100"></sit-data-checkbox>
+        <sit-data-input type="text" #sitControl field="ProfessionCode" label="Kod zawodu" appearance="outline"></sit-data-input>
+      </div>
       <div fxLayout="row" fxLayoutGap="5px">
         <div fxLayout="column" >
           <sit-data-input type="number" #sitControl field="BaseRate" label="Zasadnicze" appearance="outline"></sit-data-input>
           <sit-data-input type="number" #sitControl field="NightRate" label="Nocne" appearance="outline"></sit-data-input>
           <sit-data-input type="number" #sitControl field="OvertimeRate" label="Nadgodziny" appearance="outline"></sit-data-input>
           <sit-data-input type="number" #sitControl field="BonusRate" label="Premie" appearance="outline"></sit-data-input>
+          <sit-data-input type="number" #sitControl field="Bonus1Rate" label="Premie1" appearance="outline"></sit-data-input>
           <sit-data-input type="number" #sitControl field="VacRate" label="Urlop" appearance="outline"></sit-data-input>
           <sit-data-input type="number" #sitControl field="VacAddRate" label="Dodatkowy urlop" appearance="outline"></sit-data-input>
           <sit-data-checkbox #sitControl field="MealsNoVAT" label="Posiłki bez VAT"></sit-data-checkbox>
         </div>
         <div fxLayout="column">
+          <sit-data-input type="number" #sitControl field="VacResRate" label="Rezerwa urlopowa" appearance="outline"></sit-data-input>
           <sit-data-input type="number" #sitControl field="SickRate" label="Chorobowe" appearance="outline"></sit-data-input>
           <sit-data-input type="number" #sitControl field="VouchersRate" label="Nagr. i bony" appearance="outline"></sit-data-input>
           <sit-data-input type="number" #sitControl field="LumpSumRate" label="Ryczałty" appearance="outline"></sit-data-input>
           <sit-data-input type="number" #sitControl field="Addition01Rate" label="Dof.do zakwaterowania" appearance="outline"></sit-data-input>
           <sit-data-input type="number" #sitControl field="Addition05Rate" label="Dof.do ubezpieczenia" appearance="outline"></sit-data-input>
-          <sit-data-input type="number" #sitControl field="Addition06Rate" label="Dof. do op. medycznej" appearance="outline"></sit-data-input>
+          <sit-data-input type="number" #sitControl field="StandbyRate" label="Dyżur" appearance="outline"></sit-data-input>
           <sit-data-input type="number" #sitControl field="MealsVATRate" label="% VAT - posiłki" appearance="outline"></sit-data-input>
         </div>
         <div>
+          <sit-data-input type="number" #sitControl field="Addition06Rate" label="Dof. do op. medycznej" appearance="outline"></sit-data-input>
           <sit-data-input type="number" #sitControl field="Addition02Rate" label="Dof.do posiłków" appearance="outline"></sit-data-input>
           <sit-data-input type="number" #sitControl field="AdditionsRate" label="Inne dodatki" appearance="outline"></sit-data-input>
           <sit-data-input type="number" #sitControl field="ZUSAddRate" label="Dodatkowy ZUS" appearance="outline"></sit-data-input>

@@ -3,13 +3,20 @@
   >
   <sit-data-set-container ident="sitAgreementsBenefEdit">
     <div class="sit-proc-params-content" fxLayout="column">
-      <sit-data-input #sitControl type="text" field="CustIdent" label="Beneficjent" appearance="outline"  [lookupDisplayFields] = "['CustIdent', 'CustName']"></sit-data-input>
-      <sit-data-input #sitControl type="text" field="CustName" label="Nazwa" appearance="outline" ></sit-data-input>
-      <sit-data-input #sitControl type="number" field="PercentShare" label="Udział procentowy" appearance="outline" ></sit-data-input>
-      <sit-data-radio #sitControl field="BillingType" type="row" label="Typ rozliczenia"
-        [buttons]="[{'caption':'faktura','value': 'FK', 'checked':true},{'caption':'płace','value':'LP'}]"
-      ></sit-data-radio>      
-      <sit-data-checkbox #sitControl field="ForBilling" label="Odbiorca rozliczenia"></sit-data-checkbox>
+      <sit-data-input #sitControl type="text" field="CustIdent" label="Identyfikator" appearance="outline"  [lookupDisplayFields] = "['CustIdent', 'CustName']"></sit-data-input>
+      <sit-data-label type="text" #sitControl field="CustName" appearance="outline"></sit-data-label>
+      <div fxLayout="row">
+        <sit-data-input #sitControl type="number" field="PercentShare" label="Udział procentowy" appearance="outline" fxFlex="50"></sit-data-input>
+        <sit-data-radio #sitControl field="BillingType" type="row" label="Typ rozliczenia" fxFlex="50"
+          [buttons]="[{'caption':'faktura','value': 'FK', 'checked':true},{'caption':'płace','value':'LP'}]"
+        ></sit-data-radio>
+      </div>
+      <div fxLayout="row">
+        <sit-data-checkbox #sitControl field="ForBilling" label="Odbiorca rozliczenia" fxFlex></sit-data-checkbox>
+        <sit-data-input type="text" #sitControl field="BenefRoleIdent" label="Rola" appearance="outline" style="width: 200px"
+          [lookupDisplayFields] = "['BenefRoleIdent']"
+        ></sit-data-input>
     </div>
+  </div>
   </sit-data-set-container>
 </sit-proc-params>

@@ -27,6 +27,8 @@ export class SitDictContainerComponent implements OnInit, AfterViewInit, AfterCo
   // @ContentChildren(SitTabComponent, { descendants: true }) tabs !: QueryList<SitTabComponent>;
 
   @Input() ident: string;
+
+  loading:boolean = false;
   private dictInfo: DictInfoWrapper;
   public DataSetManager: DataSetManager;
 
@@ -62,6 +64,7 @@ export class SitDictContainerComponent implements OnInit, AfterViewInit, AfterCo
   }
 
   loadData() {
+    this.loading = true;
     const oprDictInfo: Operation =  this.gatewayService.operationGetDictInfo(this.ident);
     this.gatewayService.executeOperation(oprDictInfo)
       .pipe(first())
@@ -78,6 +81,7 @@ export class SitDictContainerComponent implements OnInit, AfterViewInit, AfterCo
             this.DataSetManager.setRefreshDataSources(this.DataSetManager.dataSetsResponse);
             this.DataSetManager.PropagateDataSources();
             this.prepareControls();
+            this.loading = false;
           }
         },
         error: (error) => {

@@ -96,7 +96,7 @@ export class SitCustomersComponent extends SitDictBaseComponent {
       { headerName: 'Identyfikator', field: 'ProductIdent', filter: 'agTextColumnFilter', width: 150, },
       { headerName: 'EAN', field: 'EAN', filter: 'agTextColumnFilter', width: 120 },
       { headerName: 'Nazwa', field: 'ProductName', tooltipField: 'ProductName', filter: 'agTextColumnFilter', width: 300 },
-      { headerName: 'Status', field: 'StatusValueName_Main', filter: 'agSetColumnFilter', width: 140, floatingFilter: false, 
+      { headerName: 'Status prod', field: 'ProductStatusValueName_Main', filter: 'agSetColumnFilter', width: 140, floatingFilter: false, 
         cellStyle: function(params) {
           if (params.value === 'W przygotowaniu') { return { color: 'violet', 'font-weight': 600 }; }
           else if (params.value === 'Zapowiedź') { return { color: 'orange', 'font-weight': 600 }; }
@@ -110,27 +110,33 @@ export class SitCustomersComponent extends SitDictBaseComponent {
       { headerName: 'Prod. akt.', field: 'IsActive_Product', filter: 'agSetColumnFilter', width: 80, renderType: 'checkbox', suppressMenu: true, cellClass: "grid-cell-centered" },
       { headerName: 'B2B', field: 'IsB2B', filter: 'agSetColumnFilter', width: 80, renderType: 'checkbox', suppressMenu: true, cellClass: "grid-cell-centered", defaultVisibility: true },
       { headerName: 'Status sprz.', field: 'SaleStatus', tooltipField: 'SaleStatusDescription', width: 80, suppressMenu: true},
+      { headerName: 'Status wys.', field: 'StatusValueIdent_Main', tooltipField: 'StatusValueName_Main', width: 80, suppressMenu: true},
 
     ];
 
     this.gridColumnsDefinition["sitHRParams4InvoicingContr"] = [
       { headerName: 'Od dnia', field: 'DateFrom', width: 100, sort: 'desc',suppressMenu: true, renderType: "date"}, // domyslny format yyyy-MM-dd - mozna przeciazyc przez np. renderFormat: "yyyy-MM-dd"
       { headerName: 'Rekr.kli.', headerTooltip:'Rekrutacja klienta', field: 'CustRecr', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 70, renderType: "checkbox"},
+      { headerName: 'Kod zaw.', field: 'ProfessionCode', tooltipField: 'ProfessionName', filter: 'agTextColumnFilter', suppressMenu: true, width: 80,},
       { headerName: 'Rez url.', headerTooltip:'Licz rezerwę urlopową', field: 'CalcVacRes', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 70, renderType: "checkbox"},
       { headerName: 'PFRON', headerTooltip:'Licz PFRON', field: 'CalcPFRON', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 70, renderType: "checkbox"},
       { headerName: 'Ryz. chor.', headerTooltip:'Licz ryzyko chorobowe', field: 'CalcSickRisk', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 70, renderType: "checkbox"},
       { headerName: 'Wsp.ryz.', field: 'SickRiskFactor',headerTooltip:'Współczynnik do wyliczenia ryzyka urlopowego', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
+      { headerName: 'Osobno', headerTooltip:'Licz osobno ZUS i narzut', field: 'CalcSeparate', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 70, renderType: "checkbox"},
       { headerName: 'Zasadnicze', field: 'BaseRate',headerTooltip:'Zasadnicze', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
       { headerName: 'Nocne', field: 'NightRate',headerTooltip:'Nocne', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
       { headerName: 'Nadgodziny', field: 'OvertimeRate',headerTooltip:'Nadgodziny', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
       { headerName: 'Premie', field: 'BonusRate', headerTooltip:'Premie',filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
+      { headerName: 'Premie1', field: 'Bonus1Rate', headerTooltip:'Premie1',filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
       { headerName: 'Urlop', field: 'VacRate',headerTooltip:'Urlop', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
       { headerName: 'Urlop dod.', field: 'VacAddRate',headerTooltip:'Urlop dodatkowy', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
+      { headerName: 'Rez.urlop.', field: 'VacResRate',headerTooltip:'Rezerwa urlopowa', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
       { headerName: 'Chorobowe', field: 'SickRate', headerTooltip:'Chorobowe',filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
       { headerName: 'Nagr./bony', field: 'VouchersRate',headerTooltip:'Nagrody i bony', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
       { headerName: 'Ryczałt', field: 'LumpSumRate',headerTooltip:'Ryczałt', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
       { headerName: 'Zakw.', field: 'Addition01Rate',headerTooltip:'Dofinansowanie do zakwaterowania', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
       { headerName: 'Ubezp.', field: 'Addition05Rate',headerTooltip:'Dofinansowanie do ubezpiecznia', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
+      { headerName: 'Dyżur', field: 'StandbyRate',headerTooltip:'Dyżur', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
       { headerName: 'Med.', field: 'Addition06Rate', headerTooltip:'Dofinansowanie do pakietów medycznych',filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
       { headerName: 'Posiłki', field: 'Addition02Rate',headerTooltip:'Dofinansowanie do posiłków', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
       { headerName: 'Inne', field: 'AdditionsRate',headerTooltip:'Inne dodatki', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},

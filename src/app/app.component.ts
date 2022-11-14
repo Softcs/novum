@@ -8,7 +8,8 @@ import { Tab } from '@app/_models/tab.model';
 import { LicenseManager } from 'ag-grid-enterprise';
 
 // LicenseManager.setLicenseKey("CompanyName=Seido IT Sp. z o.o,LicensedApplication=Novum,LicenseType=SingleApplication,LicensedConcurrentDeveloperCount=1,LicensedProductionInstancesCount=1,AssetReference=AG-011338,ExpiryDate=22_October_2021_[v2]_MTYzNDg1NzIwMDAwMA==26a2e4d0770f50a7f21e7bf61f3e9830");
-LicenseManager.setLicenseKey("CompanyName=SEIDO IT SP Z O O,LicensedApplication=Novum,LicenseType=SingleApplication,LicensedConcurrentDeveloperCount=1,LicensedProductionInstancesCount=1,AssetReference=AG-019111,ExpiryDate=22_October_2022_[v2]_MTY2NjM5MzIwMDAwMA==db796dfd0033663477a9ef35ade882a2");
+//LicenseManager.setLicenseKey("CompanyName=SEIDO IT SP Z O O,LicensedApplication=Novum,LicenseType=SingleApplication,LicensedConcurrentDeveloperCount=1,LicensedProductionInstancesCount=1,AssetReference=AG-019111,ExpiryDate=22_October_2022_[v2]_MTY2NjM5MzIwMDAwMA==db796dfd0033663477a9ef35ade882a2");
+LicenseManager.setLicenseKey("CompanyName=SEIDO IT SP Z O O,LicensedApplication=Novum,LicenseType=SingleApplication,LicensedConcurrentDeveloperCount=1,LicensedProductionInstancesCount=1,AssetReference=AG-032421,SupportServicesEnd=22_October_2023_[v2]_MTY5NzkyOTIwMDAwMA==5617eeec87fc0c573c214b6e6f2110df");
 
 @Component({
   selector: 'app',
