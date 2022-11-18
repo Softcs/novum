@@ -230,7 +230,7 @@ W aplikacji zaaplikowałem zestaw `font-family` z bootstrapa - czyli zestaw test
 ```
 font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 ```
-> Uwaga! fonty są pobierane od tyłu!!!
+> Uwaga! fonty są pobierane/interpretowane od tyłu!!!
 
 Ponieważ zauważyłem, że materials i ag-grid coś tam "kombinuje" z fontami, w globalnym styles.scss dodałem: 
 ```
