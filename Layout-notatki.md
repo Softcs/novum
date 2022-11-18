@@ -2,16 +2,19 @@
 
 Różne (być może oczywiste) notatki na temat layoutu dla aplikacji *novum*.   
 Novum jest oparte o koncepcję layoutu [flex](#flex). 
-Kaskadowo przekazujemy flex od samej góry do dołu drzewa html - wszystko układa się automatycznie 
+Kaskadowo przekazujemy flex od samej góry do dołu drzewa html - wszystko układa się automatycznie.  
+Postaramy się zasterować wyglądem/widokiem aplikacji przy pomocy atrubutu `class`, gdzie część z `class` bądzie dostępna globalnie, a szczególne przypadki będą opisane w lokalnych - componentowych scss-ach.  
+
+> **Warning**  
+> Co do zasady postaramy sie unikać atrybutu `style` w elementach HTML!
+
+To da nam swobodę w manipulacji całą zabawką!!!
 
 ## Identyfikacja elementów html
 
-<details><summary markdown="span">Typy "dojścia" do elementów html, np. dla potrzeb stylowania oraz czytelności struktury (click me!)</summary>
-  
-  > Elementy składające sie z więcej niż jednego słowa łączymy klawiaturowym minusem `-`, np: `mat-tab-body`, `super-class`  
-  > dla `class` i `id` dopuszczalne jest stosowanie camelCase - proponuję jednak zasadę opisaną wyżej
-  
-</details>
+Typy "dojścia" do elementów html, np. dla potrzeb stylowania oraz czytelności struktury
+> Elementy składające sie z więcej niż jednego słowa łączymy klawiaturowym minusem `-`, np: `mat-tab-body`, `super-class`  
+> dla `class` i `id` dopuszczalne jest stosowanie camelCase - proponuję (MOCNO) jednak zasadę opisaną wyżej
 
 
 <details><summary> tagi HTML (click me!)</summary>
@@ -157,7 +160,21 @@ natomiast jego `children` (`flex-direction:column`) podzielą się całą dostę
 ### class globalne w novum
 
 Utworzylem definicje dla 2 class ogólnych + globalnych: `flex-container-column` i `flex-container-row`.  
-Mają służyć wyłącznie do tego do czego są.  
+```
+.flex-container-column,
+.flex-container-row {
+  display: flex;
+  flex: 1 1 auto;
+}
+
+.flex-container-column {
+  flex-direction: column;
+}
+.flex-container-row {
+  flex-direction: row;
+}
+```
+Mają służyć wyłącznie do tego do czego są. Proponuję nie dostylowywać tych `class` gdzieś głębiej w aplikacji!  
 Mają służyć do nadawania elementom nowym bądź podmianie gdy zajdzie taka potrzeba,  
 np.  
 ```
