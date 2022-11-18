@@ -1,7 +1,8 @@
 # Layout - notatki
 
 Różne (być może oczywiste) notatki na temat layoutu dla aplikacji *novum*.   
-Novum jest oparte o koncepcję layoutu [flex](#flex).
+Novum jest oparte o koncepcję layoutu [flex](#flex). 
+Kaskadowo przekazujemy flex od samej góry do dołu drzewa html - wszystko układa się automatycznie 
 
 ## Identyfikacja elementów html
 
@@ -155,8 +156,34 @@ natomiast jego `children` (`flex-direction:column`) podzielą się całą dostę
 
 ### class globalne w novum
 
-`flex-container-column`
-`flex-container-row`
+Utworzylem definicje dla 2 class ogólnych + globalnych: `flex-container-column` i `flex-container-row`.  
+Mają służyć wyłącznie do tego do czego są.  
+Mają służyć do nadawania elementom nowym bądź podmianie gdy zajdzie taka potrzeba,  
+np.  
+```
+<ag-grid-angular
+  ...
+  class="ag-theme-balham flex-container-column"
+  ...
+
+zamiast:
+<ag-grid-angular
+  ...
+  style="width: 100%; height: 100%;" -> niepotrzebne!!!!!
+  class="ag-theme-balham"
+```
+
+
+W aplikacji jest jeszcze kilka `class` które to realizują, np:
+```
+.router-flex {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+}
+realizuje co do niej należy!
+```
+
 
 ### Angular + flex
 
