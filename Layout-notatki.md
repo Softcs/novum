@@ -97,7 +97,7 @@ component zwraca siebie w tagu `div` z ogólną class + nazwą samego siebie
 
 Wynik w html: `<div class="router-flex sit-sys-dictionaries">`
 ```
-> Dzięki temu w `html` łatwiej się zorientową czym jest dany element. Pozostaje kwestia konwencji nazw: czy na tym "poziomie" użyć: `sit-sys-dictionaries` czy `sit-sys-dictionaries-component` ponieważ będziemy chcieli użyć `sit-sys-dictionaries` gdzieś wewnątrz komponentu.
+> Dzięki temu w `html` łatwiej się zorientować czym jest dany element. Pozostaje kwestia konwencji nazw: czy na tym "poziomie" użyć: `sit-sys-dictionaries` czy `sit-sys-dictionaries-component` ponieważ będziemy chcieli użyć `sit-sys-dictionaries` gdzieś wewnątrz komponentu.
 
 </details>
 
