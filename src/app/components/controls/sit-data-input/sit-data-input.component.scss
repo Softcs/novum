@@ -1,5 +1,20 @@
 $input-height: 40px;
 
+.sit-data-input {
+  border: 5px dotted red;
+}
+
+.mat-form-field {
+  border: 2px solid darkmagenta;
+}
+
+.mat-form-field-wrapper {
+  border: 2px dotted green;
+}
+
+
+
+
 .lookup-select-panel-class {
   margin-top: $input-height!important;
   margin-left: 20px;

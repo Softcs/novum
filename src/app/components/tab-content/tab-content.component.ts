@@ -6,13 +6,15 @@ import { Tab } from '@app/_models/tab.model';
 @Component({
   selector: 'app-tab-content',
   templateUrl: './tab-content.component.html',
-  host: {class: 'router-flex'}
+  host: {class: 'router-flex app-tab-content'}
   })
-  export class TabContentComponent implements OnInit {
-    @Input() tab;
-    @ViewChild(ContentContainerDirective, { static: true })
 
-    contentContainer: ContentContainerDirective;
+export class TabContentComponent implements OnInit {
+
+  @Input() tab;
+  @ViewChild(ContentContainerDirective, { static: true })
+  contentContainer: ContentContainerDirective;
+  
   constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
 
   ngOnInit() {
@@ -24,4 +26,5 @@ import { Tab } from '@app/_models/tab.model';
     const componentRef = viewContainerRef.createComponent(componentFactory);
     (componentRef.instance as SkeletonComponent).data = tab.tabData;
   }
+
 }

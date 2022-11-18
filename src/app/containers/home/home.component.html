@@ -1,9 +1,12 @@
 ﻿<mat-tab-group
   animationDuration="0"
-  class="main-tab-group home-tab-content-container"
+  ngClass="main-tab-group home-tab-content-container"
   [(selectedIndex)]="selectedTabIndex"
   (selectedTabChange)="tabChanged($event)"
+  fxFlex="auto"
+  fxLayout="column"
 >
+<!-- fxFlex -->
 
   <mat-tab *ngFor="let tab of tabs; let tabIndex = index">
 
@@ -36,11 +39,17 @@
       </div>
     </ng-template>
 
+    
+    <!-- tu się zaczyna mat-tab-body-wrapper -->
+
     <span>vvvvvvvvvvvvvvvvvvvvvvv</span>
 
-    <div class="sit-tab-content">
+    <!-- <div class="sit-tab-content">
       <app-tab-content [tab]="tab" fxFill></app-tab-content>
-    </div>
+      <app-tab-content [tab]="tab"></app-tab-content>
+    </div> -->
+
+    <app-tab-content [tab]="tab" ngClass="parent-home"></app-tab-content>
 
   </mat-tab>
 

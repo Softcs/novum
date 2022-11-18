@@ -14,7 +14,7 @@ import { MatTab } from '@angular/material/tabs';
   selector: 'sit-dict-container',
   templateUrl: './sit-dict-container.component.html',
   styleUrls: ['./sit-dict-container.component.scss'],
-  host: {class: 'router-flex'}
+  host: {class: 'router-flex sit-dict-container'}
 })
 
 

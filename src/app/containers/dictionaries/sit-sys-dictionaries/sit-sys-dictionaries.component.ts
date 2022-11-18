@@ -5,7 +5,7 @@ import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-di
   selector: 'sit-sys-dictionaries',
   templateUrl: './sit-sys-dictionaries.component.html',
   styleUrls: ['./sit-sys-dictionaries.component.scss'],
-  host: {class: 'router-flex'}
+  host: {class: 'router-flex sit-sys-dictionaries'}
 })
 export class SitSysDictionariesComponent extends SitDictBaseComponent {
 

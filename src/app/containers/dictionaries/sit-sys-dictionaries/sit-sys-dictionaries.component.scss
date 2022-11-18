@@ -1,16 +1,38 @@
-#wrapper{
-  min-height: 100%;
-  height: 100%;
-  box-sizing: border-box;/*new*/
-  //background-color: rgba(255, 255, 255, 0.733);
+// .column-right {
+//   border: 5px dotted green;
+// }
+
+// .column-right-content {
+//   border: 5px dotted pink;
+// }
+
+.sit-sys-dictionaries-content {
+  border: 15px dotted green;
+}
+.content-jc-test {
+  border: 10px dotted red;
 }
 
-#tab-group{
-  height: 100%;
+
+.data-set-container {
+  // border: 5px dotted blue;
+  flex: 0 0 50%;
 }
-#tab-group mat-tab-body {
-  flex-grow: 1;
-}
+
+
+// #wrapper{
+//   min-height: 100%;
+//   height: 100%;
+//   box-sizing: border-box;/*new*/
+//   //background-color: rgba(255, 255, 255, 0.733);
+// }
+
+// #tab-group{
+//   height: 100%;
+// }
+// #tab-group mat-tab-body {
+//   flex-grow: 1;
+// }
 
 
 div.json{
