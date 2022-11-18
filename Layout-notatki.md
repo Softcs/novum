@@ -225,7 +225,13 @@ Problem z `font-family` polega na tym, że nie działa kaskadowo, tzn. jeśli gl
 
 > Warto mieć obsługę fontów w 1 miejscu - gdy się coś dzieje lub masz ochotę zmieniasz i działa.
   
-W aplikacji zaaplikowałem zestaw `font-family` z bootstrapa - czyli zestaw testowany przez społeczność przez lata na wszystkim chyba - który nigdy mnie do tej pory nie zawiódł.
+W aplikacji zaaplikowałem zestaw `font-family` z bootstrapa - czyli zestaw testowany przez społeczność przez lata na wszystkim chyba - który nigdy mnie do tej pory nie zawiódł.  
+
+```
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+```
+> Uwaga! fonty są pobierane od tyłu!!!
+
 Ponieważ zauważyłem, że materials i ag-grid coś tam "kombinuje" z fontami, w globalnym styles.scss dodałem: 
 ```
 .ag-theme-balham,
