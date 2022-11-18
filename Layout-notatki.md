@@ -152,7 +152,7 @@ gdzie flex:1 1 auto; jest skrótem dla:
   flex-basis: auto;
 }
 ```
-jeśli ten element jako `children` bedzie mial `parent` z display:flex to zajmie zajmie całą dostępną przestrzeń szerokości i wysokości jeśli bedzie sam,  jeśli będzie ich więcej - to sie podzielą przestrzenią: wysokością lub szerokością proporcjonalnie w zależności od `flex-direction` w `parent` 
+jeśli element `jakis-element` jako `children` bedzie mial `parent` z display:flex to zajmie zajmie całą dostępną przestrzeń szerokości i wysokości jeśli bedzie sam,  jeśli będzie ich więcej - to sie podzielą przestrzenią: wysokością lub szerokością proporcjonalnie w zależności od `flex-direction` w `parent` 
 (default dla `flex-direction` = `row`, czyli podział szerokości)  
 natomiast jego `children` (`flex-direction:column`) podzielą się całą dostępną wysokością
 
