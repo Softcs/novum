@@ -19,13 +19,128 @@ Typy "dojścia" do elementów html, np. dla potrzeb stylowania oraz czytelności
 ### id: 
 (np: `<div id="jakis-identykikator">`)
 
-> jednoznaczny identyfikator elementu, w kodzie HTML może wystąpić tylko 1 raz!
+> jednoznaczny identyfikator elementu, w kodzie HTML może wystąpić tylko 1 raz!  
+> Uwaga: nie może zawierać białych znaków!
 
 ### class: 
-(np: `<div class="router-flex column cos-innego">`)
+(np: `<div class="router-flex column cos-innego">`) 
+> atrybut uniwersalny: może zawirać dowolną ilość nazw 
+
+Proponuję stosowanie `class` jako podstawowego, głównego i wielowymiarowego atrybutu. 
+
+#### Przykłady:
+
+`<przykladowy-tag class="ogolny-styl identyfikator-elementu inny-dowolny" >`
+
+W aplikacji novum:
+
+typowy component zwraca siebie w "swoim" tagu
+```
+@Component({
+  selector: 'sit-sys-dictionaries',
+  templateUrl: './sit-sys-dictionaries.component.html',
+  styleUrls: ['./sit-sys-dictionaries.component.scss']
+})
+
+Wynik w html: `<sit-sys-dictionaries>`
+```
+
+component zwraca siebie jak wyżej z ogólną class
+```
+@Component({
+  selector: 'sit-sys-dictionaries',
+  templateUrl: './sit-sys-dictionaries.component.html',
+  styleUrls: ['./sit-sys-dictionaries.component.scss'],
+  host: {class: 'router-flex'}
+})
+
+Wynik w html: `<sit-sys-dictionaries class="router-flex">`
+```
+
+component zwraca siebie jak wyżej z ogólną class + nazwą samego siebie
+```
+@Component({
+  selector: 'sit-sys-dictionaries',
+  templateUrl: './sit-sys-dictionaries.component.html',
+  styleUrls: ['./sit-sys-dictionaries.component.scss'],
+  host: {class: 'router-flex sit-sys-dictionaries'}
+})
+
+Wynik w html: `<sit-sys-dictionaries class="router-flex sit-sys-dictionaries">`
+```
+
+component zwraca siebie w tagu `div` z ogólną class + nazwą samego siebie
+```
+@Component({
+  selector: '[sit-sys-dictionaries]',
+  templateUrl: './sit-sys-dictionaries.component.html',
+  styleUrls: ['./sit-sys-dictionaries.component.scss'],
+  host: {class: 'router-flex sit-sys-dictionaries'}
+})
+
+Wynik w html: `<div class="router-flex sit-sys-dictionaries">`
+```
+> Dzięki temu w `html` łatwiej się zorientową czym jest dany element. Pozostaje kwestia konwencji nazw: czy na tym "poziomie" użyć: `sit-sys-dictionaries` czy `sit-sys-dictionaries-component` ponieważ będziemy chcieli użyć `sit-sys-dictionaries` gdzieś wewnątrz komponentu.
+
 
 ## Flex
 
+Flex, a własciwie `flex box model` to technika polegająca na zachowaniu się `childrens` wewnątrz `parent` ze ścisłym związkiem miedzy nimi.  
+Parent z właściwością css `display:flex;` tworzy "przestrzeń" dla swoich pierwszopoziomowych `childrens`. 
+
+> Przykład:
+```
+<div style="display:flex;">
+  <div children=tak>
+    <div children=nie></div>
+  </div>
+  <div children=tak></div>
+</div>
+```
+Chcemy aby `children` kolejnego poziomu również zachowało się automatycznie `flex` wobec swojego rodzica:
+
+```
+<div style="display:flex;">
+  <div children=tak style="display:flex;" class="children-1">
+    <div children=tak> ale rodzic to children-1 </div>
+  </div>
+  <div children=tak></div>
+</div>
+```
+
+> Podsumowując: element może być jednocześnie `parent` + `children`
+
+tu zaczyna sie magia...:)
+
+Przykład css z oznaczeniem czego dotyczą parametry:
+```
+.jakis-element {
+  display: flex; - dotyczy parent
+  flex-direction: column; - dotyczy parent
+  flex:1 1 auto; - dotyczy children
+}
+
+gdzie flex:1 1 auto; jest skrótem dla: 
+{
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+}
+```
+jeśli ten element jako `children` bedzie mial `parent` z display:flex zajmie zajmie całą dostępną przestrzeń szerokości i wysokości jeśli bedzie sam,  jeśli będzie ich więcej - to sie podzielą przestrzenią: wysokością lub szerokością proporcjonalnie w zależności od `flex-direction` w `parent` 
+(default dla `flex-direction` = `row`, czyli podział szerokości)  
+natomiast jego `children` (`flex-direction:column`) podzielą się całą dostępną wysokością
 
 
-## Test
+### class globalne w novum
+
+`flex-container-column`
+`flex-container-row`
+
+### Angular + flex
+
+> **Warning**  
+> UWAGA! zauważyłem, że Angular potrafi kaskadowo przenosić właściwości flex  
+> zwłaszcza w elementach materials  
+> mam DUŻE wątpliwości do przewidywalności tego czegoś...
+
