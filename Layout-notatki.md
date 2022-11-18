@@ -6,7 +6,7 @@ Kaskadowo przekazujemy flex od samej góry do dołu drzewa html - wszystko ukła
 
 ## Identyfikacja elementów html
 
-<details><summary markdown="span">Typy "dojścia" do elementów html, np. dla potrzeb stylowania oraz czytelności struktury </summary>
+<details><summary markdown="span">Typy "dojścia" do elementów html, np. dla potrzeb stylowania oraz czytelności struktury (click me!)</summary>
   
   > Elementy składające sie z więcej niż jednego słowa łączymy klawiaturowym minusem `-`, np: `mat-tab-body`, `super-class`  
   > dla `class` i `id` dopuszczalne jest stosowanie camelCase - proponuję jednak zasadę opisaną wyżej
@@ -14,7 +14,7 @@ Kaskadowo przekazujemy flex od samej góry do dołu drzewa html - wszystko ukła
 </details>
 
 
-<details><summary> tagi HTML</summary>
+<details><summary> tagi HTML (click me!)</summary>
 
 ### tagi: 
 (np. `div`, `span`, `mat-tab-body`, `sit-dict-container`)
@@ -24,7 +24,7 @@ Kaskadowo przekazujemy flex od samej góry do dołu drzewa html - wszystko ukła
 
 </details>
 
-<details><summary> atrybut id </summary>
+<details><summary> atrybut id (click me!)</summary>
 
 ### id: 
 (np: `<div id="jakis-identykikator">`)
@@ -34,7 +34,7 @@ Kaskadowo przekazujemy flex od samej góry do dołu drzewa html - wszystko ukła
 
 </details>
 
-<details><summary> atrybut class </summary>
+<details><summary> atrybut class (click me!)</summary>
 
 ### class: 
 (np: `<div class="router-flex column cos-innego">`) 
