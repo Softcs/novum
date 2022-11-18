@@ -1,12 +1,12 @@
 # Layout - notatki
 
-1. ## Flex
+## Identyfikacja elementów html
 
-coś
+1. tag: (np. mat-tab-body, sit-dict-container, div, span)
+2. id: (np: <div id="identykikator">)
 
-coś
+## Flex
 
-  - coś
-  - coś 2
 
-2. ## Test
+
+## Test
