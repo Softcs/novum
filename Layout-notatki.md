@@ -209,3 +209,28 @@ realizuje co do niej należy!
 > zwłaszcza w elementach materials  
 > mam DUŻE wątpliwości do przewidywalności tego czegoś...
 
+  
+## Scss-y
+> **Warning**  
+> kolejność umieszczania i oraz importowania styli ma ZNACZENIE!
+  
+> Co do zasady proponuję w głównym globalnym `styles.scss` nie umieszczać definicji styli innych niż SUPER globalne!
+
+"zwykłe" globalne można zaimportować z katalogu `/styles` np: `@import "./styles/tests/jcTests";`
+
+
+## Fonty
+
+Problem z `font-family` polega na tym, że nie działa kaskadowo, tzn. jeśli globalnie mamy ustawiony font `Arial`, a w gałęzi HTML zmienimy na font `Lolek`, to jeśli font `Lolek` nie bedzie dostępny np. na macu:) to nie zostanie wzięty font nadrzędny czyli `Arial` i cała gałąź wyświetli jakis "losowy" font systemowy, a dokładniej to defaultowy ustawiony w przeglądarce - ale kto tam zagląda? ;) 
+
+> Warto mieć obsługę fontów w 1 miejscu - gdy się coś dzieje lub masz ochotę zmieniasz i działa.
+  
+W aplikacji zaaplikowałem zestaw `font-family` z bootstrapa - czyli zestaw testowany przez społeczność przez lata na wszystkim chyba - który nigdy mnie do tej pory nie zawiódł.
+Ponieważ zauważyłem, że materials i ag-grid coś tam "kombinuje" z fontami, w globalnym styles.scss dodałem: 
+```
+.ag-theme-balham,
+.mat-tab-group {
+  font-family: inherit;
+}
+``` 
+tzn kombinacje wyłączyłem. 
