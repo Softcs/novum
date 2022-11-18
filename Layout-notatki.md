@@ -43,7 +43,7 @@ Typy "dojścia" do elementów html, np. dla potrzeb stylowania oraz czytelności
 (np: `<div class="router-flex column cos-innego">`) 
 > atrybut uniwersalny: może zawirać dowolną ilość nazw 
 
-Proponuję stosowanie `class` jako podstawowego, głównego i wielowymiarowego atrybutu. 
+Proponuję stosowanie `class` jako atrybutu: podstawowego + głównego i wielowymiarowego. 
 
 #### Przykłady:
 
@@ -110,6 +110,10 @@ Wynik w html: `<div class="router-flex sit-sys-dictionaries">`
 Flex, a własciwie `flex box model` to technika polegająca na zachowaniu się `childrens` wewnątrz `parent` ze ścisłym związkiem miedzy nimi.  
 Parent z właściwością css `display:flex;` tworzy "przestrzeń" dla swoich pierwszopoziomowych `childrens`. 
 
+<details><summary> Przykład (click me!)</summary>
+
+---
+  
 > Przykład:
 ```
 <div style="display:flex;">
@@ -155,6 +159,11 @@ gdzie flex:1 1 auto; jest skrótem dla:
 jeśli element `jakis-element` jako `children` bedzie mial `parent` z display:flex to zajmie zajmie całą dostępną przestrzeń szerokości i wysokości jeśli bedzie sam,  jeśli będzie ich więcej - to sie podzielą przestrzenią: wysokością lub szerokością proporcjonalnie w zależności od `flex-direction` w `parent` 
 (default dla `flex-direction` = `row`, czyli podział szerokości)  
 natomiast jego `children` (`flex-direction:column`) podzielą się całą dostępną wysokością
+
+---
+  
+</details>
+
 
 
 ### class globalne w novum
