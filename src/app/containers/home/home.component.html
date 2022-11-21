@@ -1,11 +1,13 @@
 ﻿<mat-tab-group
   animationDuration="0"
-  ngClass="main-tab-group home-tab-content-container"
+  ngClass="main-tab-group home-tab-content-container flex-container-column"
   [(selectedIndex)]="selectedTabIndex"
   (selectedTabChange)="tabChanged($event)"
-  fxFlex="auto"
-  fxLayout="column"
 >
+<!-- 
+fxFlex="auto"
+fxLayout="column" 
+-->
 <!-- fxFlex -->
 
   <mat-tab *ngFor="let tab of tabs; let tabIndex = index">
@@ -42,14 +44,14 @@
     
     <!-- tu się zaczyna mat-tab-body-wrapper -->
 
-    <span>vvvvvvvvvvvvvvvvvvvvvvv</span>
+    <!-- <span>vvvvvvvvvvvvvvvvvvvvvvv</span> -->
 
     <!-- <div class="sit-tab-content">
       <app-tab-content [tab]="tab" fxFill></app-tab-content>
       <app-tab-content [tab]="tab"></app-tab-content>
     </div> -->
 
-    <app-tab-content [tab]="tab" ngClass="parent-home"></app-tab-content>
+    <app-tab-content [tab]="tab" ngClass="loaded-by-home-component"></app-tab-content>
 
   </mat-tab>
 

@@ -1,10 +1,17 @@
 <!-- <sit-dict-container ident="sitSysDictionaries" #sitDictcontainer fxFill> -->
-<sit-dict-container ident="sitSysDictionaries" #sitDictcontainer ngClass="sit-sys-dictionaries-content">
+<sit-dict-container 
+  ident="sitSysDictionaries" 
+  #sitDictcontainer 
+  ngClass="sit-sys-dictionaries-content flex-container-column"
+>
   
   <!-- <div fxLayout="row" fxFill class="content" fxLayoutGap="5px"> -->
-  <div fxLayout="row" fxFlex="auto" fxLayoutGap="5px" class="content content-jc-test">
+  <!-- <div fxLayout="row" fxFlex="auto" fxLayoutGap="5px" class="content content-container flex-container-row"> -->
+  <div fxLayoutGap="5px" class="content content-container flex-container-row">
     
-    <div fxLayout="column" [ngStyle]="{'flex': '0 1 content'}">
+    <!-- <div fxLayout="column" [ngStyle]="{'flex': '0 1 content'}" ngClass="column-left flex-container-column"> -->
+    <div ngClass="column-left flex-container-column">
+      
       <div class="sit-grid-title">Dictionaries</div>
       
       <sit-data-set-container ident="sitFilterSysDictionaries" >
@@ -27,6 +34,7 @@
     </div>
     
     <!-- flex-container-column -->
+   
     <div ngClass="column-right flex-container-column" fxLayout="column" fxFlex="auto">
     <!-- <div fxFlex="auto" fxLayout="column" ngClass="column-right"> -->
       <mat-tab-group id="tab-group" animationDuration="0ms" ngClass="flex-container-column">
@@ -37,7 +45,7 @@
         <!-- <div ngClass="column-right-content" fxFlex="auto" fxLayout="column"> -->
         <div ngClass="column-right-content flex-container-column" fxLayout="column">
           
-          <div fxLayout="column" ngClass="data-set-container">
+          <div fxLayout="column" ngClass="data-set-container flex-container-column">
           <!-- <div fxLayout="column" fxFlex=50 ngClass="data-set-container"> -->
           <!-- <div fxLayout="column" fxFlex="0 0 50%" ngClass="data-set-container"> -->
           <!-- <div ngClass="flex-container-column" [ngStyle]="{'flex': '0 0 50%'}"> -->
@@ -59,35 +67,37 @@
                 </ag-grid-angular>
               </div>
             </sit-data-set-container>
-            </div>
-            
-            <!-- <div fxLayout="column" fxFlex=50 ngClass="LOLEK"> -->
-            <!-- <div fxLayout="column" fxFlex="0 0 50%" ngClass="data-set-container"> -->
-            <!-- <div ngClass="flex-container-column" style="flex: 0 0 50%;"> -->
-            <div fxLayout="column" ngClass="data-set-container">
 
-              <div class="sit-grid-title">Actions</div>
-
-              <sit-data-set-container ident="sitFilterSysActions" >
-                <div class="sit-filter-bar">
-                  <sit-data-input #sitControl field="searchSysActions" label="Filtruj" appearance="outline" style="width: 300px" showRefreshButton="true"></sit-data-input>
-                </div>
-              </sit-data-set-container>
-              
-              <sit-data-set-container ident="sitSysActions" showActionsToolbar="true" ngClass="flex-container-column">
-                <div class="data-table flex-container-column">
-                  <ag-grid-angular #sitSetDataSource
-                    #agGrid
-                    id="gridSysActions"
-                    class="ag-theme-balham flex-container-column"
-                  >
-                  </ag-grid-angular>
-                </div>
-              </sit-data-set-container>
-
-            </div>
           </div>
-        </mat-tab>
+            
+          <!-- <div fxLayout="column" fxFlex=50 ngClass="LOLEK"> -->
+          <!-- <div fxLayout="column" fxFlex="0 0 50%" ngClass="data-set-container"> -->
+          <!-- <div ngClass="flex-container-column" style="flex: 0 0 50%;"> -->
+          <div fxLayout="column" ngClass="data-set-container">
+
+            <div class="sit-grid-title">Actions</div>
+
+            <sit-data-set-container ident="sitFilterSysActions" >
+              <div class="sit-filter-bar">
+                <sit-data-input #sitControl field="searchSysActions" label="Filtruj" appearance="outline" style="width: 300px" showRefreshButton="true"></sit-data-input>
+              </div>
+            </sit-data-set-container>
+            
+            <sit-data-set-container ident="sitSysActions" showActionsToolbar="true" ngClass="flex-container-column">
+              <div class="data-table flex-container-column">
+                <ag-grid-angular #sitSetDataSource
+                  #agGrid
+                  id="gridSysActions"
+                  class="ag-theme-balham flex-container-column"
+                >
+                </ag-grid-angular>
+              </div>
+            </sit-data-set-container>
+
+          </div>
+        </div>
+      </mat-tab>
+
         <mat-tab label="Info">
           <sit-data-set-container ident="sitSysDictionaries" fxLayout="column" fxFill>
             <div fxLayout="row" fxFill>
@@ -95,6 +105,7 @@
             </div>
           </sit-data-set-container>
         </mat-tab>
+
         <mat-tab label="JSON">
           <sit-data-set-container ident="sitSysDictionaries" fxLayout="column" (activeRowChanged)="activeRowChanged($event)" fxFill>
             <div class="json">

@@ -1,29 +1,15 @@
+
 $input-height: 40px;
 
-.sit-data-input {
-  border: 5px dotted red;
-}
-
-.mat-form-field {
-  border: 2px solid darkmagenta;
-}
-
-.mat-form-field-wrapper {
-  border: 2px dotted green;
-}
-
-
-
-
 .lookup-select-panel-class {
-  margin-top: $input-height!important;
+  margin-top: $input-height !important;
   margin-left: 20px;
-  font-size: 12px!important;
+  font-size: 12px !important;
 }
 
 .lookup-select {
   visibility: collapse;
-  width: 0px!important
+  width: 0px !important;
 }
 
 button {
@@ -61,7 +47,7 @@ button {
 }
 
 .mat-form-field {
-  min-width: 50px!important;
+  min-width: 50px !important;
   width: auto !important;
   height: 47px;
   .mat-form-field-wrapper {
@@ -91,5 +77,5 @@ sit-refresh-button {
 
 
 .right {
-  text-align: right!important;
+  text-align: right !important;
 }

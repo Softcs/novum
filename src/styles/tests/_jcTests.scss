@@ -3,63 +3,39 @@
 body {
   min-width: 1000px;
   max-width: 1920px;
+  display: flex;
+  flex-direction: column;
 }
 
 .mat-drawer-container {
   background-color: transparent;
 }
 
-// -------------------
-
-html {
-  border: 5px solid green;
-}
-body {
-  border: 5px solid #f60;
-}
 
 
-// .mat-tab-body-content {
-//   border: 10px solid #6f0;
-// }
-
-
-// .mat-tab-body-wrapper {
-//   border: 5px solid aqua;
-// }
-
-// .mat-tab-group {
-//   border: 5px dotted red;
-// }
-
-// .mat-tab-body {
-//   border: #06F 16px dashed;
-
-//   .mat-tab-body-content {
-//     border: #60F 10px dotted;
-//   }
-// }
-
-
-// .mat-tab-labels {
-//   border: 3px double green;
-// }
-
-// .mat-tab-label {
-//   border: 1px solid blue;
-// }
-
-// .mat-tab-label-content {
-//   border: 1px solid red;
-// }
-
-.sit-data-set-container {
-  border: 1px solid #6f0;
-}
-
-// -------------------
 
 // ------- global flex -------
+
+// .container-main {
+//   height: 100%;
+// }
+
+
+
+.mat-drawer-content>div>div {
+  display: flex;
+  // flex: 1 1 1e-9px;
+  flex: 1 1 1vh;
+}
+
+.mat-tab-group,
+.container-cols {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+
+}
+
 
 .flex-container-column,
 .flex-container-row {
@@ -115,10 +91,7 @@ mat-toolbar-multiple-rows,
 }
 
 .home-tab-content-container {
-  border: 20px dotted #0f6;
-  border-width: 10px;
-  // height: 100%;
-  flex: 1 1 100%;
+
 
   // element usunięty (home.component)
   // .sit-tab-content {
@@ -188,8 +161,6 @@ mat-toolbar-multiple-rows,
   width: max-content;
   min-width: 22em;
 
-  border: 10px pink dotted;
-
 }
 
 
@@ -197,20 +168,17 @@ mat-toolbar-multiple-rows,
 .container-menu
 {
   background-color: $sidenav-background-color;
-  // border: 3px dotted yellow;
 
   .mat-list-base {
     display: flex;
     flex-direction: column;
     background-color: $sidenav-background-color;
-    // border: 11px solid pink;
 
     .mat-list-item {
       font-size: inherit;
       height: auto;
       padding-top: 0.4em;
       padding-bottom: .4em;
-      // border: 1px dotted yellow;
     }
 
     .menu-depth-1 {
@@ -234,7 +202,6 @@ mat-toolbar-multiple-rows,
 
       sit-menu-list-item {
         font-size: .91em;
-        // border: 1px dotted yellow;
       }
     }
   }
@@ -248,40 +215,7 @@ mat-toolbar-multiple-rows,
 
 
 
-.container-main {
-  height: 100%;
-}
 
-.container {
-  border: 10px solid yellow;
-}
 
-.container-rows {
-  border: 10px solid green;
-}
-
-.container-cols {
-  display: flex;
-  flex-direction: column;
-  flex: 1 1 auto;
-  border: 10px solid blue;
-  // margin: 1px;
-}
-
-// .mat-drawer-container {
-// }
-// .mat-drawer-content {
-// }
-
-.mat-drawer-content>div>div {
-  display: flex;
-  // flex: 1 1 1e-9px;
-  border: 3px dotted brown;
-  flex: 1 1 1vh;
-}
-
-.main-app-menu-tab {
-  border: 10px dotted #f60;
-}
 
 // testy

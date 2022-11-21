@@ -1,8 +1,7 @@
 ﻿<!-- <sit-dict-container ident="sitPulpit" #sitDictcontainer fxFill > -->
 <sit-dict-container ident="sitPulpit" #sitDictcontainer ngClass="flex-container-column sit-pulpit-component">
-
-    <div ngClass="flex-container-row sit-pulpit-row-content-container">
-      
+  <div fxFill fxLayout="column">
+    <div fxFlex fxLayout="row">
       <div fxFlex=25 fxLayout="column" class="content">
         <div class="sit-grid-title">Lista obecności</div>
         <sit-data-set-container ident="sitFilterAttendanceList4User" >
@@ -26,7 +25,6 @@
           </div>
         </sit-data-set-container>
       </div>
-      
       <div fxFlex=40 fxLayout="column" class="content">
         <div class="sit-grid-title">Akceptacja wniosków urlopowych</div>
         <sit-data-set-container ident="sitFilterVac" >
@@ -46,7 +44,6 @@
           </div>
         </sit-data-set-container>
       </div>
-      
       <div fxFlex fxLayout="column" class="content">
         <div class="sit-grid-title">Lista kontaktów</div>
         <sit-data-set-container ident="sitEmployeeContactsFilter" >
@@ -69,7 +66,6 @@
         </sit-data-set-container>
       </div>      
     </div>
-    
     <div class="sit-pulpit-bottom-bar">v {{appVersion}} sv {{serverVersion}}</div>
-
+  </div>
 </sit-dict-container>
