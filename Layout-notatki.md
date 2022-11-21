@@ -214,14 +214,25 @@ realizuje co do niej należy!
 ### Angular + flex
 
 > **Warning**  
-> UWAGA! zauważyłem, że Angular potrafi kaskadowo przenosić właściwości flex  
+> UWAGA! zauważyłem, że Angular potrafi **nieprzewidywalnie** kaskadowo przenosić właściwości flex  
 > zwłaszcza w elementach materials  
-> mam DUŻE wątpliwości do przewidywalności tego czegoś...
+
+
+Przykładowe atrybuty flex Angulara, których czasem nalaży użyć  
+  (jeśli nie: angular potrafi inline wstawić: `display: block' i rozjechać układ):  
+```
+fxLayout="column" - dotyczy 'parent' -> wynik `display: flex; flex-direction: column;`
+fxFlex="auto" - dotyczy 'children'   -> wynik: `flex: 1 1 auto;`
+```
+  
+Ponieważ angular styluje elementy przez `class` i `inline` (nieco nieprzewidywalnie) niektóre elementy są ostylowane flex-em "podwójnie", czasem "potrójnie": to w niczym nie przeszkadza, a w pewnym sensie jest czytelniejsze: widzimy co robi Angular i jaka jest/była intencja
+
 
   
 ## Scss-y
 > **Warning**  
-> kolejność umieszczania i oraz importowania styli ma ZNACZENIE!
+> kolejność umieszczania i oraz importowania styli ma ZNACZENIE!  
+> style `inline` są nadrzędne nad `class` w css
   
 > Co do zasady proponuję w głównym globalnym `styles.scss` nie umieszczać definicji styli innych niż SUPER globalne!
 
