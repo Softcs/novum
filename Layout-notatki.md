@@ -19,26 +19,38 @@ Typy "dojścia" do elementów html, np. dla potrzeb stylowania oraz czytelności
 
 <details><summary> tagi HTML (click me!)</summary>
 
+---
+
 ### tagi: 
 (np. `div`, `span`, `mat-tab-body`, `sit-dict-container`)
 
 > standardowy tag html jako element layoutu jest: blokowy(np: `<div>`, `<p>`) lub liniowy(np: `<span>`, `<strong>`)  
 > niestandardowy tag jest "przezroczysty"(np: `<router>`, `<mat-tab-body>`) 
+  
+---
 
 </details>
 
 <details><summary> atrybut id (click me!)</summary>
-
+  
+--- 
+  
 ### id: 
+
 (np: `<div id="jakis-identykikator">`)
 
 > jednoznaczny identyfikator elementu, w kodzie HTML może wystąpić tylko 1 raz!  
-> Uwaga: nie może zawierać białych znaków!
+> Uwaga: nie może zawierać białych znaków!  
+> Proponuję używać **bardzo** OSTROŻNIE albo wcale - tym bardziej, ze Angular czasami dodaje dynamicznie!
 
+---
+  
 </details>
 
 <details><summary> atrybut class (click me!)</summary>
-
+  
+---
+  
 ### class: 
 (np: `<div class="router-flex column cos-innego">`) 
 > atrybut uniwersalny: może zawirać dowolną ilość nazw 
@@ -98,7 +110,9 @@ component zwraca siebie w tagu `div` z ogólną class + nazwą samego siebie
 Wynik w html: `<div class="router-flex sit-sys-dictionaries">`
 ```
 > Dzięki temu w `html` łatwiej się zorientować czym jest dany element. Pozostaje kwestia konwencji nazw: czy na tym "poziomie" użyć: `sit-sys-dictionaries` czy `sit-sys-dictionaries-component` ponieważ będziemy chcieli użyć `sit-sys-dictionaries` gdzieś wewnątrz komponentu.
-
+  
+---
+  
 </details>
 
 
@@ -237,6 +251,10 @@ Ponieważ angular styluje elementy przez `class` i `inline` (nieco nieprzewidywa
 > Co do zasady proponuję w głównym globalnym `styles.scss` nie umieszczać definicji styli innych niż SUPER globalne!
 
 "zwykłe" globalne można zaimportować z katalogu `/styles` np: `@import "./styles/tests/jcTests";`
+  
+> Angular encapsuluje lokalne/componentowe css/scss - używamy do:  
+>  - elementów zawartych w component, 
+>  - modyfikujemy reguły dla elementów zawartych w module i ostylowanych globalnie.
 
 
 ## Fonty
