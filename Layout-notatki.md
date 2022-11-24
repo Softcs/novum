@@ -17,11 +17,12 @@ Typy "dojścia" do elementów html, np. dla potrzeb stylowania oraz czytelności
 > dla `class` i `id` dopuszczalne jest stosowanie camelCase - proponuję (MOCNO) jednak zasadę opisaną wyżej
 
 
-<details><summary> tagi HTML (click me!)</summary>
+#### tagi html: 
+
+<details><summary> więcej o tagi HTML (click me!)</summary>
 
 ---
 
-### tagi: 
 (np. `div`, `span`, `mat-tab-body`, `sit-dict-container`)
 
 > standardowy tag html jako element layoutu jest: blokowy(np: `<div>`, `<p>`) lub liniowy(np: `<span>`, `<strong>`)  
@@ -31,12 +32,12 @@ Typy "dojścia" do elementów html, np. dla potrzeb stylowania oraz czytelności
 
 </details>
 
-<details><summary> atrybut id (click me!)</summary>
+#### attr id:  
+
+<details><summary> więcej o atrybut id (click me!)</summary>
   
 --- 
   
-### id: 
-
 (np: `<div id="jakis-identykikator">`)
 
 > jednoznaczny identyfikator elementu, w kodzie HTML może wystąpić tylko 1 raz!  
@@ -47,17 +48,18 @@ Typy "dojścia" do elementów html, np. dla potrzeb stylowania oraz czytelności
   
 </details>
 
-<details><summary> atrybut class (click me!)</summary>
+#### attr class:   
+
+<details><summary>więcej o atrybut class (click me!)</summary>
   
 ---
-  
-### class: 
+
 (np: `<div class="router-flex column cos-innego">`) 
 > atrybut uniwersalny: może zawirać dowolną ilość nazw 
 
 Proponuję stosowanie `class` jako atrybutu: podstawowego + głównego i wielowymiarowego. 
 
-#### Przykłady:
+##### Przykłady:
 
 `<przykladowy-tag class="ogolny-styl identyfikator-elementu inny-dowolny" >`
 
