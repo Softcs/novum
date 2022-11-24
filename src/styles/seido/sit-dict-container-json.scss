@@ -1,0 +1,42 @@
+// dotyczy:
+// src\app\components\sit-dict-container\sit-dict-container.component
+// ngx-json-viewer 
+// narzędzie zachowuje się nieprzewidywalnie i na wszelki wypadek wynoszę style na poziom globalny
+// prawdopodobnie problem jest z enkapsulacją styli poprzez przenoszenie elementu między kilkoma componentami
+
+
+
+
+// div.json
+div.ngx-json-viewer-container-main
+{
+    // border: 10px solid brown;
+    height: calc(100vh - 130px);
+}
+
+// .json .ngx-json-viewer 
+.ngx-json-viewer-container-main .ngx-json-viewer 
+{
+    overflow: auto !important;
+}
+
+.ngx-json-viewer-container {
+    // border: 5px dotted brown;
+    display: block;
+    overflow: hidden;
+}
+
+.data-set-container-json {
+    max-width: 100%;
+    // border: 10px dotted blue;
+}
+
+
+// do ogólnej oceny zachowania:
+// html {
+//     border: 5px solid green;
+// }
+// body {
+//     border: 5px solid #f60;
+// }
+

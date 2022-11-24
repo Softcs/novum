@@ -15,7 +15,8 @@ import { FactoryService } from '@app/_services/factory.service';
 @Component({
   selector: 'sit-navbar',
   templateUrl: './sit-navbar.component.html',
-  styleUrls: ['./sit-navbar.component.scss']
+  styleUrls: ['./sit-navbar.component.scss'],
+  host: {class: 'sit-navbar-component'}
 })
 export class SitNavbarComponent {
   // @ViewChild('appDrawer') appDrawer: ElementRef;

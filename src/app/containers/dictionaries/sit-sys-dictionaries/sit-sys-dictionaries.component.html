@@ -21,11 +21,11 @@
       </sit-data-set-container>
       
       <sit-data-set-container ident="sitSysDictionaries" showActionsToolbar="true" ngClass="flex-container-column">
-        <div class="data-table flex-container-column">
+        <div class="data-table">
           <ag-grid-angular #sitSetDataSource
             #agGrid
             id="gridSysDictionaries"
-            class="ag-theme-balham flex-container-column"
+            class="ag-theme-balham"
           >
           </ag-grid-angular>
         </div>
@@ -36,70 +36,74 @@
     <!-- flex-container-column -->
    
     <div ngClass="column-right flex-container-column" fxLayout="column" fxFlex="auto">
-    <!-- <div fxFlex="auto" fxLayout="column" ngClass="column-right"> -->
+      <!-- <div fxFlex="auto" fxLayout="column" ngClass="column-right"> -->
+      
       <mat-tab-group id="tab-group" animationDuration="0ms" ngClass="flex-container-column">
         
         <mat-tab label="Definicja">
         
-        <!-- <div fxFlex fxLayout="column" fxFill="auto" ngClass="column-right-content" > -->
-        <!-- <div ngClass="column-right-content" fxFlex="auto" fxLayout="column"> -->
-        <div ngClass="column-right-content flex-container-column" fxLayout="column">
+          <!-- <div fxFlex fxLayout="column" fxFill="auto" ngClass="column-right-content" > -->
+          <!-- <div ngClass="column-right-content" fxFlex="auto" fxLayout="column"> -->
+          <div ngClass="column-right-content flex-container-column" fxLayout="column">
           
-          <div fxLayout="column" ngClass="data-set-container flex-container-column">
-          <!-- <div fxLayout="column" fxFlex=50 ngClass="data-set-container"> -->
-          <!-- <div fxLayout="column" fxFlex="0 0 50%" ngClass="data-set-container"> -->
-          <!-- <div ngClass="flex-container-column" [ngStyle]="{'flex': '0 0 50%'}"> -->
+            <!-- <div fxLayout="column" fxFlex=50 ngClass="data-set-container"> -->
+            <!-- <div fxLayout="column" fxFlex="0 0 50%" ngClass="data-set-container"> -->
+            <!-- <div ngClass="flex-container-column" [ngStyle]="{'flex': '0 0 50%'}"> -->
+            <div fxLayout="column" ngClass="data-set-container flex-container-column">
 
-            <div class="sit-grid-title">Datasources</div>
-            <sit-data-set-container ident="sitFilterSysDatasources" >
-              <div class="sit-filter-bar">
-                <sit-data-input #sitControl field="searchSysDatasources" label="Filtruj" appearance="outline" style="width: 300px" showRefreshButton="true"></sit-data-input>
-              </div>
-            </sit-data-set-container>
+              <div class="sit-grid-title">Datasources</div>
+              <sit-data-set-container ident="sitFilterSysDatasources" >
+                <div class="sit-filter-bar">
+                  <sit-data-input #sitControl field="searchSysDatasources" label="Filtruj" appearance="outline" style="width: 300px" showRefreshButton="true"></sit-data-input>
+                </div>
+              </sit-data-set-container>
             
-            <sit-data-set-container ident="sitSysDatasources" showActionsToolbar="true" ngClass="flex-container-column">
-              <div class="data-table flex-container-column">
-                <ag-grid-angular #sitSetDataSource
-                  #agGrid
-                  id="gridSysDatasources"
-                  class="ag-theme-balham flex-container-column"
-                >
-                </ag-grid-angular>
-              </div>
-            </sit-data-set-container>
+              <sit-data-set-container ident="sitSysDatasources" showActionsToolbar="true" ngClass="flex-container-column">
+                <div class="data-table">
+                  <ag-grid-angular #sitSetDataSource
+                    #agGrid
+                    id="gridSysDatasources"
+                    class="ag-theme-balham"
+                  >
+                  </ag-grid-angular>
+                </div>
+              </sit-data-set-container>
+
+            </div>
+            
+            <!-- <div fxLayout="column" fxFlex=50 ngClass="LOLEK"> -->
+            <!-- <div fxLayout="column" fxFlex="0 0 50%" ngClass="data-set-container"> -->
+            <!-- <div ngClass="flex-container-column" style="flex: 0 0 50%;"> -->
+            <div fxLayout="column" ngClass="data-set-container">
+
+              <div class="sit-grid-title">Actions</div>
+
+              <sit-data-set-container ident="sitFilterSysActions" >
+                <div class="sit-filter-bar">
+                  <sit-data-input #sitControl field="searchSysActions" label="Filtruj" appearance="outline" style="width: 300px" showRefreshButton="true"></sit-data-input>
+                </div>
+              </sit-data-set-container>
+              
+              <sit-data-set-container ident="sitSysActions" showActionsToolbar="true" ngClass="flex-container-column">
+                <div class="data-table">
+                  <ag-grid-angular #sitSetDataSource
+                    #agGrid
+                    id="gridSysActions"
+                    class="ag-theme-balham"
+                  >
+                  </ag-grid-angular>
+                </div>
+              </sit-data-set-container>
+
+            </div>
 
           </div>
-            
-          <!-- <div fxLayout="column" fxFlex=50 ngClass="LOLEK"> -->
-          <!-- <div fxLayout="column" fxFlex="0 0 50%" ngClass="data-set-container"> -->
-          <!-- <div ngClass="flex-container-column" style="flex: 0 0 50%;"> -->
-          <div fxLayout="column" ngClass="data-set-container">
 
-            <div class="sit-grid-title">Actions</div>
-
-            <sit-data-set-container ident="sitFilterSysActions" >
-              <div class="sit-filter-bar">
-                <sit-data-input #sitControl field="searchSysActions" label="Filtruj" appearance="outline" style="width: 300px" showRefreshButton="true"></sit-data-input>
-              </div>
-            </sit-data-set-container>
-            
-            <sit-data-set-container ident="sitSysActions" showActionsToolbar="true" ngClass="flex-container-column">
-              <div class="data-table flex-container-column">
-                <ag-grid-angular #sitSetDataSource
-                  #agGrid
-                  id="gridSysActions"
-                  class="ag-theme-balham flex-container-column"
-                >
-                </ag-grid-angular>
-              </div>
-            </sit-data-set-container>
-
-          </div>
-        </div>
-      </mat-tab>
+        </mat-tab>
 
         <mat-tab label="Info">
-          <sit-data-set-container ident="sitSysDictionaries" fxLayout="column" fxFill>
+          <!-- <sit-data-set-container ident="sitSysDictionaries" fxLayout="column" fxFill> -->
+          <sit-data-set-container ident="sitSysDictionaries" ngClass="flex-container-column">
             <div fxLayout="row" fxFill>
               <sit-data-textarea type="textarea" #sitControl field="DictionaryInfo" label="" appearance="outline" [readonly]=true fxFill></sit-data-textarea>
             </div>
@@ -107,13 +111,16 @@
         </mat-tab>
 
         <mat-tab label="JSON">
-          <sit-data-set-container ident="sitSysDictionaries" fxLayout="column" (activeRowChanged)="activeRowChanged($event)" fxFill>
-            <div class="json">
-              <ngx-json-viewer [json]="json"></ngx-json-viewer>
+          <!-- <sit-data-set-container ident="sitSysDictionaries" fxLayout="column" (activeRowChanged)="activeRowChanged($event)" fxFill> -->
+          <sit-data-set-container ident="sitSysDictionaries" (activeRowChanged)="activeRowChanged($event)" ngClass="flex-container-column data-set-container-json">
+            <div ngClass="json ngx-json-viewer-container-main">
+              <ngx-json-viewer [json]="json" ngClass="ngx-json-viewer-container"></ngx-json-viewer>
             </div>
           </sit-data-set-container>
         </mat-tab>
+
       </mat-tab-group>
+
     </div>
   </div>
 </sit-dict-container>

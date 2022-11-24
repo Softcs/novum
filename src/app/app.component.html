@@ -5,6 +5,7 @@
   <sit-navbar
     [appDrawerParent]="appDrawer"
     *ngIf="currentUser"
+    ngClass="flex-container-column"
   >
   </sit-navbar>
 
@@ -15,7 +16,7 @@
   <!-- fxFlex = flex-basis: 1e-9px; = https://stackoverflow.com/questions/49238319/flex-layout-what-does-flex-basis-1e-09px-mean -->
   <!-- <mat-drawer-container fxFlex fxLayout="column" class="container-cols"> -->
   <!-- <mat-drawer-container ngClass="mat-drawer-container xxxx"> -->
-  <mat-drawer-container  ngClass="mat-drawer-container flex-container-column" fxFlex="auto" fxLayout="column">
+  <mat-drawer-container  ngClass="main-content-container flex-container-column mat-drawer-container" fxFlex="auto" fxLayout="column">
 
     <mat-drawer #appDrawer class="sidenav" mode="overlay" >
       <sit-side-menu></sit-side-menu>

@@ -9,7 +9,7 @@ import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-di
 })
 export class SitSysDictionariesComponent extends SitDictBaseComponent {
 
-  json;
+  json: any;
 
   public prepareColumnsDefinitnion() {
     this.gridColumnsDefinition["sitSysDictionaries"] = [

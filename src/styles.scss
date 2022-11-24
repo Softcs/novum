@@ -25,6 +25,7 @@
   @include ag-theme-balham();
 }
 
+.mat-toolbar,
 .ag-theme-balham,
 .mat-tab-group {
   font-family: inherit;
@@ -44,6 +45,8 @@
 @import "./styles/bootstrap/forms";
 @import "./styles/bootstrap/alert";
 @import "./styles/bootstrap/spinner";
+@import "./styles/bootstrap/headers";
+
 
 
 // ikony z font-awesome
@@ -55,4 +58,11 @@ i.fa {
 @import "./styles/seido/mainBack";
 @import "./styles/tests/jcTests";
 
+// obsługa ngx-json-viewer globalnie
+@import "./styles/seido/sit-dict-container-json";
+
+@import "./styles/seido/sit-actions-toolbar";
+
 // @import "./styles/tests/tmp-borders.scss";
+@import "./styles/tests/tmp-borders2.scss";
+

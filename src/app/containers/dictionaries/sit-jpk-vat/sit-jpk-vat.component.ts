@@ -6,7 +6,8 @@ import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-di
 @Component({
   selector: 'app-sit-jpk-vat',
   templateUrl: './sit-jpk-vat.component.html',
-  styleUrls: ['./sit-jpk-vat.component.scss']
+  styleUrls: ['./sit-jpk-vat.component.scss'],
+  host: {class: 'sit-jpk-vat-component'}
 })
 export class SitJPKVatComponent extends SitDictBaseComponent {
   public prepareColumnsDefinitnion() {

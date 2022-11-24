@@ -26,4 +26,11 @@
     flex: 0 0 auto;
     //flex: initial;
   }
+
+  :host-context(div.cdk-overlay-pane) .spinner {
+    color: green;
+    position: absolute;
+  }
 }
+
+

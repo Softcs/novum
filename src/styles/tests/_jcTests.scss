@@ -28,6 +28,10 @@ body {
   flex: 1 1 1vh;
 }
 
+as-split,
+as-split-area,
+ag-grid-angular,
+.data-table,
 .mat-tab-group,
 .container-cols {
   display: flex;
@@ -52,11 +56,6 @@ body {
 
 // ------- global flex -------
 
-// .data-table {
-//   display: flex;
-//   flex-direction: column;
-//   flex: 1 1 auto;  
-// }
 
 sit-actions-toolbar,
 .sit-actions-toolbar {
@@ -88,6 +87,14 @@ mat-toolbar-multiple-rows,
 .mat-toolbar-multiple-rows {
   height: auto;
   min-height: auto;
+}
+
+
+.sit-navbar-component {
+  &.flex-container-column {
+    flex: 0 1 0;
+  }
+  
 }
 
 .home-tab-content-container {
@@ -170,6 +177,7 @@ mat-toolbar-multiple-rows,
   background-color: $sidenav-background-color;
 
   .mat-list-base {
+    padding-top: 2px;
     display: flex;
     flex-direction: column;
     background-color: $sidenav-background-color;
