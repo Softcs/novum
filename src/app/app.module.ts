@@ -335,6 +335,8 @@ import { SitRoyaltyCalcOnePublicationFromDateComponent } from './containers/dict
 import { SitB2cConfigComponent } from './containers/dictionaries/sit-b2c-config/sit-b2c-config.component';
 import { SitB2cConfigEditComponent } from './containers/dictionaries/sit-b2c-config/actions/sit-b2c-config-edit/sit-b2c-config-edit.component';
 import { SitB2cProductsEditComponent } from './containers/dictionaries/sit-b2c-config/actions/sit-b2c-products-edit/sit-b2c-products-edit.component';
+import { SitB2cPublicationAudienceEditComponent } from './containers/dictionaries/sit-b2c-config/actions/sit-b2c-publication-audience-edit/sit-b2c-publication-audience-edit.component';
+import { SitB2cPublicationsFormsOfReleaseEditComponent } from './containers/dictionaries/sit-b2c-config/actions/sit-b2c-publications-forms-of-release-edit/sit-b2c-publications-forms-of-release-edit.component';
 
 @NgModule({
     imports: [
@@ -654,7 +656,9 @@ import { SitB2cProductsEditComponent } from './containers/dictionaries/sit-b2c-c
         SitRoyaltyCalcOnePublicationFromDateComponent,
         SitB2cConfigComponent,
         SitB2cConfigEditComponent,
-        SitB2cProductsEditComponent
+        SitB2cProductsEditComponent,
+        SitB2cPublicationAudienceEditComponent,
+        SitB2cPublicationsFormsOfReleaseEditComponent
 
     ],
     providers: [

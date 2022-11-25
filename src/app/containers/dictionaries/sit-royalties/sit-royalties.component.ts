@@ -63,8 +63,6 @@ export class SitRoyaltiesComponent extends SitDictBaseComponent {
       { headerName: 'Zaliczka', field: 'Advance', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, renderType: 'number'},
       { headerName: 'Należność', field: 'RoyDue', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, renderType: 'number'},
       { headerName: 'Do zapłaty', field: 'Payable', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, renderType: 'number'},
-
-
     ];
 
     this.detailCellRendererParamsBenef = {
@@ -79,11 +77,22 @@ export class SitRoyaltiesComponent extends SitDictBaseComponent {
           { headerName: 'Do zapłaty', field: 'Payable', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, renderType: 'number'},
           ],
       },
-
+      
       getDetailRowData: function (params) {
           params.successCallback(params.data.Det);
       },
     }
+
+    this.gridColumnsDefinition["sitRoyaltiesPublicationsToCalcInPeriod"] = [
+      { headerName: 'Id', field: 'sitRoyaltiesPublicationsToCalcInPeriodId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 50, defaultVisibility: false },
+      { headerName: 'GUID', field: 'sitRoyaltiesPublicationsToCalcInPeriodG', width: 100, defaultVisibility: false },
+      { headerName: 'Data od', field: 'DateFrom', filter: 'agTextColumnFilter', width: 100, sortable: false},
+      { headerName: 'Data do', field: 'DateTo', filter: 'agTextColumnFilter', width: 100, sortable: false },
+      { headerName: 'Publikacja', field: 'PublicationIdent', tooltipField: 'PublicationIdent', filter: 'agTextColumnFilter', width: 300, sort: 'asc', cellRenderer: 'agGroupCellRenderer' },
+      { headerName: 'Numer umowy', field: 'AgreementNo', filter: 'agTextColumnFilter', width: 150},
+      { headerName: 'Naliczono', field: 'RoyaltiesExists', width: 100, renderType: 'checkbox', cellClass: "grid-cell-centered", floatingFilter: false, sortable: false},
+    ];    
+
   }
   
   getPrintout() {

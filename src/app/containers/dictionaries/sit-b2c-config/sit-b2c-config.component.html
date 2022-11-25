@@ -1,6 +1,6 @@
 <sit-dict-container ident="sitB2cConfig" #sitDictcontainer fxFill >
     <as-split direction="vertical">
-      <as-split-area [size]="60">
+      <as-split-area [size]="30">
         <div fxFill fxLayout="column">
           <sit-data-set-container ident="sitB2CConfigFilter" >
             <div class="sit-filter-bar">
@@ -19,7 +19,7 @@
           </sit-data-set-container>
         </div>
       </as-split-area>
-      <as-split-area [size]="40">
+      <as-split-area [size]="70">
         <div fxLayout="column" fxFill>
           <mat-tab-group id="tab-group" animationDuration="0ms">
             <mat-tab label="Produkty">
@@ -30,6 +30,44 @@
                   </div>
                 </sit-data-set-container> 
                 <sit-data-set-container ident="sitB2CProducts" [showActionsToolbar]="true" fxFlex fxLayout="column">
+                  <div class="data-table" fxFlex>
+                      <ag-grid-angular
+                        #sitSetDataSource
+                        style="width: 100%; height: 100%;"
+                        class="ag-theme-balham"
+                      >
+                      </ag-grid-angular>
+                    </div>
+                </sit-data-set-container>
+              </div>
+            </mat-tab>
+            <mat-tab label="Grupy wiekowe">
+              <div fxFill fxLayout="column">
+                <sit-data-set-container ident="sitB2CPublicationAudienceFilter" >
+                  <div class="sit-filter-bar" fxLayout="row">
+                    <sit-data-input #sitControl field="searchAudience" label="Filtruj" placeholder="" appearance="outline" style="width: 300px;" [showRefreshButton]="true"></sit-data-input>
+                  </div>
+                </sit-data-set-container> 
+                <sit-data-set-container ident="sitB2CPublicationAudience" [showActionsToolbar]="true" fxFlex fxLayout="column">
+                  <div class="data-table" fxFlex>
+                      <ag-grid-angular
+                        #sitSetDataSource
+                        style="width: 100%; height: 100%;"
+                        class="ag-theme-balham"
+                      >
+                      </ag-grid-angular>
+                    </div>
+                </sit-data-set-container>
+              </div>
+            </mat-tab>
+            <mat-tab label="Formy wydania">
+              <div fxFill fxLayout="column">
+                <sit-data-set-container ident="sitB2CPublicationsFormsOfReleaseFilter" >
+                  <div class="sit-filter-bar" fxLayout="row">
+                    <sit-data-input #sitControl field="searchFormsOfRelease" label="Filtruj" placeholder="" appearance="outline" style="width: 300px;" [showRefreshButton]="true"></sit-data-input>
+                  </div>
+                </sit-data-set-container> 
+                <sit-data-set-container ident="sitB2CPublicationsFormsOfRelease" [showActionsToolbar]="true" fxFlex fxLayout="column">
                   <div class="data-table" fxFlex>
                       <ag-grid-angular
                         #sitSetDataSource

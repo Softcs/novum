@@ -233,6 +233,8 @@ import { SitRoyaltyCalcOnePublicationFromDateComponent } from '@app/containers/d
 import { SitB2cConfigComponent } from '@app/containers/dictionaries/sit-b2c-config/sit-b2c-config.component';
 import { SitB2cConfigEditComponent } from '@app/containers/dictionaries/sit-b2c-config/actions/sit-b2c-config-edit/sit-b2c-config-edit.component';
 import { SitB2cProductsEditComponent } from '@app/containers/dictionaries/sit-b2c-config/actions/sit-b2c-products-edit/sit-b2c-products-edit.component';
+import { SitB2cPublicationAudienceEditComponent } from '@app/containers/dictionaries/sit-b2c-config/actions/sit-b2c-publication-audience-edit/sit-b2c-publication-audience-edit.component';
+import { SitB2cPublicationsFormsOfReleaseEditComponent } from '@app/containers/dictionaries/sit-b2c-config/actions/sit-b2c-publications-forms-of-release-edit/sit-b2c-publications-forms-of-release-edit.component';
 
 
 @Injectable({ providedIn: 'root' })
@@ -473,6 +475,8 @@ export class FactoryService {
         sitB2cConfig: SitB2cConfigComponent,
         sitB2cConfigEdit: SitB2cConfigEditComponent,
         sitB2cProductsEdit: SitB2cProductsEditComponent,
+        sitB2cPublicationAudienceEdit: SitB2cPublicationAudienceEditComponent,
+        sitB2cPublicationsFormsOfReleaseEdit: SitB2cPublicationsFormsOfReleaseEditComponent,
     };
 
     public GetFactory(ident: string) {
