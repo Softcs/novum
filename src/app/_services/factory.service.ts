@@ -235,6 +235,8 @@ import { SitB2cConfigEditComponent } from '@app/containers/dictionaries/sit-b2c-
 import { SitB2cProductsEditComponent } from '@app/containers/dictionaries/sit-b2c-config/actions/sit-b2c-products-edit/sit-b2c-products-edit.component';
 import { SitB2cPublicationAudienceEditComponent } from '@app/containers/dictionaries/sit-b2c-config/actions/sit-b2c-publication-audience-edit/sit-b2c-publication-audience-edit.component';
 import { SitB2cPublicationsFormsOfReleaseEditComponent } from '@app/containers/dictionaries/sit-b2c-config/actions/sit-b2c-publications-forms-of-release-edit/sit-b2c-publications-forms-of-release-edit.component';
+import { SitB2cPublicationSubjectsEditComponent } from '@app/containers/dictionaries/sit-b2c-config/actions/sit-b2c-publication-subjects-edit/sit-b2c-publication-subjects-edit.component';
+import { SitB2cImprintsEditComponent } from '@app/containers/dictionaries/sit-b2c-config/actions/sit-b2c-imprints-edit/sit-b2c-imprints-edit.component';
 
 
 @Injectable({ providedIn: 'root' })
@@ -477,6 +479,8 @@ export class FactoryService {
         sitB2cProductsEdit: SitB2cProductsEditComponent,
         sitB2cPublicationAudienceEdit: SitB2cPublicationAudienceEditComponent,
         sitB2cPublicationsFormsOfReleaseEdit: SitB2cPublicationsFormsOfReleaseEditComponent,
+        sitB2cImprintsEdit: SitB2cImprintsEditComponent,
+        sitB2cPublicationSubjectsEdit: SitB2cPublicationSubjectsEditComponent,
     };
 
     public GetFactory(ident: string) {

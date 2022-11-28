@@ -90,7 +90,7 @@ export class SitRoyaltiesComponent extends SitDictBaseComponent {
       { headerName: 'Data do', field: 'DateTo', filter: 'agTextColumnFilter', width: 100, sortable: false },
       { headerName: 'Publikacja', field: 'PublicationIdent', tooltipField: 'PublicationIdent', filter: 'agTextColumnFilter', width: 300, sort: 'asc', cellRenderer: 'agGroupCellRenderer' },
       { headerName: 'Numer umowy', field: 'AgreementNo', filter: 'agTextColumnFilter', width: 150},
-      { headerName: 'Naliczono', field: 'RoyaltiesExists', width: 100, renderType: 'checkbox', cellClass: "grid-cell-centered", floatingFilter: false, sortable: false},
+      { headerName: 'Naliczono', field: 'RoyaltiesExists', width: 100, renderType: 'checkbox', cellClass: "grid-cell-centered", floatingFilter: false},
     ];    
 
   }

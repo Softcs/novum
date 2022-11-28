@@ -1,0 +1,13 @@
+<sit-proc-params
+  [(actionExecuteData)]="actionExecuteData"
+  >
+  <sit-data-set-container ident="sitB2cPublicationSubjectsEdit">
+    <div class="sit-proc-params-content" fxLayout="column" style="width: 350px;height: 400px;">
+      <div fxLayout="row">
+        <sit-data-checkbox #sitControl field="IsActive" label="Aktywne" fxFlex="30"></sit-data-checkbox>
+        <sit-data-input #sitControl type="text" field="PublicationSubjectIdent" label="Tematyka" appearance="outline" 
+            [lookupDisplayFields] = "['PublicationSubjectIdent', 'PublicationSubjectName']"></sit-data-input>
+      </div>
+    </div>    
+  </sit-data-set-container>
+</sit-proc-params>
