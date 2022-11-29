@@ -10,7 +10,16 @@
 
 
 
-
+.toolbar-filler {
+    flex: 0 0 0;
+    max-width: 0px;
+    padding: 0;
+    visibility: hidden;
+    width: 0;
+    min-width: auto;
+    border-color: transparent;
+    color: transparent;
+}
 
 
 
