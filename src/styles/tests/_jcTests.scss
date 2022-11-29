@@ -143,16 +143,62 @@ mat-toolbar-multiple-rows,
     //   opacity: 1;
     // }
 
-    .close-tab-icon {
-      margin-left: .4em;
-      font-size: 1.2em;
-      opacity: .6;
-      line-height: 1.4em;
+    .close-tab-button-container {
+      margin-left: .33em;
+      // border: 1px dotted #666;
+
+      .close-tab-icon-entity {
+        font-size: 1.3em;
+        opacity: 0.5;
+        line-height: 0;
+        display: inline-block;
+        vertical-align: middle;
+        font-weight: 600;
+        background-color: #555;
+        color: #fff;
+        border-radius: 3px;
+        padding: 7px 2px;
+
+        &:hover {
+          opacity: 1;
+          background-color: #c00;
+        }
+      }
+
+      .close-tab-icon {
+        // font-size: 1.2em;
+        // opacity: .6;
+        // line-height: 1em;
+
+        font-size: 1em;
+        opacity: 0.6;
+        line-height: 0;
+        display: inline;
+        vertical-align: middle;
+        font-weight: 600;
+        background-color: #555;
+        color: #fff;
+        border-radius: 3px;
+
+        &:hover{
+          opacity: 1;
+          // color:#c00;
+          background-color: #c00;
+        }
+      }
+
+    }
+
+    &.mat-tab-label-active .close-tab-button-container .close-tab-icon-entity{
+      background-color: #600;
+      
       &:hover{
         opacity: 1;
-        color:#c00;
+        background-color: #c00;
       }
     }
+
+
   }
 }
 

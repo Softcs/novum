@@ -22,14 +22,22 @@ fxLayout="column"
           <!-- <i class="fa fa-home" aria-hidden="true"></i> -->
         </div>
 
-        <i
+        <div 
           *ngIf="tab.title != 'Pulpit'"
-          class="fa fa-times close-tab-icon"
-          aria-hidden="true"
-          aria-label="Close"
-          (click)="removeTab(tabIndex)"
+          ngClass="close-tab-button-container"
         >
-        </i>
+          <!-- <div ngClass="close-tab-button"> -->
+            <!-- <i
+              class="fa fa-times close-tab-icon"
+              aria-hidden="true"
+              aria-label="Close"
+              (click)="removeTab(tabIndex)"
+            >
+            </i> -->
+            <!-- <mat-icon class="close-tab-icon" (click)="removeTab(tabIndex)">close</mat-icon> -->
+            <span class="close-tab-icon-entity" (click)="removeTab(tabIndex)">&times;</span>
+          <!-- </div> -->
+        </div>
 
         <!-- <div *ngIf="showClose(tabIndex)" class="sit-close-tab">
           <mat-icon class="close-tab-icon" (click)="removeTab(tabIndex)" >close</mat-icon> -->
