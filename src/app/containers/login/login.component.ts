@@ -59,8 +59,8 @@ export class LoginComponent implements OnInit {
             return false;
         }
 
-        // this.error = data.Errors[0].message;
-        this.error = "Błędne dane logowania!";
+        this.error = data.Errors[0].message;
+        // this.error = "Błędne dane logowania!";
         return true;
     }
 
