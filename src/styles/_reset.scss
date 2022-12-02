@@ -41,3 +41,8 @@ p {
 article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block;
 }
+
+textarea {
+  overflow: auto;
+  resize: vertical;
+}
