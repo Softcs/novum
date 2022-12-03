@@ -12,7 +12,7 @@ import { environment } from '../../../environments/environment';
   selector: 'app-pulpit',
   templateUrl: 'sit-pulpit.component.html',
   styleUrls: ['sit-pulpit.component.scss'],
-  host: {class: 'router-flex'}
+  host: {class: 'router-flex sit-pulpit-component-container'}
 })
 export class SitPulpitComponent  extends SitDictBaseComponent {
   appVersion = environment.appVersion;

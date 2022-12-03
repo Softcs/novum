@@ -1,29 +1,34 @@
 @import '../../../theme';
 
 :host {
-  display: block;
-  outline: none;
 
-  .mat-list-item.active {
-    background-color: $sidenav-item-active;
-    color: $sidenav-font-color !important;
-  }
-  &:hover,
-  &:focus {
-    >.mat-list-item:not(.expanded) {
-      background-color: $sidenav-hover-color !important;
-    }
+  &.sit-menu-list-item {
+    display: block;
+    // outline: none;
+    background-color: #35383c;
   }
 }
 
+
 .mat-list-item {
-  padding-bottom: 12px;
-  height: 40px;
-  color: $sidenav-font-color !important;
+  color: $sidenav-font-color;
 
   .routeIcon {
     margin-right: 10px;
   }
+
+  &.active {
+    background-color: $sidenav-item-active;
+    color: $sidenav-font-color;
+  }
+  &:hover,
+  &:focus {
+
+    background-color: $sidenav-hover-color;
+
+    // >.mat-list-item:not(.expanded) {
+    //   background-color: $sidenav-hover-color;
+    // }
+  }
+
 }
-
-

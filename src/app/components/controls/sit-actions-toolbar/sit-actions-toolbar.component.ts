@@ -5,7 +5,8 @@ import { ActionDefinitionWrapper } from '@app/_models/actionDefinitionWrapper';
 @Component({
   selector: 'sit-actions-toolbar',
   templateUrl: './sit-actions-toolbar.component.html',
-  styleUrls: ['./sit-actions-toolbar.component.scss']
+  styleUrls: ['./sit-actions-toolbar.component.scss'],
+  host: {class: 'sit-actions-toolbar-component'}
 })
 export class SitActionsToolbarComponent {
   

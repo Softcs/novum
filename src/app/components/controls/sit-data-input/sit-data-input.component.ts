@@ -11,7 +11,8 @@ import { OnCFService } from '@app/_services/oncf.service';
   selector: 'sit-data-input',
   templateUrl: './sit-data-input.component.html',
   styleUrls: ['./sit-data-input.component.scss'],
-  encapsulation : ViewEncapsulation.None
+  encapsulation : ViewEncapsulation.None,
+  host: {class: 'sit-data-input'},
 })
 export class SitDataInputComponent extends SitDataBaseComponent {
 

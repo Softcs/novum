@@ -1,5 +1,10 @@
-<a mat-list-item [ngStyle]="{'padding-left': (depth * 12) + 'px; '}" (click)="onItemSelected(item)"
-              [ngClass]="{'active': item.link ? router.isActive(item.link, true): false, 'expanded': expanded}">
+<!-- [ngStyle]="{'padding-left': (depth * 12) + 'px; '}" -->
+<a
+  mat-list-item
+  (click)="onItemSelected(item)"
+  [ngClass]="{'active': item.link ? router.isActive(item.link, true): false, 'expanded': expanded}"
+  fxLayout="column"
+>
   <mat-icon class="routeIcon">{{item.icon}}</mat-icon>
   {{item.caption}}
   <span fxFlex *ngIf="item.children && item.children.length">
@@ -9,7 +14,8 @@
     </mat-icon>
   </span>
 </a>
-<div *ngIf="expanded">
-  <sit-menu-list-item style="margin-bottom: 2px;" *ngFor="let child of item.children" [item]="child" [depth]="depth+1">
+
+<div *ngIf="expanded" [ngClass]="['menu-depth-'+(depth+1)]">
+  <sit-menu-list-item *ngFor="let child of item.children" [item]="child" [depth]="depth+1">
   </sit-menu-list-item>
 </div>

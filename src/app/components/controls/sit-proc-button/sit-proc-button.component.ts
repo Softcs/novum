@@ -14,7 +14,8 @@ import { MultiActionService } from '@app/_services/multi-action.service';
 @Component({
   selector: 'sit-proc-button',
   templateUrl: './sit-proc-button.component.html',
-  styleUrls: ['./sit-proc-button.component.scss']
+  styleUrls: ['./sit-proc-button.component.scss'],
+  host: {class: 'sit-proc-button-component'}
 })
 export class SitProcButtonComponent extends SitActionDirective {
   executing = false;

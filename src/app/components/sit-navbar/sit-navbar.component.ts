@@ -1,5 +1,6 @@
 import { SitChangeCompanyComponent } from './../../containers/sit-change-company/sit-change-company.component';
-import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, ChangeDetectorRef } from '@angular/core';
+// import { Component, OnInit, AfterViewInit, ViewChild, ElementRef, ChangeDetectorRef, Input } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ElementRef, ChangeDetectorRef, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { GatewayService } from '@app/_services';
 import { User } from '@app/_models';
@@ -10,18 +11,25 @@ import { TabService } from '@app/_services/tab.service';
 import { Tab } from '@app/_models/tab.model';
 import { FactoryService } from '@app/_services/factory.service';
 
+
 @Component({
   selector: 'sit-navbar',
   templateUrl: './sit-navbar.component.html',
-  styleUrls: ['./sit-navbar.component.scss']
+  styleUrls: ['./sit-navbar.component.scss'],
+  host: {class: 'sit-navbar-component'}
 })
 export class SitNavbarComponent {
-  @ViewChild('appDrawer') appDrawer: ElementRef;
+  // @ViewChild('appDrawer') appDrawer: ElementRef;
+  @Input() appDrawerParent: any;
   currentUser: User;
   caption: string;
   title = 'Pulpit';
   tabs = new Array<Tab>();
   selectedTabIndex: number;
+
+  ngAfterViewInit() {
+    // this.navService.appDrawer = this.appDrawer;
+  }
 
   constructor(
     private ref: ChangeDetectorRef,

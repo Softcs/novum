@@ -1,0 +1,275 @@
+// testy
+
+body {
+  min-width: 1000px;
+  max-width: 1920px;
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-drawer-container {
+  background-color: transparent;
+}
+
+
+
+
+// ------- global flex -------
+
+// .container-main {
+//   height: 100%;
+// }
+
+
+
+.mat-drawer-content>div>div {
+  display: flex;
+  // flex: 1 1 1e-9px;
+  flex: 1 1 1vh;
+}
+
+as-split,
+as-split-area,
+ag-grid-angular,
+.data-table,
+.mat-tab-group,
+.container-cols {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+
+}
+
+
+.flex-container-column,
+.flex-container-row {
+  display: flex;
+  flex: 1 1 auto;
+}
+
+.flex-container-column {
+  flex-direction: column;
+}
+.flex-container-row {
+  flex-direction: row;
+}
+
+// ------- global flex -------
+
+
+sit-actions-toolbar,
+.sit-actions-toolbar {
+  display: flex;
+  flex-direction: column;
+  //flex: 1 1 auto;
+  flex-basis: auto;
+}
+
+// sit-actions-toolbar,
+// .sit-actions-toolbar {
+//   border: 6px dashed rgb(144, 97, 172);
+// }
+
+mat-toolbar,
+.mat-toolbar {
+  flex: 0 0 auto;
+  // border: 6px dashed pink;
+}
+
+
+mat-toolbar,
+mat-toolbar-row,
+mat-toolbar-single-row,
+mat-toolbar-multiple-rows,
+.mat-toolbar,
+.mat-toolbar-row,
+.mat-toolbar-single-row,
+.mat-toolbar-multiple-rows {
+  height: auto;
+  min-height: auto;
+}
+
+
+.sit-navbar-component {
+  &.flex-container-column {
+    flex: 0 1 0;
+  }
+  
+}
+
+.home-tab-content-container {
+
+
+  // element usunięty (home.component)
+  // .sit-tab-content {
+  //   display: flex;
+  //   flex-direction: column;
+  //   flex: 1 1 auto;
+  //   border: 15px solid #f60;
+  // }
+
+  .mat-tab-body-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+
+    .mat-tab-body {
+      // border: #06F 16px dashed;
+      display: flex;
+      flex-direction: column;
+      flex: 1 1 auto;
+
+      .mat-tab-body-content {
+        // border: #60F 10px dotted;
+        display: flex;
+        flex-direction: column;
+        flex: auto;
+      }
+    }
+
+  }
+
+  .mat-tab-label {
+    height: 2.3em;
+    padding: 0 .8em;
+    min-width: auto;
+    
+    &.mat-tab-label-active,
+    &:hover {
+      opacity: 1;
+    }
+
+    // &:hover{
+    //   opacity: 1;
+    // }
+
+    .close-tab-button-container {
+      margin-left: .33em;
+      // border: 1px dotted #666;
+
+      .close-tab-icon-entity {
+        font-size: 1.3em;
+        opacity: 0.5;
+        line-height: 0;
+        display: inline-block;
+        vertical-align: middle;
+        font-weight: 600;
+        background-color: #555;
+        color: #fff;
+        border-radius: 3px;
+        padding: 7px 2px;
+
+        &:hover {
+          opacity: 1;
+          background-color: #c00;
+        }
+      }
+
+      .close-tab-icon {
+        // font-size: 1.2em;
+        // opacity: .6;
+        // line-height: 1em;
+
+        font-size: 1em;
+        opacity: 0.6;
+        line-height: 0;
+        display: inline;
+        vertical-align: middle;
+        font-weight: 600;
+        background-color: #555;
+        color: #fff;
+        border-radius: 3px;
+
+        &:hover{
+          opacity: 1;
+          // color:#c00;
+          background-color: #c00;
+        }
+      }
+
+    }
+
+    &.mat-tab-label-active .close-tab-button-container .close-tab-icon-entity{
+      background-color: #600;
+      
+      &:hover{
+        opacity: 1;
+        background-color: #c00;
+      }
+    }
+
+
+  }
+}
+
+
+
+
+.mat-drawer-container > .mat-drawer.sidenav
+{
+  bottom: auto;
+  //max-height: 90vh;
+  // max-height: calc(100vh - 60px);
+  max-height: 100%;
+  width: max-content;
+  min-width: 22em;
+
+}
+
+
+
+.container-menu
+{
+  background-color: $sidenav-background-color;
+
+  .mat-list-base {
+    padding-top: 2px;
+    display: flex;
+    flex-direction: column;
+    background-color: $sidenav-background-color;
+
+    .mat-list-item {
+      font-size: inherit;
+      height: auto;
+      padding-top: 0.4em;
+      padding-bottom: .4em;
+    }
+
+    .menu-depth-1 {
+      .mat-list-item {
+        padding-left: .5rem;
+      }
+    }
+    .menu-depth-2 {
+      .mat-list-item {
+        padding-left: 1rem;
+      }
+    }
+  }
+
+  sit-menu-list-item {
+    margin-bottom: 2px;
+
+    sit-menu-list-item {
+      margin-bottom: 0;
+      font-size: .92em;
+
+      sit-menu-list-item {
+        font-size: .91em;
+      }
+    }
+  }
+
+
+  // .mat-list-base {}
+
+
+}
+
+
+
+
+
+
+
+// testy
