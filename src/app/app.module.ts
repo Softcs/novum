@@ -337,6 +337,8 @@ import { SitB2cConfigEditComponent } from './containers/dictionaries/sit-b2c-con
 import { SitB2cProductsEditComponent } from './containers/dictionaries/sit-b2c-config/actions/sit-b2c-products-edit/sit-b2c-products-edit.component';
 import { SitB2cPublicationAudienceEditComponent } from './containers/dictionaries/sit-b2c-config/actions/sit-b2c-publication-audience-edit/sit-b2c-publication-audience-edit.component';
 import { SitB2cPublicationsFormsOfReleaseEditComponent } from './containers/dictionaries/sit-b2c-config/actions/sit-b2c-publications-forms-of-release-edit/sit-b2c-publications-forms-of-release-edit.component';
+import { SitB2cImprintsEditComponent } from './containers/dictionaries/sit-b2c-config/actions/sit-b2c-imprints-edit/sit-b2c-imprints-edit.component';
+import { SitB2cPublicationSubjectsEditComponent } from './containers/dictionaries/sit-b2c-config/actions/sit-b2c-publication-subjects-edit/sit-b2c-publication-subjects-edit.component';
 
 @NgModule({
     imports: [
@@ -658,7 +660,9 @@ import { SitB2cPublicationsFormsOfReleaseEditComponent } from './containers/dict
         SitB2cConfigEditComponent,
         SitB2cProductsEditComponent,
         SitB2cPublicationAudienceEditComponent,
-        SitB2cPublicationsFormsOfReleaseEditComponent
+        SitB2cPublicationsFormsOfReleaseEditComponent,
+        SitB2cImprintsEditComponent,
+        SitB2cPublicationSubjectsEditComponent
 
     ],
     providers: [
