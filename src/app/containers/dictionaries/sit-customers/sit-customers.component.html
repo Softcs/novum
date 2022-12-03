@@ -1,26 +1,41 @@
-<sit-dict-container ident="sitCustomers" #sitDictcontainer fxFill>
-  <div fxLayout="column" fxFill >
-    <as-split direction="horizontal">
-      <as-split-area [size]="25">
-        <div fxLayout="column" fxFill class="content">
+<sit-dict-container ident="sitCustomers" #sitDictcontainer fxFill ngClass="app-sit-customers flex-container-column">
+  <!-- <div fxLayout="column" fxFill ngClass="app-sit-customers-content-all-container"> -->
+
+    <as-split direction="horizontal" ngClass="flex-container-row">
+    
+      <!-- UWAGA! bez fxLayout="column" elementowi jest wymuszany flex-direction="row" mimo class="flex-container-column"  -->
+      <as-split-area [size]="25" fxLayout="column" ngClass="flex-container-column content">
+        
+        <!-- <div fxLayout="column" fxFill class="content"> -->
+        <!-- <div class="content flex-container-column"> -->
+          
           <div class="sit-filter-bar">
             <sit-data-set-container ident="sitFilterCustomers" >
                 <sit-data-input #sitControl id="searchCustomers" field="searchCustomers" label="Filtruj kontrahentów" placeholder="Nazwa, NIP, Identyfikator" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
             </sit-data-set-container>
           </div>
+
           <sit-data-set-container ident="sitCustomers" [showActionsToolbar]="true" #sitDataSetContainer fxFlex fxLayout="column">
             <div class="data-table" fxFlex>
-              <ag-grid-angular
+              <!-- <ag-grid-angular
                 #sitSetDataSource
                 style="width: 100%; height: 100%;"
+                class="ag-theme-balham"
+                [rowHeight]="60"
+              >
+              </ag-grid-angular> -->
+              <ag-grid-angular
+                #sitSetDataSource
                 class="ag-theme-balham"
                 [rowHeight]="60"
               >
               </ag-grid-angular>
             </div>
           </sit-data-set-container>
-        </div>
+
+        <!-- </div> -->
       </as-split-area>
+    
       <as-split-area [size]="75">
         <div fxLayout="column" fxFill>
           <mat-tab-group id="tab-group" animationDuration="0ms">
@@ -235,6 +250,8 @@
           </mat-tab-group>
         </div>
       </as-split-area>
+
     </as-split>
-  </div>
+
+  <!-- </div> -->
 </sit-dict-container>

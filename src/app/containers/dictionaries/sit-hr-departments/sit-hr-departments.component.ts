@@ -5,7 +5,7 @@ import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-di
   selector: 'sit-hr-departments',
   templateUrl: './sit-hr-departments.component.html',
   styleUrls: ['./sit-hr-departments.component.scss'],
-  host: {class: 'router-flex'}
+  host: {class: 'router-flex sit-hr-departments'}
 })
 export class SitHRDepartmentsComponent extends SitDictBaseComponent {
    public prepareColumnsDefinitnion() {

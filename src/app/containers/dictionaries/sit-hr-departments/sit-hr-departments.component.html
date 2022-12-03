@@ -1,11 +1,19 @@
 <sit-dict-container ident="sitHRDepartments" #sitDictcontainer fxFill>
-  <div fxLayout="column" fxFill class="content">
+
+  <div fxFill fxLayout="column" class="content">
+
     <div class="sit-filter-bar">
       <sit-data-set-container ident="sitFilter" >
           <sit-data-input #sitControl field="search" label="Filtruj" placeholder="" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
       </sit-data-set-container>
     </div>
-    <sit-data-set-container  ident="sitHRDepartments" fxFlex fxLayout="column">
+
+    <sit-data-set-container  
+      ident="sitHRDepartments" 
+      ngClass="sit-hr-departments-data-set-container"
+      fxFlex 
+      fxLayout="column"
+    >
       <div class="data-table" fxFlex>
         <ag-grid-angular
           #sitSetDataSource
@@ -16,5 +24,7 @@
         </ag-grid-angular>
       </div>
     </sit-data-set-container>
+
   </div>
+
 </sit-dict-container>

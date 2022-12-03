@@ -17,6 +17,7 @@ import { MatTab, MatTabGroup } from '@angular/material/tabs';
 
 @Component({
   selector: 'sit-data-set-container',
+  host: {class: 'sit-data-set-container'},
   templateUrl: './sit-data-set-container.component.html',
   styleUrls: ['./sit-data-set-container.component.scss']
 })
