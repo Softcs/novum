@@ -17,8 +17,8 @@ export class SitRoyaltiesComponent extends SitDictBaseComponent {
     this.gridColumnsDefinition["sitRoyaltiesHeaders"] = [
       { headerName: 'GUID', field: 'sitRoyaltiesHeadersG', filter: 'agTextColumnFilter', width: 100, defaultVisibility: false },
       { headerName: 'Publikacja', field: 'PublicationIdent', tooltipField: 'PublicationIdent', filter: 'agTextColumnFilter', width: 200, sort: 'asc', cellRenderer: 'agGroupCellRenderer' },
-      { headerName: 'Od', field: 'DateFrom', width: 90, renderType: 'date', renderFormat: 'yyyy-MM-dd', sort: 'asc' },
-      { headerName: 'Do', field: 'DateTo', width: 90, renderType: 'date', renderFormat: 'yyyy-MM-dd' },
+      { headerName: 'Od', field: 'DateFrom', width: 90, renderType: 'date', renderFormat: 'yyyy-MM-dd', sort: 'desc'},
+      { headerName: 'Do', field: 'DateTo', width: 90, renderType: 'date', renderFormat: 'yyyy-MM-dd'},
       { headerName: 'Wart. wal.', field: 'AmountCurr', type: 'numericColumn', filter: 'agNumberColumnFilter', renderType: 'number', width: 100, suppressMenu: true, agr: 'sum'},
       { headerName: 'Wal.', field: 'CurrencyIdent', filter: 'agTextColumnFilter', width: 60, suppressMenu: true },
       { headerName: 'Kurs wal.', field: 'ExRate', type: 'numericColumn', filter: 'agNumberColumnFilter', renderType: 'number', renderFormat: '1.4-4', width: 80, suppressMenu: true},
@@ -26,7 +26,8 @@ export class SitRoyaltiesComponent extends SitDictBaseComponent {
       { headerName: 'Zaliczka', field: 'Advance', type: 'numericColumn', filter: 'agNumberColumnFilter', renderType: 'number', width: 90, suppressMenu: true},
       { headerName: 'Należność', field: 'RoyDue', type: 'numericColumn', filter: 'agNumberColumnFilter', renderType: 'number', width: 90, suppressMenu: true},
       { headerName: 'Do zapłaty', field: 'Payable', type: 'numericColumn', filter: 'agNumberColumnFilter', renderType: 'number', width: 90, suppressMenu: true, agr: 'sum'},
-      { headerName: 'Beneficjenci', field: 'Benef', tooltipField: 'Benef', filter: 'agTextColumnFilter', width: 200,}
+      { headerName: 'Beneficjenci', field: 'Benef', tooltipField: 'Benef', filter: 'agTextColumnFilter', width: 200,},
+      { headerName: 'Agenci', field: 'Agent', tooltipField: 'Agent', filter: 'agTextColumnFilter', width: 200,}
 
     ],
 

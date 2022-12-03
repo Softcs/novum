@@ -11,16 +11,18 @@ export class SitB2cConfigComponent extends SitDictBaseComponent {
 
   public prepareColumnsDefinitnion() {
     this.gridColumnsDefinition["sitB2CConfig"] = [
-      { headerName: 'Id', field: 'sitB2CConfigId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 50, defaultVisibility: false },
+      { headerName: 'Id', field: 'sitB2CConfigId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 80, defaultVisibility: false },
       { headerName: 'GUID', field: 'sitB2CConfigG', width: 100, defaultVisibility: false },
       { headerName: 'Identyfikator', field: 'B2CConfigIdent', width: 200 },
       { headerName: 'Nazwa', field: 'B2CConfigName', width: 200 },
+      { headerName: 'Aktywny', field: 'IsActive', width: 80, renderType: 'checkbox', suppressMenu: true, cellClass: "grid-cell-centered"},
     ];
 
     this.gridColumnsDefinition["sitB2CProducts"] = [
-      { headerName: 'Id', field: 'sitB2CProductsId', type: 'numericColumn', filter: 'agNumberColumnFilter', flex: 1, defaultVisibility: false },
-      { headerName: 'GUID', field: 'sitB2CProductsG', flex: 1, defaultVisibility: false },
+      { headerName: 'Id', field: 'sitB2CProductsId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 80, defaultVisibility: false },
+      { headerName: 'GUID', field: 'sitB2CProductsG', width: 150, defaultVisibility: false },
       { headerName: 'Aktywny', field: 'IsActive', width: 80, renderType: 'checkbox', suppressMenu: true, cellClass: "grid-cell-centered"},
+      { headerName: 'B2C id', field: 'sitProductsId', filter: 'agTextColumnFilter', width: 100, },
       { headerName: 'Identyfikator', field: 'ProductIdent', filter: 'agTextColumnFilter', width: 150, },
       { headerName: 'EAN', field: 'EAN', filter: 'agTextColumnFilter', width: 120 },
       { headerName: 'Nazwa', field: 'ProductName', tooltipField: 'ProductName', filter: 'agTextColumnFilter', width: 300 },
@@ -41,36 +43,40 @@ export class SitB2cConfigComponent extends SitDictBaseComponent {
     ];
 
     this.gridColumnsDefinition["sitB2CPublicationAudience"] = [
-      { headerName: 'Id', field: 'sitB2CPublicationAudienceId', type: 'numericColumn', filter: 'agNumberColumnFilter', flex: 1, defaultVisibility: false },
-      { headerName: 'GUID', field: 'sitB2CPublicationAudienceG', flex: 1, defaultVisibility: false },
+      { headerName: 'Id', field: 'sitB2CPublicationAudienceId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 80, defaultVisibility: false },
+      { headerName: 'GUID', field: 'sitB2CPublicationAudienceG', width: 150, defaultVisibility: false },
       { headerName: 'Aktywny', field: 'IsActive', width: 80, renderType: 'checkbox', suppressMenu: true, cellClass: "grid-cell-centered"},
+      { headerName: 'B2C id', field: 'sitPublicationAudienceId', filter: 'agTextColumnFilter', width: 100, },
       { headerName: 'Identyfikator', field: 'AudienceIdent', filter: 'agTextColumnFilter', width: 150, },
       { headerName: 'Nazwa', field: 'AudienceName', tooltipField: 'AudienceName', filter: 'agTextColumnFilter', width: 300 },
       { headerName: 'Status wys.', field: 'StatusValueIdent_Main', tooltipField: 'StatusValueName_Main', width: 100, suppressMenu: true},
     ];
 
     this.gridColumnsDefinition["sitB2CPublicationsFormsOfRelease"] = [
-      { headerName: 'Id', field: 'sitB2CPublicationsFormsOfReleaseId', type: 'numericColumn', filter: 'agNumberColumnFilter', flex: 1, defaultVisibility: false },
-      { headerName: 'GUID', field: 'sitB2CPublicationsFormsOfReleaseG', flex: 1, defaultVisibility: false },
+      { headerName: 'Id', field: 'sitB2CPublicationsFormsOfReleaseId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 80, defaultVisibility: false },
+      { headerName: 'GUID', field: 'sitB2CPublicationsFormsOfReleaseG', width: 150, defaultVisibility: false },
       { headerName: 'Aktywny', field: 'IsActive', width: 80, renderType: 'checkbox', suppressMenu: true, cellClass: "grid-cell-centered"},
+      { headerName: 'B2C id', field: 'sitPublicationsFormsOfReleaseId', filter: 'agTextColumnFilter', width: 100, },
       { headerName: 'Identyfikator', field: 'FormOfReleaseIdent', filter: 'agTextColumnFilter', width: 150, },
       { headerName: 'Nazwa', field: 'FormOfReleaseDesc', tooltipField: 'FormOfReleaseDesc', filter: 'agTextColumnFilter', width: 300 },
       { headerName: 'Status wys.', field: 'StatusValueIdent_Main', tooltipField: 'StatusValueName_Main', width: 100, suppressMenu: true},
     ];
 
     this.gridColumnsDefinition["sitB2CImprints"] = [
-      { headerName: 'Id', field: 'sitB2CImprintsId', type: 'numericColumn', filter: 'agNumberColumnFilter', flex: 1, defaultVisibility: false },
-      { headerName: 'GUID', field: 'sitB2CImprintsG', flex: 1, defaultVisibility: false },
+      { headerName: 'Id', field: 'sitB2CImprintsId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 80, defaultVisibility: false },
+      { headerName: 'GUID', field: 'sitB2CImprintsG', width: 150, defaultVisibility: false },
       { headerName: 'Aktywny', field: 'IsActive', width: 80, renderType: 'checkbox', suppressMenu: true, cellClass: "grid-cell-centered"},
+      { headerName: 'B2C id', field: 'sitProductsTypesId', filter: 'agTextColumnFilter', width: 100, },
       { headerName: 'Identyfikator', field: 'ProductsTypeIdent', filter: 'agTextColumnFilter', width: 150, },
       { headerName: 'Nazwa', field: 'ProductsTypeDesc', tooltipField: 'ProductsTypeDesc', filter: 'agTextColumnFilter', width: 300 },
       { headerName: 'Status wys.', field: 'StatusValueIdent_Main', tooltipField: 'StatusValueName_Main', width: 100, suppressMenu: true},
     ];
 
     this.gridColumnsDefinition["sitB2CPublicationSubjects"] = [
-      { headerName: 'Id', field: 'sitB2CPublicationSubjectsId', type: 'numericColumn', filter: 'agNumberColumnFilter', flex: 1, defaultVisibility: false },
-      { headerName: 'GUID', field: 'sitB2CPublicationSubjectsG', flex: 1, defaultVisibility: false },
+      { headerName: 'Id', field: 'sitB2CPublicationSubjectsId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 80, defaultVisibility: false },
+      { headerName: 'GUID', field: 'sitB2CPublicationSubjectsG', width: 150, defaultVisibility: false },
       { headerName: 'Aktywny', field: 'IsActive', width: 80, renderType: 'checkbox', suppressMenu: true, cellClass: "grid-cell-centered"},
+      { headerName: 'B2C id', field: 'sitPublicationSubjectsId', filter: 'agTextColumnFilter', width: 100, },
       { headerName: 'Identyfikator', field: 'PublicationSubjectIdent', filter: 'agTextColumnFilter', width: 150, },
       { headerName: 'Nazwa', field: 'PublicationSubjectName', tooltipField: 'PublicationSubjectName', filter: 'agTextColumnFilter', width: 300 },
       { headerName: 'Status wys.', field: 'StatusValueIdent_Main', tooltipField: 'StatusValueName_Main', width: 100, suppressMenu: true},
