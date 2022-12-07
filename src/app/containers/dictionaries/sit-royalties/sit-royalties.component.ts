@@ -17,6 +17,7 @@ export class SitRoyaltiesComponent extends SitDictBaseComponent {
     this.gridColumnsDefinition["sitRoyaltiesHeaders"] = [
       { headerName: 'GUID', field: 'sitRoyaltiesHeadersG', filter: 'agTextColumnFilter', width: 100, defaultVisibility: false },
       { headerName: 'Publikacja', field: 'PublicationIdent', tooltipField: 'PublicationIdent', filter: 'agTextColumnFilter', width: 200, sort: 'asc', cellRenderer: 'agGroupCellRenderer' },
+      { headerName: 'Numer umowy', field: 'AgreementNo', filter: 'agTextColumnFilter', width: 150, sortable: false},
       { headerName: 'Od', field: 'DateFrom', width: 90, renderType: 'date', renderFormat: 'yyyy-MM-dd', sort: 'desc'},
       { headerName: 'Do', field: 'DateTo', width: 90, renderType: 'date', renderFormat: 'yyyy-MM-dd'},
       { headerName: 'Wart. wal.', field: 'AmountCurr', type: 'numericColumn', filter: 'agNumberColumnFilter', renderType: 'number', width: 100, suppressMenu: true, agr: 'sum'},
