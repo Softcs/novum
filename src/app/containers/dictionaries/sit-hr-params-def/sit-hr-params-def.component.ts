@@ -24,6 +24,7 @@ export class SitHRParamsDefComponent extends SitDictBaseComponent {
       { headerName: 'Skrót', field: 'ShortAbsenceIdent', filter: 'agTextColumnFilter', width: 120 },
       { headerName: 'Typ', field: 'AbsenceType', filter: 'agTextColumnFilter', width: 80 },
       { headerName: 'Wniosek', field: 'Is4VacReq', width: 80, renderType: 'checkbox', suppressMenu: true, cellClass: "grid-cell-centered"},
+      { headerName: 'Limit', field: 'IsYearLimit', width: 80, renderType: 'checkbox', suppressMenu: true, cellClass: "grid-cell-centered"},
       { headerName: 'Id zew 01', field: 'ExtAppIdent01', filter: 'agTextColumnFilter', width: 100, defaultVisibility: false },
       { headerName: 'Id zew 02', field: 'ExtAppIdent02', filter: 'agTextColumnFilter', width: 100, defaultVisibility: false },
     ];
