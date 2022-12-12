@@ -26,6 +26,11 @@
       <as-split-area [size]="20">
         <div fxLayout="column" fxFill class="content">
           <div class="sit-grid-title">Limity urlopów pracownika</div>
+          <sit-data-set-container ident="sitEmployeeVacationLimits4UserFilter" fxLayout="row">
+            <div class="sit-filter-bar" fxLayout="row">
+              <sit-data-checkbox #sitControl [refreshOnChange]="true" label="Następny rok" field="nextYearUser" widht="100px"></sit-data-checkbox>
+            </div>
+          </sit-data-set-container>          
           <sit-data-set-container ident="sitEmployeeVacationLimits4User" [showActionsToolbar]="false" #sitDataSetContainer fxFlex fxLayout="column">
             <div class="data-table" fxFlex>
               <ag-grid-angular
@@ -38,6 +43,11 @@
             </div>
           </sit-data-set-container>
           <div class="sit-grid-title">Limity urlopów podwładnego</div>
+          <sit-data-set-container ident="sitEmployeeVacationLimits4SubordinateFilter" fxLayout="row">
+            <div class="sit-filter-bar" fxLayout="row">
+              <sit-data-checkbox #sitControl [refreshOnChange]="true" label="Następny rok" field="nextYearSub" widht="100px"></sit-data-checkbox>
+            </div>
+          </sit-data-set-container>          
           <sit-data-set-container ident="sitEmployeeVacationLimits4Subordinate" [showActionsToolbar]="false" #sitDataSetContainer fxFlex fxLayout="column">
             <div class="data-table" fxFlex>
               <ag-grid-angular

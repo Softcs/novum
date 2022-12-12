@@ -39,16 +39,16 @@ export class SitUtilSqlObjectsComponent extends SitDictBaseComponent {
    this.gridColumnsDefinition["sitUtilSQLObjectVersions"] = [       
       { headerName: 'Version Id', field: 'VersionId', type: "numericColumn", filter: 'agNumberColumnFilter', width: 120 },
       { headerName: 'Version date', field: 'VersionDate', filter: 'agTextColumnFilter', width: 150 ,
-      renderType: "date", renderFormat: "yyyy-MM-dd HH:mm:ss" 
+        renderType: "date", renderFormat: "yyyy-MM-dd HH:mm:ss" 
       },
       { headerName: 'Def checksum', field: 'DefinitionCs', type: "numericColumn", filter: 'agNumberColumnFilter', width: 120 },
       { headerName: 'DB version', field: 'DBVersion', type: "numericColumn", filter: 'agNumberColumnFilter', width: 120 }
     ];
     
     this.gridColumnsDefinition["sitUtilSQLAddBatches4Object"] = [       
-      { headerName: 'For proc type', field: 'ForProcType', filter: 'agTextColumnFilter', width: 100 },
-      { headerName: 'Spot ident', field: 'SpotIdent', filter: 'agTextColumnFilter', width: 200 },
-      { headerName: 'Order', field: 'Order', type: "numericColumn", filter: 'agNumberColumnFilter', width: 100 },
+      { headerName: 'For proc type', field: 'ForProcType', filter: 'agTextColumnFilter', width: 100, sort: 'asc' },
+      { headerName: 'Spot ident', field: 'SpotIdent', filter: 'agTextColumnFilter', width: 200, sort: 'asc' },
+      { headerName: 'Order', field: 'Order', type: "numericColumn", filter: 'agNumberColumnFilter', width: 100, sort: 'asc' },
       { headerName: 'Description', field: 'Description', filter: 'agTextColumnFilter', width: 400 }
      ];
     
