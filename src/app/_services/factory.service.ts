@@ -237,6 +237,8 @@ import { SitB2cPublicationAudienceEditComponent } from '@app/containers/dictiona
 import { SitB2cPublicationsFormsOfReleaseEditComponent } from '@app/containers/dictionaries/sit-b2c-config/actions/sit-b2c-publications-forms-of-release-edit/sit-b2c-publications-forms-of-release-edit.component';
 import { SitB2cPublicationSubjectsEditComponent } from '@app/containers/dictionaries/sit-b2c-config/actions/sit-b2c-publication-subjects-edit/sit-b2c-publication-subjects-edit.component';
 import { SitB2cImprintsEditComponent } from '@app/containers/dictionaries/sit-b2c-config/actions/sit-b2c-imprints-edit/sit-b2c-imprints-edit.component';
+import { SitOfficeDocHeadersComponent } from '@app/containers/dictionaries/sit-office-doc-headers/sit-office-doc-headers.component';
+import { SitOfficeDocHeadersEditComponent } from '@app/containers/dictionaries/sit-office-doc-headers/actions/sit-office-doc-headers-edit/sit-office-doc-headers-edit.component';
 
 
 @Injectable({ providedIn: 'root' })
@@ -481,6 +483,8 @@ export class FactoryService {
         sitB2cPublicationsFormsOfReleaseEdit: SitB2cPublicationsFormsOfReleaseEditComponent,
         sitB2cImprintsEdit: SitB2cImprintsEditComponent,
         sitB2cPublicationSubjectsEdit: SitB2cPublicationSubjectsEditComponent,
+        sitOfficeDocHeaders: SitOfficeDocHeadersComponent,
+        sitOfficeDocHeadersEdit: SitOfficeDocHeadersEditComponent,
     };
 
     public GetFactory(ident: string) {

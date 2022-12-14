@@ -1,0 +1,60 @@
+<sit-dict-container ident="sitOfficeDocHeaders" #sitDictcontainer fxFlexFill>
+  <div fxFill class="content" fxLayout="column">
+    <div class="sit-filter-bar">
+      <sit-data-set-container ident="sitFilter" fxLayout="row">
+        <sit-data-input #sitControl field="OfficeDocIdent" label="Typ dok." placeholder="Typ" appearance="outline" style="width: 100px;"
+          [lookupDisplayFields] = "['OfficeDocIdent', 'OfficeDocName']">
+        </sit-data-input>
+        <sit-data-input #sitControl field="search" label="Dokument" placeholder="" appearance="outline" style="width: 250px;"></sit-data-input>
+        <sit-data-input #sitControl field="Customer" label="Kontrahent" placeholder="" appearance="outline" style="width: 250px;"></sit-data-input>
+        <sit-data-input #sitControl field="DateFrom" type="date" label="Od" appearance="outline" style="width: 130px;"></sit-data-input>
+        <sit-data-input #sitControl field="DateTo" type="date" label="Do" appearance="outline" style="width: 195px;" showRefreshButton="true" ></sit-data-input>
+      </sit-data-set-container>
+    </div>
+    <as-split direction="horizontal">
+      <as-split-area [size]="55">
+        <as-split direction="vertical">
+          <as-split-area [size]="50">
+            <div fxLayout="column" fxFill>
+              <sit-data-set-container  ident="sitOfficeDocHeaders" showActionsToolbar="true" fxFlex fxLayout="column">
+                <div class="data-table" fxFlex>
+                  <ag-grid-angular
+                    #sitSetDataSource
+                    style="width: 100%; height: 100%;"
+                    class="ag-theme-balham"
+                  >
+                  </ag-grid-angular>
+                </div>
+              </sit-data-set-container>
+            </div>
+          </as-split-area>
+          <as-split-area [size]="50">
+            <mat-tab-group id="tab-group" animationDuration="0ms">
+              <mat-tab label="Info">
+              </mat-tab>
+              <mat-tab label="Załączniki">
+                <sit-data-set-container  ident="sitAttachments" showActionsToolbar="true" fxFlex fxLayout="column">
+                  <div class="data-table" fxFlex>
+                    <ag-grid-angular
+                      #sitSetDataSource
+                      style="width: 100%; height: 100%;"
+                      class="ag-theme-balham"
+                    >
+                    </ag-grid-angular>
+                  </div>
+                </sit-data-set-container>
+              </mat-tab>
+            </mat-tab-group>
+        </as-split-area>
+        </as-split>
+      </as-split-area>
+      <as-split-area [size]="45">
+        <div fxFill>
+          <sit-data-set-container  ident="sitAttachments" fxFlex fxLayout="column">
+            <sit-pdf-viewer #sitControl reportType="att" field="FileName" fxFill></sit-pdf-viewer>
+          </sit-data-set-container>
+        </div>        
+      </as-split-area>
+    </as-split>
+  </div>
+</sit-dict-container>

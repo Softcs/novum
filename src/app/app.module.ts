@@ -339,6 +339,8 @@ import { SitB2cPublicationAudienceEditComponent } from './containers/dictionarie
 import { SitB2cPublicationsFormsOfReleaseEditComponent } from './containers/dictionaries/sit-b2c-config/actions/sit-b2c-publications-forms-of-release-edit/sit-b2c-publications-forms-of-release-edit.component';
 import { SitB2cImprintsEditComponent } from './containers/dictionaries/sit-b2c-config/actions/sit-b2c-imprints-edit/sit-b2c-imprints-edit.component';
 import { SitB2cPublicationSubjectsEditComponent } from './containers/dictionaries/sit-b2c-config/actions/sit-b2c-publication-subjects-edit/sit-b2c-publication-subjects-edit.component';
+import { SitOfficeDocHeadersComponent } from './containers/dictionaries/sit-office-doc-headers/sit-office-doc-headers.component';
+import { SitOfficeDocHeadersEditComponent } from './containers/dictionaries/sit-office-doc-headers/actions/sit-office-doc-headers-edit/sit-office-doc-headers-edit.component';
 
 @NgModule({
     imports: [
@@ -662,7 +664,9 @@ import { SitB2cPublicationSubjectsEditComponent } from './containers/dictionarie
         SitB2cPublicationAudienceEditComponent,
         SitB2cPublicationsFormsOfReleaseEditComponent,
         SitB2cImprintsEditComponent,
-        SitB2cPublicationSubjectsEditComponent
+        SitB2cPublicationSubjectsEditComponent,
+        SitOfficeDocHeadersComponent,
+        SitOfficeDocHeadersEditComponent
 
     ],
     providers: [
