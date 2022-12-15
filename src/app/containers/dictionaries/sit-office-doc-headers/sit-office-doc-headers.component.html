@@ -18,9 +18,13 @@
               </div>
               <sit-data-set-container  ident="sitOfficeDocHeaders" showActionsToolbar="true" fxFlex fxLayout="column">
                 <div class="data-table" fxFlex>
-                  <ag-grid-angular
+                  <!-- <ag-grid-angular
                     #sitSetDataSource
                     style="width: 100%; height: 100%;"
+                    class="ag-theme-balham"
+                  > -->
+                  <ag-grid-angular
+                    #sitSetDataSource
                     class="ag-theme-balham"
                   >
                   </ag-grid-angular>
@@ -32,22 +36,37 @@
             <mat-tab-group id="tab-group" animationDuration="0ms">
               <mat-tab label="Info">
                 <sit-data-set-container  ident="sitOfficeDocHeaders" fxFlex fxLayout="column">
-                  <sit-data-label type="text" #sitControl field="OfficeDocName" label="" labelWidth="0" valueWidth="170"></sit-data-label>
+                  <!-- <sit-data-label type="text" #sitControl field="OfficeDocName" label="" labelWidth="0" valueWidth="170"></sit-data-label>
                   <sit-data-label type="text" #sitControl field="OfficeDocNumber" label="Numer:" labelWidth="80" valueWidth="90"></sit-data-label>
                   <sit-data-label type="text" #sitControl field="RegDate" label="Data rej.:" labelWidth="80" valueWidth="90"></sit-data-label>
                   <sit-data-label type="text" #sitControl field="CustName" label="Kontrahent:" labelWidth="90" valueWidth="600"></sit-data-label>
                   <sit-data-label type="text" #sitControl field="VATId" label="NIP:" labelWidth="90" valueWidth="600"></sit-data-label>
                   <sit-data-label type="text" #sitControl field="CustAddress" label="Adres:" labelWidth="90" valueWidth="600"></sit-data-label>
                   <sit-data-label type="text" #sitControl field="DocumentNumber" label="Nr dok.:" labelWidth="90" valueWidth="600"></sit-data-label>
-                  <sit-data-label type="text" #sitControl field="OfficeDocDescription" label="Opis:" labelWidth="90" valueWidth="600"></sit-data-label>
+                  <sit-data-label type="text" #sitControl field="OfficeDocDescription" label="Opis:" labelWidth="90" valueWidth="600"></sit-data-label> -->
+
+                  <sit-data-label #sitControl field="OfficeDocName" type="header"></sit-data-label>
+                  <sit-data-label #sitControl field="OfficeDocNumber" label="Numer"></sit-data-label>
+                  <sit-data-label #sitControl field="RegDate" label="Data rejestracji dokumentu" ></sit-data-label>
+                  <sit-data-label #sitControl field="CustName" label="Kontrahent" ></sit-data-label>
+                  <sit-data-label #sitControl field="VATId" label="NIP" ></sit-data-label>
+                  <sit-data-label #sitControl field="CustAddress" label="Adres" ></sit-data-label>
+                  <sit-data-label #sitControl field="DocumentNumber" label="Nr dok." ></sit-data-label>
+                  <sit-data-label #sitControl field="OfficeDocDescription" label="Opis"></sit-data-label>
+                  <sit-data-label #sitControl field={152895154.5} label="Jakis nrumer" type="number"></sit-data-label>
+
                 </sit-data-set-container>
               </mat-tab>
               <mat-tab label="Załączniki">
                 <sit-data-set-container  ident="sitAttachments" showActionsToolbar="true" fxFlex fxLayout="column">
                   <div class="data-table" fxFlex>
-                    <ag-grid-angular
+                    <!-- <ag-grid-angular
                       #sitSetDataSource
                       style="width: 100%; height: 100%;"
+                      class="ag-theme-balham"
+                    > -->
+                    <ag-grid-angular
+                      #sitSetDataSource
                       class="ag-theme-balham"
                     >
                     </ag-grid-angular>

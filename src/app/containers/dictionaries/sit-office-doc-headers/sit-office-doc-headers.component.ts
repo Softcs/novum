@@ -5,7 +5,7 @@ import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-di
   selector: 'app-sit-office-doc-headers',
   templateUrl: './sit-office-doc-headers.component.html',
   styleUrls: ['./sit-office-doc-headers.component.scss'],
-  host: {class: 'router-flex'}
+  host: {class: 'router-flex sit-office-doc-headers-component'}
 })
 export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
   public prepareColumnsDefinitnion() {

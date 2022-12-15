@@ -8,14 +8,15 @@ import { formatDate, formatNumber } from '@angular/common';
   selector: 'sit-data-label',
   templateUrl: './sit-data-label.component.html',
   styleUrls: ['./sit-data-label.component.scss'],
-  encapsulation : ViewEncapsulation.None
+  encapsulation : ViewEncapsulation.None,
+  host: {class: 'sit-data-label-component flex-container-row'}
 })
 export class SitDataLabelComponent extends SitDataBaseComponent {
 
   @Input() type = 'text';
   @Input() label = '';
-  @Input() valueWidth;
-  @Input() labelWidth;
+  // @Input() valueWidth;
+  // @Input() labelWidth;
 
   constructor(
     @Inject(LOCALE_ID) protected locale: string,
@@ -27,11 +28,21 @@ export class SitDataLabelComponent extends SitDataBaseComponent {
   }
   
   public setValue(value: any) {
+
+console.log('value: ', value);
+
    // console.log(this.type)
-    this.value = (this.type === 'text' ? value : formatNumber(value, this.locale, '1.2-2').replace(/[,]/g,' '));
+    this.value = (
+      this.type !== 'number' 
+      ? value 
+      : formatNumber(value, this.locale, '1.2-2').replace(/[,]/g,' ') 
+    );
   }
 
   public getValue(): string {
+
+console.log('inputElement: ', this.inputElement);
+
     return this.inputElement.nativeElement.value   
   }
 }

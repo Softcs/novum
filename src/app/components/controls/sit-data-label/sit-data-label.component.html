@@ -1,8 +1,8 @@
-<div fxLayout="row">
-  <div *ngIf="label" class="sit-data-label" [style.width.px]="labelWidth">
+<!-- <div fxLayout="row"> -->
+  <div *ngIf="label" [ngClass]="['sit-data-label-name']"  title={{label}}>
     {{label}}
   </div>
-  <div class="sit-data-label-value" [style.width.px]="valueWidth">
+  <div [ngClass]="['sit-data-label-value', type]" title={{label}}>
     {{value}}
   </div>
-</div>
+<!-- </div> -->
