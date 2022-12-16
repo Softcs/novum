@@ -46,15 +46,18 @@
                   <sit-data-label type="text" #sitControl field="OfficeDocDescription" label="Opis:" labelWidth="90" valueWidth="600"></sit-data-label> -->
 
                   <sit-data-label #sitControl field="OfficeDocName" type="header"></sit-data-label>
-                  <sit-data-label #sitControl field="OfficeDocNumber" label="Numer"></sit-data-label>
+                  <sit-data-label #sitControl field="OfficeDocNumber" label="Numer w rejestrze"></sit-data-label>
                   <sit-data-label #sitControl field="RegDate" label="Data rejestracji dokumentu" ></sit-data-label>
                   <sit-data-label #sitControl field="CustName" label="Kontrahent" ></sit-data-label>
                   <sit-data-label #sitControl field="VATId" label="NIP" ></sit-data-label>
                   <sit-data-label #sitControl field="CustAddress" label="Adres" ></sit-data-label>
-                  <sit-data-label #sitControl field="DocumentNumber" label="Nr dok." ></sit-data-label>
+                  <sit-data-label #sitControl field="DocumentNumber" label="Nr dokumentu" ></sit-data-label>
                   <sit-data-label #sitControl field="OfficeDocDescription" label="Opis"></sit-data-label>
-                  <sit-data-label #sitControl field={152895154.5} label="Jakis nrumer" type="number"></sit-data-label>
-
+                  <div fxLayout="row" fxLayoutAlign="space-between center" >
+                    <sit-data-label #sitControl field="Net" label="Netto" type="number"></sit-data-label>
+                    <sit-data-label #sitControl field="Vat" label="VAT" type="number"></sit-data-label>
+                    <sit-data-label #sitControl field="Gross" label="Brutto" type="number"></sit-data-label>
+                 </div>
                 </sit-data-set-container>
               </mat-tab>
               <mat-tab label="Załączniki">
