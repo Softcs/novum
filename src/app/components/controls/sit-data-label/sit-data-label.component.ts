@@ -29,7 +29,7 @@ export class SitDataLabelComponent extends SitDataBaseComponent {
   
   public setValue(value: any) {
 
-console.log('value: ', value);
+//console.log('value: ', value);
 
    // console.log(this.type)
     this.value = (
@@ -41,7 +41,7 @@ console.log('value: ', value);
 
   public getValue(): string {
 
-console.log('inputElement: ', this.inputElement);
+//console.log('inputElement: ', this.inputElement);
 
     return this.inputElement.nativeElement.value   
   }
