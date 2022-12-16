@@ -28,12 +28,15 @@ body {
   flex: 1 1 1vh;
 }
 
+
 as-split,
 as-split-area,
 ag-grid-angular,
 .data-table,
 .mat-tab-group,
-.container-cols {
+.container-cols, 
+.sit-pdf-viewer-component
+{
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
