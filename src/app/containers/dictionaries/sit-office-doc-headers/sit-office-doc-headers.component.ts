@@ -12,6 +12,14 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
     this.gridColumnsDefinition["sitOfficeDocHeaders"] = [
       { headerName: 'Id', field: 'sitOfficeDocHeadersId',width: 90, defaultVisibility: false },
       { headerName: 'GUID', field: 'sitOfficeDocHeadersG',width: 150, defaultVisibility: false },
+      { headerName: '', field: 'StatusValueIdent',  tooltipField: 'StatusValueName', width: 40, suppressMenu: true,
+        cellStyle: function(params) {
+          if (params.value === 'ED') { return { color: 'gray', 'font-weight': 700 }; }
+          else if (params.value === 'DZ') { return { color: 'green', 'font-weight': 700 }; }
+          else if (params.value === 'FK') { return { color: 'blue', 'font-weight': 700 }; }
+          else { return null; }
+        }
+      },
       { headerName: 'Numer', field: 'OfficeDocNumber', width: 100, sort: 'desc' },
       { headerName: 'Data rej.', field: 'RegDate', filter: 'agDateColumnFilter',width: 90, floatingFilter: false  },
       { headerName: 'Typ', field: 'OfficeDocIdent', tooltipField: 'OfficeDocName', filter: 'agSetColumnFilter', floatingFilter: false, suppressMenu: true, width: 50},
