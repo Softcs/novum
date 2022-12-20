@@ -12,7 +12,7 @@ import { OnCFService } from '@app/_services/oncf.service';
   templateUrl: './sit-data-input.component.html',
   styleUrls: ['./sit-data-input.component.scss'],
   encapsulation : ViewEncapsulation.None,
-  host: {class: 'sit-data-input'},
+  host: {class: 'sit-data-input-component'},
 })
 export class SitDataInputComponent extends SitDataBaseComponent {
 
@@ -81,7 +81,7 @@ export class SitDataInputComponent extends SitDataBaseComponent {
   }
 
   public getValue(): string {
-    return this.inputElement.nativeElement.value;
+    return this.inputElement.nativeElement.value.trim();
   }
 
   _onFilterKeyEnter(event: any) {
