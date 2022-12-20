@@ -21,9 +21,9 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
       { headerName: 'Vat PLN', field: 'VAT', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80, renderType: 'number', agr: 'sum' },
       { headerName: 'Brutto PLN', field: 'Gross', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 100, renderType: 'number', agr: 'sum' },   
       { headerName: 'Wal.', field: 'CurrencyIdent', tooltipField: 'CurrencyDescription', filter: 'agSetColumnFilter', floatingFilter: false, width: 60,suppressMenu: true,},
-      { headerName: 'Netto', field: 'NetCurrency', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 100, renderType: 'number', },
-      { headerName: 'Vat', field: 'VATCurrency', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80, renderType: 'number', },
-      { headerName: 'Brutto', field: 'GrossCurrency', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 100, renderType: 'number', },   
+      { headerName: 'Netto w wal.', field: 'NetCurrency', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 100, renderType: 'number', },
+      { headerName: 'Vat w wal.', field: 'VATCurrency', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80, renderType: 'number', },
+      { headerName: 'Brutto w wal.', field: 'GrossCurrency', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 100, renderType: 'number', },   
     ];
 
     this.gridColumnsDefinition["sitAttachments"] = [

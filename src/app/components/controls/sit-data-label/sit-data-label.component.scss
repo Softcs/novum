@@ -7,21 +7,29 @@
   font-size: .94rem;
 
   .sit-data-label-name {
-    color: rgba(0,0,0, .7);
+    color: rgba(0, 0, 0, 0.747);
     flex: 0 0 6.6rem;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
     cursor: help;
-    font-size: .8em;
-    // font-weight: 200;
+    font-size: 0.9em;
+    font-weight: 600;
   }
   
   .sit-data-label-value {
+    color: rgb(0, 0, 0);
     flex: 1 1 auto;
-    // margin-left: .2em;
+    margin-left: .8em;
+    margin-right: .8em;
     &.header {
       font-weight: 600;
+      font-size: 1.3rem;
+      margin-left: 0em;
+      color: rgba(0, 0, 0, 0.774);
+    }
+    &.number {
+      text-align: right;
     }
   }
 
