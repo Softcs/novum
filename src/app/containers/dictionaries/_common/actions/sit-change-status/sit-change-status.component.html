@@ -2,15 +2,18 @@
    [(actionExecuteData)]="actionExecuteData"
   >
   <sit-data-set-container ident="sitChangeStatus">
-    <div class="sit-proc-params-content" fxLayout="column">
-      <div fxLayout="row">
-        <sit-data-input type="text" #sitControl field="StatusValueName" label="Status aktualny" appearance="outline" [readonly]="true" fxFlex></sit-data-input>        
+    <div ngClass="sit-proc-params-content">
+
+      <div ngClass="flex-container-row">
+        <sit-data-label #sitControl field="StatusValueName" label="Aktualny status"></sit-data-label>
       </div>      
-      <div fxLayout="row">
+
+      <div ngClass="flex-container-row">
         <sit-data-input type="text" #sitControl field="ValueIdent_To" label="Status docelowy" appearance="outline" style="width: 150px"
           [lookupDisplayFields] = "['ValueIdent', 'ValueName']"></sit-data-input>
-        <sit-data-label type="text" #sitControl field="ValueName_To" label=""></sit-data-label>
+        <sit-data-label #sitControl field="ValueName_To" label=""></sit-data-label>
       </div>
+
     </div>
   </sit-data-set-container>
 </sit-proc-params>

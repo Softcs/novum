@@ -94,7 +94,7 @@ export class SitProcButtonComponent extends SitActionDirective {
        return true;
     };
 
-    if ( (this.isUpdate() || this.isDelete() || !this.showWhenEmpty()) && this.dataSetResponseWrapper !== undefined && this.dataSetResponseWrapper.rows == null) {
+    if ( (this.isUpdate() || this.isDelete() || !this.showWhenEmpty()) && this.dataSetResponseWrapper !== undefined && (this.dataSetResponseWrapper.rows == null || this.dataSetResponseWrapper.rows.length == 0)) {
         return true;
     }
 
@@ -128,6 +128,7 @@ export class SitProcButtonComponent extends SitActionDirective {
     if (!this.isDelete()) {
       return false;
     }
+
     if (showConfirmation) {
       const dialogRef = this.dialog.open(SitDialogConfirmDelComponent, {
         width: '250px', height: '150px'

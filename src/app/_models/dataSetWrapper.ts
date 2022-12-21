@@ -248,7 +248,7 @@ export class DataSetWrapper {
         }
     }
 
-    public RemoveRow(row: any) {
+    public RemoveRow(row: any, notifyManger: boolean = true) {
         if (row == null) {
             return;
         }
@@ -257,7 +257,9 @@ export class DataSetWrapper {
         var index = this._rows.indexOf(row);
 
         this._rows.splice(index, 1);
-        this.dataSourceManager.RemoveRow(this, row);
+        if (notifyManger) {
+            this.dataSourceManager.RemoveRow(this, row);
+        }
         var newActiveRow = null;
         newActiveRow = index == this._rows.length
               ? this._rows[this._rows.length-1]
