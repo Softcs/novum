@@ -1,0 +1,123 @@
+<sit-dict-container ident="sitOfficeDocHeaders" #sitDictcontainer ngClass="flex-container-column">
+  <div ngClass="content flex-container-column">
+    <as-split direction="horizontal">
+      <as-split-area [size]="55">
+        <as-split direction="vertical">
+          
+          <as-split-area [size]="45" fxLayout="column">
+
+              <!-- kombinacja: flex-container-row sit-filter-bar zwraca: flex:0 0 0; -->
+              <sit-data-set-container ident="sitFilter" ngClass="flex-container-row sit-filter-bar">
+                <sit-data-input #sitControl field="OfficeDocIdent" label="Typ dok." placeholder="Typ" appearance="outline" style="width: 100px;"
+                  [lookupDisplayFields] = "['OfficeDocIdent', 'OfficeDocName']">
+                </sit-data-input>
+                <sit-data-input #sitControl field="search" label="Dokument" placeholder="" appearance="outline" style="width: 250px;"></sit-data-input>
+                <sit-data-input #sitControl field="Customer" label="Kontrahent" placeholder="" appearance="outline" style="width: 250px;"></sit-data-input>
+                <sit-data-input #sitControl field="DateFrom" type="date" label="Od" appearance="outline" style="width: 130px;"></sit-data-input>
+                <sit-data-input #sitControl field="DateTo" type="date" label="Do" appearance="outline" style="width: 195px;" showRefreshButton="true" ></sit-data-input>
+              </sit-data-set-container>
+
+              <sit-data-set-container  ident="sitOfficeDocHeaders" showActionsToolbar="true" ngClass="flex-container-column">
+                <div ngClass="data-table flex-container-column">
+                  <ag-grid-angular
+                    #sitSetDataSource
+                    class="ag-theme-balham"
+                  >
+                  </ag-grid-angular>
+                </div>
+              </sit-data-set-container>
+
+          </as-split-area>
+
+          <as-split-area [size]="55">
+            <mat-tab-group id="tab-group" animationDuration="0ms">
+              
+              <mat-tab label="Info">
+
+                <sit-data-set-container  ident="sitOfficeDocHeaders" ngClass="sit-data-labels-standard-container flex-container-column mr-05">
+                  
+                  <mat-card ngClass="flex-container-column mb-05 mt-05">
+                    <mat-card-content ngClass="flex-container-row">
+                      <sit-data-label #sitControl field="OfficeDocName" type="header"></sit-data-label>
+                    </mat-card-content>
+                    <mat-card-content ngClass="flex-container-row">
+                      <sit-data-label #sitControl field="OfficeDocNumber" label="Numer w rejestrze" fxFlex="50%"></sit-data-label>
+                      <sit-data-label #sitControl field="RegDate" label="Data rejestracji dokumentu" fxFlex="50%"></sit-data-label>
+                    </mat-card-content>
+                  </mat-card>
+
+                  <mat-card ngClass="flex-container-column mb-05">
+                    <mat-card-content ngClass="flex-container-column">
+                      <sit-data-label #sitControl field="CustName" label="Kontrahent" ></sit-data-label>
+                      <sit-data-label #sitControl field="VATId" label="NIP" ></sit-data-label>
+                      <sit-data-label #sitControl field="CustAddress" label="Adres" ></sit-data-label>
+                      <sit-data-label #sitControl field="DocumentNumber" label="Nr dokumentu" ></sit-data-label>
+                      <sit-data-label #sitControl field="OfficeDocDescription" label="Opis"></sit-data-label>                      
+                    </mat-card-content>
+                  </mat-card>
+
+                  <div ngClass="flex-container-row mb-05">
+
+                    <mat-card ngClass="flex-container-column mr-05" fxFlex="32">
+                      <mat-card-content ngClass="flex-container-column">
+                        <sit-data-label #sitControl field="Net" label="Netto PLN" type="number"></sit-data-label>
+                        <sit-data-label #sitControl field="VAT" label="VAT PLN" type="number"></sit-data-label>
+                        <sit-data-label #sitControl field="Gross" label="Brutto PLN" type="number"></sit-data-label>
+                      </mat-card-content>
+                    </mat-card>
+                    
+                    <mat-card ngClass="flex-container-column mr-05" fxFlex="32">
+                      <mat-card-content ngClass="flex-container-column">
+                        <sit-data-label #sitControl field="NetCurrency" label="Netto w wal." type="number"></sit-data-label>
+                        <sit-data-label #sitControl field="VATCurrency" label="VAT w wal." type="number"></sit-data-label>
+                        <sit-data-label #sitControl field="GrossCurrency" label="Brutto w wal." type="number"></sit-data-label>
+                      </mat-card-content>
+                    </mat-card>
+  
+                    <mat-card ngClass="flex-container-column">
+                      <mat-card-content ngClass="flex-container-column">
+                        <sit-data-label #sitControl field="CurrencyIdent" label="Waluta"></sit-data-label>
+                        <sit-data-label #sitControl field="ExRateDate" label="Data kursu"></sit-data-label>
+                        <sit-data-label #sitControl field="ExRate" label="Kurs waluty"></sit-data-label>
+                      </mat-card-content>
+                    </mat-card>
+  
+                  </div>
+
+
+
+                </sit-data-set-container>
+
+              </mat-tab>
+
+              <mat-tab label="Załączniki">
+                <sit-data-set-container  ident="sitAttachments" showActionsToolbar="true" fxFlex fxLayout="column">
+                  <div class="data-table" fxFlex>
+                    <!-- <ag-grid-angular
+                      #sitSetDataSource
+                      style="width: 100%; height: 100%;"
+                      class="ag-theme-balham"
+                    > -->
+                    <ag-grid-angular
+                      #sitSetDataSource
+                      class="ag-theme-balham"
+                    >
+                    </ag-grid-angular>
+                  </div>
+                </sit-data-set-container>
+              </mat-tab>
+            </mat-tab-group>
+          </as-split-area>
+        </as-split>
+      </as-split-area>
+      <as-split-area [size]="45" ngClass="flex-container-column">
+        <!-- <div fxFlex> -->
+          <sit-data-set-container  ident="sitAttachments" ngClass="flex-container-column">
+            <sit-pdf-viewer #sitControl reportType="att" field="FileName" ngClass="from-sit-office-doc-headers-component-html">
+            </sit-pdf-viewer>
+          </sit-data-set-container>
+        <!-- </div> -->
+      </as-split-area>
+    </as-split>
+  </div>
+</sit-dict-container>

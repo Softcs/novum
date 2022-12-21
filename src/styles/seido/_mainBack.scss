@@ -131,8 +131,13 @@ body {
 }
 
 .sit-filter-bar {
-  width: 100%;
-  margin-top: 3px;
+  // width: 100%;
+  min-width: 100%;
+  // margin-top: 3px;
+}
+
+.sit-filter-bar.flex-container-row {
+  flex: 0 0 0;
 }
 
 .sit-params-bar{
@@ -361,7 +366,7 @@ button:focus {
   background-color: #073763;
   width: 100%;
   padding: 3px 10px;
-
+  margin-bottom: 0.3rem;
 }
 
 .sit-form-section-title {

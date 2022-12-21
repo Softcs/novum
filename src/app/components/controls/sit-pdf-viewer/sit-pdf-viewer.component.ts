@@ -8,7 +8,8 @@ import { OnCFService } from '@app/_services/oncf.service';
 @Component({
   selector: 'sit-pdf-viewer',
   templateUrl: './sit-pdf-viewer.component.html',
-  styleUrls: ['./sit-pdf-viewer.component.scss']
+  styleUrls: ['./sit-pdf-viewer.component.scss'],
+  host: {class: 'sit-pdf-viewer-component'}
 })
 export class SitPdfViewerComponent extends SitDataBaseComponent implements AfterViewInit {
   @ViewChild('pdfViewer') pdfViewer;

@@ -28,12 +28,15 @@ body {
   flex: 1 1 1vh;
 }
 
+
 as-split,
 as-split-area,
 ag-grid-angular,
 .data-table,
 .mat-tab-group,
-.container-cols {
+.container-cols, 
+.sit-pdf-viewer-component
+{
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
@@ -268,8 +271,27 @@ mat-toolbar-multiple-rows,
 
 
 
+.mt-05 {
+  margin-top: .5rem;
+}
+.mt-1 {
+  margin-top: 1rem;
+}
+
+.mb-05 {
+  margin-bottom: .5rem;
+}
+.mb-1 {
+  margin-bottom: 1rem;
+}
+
+.mr-05 {
+  margin-right: .5rem;
+}
+.mr-1 {
+  margin-right: 1rem;
+}
 
 
 
 
-// testy

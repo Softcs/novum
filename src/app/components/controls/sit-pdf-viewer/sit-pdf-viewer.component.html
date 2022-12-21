@@ -1,4 +1,4 @@
-<div fxLayout="column" fxFill>
+<div ngClass="flex-container-column">
   <div *ngIf="!showPDF" fxLayoutAlign="space-around center" fxFill><h5>Brak podglądu!</h5></div>
   <ng2-pdfjs-viewer [hidden]="!showPDF"
     fxFlex
