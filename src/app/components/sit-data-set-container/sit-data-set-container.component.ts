@@ -139,6 +139,8 @@ export class SitDataSetContainerComponent implements AfterViewInit{
         }
       }
     });
+
+    this.dataSetResponseWrapper.RemoveRow(activeRow, false);
   }
 
   public refreshRows(dataSetWrapper: DataSetWrapper, dataSourcesRequest) {
@@ -319,6 +321,12 @@ export class SitDataSetContainerComponent implements AfterViewInit{
       this.actionToolbar.dataSetManagerSource = this.dataSetControlsManager;
       this.actionToolbar.actions = dataSetWrapperDefinition && dataSetWrapperDefinition.actions ? dataSetWrapperDefinition.actions.filter(a => a.showInToolbar) : [];
     }
+  }
+
+  public refreshActionToolbar(dataSetWrapperDefinition: DataSetDefinitionWrapper) {
+    if (!this.actionToolbar) return;
+
+
   }
 
   private getActionDefinitionForControl(actionIdent: string, dataSetWrapperDefinition: DataSetDefinitionWrapper, allowActionFromLocalDefinition): ActionDefinitionWrapper {
