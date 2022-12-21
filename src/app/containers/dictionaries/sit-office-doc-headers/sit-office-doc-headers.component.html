@@ -11,10 +11,14 @@
                 <sit-data-input #sitControl field="OfficeDocIdent" label="Typ dok." placeholder="Typ" appearance="outline" style="width: 100px;"
                   [lookupDisplayFields] = "['OfficeDocIdent', 'OfficeDocName']">
                 </sit-data-input>
-                <sit-data-input #sitControl field="search" label="Dokument" placeholder="" appearance="outline" style="width: 250px;"></sit-data-input>
-                <sit-data-input #sitControl field="Customer" label="Kontrahent" placeholder="" appearance="outline" style="width: 250px;"></sit-data-input>
+                <sit-data-input #sitControl field="search" label="Dokument" placeholder="" appearance="outline" style="width: 200px;"></sit-data-input>
+                <sit-data-input #sitControl field="Customer" label="Kontrahent" placeholder="" appearance="outline" style="width: 200px;"></sit-data-input>
                 <sit-data-input #sitControl field="DateFrom" type="date" label="Od" appearance="outline" style="width: 130px;"></sit-data-input>
                 <sit-data-input #sitControl field="DateTo" type="date" label="Do" appearance="outline" style="width: 195px;" showRefreshButton="true" ></sit-data-input>
+                <sit-data-checkbox #sitControl field="ED" label="Edycja" labelPosition="after" checked="true" [refreshOnChange]="true" style="color: rgb(0,0,0);" ></sit-data-checkbox>
+                <sit-data-checkbox #sitControl field="DZ" label="Dziennik" labelPosition="after" checked="true" [refreshOnChange]="true" style="color: lime;" ></sit-data-checkbox>
+                <sit-data-checkbox #sitControl field="FK" label="Zaksięgowane" labelPosition="after" checked="true" [refreshOnChange]="true" style="color: green;" ></sit-data-checkbox>
+      
               </sit-data-set-container>
 
               <sit-data-set-container  ident="sitOfficeDocHeaders" showActionsToolbar="true" ngClass="flex-container-column">
