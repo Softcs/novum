@@ -39,24 +39,33 @@
               <mat-tab label="Info">
 
                 <sit-data-set-container  ident="sitOfficeDocHeaders" ngClass="sit-data-labels-standard-container flex-container-column mr-05">
-                  
-                  <mat-card ngClass="flex-container-column mb-05 mt-05">
-                    <mat-card-content ngClass="flex-container-row">
-                      <sit-data-label #sitControl field="OfficeDocName" type="header"></sit-data-label>
-                    </mat-card-content>
-                    <mat-card-content ngClass="flex-container-row">
-                      <sit-data-label #sitControl field="OfficeDocNumber" label="Nr w rejestrze" fxFlex="30"></sit-data-label>
-                      <sit-data-label #sitControl field="RegDate" label="Data rej. dokumentu" fxFlex="40"></sit-data-label>
-                      <sit-data-label #sitControl field="StatusValueName" label="Status" fxFlex></sit-data-label>
-                    </mat-card-content>
-                  </mat-card>
 
+                  <div ngClass="flex-container-row mb-05 mt-05">
+
+                    <mat-card ngClass="flex-container-column mr-05">
+                      <mat-card-content ngClass="flex-container-column">
+                        <sit-data-label #sitControl field="OfficeDocName" type="header"></sit-data-label>
+                        <sit-data-label #sitControl field="OfficeDocNumber" label="Nr w rejestrze"></sit-data-label>
+                        <sit-data-label #sitControl field="RegDate" label="Data rejestracji" ></sit-data-label>
+                        <sit-data-label #sitControl field="StatusValueName" label="Status"></sit-data-label>
+                      </mat-card-content>
+                    </mat-card>
+                  
+                    <mat-card ngClass="flex-container-column">
+                      <mat-card-content ngClass="flex-container-column">
+                        <sit-data-label #sitControl field="DocumentNumber" label="Nr dok." ></sit-data-label>
+                        <sit-data-label #sitControl field="DocumentDate" label="Data wyst."></sit-data-label>
+                        <sit-data-label #sitControl field="SalesDate" label="Data sprz." ></sit-data-label>
+                        <sit-data-label #sitControl field="PaymentDate" label="Data płat." ></sit-data-label>
+                      </mat-card-content>
+                    </mat-card>
+                    
+                  </div>
                   <mat-card ngClass="flex-container-column mb-05">
                     <mat-card-content ngClass="flex-container-column">
                       <sit-data-label #sitControl field="CustName" label="Kontrahent" ></sit-data-label>
                       <sit-data-label #sitControl field="VATId" label="NIP" ></sit-data-label>
                       <sit-data-label #sitControl field="CustAddress" label="Adres" ></sit-data-label>
-                      <sit-data-label #sitControl field="DocumentNumber" label="Nr dokumentu" ></sit-data-label>
                       <sit-data-label #sitControl field="OfficeDocDescription" label="Opis"></sit-data-label>                      
                     </mat-card-content>
                   </mat-card>
