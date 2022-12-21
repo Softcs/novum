@@ -65,21 +65,21 @@
 
                     <mat-card ngClass="flex-container-column mr-05" fxFlex="30">
                       <mat-card-content ngClass="flex-container-column">
+                        <sit-data-label #sitControl field="NetCurrency" label="Netto" type="number"></sit-data-label>
+                        <sit-data-label #sitControl field="VATCurrency" label="VAT" type="number"></sit-data-label>
+                        <sit-data-label #sitControl field="GrossCurrency" label="Brutto" type="number"></sit-data-label>
+                      </mat-card-content>
+                    </mat-card>
+                    
+                    <mat-card *ngIf="this.activeRow('sitOfficeDocHeaders')?.IsCurrency == 1" ngClass="flex-container-column mr-05" fxFlex="30">
+                      <mat-card-content ngClass="flex-container-column">
                         <sit-data-label #sitControl field="Net" label="Netto PLN" type="number"></sit-data-label>
                         <sit-data-label #sitControl field="VAT" label="VAT PLN" type="number"></sit-data-label>
                         <sit-data-label #sitControl field="Gross" label="Brutto PLN" type="number"></sit-data-label>
                       </mat-card-content>
                     </mat-card>
-                    
-                    <mat-card ngClass="flex-container-column mr-05" fxFlex="30">
-                      <mat-card-content ngClass="flex-container-column">
-                        <sit-data-label #sitControl field="NetCurrency" label="Netto w wal." type="number"></sit-data-label>
-                        <sit-data-label #sitControl field="VATCurrency" label="VAT w wal." type="number"></sit-data-label>
-                        <sit-data-label #sitControl field="GrossCurrency" label="Brutto w wal." type="number"></sit-data-label>
-                      </mat-card-content>
-                    </mat-card>
   
-                    <mat-card ngClass="flex-container-column">
+                    <mat-card *ngIf="this.activeRow('sitOfficeDocHeaders')?.IsCurrency == 1" ngClass="flex-container-column">
                       <mat-card-content ngClass="flex-container-column">
                         <sit-data-label #sitControl field="CurrencyIdent" label="Waluta"></sit-data-label>
                         <sit-data-label #sitControl field="ExRateDate" label="Data kursu"></sit-data-label>
