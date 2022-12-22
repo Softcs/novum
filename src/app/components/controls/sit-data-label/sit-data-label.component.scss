@@ -1,14 +1,13 @@
 .sit-data-label-component {
-  // border: 1px dotted;
   border-bottom: 1px dotted rgba(0, 0, 0, 0.144);
   // box-shadow: 0px 4px 2px -3px rgba(0, 0, 0, 0.25);
-  // align-items: center;
   align-items: baseline;
   font-size: .94rem;
 
   .sit-data-label-name {
     color: rgba(0, 0, 0, 0.747);
-    flex: 0 0 5.6rem;
+    // flex: 0 0 5.6rem;
+    flex: 0 0 fit-content;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -30,24 +29,16 @@
     }
     &.number {
       text-align: right;
+      white-space: nowrap;
     }
   }
 
 }
 
-.flex-container-row > .sit-data-label-component > .sit-data-label-name {
-  // flex: 0 0 25%;
-  flex: 0 0 fit-content;
-  padding-right: .5em;
-}
 
 
 
-// :host-context(div.flex-container-row) {
-//   //flex: 0 0 auto;
-//   color: red;
-//   border: 1px dotted red;
-// }
+
 
 .sit-data-labels-standard-container {
   > * {

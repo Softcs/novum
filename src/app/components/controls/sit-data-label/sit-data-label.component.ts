@@ -13,6 +13,7 @@ import { formatDate, formatNumber } from '@angular/common';
 })
 export class SitDataLabelComponent extends SitDataBaseComponent {
 
+  @Input() labelWidth = '';
   @Input() type = 'text';
   @Input() label = '';
   // @Input() valueWidth;
