@@ -1,5 +1,10 @@
-import { Component } from '@angular/core';
+import { Component,LOCALE_ID,Inject } from '@angular/core';
 import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-dict-base.component';
+import { formatDate } from '@angular/common';
+import { formatNumber } from '@angular/common';
+import { GatewayService } from '@app/_services';
+import { GridService } from '@app/_services/grid.service';
+import { UrlService } from '@app/_services/url.service';
 
 @Component({
   selector: 'app-sit-office-doc-headers',
@@ -8,15 +13,25 @@ import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-di
   host: {class: 'router-flex sit-office-doc-headers-component'}
 })
 export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
+
+  constructor(
+    protected gatewayService: GatewayService,
+    protected gridService: GridService,
+    protected urlService: UrlService,
+    @Inject(LOCALE_ID) protected locale: string) {
+      super(gatewayService, gridService, urlService, locale);
+  };
+
   public prepareColumnsDefinitnion() {
+    var locale = this.locale;
     this.gridColumnsDefinition["sitOfficeDocHeaders"] = [
       { headerName: 'Id', field: 'sitOfficeDocHeadersId',width: 90, defaultVisibility: false },
       { headerName: 'GUID', field: 'sitOfficeDocHeadersG',width: 150, defaultVisibility: false },
       { headerName: '', field: 'StatusValueIdent',  tooltipField: 'StatusValueName', width: 40, suppressMenu: true,
         cellStyle: function(params) {
-          if (params.value === 'ED') { return { color: 'gray', 'font-weight': 700 }; }
-          else if (params.value === 'DZ') { return { color: 'green', 'font-weight': 700 }; }
-          else if (params.value === 'FK') { return { color: 'blue', 'font-weight': 700 }; }
+          if (params.value === 'ED') { return { 'background-color': 'rgb(236, 236, 236)','font-weight': 700 }; }
+          else if (params.value === 'DZ') { return { 'background-color': 'lime', color: 'white', 'font-weight': 700 }; }
+          else if (params.value === 'FK') { return { 'background-color': 'green',color: 'white', 'font-weight': 700 }; }
           else { return null; }
         }
       },
@@ -25,13 +40,18 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
       { headerName: 'Typ', field: 'OfficeDocIdent', tooltipField: 'OfficeDocName', filter: 'agSetColumnFilter', floatingFilter: false, suppressMenu: true, width: 50},
       { headerName: 'Kontrahent', field: 'CustName', tooltipField: 'CustName', filter: 'agTextColumnFilter', floatingFilter: false},
       { headerName: 'Nr dok.', field: 'DocumentNumber', tooltipField: 'DocumentNumber', filter: 'agTextColumnFilter', floatingFilter: false, suppressMenu: true, width: 120 },
-      { headerName: 'Netto PLN', field: 'Net', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 100, renderType: 'number', agr: 'sum' },
-      { headerName: 'Vat PLN', field: 'VAT', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80, renderType: 'number', agr: 'sum' },
-      { headerName: 'Brutto PLN', field: 'Gross', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 100, renderType: 'number', agr: 'sum' },   
-      { headerName: 'Wal.', field: 'CurrencyIdent', tooltipField: 'CurrencyDescription', filter: 'agSetColumnFilter', floatingFilter: false, width: 60,suppressMenu: true,},
-      { headerName: 'Netto w wal.', field: 'NetCurrency', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 100, renderType: 'number', },
-      { headerName: 'Vat w wal.', field: 'VATCurrency', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80, renderType: 'number', },
-      { headerName: 'Brutto w wal.', field: 'GrossCurrency', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 100, renderType: 'number', },   
+      { headerName: 'Wal.', field: 'CurrencyIdent', tooltipField: 'CurrencyIdent', filter: 'agTextColumnFilter', width: 50,  suppressMenu: true,
+        cellStyle: function(params) { return (params.data["CurrencyIdent"] === 'PLN' ? {} : {'background-color': 'rgb(219, 247, 255)'}) }
+      },
+      { headerName: 'Netto', field: 'NetCurrency', filter: 'agTextColumnFilter', type: 'numericColumn', renderType:'number', width: 100,
+        cellStyle: function(params) { return (params.data["IsCurrency"] === 0 ? {} : {'background-color': 'rgb(219, 247, 255)'}) }
+      },
+      { headerName: 'Vat', field: 'VATCurrency', filter: 'agTextColumnFilter', type: 'numericColumn', renderType:'number', width: 80,  
+        cellStyle: function(params) { return (params.data["IsCurrency"] === 0 ? {} : {'background-color': 'rgb(219, 247, 255)'}) }
+      },
+      { headerName: 'Brutto', field: 'GrossCurrency', filter: 'agTextColumnFilter', type: 'numericColumn', renderType:'number', width: 100, 
+        cellStyle: function(params) { return (params.data["IsCurrency"] === 0 ? {} : {'background-color': 'rgb(219, 247, 255)'}) }
+      },   
     ];
 
     this.gridColumnsDefinition["sitAttachments"] = [
