@@ -37,11 +37,13 @@
             ></sit-data-input>
           </div>
         </sit-data-set-container>
-        <sit-data-set-container  ident="sitSaleParams" fxLayout="row" style="margin-bottom: 5px" style="width: 100%;">
-          <sit-data-label type="text" #sitControl field="SaleDateFrom" label="Sprzedaż od:"></sit-data-label>
-          <sit-data-label type="text" #sitControl field="SaleDateTo" label="do:" ></sit-data-label>
-          <sit-data-label type="text" #sitControl field="LastValuationDate" label="Magazyn rozliczony do:" ></sit-data-label>
-        </sit-data-set-container>
+        <div>
+          <sit-data-set-container  ident="sitSaleParams" ngClass="flex-container-row" style="margin-bottom: 5px" style="width: 100%;">
+            <sit-data-label type="text" #sitControl field="SaleDateFrom" label="Sprzedaż od:" fxFlex="200px"></sit-data-label>
+            <sit-data-label type="text" #sitControl field="SaleDateTo" label="do:" fxFlex="200px"></sit-data-label>
+            <sit-data-label type="text" #sitControl field="LastValuationDate" label="Magazyn rozliczony do:" fxFlex="300px"></sit-data-label>
+          </sit-data-set-container>
+        </div>
         <sit-data-set-container ident="sitSale" showActionsToolbar="true" fxFlex fxLayout="column">
           <div class="data-table" fxFlex>
             <ag-grid-angular
