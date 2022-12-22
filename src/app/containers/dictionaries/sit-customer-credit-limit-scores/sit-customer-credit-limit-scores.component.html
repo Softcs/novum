@@ -40,67 +40,40 @@
                       <mat-card-content>
                         <div fxLayout="column">
                           <sit-data-label #sitControl field="ScoreDate" label="Data oceny"></sit-data-label>
-                          <div fxLayout="row">
-                            <sit-data-label #sitControl field="CustIdent" label="Identyfikator" fxFlex="200px"></sit-data-label>
-                            <sit-data-label #sitControl field="CustName" label="Nazwa"></sit-data-label>
-                          </div>
-                          <div fxLayout="row">
-                            <sit-data-label #sitControl field="CustomersGroupIdent" label="Rynek" fxFlex="200px"></sit-data-label>
-                            <sit-data-label #sitControl field="CustomersGroupName" label="Opis"></sit-data-label>
-                          </div>
-                          <div ngClass="flex-container-row">
-                            <sit-data-label #sitControl field="PreviousCreditLimit" label="Dotychczasowy limit kredytu"></sit-data-label>
-                          </div>
-                          <div ngClass="flex-container-row">
-                            <sit-data-label #sitControl field="PreviousPaymentType" label="Dotychczasowy termin płatności"></sit-data-label>
-                          </div>
-                          <div ngClass="flex-container-row">
-                            <sit-data-label #sitControl field="StockAmountForDate" label="Wartość zapasu konsygnacyjnego"></sit-data-label>
-                          </div>
-                          <div ngClass="flex-container-row">
-                            <sit-data-label #sitControl field="StockStandardAmountForDate" label="Wartość magazynowa"></sit-data-label>
-                          </div>
-                          <div ngClass="flex-container-row">
-                            <sit-data-label #sitControl field="StockDate" label="Wartość magazynu na dzień:"></sit-data-label>
-                          </div>
-                          <!-- <sit-data-input type="text" id="ScoreDate" #sitControl field="ScoreDate" label="Data oceny" appearance="outline" [readonly]=true style="width: 100px"></sit-data-input>
+                          <sit-data-input type="text" id="ScoreDate" #sitControl field="ScoreDate" label="Data oceny" appearance="outline" [readonly]=true style="width: 100px"></sit-data-input>
                           <sit-data-input type="text" id="CustIdent" #sitControl field="CustIdent" label="Identyfikator" appearance="outline" style="width: 100px" [readonly]=true></sit-data-input>
-                          <sit-data-input type="text" id="CustName" #sitControl field="CustName" label="Nazwa" appearance="outline" [readonly]=true fxFlex></sit-data-input> -->
+                          <sit-data-input type="text" id="CustName" #sitControl field="CustName" label="Nazwa" appearance="outline" [readonly]=true fxFlex></sit-data-input>
                         </div>
                         <div fxLayout="row">
-                          <!-- <sit-data-label #sitControl field="CustomersGroupIdent" label="Rynek"></sit-data-label>
-                          <sit-data-label #sitControl field="CustomersGroupName" label="Opis"></sit-data-label> -->
+                          <sit-data-label #sitControl field="CustomersGroupIdent" label="Rynek"></sit-data-label>
+                          <sit-data-label #sitControl field="CustomersGroupName" label="Opis"></sit-data-label>
                           <!-- <sit-data-input type="text" id="CustomersGroupIdent" #sitControl field="CustomersGroupIdent" label="Rynek" appearance="outline" style="width: 200px"[readonly]=true></sit-data-input>
                           <sit-data-input type="text" id="CustomersGroupName" #sitControl field="CustomersGroupName" label="Opis" appearance="outline" [readonly]=true fxFlex></sit-data-input> -->
                         </div>
                         <div fxLayout="row">
                           <sit-data-textarea type="textarea" id="Description" #sitControl field="Description" label="Opis" appearance="outline" [readonly]=true style="height: 95px"  fxFlex></sit-data-textarea>
                         </div>
-                        <!-- <div fxLayout="row">
+                        <div fxLayout="row">
                           <sit-data-input type="number" id="PreviousCreditLimit" #sitControl field="PreviousCreditLimit" label="Dotychczasowy limit kredytu" appearance="outline" [readonly]=true fxFlex="30"></sit-data-input>
                           <sit-data-input type="number" id="StockAmountForDate" #sitControl field="StockAmountForDate" label="Wartość zapasu konsygnacyjnego" appearance="outline" [readonly]=true fxFlex="30"></sit-data-input>
                         </div>     
                         <div fxLayout="row">
                           <sit-data-input type="text" id="PreviousPaymentType" #sitControl field="PreviousPaymentType" label="Dotychczasowy termin płatności" appearance="outline" [readonly]=true fxFlex="30"></sit-data-input>
                           <sit-data-input type="number" id="StockStandardAmountForDate" #sitControl field="StockStandardAmountForDate" label="Wartość magazynowa" appearance="outline" [readonly]=true fxFlex="30"></sit-data-input>
-                        </div>       -->
-                        <!-- <div fxLayout="row">
+                        </div>      
+                        <div fxLayout="row">
                           <div fxFlex="30"></div>
                           <sit-data-label type="text" #sitControl field="StockDate" label="Wartość magazynu na dzień:" ></sit-data-label>
-                        </div>                     -->
+                        </div>                    
                       </mat-card-content>
                     </mat-card>
                     <mat-card>
                       <mat-card-content>
-                        <div ngClass="flex-container-row">
-                          <sit-data-label #sitControl field="CreditLimit" label="Proponowany limit kredytu kupieckiego"></sit-data-label>
-                          <sit-data-label #sitControl field="CreditLimitDateTo" label="Termin obowiązywania limitu"></sit-data-label>
-                        </div>
 
-                        <!-- <div fxLayout="row">
+                        <div fxLayout="row">
                           <sit-data-input type="number" #sitControl field="CreditLimit" label="Proponowany limit kredytu kupieckiego" appearance="outline" [readonly]=true fxFlex="50"></sit-data-input>
                           <sit-data-input type="text" #sitControl field="CreditLimitDateTo" label="Termin obowiązywania limitu" appearance="outline" [readonly]=true fxFlex="50"></sit-data-input>
-                        </div> -->
+                        </div>
                       </mat-card-content>
                     </mat-card>
                   </div>

@@ -2,7 +2,7 @@
   border-bottom: 1px dotted rgba(0, 0, 0, 0.144);
   // box-shadow: 0px 4px 2px -3px rgba(0, 0, 0, 0.25);
   align-items: baseline;
-  font-size: .94rem;
+  font-size: .95rem;
 
   .sit-data-label-name {
     color: rgba(0, 0, 0, 0.747);
@@ -14,6 +14,8 @@
     cursor: help;
     font-size: 0.9em;
     font-weight: 600;
+    color: rgb(7, 55, 99);
+
   }
   
   .sit-data-label-value {
