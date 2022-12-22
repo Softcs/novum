@@ -4,14 +4,13 @@
   <sit-data-set-container ident="sitChangeStatus">
     <div ngClass="sit-proc-params-content">
 
-      <div ngClass="flex-container-row">
+      <div ngClass="flex-container-row mb-05">
         <sit-data-label #sitControl field="StatusValueName" label="Aktualny status"></sit-data-label>
       </div>      
 
       <div ngClass="flex-container-row">
-        <sit-data-input type="text" #sitControl field="ValueIdent_To" label="Status docelowy" appearance="outline" style="width: 150px"
-          [lookupDisplayFields] = "['ValueIdent', 'ValueName']"></sit-data-input>
-        <sit-data-label #sitControl field="ValueName_To" label=""></sit-data-label>
+        <sit-data-input type="text" #sitControl field="ValueName_To" label="Status docelowy" appearance="outline" fxFlex
+          [lookupDisplayFields] = "['ValueName']"></sit-data-input>
       </div>
 
     </div>
