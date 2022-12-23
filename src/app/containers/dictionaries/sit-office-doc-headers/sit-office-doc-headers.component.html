@@ -22,55 +22,35 @@
               </sit-data-set-container>
 
               <sit-data-set-container  ident="sitOfficeDocHeaders" showActionsToolbar="true" ngClass="flex-container-column">
-                <div ngClass="data-table flex-container-column">
-                  <ag-grid-angular
-                    #sitSetDataSource
-                    class="ag-theme-balham"
-                  >
-                  </ag-grid-angular>
-                </div>
+                <ag-grid-angular #sitSetDataSource class="ag-theme-balham"></ag-grid-angular>
               </sit-data-set-container>
 
           </as-split-area>
 
-          <as-split-area [size]="55">
+          <as-split-area [size]="60">
             <mat-tab-group id="tab-group" animationDuration="0ms">
 
               <mat-tab label="Info">
+                <!-- sit-data-labels-standard-container - zmienia zachowanie wysokości elementów -->
+                <sit-data-set-container ident="sitOfficeDocHeaders" ngClass="flex-container-column">
 
-                <sit-data-set-container  ident="sitOfficeDocHeaders" ngClass="sit-data-labels-standard-container flex-container-column">
+                  <div ngClass="flex-container-row mb-05 mt-05">
 
-                  <div ngClass="flex-container-row mb-05 mt-05 mb-05">
-
-                    <!-- <div ngClass="flex-container-column mr-05" style="background-color: 'white'; padding: .5em .5em .5em .5em;box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;" fxFlex="50">
-                      <sit-data-label #sitControl field="OfficeDocName" type="header"></sit-data-label>
-                      <sit-data-label #sitControl field="OfficeDocNumber" label="Nr w rejestrze:" labelWidth="8em"></sit-data-label>
-                      <sit-data-label #sitControl field="RegDate" label="Data rejestracji:" labelWidth="8em"></sit-data-label>
-                      <sit-data-label #sitControl field="StatusValueName" label="Status:" labelWidth="8em"></sit-data-label>
-                    </div> -->
-
-                    <sit-simple-container ngClass="flex-container-column mr-05">
+                    <sit-simple-container ngClass="flex-container-column mr-05" fxFlex="50">
                       <sit-data-label #sitControl field="OfficeDocName" type="header"></sit-data-label>
                       <sit-data-label #sitControl field="OfficeDocNumber" label="Nr w rejestrze:" labelWidth="8em"></sit-data-label>
                       <sit-data-label #sitControl field="RegDate" label="Data rejestracji:" labelWidth="8em"></sit-data-label>
                       <sit-data-label #sitControl field="StatusValueName" label="Status:" labelWidth="8em"></sit-data-label>
                     </sit-simple-container>
 
-                    <div ngClass="flex-container-column mr-05" style="background-color: 'white'; padding: .5em .5em .5em .5em;box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;">
+                    <sit-simple-container ngClass="flex-container-column mr-05" fxFlex=>
                       <sit-data-label #sitControl field="DocumentNumber" label="Nr dok.:" labelWidth="5em"></sit-data-label>
                       <sit-data-label #sitControl field="DocumentDate" label="Data wyst.:" labelWidth="5em"></sit-data-label>
                       <sit-data-label #sitControl field="SalesDate" label="Data sprz.:" labelWidth="5em" ></sit-data-label>
                       <sit-data-label #sitControl field="PaymentDate" label="Data płat.:" labelWidth="5em" ></sit-data-label>
-                    </div>
+                    </sit-simple-container>
 
                   </div>
-
-                  <!-- <div ngClass="flex-container-column mr-05 mb-05" style="background-color: 'white'; padding: .5em .5em .5em .5em;box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;">
-                    <sit-data-label #sitControl field="CustName" label="Kontrahent:" labelWidth="6em"></sit-data-label>
-                    <sit-data-label #sitControl field="VATId" label="NIP:" labelWidth="6em"></sit-data-label>
-                    <sit-data-label #sitControl field="CustAddress" label="Adres:" labelWidth="6em"></sit-data-label>
-                    <sit-data-label #sitControl field="OfficeDocDescription" label="Opis:" labelWidth="6em"></sit-data-label>
-                  </div> -->
 
                   <sit-simple-container ngClass="flex-container-column mr-05 mb-05">
                     <sit-data-label #sitControl field="CustName" label="Kontrahent:" labelWidth="6em"></sit-data-label>
@@ -79,29 +59,27 @@
                     <sit-data-label #sitControl field="OfficeDocDescription" label="Opis:" labelWidth="6em"></sit-data-label>
                   </sit-simple-container>
 
-                  <div ngClass="flex-container-row mb-05">
+                  <div ngClass="flex-container-row">
 
-                    <div ngClass="flex-container-column mr-05" style="background-color: 'white'; padding: .5em .5em .5em .5em;box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;" fxFlex="30">
+                    <sit-simple-container ngClass="flex-container-column mr-05" fxFlex="30">
                       <sit-data-label #sitControl field="NetCurrency" label="Netto" type="number"></sit-data-label>
                       <sit-data-label #sitControl field="VATCurrency" label="VAT" type="number"></sit-data-label>
                       <sit-data-label #sitControl field="GrossCurrency" label="Brutto" type="number"></sit-data-label>
-                    </div>
+                    </sit-simple-container>
 
-                    <div *ngIf="this.activeRow('sitOfficeDocHeaders')?.IsCurrency == 1" ngClass="flex-container-column mr-05" style="background-color: 'white'; padding: .5em .5em .5em .5em;box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;" fxFlex="30">
+                    <sit-simple-container *ngIf="this.activeRow('sitOfficeDocHeaders')?.IsCurrency == 1" ngClass="flex-container-column mr-05" fxFlex="30">
                       <sit-data-label #sitControl field="Net" label="Netto PLN" type="number"></sit-data-label>
                       <sit-data-label #sitControl field="VAT" label="VAT PLN" type="number"></sit-data-label>
                       <sit-data-label #sitControl field="Gross" label="Brutto PLN" type="number"></sit-data-label>
-                    </div>
+                    </sit-simple-container>
 
-                    <div *ngIf="this.activeRow('sitOfficeDocHeaders')?.IsCurrency == 1" ngClass="flex-container-column mr-05" style="background-color: 'white'; padding: .5em .5em .5em .5em;box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;" fxFlex>
-                      <sit-data-label #sitControl field="CurrencyIdent" label="Waluta"></sit-data-label>
-                      <sit-data-label #sitControl field="ExRateDate" label="Data kursu"></sit-data-label>
-                      <sit-data-label #sitControl field="ExRate" label="Kurs waluty"></sit-data-label>
-                    </div>
+                    <sit-simple-container *ngIf="this.activeRow('sitOfficeDocHeaders')?.IsCurrency == 1" ngClass="flex-container-column mr-05" fxFlex>
+                      <sit-data-label #sitControl field="CurrencyIdent" label="Waluta" labelWidth="6em"></sit-data-label>
+                      <sit-data-label #sitControl field="ExRateDate" label="Data kursu" labelWidth="6em"></sit-data-label>
+                      <sit-data-label #sitControl field="ExRate" label="Kurs waluty" labelWidth="6em"></sit-data-label>
+                    </sit-simple-container>
 
                   </div>
-
-
 
                 </sit-data-set-container>
 
@@ -110,11 +88,6 @@
               <mat-tab label="Załączniki">
                 <sit-data-set-container  ident="sitAttachments" showActionsToolbar="true" fxFlex fxLayout="column">
                   <div class="data-table" fxFlex>
-                    <!-- <ag-grid-angular
-                      #sitSetDataSource
-                      style="width: 100%; height: 100%;"
-                      class="ag-theme-balham"
-                    > -->
                     <ag-grid-angular
                       #sitSetDataSource
                       class="ag-theme-balham"
@@ -128,12 +101,10 @@
         </as-split>
       </as-split-area>
       <as-split-area [size]="45" ngClass="flex-container-column">
-        <!-- <div fxFlex> -->
-          <sit-data-set-container  ident="sitAttachments" ngClass="flex-container-column">
-            <sit-pdf-viewer #sitControl reportType="att" field="FileName" ngClass="from-sit-office-doc-headers-component-html">
-            </sit-pdf-viewer>
-          </sit-data-set-container>
-        <!-- </div> -->
+        <sit-data-set-container  ident="sitAttachments" ngClass="flex-container-column">
+          <sit-pdf-viewer #sitControl reportType="att" field="FileName" ngClass="from-sit-office-doc-headers-component-html">
+          </sit-pdf-viewer>
+        </sit-data-set-container>
       </as-split-area>
     </as-split>
   </div>

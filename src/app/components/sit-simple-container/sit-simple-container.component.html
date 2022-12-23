@@ -1,2 +1,7 @@
-
+<div fxLayout="column">
+<div *ngIf="title" [ngClass]="['sit-simple-container-title']"  title={{title}} >
+  {{title}}
+</div>
+<ng-content></ng-content>
+</div>
 

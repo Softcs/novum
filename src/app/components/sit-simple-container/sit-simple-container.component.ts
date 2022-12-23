@@ -1,10 +1,10 @@
 // import { Component, OnInit } from '@angular/core';
-import { Component, ViewEncapsulation, OnInit } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'sit-simple-container',
-  template: `<ng-content></ng-content>`,
-  // templateUrl: './sit-simple-container.component.html',
+  //template: `<ng-content></ng-content>`,
+  templateUrl: './sit-simple-container.component.html',
   styleUrls: ['./sit-simple-container.component.scss'],
   encapsulation : ViewEncapsulation.None,
   host: {class: 'sit-simple-container-component'}
@@ -12,7 +12,8 @@ import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 
 export class SitSimpleContainerComponent implements OnInit 
 {
-
+  @Input() title;
+  
   constructor() {}
 
   ngOnInit(): void {}
