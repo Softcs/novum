@@ -8,4 +8,8 @@ import { SitActionParamsForm } from '@app/_interfaces/sitActionParamsForm';
 })
 export class SitOfficeDocHeadersEditComponent extends SitActionParamsForm{
 
+  onClick(){
+    console.log(this.activeRow?.CustomerInsert)
+  }
+
 }
