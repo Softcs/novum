@@ -63,5 +63,26 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
       { headerName: 'Nazwa pliku', field: 'FileName', width: 250 },
       { headerName: 'Opis', field: 'AttachmentDesc', width: 250 }
     ];    
+
+    this.gridColumnsDefinition["sitAcceptances"] = [
+      { headerName: 'ID', field: 'sitAcceptancesG', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, defaultVisibility: false },
+      { headerName: 'GUID', field: 'sitAcceptancesId', width: 100, defaultVisibility: false },
+      { headerName: 'Data wstawienia', field: 'InsertDate', filter: 'agDateColumnFilter',width: 140, floatingFilter: false, renderType: "date", 
+        renderFormat: "yyyy-MM-dd H:mm:ss", sort: 'asc'},     
+      { headerName: 'Poziom akceptacji', field: 'AcceptanceStepName', width: 200 },
+      { headerName: 'Akceptujący', field: 'UserName', width: 200 },
+      { headerName: 'Status akceptacji', field: 'AcceptedDesc', width: 150,
+        cellStyle: function(params) {
+          if (params.value === 'Do akceptacji') { return { color: 'orange', 'font-weight': 600 }; }
+          else if (params.value === 'Zaakceptowane') { return { color: 'green', 'font-weight': 600 }; }
+          else if (params.value === 'Odrzucone') { return { color: 'red', 'font-weight': 600 }; }
+          else { return null; }
+        }
+      },
+      { headerName: 'Data akceptacji', field: 'AcceptanceDate', filter: 'agDateColumnFilter',width: 140, floatingFilter: false, renderType: "date", 
+        renderFormat: "yyyy-MM-dd H:mm:ss"},     
+      { headerName: 'Komentarz', field: 'Comment', width: 300 },
+    ];
+
   };
 }
