@@ -1,44 +1,54 @@
 <sit-proc-params
   [(actionExecuteData)]="actionExecuteData"
   >
-  <sit-data-set-container ident="sitOfficeDocHeadersEdit">
-    <div class="sit-proc-params-content" fxLayout="column" style="width: 500px; height: 600px;">
-      <div fxLayout="row">
-        <sit-data-input #sitControl type="date" field="RegDate" label="Data rejestracji" appearance="outline" fxFlex="25"></sit-data-input>
-        <sit-data-input #sitControl type="text" field="OfficeDocName" label="Rodzaj dowodu"  [lookupDisplayFields] = "['OfficeDocName']" appearance="outline" fxFlex></sit-data-input>
-        <!-- <sit-data-label type="text" #sitControl field="OfficeDocName" appearance="outline" fxFlex="40"></sit-data-label> -->
+  <sit-data-set-container ident="sitOfficeDocHeadersEdit"  fxLayout="column">
+    <div class="sit-proc-params-content" fxLayout="row" style="width: 1500px; height: 700px;">
+      <div fxLayout="column" fxFlex="30" ngClass="mr-05">
+        <div fxLayout="row" *ngIf="!this.activeRow?.sitOfficeDocHeadersId">
+          <sit-files-button #sitSimpleButton fieldIdent="sitAttachmentsG" fieldFileNames="FileName"></sit-files-button >
+          <sit-data-input #sitControl type="text" field="FileName" label="Nazwa pliku" appearance="outline" style="width: 500px;"></sit-data-input>
+        </div>
+        <div fxLayout="row">
+          <sit-data-input #sitControl type="date" field="RegDate" label="Data rejestracji" appearance="outline" fxFlex="33"></sit-data-input>
+          <sit-data-input #sitControl type="text" field="OfficeDocName" label="Rodzaj dowodu"  [lookupDisplayFields] = "['OfficeDocName']" appearance="outline" fxFlex></sit-data-input>
+          <!-- <sit-data-label type="text" #sitControl field="OfficeDocName" appearance="outline" fxFlex="40"></sit-data-label> -->
+        </div>
+        <div fxLayout="row">
+          <sit-data-input #sitControl type="date" field="DocumentDate" label="Data wystawienia" appearance="outline" fxFlex="33"></sit-data-input>
+          <sit-data-input #sitControl type="date" field="SalesDate" label="Data sprzedaży" appearance="outline" fxFlex="33"></sit-data-input>
+          <sit-data-input #sitControl type="date" field="PaymentDate" label="Data płatności" appearance="outline" fxFlex="34"></sit-data-input>
+        </div>
+        <div fxLayout="row">
+          <!-- <sit-data-input #sitControl type="date" field="SalesDate" label="Data sprzedaży" appearance="outline" fxFlex="25"></sit-data-input> -->
+        </div>
+        <div fxLayout="row">
+          <sit-data-input #sitControl type="text" field="CustName" label="Kontrahent" appearance="outline" fxFlex></sit-data-input>
+        </div>
+        <div fxLayout="row">
+          <sit-data-input #sitControl type="text" field="DocumentNumber" label="Numer dokumentu" appearance="outline" fxFlex></sit-data-input>
+        </div>
+        <div fxLayout="row">
+          <sit-data-input #sitControl type="text" field="OfficeDocDescription" label="Opis dokumentu" appearance="outline" fxFlex></sit-data-input>
+        </div>
+        <div fxLayout="row">
+          <sit-data-input #sitControl type="text" field="CurrencyIdent" label="Waluta" appearance="outline" fxFlex="20"></sit-data-input>
+          <sit-data-input #sitControl type="date" field="ExRateDate" label="Kurs z dnia" appearance="outline" fxFlex="33"></sit-data-input>
+          <sit-data-input #sitControl type="number" field="ExRate" label="Kurs waluty" appearance="outline" fxFlex></sit-data-input>
+        </div>
+        <div fxLayout="row">
+          <sit-data-input #sitControl type="number" field="NetCurrency" label="Netto" appearance="outline" fxFlex></sit-data-input>
+          <sit-data-input #sitControl type="number" field="VATCurrency" label="Vat" appearance="outline" fxFlex></sit-data-input>
+          <sit-data-input #sitControl type="number" field="GrossCurrency" label="Brutto" appearance="outline" fxFlex></sit-data-input>
+        </div>
+        <div fxLayout="row">
+          <sit-data-input #sitControl type="number" field="Net" label="Netto PLN" appearance="outline" fxFlex></sit-data-input>
+          <sit-data-input #sitControl type="number" field="VAT" label="Vat PLN" appearance="outline" fxFlex></sit-data-input>
+          <sit-data-input #sitControl type="number" field="Gross" label="Brutto PLN" appearance="outline" fxFlex></sit-data-input>
+        </div>
       </div>
-      <div fxLayout="row">
-        <sit-data-input #sitControl type="date" field="DocumentDate" label="Data wystawienia" appearance="outline" fxFlex="25"></sit-data-input>
-        <sit-data-input #sitControl type="date" field="SalesDate" label="Data sprzedaży" appearance="outline" fxFlex="25"></sit-data-input>
-      </div>
-      <div fxLayout="row">
-        <sit-data-input #sitControl type="date" field="PaymentDate" label="Data płatności" appearance="outline" fxFlex="25"></sit-data-input>
-        <!-- <sit-data-input #sitControl type="date" field="SalesDate" label="Data sprzedaży" appearance="outline" fxFlex="25"></sit-data-input> -->
-      </div>
-      <div fxLayout="row">
-        <sit-data-input #sitControl type="text" field="CustName" label="Kontrahent" appearance="outline" fxFlex></sit-data-input>
-      </div>      
-      <div fxLayout="row">
-        <sit-data-input #sitControl type="text" field="DocumentNumber" label="Numer dokumentu" appearance="outline" fxFlex></sit-data-input>
-      </div>
-      <div fxLayout="row">
-        <sit-data-input #sitControl type="text" field="OfficeDocDescription" label="Opis dokumentu" appearance="outline" fxFlex></sit-data-input>
-      </div>
-      <div fxLayout="row">
-        <sit-data-input #sitControl type="text" field="CurrencyIdent" label="Waluta" appearance="outline" fxFlex="20"></sit-data-input>
-        <sit-data-input #sitControl type="date" field="ExRateDate" label="Kurs z dnia" appearance="outline" fxFlex="25"></sit-data-input>
-        <sit-data-input #sitControl type="number" field="ExRate" label="Kurs waluty" appearance="outline" fxFlex></sit-data-input>
-      </div>
-      <div fxLayout="row">
-        <sit-data-input #sitControl type="number" field="NetCurrency" label="Netto" appearance="outline" fxFlex></sit-data-input>
-        <sit-data-input #sitControl type="number" field="VATCurrency" label="Vat" appearance="outline" fxFlex></sit-data-input>
-        <sit-data-input #sitControl type="number" field="GrossCurrency" label="Brutto" appearance="outline" fxFlex></sit-data-input>
-      </div>      
-      <div fxLayout="row">
-        <sit-data-input #sitControl type="number" field="Net" label="Netto PLN" appearance="outline" fxFlex></sit-data-input>
-        <sit-data-input #sitControl type="number" field="VAT" label="Vat PLN" appearance="outline" fxFlex></sit-data-input>
-        <sit-data-input #sitControl type="number" field="Gross" label="Brutto PLN" appearance="outline" fxFlex></sit-data-input>
+      <div fxLayout="column" fxFlex>
+        <sit-pdf-viewer #sitControl reportType="att" field="FileName" ngClass="from-sit-office-doc-headers-component-html">
+        </sit-pdf-viewer>
       </div>
     </div>
   </sit-data-set-container>

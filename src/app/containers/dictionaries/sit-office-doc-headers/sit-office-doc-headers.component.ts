@@ -52,6 +52,7 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
       { headerName: 'Brutto', field: 'GrossCurrency', filter: 'agTextColumnFilter', type: 'numericColumn', renderType:'number', width: 100, 
         cellStyle: function(params) { return (params.data["IsCurrency"] === 0 ? {} : {'background-color': 'rgb(219, 247, 255)'}) }
       },   
+      { headerName: 'GUID załącznika', field: 'sitAttachmentsG',width: 150, defaultVisibility: false },
     ];
 
     this.gridColumnsDefinition["sitAttachments"] = [

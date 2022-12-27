@@ -10,9 +10,11 @@
         <sit-data-input #sitControl field="searchDateTo" type="date" label="Do" appearance="outline" style="width: 195px;" showRefreshButton="true" ></sit-data-input>
       </sit-data-set-container>
     </div>
-    <sit-data-set-container  ident="sitAggrDayStockTurnoverParams" fxLayout="row" style="margin-bottom: 5px" style="width: 100%;">
-      <sit-data-label type="text" #sitControl field="LastValuationDate" label="Ostatni dzień rozliczenia:"></sit-data-label>
-    </sit-data-set-container>
+    <div>
+      <sit-data-set-container  ident="sitAggrDayStockTurnoverParams" ngClass="flex-container-row mb-05">
+        <sit-data-label #sitControl field="LastValuationDate" label="Ostatni dzień rozliczenia:" fxFlex="270px"></sit-data-label>
+      </sit-data-set-container>
+    </div>
     <sit-data-set-container ident="sitAggrDayStockTurnover" showActionsToolbar="false" fxFlex fxLayout="column">
       <div class="data-table" fxFlex>
         <ag-grid-angular

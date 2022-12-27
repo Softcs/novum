@@ -5,6 +5,7 @@ import { User } from '@app/_models';
 import { GatewayService } from '@app/_services';
 import { UrlService } from '@app/_services/url.service';
 import { OnCFService } from '@app/_services/oncf.service';
+import { basename } from 'path';
 @Component({
   selector: 'sit-pdf-viewer',
   templateUrl: './sit-pdf-viewer.component.html',
@@ -28,7 +29,7 @@ export class SitPdfViewerComponent extends SitDataBaseComponent implements After
       renderer: Renderer2,
       oncfService: OnCFService,
       private gatewayService: GatewayService,
-      private urlService: UrlService      
+      private urlService: UrlService
       ) {
     super(renderer);
 
@@ -82,6 +83,13 @@ export class SitPdfViewerComponent extends SitDataBaseComponent implements After
       this.pdfViewer.pdfSrc = encodeURIComponent(this.pdfSrc);
       this.pdfViewer.downloadFileName = this.downloadFileName;
       this.pdfViewer.refresh();
+    }
+  }
+
+  public setValue(value: any) {
+    super.setValue(value);
+    if (value != null) {
+      this.refreshFieldValue();
     }
   }
 }

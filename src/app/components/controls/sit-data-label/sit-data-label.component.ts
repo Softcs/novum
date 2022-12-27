@@ -13,10 +13,11 @@ import { formatDate, formatNumber } from '@angular/common';
 })
 export class SitDataLabelComponent extends SitDataBaseComponent {
 
+  @Input() labelWidth = '';
   @Input() type = 'text';
   @Input() label = '';
-  // @Input() valueWidth;
-  // @Input() labelWidth;
+  @Input() valueStyle: any = {};
+  @Input() labelStyle: any = {};
 
   constructor(
     @Inject(LOCALE_ID) protected locale: string,

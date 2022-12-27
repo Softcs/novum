@@ -11,7 +11,7 @@
                     <sit-data-input #sitControl field="Customer" label="Kontrahent" appearance="outline" style="width: 200px;"></sit-data-input>
                     <sit-data-input #sitControl field="DocumentNumber" label="Numer" appearance="outline" style="width: 200px;"></sit-data-input>
                     <sit-data-input #sitControl field="CurrencyIdent" label="Waluta" appearance="outline" style="width: 120px;"></sit-data-input>
-                    <sit-data-input #sitControl field="ForDate" type="date" label="Na dzień" appearance="outline" style="width: 200px;" [showRefreshButton]="true"></sit-data-input>
+                    <sit-data-input #sitControl field="ForDate" type="date" label="Na dzień" appearance="outline" style="width: 140px;"></sit-data-input>
                     <sit-data-input #sitControl field="PaymentDateFrom" type="date" label="Data płatności od" appearance="outline" style="width: 140px;" ></sit-data-input>
                     <sit-data-input #sitControl field="PaymentDateTo" type="date" label="Data płatności do" appearance="outline" style="width: 200px;" [showRefreshButton]="true"></sit-data-input>
                   </div>
@@ -65,7 +65,7 @@
                 [buttons]="[{'caption':'Wszystkie','value': '0', 'checked':true},{'caption':'Należności','value': '1'},{'caption':'Zobowiązania','value': '-1'}]"
                 showRefreshButton='true'
               ></sit-data-radio>
-              <sit-data-input #sitControl field="ForDate" type="date" label="Na dzień" appearance="outline" style="width: 200px;" showRefreshButton="true"></sit-data-input>
+              <sit-data-input #sitControl field="ForDate" type="date" label="Na dzień" appearance="outline" style="width: 140px;"></sit-data-input>
               <sit-data-input #sitControl field="DepositDateFrom" type="date" label="Wpłaty od" appearance="outline" style="width: 140px;"></sit-data-input>
               <sit-data-input #sitControl field="DepositDateTo" type="date" label="Wpłaty do" appearance="outline" style="width: 200px;" showRefreshButton="true"></sit-data-input>
             </div>

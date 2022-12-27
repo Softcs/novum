@@ -1,8 +1,11 @@
 <!-- <div ngClass="flex-container-row"> -->
-  <div *ngIf="label" [ngClass]="['sit-data-label-name']"  title={{label}}>
+  <div *ngIf="label && !labelWidth" [ngClass]="['sit-data-label-name']" title={{label}} [ngStyle]="labelStyle">
     {{label}}
   </div>
-  <div [ngClass]="['sit-data-label-value', type]" title={{label}}>
+  <div *ngIf="label && labelWidth" fxFlex={{labelWidth}} [ngClass]="['sit-data-label-name']" title={{label}} [ngStyle]="labelStyle">
+    {{label}}
+  </div>
+  <div [ngClass]="['sit-data-label-value', type]" title={{label}} [ngStyle]="valueStyle">
     {{value}}
   </div>
 <!-- </div> -->

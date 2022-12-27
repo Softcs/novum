@@ -6,12 +6,14 @@
           <as-split-area [size]="50" fxLayout="column">
             <sit-data-set-container ident="sitRoyaltiesHeadersFilter" fxLayout="column">
               <div fxLayout="row" fxLayoutAlign="space-between center">
+                <div>
                 <div class="sit-filter-bar" fxLayout="row">
                   <sit-data-input #sitControl field="Publication" label="Publikacja" placeholder="Tytuł" appearance="outline" style="width: 250px;"></sit-data-input>
                   <sit-data-input #sitControl field="Benef" label="Beneficjent" placeholder="Identyfikator, Nazwa" appearance="outline" style="width: 250px;"></sit-data-input>
                   <sit-data-input #sitControl field="Agent" label="Agencja" placeholder="Identyfikator, Nazwa" appearance="outline" style="width: 250px;"></sit-data-input>
                   <sit-data-input #sitControl field="DateFrom" type="date" label="Od" appearance="outline" style="width: 120px;"></sit-data-input>
                   <sit-data-input #sitControl field="DateTo" type="date" label="Do" appearance="outline" style="width: 180px;" [showRefreshButton]="true"></sit-data-input>
+                </div>
                 </div>
                 <div>
                   <button mat-stroked-button color="primary" (click)="getPrintout()"><mat-icon>print</mat-icon> Drukuj rozliczenie</button>
