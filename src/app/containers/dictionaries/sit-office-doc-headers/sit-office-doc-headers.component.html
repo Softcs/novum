@@ -96,6 +96,17 @@
                   </div>
                 </sit-data-set-container>
               </mat-tab>
+              <mat-tab label="Historia akceptacji">
+                <sit-data-set-container ident="sitAcceptances" [showActionsToolbar]="false" fxFill fxLayout="column">
+                  <div class="data-table" fxFlex>
+                    <ag-grid-angular
+                          #sitSetDataSource
+                          class="ag-theme-balham"
+                        >
+                    </ag-grid-angular>
+                  </div>
+                </sit-data-set-container>  
+              </mat-tab>
             </mat-tab-group>
           </as-split-area>
         </as-split>
