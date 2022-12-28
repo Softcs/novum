@@ -13,6 +13,7 @@
           <sit-data-input #sitControl type="text" field="OfficeDocName" label="Rodzaj dowodu"  [lookupDisplayFields] = "['OfficeDocName']" appearance="outline" fxFlex></sit-data-input>
           <!-- <sit-data-label type="text" #sitControl field="OfficeDocName" appearance="outline" fxFlex="40"></sit-data-label> -->
         </div>
+        <mat-divider style="margin-bottom: .8em; margin-top: .5em;"></mat-divider>
         <div fxLayout="row">
           <!-- <sit-data-input #sitControl type="date" field="SalesDate" label="Data sprzedaży" appearance="outline" fxFlex="25"></sit-data-input> -->
         </div>
@@ -20,14 +21,13 @@
           <sit-data-input #sitControl type="text" field="CustName" label="Kontrahent" appearance="outline" fxFlex></sit-data-input>
           <sit-data-checkbox *ngIf="this.isInsert" #sitControl field="CustomerInsert" label="Nowy"></sit-data-checkbox>
         </div>
-        <sit-proc-button #sitAction actionIdent="importFromGUS" color="primary"></sit-proc-button>
-        <div fxLayout="column" *ngIf="this.activeRow?.CustomerInsert == 1">
+        <div fxLayout="column" [class.hidden]="!this.activeRow  || this.activeRow.CustomerInsert == 0 ? true : false">
           <div fxLayout="row">
             <sit-data-input #sitControl type="text" field="VATId" label="NIP" appearance="outline"></sit-data-input>
-            <sit-data-input #sitControl type="text" field="REGON" label="REGON" appearance="outline" fxFlex></sit-data-input>
-            <sit-data-input #sitControl type="text" field="KRS" label="KRS" appearance="outline" fxFlex></sit-data-input>
+            <sit-data-input #sitControl type="text" field="REGON" label="REGON" appearance="outline"></sit-data-input>
+            <sit-data-input #sitControl type="text" field="KRS" label="KRS" appearance="outline"></sit-data-input>
+            <sit-proc-button #sitAction actionIdent="importFromGUS" color="primary"></sit-proc-button>
           </div>
-          <sit-proc-button #sitAction actionIdent="importFromGUS" color="primary"></sit-proc-button>
           <sit-data-input #sitControl type="text" field="CustIdent" label="Identyfikator" appearance="outline" fxFlex></sit-data-input>
           <div fxLayout="row">
             <sit-data-input #sitControl type="text" field="Street" label="Ulica" appearance="outline" fxFlex></sit-data-input>
@@ -39,6 +39,9 @@
             <sit-data-input #sitControl type="text" field="City" label="Miasto" appearance="outline" fxFlex></sit-data-input>
           </div>
         </div>
+
+        <mat-divider style="margin-bottom: 1em; margin-top: .5em;"></mat-divider>
+        
         <div fxLayout="row">
           <sit-data-input #sitControl type="date" field="DocumentDate" label="Data wystawienia" appearance="outline" fxFlex="33"></sit-data-input>
           <sit-data-input #sitControl type="date" field="SalesDate" label="Data sprzedaży" appearance="outline" fxFlex="33"></sit-data-input>
