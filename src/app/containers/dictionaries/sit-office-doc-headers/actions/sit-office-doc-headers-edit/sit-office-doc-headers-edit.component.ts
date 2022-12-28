@@ -8,8 +8,11 @@ import { SitActionParamsForm } from '@app/_interfaces/sitActionParamsForm';
 })
 export class SitOfficeDocHeadersEditComponent extends SitActionParamsForm{
 
-  onClick(){
-    console.log(this.activeRow?.CustomerInsert)
+  isCurrency(){
+    return( !this.activeRow?.sitCurrenciesG || this.activeRow?.sitCurrenciesG == 'E43EB905-3B49-432B-AD42-0D7E2618C82D' ? false : true );
   }
 
+  hideNewCustomer(){
+    return(!this.activeRow  || this.activeRow.CustomerInsert == 0 ? true : false);
+  }
 }
