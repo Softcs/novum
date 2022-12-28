@@ -11,20 +11,21 @@ export class SitRightsComponent extends SitDictBaseComponent {
 
   public prepareColumnsDefinitnion() {
     this.gridColumnsDefinition["sitRightsGroups"] = [
-      { headerName: 'Id', field: 'sitRightsGroupsId', type: "numericColumn", sortable: true, resizable: true, filter: 'agNumberColumnFilter',width: 80, defaultVisibility: false },
-      { headerName: 'GUID', field: 'sitRightsGroupsG', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 100, defaultVisibility: false },
-      { headerName: 'Identyfikator', field: 'RightsGroupIdent', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 100 },
-      { headerName: 'Nazwa grupy', field: 'RightsGroupName', sortable: true, resizable: true, filter: 'agTextColumnFilter', width: 200 },
-      { headerName: 'Poufne umowy', field: 'ConfidentialAgreements', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, renderType: 'checkbox', cellClass: "grid-cell-centered",width: 120 },
-      { headerName: 'Prawa do wierszy: status kartoteki', field: 'UseRights4ProductsStatusMain', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, renderType: 'checkbox', cellClass: "grid-cell-centered",width: 120, defaultVisibility: false },
-      { headerName: 'Prawa do wierszy: opiekun kontrahenta', field: 'UseRights4CustomersAccountManager', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, renderType: 'checkbox', cellClass: "grid-cell-centered",width: 120, defaultVisibility: false },
+      { headerName: 'Id', field: 'sitRightsGroupsId', type: "numericColumn", filter: 'agNumberColumnFilter',width: 80, defaultVisibility: false },
+      { headerName: 'GUID', field: 'sitRightsGroupsG', filter: 'agTextColumnFilter', width: 100, defaultVisibility: false },
+      { headerName: 'Identyfikator', field: 'RightsGroupIdent', filter: 'agTextColumnFilter', width: 100 },
+      { headerName: 'Nazwa grupy', field: 'RightsGroupName', filter: 'agTextColumnFilter', width: 200 },
+      { headerName: 'P.um.', field: 'ConfidentialAgreements', headerTooltip:'Może widzieć poufne umowy', filter: 'agTextColumnFilter', autoHeight: true, renderType: 'checkbox', cellClass: "grid-cell-centered",width: 80, suppressMenu: true },
+      { headerName: 'St.kar.', field: 'UseRights4ProductsStatusMain', headerTooltip: 'Prawa do wierszy: status kartoteki', filter: 'agTextColumnFilter', autoHeight: true, renderType: 'checkbox', cellClass: "grid-cell-centered",width: 80, suppressMenu: true },
+      { headerName: 'Op.kon.', field: 'UseRights4CustomersAccountManager', headerTooltip: 'Prawa do wierszy: opiekun kontrahenta', filter: 'agTextColumnFilter', autoHeight: true, renderType: 'checkbox', cellClass: "grid-cell-centered",width: 80, suppressMenu: true},
+      { headerName: 'Kanc.', field: 'AllOfficeDocHeaders', headerTooltip: 'Widzi wszystkie dokumenty w kancelarii', filter: 'agTextColumnFilter', autoHeight: true, renderType: 'checkbox', cellClass: "grid-cell-centered",width: 80, suppressMenu: true},
     ]
     this.gridColumnsDefinition["sitSysDictionaries"] = [
       { headerName: 'Id', type: 'numericColumn', field: 'sitSysDictionariesId', filter: 'agTextColumnFilter', defaultVisibility: false },
       { headerName: 'GUID', field: 'sitSysDictionariesG', filter: 'agTextColumnFilter', defaultVisibility: false },
       { headerName: "Identyfikator", field: 'DictionaryIdent', filter: 'agTextColumnFilter'},
       { headerName: "Nazwa", field: 'DictionaryName', filter: 'agTextColumnFilter'},
-      { headerName: 'Prawo', field: 'HasRight', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, renderType: 'checkbox', cellClass: "grid-cell-centered",width: 130 },
+      { headerName: 'Prawo', field: 'HasRight', filter: 'agTextColumnFilter', autoHeight: true, renderType: 'checkbox', cellClass: "grid-cell-centered",width: 130 },
 
     ];
     this.gridColumnsDefinition["sitSysDatasources"] = [
@@ -32,7 +33,7 @@ export class SitRightsComponent extends SitDictBaseComponent {
       { headerName: 'GUID', field: 'sitSysDatasourcesG', filter: 'agTextColumnFilter', defaultVisibility: false },
       { headerName: "Identyfikator", field: 'DatasourceIdent', filter: 'agTextColumnFilter'},
       { headerName: "Nazwa", field: 'DatasourceName', filter: 'agTextColumnFilter'},
-      { headerName: 'Prawo', field: 'HasRight', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, renderType: 'checkbox', cellClass: "grid-cell-centered",width: 80 },
+      { headerName: 'Prawo', field: 'HasRight', filter: 'agTextColumnFilter', autoHeight: true, renderType: 'checkbox', cellClass: "grid-cell-centered",width: 80 },
 
     ];
     this.gridColumnsDefinition["sitSysActions"] = [
@@ -40,7 +41,7 @@ export class SitRightsComponent extends SitDictBaseComponent {
       { headerName: 'GUID', field: 'sitSysActionsG', filter: 'agTextColumnFilter', defaultVisibility: false },
       { headerName: "Identyfikator", field: 'ActionIdent', filter: 'agTextColumnFilter'},
       { headerName: "Nazwa", field: 'ActionName', filter: 'agTextColumnFilter'},
-      { headerName: 'Prawo', field: 'HasRight', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, renderType: 'checkbox', cellClass: "grid-cell-centered",width: 80 },
+      { headerName: 'Prawo', field: 'HasRight', filter: 'agTextColumnFilter', autoHeight: true, renderType: 'checkbox', cellClass: "grid-cell-centered",width: 80 },
 
     ];
     this.gridColumnsDefinition["sitRightsGroupUsers"] = [
@@ -53,7 +54,7 @@ export class SitRightsComponent extends SitDictBaseComponent {
       { headerName: 'GUID', field: 'sitLocationsG', filter: 'agTextColumnFilter', defaultVisibility: false },
       { headerName: "Identyfikator", field: 'LocationIdent', filter: 'agTextColumnFilter'},
       { headerName: "Nazwa", field: 'LocationName', filter: 'agTextColumnFilter'},
-      { headerName: 'Prawo', field: 'HasRight', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, renderType: 'checkbox', cellClass: "grid-cell-centered",width: 80 },
+      { headerName: 'Prawo', field: 'HasRight', filter: 'agTextColumnFilter', autoHeight: true, renderType: 'checkbox', cellClass: "grid-cell-centered",width: 80 },
 
     ];
     this.gridColumnsDefinition["sitAgreementsTypes"] = [
@@ -61,7 +62,7 @@ export class SitRightsComponent extends SitDictBaseComponent {
       { headerName: 'GUID', field: 'sitAgreementsTypesG', filter: 'agTextColumnFilter', defaultVisibility: false },
       { headerName: "Identyfikator", field: 'AgreementsTypeIdent', filter: 'agTextColumnFilter'},
       { headerName: "Nazwa", field: 'AgreementsTypeName', filter: 'agTextColumnFilter'},
-      { headerName: 'Prawo', field: 'HasRight', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, renderType: 'checkbox', cellClass: "grid-cell-centered",width: 80 },
+      { headerName: 'Prawo', field: 'HasRight', filter: 'agTextColumnFilter', autoHeight: true, renderType: 'checkbox', cellClass: "grid-cell-centered",width: 80 },
     ];
 
     this.gridColumnsDefinition["sitRightsSettlementsKinds"] = [
@@ -69,7 +70,7 @@ export class SitRightsComponent extends SitDictBaseComponent {
       { headerName: 'GUID', field: 'sitSettlementKindG', filter: 'agTextColumnFilter', defaultVisibility: false },
       { headerName: "Identyfikator", field: 'SettlementKindIdent', filter: 'agTextColumnFilter'},
       { headerName: "Nazwa", field: 'SettlementKindName', filter: 'agTextColumnFilter'},
-      { headerName: 'Prawo', field: 'HasRight', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, renderType: 'checkbox', cellClass: "grid-cell-centered",width: 80 },
+      { headerName: 'Prawo', field: 'HasRight', filter: 'agTextColumnFilter', autoHeight: true, renderType: 'checkbox', cellClass: "grid-cell-centered",width: 80 },
     ];
 
     this.gridColumnsDefinition["sitRightsProductsStatusMain"] = [
@@ -77,7 +78,7 @@ export class SitRightsComponent extends SitDictBaseComponent {
       { headerName: 'GUID', field: 'sitStatusValuesG', filter: 'agTextColumnFilter', defaultVisibility: false },
       { headerName: "Identyfikator", field: 'ValueIdent', filter: 'agTextColumnFilter'},
       { headerName: "Nazwa", field: 'ValueName', filter: 'agTextColumnFilter'},
-      { headerName: 'Prawo', field: 'HasRight', sortable: true, filter: 'agTextColumnFilter', autoHeight: true, renderType: 'checkbox', cellClass: "grid-cell-centered",width: 80 },
+      { headerName: 'Prawo', field: 'HasRight', filter: 'agTextColumnFilter', autoHeight: true, renderType: 'checkbox', cellClass: "grid-cell-centered",width: 80 },
     ];
 
    }
