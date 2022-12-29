@@ -88,7 +88,7 @@ export class SitPdfViewerComponent extends SitDataBaseComponent implements After
 
   public setValue(value: any) {
     super.setValue(value);
-    if (value != null) {
+    if (value != this.value) {
       this.refreshFieldValue();
     }
   }
