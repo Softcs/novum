@@ -77,10 +77,6 @@ export class SitProcButtonComponent extends SitActionDirective {
     return (this.actionDefinition?.isUpdate);
   }
 
-  isSvgIcon(): boolean {
-    return (this.icon === "gus")
-  }
-
   public get isDisabled() {
     var disabled = this.executing
     if (!this.actionDefinition.forSelectedRows && this.dataSetResponseWrapper.hasSelectedRows) {

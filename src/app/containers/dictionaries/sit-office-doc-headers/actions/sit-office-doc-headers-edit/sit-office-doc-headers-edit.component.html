@@ -24,18 +24,18 @@
         <div fxLayout="column" [class.hidden]="hideNewCustomer()">
           <div fxLayout="row">
             <sit-data-input #sitControl type="text" field="VATId" label="NIP" appearance="outline"></sit-data-input>
+            <sit-proc-button #sitAction actionIdent="importFromGUS" color="primary" style="margin-bottom: 5px;"></sit-proc-button>
             <sit-data-input #sitControl type="text" field="REGON" label="REGON" appearance="outline"></sit-data-input>
             <sit-data-input #sitControl type="text" field="KRS" label="KRS" appearance="outline"></sit-data-input>
-            <sit-proc-button #sitAction actionIdent="importFromGUS" color="primary"></sit-proc-button>
           </div>
           <sit-data-input #sitControl type="text" field="CustIdent" label="Identyfikator" appearance="outline" fxFlex></sit-data-input>
           <div fxLayout="row">
             <sit-data-input #sitControl type="text" field="Street" label="Ulica" appearance="outline" fxFlex></sit-data-input>
-            <sit-data-input #sitControl type="text" field="HouseNum" label="Numer" appearance="outline" fxFlex></sit-data-input>
+            <sit-data-input #sitControl type="text" field="HouseNum" label="Numer" appearance="outline" fxFlex="30"></sit-data-input>
           </div>
           <div fxLayout="row">
-            <sit-data-input #sitControl type="text" field="CountrySymbol" label="Kraj" appearance="outline" fxFlex></sit-data-input>
-            <sit-data-input #sitControl type="text" field="PostCode" label="Kod pocztowy" appearance="outline" fxFlex></sit-data-input>
+            <sit-data-input #sitControl type="text" field="CountrySymbol" label="Kraj" appearance="outline" fxFlex="20"></sit-data-input>
+            <sit-data-input #sitControl type="text" field="PostCode" label="Kod pocztowy" appearance="outline" fxFlex="30"></sit-data-input>
             <sit-data-input #sitControl type="text" field="City" label="Miasto" appearance="outline" fxFlex></sit-data-input>
           </div>
         </div>
