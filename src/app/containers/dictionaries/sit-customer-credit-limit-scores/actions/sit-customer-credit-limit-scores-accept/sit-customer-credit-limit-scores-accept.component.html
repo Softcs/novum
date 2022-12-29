@@ -2,24 +2,33 @@
   [(actionExecuteData)]="actionExecuteData"
   >
   <sit-data-set-container ident="sitCustomerCreditLimitScoresAccept">
-    <div class="sit-proc-params-content" fxLayout="column">
-      <div fxLayout="column">
-        <sit-data-label type="text" #sitControl field="AcceptanceStepName_From" appearance="outline"></sit-data-label>
-        <sit-data-radio #sitControl field="AcceptanceMode" type="row" label=""
-          [buttons]="[{'caption':'Akceptuj','value': '1', 'checked':true},{'caption':'Odrzuć','value':'-1'}]"
-        ></sit-data-radio>          
-        <div fxLayout="row" fxFlex>
-          <sit-data-textarea 
-            type="textarea" 
-            #sitControl field="Comment" 
-            label="Komentarz" 
-            appearance="outline" 
-            rows="5" 
-            cols="30" 
-            fxFill>
-          </sit-data-textarea>
-        </div> 
+    <div ngClass="sit-proc-params-content">
+      <div ngClass="flex-container-row mb-05">
+        <sit-data-label #sitControl field="AcceptanceStepName_From" label="Bieżący poziom akceptacji"></sit-data-label>
       </div>
-    </div>
+      <div ngClass="flex-container-row mb-05">
+        <sit-data-label #sitControl field="AcceptanceStepName_To" label="Następny poziom akceptacji"></sit-data-label>
+      </div>
+      <div ngClass="flex-container-row">
+        <sit-data-radio #sitControl field="AcceptanceMode" type="row" 
+          [buttons]="[{'caption':'Akceptuj','value': '1', 'checked':true},{'caption':'Odrzuć','value':'-1'}]"
+        ></sit-data-radio>
+      </div>
+      <div ngClass="flex-container-row" *ngIf="hideEmployeesList()">
+        <sit-data-input type="text" #sitControl field="EmployeeName" label="Przekaż do akceptacji" appearance="outline" fxFlex
+          [lookupDisplayFields] = "['EmployeeName']"></sit-data-input>
+      </div>
+      <div ngClass="flex-container-row">
+        <sit-data-textarea 
+          type="textarea" 
+          #sitControl field="Comment" 
+          label="Komentarz" 
+          appearance="outline" 
+          rows="5" 
+          cols="30" 
+          fxFill>
+        </sit-data-textarea>
+      </div> 
+   </div>
   </sit-data-set-container>
 </sit-proc-params>
