@@ -8,8 +8,8 @@ import { SitActionParamsForm } from '@app/_interfaces/sitActionParamsForm';
 })
 export class SitCustomerCreditLimitScoresAcceptComponent extends SitActionParamsForm{
 
-  hideEmployeesList(){
-    return(!this.activeRow  || this.activeRow.ShowEmployeesList == 0 ? true : false);
+  showEmployeesList(){
+    return(!this.activeRow  || this.activeRow.ShowEmployeesList == 0 ? false : true);
   }
 
 }

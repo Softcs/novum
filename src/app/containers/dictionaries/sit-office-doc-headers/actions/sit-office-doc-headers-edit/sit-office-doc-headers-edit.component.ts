@@ -15,4 +15,9 @@ export class SitOfficeDocHeadersEditComponent extends SitActionParamsForm{
   hideNewCustomer(){
     return(!this.activeRow  || this.activeRow.CustomerInsert == 0 ? true : false);
   }
+
+  bankNoReq(){
+    return(!this.activeRow  || this.activeRow.BankAccountNumberReq == 0 ? false : true);
+
+  }
 }

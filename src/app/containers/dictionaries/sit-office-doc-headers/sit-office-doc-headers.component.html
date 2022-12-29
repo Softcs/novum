@@ -8,11 +8,9 @@
 
               <!-- kombinacja: flex-container-row sit-filter-bar zwraca: flex:0 0 0; -->
               <sit-data-set-container ident="sitFilter" ngClass="flex-container-row sit-filter-bar">
-                <sit-data-input #sitControl field="OfficeDocIdent" label="Typ dok." placeholder="Typ" appearance="outline" style="width: 100px;"
-                  [lookupDisplayFields] = "['OfficeDocIdent', 'OfficeDocName']">
-                </sit-data-input>
-                <sit-data-input #sitControl field="search" label="Dokument" placeholder="" appearance="outline" style="width: 200px;"></sit-data-input>
-                <sit-data-input #sitControl field="Customer" label="Kontrahent" placeholder="" appearance="outline" style="width: 200px;"></sit-data-input>
+
+                <sit-data-input #sitControl field="Customer" label="Kontrahent" placeholder="" appearance="outline" style="width: 150px;"></sit-data-input>
+                <sit-data-input #sitControl field="search" label="Numer" placeholder="" appearance="outline" style="width: 150px;"></sit-data-input>
                 <sit-data-input #sitControl field="DateFrom" type="date" label="Od" appearance="outline" style="width: 130px;"></sit-data-input>
                 <sit-data-input #sitControl field="DateTo" type="date" label="Do" appearance="outline" style="width: 195px;" showRefreshButton="true" ></sit-data-input>
                 <sit-data-checkbox #sitControl field="ED" label="Edycja" labelPosition="after" checked="true" [refreshOnChange]="true" style="color: rgb(0,0,0);" ></sit-data-checkbox>
@@ -34,32 +32,46 @@
                 <!-- sit-data-labels-standard-container - zmienia zachowanie wysokości elementów -->
                 <sit-data-set-container ident="sitOfficeDocHeaders" ngClass="flex-container-column">
 
-                  <div ngClass="flex-container-row mb-05 mt-05">
+                  <div ngClass="flex-container-row mb-05 mt-05 mr-05">
 
-                    <sit-simple-container ngClass="flex-container-column mr-05" fxFlex="50">
+                    <sit-simple-container ngClass="flex-container-column mr-05" fxFlex="30">
                       <sit-data-label #sitControl field="OfficeDocName" type="header"></sit-data-label>
                       <sit-data-label #sitControl field="OfficeDocNumber" label="Nr w rejestrze" labelWidth="8em"></sit-data-label>
                       <sit-data-label #sitControl field="RegDate" label="Data rejestracji" labelWidth="8em"></sit-data-label>
                       <sit-data-label #sitControl field="StatusValueName" label="Status" labelWidth="8em"></sit-data-label>
                     </sit-simple-container>
 
-                    <sit-simple-container ngClass="flex-container-column mr-05" fxFlex=>
-                      <sit-data-label #sitControl field="DocumentNumber" label="Nr dok." labelWidth="5em"></sit-data-label>
-                      <sit-data-label #sitControl field="DocumentDate" label="Data wyst." labelWidth="5em"></sit-data-label>
-                      <sit-data-label #sitControl field="SalesDate" label="Data sprz." labelWidth="5em" ></sit-data-label>
-                      <sit-data-label #sitControl field="PaymentDate" label="Data płat." labelWidth="5em" ></sit-data-label>
+                    <sit-simple-container ngClass="flex-container-column" fxFlex>
+                      <sit-data-label #sitControl field="CustName" label="Kontrahent" labelWidth="6em" [valueStyle]="{'font-weight': '600'}"></sit-data-label>
+                      <sit-data-label #sitControl field="VATId" label="NIP" labelWidth="6em" [valueStyle]="{'font-weight': '600'}"></sit-data-label>
+                      <sit-data-label #sitControl field="CustAddress" label="Adres" labelWidth="6em"></sit-data-label>
+                      <sit-data-label #sitControl field="EmployeeName" label="Pracownik" labelWidth="6em"></sit-data-label>
+                      <sit-data-label #sitControl field="OfficeDocDescription" label="Opis dok." labelWidth="6em"></sit-data-label>
                     </sit-simple-container>
 
                   </div>
 
-                  <sit-simple-container ngClass="flex-container-column mr-05 mb-05">
-                    <sit-data-label #sitControl field="CustName" label="Kontrahent" labelWidth="6em"></sit-data-label>
-                    <sit-data-label #sitControl field="VATId" label="NIP" labelWidth="6em"></sit-data-label>
-                    <sit-data-label #sitControl field="CustAddress" label="Adres" labelWidth="6em"></sit-data-label>
-                    <sit-data-label #sitControl field="OfficeDocDescription" label="Opis" labelWidth="6em"></sit-data-label>
-                  </sit-simple-container>
+                  <div ngClass="flex-container-row mb-05 mr-05">
 
-                  <div ngClass="flex-container-row">
+                    <sit-simple-container ngClass="flex-container-column mr-05" fxFlex="30">
+                      <sit-data-label #sitControl field="DocumentNumber" label="Nr dok." labelWidth="8em" [valueStyle]="{'font-weight': '600'}"></sit-data-label>
+                      <sit-data-label #sitControl field="DocumentDate" label="Data wyst." labelWidth="8em"></sit-data-label>
+                      <sit-data-label #sitControl field="SalesDate" label="Data sprz." labelWidth="8em" ></sit-data-label>
+                    </sit-simple-container>
+
+                    <sit-simple-container ngClass="flex-container-column" fxFlex>
+                      <div ngClass="flex-container-row">
+                        <sit-data-label #sitControl field="PaymentTypeDesc" label="Rodz. płat." labelWidth="6em" fxFlex="30"></sit-data-label>
+                        <sit-data-label #sitControl field="PaymentDays" label="Dni" labelWidth="6em" fxFlex="30"></sit-data-label>
+                        <sit-data-label #sitControl field="PaymentDate" label="Data płat." labelWidth="6em" fxFlex></sit-data-label>
+                      </div>
+                      <sit-data-label #sitControl field="BankAccountNumber" label="Rachunek" labelWidth="6em"></sit-data-label>
+                      <sit-data-label #sitControl field="Swift" label="SWIFT" labelWidth="6em" ></sit-data-label>
+                    </sit-simple-container>
+
+                  </div>
+                  
+                  <div ngClass="flex-container-row mb-05">
 
                     <sit-simple-container ngClass="flex-container-column mr-05" fxFlex="30">
                       <sit-data-label #sitControl field="NetCurrency" label="Netto" type="number"></sit-data-label>
