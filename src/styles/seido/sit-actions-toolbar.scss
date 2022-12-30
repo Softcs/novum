@@ -1,41 +1,25 @@
-.mat-toolbar {
-    // tu sterujemy wielkoscia fonta globalnie dla toolbar
-    font-size: 1rem;
 
-    .sit-proc-buttons-row {
-      display: flex;
-      flex: 0 1 0;
-    }
-  
-    .sit-proc-button-component {
-      flex: 0 1 0;
-      display: flex;
-    }
-  
-    
-    .mat-stroked-button {
-      display: flex;
-      // align-items: center;
-      justify-content: center;
-      flex: 1 1 0;
-  
-    //   font-size: 1rem;
-      line-height: 1.9em;
-      min-width: 2em;
-      padding: 0 .5em;
-      margin: 4px 0px 3px 4px;
 
-      &.small {
-        // tu sterujemy wielkoscia fonta dla .small
-        font-size: .9em;
-      }
-      &:hover {
-        // border-color: rgba(150,0,0, 0.3) !important;
-        border-color: rgba(7, 55, 99, 0.3) !important;
-      }
-    }
-    
-    
+.sit-proc-button-component {
+  flex: 0 1 0;
+  display: flex;
+
+  //.mat-stroked-button, 
+  button
+  {
+    display: flex;
+    // align-items: center;
+    justify-content: center;
+    flex: 1 1 0;
+
+  //   font-size: 1rem;
+    line-height: 1.9em;
+    min-width: 2em;
+    padding: 0 .5em;
+    margin: 4px 0px 3px 4px;    
+    white-space: nowrap;
+
+
     .mat-button-wrapper {
       display: flex;
       flex: auto;
@@ -63,7 +47,40 @@
     {
       line-height: inherit;
     }
-    
+
+
+
+    &.small {
+      // tu sterujemy wielkoscia fonta dla .small
+      font-size: .9em;
+    }
+    &:hover {
+      // border-color: rgba(150,0,0, 0.3) !important;
+      border-color: rgba(7, 55, 99, 0.3) !important;
+    }
+  }
+}
+
+
+.mat-toolbar {
+    // tu sterujemy wielkoscia fonta globalnie dla toolbar
+    font-size: 1rem;
+
+    .sit-proc-buttons-row {
+      display: flex;
+      flex: 0 1 0;
+    }
+
+    button {
+      margin: 4px 0px 3px 4px;
+    }
+  
+    // .sit-proc-button-component {
+    //   flex: 0 1 0;
+    //   display: flex;
+    // }
+  
+  
     
     .mat-toolbar-row, .mat-toolbar-single-row {
       // padding: 2px 2px 0px 2px;
