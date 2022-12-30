@@ -2,9 +2,10 @@
 	<div fxLayout="column" fxFill class="content">
 		<sit-data-set-container ident="sitFilterCustomerBillingHours" fxLayout="row">
 			<div class="sit-filter-bar" fxLayout="row">
-				<sit-data-input #sitControl field="search" label="Filtruj" placeholder="" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
-				<sit-data-input #sitControl field="dateFrom" type="date" label="Data od" appearance="outline" style="width: 130px;"></sit-data-input>
-				<sit-data-input #sitControl field="dateTo" type="date" label="Data do" appearance="outline" style="width: 195px;" showRefreshButton="true"></sit-data-input>
+				<sit-data-input #sitControl field="search" label="Filtruj" placeholder="kontrahent, opis" appearance="outline" style="width: 200px;"></sit-data-input>
+				<sit-data-input #sitControl field="userName" label="Osoba" placeholder="" appearance="outline" style="width: 150px;"></sit-data-input>
+				<sit-data-input #sitControl field="dateFrom" type="date" label="Data od" appearance="outline" style="width: 120px;"></sit-data-input>
+				<sit-data-input #sitControl field="dateTo" type="date" label="Data do" appearance="outline" style="width: 180px;" showRefreshButton="true"></sit-data-input>
 			</div>
 		</sit-data-set-container>
 		<sit-data-set-container ident="sitCustomerBillingHours" showActionsToolbar="true" fxLayout="column" fxFlex>

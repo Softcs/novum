@@ -1,8 +1,8 @@
 <sit-dict-container ident="sitOfficeDocHeaders" #sitDictcontainer ngClass="flex-container-column">
   <div ngClass="content flex-container-column">
-    <as-split direction="horizontal">
+    <as-split #sitSpliter direction="horizontal">
       <as-split-area [size]="55">
-        <as-split direction="vertical">
+        <as-split #sitSpliter direction="vertical">
 
           <as-split-area [size]="45" fxLayout="column">
 
@@ -10,7 +10,7 @@
               <sit-data-set-container ident="sitFilter" ngClass="flex-container-row sit-filter-bar">
 
                 <sit-data-input #sitControl field="Customer" label="Kontrahent" placeholder="" appearance="outline" style="width: 150px;"></sit-data-input>
-                <sit-data-input #sitControl field="search" label="Numer" placeholder="" appearance="outline" style="width: 150px;"></sit-data-input>
+                <sit-data-input #sitControl field="search" label="Filtruj" placeholder="numer, opis, pracownik" appearance="outline" style="width: 150px;"></sit-data-input>
                 <sit-data-input #sitControl field="DateFrom" type="date" label="Od" appearance="outline" style="width: 130px;"></sit-data-input>
                 <sit-data-input #sitControl field="DateTo" type="date" label="Do" appearance="outline" style="width: 195px;" showRefreshButton="true" ></sit-data-input>
                 <sit-data-checkbox #sitControl field="ED" label="Edycja" labelPosition="after" checked="true" [refreshOnChange]="true" style="color: rgb(0,0,0);" ></sit-data-checkbox>
@@ -38,14 +38,14 @@
                       <sit-data-label #sitControl field="OfficeDocName" type="header"></sit-data-label>
                       <sit-data-label #sitControl field="OfficeDocNumber" label="Nr w rejestrze" labelWidth="8em"></sit-data-label>
                       <sit-data-label #sitControl field="RegDate" label="Data rejestracji" labelWidth="8em"></sit-data-label>
-                      <sit-data-label #sitControl field="StatusValueName" label="Status" labelWidth="8em"></sit-data-label>
+                      <sit-data-label #sitControl field="StatusValueName" label="Status" labelWidth="8em" [valueStyle]="{'color': statusColor(), 'font-weight': '600' }" ></sit-data-label>
                     </sit-simple-container>
 
                     <sit-simple-container ngClass="flex-container-column" fxFlex>
                       <sit-data-label #sitControl field="CustName" label="Kontrahent" labelWidth="6em" [valueStyle]="{'font-weight': '600'}"></sit-data-label>
                       <sit-data-label #sitControl field="VATId" label="NIP" labelWidth="6em" [valueStyle]="{'font-weight': '600'}"></sit-data-label>
                       <sit-data-label #sitControl field="CustAddress" label="Adres" labelWidth="6em"></sit-data-label>
-                      <sit-data-label #sitControl field="EmployeeName" label="Pracownik" labelWidth="6em"></sit-data-label>
+                      <sit-data-label #sitControl field="EmployeeName" label="Pracownik" labelWidth="6em" [valueStyle]="{'font-weight': '600'}"></sit-data-label>
                       <sit-data-label #sitControl field="OfficeDocDescription" label="Opis dok." labelWidth="6em"></sit-data-label>
                     </sit-simple-container>
 

@@ -27,7 +27,7 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
     this.gridColumnsDefinition["sitOfficeDocHeaders"] = [
       { headerName: 'Id', field: 'sitOfficeDocHeadersId',width: 90, defaultVisibility: false },
       { headerName: 'GUID', field: 'sitOfficeDocHeadersG',width: 150, defaultVisibility: false },
-      { headerName: '', field: 'StatusValueIdent',  tooltipField: 'StatusValueName', width: 40, suppressMenu: true,
+      { headerName: '', field: 'StatusValueIdent',  tooltipField: 'StatusValueName', width: 45, suppressMenu: true,
         cellStyle: function(params) {
           if (params.value === 'ED') { return { 'background-color': 'rgb(236, 236, 236)','font-weight': 700 }; }
           else if (params.value === 'DZ') { return { 'background-color': 'lime', color: 'white', 'font-weight': 700 }; }
@@ -51,8 +51,13 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
       },
       { headerName: 'Brutto', field: 'GrossCurrency', filter: 'agTextColumnFilter', type: 'numericColumn', renderType:'number', width: 100, 
         cellStyle: function(params) { return (params.data["IsCurrency"] === 0 ? {} : {'background-color': 'rgb(219, 247, 255)'}) }
-      },   
+      },
+      { headerName: 'Pracownik', field: 'EmployeeName', tooltipField: 'EmployeeName', filter: 'agTextColumnFilter', floatingFilter: false, width: 120, defaultVisibility: false},
+      { headerName: 'Netto PLN', field: 'Net', filter: 'agTextColumnFilter', type: 'numericColumn', renderType:'number', width: 100, defaultVisibility: false},
+      { headerName: 'VAT PLN', field: 'VAT', filter: 'agTextColumnFilter', type: 'numericColumn', renderType:'number', width: 100, defaultVisibility: false},
+      { headerName: 'Brutto PLN', field: 'Gross', filter: 'agTextColumnFilter', type: 'numericColumn', renderType:'number', width: 100, defaultVisibility: false},
       { headerName: 'GUID załącznika', field: 'sitAttachmentsG',width: 150, defaultVisibility: false },
+
     ];
 
     this.gridColumnsDefinition["sitAttachments"] = [
@@ -85,4 +90,13 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
     ];
 
   };
+
+  statusColor(){
+    if (!this.dictContainer?.activeRow('sitOfficeDocHeaders')) { return }
+    else if (this.dictContainer?.activeRow('sitOfficeDocHeaders').StatusValueIdent == 'ED') { return 'DarkGrey' }
+    else if (this.dictContainer?.activeRow('sitOfficeDocHeaders').StatusValueIdent == 'DZ') { return 'Lime' }
+    else if (this.dictContainer?.activeRow('sitOfficeDocHeaders').StatusValueIdent == 'FK') { return 'Green' };
+  }
+
+
 }
