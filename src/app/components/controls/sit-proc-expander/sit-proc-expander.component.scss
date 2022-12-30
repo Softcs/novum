@@ -1,9 +1,15 @@
 $backgroud-color: #073763;
 .sit-proc-expander {
     position: absolute;
-    margin-top: 55px;
+    // margin-top: 55px;
     z-index: 100;
-    .items-container {
+
+    // right: 0;
+    // left: 0;
+    // top: 0;
+    // bottom: 0;
+
+    .expander-items-container {
         .item {
             display: grid;
             grid-template-columns: 30px 1fr;

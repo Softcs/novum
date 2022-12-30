@@ -1,8 +1,11 @@
 <sit-proc-params
   [(actionExecuteData)]="actionExecuteData"
+  
   >
+  <!-- style="border:3px solid red;" -->
   <sit-data-set-container ident="sitOfficeDocHeadersEdit"  fxLayout="column">
     <div class="sit-proc-params-content" fxLayout="row" style="width: 1500px; height: 700px;">
+    <!-- <div class="sit-proc-params-content" fxLayout="row"> -->
       <div fxLayout="column" fxFlex="30" ngClass="mr-05">
         <div fxLayout="row" fxLayoutAlign="start center" *ngIf="this.isInsert" ngClas="mb-05">
           <sit-files-button #sitSimpleButton fieldIdent="sitAttachmentsG" fieldFileNames="FileName" style="margin-bottom: 5px;"></sit-files-button >
@@ -24,7 +27,7 @@
         <div fxLayout="column" [class.hidden]="hideNewCustomer()">
           <div fxLayout="row">
             <sit-data-input #sitControl type="text" field="VATId" label="NIP" appearance="outline"></sit-data-input>
-            <sit-proc-button #sitAction actionIdent="importFromGUS" color="primary" style="margin-bottom: 5px;"></sit-proc-button>
+            <sit-proc-button #sitAction actionIdent="importFromGUS" color="primary" style="margin-bottom: 4px; margin-right: 4px;"></sit-proc-button>
             <sit-data-input #sitControl type="text" field="REGON" label="REGON" appearance="outline"></sit-data-input>
             <sit-data-input #sitControl type="text" field="KRS" label="KRS" appearance="outline"></sit-data-input>
           </div>
