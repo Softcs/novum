@@ -43,19 +43,19 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
       { headerName: 'Wal.', field: 'CurrencyIdent', tooltipField: 'CurrencyIdent', filter: 'agTextColumnFilter', width: 50,  suppressMenu: true,
         cellStyle: function(params) { return (params.data["CurrencyIdent"] === 'PLN' ? {} : {'background-color': 'rgb(219, 247, 255)'}) }
       },
-      { headerName: 'Netto', field: 'NetCurrency', filter: 'agTextColumnFilter', type: 'numericColumn', renderType:'number', width: 100,
+      { headerName: 'Netto', field: 'NetCurrency', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: 100,
         cellStyle: function(params) { return (params.data["IsCurrency"] === 0 ? {} : {'background-color': 'rgb(219, 247, 255)'}) }
       },
-      { headerName: 'Vat', field: 'VATCurrency', filter: 'agTextColumnFilter', type: 'numericColumn', renderType:'number', width: 80,  
+      { headerName: 'Vat', field: 'VATCurrency', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: 80,  
         cellStyle: function(params) { return (params.data["IsCurrency"] === 0 ? {} : {'background-color': 'rgb(219, 247, 255)'}) }
       },
-      { headerName: 'Brutto', field: 'GrossCurrency', filter: 'agTextColumnFilter', type: 'numericColumn', renderType:'number', width: 100, 
+      { headerName: 'Brutto', field: 'GrossCurrency', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: 100, 
         cellStyle: function(params) { return (params.data["IsCurrency"] === 0 ? {} : {'background-color': 'rgb(219, 247, 255)'}) }
       },
       { headerName: 'Pracownik', field: 'EmployeeName', tooltipField: 'EmployeeName', filter: 'agTextColumnFilter', floatingFilter: false, width: 120, defaultVisibility: false},
-      { headerName: 'Netto PLN', field: 'Net', filter: 'agTextColumnFilter', type: 'numericColumn', renderType:'number', width: 100, defaultVisibility: false},
-      { headerName: 'VAT PLN', field: 'VAT', filter: 'agTextColumnFilter', type: 'numericColumn', renderType:'number', width: 100, defaultVisibility: false},
-      { headerName: 'Brutto PLN', field: 'Gross', filter: 'agTextColumnFilter', type: 'numericColumn', renderType:'number', width: 100, defaultVisibility: false},
+      { headerName: 'Netto PLN', field: 'Net', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: 100, defaultVisibility: false},
+      { headerName: 'VAT PLN', field: 'VAT', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: 100, defaultVisibility: false},
+      { headerName: 'Brutto PLN', field: 'Gross', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: 100, defaultVisibility: false},
       { headerName: 'GUID załącznika', field: 'sitAttachmentsG',width: 150, defaultVisibility: false },
 
     ];
@@ -89,6 +89,65 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
       { headerName: 'Komentarz', field: 'Comment', width: 300 },
     ];
 
+    this.gridColumnsDefinition["sitOfficeDocDimensions"] = [
+      { headerName: 'ID', field: 'sitOfficeDocDimensionsId', defaultVisibility: false},
+      { headerName: 'GUID', field: 'sitOfficeDocDimensionsG', defaultVisibility: false},
+      { headerName: 'Lp.', field: 'PosId', filter: 'agNumberColumnFilter', type: 'rightAligned' , width: "50", suppressMenu: true},
+      { headerName: 'Kwota PLN', field: 'Amount', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: "100", suppressMenu: true, agr: "sum"},
+      { headerName: 'Kwota w wal.', field: 'AmountCurrency', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: "100", suppressMenu: true, agr: "sum"},
+      { headerName: 'Dział', field: 'CompanyDepartmentIdent', tooltipField: 'CompanyDepartmentDesc', filter: 'agTextColumnFilter', floatingFilter: false, width: 130,
+        cellRenderer: function(params) {
+          var ident;
+          var desc;
+          ident = params.data["CompanyDepartmentIdent"] ? params.data["CompanyDepartmentIdent"] : '';
+          desc = params.data["CompanyDepartmentDesc"] ? params.data["CompanyDepartmentDesc"] : '';
+          return '<b>' + ident + '</b><br>' + desc
+        },
+        cellClass: ['sit-grid-row'],
+        celStyle: {'line-height': '20px!important'}
+      },
+      { headerName: 'Projekt', field: 'ProjectIdent', tooltipField: 'ProjectName', filter: 'agTextColumnFilter', floatingFilter: false, width: 130,
+        cellRenderer: function(params) {
+          var ident;
+          var desc;
+          ident = params.data["ProjectIdent"] ? params.data["ProjectIdent"] : '';
+          desc = params.data["ProjectName"] ? params.data["ProjectName"] : '';
+          return '<b>' + ident + '</b><br>' + desc
+        }
+      },
+      { headerName: 'Kanał dystr.', field: 'DistributionChannelIdent', tooltipField: 'DistributionChannelDesc', filter: 'agTextColumnFilter', floatingFilter: false, width: 130,
+        cellRenderer: function(params) {
+          var ident;
+          var desc;
+          ident = params.data["DistributionChannelIdent"] ? params.data["DistributionChannelIdent"] : '';
+          desc = params.data["DistributionChannelDesc"] ? params.data["DistributionChannelDesc"] : '';
+          return '<b>' + ident + '</b><br>' + desc
+        }
+      },
+      { headerName: 'Typ produktu', field: 'ProductsTypeIdent', tooltipField: 'ProductsTypeDesc', filter: 'agTextColumnFilter', floatingFilter: false, width: 130,
+        cellRenderer: function(params) {
+          var ident;
+          var desc;
+          ident = params.data["ProductsTypeIdent"] ? params.data["ProductsTypeIdent"] : '';
+          desc = params.data["ProductsTypeDesc"] ? params.data["ProductsTypeDesc"] : '';
+          return '<b>' + ident + '</b><br>' + desc
+        }
+      },
+      { headerName: 'Opis', field: 'PosDesc', tooltipField: 'PosDesc', filter: 'agTextColumnFilter', floatingFilter: false, width: 100},
+
+    ];  
+
+    this.gridColumnsDefinition["sitOfficeDocVATFooters"] = [
+      { headerName: 'ID', field: 'sitOfficeDocVATFootersId', defaultVisibility: false},
+      { headerName: 'GUID', field: 'sitOfficeDocVATFootersG', defaultVisibility: false},
+      { headerName: 'Lp.', field: 'OrdNumber', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: "60", suppressMenu: true},
+      { headerName: 'SV', headerTooltip: 'Symbol stawki VAT', field: 'VATRatesIdent', filter: 'agTextColumnFilter', floatingFilter: false, width: 100},
+      { headerName: 'Netto', field: 'Net', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: "80"},
+      { headerName: 'VAT', field: 'VAT', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: "80"},
+      { headerName: 'Brutto', field: 'Gross', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: "80"},
+
+    ];  
+    
   };
 
   statusColor(){

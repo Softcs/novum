@@ -240,6 +240,8 @@ import { SitB2cImprintsEditComponent } from '@app/containers/dictionaries/sit-b2
 import { SitOfficeDocHeadersComponent } from '@app/containers/dictionaries/sit-office-doc-headers/sit-office-doc-headers.component';
 import { SitOfficeDocHeadersEditComponent } from '@app/containers/dictionaries/sit-office-doc-headers/actions/sit-office-doc-headers-edit/sit-office-doc-headers-edit.component';
 import { SitSimpleContainerComponent } from '@app/components/sit-simple-container/sit-simple-container.component';
+import { SitOfficeDocDimensionsEditComponent } from '@app/containers/dictionaries/sit-office-doc-headers/actions/sit-office-doc-dimensions-edit/sit-office-doc-dimensions-edit.component';
+import { SitOfficeDocVatFootersEditComponent } from '@app/containers/dictionaries/sit-office-doc-headers/actions/sit-office-doc-vat-footers-edit/sit-office-doc-vat-footers-edit.component';
 
 
 
@@ -488,6 +490,8 @@ export class FactoryService {
         sitOfficeDocHeaders: SitOfficeDocHeadersComponent,
         sitOfficeDocHeadersEdit: SitOfficeDocHeadersEditComponent,
         sitSimpleContainer: SitSimpleContainerComponent,
+        sitOfficeDocDimensionsEdit: SitOfficeDocDimensionsEditComponent,
+        sitOfficeDocVatFootersEdit: SitOfficeDocVatFootersEditComponent,
     };
 
     public GetFactory(ident: string) {

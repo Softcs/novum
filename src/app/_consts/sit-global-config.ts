@@ -21,7 +21,7 @@ export const sitGlobalConfig = {
     },
     {
       id: 'font11',
-      font: { fontName: "Calibri", size: 12, }
+      font: { fontName: "Calibri", size: 11, }
     },
     {
       id: 'font12',
