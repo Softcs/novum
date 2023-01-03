@@ -10,6 +10,7 @@ import { ProcExpanderService } from '@app/_services/procexpander.service';
 import { ActionDefinitionWrapper } from '@app/_models/actionDefinitionWrapper';
 import { VisibilityService } from '@app/_services/visibility.service';
 import { MultiActionService } from '@app/_services/multi-action.service';
+// import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'sit-proc-button',
@@ -25,10 +26,15 @@ export class SitProcButtonComponent extends SitActionDirective {
   @Input() tooltip: string;
   @Input() componentParamsIdent: string;
   @Input() openKind = 'EXPANDER';
+  @Input() buttonType = 'mat-stroked-button';
 
   @Output() afterCompleted: EventEmitter<string> = new EventEmitter<string>();
 
   @ViewChild('button') private _buttonElement: ElementRef;
+
+  public get buttonClasses() {
+    return {'small': true, 'forSelectedRows': this.actionDefinition.forSelectedRows, [this.buttonType]: true };
+  }
 
   public set actionDefinition(action: ActionDefinitionWrapper) {
     super.actionDefinition = action;
