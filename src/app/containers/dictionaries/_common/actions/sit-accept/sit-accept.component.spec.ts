@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SitCustomerCreditLimitScoresAcceptComponent } from './sit-customer-credit-limit-scores-accept.component';
+import { SitCustomerCreditLimitScoresAcceptComponent } from './sit-accept.component';
 
 describe('SitCustomerCreditLimitScoresAcceptComponent', () => {
   let component: SitCustomerCreditLimitScoresAcceptComponent;

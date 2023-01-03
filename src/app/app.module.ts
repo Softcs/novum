@@ -297,7 +297,7 @@ import { SitAcceptancePathsDefEditComponent } from './containers/dictionaries/si
 import { SitAcceptanceStepsDefEditComponent } from './containers/dictionaries/sit-acceptance-paths-def/actions/sit-acceptance-steps-def-edit/sit-acceptance-steps-def-edit.component';
 import { SitAcceptanceStepPersonsDefEditComponent } from './containers/dictionaries/sit-acceptance-paths-def/actions/sit-acceptance-step-persons-def-edit/sit-acceptance-step-persons-def-edit.component';
 import { SitAcceptanceTablesEditComponent } from './containers/dictionaries/sit-acceptance-paths-def/actions/sit-acceptance-tables-edit/sit-acceptance-tables-edit.component';
-import { SitCustomerCreditLimitScoresAcceptComponent } from './containers/dictionaries/sit-customer-credit-limit-scores/actions/sit-customer-credit-limit-scores-accept/sit-customer-credit-limit-scores-accept.component';
+import { SitAcceptComponent } from './containers/dictionaries/_common/actions/sit-accept/sit-accept.component';
 import { SitPayrollComponentsSettlementsColumnsEditComponent } from './containers/dictionaries/sit-payroll-components/actions/sit-payroll-components-settlements-columns-edit/sit-payroll-components-settlements-columns-edit.component';
 import { SitCashRegisterSaleReportsComponent } from './containers/dictionaries/sit-cash-register-sale-reports/sit-cash-register-sale-reports.component';
 import { SitCashRegisterSaleReportsImportComponent } from './containers/dictionaries/sit-cash-register-sale-reports/actions/sit-cash-register-sale-reports-import/sit-cash-register-sale-reports-import.component';
@@ -624,7 +624,7 @@ import { SitSimpleContainerComponent } from './components/sit-simple-container/s
         SitAcceptanceStepsDefEditComponent,
         SitAcceptanceStepPersonsDefEditComponent,
         SitAcceptanceTablesEditComponent,
-        SitCustomerCreditLimitScoresAcceptComponent,
+        SitAcceptComponent,
         SitPayrollComponentsSettlementsColumnsEditComponent,
         SitCashRegisterSaleReportsComponent,
         SitCashRegisterSaleReportsImportComponent,

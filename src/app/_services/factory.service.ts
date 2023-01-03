@@ -195,7 +195,7 @@ import { SitAcceptancePathsDefEditComponent } from '@app/containers/dictionaries
 import { SitAcceptanceStepsDefEditComponent } from '@app/containers/dictionaries/sit-acceptance-paths-def/actions/sit-acceptance-steps-def-edit/sit-acceptance-steps-def-edit.component';
 import { SitAcceptanceStepPersonsDefEditComponent } from '@app/containers/dictionaries/sit-acceptance-paths-def/actions/sit-acceptance-step-persons-def-edit/sit-acceptance-step-persons-def-edit.component';
 import { SitAcceptanceTablesEditComponent } from '@app/containers/dictionaries/sit-acceptance-paths-def/actions/sit-acceptance-tables-edit/sit-acceptance-tables-edit.component';
-import { SitCustomerCreditLimitScoresAcceptComponent } from '@app/containers/dictionaries/sit-customer-credit-limit-scores/actions/sit-customer-credit-limit-scores-accept/sit-customer-credit-limit-scores-accept.component';
+import { SitAcceptComponent } from '@app/containers/dictionaries/_common/actions/sit-accept/sit-accept.component';
 import { SitPayrollComponentsSettlementsColumnsEditComponent } from '@app/containers/dictionaries/sit-payroll-components/actions/sit-payroll-components-settlements-columns-edit/sit-payroll-components-settlements-columns-edit.component';
 import { SitCashRegisterSaleReportsComponent } from '@app/containers/dictionaries/sit-cash-register-sale-reports/sit-cash-register-sale-reports.component';
 import { SitCashRegisterSaleReportsImportComponent } from '@app/containers/dictionaries/sit-cash-register-sale-reports/actions/sit-cash-register-sale-reports-import/sit-cash-register-sale-reports-import.component';
@@ -443,7 +443,7 @@ export class FactoryService {
         sitAcceptanceStepsDefEdit: SitAcceptanceStepsDefEditComponent,
         sitAcceptanceStepPersonsDefEdit: SitAcceptanceStepPersonsDefEditComponent,
         sitAcceptanceTablesEdit: SitAcceptanceTablesEditComponent,
-        sitCustomerCreditLimitScoresAccept: SitCustomerCreditLimitScoresAcceptComponent,
+        sitAccept: SitAcceptComponent,
         sitPayrollComponentsSettlementsColumnsEdit: SitPayrollComponentsSettlementsColumnsEditComponent,
         sitCashRegisterSaleReports: SitCashRegisterSaleReportsComponent,
         sitCashRegisterSaleReportsImport: SitCashRegisterSaleReportsImportComponent,
