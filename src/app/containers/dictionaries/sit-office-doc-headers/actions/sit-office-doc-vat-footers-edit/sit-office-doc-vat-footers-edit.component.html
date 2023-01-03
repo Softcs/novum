@@ -1,1 +1,18 @@
-<p>sit-office-doc-vat-footers-edit works!</p>
+<sit-proc-params
+  [(actionExecuteData)]="actionExecuteData"
+  
+  >
+  <sit-data-set-container ident="sitOfficeDocVATFootersEdit"  fxLayout="column">
+    <div ngClass="sit-proc-params-content" fxLayout="column" style="width: 800; height: 500px;">
+      <div ngClass="flex-container-column">
+        <sit-data-input #sitControl field="VATRatesIdent" label="Stawka VAT" appearance="outline"></sit-data-input>
+        <sit-data-input #sitControl type="number" field="NetCurrency" label="Netto" appearance="outline"></sit-data-input>
+        <sit-data-input #sitControl type="number" field="VATCurrency" label="VAT" appearance="outline"></sit-data-input>
+        <sit-data-input #sitControl type="number" field="GrossCurrency" label="Brutto" appearance="outline"></sit-data-input>
+        <sit-data-input #sitControl type="number" field="Net" label="Netto PLN" appearance="outline"></sit-data-input>
+        <sit-data-input #sitControl type="number" field="VAT" label="VAT PLN" appearance="outline"></sit-data-input>
+        <sit-data-input #sitControl type="number" field="Gross" label="Brutto PLN" appearance="outline"></sit-data-input>
+      </div>
+    </div>    
+  </sit-data-set-container>
+</sit-proc-params>

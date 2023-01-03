@@ -491,7 +491,7 @@ export class FactoryService {
         sitOfficeDocHeadersEdit: SitOfficeDocHeadersEditComponent,
         sitSimpleContainer: SitSimpleContainerComponent,
         sitOfficeDocDimensionsEdit: SitOfficeDocDimensionsEditComponent,
-        sitOfficeDocVatFootersEdit: SitOfficeDocVatFootersEditComponent,
+        sitOfficeDocVATFootersEdit: SitOfficeDocVatFootersEditComponent,
     };
 
     public GetFactory(ident: string) {

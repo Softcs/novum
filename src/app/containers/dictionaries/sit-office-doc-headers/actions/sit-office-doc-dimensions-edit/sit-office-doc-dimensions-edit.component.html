@@ -1,22 +1,15 @@
-<sit-proc-params
-  [(actionExecuteData)]="actionExecuteData"
-  
-  >
-  <!-- style="border:3px solid red;" -->
-  <sit-data-set-container ident="sitOfficeDocDimensionsEdit"  fxLayout="column">
-    <div ngClass="sit-proc-params-content" fxLayout="column" style="width: 800; height: 500px;">
-      <div ngClass="flex-container-row mb-05">
-        <sit-data-label #sitControl field="PosId" label="Pozycja" ></sit-data-label>
-      </div>
-      <div ngClass="flex-container-column">
-        <sit-data-input #sitControl type="number" field="AmountCurrency" label="Kwota w walucie" appearance="outline"></sit-data-input>
-        <sit-data-input #sitControl type="number" field="Amount" label="Kwota w PLN" appearance="outline"></sit-data-input>
-        <sit-data-input #sitControl field="CompanyDepartmentDesc4Lookup" label="Dział" appearance="outline"></sit-data-input>
-        <sit-data-input #sitControl field="ProjectName4Lookup" label="Projekt" appearance="outline"></sit-data-input>
-        <sit-data-input #sitControl field="DistributionChannelDesc4Lookup" label="Kanał dystrybucji" appearance="outline"></sit-data-input>
-        <sit-data-input #sitControl field="ProductsTypeDesc4Lookup" label="Typ produktu" appearance="outline"></sit-data-input>
-        <sit-data-input #sitControl field="PosDesc" label="Opis" appearance="outline"></sit-data-input>
-      </div>
-    </div>    
+<sit-proc-params [(actionExecuteData)]="actionExecuteData" ngClass="flex-container-column">
+  <sit-data-set-container ident="sitOfficeDocDimensionsEdit" ngClass="flex-container-column sit-proc-params-content" style="width: 800; height: 500px;">
+
+    <sit-data-label #sitControl field="PosId" label="Pozycja" style="flex: 0 0 0" ngClass="mb-05"></sit-data-label>
+    <sit-data-input #sitControl type="number" field="NetCurrency" label="Netto w walucie" appearance="outline"></sit-data-input>
+    <sit-data-input #sitControl type="number" field="Net" label="Netto w PLN" appearance="outline" ></sit-data-input>
+    <sit-data-input #sitControl field="CompanyDepartmentDesc4Lookup" label="Dział" appearance="outline"></sit-data-input>
+    <sit-data-input #sitControl field="ProjectName4Lookup" label="Projekt" appearance="outline"></sit-data-input>
+    <sit-data-input #sitControl field="DistributionChannelDesc4Lookup" label="Kanał dystrybucji" appearance="outline"></sit-data-input>
+    <sit-data-input #sitControl field="ProductsTypeDesc4Lookup" label="Typ produktu" appearance="outline"></sit-data-input>
+    <sit-data-input #sitControl field="PosDesc" label="Opis" appearance="outline"></sit-data-input>
+    <sit-data-input #sitControl field="VATRatesIdent" label="Stawka VAT" appearance="outline" [lookupDisplayFields] = "['VATRatesIdent', 'VATRatesDescription']"></sit-data-input>
+
   </sit-data-set-container>
 </sit-proc-params>
