@@ -1,7 +1,14 @@
-<button #button mat-stroked-button *ngIf="!isShouldBeHidden"
-    [ngClass]="{'small': true, 'forSelectedRows': forSelectedRows}"
+
+<!-- [ngClass]="{'small': true, 'forSelectedRows': forSelectedRows, buttonTypeClass}" -->
+
+<button 
+    mat-button
+    #button 
+    *ngIf="!isShouldBeHidden"
+    [ngClass] = 'buttonClasses'
     color="{{color}}"
-    (click)="onClick($event)" [disabled]="isDisabled"
+    (click)="onClick($event)" 
+    [disabled]="isDisabled"
     matTooltip="{{tooltip}}"
 >
     <span *ngIf="executing" class="spinner-border spinner-border-sm mr-1 sit-proc-button-spinner"></span>
