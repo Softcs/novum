@@ -106,6 +106,16 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
       { headerName: 'Netto PLN', field: 'Net', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: "100", suppressMenu: true, agr: "sum",
         cellStyle: {'padding-top': '6px'}
       },
+      { headerName: 'Typ kosztu', field: 'CostTypeIdent', tooltipField: 'CostTypeDesc', filter: 'agTextColumnFilter', floatingFilter: false, width: 130,
+        cellRenderer: function(params) {
+          var ident;
+          var desc;
+          ident = params.data["CostTypeIdent"] ? params.data["CostTypeIdent"] : '';
+          desc = params.data["CostTypeDesc"] ? params.data["CostTypeDesc"] : '';
+          return '<b>' + ident + '</b><br>' + desc
+        },
+        cellStyle: {'line-height': '1.2em', 'padding-top': '.3em'}
+      },
       { headerName: 'Dział', field: 'CompanyDepartmentIdent', tooltipField: 'CompanyDepartmentDesc', filter: 'agTextColumnFilter', floatingFilter: false, width: 130,
         cellRenderer: function(params) {
           var ident;
@@ -150,9 +160,21 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
       { headerName: 'Opis', field: 'PosDesc', tooltipField: 'PosDesc', filter: 'agTextColumnFilter', floatingFilter: false, width: 150,
         cellStyle: {'white-space': 'normal','line-height': '1.3em', 'padding-top': '.3em'}
       },
-      { headerName: 'SV', field: 'VATRatesIdent', filter: 'agNumberColumnFilter', width: "50", suppressMenu: true, 
+      { headerName: 'SV', field: 'VATRatesIdent', width: "50", suppressMenu: true, 
         cellStyle: {'padding-top': '6px'}
       },
+      { headerName: 'Klasyfikacja', field: 'VATClassificationIdent', tooltipField: 'VATClassificationIdent', width: "100", suppressMenu: true, 
+        cellStyle: {'padding-top': '6px'}
+      },
+      { headerName: 'Rodzaj', field: 'VATCostTypeIdent', tooltipField: 'VATCostTypeIdent', width: "100", suppressMenu: true, 
+        cellStyle: {'padding-top': '6px'}
+      },
+      { headerName: 'Szczeg.VAT', field: 'VATSpecialTypesIdent', tooltipField: 'VATSpecialTypesIdent', width: "100", suppressMenu: true, 
+        cellStyle: {'padding-top': '6px'}
+      },            
+      { headerName: 'Szczeg.pod.', field: 'TaxSpecialTypesIdent', tooltipField: 'TaxSpecialTypesIdent', width: "100", suppressMenu: true, 
+        cellStyle: {'padding-top': '6px'}
+      },                  
       { headerName: 'VAT PLN', field: 'VAT', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: "100", suppressMenu: true, agr: "sum",
         cellStyle: {'padding-top': '6px'}
       },
@@ -170,10 +192,12 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
     this.gridColumnsDefinition["sitOfficeDocVATFooters"] = [
       { headerName: 'ID', field: 'sitOfficeDocVATFootersId', defaultVisibility: false},
       { headerName: 'GUID', field: 'sitOfficeDocVATFootersG', defaultVisibility: false},
-      { headerName: 'SV', headerTooltip: 'Symbol stawki VAT', field: 'VATRatesIdent', filter: 'agTextColumnFilter', floatingFilter: false, width: 100},
-      { headerName: 'Netto', field: 'Net', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: "80"},
-      { headerName: 'VAT', field: 'VAT', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: "80"},
-      { headerName: 'Brutto', field: 'Gross', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: "80"},
+      { headerName: 'SV', headerTooltip: 'Symbol stawki VAT', field: 'VATRatesIdent', filter: 'agTextColumnFilter', floatingFilter: false, width: 60, suppressMenu: true},
+      { headerName: 'Klasyfikacja', field: 'VATClassificationIdent', tooltipField: 'VATClassificationIdent', width: "110"  },
+      { headerName: 'Rodzaj', field: 'VATCostTypeIdent', tooltipField: 'VATCostTypeIdent', width: "100" },
+      { headerName: 'Netto', field: 'Net', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: "80", agr: "sum"},
+      { headerName: 'VAT', field: 'VAT', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: "80", agr: "sum"},
+      { headerName: 'Brutto', field: 'Gross', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: "80", agr: "sum"},
 
     ];  
     
