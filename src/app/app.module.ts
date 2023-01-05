@@ -297,7 +297,7 @@ import { SitAcceptancePathsDefEditComponent } from './containers/dictionaries/si
 import { SitAcceptanceStepsDefEditComponent } from './containers/dictionaries/sit-acceptance-paths-def/actions/sit-acceptance-steps-def-edit/sit-acceptance-steps-def-edit.component';
 import { SitAcceptanceStepPersonsDefEditComponent } from './containers/dictionaries/sit-acceptance-paths-def/actions/sit-acceptance-step-persons-def-edit/sit-acceptance-step-persons-def-edit.component';
 import { SitAcceptanceTablesEditComponent } from './containers/dictionaries/sit-acceptance-paths-def/actions/sit-acceptance-tables-edit/sit-acceptance-tables-edit.component';
-import { SitCustomerCreditLimitScoresAcceptComponent } from './containers/dictionaries/sit-customer-credit-limit-scores/actions/sit-customer-credit-limit-scores-accept/sit-customer-credit-limit-scores-accept.component';
+import { SitAcceptComponent } from './containers/dictionaries/_common/actions/sit-accept/sit-accept.component';
 import { SitPayrollComponentsSettlementsColumnsEditComponent } from './containers/dictionaries/sit-payroll-components/actions/sit-payroll-components-settlements-columns-edit/sit-payroll-components-settlements-columns-edit.component';
 import { SitCashRegisterSaleReportsComponent } from './containers/dictionaries/sit-cash-register-sale-reports/sit-cash-register-sale-reports.component';
 import { SitCashRegisterSaleReportsImportComponent } from './containers/dictionaries/sit-cash-register-sale-reports/actions/sit-cash-register-sale-reports-import/sit-cash-register-sale-reports-import.component';
@@ -342,6 +342,8 @@ import { SitB2cPublicationSubjectsEditComponent } from './containers/dictionarie
 import { SitOfficeDocHeadersComponent } from './containers/dictionaries/sit-office-doc-headers/sit-office-doc-headers.component';
 import { SitOfficeDocHeadersEditComponent } from './containers/dictionaries/sit-office-doc-headers/actions/sit-office-doc-headers-edit/sit-office-doc-headers-edit.component';
 import { SitSimpleContainerComponent } from './components/sit-simple-container/sit-simple-container.component';
+import { SitOfficeDocDimensionsEditComponent } from './containers/dictionaries/sit-office-doc-headers/actions/sit-office-doc-dimensions-edit/sit-office-doc-dimensions-edit.component';
+import { SitOfficeDocVatFootersEditComponent } from './containers/dictionaries/sit-office-doc-headers/actions/sit-office-doc-vat-footers-edit/sit-office-doc-vat-footers-edit.component';
 
 @NgModule({
     imports: [
@@ -624,7 +626,7 @@ import { SitSimpleContainerComponent } from './components/sit-simple-container/s
         SitAcceptanceStepsDefEditComponent,
         SitAcceptanceStepPersonsDefEditComponent,
         SitAcceptanceTablesEditComponent,
-        SitCustomerCreditLimitScoresAcceptComponent,
+        SitAcceptComponent,
         SitPayrollComponentsSettlementsColumnsEditComponent,
         SitCashRegisterSaleReportsComponent,
         SitCashRegisterSaleReportsImportComponent,
@@ -668,7 +670,9 @@ import { SitSimpleContainerComponent } from './components/sit-simple-container/s
         SitB2cPublicationSubjectsEditComponent,
         SitOfficeDocHeadersComponent,
         SitOfficeDocHeadersEditComponent,
-        SitSimpleContainerComponent
+        SitSimpleContainerComponent,
+        SitOfficeDocDimensionsEditComponent,
+        SitOfficeDocVatFootersEditComponent
 
     ],
     providers: [

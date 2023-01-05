@@ -195,7 +195,7 @@ import { SitAcceptancePathsDefEditComponent } from '@app/containers/dictionaries
 import { SitAcceptanceStepsDefEditComponent } from '@app/containers/dictionaries/sit-acceptance-paths-def/actions/sit-acceptance-steps-def-edit/sit-acceptance-steps-def-edit.component';
 import { SitAcceptanceStepPersonsDefEditComponent } from '@app/containers/dictionaries/sit-acceptance-paths-def/actions/sit-acceptance-step-persons-def-edit/sit-acceptance-step-persons-def-edit.component';
 import { SitAcceptanceTablesEditComponent } from '@app/containers/dictionaries/sit-acceptance-paths-def/actions/sit-acceptance-tables-edit/sit-acceptance-tables-edit.component';
-import { SitCustomerCreditLimitScoresAcceptComponent } from '@app/containers/dictionaries/sit-customer-credit-limit-scores/actions/sit-customer-credit-limit-scores-accept/sit-customer-credit-limit-scores-accept.component';
+import { SitAcceptComponent } from '@app/containers/dictionaries/_common/actions/sit-accept/sit-accept.component';
 import { SitPayrollComponentsSettlementsColumnsEditComponent } from '@app/containers/dictionaries/sit-payroll-components/actions/sit-payroll-components-settlements-columns-edit/sit-payroll-components-settlements-columns-edit.component';
 import { SitCashRegisterSaleReportsComponent } from '@app/containers/dictionaries/sit-cash-register-sale-reports/sit-cash-register-sale-reports.component';
 import { SitCashRegisterSaleReportsImportComponent } from '@app/containers/dictionaries/sit-cash-register-sale-reports/actions/sit-cash-register-sale-reports-import/sit-cash-register-sale-reports-import.component';
@@ -240,6 +240,8 @@ import { SitB2cImprintsEditComponent } from '@app/containers/dictionaries/sit-b2
 import { SitOfficeDocHeadersComponent } from '@app/containers/dictionaries/sit-office-doc-headers/sit-office-doc-headers.component';
 import { SitOfficeDocHeadersEditComponent } from '@app/containers/dictionaries/sit-office-doc-headers/actions/sit-office-doc-headers-edit/sit-office-doc-headers-edit.component';
 import { SitSimpleContainerComponent } from '@app/components/sit-simple-container/sit-simple-container.component';
+import { SitOfficeDocDimensionsEditComponent } from '@app/containers/dictionaries/sit-office-doc-headers/actions/sit-office-doc-dimensions-edit/sit-office-doc-dimensions-edit.component';
+import { SitOfficeDocVatFootersEditComponent } from '@app/containers/dictionaries/sit-office-doc-headers/actions/sit-office-doc-vat-footers-edit/sit-office-doc-vat-footers-edit.component';
 
 
 
@@ -443,7 +445,7 @@ export class FactoryService {
         sitAcceptanceStepsDefEdit: SitAcceptanceStepsDefEditComponent,
         sitAcceptanceStepPersonsDefEdit: SitAcceptanceStepPersonsDefEditComponent,
         sitAcceptanceTablesEdit: SitAcceptanceTablesEditComponent,
-        sitCustomerCreditLimitScoresAccept: SitCustomerCreditLimitScoresAcceptComponent,
+        sitAccept: SitAcceptComponent,
         sitPayrollComponentsSettlementsColumnsEdit: SitPayrollComponentsSettlementsColumnsEditComponent,
         sitCashRegisterSaleReports: SitCashRegisterSaleReportsComponent,
         sitCashRegisterSaleReportsImport: SitCashRegisterSaleReportsImportComponent,
@@ -488,6 +490,8 @@ export class FactoryService {
         sitOfficeDocHeaders: SitOfficeDocHeadersComponent,
         sitOfficeDocHeadersEdit: SitOfficeDocHeadersEditComponent,
         sitSimpleContainer: SitSimpleContainerComponent,
+        sitOfficeDocDimensionsEdit: SitOfficeDocDimensionsEditComponent,
+        sitOfficeDocVATFootersEdit: SitOfficeDocVatFootersEditComponent,
     };
 
     public GetFactory(ident: string) {

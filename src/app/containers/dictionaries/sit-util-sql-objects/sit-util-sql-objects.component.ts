@@ -47,36 +47,17 @@ export class SitUtilSqlObjectsComponent extends SitDictBaseComponent {
     
     this.gridColumnsDefinition["sitUtilSQLAddBatches4Object"] = [       
       { headerName: 'For proc type', field: 'ForProcType', filter: 'agTextColumnFilter', width: 100, sort: 'asc' },
-      { headerName: 'Spot ident', field: 'SpotIdent', filter: 'agTextColumnFilter', width: 200, sort: 'asc' },
-      { headerName: 'Order', field: 'Order', type: "numericColumn", filter: 'agNumberColumnFilter', width: 100, sort: 'asc' },
+      { headerName: 'InProcOrder', field: 'InProcOrder', type: "numericColumn", filter: 'agNumberColumnFilter', width: 100, sort: 'asc', 
+        headerTooltip: 'Kolejność w procedurze' },
+      { headerName: 'Spot ident', field: 'SpotIdent', filter: 'agTextColumnFilter', width: 200 },
+      { headerName: 'Order', field: 'Order', type: "numericColumn", filter: 'agNumberColumnFilter', width: 100, sort: 'asc',
+        headerTooltip: 'Kolejność w grupie spot' },
       { headerName: 'Description', field: 'Description', filter: 'agTextColumnFilter', width: 400 }
      ];
     
-     this.gridColumnsDefinition["sitUtilCheckCommonDataTable"] = [       
-       { headerName: 'Table name', field: 'TableName', filter: 'agTextColumnFilter', width: 200 },
-       { headerName: 'sit_test_job', field: 'sit_test_job_diff', width: 150, renderType: 'checkbox'},
-       { headerName: 'sit_test_publicat', field: 'sit_test_publicat_diff', width: 150, renderType: 'checkbox'},
-       { headerName: 'sit_test_chobot', field: 'sit_test_chobot_diff', width: 150, renderType: 'checkbox'},
-       { headerName: 'sit', field: 'sit_diff', width: 150, renderType: 'checkbox'},
-       { headerName: 'sit_company_template', field: 'sit_company_template_diff', width: 150, renderType: 'checkbox'},
-       { headerName: 'sit_job', field: 'sit_job_diff', width: 150, renderType: 'checkbox'},
-       { headerName: 'sit_job_abroad', field: 'sit_job_abroad_diff', width: 150, renderType: 'checkbox'},
-       { headerName: 'sit_publicat', field: 'sit_publicat_diff', width: 150, renderType: 'checkbox'},
-       { headerName: 'sit_chobot', field: 'sit_chobot_diff', width: 150, renderType: 'checkbox'},
-      ];
-
-      this.gridColumnsDefinition["sitUtilCheckCommonDataTablePivot"] = [       
-        { headerName: 'Table name', field: 'TableName', filter: 'agTextColumnFilter', width: 200,
-          rowGroup: true, enableRowGroup: true, enablePivot: true },
-        { headerName: 'DB name', field: 'dbName', filter: 'agTextColumnFilter', width: 100, sort: 'desc', 
-          pivot: true, enablePivot: true },
-        { headerName: 'diff', field: 'diff', width: 150, renderType: 'checkbox', cellClass: "grid-cell-centered",
-          aggFunc: 'min', enableValue: true },
-      ]
-      
-      this.gridColumnsDefinition["sitUtilSQLObjectRoutineColumns"] = [       
-        { headerName: 'Nazwa kolumny', field: 'ColumnName', filter: 'agNumberColumnFilter', width: 150 },
-        { headerName: 'Typ danych', field: 'DataType', filter: 'agNumberColumnFilter', width: 150 }
-      ];
+    this.gridColumnsDefinition["sitUtilSQLObjectRoutineColumns"] = [       
+      { headerName: 'Nazwa kolumny', field: 'ColumnName', filter: 'agNumberColumnFilter', width: 150 },
+      { headerName: 'Typ danych', field: 'DataType', filter: 'agNumberColumnFilter', width: 150 }
+    ];
   }
 }

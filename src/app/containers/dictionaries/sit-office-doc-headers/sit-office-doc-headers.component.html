@@ -1,4 +1,4 @@
-<sit-dict-container ident="sitOfficeDocHeaders" #sitDictcontainer ngClass="flex-container-column">
+<sit-dict-container ident="sitOfficeDocHeaders" #sitDictcontainer ngClass="flex-container-column" (refreshAfter)="refreshAfter($event)">
   <div ngClass="content flex-container-column">
     <as-split #sitSpliter direction="horizontal">
       <as-split-area [size]="55">
@@ -79,13 +79,15 @@
                       <sit-data-label #sitControl field="GrossCurrency" label="Brutto" type="number"></sit-data-label>
                     </sit-simple-container>
 
-                    <sit-simple-container *ngIf="this.activeRow('sitOfficeDocHeaders')?.IsCurrency == 1" ngClass="flex-container-column mr-05" fxFlex="30">
+                    <!-- <sit-simple-container *ngIf="this.activeRow('sitOfficeDocHeaders')?.IsCurrency == 1" ngClass="flex-container-column mr-05" fxFlex="30"> -->
+                    <sit-simple-container [class.hidden]="hideCurrency()" ngClass="flex-container-column mr-05" fxFlex="30">                      
                       <sit-data-label #sitControl field="Net" label="Netto PLN" type="number"></sit-data-label>
                       <sit-data-label #sitControl field="VAT" label="VAT PLN" type="number"></sit-data-label>
                       <sit-data-label #sitControl field="Gross" label="Brutto PLN" type="number"></sit-data-label>
                     </sit-simple-container>
 
-                    <sit-simple-container *ngIf="this.activeRow('sitOfficeDocHeaders')?.IsCurrency == 1" ngClass="flex-container-column mr-05" fxFlex>
+                    <!-- <sit-simple-container *ngIf="this.activeRow('sitOfficeDocHeaders')?.IsCurrency == 1" ngClass="flex-container-column mr-05" fxFlex> -->
+                    <sit-simple-container [class.hidden]="hideCurrency()" ngClass="flex-container-column mr-05" fxFlex>
                       <sit-data-label #sitControl field="CurrencyIdent" label="Waluta" labelWidth="6em"></sit-data-label>
                       <sit-data-label #sitControl field="ExRateDate" label="Data kursu" labelWidth="6em"></sit-data-label>
                       <sit-data-label #sitControl field="ExRate" label="Kurs waluty" labelWidth="6em"></sit-data-label>
@@ -95,6 +97,28 @@
 
                 </sit-data-set-container>
 
+              </mat-tab>
+
+              <mat-tab label="Wymiary">
+                <sit-data-set-container ident="sitOfficeDocDimensions" showActionsToolbar="true" ngClass="flex-container-column">
+                    <ag-grid-angular
+                      #sitSetDataSource
+                      class="ag-theme-balham"
+                      (gridReady)="onGridReady($event)"
+                      [rowHeight]="40"
+                    >
+                  </ag-grid-angular>
+                </sit-data-set-container>
+              </mat-tab>
+
+              <mat-tab label="Stopka VAT">
+                <sit-data-set-container ident="sitOfficeDocVATFooters" showActionsToolbar="true" ngClass="flex-container-column">
+                  <ag-grid-angular
+                      #sitSetDataSource
+                      class="ag-theme-balham"
+                    >
+                  </ag-grid-angular>
+                </sit-data-set-container>
               </mat-tab>
 
               <mat-tab label="Załączniki">
@@ -108,17 +132,17 @@
                   </div>
                 </sit-data-set-container>
               </mat-tab>
+
               <mat-tab label="Historia akceptacji">
                 <sit-data-set-container ident="sitAcceptances" [showActionsToolbar]="false" fxFill fxLayout="column">
-                  <div class="data-table" fxFlex>
-                    <ag-grid-angular
-                          #sitSetDataSource
-                          class="ag-theme-balham"
-                        >
-                    </ag-grid-angular>
-                  </div>
+                  <ag-grid-angular
+                        #sitSetDataSource
+                        class="ag-theme-balham"
+                      >
+                  </ag-grid-angular>
                 </sit-data-set-container>  
               </mat-tab>
+
             </mat-tab-group>
           </as-split-area>
         </as-split>

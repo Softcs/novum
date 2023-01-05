@@ -426,6 +426,17 @@ button:focus {
 // }
 
 // lookup fields
+.VATRatesIdent {
+  display: inline-block;
+  width: 40px;
+  font-weight: bold;
+}
+.VATRatesDescription {
+  display: inline-block;
+  width: 200px;
+}
+
+
 .CountrySymbol {
   display: inline-block;
   width: 30px;

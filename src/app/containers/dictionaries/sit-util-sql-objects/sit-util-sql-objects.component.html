@@ -3,7 +3,7 @@
     <as-split direction="horizontal">
       <as-split-area [size]="40">
         <div fxFill fxLayout="column">
-          <sit-data-set-container ident="sitFilter" fxLayout="row">
+          <sit-data-set-container ident="sitUtilSQLObjectsFilter" fxLayout="row">
             <div class="sit-filter-bar" fxLayout="row">
               <sit-data-input #sitControl field="Search" label="wyszukaj" appearance="outline" style="width: 300px;" [showRefreshButton]="true"></sit-data-input>
               <sit-data-checkbox #sitControl field="TabOnly" label="Tylko tabele" labelPosition="after" checked="false"></sit-data-checkbox>
@@ -47,6 +47,13 @@
           <mat-tab label="Dodatkowe skrypty INS\DEL">
             <div class="content" fxFill fxLayout="column">
               <div fxLayout="column" fxFlex=40>
+                <sit-data-set-container ident="sitUtilSQLAddBatches4ObjectFilter" fxLayout="row">
+                  <div class="sit-filter-bar" fxLayout="row">
+                    <sit-data-radio #sitControl field="ForProcType" type="row" label="ForProcType"
+                      [buttons]="[{'caption':'ALL','value': 'ALL', 'checked':true},{'caption':'INS','value': 'INS'},{'caption':'DEL','value': 'DEL'},{'caption':'STAT','value': 'STAT'}]"
+                    ></sit-data-radio>
+                  </div>
+                </sit-data-set-container>
                 <sit-data-set-container ident="sitUtilSQLAddBatches4Object" [showActionsToolbar]="true" fxFlex fxLayout="column">
                   <div class="data-table" fxFlex>
                     <ag-grid-angular 
@@ -80,48 +87,7 @@
                 </sit-data-set-container>
               </div>
             </div>
-          </mat-tab>          
-          <mat-tab label="Tabele wspólne">
-            <div class="content" fxFill fxLayout="column">
-              <sit-data-set-container ident="sitFilterCheckCommonDataTable" fxLayout="row">
-                <div class="sit-filter-bar" fxLayout="row">
-                  <sit-data-input #sitControl field="Search" label="Object name" appearance="outline" style="width: 300px;" [showRefreshButton]="true"></sit-data-input>
-                </div>
-              </sit-data-set-container>
-              <sit-data-set-container ident="sitUtilCheckCommonDataTable" [showActionsToolbar]="true" fxFlex fxLayout="column">
-                <div class="data-table" fxFlex>
-                  <ag-grid-angular 
-                    #sitSetDataSource 
-                    style="width: 100%; height: 100%;" 
-                    class="ag-theme-balham">
-                  </ag-grid-angular>
-                </div>
-              </sit-data-set-container>
-            </div>
-          </mat-tab>
-          <mat-tab label="Tabele wspólne - pivot">
-            <div class="content" fxFill fxLayout="column">
-              <sit-data-set-container ident="sitFilterCheckCommonDataTablePivot" fxLayout="row">
-                <div class="sit-filter-bar" fxLayout="row">
-                  <sit-data-input #sitControl field="SearchPivot" label="Object name" appearance="outline" style="width: 300px;" [showRefreshButton]="true"></sit-data-input>
-                </div>
-              </sit-data-set-container>
-              <sit-data-set-container ident="sitUtilCheckCommonDataTablePivot" [showActionsToolbar]="true" fxFlex fxLayout="column">
-                <div class="data-table" fxFlex>
-                  <ag-grid-angular 
-                    #sitSetDataSource 
-                    style="width: 100%; height: 100%;" 
-                    class="ag-theme-balham"
-                    [pivotMode]="true"
-                    [sideBar]="false"
-                    [suppressAggFuncInHeader]="true"
-                    [autoGroupColumnDef]="autoGroupColumnDef"
-                  >
-                  </ag-grid-angular>
-                </div>
-              </sit-data-set-container>
-            </div>
-          </mat-tab>          
+          </mat-tab>               
         </mat-tab-group>
       </as-split-area>
     </as-split>

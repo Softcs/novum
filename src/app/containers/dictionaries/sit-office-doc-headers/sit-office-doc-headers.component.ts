@@ -5,6 +5,7 @@ import { formatNumber } from '@angular/common';
 import { GatewayService } from '@app/_services';
 import { GridService } from '@app/_services/grid.service';
 import { UrlService } from '@app/_services/url.service';
+import { DataSetWrapper } from '@app/_models';
 
 @Component({
   selector: 'app-sit-office-doc-headers',
@@ -13,7 +14,10 @@ import { UrlService } from '@app/_services/url.service';
   host: {class: 'router-flex sit-office-doc-headers-component'}
 })
 export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
-
+  dataSourceResponseWrapper: DataSetWrapper;
+  gridApi: any;
+  columnApi: any;
+ 
   constructor(
     protected gatewayService: GatewayService,
     protected gridService: GridService,
@@ -43,19 +47,20 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
       { headerName: 'Wal.', field: 'CurrencyIdent', tooltipField: 'CurrencyIdent', filter: 'agTextColumnFilter', width: 50,  suppressMenu: true,
         cellStyle: function(params) { return (params.data["CurrencyIdent"] === 'PLN' ? {} : {'background-color': 'rgb(219, 247, 255)'}) }
       },
-      { headerName: 'Netto', field: 'NetCurrency', filter: 'agTextColumnFilter', type: 'numericColumn', renderType:'number', width: 100,
+      { headerName: 'Netto', field: 'NetCurrency', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: 100,
         cellStyle: function(params) { return (params.data["IsCurrency"] === 0 ? {} : {'background-color': 'rgb(219, 247, 255)'}) }
       },
-      { headerName: 'Vat', field: 'VATCurrency', filter: 'agTextColumnFilter', type: 'numericColumn', renderType:'number', width: 80,  
+      { headerName: 'Vat', field: 'VATCurrency', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: 80,  
         cellStyle: function(params) { return (params.data["IsCurrency"] === 0 ? {} : {'background-color': 'rgb(219, 247, 255)'}) }
       },
-      { headerName: 'Brutto', field: 'GrossCurrency', filter: 'agTextColumnFilter', type: 'numericColumn', renderType:'number', width: 100, 
+      { headerName: 'Brutto', field: 'GrossCurrency', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: 100, 
         cellStyle: function(params) { return (params.data["IsCurrency"] === 0 ? {} : {'background-color': 'rgb(219, 247, 255)'}) }
       },
+      { headerName: 'P', headerTooltip:'Opłacone przez pracownika',field: 'P', filter: 'agSetColumnFilter', headerClass: "grid-cell-centered", cellClass: "grid-cell-centered", suppressMenu: true, width: 40, renderType: "checkbox"},
       { headerName: 'Pracownik', field: 'EmployeeName', tooltipField: 'EmployeeName', filter: 'agTextColumnFilter', floatingFilter: false, width: 120, defaultVisibility: false},
-      { headerName: 'Netto PLN', field: 'Net', filter: 'agTextColumnFilter', type: 'numericColumn', renderType:'number', width: 100, defaultVisibility: false},
-      { headerName: 'VAT PLN', field: 'VAT', filter: 'agTextColumnFilter', type: 'numericColumn', renderType:'number', width: 100, defaultVisibility: false},
-      { headerName: 'Brutto PLN', field: 'Gross', filter: 'agTextColumnFilter', type: 'numericColumn', renderType:'number', width: 100, defaultVisibility: false},
+      { headerName: 'Netto PLN', field: 'Net', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: 100, defaultVisibility: false},
+      { headerName: 'VAT PLN', field: 'VAT', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: 100, defaultVisibility: false},
+      { headerName: 'Brutto PLN', field: 'Gross', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: 100, defaultVisibility: false},
       { headerName: 'GUID załącznika', field: 'sitAttachmentsG',width: 150, defaultVisibility: false },
 
     ];
@@ -89,6 +94,113 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
       { headerName: 'Komentarz', field: 'Comment', width: 300 },
     ];
 
+    this.gridColumnsDefinition["sitOfficeDocDimensions"] = [
+      { headerName: 'ID', field: 'sitOfficeDocDimensionsId', defaultVisibility: false},
+      { headerName: 'GUID', field: 'sitOfficeDocDimensionsG', defaultVisibility: false},
+      { headerName: 'Lp.', field: 'PosId', filter: 'agNumberColumnFilter', type: 'rightAligned' , width: "50", suppressMenu: true,
+        cellStyle: {'padding-top': '6px'}
+      },
+      { headerName: 'Netto w wal.', field: 'NetCurrency', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: "100", suppressMenu: true, agr: "sum",
+        cellStyle: {'padding-top': '6px','background-color': 'rgb(219, 247, 255)'}
+      },
+      { headerName: 'Netto PLN', field: 'Net', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: "100", suppressMenu: true, agr: "sum",
+        cellStyle: {'padding-top': '6px'}
+      },
+      { headerName: 'Typ kosztu', field: 'CostTypeIdent', tooltipField: 'CostTypeDesc', filter: 'agTextColumnFilter', floatingFilter: false, width: 130,
+        cellRenderer: function(params) {
+          var ident;
+          var desc;
+          ident = params.data["CostTypeIdent"] ? params.data["CostTypeIdent"] : '';
+          desc = params.data["CostTypeDesc"] ? params.data["CostTypeDesc"] : '';
+          return '<b>' + ident + '</b><br>' + desc
+        },
+        cellStyle: {'line-height': '1.2em', 'padding-top': '.3em'}
+      },
+      { headerName: 'Dział', field: 'CompanyDepartmentIdent', tooltipField: 'CompanyDepartmentDesc', filter: 'agTextColumnFilter', floatingFilter: false, width: 130,
+        cellRenderer: function(params) {
+          var ident;
+          var desc;
+          ident = params.data["CompanyDepartmentIdent"] ? params.data["CompanyDepartmentIdent"] : '';
+          desc = params.data["CompanyDepartmentDesc"] ? params.data["CompanyDepartmentDesc"] : '';
+          return '<b>' + ident + '</b><br>' + desc
+        },
+        //cellClass: ['sit-grid-row-2lines'],
+        cellStyle: {'line-height': '1.2em', 'padding-top': '.3em'}
+      },
+      { headerName: 'Projekt', field: 'ProjectIdent', tooltipField: 'ProjectName', filter: 'agTextColumnFilter', floatingFilter: false, width: 130,
+        cellRenderer: function(params) {
+          var ident;
+          var desc;
+          ident = params.data["ProjectIdent"] ? params.data["ProjectIdent"] : '';
+          desc = params.data["ProjectName"] ? params.data["ProjectName"] : '';
+          return '<b>' + ident + '</b><br>' + desc
+        },
+        cellStyle: {'line-height': '1.2em', 'padding-top': '.3em'}
+      },
+      { headerName: 'Kanał dystr.', field: 'DistributionChannelIdent', tooltipField: 'DistributionChannelDesc', filter: 'agTextColumnFilter', floatingFilter: false, width: 130,
+        cellRenderer: function(params) {
+          var ident;
+          var desc;
+          ident = params.data["DistributionChannelIdent"] ? params.data["DistributionChannelIdent"] : '';
+          desc = params.data["DistributionChannelDesc"] ? params.data["DistributionChannelDesc"] : '';
+          return '<b>' + ident + '</b><br>' + desc
+        },
+        cellStyle: {'line-height': '1.2em', 'padding-top': '.3em'}
+      },
+      { headerName: 'Typ produktu', field: 'ProductsTypeIdent', tooltipField: 'ProductsTypeDesc', filter: 'agTextColumnFilter', floatingFilter: false, width: 130,
+        cellRenderer: function(params) {
+          var ident;
+          var desc;
+          ident = params.data["ProductsTypeIdent"] ? params.data["ProductsTypeIdent"] : '';
+          desc = params.data["ProductsTypeDesc"] ? params.data["ProductsTypeDesc"] : '';
+          return '<b>' + ident + '</b><br>' + desc
+        },
+        cellStyle: {'line-height': '1.2em', 'padding-top': '.3em'}
+      },
+      { headerName: 'Opis', field: 'PosDesc', tooltipField: 'PosDesc', filter: 'agTextColumnFilter', floatingFilter: false, width: 150,
+        cellStyle: {'white-space': 'normal','line-height': '1.3em', 'padding-top': '.3em'}
+      },
+      { headerName: 'SV', field: 'VATRatesIdent', width: "50", suppressMenu: true, 
+        cellStyle: {'padding-top': '6px'}
+      },
+      { headerName: 'Klasyfikacja', field: 'VATClassificationIdent', tooltipField: 'VATClassificationIdent', width: "100", suppressMenu: true, 
+        cellStyle: {'padding-top': '6px'}
+      },
+      { headerName: 'Rodzaj', field: 'VATCostTypeIdent', tooltipField: 'VATCostTypeIdent', width: "100", suppressMenu: true, 
+        cellStyle: {'padding-top': '6px'}
+      },
+      { headerName: 'Szczeg.VAT', field: 'VATSpecialTypesIdent', tooltipField: 'VATSpecialTypesIdent', width: "100", suppressMenu: true, 
+        cellStyle: {'padding-top': '6px'}
+      },            
+      { headerName: 'Szczeg.pod.', field: 'TaxSpecialTypesIdent', tooltipField: 'TaxSpecialTypesIdent', width: "100", suppressMenu: true, 
+        cellStyle: {'padding-top': '6px'}
+      },                  
+      { headerName: 'VAT PLN', field: 'VAT', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: "100", suppressMenu: true, agr: "sum",
+        cellStyle: {'padding-top': '6px'}
+      },
+      { headerName: 'Brutto PLN', field: 'Gross', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: "100", suppressMenu: true, agr: "sum",
+        cellStyle: {'padding-top': '6px'}
+      },
+      { headerName: 'VAT w wal.', field: 'VATCurrency', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: "100", suppressMenu: true, agr: "sum",
+        cellStyle: {'padding-top': '6px','background-color': 'rgb(219, 247, 255)'}
+      },
+      { headerName: 'Brutto w wal.', field: 'GrossCurrency', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: "100", suppressMenu: true, agr: "sum",
+        cellStyle: {'padding-top': '6px','background-color': 'rgb(219, 247, 255)'}
+      },
+    ];  
+
+    this.gridColumnsDefinition["sitOfficeDocVATFooters"] = [
+      { headerName: 'ID', field: 'sitOfficeDocVATFootersId', defaultVisibility: false},
+      { headerName: 'GUID', field: 'sitOfficeDocVATFootersG', defaultVisibility: false},
+      { headerName: 'SV', headerTooltip: 'Symbol stawki VAT', field: 'VATRatesIdent', filter: 'agTextColumnFilter', floatingFilter: false, width: 60, suppressMenu: true},
+      { headerName: 'Klasyfikacja', field: 'VATClassificationIdent', tooltipField: 'VATClassificationIdent', width: "110"  },
+      { headerName: 'Rodzaj', field: 'VATCostTypeIdent', tooltipField: 'VATCostTypeIdent', width: "100" },
+      { headerName: 'Netto', field: 'Net', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: "80", agr: "sum"},
+      { headerName: 'VAT', field: 'VAT', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: "80", agr: "sum"},
+      { headerName: 'Brutto', field: 'Gross', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: "80", agr: "sum"},
+
+    ];  
+    
   };
 
   statusColor(){
@@ -97,6 +209,28 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
     else if (this.dictContainer?.activeRow('sitOfficeDocHeaders').StatusValueIdent == 'DZ') { return 'Lime' }
     else if (this.dictContainer?.activeRow('sitOfficeDocHeaders').StatusValueIdent == 'FK') { return 'Green' };
   }
+  hideCurrency(){
+    if (!this.dictContainer?.activeRow('sitOfficeDocHeaders')) { return }
+    else return(this.dictContainer?.activeRow('sitOfficeDocHeaders').IsCurrency == 1 ? false : true);
+  }
 
+  onGridReady(params){
+    this.gridApi=params.api;
+    this.columnApi=params.columnApi;
+  }
+
+  refreshAfter(dataSourceManager) {
+    this.dataSourceResponseWrapper = dataSourceManager?.getDateSourceWrapper("sitOfficeDocHeaders");
+
+    if (!this.dataSourceResponseWrapper.activeRow['IsCurrency']){ 
+      this.columnApi.setColumnsVisible(['NetCurrency','VATCurrency','GrossCurrency'],false);
+      return 
+    } else if (this.dataSourceResponseWrapper.activeRow['IsCurrency'] == 1) {
+      this.columnApi.setColumnsVisible(['NetCurrency','VATCurrency','GrossCurrency'],true);
+      return;
+    }
+
+
+  }
 
 }

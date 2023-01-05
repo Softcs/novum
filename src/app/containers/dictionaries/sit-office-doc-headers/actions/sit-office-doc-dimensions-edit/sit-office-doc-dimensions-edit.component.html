@@ -1,0 +1,20 @@
+<sit-proc-params [(actionExecuteData)]="actionExecuteData" ngClass="flex-container-column">
+  <sit-data-set-container ident="sitOfficeDocDimensionsEdit" ngClass="flex-container-column sit-proc-params-content" style="width: 800; height: 800px;">
+
+    <sit-data-label #sitControl field="PosId" label="Pozycja" style="flex: 0 0 0" ngClass="mb-05"></sit-data-label>
+    <sit-data-input #sitControl type="number" field="NetCurrency" label="Netto w walucie" appearance="outline"></sit-data-input>
+    <sit-data-input #sitControl type="number" field="Net" label="Netto w PLN" appearance="outline" ></sit-data-input>
+    <sit-data-input #sitControl field="CostTypeDesc4Lookup" label="Rodzaj kosztu" appearance="outline"></sit-data-input>
+    <sit-data-input #sitControl field="CompanyDepartmentDesc4Lookup" label="Dział" appearance="outline"></sit-data-input>
+    <sit-data-input #sitControl field="ProjectName4Lookup" label="Projekt" appearance="outline"></sit-data-input>
+    <sit-data-input #sitControl field="DistributionChannelDesc4Lookup" label="Kanał dystrybucji" appearance="outline"></sit-data-input>
+    <sit-data-input #sitControl field="ProductsTypeDesc4Lookup" label="Typ produktu" appearance="outline"></sit-data-input>
+    <sit-data-input #sitControl field="PosDesc" label="Opis" appearance="outline"></sit-data-input>
+    <sit-data-input #sitControl field="VATRatesIdent" label="Stawka VAT" appearance="outline" [lookupDisplayFields] = "['VATRatesIdent', 'VATRatesDescription']"></sit-data-input>
+    <sit-data-input #sitControl field="VATClassificationIdent" label="Klasyfikacja VAT" appearance="outline"></sit-data-input>
+    <sit-data-input #sitControl field="VATCostTypeIdent" label="Rodzaj" appearance="outline"></sit-data-input>
+    <sit-data-input #sitControl field="VATSpecialTypesIdent" label="Szególny VAT" appearance="outline"></sit-data-input>
+    <sit-data-input #sitControl field="TaxSpecialTypesIdent" label="Szególny podatek" appearance="outline"></sit-data-input>
+
+  </sit-data-set-container>
+</sit-proc-params>
