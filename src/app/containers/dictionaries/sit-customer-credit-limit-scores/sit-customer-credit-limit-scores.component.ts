@@ -55,8 +55,8 @@ export class SitCustomerCreditLimitScoresComponent extends SitDictBaseComponent 
     ];
 
     this.gridColumnsDefinition["sitAcceptances"] = [
-      { headerName: 'ID', field: 'sitAcceptancesG', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, defaultVisibility: false },
-      { headerName: 'GUID', field: 'sitAcceptancesId', width: 100, defaultVisibility: false },
+      { headerName: 'ID', field: 'sitAcceptancesId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, defaultVisibility: false },
+      { headerName: 'GUID', field: 'sitAcceptancesG', width: 100, defaultVisibility: false },
       { headerName: 'Data wstawienia', field: 'InsertDate', filter: 'agDateColumnFilter',width: 140, floatingFilter: false, renderType: "date", 
         renderFormat: "yyyy-MM-dd H:mm:ss", sort: 'asc'},     
       { headerName: 'Poziom akceptacji', field: 'AcceptanceStepName', width: 200 },

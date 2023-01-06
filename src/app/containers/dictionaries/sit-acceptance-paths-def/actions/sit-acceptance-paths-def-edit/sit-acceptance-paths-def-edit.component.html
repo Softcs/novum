@@ -10,6 +10,13 @@
       <div fxLayout="row">
         <sit-data-input type="text" #sitControl field="AcceptancePathDesc" label="Opis" appearance="outline" fxFlex></sit-data-input>
       </div>			  
+      <div fxLayout="row">
+        <sit-data-input type="text" #sitControl field="MailTemplateName" label="Szablon maila" appearance="outline" style="width: 300px"
+          [lookupDisplayFields] = "['MailTemplateIdent', 'MailTemplateName']"></sit-data-input>
+      </div>
+      <div fxLayout="row">
+				<sit-data-input type="text" #sitControl field="MailBodyContentDataFunction" label="Funkcja dla parametrów treści maila" appearance="outline" fxFlex></sit-data-input>
+      </div>
     </div>
   </sit-data-set-container>
 </sit-proc-params>
