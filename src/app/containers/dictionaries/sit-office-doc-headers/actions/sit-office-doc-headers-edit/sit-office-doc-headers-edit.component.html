@@ -52,7 +52,7 @@
           <sit-data-input #sitControl type="number" field="PaymentDays" label="Dni" appearance="outline" fxFlex></sit-data-input>
           <sit-data-input #sitControl type="date" field="PaymentDate" label="Data płatności" appearance="outline" fxFlex="25"></sit-data-input>
         </div>
-        <div *ngIf="bankNoReq()" fxLayout="row">
+        <div [class.hidden]="!bankNoReq()" fxLayout="row">
           <sit-data-input #sitControl type="text" field="BankAccountNumber" label="Nr rachunku bankowego" appearance="outline" fxFlex></sit-data-input>
           <sit-data-input #sitControl type="text" field="Swift" label="SWIFT" appearance="outline" fxFlex="30"></sit-data-input>
         </div>
