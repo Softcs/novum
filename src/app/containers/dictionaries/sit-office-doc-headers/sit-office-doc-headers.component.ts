@@ -157,24 +157,38 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
         },
         cellStyle: {'line-height': '1.2em', 'padding-top': '.3em'}
       },
-      { headerName: 'Opis', field: 'PosDesc', tooltipField: 'PosDesc', filter: 'agTextColumnFilter', floatingFilter: false, width: 150,
-        cellStyle: {'white-space': 'normal','line-height': '1.3em', 'padding-top': '.3em'}
+      { headerName: 'SV', headerTooltip: 'Stawka VAT (O - odliczane, N - nieodliczane, S - struktura)', field: 'VATRatesIdent', width: "50", suppressMenu: true, 
+        cellRenderer: function(params) {
+          var ident;
+          var desc;
+          ident = params.data["VATRatesIdent"] ? params.data["VATRatesIdent"] : '';
+          desc = params.data["VATdeductionIdent"] ? params.data["VATdeductionIdent"] : '';
+          return ident + '<br>' + desc
+        },
+        cellStyle: {'line-height': '1.2em', 'padding-top': '.3em', 'text-align': 'right'}
       },
-      { headerName: 'SV', field: 'VATRatesIdent', width: "50", suppressMenu: true, 
-        cellStyle: {'padding-top': '6px'}
+      { headerName: 'Klasyfikacja/Rodzaj', field: 'VATClassificationIdent', tooltipField: 'VATClassificationIdent', width: "130", suppressMenu: true, 
+        cellRenderer: function(params) {
+          var ident;
+          var desc;
+          ident = params.data["VATClassificationIdent"] ? params.data["VATClassificationIdent"] : '';
+          desc = params.data["VATCostTypeIdent"] ? params.data["VATCostTypeIdent"] : '';
+          return '<span style="color: dimgray;"><b>K:</b></span> '+ident 
+            + '<br><span style="color: dimgray;"><b>R:</b></span> ' + desc
+        },
+        cellStyle: {'line-height': '1.2em', 'padding-top': '.3em'}
       },
-      { headerName: 'Klasyfikacja', field: 'VATClassificationIdent', tooltipField: 'VATClassificationIdent', width: "100", suppressMenu: true, 
-        cellStyle: {'padding-top': '6px'}
-      },
-      { headerName: 'Rodzaj', field: 'VATCostTypeIdent', tooltipField: 'VATCostTypeIdent', width: "100", suppressMenu: true, 
-        cellStyle: {'padding-top': '6px'}
-      },
-      { headerName: 'Szczeg.VAT', field: 'VATSpecialTypesIdent', tooltipField: 'VATSpecialTypesIdent', width: "100", suppressMenu: true, 
-        cellStyle: {'padding-top': '6px'}
+      { headerName: 'Proc. szczególna', headerTooltip: 'Procedura szczególna VAT i podatkowa', field: 'VATSpecialTypesIdent', tooltipField: 'VATSpecialTypesIdent', width: "130", suppressMenu: true, 
+        cellRenderer: function(params) {
+          var ident;
+          var desc;
+          ident = params.data["VATSpecialTypesIdent"] ? params.data["VATSpecialTypesIdent"] : '';
+          desc = params.data["TaxSpecialTypesIdent"] ? params.data["TaxSpecialTypesIdent"] : '';
+          return '<span style="color: dimgray;"><b>V:</b></span> ' + ident + 
+          '<br><span style="color: dimgray;"><b>P.:</b></span> ' + desc
+        },
+        cellStyle: {'line-height': '1.2em', 'padding-top': '.3em'}
       },            
-      { headerName: 'Szczeg.pod.', field: 'TaxSpecialTypesIdent', tooltipField: 'TaxSpecialTypesIdent', width: "100", suppressMenu: true, 
-        cellStyle: {'padding-top': '6px'}
-      },                  
       { headerName: 'VAT PLN', field: 'VAT', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: "100", suppressMenu: true, agr: "sum",
         cellStyle: {'padding-top': '6px'}
       },
@@ -187,12 +201,17 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
       { headerName: 'Brutto w wal.', field: 'GrossCurrency', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: "100", suppressMenu: true, agr: "sum",
         cellStyle: {'padding-top': '6px','background-color': 'rgb(219, 247, 255)'}
       },
+      { headerName: 'Opis', field: 'PosDesc', tooltipField: 'PosDesc', filter: 'agTextColumnFilter', floatingFilter: false, width: 150,
+        cellStyle: {'white-space': 'normal','line-height': '1.3em', 'padding-top': '.3em'}
+      },
+      
     ];  
 
     this.gridColumnsDefinition["sitOfficeDocVATFooters"] = [
       { headerName: 'ID', field: 'sitOfficeDocVATFootersId', defaultVisibility: false},
       { headerName: 'GUID', field: 'sitOfficeDocVATFootersG', defaultVisibility: false},
       { headerName: 'SV', headerTooltip: 'Symbol stawki VAT', field: 'VATRatesIdent', filter: 'agTextColumnFilter', floatingFilter: false, width: 60, suppressMenu: true},
+      { headerName: 'G', headerTooltip: 'O - odliczane, N - nieodliczane, S - struktura', field: 'VATRatesIdent', filter: 'agTextColumnFilter', floatingFilter: false, width: 40, suppressMenu: true},
       { headerName: 'Klasyfikacja', field: 'VATClassificationIdent', tooltipField: 'VATClassificationIdent', width: "110"  },
       { headerName: 'Rodzaj', field: 'VATCostTypeIdent', tooltipField: 'VATCostTypeIdent', width: "100" },
       { headerName: 'Netto', field: 'Net', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: "80", agr: "sum"},
