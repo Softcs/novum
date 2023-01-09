@@ -184,8 +184,8 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
           var desc;
           ident = params.data["VATSpecialTypesIdent"] ? params.data["VATSpecialTypesIdent"] : '';
           desc = params.data["TaxSpecialTypesIdent"] ? params.data["TaxSpecialTypesIdent"] : '';
-          return '<span style="color: dimgray;"><b>V:</b></span> ' + ident + 
-          '<br><span style="color: dimgray;"><b>P.:</b></span> ' + desc
+          return '<span style="color: dimgray;"><b></b></span> ' + ident + 
+          '<br><span style="color: dimgray;"><b></b></span> ' + desc
         },
         cellStyle: {'line-height': '1.2em', 'padding-top': '.3em'}
       },            
@@ -210,13 +210,16 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
     this.gridColumnsDefinition["sitOfficeDocVATFooters"] = [
       { headerName: 'ID', field: 'sitOfficeDocVATFootersId', defaultVisibility: false},
       { headerName: 'GUID', field: 'sitOfficeDocVATFootersG', defaultVisibility: false},
-      { headerName: 'SV', headerTooltip: 'Symbol stawki VAT', field: 'VATRatesIdent', filter: 'agTextColumnFilter', floatingFilter: false, width: 60, suppressMenu: true},
-      { headerName: 'G', headerTooltip: 'O - odliczane, N - nieodliczane, S - struktura', field: 'VATRatesIdent', filter: 'agTextColumnFilter', floatingFilter: false, width: 40, suppressMenu: true},
+      { headerName: 'SV', headerTooltip: 'Symbol stawki VAT', field: 'VATRatesIdent', filter: 'agTextColumnFilter', floatingFilter: false, width: 50, suppressMenu: true},
+      { headerName: 'GV', headerTooltip: 'O - odliczane, N - nieodliczane, S - struktura', field: 'VATdeductionIdent', filter: 'agTextColumnFilter', floatingFilter: false, width: 40, suppressMenu: true},
       { headerName: 'Klasyfikacja', field: 'VATClassificationIdent', tooltipField: 'VATClassificationIdent', width: "110"  },
       { headerName: 'Rodzaj', field: 'VATCostTypeIdent', tooltipField: 'VATCostTypeIdent', width: "100" },
       { headerName: 'Netto', field: 'Net', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: "80", agr: "sum"},
       { headerName: 'VAT', field: 'VAT', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: "80", agr: "sum"},
       { headerName: 'Brutto', field: 'Gross', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: "80", agr: "sum"},
+      { headerName: 'Netto w wal', field: 'NetCurrency', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: "80", agr: "sum", defaultVisibility: false},
+      { headerName: 'VAT w wal', field: 'VATCurrency', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: "80", agr: "sum", defaultVisibility: false},
+      { headerName: 'Brutto w wal', field: 'GrossCurrency', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: "80", agr: "sum", defaultVisibility: false},
 
     ];  
     
