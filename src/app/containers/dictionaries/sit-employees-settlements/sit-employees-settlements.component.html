@@ -33,10 +33,25 @@
             </sit-data-set-container>
           </as-split-area>
           <as-split-area [size]="30">
-            <div fxLayout="column" fxFill class="content" fxLayoutGap="5px">
-              <div class="sit-grid-title">Składniki pracownika</div>
+            <div fxLayout="column" fxFill ngClass="content">
               <sit-data-set-container ident="sitEmployeesSettlements">
-                <div fxLayout="column" fxFill fxLayoutGap="5px">
+                <sit-simple-container ngClass="flex-container-column mb-05" title="Składniki">
+                  <sit-data-label #sitControl field="EmployeeName" type="header" [valueStyle]="{'text-align': 'center', 'margin-right': '0em' }"></sit-data-label>
+                  <div ngClass="flex-container-row">
+                    <sit-data-label #sitControl field="CustIdent" label="Kontrahent" labelWidth="6em" fxFlex="35"></sit-data-label>
+                    <sit-data-label #sitControl field="CustName" label="" fxFlex></sit-data-label>
+                  </div>
+                  <div ngClass="flex-container-row">
+                    <sit-data-label #sitControl field="HRDepartmentIdent" label="Dział" labelWidth="6em" fxFlex="35"></sit-data-label>
+                    <sit-data-label #sitControl field="HRDepartmentName" label=""  ></sit-data-label>
+                  </div>
+                </sit-simple-container>
+                <sit-simple-container ngClass="flex-container-column mb-05">
+                  <sit-data-label #sitControl field="HRContractTemplateRate" label="St. z szabl." labelWidth="6em" ></sit-data-label>
+                  <sit-data-label #sitControl field="CalcInfo" label="Kalkulacja" labelWidth="6em"></sit-data-label>
+                </sit-simple-container>
+
+                <!-- <div fxLayout="column" fxFill fxLayoutGap="5px">
                   <mat-card>
                     <mat-card-title>
                       <sit-data-label #sitControl field="EmployeeName" label="" style="font-size: 24px; font-weight: 500;"></sit-data-label>
@@ -62,7 +77,7 @@
                       </div>
                     </mat-card-content>
                   </mat-card>
-                </div>
+                </div> -->
               </sit-data-set-container>
               <sit-data-set-container  ident="sitEmployeesSettlementsComp" showActionsToolbar="true" fxFlex fxLayout="column">
                 <div class="data-table" fxFlex>
@@ -97,10 +112,21 @@
             </sit-data-set-container>
           </as-split-area>
           <as-split-area [size]="30">
-            <div fxLayout="column" fxFill class="content" fxLayoutGap="5px">
-              <div class="sit-grid-title">Składniki</div>
+            <div fxLayout="column" fxFill ngClass="content">
               <sit-data-set-container ident="sitEmployeesSettlementsContr">
-                <div fxLayout="column" fxFill fxLayoutGap="5px">
+                <sit-simple-container ngClass="flex-container-column mb-05" title="Składniki">
+                  <sit-data-label #sitControl field="EmployeeName" type="header" [valueStyle]="{'text-align': 'center', 'margin-right': '0em' }"></sit-data-label>
+                  <div ngClass="flex-container-row">
+                    <sit-data-label #sitControl field="CustIdent" label="Kontrahent" labelWidth="6em" fxFlex="35"></sit-data-label>
+                    <sit-data-label #sitControl field="CustName" label="" fxFlex></sit-data-label>
+                  </div>
+                  <div ngClass="flex-container-row">
+                    <sit-data-label #sitControl field="HRDepartmentIdent" label="Dział" labelWidth="6em" fxFlex="35"></sit-data-label>
+                    <sit-data-label #sitControl field="HRDepartmentName" label=""  ></sit-data-label>
+                  </div>
+                  </sit-simple-container>
+
+                <!-- <div fxLayout="column" fxFill fxLayoutGap="5px">
                   <mat-card>
                     <mat-card-title>
                       <sit-data-label type="text" #sitControl field="EmployeeName" label="" style="font-size: 24px; font-weight: 500;"></sit-data-label>
@@ -118,9 +144,9 @@
                       </div>
                     </mat-card-content>
                   </mat-card>
-                </div>
+                </div> -->
               </sit-data-set-container>
-              <mat-tab-group id="tab-group" animationDuration="0ms">
+              <mat-tab-group id="tab-group" animationDuration="0ms" >
                 <mat-tab label="Pracownika">
                   <sit-data-set-container  ident="sitEmployeesSettlementsContrComp" showActionsToolbar="true" fxFill fxLayout="column">
                     <div class="data-table" fxFlex>
