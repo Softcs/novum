@@ -516,6 +516,7 @@ button:focus {
   display: inline-block;
   width: 150px;
 }
+
 .HRCompanyHierarchyIdentLvl{
   display: inline-block;
   width: 150px;
@@ -528,6 +529,17 @@ button:focus {
   width: 130px;
   text-overflow: ellipsis;
   overflow: hidden;
+}
+
+.ProductIdent {
+  display: inline-block;
+  width: 120px;
+  font-weight: bold;
+}
+.ProductName {
+  display: inline-block;
+  width: 150px;
+  word-wrap: break-word;
 }
 // end of lookup fields
 
