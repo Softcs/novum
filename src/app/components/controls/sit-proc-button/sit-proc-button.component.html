@@ -19,8 +19,9 @@
     <!-- <span *ngIf="executing" class="spinner-border spinner-border-sm sit-proc-button-spinner"></span> -->
 
     <span *ngIf="icon && !executing" class="sit-proc-button-icon">
-        <mat-icon aria-hidden="false" aria-label="Firma">{{icon}}</mat-icon>
+        <mat-icon aria-hidden="false" aria-label="Icon">{{icon}}</mat-icon>
     </span>
+    <span *ngIf="caption && (icon || executing)" ngClass="separator">&nbsp;</span>
     <span class="sit-proc-button-caption">{{caption}}</span>
 
 </button>

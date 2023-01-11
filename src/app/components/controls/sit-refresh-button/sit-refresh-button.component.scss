@@ -1,1 +1,48 @@
 @import "../../../../theme";
+
+// :host 
+.sit-refresh-button-component {
+    // border: red 2px solid;
+    flex: 0 1 0;
+    display: flex;
+    flex-direction: column;
+    // font-size: 1.1em;
+
+    button {
+        display: flex;
+        flex: 1 1 0;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: inherit;
+        line-height: 1em;
+        margin-bottom: .2em;
+        
+        // border: 1px solid green;
+
+        .mat-button-wrapper {
+            display: flex;
+            flex-direction: row;
+            flex: auto;
+            align-items: center;
+            justify-content: center;
+            font-size: inherit;
+
+            .spinner-border-sm {
+                --bs-spinner-width: .96em;
+                --bs-spinner-height: .96em;
+                --bs-spinner-border-width: .15em;
+                margin-left: .22em;
+                margin-right: .22em;
+            }
+    
+            .mat-icon {
+                height: auto;
+                width: auto;
+                font-size: 1.4em;
+              }
+
+        }
+
+    }
+}
