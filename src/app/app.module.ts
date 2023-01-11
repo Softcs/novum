@@ -344,6 +344,7 @@ import { SitOfficeDocHeadersEditComponent } from './containers/dictionaries/sit-
 import { SitSimpleContainerComponent } from './components/sit-simple-container/sit-simple-container.component';
 import { SitOfficeDocDimensionsEditComponent } from './containers/dictionaries/sit-office-doc-headers/actions/sit-office-doc-dimensions-edit/sit-office-doc-dimensions-edit.component';
 import { SitOfficeDocVatFootersEditComponent } from './containers/dictionaries/sit-office-doc-headers/actions/sit-office-doc-vat-footers-edit/sit-office-doc-vat-footers-edit.component';
+import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 
 @NgModule({
     imports: [
@@ -383,6 +384,7 @@ import { SitOfficeDocVatFootersEditComponent } from './containers/dictionaries/s
         //AngularSplitModule.forRoot(),
         AngularSplitModule,
         NgxBarcodeModule,
+        NgxQRCodeModule
     ],
     declarations: [
         AppComponent,
