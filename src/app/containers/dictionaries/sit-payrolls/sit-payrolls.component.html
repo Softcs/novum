@@ -15,16 +15,13 @@
               </sit-data-set-container>
             </div>
             <sit-data-set-container ident="sitPayrolls" showActionsToolbar="true" fxFlex fxLayout="column">
-              <div class="data-table" fxFlex>
-                <ag-grid-angular
-                  #sitSetDataSource
-                  style="width: 100%; height: 100%;"
-                  class="ag-theme-balham"
-                  [enableCellTextSelection]="true"
-                  [rowHeight]="170"
-                >
-                </ag-grid-angular>
-              </div>
+              <ag-grid-angular
+                #sitSetDataSource
+                class="ag-theme-balham"
+                [enableCellTextSelection]="true"
+                [rowHeight]="130"
+              >
+              </ag-grid-angular>
             </sit-data-set-container>
           </div>
         </as-split-area>
@@ -39,9 +36,8 @@
               <div class="data-table" fxFlex>
                 <ag-grid-angular
                   #sitSetDataSource
-                  style="width: 100%; height: 100%;"
                   class="ag-theme-balham"
-                  [rowHeight]="80"
+                  [rowHeight]="65"
                 >
                 </ag-grid-angular>
               </div>
@@ -57,9 +53,8 @@
             <div class="data-table" fxFlex>
               <ag-grid-angular
                 #sitSetDataSource
-                style="width: 100%; height: 100%;"
                 class="ag-theme-balham"
-                [rowHeight]="80"
+                [rowHeight]="65"
                 (gridReady)="gridReady($event)"
               >
               </ag-grid-angular>
@@ -73,7 +68,6 @@
                 <div class="data-table" fxFlex>
                   <ag-grid-angular
                     #sitSetDataSource
-                    style="width: 100%; height: 100%;"
                     class="ag-theme-balham"
                     (gridReady)="gridReady($event)"
                   >
@@ -90,7 +84,6 @@
                   <div class="data-table" fxFlex>
                     <ag-grid-angular
                       #sitSetDataSource
-                      style="width: 100%; height: 100%;"
                       class="ag-theme-balham"
                       [rowHeight]="55"
 

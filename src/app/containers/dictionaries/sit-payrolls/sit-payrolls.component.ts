@@ -58,7 +58,9 @@ export class SitPayrollsComponent extends SitDictBaseComponent {
           + '<span style="color: dimgray;">PPK prac.:</span> <span style="display:inline-block;width:70px;">' + formatNumber(params.data["PPKPrac"], locale,'1.2-2').replace(/[,]/g,' ') + '</span><br>'
           + '<span style="color: dimgray;">PPK firma:</span> <span style="display:inline-block;width:70px;">' + formatNumber(params.data["PPKFirma"], locale,'1.2-2').replace(/[,]/g,' ') + '</span><br>'
           + '<b><span style="color: dimgray;">Koszty:</span> <span style="display:inline-block;width:70px;">' + formatNumber(params.data["Costs"], locale,'1.2-2').replace(/[,]/g,' ') + '</span></b>'
-        }
+        },
+        cellStyle: {'line-height': '1.5em', 'padding-top': '.3em'}
+
       },
       { headerName: 'ZUS pracownika', field: 'ZUSEmerPrac', filter: 'agNumberColumnFilter', width: 160,
         type: 'rightAligned',
@@ -69,7 +71,9 @@ export class SitPayrollsComponent extends SitDictBaseComponent {
             + '<b><span style="color: dimgray;">Społeczne:</span> <span style="display:inline-block;width:70px;">' + formatNumber(params.data["ZUSSpolPrac"], locale,'1.2-2').replace(/[,]/g,' ') + '</span></b><br>'
             + '<span style="color: dimgray;">Zdro.:</span> <span style="display:inline-block;width:70px;">' + formatNumber(params.data["ZUSZdroPrac"], locale,'1.2-2').replace(/[,]/g,' ') + '</span><br>'
             + '<b><span style="color: dimgray;">Suma:</span> <span style="display:inline-block;width:70px;">' + formatNumber(params.data["ZUSPrac"], locale,'1.2-2').replace(/[,]/g,' ') + '</span></b>'
-        }
+        },
+        cellStyle: {'line-height': '1.5em', 'padding-top': '.3em'}
+
       },
       { headerName: 'ZUS pracodawcy', field: 'ZUSEmerFirma', filter: 'agNumberColumnFilter', width: 160,
         type: 'rightAligned',
@@ -80,7 +84,9 @@ export class SitPayrollsComponent extends SitDictBaseComponent {
             + '<span style="color: dimgray;">FP:</span> <span style="display:inline-block;width:70px;">' + formatNumber(params.data["ZUSFP"], locale,'1.2-2').replace(/[,]/g,' ') + '</span><br>'
             + '<span style="color: dimgray;">FGŚP:</span> <span style="display:inline-block;width:70px;">' + formatNumber(params.data["ZUSFGSP"], locale,'1.2-2').replace(/[,]/g,' ') + '</span><br>'
             + '<B><span style="color: dimgray;">Suma:</span> <span style="display:inline-block;width:70px;">' + formatNumber(params.data["ZUSFirma"], locale,'1.2-2').replace(/[,]/g,' ') + '</span></b>'
-        }
+        },
+        cellStyle: {'line-height': '1.5em', 'padding-top': '.3em'}
+
       },
 
 
@@ -92,7 +98,9 @@ export class SitPayrollsComponent extends SitDictBaseComponent {
       { headerName: 'Nazwisko', field: 'LastName', tooltipField: 'LastName',filter: 'agTextColumnFilter', width: 150, sort: 'asc', pinned: 'left',
         cellRenderer: function(params) {
         return '<b>' + params.data["LastName"] +'</b><br>' + params.data["FirstName"]+'</b><br>' + params.data["PESEL"]
-        }
+        },
+        cellStyle: {'line-height': '1.5em', 'padding-top': '.3em'}
+
       },
       { headerName: 'Wynagrodzenie', field: 'Gross', filter: 'agNumberColumnFilter', width: 140,
         type: 'rightAligned',
@@ -100,7 +108,9 @@ export class SitPayrollsComponent extends SitDictBaseComponent {
         return '<span style="color: dimgray;">Netto:</span> <span style="display:inline-block;width:60px;">' + formatNumber(params.data["Net"], locale,'1.2-2').replace(/[,]/g,' ') +'</span><br>'
              + '<span style="color: dimgray;">Brutto:</span> <span style="display:inline-block;width:60px;">' + formatNumber(params.data["Gross"], locale,'1.2-2').replace(/[,]/g,' ') +'</span><br>'
              + '<span style="color: dimgray;">Podatek:</span> <span style="display:inline-block;width:60px;">' + formatNumber(params.data["Tax"], locale,'1.2-2').replace(/[,]/g,' ') + '</span>'
-        }
+        },
+        cellStyle: {'line-height': '1.5em', 'padding-top': '.3em'}
+
       },
       { headerName: 'ZUS pracownika', field: 'ZUSEmerPrac', filter: 'agNumberColumnFilter', width: 140,
         type: 'rightAligned',
@@ -108,7 +118,9 @@ export class SitPayrollsComponent extends SitDictBaseComponent {
         return '<span style="color: dimgray;">Emeryt.:</span> <span style="display:inline-block;width:50px;">' + formatNumber(params.data["ZUSEmerPrac"], locale,'1.2-2').replace(/[,]/g,' ') +'</span><br>'
             + '<span style="color: dimgray;">Rent.:</span> <span style="display:inline-block;width:50px;">' + formatNumber(params.data["ZUSRentPrac"], locale,'1.2-2').replace(/[,]/g,' ') +'</span><br>'
             + '<span style="color: dimgray;">Chorob.:</span> <span style="display:inline-block;width:50px;">' + formatNumber(params.data["ZUSChorPrac"], locale,'1.2-2').replace(/[,]/g,' ') + '</span>'
-        }
+        },
+        cellStyle: {'line-height': '1.5em', 'padding-top': '.3em'}
+
       },
       { headerName: '', field: 'ZUSWypPrac', filter: 'agNumberColumnFilter', width: 140,
         type: 'rightAligned',
@@ -117,7 +129,9 @@ export class SitPayrollsComponent extends SitDictBaseComponent {
              + '<span style="color: dimgray;">Zdro.:</span> <span style="display:inline-block;width:50px;">' + formatNumber(params.data["ZUSZdroPrac"], locale,'1.2-2').replace(/[,]/g,' ') + '</span><br>'
              + '<b><span style="color: dimgray;">Suma:</span> <span style="display:inline-block;width:50px;">' + formatNumber(params.data["ZUSPrac"], locale,'1.2-2').replace(/[,]/g,' ') + '</span></b>'
 
-        }
+        },
+        cellStyle: {'line-height': '1.5em', 'padding-top': '.3em'}
+
       },
       { headerName: 'ZUS pracodawcy', field: 'ZUSEmerPrac', filter: 'agNumberColumnFilter', width: 140,
         type: 'rightAligned',
@@ -125,7 +139,9 @@ export class SitPayrollsComponent extends SitDictBaseComponent {
         return '<span style="color: dimgray;">Emeryt.:</span> <span style="display:inline-block;width:50px;">' + formatNumber(params.data["ZUSEmerFirma"], locale,'1.2-2').replace(/[,]/g,' ') +'</span><br>'
             + '<span style="color: dimgray;">Rent.:</span> <span style="display:inline-block;width:50px;">' + formatNumber(params.data["ZUSRentFirma"], locale,'1.2-2').replace(/[,]/g,' ') +'</span><br>'
             + '<span style="color: dimgray;">Wyp.:</span> <span style="display:inline-block;width:50px;">' + formatNumber(params.data["ZUSWypFirma"], locale,'1.2-2').replace(/[,]/g,' ') + '</span>'
-        }
+        },
+        cellStyle: {'line-height': '1.5em', 'padding-top': '.3em'}
+
       },
       { headerName: '', field: 'ZUSFP', filter: 'agNumberColumnFilter', width: 130,
         type: 'rightAligned',
@@ -133,14 +149,18 @@ export class SitPayrollsComponent extends SitDictBaseComponent {
         return '<span style="color: dimgray;">FP:</span> <span style="display:inline-block;width:50px;">' + formatNumber(params.data["ZUSFP"], locale,'1.2-2').replace(/[,]/g,' ') + '</span><br>'
             + '<span style="color: dimgray;">FGSP:</span> <span style="display:inline-block;width:50px;">' + formatNumber(params.data["ZUSFGSP"], locale,'1.2-2').replace(/[,]/g,' ') + '</span><br>'
             + '<b><span style="color: dimgray;">Suma:</span> <span style="display:inline-block;width:50px;">' + formatNumber(params.data["ZUSFirma"], locale,'1.2-2').replace(/[,]/g,' ') + '</span></b>'
-        }
+        },
+        cellStyle: {'line-height': '1.5em', 'padding-top': '.3em'}
+
       },
       { headerName: 'PPK', field: 'PPKFirma', filter: 'agNumberColumnFilter', width: 150,
         type: 'rightAligned',
         cellRenderer: function(params) {
         return '<span style="color: dimgray;">Pracownik:</span> <span style="display:inline-block;width:50px;">' + formatNumber(params.data["PPKPrac"], locale,'1.2-2').replace(/[,]/g,' ') + '</span><br>'
             + '<span style="color: dimgray;">Pracodawca:</span> <span style="display:inline-block;width:50px;">' + formatNumber(params.data["PPKFirma"], locale,'1.2-2').replace(/[,]/g,' ') + '</span>'
-        }
+        },
+        cellStyle: {'line-height': '1.5em', 'padding-top': '.3em'}
+
       }
    ];
 
@@ -154,7 +174,8 @@ export class SitPayrollsComponent extends SitDictBaseComponent {
       return '<span style="color: dimgray;">Wartość:</span> <span style="display:inline-block;width:60px;">' + formatNumber(params.data["Value"], locale,'1.2-2').replace(/[,]/g,' ') +'</span><br>'
            + '<span style="color: dimgray;">Brutto:</span> <span style="display:inline-block;width:60px;">' + formatNumber(params.data["Gross"], locale,'1.2-2').replace(/[,]/g,' ') +'</span><br>'
            + '<span style="color: dimgray;">Podatek:</span> <span style="display:inline-block;width:60px;">' + formatNumber(params.data["Tax"], locale,'1.2-2').replace(/[,]/g,' ') + '</span>'
-      }
+      },
+      cellStyle: {'line-height': '1.5em', 'padding-top': '.3em'}
     },
     { headerName: 'ZUS pracownika', field: 'ZUSEmerPrac', filter: 'agNumberColumnFilter', width: 140,
       type: 'rightAligned',
@@ -162,7 +183,8 @@ export class SitPayrollsComponent extends SitDictBaseComponent {
       return '<span style="color: dimgray;">Emeryt.:</span> <span style="display:inline-block;width:50px;">' + formatNumber(params.data["ZUSEmerPrac"], locale,'1.2-2').replace(/[,]/g,' ') +'</span><br>'
           + '<span style="color: dimgray;">Rent.:</span> <span style="display:inline-block;width:50px;">' + formatNumber(params.data["ZUSRentPrac"], locale,'1.2-2').replace(/[,]/g,' ') +'</span><br>'
           + '<span style="color: dimgray;">Chorob.:</span> <span style="display:inline-block;width:50px;">' + formatNumber(params.data["ZUSChorPrac"], locale,'1.2-2').replace(/[,]/g,' ') + '</span>'
-      }
+      },
+      cellStyle: {'line-height': '1.5em', 'padding-top': '.3em'}
     },
     { headerName: '', field: 'ZUSWypPrac', filter: 'agNumberColumnFilter', width: 140,
       type: 'rightAligned',
@@ -171,7 +193,8 @@ export class SitPayrollsComponent extends SitDictBaseComponent {
            + '<span style="color: dimgray;">Zdro.:</span> <span style="display:inline-block;width:50px;">' + formatNumber(params.data["ZUSZdroPrac"], locale,'1.2-2').replace(/[,]/g,' ') + '</span><br>'
            + '<b><span style="color: dimgray;">Suma:</span> <span style="display:inline-block;width:50px;">' + formatNumber(params.data["ZUSPrac"], locale,'1.2-2').replace(/[,]/g,' ') + '</span></b>'
 
-      }
+      },
+      cellStyle: {'line-height': '1.5em', 'padding-top': '.3em'}
     },
     { headerName: 'ZUS pracodawcy', field: 'ZUSEmerPrac', filter: 'agNumberColumnFilter', width: 140,
       type: 'rightAligned',
@@ -179,7 +202,8 @@ export class SitPayrollsComponent extends SitDictBaseComponent {
       return '<span style="color: dimgray;">Emeryt.:</span> <span style="display:inline-block;width:50px;">' + formatNumber(params.data["ZUSEmerFirma"], locale,'1.2-2').replace(/[,]/g,' ') +'</span><br>'
           + '<span style="color: dimgray;">Rent.:</span> <span style="display:inline-block;width:50px;">' + formatNumber(params.data["ZUSRentFirma"], locale,'1.2-2').replace(/[,]/g,' ') +'</span><br>'
           + '<span style="color: dimgray;">Wyp.:</span> <span style="display:inline-block;width:50px;">' + formatNumber(params.data["ZUSWypFirma"], locale,'1.2-2').replace(/[,]/g,' ') + '</span>'
-      }
+      },
+      cellStyle: {'line-height': '1.5em', 'padding-top': '.3em'}
     },
     { headerName: '', field: 'ZUSFP', filter: 'agNumberColumnFilter', width: 130,
       type: 'rightAligned',
@@ -187,14 +211,16 @@ export class SitPayrollsComponent extends SitDictBaseComponent {
       return '<span style="color: dimgray;">FP:</span> <span style="display:inline-block;width:50px;">' + formatNumber(params.data["ZUSFP"], locale,'1.2-2').replace(/[,]/g,' ') + '</span><br>'
           + '<span style="color: dimgray;">FGSP:</span> <span style="display:inline-block;width:50px;">' + formatNumber(params.data["ZUSFGSP"], locale,'1.2-2').replace(/[,]/g,' ') + '</span><br>'
           + '<b><span style="color: dimgray;">Suma:</span> <span style="display:inline-block;width:50px;">' + formatNumber(params.data["ZUSFirma"], locale,'1.2-2').replace(/[,]/g,' ') + '</span></b>'
-      }
+      },
+      cellStyle: {'line-height': '1.5em', 'padding-top': '.3em'}
     },
     { headerName: 'PPK', field: 'PPKFirma', filter: 'agNumberColumnFilter', width: 150,
       type: 'rightAligned',
       cellRenderer: function(params) {
       return '<span style="color: dimgray;">Pracownik:</span> <span style="display:inline-block;width:50px;">' + formatNumber(params.data["PPKPrac"], locale,'1.2-2').replace(/[,]/g,' ') + '</span><br>'
           + '<span style="color: dimgray;">Pracodawca:</span> <span style="display:inline-block;width:50px;">' + formatNumber(params.data["PPKFirma"], locale,'1.2-2').replace(/[,]/g,' ') + '</span>'
-      }
+      },
+      cellStyle: {'line-height': '1.5em', 'padding-top': '.3em'}
     }
   ];
 
@@ -251,7 +277,8 @@ export class SitPayrollsComponent extends SitDictBaseComponent {
         ident = params.data["CompanyDepartmentIdent"] ? params.data["CompanyDepartmentIdent"] : ''
         desc = params.data["CompanyDepartmentDesc"] ? params.data["CompanyDepartmentDesc"] : ''
         return '<b>' + ident + '</b><br>' + desc
-      }
+      },
+      cellStyle: {'line-height': '1.5em', 'padding-top': '.3em'}
     },
     { headerName: 'Projekt', field: 'ProjectIdent', filter: 'agTextColumnFilter', tooltipField: 'ProjectName',
       cellRenderer: function(params) {
@@ -260,7 +287,9 @@ export class SitPayrollsComponent extends SitDictBaseComponent {
         ident = params.data["ProjectIdent"] ? params.data["ProjectIdent"] : '';
         desc = params.data["ProjectName"] ? params.data["ProjectName"] : '';
         return '<b>' + ident + '</b><br>' + desc
-      }
+      },
+      cellStyle: {'line-height': '1.5em', 'padding-top': '.3em'}
+
     },
     { headerName: 'Kanał dystrybucji', field: 'DistributionChannelIdent', filter: 'agTextColumnFilter', tooltipField: 'DistributionChannelDesc',
       cellRenderer: function(params) {
@@ -269,7 +298,9 @@ export class SitPayrollsComponent extends SitDictBaseComponent {
         ident = params.data["DistributionChannelIdent"] ? params.data["DistributionChannelIdent"] : '';
         desc = params.data["DistributionChannelDesc"] ? params.data["DistributionChannelDesc"] : '';
         return '<b>' + ident + '</b><br>' + desc
-      }
+      },
+      cellStyle: {'line-height': '1.5em', 'padding-top': '.3em'}
+
     },
     { headerName: 'Typ produktu', field: 'ProductsTypeIdent', filter: 'agTextColumnFilter', tooltipField: 'ProductsTypeDesc',
       cellRenderer: function(params) {
@@ -278,7 +309,9 @@ export class SitPayrollsComponent extends SitDictBaseComponent {
         ident = params.data["ProductsTypeIdent"] ? params.data["ProductsTypeIdent"] : '';
         desc = params.data["ProductsTypeDesc"] ? params.data["ProductsTypeDesc"] : '';
         return '<b>' + ident + '</b><br>' + desc
-      }
+      },
+      cellStyle: {'line-height': '1.5em', 'padding-top': '.3em'}
+
     },
 
   ];

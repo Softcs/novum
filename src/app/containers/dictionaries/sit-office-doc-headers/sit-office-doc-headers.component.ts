@@ -98,13 +98,14 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
       { headerName: 'ID', field: 'sitOfficeDocDimensionsId', defaultVisibility: false},
       { headerName: 'GUID', field: 'sitOfficeDocDimensionsG', defaultVisibility: false},
       { headerName: 'Lp.', field: 'PosId', filter: 'agNumberColumnFilter', type: 'rightAligned' , width: "50", suppressMenu: true,
-        cellStyle: {'padding-top': '6px'}
+        cellClass: 'grid-cell-center-right'
       },
       { headerName: 'Netto w wal.', field: 'NetCurrency', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: "100", suppressMenu: true, agr: "sum",
-        cellStyle: {'padding-top': '6px','background-color': 'rgb(219, 247, 255)'}
+        cellStyle: {'background-color': 'rgb(219, 247, 255)'},
+        cellClass: 'grid-cell-center-right'
       },
       { headerName: 'Netto PLN', field: 'Net', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: "100", suppressMenu: true, agr: "sum",
-        cellStyle: {'padding-top': '6px'}
+        cellClass: 'grid-cell-center-right'
       },
       { headerName: 'Typ kosztu', field: 'CostTypeIdent', tooltipField: 'CostTypeDesc', filter: 'agTextColumnFilter', floatingFilter: false, width: 130,
         cellRenderer: function(params) {
@@ -124,7 +125,6 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
           desc = params.data["CompanyDepartmentDesc"] ? params.data["CompanyDepartmentDesc"] : '';
           return '<b>' + ident + '</b><br>' + desc
         },
-        //cellClass: ['sit-grid-row-2lines'],
         cellStyle: {'line-height': '1.2em', 'padding-top': '.3em'}
       },
       { headerName: 'Projekt', field: 'ProjectIdent', tooltipField: 'ProjectName', filter: 'agTextColumnFilter', floatingFilter: false, width: 130,
@@ -190,16 +190,18 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
         cellStyle: {'line-height': '1.2em', 'padding-top': '.3em'}
       },            
       { headerName: 'VAT PLN', field: 'VAT', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: "100", suppressMenu: true, agr: "sum",
-        cellStyle: {'padding-top': '6px'}
+        cellClass: 'grid-cell-center-right'
       },
       { headerName: 'Brutto PLN', field: 'Gross', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: "100", suppressMenu: true, agr: "sum",
-        cellStyle: {'padding-top': '6px'}
+        cellClass: 'grid-cell-center-right'
       },
       { headerName: 'VAT w wal.', field: 'VATCurrency', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: "100", suppressMenu: true, agr: "sum",
-        cellStyle: {'padding-top': '6px','background-color': 'rgb(219, 247, 255)'}
+        cellStyle: {'background-color': 'rgb(219, 247, 255)'},
+        cellClass: 'grid-cell-center-right'
       },
       { headerName: 'Brutto w wal.', field: 'GrossCurrency', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: "100", suppressMenu: true, agr: "sum",
-        cellStyle: {'padding-top': '6px','background-color': 'rgb(219, 247, 255)'}
+        cellStyle: {'background-color': 'rgb(219, 247, 255)'},
+        cellClass: 'grid-cell-center-right'
       },
       { headerName: 'Opis', field: 'PosDesc', tooltipField: 'PosDesc', filter: 'agTextColumnFilter', floatingFilter: false, width: 150,
         cellStyle: {'white-space': 'normal','line-height': '1.3em', 'padding-top': '.3em'}
