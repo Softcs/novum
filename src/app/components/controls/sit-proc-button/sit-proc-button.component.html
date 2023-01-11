@@ -11,9 +11,16 @@
     [disabled]="isDisabled"
     matTooltip="{{tooltip}}"
 >
-    <span *ngIf="executing" class="spinner-border spinner-border-sm mr-1 sit-proc-button-spinner"></span>
+
+    <span *ngIf="executing" class="sit-proc-button-icon">
+        <span class="spinner-border sit-proc-button-spinner"></span>
+    </span>
+
+    <!-- <span *ngIf="executing" class="spinner-border spinner-border-sm sit-proc-button-spinner"></span> -->
+
     <span *ngIf="icon && !executing" class="sit-proc-button-icon">
         <mat-icon aria-hidden="false" aria-label="Firma">{{icon}}</mat-icon>
     </span>
     <span class="sit-proc-button-caption">{{caption}}</span>
+
 </button>
