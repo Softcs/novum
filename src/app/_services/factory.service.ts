@@ -20,7 +20,7 @@ import { SitPayrollImportComponent } from './../containers/dictionaries/sit-payr
 import { SitPayrollComponentsComponent } from './../containers/dictionaries/sit-payroll-components/sit-payroll-components.component';
 import { SitPayrollsComponent } from './../containers/dictionaries/sit-payrolls/sit-payrolls.component';
 import { SitEmployeesComponent } from './../containers/dictionaries/sit-employees/sit-employees.component';
-import { SitImportCustomerFromImpTableComponent } from './../containers/dictionaries/sit-kancelaria/actions/sit-import-customer-from-imp-table/sit-import-customer-from-imp-table.component';
+import { SitImportCustomerFromImpTableComponent } from '../containers/dictionaries/sit-customers/actions/sit-import-customer-from-imp-table/sit-import-customer-from-imp-table.component';
 import { SitLocationsEditComponent } from './../containers/dictionaries/sit-locations/actions/sit-locations-edit/sit-locations-edit.component';
 import { SitAgreementsTypesEditComponent } from './../containers/dictionaries/sit-agreements-types/actions/sit-agreements-types-edit/sit-agreements-types-edit.component';
 import { SitLocationsComponent } from './../containers/dictionaries/sit-locations/sit-locations.component';
@@ -226,7 +226,7 @@ import { SitEmployeeAbsencesEditComponent } from '@app/containers/dictionaries/s
 import { SitCashRegisterSaleReportsExportForMultiComponent } from '@app/containers/dictionaries/sit-cash-register-sale-reports/actions/sit-cash-register-sale-reports-export-for-multi/sit-cash-register-sale-reports-export-for-multi.component';
 import { SitHRDepartmentsEditComponent } from '@app/containers/dictionaries/sit-hr-params-def/actions/sit-hr-departments-edit/sit-hr-departments-edit.component';
 import { SitPublicationsBillingParamsDefComponent } from '@app/containers/dictionaries/sit-publications-billing-params-def/sit-publications-billing-params-def.component';
-import { SitAgreementsBenefRolesEditComponent } from '@app/containers/dictionaries/sit-publications-billing-params-def/actions/sit-agreements-benef-roles-edit/sit-agreements-benef-roles-edit.component';
+import { SitAgreementCustomerRolesEditComponent } from '@app/containers/dictionaries/sit-publications-billing-params-def/actions/sit-agreement-customer-roles-edit/sit-agreement-customer-roles-edit.component';
 import { SitAppUsersInCompanyAddUserComponent } from '@app/containers/dictionaries/sit-app-users-in-company/actions/sit-app-users-in-company-add-user/sit-app-users-in-company-add-user.component';
 import { SitPublicationsBillingDefCopyWithinAgreementComponent } from '@app/containers/dictionaries/sit-publications-billing-def/actions/sit-publications-billing-def-copy-within-agreement/sit-publications-billing-def-copy-within-agreement.component';
 import { SitRoyaltyCalcOnePublicationFromDateComponent } from '@app/containers/dictionaries/sit-publications/actions/sit-royalty-calc-one-publication-from-date/sit-royalty-calc-one-publication-from-date.component';
@@ -476,7 +476,7 @@ export class FactoryService {
         sitCashRegisterSaleReportsExportForMulti: SitCashRegisterSaleReportsExportForMultiComponent,
         sitHRDepartmentsEdit: SitHRDepartmentsEditComponent,
         sitPublicationsBillingParamsDef: SitPublicationsBillingParamsDefComponent,
-        sitAgreementsBenefRolesEdit: SitAgreementsBenefRolesEditComponent,
+        sitAgreementCustomerRolesEdit: SitAgreementCustomerRolesEditComponent,
         sitAppUsersInCompanyAddUser: SitAppUsersInCompanyAddUserComponent,
         sitPublicationsBillingDefCopyWithinAgreement: SitPublicationsBillingDefCopyWithinAgreementComponent,
         sitRoyaltyCalcOnePublicationFromDate: SitRoyaltyCalcOnePublicationFromDateComponent,
