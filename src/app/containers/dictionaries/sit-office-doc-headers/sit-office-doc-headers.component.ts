@@ -6,6 +6,7 @@ import { GatewayService } from '@app/_services';
 import { GridService } from '@app/_services/grid.service';
 import { UrlService } from '@app/_services/url.service';
 import { DataSetWrapper } from '@app/_models';
+import { NgxQrcodeElementTypes, NgxQrcodeErrorCorrectionLevels } from '@techiediaries/ngx-qrcode';
 
 @Component({
   selector: 'app-sit-office-doc-headers',
@@ -17,7 +18,11 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
   dataSourceResponseWrapper: DataSetWrapper;
   gridApi: any;
   columnApi: any;
- 
+
+  elementType = NgxQrcodeElementTypes.URL;
+  correctionLevel = NgxQrcodeErrorCorrectionLevels.HIGH;
+  qrvalue = '7822282471|PL|22114011240000269703001001|2040.14|PUBLICAT SPÓŁKA AKCYJNA|SK4/23/01/0001|||';
+
   constructor(
     protected gatewayService: GatewayService,
     protected gridService: GridService,
@@ -62,6 +67,11 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
       { headerName: 'VAT PLN', field: 'VAT', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: 100, defaultVisibility: false},
       { headerName: 'Brutto PLN', field: 'Gross', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: 100, defaultVisibility: false},
       { headerName: 'GUID załącznika', field: 'sitAttachmentsG',width: 150, defaultVisibility: false },
+      { headerName: 'Z', headerTooltip:'Zapłacone',field: 'P', filter: 'agSetColumnFilter', headerClass: "grid-cell-centered", cellClass: "grid-cell-centered", suppressMenu: true, width: 40,
+        cellRenderer: function(params) {
+          return '<span><i class="material-icons">edit</i></span>'
+        }
+      },
 
     ];
 
@@ -233,9 +243,15 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
     else if (this.dictContainer?.activeRow('sitOfficeDocHeaders').StatusValueIdent == 'DZ') { return 'Lime' }
     else if (this.dictContainer?.activeRow('sitOfficeDocHeaders').StatusValueIdent == 'FK') { return 'Green' };
   }
+
   hideCurrency(){
     if (!this.dictContainer?.activeRow('sitOfficeDocHeaders')) { return }
     else return(this.dictContainer?.activeRow('sitOfficeDocHeaders').IsCurrency == 1 ? false : true);
+  }
+
+  hideQRCode(){
+    if (!this.dictContainer?.activeRow('sitOfficeDocHeaders')) { return }
+    else return( this.dictContainer?.activeRow('sitOfficeDocHeaders').QRvalue ? false : true );
   }
 
   onGridReady(params){
@@ -246,6 +262,8 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
   refreshAfter(dataSourceManager) {
     this.dataSourceResponseWrapper = dataSourceManager?.getDateSourceWrapper("sitOfficeDocHeaders");
 
+    this.qrvalue = this.dataSourceResponseWrapper.activeRow['QRvalue'];
+
     if (!this.dataSourceResponseWrapper.activeRow['IsCurrency']){ 
       this.columnApi.setColumnsVisible(['NetCurrency','VATCurrency','GrossCurrency'],false);
       return 
@@ -253,8 +271,7 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
       this.columnApi.setColumnsVisible(['NetCurrency','VATCurrency','GrossCurrency'],true);
       return;
     }
-
-
+    
   }
 
 }
