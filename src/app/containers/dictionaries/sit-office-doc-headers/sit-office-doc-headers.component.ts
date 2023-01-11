@@ -67,11 +67,6 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
       { headerName: 'VAT PLN', field: 'VAT', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: 100, defaultVisibility: false},
       { headerName: 'Brutto PLN', field: 'Gross', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: 100, defaultVisibility: false},
       { headerName: 'GUID załącznika', field: 'sitAttachmentsG',width: 150, defaultVisibility: false },
-      { headerName: 'Z', headerTooltip:'Zapłacone',field: 'P', filter: 'agSetColumnFilter', headerClass: "grid-cell-centered", cellClass: "grid-cell-centered", suppressMenu: true, width: 40,
-        cellRenderer: function(params) {
-          return '<span><i class="material-icons">edit</i></span>'
-        }
-      },
 
     ];
 
