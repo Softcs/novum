@@ -1,0 +1,71 @@
+<sit-dict-container ident="sitAgreements" #sitDictcontainer ngClass="flex-container-column" >
+    <div ngClass="content flex-container-column">
+      <as-split #sitSpliter direction="horizontal">
+        <as-split-area [size]="55">
+          <as-split #sitSpliter direction="vertical">
+            <as-split-area [size]="45" fxLayout="column">
+              <!-- kombinacja: flex-container-row sit-filter-bar zwraca: flex:0 0 0; -->
+              <sit-data-set-container ident="sitAgreementsFilter" ngClass="flex-container-row sit-filter-bar">
+                <sit-data-input #sitControl field="searchAgreements" label="Filtruj umowy" placeholder="Numer, treść"  appearance="outline" style="width: 300px"></sit-data-input>
+                <sit-data-input #sitControl field="searchCustomer" label="Strony umowy" appearance="outline" style="width: 300px;" ></sit-data-input>
+                <sit-data-input #sitControl field="searchAgreementDate" type="date" label="Data umowy" appearance="outline" style="width: 195px;" showRefreshButton="true" ></sit-data-input>
+              </sit-data-set-container>
+              <sit-data-set-container  ident="sitAgreements" showActionsToolbar="true" ngClass="flex-container-column">
+                <ag-grid-angular #sitSetDataSource class="ag-theme-balham"></ag-grid-angular>
+              </sit-data-set-container>
+            </as-split-area>
+            <as-split-area [size]="60">
+              <mat-tab-group id="tab-group" animationDuration="0ms">
+                <mat-tab label="Info">
+                  <!-- sit-data-labels-standard-container - zmienia zachowanie wysokości elementów -->
+                  <sit-data-set-container ident="sitAgreements" ngClass="flex-container-column">
+                    <div ngClass="flex-container-row mb-05 mt-05 mr-05">
+                      <sit-simple-container ngClass="flex-container-column mr-05" fxFlex="30">
+                        <sit-data-textarea type="textarea" #sitControl field="AgreementDesc" label="" appearance="outline" [readonly]=true fxFlex></sit-data-textarea> 
+                      </sit-simple-container>
+                    </div>
+                  </sit-data-set-container>
+                </mat-tab>
+                <mat-tab label="Strony umowy">
+                  <sit-data-set-container ident="sitAgreementCustomers" showActionsToolbar="true" ngClass="flex-container-column">
+                    <ag-grid-angular
+                        #sitSetDataSource
+                        class="ag-theme-balham"
+                      >
+                    </ag-grid-angular>
+                  </sit-data-set-container>
+                </mat-tab>
+                <mat-tab label="Załączniki">
+                  <sit-data-set-container  ident="sitAttachments" showActionsToolbar="true" fxFlex fxLayout="column">
+                    <div class="data-table" fxFlex>
+                      <ag-grid-angular
+                        #sitSetDataSource
+                        class="ag-theme-balham"
+                      >
+                      </ag-grid-angular>
+                    </div>
+                  </sit-data-set-container>
+                </mat-tab>
+                <mat-tab label="Osoby uprawnione">
+                  <sit-data-set-container ident="sitAgreementUsers" showActionsToolbar="true" ngClass="flex-container-column">
+                    <ag-grid-angular
+                        #sitSetDataSource
+                        class="ag-theme-balham"
+                      >
+                    </ag-grid-angular>
+                  </sit-data-set-container>
+                </mat-tab>
+              </mat-tab-group>
+            </as-split-area>
+          </as-split>
+        </as-split-area>
+        <as-split-area [size]="45" ngClass="flex-container-column">
+          <sit-data-set-container  ident="sitAttachments" ngClass="flex-container-column">
+            <sit-pdf-viewer #sitControl reportType="att" field="FileName" ngClass="from-sit-office-doc-headers-component-html">
+            </sit-pdf-viewer>
+          </sit-data-set-container>
+        </as-split-area>
+      </as-split>
+    </div>
+  </sit-dict-container>
+  

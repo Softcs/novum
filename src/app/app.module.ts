@@ -344,6 +344,9 @@ import { SitOfficeDocHeadersEditComponent } from './containers/dictionaries/sit-
 import { SitSimpleContainerComponent } from './components/sit-simple-container/sit-simple-container.component';
 import { SitOfficeDocDimensionsEditComponent } from './containers/dictionaries/sit-office-doc-headers/actions/sit-office-doc-dimensions-edit/sit-office-doc-dimensions-edit.component';
 import { SitOfficeDocVatFootersEditComponent } from './containers/dictionaries/sit-office-doc-headers/actions/sit-office-doc-vat-footers-edit/sit-office-doc-vat-footers-edit.component';
+import { SitAgreementsComponent } from './containers/dictionaries/sit-agreements/sit-agreements.component';
+import { SitAgreementCustomersEditComponent } from './containers/dictionaries/sit-agreements/actions/sit-agreement-customers-edit/sit-agreement-customers-edit.component';
+import { SitAgreementUsersEditComponent } from './containers/dictionaries/sit-agreements/actions/sit-agreement-users-edit/sit-agreement-users-edit.component';
 
 @NgModule({
     imports: [
@@ -672,7 +675,10 @@ import { SitOfficeDocVatFootersEditComponent } from './containers/dictionaries/s
         SitOfficeDocHeadersEditComponent,
         SitSimpleContainerComponent,
         SitOfficeDocDimensionsEditComponent,
-        SitOfficeDocVatFootersEditComponent
+        SitOfficeDocVatFootersEditComponent,
+        SitAgreementsComponent,
+        SitAgreementCustomersEditComponent,
+        SitAgreementUsersEditComponent
 
     ],
     providers: [

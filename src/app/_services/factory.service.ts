@@ -242,6 +242,9 @@ import { SitOfficeDocHeadersEditComponent } from '@app/containers/dictionaries/s
 import { SitSimpleContainerComponent } from '@app/components/sit-simple-container/sit-simple-container.component';
 import { SitOfficeDocDimensionsEditComponent } from '@app/containers/dictionaries/sit-office-doc-headers/actions/sit-office-doc-dimensions-edit/sit-office-doc-dimensions-edit.component';
 import { SitOfficeDocVatFootersEditComponent } from '@app/containers/dictionaries/sit-office-doc-headers/actions/sit-office-doc-vat-footers-edit/sit-office-doc-vat-footers-edit.component';
+import { SitAgreementsComponent } from '@app/containers/dictionaries/sit-agreements/sit-agreements.component';
+import { SitAgreementCustomersEditComponent } from '@app/containers/dictionaries/sit-agreements/actions/sit-agreement-customers-edit/sit-agreement-customers-edit.component';
+import { SitAgreementUsersEditComponent } from '@app/containers/dictionaries/sit-agreements/actions/sit-agreement-users-edit/sit-agreement-users-edit.component';
 
 
 
@@ -492,6 +495,9 @@ export class FactoryService {
         sitSimpleContainer: SitSimpleContainerComponent,
         sitOfficeDocDimensionsEdit: SitOfficeDocDimensionsEditComponent,
         sitOfficeDocVATFootersEdit: SitOfficeDocVatFootersEditComponent,
+        sitAgreements: SitAgreementsComponent,
+        sitAgreementCustomersEdit: SitAgreementCustomersEditComponent,
+        sitAgreementUsersEdit: SitAgreementUsersEditComponent
     };
 
     public GetFactory(ident: string) {
