@@ -30,13 +30,19 @@
       justify-content: center;
     }
   
-    
-    .sit-proc-button-spinner,
     .sit-proc-button-icon {
       display: flex;
       flex: 0 0 0;
-      // margin-left: .2em;
       margin-right: .2em;
+    }
+
+    .sit-proc-button-spinner {
+      flex: auto;
+      max-width: 0.94em;
+      max-height: 0.94em;
+      // margin-left: 0.32em;
+      margin-left: 0.18em;
+      margin-right: 0.18em;
     }
   
     .mat-icon {
