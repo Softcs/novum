@@ -59,16 +59,29 @@
                       <sit-data-label #sitControl field="SalesDate" label="Data sprz." labelWidth="8em" ></sit-data-label>
                     </sit-simple-container>
 
-                    <sit-simple-container ngClass="flex-container-column" fxFlex>
-                      <div ngClass="flex-container-row">
-                        <sit-data-label #sitControl field="PaymentTypeDesc" label="Rodz. płat." labelWidth="6em" fxFlex="30"></sit-data-label>
-                        <sit-data-label #sitControl field="PaymentDays" label="Dni" labelWidth="6em" fxFlex="30"></sit-data-label>
-                        <sit-data-label #sitControl field="PaymentDate" label="Data płat." labelWidth="6em" fxFlex></sit-data-label>
+                    <div ngClass="flex-container-row">
+                      <sit-simple-container ngClass="flex-container-column" fxFlex>
+                        <div ngClass="flex-container-row">
+                          <sit-data-label #sitControl field="PaymentTypeDesc" label="Rodz. płat." labelWidth="6em" fxFlex="30"></sit-data-label>
+                          <sit-data-label #sitControl field="PaymentDays" label="Dni" labelWidth="6em" fxFlex="30"></sit-data-label>
+                          <sit-data-label #sitControl field="PaymentDate" label="Data płat." labelWidth="6em" fxFlex></sit-data-label>
+                        </div>
+                        <sit-data-label #sitControl field="BankAccountNumber" label="Rachunek" labelWidth="6em"></sit-data-label>
+                        <sit-data-label #sitControl field="Swift" label="SWIFT" labelWidth="6em" ></sit-data-label>
+                      </sit-simple-container>
+                      
+                      <div [class.hidden]="hideQRCode()">
+                        <ngx-qrcode
+                          [elementType]="elementType"
+                          [errorCorrectionLevel]="correctionLevel"
+                          [value]="qrvalue"
+                          alt="QR Code"
+                          cssClass="qrcode">
+                        </ngx-qrcode>
+                        <!-- <span>{{qrvalue}}</span> -->
                       </div>
-                      <sit-data-label #sitControl field="BankAccountNumber" label="Rachunek" labelWidth="6em"></sit-data-label>
-                      <sit-data-label #sitControl field="Swift" label="SWIFT" labelWidth="6em" ></sit-data-label>
-                    </sit-simple-container>
-
+                    
+                    </div>
                   </div>
                   
                   <div ngClass="flex-container-row mb-05">

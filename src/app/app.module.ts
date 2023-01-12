@@ -347,6 +347,7 @@ import { SitOfficeDocVatFootersEditComponent } from './containers/dictionaries/s
 import { SitAgreementsComponent } from './containers/dictionaries/sit-agreements/sit-agreements.component';
 import { SitAgreementCustomersEditComponent } from './containers/dictionaries/sit-agreements/actions/sit-agreement-customers-edit/sit-agreement-customers-edit.component';
 import { SitAgreementUsersEditComponent } from './containers/dictionaries/sit-agreements/actions/sit-agreement-users-edit/sit-agreement-users-edit.component';
+import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 
 @NgModule({
     imports: [
@@ -386,6 +387,7 @@ import { SitAgreementUsersEditComponent } from './containers/dictionaries/sit-ag
         //AngularSplitModule.forRoot(),
         AngularSplitModule,
         NgxBarcodeModule,
+        NgxQRCodeModule
     ],
     declarations: [
         AppComponent,

@@ -1,6 +1,15 @@
-<button #button mat-flat-button color="{{color}}" (click)="onClick($event)" [disabled]="executing"
-    matTooltip="{{tooltip}}">
-    <span *ngIf="executing; else elseBlock" class="spinner-border spinner-border-sm mr-1"></span>
+<button 
+    #button 
+    mat-flat-button 
+    color="{{color}}" 
+    (click)="onClick($event)" 
+    [disabled]="executing"
+    matTooltip="{{tooltip}}"
+>
+
+    <span *ngIf="executing; else elseBlock" class="spinner-border spinner-border-sm"></span>
+
     <ng-template #elseBlock><mat-icon  aria-hidden="false">{{icon}}</mat-icon></ng-template>
     {{caption}}
+
 </button>

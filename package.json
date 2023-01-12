@@ -1,6 +1,6 @@
 {
   "name": "Novum",
-  "version": "2.1.250",
+  "version": "2.1.252",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --open",
@@ -27,6 +27,7 @@
     "@angular/platform-browser-dynamic": "^13.3.10",
     "@angular/router": "^13.3.10",
     "@fortawesome/fontawesome-free": "^5.15.4",
+    "@techiediaries/ngx-qrcode": "^9.1.0",
     "@types/chart.js": "^2.9.37",
     "ag-grid-angular": "^25.3.0",
     "ag-grid-community": "^25.3.0",

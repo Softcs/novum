@@ -28,12 +28,16 @@
       flex: auto;
       align-items: center;
       justify-content: center;
+
+      .separator {
+        width: auto;
+      }
     }
   
     .sit-proc-button-icon {
       display: flex;
       flex: 0 0 0;
-      margin-right: .2em;
+      // margin-right: .2em;
     }
 
     .sit-proc-button-spinner {
@@ -92,11 +96,16 @@
     // }
   
   
+    &.mat-toolbar-multiple-rows {
+      min-height: auto;
+      mat-toolbar-row, .mat-toolbar-row, .mat-toolbar-single-row {
+        height: auto;
+      }
+    }
     
     .mat-toolbar-row, .mat-toolbar-single-row {
       // padding: 2px 2px 0px 2px;
       padding: 0 3px 0 0;
-
     }
   
   
