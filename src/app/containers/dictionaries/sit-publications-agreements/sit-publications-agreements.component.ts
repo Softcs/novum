@@ -42,6 +42,15 @@ export class SitPublicationsAgreementsComponent extends SitDictBaseComponent {
       { headerName: 'Sposób rozl.', field: 'BillingType', width: 100, suppressMenu: true},
       { headerName: 'Rola', field: 'BenefRoleIdent', width: 100, suppressMenu: true}
     ];
+    this.gridColumnsDefinition["sitAgreementCustomers"] = [
+      { headerName: 'Id', field: 'sitAgreementCustomersId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 50, defaultVisibility: false},
+      { headerName: 'GUID', field: 'sitAgreementCustomersG', width: 100, defaultVisibility: false},
+      { headerName: 'Identyfikator', field: 'CustIdent', width: 150},
+      { headerName: 'Nazwa', field: 'CustName', width: 300},
+      { headerName: '% udziału', field: 'PercentShare', width: 100, type: 'numericColumn', suppressMenu: true},
+      { headerName: 'Odbiorca rozl.', field: 'ForBilling', width: 110, renderType: 'checkbox', suppressMenu: true, cellClass: "grid-cell-centered"},
+      { headerName: 'Rola', field: 'RoleIdent', width: 100, suppressMenu: true}
+    ];
     this.gridColumnsDefinition["sitAgreementsPublications"] = [
       { headerName: 'Id', field: 'sitAgreementsPublicationsId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 50, defaultVisibility: false},
       { headerName: 'GUID', field: 'sitAgreementsPublicationsG', width: 100, defaultVisibility: false},

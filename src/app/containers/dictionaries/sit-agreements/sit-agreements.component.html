@@ -21,6 +21,14 @@
                   <sit-data-set-container ident="sitAgreements" ngClass="flex-container-column">
                     <div ngClass="flex-container-row mb-05 mt-05 mr-05">
                       <sit-simple-container ngClass="flex-container-column mr-05" fxFlex="30">
+                        <sit-data-label #sitControl field="AgreementNo" type="header"></sit-data-label>
+                        <sit-data-label #sitControl field="AgreementNumberExt01" label="Nr zewnętrzny" labelWidth="8em"></sit-data-label>
+                        <sit-data-label #sitControl field="Date" label="Data umowy" labelWidth="8em"></sit-data-label>
+                        <sit-data-label #sitControl field="DateTo" label="Data zakończenia" labelWidth="8em"></sit-data-label>
+                        <sit-data-label #sitControl field="AgreementsTypeName" label="Typ umowy" labelWidth="8em"></sit-data-label>
+                        <sit-data-label #sitControl field="LocationName" label="Lokalizacja" labelWidth="8em"></sit-data-label>
+                      </sit-simple-container>
+                      <sit-simple-container ngClass="flex-container-column mr-05" fxFlex>
                         <sit-data-textarea type="textarea" #sitControl field="AgreementDesc" label="" appearance="outline" [readonly]=true fxFlex></sit-data-textarea> 
                       </sit-simple-container>
                     </div>

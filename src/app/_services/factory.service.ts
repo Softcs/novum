@@ -44,12 +44,12 @@ import { SitAppUsersEditComponent } from './../containers/dictionaries/sit-app-u
 import { SitAppUsersComponent } from './../containers/dictionaries/sit-app-users/sit-app-users.component';
 import { SitReturnsGetdataComponent } from './../containers/dictionaries/sit-returns/actions/sit-returns-getdata/sit-returns-getdata.component';
 import { SitReturnsComponent } from './../containers/dictionaries/sit-returns/sit-returns.component';
-import { SitAttachmentsInsComponent } from './../containers/dictionaries/sit-kancelaria/actions/sit-attachments-ins/sit-attachments-ins.component';
+import { SitAttachmentsInsComponent } from '../containers/dictionaries/_common/actions/sit-attachments-ins/sit-attachments-ins.component';
 import { SitWmsStocksComponent } from '../containers/dictionaries/sit-wms-stocks/sit-wms-stocks.component';
 import { SitParamsComponent } from './../containers/dictionaries/sit-params/sit-params.component';
 import { SitUserAccountChangePasswordComponent } from './../containers/dictionaries/sit-user-account/actions/sit-user-account-change-password/sit-user-account-change-password.component';
 import { SitCustomersEditComponent } from './../containers/dictionaries/sit-customers/actions/sit-customers-edit/sit-customers-edit.component';
-import { SitAgreementsEditComponent } from './../containers/dictionaries/sit-kancelaria/actions/sit-agreements-edit/sit-agreements-edit.component';
+import { SitAgreementsEditComponent } from '../containers/dictionaries/sit-agreements/actions/sit-agreements-edit/sit-agreements-edit.component';
 import { SitJpkVatGetDataComponent } from './../containers/dictionaries/sit-jpk-vat/actions/sit-jpk-vat-get-data/sit-jpk-vat-get-data.component';
 import { Injectable, Type } from '@angular/core';
 import { SitJPKVatComponent } from '@app/containers/dictionaries/sit-jpk-vat';

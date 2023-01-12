@@ -93,7 +93,7 @@ import { SitProcExpanderItemBodyComponent } from './components/controls/sit-proc
 import { SitJpkVatGetDataComponent } from './containers/dictionaries/sit-jpk-vat/actions/sit-jpk-vat-get-data/sit-jpk-vat-get-data.component';
 import { SitMenuEditComponent } from './containers/dictionaries/sit-menu/actions/sit-menu-edit/sit-menu-edit.component';
 import { SitMenuItemsEditComponent } from './containers/dictionaries/sit-menu/actions/sit-menu-items-edit/sit-menu-items-edit.component';
-import { SitAgreementsEditComponent } from './containers/dictionaries/sit-kancelaria/actions/sit-agreements-edit/sit-agreements-edit.component';
+import { SitAgreementsEditComponent } from './containers/dictionaries/sit-agreements/actions/sit-agreements-edit/sit-agreements-edit.component';
 import { SitCustomersEditComponent } from './containers/dictionaries/sit-customers/actions/sit-customers-edit/sit-customers-edit.component';
 import { SitUserAccountChangePasswordComponent } from './containers/dictionaries/sit-user-account/actions/sit-user-account-change-password/sit-user-account-change-password.component';
 import { SitParamsComponent } from './containers/dictionaries/sit-params/sit-params.component';
@@ -103,7 +103,7 @@ import { SitWmsDocsComponent } from '@app/containers/dictionaries/sit-wms-docs/s
 import { SitRefreshButtonComponent } from './components/controls/sit-refresh-button/sit-refresh-button.component';
 import { SitFilesButtonComponent } from './components/controls/sit-files-button/sit-files-button.component';;
 import { SitButtonBaseComponent } from './components/controls/sit-button-base/sit-button-base.component';
-import { SitAttachmentsInsComponent } from './containers/dictionaries/sit-kancelaria/actions/sit-attachments-ins/sit-attachments-ins.component';
+import { SitAttachmentsInsComponent } from './containers/dictionaries/_common/actions/sit-attachments-ins/sit-attachments-ins.component';
 import { SitReturnsComponent } from './containers/dictionaries/sit-returns/sit-returns.component';
 import { SitReturnsGetdataComponent } from './containers/dictionaries/sit-returns/actions/sit-returns-getdata/sit-returns-getdata.component';
 import { SitAppUsersComponent } from './containers/dictionaries/sit-app-users/sit-app-users.component';
