@@ -17,10 +17,12 @@
             <as-split-area [size]="60">
               <mat-tab-group id="tab-group" animationDuration="0ms">
                 <mat-tab label="Info">
-                  <!-- sit-data-labels-standard-container - zmienia zachowanie wysokości elementów -->
-                  <sit-data-set-container ident="sitAgreements" ngClass="flex-container-column">
-                    <div ngClass="flex-container-row mb-05 mt-05 mr-05">
-                      <sit-simple-container ngClass="flex-container-column mr-05" fxFlex="30">
+                  
+                  <div ngClass="flex-container-row content">
+                  
+                    <sit-data-set-container ident="sitAgreements" ngClass="flex-container-column" fxFlex="30">
+
+                      <sit-simple-container ngClass="flex-container-column mr-05">
                         <sit-data-label #sitControl field="AgreementNo" type="header"></sit-data-label>
                         <sit-data-label #sitControl field="AgreementNumberExt01" label="Nr zewnętrzny" labelWidth="8em"></sit-data-label>
                         <sit-data-label #sitControl field="Date" label="Data umowy" labelWidth="8em"></sit-data-label>
@@ -28,11 +30,33 @@
                         <sit-data-label #sitControl field="AgreementsTypeName" label="Typ umowy" labelWidth="8em"></sit-data-label>
                         <sit-data-label #sitControl field="LocationName" label="Lokalizacja" labelWidth="8em"></sit-data-label>
                       </sit-simple-container>
-                      <sit-simple-container ngClass="flex-container-column mr-05" fxFlex>
-                        <sit-data-textarea type="textarea" #sitControl field="AgreementDesc" label="" appearance="outline" [readonly]=true fxFlex></sit-data-textarea> 
-                      </sit-simple-container>
+
+                    </sit-data-set-container>
+                    
+                    <div fxLayout="column" fxFlex>
+
+                      <sit-data-set-container ident="sitAgreements" ngClass="flex-container-column mb-05" fxFlex="50">
+                        <sit-simple-container title="Opis" fxFlex>
+                          <div fxLayout="column" fxFlex>
+                            <sit-data-textarea type="textarea" #sitControl field="AgreementDesc" label="" appearance="outline" [readonly]=true fxFill></sit-data-textarea> 
+                          </div>
+                        </sit-simple-container>
+                      </sit-data-set-container>
+
+                      <sit-data-set-container ident="sitAgreementCustomers" ngClass="flex-container-column" >
+                        <sit-simple-container ngClass="flex-container-column" title="Strony umowy">
+                            <ag-grid-angular 
+                              #sitSetDataSource
+                              class="ag-theme-balham"
+                            >
+                          </ag-grid-angular>
+                        </sit-simple-container>
+                      </sit-data-set-container>
+                    
                     </div>
-                  </sit-data-set-container>
+
+                  </div>
+                
                 </mat-tab>
                 <mat-tab label="Strony umowy">
                   <sit-data-set-container ident="sitAgreementCustomers" showActionsToolbar="true" ngClass="flex-container-column">

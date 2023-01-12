@@ -36,9 +36,9 @@ export class SitAgreementsComponent extends SitDictBaseComponent {
       { headerName: 'GUID', field: 'sitAgreementCustomersG', width: 100, defaultVisibility: false},
       { headerName: 'Identyfikator', field: 'CustIdent', width: 150},
       { headerName: 'Nazwa', field: 'CustName', width: 300},
-      { headerName: '% udziału', field: 'PercentShare', width: 100, type: 'numericColumn', suppressMenu: true},
-      { headerName: 'Odbiorca rozl.', field: 'ForBilling', width: 110, renderType: 'checkbox', suppressMenu: true, cellClass: "grid-cell-centered"},
-      { headerName: 'Rola', field: 'BenefRoleIdent', width: 100, suppressMenu: true}
+      { headerName: '% udziału', field: 'PercentShare', width: 100, type: 'numericColumn', suppressMenu: true, defaultVisibility: false},
+      { headerName: 'Odbiorca rozl.', field: 'ForBilling', width: 110, renderType: 'checkbox', suppressMenu: true, cellClass: "grid-cell-centered", defaultVisibility: false},
+      { headerName: 'Rola', field: 'BenefRoleIdent', width: 100, suppressMenu: true, defaultVisibility: false}
     ];
 
     this.gridColumnsDefinition["sitAgreementUsers"] = [
