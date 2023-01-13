@@ -19,14 +19,14 @@
         </sit-data-set-container>
       </div>
     </mat-tab>
-    <mat-tab label="Role beneficjentów">
+    <mat-tab label="Role stron umowy">
       <div fxLayout="column" fxFill class="content">
-        <sit-data-set-container ident="sitAgreementsBenefRolesFilter" >
+        <sit-data-set-container ident="sitAgreementCustomerRolesFilter" >
           <div class="sit-filter-bar" fxLayout="row">
-            <sit-data-input #sitControl field="searchBenefRole" label="Filtruj" appearance="outline" style="width: 300px;" [showRefreshButton]="true"></sit-data-input>
+            <sit-data-input #sitControl field="searchCustomerRole" label="Filtruj" appearance="outline" style="width: 300px;" [showRefreshButton]="true"></sit-data-input>
           </div>
         </sit-data-set-container>
-        <sit-data-set-container ident="sitAgreementsBenefRoles" [showActionsToolbar]="true" fxLayout="column" fxFlex>
+        <sit-data-set-container ident="sitAgreementCustomerRoles" [showActionsToolbar]="true" fxLayout="column" fxFlex>
           <div class="data-table" fxFlex>
             <ag-grid-angular
               #sitSetDataSource

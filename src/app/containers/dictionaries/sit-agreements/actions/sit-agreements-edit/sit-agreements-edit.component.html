@@ -1,0 +1,36 @@
+<sit-proc-params
+  [(actionExecuteData)]="actionExecuteData"
+  >
+  <sit-data-set-container ident="sitAgreementsEdit" fxLayout="column">
+    <div class="sit-proc-params-content" fxLayout="row" style="width: 1500px; height: 700px;">
+      <div fxLayout="column" fxFlex="30" ngClass="mr-05">
+        <div fxLayout="row" fxLayoutAlign="start center" *ngIf="this.isInsert" ngClas="mb-05">
+          <sit-files-button #sitSimpleButton fieldIdent="sitAttachmentsG" fieldFileNames="FileName" style="margin-bottom: 5px;"></sit-files-button >
+          <sit-data-input #sitControl type="text" field="FileName" label="Nazwa pliku" appearance="outline" style="width: 500px;"></sit-data-input>
+        </div>
+        <div fxLayout="row" *ngIf="this.isInsert">
+          <sit-data-input #sitControl type="text" field="CustName" label="Kontrahent" appearance="outline" fxFlex></sit-data-input>
+        </div>
+        <div fxLayout="row">
+          <sit-data-input #sitControl type="text" field="AgreementNo" label="Numer" [showRefresh]=false appearance="outline" fxFlex></sit-data-input>
+          <sit-data-input #sitControl type="date" field="Date" label="Data umowy" [showRefresh]=false appearance="outline"></sit-data-input>
+          <sit-data-input #sitControl type="date" field="DateTo" label="Data zakończenia" [showRefresh]=false appearance="outline"></sit-data-input>
+          <!-- <sit-files-button #sitSimpleButton fieldIdent="sitAgreementsG" ></sit-files-button> -->
+        </div>
+        <div fxLayout="row">
+          <sit-data-input #sitControl type="text" field="AgreementsTypeName" label="Typ umowy" appearance="outline" fxFlex></sit-data-input>
+          <sit-data-input #sitControl type="text" field="LocationName" label="Lokalizacja" appearance="outline" fxFlex></sit-data-input>
+          <sit-data-checkbox #sitControl field="Confidential" label="Poufny"></sit-data-checkbox>
+        </div>
+        <div fxLayout="row">
+          <sit-data-input #sitControl type="text" field="AgreementNumberExt01" label="Numer zewnętrzny" [showRefresh]=false appearance="outline" fxFlex></sit-data-input>
+        </div>      
+        <sit-data-textarea type="textarea" #sitControl field="AgreementDesc" label="Opis" appearance="outline" rows="10" cols="80" style="padding-left: 5px;" fxFlex></sit-data-textarea>
+      </div>
+      <div fxLayout="column" fxFlex>
+        <sit-pdf-viewer #sitControl reportType="att" field="FileName" ngClass="from-sit-office-doc-headers-component-html">
+        </sit-pdf-viewer>
+      </div>
+    </div>
+  </sit-data-set-container>
+</sit-proc-params>

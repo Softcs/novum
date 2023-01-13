@@ -18,11 +18,11 @@ export class SitPublicationsBillingParamsDefComponent extends SitDictBaseCompone
       { headerName: 'Procentowy', field: 'IsPercent', width: 100, renderType: 'checkbox', cellClass: "grid-cell-centered", suppressMenu: true}
     ];
 
-    this.gridColumnsDefinition["sitAgreementsBenefRoles"] = [
-      { headerName: 'Id', field: 'sitAgreementsBenefRolesId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 50, defaultVisibility: false },
-      { headerName: 'GUID', field: 'sitAgreementsBenefRolesG', width: 100, defaultVisibility: false },
-      { headerName: 'Rola', field: 'BenefRoleIdent', filter: 'agTextColumnFilter', width: 150 },
-      { headerName: 'Opis', field: 'BenefRoleName', filter: 'agTextColumnFilter', width: 300 },
+    this.gridColumnsDefinition["sitAgreementCustomerRoles"] = [
+      { headerName: 'Id', field: 'sitAgreementCustomerRolesId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 50, defaultVisibility: false },
+      { headerName: 'GUID', field: 'sitAgreementCustomerRolesG', width: 100, defaultVisibility: false },
+      { headerName: 'Rola', field: 'RoleIdent', filter: 'agTextColumnFilter', width: 150 },
+      { headerName: 'Opis', field: 'RoleName', filter: 'agTextColumnFilter', width: 300 },
       { headerName: 'Aktywny', field: 'IsActive', width: 100, renderType: 'checkbox', cellClass: "grid-cell-centered", suppressMenu: true},
       { headerName: 'Domyślny', field: 'IsDefault', width: 100, renderType: 'checkbox', cellClass: "grid-cell-centered", suppressMenu: true},
     ];

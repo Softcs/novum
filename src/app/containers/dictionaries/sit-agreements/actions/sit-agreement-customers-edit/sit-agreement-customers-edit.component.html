@@ -1,0 +1,19 @@
+<sit-proc-params
+   [(actionExecuteData)]="actionExecuteData"
+  >
+  <sit-data-set-container ident="sitAgreementCustomersEdit">
+    <div class="sit-proc-params-content" fxLayout="column">
+      <sit-data-input #sitControl type="text" field="CustIdent" label="Identyfikator" appearance="outline"  [lookupDisplayFields] = "['CustIdent', 'CustName']"></sit-data-input>
+      <sit-data-label type="text" #sitControl field="CustName" appearance="outline"></sit-data-label>
+      <div fxLayout="row">
+        <sit-data-input #sitControl type="number" field="PercentShare" label="Udział procentowy" appearance="outline" fxFlex="50"></sit-data-input>
+      </div>
+      <div fxLayout="row">
+        <sit-data-checkbox #sitControl field="ForBilling" label="Odbiorca rozliczenia" fxFlex></sit-data-checkbox>
+        <sit-data-input type="text" #sitControl field="RoleIdent" label="Rola" appearance="outline" style="width: 200px"
+          [lookupDisplayFields] = "['RoleIdent']"
+        ></sit-data-input>
+    </div>
+  </div>
+  </sit-data-set-container>
+</sit-proc-params>

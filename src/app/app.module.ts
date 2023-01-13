@@ -93,7 +93,7 @@ import { SitProcExpanderItemBodyComponent } from './components/controls/sit-proc
 import { SitJpkVatGetDataComponent } from './containers/dictionaries/sit-jpk-vat/actions/sit-jpk-vat-get-data/sit-jpk-vat-get-data.component';
 import { SitMenuEditComponent } from './containers/dictionaries/sit-menu/actions/sit-menu-edit/sit-menu-edit.component';
 import { SitMenuItemsEditComponent } from './containers/dictionaries/sit-menu/actions/sit-menu-items-edit/sit-menu-items-edit.component';
-import { SitAgreementsEditComponent } from './containers/dictionaries/sit-kancelaria/actions/sit-agreements-edit/sit-agreements-edit.component';
+import { SitAgreementsEditComponent } from './containers/dictionaries/sit-agreements/actions/sit-agreements-edit/sit-agreements-edit.component';
 import { SitCustomersEditComponent } from './containers/dictionaries/sit-customers/actions/sit-customers-edit/sit-customers-edit.component';
 import { SitUserAccountChangePasswordComponent } from './containers/dictionaries/sit-user-account/actions/sit-user-account-change-password/sit-user-account-change-password.component';
 import { SitParamsComponent } from './containers/dictionaries/sit-params/sit-params.component';
@@ -103,7 +103,7 @@ import { SitWmsDocsComponent } from '@app/containers/dictionaries/sit-wms-docs/s
 import { SitRefreshButtonComponent } from './components/controls/sit-refresh-button/sit-refresh-button.component';
 import { SitFilesButtonComponent } from './components/controls/sit-files-button/sit-files-button.component';;
 import { SitButtonBaseComponent } from './components/controls/sit-button-base/sit-button-base.component';
-import { SitAttachmentsInsComponent } from './containers/dictionaries/sit-kancelaria/actions/sit-attachments-ins/sit-attachments-ins.component';
+import { SitAttachmentsInsComponent } from './containers/dictionaries/_common/actions/sit-attachments-ins/sit-attachments-ins.component';
 import { SitReturnsComponent } from './containers/dictionaries/sit-returns/sit-returns.component';
 import { SitReturnsGetdataComponent } from './containers/dictionaries/sit-returns/actions/sit-returns-getdata/sit-returns-getdata.component';
 import { SitAppUsersComponent } from './containers/dictionaries/sit-app-users/sit-app-users.component';
@@ -134,7 +134,7 @@ import { SitLocationsComponent } from './containers/dictionaries/sit-locations/s
 import { SitAgreementsTypesEditComponent } from './containers/dictionaries/sit-agreements-types/actions/sit-agreements-types-edit/sit-agreements-types-edit.component';
 import { SitLocationsEditComponent } from './containers/dictionaries/sit-locations/actions/sit-locations-edit/sit-locations-edit.component';
 import { SitRightsGroupsEditComponent } from './containers/dictionaries/sit-rights/actions/sit-rights-groups-edit/sit-rights-groups-edit.component';
-import { SitImportCustomerFromImpTableComponent } from './containers/dictionaries/sit-kancelaria/actions/sit-import-customer-from-imp-table/sit-import-customer-from-imp-table.component';
+import { SitImportCustomerFromImpTableComponent } from './containers/dictionaries/sit-customers/actions/sit-import-customer-from-imp-table/sit-import-customer-from-imp-table.component';
 import { SitEmployeesComponent } from './containers/dictionaries/sit-employees/sit-employees.component';
 import { SitPayrollsComponent } from './containers/dictionaries/sit-payrolls/sit-payrolls.component';
 import { SitPayrollComponentsComponent } from './containers/dictionaries/sit-payroll-components/sit-payroll-components.component';
@@ -328,7 +328,7 @@ import { SitEmployeeAbsencesEditComponent } from './containers/dictionaries/sit-
 import { SitCashRegisterSaleReportsExportForMultiComponent } from './containers/dictionaries/sit-cash-register-sale-reports/actions/sit-cash-register-sale-reports-export-for-multi/sit-cash-register-sale-reports-export-for-multi.component';
 import { SitHRDepartmentsEditComponent } from './containers/dictionaries/sit-hr-params-def/actions/sit-hr-departments-edit/sit-hr-departments-edit.component';
 import { SitPublicationsBillingParamsDefComponent } from './containers/dictionaries/sit-publications-billing-params-def/sit-publications-billing-params-def.component';
-import { SitAgreementsBenefRolesEditComponent } from './containers/dictionaries/sit-publications-billing-params-def/actions/sit-agreements-benef-roles-edit/sit-agreements-benef-roles-edit.component';
+import { SitAgreementCustomerRolesEditComponent } from './containers/dictionaries/sit-publications-billing-params-def/actions/sit-agreement-customer-roles-edit/sit-agreement-customer-roles-edit.component';
 import { SitAppUsersInCompanyAddUserComponent } from './containers/dictionaries/sit-app-users-in-company/actions/sit-app-users-in-company-add-user/sit-app-users-in-company-add-user.component';
 import { SitPublicationsBillingDefCopyWithinAgreementComponent } from './containers/dictionaries/sit-publications-billing-def/actions/sit-publications-billing-def-copy-within-agreement/sit-publications-billing-def-copy-within-agreement.component';
 import { SitRoyaltyCalcOnePublicationFromDateComponent } from './containers/dictionaries/sit-publications/actions/sit-royalty-calc-one-publication-from-date/sit-royalty-calc-one-publication-from-date.component';
@@ -344,6 +344,9 @@ import { SitOfficeDocHeadersEditComponent } from './containers/dictionaries/sit-
 import { SitSimpleContainerComponent } from './components/sit-simple-container/sit-simple-container.component';
 import { SitOfficeDocDimensionsEditComponent } from './containers/dictionaries/sit-office-doc-headers/actions/sit-office-doc-dimensions-edit/sit-office-doc-dimensions-edit.component';
 import { SitOfficeDocVatFootersEditComponent } from './containers/dictionaries/sit-office-doc-headers/actions/sit-office-doc-vat-footers-edit/sit-office-doc-vat-footers-edit.component';
+import { SitAgreementsComponent } from './containers/dictionaries/sit-agreements/sit-agreements.component';
+import { SitAgreementCustomersEditComponent } from './containers/dictionaries/sit-agreements/actions/sit-agreement-customers-edit/sit-agreement-customers-edit.component';
+import { SitAgreementUsersEditComponent } from './containers/dictionaries/sit-agreements/actions/sit-agreement-users-edit/sit-agreement-users-edit.component';
 import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 
 @NgModule({
@@ -659,7 +662,7 @@ import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
         SitCashRegisterSaleReportsExportForMultiComponent,
         SitHRDepartmentsEditComponent,
         SitPublicationsBillingParamsDefComponent,
-        SitAgreementsBenefRolesEditComponent,
+        SitAgreementCustomerRolesEditComponent,
         SitAppUsersInCompanyAddUserComponent,
         SitPublicationsBillingDefCopyWithinAgreementComponent,
         SitRoyaltyCalcOnePublicationFromDateComponent,
@@ -674,7 +677,10 @@ import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
         SitOfficeDocHeadersEditComponent,
         SitSimpleContainerComponent,
         SitOfficeDocDimensionsEditComponent,
-        SitOfficeDocVatFootersEditComponent
+        SitOfficeDocVatFootersEditComponent,
+        SitAgreementsComponent,
+        SitAgreementCustomersEditComponent,
+        SitAgreementUsersEditComponent
 
     ],
     providers: [

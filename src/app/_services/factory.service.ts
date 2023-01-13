@@ -20,7 +20,7 @@ import { SitPayrollImportComponent } from './../containers/dictionaries/sit-payr
 import { SitPayrollComponentsComponent } from './../containers/dictionaries/sit-payroll-components/sit-payroll-components.component';
 import { SitPayrollsComponent } from './../containers/dictionaries/sit-payrolls/sit-payrolls.component';
 import { SitEmployeesComponent } from './../containers/dictionaries/sit-employees/sit-employees.component';
-import { SitImportCustomerFromImpTableComponent } from './../containers/dictionaries/sit-kancelaria/actions/sit-import-customer-from-imp-table/sit-import-customer-from-imp-table.component';
+import { SitImportCustomerFromImpTableComponent } from '../containers/dictionaries/sit-customers/actions/sit-import-customer-from-imp-table/sit-import-customer-from-imp-table.component';
 import { SitLocationsEditComponent } from './../containers/dictionaries/sit-locations/actions/sit-locations-edit/sit-locations-edit.component';
 import { SitAgreementsTypesEditComponent } from './../containers/dictionaries/sit-agreements-types/actions/sit-agreements-types-edit/sit-agreements-types-edit.component';
 import { SitLocationsComponent } from './../containers/dictionaries/sit-locations/sit-locations.component';
@@ -44,12 +44,12 @@ import { SitAppUsersEditComponent } from './../containers/dictionaries/sit-app-u
 import { SitAppUsersComponent } from './../containers/dictionaries/sit-app-users/sit-app-users.component';
 import { SitReturnsGetdataComponent } from './../containers/dictionaries/sit-returns/actions/sit-returns-getdata/sit-returns-getdata.component';
 import { SitReturnsComponent } from './../containers/dictionaries/sit-returns/sit-returns.component';
-import { SitAttachmentsInsComponent } from './../containers/dictionaries/sit-kancelaria/actions/sit-attachments-ins/sit-attachments-ins.component';
+import { SitAttachmentsInsComponent } from '../containers/dictionaries/_common/actions/sit-attachments-ins/sit-attachments-ins.component';
 import { SitWmsStocksComponent } from '../containers/dictionaries/sit-wms-stocks/sit-wms-stocks.component';
 import { SitParamsComponent } from './../containers/dictionaries/sit-params/sit-params.component';
 import { SitUserAccountChangePasswordComponent } from './../containers/dictionaries/sit-user-account/actions/sit-user-account-change-password/sit-user-account-change-password.component';
 import { SitCustomersEditComponent } from './../containers/dictionaries/sit-customers/actions/sit-customers-edit/sit-customers-edit.component';
-import { SitAgreementsEditComponent } from './../containers/dictionaries/sit-kancelaria/actions/sit-agreements-edit/sit-agreements-edit.component';
+import { SitAgreementsEditComponent } from '../containers/dictionaries/sit-agreements/actions/sit-agreements-edit/sit-agreements-edit.component';
 import { SitJpkVatGetDataComponent } from './../containers/dictionaries/sit-jpk-vat/actions/sit-jpk-vat-get-data/sit-jpk-vat-get-data.component';
 import { Injectable, Type } from '@angular/core';
 import { SitJPKVatComponent } from '@app/containers/dictionaries/sit-jpk-vat';
@@ -226,7 +226,7 @@ import { SitEmployeeAbsencesEditComponent } from '@app/containers/dictionaries/s
 import { SitCashRegisterSaleReportsExportForMultiComponent } from '@app/containers/dictionaries/sit-cash-register-sale-reports/actions/sit-cash-register-sale-reports-export-for-multi/sit-cash-register-sale-reports-export-for-multi.component';
 import { SitHRDepartmentsEditComponent } from '@app/containers/dictionaries/sit-hr-params-def/actions/sit-hr-departments-edit/sit-hr-departments-edit.component';
 import { SitPublicationsBillingParamsDefComponent } from '@app/containers/dictionaries/sit-publications-billing-params-def/sit-publications-billing-params-def.component';
-import { SitAgreementsBenefRolesEditComponent } from '@app/containers/dictionaries/sit-publications-billing-params-def/actions/sit-agreements-benef-roles-edit/sit-agreements-benef-roles-edit.component';
+import { SitAgreementCustomerRolesEditComponent } from '@app/containers/dictionaries/sit-publications-billing-params-def/actions/sit-agreement-customer-roles-edit/sit-agreement-customer-roles-edit.component';
 import { SitAppUsersInCompanyAddUserComponent } from '@app/containers/dictionaries/sit-app-users-in-company/actions/sit-app-users-in-company-add-user/sit-app-users-in-company-add-user.component';
 import { SitPublicationsBillingDefCopyWithinAgreementComponent } from '@app/containers/dictionaries/sit-publications-billing-def/actions/sit-publications-billing-def-copy-within-agreement/sit-publications-billing-def-copy-within-agreement.component';
 import { SitRoyaltyCalcOnePublicationFromDateComponent } from '@app/containers/dictionaries/sit-publications/actions/sit-royalty-calc-one-publication-from-date/sit-royalty-calc-one-publication-from-date.component';
@@ -242,6 +242,9 @@ import { SitOfficeDocHeadersEditComponent } from '@app/containers/dictionaries/s
 import { SitSimpleContainerComponent } from '@app/components/sit-simple-container/sit-simple-container.component';
 import { SitOfficeDocDimensionsEditComponent } from '@app/containers/dictionaries/sit-office-doc-headers/actions/sit-office-doc-dimensions-edit/sit-office-doc-dimensions-edit.component';
 import { SitOfficeDocVatFootersEditComponent } from '@app/containers/dictionaries/sit-office-doc-headers/actions/sit-office-doc-vat-footers-edit/sit-office-doc-vat-footers-edit.component';
+import { SitAgreementsComponent } from '@app/containers/dictionaries/sit-agreements/sit-agreements.component';
+import { SitAgreementCustomersEditComponent } from '@app/containers/dictionaries/sit-agreements/actions/sit-agreement-customers-edit/sit-agreement-customers-edit.component';
+import { SitAgreementUsersEditComponent } from '@app/containers/dictionaries/sit-agreements/actions/sit-agreement-users-edit/sit-agreement-users-edit.component';
 
 
 
@@ -476,7 +479,7 @@ export class FactoryService {
         sitCashRegisterSaleReportsExportForMulti: SitCashRegisterSaleReportsExportForMultiComponent,
         sitHRDepartmentsEdit: SitHRDepartmentsEditComponent,
         sitPublicationsBillingParamsDef: SitPublicationsBillingParamsDefComponent,
-        sitAgreementsBenefRolesEdit: SitAgreementsBenefRolesEditComponent,
+        sitAgreementCustomerRolesEdit: SitAgreementCustomerRolesEditComponent,
         sitAppUsersInCompanyAddUser: SitAppUsersInCompanyAddUserComponent,
         sitPublicationsBillingDefCopyWithinAgreement: SitPublicationsBillingDefCopyWithinAgreementComponent,
         sitRoyaltyCalcOnePublicationFromDate: SitRoyaltyCalcOnePublicationFromDateComponent,
@@ -492,6 +495,9 @@ export class FactoryService {
         sitSimpleContainer: SitSimpleContainerComponent,
         sitOfficeDocDimensionsEdit: SitOfficeDocDimensionsEditComponent,
         sitOfficeDocVATFootersEdit: SitOfficeDocVatFootersEditComponent,
+        sitAgreements: SitAgreementsComponent,
+        sitAgreementCustomersEdit: SitAgreementCustomersEditComponent,
+        sitAgreementUsersEdit: SitAgreementUsersEditComponent
     };
 
     public GetFactory(ident: string) {
