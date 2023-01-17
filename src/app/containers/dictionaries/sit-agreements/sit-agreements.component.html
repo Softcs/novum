@@ -37,7 +37,9 @@
                           </sit-simple-container>
 
                           <sit-simple-container title="Strony umowy" ngClass="flex-container-column" fxFlex>
-                            <li *ngFor="let cust of sitAgreementCustomers; ">{{cust.CustName}}</li>
+                            <ul>
+                              <li *ngFor="let cust of sitAgreementCustomers; ">{{cust.CustName}}</li>
+                            </ul>
                           </sit-simple-container>
 
                         <!-- <sit-data-set-container ident="sitAgreementCustomers" ngClass="flex-container-column" >
