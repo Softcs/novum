@@ -56,7 +56,7 @@
                       <sit-data-label #sitControl field="VATId" label="NIP"></sit-data-label>
                       <!-- <sit-data-label #sitControl field="CustAddress" label="Adres"></sit-data-label> -->
                       <sit-data-label #sitControl field="EmployeeName" label="Pracownik"></sit-data-label>
-                      <sit-data-label #sitControl field="OfficeDocDescription" label="Opis dok."></sit-data-label>
+                      <sit-data-label #sitControl field="OfficeDocDescription" label="Opis"></sit-data-label>
                     </sit-simple-container>
   
 
@@ -66,13 +66,15 @@
 
                     <sit-simple-container ngClass="flex-container-column tech-container mr-05">
 
-                      <sit-data-label #sitControl field="PaymentTypeDesc" label="Rodz. płat."></sit-data-label>
-                      <sit-data-label #sitControl field="GrossCurrency" label="Brutto" type="number"></sit-data-label>
+                      <sit-data-label #sitControl field="PaymentTypeDesc" label="Rodz. płatności"></sit-data-label>
                       <sit-data-label #sitControl field="PaymentDays" label="Dni"></sit-data-label>
                       <sit-data-label #sitControl field="PaymentDate" label="Data płat."></sit-data-label>
                       <sit-data-label #sitControl field="BankAccountNumber" label="Rachunek"></sit-data-label>
                       <sit-data-label #sitControl field="Swift" label="SWIFT"></sit-data-label>
-  
+                      <div ngClass="flex-container-row">
+                        <sit-data-label #sitControl field="GrossCurrency" label="Do zapłaty" type="number"></sit-data-label>
+                        <sit-data-label #sitControl field="CurrencyIdent" label=""></sit-data-label>
+                      </div>
                     </sit-simple-container>
   
                     <sit-simple-container 
