@@ -17,9 +17,9 @@
             <as-split-area [size]="60">
               <mat-tab-group id="tab-group" animationDuration="0ms">
                 <mat-tab label="Info">
-                  
+
                   <div ngClass="flex-container-row content">
-                  
+
                     <sit-data-set-container ident="sitAgreements" ngClass="flex-container-column" fxFlex="30">
 
                       <sit-simple-container ngClass="flex-container-column mr-05">
@@ -32,36 +32,30 @@
                       </sit-simple-container>
 
                     </sit-data-set-container>
-                    
+
                     <div fxLayout="column" fxFlex>
 
                       <sit-data-set-container ident="sitAgreements" ngClass="flex-container-column mb-05" fxFlex="50">
-                        <!-- <sit-simple-container title="Opis" fxFlex>
-                          <div fxLayout="column" fxFlex>
-                            <sit-data-textarea type="textarea" #sitControl field="AgreementDesc" label="" appearance="outline" [readonly]=true fxFill></sit-data-textarea> 
-                          </div>
-                        </sit-simple-container> -->
-
                         <sit-simple-container title="Opis" ngClass="flex-container-column">
-                          <sit-data-textarea type="textarea" #sitControl field="AgreementDesc" label="" appearance="outline" [readonly]=true  ngClass="flex-container-column"></sit-data-textarea> 
+                          <sit-data-textarea type="textarea" #sitControl field="AgreementDesc" label="" appearance="outline" [readonly]=true  ngClass="flex-container-column"></sit-data-textarea>
                         </sit-simple-container>
 
                       </sit-data-set-container>
 
                       <sit-data-set-container ident="sitAgreementCustomers" ngClass="flex-container-column" >
                         <sit-simple-container ngClass="flex-container-column" title="Strony umowy">
-                            <ag-grid-angular 
+                            <ag-grid-angular
                               #sitSetDataSource
                               class="ag-theme-balham"
                             >
                           </ag-grid-angular>
                         </sit-simple-container>
                       </sit-data-set-container>
-                    
+
                     </div>
 
                   </div>
-                
+
                 </mat-tab>
                 <mat-tab label="Strony umowy">
                   <sit-data-set-container ident="sitAgreementCustomers" showActionsToolbar="true" ngClass="flex-container-column">
@@ -105,4 +99,3 @@
       </as-split>
     </div>
   </sit-dict-container>
-  
