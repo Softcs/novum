@@ -72,34 +72,34 @@
 
 
 
-app-sit-office-doc-headers sit-data-set-container {
+// app-sit-office-doc-headers sit-data-set-container {
 
-    // flex-wrap: wrap;
-    flex-flow: row wrap;
+//     // flex-wrap: wrap;
+//     flex-flow: row wrap;
 
 
-    .sit-simple-container-component {
-        flex: 0 2 fit-content;
-        height: fit-content;
+//     .sit-simple-container-component {
+//         flex: 0 2 fit-content;
+//         height: fit-content;
 
-        .sit-data-label-component {
-            // border: 1px dashed blue;
-            flex-basis: fit-content;
-            flex-grow: 1;
-            flex-shrink: 2;
+//         // .sit-data-label-component {
+//         //     // border: 1px dashed blue;
+//         //     // flex-basis: fit-content;
+//         //     // flex-grow: 1;
+//         //     // flex-shrink: 2;
 
-            .sit-data-label-name {
-                // border: 1px solid red;
-                flex: 0 2 fit-content;
-            }
+//         //     .sit-data-label-name {
+//         //         // border: 1px solid red;
+//         //         // flex: 0 2 fit-content;
+//         //     }
 
-            .sit-data-label-value {
-                flex-basis: fit-content;
-                flex-grow: 1;
-                flex-shrink: 3;
-                max-width: 21em;
-            }
-        }
+//         //     .sit-data-label-value {
+//         //         flex-basis: fit-content;
+//         //         flex-grow: 1;
+//         //         flex-shrink: 3;
+//         //         // max-width: 21em;
+//         //     }
+//         // }
 
-    }
-}
+//     }
+// }

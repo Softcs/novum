@@ -31,29 +31,69 @@
               <mat-tab label="Info">
                 <!-- sit-data-labels-standard-container - zmienia zachowanie wysokości elementów -->
                 <!-- <sit-data-set-container ident="sitOfficeDocHeaders" ngClass="flex-container-column"> -->
-                <sit-data-set-container ident="sitOfficeDocHeaders" ngClass="flex-container-row sit-data-set-container-data">
+                <sit-data-set-container ident="sitOfficeDocHeaders" ngClass="flex-container-column sit-data-set-container-data">
 
-                  <sit-simple-container ngClass="flex-container-column head-container">
+                  <sit-simple-container ngClass="flex-container-row head-container">
                     <sit-data-label #sitControl field="OfficeDocName" type="header"></sit-data-label>
+                    &nbsp;
+                    <sit-data-label #sitControl field="DocumentNumber" type="header" ></sit-data-label>
                   </sit-simple-container>
 
-                  <sit-simple-container ngClass="flex-container-column mr-05 mb-05 first-container">
-                    <!-- <sit-data-label #sitControl field="OfficeDocName" type="header"></sit-data-label> -->
-                    <sit-data-label #sitControl field="CustName" label="Kontrahent"></sit-data-label>
-                    <sit-data-label #sitControl field="VATId" label="NIP"></sit-data-label>
-                    <!-- <sit-data-label #sitControl field="CustAddress" label="Adres"></sit-data-label> -->
-                    <sit-data-label #sitControl field="EmployeeName" label="Pracownik"></sit-data-label>
-                    <sit-data-label #sitControl field="OfficeDocDescription" label="Opis dok."></sit-data-label>
-                  </sit-simple-container>
+                  <div ngClass="flex-container-row">
 
-                  <sit-simple-container ngClass="flex-container-column mr-05 mb-05">
-                    <sit-data-label #sitControl field="DocumentNumber" label="Nr dok."></sit-data-label>
-                    <sit-data-label #sitControl field="DocumentDate" label="Data wyst."></sit-data-label>
-                    <sit-data-label #sitControl field="SalesDate" label="Data sprz." ></sit-data-label>
-                    <sit-data-label #sitControl field="OfficeDocNumber" label="Nr w rejestrze"></sit-data-label>
-                    <sit-data-label #sitControl field="RegDate" label="Data rejestracji"></sit-data-label>
-                    <sit-data-label #sitControl field="StatusValueName" label="Status" [valueStyle]="{'color': statusColor()}" ></sit-data-label>
-                  </sit-simple-container>
+                    <sit-simple-container ngClass="flex-container-column tech-container mr-05">
+                      <!-- <sit-data-label #sitControl field="DocumentNumber" label="Nr dok."></sit-data-label> -->
+                      <sit-data-label #sitControl field="DocumentDate" label="Data wyst."></sit-data-label>
+                      <sit-data-label #sitControl field="SalesDate" label="Data sprz." ></sit-data-label>
+                      <sit-data-label #sitControl field="OfficeDocNumber" label="Nr w rejestrze"></sit-data-label>
+                      <sit-data-label #sitControl field="RegDate" label="Data rejestracji"></sit-data-label>
+                      <sit-data-label #sitControl field="StatusValueName" label="Status" [valueStyle]="{'color': statusColor()}" ></sit-data-label>
+                    </sit-simple-container>
+
+                    <sit-simple-container ngClass="flex-container-column info-container">
+                      <!-- <sit-data-label #sitControl field="OfficeDocName" type="header"></sit-data-label> -->
+                      <sit-data-label #sitControl field="CustName" label="Kontrahent"></sit-data-label>
+                      <sit-data-label #sitControl field="VATId" label="NIP"></sit-data-label>
+                      <!-- <sit-data-label #sitControl field="CustAddress" label="Adres"></sit-data-label> -->
+                      <sit-data-label #sitControl field="EmployeeName" label="Pracownik"></sit-data-label>
+                      <sit-data-label #sitControl field="OfficeDocDescription" label="Opis dok."></sit-data-label>
+                    </sit-simple-container>
+  
+
+                  </div>
+
+                  <div ngClass="flex-container-row">
+
+                    <sit-simple-container ngClass="flex-container-column tech-container mr-05">
+
+                      <sit-data-label #sitControl field="PaymentTypeDesc" label="Rodz. płat."></sit-data-label>
+                      <sit-data-label #sitControl field="GrossCurrency" label="Brutto" type="number"></sit-data-label>
+                      <sit-data-label #sitControl field="PaymentDays" label="Dni"></sit-data-label>
+                      <sit-data-label #sitControl field="PaymentDate" label="Data płat."></sit-data-label>
+                      <sit-data-label #sitControl field="BankAccountNumber" label="Rachunek"></sit-data-label>
+                      <sit-data-label #sitControl field="Swift" label="SWIFT"></sit-data-label>
+  
+                    </sit-simple-container>
+  
+                    <sit-simple-container 
+                      ngClass="flex-container-column qrcode-container"
+                      [class.hidden]="hideQRCode()"
+                    >
+  
+                      <ngx-qrcode
+                        [elementType]="elementType"
+                        [errorCorrectionLevel]="correctionLevel"
+                        [value]="qrvalue"
+                        alt="QR Code"
+                        cssClass="qrcode-img-cont">
+                      </ngx-qrcode>
+                      <!-- <span>{{qrvalue}}</span> -->
+  
+  
+                    </sit-simple-container>
+                    
+                  </div>
+
 
 
 

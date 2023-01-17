@@ -5,19 +5,47 @@
         align-content: flex-start;
         align-items: flex-start;
         margin-top: 0.3em;
+
+        .head-container,
+        > div {
+            flex: 0;
+            margin-bottom: .5em;
+            min-width: 100%;
+            // border: 2px dotted green !important;
+        }
+
+        .head-container {
+            .sit-data-label-component {
+                flex-grow: 0;
+
+                .sit-data-label-value {
+                    margin: 0;
+                }
+            }
+        }
     
         .sit-simple-container-component {
             padding: 0;
             box-shadow: none;
             background-color: inherit;
-            // border-radius: 3px;
+            // border: 1px solid red;
     
-            &.head-container {
-                min-width: 100%;
+    
+            &.info-container {
+                flex-grow: 1
             }
-    
-            &.first-container {
-                min-width: 27em;
+
+            // &.qrcode-container,
+            &.tech-container {
+                min-width: 16em;
+            }
+
+            &.qrcode-container {
+
+                img {
+                    height: 9em;
+                    width: auto;
+                }
             }
     
             .documentNumber-component,
