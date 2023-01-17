@@ -21,7 +21,6 @@
                   <div ngClass="flex-container-column content">
 
                     <sit-data-set-container ident="sitAgreements" ngClass="flex-container-row">
-
                       <sit-simple-container ngClass="flex-container-column mr-05" fxFlex="30">
                         <sit-data-label #sitControl field="AgreementNo" type="header"></sit-data-label>
                         <sit-data-label #sitControl field="AgreementNumberExt01" label="Nr zewnętrzny" labelWidth="8em"></sit-data-label>
@@ -33,11 +32,11 @@
 
                       <div fxLayout="column" fxFlex>
 
-                          <sit-simple-container title="Opis" ngClass="flex-container-column" fxFlex="50">
+                          <sit-simple-container title="Opis" ngClass="flex-container-column mb-05" fxFlex="50">
                             <sit-data-textarea type="textarea" #sitControl field="AgreementDesc" label="" appearance="outline" [readonly]=true  ngClass="flex-container-column"></sit-data-textarea>
                           </sit-simple-container>
 
-                          <sit-simple-container title="Strony umowy" ngClass="flex-container-column" fxFlex="50">
+                          <sit-simple-container title="Strony umowy" ngClass="flex-container-column" fxFlex>
                             <li *ngFor="let cust of sitAgreementCustomers; ">{{cust.CustName}}</li>
                           </sit-simple-container>
 
@@ -53,7 +52,6 @@
 
                       </div>
                     </sit-data-set-container>
-
                   </div>
 
                 </mat-tab>
