@@ -8,6 +8,7 @@ import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-di
   host: {class: 'router-flex'}
 })
 export class SitAgreementsComponent extends SitDictBaseComponent {
+  sitAgreementCustomers: any;
 
   public prepareColumnsDefinitnion(){
     this.gridColumnsDefinition["sitAgreements"] = [
@@ -49,4 +50,11 @@ export class SitAgreementsComponent extends SitDictBaseComponent {
     ];
 
   }
+
+  refreshAfter(dataSourceManager) {
+    this.sitAgreementCustomers = dataSourceManager?.getDateSourceWrapper("sitAgreementCustomers").rows;
+
+    console.log(this.sitAgreementCustomers)
+    
+  }  
 }

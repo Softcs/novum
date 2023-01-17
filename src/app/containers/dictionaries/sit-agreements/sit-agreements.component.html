@@ -1,4 +1,4 @@
-<sit-dict-container ident="sitAgreements" #sitDictcontainer ngClass="flex-container-column" >
+<sit-dict-container ident="sitAgreements" #sitDictcontainer ngClass="flex-container-column" (refreshAfter)="refreshAfter($event)">
     <div ngClass="content flex-container-column">
       <as-split #sitSpliter direction="horizontal">
         <as-split-area [size]="55">
@@ -18,11 +18,11 @@
               <mat-tab-group id="tab-group" animationDuration="0ms">
                 <mat-tab label="Info">
                   
-                  <div ngClass="flex-container-row content">
+                  <div ngClass="flex-container-column content">
                   
-                    <sit-data-set-container ident="sitAgreements" ngClass="flex-container-column" fxFlex="30">
+                    <sit-data-set-container ident="sitAgreements" ngClass="flex-container-row">
 
-                      <sit-simple-container ngClass="flex-container-column mr-05">
+                      <sit-simple-container ngClass="flex-container-column mr-05" fxFlex="30">
                         <sit-data-label #sitControl field="AgreementNo" type="header"></sit-data-label>
                         <sit-data-label #sitControl field="AgreementNumberExt01" label="Nr zewnętrzny" labelWidth="8em"></sit-data-label>
                         <sit-data-label #sitControl field="Date" label="Data umowy" labelWidth="8em"></sit-data-label>
@@ -30,28 +30,29 @@
                         <sit-data-label #sitControl field="AgreementsTypeName" label="Typ umowy" labelWidth="8em"></sit-data-label>
                         <sit-data-label #sitControl field="LocationName" label="Lokalizacja" labelWidth="8em"></sit-data-label>
                       </sit-simple-container>
+                    
+                      <div fxLayout="column" fxFlex>
 
+                          <sit-simple-container title="Opis" ngClass="flex-container-column" fxFlex="50">
+                            <sit-data-textarea type="textarea" #sitControl field="AgreementDesc" label="" appearance="outline" [readonly]=true  ngClass="flex-container-column"></sit-data-textarea> 
+                          </sit-simple-container>
+
+                          <sit-simple-container title="Strony umowy" ngClass="flex-container-column" fxFlex="50">
+                            <li *ngFor="let cust of sitAgreementCustomers; ">{{cust.CustName}}</li>
+                          </sit-simple-container>
+
+                        <!-- <sit-data-set-container ident="sitAgreementCustomers" ngClass="flex-container-column" >
+                          <sit-simple-container ngClass="flex-container-column" title="Strony umowy">
+                              <ag-grid-angular 
+                                #sitSetDataSource
+                                class="ag-theme-balham"
+                              >
+                            </ag-grid-angular>
+                          </sit-simple-container>
+                        </sit-data-set-container> -->
+                      
+                      </div>
                     </sit-data-set-container>
-                    
-                    <div fxLayout="column" fxFlex>
-
-                      <sit-data-set-container ident="sitAgreements" ngClass="flex-container-column mb-05" fxFlex="50">
-                        <sit-simple-container title="Opis" ngClass="flex-container-column">
-                          <sit-data-textarea type="textarea" #sitControl field="AgreementDesc" label="" appearance="outline" [readonly]=true  ngClass="flex-container-column"></sit-data-textarea> 
-                        </sit-simple-container>
-                      </sit-data-set-container>
-
-                      <sit-data-set-container ident="sitAgreementCustomers" ngClass="flex-container-column" >
-                        <sit-simple-container ngClass="flex-container-column" title="Strony umowy">
-                            <ag-grid-angular 
-                              #sitSetDataSource
-                              class="ag-theme-balham"
-                            >
-                          </ag-grid-angular>
-                        </sit-simple-container>
-                      </sit-data-set-container>
-                    
-                    </div>
 
                   </div>
                 
