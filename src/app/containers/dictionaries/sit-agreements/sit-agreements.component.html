@@ -36,11 +36,16 @@
                     <div fxLayout="column" fxFlex>
 
                       <sit-data-set-container ident="sitAgreements" ngClass="flex-container-column mb-05" fxFlex="50">
-                        <sit-simple-container title="Opis" fxFlex>
+                        <!-- <sit-simple-container title="Opis" fxFlex>
                           <div fxLayout="column" fxFlex>
                             <sit-data-textarea type="textarea" #sitControl field="AgreementDesc" label="" appearance="outline" [readonly]=true fxFill></sit-data-textarea> 
                           </div>
+                        </sit-simple-container> -->
+
+                        <sit-simple-container title="Opis" ngClass="flex-container-column">
+                          <sit-data-textarea type="textarea" #sitControl field="AgreementDesc" label="" appearance="outline" [readonly]=true  ngClass="flex-container-column"></sit-data-textarea> 
                         </sit-simple-container>
+
                       </sit-data-set-container>
 
                       <sit-data-set-container ident="sitAgreementCustomers" ngClass="flex-container-column" >

@@ -1,4 +1,4 @@
-import { Component, NgZone, Renderer2, ViewEncapsulation, Input, LOCALE_ID, Inject } from '@angular/core';
+import { Component, NgZone, Renderer2, ViewEncapsulation, Input, LOCALE_ID, Inject, HostBinding } from '@angular/core';
 import { MatFormFieldAppearance } from '@angular/material/form-field';
 import { OnCFService } from '@app/_services/oncf.service';
 import { SitDataBaseComponent } from '../sit-data-base/sit-data-base.component';
@@ -18,6 +18,9 @@ export class SitDataLabelComponent extends SitDataBaseComponent {
   @Input() label = '';
   @Input() valueStyle: any = {};
   @Input() labelStyle: any = {};
+  @Input() field: string = '';
+  
+
 
   constructor(
     @Inject(LOCALE_ID) protected locale: string,
@@ -27,12 +30,12 @@ export class SitDataLabelComponent extends SitDataBaseComponent {
     super(_renderer);
 
   }
+
+  @HostBinding('class') get class() {
+    return this.getFieldClassName('component');
+  }
   
   public setValue(value: any) {
-
-//console.log('value: ', value);
-
-   // console.log(this.type)
     this.value = (
       this.type !== 'number' 
       ? value 
@@ -45,6 +48,19 @@ export class SitDataLabelComponent extends SitDataBaseComponent {
 //console.log('inputElement: ', this.inputElement);
 
     return this.inputElement.nativeElement.value   
+  }
+
+  public getFieldClassName(prefix?: string): string {
+
+    if (typeof(prefix)==='undefined') prefix = 'def';
+
+    if (!this.field) {
+      return '';
+    }
+    
+    // return this.field.trim().toLowerCase() + '-' + prefix;
+    return this.field.trim().substring(0, 1).toLowerCase() + this.field.substring(1) + '-' + prefix;
+
   }
 }
 
