@@ -27,14 +27,14 @@
 
             <sit-simple-container ngClass="flex-container-column mb-05" title="PUBLIKACJA">
               <sit-data-label #sitControl field="PublicationIdent" type="header"></sit-data-label>
-              <sit-data-label #sitControl field="Title" label="Tytuł polski" labelWidth="8em" style="font-weight: bold;"></sit-data-label>
-              <sit-data-label #sitControl field="OriginalTitle" label="Tytuł oryginalny" labelWidth="8em" [valueStyle]="{'font-style': 'italic'}"></sit-data-label>
+              <sit-data-label #sitControl field="Title" label="Tytuł polski"></sit-data-label>
+              <sit-data-label #sitControl field="OriginalTitle" label="Tytuł oryginalny"></sit-data-label>
             </sit-simple-container>
             
             <sit-simple-container ngClass="flex-container-column" >
-              <sit-data-label #sitControl field="PublicationSubjectName" label="Tematyka" labelWidth="8em"></sit-data-label>
+              <sit-data-label #sitControl field="PublicationSubjectName" label="Tematyka"></sit-data-label>
               <div ngClass="flex-container-row">
-                <sit-data-label #sitControl field="AudienceName" label="Grupa wiekowa" labelWidth="8em" fxFlex="60"></sit-data-label>
+                <sit-data-label #sitControl field="AudienceName" label="Grupa wiekowa" fxFlex="60"></sit-data-label>
                 <sit-data-label #sitControl field="LanguageName_Original" label="Język oryginału" fxFlex="40"></sit-data-label>
               </div>
             </sit-simple-container>
@@ -63,16 +63,16 @@
                       <!-- sit-data-labels-standard-container -->
                       <div ngClass="flex-container-column mr-05 " >
 
-                        <sit-simple-container ngClass="flex-container-column mb-05" title="PRODUKT">
+                        <sit-simple-container ngClass="white-colored flex-container-column mb-05" title="PRODUKT">
                           <sit-data-label #sitControl field="ProductName" type="header"></sit-data-label>
                           <div ngClass="flex-container-row"> 
                             <div ngClass="flex-container-column" fxFlex="50">
-                              <sit-data-label #sitControl field="Author" label="Autor" labelWidth="6em" [valueStyle]="{'font-weight': '600'}"></sit-data-label>
-                              <sit-data-label #sitControl field="Illustrator" label="Ilustrator" labelWidth="6em" [valueStyle]="{'font-weight': '600'}"></sit-data-label>
+                              <sit-data-label #sitControl field="Author" label="Autor" [valueStyle]="{'font-weight': '600'}"></sit-data-label>
+                              <sit-data-label #sitControl field="Illustrator" label="Ilustrator" [valueStyle]="{'font-weight': '600'}"></sit-data-label>
                             </div>
                             <div ngClass="flex-container-column sit-data-labels-standard-container" fxFlex>
-                              <sit-data-label #sitControl field="Translator" label="Tłumacz" labelWidth="6em" [valueStyle]="{'font-weight': '600'}"></sit-data-label>
-                              <sit-data-label #sitControl field="CollectionName" label="Kolekcja" labelWidth="6em" [valueStyle]="{'font-weight': '600', 'font-style': 'italic'}"></sit-data-label>
+                              <sit-data-label #sitControl field="Translator" label="Tłumacz" [valueStyle]="{'font-weight': '600'}"></sit-data-label>
+                              <sit-data-label #sitControl field="CollectionName" label="Kolekcja" [valueStyle]="{'font-weight': '600', 'font-style': 'italic'}"></sit-data-label>
                             </div>
                           </div>
                         </sit-simple-container>
@@ -81,15 +81,15 @@
                         <div ngClass="flex-container-row">
 
                           <sit-simple-container ngClass="flex-container-column mr-05" fxFlex="50">
-                            <sit-data-label #sitControl field="PremiereDate" label="Data premiery" labelWidth="8em" ></sit-data-label>
-                            <sit-data-label #sitControl field="RegisterDate" label="Data wydania" labelWidth="8em" ></sit-data-label>
-                            <sit-data-label #sitControl field="FormOfReleaseDesc" label="Forma wydania" labelWidth="8em" ></sit-data-label>
-                            <sit-data-label #sitControl field="EAN" label="EAN" labelWidth="8em" ></sit-data-label>
-                            <sit-data-label #sitControl field="ISBN" label="ISBN" labelWidth="8em" ></sit-data-label>
-                            <sit-data-label #sitControl field="MasterProductIdent" label="Produkt główny" labelWidth="8em" ></sit-data-label>
+                            <sit-data-label #sitControl field="PremiereDate" label="Data premiery" ></sit-data-label>
+                            <sit-data-label #sitControl field="RegisterDate" label="Data wydania" ></sit-data-label>
+                            <sit-data-label #sitControl field="FormOfReleaseDesc" label="Forma wydania" ></sit-data-label>
+                            <sit-data-label #sitControl field="EAN" label="EAN"></sit-data-label>
+                            <sit-data-label #sitControl field="ISBN" label="ISBN"></sit-data-label>
+                            <sit-data-label #sitControl field="MasterProductIdent" label="Produkt główny"></sit-data-label>
                           </sit-simple-container>
 
-                          <sit-simple-container ngClass="flex-container-column" title="Format">
+                          <sit-simple-container ngClass="white-colored  flex-container-column" title="Format" fxFlex="auto">
                             <sit-data-label #sitControl field="NumberOfPages" label="Ilość stron" labelWidth="8em" ></sit-data-label>
                             <sit-data-label #sitControl field="FormatBase" label="Podstawa" labelWidth="8em" ></sit-data-label>
                             <sit-data-label #sitControl field="FormatHeight" label="Wysokość" labelWidth="8em" ></sit-data-label>

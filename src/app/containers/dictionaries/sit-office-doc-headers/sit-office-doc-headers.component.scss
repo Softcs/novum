@@ -1,0 +1,70 @@
+
+.sit-office-doc-headers-component {
+
+    .sit-data-set-container-data {
+        align-content: flex-start;
+        align-items: flex-start;
+        margin-top: 0.3em;
+
+        .head-container,
+        > div {
+            flex: 0;
+            margin-bottom: .5em;
+            min-width: 100%;
+            // border: 2px dotted green !important;
+        }
+
+        .head-container {
+            .sit-data-label-component {
+                flex-grow: 0;
+
+                .sit-data-label-value {
+                    margin: 0;
+                }
+            }
+        }
+    
+        .sit-simple-container-component {
+            padding: 0;
+            box-shadow: none;
+            background-color: inherit;
+            // border: 1px solid red;
+    
+    
+            &.info-container {
+                flex-grow: 1
+            }
+
+            // &.qrcode-container,
+            &.tech-container {
+                min-width: 16em;
+            }
+
+            &.qrcode-container {
+
+                img {
+                    height: 9em;
+                    width: auto;
+                }
+            }
+    
+            .documentNumber-component,
+            .custName-component,
+            .statusValueName-component,
+            .employeeName-component {
+                .sit-data-label-value {
+                    font-weight: 600;
+                }
+            }
+    
+            .sit-data-label-name {
+                // border: 1px solid red;
+                min-width: 5em;
+                max-width: 5em;
+                text-align: left;
+            }
+        }
+    }
+
+}
+

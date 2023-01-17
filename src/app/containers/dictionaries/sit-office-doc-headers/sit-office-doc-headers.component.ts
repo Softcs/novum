@@ -1,4 +1,4 @@
-import { Component,LOCALE_ID,Inject } from '@angular/core';
+import { Component, LOCALE_ID, Inject, ViewEncapsulation } from '@angular/core';
 import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-dict-base.component';
 import { formatDate } from '@angular/common';
 import { formatNumber } from '@angular/common';
@@ -12,7 +12,8 @@ import { NgxQrcodeElementTypes, NgxQrcodeErrorCorrectionLevels } from '@techiedi
   selector: 'app-sit-office-doc-headers',
   templateUrl: './sit-office-doc-headers.component.html',
   styleUrls: ['./sit-office-doc-headers.component.scss'],
-  host: {class: 'router-flex sit-office-doc-headers-component'}
+  host: {class: 'router-flex sit-office-doc-headers-component'},
+  encapsulation : ViewEncapsulation.None,
 })
 export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
   dataSourceResponseWrapper: DataSetWrapper;
