@@ -1,3 +1,5 @@
+$border-color: #999;
+
 .sit-agreements-component{
   ul {
     list-style-type: none;
@@ -5,4 +7,31 @@
     margin: 0;
     font-size: .95rem;
   }
+
+
+  .agreement-desc-cont {
+    textarea {
+      border: 1px dotted $border-color;
+      font-size: .8rem;
+
+      &:focus-visible,
+      &:focus {
+        border-color: #666;
+        outline: none;
+      }
+    }
+  }
+  
+
+  .agreement-customers-cont {
+
+    .agreement-customer {
+      display: inline-block;
+      border: 1px dotted $border-color;
+      border-radius: 3px;
+      padding: 0.1em 0.4em;
+      margin: 0.1em;
+    }
+  }
+
 }
