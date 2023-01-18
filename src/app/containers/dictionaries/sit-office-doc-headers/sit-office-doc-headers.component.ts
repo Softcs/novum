@@ -250,6 +250,11 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
     else return( this.dictContainer?.activeRow('sitOfficeDocHeaders').QRvalue ? false : true );
   }
 
+  hideSwift(){
+    if (!this.dictContainer?.activeRow('sitOfficeDocHeaders')) { return }
+    else return( this.dictContainer?.activeRow('sitOfficeDocHeaders').Swift ? false : true );
+  }
+
   onGridReady(params){
     this.gridApi=params.api;
     this.columnApi=params.columnApi;

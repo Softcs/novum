@@ -70,9 +70,9 @@
                       <sit-data-label #sitControl field="PaymentDays" label="Dni"></sit-data-label>
                       <sit-data-label #sitControl field="PaymentDate" label="Data płat."></sit-data-label>
                       <sit-data-label #sitControl field="BankAccountNumber" label="Rachunek"></sit-data-label>
-                      <sit-data-label #sitControl field="Swift" label="SWIFT"></sit-data-label>
+                      <sit-data-label [class.hidden]="hideSwift()" #sitControl field="Swift" label="SWIFT"></sit-data-label>
                       <div ngClass="flex-container-row">
-                        <sit-data-label #sitControl field="GrossCurrency" label="Do zapłaty" type="number"></sit-data-label>
+                        <sit-data-label #sitControl field="GrossCurrency" label="Brutto" type="number"></sit-data-label>
                         <sit-data-label #sitControl field="CurrencyIdent" label=""></sit-data-label>
                       </div>
                     </sit-simple-container>
