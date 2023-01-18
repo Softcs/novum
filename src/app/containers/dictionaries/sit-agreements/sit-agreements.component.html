@@ -32,14 +32,18 @@
 
                       <div fxLayout="column" fxFlex>
 
-                          <sit-simple-container title="Opis" ngClass="flex-container-column mb-05" fxFlex="50">
+                          <sit-simple-container title="Opis" ngClass="flex-container-column mb-05 agreement-desc-cont" fxFlex="50">
                             <sit-data-textarea type="textarea" #sitControl field="AgreementDesc" label="" appearance="outline" [readonly]=true  ngClass="flex-container-column"></sit-data-textarea>
                           </sit-simple-container>
 
                           <sit-simple-container title="Strony umowy" ngClass="flex-container-column" fxFlex>
-                            <ul>
+                            <!-- <ul>
                               <li *ngFor="let cust of sitAgreementCustomers; ">{{cust.CustName}}</li>
-                            </ul>
+                            </ul> -->
+                            <div ngClass="agreement-customers-cont">
+                              <span *ngFor="let cust of sitAgreementCustomers; " ngClass="agreement-customer">{{cust.CustName}}</span>
+                            </div>
+                            
                           </sit-simple-container>
 
                         <!-- <sit-data-set-container ident="sitAgreementCustomers" ngClass="flex-container-column" >
