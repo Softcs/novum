@@ -13,8 +13,10 @@
 }
 
 .sit-simple-container-title {
-    color: rgba(0, 0, 0, 0.808);
-    background-color: rgba(0, 0, 0, 0.068);
+    color: rgba(0, 0, 0, 1);
+    background-color: rgba(0, 0, 0, 0.010);
+    border: 1px solid rgba(0, 0, 0, 0.100);
+    border-radius: 5px;
     font-size: 1em;
     letter-spacing: .3em;
     text-align: center;

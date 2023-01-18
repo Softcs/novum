@@ -1,11 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-dict-base.component';
 
 @Component({
   selector: 'app-sit-agreements',
   templateUrl: './sit-agreements.component.html',
   styleUrls: ['./sit-agreements.component.scss'],
-  host: {class: 'router-flex'}
+  host: {class: 'router-flex sit-agreements-component'},
+  encapsulation : ViewEncapsulation.None,
+
+
 })
 export class SitAgreementsComponent extends SitDictBaseComponent {
   sitAgreementCustomers: any;

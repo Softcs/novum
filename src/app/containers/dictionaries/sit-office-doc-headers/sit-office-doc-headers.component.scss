@@ -52,16 +52,34 @@
             .documentNumber-component,
             .custName-component,
             .statusValueName-component,
-            .employeeName-component {
+            .employeeName-component,
+            .grossCurrency-component,
+            .currencyIdent-component {
                 .sit-data-label-value {
                     font-weight: 600;
                 }
             }
-    
+            
+            .grossCurrency-component {
+                flex-grow: 0;
+                .sit-data-label-value {
+                    text-align: left;
+                    margin-right: 0em;
+
+                }
+            }
+
+            .currencyIdent-component {
+                margin-left: 0.4em;
+                .sit-data-label-value {
+                    margin-left: 0em;
+                }
+            }
+
             .sit-data-label-name {
                 // border: 1px solid red;
-                min-width: 5em;
-                max-width: 5em;
+                min-width: 6em;
+                max-width: 6em;
                 text-align: left;
             }
         }
