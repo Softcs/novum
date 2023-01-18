@@ -6,12 +6,20 @@
             <as-split-area [size]="45" fxLayout="column">
               <!-- kombinacja: flex-container-row sit-filter-bar zwraca: flex:0 0 0; -->
               <sit-data-set-container ident="sitAgreementsFilter" ngClass="flex-container-row sit-filter-bar">
-                <sit-data-input #sitControl field="searchAgreements" label="Filtruj umowy" placeholder="Numer, treść"  appearance="outline" style="width: 250px"></sit-data-input>
-                <sit-data-input #sitControl field="searchCustomer" label="Strony umowy" appearance="outline" style="width: 250px;" ></sit-data-input>
-                <sit-data-input #sitControl field="searchAgreementsType" label="Typ umowy" appearance="outline" style="width: 150px;" ></sit-data-input>
-                <sit-data-input #sitControl field="searchLocation" label="Lokalizacja" appearance="outline" style="width: 150px;" ></sit-data-input>
-                <sit-data-input #sitControl field="searchAgreementDateFrom" type="date" label="Data umowy od" appearance="outline" style="width: 130px;" ></sit-data-input>
-                <sit-data-input #sitControl field="searchAgreementDateTo" type="date" label="Data umowy do" appearance="outline" style="width: 195px;" showRefreshButton="true" ></sit-data-input>
+                <div ngClass="flex-container-column" fxFlex="40">
+                  <sit-data-input #sitControl field="searchAgreements" label="Filtruj umowy" placeholder="Numer, treść" appearance="outline"></sit-data-input>
+                  <sit-data-input #sitControl field="searchCustomer" label="Strony umowy" appearance="outline"></sit-data-input>  
+                </div>
+                <div ngClass="flex-container-column" fxFlex="30">
+                  <sit-data-input #sitControl field="searchAgreementsType" label="Typ umowy" appearance="outline"
+                  [lookupDisplayFields] = "['AgreementsTypeName']"></sit-data-input>
+                  <sit-data-input #sitControl field="searchLocation" label="Lokalizacja" appearance="outline"
+                  [lookupDisplayFields] = "['LocationName']"></sit-data-input>
+                </div>
+                <div ngClass="flex-container-column" fxFlex>
+                  <sit-data-input #sitControl field="searchAgreementDateFrom" type="date" label="Data umowy od" appearance="outline" showRefreshButton="true"></sit-data-input>
+                  <sit-data-input #sitControl field="searchAgreementDateTo" type="date" label="Data umowy do" appearance="outline"  ></sit-data-input>
+                </div>
               </sit-data-set-container>
               <sit-data-set-container  ident="sitAgreements" showActionsToolbar="true" ngClass="flex-container-column">
                 <ag-grid-angular #sitSetDataSource class="ag-theme-balham"></ag-grid-angular>
@@ -24,7 +32,7 @@
                   <div ngClass="flex-container-column content">
 
                     <sit-data-set-container ident="sitAgreements" ngClass="flex-container-row">
-                      <sit-simple-container ngClass="flex-container-column mr-05" fxFlex="30">
+                      <sit-simple-container ngClass="flex-container-column mr-05" fxFlex="40">
                         <sit-data-label #sitControl field="AgreementNo" type="header"></sit-data-label>
                         <sit-data-label #sitControl field="AgreementNumberExt01" label="Nr zewnętrzny" labelWidth="8em"></sit-data-label>
                         <sit-data-label #sitControl field="Date" label="Data umowy" labelWidth="8em"></sit-data-label>
@@ -35,7 +43,7 @@
 
                       <div fxLayout="column" fxFlex>
 
-                          <sit-simple-container title="Opis" ngClass="flex-container-column mb-05 agreement-desc-cont" fxFlex="50">
+                          <sit-simple-container title="Opis" ngClass="flex-container-column mb-05 agreement-desc-cont" fxFlex="45">
                             <sit-data-textarea type="textarea" #sitControl field="AgreementDesc" label="" appearance="outline" [readonly]=true  ngClass="flex-container-column"></sit-data-textarea>
                           </sit-simple-container>
 

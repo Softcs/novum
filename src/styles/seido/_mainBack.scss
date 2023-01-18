@@ -467,7 +467,7 @@ button:focus {
 }
 .CustName {
   display: inline-block;
-  width: 200px;
+  width: 150px;
 }
 
 .HRDepartmentIdent {
@@ -546,6 +546,14 @@ button:focus {
   width: 50px;
   word-wrap: break-word;
 }
+
+.CustIdent {
+  display: inline-block;
+  width: 100px;
+  word-wrap: break-word;
+}
+
+
 // end of lookup fields
 
 // .sit-proc-button-spinner {
