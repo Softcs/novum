@@ -7,7 +7,9 @@
 
   border-bottom: 1px dotted rgba(0, 0, 0, 0.144);
   // box-shadow: 0px 4px 2px -3px rgba(0, 0, 0, 0.25);
-  align-items: baseline;
+  // align-items: baseline;
+  // align-items: flex-start;
+  align-items: first baseline;
   font-size: .95rem;
   min-height: 1.5rem;
   
@@ -26,6 +28,13 @@
     // text-align: right;
 
   }
+
+  // .sit-data-label-value::before {
+  //   content: "\00A0";
+  // }
+  // .sit-data-label-value::after {
+  //   content: "a";
+  // }
   
   .sit-data-label-value {
     color: rgb(0, 0, 0);
@@ -37,6 +46,7 @@
 
     margin-left: .8em;
     margin-right: .8em;
+
     &.header {
       font-weight: 600;
       font-size: 1.2rem;
@@ -44,10 +54,20 @@
       color: rgb(7, 55, 99);
       margin-bottom: 0.2em;
     }
+    
     &.number {
       text-align: right;
       white-space: nowrap;
     }
+    
+    &.fill-if-empty {
+      border-color: chartreuse;
+
+      &::after {
+        content: "\00A0";
+      }
+    }
+    
   }
 
 }

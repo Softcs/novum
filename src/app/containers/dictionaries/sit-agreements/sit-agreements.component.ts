@@ -55,7 +55,6 @@ export class SitAgreementsComponent extends SitDictBaseComponent {
   }
 
   refreshAfter(dataSourceManager) {
-    this.sitAgreementCustomers = dataSourceManager?.getDateSourceWrapper("sitAgreementCustomers").rows;
-    
+    this.sitAgreementCustomers = dataSourceManager?.getDateSourceWrapper("sitAgreementCustomers").rows;    
   }  
 }

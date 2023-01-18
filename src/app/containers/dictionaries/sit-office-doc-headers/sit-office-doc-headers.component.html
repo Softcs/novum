@@ -66,8 +66,8 @@
 
                     <sit-simple-container ngClass="flex-container-column tech-container mr-05">
 
-                      <sit-data-label #sitControl field="PaymentTypeDesc" label="Rodz. płatności"></sit-data-label>
-                      <sit-data-label #sitControl field="PaymentDays" label="Dni"></sit-data-label>
+                      <sit-data-label #sitControl field="PaymentTypeDesc" label="Rodz. płatności" ngClass="fill-if-empty"></sit-data-label>
+                      <sit-data-label #sitControl field="PaymentDays" label="Dni" ngClass="fill-if-empty"></sit-data-label>
                       <sit-data-label #sitControl field="PaymentDate" label="Data płat."></sit-data-label>
                       <sit-data-label #sitControl field="BankAccountNumber" label="Rachunek"></sit-data-label>
                       <sit-data-label [class.hidden]="hideSwift()" #sitControl field="Swift" label="SWIFT"></sit-data-label>

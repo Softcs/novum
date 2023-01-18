@@ -5,7 +5,7 @@
   <div *ngIf="label && labelWidth" fxFlex={{labelWidth}} [ngClass]="['sit-data-label-name']" title={{label}} [ngStyle]="labelStyle">
     {{label}}
   </div>
-  <div [ngClass]="['sit-data-label-value', type]" title={{label}} [ngStyle]="valueStyle">
+  <div [ngClass]="['sit-data-label-value', type]" title={{label}} [ngStyle]="valueStyle" [class.fill-if-empty]="fillIfEmpty()">
     {{value}}
   </div>
 <!-- </div> -->
