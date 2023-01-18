@@ -1,4 +1,4 @@
-import { Component, NgZone, Renderer2, ViewEncapsulation, Input, LOCALE_ID, Inject, HostBinding } from '@angular/core';
+import { Component, NgZone, Renderer2, ViewEncapsulation, Input, LOCALE_ID, Inject, HostBinding, ElementRef } from '@angular/core';
 import { MatFormFieldAppearance } from '@angular/material/form-field';
 import { OnCFService } from '@app/_services/oncf.service';
 import { SitDataBaseComponent } from '../sit-data-base/sit-data-base.component';
@@ -19,14 +19,16 @@ export class SitDataLabelComponent extends SitDataBaseComponent {
   @Input() valueStyle: any = {};
   @Input() labelStyle: any = {};
   @Input() field: string = '';
-  
+  // @Input() ngClass: string = '';
 
 
   constructor(
     @Inject(LOCALE_ID) protected locale: string,
     _renderer: Renderer2,
     protected _oncfService: OnCFService,
-    private ngZone: NgZone) {
+    private ngZone: NgZone,
+    private hostRef:ElementRef
+    ) {
     super(_renderer);
 
   }
@@ -34,7 +36,7 @@ export class SitDataLabelComponent extends SitDataBaseComponent {
   @HostBinding('class') get class() {
     return this.getFieldClassName('component');
   }
-  
+
   public setValue(value: any) {
     this.value = (
       this.type !== 'number' 
@@ -44,10 +46,11 @@ export class SitDataLabelComponent extends SitDataBaseComponent {
   }
 
   public getValue(): string {
-
-//console.log('inputElement: ', this.inputElement);
-
     return this.inputElement.nativeElement.value   
+  }
+
+  public fillIfEmpty() {
+    return this.hostRef.nativeElement.classList.contains('fill-if-empty') && !this.value;
   }
 
   public getFieldClassName(prefix?: string): string {
