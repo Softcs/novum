@@ -6,9 +6,12 @@
             <as-split-area [size]="45" fxLayout="column">
               <!-- kombinacja: flex-container-row sit-filter-bar zwraca: flex:0 0 0; -->
               <sit-data-set-container ident="sitAgreementsFilter" ngClass="flex-container-row sit-filter-bar">
-                <sit-data-input #sitControl field="searchAgreements" label="Filtruj umowy" placeholder="Numer, treść"  appearance="outline" style="width: 300px"></sit-data-input>
-                <sit-data-input #sitControl field="searchCustomer" label="Strony umowy" appearance="outline" style="width: 300px;" ></sit-data-input>
-                <sit-data-input #sitControl field="searchAgreementDate" type="date" label="Data umowy" appearance="outline" style="width: 195px;" showRefreshButton="true" ></sit-data-input>
+                <sit-data-input #sitControl field="searchAgreements" label="Filtruj umowy" placeholder="Numer, treść"  appearance="outline" style="width: 250px"></sit-data-input>
+                <sit-data-input #sitControl field="searchCustomer" label="Strony umowy" appearance="outline" style="width: 250px;" ></sit-data-input>
+                <sit-data-input #sitControl field="searchAgreementsType" label="Typ umowy" appearance="outline" style="width: 150px;" ></sit-data-input>
+                <sit-data-input #sitControl field="searchLocation" label="Lokalizacja" appearance="outline" style="width: 150px;" ></sit-data-input>
+                <sit-data-input #sitControl field="searchAgreementDateFrom" type="date" label="Data umowy od" appearance="outline" style="width: 130px;" ></sit-data-input>
+                <sit-data-input #sitControl field="searchAgreementDateTo" type="date" label="Data umowy do" appearance="outline" style="width: 195px;" showRefreshButton="true" ></sit-data-input>
               </sit-data-set-container>
               <sit-data-set-container  ident="sitAgreements" showActionsToolbar="true" ngClass="flex-container-column">
                 <ag-grid-angular #sitSetDataSource class="ag-theme-balham"></ag-grid-angular>
