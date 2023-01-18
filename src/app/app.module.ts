@@ -348,6 +348,7 @@ import { SitAgreementsComponent } from './containers/dictionaries/sit-agreements
 import { SitAgreementCustomersEditComponent } from './containers/dictionaries/sit-agreements/actions/sit-agreement-customers-edit/sit-agreement-customers-edit.component';
 import { SitAgreementUsersEditComponent } from './containers/dictionaries/sit-agreements/actions/sit-agreement-users-edit/sit-agreement-users-edit.component';
 import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
+import { SitCashFlowComponent } from './containers/dictionaries/sit-cash-flow/sit-cash-flow.component';
 
 @NgModule({
     imports: [
@@ -680,7 +681,8 @@ import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
         SitOfficeDocVatFootersEditComponent,
         SitAgreementsComponent,
         SitAgreementCustomersEditComponent,
-        SitAgreementUsersEditComponent
+        SitAgreementUsersEditComponent,
+        SitCashFlowComponent
 
     ],
     providers: [
