@@ -1,56 +1,56 @@
-import { SitHRBatches4InvoicingComponent } from '../containers/dictionaries/sit-hr-batches4-invoicing/sit-hr-batches4-invoicing.component';
-import { SitHRWorkingHoursEditComponent } from './../containers/dictionaries/sit-sys-common-data-tables/actions/sit-hrworking-hours-edit/sit-hrworking-hours-edit.component';
-import { SitHRParamsDefComponent }        from './../containers/dictionaries/sit-hr-params-def/sit-hr-params-def.component';
-import { SitSettlementsComponent } from './../containers/dictionaries/sit-settlements/sit-settlements.component';
-import { SitAppUsersInCompanyEditComponent } from './../containers/dictionaries/sit-app-users-in-company/actions/sit-app-users-in-company-edit/sit-app-users-in-company-edit.component';
-import { SitAppUsersInCompanyComponent } from './../containers/dictionaries/sit-app-users-in-company/sit-app-users-in-company.component';
-import { SitRailLogComponent } from './../containers/dictionaries/sit-rail-log/sit-rail-log.component';
-import { SitPayrollsCalcAccountingDimEditComponent } from './../containers/dictionaries/sit-payrolls/actions/sit-payrolls-calc-accounting-dim-edit/sit-payrolls-calc-accounting-dim-edit.component';
-import { SitPayrollComponentsEditComponent } from './../containers/dictionaries/sit-payroll-components/actions/sit-payroll-components-edit/sit-payroll-components-edit.component';
-import { SitHRParams4InvoicingEditComponent } from './../containers/dictionaries/sit-customers/actions/sit-hrparams4-invoicing-edit/sit-hrparams4-invoicing-edit.component';
-import { SitPayrollsCalcDataImportComponent } from './../containers/dictionaries/sit-employees-settlements/actions/sit-payrolls-calc-data-import/sit-payrolls-calc-data-import.component';
-import { SitEmployeesSettlementsComponent } from './../containers/dictionaries/sit-employees-settlements/sit-employees-settlements.component';
+import { SitHRBatches4InvoicingComponent } from '@app/containers/dictionaries/sit-hr-batches4-invoicing/sit-hr-batches4-invoicing.component';
+import { SitHRWorkingHoursEditComponent } from '@app/containers/dictionaries/sit-sys-common-data-tables/actions/sit-hrworking-hours-edit/sit-hrworking-hours-edit.component';
+import { SitHRParamsDefComponent }        from '@app/containers/dictionaries/sit-hr-params-def/sit-hr-params-def.component';
+import { SitSettlementsComponent } from '@app/containers/dictionaries/sit-settlements/sit-settlements.component';
+import { SitAppUsersInCompanyEditComponent } from '@app/containers/dictionaries/sit-app-users-in-company/actions/sit-app-users-in-company-edit/sit-app-users-in-company-edit.component';
+import { SitAppUsersInCompanyComponent } from '@app/containers/dictionaries/sit-app-users-in-company/sit-app-users-in-company.component';
+import { SitRailLogComponent } from '@app/containers/dictionaries/sit-rail-log/sit-rail-log.component';
+import { SitPayrollsCalcAccountingDimEditComponent } from '@app/containers/dictionaries/sit-payrolls/actions/sit-payrolls-calc-accounting-dim-edit/sit-payrolls-calc-accounting-dim-edit.component';
+import { SitPayrollComponentsEditComponent } from '@app/containers/dictionaries/sit-payroll-components/actions/sit-payroll-components-edit/sit-payroll-components-edit.component';
+import { SitHRParams4InvoicingEditComponent } from '@app/containers/dictionaries/sit-customers/actions/sit-hrparams4-invoicing-edit/sit-hrparams4-invoicing-edit.component';
+import { SitPayrollsCalcDataImportComponent } from '@app/containers/dictionaries/sit-employees-settlements/actions/sit-payrolls-calc-data-import/sit-payrolls-calc-data-import.component';
+import { SitEmployeesSettlementsComponent } from '@app/containers/dictionaries/sit-employees-settlements/sit-employees-settlements.component';
 import { SitHRDepartmentsComponent } from '../containers/dictionaries/sit-hr-departments/sit-hr-departments.component';
-import { SitRailDeliveryDistrybutionImportComponent } from '../containers/dictionaries/sit-pub-delivery-distribution/actions/sit-rail-delivery-distrybution-import/sit-rail-delivery-distrybution-import.component'
-import { SitPubDeliveryDistributionComponent } from '../containers/dictionaries/sit-pub-delivery-distribution/sit-pub-delivery-distribution.component';
-import { SitProductsUpdateWeightComponent } from './../containers/dictionaries/sit-products/actions/sit-products-update-weight/sit-products-update-weight.component';
-import { SitCompanyDepartmentsComponent } from './../containers/dictionaries/sit-company-departments/sit-company-departments.component';
-import { SitProcPayrollComponentsAccountingDefEditComponent } from './../containers/dictionaries/sit-payroll-components/actions/sit-proc-payroll-components-accounting-def-edit/sit-proc-payroll-components-accounting-def-edit.component';
-import { SitPayrollImportComponent } from './../containers/dictionaries/sit-payrolls/actions/sit-payroll-import/sit-payroll-import.component';
-import { SitPayrollComponentsComponent } from './../containers/dictionaries/sit-payroll-components/sit-payroll-components.component';
-import { SitPayrollsComponent } from './../containers/dictionaries/sit-payrolls/sit-payrolls.component';
-import { SitEmployeesComponent } from './../containers/dictionaries/sit-employees/sit-employees.component';
+import { SitRailDeliveryDistrybutionImportComponent } from '@app/containers/dictionaries/sit-pub-delivery-distribution/actions/sit-rail-delivery-distrybution-import/sit-rail-delivery-distrybution-import.component'
+import { SitPubDeliveryDistributionComponent } from '@app/containers/dictionaries/sit-pub-delivery-distribution/sit-pub-delivery-distribution.component';
+import { SitProductsUpdateWeightComponent } from '@app/containers/dictionaries/sit-products/actions/sit-products-update-weight/sit-products-update-weight.component';
+import { SitCompanyDepartmentsComponent } from '@app/containers/dictionaries/sit-company-departments/sit-company-departments.component';
+import { SitProcPayrollComponentsAccountingDefEditComponent } from '@app/containers/dictionaries/sit-payroll-components/actions/sit-proc-payroll-components-accounting-def-edit/sit-proc-payroll-components-accounting-def-edit.component';
+import { SitPayrollImportComponent } from '@app/containers/dictionaries/sit-payrolls/actions/sit-payroll-import/sit-payroll-import.component';
+import { SitPayrollComponentsComponent } from '@app/containers/dictionaries/sit-payroll-components/sit-payroll-components.component';
+import { SitPayrollsComponent } from '@app/containers/dictionaries/sit-payrolls/sit-payrolls.component';
+import { SitEmployeesComponent } from '@app/containers/dictionaries/sit-employees/sit-employees.component';
 import { SitImportCustomerFromImpTableComponent } from '../containers/dictionaries/sit-customers/actions/sit-import-customer-from-imp-table/sit-import-customer-from-imp-table.component';
-import { SitLocationsEditComponent } from './../containers/dictionaries/sit-locations/actions/sit-locations-edit/sit-locations-edit.component';
-import { SitAgreementsTypesEditComponent } from './../containers/dictionaries/sit-agreements-types/actions/sit-agreements-types-edit/sit-agreements-types-edit.component';
-import { SitLocationsComponent } from './../containers/dictionaries/sit-locations/sit-locations.component';
-import { SitAgreementsTypesComponent } from './../containers/dictionaries/sit-agreements-types/sit-agreements-types.component';
-import { SitRightsComponent } from './../containers/dictionaries/sit-rights/sit-rights.component';
+import { SitLocationsEditComponent } from '@app/containers/dictionaries/sit-locations/actions/sit-locations-edit/sit-locations-edit.component';
+import { SitAgreementsTypesEditComponent } from '@app/containers/dictionaries/sit-agreements-types/actions/sit-agreements-types-edit/sit-agreements-types-edit.component';
+import { SitLocationsComponent } from '@app/containers/dictionaries/sit-locations/sit-locations.component';
+import { SitAgreementsTypesComponent } from '@app/containers/dictionaries/sit-agreements-types/sit-agreements-types.component';
+import { SitRightsComponent } from '@app/containers/dictionaries/sit-rights/sit-rights.component';
 import { SitRightsGroupUsersEditComponent } from '../containers/dictionaries/sit-app-users-in-company/actions/sit-rights-group-users-edit/sit-rights-group-users-edit.component';
 import { SitSysActionsEditComponent } from '../containers/dictionaries/sit-sys-dictionaries/actions/sit-sys-actions-edit/sit-sys-actions-edit.component';
-import { SitSysDatasourcesEditComponent } from './../containers/dictionaries/sit-sys-dictionaries/actions/sit-sys-datasources-edit/sit-sys-datasources-edit.component';
-import { SitSysDictionariesEditComponent } from './../containers/dictionaries/sit-sys-dictionaries/actions/sit-sys-dictionaries-edit/sit-sys-dictionaries-edit.component';
-import { SitSysDictionariesComponent } from './../containers/dictionaries/sit-sys-dictionaries/sit-sys-dictionaries.component';
-import { SitProjectsPubRegisterWorkTimeComponent } from './../containers/dictionaries/sit-projects-pub/actions/sit-projects-pub-register-work-time/sit-projects-pub-register-work-time.component';
-import { SitWarehousesEditComponent } from './../containers/dictionaries/sit-warehouses/actions/sit-warehouses-edit/sit-warehouses-edit.component';
-import { SitWarehousesComponent } from './../containers/dictionaries/sit-warehouses/sit-warehouses.component';
+import { SitSysDatasourcesEditComponent } from '@app/containers/dictionaries/sit-sys-dictionaries/actions/sit-sys-datasources-edit/sit-sys-datasources-edit.component';
+import { SitSysDictionariesEditComponent } from '@app/containers/dictionaries/sit-sys-dictionaries/actions/sit-sys-dictionaries-edit/sit-sys-dictionaries-edit.component';
+import { SitSysDictionariesComponent } from '@app/containers/dictionaries/sit-sys-dictionaries/sit-sys-dictionaries.component';
+import { SitProjectsPubRegisterWorkTimeComponent } from '@app/containers/dictionaries/sit-projects-pub/actions/sit-projects-pub-register-work-time/sit-projects-pub-register-work-time.component';
+import { SitWarehousesEditComponent } from '@app/containers/dictionaries/sit-warehouses/actions/sit-warehouses-edit/sit-warehouses-edit.component';
+import { SitWarehousesComponent } from '@app/containers/dictionaries/sit-warehouses/sit-warehouses.component';
 import { SitLogisticUnitsEditComponent } from '../containers/dictionaries/sit-wms-stocks/actions/sit-logistic-units-edit/sit-logistic-units-edit.component';
-import { SitJobStepsEditComponent } from './../containers/dictionaries/sit-jobs/actions/sit-job-steps-edit/sit-job-steps-edit.component';
-import { SitJobsEditComponent } from './../containers/dictionaries/sit-jobs/actions/sit-jobs-edit/sit-jobs-edit.component';
-import { SitJobsComponent } from './../containers/dictionaries/sit-jobs/sit-jobs.component';
-import { SitParamsEditComponent } from './../containers/dictionaries/sit-params/actions/sit-params-edit/sit-params-edit.component';
-import { SitAppUsersSetPasswordComponent } from './../containers/dictionaries/sit-app-users/actions/sit-app-users-set-password/sit-app-users-set-password.component';
-import { SitAppUsersEditComponent } from './../containers/dictionaries/sit-app-users/actions/sit-app-users-edit/sit-app-users-edit.component';
-import { SitAppUsersComponent } from './../containers/dictionaries/sit-app-users/sit-app-users.component';
-import { SitReturnsGetdataComponent } from './../containers/dictionaries/sit-returns/actions/sit-returns-getdata/sit-returns-getdata.component';
-import { SitReturnsComponent } from './../containers/dictionaries/sit-returns/sit-returns.component';
+import { SitJobStepsEditComponent } from '@app/containers/dictionaries/sit-jobs/actions/sit-job-steps-edit/sit-job-steps-edit.component';
+import { SitJobsEditComponent } from '@app/containers/dictionaries/sit-jobs/actions/sit-jobs-edit/sit-jobs-edit.component';
+import { SitJobsComponent } from '@app/containers/dictionaries/sit-jobs/sit-jobs.component';
+import { SitParamsEditComponent } from '@app/containers/dictionaries/sit-params/actions/sit-params-edit/sit-params-edit.component';
+import { SitAppUsersSetPasswordComponent } from '@app/containers/dictionaries/sit-app-users/actions/sit-app-users-set-password/sit-app-users-set-password.component';
+import { SitAppUsersEditComponent } from '@app/containers/dictionaries/sit-app-users/actions/sit-app-users-edit/sit-app-users-edit.component';
+import { SitAppUsersComponent } from '@app/containers/dictionaries/sit-app-users/sit-app-users.component';
+import { SitReturnsGetdataComponent } from '@app/containers/dictionaries/sit-returns/actions/sit-returns-getdata/sit-returns-getdata.component';
+import { SitReturnsComponent } from '@app/containers/dictionaries/sit-returns/sit-returns.component';
 import { SitAttachmentsInsComponent } from '../containers/dictionaries/_common/actions/sit-attachments-ins/sit-attachments-ins.component';
 import { SitWmsStocksComponent } from '../containers/dictionaries/sit-wms-stocks/sit-wms-stocks.component';
-import { SitParamsComponent } from './../containers/dictionaries/sit-params/sit-params.component';
-import { SitUserAccountChangePasswordComponent } from './../containers/dictionaries/sit-user-account/actions/sit-user-account-change-password/sit-user-account-change-password.component';
-import { SitCustomersEditComponent } from './../containers/dictionaries/sit-customers/actions/sit-customers-edit/sit-customers-edit.component';
+import { SitParamsComponent } from '@app/containers/dictionaries/sit-params/sit-params.component';
+import { SitUserAccountChangePasswordComponent } from '@app/containers/dictionaries/sit-user-account/actions/sit-user-account-change-password/sit-user-account-change-password.component';
+import { SitCustomersEditComponent } from '@app/containers/dictionaries/sit-customers/actions/sit-customers-edit/sit-customers-edit.component';
 import { SitAgreementsEditComponent } from '../containers/dictionaries/sit-agreements/actions/sit-agreements-edit/sit-agreements-edit.component';
-import { SitJpkVatGetDataComponent } from './../containers/dictionaries/sit-jpk-vat/actions/sit-jpk-vat-get-data/sit-jpk-vat-get-data.component';
+import { SitJpkVatGetDataComponent } from '@app/containers/dictionaries/sit-jpk-vat/actions/sit-jpk-vat-get-data/sit-jpk-vat-get-data.component';
 import { Injectable, Type } from '@angular/core';
 import { SitJPKVatComponent } from '@app/containers/dictionaries/sit-jpk-vat';
 import { SitKancelariaComponent } from '@app/containers/dictionaries/sit-kancelaria';
@@ -65,8 +65,7 @@ import { SitWhiteListVATComponent } from '@app/containers/dictionaries/sit-white
 import { SitCustomersComponent } from '@app/containers/dictionaries/sit-customers';
 import { SitProductsComponent } from '@app/containers/dictionaries/sit-products';
 import { SitDocumentsComponent } from '@app/containers/dictionaries/sit-documents';
-import { SitRailConfigurationsEditComponent } from
-'@app/containers/dictionaries/sit-rail-configurations/actions/sit-rail-configurations-edit';
+import { SitRailConfigurationsEditComponent } from '@app/containers/dictionaries/sit-rail-configurations/actions/sit-rail-configurations-edit';
 import { SitWmsDocsComponent } from '@app/containers/dictionaries/sit-wms-docs';
 import { SitAppUserCompaniesEditComponent } from '@app/containers/dictionaries/sit-app-users/actions/sit-app-user-companies-edit';
 import { SitRightsGroupsEditComponent } from '@app/containers/dictionaries/sit-rights/actions/sit-rights-groups-edit/sit-rights-groups-edit.component';
@@ -245,6 +244,7 @@ import { SitOfficeDocVatFootersEditComponent } from '@app/containers/dictionarie
 import { SitAgreementsComponent } from '@app/containers/dictionaries/sit-agreements/sit-agreements.component';
 import { SitAgreementCustomersEditComponent } from '@app/containers/dictionaries/sit-agreements/actions/sit-agreement-customers-edit/sit-agreement-customers-edit.component';
 import { SitAgreementUsersEditComponent } from '@app/containers/dictionaries/sit-agreements/actions/sit-agreement-users-edit/sit-agreement-users-edit.component';
+import { SitCashFlowComponent } from '@app/containers/dictionaries/sit-cash-flow/sit-cash-flow.component';
 
 
 
@@ -497,7 +497,8 @@ export class FactoryService {
         sitOfficeDocVATFootersEdit: SitOfficeDocVatFootersEditComponent,
         sitAgreements: SitAgreementsComponent,
         sitAgreementCustomersEdit: SitAgreementCustomersEditComponent,
-        sitAgreementUsersEdit: SitAgreementUsersEditComponent
+        sitAgreementUsersEdit: SitAgreementUsersEditComponent,
+        sitCashFlow: SitCashFlowComponent,
     };
 
     public GetFactory(ident: string) {
