@@ -81,7 +81,26 @@ export class SitB2cConfigComponent extends SitDictBaseComponent {
       { headerName: 'Nazwa', field: 'PublicationSubjectName', tooltipField: 'PublicationSubjectName', filter: 'agTextColumnFilter', width: 300 },
       { headerName: 'Status wys.', field: 'StatusValueIdent_Main', tooltipField: 'StatusValueName_Main', width: 100, suppressMenu: true},
     ];
-       
+
+    this.gridColumnsDefinition["sitB2CLog"] = [
+      { headerName: 'ID', field: 'LogId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 50, suppressMenu: true },
+      { headerName: 'Data', field: 'LogDate', filter: 'agDateColumnFilter', width: 140, sort: 'desc',
+        renderType: "date", renderFormat: "yyyy-MM-dd H:mm:ss" },
+      { headerName: 'Typ komunikatu', field: 'MessageType', filter: 'agTextColumnFilter', width: 150},
+      { headerName: 'Zapytanie', field: 'Request', filter: 'agTextColumnFilter', width: 450 },
+      { headerName: 'Odpowiedź', field: 'Response', filter: 'agTextColumnFilter', width: 450 },
+    ];
+
+    this.gridColumnsDefinition["sitB2CProductsHistory"] = [
+      { headerName: 'ID', field: 'sitB2CProductsHistoryId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 50, suppressMenu: true },
+      { headerName: 'Data', field: 'ChangeDate', filter: 'agDateColumnFilter', width: 140, sort: 'desc',
+        renderType: "date", renderFormat: "yyyy-MM-dd H:mm:ss" },
+      { headerName: 'Operator', field: 'UserLogin', filter: 'agTextColumnFilter', width: 150, suppressMenu: true },
+      { headerName: 'Opr.', field: 'OprType', filter: 'agTextColumnFilter', width: 50, suppressMenu: true  },
+      { headerName: 'Komentarz', field: '__HistoryComments__', tooltipField: '__HistoryComments__', filter: 'agTextColumnFilter', width: 200 },
+      { headerName: 'Info', field: 'Data', filter: 'agTextColumnFilter', width: 200, defaultVisibility: false  },
+    ];
+    
    }
 }
 
