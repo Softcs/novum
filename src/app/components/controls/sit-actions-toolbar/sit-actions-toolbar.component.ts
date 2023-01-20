@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
 import { DataSetManager, DataSetWrapper } from '@app/_models';
 import { ActionDefinitionWrapper } from '@app/_models/actionDefinitionWrapper';
 
@@ -6,7 +6,8 @@ import { ActionDefinitionWrapper } from '@app/_models/actionDefinitionWrapper';
   selector: 'sit-actions-toolbar',
   templateUrl: './sit-actions-toolbar.component.html',
   styleUrls: ['./sit-actions-toolbar.component.scss'],
-  host: {class: 'sit-actions-toolbar-component'}
+  host: {class: 'sit-actions-toolbar-component'},
+  encapsulation : ViewEncapsulation.None,
 })
 export class SitActionsToolbarComponent {
   
@@ -17,4 +18,13 @@ export class SitActionsToolbarComponent {
   public setActions(actions: ActionDefinitionWrapper[]) {
     this.actions.push(...actions);
   }
+
+
+//   public hasActions () {
+// console.log('actions: ', this.actions);
+// console.log('actions.length: ', this.actions && this.actions.length);
+// console.log(' - - - - - - - - ');
+//     return true;
+//   }
+
 }
