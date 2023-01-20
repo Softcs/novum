@@ -461,27 +461,6 @@ button:focus {
   width: 200px;
 }
 
-.CustIdent {
-  display: inline-block;
-  width: 80px;
-}
-.lookup-select-panel-class .CustIdent
-{
-  max-width: 10em;
-  min-width: 10em;
-}
-
-
-.CustName {
-  display: inline-block;
-  width: 200px;
-}
-
-.lookup-select-panel-class .CustName
-{
-  max-width: 11em;
-  min-width: 11em;
-}
 
 .HRDepartmentIdent {
   display: inline-block;
@@ -554,18 +533,29 @@ button:focus {
   width: 150px;
   word-wrap: break-word;
 }
+
+.CustIdent {
+  display: inline-block;
+  width: 80px;
+}
+
+.CustName {
+  display: inline-block;
+  width: 150px;
+}
+
+
 .VATId {
   display: inline-block;
   width: 50px;
   word-wrap: break-word;
 }
-.lookup-select-panel-class .VATId
-{
-  max-width: 6.5em;
-  min-width: 6.5em;
-}
+
+
 
 // end of lookup fields
+
+
 
 // .sit-proc-button-spinner {
 //   position: relative;

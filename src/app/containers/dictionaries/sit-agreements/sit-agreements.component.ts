@@ -23,6 +23,7 @@ export class SitAgreementsComponent extends SitDictBaseComponent {
       { headerName: 'Data do', field: 'DateTo', width: 100, renderType: 'date' },
       { headerName: 'Typ umowy', field: 'AgreementsTypeName', width: 150, filter: 'agTextColumnFilter'},
       { headerName: 'Lokalizacja', field: 'LocationName', width: 150, filter: 'agTextColumnFilter' },
+      { headerName: 'Strony umowy', field: 'CustNames', tooltipField:"CustNames", width: 150, filter: 'agTextColumnFilter' },
       { headerName: 'Poufny', field: 'Confidential', sortable: true, filter: 'agTextColumnFilter', suppressMenu: true, width: 80,renderType: "checkbox", cellClass: "grid-cell-centered"  }
     ];
 

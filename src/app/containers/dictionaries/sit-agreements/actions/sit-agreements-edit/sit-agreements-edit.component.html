@@ -10,7 +10,7 @@
         </div>
         <div fxLayout="row" *ngIf="this.isInsert">
           <sit-data-input #sitControl type="text" field="CustName" label="Kontrahent" appearance="outline" fxFlex
-          [lookupDisplayFields] = "['CustName', 'VATId', 'CustIdent']"></sit-data-input>
+          [lookupDisplayFields] = "['CustIdent','CustName']"></sit-data-input>
         </div>
         <div fxLayout="row">
           <sit-data-input #sitControl type="text" field="AgreementNo" label="Numer" [showRefresh]=false appearance="outline" fxFlex></sit-data-input>
