@@ -55,7 +55,7 @@
                       <sit-data-label #sitControl field="CustName" label="Kontrahent"></sit-data-label>
                       <sit-data-label #sitControl field="VATId" label="NIP"></sit-data-label>
                       <!-- <sit-data-label #sitControl field="CustAddress" label="Adres"></sit-data-label> -->
-                      <sit-data-label #sitControl field="EmployeeName" label="Pracownik"></sit-data-label>
+                      <sit-data-label #sitControl field="EmployeeName" label="Pracownik" ngClass="fill-if-empty"></sit-data-label>
                       <sit-data-label #sitControl field="OfficeDocDescription" label="Opis"></sit-data-label>
                     </sit-simple-container>
   
@@ -69,7 +69,7 @@
                       <sit-data-label #sitControl field="PaymentTypeDesc" label="Rodz. płatności" ngClass="fill-if-empty"></sit-data-label>
                       <sit-data-label #sitControl field="PaymentDays" label="Dni" ngClass="fill-if-empty"></sit-data-label>
                       <sit-data-label #sitControl field="PaymentDate" label="Data płat."></sit-data-label>
-                      <sit-data-label #sitControl field="BankAccountNumber" label="Rachunek"></sit-data-label>
+                      <sit-data-label #sitControl field="BankAccountNumber" label="Rachunek" ngClass="fill-if-empty"></sit-data-label>
                       <sit-data-label [class.hidden]="hideSwift()" #sitControl field="Swift" label="SWIFT"></sit-data-label>
                       <div ngClass="flex-container-row">
                         <sit-data-label #sitControl field="GrossCurrency" label="Brutto" type="number"></sit-data-label>

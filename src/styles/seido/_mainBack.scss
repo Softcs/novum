@@ -474,7 +474,7 @@ button:focus {
 
 .CustName {
   display: inline-block;
-  width: 200px;
+  width: 150px;
 }
 
 .lookup-select-panel-class .CustName
@@ -559,11 +559,19 @@ button:focus {
   width: 50px;
   word-wrap: break-word;
 }
+
 .lookup-select-panel-class .VATId
 {
   max-width: 6.5em;
   min-width: 6.5em;
 }
+
+.CustIdent {
+  display: inline-block;
+  width: 100px;
+  word-wrap: break-word;
+}
+
 
 // end of lookup fields
 
