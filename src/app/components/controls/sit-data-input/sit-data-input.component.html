@@ -1,16 +1,29 @@
-<mat-select #lookupElement *ngIf="hasLookup" class="lookup-select"
+<mat-select 
+  *ngIf="hasLookup"   
+  #lookupElement 
+  ngClass="lookup-select"
   panelClass="lookup-select-panel-class"
   (selectionChange)="onLookupSelect($event)"
-  disableOptionCentering>
+  disableOptionCentering
+  [style.max-width]="max-content"
+>
   <mat-option *ngFor="let record of lookupRows | async" [value]="getLookupValue(record)">
-    <span *ngFor="let dispField of lookupDisplayFields" class="displayField {{dispField}}">
+    <span *ngFor="let dispField of lookupDisplayFields" class="displayField {{dispField}}" title="{{record[dispField]}}">
       {{record[dispField]}}
     </span>
-    <ng-container *ngIf="!lookupDisplayFields">
+
+    <!-- <ng-container *ngIf="!lookupDisplayFields">
       {{getLookupDisplay(record)}}
-    </ng-container>
+    </ng-container> -->
+    
+    <span  *ngIf="!lookupDisplayFields" ngClass="displayField {{field}}" title="{{getLookupDisplay(record)}}">
+      {{getLookupDisplay(record)}}
+    </span>
+
+
   </mat-option>
 </mat-select>
+
 
 <mat-form-field appearance="{{ appearance }}" fxFlex [style.fontSize.px]=12>
 

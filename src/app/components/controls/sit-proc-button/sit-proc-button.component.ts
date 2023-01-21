@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Renderer2, ViewChild, ElementRef, EventEmitter, Output, Directive  } from '@angular/core';
+import { Component, OnInit, Input, Renderer2, ViewChild, ElementRef, EventEmitter, Output, Directive, ViewEncapsulation  } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { SitDialogConfirmDelComponent } from '@app/components/sit-dialog-confirm-del';
 import { SitActionDirective } from '@app/_directives/sitActionDirective';
@@ -16,6 +16,7 @@ import { MultiActionService } from '@app/_services/multi-action.service';
   selector: 'sit-proc-button',
   templateUrl: './sit-proc-button.component.html',
   styleUrls: ['./sit-proc-button.component.scss'],
+  encapsulation : ViewEncapsulation.None,
   host: {class: 'sit-proc-button-component'}
 })
 export class SitProcButtonComponent extends SitActionDirective {
