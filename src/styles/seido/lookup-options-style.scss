@@ -1,13 +1,13 @@
 .lookup-select-panel-class {
   
     .CustName {
-      max-width: 20em;
-      min-width: 20em;
+      max-width: 25em;
+      min-width: 25em;
     }
     
     .VATId {
-      max-width: 6em;
-      min-width: 6em;
+      max-width: 7em;
+      min-width: 7em;
     }
   
     .CustIdent {
@@ -24,5 +24,92 @@
     .CountryName {
       max-width: 10em;
       min-width: 10em;
-    }  
+    } 
+
+    .VATRatesIdent {
+      max-width: 3em;
+      min-width: 3em;
+      //font-weight: bold;
+    }
+
+    .VATRatesDescription {
+      max-width: 20em;
+      min-width: 20em;
+    }
+
+    .Account {
+      max-width: 15em;
+      min-width: 15em;
+    }
+
+    .AccountDesc {
+      max-width: 20em;
+      min-width: 20em;
+    }
+
+    .Date {
+      max-width: 8em;
+      min-width: 8em;
+    }
+    
+    .CompanyDepartmentIdent {
+      max-width: 10em;
+      min-width: 10em;
+    }
+
+    .CompanyDepartmentDesc {
+      max-width: 20em;
+      min-width: 20em;
+    }
+    
+    .HRDepartmentIdent {
+      max-width: 10em;
+      min-width: 10em;
+    }
+
+    .ProductIdent {
+      max-width: 10em;
+      min-width: 10em;
+      font-weight: bold;
+    }
+    
+    .ProductName {
+      max-width: 20em;
+      min-width: 20em;
+    }    
+
+    .ProjectIdent {
+      max-width: 10em;
+      min-width: 10em;
+    }
+    
+    .ProjectName {
+      max-width: 20em;
+      min-width: 20em;
+    }
+
+    .DocumentIdent {
+      max-width: 6em;
+      min-width: 6em;
+    }
+    .DocumentName {
+      max-width: 20em;
+      min-width: 20em;
+    }    
+
+    .RightsGroupIdent {
+      max-width: 10em;
+      min-width: 10em;
+    }
+    
+    .DistributionChannelIdent {
+      max-width: 10em;
+      min-width: 10em;
+    }
+    
+    .DistributionChannelDesc {
+      max-width: 20em;
+      min-width: 20em;
+    }
+    
   }
