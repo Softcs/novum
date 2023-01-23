@@ -4,7 +4,57 @@ $input-height: 40px;
 .lookup-select-panel-class {
   margin-top: $input-height !important;
   margin-left: 20px;
-  font-size: 12px !important;
+  // font-size: 12px !important;
+  
+  display: flex;
+  flex-direction: column;
+  max-width: max-content !important;
+  // max-width: min-content !important;
+  width: auto;
+  // border: 10px solid green;
+
+
+
+  mat-option {
+    // border: 2px solid blue;
+    display: flex;
+    flex: auto;
+    flex-direction: column;
+    height: auto;
+    min-height: 2em;
+    max-height: max-content;
+    line-height: inherit !important;
+    align-items: start;
+
+    // max-width: max-content;
+    // min-width: max-content;
+
+    .mat-option-ripple {
+      border-bottom: 1px dotted #999;
+    }
+
+    .mat-option-text {
+      // border: 1px solid pink;
+      display: flex;
+      flex-direction: row;
+      flex: auto;
+      overflow: auto;
+      text-overflow: inherit;
+      // align-items: last baseline;
+      align-items: center;
+      font-size: 0.9rem;
+      line-height: 1.7em;
+
+      span {
+        // border: 1px solid red;
+        flex: 1 1 max-content;
+        font-size: 0.9rem;
+        line-height: 1.7em;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+    }
+  }
 }
 
 .lookup-select {
