@@ -6,11 +6,12 @@
         <div fxFlex="50">
           <sit-data-input #sitControl type="number" field="NetCurrency" label="Netto w walucie" appearance="outline"></sit-data-input>
           <sit-data-input #sitControl type="number" field="Net" label="Netto w PLN" appearance="outline" ></sit-data-input>
-          <sit-data-input #sitControl field="CostTypeDesc4Lookup" label="Rodzaj kosztu" appearance="outline"></sit-data-input>
-          <sit-data-input #sitControl field="CompanyDepartmentDesc4Lookup" label="Dział" appearance="outline"></sit-data-input>
-          <sit-data-input #sitControl field="ProjectName4Lookup" label="Projekt" appearance="outline"></sit-data-input>
-          <sit-data-input #sitControl field="DistributionChannelDesc4Lookup" label="Kanał dystrybucji" appearance="outline"></sit-data-input>
-          <sit-data-input #sitControl field="ProductsTypeDesc4Lookup" label="Typ produktu" appearance="outline"></sit-data-input>
+          <sit-data-input #sitControl field="TransactionTypeDesc4Lookup" label="Typ transakcji" appearance="outline"></sit-data-input>
+          <sit-data-input #sitControl [class.hidden]="!(this.activeRow?.UseCompanyDepartments == 1)" field="CompanyDepartmentDesc4Lookup" label="Dział" appearance="outline"></sit-data-input>
+          <sit-data-input #sitControl [class.hidden]="!(this.activeRow?.UseProjects == 1)" field="ProjectName4Lookup" label="Projekt" appearance="outline"></sit-data-input>
+          <sit-data-input #sitControl [class.hidden]="!(this.activeRow?.UseDistributionChannels == 1)" field="DistributionChannelDesc4Lookup" label="Kanał dystrybucji" appearance="outline"></sit-data-input>
+          <sit-data-input #sitControl [class.hidden]="!(this.activeRow?.UseProductsTypes == 1)" field="ProductsTypeDesc4Lookup" label="Typ produktu" appearance="outline"></sit-data-input>
+          <sit-data-input #sitControl [class.hidden]="!(this.activeRow?.UseCostTypes == 1)" field="CostTypeDesc4Lookup" label="Rodzaj kosztu" appearance="outline"></sit-data-input>
         </div>
         <div fxFlex>
           <sit-data-input #sitControl field="VATRatesIdent" label="Stawka VAT" appearance="outline" [lookupDisplayFields] = "['VATRatesIdent', 'VATRatesDescription']"></sit-data-input>
