@@ -245,6 +245,8 @@ import { SitAgreementsComponent } from '@app/containers/dictionaries/sit-agreeme
 import { SitAgreementCustomersEditComponent } from '@app/containers/dictionaries/sit-agreements/actions/sit-agreement-customers-edit/sit-agreement-customers-edit.component';
 import { SitAgreementUsersEditComponent } from '@app/containers/dictionaries/sit-agreements/actions/sit-agreement-users-edit/sit-agreement-users-edit.component';
 import { SitCashFlowComponent } from '@app/containers/dictionaries/sit-cash-flow/sit-cash-flow.component';
+import { SitTransactionTypesComponent } from '@app/containers/dictionaries/sit-transaction-types/sit-transaction-types.component';
+import { SitTransactionTypesEditComponent } from '@app/containers/dictionaries/sit-transaction-types/actions/sit-transaction-types-edit/sit-transaction-types-edit.component';
 
 
 
@@ -499,6 +501,8 @@ export class FactoryService {
         sitAgreementCustomersEdit: SitAgreementCustomersEditComponent,
         sitAgreementUsersEdit: SitAgreementUsersEditComponent,
         sitCashFlow: SitCashFlowComponent,
+        sitTransactionTypes: SitTransactionTypesComponent,
+        sitTransactionTypesEdit: SitTransactionTypesEditComponent,
     };
 
     public GetFactory(ident: string) {
