@@ -20,7 +20,10 @@
               </sit-data-set-container>
 
               <sit-data-set-container  ident="sitOfficeDocHeaders" showActionsToolbar="true" ngClass="flex-container-column">
-                <ag-grid-angular #sitSetDataSource class="ag-theme-balham"></ag-grid-angular>
+                <ag-grid-angular 
+                  #sitSetDataSource 
+                  class="ag-theme-balham">
+                </ag-grid-angular>
               </sit-data-set-container>
 
           </as-split-area>
@@ -132,6 +135,19 @@
                   </ag-grid-angular>
                 </sit-data-set-container>
               </mat-tab>
+
+              <!-- <mat-tab label="Księgowanie">
+                <sit-data-set-container ident="sitOfficeDocAccounting" showActionsToolbar="true" ngClass="flex-container-column">
+                  <ag-grid-angular
+                      #sitSetDataSource
+                      class="ag-theme-balham"
+                    >
+                  </ag-grid-angular>
+                  <div>
+                    <sit-data-label #sitControl field="AccountDesc" label="Konto"></sit-data-label>
+                  </div>
+                </sit-data-set-container>
+              </mat-tab> -->
 
               <mat-tab label="Załączniki">
                 <sit-data-set-container  ident="sitAttachments" showActionsToolbar="true" fxFlex fxLayout="column">

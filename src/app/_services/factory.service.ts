@@ -247,6 +247,10 @@ import { SitAgreementUsersEditComponent } from '@app/containers/dictionaries/sit
 import { SitCashFlowComponent } from '@app/containers/dictionaries/sit-cash-flow/sit-cash-flow.component';
 import { SitTransactionTypesComponent } from '@app/containers/dictionaries/sit-transaction-types/sit-transaction-types.component';
 import { SitTransactionTypesEditComponent } from '@app/containers/dictionaries/sit-transaction-types/actions/sit-transaction-types-edit/sit-transaction-types-edit.component';
+import { SitGeneralLedgerComponent } from '@app/containers/dictionaries/sit-general-ledger/sit-general-ledger.component';
+import { SitOfficeDocAccountingEditComponent } from '@app/containers/dictionaries/sit-office-doc-headers/actions/sit-office-doc-accounting-edit/sit-office-doc-accounting-edit.component';
+import { SitFiscalYearsComponent } from '@app/containers/dictionaries/sit-fiscal-years/sit-fiscal-years.component';
+import { SitFiscalYearsEditComponent } from '@app/containers/dictionaries/sit-fiscal-years/actions/sit-fiscal-years-edit/sit-fiscal-years-edit.component';
 
 
 
@@ -503,6 +507,10 @@ export class FactoryService {
         sitCashFlow: SitCashFlowComponent,
         sitTransactionTypes: SitTransactionTypesComponent,
         sitTransactionTypesEdit: SitTransactionTypesEditComponent,
+        sitGeneralLedger: SitGeneralLedgerComponent,
+        sitOfficeDocAccountingEdit: SitOfficeDocAccountingEditComponent,
+        sitFiscalYears: SitFiscalYearsComponent,
+        sitFiscalYearsEdit: SitFiscalYearsEditComponent,
     };
 
     public GetFactory(ident: string) {
