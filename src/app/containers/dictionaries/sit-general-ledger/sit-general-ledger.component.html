@@ -1,0 +1,20 @@
+<sit-dict-container ident="sitGeneralLedger" #sitDictcontainer ngClass="flex-container-column content">
+  
+  <sit-data-set-container ident="sitFilter" ngClass="flex-container-row sit-filter-bar">
+    <sit-data-input #sitControl type="number" field="fiscalYear" label="Rok" appearance="outline" style="width: 100px;"
+    [lookupDisplayFields] = "['FiscalYear']"></sit-data-input>  
+    <sit-data-input #sitControl field="search" label="Filtruj" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
+  </sit-data-set-container>
+
+  <sit-data-set-container ident="sitGeneralLedger" showActionsToolbar="true" ngClass="flex-container-column">
+    <ag-grid-angular
+      #sitSetDataSource
+      class="ag-theme-balham"
+      [treeData]="true"
+      [getDataPath]="getDataPath"
+      [autoGroupColumnDef]="autoGroupColumnDef"
+      [groupDefaultExpanded]="groupDefaultExpanded"
+    >
+    </ag-grid-angular>
+  </sit-data-set-container>
+</sit-dict-container>

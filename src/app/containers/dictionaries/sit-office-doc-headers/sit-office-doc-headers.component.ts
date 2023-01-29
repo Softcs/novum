@@ -19,10 +19,9 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
   dataSourceResponseWrapper: DataSetWrapper;
   gridApi: any;
   columnApi: any;
-
   elementType = NgxQrcodeElementTypes.URL;
   correctionLevel = NgxQrcodeErrorCorrectionLevels.HIGH;
-  qrvalue = '7822282471|PL|22114011240000269703001001|2040.14|PUBLICAT SPÓŁKA AKCYJNA|SK4/23/01/0001|||';
+  qrvalue = '';
 
   constructor(
     protected gatewayService: GatewayService,
@@ -103,22 +102,22 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
     this.gridColumnsDefinition["sitOfficeDocDimensions"] = [
       { headerName: 'ID', field: 'sitOfficeDocDimensionsId', defaultVisibility: false},
       { headerName: 'GUID', field: 'sitOfficeDocDimensionsG', defaultVisibility: false},
-      { headerName: 'Lp.', field: 'PosId', filter: 'agNumberColumnFilter', type: 'rightAligned' , width: "50", suppressMenu: true,
+      { headerName: 'Lp.', field: 'PosId', filter: 'agNumberColumnFilter', type: 'rightAligned' , width: 50, suppressMenu: true,
         cellClass: 'grid-cell-center-right'
       },
-      { headerName: 'Netto w wal.', field: 'NetCurrency', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: "100", suppressMenu: true, agr: "sum",
+      { headerName: 'Netto w wal.', field: 'NetCurrency', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: 100, suppressMenu: true, agr: "sum",
         cellStyle: {'background-color': 'rgb(219, 247, 255)'},
         cellClass: 'grid-cell-center-right'
       },
-      { headerName: 'Netto PLN', field: 'Net', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: "100", suppressMenu: true, agr: "sum",
+      { headerName: 'Netto PLN', field: 'Net', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: 100, suppressMenu: true, agr: "sum",
         cellClass: 'grid-cell-center-right'
       },
-      { headerName: 'Typ kosztu', field: 'CostTypeIdent', tooltipField: 'CostTypeDesc', filter: 'agTextColumnFilter', floatingFilter: false, width: 130,
+      { headerName: 'Typ transakcji', field: 'TransactionTypeIdent', tooltipField: 'TransactionTypeDesc', filter: 'agTextColumnFilter', floatingFilter: false, width: 130,
         cellRenderer: function(params) {
           var ident;
           var desc;
-          ident = params.data["CostTypeIdent"] ? params.data["CostTypeIdent"] : '';
-          desc = params.data["CostTypeDesc"] ? params.data["CostTypeDesc"] : '';
+          ident = params.data["TransactionTypeIdent"] ? params.data["TransactionTypeIdent"] : '';
+          desc = params.data["TransactionTypeDesc"] ? params.data["TransactionTypeDesc"] : '';
           return '<b>' + ident + '</b><br>' + desc
         },
         cellStyle: {'line-height': '1.2em', 'padding-top': '.3em'}
@@ -163,7 +162,17 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
         },
         cellStyle: {'line-height': '1.2em', 'padding-top': '.3em'}
       },
-      { headerName: 'SV', headerTooltip: 'Stawka VAT (O - odliczane, N - nieodliczane, S - struktura)', field: 'VATRatesIdent', width: "50", suppressMenu: true, 
+      { headerName: 'Rodzaj kosztu', field: 'CostTypeIdent', tooltipField: 'CostTypeDesc', filter: 'agTextColumnFilter', floatingFilter: false, width: 130,
+        cellRenderer: function(params) {
+          var ident;
+          var desc;
+          ident = params.data["CostTypeIdent"] ? params.data["CostTypeIdent"] : '';
+          desc = params.data["CostTypeDesc"] ? params.data["CostTypeDesc"] : '';
+          return '<b>' + ident + '</b><br>' + desc
+        },
+        cellStyle: {'line-height': '1.2em', 'padding-top': '.3em'}
+      },
+      { headerName: 'SV', headerTooltip: 'Stawka VAT (O - odliczane, N - nieodliczane, S - struktura)', field: 'VATRatesIdent', width: 50, suppressMenu: true, 
         cellRenderer: function(params) {
           var ident;
           var desc;
@@ -173,7 +182,7 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
         },
         cellStyle: {'line-height': '1.2em', 'padding-top': '.3em', 'text-align': 'right'}
       },
-      { headerName: 'Klasyfikacja/Rodzaj', field: 'VATClassificationIdent', tooltipField: 'VATClassificationIdent', width: "130", suppressMenu: true, 
+      { headerName: 'Klasyfikacja/Rodzaj', field: 'VATClassificationIdent', tooltipField: 'VATClassificationIdent', width: 130, suppressMenu: true, 
         cellRenderer: function(params) {
           var ident;
           var desc;
@@ -184,7 +193,7 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
         },
         cellStyle: {'line-height': '1.2em', 'padding-top': '.3em'}
       },
-      { headerName: 'Proc. szczególna', headerTooltip: 'Procedura szczególna VAT i podatkowa', field: 'VATSpecialTypesIdent', tooltipField: 'VATSpecialTypesIdent', width: "130", suppressMenu: true, 
+      { headerName: 'Proc. szczególna', headerTooltip: 'Procedura szczególna VAT i podatkowa', field: 'VATSpecialTypesIdent', tooltipField: 'VATSpecialTypesIdent', width: 130, suppressMenu: true, 
         cellRenderer: function(params) {
           var ident;
           var desc;
@@ -195,17 +204,17 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
         },
         cellStyle: {'line-height': '1.2em', 'padding-top': '.3em'}
       },            
-      { headerName: 'VAT PLN', field: 'VAT', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: "100", suppressMenu: true, agr: "sum",
+      { headerName: 'VAT PLN', field: 'VAT', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: 100, suppressMenu: true, agr: "sum",
         cellClass: 'grid-cell-center-right'
       },
-      { headerName: 'Brutto PLN', field: 'Gross', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: "100", suppressMenu: true, agr: "sum",
+      { headerName: 'Brutto PLN', field: 'Gross', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: 100, suppressMenu: true, agr: "sum",
         cellClass: 'grid-cell-center-right'
       },
-      { headerName: 'VAT w wal.', field: 'VATCurrency', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: "100", suppressMenu: true, agr: "sum",
+      { headerName: 'VAT w wal.', field: 'VATCurrency', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: 100, suppressMenu: true, agr: "sum",
         cellStyle: {'background-color': 'rgb(219, 247, 255)'},
         cellClass: 'grid-cell-center-right'
       },
-      { headerName: 'Brutto w wal.', field: 'GrossCurrency', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: "100", suppressMenu: true, agr: "sum",
+      { headerName: 'Brutto w wal.', field: 'GrossCurrency', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: 100, suppressMenu: true, agr: "sum",
         cellStyle: {'background-color': 'rgb(219, 247, 255)'},
         cellClass: 'grid-cell-center-right'
       },
@@ -220,16 +229,33 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
       { headerName: 'GUID', field: 'sitOfficeDocVATFootersG', defaultVisibility: false},
       { headerName: 'SV', headerTooltip: 'Symbol stawki VAT', field: 'VATRatesIdent', filter: 'agTextColumnFilter', floatingFilter: false, width: 50, suppressMenu: true},
       { headerName: 'GV', headerTooltip: 'O - odliczane, N - nieodliczane, S - struktura', field: 'VATdeductionIdent', filter: 'agTextColumnFilter', floatingFilter: false, width: 40, suppressMenu: true},
-      { headerName: 'Klasyfikacja', field: 'VATClassificationIdent', tooltipField: 'VATClassificationIdent', width: "110"  },
-      { headerName: 'Rodzaj', field: 'VATCostTypeIdent', tooltipField: 'VATCostTypeIdent', width: "100" },
-      { headerName: 'Netto', field: 'Net', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: "80", agr: "sum"},
-      { headerName: 'VAT', field: 'VAT', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: "80", agr: "sum"},
-      { headerName: 'Brutto', field: 'Gross', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: "80", agr: "sum"},
-      { headerName: 'Netto w wal', field: 'NetCurrency', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: "80", agr: "sum", defaultVisibility: false},
-      { headerName: 'VAT w wal', field: 'VATCurrency', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: "80", agr: "sum", defaultVisibility: false},
-      { headerName: 'Brutto w wal', field: 'GrossCurrency', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: "80", agr: "sum", defaultVisibility: false},
+      { headerName: 'Klasyfikacja', field: 'VATClassificationIdent', tooltipField: 'VATClassificationIdent', width: 110  },
+      { headerName: 'Rodzaj', field: 'VATCostTypeIdent', tooltipField: 'VATCostTypeIdent', width: 100 },
+      { headerName: 'Netto', field: 'Net', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: 80, agr: "sum"},
+      { headerName: 'VAT', field: 'VAT', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: 80, agr: "sum"},
+      { headerName: 'Brutto', field: 'Gross', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: 80, agr: "sum"},
+      { headerName: 'Netto w wal', field: 'NetCurrency', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: 80, agr: "sum", defaultVisibility: false},
+      { headerName: 'VAT w wal', field: 'VATCurrency', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: 80, agr: "sum", defaultVisibility: false},
+      { headerName: 'Brutto w wal', field: 'GrossCurrency', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: 80, agr: "sum", defaultVisibility: false},
 
     ];  
+
+    this.gridColumnsDefinition["sitOfficeDocAccounting"] = [
+      { headerName: 'ID', field: 'sitOfficeDocAccountingId', defaultVisibility: false},
+      { headerName: 'GUID', field: 'sitOfficeDocAccountingG', defaultVisibility: false},
+      { headerName: 'Lp', field: 'PosId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 60, sort: 'asc', suppressMenu: true },
+      { headerName: 'Konto', field: 'Account', tooltipField: 'AccountDesc', filter: 'agTextColumnFilter', width: 150 },
+      { headerName: 'WN wal.', field: 'CAmountCurrency', type: 'numericColumn',renderType:'number', filter: 'agNumberColumnFilter', width: 100, agr: 'sum', suppressMenu: true,},
+      { headerName: 'MA wal.', field: 'DAmountCurrency', type: 'numericColumn',renderType:'number', filter: 'agNumberColumnFilter', width: 100, agr: 'sum', suppressMenu: true,},
+      { headerName: 'Wal.', field: 'CurrencyIdent', tooltipField: 'CurrencyIdent', filter: 'agTextColumnFilter', width: 50,  suppressMenu: true,
+        cellStyle: function(params) { return (params.data["CurrencyIdent"] === 'PLN' ? {} : {'background-color': 'rgb(219, 247, 255)'}) }
+      },
+
+      { headerName: 'WN', field: 'CAmount', type: 'numericColumn',renderType:'number', filter: 'agNumberColumnFilter', width: 100, agr: 'sum', suppressMenu: true,},
+      { headerName: 'MA', field: 'DAmount', type: 'numericColumn',renderType:'number', filter: 'agNumberColumnFilter', width: 100, agr: 'sum', suppressMenu: true},
+      { headerName: 'Nr.dok.', field: 'DocumentNumber', filter: 'agTextColumnFilter', width: 100 },
+      { headerName: 'Opis', field: 'PosDesc', filter: 'agTextColumnFilter', width: 250 },
+    ];      
     
   };
 
@@ -267,12 +293,41 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
 
     if (!this.dataSourceResponseWrapper.activeRow['IsCurrency']){ 
       this.columnApi.setColumnsVisible(['NetCurrency','VATCurrency','GrossCurrency'],false);
-      return 
     } else if (this.dataSourceResponseWrapper.activeRow['IsCurrency'] == 1) {
       this.columnApi.setColumnsVisible(['NetCurrency','VATCurrency','GrossCurrency'],true);
-      return;
+    }
+
+    if (!this.dataSourceResponseWrapper.activeRow['UseCompanyDepartments'] || this.dataSourceResponseWrapper.activeRow['UseCompanyDepartments'] == 0){ 
+      this.columnApi.setColumnsVisible(['CompanyDepartmentIdent'],false);
+    } else {
+      this.columnApi.setColumnsVisible(['CompanyDepartmentIdent'],true);
+    }
+
+    if (!this.dataSourceResponseWrapper.activeRow['UseProjects'] || this.dataSourceResponseWrapper.activeRow['UseProjects'] == 0){ 
+      this.columnApi.setColumnsVisible(['ProjectIdent'],false);
+    } else {
+      this.columnApi.setColumnsVisible(['ProjectIdent'],true);
+    }
+
+    if (!this.dataSourceResponseWrapper.activeRow['UseDistributionChannels'] || this.dataSourceResponseWrapper.activeRow['UseDistributionChannels'] == 0){ 
+      this.columnApi.setColumnsVisible(['DistributionChannelIdent'],false);
+    } else {
+      this.columnApi.setColumnsVisible(['DistributionChannelIdent'],true);
+    }
+
+    if (!this.dataSourceResponseWrapper.activeRow['UseProductsTypes'] || this.dataSourceResponseWrapper.activeRow['UseProductsTypes'] == 0){ 
+      this.columnApi.setColumnsVisible(['ProductsTypeIdent'],false);
+    } else {
+      this.columnApi.setColumnsVisible(['ProductsTypeIdent'],true);
     }
     
+    if (!this.dataSourceResponseWrapper.activeRow['UseCostTypes'] || this.dataSourceResponseWrapper.activeRow['UseCostTypes'] == 0){ 
+      this.columnApi.setColumnsVisible(['CostTypeIdent'],false);
+    } else {
+      this.columnApi.setColumnsVisible(['CostTypeIdent'],true);
+    }
+        
+    return;
   }
 
 }

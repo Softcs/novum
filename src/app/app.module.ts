@@ -349,6 +349,12 @@ import { SitAgreementCustomersEditComponent } from './containers/dictionaries/si
 import { SitAgreementUsersEditComponent } from './containers/dictionaries/sit-agreements/actions/sit-agreement-users-edit/sit-agreement-users-edit.component';
 import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 import { SitCashFlowComponent } from './containers/dictionaries/sit-cash-flow/sit-cash-flow.component';
+import { SitTransactionTypesComponent } from './containers/dictionaries/sit-transaction-types/sit-transaction-types.component';
+import { SitTransactionTypesEditComponent } from './containers/dictionaries/sit-transaction-types/actions/sit-transaction-types-edit/sit-transaction-types-edit.component';
+import { SitGeneralLedgerComponent } from './containers/dictionaries/sit-general-ledger/sit-general-ledger.component';
+import { SitOfficeDocAccountingEditComponent } from './containers/dictionaries/sit-office-doc-headers/actions/sit-office-doc-accounting-edit/sit-office-doc-accounting-edit.component';
+import { SitFiscalYearsComponent } from './containers/dictionaries/sit-fiscal-years/sit-fiscal-years.component';
+import { SitFiscalYearsEditComponent } from './containers/dictionaries/sit-fiscal-years/actions/sit-fiscal-years-edit/sit-fiscal-years-edit.component';
 
 @NgModule({
     imports: [
@@ -682,7 +688,13 @@ import { SitCashFlowComponent } from './containers/dictionaries/sit-cash-flow/si
         SitAgreementsComponent,
         SitAgreementCustomersEditComponent,
         SitAgreementUsersEditComponent,
-        SitCashFlowComponent
+        SitCashFlowComponent,
+        SitTransactionTypesComponent,
+        SitTransactionTypesEditComponent,
+        SitGeneralLedgerComponent,
+        SitOfficeDocAccountingEditComponent,
+        SitFiscalYearsComponent,
+        SitFiscalYearsEditComponent
 
     ],
     providers: [

@@ -11,14 +11,17 @@
                   <sit-data-input #sitControl field="searchCustomer" label="Strony umowy" appearance="outline"></sit-data-input>  
                 </div>
                 <div ngClass="flex-container-column" fxFlex="30">
-                  <sit-data-input #sitControl field="searchAgreementsType" label="Typ umowy" appearance="outline"
-                  [lookupDisplayFields] = "['AgreementsTypeName']"></sit-data-input>
+                  <div ngClass="flex-container-row">
+                    <sit-data-input #sitControl field="searchAgreementsType" label="Typ umowy" appearance="outline" fxFlex
+                      [lookupDisplayFields] = "['AgreementsTypeName']"></sit-data-input>
+                    <sit-data-checkbox #sitControl field="searchConfidential" label="Poufne" labelPosition="after" checked="false" [refreshOnChange]="true" style="color: rgb(0,0,0);" ></sit-data-checkbox>
+                  </div>
                   <sit-data-input #sitControl field="searchLocation" label="Lokalizacja" appearance="outline"
                   [lookupDisplayFields] = "['LocationName']"></sit-data-input>
                 </div>
                 <div ngClass="flex-container-column" fxFlex>
-                  <sit-data-input #sitControl field="searchAgreementDateFrom" type="date" label="Data umowy od" appearance="outline" showRefreshButton="true"></sit-data-input>
-                  <sit-data-input #sitControl field="searchAgreementDateTo" type="date" label="Data umowy do" appearance="outline"  ></sit-data-input>
+                  <sit-data-input #sitControl field="searchAgreementDateFrom" type="date" label="Data umowy od" appearance="outline"></sit-data-input>
+                  <sit-data-input #sitControl field="searchAgreementDateTo" type="date" label="Data umowy do" appearance="outline"  showRefreshButton="true" ></sit-data-input>
                 </div>
               </sit-data-set-container>
               <sit-data-set-container  ident="sitAgreements" showActionsToolbar="true" ngClass="flex-container-column">

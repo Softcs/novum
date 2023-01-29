@@ -1,0 +1,22 @@
+<sit-dict-container ident="sitFiscalYears" #sitDictcontainer ngClass="flex-container-column content">
+  <as-split #sitSpliter direction="horizontal">
+    <as-split-area [size]="30">
+      <sit-data-set-container ident="sitFiscalYears" showActionsToolbar="true" ngClass="flex-container-column">
+        <ag-grid-angular
+          #sitSetDataSource
+          class="ag-theme-balham"
+        >
+        </ag-grid-angular>
+      </sit-data-set-container>
+    </as-split-area>
+    <as-split-area [size]="70">
+      <sit-data-set-container ident="sitFiscalPeriods" showActionsToolbar="true" ngClass="flex-container-column">
+        <ag-grid-angular
+          #sitSetDataSource
+          class="ag-theme-balham"
+        >
+        </ag-grid-angular>
+      </sit-data-set-container>      
+    </as-split-area>
+  </as-split>
+</sit-dict-container>

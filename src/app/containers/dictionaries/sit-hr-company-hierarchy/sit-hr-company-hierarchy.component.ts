@@ -20,7 +20,7 @@ export class SitHRCompanyHierarchyComponent  extends SitDictBaseComponent {
       minWidth: 400,
       cellRendererParams: { suppressCount: true },
     };
-    this.groupDefaultExpanded = -1;
+    this.groupDefaultExpanded = 0;
 
     this.getDataPath = function (data) {
       return data.dataPath;

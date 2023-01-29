@@ -1,5 +1,9 @@
-
 $input-height: 40px;
+
+.sit-data-input-component {
+  display: flex;
+  flex-direction: row;
+}
 
 .lookup-select-panel-class {
   margin-top: $input-height !important;
@@ -20,7 +24,7 @@ $input-height: 40px;
     display: flex;
     flex: auto;
     flex-direction: column;
-    height: auto;
+    height: auto !important;
     min-height: 2em;
     max-height: max-content;
     line-height: inherit !important;
@@ -42,16 +46,17 @@ $input-height: 40px;
       text-overflow: inherit;
       // align-items: last baseline;
       align-items: center;
-      font-size: 0.9rem;
+      font-size: 0.75rem;
       line-height: 1.7em;
 
       span {
-        // border: 1px solid red;
+        //border: 1px solid red;
         flex: 1 1 max-content;
-        font-size: 0.9rem;
+        font-size: 0.75rem;
         line-height: 1.7em;
         text-overflow: ellipsis;
         overflow: hidden;
+        margin-right: 0.5em;
       }
     }
   }
@@ -100,14 +105,26 @@ button {
   min-width: 50px !important;
   width: auto !important;
   height: 47px;
+  font-size: 12px;
+  flex: 1 1 0%;
+  display: flex;
+
+
   .mat-form-field-wrapper {
     height: $input-height;
     padding: 0px 1px 5px;
+
     .mat-form-field-infix {
       width: auto;
       height: $input-height;
       padding-top: 7px;
       display: inline-flex;
+
+      .spinner-border {
+        width: 1.8em;
+        height: 1.8em;
+        --bs-spinner-border-width: 0.2em;
+      }
 
       .mat-form-field-label-wrapper {
         padding-top: 7px;
