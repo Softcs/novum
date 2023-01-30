@@ -355,6 +355,7 @@ import { SitGeneralLedgerComponent } from './containers/dictionaries/sit-general
 import { SitOfficeDocAccountingEditComponent } from './containers/dictionaries/sit-office-doc-headers/actions/sit-office-doc-accounting-edit/sit-office-doc-accounting-edit.component';
 import { SitFiscalYearsComponent } from './containers/dictionaries/sit-fiscal-years/sit-fiscal-years.component';
 import { SitFiscalYearsEditComponent } from './containers/dictionaries/sit-fiscal-years/actions/sit-fiscal-years-edit/sit-fiscal-years-edit.component';
+import { SitOfficeDocGenAccountingComponent } from './containers/dictionaries/sit-office-doc-headers/actions/sit-office-doc-gen-accounting/sit-office-doc-gen-accounting.component';
 
 @NgModule({
     imports: [
@@ -694,7 +695,8 @@ import { SitFiscalYearsEditComponent } from './containers/dictionaries/sit-fisca
         SitGeneralLedgerComponent,
         SitOfficeDocAccountingEditComponent,
         SitFiscalYearsComponent,
-        SitFiscalYearsEditComponent
+        SitFiscalYearsEditComponent,
+        SitOfficeDocGenAccountingComponent
 
     ],
     providers: [

@@ -251,6 +251,7 @@ import { SitGeneralLedgerComponent } from '@app/containers/dictionaries/sit-gene
 import { SitOfficeDocAccountingEditComponent } from '@app/containers/dictionaries/sit-office-doc-headers/actions/sit-office-doc-accounting-edit/sit-office-doc-accounting-edit.component';
 import { SitFiscalYearsComponent } from '@app/containers/dictionaries/sit-fiscal-years/sit-fiscal-years.component';
 import { SitFiscalYearsEditComponent } from '@app/containers/dictionaries/sit-fiscal-years/actions/sit-fiscal-years-edit/sit-fiscal-years-edit.component';
+import { SitOfficeDocGenAccountingComponent } from '@app/containers/dictionaries/sit-office-doc-headers/actions/sit-office-doc-gen-accounting/sit-office-doc-gen-accounting.component';
 
 
 
@@ -511,6 +512,7 @@ export class FactoryService {
         sitOfficeDocAccountingEdit: SitOfficeDocAccountingEditComponent,
         sitFiscalYears: SitFiscalYearsComponent,
         sitFiscalYearsEdit: SitFiscalYearsEditComponent,
+        sitOfficeDocGenAccounting: SitOfficeDocGenAccountingComponent,
     };
 
     public GetFactory(ident: string) {

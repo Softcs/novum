@@ -240,7 +240,7 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
 
     ];  
 
-    this.gridColumnsDefinition["sitOfficeDocAccounting"] = [
+    this.gridColumnsDefinition["sitAccounting"] = [
       { headerName: 'ID', field: 'sitOfficeDocAccountingId', defaultVisibility: false},
       { headerName: 'GUID', field: 'sitOfficeDocAccountingG', defaultVisibility: false},
       { headerName: 'Lp', field: 'PosId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 60, sort: 'asc', suppressMenu: true },
