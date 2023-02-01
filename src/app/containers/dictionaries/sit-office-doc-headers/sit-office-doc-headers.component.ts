@@ -242,8 +242,8 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
     ];  
 
     this.gridColumnsDefinition["sitAccounting"] = [
-      { headerName: 'ID', field: 'sitOfficeDocAccountingId', defaultVisibility: false},
-      { headerName: 'GUID', field: 'sitOfficeDocAccountingG', defaultVisibility: false},
+      { headerName: 'ID', field: 'sitAccountingId', defaultVisibility: false},
+      { headerName: 'GUID', field: 'sitAccountingG', defaultVisibility: false},
       { headerName: 'Lp', field: 'PosId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 60, sort: 'asc', suppressMenu: true },
       { headerName: 'Konto', field: 'Account', tooltipField: 'AccountDesc', filter: 'agTextColumnFilter', width: 150 },
       { headerName: 'WN wal.', field: 'CAmountCurrency', type: 'numericColumn',renderType:'number', filter: 'agNumberColumnFilter', width: 100, agr: 'sum', suppressMenu: true,},

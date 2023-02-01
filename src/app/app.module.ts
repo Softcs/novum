@@ -352,7 +352,7 @@ import { SitCashFlowComponent } from './containers/dictionaries/sit-cash-flow/si
 import { SitTransactionTypesComponent } from './containers/dictionaries/sit-transaction-types/sit-transaction-types.component';
 import { SitTransactionTypesEditComponent } from './containers/dictionaries/sit-transaction-types/actions/sit-transaction-types-edit/sit-transaction-types-edit.component';
 import { SitGeneralLedgerComponent } from './containers/dictionaries/sit-general-ledger/sit-general-ledger.component';
-import { SitOfficeDocAccountingEditComponent } from './containers/dictionaries/sit-office-doc-headers/actions/sit-office-doc-accounting-edit/sit-office-doc-accounting-edit.component';
+import { SitAccountingEditComponent } from './containers/dictionaries/sit-office-doc-headers/actions/sit-accounting-edit/sit-accounting-edit.component';
 import { SitFiscalYearsComponent } from './containers/dictionaries/sit-fiscal-years/sit-fiscal-years.component';
 import { SitFiscalYearsEditComponent } from './containers/dictionaries/sit-fiscal-years/actions/sit-fiscal-years-edit/sit-fiscal-years-edit.component';
 import { SitOfficeDocGenAccountingComponent } from './containers/dictionaries/sit-office-doc-headers/actions/sit-office-doc-gen-accounting/sit-office-doc-gen-accounting.component';
@@ -693,7 +693,7 @@ import { SitOfficeDocGenAccountingComponent } from './containers/dictionaries/si
         SitTransactionTypesComponent,
         SitTransactionTypesEditComponent,
         SitGeneralLedgerComponent,
-        SitOfficeDocAccountingEditComponent,
+        SitAccountingEditComponent,
         SitFiscalYearsComponent,
         SitFiscalYearsEditComponent,
         SitOfficeDocGenAccountingComponent
