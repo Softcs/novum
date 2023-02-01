@@ -67,6 +67,7 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
       { headerName: 'VAT PLN', field: 'VAT', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: 100, defaultVisibility: false},
       { headerName: 'Brutto PLN', field: 'Gross', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: 100, defaultVisibility: false},
       { headerName: 'GUID załącznika', field: 'sitAttachmentsG',width: 150, defaultVisibility: false },
+      { headerName: 'ID dowodu księgowego', field: 'sitAccountingHeadersId',width: 150, defaultVisibility: false },
 
     ];
 
@@ -255,8 +256,64 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
       { headerName: 'MA', field: 'DAmount', type: 'numericColumn',renderType:'number', filter: 'agNumberColumnFilter', width: 100, agr: 'sum', suppressMenu: true},
       { headerName: 'Nr.dok.', field: 'DocumentNumber', filter: 'agTextColumnFilter', width: 100 },
       { headerName: 'Opis', field: 'PosDesc', filter: 'agTextColumnFilter', width: 250 },
-    ];      
-    
+    ];  
+
+    this.gridColumnsDefinition['sitAccountingDim'] = [
+      { headerName: 'ID', field: 'sitAccountingDimId', filter: 'agNumberColumnFilter', defaultVisibility: false },
+      { headerName: 'GUID', field: 'sitAccountingDimG', filter: 'agTextColumnFilter', defaultVisibility: false },
+      { headerName: 'Lp', field: 'PosId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 60, sort: 'asc', suppressMenu: true,
+        cellClass: 'grid-cell-center-right'
+      },
+      { headerName: 'Kwota', field: 'Amount', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, agr: 'sum', autoHeight: true,
+        cellRenderer: function(params) {
+          return params.value === null ? null : formatNumber(params.value, locale,'1.2-2').replace(/[,]/g,' ')
+        },
+        cellClass: 'grid-cell-center-right'
+      },
+      { headerName: 'Dział', field: 'CompanyDepartmentIdent', filter: 'agTextColumnFilter',tooltipField: 'CompanyDepartmentDesc', autoHeight: true,
+        cellRenderer: function(params) {
+          var ident;
+          var desc;
+          ident = params.data["CompanyDepartmentIdent"] ? params.data["CompanyDepartmentIdent"] : ''
+          desc = params.data["CompanyDepartmentDesc"] ? params.data["CompanyDepartmentDesc"] : ''
+          return '<b>' + ident + '</b><br>' + desc
+        },
+        cellStyle: {'line-height': '1.5em', 'padding-top': '.3em'}
+      },
+      { headerName: 'Projekt', field: 'ProjectIdent', filter: 'agTextColumnFilter', tooltipField: 'ProjectName',
+        cellRenderer: function(params) {
+          var ident;
+          var desc;
+          ident = params.data["ProjectIdent"] ? params.data["ProjectIdent"] : '';
+          desc = params.data["ProjectName"] ? params.data["ProjectName"] : '';
+          return '<b>' + ident + '</b><br>' + desc
+        },
+        cellStyle: {'line-height': '1.5em', 'padding-top': '.3em'}
+  
+      },
+      { headerName: 'Kanał dystrybucji', field: 'DistributionChannelIdent', filter: 'agTextColumnFilter', tooltipField: 'DistributionChannelDesc',
+        cellRenderer: function(params) {
+          var ident;
+          var desc;
+          ident = params.data["DistributionChannelIdent"] ? params.data["DistributionChannelIdent"] : '';
+          desc = params.data["DistributionChannelDesc"] ? params.data["DistributionChannelDesc"] : '';
+          return '<b>' + ident + '</b><br>' + desc
+        },
+        cellStyle: {'line-height': '1.5em', 'padding-top': '.3em'}
+  
+      },
+      { headerName: 'Typ produktu', field: 'ProductsTypeIdent', filter: 'agTextColumnFilter', tooltipField: 'ProductsTypeDesc',
+        cellRenderer: function(params) {
+          var ident;
+          var desc;
+          ident = params.data["ProductsTypeIdent"] ? params.data["ProductsTypeIdent"] : '';
+          desc = params.data["ProductsTypeDesc"] ? params.data["ProductsTypeDesc"] : '';
+          return '<b>' + ident + '</b><br>' + desc
+        },
+        cellStyle: {'line-height': '1.5em', 'padding-top': '.3em'}
+  
+      },
+    ]
   };
 
   statusColor(){
