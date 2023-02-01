@@ -26,7 +26,7 @@
   }
   
   sit-simple-container {
-    overflow: initial;
+    flex: 0 0 auto;
 
     .mat-form-field-appearance-outline .mat-form-field-outline,
     .mat-form-field-appearance-outline:hover .mat-form-field-outline,
