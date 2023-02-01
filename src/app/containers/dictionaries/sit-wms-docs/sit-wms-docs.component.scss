@@ -31,7 +31,8 @@
     .mat-form-field-appearance-outline .mat-form-field-outline,
     .mat-form-field-appearance-outline:hover .mat-form-field-outline,
     .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline {
-      color: rgba(0, 0, 0, 0.12);
+      // color: rgba(0, 0, 0, 0.12);
+      color: rgba(0, 0, 0, 0.08);
     }
     .mat-form-field-appearance-outline .mat-form-field-outline *{
       border-width: 1px;
