@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit, ViewChildren, QueryList, Inject, LOCALE_ID  } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit, ViewChild, AfterViewInit, ViewChildren, QueryList, Inject, LOCALE_ID  } from '@angular/core';
 import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-dict-base.component';
 import { formatDate } from '@angular/common';
 import { DataSetWrapper } from '@app/_models';
@@ -6,7 +6,8 @@ import { DataSetWrapper } from '@app/_models';
   selector: 'app-sit-wms-docs',
   templateUrl: './sit-wms-docs.component.html',
   styleUrls: ['./sit-wms-docs.component.scss'],
-  host: {class: 'router-flex'}
+  encapsulation : ViewEncapsulation.None,
+  host: {class: 'router-flex sit-wms-docs-component'}
 })
 export class SitWmsDocsComponent extends SitDictBaseComponent {
 

@@ -1,14 +1,47 @@
-#wrapper{
-  min-height: 100%;
-  height: 100%;
-  box-sizing: border-box;/*new*/
-  //background-color: rgba(255, 255, 255, 0.733);
-}
+.sit-wms-docs-component {
 
-#tab-group{
-  height: 100%;
-}
-#tab-group mat-tab-body {
-  flex-grow: 1;
+  #wrapper{
+    min-height: 100%;
+    height: 100%;
+    box-sizing: border-box;/*new*/
+    //background-color: rgba(255, 255, 255, 0.733);
+  }
+  
+  #tab-group{
+    height: 100%;
+  }
+  #tab-group mat-tab-body {
+    flex-grow: 1;
+  }
+  
+  // sit-data-set-container,
+  .data-details-container {
+    max-height: 100%;
+    overflow: hidden;
+    overflow-y: hidden;
+    overflow-y: auto;
+    flex: 1 1 0;
+    background-color: #fff;
+    // border: 2px dotted blue;
+  }
+  
+  sit-simple-container {
+    overflow: initial;
+
+    .mat-form-field-appearance-outline .mat-form-field-outline,
+    .mat-form-field-appearance-outline:hover .mat-form-field-outline,
+    .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline {
+      color: rgba(0, 0, 0, 0.12);
+    }
+    .mat-form-field-appearance-outline .mat-form-field-outline *{
+      border-width: 1px;
+    }
+    
+
+    .mat-input-element {
+      font-size: 14px;
+    }
+  }
+
 }
 
