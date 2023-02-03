@@ -1,36 +1,28 @@
 
 .sit-office-doc-headers-component {
 
-    .head-container {
-        .sit-data-label-component {
-            flex-grow: 0;
-
-            .sit-data-label-value {
-                margin: 0;
-            }
-        }
-    }
-
-    .sit-data-set-container-ksiegowanie {
-        max-height: 45%;
-        flex: 0 0 fit-content;
-        overflow-y: auto;
-    }
-
-    .sit-data-set-container-ksiegowanie,
     .sit-data-set-container-data {
         align-content: flex-start;
         align-items: flex-start;
         margin-top: 0.3em;
 
-        // .head-container,
-        > * {
-            flex: 0 0 fit-content;
+        .head-container,
+        > div {
+            flex: 0;
             margin-bottom: .5em;
             min-width: 100%;
-            // border: 1px dotted green;
+            // border: 2px dotted green !important;
         }
 
+        .head-container {
+            .sit-data-label-component {
+                flex-grow: 0;
+
+                .sit-data-label-value {
+                    margin: 0;
+                }
+            }
+        }
     
         .sit-simple-container-component {
             padding: 0;

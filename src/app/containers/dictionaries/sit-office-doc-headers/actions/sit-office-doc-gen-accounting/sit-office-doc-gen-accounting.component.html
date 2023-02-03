@@ -1,0 +1,9 @@
+<sit-proc-params [(actionExecuteData)]="actionExecuteData" ngClass="flex-container-column">
+  <sit-data-set-container ident="sitOfficeDocGenAccounting" ngClass="flex-container-column sit-proc-params-content" style="width: 200px;">
+      <sit-data-input #sitControl field="AccountingDocIdent" label="Rodzaj dowodu" appearance="outline" style="width: 100%;"
+      [lookupDisplayFields] = "['AccountingDocIdent', 'AccountingDocName']"></sit-data-input>
+      <sit-data-input #sitControl field="AccountingDate" label="Data dowodu" type="date" appearance="outline" style="width: 100%;"></sit-data-input>
+      <sit-data-input #sitControl field="AccountingHeaderDesc" label="Opis dowodu" appearance="outline" style="width: 100%;"></sit-data-input>
+      <sit-data-input #sitControl field="AccountingSchemaIdent" label="Schemat księgowania" appearance="outline" style="width: 100%;"></sit-data-input>
+  </sit-data-set-container>
+</sit-proc-params>

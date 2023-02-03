@@ -248,9 +248,10 @@ import { SitCashFlowComponent } from '@app/containers/dictionaries/sit-cash-flow
 import { SitTransactionTypesComponent } from '@app/containers/dictionaries/sit-transaction-types/sit-transaction-types.component';
 import { SitTransactionTypesEditComponent } from '@app/containers/dictionaries/sit-transaction-types/actions/sit-transaction-types-edit/sit-transaction-types-edit.component';
 import { SitGeneralLedgerComponent } from '@app/containers/dictionaries/sit-general-ledger/sit-general-ledger.component';
-import { SitOfficeDocAccountingEditComponent } from '@app/containers/dictionaries/sit-office-doc-headers/actions/sit-office-doc-accounting-edit/sit-office-doc-accounting-edit.component';
+import { SitAccountingEditComponent } from '@app/containers/dictionaries/sit-office-doc-headers/actions/sit-accounting-edit/sit-accounting-edit.component';
 import { SitFiscalYearsComponent } from '@app/containers/dictionaries/sit-fiscal-years/sit-fiscal-years.component';
 import { SitFiscalYearsEditComponent } from '@app/containers/dictionaries/sit-fiscal-years/actions/sit-fiscal-years-edit/sit-fiscal-years-edit.component';
+import { SitOfficeDocGenAccountingComponent } from '@app/containers/dictionaries/sit-office-doc-headers/actions/sit-office-doc-gen-accounting/sit-office-doc-gen-accounting.component';
 
 
 
@@ -508,9 +509,10 @@ export class FactoryService {
         sitTransactionTypes: SitTransactionTypesComponent,
         sitTransactionTypesEdit: SitTransactionTypesEditComponent,
         sitGeneralLedger: SitGeneralLedgerComponent,
-        sitOfficeDocAccountingEdit: SitOfficeDocAccountingEditComponent,
+        sitAccountingEdit: SitAccountingEditComponent,
         sitFiscalYears: SitFiscalYearsComponent,
         sitFiscalYearsEdit: SitFiscalYearsEditComponent,
+        sitOfficeDocGenAccounting: SitOfficeDocGenAccountingComponent,
     };
 
     public GetFactory(ident: string) {

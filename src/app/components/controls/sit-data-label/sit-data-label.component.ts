@@ -38,11 +38,16 @@ export class SitDataLabelComponent extends SitDataBaseComponent {
   }
 
   public setValue(value: any) {
-    this.value = (
-      this.type !== 'number' 
-      ? value 
-      : formatNumber(value, this.locale, '1.2-2').replace(/[,]/g,' ') 
-    );
+
+    if (this.type =='number')  { this.value = formatNumber(value, this.locale, '1.2-2').replace(/[,]/g,' ') }
+    else if (this.type =='number4')  { this.value = formatNumber(value, this.locale, '1.4-4').replace(/[,]/g,' ') }
+    else { this.value = value }
+    
+    //this.value = (
+    // this.type !== 'number' 
+    // ? value 
+    // : formatNumber(value, this.locale, '1.2-2').replace(/[,]/g,' ') 
+    //);
   }
 
   public getValue(): string {
