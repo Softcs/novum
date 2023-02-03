@@ -80,6 +80,10 @@
                         <sit-data-label #sitControl field="GrossCurrency" label="Brutto" type="number"></sit-data-label>
                         <sit-data-label #sitControl field="CurrencyIdent" label=""></sit-data-label>
                       </div>
+                      <div ngClass="flex-container-row" [class.hide]="hideCurrency()">
+                        <sit-data-label #sitControl field="ExRate" label="Kurs" type="number4"></sit-data-label>
+                        <sit-data-label #sitControl field="ExRateDate" label=""></sit-data-label>
+                      </div>
                     </sit-simple-container>
   
                     <sit-simple-container 
@@ -138,19 +142,6 @@
                 </sit-data-set-container>
               </mat-tab>
 
-              <!-- <mat-tab label="Księgowanie">
-                <sit-data-set-container ident="sitOfficeDocAccounting" showActionsToolbar="true" ngClass="flex-container-column">
-                  <ag-grid-angular
-                      #sitSetDataSource
-                      class="ag-theme-balham"
-                    >
-                  </ag-grid-angular>
-                  <div>
-                    <sit-data-label #sitControl field="AccountDesc" label="Konto"></sit-data-label>
-                  </div>
-                </sit-data-set-container>
-              </mat-tab> -->
-
               <mat-tab label="Załączniki">
                 <sit-data-set-container  ident="sitAttachments" showActionsToolbar="true" fxFlex fxLayout="column">
                   <div class="data-table" fxFlex>
@@ -178,10 +169,66 @@
         </as-split>
       </as-split-area>
       <as-split-area [size]="45" ngClass="flex-container-column">
-        <sit-data-set-container  ident="sitAttachments" ngClass="flex-container-column">
-          <sit-pdf-viewer #sitControl reportType="att" field="FileName" ngClass="from-sit-office-doc-headers-component-html">
-          </sit-pdf-viewer>
-        </sit-data-set-container>
+       
+        <mat-tab-group id="tab-group" animationDuration="0ms">
+          <mat-tab label="Skan">
+            <sit-data-set-container  ident="sitAttachments" ngClass="flex-container-column">
+              <sit-pdf-viewer #sitControl reportType="att" field="FileName" ngClass="from-sit-office-doc-headers-component-html">
+              </sit-pdf-viewer>
+            </sit-data-set-container>
+          </mat-tab>
+          <mat-tab label="Księgowanie">
+            <sit-data-set-container ident="sitAccountingHeaders4OfficeDoc" ngClass="flex-container-column sit-data-set-container-data">
+
+              <sit-simple-container ngClass="flex-container-row head-container">
+                <sit-data-label #sitControl field="AccountingDocIdent" type="header"></sit-data-label>
+                &nbsp;
+                <sit-data-label #sitControl field="AccountingDocName" type="header" ></sit-data-label>
+              </sit-simple-container>
+
+              <sit-simple-container ngClass="flex-container-column">
+                <sit-data-label #sitControl field="AccountingDate" label="Data księgowania" ngClass="fill-if-empty"></sit-data-label>
+                <sit-data-label #sitControl field="AccountingHeaderDesc" label="Opis" ngClass="fill-if-empty"></sit-data-label>
+              </sit-simple-container>
+              
+            </sit-data-set-container>
+
+            <as-split #sitSpliter direction="vertical">
+  
+              <as-split-area [size]="50">
+
+                <sit-data-set-container ident="sitAccounting" showActionsToolbar="true" ngClass="flex-container-column">
+                  <ag-grid-angular
+                      #sitSetDataSource
+                      class="ag-theme-balham"
+                    >
+                  </ag-grid-angular>
+                  <div>
+                    <sit-data-label #sitControl field="AccountDesc" label="Konto"></sit-data-label>
+                  </div>
+                </sit-data-set-container>
+  
+              </as-split-area>
+
+              <as-split-area [size]="50">
+
+                <sit-data-set-container ident="sitAccountingDim" showActionsToolbar="true" ngClass="flex-container-column">
+                  <ag-grid-angular
+                      #sitSetDataSource
+                      class="ag-theme-balham"
+                    >
+                  </ag-grid-angular>
+                  <div>
+                    <sit-data-label #sitControl field="AccountDesc" label="Konto"></sit-data-label>
+                  </div>
+                </sit-data-set-container>
+  
+              </as-split-area>
+
+            </as-split>
+          </mat-tab>
+        </mat-tab-group>
+
       </as-split-area>
     </as-split>
   </div>
