@@ -1,0 +1,20 @@
+.sit-data-textarea-component {
+    
+    textarea {
+        border-color: rgba(0,0,0, .3);
+        border-width: 1px;
+
+        &:hover {
+            border-width: 2px;
+            border-color: #073763;
+        }
+
+
+        &:focus-visible {
+            outline-style: solid;
+            outline-width: 2px;
+            outline-offset: -2px;
+            outline-color: #073763;
+        }
+    }
+}

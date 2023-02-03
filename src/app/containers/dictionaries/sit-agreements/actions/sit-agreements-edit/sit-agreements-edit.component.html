@@ -26,7 +26,8 @@
         <div fxLayout="row">
           <sit-data-input #sitControl type="text" field="AgreementNumberExt01" label="Numer zewnętrzny" [showRefresh]=false appearance="outline" fxFlex></sit-data-input>
         </div>      
-        <sit-data-textarea type="textarea" #sitControl field="AgreementDesc" label="Opis" appearance="outline" rows="10" cols="80" style="padding-left: 5px;" fxFlex></sit-data-textarea>
+        <!-- <sit-data-textarea type="textarea" #sitControl field="AgreementDesc" label="Opis" appearance="outline" rows="10" cols="80" style="padding-left: 5px;" fxFlex></sit-data-textarea> -->
+        <sit-data-textarea type="textarea" #sitControl field="AgreementDesc" label="Opis" rows="10" fxFlex></sit-data-textarea>
       </div>
       <div fxLayout="column" fxFlex>
         <sit-pdf-viewer #sitControl reportType="att" field="FileName" ngClass="from-sit-office-doc-headers-component-html">

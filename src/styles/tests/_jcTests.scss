@@ -7,6 +7,13 @@ body {
   flex-direction: column;
 }
 
+.app-component-container, 
+.container-main {
+  max-height: 100%;
+  // border: 3px dotted blue;
+}
+
+
 .mat-drawer-container {
   background-color: transparent;
 }
@@ -39,15 +46,19 @@ ag-grid-angular,
 {
   display: flex;
   flex-direction: column;
-  flex: 1 1 auto;
-
+  // flex: 1 1 auto;
+  flex: 1 1 0.01px;
+  max-height: 100%;
 }
 
 
 .flex-container-column,
 .flex-container-row {
   display: flex;
-  flex: 1 1 auto;
+  // flex: 1 1 auto;
+  flex: 1 1 0.01px;
+  // border: 3px solid green;
+  max-height: 100%;
 }
 
 .flex-container-column {
@@ -66,6 +77,7 @@ sit-actions-toolbar,
   flex-direction: column;
   //flex: 1 1 auto;
   flex-basis: auto;
+  // border: #600 dashed 3px;
 }
 
 // sit-actions-toolbar,
@@ -114,7 +126,9 @@ mat-toolbar-multiple-rows,
   .mat-tab-body-wrapper {
     display: flex;
     flex-direction: column;
-    flex: 1 1 auto;
+    // flex: 1 1 auto;
+    flex: 1 1 0;
+    // border: 6px dotted #f60;
 
     .mat-tab-body {
       // border: #06F 16px dashed;

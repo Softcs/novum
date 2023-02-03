@@ -1,6 +1,7 @@
 .sit-simple-container-component {
     flex: 0 2 fit-content;
     height: fit-content;
+    overflow: auto;
 
     &.white-colored {
         // border: 1px solid;
