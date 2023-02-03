@@ -1,48 +1,57 @@
 $backgroud-color: #073763;
-.sit-proc-expander {
-    position: absolute;
-    // margin-top: 55px;
-    z-index: 100;
 
-    // right: 0;
-    // left: 0;
-    // top: 0;
-    // bottom: 0;
+.sit-proc-expander-comp {
 
-    .expander-items-container {
-        .item {
-            display: grid;
-            grid-template-columns: 30px 1fr;
-
-            .header{
-                    font-size: 0.7rem;
-                    text-transform: uppercase;
-                    letter-spacing: 3px;
-                    background: #073763;
-                    text-align: center;
-                    color: white;
-                    grid-column: 1;
-                    margin-bottom: 20px;
-                    height: 200px;
-                    cursor: pointer;
-                    position: relative;
-                .caption {
-                    transform: rotate(180deg);
-                    height: 200px;
-                    width: 30px;
-                    line-height: 30px;
-                    writing-mode: vertical-rl;
+    .sit-proc-expander {
+        position: absolute;
+        // margin-top: 55px;
+        z-index: 100;
+        // border: 10px solid red;
+    
+        // right: 0;
+        // left: 0;
+        // top: 0;
+        // bottom: 0;
+    
+        &.expander-items-container {
+            .item {
+                display: grid;
+                grid-template-columns: 30px 1fr;
+    
+                .header{
+                        font-size: 0.7rem;
+                        text-transform: uppercase;
+                        letter-spacing: 3px;
+                        background: #073763;
+                        text-align: center;
+                        color: white;
+                        grid-column: 1;
+                        margin-bottom: 20px;
+                        height: 200px;
+                        cursor: pointer;
+                        position: relative;
+                    .caption {
+                        transform: rotate(180deg);
+                        height: 200px;
+                        width: 30px;
+                        line-height: 30px;
+                        writing-mode: vertical-rl;
+                    }
+                }
+                .body {
+                    border: 1px solid $backgroud-color;
+                    margin-bottom: 0px;
+                    margin-right: 0px;
+                    // box-shadow: 2px 2px 25px -9px rgba(0,0,0,0.73);
+    
                 }
             }
-            .body {
-                border: 1px solid $backgroud-color;
-                margin-bottom: 0px;
-                margin-right: 0px;
-                // box-shadow: 2px 2px 25px -9px rgba(0,0,0,0.73);
-
-            }
         }
+    
     }
 
 }
+
+
+
 

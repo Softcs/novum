@@ -10,7 +10,7 @@ import { ActionExecuteData } from '@app/_models/actionExecuteData';
   templateUrl: './sit-proc-expander.component.html',
   styleUrls: ['./sit-proc-expander.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  host: { 'class': 'sit-proc-expander' }
+  host: { 'class': 'sit-proc-expander-comp' }
 })
 export class SitProcExpanderComponent implements OnInit {
   @Input()
