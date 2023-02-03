@@ -15,10 +15,56 @@ $border-color: #999;
       font-size: .8rem;
 
       &:focus-visible,
-      &:focus {
-        border-color: #666;
+      &:focus,
+      &:hover {
+        // border-color: #666;
+        border: 1px dotted $border-color;
         outline: none;
       }
+    }
+  }
+
+  .agreement-details-container {
+
+    .mat-tab-body-wrapper {
+
+      .agreement-details-info {
+        max-height: 100%;
+        // border: 3px solid brown;
+
+        .agr-det-inf-col1 {
+          max-width: 40%;
+          min-width: 40%;
+          flex: auto;
+        }
+        .agr-det-inf-col2 {
+          max-width: 60%;
+          flex: auto;
+
+          & > *:nth-child(1) {
+            max-height: 50%;
+            min-height: 50%;
+
+            .sit-data-label-component {
+              margin-bottom: 0.5em;
+              overflow-y: auto;
+            }
+          }
+
+          & > *:nth-child(2) {
+            // max-height: calc(50% - 0.5em);
+            max-height: 50%;
+            min-height: 50%;
+          }
+
+          // .agreement-desc-cont {}
+        }
+
+
+
+      }
+
+
     }
   }
   
