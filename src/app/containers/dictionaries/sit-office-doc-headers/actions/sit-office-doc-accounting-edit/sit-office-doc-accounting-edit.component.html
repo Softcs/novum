@@ -1,0 +1,30 @@
+<sit-proc-params [(actionExecuteData)]="actionExecuteData">
+
+  <sit-data-set-container ident="sitOfficeDocAccountingEdit">
+    <div class="sit-proc-params-content" fxLayout="column" style="width: 500px;">
+      <div fxLayout="row">
+        <sit-data-input #sitControl type="text" field="Account" label="Konto" appearance="outline" style="width: 100%;"
+          [lookupDisplayFields] = "['Account', 'AccountDesc']"
+        ></sit-data-input>
+      </div>
+      <sit-data-label #sitControl type="text" field="AccountDesc" label="" style="width: 95%; font-size: 13px; margin: 0px 0px 10px 5px;"></sit-data-label>
+
+      <div fxLayout="row" fxLayoutAlign="space-between center" style="width: 100%;">
+        <sit-data-input #sitControl type="number" field="CAmountCurrency" label="Kwota Wn w walucie" appearance="outline" style="width: 50%;"></sit-data-input>
+        <sit-data-input #sitControl type="number" field="DAmountCurrency" label="Kwota Ma w walucie" appearance="outline" style="width: 50%;"></sit-data-input>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="space-between center" style="width: 100%;">
+        <sit-data-input #sitControl field="CurrencyIdent" label="Waluuta" appearance="outline" style="width: 50%;"></sit-data-input>
+        <sit-data-input #sitControl type="number" field="ExRate" label="Kurs" appearance="outline" style="width: 50%;"></sit-data-input>
+      </div>
+ 
+      <div fxLayout="row" fxLayoutAlign="space-between center" style="width: 100%;">
+        <sit-data-input #sitControl type="number" field="CAmount" label="Kwota Wn" appearance="outline" style="width: 50%;"></sit-data-input>
+        <sit-data-input #sitControl type="number" field="DAmount" label="Kwota Ma" appearance="outline" style="width: 50%;"></sit-data-input>
+      </div>
+      <sit-data-input #sitControl type="text" field="DocumentNumber" label="Numer dokumentu" appearance="outline"></sit-data-input>
+      <sit-data-input #sitControl type="text" field="PosDesc" label="Opis" appearance="outline"></sit-data-input>
+    </div>
+  </sit-data-set-container>
+
+</sit-proc-params>
