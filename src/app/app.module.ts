@@ -356,6 +356,7 @@ import { SitAccountingEditComponent } from './containers/dictionaries/sit-office
 import { SitFiscalYearsComponent } from './containers/dictionaries/sit-fiscal-years/sit-fiscal-years.component';
 import { SitFiscalYearsEditComponent } from './containers/dictionaries/sit-fiscal-years/actions/sit-fiscal-years-edit/sit-fiscal-years-edit.component';
 import { SitOfficeDocGenAccountingComponent } from './containers/dictionaries/sit-office-doc-headers/actions/sit-office-doc-gen-accounting/sit-office-doc-gen-accounting.component';
+import { SitAggrB2bCustomersSalesDailyComponent } from './containers/dictionaries/sit-aggr-b2b-customers-sales-daily/sit-aggr-b2b-customers-sales-daily.component';
 
 @NgModule({
     imports: [
@@ -696,7 +697,8 @@ import { SitOfficeDocGenAccountingComponent } from './containers/dictionaries/si
         SitAccountingEditComponent,
         SitFiscalYearsComponent,
         SitFiscalYearsEditComponent,
-        SitOfficeDocGenAccountingComponent
+        SitOfficeDocGenAccountingComponent,
+        SitAggrB2bCustomersSalesDailyComponent,
 
     ],
     providers: [

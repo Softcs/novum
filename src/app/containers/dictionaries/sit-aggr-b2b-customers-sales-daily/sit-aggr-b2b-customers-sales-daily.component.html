@@ -1,0 +1,75 @@
+<sit-dict-container ident="sitAggrB2bCustomersSalesDaily" #sitDictcontainer fxFill>
+  <mat-tab-group id="tab-group" animationDuration="0ms">
+    <mat-tab label="Wykres">
+      <div fxLayout="column" fxFill class="content"> 
+        <sit-data-set-container ident="sitAggrB2BCustomersSalesDailyChartFilter" >
+          <div class="sit-filter-bar" fxLayout="row">
+            <sit-data-input #sitControl field="chartSearchCustName" label="Kontrahent" appearance="outline" style="width: 200px;" [lookupDisplayFields] = "['CustName']"></sit-data-input>
+            <sit-data-input #sitControl field="chartSearchProductName" label="Produkt" appearance="outline" style="width: 200px;" [lookupDisplayFields] = "['ProductName']"></sit-data-input>
+            <sit-data-input #sitControl field="chartSearchGroupName" label="Grupa produktów" appearance="outline" style="width: 200px;" [lookupDisplayFields] = "['GroupName']" ></sit-data-input>
+            <sit-data-input #sitControl field="chartSearchSaleDays" label="Liczba dni" appearance="outline" style="width: 100px;" [showRefreshButton]="true"></sit-data-input>
+          </div>
+        </sit-data-set-container>
+        <sit-data-set-container ident="sitAggrB2BCustomersSalesDailyChart" [showActionsToolbar]="false" fxLayout="column" fxFlex>
+          <div class="data-table" fxFlex>
+            <ag-grid-angular
+              #sitSetDataSource
+              style="width: 100%; height: 100%;"
+              class="ag-theme-balham"
+            >
+            </ag-grid-angular>
+          </div>
+        </sit-data-set-container>
+      </div>
+    </mat-tab>
+    <mat-tab label="Topki">
+      <div class="content" fxFill fxLayout="column">
+        <sit-data-set-container ident="sitAggrB2BCustomersSalesDailyTopsFilter" fxLayout="row">
+          <div class="sit-filter-bar" fxLayout="row">
+            <sit-data-radio #sitControl field="topsSearchPeriodType" type="row" label="okres"
+              [buttons]="[{'caption':'tydzień','value': '1', 'checked':true},{'caption':'miesiąc','value': '2'}]"></sit-data-radio>
+            <sit-data-input #sitControl field="topsSearchPeriodQuantity" label="Liczba okresów" appearance="outline" style="width: 100px;"></sit-data-input>
+            <sit-data-input #sitControl field="topsSearchDateStart" type="date" label="Koniec okresu" appearance="outline" style="width: 195px;" [showRefreshButton]="true" ></sit-data-input>
+          </div>
+        </sit-data-set-container>
+        <sit-data-set-container ident="sitAggrB2BCustomersSalesDailyTops" [showActionsToolbar]="true" fxFlex fxLayout="column">
+          <div class="data-table" fxFlex>
+            <ag-grid-angular 
+              #sitSetDataSource 
+              style="width: 100%; height: 100%;" 
+              class="ag-theme-balham"
+              [pivotMode]="true"
+              [sideBar]="false"
+              [suppressAggFuncInHeader]="true"
+              [autoGroupColumnDef]="autoGroupColumnDef"
+            >
+            </ag-grid-angular>
+          </div>
+        </sit-data-set-container>
+      </div>
+    </mat-tab>
+    <mat-tab label="Tabela">
+      <div fxLayout="column" fxFill class="content"> 
+        <sit-data-set-container ident="sitAggrB2BCustomersSalesDailyFilter" >
+          <div class="sit-filter-bar" fxLayout="row">
+            <sit-data-input #sitControl field="tableSearch" label="Filtruj" appearance="outline" style="width: 300px;"></sit-data-input>
+            <sit-data-input #sitControl field="tableSearchDateFrom" type="date" label="Od" appearance="outline" style="width: 130px;"></sit-data-input>
+            <sit-data-input #sitControl field="tableSearchDateTo" type="date" label="Do" appearance="outline" style="width: 195px;" showRefreshButton="true" ></sit-data-input>
+          </div>
+        </sit-data-set-container>
+        <sit-data-set-container ident="sitAggrB2BCustomersSalesDaily" [showActionsToolbar]="true" fxLayout="column" fxFlex>
+          <div class="data-table" fxFlex>
+            <ag-grid-angular
+              #sitSetDataSource
+              style="width: 100%; height: 100%;"
+              class="ag-theme-balham"
+            >
+            </ag-grid-angular>
+          </div>
+        </sit-data-set-container>
+      </div>
+    </mat-tab>
+  </mat-tab-group>  
+</sit-dict-container>
+
+  

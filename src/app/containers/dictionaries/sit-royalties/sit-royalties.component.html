@@ -16,7 +16,10 @@
                 </div>
                 </div>
                 <div>
-                  <button mat-stroked-button color="primary" (click)="getPrintout()"><mat-icon>print</mat-icon> Drukuj rozliczenie</button>
+                  <button mat-stroked-button color="primary" (click)="getPrintout()" matTooltip="Drukuj rozliczenie w wersji polskiej">
+                    <mat-icon>print</mat-icon> POL</button>
+                  <button mat-stroked-button color="primary" (click)="getPrintoutEng()" matTooltip="Drukuj rozliczenie w wersji angielskiej">
+                    <mat-icon>print</mat-icon> ENG</button>
                 </div>
               </div>
             </sit-data-set-container>
@@ -51,9 +54,11 @@
         <div fxFill fxLayout="column">        
           <sit-data-set-container ident="sitRoyaltiesPublicationsToCalcInPeriodFilter" fxLayout="row">
             <div class="sit-filter-bar" fxLayout="row">
-              <sit-data-input #sitControl field="Year" type="number" label="Rok" appearance="outline" style="width: 80px;"></sit-data-input>
-              <sit-data-input #sitControl field="Month" type="number" label="Miesiąc" appearance="outline" style="width: 60px;"></sit-data-input>
-              <sit-data-input #sitControl field="PublicationsToCalcSearch" label="wyszukaj" appearance="outline" style="width: 300px;" [showRefreshButton]="true"></sit-data-input>
+              <sit-data-input #sitControl field="searchPeriodYear" type="number" label="Rok" appearance="outline" style="width: 80px;"></sit-data-input>
+              <sit-data-input #sitControl field="searchPeriodMonth" type="number" label="Miesiąc" appearance="outline" style="width: 60px;"></sit-data-input>
+              <sit-data-input #sitControl field="searchPeriodPublicationsToCalc" label="Publikacja" appearance="outline" style="width: 250px;"></sit-data-input>
+              <sit-data-input #sitControl field="searchPeriodBenef" label="Beneficjent" appearance="outline" style="width: 250px;"></sit-data-input>
+              <sit-data-input #sitControl field="searchPeriodAgent" label="Agencja" appearance="outline" style="width: 300px;" [showRefreshButton]="true"></sit-data-input>
             </div>
           </sit-data-set-container>
           <sit-data-set-container ident="sitRoyaltiesPublicationsToCalcInPeriod" [showActionsToolbar]="true" fxLayout="column" fxFlex>
