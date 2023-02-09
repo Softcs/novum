@@ -178,6 +178,7 @@
             </sit-data-set-container>
           </mat-tab>
           <mat-tab label="Księgowanie">
+
             <sit-data-set-container ident="sitAccountingHeaders4OfficeDoc" ngClass="flex-container-column sit-data-set-container-ksiegowanie">
 
               <sit-simple-container ngClass="flex-container-row head-container">
@@ -189,44 +190,9 @@
               <sit-simple-container ngClass="flex-container-column">
                 <sit-data-label #sitControl field="AccountingDate" label="Data" ngClass="fill-if-empty"></sit-data-label>
                 <sit-data-label #sitControl field="AccountingHeaderDesc" label="Opis" ngClass="fill-if-empty"></sit-data-label>
-                <sit-data-label #sitControl field="AccountingSchemaIdent" label="Księgowanie" ngClass="fill-if-empty"></sit-data-label>
+                <sit-data-label #sitControl field="AccountingSchemaIdent" label="Schemat" ngClass="fill-if-empty"></sit-data-label>
               </sit-simple-container>
-
-
-
-
-<!-- 
-              <sit-simple-container ngClass="flex-container-column">
-                <sit-data-label #sitControl field="AccountingDate" label="Data" ngClass="fill-if-empty"></sit-data-label>
-                <sit-data-label #sitControl field="AccountingHeaderDesc" label="Opis" ngClass="fill-if-empty"></sit-data-label>
-                <sit-data-label #sitControl field="AccountingSchemaIdent" label="Księgowanie" ngClass="fill-if-empty"></sit-data-label>
-              </sit-simple-container>
-
-              <sit-simple-container ngClass="flex-container-column">
-                <sit-data-label #sitControl field="AccountingDate" label="Data" ngClass="fill-if-empty"></sit-data-label>
-                <sit-data-label #sitControl field="AccountingHeaderDesc" label="Opis" ngClass="fill-if-empty"></sit-data-label>
-                <sit-data-label #sitControl field="AccountingSchemaIdent" label="Księgowanie" ngClass="fill-if-empty"></sit-data-label>
-              </sit-simple-container>
-
-              <sit-simple-container ngClass="flex-container-column">
-                <sit-data-label #sitControl field="AccountingDate" label="Data" ngClass="fill-if-empty"></sit-data-label>
-                <sit-data-label #sitControl field="AccountingHeaderDesc" label="Opis" ngClass="fill-if-empty"></sit-data-label>
-                <sit-data-label #sitControl field="AccountingSchemaIdent" label="Księgowanie" ngClass="fill-if-empty"></sit-data-label>
-              </sit-simple-container>
-
-              <sit-simple-container ngClass="flex-container-column">
-                <sit-data-label #sitControl field="AccountingDate" label="Data" ngClass="fill-if-empty"></sit-data-label>
-                <sit-data-label #sitControl field="AccountingHeaderDesc" label="Opis" ngClass="fill-if-empty"></sit-data-label>
-                <sit-data-label #sitControl field="AccountingSchemaIdent" label="Księgowanie" ngClass="fill-if-empty"></sit-data-label>
-              </sit-simple-container>
-
-              <sit-simple-container ngClass="flex-container-column">
-                <sit-data-label #sitControl field="AccountingDate" label="Data" ngClass="fill-if-empty"></sit-data-label>
-                <sit-data-label #sitControl field="AccountingHeaderDesc" label="Opis" ngClass="fill-if-empty"></sit-data-label>
-                <sit-data-label #sitControl field="AccountingSchemaIdent" label="Księgowanie" ngClass="fill-if-empty"></sit-data-label>
-              </sit-simple-container> -->
-
-              
+         
             </sit-data-set-container>
 
             <as-split #sitSpliter direction="vertical">
@@ -254,9 +220,6 @@
                       class="ag-theme-balham"
                     >
                   </ag-grid-angular>
-                  <div>
-                    <sit-data-label #sitControl field="AccountDesc" label="Konto"></sit-data-label>
-                  </div>
                 </sit-data-set-container>
   
               </as-split-area>
