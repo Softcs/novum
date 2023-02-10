@@ -359,6 +359,8 @@ import { SitOfficeDocGenAccountingComponent } from './containers/dictionaries/si
 import { SitAggrB2bCustomersSalesDailyComponent } from './containers/dictionaries/sit-aggr-b2b-customers-sales-daily/sit-aggr-b2b-customers-sales-daily.component';
 import { SitAccountingDocTypesComponent } from './containers/dictionaries/sit-accounting-doc-types/sit-accounting-doc-types.component';
 import { SitAccountingDocTypesEditComponent } from './containers/dictionaries/sit-accounting-doc-types/actions/sit-accounting-doc-types-edit/sit-accounting-doc-types-edit.component';
+import { SitAccountingSchemasComponent } from './containers/dictionaries/sit-accounting-schemas/sit-accounting-schemas.component';
+import { SitAccountingSchemasEditComponent } from './containers/dictionaries/sit-accounting-schemas/actions/sit-accounting-schemas-edit/sit-accounting-schemas-edit.component';
 
 @NgModule({
     imports: [
@@ -703,6 +705,8 @@ import { SitAccountingDocTypesEditComponent } from './containers/dictionaries/si
         SitAggrB2bCustomersSalesDailyComponent,
         SitAccountingDocTypesComponent,
         SitAccountingDocTypesEditComponent,
+        SitAccountingSchemasComponent,
+        SitAccountingSchemasEditComponent,
 
     ],
     providers: [

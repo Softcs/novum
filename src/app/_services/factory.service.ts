@@ -255,6 +255,8 @@ import { SitOfficeDocGenAccountingComponent } from '@app/containers/dictionaries
 import { SitAggrB2bCustomersSalesDailyComponent } from '@app/containers/dictionaries/sit-aggr-b2b-customers-sales-daily/sit-aggr-b2b-customers-sales-daily.component';
 import { SitAccountingDocTypesComponent } from '@app/containers/dictionaries/sit-accounting-doc-types/sit-accounting-doc-types.component';
 import { SitAccountingDocTypesEditComponent } from '@app/containers/dictionaries/sit-accounting-doc-types/actions/sit-accounting-doc-types-edit/sit-accounting-doc-types-edit.component';
+import { SitAccountingSchemasComponent } from '@app/containers/dictionaries/sit-accounting-schemas/sit-accounting-schemas.component';
+import { SitAccountingSchemasEditComponent } from '@app/containers/dictionaries/sit-accounting-schemas/actions/sit-accounting-schemas-edit/sit-accounting-schemas-edit.component';
 
 
 @Injectable({ providedIn: 'root' })
@@ -517,7 +519,9 @@ export class FactoryService {
         sitOfficeDocGenAccounting: SitOfficeDocGenAccountingComponent,
         sitAggrB2bCustomersSalesDaily: SitAggrB2bCustomersSalesDailyComponent,
         sitAccountingDocTypes: SitAccountingDocTypesComponent,
-        sitAccountingDocTypesEdit: SitAccountingDocTypesEditComponent
+        sitAccountingDocTypesEdit: SitAccountingDocTypesEditComponent,
+        sitAccountingSchemas: SitAccountingSchemasComponent,
+        sitAccountingSchemasEdit: SitAccountingSchemasEditComponent,
     };
 
     public GetFactory(ident: string) {
