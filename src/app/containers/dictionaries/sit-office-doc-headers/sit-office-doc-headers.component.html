@@ -80,9 +80,9 @@
                         <sit-data-label #sitControl field="GrossCurrency" label="Brutto" type="number"></sit-data-label>
                         <sit-data-label #sitControl field="CurrencyIdent" label=""></sit-data-label>
                       </div>
-                      <div ngClass="flex-container-row" [class.hide]="hideCurrency()">
-                        <sit-data-label #sitControl field="ExRate" label="Kurs" type="number4"></sit-data-label>
-                        <sit-data-label #sitControl field="ExRateDate" label=""></sit-data-label>
+                      <div ngClass="flex-container-row">
+                        <sit-data-label #sitControl field="ExRate" label="Kurs" type="number4" [class.hidden]="hideCurrency()"></sit-data-label>
+                        <sit-data-label #sitControl field="ExRateDate" label="" [class.hidden]="hideCurrency()"></sit-data-label>
                       </div>
                     </sit-simple-container>
   
