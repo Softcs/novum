@@ -325,10 +325,7 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
 
   hideCurrency(){
     if (!this.dictContainer?.activeRow('sitOfficeDocHeaders')) { return }
-    else {
-      console.log(this.dictContainer?.activeRow('sitOfficeDocHeaders').IsCurrency)
-      return(this.dictContainer?.activeRow('sitOfficeDocHeaders').IsCurrency == 1 ? false : true);
-    }
+    else return(this.dictContainer?.activeRow('sitOfficeDocHeaders').IsCurrency == 1 ? false : true);
   }
 
   hideQRCode(){
