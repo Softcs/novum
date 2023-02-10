@@ -253,6 +253,8 @@ import { SitFiscalYearsComponent } from '@app/containers/dictionaries/sit-fiscal
 import { SitFiscalYearsEditComponent } from '@app/containers/dictionaries/sit-fiscal-years/actions/sit-fiscal-years-edit/sit-fiscal-years-edit.component';
 import { SitOfficeDocGenAccountingComponent } from '@app/containers/dictionaries/sit-office-doc-headers/actions/sit-office-doc-gen-accounting/sit-office-doc-gen-accounting.component';
 import { SitAggrB2bCustomersSalesDailyComponent } from '@app/containers/dictionaries/sit-aggr-b2b-customers-sales-daily/sit-aggr-b2b-customers-sales-daily.component';
+import { SitAccountingDocTypesComponent } from '@app/containers/dictionaries/sit-accounting-doc-types/sit-accounting-doc-types.component';
+import { SitAccountingDocTypesEditComponent } from '@app/containers/dictionaries/sit-accounting-doc-types/actions/sit-accounting-doc-types-edit/sit-accounting-doc-types-edit.component';
 
 
 @Injectable({ providedIn: 'root' })
@@ -514,6 +516,8 @@ export class FactoryService {
         sitFiscalYearsEdit: SitFiscalYearsEditComponent,
         sitOfficeDocGenAccounting: SitOfficeDocGenAccountingComponent,
         sitAggrB2bCustomersSalesDaily: SitAggrB2bCustomersSalesDailyComponent,
+        sitAccountingDocTypes: SitAccountingDocTypesComponent,
+        sitAccountingDocTypesEdit: SitAccountingDocTypesEditComponent
     };
 
     public GetFactory(ident: string) {
