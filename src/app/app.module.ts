@@ -361,6 +361,9 @@ import { SitAccountingDocTypesComponent } from './containers/dictionaries/sit-ac
 import { SitAccountingDocTypesEditComponent } from './containers/dictionaries/sit-accounting-doc-types/actions/sit-accounting-doc-types-edit/sit-accounting-doc-types-edit.component';
 import { SitAccountingSchemasComponent } from './containers/dictionaries/sit-accounting-schemas/sit-accounting-schemas.component';
 import { SitAccountingSchemasEditComponent } from './containers/dictionaries/sit-accounting-schemas/actions/sit-accounting-schemas-edit/sit-accounting-schemas-edit.component';
+import { SitVehiclesComponent } from './containers/dictionaries/sit-vehicles/sit-vehicles.component';
+import { SitVehiclesEditComponent } from './containers/dictionaries/sit-vehicles/actions/sit-vehicles-edit/sit-vehicles-edit.component';
+import { SitAccountingDimEditComponent } from './containers/dictionaries/sit-office-doc-headers/actions/sit-accounting-dim-edit/sit-accounting-dim-edit.component';
 
 @NgModule({
     imports: [
@@ -707,6 +710,9 @@ import { SitAccountingSchemasEditComponent } from './containers/dictionaries/sit
         SitAccountingDocTypesEditComponent,
         SitAccountingSchemasComponent,
         SitAccountingSchemasEditComponent,
+        SitVehiclesComponent,
+        SitVehiclesEditComponent,
+        SitAccountingDimEditComponent,
 
     ],
     providers: [

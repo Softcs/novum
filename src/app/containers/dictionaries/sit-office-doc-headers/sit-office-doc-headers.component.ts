@@ -19,6 +19,8 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
   dataSourceResponseWrapper: DataSetWrapper;
   gridApi: any;
   columnApi: any;
+  gridDimApi: any;
+  columnDimApi: any;
   elementType = NgxQrcodeElementTypes.URL;
   correctionLevel = NgxQrcodeErrorCorrectionLevels.HIGH;
   qrvalue = '';
@@ -173,6 +175,16 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
         },
         cellStyle: {'line-height': '1.2em', 'padding-top': '.3em'}
       },
+      { headerName: 'Pojazd', field: 'VehicleIdent', tooltipField: 'VehicleDesc', filter: 'agTextColumnFilter', floatingFilter: false, width: 130,
+        cellRenderer: function(params) {
+          var ident;
+          var desc;
+          ident = params.data["VehicleIdent"] ? params.data["VehicleIdent"] : '';
+          desc = params.data["VehicleDesc"] ? params.data["VehicleDesc"] : '';
+          return '<b>' + ident + '</b><br>' + desc
+        },
+        cellStyle: {'line-height': '1.2em', 'padding-top': '.3em'}
+      },
       { headerName: 'SV', headerTooltip: 'Stawka VAT (O - odliczane, N - nieodliczane, S - struktura)', field: 'VATRatesIdent', width: 50, suppressMenu: true, 
         cellRenderer: function(params) {
           var ident;
@@ -311,8 +323,29 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
           return '<b>' + ident + '</b><br>' + desc
         },
         cellStyle: {'line-height': '1.5em', 'padding-top': '.3em'}
-  
       },
+      { headerName: 'Rodzaj kosztu', field: 'CostTypeIdent', filter: 'agTextColumnFilter', tooltipField: 'ProductsTypeDesc',
+        cellRenderer: function(params) {
+          var ident;
+          var desc;
+          ident = params.data["CostTypeIdent"] ? params.data["CostTypeIdent"] : '';
+          desc = params.data["CostTypeDesc"] ? params.data["CostTypeDesc"] : '';
+          return '<b>' + ident + '</b><br>' + desc
+        },
+        cellStyle: {'line-height': '1.5em', 'padding-top': '.3em'}
+      },
+      { headerName: 'Pojazd', field: 'VehicleIdent', filter: 'agTextColumnFilter', tooltipField: 'ProductsTypeDesc',
+        cellRenderer: function(params) {
+          var ident;
+          var desc;
+          ident = params.data["VehicleIdent"] ? params.data["VehicleIdent"] : '';
+          desc = params.data["VehicleDesc"] ? params.data["VehicleDesc"] : '';
+          return '<b>' + ident + '</b><br>' + desc
+        },
+        cellStyle: {'line-height': '1.5em', 'padding-top': '.3em'}
+      },
+      { headerName: 'Opis', field: 'PosDesc', filter: 'agTextColumnFilter', width: 250 },
+
     ]
   };
 
@@ -343,6 +376,11 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
     this.columnApi=params.columnApi;
   }
 
+  onGridDimReady(params){
+    this.gridDimApi=params.api;
+    this.columnDimApi=params.columnApi;
+  }
+
   refreshAfter(dataSourceManager) {
     this.dataSourceResponseWrapper = dataSourceManager?.getDateSourceWrapper("sitOfficeDocHeaders");
 
@@ -356,34 +394,51 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
 
     if (!this.dataSourceResponseWrapper.activeRow['UseCompanyDepartments'] || this.dataSourceResponseWrapper.activeRow['UseCompanyDepartments'] == 0){ 
       this.columnApi.setColumnsVisible(['CompanyDepartmentIdent'],false);
+      this.columnDimApi.setColumnsVisible(['CompanyDepartmentIdent'],false);
     } else {
       this.columnApi.setColumnsVisible(['CompanyDepartmentIdent'],true);
+      this.columnDimApi.setColumnsVisible(['CompanyDepartmentIdent'],true);
     }
 
     if (!this.dataSourceResponseWrapper.activeRow['UseProjects'] || this.dataSourceResponseWrapper.activeRow['UseProjects'] == 0){ 
       this.columnApi.setColumnsVisible(['ProjectIdent'],false);
+      this.columnDimApi.setColumnsVisible(['ProjectIdent'],false);
     } else {
       this.columnApi.setColumnsVisible(['ProjectIdent'],true);
+      this.columnDimApi.setColumnsVisible(['ProjectIdent'],true);
     }
 
     if (!this.dataSourceResponseWrapper.activeRow['UseDistributionChannels'] || this.dataSourceResponseWrapper.activeRow['UseDistributionChannels'] == 0){ 
       this.columnApi.setColumnsVisible(['DistributionChannelIdent'],false);
+      this.columnDimApi.setColumnsVisible(['DistributionChannelIdent'],false);
     } else {
       this.columnApi.setColumnsVisible(['DistributionChannelIdent'],true);
+      this.columnDimApi.setColumnsVisible(['DistributionChannelIdent'],true);
     }
 
     if (!this.dataSourceResponseWrapper.activeRow['UseProductsTypes'] || this.dataSourceResponseWrapper.activeRow['UseProductsTypes'] == 0){ 
       this.columnApi.setColumnsVisible(['ProductsTypeIdent'],false);
+      this.columnDimApi.setColumnsVisible(['ProductsTypeIdent'],false);
     } else {
       this.columnApi.setColumnsVisible(['ProductsTypeIdent'],true);
+      this.columnDimApi.setColumnsVisible(['ProductsTypeIdent'],true);
     }
     
     if (!this.dataSourceResponseWrapper.activeRow['UseCostTypes'] || this.dataSourceResponseWrapper.activeRow['UseCostTypes'] == 0){ 
       this.columnApi.setColumnsVisible(['CostTypeIdent'],false);
+      this.columnDimApi.setColumnsVisible(['CostTypeIdent'],false);
     } else {
       this.columnApi.setColumnsVisible(['CostTypeIdent'],true);
+      this.columnDimApi.setColumnsVisible(['CostTypeIdent'],true);
     }
-        
+    
+    if (!this.dataSourceResponseWrapper.activeRow['UseVehicles'] || this.dataSourceResponseWrapper.activeRow['UseVehicles'] == 0){ 
+      this.columnApi.setColumnsVisible(['VehicleIdent'],false);
+      this.columnDimApi.setColumnsVisible(['VehicleIdent'],false);
+    } else {
+      this.columnApi.setColumnsVisible(['VehicleIdent'],true);
+      this.columnDimApi.setColumnsVisible(['VehicleIdent'],true);
+    }        
     return;
   }
 

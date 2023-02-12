@@ -1,5 +1,5 @@
 <sit-proc-params [(actionExecuteData)]="actionExecuteData" ngClass="flex-container-column">
-  <sit-data-set-container ident="sitOfficeDocDimensionsEdit" ngClass="flex-container-row sit-proc-params-content" style="width: 600px; height: 500px;">
+  <sit-data-set-container ident="sitOfficeDocDimensionsEdit" ngClass="flex-container-row sit-proc-params-content" style="width: 600px; height: 550px;">
     <div fxLayout="column" fxFill>
       <sit-data-label #sitControl field="PosId" label="Pozycja" style="flex: 0 0 0" ngClass="mb-05"></sit-data-label>
       <div fxLayout="row">
@@ -12,6 +12,7 @@
           <sit-data-input #sitControl [class.hidden]="!(this.activeRow?.UseDistributionChannels == 1)" field="DistributionChannelDesc4Lookup" label="Kanał dystrybucji" appearance="outline"></sit-data-input>
           <sit-data-input #sitControl [class.hidden]="!(this.activeRow?.UseProductsTypes == 1)" field="ProductsTypeDesc4Lookup" label="Typ produktu" appearance="outline"></sit-data-input>
           <sit-data-input #sitControl [class.hidden]="!(this.activeRow?.UseCostTypes == 1)" field="CostTypeDesc4Lookup" label="Rodzaj kosztu" appearance="outline"></sit-data-input>
+          <sit-data-input #sitControl [class.hidden]="!(this.activeRow?.UseVehicles == 1)" field="VehicleDesc4Lookup" label="Pojazd" appearance="outline"></sit-data-input>
         </div>
         <div fxFlex>
           <sit-data-input #sitControl field="VATRatesIdent" label="Stawka VAT" appearance="outline" [lookupDisplayFields] = "['VATRatesIdent', 'VATRatesDescription']"></sit-data-input>

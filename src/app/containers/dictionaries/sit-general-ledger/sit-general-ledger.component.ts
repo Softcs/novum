@@ -30,7 +30,9 @@ export class SitGeneralLedgerComponent extends SitDictBaseComponent {
       { headerName: 'Id', field: 'sitGeneralLedgerId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 50, defaultVisibility: false},
       { headerName: 'GUID', field: 'sitGeneralLedgerG', width: 100, defaultVisibility: false},
       { headerName: 'Opis', field: 'AccountDesc',width: 300, },
-      { headerName: 'Czynne', field: 'Active', sortable: true, filter: 'agTextColumnFilter', suppressMenu: true, width: 80,renderType: "checkbox", cellClass: "grid-cell-centered"  },
+      { headerName: 'C', headerTooltip: 'Czynne', field: 'Active', suppressMenu: true, width: 40,renderType: "checkbox", cellClass: "grid-cell-centered"  },
+      { headerName: 'B', headerTooltip: 'Bilansowe', field: 'IsBalance',  suppressMenu: true, width: 40,renderType: "checkbox", cellClass: "grid-cell-centered"  },
+      { headerName: 'R', headerTooltip: 'Rozrachunkowe', field: 'IsClearing', suppressMenu: true, width: 40,renderType: "checkbox", cellClass: "grid-cell-centered"  },
       { headerName: 'Kontrahent', field: 'CustName',width: 300, },
     ];
   };

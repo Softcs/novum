@@ -218,6 +218,7 @@
                   <ag-grid-angular
                       #sitSetDataSource
                       class="ag-theme-balham"
+                      (gridReady)="onGridDimReady($event)"
                     >
                   </ag-grid-angular>
                 </sit-data-set-container>
