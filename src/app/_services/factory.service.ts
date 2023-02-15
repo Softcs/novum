@@ -260,6 +260,7 @@ import { SitAccountingSchemasEditComponent } from '@app/containers/dictionaries/
 import { SitVehiclesComponent } from '@app/containers/dictionaries/sit-vehicles/sit-vehicles.component';
 import { SitVehiclesEditComponent } from '@app/containers/dictionaries/sit-vehicles/actions/sit-vehicles-edit/sit-vehicles-edit.component';
 import { SitAccountingDimEditComponent } from '@app/containers/dictionaries/sit-office-doc-headers/actions/sit-accounting-dim-edit/sit-accounting-dim-edit.component';
+import { SitAggrMonthSaleByAuthorComponent } from '@app/containers/dictionaries/sit-aggr-month-sale-by-author/sit-aggr-month-sale-by-author.component';
 
 
 @Injectable({ providedIn: 'root' })
@@ -528,6 +529,7 @@ export class FactoryService {
         sitVehicles: SitVehiclesComponent,
         sitVehiclesEdit: SitVehiclesEditComponent,
         sitAccountingDimEdit: SitAccountingDimEditComponent,
+        sitAggrMonthSaleByAuthor: SitAggrMonthSaleByAuthorComponent,
     };
 
     public GetFactory(ident: string) {
