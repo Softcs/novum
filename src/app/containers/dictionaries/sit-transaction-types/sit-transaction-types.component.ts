@@ -16,7 +16,10 @@ export class SitTransactionTypesComponent extends SitDictBaseComponent {
       { headerName: 'Id', field: 'sitTransactionTypesId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 50, defaultVisibility: false},
       { headerName: 'GUID', field: 'sitTransactionTypesG', width: 100, defaultVisibility: false},
       { headerName: 'Identyfikator', field: 'TransactionTypeIdent', filter: 'agTextColumnFilter', width: 150},
-      { headerName: 'Opis', field: 'TransactionTypeDesc',width: 300 },
+      { headerName: 'Opis', field: 'TransactionTypeDesc', tooltipField: 'TransactionTypeDesc',width: 400 },
+      { headerName: 'Aktywny.', field: 'Active', width: 90, suppressMenu: true, renderType: 'checkbox', cellClass: "grid-cell-centered"},
+      { headerName: 'Konto', field: 'Account', tooltipField: 'AccountDesc',width: 200 },
+            
     ];
   }
 }
