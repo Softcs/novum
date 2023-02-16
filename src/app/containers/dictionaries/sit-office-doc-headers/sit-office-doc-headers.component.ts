@@ -231,6 +231,16 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
         cellStyle: {'background-color': 'rgb(219, 247, 255)'},
         cellClass: 'grid-cell-center-right'
       },
+      { headerName: 'Ilość', field: 'Quantity', filter: 'agTextColumnFilter', floatingFilter: false, width: 80, agr: "sum",
+        cellRenderer: function(params) {
+          var ident;
+          var desc;
+          ident = params.data["Quantity"] ? params.data["Quantity"] : '';
+          desc = params.data["UnitName"] ? params.data["UnitName"] : '';
+          return ident + '<br>' + desc
+        },
+        cellStyle: {'line-height': '1.2em', 'padding-top': '.3em', 'text-align': 'right'}
+      },
       { headerName: 'Opis', field: 'PosDesc', tooltipField: 'PosDesc', filter: 'agTextColumnFilter', floatingFilter: false, width: 150,
         cellStyle: {'white-space': 'normal','line-height': '1.3em', 'padding-top': '.3em'}
       },
