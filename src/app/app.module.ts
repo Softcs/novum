@@ -1,4 +1,6 @@
 import { NgxJsonViewerModule } from 'ngx-json-viewer';
+import '@angular/common/locales/global/pl';
+
 import { NgModule } from '@angular/core';
 import { BrowserModule, Title } from '@angular/platform-browser';
 

@@ -3,7 +3,97 @@ $input-height: 40px;
 .sit-data-input-component {
   display: flex;
   flex-direction: row;
+
+  // input:invalid {
+  //   color: #f00;
+  // }
+
+  .mat-hint {
+    background-color: #fff;
+    font-size: 1.1em;
+    padding: 0 .2em;
+  }
+
+  .sit-data-input-form-field {
+    // border: 1px dashed green;
+    
+    &.number-formated-type {
+      // border-color: brown;
+
+      .number-formated-type-view {
+        // display: block;
+        position: static;
+      }
+      .number-formated-type-edit {
+        position: absolute;
+        left: -1000px;
+      }
+
+      &.mat-focused {
+
+        .number-formated-type-view {
+          // display: none;
+          position: absolute;
+          left: -1000px;
+        }
+        .number-formated-type-edit {
+          position: static;
+        }
+      }
+    }
+
+    &.number-formated-type:is(.form-field-invalid) {
+      .number-formated-type-view {
+        // display: none;
+        position: absolute;
+        left: -1000px;
+      }
+      .number-formated-type-edit {
+        position: static;
+      }
+    }
+
+
+
+
+    &.form-field-invalid {
+      // border-color: red;
+
+      .mat-form-field-outline {
+        // color:aqua;
+        color: #f00;
+      }
+    }
+  }
+
+  // .mat-focused {
+  //   border: 1px solid green;
+  // }
+
+  .mat-form-field-label {
+    display: flex !important;
+
+    .mat-form-field-required-marker {
+      color: #f00;
+      font-size: 1.7em;
+      line-height: 0.9em;
+      margin-left: 0.1em;
+    }
+  }
 }
+
+
+
+// .sit-data-input-component:has(input:invalid) 
+// {
+//   .mat-form-field-outline {
+//     color: #60f;
+//   }
+// }
+
+
+
+
 
 .lookup-select-panel-class {
   margin-top: $input-height !important;
