@@ -78,8 +78,15 @@ export class SitDataInputComponent extends SitDataBaseComponent {
     return !this.isValidField;
   }
 
-  get numberValue(): number {
-    return parseFloat(super.getValue());
+  // funkcja zwracająca value|null do wyświetlenia w elemencie formatującym
+  get numberValueToFormatedView(): any {
+
+    // if (!this.value) {
+    //   return null;
+    // }
+
+    return parseFloat(this.value) ? this.value : null;
+
   }
   
 
@@ -87,40 +94,11 @@ export class SitDataInputComponent extends SitDataBaseComponent {
     
     if (this.type === 'number' && this.digitsInfo) {
       this.numberFormatedType = true;
-
       this.numberFormatedTypeRegexClear = new RegExp("\\d+(?:[.]\\d{" + this.digitsInfo.slice(-1) + "})", 'g');
       this.numberFormatedTypeRegexFieldPattern = "\\d+(?:[.,]\\d{1," + this.digitsInfo.slice(-1) + "})?";
-      
-
-// console.log('ngOnInit: ' + this.label + ' numberFormatedTypeRegexClear: ', this.numberFormatedTypeRegexClear);
-// console.log('ngOnInit: ' + this.label + ' numberFormatedTypeRegexFieldPattern: ', this.numberFormatedTypeRegexFieldPattern);
-// console.log('ngOnInit: ' + this.label + ' this.digitsInfo: ', this.digitsInfo);
-// //str.slice(-1);
-// console.log('ngOnInit: ' + this.label + ' this.digitsInfo - last char: ', this.digitsInfo.slice(-1));
-
-      
-// console.log('ngOnInit' + this.label + ' this.value: ', this.value);
-// console.log('ngOnInit' + this.label + ' super.value: ', super.value);
-
-// console.log('ngOnInit' + this.label + ' type: ', this.type);
-// console.log('ngOnInit' + this.label + ' digitsInfo: ', this.digitsInfo);
-// console.log('ngOnInit' + this.label + ' required: ', this.required);
-// console.log('ngOnInit' + this.label + ' this: ', this);
-// console.log('ngOnInit' + this.label + ' Required: ', this.Required);
-// console.log(' ngOnInit: END - - - - - - - - - - - - - - - - - ');
-
     }
 
-
   }
-
-//   ngAfterViewInit() {
-
-//     if (this.type === 'number' && this.digitsInfo) {
-// // console.log('ngAfterViewInit' + this.label + ': this.getValue(): ', this.getValue() );
-// console.log(' ngAfterViewInit: END - - - - - - - - - - - - - - - - - ');
-//     }
-//   }
 
   public getValid(): boolean {
     return this.inputElement.nativeElement.​​​validity.valid;
@@ -237,23 +215,23 @@ export class SitDataInputComponent extends SitDataBaseComponent {
 
     if (this.numberFormatedType) {
 
-// console.log('onKeyup: ' + this.label + ' this.getValue(): ', this.getValue() );
-// console.log('onKeyup: ' + this.label + ' this.inputElement.nativeElement.value: ', this.inputElement.nativeElement.value );
-
 //     //pattern="\d+(?:[.,]\d{1,2})?"
 
       // __valTempLocal = this.getValue().replace(/[^0-9.,]/, '').replace(/[,]/g, '.');
       __valTempLocal = this.getValue().replace(/[^0-9.,]+/, '').replace(/(\.|,)+/g, '.');
+
+      if (__valTempLocal.slice(0) === '.') {
+        __valTempLocal = '0' + __valTempLocal;
+      }
+
       let val_3 = __valTempLocal.match(this.numberFormatedTypeRegexClear);
       __valTempLocal = val_3 && val_3[0] ? val_3[0] : __valTempLocal;
 
       this._renderer.setProperty(this.inputElement.nativeElement, 'value', __valTempLocal);
 
-      // super.setValue(__valTempLocal);
     }
 
     let localVal: any = __valTempLocal ? __valTempLocal : this.getValue();
-
 
 // console.log('onKeyup' + this.label + ': validationMessage: ', this.inputElement.nativeElement.validationMessage);
 // console.log('onKeyup' + this.label + ': ​​​validity: ', this.inputElement.nativeElement.​​​validity);

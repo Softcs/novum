@@ -72,8 +72,9 @@
   <p 
     *ngIf="numberFormatedType" 
     ngClass="number-formated-type-view"
+    [attr.data-formatInfo]="digitsInfo"
   >
-    {{ numberValue | number:'1.2-2':'pl-PL'}}
+    {{ numberValueToFormatedView | number:digitsInfo:'pl-PL'}}
   </p>
 
   <!-- * * * * numberFormatedType * * * * -->

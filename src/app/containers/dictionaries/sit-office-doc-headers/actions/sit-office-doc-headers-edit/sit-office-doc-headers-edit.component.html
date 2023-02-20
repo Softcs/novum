@@ -79,7 +79,7 @@
             appearance="outline" 
             fxFlex></sit-data-input>
           <sit-data-input #sitControl type="number" digitsInfo="1.2-2" required field="VATCurrency" label="Vat" appearance="outline" fxFlex></sit-data-input>
-          <sit-data-input #sitControl type="number" digitsInfo="1.2-2" required field="GrossCurrency" label="Brutto" appearance="outline" fxFlex></sit-data-input>
+          <sit-data-input #sitControl type="number" digitsInfo="1.4-4" required field="GrossCurrency" label="Brutto" appearance="outline" fxFlex></sit-data-input>
         </div>
         <div *ngIf="isCurrency()" fxLayout="row">
           <sit-data-input #sitControl type="number" field="Net" label="Netto PLN" appearance="outline" fxFlex></sit-data-input>
