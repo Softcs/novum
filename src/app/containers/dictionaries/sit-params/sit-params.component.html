@@ -12,7 +12,6 @@
           <ag-grid-angular
             #sitSetDataSource
             #sitParamsGrid
-            style="width: 100%; height: 100%;"
             class="ag-theme-balham"
           >
           </ag-grid-angular>
@@ -27,11 +26,11 @@
           <sit-data-checkbox id="IsTechnical" #sitControl field="IsTechnical" label="Techniczny" readonly="true"></sit-data-checkbox>
         </div>
         <div fxLayout="row" fxFlex>
-          <sit-data-textarea type="textarea" id="ParamValue" #sitControl field="ParamValue" label="Wartosć" appearance="outline" rows="30" cols="150" 
+          <sit-data-textarea type="textarea" id="ParamValue" #sitControl field="ParamValue" label="Wartosć" appearance="outline" cols="150" 
             [readonly]=true fxFill></sit-data-textarea>
         </div>
         <div fxLayout="row" fxFlex>
-          <sit-data-textarea type="textarea" id="ParamName" #sitControl field="ParamName" label="Opis" appearance="outline" rows="30" cols="150" 
+          <sit-data-textarea type="textarea" id="ParamName" #sitControl field="ParamName" label="Opis" appearance="outline" cols="150" 
             [readonly]=true fxFill></sit-data-textarea>
         </div>
       </sit-data-set-container>

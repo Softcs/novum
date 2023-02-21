@@ -92,6 +92,8 @@ export class SitRoyaltiesComponent extends SitDictBaseComponent {
       { headerName: 'Data do', field: 'DateTo', filter: 'agTextColumnFilter', width: 100, sortable: false },
       { headerName: 'Publikacja', field: 'PublicationIdent', tooltipField: 'PublicationIdent', filter: 'agTextColumnFilter', width: 300, sort: 'asc', cellRenderer: 'agGroupCellRenderer' },
       { headerName: 'Numer umowy', field: 'AgreementNo', filter: 'agTextColumnFilter', width: 150},
+      { headerName: 'Beneficjenci', field: 'BenefList', tooltipField: 'BenefList', filter: 'agTextColumnFilter', width: 200,},
+      { headerName: 'Agenci', field: 'AgentList', tooltipField: 'AgentList', filter: 'agTextColumnFilter', width: 200,},
       { headerName: 'Naliczono', field: 'RoyaltiesExists', width: 100, renderType: 'checkbox', cellClass: "grid-cell-centered", floatingFilter: false},
     ];    
 
@@ -100,9 +102,16 @@ export class SitRoyaltiesComponent extends SitDictBaseComponent {
   getPrintout() {
     //generuje wydruk w nowej zakładce
     const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitRoyaltiesHeaders');
-    var url = this.urlService.getSecureRepUrl('DFCE133B-62D1-263D-9AE3-DCC06502804D', 'dict', '2D770473-E648-ECA7-E003-38737DEF5DDB', dataSourceResponseWrapper.activeRow);
+    var url = this.urlService.getSecureRepUrl('DFCE133B-62D1-263D-9AE3-DCC06502804D', 'dict', 'C3585AD4-2467-A8A3-3518-83AFB2A9A405', dataSourceResponseWrapper.activeRow);
     window.open(url, '','height=700, width=1400, left=100,top=100');
 
   }
 
+  getPrintoutEng() {
+    //generuje wydruk w nowej zakładce
+    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitRoyaltiesHeaders');
+    var url = this.urlService.getSecureRepUrl('DFCE133B-62D1-263D-9AE3-DCC06502804D', 'dict', '3FA2A044-9B08-A882-B6FE-DE1562BE0296', dataSourceResponseWrapper.activeRow);
+    window.open(url, '','height=700, width=1400, left=100,top=100');
+
+  }
 }

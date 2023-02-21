@@ -1,0 +1,30 @@
+<sit-dict-container ident="sitAccountingSchemas" #sitDictcontainer ngClass="flex-container-column content">
+  <sit-data-set-container ident="sitFilter" ngClass="flex-container-row sit-filter-bar">
+
+    <sit-data-input #sitControl field="search" label="Filtruj" placeholder="Typ, nazwa" appearance="outline" style="width: 150px;"></sit-data-input>
+
+  </sit-data-set-container>
+
+  <sit-data-set-container  ident="sitAccountingSchemas" showActionsToolbar="true" ngClass="flex-container-column">
+   
+    <as-split direction="horizontal">
+      <as-split-area [size]="30">
+
+        <ag-grid-angular 
+          #sitSetDataSource 
+          class="ag-theme-balham">
+        </ag-grid-angular>
+    
+      </as-split-area>
+      <as-split-area [size]="70">
+
+        <sit-simple-container title="Skrypt" ngClass="flex-container-column sqlbatch-container">
+          <sit-data-label #sitControl field="SQLBatch"></sit-data-label>
+        </sit-simple-container>
+
+      </as-split-area>
+    </as-split>
+
+  </sit-data-set-container>
+
+</sit-dict-container>

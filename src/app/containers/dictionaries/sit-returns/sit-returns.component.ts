@@ -49,8 +49,8 @@ export class SitReturnsComponent extends SitDictBaseComponent {
     ];
 
     this.gridColumnsDefinition["sitAttachments"] = [
-      { headerName: 'ParentId', field: 'ParentId' },
-      { headerName: 'sitAttachmentsG', field: 'sitAttachmentsG' },
+      { headerName: 'ParentId', field: 'ParentId' , defaultVisibility: false },
+      { headerName: 'sitAttachmentsG', field: 'sitAttachmentsG' , defaultVisibility: false },
       { headerName: 'Data dodania', field: 'InsertDate', width: 120, renderType: "date", renderFormat: "yyyy-MM-dd HH:mm"},
       { headerName: 'Nazwa pliku', field: 'FileName', width: 250 },
       { headerName: 'Opis', field: 'AttachmentDesc', width: 250 },

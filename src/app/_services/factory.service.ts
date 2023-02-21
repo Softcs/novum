@@ -252,7 +252,15 @@ import { SitAccountingEditComponent } from '@app/containers/dictionaries/sit-off
 import { SitFiscalYearsComponent } from '@app/containers/dictionaries/sit-fiscal-years/sit-fiscal-years.component';
 import { SitFiscalYearsEditComponent } from '@app/containers/dictionaries/sit-fiscal-years/actions/sit-fiscal-years-edit/sit-fiscal-years-edit.component';
 import { SitOfficeDocGenAccountingComponent } from '@app/containers/dictionaries/sit-office-doc-headers/actions/sit-office-doc-gen-accounting/sit-office-doc-gen-accounting.component';
-
+import { SitAggrB2bCustomersSalesDailyComponent } from '@app/containers/dictionaries/sit-aggr-b2b-customers-sales-daily/sit-aggr-b2b-customers-sales-daily.component';
+import { SitAccountingDocTypesComponent } from '@app/containers/dictionaries/sit-accounting-doc-types/sit-accounting-doc-types.component';
+import { SitAccountingDocTypesEditComponent } from '@app/containers/dictionaries/sit-accounting-doc-types/actions/sit-accounting-doc-types-edit/sit-accounting-doc-types-edit.component';
+import { SitAccountingSchemasComponent } from '@app/containers/dictionaries/sit-accounting-schemas/sit-accounting-schemas.component';
+import { SitAccountingSchemasEditComponent } from '@app/containers/dictionaries/sit-accounting-schemas/actions/sit-accounting-schemas-edit/sit-accounting-schemas-edit.component';
+import { SitVehiclesComponent } from '@app/containers/dictionaries/sit-vehicles/sit-vehicles.component';
+import { SitVehiclesEditComponent } from '@app/containers/dictionaries/sit-vehicles/actions/sit-vehicles-edit/sit-vehicles-edit.component';
+import { SitAccountingDimEditComponent } from '@app/containers/dictionaries/sit-office-doc-headers/actions/sit-accounting-dim-edit/sit-accounting-dim-edit.component';
+import { SitAggrMonthSaleByAuthorComponent } from '@app/containers/dictionaries/sit-aggr-month-sale-by-author/sit-aggr-month-sale-by-author.component';
 
 
 @Injectable({ providedIn: 'root' })
@@ -513,6 +521,15 @@ export class FactoryService {
         sitFiscalYears: SitFiscalYearsComponent,
         sitFiscalYearsEdit: SitFiscalYearsEditComponent,
         sitOfficeDocGenAccounting: SitOfficeDocGenAccountingComponent,
+        sitAggrB2bCustomersSalesDaily: SitAggrB2bCustomersSalesDailyComponent,
+        sitAccountingDocTypes: SitAccountingDocTypesComponent,
+        sitAccountingDocTypesEdit: SitAccountingDocTypesEditComponent,
+        sitAccountingSchemas: SitAccountingSchemasComponent,
+        sitAccountingSchemasEdit: SitAccountingSchemasEditComponent,
+        sitVehicles: SitVehiclesComponent,
+        sitVehiclesEdit: SitVehiclesEditComponent,
+        sitAccountingDimEdit: SitAccountingDimEditComponent,
+        sitAggrMonthSaleByAuthor: SitAggrMonthSaleByAuthorComponent,
     };
 
     public GetFactory(ident: string) {

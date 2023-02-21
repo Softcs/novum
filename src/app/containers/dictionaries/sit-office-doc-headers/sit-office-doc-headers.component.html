@@ -19,13 +19,13 @@
 
               </sit-data-set-container>
 
-
-
               <sit-data-set-container  ident="sitOfficeDocHeaders" showActionsToolbar="true" ngClass="flex-container-column">
+
                 <ag-grid-angular 
                   #sitSetDataSource 
                   class="ag-theme-balham">
                 </ag-grid-angular>
+              
               </sit-data-set-container>
 
           </as-split-area>
@@ -36,7 +36,7 @@
               <mat-tab label="Info">
                 <!-- sit-data-labels-standard-container - zmienia zachowanie wysokości elementów -->
                 <!-- <sit-data-set-container ident="sitOfficeDocHeaders" ngClass="flex-container-column"> -->
-                <sit-data-set-container ident="sitOfficeDocHeaders" ngClass="flex-container-column sit-data-set-container-data">
+                <sit-data-set-container ident="sitOfficeDocHeadersOne" ngClass="flex-container-column sit-data-set-container-data">
 
                   <sit-simple-container ngClass="flex-container-row head-container">
                     <sit-data-label #sitControl field="OfficeDocName" type="header"></sit-data-label>
@@ -80,9 +80,9 @@
                         <sit-data-label #sitControl field="GrossCurrency" label="Brutto" type="number"></sit-data-label>
                         <sit-data-label #sitControl field="CurrencyIdent" label=""></sit-data-label>
                       </div>
-                      <div ngClass="flex-container-row" [class.hide]="hideCurrency()">
-                        <sit-data-label #sitControl field="ExRate" label="Kurs" type="number4"></sit-data-label>
-                        <sit-data-label #sitControl field="ExRateDate" label=""></sit-data-label>
+                      <div ngClass="flex-container-row">
+                        <sit-data-label #sitControl field="ExRate" label="Kurs" type="number4" [class.hidden]="hideCurrency()"></sit-data-label>
+                        <sit-data-label #sitControl field="ExRateDate" label="" [class.hidden]="hideCurrency()"></sit-data-label>
                       </div>
                     </sit-simple-container>
   
@@ -178,6 +178,7 @@
             </sit-data-set-container>
           </mat-tab>
           <mat-tab label="Księgowanie">
+
             <sit-data-set-container ident="sitAccountingHeaders4OfficeDoc" ngClass="flex-container-column sit-data-set-container-ksiegowanie">
 
               <sit-simple-container ngClass="flex-container-row head-container">
@@ -189,44 +190,9 @@
               <sit-simple-container ngClass="flex-container-column">
                 <sit-data-label #sitControl field="AccountingDate" label="Data" ngClass="fill-if-empty"></sit-data-label>
                 <sit-data-label #sitControl field="AccountingHeaderDesc" label="Opis" ngClass="fill-if-empty"></sit-data-label>
-                <sit-data-label #sitControl field="AccountingSchemaIdent" label="Księgowanie" ngClass="fill-if-empty"></sit-data-label>
+                <sit-data-label #sitControl field="AccountingSchemaIdent" label="Schemat" ngClass="fill-if-empty"></sit-data-label>
               </sit-simple-container>
-
-
-
-
-<!-- 
-              <sit-simple-container ngClass="flex-container-column">
-                <sit-data-label #sitControl field="AccountingDate" label="Data" ngClass="fill-if-empty"></sit-data-label>
-                <sit-data-label #sitControl field="AccountingHeaderDesc" label="Opis" ngClass="fill-if-empty"></sit-data-label>
-                <sit-data-label #sitControl field="AccountingSchemaIdent" label="Księgowanie" ngClass="fill-if-empty"></sit-data-label>
-              </sit-simple-container>
-
-              <sit-simple-container ngClass="flex-container-column">
-                <sit-data-label #sitControl field="AccountingDate" label="Data" ngClass="fill-if-empty"></sit-data-label>
-                <sit-data-label #sitControl field="AccountingHeaderDesc" label="Opis" ngClass="fill-if-empty"></sit-data-label>
-                <sit-data-label #sitControl field="AccountingSchemaIdent" label="Księgowanie" ngClass="fill-if-empty"></sit-data-label>
-              </sit-simple-container>
-
-              <sit-simple-container ngClass="flex-container-column">
-                <sit-data-label #sitControl field="AccountingDate" label="Data" ngClass="fill-if-empty"></sit-data-label>
-                <sit-data-label #sitControl field="AccountingHeaderDesc" label="Opis" ngClass="fill-if-empty"></sit-data-label>
-                <sit-data-label #sitControl field="AccountingSchemaIdent" label="Księgowanie" ngClass="fill-if-empty"></sit-data-label>
-              </sit-simple-container>
-
-              <sit-simple-container ngClass="flex-container-column">
-                <sit-data-label #sitControl field="AccountingDate" label="Data" ngClass="fill-if-empty"></sit-data-label>
-                <sit-data-label #sitControl field="AccountingHeaderDesc" label="Opis" ngClass="fill-if-empty"></sit-data-label>
-                <sit-data-label #sitControl field="AccountingSchemaIdent" label="Księgowanie" ngClass="fill-if-empty"></sit-data-label>
-              </sit-simple-container>
-
-              <sit-simple-container ngClass="flex-container-column">
-                <sit-data-label #sitControl field="AccountingDate" label="Data" ngClass="fill-if-empty"></sit-data-label>
-                <sit-data-label #sitControl field="AccountingHeaderDesc" label="Opis" ngClass="fill-if-empty"></sit-data-label>
-                <sit-data-label #sitControl field="AccountingSchemaIdent" label="Księgowanie" ngClass="fill-if-empty"></sit-data-label>
-              </sit-simple-container> -->
-
-              
+         
             </sit-data-set-container>
 
             <as-split #sitSpliter direction="vertical">
@@ -252,11 +218,9 @@
                   <ag-grid-angular
                       #sitSetDataSource
                       class="ag-theme-balham"
+                      (gridReady)="onGridDimReady($event)"
                     >
                   </ag-grid-angular>
-                  <div>
-                    <sit-data-label #sitControl field="AccountDesc" label="Konto"></sit-data-label>
-                  </div>
                 </sit-data-set-container>
   
               </as-split-area>

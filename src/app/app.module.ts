@@ -358,6 +358,15 @@ import { SitAccountingEditComponent } from './containers/dictionaries/sit-office
 import { SitFiscalYearsComponent } from './containers/dictionaries/sit-fiscal-years/sit-fiscal-years.component';
 import { SitFiscalYearsEditComponent } from './containers/dictionaries/sit-fiscal-years/actions/sit-fiscal-years-edit/sit-fiscal-years-edit.component';
 import { SitOfficeDocGenAccountingComponent } from './containers/dictionaries/sit-office-doc-headers/actions/sit-office-doc-gen-accounting/sit-office-doc-gen-accounting.component';
+import { SitAggrB2bCustomersSalesDailyComponent } from './containers/dictionaries/sit-aggr-b2b-customers-sales-daily/sit-aggr-b2b-customers-sales-daily.component';
+import { SitAccountingDocTypesComponent } from './containers/dictionaries/sit-accounting-doc-types/sit-accounting-doc-types.component';
+import { SitAccountingDocTypesEditComponent } from './containers/dictionaries/sit-accounting-doc-types/actions/sit-accounting-doc-types-edit/sit-accounting-doc-types-edit.component';
+import { SitAccountingSchemasComponent } from './containers/dictionaries/sit-accounting-schemas/sit-accounting-schemas.component';
+import { SitAccountingSchemasEditComponent } from './containers/dictionaries/sit-accounting-schemas/actions/sit-accounting-schemas-edit/sit-accounting-schemas-edit.component';
+import { SitVehiclesComponent } from './containers/dictionaries/sit-vehicles/sit-vehicles.component';
+import { SitVehiclesEditComponent } from './containers/dictionaries/sit-vehicles/actions/sit-vehicles-edit/sit-vehicles-edit.component';
+import { SitAccountingDimEditComponent } from './containers/dictionaries/sit-office-doc-headers/actions/sit-accounting-dim-edit/sit-accounting-dim-edit.component';
+import { SitAggrMonthSaleByAuthorComponent } from './containers/dictionaries/sit-aggr-month-sale-by-author/sit-aggr-month-sale-by-author.component';
 
 @NgModule({
     imports: [
@@ -698,7 +707,16 @@ import { SitOfficeDocGenAccountingComponent } from './containers/dictionaries/si
         SitAccountingEditComponent,
         SitFiscalYearsComponent,
         SitFiscalYearsEditComponent,
-        SitOfficeDocGenAccountingComponent
+        SitOfficeDocGenAccountingComponent,
+        SitAggrB2bCustomersSalesDailyComponent,
+        SitAccountingDocTypesComponent,
+        SitAccountingDocTypesEditComponent,
+        SitAccountingSchemasComponent,
+        SitAccountingSchemasEditComponent,
+        SitVehiclesComponent,
+        SitVehiclesEditComponent,
+        SitAccountingDimEditComponent,
+        SitAggrMonthSaleByAuthorComponent,
 
     ],
     providers: [

@@ -1,0 +1,18 @@
+<sit-dict-container ident="sitVehicles" #sitDictcontainer ngClass="flex-container-column">
+
+  <sit-data-set-container ident="sitFilter" ngClass="flex-container-row sit-filter-bar">
+
+    <sit-data-input #sitControl field="search" label="Filtruj" appearance="outline" style="width: 150px;"></sit-data-input>
+
+  </sit-data-set-container>
+
+  <sit-data-set-container  ident="sitVehicles" showActionsToolbar="true" ngClass="flex-container-column">
+
+    <ag-grid-angular 
+      #sitSetDataSource 
+      class="ag-theme-balham">
+    </ag-grid-angular>
+
+  </sit-data-set-container>
+
+</sit-dict-container>

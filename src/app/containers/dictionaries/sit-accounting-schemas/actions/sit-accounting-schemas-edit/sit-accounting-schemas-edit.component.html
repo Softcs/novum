@@ -1,0 +1,13 @@
+<sit-proc-params
+   [(actionExecuteData)]="actionExecuteData"
+  >
+  <sit-data-set-container ident="sitAccountingSchemasEdit">
+    <div class="sit-proc-params-content" fxLayout="column" style="width: 1000px; height: 600px;">
+      <sit-data-input #sitControl field="AccountingSchemaIdent" label="Identyfikator" appearance="outline"></sit-data-input>
+      <sit-data-input #sitControl field="AccountingSchemaDesc" label="Nazwa" appearance="outline"></sit-data-input>
+      <div fxLayout="row" fxFlex>
+        <sit-data-textarea type="textarea" #sitControl field="SQLBatch" label="Skrypt" rows="10" fxFlex></sit-data-textarea>
+      </div>
+    </div>
+  </sit-data-set-container>
+</sit-proc-params>
