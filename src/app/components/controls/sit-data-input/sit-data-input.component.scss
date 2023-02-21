@@ -3,24 +3,89 @@ $input-height: 40px;
 .sit-data-input-component {
   display: flex;
   flex-direction: row;
+
+  // input:invalid {
+  //   color: #f00;
+  // }
+
+  .mat-hint {
+    background-color: #fff;
+    font-size: 1.1em;
+    padding: 0 .2em;
+  }
+
+  .sit-data-input-form-field {
+    
+    &.number-formated-type {
+
+      .number-formated-type-view {
+        position: static;
+      }
+      .number-formated-type-edit {
+        position: absolute;
+        left: -1000px;
+      }
+
+      &.mat-focused {
+
+        .number-formated-type-view {
+          position: absolute;
+          left: -1000px;
+        }
+        .number-formated-type-edit {
+          position: static;
+        }
+      }
+    }
+
+    &.number-formated-type:is(.form-field-invalid) {
+      .number-formated-type-view {
+        position: absolute;
+        left: -1000px;
+      }
+      .number-formated-type-edit {
+        position: static;
+      }
+    }
+
+    &.form-field-invalid {
+
+      .mat-form-field-outline {
+        color: #f00;
+      }
+    }
+  }
+
+
+  .mat-form-field-label {
+    display: flex !important;
+
+    .mat-form-field-required-marker {
+      color: #f00;
+      font-size: 1.7em;
+      line-height: 0.9em;
+      margin-left: 0.1em;
+    }
+  }
 }
+
+
+
+
+
+
 
 .lookup-select-panel-class {
   margin-top: $input-height !important;
   margin-left: 20px;
-  // font-size: 12px !important;
-  
   display: flex;
   flex-direction: column;
   max-width: max-content !important;
-  // max-width: min-content !important;
   width: auto;
-  // border: 10px solid green;
 
 
 
   mat-option {
-    // border: 2px solid blue;
     display: flex;
     flex: auto;
     flex-direction: column;
@@ -29,7 +94,6 @@ $input-height: 40px;
     max-height: max-content;
     line-height: inherit !important;
     align-items: start;
-
     // max-width: max-content;
     // min-width: max-content;
 
@@ -38,19 +102,16 @@ $input-height: 40px;
     }
 
     .mat-option-text {
-      // border: 1px solid pink;
       display: flex;
       flex-direction: row;
       flex: auto;
       overflow: auto;
       text-overflow: inherit;
-      // align-items: last baseline;
       align-items: center;
       font-size: 0.75rem;
       line-height: 1.7em;
 
       span {
-        //border: 1px solid red;
         flex: 1 1 max-content;
         font-size: 0.75rem;
         line-height: 1.7em;

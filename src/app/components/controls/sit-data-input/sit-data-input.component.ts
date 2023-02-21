@@ -1,4 +1,4 @@
-import { Component, Input,  Renderer2, ViewEncapsulation, ViewChild, NgZone } from '@angular/core';
+import { Component, Input,  Renderer2, ViewEncapsulation, ViewChild, NgZone, OnInit } from '@angular/core';
 import { SitDataBaseComponent } from '../sit-data-base/sit-data-base.component';
 import { MatFormFieldAppearance  } from '@angular/material/form-field';
 import { SitRefreshButtonComponent } from '../sit-refresh-button/sit-refresh-button.component';
@@ -20,6 +20,12 @@ export class SitDataInputComponent extends SitDataBaseComponent {
   @ViewChild(SitRefreshButtonComponent)
   refreshButton: SitRefreshButtonComponent;
 
+  numberFormatedType: boolean = false;
+  numberFormatedTypeRegexClear: any;
+  numberFormatedTypeRegexFieldPattern: any;
+  isValidField: boolean = true;  // tymczasowa zmienna do prostej validacji
+
+
   @Input() type = 'text';
   @Input() label = '';
   @Input() showRefresh = true;
@@ -28,6 +34,10 @@ export class SitDataInputComponent extends SitDataBaseComponent {
   @Input() showRefreshButton: boolean;
   @Input() refreshOnChange: boolean;
   @Input() lookupDisplayFields: string[] = null;
+  @Input() digitsInfo: string;
+  //@Input() digitsInfo: string = '1.0-0';
+  @Input() required: boolean;
+
 
   hasLookup: boolean;
   lookupIsLoading = false;
@@ -53,6 +63,49 @@ export class SitDataInputComponent extends SitDataBaseComponent {
       this.showRefreshButton = false;
       this.refreshOnChange = false;
       this.id = this.newGuid();
+  }
+
+  get Required(): boolean {
+    return this.required === undefined ? false : true;
+  }
+
+  get IsInvalidField(): boolean {
+    return !this.isValidField;
+  }
+
+  // funkcja zwracająca value|null do wyświetlenia w elemencie formatującym
+  get numberValueToFormatedView(): any {
+    return parseFloat(this.value) ? this.value : null;
+  }
+  
+
+  ngOnInit() {
+    
+    if (this.type === 'number' && this.digitsInfo) {
+      this.numberFormatedType = true;
+      this.numberFormatedTypeRegexClear = new RegExp("\\d+(?:[.]\\d{" + this.digitsInfo.slice(-1) + "})", 'g');
+      this.numberFormatedTypeRegexFieldPattern = "\\d+(?:[.,]\\d{1," + this.digitsInfo.slice(-1) + "})?";
+    }
+
+  }
+
+  public getValid(): boolean {
+    return this.inputElement.nativeElement.​​​validity.valid;
+  }
+
+  public getValidationMessage(): string {
+    return this.inputElement.nativeElement.​​​validationMessage;
+  }
+
+  public setIsValidField(value: boolean) {
+    this.isValidField = value;
+  }
+
+
+
+  onBlur(event: any) {
+    this.setIsValidField(this.getValid());
+    super.onBlur(event);
   }
 
   onChange(event: any) {
@@ -142,13 +195,47 @@ export class SitDataInputComponent extends SitDataBaseComponent {
     }
   }
 
-  onKeyup(event: any) {
-    super.onKeyup(this.getValue());
 
-    if (!this.hasLookup) { return; }
+
+
+  onKeyup(event: any) {
+
+    let __valTempLocal: any = false;
+
+    if (this.numberFormatedType) {
+
+      __valTempLocal = this.getValue().replace(/[^0-9.,]+/, '').replace(/(\.|,)+/g, '.');
+
+      if (__valTempLocal.slice(0) === '.') {
+        __valTempLocal = '0' + __valTempLocal;
+      }
+
+      let val_3 = __valTempLocal.match(this.numberFormatedTypeRegexClear);
+      __valTempLocal = val_3 && val_3[0] ? val_3[0] : __valTempLocal;
+
+      this._renderer.setProperty(this.inputElement.nativeElement, 'value', __valTempLocal);
+
+    }
+
+    let localVal: any = __valTempLocal ? __valTempLocal : this.getValue();
+
+    this.setIsValidField(this.getValid());
+
+    // jc end --------------------
+
+
+
+    // super.onKeyup(this.getValue());
+    super.onKeyup(localVal);
+
+    if (!this.hasLookup) { 
+      return; 
+    }
+
     clearTimeout(this.lookupTimeout);
     this.lookupTimeout = setTimeout(() => {
-      super.onChange(this.getValue());
+      // super.onChange(this.getValue());
+      super.onChange(localVal);
       this.onLookupOpen();
     }, 500);
   }

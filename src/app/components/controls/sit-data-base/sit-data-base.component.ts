@@ -38,7 +38,9 @@ export class SitDataBaseComponent implements ControlValueAccessor, AfterViewInit
   }
 
   constructor(    
-    protected _renderer: Renderer2) {      
+    protected _renderer: Renderer2
+  ) {
+    
   }  
 
   ngAfterViewInit(): void {

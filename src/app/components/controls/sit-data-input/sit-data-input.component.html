@@ -30,24 +30,72 @@
 
 
 <mat-form-field 
-  ngClass="sit-data-input-form-field"
+  [ngClass]="{'sit-data-input-form-field':true, 'number-formated-type': numberFormatedType, 'form-field-invalid': IsInvalidField }"
   appearance="{{ appearance }}" 
 >
-
+  
   <mat-label>{{label}}</mat-label>
-  <input matInput #inputElement
+
+
+  <!-- * * * * numberFormatedType * * * * -->
+    
+  <input 
+    *ngIf="numberFormatedType"
+    matInput 
+    #inputElement
     [id]="id"
     [value]="value"
-    [type]="type"
+    type="text"
+    ngClass="number-formated-type-edit"
+    [pattern]="numberFormatedTypeRegexFieldPattern"
     [id]="id"
     [placeholder]="placeholder"
     [readonly]="readonly"
+    [required]="Required"
     (change)="onChange($event)"
     (keyup)="onKeyup($event)"
     (keyup.enter)="onKeyupEnter($event)"
     (blur)="onBlur($event)"
     autocomplete="off"
   />
+
+  <mat-hint 
+    class="mat-error" 
+    *ngIf="numberFormatedType && IsInvalidField" 
+  >
+    {{getValidationMessage()}}
+  </mat-hint>
+
+  <p 
+    *ngIf="numberFormatedType" 
+    ngClass="number-formated-type-view"
+    [attr.data-formatInfo]="digitsInfo"
+  >
+    {{ numberValueToFormatedView | number:digitsInfo:'pl-PL'}}
+  </p>
+
+  <!-- * * * * numberFormatedType * * * * -->
+
+
+
+
+  <input *ngIf="!numberFormatedType"
+    matInput 
+    #inputElement
+    [id]="id"
+    [value]="value"
+    [type]="type"
+    [id]="id"
+    [placeholder]="placeholder"
+    [readonly]="readonly"
+    [atrr.required]="Required"
+    (change)="onChange($event)"
+    (keyup)="onKeyup($event)"
+    (keyup.enter)="onKeyupEnter($event)"
+    (blur)="onBlur($event)"
+    autocomplete="off"
+  />
+
   <div *ngIf="hasLookup" [ngClass]="{'hasLookup': hasLookup, 'loading': lookupIsLoading}" fxLayoutAlign="center center" >
     <span
       ngClass="material-icons lookupDropDawn"
