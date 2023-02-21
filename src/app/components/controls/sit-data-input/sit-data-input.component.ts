@@ -65,11 +65,6 @@ export class SitDataInputComponent extends SitDataBaseComponent {
       this.id = this.newGuid();
   }
 
-
-  // public valueIsNumber(val: any): boolean { 
-  //   return typeof val === 'number'; 
-  // }
-
   get Required(): boolean {
     return this.required === undefined ? false : true;
   }
@@ -80,13 +75,7 @@ export class SitDataInputComponent extends SitDataBaseComponent {
 
   // funkcja zwracająca value|null do wyświetlenia w elemencie formatującym
   get numberValueToFormatedView(): any {
-
-    // if (!this.value) {
-    //   return null;
-    // }
-
     return parseFloat(this.value) ? this.value : null;
-
   }
   
 
@@ -215,9 +204,6 @@ export class SitDataInputComponent extends SitDataBaseComponent {
 
     if (this.numberFormatedType) {
 
-//     //pattern="\d+(?:[.,]\d{1,2})?"
-
-      // __valTempLocal = this.getValue().replace(/[^0-9.,]/, '').replace(/[,]/g, '.');
       __valTempLocal = this.getValue().replace(/[^0-9.,]+/, '').replace(/(\.|,)+/g, '.');
 
       if (__valTempLocal.slice(0) === '.') {
@@ -232,11 +218,6 @@ export class SitDataInputComponent extends SitDataBaseComponent {
     }
 
     let localVal: any = __valTempLocal ? __valTempLocal : this.getValue();
-
-// console.log('onKeyup' + this.label + ': validationMessage: ', this.inputElement.nativeElement.validationMessage);
-// console.log('onKeyup' + this.label + ': ​​​validity: ', this.inputElement.nativeElement.​​​validity);
-// console.log('onKeyup' + this.label + ': valid: ', this.inputElement.nativeElement.​​​validity.valid);
-// console.log(' onKeyup: END - - - - - - - - - - - - - - - - - ');
 
     this.setIsValidField(this.getValid());
 

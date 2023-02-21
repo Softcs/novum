@@ -33,15 +33,12 @@
   [ngClass]="{'sit-data-input-form-field':true, 'number-formated-type': numberFormatedType, 'form-field-invalid': IsInvalidField }"
   appearance="{{ appearance }}" 
 >
-
-  <!-- <div class="lolek">aaaaaa</div> -->
-
+  
   <mat-label>{{label}}</mat-label>
 
 
   <!-- * * * * numberFormatedType * * * * -->
-  <!-- * * * * pattern="\d+(?:[.,]\d{1,2})?" * * * * -->
-  
+    
   <input 
     *ngIf="numberFormatedType"
     matInput 
