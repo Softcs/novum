@@ -5,6 +5,7 @@ import { SitRefreshButtonComponent } from '../sit-refresh-button/sit-refresh-but
 import { LookupService } from '@app/_services/lookup.service';
 import { MatSelect } from '@angular/material/select';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
 import { OnCFService } from '@app/_services/oncf.service';
 
 @Component({
@@ -89,6 +90,11 @@ export class SitDataInputComponent extends SitDataBaseComponent {
 
   }
 
+//   ngAfterViewInit() {
+// console.log('this.inputElement.nativeElement: ', this.inputElement.nativeElement);
+// console.log('this.inputElement.nativeElement.​​​validity: ', this.inputElement.nativeElement.​​​validity);
+//   }
+
   public getValid(): boolean {
     return this.inputElement.nativeElement.​​​validity.valid;
   }
@@ -103,9 +109,22 @@ export class SitDataInputComponent extends SitDataBaseComponent {
 
 
 
+
+  onBlurLookupTimeout: any;
+
   onBlur(event: any) {
-    this.setIsValidField(this.getValid());
     super.onBlur(event);
+
+    if (!this.hasLookup) { 
+      this.setIsValidField(this.getValid());
+      return; 
+    }
+
+    clearTimeout(this.onBlurLookupTimeout);
+    this.onBlurLookupTimeout = setTimeout(() => {
+      this.setIsValidField(this.getValid());
+    }, 500);
+
   }
 
   onChange(event: any) {
