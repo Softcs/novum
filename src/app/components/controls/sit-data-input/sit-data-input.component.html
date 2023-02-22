@@ -59,12 +59,12 @@
     autocomplete="off"
   />
 
-  <mat-hint 
+  <!-- <mat-hint 
     class="mat-error" 
     *ngIf="numberFormatedType && IsInvalidField" 
   >
     {{getValidationMessage()}}
-  </mat-hint>
+  </mat-hint> -->
 
   <p 
     *ngIf="numberFormatedType" 
@@ -95,6 +95,13 @@
     (blur)="onBlur($event)"
     autocomplete="off"
   />
+
+  <mat-hint 
+    class="mat-error" 
+    *ngIf="IsInvalidField" 
+  >
+    {{getValidationMessage()}}
+  </mat-hint>
 
   <div *ngIf="hasLookup" [ngClass]="{'hasLookup': hasLookup, 'loading': lookupIsLoading}" fxLayoutAlign="center center" >
     <span
