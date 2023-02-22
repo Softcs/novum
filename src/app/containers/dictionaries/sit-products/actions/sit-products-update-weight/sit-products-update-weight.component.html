@@ -4,9 +4,9 @@
   <sit-data-set-container ident="sitProducts">
     <div class="sit-proc-params-content" fxLayout="column">
       <div fxLayout="column">
-        <sit-data-input type="text" #sitControl field="ProductIdent" label="Identyfikator" appearance="outline" fxFlex readonly="true"></sit-data-input>
-        <sit-data-input type="text" #sitControl field="ProductName" label="Nazwa" appearance="outline" fxFlex readonly="true"></sit-data-input>
-        <sit-data-input type="number" #sitControl field="Weight" label="Waga" appearance="outline" fxFlex></sit-data-input>
+        <sit-data-input #sitControl field="ProductIdent" label="Identyfikator" appearance="outline" fxFlex readonly="true"></sit-data-input>
+        <sit-data-input #sitControl field="ProductName" label="Nazwa" appearance="outline" fxFlex readonly="true"></sit-data-input>
+        <sit-data-input #sitControl type="number" field="Weight" label="Waga" required type="number" digitsInfo="1.3-3" appearance="outline" fxFlex></sit-data-input>
       </div>
     </div>
   </sit-data-set-container>
