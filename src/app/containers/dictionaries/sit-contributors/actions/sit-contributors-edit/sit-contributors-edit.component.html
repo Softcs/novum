@@ -1,0 +1,33 @@
+<sit-proc-params
+  [(actionExecuteData)]="actionExecuteData"
+  >
+  <sit-data-set-container ident="sitContributorsEdit">
+    <div class="sit-proc-params-content" fxLayout="column" style="width: 600px;">
+      <div fxLayout="row">
+        <sit-data-input type="text" #sitControl field="TitlesBeforeNames" label="Tytuł" appearance="outline" style="width: 100px"></sit-data-input>
+        <sit-data-input type="text" #sitControl field="NamesBeforeKey" label="Imię" appearance="outline" style="width: 300px"></sit-data-input>      
+      </div>
+      <div fxLayout="row" fxFlex>
+        <sit-data-input type="text" #sitControl field="PrefixToKey" label="Prefix" appearance="outline" style="width: 100px"></sit-data-input>
+        <sit-data-input type="text" #sitControl field="KeyNames" label="Nazwisko" appearance="outline" style="width: 300px"></sit-data-input>      
+        <sit-data-input type="text" #sitControl field="SuffixToKey" label="Postfix" appearance="outline" style="width: 100px"></sit-data-input>      
+      </div>
+      <div ngClass="flex-container-row mb-05">
+        <sit-data-label #sitControl field="PersonName" label="Twórca"></sit-data-label>
+      </div>       
+      <div ngClass="flex-container-row mb-05">
+        <sit-data-label #sitControl field="PersonNameInverted" label="Notacja odwrotna"></sit-data-label>
+      </div> 
+      <div fxLayout="row" fxFlex>
+        <sit-data-textarea 
+          type="textarea" 
+          #sitControl field="BiographicalNote" 
+          label="Notka biograficzna" 
+          appearance="outline" 
+          cols="65" 
+          fxFill>
+        </sit-data-textarea>
+      </div>      
+    </div>
+  </sit-data-set-container>
+</sit-proc-params>

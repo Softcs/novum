@@ -261,6 +261,13 @@ import { SitVehiclesComponent } from '@app/containers/dictionaries/sit-vehicles/
 import { SitVehiclesEditComponent } from '@app/containers/dictionaries/sit-vehicles/actions/sit-vehicles-edit/sit-vehicles-edit.component';
 import { SitAccountingDimEditComponent } from '@app/containers/dictionaries/sit-office-doc-headers/actions/sit-accounting-dim-edit/sit-accounting-dim-edit.component';
 import { SitAggrMonthSaleByAuthorComponent } from '@app/containers/dictionaries/sit-aggr-month-sale-by-author/sit-aggr-month-sale-by-author.component';
+import { SitContributorsComponent } from '@app/containers/dictionaries/sit-contributors/sit-contributors.component';
+import { SitContributorsEditComponent } from '@app/containers/dictionaries/sit-contributors/actions/sit-contributors-edit/sit-contributors-edit.component';
+import { SitImagesInsComponent } from '@app/containers/dictionaries/sit-contributors/actions/sit-images-ins/sit-images-ins.component';
+import { SitContributorAlternativeNamesEditComponent } from '@app/containers/dictionaries/sit-contributors/actions/sit-contributor-alternative-names-edit/sit-contributor-alternative-names-edit.component';
+import { SitContributorRolesEditComponent } from '@app/containers/dictionaries/sit-publications-params-def/actions/sit-contributor-roles-edit/sit-contributor-roles-edit.component';
+import { SitPublicationContributorsEditComponent } from '@app/containers/dictionaries/sit-publications/actions/sit-publication-contributors-edit/sit-publication-contributors-edit.component';
+import { SitProducts4pubContributorsEditComponent } from '@app/containers/dictionaries/sit-publications/actions/sit-products4pub-contributors-edit/sit-products4pub-contributors-edit.component';
 
 
 @Injectable({ providedIn: 'root' })
@@ -530,6 +537,13 @@ export class FactoryService {
         sitVehiclesEdit: SitVehiclesEditComponent,
         sitAccountingDimEdit: SitAccountingDimEditComponent,
         sitAggrMonthSaleByAuthor: SitAggrMonthSaleByAuthorComponent,
+        sitContributors: SitContributorsComponent,
+        sitContributorsEdit: SitContributorsEditComponent,
+        sitImagesIns: SitImagesInsComponent,
+        sitContributorAlternativeNamesEdit: SitContributorAlternativeNamesEditComponent,
+        sitContributorRolesEdit: SitContributorRolesEditComponent,
+        sitPublicationContributorsEdit: SitPublicationContributorsEditComponent,
+        sitProducts4pubContributorsEdit: SitProducts4pubContributorsEditComponent,
     };
 
     public GetFactory(ident: string) {

@@ -77,6 +77,13 @@ export class SitPublicationsParamsDefComponent extends SitDictBaseComponent {
       { headerName: 'Id zew 02', field: 'ExtAppIdent02', filter: 'agTextColumnFilter', width: 100, defaultVisibility: false },
     ];
 
+    this.gridColumnsDefinition["sitContributorRoles"] = [
+      { headerName: 'Id', field: 'sitContributorRolesId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 50, defaultVisibility: false },
+      { headerName: 'GUID', field: 'sitContributorRolesG', width: 100, defaultVisibility: false },
+      { headerName: 'Identyfikator', field: 'ContributorRoleIdent', width: 200,  filter: 'agTextColumnFilter' },
+      { headerName: 'Nazwa', field: 'ContributorRoleName', width: 250, filter: 'agTextColumnFilter' },
+    ];
+
   }
 
 }

@@ -1,10 +1,7 @@
 <sit-dict-container ngClass="sitPublicationsParamsDef" ident="sitPublicationsParamsDef" #sitDictcontainer fxFill>
   <mat-tab-group id="tab-group" animationDuration="0ms">
-
-
     <mat-tab label="Formy wydania">
       <div fxLayout="column" fxFill class="content">
-
         <sit-data-set-container ident="sitPublicationsFormsOfReleaseFilter" fxLayout="row">
           <div class="sit-filter-bar" fxLayout="row">
               <sit-data-input #sitControl field="searchFormsOfRelease" label="Filtruj" appearance="outline" style="width: 300px;" showRefreshButton="true"></sit-data-input>
@@ -19,11 +16,8 @@
             </ag-grid-angular>
           </div>
         </sit-data-set-container>
-
       </div>
     </mat-tab>
-
-
     <mat-tab label="Grupy form wydania">
       <div fxLayout="column" fxFill class="content">
         <sit-data-set-container ident="sitPublicationsFormsOfReleaseGroupsFilter" >
@@ -118,5 +112,23 @@
         </sit-data-set-container>
       </div>
     </mat-tab>
+    <mat-tab label="Role twórców">
+      <div fxLayout="column" fxFill class="content">
+        <sit-data-set-container ident="sitContributorRolesFilter">
+          <div class="sit-filter-bar" fxLayout="row">
+            <sit-data-input #sitControl field="searchContributorRole" label="Filtruj" appearance="outline" style="width: 300px;" [showRefreshButton]="true"></sit-data-input>
+          </div>
+        </sit-data-set-container>
+        <sit-data-set-container ident="sitContributorRoles" [showActionsToolbar]="true" fxLayout="column" fxFlex>
+          <div class="data-table" fxFlex>
+            <ag-grid-angular
+              #sitSetDataSource
+              class="ag-theme-balham"
+            >
+            </ag-grid-angular>
+          </div>
+        </sit-data-set-container>
+      </div>
+    </mat-tab>    
   </mat-tab-group>
 </sit-dict-container>
