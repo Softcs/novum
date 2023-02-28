@@ -108,6 +108,9 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
       { headerName: 'Lp.', field: 'PosId', filter: 'agNumberColumnFilter', type: 'rightAligned' , width: 50, suppressMenu: true,
         cellClass: 'grid-cell-center-right'
       },
+      { headerName: '%', field: 'Perc', filter: 'agNumberColumnFilter', type: 'rightAligned' , width: 70, suppressMenu: true,
+        cellClass: 'grid-cell-center-right', agr: "sum"
+      },
       { headerName: 'Netto w wal.', field: 'NetCurrency', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: 100, suppressMenu: true, agr: "sum",
         cellStyle: {'background-color': 'rgb(219, 247, 255)'},
         cellClass: 'grid-cell-center-right'

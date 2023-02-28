@@ -13,7 +13,7 @@
         <sit-data-input type="text" #sitControl field="PKWIU" label="PKWIU" appearance="outline" style="width: 150px"></sit-data-input>
         <sit-data-input type="text" #sitControl field="UnitIdent" label="Jednostka" appearance="outline" style="width: 100px"></sit-data-input>
         <sit-data-input type="text" #sitControl field="VATRatesIdent" label="Stawka VAT" appearance="outline" style="width: 100px"></sit-data-input>
-        <sit-data-input type="number" #sitControl field="Weight" label="Waga" appearance="outline" style="width: 100px"></sit-data-input>
+        <sit-data-input type="number" #sitControl field="Weight" label="Waga" appearance="outline" digitsInfo="1.0-3" style="width: 100px"></sit-data-input>
       </div>
       <div fxLayout="row" >
         <sit-data-checkbox #sitControl field="IsActive" label="Aktywna" style="width: 110px"></sit-data-checkbox>
@@ -28,11 +28,11 @@
         <sit-data-input type="text" #sitControl field="ExtAppIdent02" label="Id zew 02" appearance="outline" style="width: 100px"></sit-data-input>
       </div>
       <div fxLayout="row" >
-        <sit-data-input type="number" #sitControl field="NetPrice" label="Cena netto" appearance="outline" style="width: 100px"></sit-data-input>
-        <sit-data-input type="number" #sitControl field="GrossPrice" label="Cena brutto" appearance="outline" style="width: 100px"></sit-data-input>
-        <sit-data-input type="number" #sitControl field="StandardPrice" label="Cena std." appearance="outline" style="width: 100px"></sit-data-input>
-        <sit-data-input type="number" #sitControl field="B2BNetPrice" label="Cena netto B2B" appearance="outline" style="width: 100px"></sit-data-input>
-        <sit-data-input type="number" #sitControl field="B2BGrossPrice" label="Cena brutto B2B" appearance="outline" style="width: 100px"></sit-data-input>
+        <sit-data-input type="number" #sitControl field="NetPrice" label="Cena netto" digitsInfo="1.2-2" appearance="outline" style="width: 100px"></sit-data-input>
+        <sit-data-input type="number" #sitControl field="GrossPrice" label="Cena brutto" digitsInfo="1.2-2" appearance="outline" style="width: 100px"></sit-data-input>
+        <sit-data-input type="number" #sitControl field="StandardPrice" label="Cena std." digitsInfo="1.2-2" appearance="outline" style="width: 100px"></sit-data-input>
+        <sit-data-input type="number" #sitControl field="B2BNetPrice" label="Cena netto B2B" digitsInfo="1.2-2" appearance="outline" style="width: 100px"></sit-data-input>
+        <sit-data-input type="number" #sitControl field="B2BGrossPrice" label="Cena brutto B2B" digitsInfo="1.2-2" appearance="outline" style="width: 100px"></sit-data-input>
       </div> 
     </div>
   </sit-data-set-container>

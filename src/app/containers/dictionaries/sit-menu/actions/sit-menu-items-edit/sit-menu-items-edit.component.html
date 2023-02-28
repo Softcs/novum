@@ -3,7 +3,7 @@
 >
   <sit-data-set-container ident="sitMenuItemsEdit">
     <div class="sit-proc-params-content" fxLayout="column">
-      <sit-data-input type="number" #sitControl field="OrdId" label="Kolejność" appearance="outline"></sit-data-input>
+      <sit-data-input type="number" #sitControl field="OrdId" label="Kolejność" digitsInfo="1.0-0" appearance="outline"></sit-data-input>
       <sit-data-input type="text" #sitControl field="Caption" label="Opis" appearance="outline"></sit-data-input>
       <sit-data-radio #sitControl field="Kind" type="row" label="Rodzaj"
         [buttons]="[{'caption':'Okno aplikacji','value': 'app', 'checked':true},{'caption':'Grupa menu','value':'group'}]"

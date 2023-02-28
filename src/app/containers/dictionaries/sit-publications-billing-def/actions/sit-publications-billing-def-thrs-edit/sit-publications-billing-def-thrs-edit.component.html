@@ -3,9 +3,9 @@
   >
   <sit-data-set-container ident="sitPublicationsBillingDefThrsEdit">
     <div class="sit-proc-params-content" fxLayout="column">
-      <sit-data-input #sitControl type="number" field="Threshold" label="Powyżej ilości" appearance="outline" ></sit-data-input>
-      <sit-data-input #sitControl type="number" field="Rate" label="Stawka(% lub kwota)" appearance="outline" ></sit-data-input>
-      <sit-data-input *ngIf="this.activeRow?.MinPriceAgreement !== 0" #sitControl type="number" field="MinPrice" label="Tant./cena min." appearance="outline" ></sit-data-input>
+      <sit-data-input #sitControl type="number" field="Threshold" label="Powyżej ilości" digitsInfo="1.0-0" appearance="outline" ></sit-data-input>
+      <sit-data-input #sitControl type="number" field="Rate" label="Stawka(% lub kwota)" digitsInfo="1.2-2" appearance="outline" ></sit-data-input>
+      <sit-data-input *ngIf="this.activeRow?.MinPriceAgreement !== 0" #sitControl type="number" field="MinPrice" label="Tant./cena min." digitsInfo="1.2-2" appearance="outline" ></sit-data-input>
     </div>
   </sit-data-set-container>
 </sit-proc-params>
