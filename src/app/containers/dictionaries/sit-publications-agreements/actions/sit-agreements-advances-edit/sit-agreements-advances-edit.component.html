@@ -6,8 +6,8 @@
       <sit-data-input #sitControl type="text" field="CustIdent" label="Beneficjent" appearance="outline"  [lookupDisplayFields] = "['CustIdent', 'CustName']"></sit-data-input>
       <sit-data-input #sitControl type="text" field="PublicationIdent" label="Publikacja" appearance="outline"  
         [lookupDisplayFields] = "['PublicationIdent', 'Title']"></sit-data-input>
-    <sit-data-input #sitControl type="number" field="Amount" label="Kwota zaliczki" appearance="outline" ></sit-data-input>
-    <sit-data-input #sitControl type="number" field="ClearedAmount" label="Kwota rozliczona" appearance="outline" ></sit-data-input>
+    <sit-data-input #sitControl type="number" field="Amount" label="Kwota zaliczki" digitsInfo="1.2-2" appearance="outline" ></sit-data-input>
+    <sit-data-input #sitControl type="number" field="ClearedAmount" label="Kwota rozliczona" digitsInfo="1.2-2" appearance="outline" ></sit-data-input>
     </div>
   </sit-data-set-container>
 </sit-proc-params>

@@ -18,7 +18,11 @@ export class SitVehiclesComponent extends SitDictBaseComponent {
       { headerName: 'Opis', field: 'VehicleDesc', width: 300, },
       { headerName: 'Nr rej.', field: 'RegNo', width: 100,},
       { headerName: 'VIN', field: 'VIN', width: 150,},
-    
+      { headerName: 'Pracownik', field: 'EmployeeName', width: 150,},
+      { headerName: 'Dział', field: 'CompanyDepartmentIdent', tooltipField: 'CompanyDepartmentDesc', width: 150,},    
+      { headerName: 'Projekt', field: 'ProjectIdent', tooltipField: 'ProjectName', width: 150,},    
+      { headerName: 'Kanał dystrybucji', field: 'DistributionChannelIdent', tooltipField: 'DistributionChannelDesc', width: 150,},    
+      { headerName: 'Typ produktu', field: 'ProductsTypeIdent', tooltipField: 'ProductsTypeDesc', width: 150,},
     ];
   }
 

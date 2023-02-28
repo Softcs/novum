@@ -6,6 +6,12 @@
       <sit-data-input #sitControl field="VehicleDesc" label="Opis" appearance="outline" style="width: 100%;"></sit-data-input>
       <sit-data-input #sitControl field="RegNo" label="Nr rejestracyjny" appearance="outline" style="width: 100%;"></sit-data-input>
       <sit-data-input #sitControl field="VIN" label="VIN" appearance="outline" style="width: 100%;"></sit-data-input>
+      <sit-data-input #sitControl field="EmployeeName" label="Pracownik" appearance="outline" style="width: 100%;"></sit-data-input>
+      <sit-data-input #sitControl [class.hidden]="!(this.activeRow?.UseCompanyDepartments == 1)" field="CompanyDepartmentDesc4Lookup" label="Dział" appearance="outline"></sit-data-input>
+      <sit-data-input #sitControl [class.hidden]="!(this.activeRow?.UseProjects == 1)" field="ProjectName4Lookup" label="Projekt" appearance="outline"></sit-data-input>
+      <sit-data-input #sitControl [class.hidden]="!(this.activeRow?.UseDistributionChannels == 1)" field="DistributionChannelDesc4Lookup" label="Kanał dystrybucji" appearance="outline"></sit-data-input>
+      <sit-data-input #sitControl [class.hidden]="!(this.activeRow?.UseProductsTypes == 1)" field="ProductsTypeDesc4Lookup" label="Typ produktu" appearance="outline"></sit-data-input>
+
     </div>
   </sit-data-set-container>
 

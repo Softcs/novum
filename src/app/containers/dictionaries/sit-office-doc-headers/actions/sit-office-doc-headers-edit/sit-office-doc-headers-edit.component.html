@@ -49,7 +49,7 @@
           <sit-data-input #sitControl type="date" field="DocumentDate" label="Data wystawienia" required appearance="outline" fxFlex="25"></sit-data-input>
           <sit-data-input #sitControl type="date" field="SalesDate" label="Data sprzedaży" required appearance="outline" fxFlex="25"></sit-data-input>
           <sit-data-input #sitControl field="PaymentTypeIdent" label="RP" required appearance="outline" [lookupDisplayFields] = "['PaymentTypeDesc']" fxFlex="20"></sit-data-input>
-          <sit-data-input #sitControl type="number" field="PaymentDays" label="Dni" required appearance="outline" fxFlex></sit-data-input>
+          <sit-data-input #sitControl type="number" field="PaymentDays" label="Dni" digitsInfo="1.0-0" required appearance="outline" fxFlex></sit-data-input>
           <sit-data-input #sitControl type="date" field="PaymentDate" label="Data płatności" required appearance="outline" fxFlex="25"></sit-data-input>
         </div>
         <div [class.hidden]="!bankNoReq()" fxLayout="row">
