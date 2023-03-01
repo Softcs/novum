@@ -51,12 +51,12 @@
                           <sit-data-textarea type="textarea" id="Description" #sitControl field="Description" label="Opis" appearance="outline" [readonly]=true style="height: 95px"  fxFlex></sit-data-textarea>
                         </div>
                         <div fxLayout="row">
-                          <sit-data-input type="number" id="PreviousCreditLimit" #sitControl field="PreviousCreditLimit" label="Dotychczasowy limit kredytu" appearance="outline" [readonly]=true fxFlex="30"></sit-data-input>
+                          <sit-data-input type="number" id="PreviousCreditLimit" #sitControl field="PreviousCreditLimit" label="Dotychczasowy limit kredytu" digitsInfo="1.2-2" appearance="outline" [readonly]=true fxFlex="30"></sit-data-input>
                           <sit-data-input type="number" id="StockAmountForDate" #sitControl field="StockAmountForDate" label="Wartość zapasu konsygnacyjnego" appearance="outline" [readonly]=true fxFlex="30"></sit-data-input>
                         </div>     
                         <div fxLayout="row">
                           <sit-data-input type="text" id="PreviousPaymentType" #sitControl field="PreviousPaymentType" label="Dotychczasowy termin płatności" appearance="outline" [readonly]=true fxFlex="30"></sit-data-input>
-                          <sit-data-input type="number" id="StockStandardAmountForDate" #sitControl field="StockStandardAmountForDate" label="Wartość magazynowa" appearance="outline" [readonly]=true fxFlex="30"></sit-data-input>
+                          <sit-data-input type="number" id="StockStandardAmountForDate" #sitControl field="StockStandardAmountForDate" label="Wartość magazynowa" digitsInfo="1.2-2" appearance="outline" [readonly]=true fxFlex="30"></sit-data-input>
                         </div>      
                         <div fxLayout="row">
                           <div fxFlex="30"></div>
@@ -67,7 +67,7 @@
                     <mat-card>
                       <mat-card-content>
                         <div fxLayout="row">
-                          <sit-data-input type="number" #sitControl field="CreditLimit" label="Proponowany limit kredytu kupieckiego" appearance="outline" [readonly]=true fxFlex="50"></sit-data-input>
+                          <sit-data-input type="number" #sitControl field="CreditLimit" label="Proponowany limit kredytu kupieckiego" digitsInfo="1.2-2" appearance="outline" [readonly]=true fxFlex="50"></sit-data-input>
                           <sit-data-input type="text" #sitControl field="CreditLimitDateTo" label="Termin obowiązywania limitu" appearance="outline" [readonly]=true fxFlex="50"></sit-data-input>
                         </div>
                       </mat-card-content>
@@ -81,8 +81,8 @@
                         <div fxLayout="column">
                           <sit-data-label type="text" #sitControl field="SettlementsForDate" label="Należności i zobowiąznia na dzień:"></sit-data-label>
                           <div fxLayout="row">
-                            <sit-data-input type="number" #sitControl field="Payables" label="Zobowiązania ogółem" appearance="outline" [readonly]=true fxFlex="50"></sit-data-input>
-                            <sit-data-input type="number" #sitControl field="ReceivablesExpired" label="Należności przeterminowane" appearance="outline" [readonly]=true fxFlex="50"></sit-data-input>
+                            <sit-data-input type="number" #sitControl field="Payables" label="Zobowiązania ogółem" appearance="outline" digitsInfo="1.2-2" [readonly]=true fxFlex="50"></sit-data-input>
+                            <sit-data-input type="number" #sitControl field="ReceivablesExpired" label="Należności przeterminowane" digitsInfo="1.2-2" appearance="outline" [readonly]=true fxFlex="50"></sit-data-input>
                           </div>
                           <div fxLayout="row">
                             <sit-data-input type="number" #sitControl field="Receivables" label="Należności ogółem" appearance="outline" [readonly]=true fxFlex="50"></sit-data-input>

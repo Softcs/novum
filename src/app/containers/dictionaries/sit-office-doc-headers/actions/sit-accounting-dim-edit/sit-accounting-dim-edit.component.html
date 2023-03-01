@@ -2,7 +2,7 @@
   <sit-data-set-container ident="sitAccountingDimEdit" ngClass="flex-container-row sit-proc-params-content" style="width: 600px; height: 550px;">
     <div fxLayout="column" fxFill>
       <sit-data-label #sitControl field="PosId" label="Pozycja" style="flex: 0 0 0" ngClass="mb-05"></sit-data-label>
-      <sit-data-input #sitControl type="number" field="Amount" label="Kwota" appearance="outline"></sit-data-input>
+      <sit-data-input #sitControl type="number" field="Amount" label="Kwota" digitsInfo="1.2-2" appearance="outline"></sit-data-input>
       <sit-data-input #sitControl [class.hidden]="!(this.activeRow?.UseCompanyDepartments == 1)" field="CompanyDepartmentDesc4Lookup" label="Dział" appearance="outline"></sit-data-input>
       <sit-data-input #sitControl [class.hidden]="!(this.activeRow?.UseProjects == 1)" field="ProjectName4Lookup" label="Projekt" appearance="outline"></sit-data-input>
       <sit-data-input #sitControl [class.hidden]="!(this.activeRow?.UseDistributionChannels == 1)" field="DistributionChannelDesc4Lookup" label="Kanał dystrybucji" appearance="outline"></sit-data-input>

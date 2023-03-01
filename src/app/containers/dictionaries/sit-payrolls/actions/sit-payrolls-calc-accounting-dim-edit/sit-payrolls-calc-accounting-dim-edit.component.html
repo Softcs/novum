@@ -3,7 +3,7 @@
   >
   <sit-data-set-container ident="sitPayrollsCalcAccountingDimEdit">
     <div class="sit-proc-params-content" fxLayout="column" style="width: 600px;">
-      <sit-data-input #sitControl type="number" field="Amount" label="Kwota" appearance="outline" style="width: 200px;"></sit-data-input>
+      <sit-data-input #sitControl type="number" field="Amount" label="Kwota" digitsInfo="1.2-2" appearance="outline" style="width: 200px;"></sit-data-input>
       <div fxLayout="row" fxLayoutAlign="space-between center">
         <sit-data-input #sitControl type="text" field="CompanyDepartmentIdent" label="Dział" appearance="outline" style="width: 200px;"
           [lookupDisplayFields] = "['CompanyDepartmentIdent', 'CompanyDepartmentDesc']"

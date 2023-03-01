@@ -1,7 +1,7 @@
 <sit-dict-container ident="sitGeneralLedger" #sitDictcontainer ngClass="flex-container-column content">
   
   <sit-data-set-container ident="sitFilter" ngClass="flex-container-row sit-filter-bar">
-    <sit-data-input #sitControl type="number" field="fiscalYear" label="Rok" appearance="outline" style="width: 100px;"
+    <sit-data-input #sitControl type="number" field="fiscalYear" label="Rok" digitsInfo="1.0-0" appearance="outline" style="width: 100px;"
     [lookupDisplayFields] = "['FiscalYear']"></sit-data-input>  
     <sit-data-input #sitControl field="search" label="Filtruj" appearance="outline" showRefreshButton="true" style="width: 300px;"></sit-data-input>
   </sit-data-set-container>
