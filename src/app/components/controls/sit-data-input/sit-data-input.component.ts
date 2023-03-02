@@ -84,8 +84,13 @@ export class SitDataInputComponent extends SitDataBaseComponent {
     
     if (this.type === 'number' && this.digitsInfo) {
       this.numberFormatedType = true;
-      this.numberFormatedTypeRegexClear = new RegExp("\\d+(?:[.]\\d{" + this.digitsInfo.slice(-1) + "})", 'g');
-      this.numberFormatedTypeRegexFieldPattern = "\\d+(?:[.,]\\d{1," + this.digitsInfo.slice(-1) + "})?";
+
+      let patternLastGroupTmp = (this.digitsInfo.slice(-1) === '0') ? "\\d+" : "\\d+(?:[.]\\d{" + this.digitsInfo.slice(-1) + "})";
+      //this.numberFormatedTypeRegexClear = new RegExp("\\d+(?:[.]\\d{" + this.digitsInfo.slice(-1) + "})", 'g');
+      this.numberFormatedTypeRegexClear = new RegExp(patternLastGroupTmp, 'g');
+
+      let patternLastGroupTmp2 = (this.digitsInfo.slice(-1) === '0') ? '0' : '1,' + this.digitsInfo.slice(-1);
+      this.numberFormatedTypeRegexFieldPattern = "\\d+(?:[.,]\\d{" + patternLastGroupTmp2 + "})?";
     }
 
   }
