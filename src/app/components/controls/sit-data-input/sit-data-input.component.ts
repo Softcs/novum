@@ -76,7 +76,7 @@ export class SitDataInputComponent extends SitDataBaseComponent {
 
   // funkcja zwracająca value|null do wyświetlenia w elemencie formatującym
   get numberValueToFormatedView(): any {
-    return parseFloat(this.value) ? this.value : null;
+    return isNaN(parseFloat(this.value)) ? null : this.value;
   }
   
 
