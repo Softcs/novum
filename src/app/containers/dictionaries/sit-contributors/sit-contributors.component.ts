@@ -21,7 +21,10 @@ export class SitContributorsComponent extends SitDictBaseComponent {
       { headerName: 'Prefix', field: 'PrefixToKey', filter: 'agTextColumnFilter', width: 80 },
       { headerName: 'Nazwisko', field: 'KeyNames', filter: 'agTextColumnFilter', width: 150 },
       { headerName: 'Postfix', field: 'SuffixToKey', filter: 'agTextColumnFilter', width: 80 },
-      { headerName: 'Twórca', field: 'PersonNameInverted', filter: 'agTextColumnFilter', width: 250, defaultVisibility: false},
+      { headerName: 'Notacja odwrotna', field: 'PersonNameInverted', filter: 'agTextColumnFilter', width: 250, defaultVisibility: false},
+      { headerName: 'WWW', field: 'WWW', filter: 'agTextColumnFilter', width: 250, defaultVisibility: false},
+      { headerName: 'Facebook', field: 'Facebook', filter: 'agTextColumnFilter', width: 250, defaultVisibility: false},
+      { headerName: 'Instagram', field: 'Instagram', filter: 'agTextColumnFilter', width: 250, defaultVisibility: false},
     ];
 
     this.gridColumnsDefinition["sitContributorAlternativeNames"] = [
