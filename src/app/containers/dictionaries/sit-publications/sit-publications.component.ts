@@ -83,7 +83,22 @@ export class SitPublicationsComponent extends SitDictBaseComponent {
       { headerName: 'Naliczono', field: 'RoyaltiesExists', width: 100, renderType: 'checkbox', cellClass: "grid-cell-centered", floatingFilter: false, sortable: false},
       { headerName: 'Błędne nalicznie', field: 'RoyaltiesError', width: 130, renderType: 'checkbox', cellClass: "grid-cell-centered", floatingFilter: false, sortable: false},
     ];    
-   }
+
+    this.gridColumnsDefinition["sitPublicationContributors"] = [
+      { headerName: 'Id', field: 'sitPublicationContributorsId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 50, defaultVisibility: false },
+      { headerName: 'GUID', field: 'sitPublicationContributorsG', width: 100, defaultVisibility: false },
+      { headerName: 'Rola', field: 'ContributorRoleName', width: 150, filter: 'agTextColumnFilter', },
+      { headerName: 'Twórca', field: 'PersonName', width: 300, filter: 'agTextColumnFilter', },
+    ];    
+
+    this.gridColumnsDefinition["sitProducts4PubContributors"] = [
+      { headerName: 'Id', field: 'sitProducts4PubContributorsId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 50, defaultVisibility: false },
+      { headerName: 'GUID', field: 'sitProducts4PubContributorsG', width: 100, defaultVisibility: false },
+      { headerName: 'Rola', field: 'ContributorRoleName', width: 150, filter: 'agTextColumnFilter', },
+      { headerName: 'Twórca', field: 'PersonName', width: 300, filter: 'agTextColumnFilter', },
+    ];    
+
+  }
 
    activeRowProductsChanged(activeRow) {
     this.link = activeRow?.sitImagesG == null

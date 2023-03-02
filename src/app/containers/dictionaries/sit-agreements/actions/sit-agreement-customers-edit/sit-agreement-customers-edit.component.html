@@ -8,7 +8,7 @@
         <sit-data-input type="text" #sitControl field="RoleIdent" label="Rola" appearance="outline" style="width: 200px"
           [lookupDisplayFields] = "['RoleIdent']"
         ></sit-data-input>        
-        <sit-data-input #sitControl type="number" field="PercentShare" label="Udział procentowy" appearance="outline" fxFlex="50"></sit-data-input>
+        <sit-data-input #sitControl type="number" field="PercentShare" label="Udział procentowy" digitsInfo="1.2-2" appearance="outline" fxFlex="50"></sit-data-input>
       </div>
       <sit-data-checkbox #sitControl field="ForBilling" label="Odbiorca rozliczenia" fxFlex></sit-data-checkbox>
     </div>

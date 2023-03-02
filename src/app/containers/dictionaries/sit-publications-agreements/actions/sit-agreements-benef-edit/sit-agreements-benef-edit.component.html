@@ -6,7 +6,7 @@
       <sit-data-input #sitControl type="text" field="CustIdent" label="Identyfikator" appearance="outline"  [lookupDisplayFields] = "['CustIdent', 'CustName']"></sit-data-input>
       <sit-data-label type="text" #sitControl field="CustName" appearance="outline"></sit-data-label>
       <div fxLayout="row">
-        <sit-data-input #sitControl type="number" field="PercentShare" label="Udział procentowy" appearance="outline" fxFlex="50"></sit-data-input>
+        <sit-data-input #sitControl type="number" field="PercentShare" label="Udział procentowy" digitsInfo="1.0-4" appearance="outline" fxFlex="50"></sit-data-input>
         <sit-data-radio #sitControl field="BillingType" type="row" label="Typ rozliczenia" fxFlex="50"
           [buttons]="[{'caption':'faktura','value': 'FK', 'checked':true},{'caption':'płace','value':'LP'}]"
         ></sit-data-radio>

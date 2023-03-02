@@ -1,0 +1,52 @@
+<sit-dict-container ident="sitContributors" #sitDictcontainer fxFlexFill>
+  <div fxLayout="column" fxFill class="content">
+    <div class="sit-filter-bar">
+      <sit-data-set-container ident="sitContributorsFilter" fxLayout="row">
+        <sit-data-input #sitControl field="search" label="Filtruj" placeholder="Imię, nazwisko" appearance="outline" style="width: 300px;" [showRefreshButton]="true"></sit-data-input>
+      </sit-data-set-container>
+    </div>
+    <div fxLayout="column" fxFlex>
+      <as-split #sitSpliter direction="horizontal">
+        <as-split-area [size]="70">
+          <as-split #sitSpliter direction="vertical">
+            <as-split-area [size]="75">
+              <sit-data-set-container  ident="sitContributors" showActionsToolbar="true" (activeRowChanged)="activeRowContributorsChanged($event)" fxFill fxLayout="column">
+                <div class="data-table" fxFlex>
+                  <ag-grid-angular
+                    #sitSetDataSource
+                    class="ag-theme-balham"
+                  >
+                  </ag-grid-angular>
+                </div>
+              </sit-data-set-container>
+            </as-split-area>
+            <as-split-area [size]="25">
+              <div fxLayout="column" fxFill>      
+                <div class="sit-grid-title">Pseudonimy twórcy</div>
+                <sit-data-set-container  ident="sitContributorAlternativeNames" [showActionsToolbar]="true" fxFlex fxLayout="column">
+                  <div class="data-table" fxFlex>
+                    <ag-grid-angular
+                      #sitSetDataSource
+                      class="ag-theme-balham"
+                    >
+                    </ag-grid-angular>
+                  </div>
+                </sit-data-set-container>
+              </div>          
+            </as-split-area>
+          </as-split>
+        </as-split-area>
+        <as-split-area [size]="30">
+          <div class="content" fxFlex fxLayout="column">
+            <div fxLayout="row" fxLayoutAlign="center" style="height: 500px">
+              <a href="{{link}}" target="_blank"><img src="{{link}}" height="500"></a>
+            </div>
+            <sit-data-set-container  ident="sitContributors" fxFlex fxLayout="column">
+              <sit-data-textarea type="textarea" #sitControl field="BiographicalNote" label="Notka biograficzna" appearance="outline" [readonly]=true fxFlex></sit-data-textarea>
+            </sit-data-set-container>
+          </div>
+        </as-split-area>
+      </as-split>
+    </div>
+  </div>
+</sit-dict-container>

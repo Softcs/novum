@@ -367,6 +367,13 @@ import { SitVehiclesComponent } from './containers/dictionaries/sit-vehicles/sit
 import { SitVehiclesEditComponent } from './containers/dictionaries/sit-vehicles/actions/sit-vehicles-edit/sit-vehicles-edit.component';
 import { SitAccountingDimEditComponent } from './containers/dictionaries/sit-office-doc-headers/actions/sit-accounting-dim-edit/sit-accounting-dim-edit.component';
 import { SitAggrMonthSaleByAuthorComponent } from './containers/dictionaries/sit-aggr-month-sale-by-author/sit-aggr-month-sale-by-author.component';
+import { SitContributorsComponent } from './containers/dictionaries/sit-contributors/sit-contributors.component';
+import { SitContributorsEditComponent } from './containers/dictionaries/sit-contributors/actions/sit-contributors-edit/sit-contributors-edit.component';
+import { SitImagesInsComponent } from './containers/dictionaries/sit-contributors/actions/sit-images-ins/sit-images-ins.component';
+import { SitContributorAlternativeNamesEditComponent } from './containers/dictionaries/sit-contributors/actions/sit-contributor-alternative-names-edit/sit-contributor-alternative-names-edit.component';
+import { SitContributorRolesEditComponent } from './containers/dictionaries/sit-publications-params-def/actions/sit-contributor-roles-edit/sit-contributor-roles-edit.component';
+import { SitPublicationContributorsEditComponent } from './containers/dictionaries/sit-publications/actions/sit-publication-contributors-edit/sit-publication-contributors-edit.component';
+import { SitProducts4pubContributorsEditComponent } from './containers/dictionaries/sit-publications/actions/sit-products4pub-contributors-edit/sit-products4pub-contributors-edit.component';
 
 @NgModule({
     imports: [
@@ -717,6 +724,13 @@ import { SitAggrMonthSaleByAuthorComponent } from './containers/dictionaries/sit
         SitVehiclesEditComponent,
         SitAccountingDimEditComponent,
         SitAggrMonthSaleByAuthorComponent,
+        SitContributorsComponent,
+        SitContributorsEditComponent,
+        SitImagesInsComponent,
+        SitContributorAlternativeNamesEditComponent,
+        SitContributorRolesEditComponent,
+        SitPublicationContributorsEditComponent,
+        SitProducts4pubContributorsEditComponent,
 
     ],
     providers: [

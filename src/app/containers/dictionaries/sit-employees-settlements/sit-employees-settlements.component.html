@@ -3,8 +3,8 @@
     <div class="sit-filter-bar" fxLayout="row">
       <sit-data-set-container ident="sitFilter" >
         <div fxLayout="row">
-          <sit-data-input #sitControl field="CostYear" type="number" label="Rok" placeholder="" appearance="outline" style="width: 65px;"></sit-data-input>
-          <sit-data-input #sitControl field="CostMonth" type="number" label="Miesiąc" placeholder="" appearance="outline" style="width: 60px;"></sit-data-input>
+          <sit-data-input #sitControl field="CostYear" type="number" label="Rok" digitsInfo="1.0-0" placeholder="" appearance="outline" style="width: 65px;"></sit-data-input>
+          <sit-data-input #sitControl field="CostMonth" type="number" label="Miesiąc" digitsInfo="1.0-0" placeholder="" appearance="outline" style="width: 60px;"></sit-data-input>
           <sit-data-input #sitControl field="HRDepartmentIdent" label="Dział" placeholder="" appearance="outline" style="width: 200px;"
             [lookupDisplayFields] = "['HRDepartmentIdent', 'HRDepartmentName']">
           </sit-data-input>
