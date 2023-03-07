@@ -65,7 +65,7 @@
         <div fxLayout="row">
           <sit-data-input #sitControl field="CurrencyIdent" label="Waluta" required appearance="outline" fxFlex="20"></sit-data-input>
           <sit-data-input #sitControl *ngIf="isCurrency()" type="date" field="ExRateDate" label="Kurs z dnia" appearance="outline" fxFlex="33"></sit-data-input>
-          <sit-data-input #sitControl *ngIf="isCurrency()" type="number" field="ExRate" label="Kurs waluty" appearance="outline" fxFlex></sit-data-input>
+          <sit-data-input #sitControl *ngIf="isCurrency()" type="number" field="ExRate" label="Kurs waluty" digitsInfo="1.0-4" appearance="outline" fxFlex></sit-data-input>
         </div>
         <div fxLayout="row">
           <sit-data-input #sitControl field="NetCurrency" label="Netto" required type="number" digitsInfo="1.2-2" placeholder="Netto" appearance="outline" fxFlex></sit-data-input>
