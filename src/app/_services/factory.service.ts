@@ -268,6 +268,7 @@ import { SitContributorAlternativeNamesEditComponent } from '@app/containers/dic
 import { SitContributorRolesEditComponent } from '@app/containers/dictionaries/sit-publications-params-def/actions/sit-contributor-roles-edit/sit-contributor-roles-edit.component';
 import { SitPublicationContributorsEditComponent } from '@app/containers/dictionaries/sit-publications/actions/sit-publication-contributors-edit/sit-publication-contributors-edit.component';
 import { SitProducts4pubContributorsEditComponent } from '@app/containers/dictionaries/sit-publications/actions/sit-products4pub-contributors-edit/sit-products4pub-contributors-edit.component';
+import { SitAnalysisPublishigPlanComponent } from '@app/containers/dictionaries/sit-analysis-publishig-plan/sit-analysis-publishig-plan.component';
 
 
 @Injectable({ providedIn: 'root' })
@@ -544,6 +545,7 @@ export class FactoryService {
         sitContributorRolesEdit: SitContributorRolesEditComponent,
         sitPublicationContributorsEdit: SitPublicationContributorsEditComponent,
         sitProducts4pubContributorsEdit: SitProducts4pubContributorsEditComponent,
+        sitAnalysisPublishigPlan: SitAnalysisPublishigPlanComponent,
     };
 
     public GetFactory(ident: string) {
