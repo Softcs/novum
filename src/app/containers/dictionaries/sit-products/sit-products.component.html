@@ -6,18 +6,22 @@
         <sit-data-input #sitControl field="SaleStatus" label="Status sprz." placeholder="" appearance="outline" showRefreshButton="true" style="width: 180px;"
           [lookupDisplayFields] = "['SaleStatus', 'SaleStatusDescription']"
         ></sit-data-input>
-        <sit-data-checkbox *ngIf="this.activeRow('sitFilterProducts')?.wpIsVisible == 1" #sitControl field="wp" label="W przyg." labelPosition="after" 
-          checked="true" [refreshOnChange]="true" style="color: violet;" ></sit-data-checkbox>
-        <sit-data-checkbox *ngIf="this.activeRow('sitFilterProducts')?.zpIsVisible == 1"  #sitControl field="zp" label="Zapowiedzi" labelPosition="after" 
-          checked="true" [refreshOnChange]="true" style="color: orange;" ></sit-data-checkbox>
-        <sit-data-checkbox *ngIf="this.activeRow('sitFilterProducts')?.nwIsVisible == 1"  #sitControl field="nw" label="Nowości" labelPosition="after" 
-          checked="true" [refreshOnChange]="true" style="color: rgb(153, 0, 0);" ></sit-data-checkbox>
-        <sit-data-checkbox *ngIf="this.activeRow('sitFilterProducts')?.akIsVisible == 1"  #sitControl field="ak" label="Aktywne" labelPosition="after" 
-          checked="true" [refreshOnChange]="true" style="color: rgb(20, 152, 46)" ></sit-data-checkbox>
-        <sit-data-checkbox *ngIf="this.activeRow('sitFilterProducts')?.wrIsVisible == 1"  #sitControl field="wr" label="Wyprzedaże" labelPosition="after" 
-          checked="false" [refreshOnChange]="true" style="color: rgb(11, 23, 255);" ></sit-data-checkbox>
-        <sit-data-checkbox *ngIf="this.activeRow('sitFilterProducts')?.wcIsVisible == 1"  #sitControl field="wc" label="Wycofane" labelPosition="after" 
-          checked="false" [refreshOnChange]="true" style="color: black;" ></sit-data-checkbox>
+        <div ngClass="checkbox-container">
+          <div ngClass="checkbox-container-func">
+            <sit-data-checkbox *ngIf="this.activeRow('sitFilterProducts')?.wpIsVisible == 1" #sitControl field="wp" label="W przyg." labelPosition="after" 
+              checked="true" [refreshOnChange]="true" style="color: violet;" ></sit-data-checkbox>
+            <sit-data-checkbox *ngIf="this.activeRow('sitFilterProducts')?.zpIsVisible == 1"  #sitControl field="zp" label="Zapowiedzi" labelPosition="after" 
+              checked="true" [refreshOnChange]="true" style="color: orange;" ></sit-data-checkbox>
+            <sit-data-checkbox *ngIf="this.activeRow('sitFilterProducts')?.nwIsVisible == 1"  #sitControl field="nw" label="Nowości" labelPosition="after" 
+              checked="true" [refreshOnChange]="true" style="color: rgb(153, 0, 0);" ></sit-data-checkbox>
+            <sit-data-checkbox *ngIf="this.activeRow('sitFilterProducts')?.akIsVisible == 1"  #sitControl field="ak" label="Aktywne" labelPosition="after" 
+              checked="true" [refreshOnChange]="true" style="color: rgb(20, 152, 46)" ></sit-data-checkbox>
+            <sit-data-checkbox *ngIf="this.activeRow('sitFilterProducts')?.wrIsVisible == 1"  #sitControl field="wr" label="Wyprzedaże" labelPosition="after" 
+              checked="false" [refreshOnChange]="true" style="color: rgb(11, 23, 255);" ></sit-data-checkbox>
+            <sit-data-checkbox *ngIf="this.activeRow('sitFilterProducts')?.wcIsVisible == 1"  #sitControl field="wc" label="Wycofane" labelPosition="after" 
+              checked="false" [refreshOnChange]="true" style="color: black;" ></sit-data-checkbox>
+          </div> 
+        </div>
       </sit-data-set-container>
     </div>
     <div fxLayout="column" fxFlex>

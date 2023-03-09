@@ -1,0 +1,69 @@
+// .checkbox-container {
+//     // border: 1px dotted blue;
+//     position: relative;
+//     display: flex;
+//     width: 12em;
+//     margin-left: .3em;
+
+//     .checkbox-container-func {
+//         // border: 1px dotted red;
+//         // flex-flow: row wrap;
+//         flex-flow: column;
+//         display: flex;
+//         width: 100%;
+//         // max-width: 20em;
+//         position: absolute;
+//         z-index: 0;
+//         overflow: hidden;
+//         height: 100%;
+//         padding: 0.3em .5em .5em;
+
+//         .sit-data-checkbox-component.sit-data-checkbox-container {
+//             min-height: 3em;
+//         }
+    
+//         &:hover {
+//             z-index: 100;
+//             background-color: rgba(255, 255, 255, 0.8);
+//             overflow: visible;
+//             height: auto;
+//             // padding: 0.3em .5em .5em;
+//             box-shadow: 2px 4px 7px 3px rgba(0,0,0, .6);
+
+
+//             .sit-data-checkbox-component.sit-data-checkbox-container {
+//                 border-bottom: 1px dotted green;
+//             }
+//         }
+//     }
+
+// }
+
+
+
+.checkbox-container {
+    // border: 1px dotted blue;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 20em;
+    margin-left: .3em;
+
+    .checkbox-container-func {
+        // border: 1px dotted red;
+        flex-flow: row wrap;
+        display: flex;
+        width: 100%;
+        flex: auto;
+        z-index: 0;
+
+        .sit-data-checkbox-component.sit-data-checkbox-container {
+            border: 1px dotted green;
+            margin-right: 1px;
+            margin-bottom: 1px;
+        }
+    
+ 
+    }
+
+}
