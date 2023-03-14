@@ -1,0 +1,16 @@
+<sit-dict-container ident="sitAnalysisPublishigPlan" #sitDictcontainer ngClass="flex-container-column content">
+  <sit-data-set-container ident="sitAnalysisPublishigPlanFilter" ngClass="flex-container-row sit-filter-bar">
+    <sit-data-input #sitControl field="searchProject" label="Filtruj" placeholder="Projekt, tytuł, autor" appearance="outline" style="width: 300px;"></sit-data-input>
+    <sit-data-radio #sitControl field="searchDateKind" type="row" label="Wg daty"
+      [buttons]="[{'caption':'premiery','value': '0', 'checked':true},{'caption':'wydania planowanej','value': '1'}]"
+    ></sit-data-radio>    
+    <sit-data-input #sitControl field="searchDateFrom" type="date" label="Od" appearance="outline" style="width: 130px;"></sit-data-input>
+    <sit-data-input #sitControl field="searchDateTo" type="date" label="Do" appearance="outline" style="width: 195px;" [showRefreshButton]="true" ></sit-data-input>
+  </sit-data-set-container>
+  <sit-data-set-container ident="sitPublishigPlan" showActionsToolbar="false" ngClass="flex-container-column">
+    <ag-grid-angular 
+      #sitSetDataSource 
+      class="ag-theme-balham">
+    </ag-grid-angular>
+  </sit-data-set-container>
+</sit-dict-container>
