@@ -138,6 +138,8 @@ export class SitCustomersComponent extends SitDictBaseComponent {
       { headerName: 'Zakw.', field: 'Addition01Rate',headerTooltip:'Dofinansowanie do zakwaterowania', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
       { headerName: 'Ubezp.', field: 'Addition05Rate',headerTooltip:'Dofinansowanie do ubezpiecznia', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
       { headerName: 'Dyżur', field: 'StandbyRate',headerTooltip:'Dyżur', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
+      { headerName: 'Zwroty', field: 'Addition03Rate',headerTooltip:'Zwroty', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
+      { headerName: 'Odprawy', field: 'Addition07Rate',headerTooltip:'Odprawy', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
       { headerName: 'Med.', field: 'Addition06Rate', headerTooltip:'Dofinansowanie do pakietów medycznych',filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
       { headerName: 'Posiłki', field: 'Addition02Rate',headerTooltip:'Dofinansowanie do posiłków', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
       { headerName: 'Inne', field: 'AdditionsRate',headerTooltip:'Inne dodatki', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},

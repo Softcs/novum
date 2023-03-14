@@ -47,7 +47,8 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
         }
       },
       { headerName: 'Numer', field: 'OfficeDocNumber', width: 100, sort: 'desc' },
-      { headerName: 'Data rej.', field: 'RegDate', filter: 'agDateColumnFilter',width: 90, floatingFilter: false  },
+      { headerName: 'Data rej.', field: 'RegDate', headerTooltip:'Data rejestracji w kancelarii', filter: 'agDateColumnFilter',width: 90, suppressMenu: true, floatingFilter: false  },
+      { headerName: 'Data wyst.', field: 'DocumentDate', headerTooltip:'Data wystawienia dokumentu', filter: 'agDateColumnFilter',width: 90, suppressMenu: true, floatingFilter: false  },
       { headerName: 'Typ', field: 'OfficeDocIdent', tooltipField: 'OfficeDocName', filter: 'agSetColumnFilter', floatingFilter: false, suppressMenu: true, width: 50},
       { headerName: 'Kontrahent', field: 'CustName', tooltipField: 'CustName', filter: 'agTextColumnFilter', floatingFilter: false},
       { headerName: 'Nr dok.', field: 'DocumentNumber', tooltipField: 'DocumentNumber', filter: 'agTextColumnFilter', floatingFilter: false, suppressMenu: true, width: 120 },
