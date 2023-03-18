@@ -6,7 +6,8 @@
         <sit-data-input #sitControl field="SaleStatus" label="Status sprz." placeholder="" appearance="outline" showRefreshButton="true" style="width: 180px;"
           [lookupDisplayFields] = "['SaleStatus', 'SaleStatusDescription']"
         ></sit-data-input>
-        <div ngClass="checkbox-container">
+
+        <!-- <div ngClass="checkbox-container">
           <div ngClass="checkbox-container-func">
             <sit-data-checkbox *ngIf="this.activeRow('sitFilterProducts')?.wpIsVisible == 1" #sitControl field="wp" label="W przyg." labelPosition="after" 
               checked="true" [refreshOnChange]="true" style="color: violet;" ></sit-data-checkbox>
@@ -21,7 +22,16 @@
             <sit-data-checkbox *ngIf="this.activeRow('sitFilterProducts')?.wcIsVisible == 1"  #sitControl field="wc" label="Wycofane" labelPosition="after" 
               checked="false" [refreshOnChange]="true" style="color: black;" ></sit-data-checkbox>
           </div> 
+        </div> -->
+
+        <div ngClass="checkbox-container">
+          <div ngClass="checkbox-container-func">
+            <sit-data-checkboxlist #sitControl field="groupStatusMain" labelPosition="after" label="Wybierz filtr"></sit-data-checkboxlist>
+          </div>
         </div>
+
+
+
       </sit-data-set-container>
     </div>
     <div fxLayout="column" fxFlex>

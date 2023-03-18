@@ -1,0 +1,42 @@
+
+<!-- <div ngClass="checkbox-container">
+    <div ngClass="checkbox-container-func"> -->
+
+        <div *ngFor="let chk of getCheckBoxList" ngClass="cnt-chk">
+
+            <!-- <div>{{chk.id}} / {{chk.order}} / {{chk.value}} / {{chk.description}} / {{chk.color}}</div> -->
+
+            <!-- <div ngClass="chk-inp-lab-cont"> -->
+                <input 
+                    type="checkbox" 
+                    [id]="chk.id" 
+                    [name]="chk.id" 
+                    [value]="chk.value" 
+                    (change)="onChange($event)" 
+                    [checked]="(chk.value === '1' ? true : false)"
+                />
+                <label [for]="chk.id">{{chk.description}}[{{chk.order}}]</label>
+                <!-- <hr/> -->
+            <!-- </div> -->
+
+            <!-- <mat-checkbox
+                [id]="chk.id"
+                [name]="chk.id"
+                (change)="onChangeX($event)"
+                [labelPosition]="labelPosition"
+                [checked]="(chk.value === '1' ? true : false)"
+                [(indeterminate)]="indeterminate === undefined ? false : indeterminate"
+            >
+                {{chk.description}}
+            </mat-checkbox> -->
+        
+        </div>
+
+    <!-- </div>
+
+</div> -->
+
+
+
+
+

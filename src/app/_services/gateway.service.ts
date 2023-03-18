@@ -79,6 +79,9 @@ export class GatewayService {
     }
 
     private encV(data) {
+
+console.log('data: ', JSON.parse(data));
+
         let envK = environment.crypt.key;
         var key = CryptoJS.enc.Utf8.parse(envK);
         var iv = CryptoJS.enc.Utf8.parse(environment.crypt.iv);
@@ -104,7 +107,13 @@ export class GatewayService {
         var decrypted = CryptoJS.AES.decrypt(data, key, {
             keySize: 128 / 8, iv: iv, mode: CryptoJS.mode.CBC, padding: CryptoJS.pad.Pkcs7
         });
-        return decrypted.toString(CryptoJS.enc.Utf8);
+        // return decrypted.toString(CryptoJS.enc.Utf8);
+
+        let resp = decrypted.toString(CryptoJS.enc.Utf8);
+
+// console.log('resp: ', JSON.parse(resp));
+
+        return resp;
     }
 
     createUser(username: string, password: string, company: Company): User {
