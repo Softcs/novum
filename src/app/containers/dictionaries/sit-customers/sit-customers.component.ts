@@ -78,6 +78,7 @@ export class SitCustomersComponent extends SitDictBaseComponent {
       { headerName: 'Dokument', field: 'DocumentIdent', width: 100 },
       { headerName: 'Aktywny', field: 'IsActive', width: 80, renderType: 'checkbox', suppressMenu: true, cellClass: "grid-cell-centered"},
       { headerName: 'Format danych', field: 'FileFormat', width: 130, },
+      { headerName: 'Dołącz Xml', field: 'SendXml', width: 100, renderType: 'checkbox', suppressMenu: true, cellClass: "grid-cell-centered"},
       { headerName: 'Dołącz PDF', field: 'SendPDFReport', width: 100, renderType: 'checkbox', suppressMenu: true, cellClass: "grid-cell-centered"},
       { headerName: 'Parametry wysyłki', field: 'ConnectionInfo', width: 400 },
     ];
