@@ -80,7 +80,9 @@ export class SitCustomersComponent extends SitDictBaseComponent {
       { headerName: 'Format danych', field: 'FileFormat', width: 130, },
       { headerName: 'Dołącz Xml', field: 'SendXml', width: 100, renderType: 'checkbox', suppressMenu: true, cellClass: "grid-cell-centered"},
       { headerName: 'Dołącz PDF', field: 'SendPDFReport', width: 100, renderType: 'checkbox', suppressMenu: true, cellClass: "grid-cell-centered"},
-      { headerName: 'Parametry wysyłki', field: 'ConnectionInfo', width: 400 },
+      { headerName: 'Odbiorca', field: 'Recipients', filter: 'agTextColumnFilter', width: 200 },
+      { headerName: 'Kopia do', field: 'CopyRecipients', filter: 'agTextColumnFilter', width: 200 },
+      { headerName: 'Ukryta kopia do', field: 'BlindCopyRecipients', filter: 'agTextColumnFilter', width: 200 },
     ];
 
     this.gridColumnsDefinition["sitCustomerB2BProductsConfig"] = [
