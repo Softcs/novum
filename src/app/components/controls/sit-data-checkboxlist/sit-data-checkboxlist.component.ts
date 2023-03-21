@@ -41,7 +41,6 @@ export class SitDataCheckboxlistComponent extends SitDataBaseComponent implement
   ngOnInit(): void {
     this.width && this.renderer.setStyle(this.hostElement.nativeElement, 'width', this.width);
     // this.renderer.setStyle(this.hostElement.nativeElement, 'width', this.width ? this.width : 'auto');
-
     this.layout === "1" && this.renderer.addClass(this.hostElement.nativeElement, 'checkboxlist-layout-column');
   }
 
