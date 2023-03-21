@@ -29,6 +29,7 @@
     "@fortawesome/fontawesome-free": "^5.15.4",
     "@techiediaries/ngx-qrcode": "^9.1.0",
     "@types/chart.js": "^2.9.37",
+    "@types/lodash": "^4.14.191",
     "ag-grid-angular": "^25.3.0",
     "ag-grid-community": "^25.3.0",
     "ag-grid-enterprise": "^25.3.0",

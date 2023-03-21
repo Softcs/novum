@@ -95,9 +95,21 @@ export class SitDataInputComponent extends SitDataBaseComponent {
 
   }
 
+  
 //   ngAfterViewInit() {
+
+//     if ('datetime-local' === this.type) {
+
+//       this._renderer.setProperty(this.inputElement.nativeElement, 'step', 1);
+
+// // console.log('this.type: ', this.type);
+// console.log('this.getValue: ', this.getValue());
 // console.log('this.inputElement.nativeElement: ', this.inputElement.nativeElement);
-// console.log('this.inputElement.nativeElement.​​​validity: ', this.inputElement.nativeElement.​​​validity);
+// // console.log('this.inputElement.nativeElement.​​​validity: ', this.inputElement.nativeElement.​​​validity);
+// console.log(' - - - - - - - - - - - - - - - ');
+
+//     }
+
 //   }
 
   public getValid(): boolean {

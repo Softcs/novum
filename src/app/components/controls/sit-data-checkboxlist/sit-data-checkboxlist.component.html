@@ -1,0 +1,51 @@
+
+<div *ngIf="label" ngClass="checkbox-list-label">
+    {{label}}
+</div>
+
+<!-- {{getCheckBoxList | json}} -->
+
+<div ngClass="checkbox-list-content">
+    
+    <ng-container 
+        [ngTemplateOutlet]="chkElementList"
+        [ngTemplateOutletContext]="{chkList: getCheckBoxList}"
+    ></ng-container>    
+
+</div>
+
+
+
+
+
+<!-- TEMPLATES -->
+
+<ng-template #chkElementList let-chkList="chkList">
+    <div *ngFor="let chk of chkList" ngClass="checkbox-list-el" [class.label-position-before]="labelPosition === 'before'">
+
+        <label [for]="chk.id">
+
+            <input 
+                type="checkbox" 
+                [id]="chk.id" 
+                [name]="chk.id" 
+                [value]="chk.value" 
+                (change)="onChange($event)" 
+                [checked]="(chk.value === '1' ? true : false)"
+            />
+
+            <span>
+                {{chk.description}}
+            </span>
+
+        </label>
+    </div>
+</ng-template>
+
+
+
+
+
+
+
+
