@@ -80,7 +80,7 @@ export class GatewayService {
 
     private encV(data) {
 
-console.log('data: ', JSON.parse(data));
+// console.log('data: ', JSON.parse(data));
 
         let envK = environment.crypt.key;
         var key = CryptoJS.enc.Utf8.parse(envK);
