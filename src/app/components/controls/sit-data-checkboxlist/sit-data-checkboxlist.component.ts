@@ -1,8 +1,6 @@
-import { Component, Input, Renderer2, ViewEncapsulation, OnInit, AfterViewInit } from '@angular/core';
+import { Component, Input, Renderer2, ViewEncapsulation, ElementRef, OnInit } from '@angular/core';
 import { SitDataBaseComponent } from '../sit-data-base/sit-data-base.component';
-// import {MatCheckboxChange} from '@angular/material/checkbox';
 import { OnCFService } from '@app/_services/oncf.service';
-// import { basename } from 'path';
 import { isEqual, map as loMap } from 'lodash';
 
 
@@ -14,24 +12,37 @@ import { isEqual, map as loMap } from 'lodash';
   host: {class: 'sit-data-checkboxlist-component sit-data-checkboxlist-container'}
 })
 
-//export class SitDataCheckboxlistComponent extends SitDataBaseComponent implements OnInit, AfterViewInit {
-export class SitDataCheckboxlistComponent extends SitDataBaseComponent {
 
+export class SitDataCheckboxlistComponent extends SitDataBaseComponent implements OnInit{
+
+  @Input() layout: string;
+  //layout: undefined = default | 1 = pionowy + hovered
   @Input() label = 'Więcej';
-  // @Input() width: string;
+  @Input() width: string;
   @Input() refreshOnChange: boolean;
-  @Input() labelPosition: 'after';
-  // indeterminate: boolean = false;
+    
+  @Input() labelPosition: string = 'after';
+  // @Input() labelPosition: string = 'before';
+  //labelPosition: 'before' | 'after' = 'after'; //pozycja etykiety checkboxa, domyslnie za
 
 
   checkBoxList: Array<{id: string, value: string, order: string, description: string, color: string }> = [];
 
-  
-  //labelPosition: 'before' | 'after' = 'after'; //pozycja etykiety checkboxa, domyslnie za
-  constructor(renderer: Renderer2, oncfService: OnCFService) {
+  constructor(
+    private renderer: Renderer2
+    // , oncfService: OnCFService
+    , private hostElement: ElementRef
+  ) {
     super(renderer);
     this.refreshOnChange = false;
     this.registerOnChange(this.onChange);
+  }
+
+  ngOnInit(): void {
+    this.width && this.renderer.setStyle(this.hostElement.nativeElement, 'width', this.width);
+    // this.renderer.setStyle(this.hostElement.nativeElement, 'width', this.width ? this.width : 'auto');
+
+    this.layout === "1" && this.renderer.addClass(this.hostElement.nativeElement, 'checkboxlist-layout-column');
   }
 
   get getCheckBoxList () {
@@ -42,21 +53,7 @@ export class SitDataCheckboxlistComponent extends SitDataBaseComponent {
   }
 
 
-  // public getValue(): any {
-  //   return this.value;
-  // }
-
-
-
-
-  // onChange(event: MatCheckboxChange) {
   onChange(event: any) {
-
-// console.log(' - - - - - - - onChange: - - - - - - - - ');
-// console.log('event.name: ', event.target.name);
-// console.log('event.checked: ', event.target.checked);
-// console.log('event: ', event);
-// console.log('checkBoxList: ', this.checkBoxList);
 
     const updatedValue = loMap(this.checkBoxList, chkItem => {
       if (chkItem.id === event.target.name) {
@@ -65,41 +62,15 @@ export class SitDataCheckboxlistComponent extends SitDataBaseComponent {
       return chkItem;
     });
 
-// console.log(' = = = = = = ');
-// console.log('checkBoxList: ', this.checkBoxList);
-// console.log('updatedValue: ', updatedValue);
-// console.log('updatedValue JSON: ', JSON.stringify(updatedValue));
-// console.log('checkBoxList: ', JSON.stringify(this.checkBoxList));
-// console.log('value: ', this.value);
-
     this.dataSetWrapper.setFieldValue(this.field, JSON.stringify(updatedValue), null, false);
 
+    if (this.refreshOnChange) {
+      this.dataSetWrapper.RefreshChildren();
+    }
 
-    // if (this.refreshOnChange) {
-    //   this.dataSetWrapper.RefreshChildren();
-    // }
-
-// console.log(' - - - - - - - - - - - - - ');
-// console.log('this: ', this);
   }
 
-
-  
-//   ngOnInit() {
-// console.log(' - - - - - - - ngOnInit: - - - - - - - - ');
-// console.log('ngOnInit: this: ', this);
-// console.log('ngOnInit: this.value: ', this.value);
-//   }
-
-
-// ngAfterViewInit() {
-// console.log(' - - - - - - - ngAfterViewInit: - - - - - - - - ');
-// console.log('ngAfterViewInit: this: ', this);
-// console.log('ngAfterViewInit: this.value: ', this.value);
-//   }
-
-
-  public checkParseValue (value: any) {
+  private checkParseValue = (value: any) => {
     try {
       return JSON.parse(value);
     } catch (e) {

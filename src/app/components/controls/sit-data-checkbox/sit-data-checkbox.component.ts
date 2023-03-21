@@ -16,7 +16,8 @@ export class SitDataCheckboxComponent extends SitDataBaseComponent {
   @Input() label = '';
   @Input() width: string;
   @Input() refreshOnChange: boolean;
-  @Input() labelPosition: 'after';
+  // @Input() labelPosition: 'after';
+  @Input() labelPosition: string = 'after';
   indeterminate: boolean = false;
   checked: boolean = false;
   //labelPosition: 'before' | 'after' = 'after'; //pozycja etykiety checkboxa, domyslnie za

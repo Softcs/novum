@@ -24,11 +24,10 @@
           </div> 
         </div> -->
 
-        <div ngClass="checkbox-container">
-          <div ngClass="checkbox-container-func">
-            <sit-data-checkboxlist #sitControl field="groupStatusMain" labelPosition="after" label="Wybierz filtr"></sit-data-checkboxlist>
-          </div>
-        </div>
+
+        <!-- <sit-data-checkboxlist labelPosition="before" width="310px"  layout="1" label="Wybierz filtr" #sitControl field="groupStatusMain"></sit-data-checkboxlist> -->
+        <sit-data-checkboxlist #sitControl field="groupStatusMain" layout="1" [refreshOnChange]="true"></sit-data-checkboxlist>
+
 
 
 
