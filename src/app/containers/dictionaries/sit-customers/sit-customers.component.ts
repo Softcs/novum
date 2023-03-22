@@ -36,8 +36,9 @@ export class SitCustomersComponent extends SitDictBaseComponent {
       { headerName: 'Próg', field: 'Threshold', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 100, sort: 'asc',suppressMenu: true},
       { headerName: 'Wartość', field: 'Value', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true,
         renderType: "number", renderFormat: '1.2-2'}, // domyslny format 1.2-2 - mozna przeciazyc przez np. renderFormat: 1.2-2"
-      { headerName: 'Zawsze licz ZUS', headerTooltip:'Zawsze licz ZUS',field: 'AlwaysCalcZUS', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 110, renderType: "checkbox"},
-      { headerName: 'Zawsze licz PPK', headerTooltip:'Zawsze licz PPK', field: 'AlwaysCalcPPK', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 110, renderType: "checkbox"},
+      { headerName: 'ZUS', headerTooltip:'Zawsze licz ZUS',field: 'AlwaysCalcZUS', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 80, renderType: "checkbox"},
+      { headerName: 'ZUS dla emer.', headerTooltip:'Licz ZUS dla emerytów',field: 'CalcZUS4Pens', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 110, renderType: "checkbox"},
+      { headerName: 'PPK', headerTooltip:'Zawsze licz PPK', field: 'AlwaysCalcPPK', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 80, renderType: "checkbox"},
       { headerName: 'Bez ZUS', field: 'ZUS', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 80, renderType: "checkbox"},
       { headerName: 'Rekr. klienta', field: 'CustRecr', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 100, renderType: "checkbox"},
       { headerName: 'Nie dodawaj premii do netto', headerTooltip:'Nie dodawaj premii do netto', field: 'NoBonusInCustNet', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 100, renderType: "checkbox"},
@@ -77,8 +78,11 @@ export class SitCustomersComponent extends SitDictBaseComponent {
       { headerName: 'Dokument', field: 'DocumentIdent', width: 100 },
       { headerName: 'Aktywny', field: 'IsActive', width: 80, renderType: 'checkbox', suppressMenu: true, cellClass: "grid-cell-centered"},
       { headerName: 'Format danych', field: 'FileFormat', width: 130, },
+      { headerName: 'Dołącz Xml', field: 'SendXml', width: 100, renderType: 'checkbox', suppressMenu: true, cellClass: "grid-cell-centered"},
       { headerName: 'Dołącz PDF', field: 'SendPDFReport', width: 100, renderType: 'checkbox', suppressMenu: true, cellClass: "grid-cell-centered"},
-      { headerName: 'Parametry wysyłki', field: 'ConnectionInfo', width: 400 },
+      { headerName: 'Odbiorca', field: 'Recipients', filter: 'agTextColumnFilter', width: 200 },
+      { headerName: 'Kopia do', field: 'CopyRecipients', filter: 'agTextColumnFilter', width: 200 },
+      { headerName: 'Ukryta kopia do', field: 'BlindCopyRecipients', filter: 'agTextColumnFilter', width: 200 },
     ];
 
     this.gridColumnsDefinition["sitCustomerB2BProductsConfig"] = [
@@ -138,6 +142,8 @@ export class SitCustomersComponent extends SitDictBaseComponent {
       { headerName: 'Zakw.', field: 'Addition01Rate',headerTooltip:'Dofinansowanie do zakwaterowania', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
       { headerName: 'Ubezp.', field: 'Addition05Rate',headerTooltip:'Dofinansowanie do ubezpiecznia', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
       { headerName: 'Dyżur', field: 'StandbyRate',headerTooltip:'Dyżur', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
+      { headerName: 'Zwroty', field: 'Addition03Rate',headerTooltip:'Zwroty', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
+      { headerName: 'Odprawy', field: 'Addition07Rate',headerTooltip:'Odprawy', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
       { headerName: 'Med.', field: 'Addition06Rate', headerTooltip:'Dofinansowanie do pakietów medycznych',filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
       { headerName: 'Posiłki', field: 'Addition02Rate',headerTooltip:'Dofinansowanie do posiłków', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
       { headerName: 'Inne', field: 'AdditionsRate',headerTooltip:'Inne dodatki', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},

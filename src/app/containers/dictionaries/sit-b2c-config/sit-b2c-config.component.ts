@@ -38,6 +38,7 @@ export class SitB2cConfigComponent extends SitDictBaseComponent {
         }
       },
       { headerName: 'Prod. akt.', field: 'IsActive_Product', filter: 'agSetColumnFilter', width: 80, renderType: 'checkbox', suppressMenu: true, cellClass: "grid-cell-centered" },
+      { headerName: 'B2C', field: 'IsB2C', filter: 'agSetColumnFilter', width: 80, renderType: 'checkbox', suppressMenu: true, cellClass: "grid-cell-centered", defaultVisibility: true },
       { headerName: 'B2B', field: 'IsB2B', filter: 'agSetColumnFilter', width: 80, renderType: 'checkbox', suppressMenu: true, cellClass: "grid-cell-centered", defaultVisibility: true },
       { headerName: 'Status wys.', field: 'StatusValueIdent_Main', tooltipField: 'StatusValueName_Main', width: 100, suppressMenu: true},
     ];
@@ -79,6 +80,15 @@ export class SitB2cConfigComponent extends SitDictBaseComponent {
       { headerName: 'B2C id', field: 'sitPublicationSubjectsId', filter: 'agTextColumnFilter', width: 100, },
       { headerName: 'Identyfikator', field: 'PublicationSubjectIdent', filter: 'agTextColumnFilter', width: 150, },
       { headerName: 'Nazwa', field: 'PublicationSubjectName', tooltipField: 'PublicationSubjectName', filter: 'agTextColumnFilter', width: 300 },
+      { headerName: 'Status wys.', field: 'StatusValueIdent_Main', tooltipField: 'StatusValueName_Main', width: 100, suppressMenu: true},
+    ];
+
+    this.gridColumnsDefinition["sitB2CContributors"] = [
+      { headerName: 'Id', field: 'sitB2CContributorsId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 80, defaultVisibility: false },
+      { headerName: 'GUID', field: 'sitB2CContributorsG', width: 150, defaultVisibility: false },
+      { headerName: 'Aktywny', field: 'IsActive', width: 80, renderType: 'checkbox', suppressMenu: true, cellClass: "grid-cell-centered"},
+      { headerName: 'B2C id', field: 'sitContributorsId', filter: 'agTextColumnFilter', width: 100, },
+      { headerName: 'Nazwa', field: 'PersonName', tooltipField: 'PersonName', filter: 'agTextColumnFilter', width: 300 },
       { headerName: 'Status wys.', field: 'StatusValueIdent_Main', tooltipField: 'StatusValueName_Main', width: 100, suppressMenu: true},
     ];
 
