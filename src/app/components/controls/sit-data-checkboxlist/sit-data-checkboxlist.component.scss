@@ -15,8 +15,9 @@
     padding-left: 3px;
     padding-right: 3px;
 
-    // line-height: normal;
-    line-height: 1.8em;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    line-height: normal;
+    // line-height: 1.8em;
 
     display: flex;
     // flex: 0 1 .01px;
@@ -31,7 +32,7 @@
       flex-flow: column nowrap;
       line-height: 28px;
       // font-size: 15px;
-      font-family: Roboto, "Helvetica Neue", sans-serif;
+      // font-family: Roboto, "Helvetica Neue", sans-serif;
 
       .checkbox-list-label {
         padding: 2px 11px;
@@ -95,8 +96,9 @@
     &.checkboxlist-layout-filter-bar-inline {
       padding-top: 3px;
       padding-bottom: 7px;
-      font-family: Roboto, "Helvetica Neue", sans-serif;
+      // font-family: Roboto, "Helvetica Neue", sans-serif;
       position: relative;
+      line-height: 1em;
   
       .checkbox-list-label {
         // transform: translateY(-1.59375em) scale(0.75);
@@ -171,8 +173,11 @@
         span {
           white-space: nowrap;
           margin: 0 5px 0 0;
+          padding: 1px 0 0;
           display: inline-block;
+          // display: flex;
           flex: auto;
+          // line-height: initial;
         }
         input {
           display: inline-block;
