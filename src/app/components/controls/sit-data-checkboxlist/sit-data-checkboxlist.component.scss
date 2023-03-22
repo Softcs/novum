@@ -80,7 +80,8 @@
 
       }
 
-      &:hover {
+      &:hover,
+      &:active {
         .checkbox-list-content{
           height: auto;
           padding: 4px;
