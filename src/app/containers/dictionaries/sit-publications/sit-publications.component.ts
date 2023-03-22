@@ -54,7 +54,8 @@ export class SitPublicationsComponent extends SitDictBaseComponent {
           else if (params.value === 'Wycofana') { return { color: 'black', 'font-weight': 600 }; }          
           else { return null; }
         }
-      },       
+      },
+      { headerName: 'B2C', field: 'IsB2C', filter: 'agSetColumnFilter', width: 80, renderType: 'checkbox', suppressMenu: true, cellClass: "grid-cell-centered", defaultVisibility: false },
     ];
 
     this.gridColumnsDefinition["sitPublicationProductProjects"] = [

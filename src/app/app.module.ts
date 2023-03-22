@@ -376,6 +376,7 @@ import { SitPublicationContributorsEditComponent } from './containers/dictionari
 import { SitProducts4pubContributorsEditComponent } from './containers/dictionaries/sit-publications/actions/sit-products4pub-contributors-edit/sit-products4pub-contributors-edit.component';
 import { SitAnalysisPublishigPlanComponent } from './containers/dictionaries/sit-analysis-publishig-plan/sit-analysis-publishig-plan.component';
 import { SitB2cContributorsEditComponent } from './containers/dictionaries/sit-b2c-config/actions/sit-b2c-contributors-edit/sit-b2c-contributors-edit.component';
+import { SitProductSetIsB2cComponent } from './containers/dictionaries/sit-products/actions/sit-product-set-is-b2c/sit-product-set-is-b2c.component';
 
 @NgModule({
     imports: [
@@ -735,6 +736,7 @@ import { SitB2cContributorsEditComponent } from './containers/dictionaries/sit-b
         SitProducts4pubContributorsEditComponent,
         SitAnalysisPublishigPlanComponent,
         SitB2cContributorsEditComponent,
+        SitProductSetIsB2cComponent,
 
     ],
     providers: [
