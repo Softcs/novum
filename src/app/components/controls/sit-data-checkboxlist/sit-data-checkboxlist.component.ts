@@ -3,6 +3,19 @@ import { SitDataBaseComponent } from '../sit-data-base/sit-data-base.component';
 import { OnCFService } from '@app/_services/oncf.service';
 import { isEqual, map as loMap } from 'lodash';
 
+/**
+ * Params: 
+ * - field: string = nazwa pola
+ * - layout: undefined | string, available:
+ *    - undefined = default, simple list
+ *    - "1" = column, hovered
+ *    - "2" = materials input style - dedicated to: sit-filter-bar
+ * - label: string; default = 'Więcej'
+ * - labelPosition: string; 'after' | 'before', default = 'after'
+ * - width: string; np: "300px", "10em"
+ * - refreshOnChange: boolean
+ * - icon: undefined | string
+ */
 
 @Component({
   selector: 'sit-data-checkboxlist',
@@ -11,7 +24,6 @@ import { isEqual, map as loMap } from 'lodash';
   encapsulation : ViewEncapsulation.None,
   host: {class: 'sit-data-checkboxlist-component sit-data-checkboxlist-container'}
 })
-
 
 export class SitDataCheckboxlistComponent extends SitDataBaseComponent implements OnInit{
 
@@ -24,6 +36,8 @@ export class SitDataCheckboxlistComponent extends SitDataBaseComponent implement
   @Input() labelPosition: string = 'after';
   // @Input() labelPosition: string = 'before';
   //labelPosition: 'before' | 'after' = 'after'; //pozycja etykiety checkboxa, domyslnie za
+
+  @Input() icon: string;
 
 
   checkBoxList: Array<{id: string, value: string, order: string, description: string, color: string }> = [];
@@ -42,6 +56,11 @@ export class SitDataCheckboxlistComponent extends SitDataBaseComponent implement
     this.width && this.renderer.setStyle(this.hostElement.nativeElement, 'width', this.width);
     // this.renderer.setStyle(this.hostElement.nativeElement, 'width', this.width ? this.width : 'auto');
     this.layout === "1" && this.renderer.addClass(this.hostElement.nativeElement, 'checkboxlist-layout-column');
+    this.layout === "2" && this.renderer.addClass(this.hostElement.nativeElement, 'checkboxlist-layout-filter-bar-inline');
+
+    if (!this.icon && this.layout === "1") {
+      this.icon = 'playlist_add_check';
+    }
   }
 
   get getCheckBoxList () {
