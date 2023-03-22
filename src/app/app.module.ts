@@ -59,7 +59,7 @@ import 'ag-grid-enterprise';
 import { SitDictBaseComponent } from './containers/_base/sit-dict-base/sit-dict-base.component';
 import { SitMenuListItemComponent } from './components/sit-menu-list-item/sit-menu-list-item.component';
 import { NavService } from './_services/nav.service';
-import { sitDSControlDirective, sitDataInputComponentDirective, sitDataCheckboxComponentDirective } from './_directives';
+import { sitDSControlDirective, sitDataInputComponentDirective, sitDataCheckboxComponentDirective, sitDataCheckboxlistComponentDirective } from './_directives';
 import { SitSideMenuComponent } from './components/sit-side-menu/';
 import { SitMenuComponent } from './containers/dictionaries/sit-menu/';
 import { SitRailConfigurationsComponent } from './containers/dictionaries/sit-rail-configurations';
@@ -82,6 +82,8 @@ import { SitDialogDiscardComponent } from './components/sit-dialog-discard/sit-d
 import { SitProcParamsComponent } from './components/sit-proc-params/sit-proc-params.component';
 import { SitDialogConfirmDelComponent } from './components/sit-dialog-confirm-del/sit-dialog-confirm-del.component';
 import { SitDataCheckboxComponent } from '@app/components/controls/sit-data-checkbox/sit-data-checkbox.component';
+import { SitDataCheckboxlistComponent } from '@app/components/controls/sit-data-checkboxlist/sit-data-checkboxlist.component';
+
 import { SitDataTextareaComponent } from '@app/components/controls/sit-data-textarea/sit-data-textarea.component';
 import { sitDataTextareaComponentDirectiveDirective } from './_directives/sitDataTextareaComponentDirective';
 import { SitDataTextareaComponentDirectiveDirective } from '@app/_directives/sit-data-textarea-component-directive.directive'
@@ -432,6 +434,7 @@ import { SitProductSetIsB2cComponent } from './containers/dictionaries/sit-produ
         sitSetDataSetDirective,
         sitDataInputComponentDirective,
         sitDataCheckboxComponentDirective,
+        sitDataCheckboxlistComponentDirective,
         sitDSControlDirective,
         SitSideMenuComponent,
         SitRozrachunkiInsertGTComponent,
@@ -456,6 +459,7 @@ import { SitProductSetIsB2cComponent } from './containers/dictionaries/sit-produ
         SitDialogConfirmSeletedRowsComponent,
         SitDialogActionProgressComponent,
         SitDataCheckboxComponent,
+        SitDataCheckboxlistComponent,
         SitDataTextareaComponent,
         sitDataTextareaComponentDirectiveDirective,
         SitDataTextareaComponentDirectiveDirective,

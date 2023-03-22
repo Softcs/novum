@@ -1,4 +1,4 @@
-import { Component, Input, Renderer2 } from '@angular/core';
+import { Component, Input, Renderer2, ViewEncapsulation } from '@angular/core';
 import { SitDataBaseComponent } from '../sit-data-base/sit-data-base.component';
 import {MatCheckboxChange} from '@angular/material/checkbox';
 import { OnCFService } from '@app/_services/oncf.service';
@@ -7,14 +7,17 @@ import { basename } from 'path';
 @Component({
   selector: 'sit-data-checkbox',
   templateUrl: './sit-data-checkbox.component.html',
-  styleUrls: ['./sit-data-checkbox.component.scss']
+  styleUrls: ['./sit-data-checkbox.component.scss'],
+  encapsulation : ViewEncapsulation.None,
+  host: {class: 'sit-data-checkbox-component sit-data-checkbox-container'}
 })
 
 export class SitDataCheckboxComponent extends SitDataBaseComponent {
   @Input() label = '';
   @Input() width: string;
   @Input() refreshOnChange: boolean;
-  @Input() labelPosition: 'after';
+  // @Input() labelPosition: 'after';
+  @Input() labelPosition: string = 'after';
   indeterminate: boolean = false;
   checked: boolean = false;
   //labelPosition: 'before' | 'after' = 'after'; //pozycja etykiety checkboxa, domyslnie za
@@ -34,6 +37,8 @@ export class SitDataCheckboxComponent extends SitDataBaseComponent {
     if (this.refreshOnChange) {
       this.dataSetWrapper.RefreshChildren();
     }
+
+// console.log(this);
   }
 
   public setValue(value: any) {
