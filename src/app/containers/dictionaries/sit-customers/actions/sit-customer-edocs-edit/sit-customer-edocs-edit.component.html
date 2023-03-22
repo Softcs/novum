@@ -13,19 +13,12 @@
       </div>
       <div fxLayout="row">
         <sit-data-checkbox #sitControl field="IsActive" label="Aktywny" fxFlex="30"></sit-data-checkbox>
+        <sit-data-checkbox #sitControl field="SendXml" label="Dołącz Xml" fxFlex="30"></sit-data-checkbox>
         <sit-data-checkbox #sitControl field="SendPDFReport" label="Dołącz PDF" fxFlex="30"></sit-data-checkbox>
       </div>
-      <div fxLayout="row" fxFlex> 
-        <sit-data-textarea 
-          type="textarea" 
-          #sitControl field="ConnectionInfo" 
-          label="Parametry wysyłki" 
-          appearance="outline" 
-          rows="20" 
-          cols="65" 
-          fxFill>
-        </sit-data-textarea>
-      </div>
+      <sit-data-input #sitControl type="text" field="Recipients" label="Odbiorca" appearance="outline" ></sit-data-input>
+      <sit-data-input #sitControl type="text" field="CopyRecipients" label="Kopia do" appearance="outline" ></sit-data-input>
+      <sit-data-input #sitControl type="text" field="BlindCopyRecipients" label="Ukryta kopia do" appearance="outline" ></sit-data-input>
     </div>    
   </sit-data-set-container>
 </sit-proc-params>

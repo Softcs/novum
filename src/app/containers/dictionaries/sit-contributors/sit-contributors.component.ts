@@ -25,6 +25,8 @@ export class SitContributorsComponent extends SitDictBaseComponent {
       { headerName: 'WWW', field: 'WWW', filter: 'agTextColumnFilter', width: 250, defaultVisibility: false},
       { headerName: 'Facebook', field: 'Facebook', filter: 'agTextColumnFilter', width: 250, defaultVisibility: false},
       { headerName: 'Instagram', field: 'Instagram', filter: 'agTextColumnFilter', width: 250, defaultVisibility: false},
+      { headerName: 'TikTok', field: 'TikTok', filter: 'agTextColumnFilter', width: 250, defaultVisibility: false},
+      { headerName: 'Twitter', field: 'Twitter', filter: 'agTextColumnFilter', width: 250, defaultVisibility: false},
     ];
 
     this.gridColumnsDefinition["sitContributorAlternativeNames"] = [

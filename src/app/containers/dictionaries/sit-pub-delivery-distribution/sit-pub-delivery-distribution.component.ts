@@ -24,8 +24,12 @@ export class SitPubDeliveryDistributionComponent extends SitDictBaseComponent {
           },
         ]
       },
-      { headerName: 'Wyd.', field: 'Publishing', filter: 'agTextColumnFilter', width: 80, enableRowGroup: true, defaultVisibility: false,
-        cellClass: ['font12','textFormat'] },
+      { headerName: 'Wyd.', field: 'Publishing', filter: 'agTextColumnFilter', width: 70, enableRowGroup: true, defaultVisibility: true,
+        cellClass: ['font12','textFormat'] 
+      },
+      { headerName: 'Promocja', field: 'SalePromoFor',tooltipField: 'SalePromoFor' , filter: 'agTextColumnFilter', width: 100, enableRowGroup: true,
+        cellClass: ['font12','textFormat']
+      },
       { headerName: 'Rynki', field: 'Markets',tooltipField: 'Markets' , filter: 'agTextColumnFilter', width: 80, enableRowGroup: true,
         cellClass: ['font12','textFormat']
       },
