@@ -10,8 +10,9 @@
     font-size: 12px;
     // margin: 0px 3px 0px;
 
-    padding-left: 3px;
-    padding-right: 3px;
+    // padding-left: 3px;
+    // padding-right: 3px;
+    padding: .5em 4px;
 
     display: flex;
     flex: 0 1 .01px;;
@@ -36,10 +37,9 @@
       .mat-checkbox-inner-container {
         margin-right: 3px;
       }
-      .mat-checkbox-label {
-        // margin-right: .5em;
-        line-height: normal;
-      }
+      // .mat-checkbox-label {
+      //   line-height: normal;
+      // }
     }
   }
 
