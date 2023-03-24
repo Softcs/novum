@@ -49,7 +49,11 @@
           <as-split #sitSpliter direction="horizontal">
             <as-split-area [size]="40">
               <sit-data-set-container ident="sitPublicationsProducts" [showActionsToolbar]="true" ngClass="flex-container-column">
-                <ag-grid-angular #sitSetDataSource class="ag-theme-balham"></ag-grid-angular>
+                <ag-grid-angular 
+                  #sitSetDataSource 
+                  class="ag-theme-balham"
+                  
+                ></ag-grid-angular>
               </sit-data-set-container>    
             </as-split-area>
             <as-split-area [size]="60">
@@ -101,7 +105,7 @@
 
                       </div>
                       <div fxLayout="column" fxLayoutAlign="start center" >
-                        <div fxLayout="row" fxLayoutAlign="start start"><a href="{{link}}" target="_blank"><img src="{{link}}" height="500"></a></div>
+                        <div fxLayout="row" fxLayoutAlign="start start"><a href="{{link}}" target="_blank"><img class="img-prod-link" src="{{link}}" height="500"></a></div>
                       </div>                      
                     </div>
                   </sit-data-set-container>

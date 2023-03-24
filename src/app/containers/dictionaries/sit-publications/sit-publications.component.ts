@@ -8,13 +8,22 @@ import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-di
   host: {class: 'router-flex sit-publications-component'}
 })
 export class SitPublicationsComponent extends SitDictBaseComponent {
-  link;
-  ean;
-  groupDefaultExpanded;
-  getDataPath;
-  autoGroupColumnDef;
+  link: any;
+  ean: any;
+  groupDefaultExpanded: any;
+  getDataPath: any;
+  autoGroupColumnDef: any;
+  imgPrvHeight: string = '55';
 
-  public prepareColumnsDefinitnion(){
+
+  public getImageUrlPrv(data:any) {
+    if (!data || !data.sitImagesG_prv || !data.FileName) {
+      return 'brak';
+    }
+    return '<img height="' + this.imgPrvHeight + '" class="img-for-grid-mini" src="' + this.urlService.getImageUrl(data.sitImagesG_prv, data.FileName_prv) + '" title="grafika: ' + data.ProductName + '" alt="grafika dla: ' + data.ProductName + '"/>';
+  }
+
+  public prepareColumnsDefinitnion() {
 
     this.autoGroupColumnDef = {
       headerName: 'Struktura',
@@ -41,6 +50,13 @@ export class SitPublicationsComponent extends SitDictBaseComponent {
     this.gridColumnsDefinition["sitPublicationsProducts"] = [
       { headerName: 'Id', field: 'sitPublicationsProductsId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 50, defaultVisibility: false },
       { headerName: 'GUID', field: 'sitPublicationsProductsG', width: 100, defaultVisibility: false }, 
+      { headerName: 'Okładka', 
+        field: 'sitImagesG_prv', 
+        maxWidth: 90, 
+        resizable: true,
+        autoHeight: true,
+        cellRenderer: (params:any) => this.getImageUrlPrv(params.data)
+      },
       { headerName: 'Identfikator', field: 'ProductIdent', width: 130},
       { headerName: 'EAN', field: 'EAN', filter: 'agTextColumnFilter', width: 120 },
       { headerName: 'Nazwa', field: 'ProductName', width: 300},
