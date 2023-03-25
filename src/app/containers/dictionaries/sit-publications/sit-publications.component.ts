@@ -18,7 +18,8 @@ export class SitPublicationsComponent extends SitDictBaseComponent {
 
   public getImageUrlPrv(data:any) {
     if (!data || !data.sitImagesG_prv || !data.FileName) {
-      return 'brak';
+      // return 'brak';
+      return '<img height="' + this.imgPrvHeight + '" class="img-for-grid-mini" src="' + this.urlService.getImageUrl("noimage", "noimage_s.jpg") + '" title="grafika: ' + data.ProductName + '" alt="grafika dla: ' + data.ProductName + '"/>';
     }
     return '<img height="' + this.imgPrvHeight + '" class="img-for-grid-mini" src="' + this.urlService.getImageUrl(data.sitImagesG_prv, data.FileName_prv) + '" title="grafika: ' + data.ProductName + '" alt="grafika dla: ' + data.ProductName + '"/>';
   }
@@ -84,6 +85,7 @@ export class SitPublicationsComponent extends SitDictBaseComponent {
       //{ headerName: 'Nazwa', field: 'ProductName', width: 300},
       //{ headerName: 'Nazwa', field: 'ProductName', flex: 1},
       { headerName: 'Nazwa', 
+        field: 'ProductName',
         // maxWidth: 120, 
         flex: 1,
         resizable: true,
