@@ -52,15 +52,52 @@ export class SitPublicationsComponent extends SitDictBaseComponent {
       { headerName: 'GUID', field: 'sitPublicationsProductsG', width: 100, defaultVisibility: false }, 
       { headerName: 'Okładka', 
         field: 'sitImagesG_prv', 
-        maxWidth: 90, 
+        maxWidth: 80, 
         resizable: true,
         autoHeight: true,
         cellRenderer: (params:any) => this.getImageUrlPrv(params.data)
       },
-      { headerName: 'Identfikator', field: 'ProductIdent', width: 130},
-      { headerName: 'EAN', field: 'EAN', filter: 'agTextColumnFilter', width: 120 },
-      { headerName: 'Nazwa', field: 'ProductName', width: 300},
-      { headerName: 'Status', field: 'StatusValueName_Main', filter: 'agSetColumnFilter', width: 100, floatingFilter: false, 
+      
+      { headerName: 'EAN/Ident', 
+        // field: 'ProductIdent', 
+        maxWidth: 120, 
+        resizable: true,
+        autoHeight: true,
+        cellRenderer: (params:any) => {
+
+// console.log(params.data);
+
+          let dataArr = [
+            (params.data.EAN ? '<span title="' + params.data.EAN + '">' + params.data.EAN + '</span>' : null),
+            (params.data.ProductIdent ? '<span title="' + params.data.ProductIdent + '">' + params.data.ProductIdent + '</span>' : null),
+          ];
+
+          return dataArr.filter(Boolean).join('<br/>');
+        }
+
+      },
+
+      // { headerName: 'Identfikator', field: 'ProductIdent', width: 130},
+      // { headerName: 'EAN', field: 'EAN', filter: 'agTextColumnFilter', width: 120 },
+
+      //{ headerName: 'Nazwa', field: 'ProductName', width: 300},
+      //{ headerName: 'Nazwa', field: 'ProductName', flex: 1},
+      { headerName: 'Nazwa', 
+        // maxWidth: 120, 
+        flex: 1,
+        resizable: true,
+        autoHeight: true,
+        cellRenderer: (params:any) => (params.data.ProductName ? '<span title="' + params.data.ProductName + '">' + params.data.ProductName + '</span>' : '')
+      },
+
+
+      { headerName: 'Status', 
+        field: 'StatusValueName_Main', 
+        filter: 'agSetColumnFilter', 
+        maxWidth: 50, 
+        // flex: 1,
+        floatingFilter: false, 
+        cellRenderer: (params:any) => (params.data.StatusValueIdent_Main ? '<span title="' + params.data.StatusValueName_Main + '">' + params.data.StatusValueIdent_Main + '</span>' : ''),
         cellStyle: function(params) {
           if (params.value === 'W przygotowaniu') { return { color: 'violet', 'font-weight': 600 }; }
           else if (params.value === 'Zapowiedź') { return { color: 'orange', 'font-weight': 600 }; }
@@ -71,7 +108,10 @@ export class SitPublicationsComponent extends SitDictBaseComponent {
           else { return null; }
         }
       },
-      { headerName: 'B2C', field: 'IsB2C', filter: 'agSetColumnFilter', width: 80, renderType: 'checkbox', suppressMenu: true, cellClass: "grid-cell-centered", defaultVisibility: false },
+      { headerName: 'B2C', field: 'IsB2C', filter: 'agSetColumnFilter', maxWidth: 50, renderType: 'checkbox', suppressMenu: true
+        , cellClass: "grid-cell-centered"
+        // , defaultVisibility: false 
+      },
     ];
 
     this.gridColumnsDefinition["sitPublicationProductProjects"] = [

@@ -47,15 +47,16 @@
       <mat-tab-group id="tab-group" animationDuration="0ms">
         <mat-tab label="Produkty">
           <as-split #sitSpliter direction="horizontal">
+
             <as-split-area [size]="40">
               <sit-data-set-container ident="sitPublicationsProducts" [showActionsToolbar]="true" ngClass="flex-container-column">
                 <ag-grid-angular 
                   #sitSetDataSource 
                   class="ag-theme-balham"
-                  
                 ></ag-grid-angular>
-              </sit-data-set-container>    
+              </sit-data-set-container>
             </as-split-area>
+            
             <as-split-area [size]="60">
               <mat-tab-group id="tab-group" animationDuration="0ms">
                 <mat-tab label="Informacje" ngClass="flex-container-column">
