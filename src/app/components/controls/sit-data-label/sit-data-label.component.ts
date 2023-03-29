@@ -4,6 +4,17 @@ import { OnCFService } from '@app/_services/oncf.service';
 import { SitDataBaseComponent } from '../sit-data-base/sit-data-base.component';
 import { formatDate, formatNumber } from '@angular/common';
 
+/**
+ * params:
+ * - labelWidth: string, default='', np: labelWidth="8em" 
+ * - type: string; text | number | number4, default='text', np: label="number" 
+ * - label: string; default='', np: labelWidth="Cena"
+ * - valueStyle: any = {}; np: [valueStyle]="{'font-weight': '600'}"
+ * - labelStyle: any = {}; np: [valueStyle]="{'font-weight': '600'}"
+ * - field: string = ''; np: field="CollectionName" 
+ * - jeśli pole puste ma być niepuste to doajemy class: "fill-if-empty", np:  ngClass="fill-if-empty"
+ */
+
 @Component({
   selector: 'sit-data-label',
   templateUrl: './sit-data-label.component.html',
@@ -11,13 +22,14 @@ import { formatDate, formatNumber } from '@angular/common';
   encapsulation : ViewEncapsulation.None,
   host: {class: 'sit-data-label-component flex-container-row'}
 })
+
 export class SitDataLabelComponent extends SitDataBaseComponent {
 
   @Input() labelWidth = '';
   @Input() type = 'text';
   @Input() label = '';
-  @Input() valueStyle: any = {};
-  @Input() labelStyle: any = {};
+  @Input() valueStyle: any = null;
+  @Input() labelStyle: any = null;
   @Input() field: string = '';
   // @Input() ngClass: string = '';
 
