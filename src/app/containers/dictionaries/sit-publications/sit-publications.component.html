@@ -9,9 +9,11 @@
             <sit-data-set-container ident="sitPublicationsFilter" ngClass="flex-container-row sit-filter-bar">
               <sit-data-input #sitControl field="searchPublications" label="Filtruj publikacje" appearance="outline" style="width: 250px;" 
                 placeholder="Publikacja, tytuł, tytuł oryginalny"></sit-data-input>
+              <sit-data-input #sitControl field="searchAuthor" label="Filtruj autora" appearance="outline" style="width: 250px;" 
+                placeholder="Imię, nazwisko"></sit-data-input>
               <sit-data-input #sitControl field="searchPublicationsProducts" label="Filtruj produkty" appearance="outline" style="width: 300px;" 
                 placeholder="Identyfikator, nazwa, EAN" [showRefreshButton]="true"></sit-data-input>
-              <sit-data-checkbox #sitControl field="searchShowArchPublications" label="Pokaż archiwalne" labelPosition="after" checked="false"></sit-data-checkbox>
+              <sit-data-checkboxlist #sitControl field="groupStatusMain" label="Status" [refreshOnChange]="false" layout="1"></sit-data-checkboxlist>
             </sit-data-set-container>
  
             <sit-data-set-container ident="sitPublications" [showActionsToolbar]="true" ngClass="flex-container-column">
@@ -27,6 +29,7 @@
 
             <sit-simple-container ngClass="flex-container-column mb-05" title="PUBLIKACJA">
               <sit-data-label #sitControl field="PublicationIdent" type="header"></sit-data-label>
+              <sit-data-label #sitControl field="Author" label="Autor"></sit-data-label>
               <sit-data-label #sitControl field="Title" label="Tytuł polski"></sit-data-label>
               <sit-data-label #sitControl field="OriginalTitle" label="Tytuł oryginalny"></sit-data-label>
             </sit-simple-container>
@@ -93,6 +96,7 @@
                             <sit-data-label #sitControl field="FormOfReleaseDesc" label="Forma wydania" ></sit-data-label>
                             <sit-data-label #sitControl field="EAN" label="EAN"></sit-data-label>
                             <sit-data-label #sitControl field="ISBN" label="ISBN"></sit-data-label>
+                            <sit-data-label #sitControl field="CoverPrice" label="Cena okładkowa" type="number" [valueStyle]="{'text-align': 'left'}"></sit-data-label>
                             <sit-data-label #sitControl field="MasterProductIdent" label="Produkt główny"></sit-data-label>
                           </sit-simple-container>
 
