@@ -312,6 +312,12 @@ ag-grid-angular {
     border: 1px solid rgba(0,0,0,0.4);
     max-height: 60px;
   }
+
+  .ag-cell-wrap-text {
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+  
 }
 
 

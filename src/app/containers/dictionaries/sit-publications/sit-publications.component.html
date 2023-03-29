@@ -51,8 +51,10 @@
             <as-split-area [size]="40">
               <sit-data-set-container ident="sitPublicationsProducts" [showActionsToolbar]="true" ngClass="flex-container-column">
                 <ag-grid-angular 
+                  id="sitPublicationsProducts"
                   #sitSetDataSource 
                   class="ag-theme-balham"
+                  [rowHeight]="publicationsProductsGridRowHeight"
                 ></ag-grid-angular>
               </sit-data-set-container>
             </as-split-area>
