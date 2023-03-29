@@ -18,7 +18,8 @@ export class SitPublicationsComponent extends SitDictBaseComponent {
 
   public getImageUrlPrv(data:any) {
     if (!data || !data.sitImagesG_prv || !data.FileName) {
-      return 'brak';
+      // return 'brak';
+      return '<img height="' + this.imgPrvHeight + '" class="img-for-grid-mini" src="' + this.urlService.getImageUrl("noimage", "noimage_s.jpg") + '" title="grafika: ' + data.ProductName + '" alt="grafika dla: ' + data.ProductName + '"/>';
     }
     return '<img height="' + this.imgPrvHeight + '" class="img-for-grid-mini" src="' + this.urlService.getImageUrl(data.sitImagesG_prv, data.FileName_prv) + '" title="grafika: ' + data.ProductName + '" alt="grafika dla: ' + data.ProductName + '"/>';
   }
@@ -55,12 +56,13 @@ export class SitPublicationsComponent extends SitDictBaseComponent {
         maxWidth: 80, 
         resizable: true,
         autoHeight: true,
-        cellRenderer: (params:any) => this.getImageUrlPrv(params.data)
+        cellRenderer: (params:any) => this.getImageUrlPrv(params.data),
+        suppressMenu: true
       },
       
       { headerName: 'EAN/Ident', 
-        // field: 'ProductIdent', 
-        maxWidth: 120, 
+        field: 'ProductIdent', 
+        maxWidth: 140,
         resizable: true,
         autoHeight: true,
         cellRenderer: (params:any) => {
@@ -83,6 +85,7 @@ export class SitPublicationsComponent extends SitDictBaseComponent {
       //{ headerName: 'Nazwa', field: 'ProductName', width: 300},
       //{ headerName: 'Nazwa', field: 'ProductName', flex: 1},
       { headerName: 'Nazwa', 
+        field: 'ProductName',
         // maxWidth: 120, 
         flex: 1,
         resizable: true,
@@ -94,9 +97,10 @@ export class SitPublicationsComponent extends SitDictBaseComponent {
       { headerName: 'Status', 
         field: 'StatusValueName_Main', 
         filter: 'agSetColumnFilter', 
-        maxWidth: 50, 
+        maxWidth: 60, 
         // flex: 1,
-        floatingFilter: false, 
+        floatingFilter: false,
+        suppressMenu: true,
         cellRenderer: (params:any) => (params.data.StatusValueIdent_Main ? '<span title="' + params.data.StatusValueName_Main + '">' + params.data.StatusValueIdent_Main + '</span>' : ''),
         cellStyle: function(params) {
           if (params.value === 'W przygotowaniu') { return { color: 'violet', 'font-weight': 600 }; }
