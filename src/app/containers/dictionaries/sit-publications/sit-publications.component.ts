@@ -28,7 +28,7 @@ export class SitPublicationsComponent extends SitDictBaseComponent {
 
   public prepareColumnsDefinitnion() {
 
-console.log('this: ', this);
+// console.log('this: ', this);
 
     this.autoGroupColumnDef = {
       headerName: 'Struktura',
