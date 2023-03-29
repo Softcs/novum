@@ -90,6 +90,9 @@ export class DataSetManager {
             !row ? dataSetResponseWrapper.activeRow : row,
             canRefresh
         );
+        if (dataSetResponseWrapper.isLookup) {
+            obj.activeRow = null;
+        }
         return obj;
     }
 
