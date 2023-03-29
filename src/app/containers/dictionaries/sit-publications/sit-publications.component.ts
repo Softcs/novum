@@ -15,6 +15,7 @@ export class SitPublicationsComponent extends SitDictBaseComponent {
   getDataPath: any;
   autoGroupColumnDef: any;
   imgPrvHeight: string = '55';
+  publicationsProductsGridRowHeight: any = 60;
 
 
   public getImageUrlPrv(data:any) {
@@ -27,7 +28,7 @@ export class SitPublicationsComponent extends SitDictBaseComponent {
 
   public prepareColumnsDefinitnion() {
 
-console.log('this: ', this);
+// console.log('this: ', this);
 
     this.autoGroupColumnDef = {
       headerName: 'Struktura',
@@ -91,8 +92,9 @@ console.log('this: ', this);
         field: 'ProductName',
         // maxWidth: 120, 
         flex: 1,
-        // resizable: true,
+        resizable: true,
         // autoHeight: true,
+        wrapText: true,
         cellRenderer: (params:any) => (params.data.ProductName ? '<span title="' + params.data.ProductName + '">' + params.data.ProductName + '</span>' : '')
       },
 

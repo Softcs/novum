@@ -39,7 +39,7 @@
         <as-split-area [size]="30">
           <div class="content" fxFlex fxLayout="column">
             <div fxLayout="row" fxLayoutAlign="center" style="height: 500px">
-              <a href="{{link}}" target="_blank"><img src="{{link}}" height="500"></a>
+              <a href="{{link}}" target="_blank"><img ngClass="img-contributor-preview" src="{{link}}" height="500"></a>
             </div>
             <sit-data-set-container  ident="sitContributors" fxFlex fxLayout="column">
               <sit-data-textarea type="textarea" #sitControl field="BiographicalNote" label="Notka biograficzna" appearance="outline" [readonly]=true fxFlex></sit-data-textarea>
