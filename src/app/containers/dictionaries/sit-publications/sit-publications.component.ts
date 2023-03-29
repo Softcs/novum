@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-dict-base.component';
 
 @Component({
   selector: 'app-sit-publications',
+  encapsulation : ViewEncapsulation.None,
   templateUrl: './sit-publications.component.html',
   styleUrls: ['./sit-publications.component.scss'],
   host: {class: 'router-flex sit-publications-component'}
@@ -25,6 +26,8 @@ export class SitPublicationsComponent extends SitDictBaseComponent {
   }
 
   public prepareColumnsDefinitnion() {
+
+console.log('this: ', this);
 
     this.autoGroupColumnDef = {
       headerName: 'Struktura',
@@ -54,20 +57,20 @@ export class SitPublicationsComponent extends SitDictBaseComponent {
       { headerName: 'Okładka', 
         field: 'sitImagesG_prv', 
         maxWidth: 80, 
-        resizable: true,
-        autoHeight: true,
+        // resizable: true,
+        // autoHeight: true,
+        // wrapText: true,
         cellRenderer: (params:any) => this.getImageUrlPrv(params.data),
-        suppressMenu: true
+        // suppressMenu: true
       },
       
       { headerName: 'EAN/Ident', 
         field: 'ProductIdent', 
         maxWidth: 140,
-        resizable: true,
-        autoHeight: true,
+        // resizable: true,
+        // autoHeight: true,
+        wrapText: true,
         cellRenderer: (params:any) => {
-
-// console.log(params.data);
 
           let dataArr = [
             (params.data.EAN ? '<span title="' + params.data.EAN + '">' + params.data.EAN + '</span>' : null),
@@ -88,8 +91,8 @@ export class SitPublicationsComponent extends SitDictBaseComponent {
         field: 'ProductName',
         // maxWidth: 120, 
         flex: 1,
-        resizable: true,
-        autoHeight: true,
+        // resizable: true,
+        // autoHeight: true,
         cellRenderer: (params:any) => (params.data.ProductName ? '<span title="' + params.data.ProductName + '">' + params.data.ProductName + '</span>' : '')
       },
 
