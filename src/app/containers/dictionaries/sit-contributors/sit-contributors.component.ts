@@ -1,11 +1,12 @@
-import { Component, Inject, LOCALE_ID } from '@angular/core';
+import { Component, ViewEncapsulation, Inject, LOCALE_ID } from '@angular/core';
 import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-dict-base.component';
 
 @Component({
   selector: 'app-sit-contributors',
   templateUrl: './sit-contributors.component.html',
+  encapsulation : ViewEncapsulation.None,
   styleUrls: ['./sit-contributors.component.scss'],
-  host: {class: 'router-flex'}
+  host: {class: 'router-flex sit-contributors-component'}
 })
 export class SitContributorsComponent extends SitDictBaseComponent {
 
@@ -26,6 +27,22 @@ export class SitContributorsComponent extends SitDictBaseComponent {
       { headerName: 'Facebook', field: 'Facebook', filter: 'agTextColumnFilter', width: 250, defaultVisibility: false},
       { headerName: 'Instagram', field: 'Instagram', filter: 'agTextColumnFilter', width: 250, defaultVisibility: false},
       { headerName: 'TikTok', field: 'TikTok', filter: 'agTextColumnFilter', width: 250, defaultVisibility: false},
+//       { headerName: 'Social', 
+//         width: 250,
+//         cellRenderer: (params:any) => {
+
+// console.log('params.data: ', params.data);
+
+// // Facebook: "https://www.facebook.com/jonesbopolska/?locale=pl_PL"
+// // Instagram: "https://www.instagram.com/jonesbo_author/"
+// // TikTok: null
+// // Twitter: null
+// // WWW: "http://jonesbo.pl/"
+
+
+//           return 'soc... <i class="fa-brands fa-tiktok"></i>';
+//         }
+//       },
       { headerName: 'Twitter', field: 'Twitter', filter: 'agTextColumnFilter', width: 250, defaultVisibility: false},
     ];
 
