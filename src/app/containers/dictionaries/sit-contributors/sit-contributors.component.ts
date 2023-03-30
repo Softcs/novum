@@ -24,7 +24,7 @@ export class SitContributorsComponent extends SitDictBaseComponent {
       { headerName: 'Postfix', field: 'SuffixToKey', filter: 'agTextColumnFilter', width: 80, defaultVisibility: false  },
       { headerName: 'Notacja odwrotna', field: 'PersonNameInverted', filter: 'agTextColumnFilter', width: 250, defaultVisibility: true},
       { headerName: 'Social', 
-        width: 120,
+        width: 130,
         // flex: 1,
         cellRenderer: (params:any) => {
 
@@ -35,7 +35,7 @@ export class SitContributorsComponent extends SitDictBaseComponent {
           + (params.data.Twitter ? '<a class="afa-twitter" href="' + params.data.Twitter + '" target="_blank" title="Twitter: ' + params.data.PersonName + '"><i class="fab fa-twitter"></i></a> ' : '')
           + (params.data.Facebook ? '<a class="afa-facebook" href="' + params.data.Facebook + '" target="_blank" title="Facebook: ' + params.data.PersonName + '"><i class="fab fa-facebook"></i></a> ' : '')
           + (params.data.Instagram ? '<a class="afa-instagram" href="' + params.data.Instagram + '" target="_blank" title="Instagram: ' + params.data.PersonName + '"><i class="fab fa-instagram"></i></a> ' : '')
-          + (params.data.Tiktok ? '<a class="afa-tiktok" href="' + params.data.Tiktok + '" target="_blank" title="Tiktok: ' + params.data.PersonName + '"><i class="fab fa-tiktok"></i></a> ' : '')
+          + (params.data.TikTok ? '<a class="afa-tiktok" href="' + params.data.TikTok + '" target="_blank" title="Tiktok: ' + params.data.PersonName + '"><i class="fab fa-tiktok"></i></a> ' : '')
         + '</div>';
         }
 
