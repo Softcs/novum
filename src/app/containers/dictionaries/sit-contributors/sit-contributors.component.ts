@@ -17,32 +17,33 @@ export class SitContributorsComponent extends SitDictBaseComponent {
       { headerName: 'Id', field: 'sitContributorsId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 50, defaultVisibility: false },
       { headerName: 'GUID', field: 'sitContributorsG', width: 100, defaultVisibility: false },      
       { headerName: 'Twórca', field: 'PersonName', filter: 'agTextColumnFilter', width: 250,},
-      { headerName: 'Tytuł', field: 'TitlesBeforeNames', filter: 'agTextColumnFilter', width: 80 },
-      { headerName: 'Imię', field: 'NamesBeforeKey', filter: 'agTextColumnFilter', width: 150 },
-      { headerName: 'Prefix', field: 'PrefixToKey', filter: 'agTextColumnFilter', width: 80 },
-      { headerName: 'Nazwisko', field: 'KeyNames', filter: 'agTextColumnFilter', width: 150 },
-      { headerName: 'Postfix', field: 'SuffixToKey', filter: 'agTextColumnFilter', width: 80 },
-      { headerName: 'Notacja odwrotna', field: 'PersonNameInverted', filter: 'agTextColumnFilter', width: 250, defaultVisibility: false},
+      { headerName: 'Tytuł', field: 'TitlesBeforeNames', filter: 'agTextColumnFilter', width: 80, defaultVisibility: false  },
+      { headerName: 'Imię', field: 'NamesBeforeKey', filter: 'agTextColumnFilter', width: 150, defaultVisibility: false  },
+      { headerName: 'Prefix', field: 'PrefixToKey', filter: 'agTextColumnFilter', width: 80, defaultVisibility: false  },
+      { headerName: 'Nazwisko', field: 'KeyNames', filter: 'agTextColumnFilter', width: 150, defaultVisibility: false  },
+      { headerName: 'Postfix', field: 'SuffixToKey', filter: 'agTextColumnFilter', width: 80, defaultVisibility: false  },
+      { headerName: 'Notacja odwrotna', field: 'PersonNameInverted', filter: 'agTextColumnFilter', width: 250, defaultVisibility: true},
+      { headerName: 'Social', 
+        width: 120,
+        // flex: 1,
+        cellRenderer: (params:any) => {
+
+// console.log('params.data: ', params.data);
+
+        return '<div class="social-list-el">'
+          + (params.data.WWW ? '<a class="afa-home" href="' + params.data.WWW + '" target="_blank" title="WWW: ' + params.data.PersonName + '"><i class="fas fa-home"></i></a> ' : '')
+          + (params.data.Twitter ? '<a class="afa-twitter" href="' + params.data.Twitter + '" target="_blank" title="Twitter: ' + params.data.PersonName + '"><i class="fab fa-twitter"></i></a> ' : '')
+          + (params.data.Facebook ? '<a class="afa-facebook" href="' + params.data.Facebook + '" target="_blank" title="Facebook: ' + params.data.PersonName + '"><i class="fab fa-facebook"></i></a> ' : '')
+          + (params.data.Instagram ? '<a class="afa-instagram" href="' + params.data.Instagram + '" target="_blank" title="Instagram: ' + params.data.PersonName + '"><i class="fab fa-instagram"></i></a> ' : '')
+          + (params.data.Tiktok ? '<a class="afa-tiktok" href="' + params.data.Tiktok + '" target="_blank" title="Tiktok: ' + params.data.PersonName + '"><i class="fab fa-tiktok"></i></a> ' : '')
+        + '</div>';
+        }
+
+      },
       { headerName: 'WWW', field: 'WWW', filter: 'agTextColumnFilter', width: 250, defaultVisibility: false},
       { headerName: 'Facebook', field: 'Facebook', filter: 'agTextColumnFilter', width: 250, defaultVisibility: false},
       { headerName: 'Instagram', field: 'Instagram', filter: 'agTextColumnFilter', width: 250, defaultVisibility: false},
       { headerName: 'TikTok', field: 'TikTok', filter: 'agTextColumnFilter', width: 250, defaultVisibility: false},
-//       { headerName: 'Social', 
-//         width: 250,
-//         cellRenderer: (params:any) => {
-
-// console.log('params.data: ', params.data);
-
-// // Facebook: "https://www.facebook.com/jonesbopolska/?locale=pl_PL"
-// // Instagram: "https://www.instagram.com/jonesbo_author/"
-// // TikTok: null
-// // Twitter: null
-// // WWW: "http://jonesbo.pl/"
-
-
-//           return 'soc... <i class="fa-brands fa-tiktok"></i>';
-//         }
-//       },
       { headerName: 'Twitter', field: 'Twitter', filter: 'agTextColumnFilter', width: 250, defaultVisibility: false},
     ];
 
