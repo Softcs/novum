@@ -38,11 +38,19 @@
         </as-split-area>
         <as-split-area [size]="30">
           <div class="content" fxFlex fxLayout="column">
-            <div fxLayout="row" fxLayoutAlign="center" style="height: 500px">
-              <a href="{{link}}" target="_blank"><img ngClass="img-contributor-preview" src="{{link}}" height="500"></a>
+            
+            <div fxLayout="row" fxLayoutAlign="center">
+              <a href="{{link}}" target="_blank"><img ngClass="img-contributor-preview" src="{{link}}" /></a>
             </div>
+
             <sit-data-set-container  ident="sitContributors" fxFlex fxLayout="column">
-              <sit-data-textarea type="textarea" #sitControl field="BiographicalNote" label="Notka biograficzna" appearance="outline" [readonly]=true fxFlex></sit-data-textarea>
+
+              <sit-simple-container title="Notka biograficzna" ngClass="flex-container-column biographical-note-cont">
+                <sit-data-label #sitControl field="BiographicalNote"></sit-data-label>
+              </sit-simple-container>
+
+              <!-- <sit-data-textarea type="textarea" #sitControl field="BiographicalNote" label="Notka biograficzna" appearance="outline" [readonly]=true fxFlex></sit-data-textarea> -->
+
             </sit-data-set-container>
           </div>
         </as-split-area>

@@ -1,20 +1,45 @@
 .sit-data-textarea-component {
-    
-    textarea {
-        border-color: rgba(0,0,0, .3);
-        border-width: 1px;
 
-        &:hover {
-            border-width: 2px;
-            border-color: #073763;
+    // ukonsekwentniamy fonta w inputach
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+
+    .sit-textarea-container {
+        font-size: 12px;
+        width: 100%;
+        min-width: 100%;
+        height: 100%;
+        .sit-textarea-label {
+          margin-bottom: 0px;
+          margin-top: 5px;
+        //   font-size: 12px;
         }
+        textarea{
+          display: block;
+          background-color: transparent;
+        //   border-color: lightgray;
+          border-color: rgba(0,0,0, .3);
+          border-width: 1px;
+        //   border-radius: 5px;
+        //   resize: none;
+          width: 100%;
+          min-width: 100%;
+          height: 100%;
 
+          padding: 3px 7px;
+      
+        //   -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+        //   -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+        //   box-sizing: border-box;         /* Opera/IE 8+ */
 
-        &:focus-visible {
-            outline-style: solid;
-            outline-width: 2px;
-            outline-offset: -2px;
-            outline-color: #073763;
+          &:hover,
+          &:focus-visible {
+              outline-style: solid;
+              outline-width: 2px;
+              outline-offset: -2px;
+              outline-color: #073763;
+          }
         }
     }
+
+
 }
