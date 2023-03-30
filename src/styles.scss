@@ -9,7 +9,17 @@
 //@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 @import "./styles/iconfont/materialicons.css";
 
-@import "../node_modules/font-awesome/css/font-awesome.min.css";
+
+// @import "../node_modules/font-awesome/css/font-awesome.min.css";
+// @import "@fortawesome/fontawesome-free/css/all.min.css";
+@import "@fortawesome/fontawesome-free/css/all.css";
+// @import "@fortawesome/fontawesome-free/css/brands.css";
+
+// @import "@fortawesome/fontawesome-free/scss/fontawesome.scss";
+// @import "../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss";
+
+// C:\Projekty\SeidoIt\novum\node_modules\@fortawesome\fontawesome-free\scss\fontawesome.scss
+
 
 
 //ag-Grid
@@ -50,10 +60,10 @@
 
 
 // ikony z font-awesome
-i.fa {
-  font-size: 1.5em;
-  vertical-align: middle;
-}
+// i.fa {
+//   font-size: 1.5em;
+//   vertical-align: middle;
+// }
 
 @import "./styles/seido/mainBack";
 @import "./styles/tests/jcTests";

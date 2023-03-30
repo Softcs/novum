@@ -19,7 +19,6 @@ fxLayout="column"
         <div *ngIf="tab.title != 'Pulpit'" fxFlex class="sit-tab-title">{{ tab.title }}</div>
         <div *ngIf="tab.title == 'Pulpit'" fxFlex fxLayoutAlign="center center" matTooltip="Home">
           <i class="material-icons">home</i>
-          <!-- <i class="fa fa-home" aria-hidden="true"></i> -->
         </div>
 
         <div 
@@ -27,13 +26,7 @@ fxLayout="column"
           ngClass="close-tab-button-container"
         >
           <!-- <div ngClass="close-tab-button"> -->
-            <!-- <i
-              class="fa fa-times close-tab-icon"
-              aria-hidden="true"
-              aria-label="Close"
-              (click)="removeTab(tabIndex)"
-            >
-            </i> -->
+
             <!-- <mat-icon class="close-tab-icon" (click)="removeTab(tabIndex)">close</mat-icon> -->
             <span class="close-tab-icon-entity" (click)="removeTab(tabIndex)">&times;</span>
           <!-- </div> -->
