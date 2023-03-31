@@ -3,33 +3,68 @@
   >
   <sit-data-set-container ident="sitContributorsEdit">
     <div class="sit-proc-params-content" fxLayout="column" style="width: 600px;">
-      <div fxLayout="row">
+      <!-- <div fxLayout="row"> -->
+      <div ngClass="flex-container-row">
         <sit-data-input type="text" #sitControl field="TitlesBeforeNames" label="Tytuł" appearance="outline" style="width: 100px"></sit-data-input>
         <sit-data-input type="text" #sitControl field="NamesBeforeKey" label="Imię" appearance="outline" style="width: 300px"></sit-data-input>      
       </div>
-      <div fxLayout="row" fxFlex>
+      <!-- <div fxLayout="row" fxFlex> -->
+      <div ngClass="flex-container-row">
         <sit-data-input type="text" #sitControl field="PrefixToKey" label="Prefix" appearance="outline" style="width: 100px"></sit-data-input>
         <sit-data-input type="text" #sitControl field="KeyNames" label="Nazwisko" appearance="outline" style="width: 300px"></sit-data-input>      
         <sit-data-input type="text" #sitControl field="SuffixToKey" label="Postfix" appearance="outline" style="width: 100px"></sit-data-input>      
       </div>
       <div ngClass="flex-container-row mb-05">
         <sit-data-label #sitControl field="PersonName" label="Twórca"></sit-data-label>
-      </div>       
-      <div ngClass="flex-container-row mb-05">
         <sit-data-label #sitControl field="PersonNameInverted" label="Notacja odwrotna"></sit-data-label>
-      </div>
-      <div fxLayout="row" fxFlex>
+      </div>       
+
+      <!-- <div ngClass="flex-container-row mb-05">
+        <sit-data-label #sitControl field="PersonNameInverted" label="Notacja odwrotna"></sit-data-label>
+      </div> -->
+
+      <sit-simple-container title="Social media" ngClass="flex-container-column social-cont">
+
+        <div ngClass="flex-container-row">
+          <sit-data-input class="afa-home" type="text" #sitControl field="WWW" label="WWW" appearance="outline"></sit-data-input>
+          <sit-data-input class="afa-facebook" type="text" #sitControl field="Facebook" label="Facebook" appearance="outline"></sit-data-input>
+        </div>
+
+        <div ngClass="flex-container-row">
+          <sit-data-input class="afa-instagram" type="text" #sitControl field="Instagram" label="Instagram" appearance="outline"></sit-data-input>
+          <sit-data-input class="afa-tiktok" type="text" #sitControl field="TikTok" label="TikTok" appearance="outline"></sit-data-input>
+        </div>
+
+        <div ngClass="flex-container-row">
+          <sit-data-input class="afa-twitter" type="text" #sitControl field="Twitter" label="Twitter" appearance="outline"></sit-data-input>
+        </div>
+
+      </sit-simple-container>
+
+      <!-- <div fxLayout="row" fxFlex>
         <sit-data-input type="text" #sitControl field="WWW" label="WWW" appearance="outline" style="width: 50%;"></sit-data-input>
         <sit-data-input type="text" #sitControl field="Facebook" label="Facebook" appearance="outline" style="width: 50%;"></sit-data-input>
-      </div>
-      <div fxLayout="row" fxFlex>
+      </div> -->
+      <!-- <div fxLayout="row" fxFlex>
         <sit-data-input type="text" #sitControl field="Instagram" label="Instagram" appearance="outline" style="width: 50%;"></sit-data-input>
         <sit-data-input type="text" #sitControl field="TikTok" label="TikTok" appearance="outline" style="width: 50%;"></sit-data-input>
       </div>  
       <div fxLayout="row" fxFlex>
         <sit-data-input type="text" #sitControl field="Twitter" label="Twitter" appearance="outline" style="width: 50%;"></sit-data-input>
-      </div>  
-      <div fxLayout="row" fxFlex>
+      </div> -->
+      
+      <sit-simple-container title="Notka biograficzna" ngClass="flex-container-column social-cont">
+        <sit-data-textarea 
+          type="textarea" 
+          #sitControl 
+          field="BiographicalNote" 
+          label="" 
+          rows="6" 
+          fxFill>
+        </sit-data-textarea>
+      </sit-simple-container>
+
+      <!-- <div fxLayout="row" fxFlex>
         <sit-data-textarea 
           type="textarea" 
           #sitControl 
@@ -38,7 +73,8 @@
           rows="6" 
           fxFill>
         </sit-data-textarea>
-      </div>      
+      </div> -->
+
     </div>
   </sit-data-set-container>
 </sit-proc-params>
