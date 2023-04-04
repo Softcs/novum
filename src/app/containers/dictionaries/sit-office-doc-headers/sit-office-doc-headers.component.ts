@@ -272,14 +272,13 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
       { headerName: 'GUID', field: 'sitAccountingG', defaultVisibility: false},
       { headerName: 'Lp', field: 'PosId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 60, sort: 'asc', suppressMenu: true },
       { headerName: 'Konto', field: 'Account', tooltipField: 'AccountDesc', filter: 'agTextColumnFilter', width: 150 },
-      { headerName: 'WN wal.', field: 'CAmountCurrency', type: 'numericColumn',renderType:'number', filter: 'agNumberColumnFilter', width: 100, agr: 'sum', suppressMenu: true,},
-      { headerName: 'MA wal.', field: 'DAmountCurrency', type: 'numericColumn',renderType:'number', filter: 'agNumberColumnFilter', width: 100, agr: 'sum', suppressMenu: true,},
+      { headerName: 'WN', field: 'CAmount', type: 'numericColumn',renderType:'number', filter: 'agNumberColumnFilter', width: 100, suppressMenu: true,},
+      { headerName: 'MA', field: 'DAmount', type: 'numericColumn',renderType:'number', filter: 'agNumberColumnFilter', width: 100, suppressMenu: true},
       { headerName: 'Wal.', field: 'CurrencyIdent', tooltipField: 'CurrencyIdent', filter: 'agTextColumnFilter', width: 50,  suppressMenu: true,
         cellStyle: function(params) { return (params.data["CurrencyIdent"] === 'PLN' ? {} : {'background-color': 'rgb(219, 247, 255)'}) }
       },
-
-      { headerName: 'WN', field: 'CAmount', type: 'numericColumn',renderType:'number', filter: 'agNumberColumnFilter', width: 100, agr: 'sum', suppressMenu: true,},
-      { headerName: 'MA', field: 'DAmount', type: 'numericColumn',renderType:'number', filter: 'agNumberColumnFilter', width: 100, agr: 'sum', suppressMenu: true},
+      { headerName: 'WN wal.', field: 'CAmountCurrency', type: 'numericColumn',renderType:'number', filter: 'agNumberColumnFilter', width: 100, suppressMenu: true,},
+      { headerName: 'MA wal.', field: 'DAmountCurrency', type: 'numericColumn',renderType:'number', filter: 'agNumberColumnFilter', width: 100, suppressMenu: true,},
       { headerName: 'Nr.dok.', field: 'DocumentNumber', filter: 'agTextColumnFilter', width: 100 },
       { headerName: 'Opis', field: 'PosDesc', filter: 'agTextColumnFilter', width: 250 },
     ];  
