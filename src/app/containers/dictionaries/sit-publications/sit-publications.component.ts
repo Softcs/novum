@@ -48,7 +48,10 @@ export class SitPublicationsComponent extends SitDictBaseComponent {
       { headerName: 'GUID', field: 'sitPublicationsG', width: 100, defaultVisibility: false },  
       { headerName: 'Publikacja', field: 'PublicationIdent', filter: 'agTextColumnFilter', width: 350 },
       { headerName: 'Tytuł', field: 'Title', filter: 'agTextColumnFilter', width: 350 },
-      { headerName: 'Status', field: 'StatusValueName', filter: 'agTextColumnFilter', width: 150 },
+      { headerName: 'Status', field: 'StatusValueName', filter: 'agTextColumnFilter', width: 67, 
+        cellRenderer: (params:any) => (params.data.StatusValueIdent ? '<span title="' + params.data.StatusValueName + '">' + params.data.StatusValueIdent + '</span>' : ''),
+        cellClass: (params:any) => [(params.data.StatusValueIdent ? params.data.StatusValueIdent : '')],
+      },
       { headerName: 'Imprint', field: 'Imprint', filter: 'agTextColumnFilter', width: 150 },
     ];
 
@@ -107,15 +110,16 @@ export class SitPublicationsComponent extends SitDictBaseComponent {
         floatingFilter: false,
         suppressMenu: true,
         cellRenderer: (params:any) => (params.data.StatusValueIdent_Main ? '<span title="' + params.data.StatusValueName_Main + '">' + params.data.StatusValueIdent_Main + '</span>' : ''),
-        cellStyle: function(params) {
-          if (params.value === 'W przygotowaniu') { return { color: 'violet', 'font-weight': 600 }; }
-          else if (params.value === 'Zapowiedź') { return { color: 'orange', 'font-weight': 600 }; }
-          else if (params.value === 'Nowość') { return { color: 'rgb(153, 0, 0)', 'font-weight': 600 }; }
-          else if (params.value === 'Aktywna') { return { color: 'rgb(20, 152, 46)', 'font-weight': 600 }; }
-          else if (params.value === 'Wyprzedaż') { return { color: 'rgb(11, 23, 255)', 'font-weight': 600 }; }
-          else if (params.value === 'Wycofana') { return { color: 'black', 'font-weight': 600 }; }          
-          else { return null; }
-        }
+        cellClass: (params:any) => [(params.data.StatusValueIdent_Main ? params.data.StatusValueIdent_Main : ''), 'bold'],
+        // cellStyle: function(params) {
+        //   if (params.value === 'W przygotowaniu') { return { color: 'violet', 'font-weight': 600 }; }
+        //   else if (params.value === 'Zapowiedź') { return { color: 'orange', 'font-weight': 600 }; }
+        //   else if (params.value === 'Nowość') { return { color: 'rgb(153, 0, 0)', 'font-weight': 600 }; }
+        //   else if (params.value === 'Aktywna') { return { color: 'rgb(20, 152, 46)', 'font-weight': 600 }; }
+        //   else if (params.value === 'Wyprzedaż') { return { color: 'rgb(11, 23, 255)', 'font-weight': 600 }; }
+        //   else if (params.value === 'Wycofana') { return { color: 'black', 'font-weight': 600 }; }          
+        //   else { return null; }
+        // }
       },
       { headerName: 'B2C', field: 'IsB2C', filter: 'agSetColumnFilter', maxWidth: 50, renderType: 'checkbox', suppressMenu: true
         , cellClass: "grid-cell-centered"

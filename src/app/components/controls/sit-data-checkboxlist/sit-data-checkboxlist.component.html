@@ -24,7 +24,7 @@
 <ng-template #chkElementList let-chkList="chkList">
     <div *ngFor="let chk of chkList" ngClass="checkbox-list-el" [class.label-position-before]="labelPosition === 'before'">
 
-        <label [for]="chk.id">
+        <label [for]="chk.id" [ngClass]="(colors ? chk.id : null)">
 
             <input 
                 type="checkbox" 

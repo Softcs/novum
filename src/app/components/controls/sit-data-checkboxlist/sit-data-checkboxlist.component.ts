@@ -2,6 +2,7 @@ import { Component, Input, Renderer2, ViewEncapsulation, ElementRef, OnInit } fr
 import { SitDataBaseComponent } from '../sit-data-base/sit-data-base.component';
 import { OnCFService } from '@app/_services/oncf.service';
 import { isEqual, map as loMap } from 'lodash';
+import { DomPortal } from '@angular/cdk/portal';
 
 /**
  * Params: 
@@ -11,6 +12,7 @@ import { isEqual, map as loMap } from 'lodash';
  *    - "1" = column, hovered
  *    - "2" = materials input style - dedicated to: sit-filter-bar
  * - label: string; default = 'Więcej'
+ * - colors: boolean = false; czy mają być kolory ze statusów?
  * - labelPosition: string; 'after' | 'before', default = 'after'
  * - width: string; np: "300px", "10em"
  * - refreshOnChange: boolean
@@ -32,6 +34,8 @@ export class SitDataCheckboxlistComponent extends SitDataBaseComponent implement
   @Input() label = 'Więcej';
   @Input() width: string;
   @Input() refreshOnChange: boolean;
+
+  @Input() colors: boolean = false;
     
   @Input() labelPosition: string = 'after';
   // @Input() labelPosition: string = 'before';
