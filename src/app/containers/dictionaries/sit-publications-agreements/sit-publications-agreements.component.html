@@ -5,6 +5,7 @@
         <sit-data-input #sitControl field="searchAgreements" label="Filtruj umowy" appearance="outline" style="width: 300px;"></sit-data-input>
         <sit-data-input #sitControl field="searchBenef" label="Strony umowy" appearance="outline" style="width: 300px;" ></sit-data-input>
         <sit-data-input #sitControl field="searchPublication" label="Publikacja" appearance="outline" style="width: 300px;" showRefreshButton="true"></sit-data-input>
+        <sit-data-checkboxlist #sitControl field="groupStatusMain" label="Status" [refreshOnChange]="false" layout="1"></sit-data-checkboxlist>
       </div>
     </sit-data-set-container>
     <mat-tab-group id="tab-group" animationDuration="0ms">
@@ -24,22 +25,6 @@
           </as-split-area>
           <as-split-area [size]="50">
             <mat-tab-group id="tab-group" animationDuration="0ms">
-            <!--
-              <mat-tab label="Strony umowy">
-                <div fxFill fxLayout="column">
-                  <sit-data-set-container ident="sitAgreementsBenef" showActionsToolbar="true" fxLayout="column" fxFlex>
-                    <div class="data-table" fxFlex>
-                      <ag-grid-angular
-                        #sitSetDataSource
-                        style="width: 100%; height: 100%;"
-                        class="ag-theme-balham"
-                      >
-                      </ag-grid-angular>
-                    </div>
-                  </sit-data-set-container>
-                </div>
-              </mat-tab>
-            -->
               <mat-tab label="Strony umowy">
                 <div fxFill fxLayout="column">
                   <sit-data-set-container ident="sitAgreementCustomers" showActionsToolbar="true" fxLayout="column" fxFlex>

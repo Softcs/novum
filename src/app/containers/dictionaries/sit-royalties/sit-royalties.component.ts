@@ -15,6 +15,7 @@ export class SitRoyaltiesComponent extends SitDictBaseComponent {
   public prepareColumnsDefinitnion() {
 
     this.gridColumnsDefinition["sitRoyaltiesHeaders"] = [
+      { headerName: 'Id', field: 'sitRoyaltiesHeadersId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 50, defaultVisibility: false },
       { headerName: 'GUID', field: 'sitRoyaltiesHeadersG', filter: 'agTextColumnFilter', width: 100, defaultVisibility: false },
       { headerName: 'Publikacja', field: 'PublicationIdent', tooltipField: 'PublicationIdent', filter: 'agTextColumnFilter', width: 200, sort: 'asc', cellRenderer: 'agGroupCellRenderer' },
       { headerName: 'Numer umowy', field: 'AgreementNo', filter: 'agTextColumnFilter', width: 150, sortable: false},
@@ -28,11 +29,12 @@ export class SitRoyaltiesComponent extends SitDictBaseComponent {
       { headerName: 'Należność', field: 'RoyDue', type: 'numericColumn', filter: 'agNumberColumnFilter', renderType: 'number', width: 90, suppressMenu: true},
       { headerName: 'Do zapłaty', field: 'Payable', type: 'numericColumn', filter: 'agNumberColumnFilter', renderType: 'number', width: 90, suppressMenu: true, agr: 'sum'},
       { headerName: 'Beneficjenci', field: 'Benef', tooltipField: 'Benef', filter: 'agTextColumnFilter', width: 200,},
-      { headerName: 'Agenci', field: 'Agent', tooltipField: 'Agent', filter: 'agTextColumnFilter', width: 200,}
-
+      { headerName: 'Agenci', field: 'Agent', tooltipField: 'Agent', filter: 'agTextColumnFilter', width: 200,},
+      { headerName: 'Status', field: 'StatusValueName', filter: 'agTextColumnFilter', width: 120 },
     ],
 
     this.gridColumnsDefinition["sitRoyalties"] = [
+      { headerName: 'Id', field: 'sitRoyaltiesId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 50, defaultVisibility: false },
       { headerName: 'GUID', field: 'sitRoyaltiesG', filter: 'agTextColumnFilter', width: 100, defaultVisibility: false },
       // { headerName: 'Publikacja', field: 'PublicationIdent', tooltipField: 'PublicationIdent', filter: 'agTextColumnFilter', width: 150, sort: 'asc'},
       { headerName: 'Produkt.', field: 'ProductIdent', filter: 'agTextColumnFilter', width: 150, sort: 'asc' },

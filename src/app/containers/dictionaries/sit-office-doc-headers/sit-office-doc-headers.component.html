@@ -12,11 +12,17 @@
                 <sit-data-input #sitControl field="Customer" label="Kontrahent" placeholder="" appearance="outline" style="width: 150px;"></sit-data-input>
                 <sit-data-input #sitControl field="search" label="Filtruj" placeholder="numer, opis, pracownik" appearance="outline" style="width: 150px;"></sit-data-input>
                 <sit-data-input #sitControl field="DateFrom" type="date" label="Od" appearance="outline" style="width: 130px;"></sit-data-input>
-                <sit-data-input #sitControl field="DateTo" type="date" label="Do" appearance="outline" style="width: 195px;" showRefreshButton="true" ></sit-data-input>
-                <sit-data-checkbox #sitControl field="ED" label="Edycja" labelPosition="after" checked="true" [refreshOnChange]="true" style="color: rgb(0,0,0);" ></sit-data-checkbox>
-                <sit-data-checkbox #sitControl field="DZ" label="Dziennik" labelPosition="after" checked="true" [refreshOnChange]="true" style="color: lime;" ></sit-data-checkbox>
-                <sit-data-checkbox #sitControl field="FK" label="Zaksięgowane" labelPosition="after" checked="true" [refreshOnChange]="true" style="color: green;" ></sit-data-checkbox>
+                <sit-data-input #sitControl field="DateTo" type="date" label="Do" appearance="outline" style="width: 130px;" ></sit-data-input>
+                <sit-data-radio #sitControl field="dateKind" type="row" label="Wg daty" [refreshOnChange]="false"
+                  [buttons]="[{'caption':'Wyst.','value': '0', 'checked':true},{'caption':'Rej.','value': '1'}]"
+                ></sit-data-radio>
+                <sit-data-checkboxlist #sitControl field="groupStatusMain" label="Status" [refreshOnChange]="false" layout="1"></sit-data-checkboxlist>
 
+                <!-- <sit-data-checkbox #sitControl field="ED" label="Edycja" labelPosition="after" checked="true" [refreshOnChange]="true" style="color: rgb(0,0,0);" ></sit-data-checkbox>
+                <sit-data-checkbox #sitControl field="DZ" label="Dziennik" labelPosition="after" checked="true" [refreshOnChange]="true" style="color: lime;" ></sit-data-checkbox>
+                <sit-data-checkbox #sitControl field="FK" label="Zaksięgowane" labelPosition="after" checked="true" [refreshOnChange]="true" style="color: green;" ></sit-data-checkbox> -->
+
+                <sit-refresh-button tooltip="Odśwież"></sit-refresh-button>
               </sit-data-set-container>
 
               <sit-data-set-container  ident="sitOfficeDocHeaders" showActionsToolbar="true" ngClass="flex-container-column">
@@ -188,9 +194,16 @@
               </sit-simple-container>
 
               <sit-simple-container ngClass="flex-container-column">
-                <sit-data-label #sitControl field="AccountingDate" label="Data" ngClass="fill-if-empty"></sit-data-label>
+                <sit-simple-container ngClass="flex-container-row">
+                  <sit-data-label #sitControl field="AccountingDate" label="Data" ngClass="fill-if-empty"></sit-data-label>
+                  <sit-data-label #sitControl field="AccountingSchemaIdent" label="Schemat" ngClass="fill-if-empty"></sit-data-label>
+                </sit-simple-container>
                 <sit-data-label #sitControl field="AccountingHeaderDesc" label="Opis" ngClass="fill-if-empty"></sit-data-label>
-                <sit-data-label #sitControl field="AccountingSchemaIdent" label="Schemat" ngClass="fill-if-empty"></sit-data-label>
+                <sit-simple-container ngClass="flex-container-row">
+                  <sit-data-label #sitControl field="CSum" label="Suma Wn:"  type="number" ngClass="fill-if-empty"></sit-data-label>
+                  <sit-data-label #sitControl field="DSum" label="Suma Ma:"  type="number" ngClass="fill-if-empty"></sit-data-label>
+                  <sit-data-label #sitControl field="DiffSum" label="Różnica:"  type="number" ngClass="fill-if-empty"></sit-data-label>
+                </sit-simple-container>
               </sit-simple-container>
          
             </sit-data-set-container>
