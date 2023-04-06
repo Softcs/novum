@@ -3,6 +3,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import "./theme";
 
+
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 // @import "@angular/material/prebuilt-themes/indigo-pink.css";
 
@@ -58,12 +59,7 @@
 @import "./styles/bootstrap/headers";
 
 
-
-// ikony z font-awesome
-// i.fa {
-//   font-size: 1.5em;
-//   vertical-align: middle;
-// }
+@import "./styles/seido/colors-funcional";
 
 @import "./styles/seido/mainBack";
 @import "./styles/tests/jcTests";

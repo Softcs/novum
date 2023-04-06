@@ -1,8 +1,11 @@
 .sit-publications-component {
 
   .img-prod-link {
-    height: 290px;
-    width: auto;
+    // height: 290px;
+    // width: auto;
+    display: inline-block;
+    max-width: 210px;
+    max-height: 330px;
     box-shadow: 1px 1px 10px 0px rgba(97, 97, 97, 0.35);
   }
   
