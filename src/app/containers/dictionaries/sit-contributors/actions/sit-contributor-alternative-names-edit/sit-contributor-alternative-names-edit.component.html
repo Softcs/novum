@@ -4,7 +4,13 @@
   <sit-data-set-container ident="sitContributorAlternativeNamesEdit">
     <div class="sit-proc-params-content" fxLayout="column" style="width: 300px;">
       <div fxLayout="row" fxFlex>
-        <sit-data-input type="text" #sitControl field="PersonName" label="Twórca" appearance="outline" fxFlex></sit-data-input>
+        <sit-data-input type="text" #sitControl field="PersonName" label="Pseudonim" appearance="outline" fxFlex></sit-data-input>
+      </div>
+      <div fxLayout="row" fxFlex>
+        <sit-data-checkbox #sitControl field="ShowContributorName" label="Używaj oryginalnych danych wraz z pseudonimem" fxFlex></sit-data-checkbox>
+      </div>
+      <div fxLayout="row" fxFlex>
+        <sit-data-checkbox #sitControl field="ContributorNameFirst" label="Oryginalne dane przed pseudonimem" fxFlex></sit-data-checkbox>
       </div>
     </div>
   </sit-data-set-container>

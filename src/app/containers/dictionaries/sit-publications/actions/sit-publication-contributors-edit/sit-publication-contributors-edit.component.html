@@ -3,6 +3,7 @@
   >
   <sit-data-set-container ident="sitPublicationContributorsEdit">
     <div class="sit-proc-params-content" fxLayout="column">
+      <sit-data-input type="number" #sitControl field="Order" label="Kolejność" appearance="outline" style="width: 100px"></sit-data-input>      
       <sit-data-input type="text" #sitControl field="ContributorRoleName" label="Rola" appearance="outline"
         [lookupDisplayFields] = "['ContributorRoleIdent', 'ContributorRoleName']"></sit-data-input>
       <sit-data-input type="text" #sitControl field="PersonName" label="Twórca" appearance="outline"

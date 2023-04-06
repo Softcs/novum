@@ -153,6 +153,7 @@ export class SitPublicationsComponent extends SitDictBaseComponent {
     this.gridColumnsDefinition["sitPublicationContributors"] = [
       { headerName: 'Id', field: 'sitPublicationContributorsId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 50, defaultVisibility: false },
       { headerName: 'GUID', field: 'sitPublicationContributorsG', width: 100, defaultVisibility: false },
+      { headerName: 'Kolejność', field: 'Order', width: 100, filter: 'agTextColumnFilter', },
       { headerName: 'Rola', field: 'ContributorRoleName', width: 150, filter: 'agTextColumnFilter', },
       { headerName: 'Twórca', field: 'PersonName', width: 300, filter: 'agTextColumnFilter', },
     ];    
@@ -160,6 +161,7 @@ export class SitPublicationsComponent extends SitDictBaseComponent {
     this.gridColumnsDefinition["sitProducts4PubContributors"] = [
       { headerName: 'Id', field: 'sitProducts4PubContributorsId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 50, defaultVisibility: false },
       { headerName: 'GUID', field: 'sitProducts4PubContributorsG', width: 100, defaultVisibility: false },
+      { headerName: 'Kolejność', field: 'Order', width: 100, filter: 'agTextColumnFilter', },
       { headerName: 'Rola', field: 'ContributorRoleName', width: 150, filter: 'agTextColumnFilter', },
       { headerName: 'Twórca', field: 'PersonName', width: 300, filter: 'agTextColumnFilter', },
     ];    

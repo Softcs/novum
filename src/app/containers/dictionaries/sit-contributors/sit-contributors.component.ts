@@ -51,6 +51,8 @@ export class SitContributorsComponent extends SitDictBaseComponent {
       { headerName: 'Id', field: 'sitContributorAlternativeNamesId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 50, defaultVisibility: false },
       { headerName: 'GUID', field: 'sitContributorAlternativeNamesG', width: 100, defaultVisibility: false },      
       { headerName: 'Pseudonim', field: 'PersonName', filter: 'agTextColumnFilter', width: 250,},
+      { headerName: 'Używaj danych autora', field: 'ShowContributorName', filter: 'agSetColumnFilter', width: 120, renderType: 'checkbox', suppressMenu: true, cellClass: "grid-cell-centered", defaultVisibility: true },
+      { headerName: 'Dane autora pierwsze', field: 'ContributorNameFirst', filter: 'agSetColumnFilter', width: 120, renderType: 'checkbox', suppressMenu: true, cellClass: "grid-cell-centered", defaultVisibility: true },
     ];    
   }
 
