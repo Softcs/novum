@@ -84,6 +84,15 @@
                 }
             }
 
+            .cSum-component,
+            .dSum-component,
+            .diffSum-component {
+                margin-top: 1em;
+                .sit-data-label-value {
+                    text-align: left;
+                }
+            }
+
             .sit-data-label-name {
                 // border: 1px solid red;
                 min-width: 6em;

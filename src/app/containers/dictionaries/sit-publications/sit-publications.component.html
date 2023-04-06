@@ -12,8 +12,10 @@
               <sit-data-input #sitControl field="searchAuthor" label="Filtruj autora" appearance="outline" style="width: 250px;" 
                 placeholder="Imię, nazwisko"></sit-data-input>
               <sit-data-input #sitControl field="searchPublicationsProducts" label="Filtruj produkty" appearance="outline" style="width: 300px;" 
-                placeholder="Identyfikator, nazwa, EAN" [showRefreshButton]="true"></sit-data-input>
+                placeholder="Identyfikator, nazwa, EAN" ></sit-data-input>
               <sit-data-checkboxlist #sitControl field="groupStatusMain" label="Status" [refreshOnChange]="false" [colors]="true" layout="1"></sit-data-checkboxlist>
+
+              <sit-refresh-button tooltip="Odśwież"></sit-refresh-button>
             </sit-data-set-container>
  
             <sit-data-set-container ident="sitPublications" [showActionsToolbar]="true" ngClass="flex-container-column">
