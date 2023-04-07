@@ -189,6 +189,16 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
         },
         cellStyle: {'line-height': '1.2em', 'padding-top': '.3em'}
       },
+      { headerName: 'Klient', field: 'CustIdent', tooltipField: 'CustName', filter: 'agTextColumnFilter', floatingFilter: false, width: 130,
+        cellRenderer: function(params) {
+          var ident;
+          var desc;
+          ident = params.data["CustIdent"] ? params.data["CustIdent"] : '';
+          desc = params.data["CustName"] ? params.data["CustName"] : '';
+          return '<b>' + ident + '</b><br>' + desc
+        },
+        cellStyle: {'line-height': '1.2em', 'padding-top': '.3em'}
+      },      
       { headerName: 'SV', headerTooltip: 'Stawka VAT (O - odliczane, N - nieodliczane, S - struktura)', field: 'VATRatesIdent', width: 50, suppressMenu: true, 
         cellRenderer: function(params) {
           var ident;
@@ -347,7 +357,7 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
         },
         cellStyle: {'line-height': '1.5em', 'padding-top': '.3em'}
       },
-      { headerName: 'Pojazd', field: 'VehicleIdent', filter: 'agTextColumnFilter', tooltipField: 'ProductsTypeDesc',
+      { headerName: 'Pojazd', field: 'VehicleIdent', filter: 'agTextColumnFilter', tooltipField: 'VehicleDesc',
         cellRenderer: function(params) {
           var ident;
           var desc;
@@ -357,6 +367,16 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
         },
         cellStyle: {'line-height': '1.5em', 'padding-top': '.3em'}
       },
+      { headerName: 'Klient', field: 'CustIdent', filter: 'agTextColumnFilter', tooltipField: 'CustName',
+        cellRenderer: function(params) {
+          var ident;
+          var desc;
+          ident = params.data["CustIdent"] ? params.data["CustIdent"] : '';
+          desc = params.data["CustName"] ? params.data["CustName"] : '';
+          return '<b>' + ident + '</b><br>' + desc
+        },
+        cellStyle: {'line-height': '1.5em', 'padding-top': '.3em'}
+      },      
       { headerName: 'Opis', field: 'PosDesc', filter: 'agTextColumnFilter', width: 250 },
 
     ]
@@ -451,7 +471,15 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
     } else {
       this.columnApi.setColumnsVisible(['VehicleIdent'],true);
       this.columnDimApi.setColumnsVisible(['VehicleIdent'],true);
-    }        
+    } 
+
+    if (!this.dataSourceResponseWrapper.activeRow['UseCustomers'] || this.dataSourceResponseWrapper.activeRow['UseCustomers'] == 0){ 
+      this.columnApi.setColumnsVisible(['CustIdent'],false);
+      this.columnDimApi.setColumnsVisible(['CustIdent'],false);
+    } else {
+      this.columnApi.setColumnsVisible(['CustIdent'],true);
+      this.columnDimApi.setColumnsVisible(['CustIdent'],true);
+    }           
     return;
   }
 
