@@ -1,5 +1,5 @@
 ﻿import { NavService } from './_services/nav.service';
-import { Component, ViewChild, ElementRef, OnInit, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, ElementRef, OnInit, AfterViewInit} from '@angular/core';
 import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 import { GatewayService } from './_services';
 import { User } from './_models';
@@ -23,6 +23,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     currentUser: User;
     tabs = new Array<Tab>();
     activeTabIndex = 0;
+    documentBody: HTMLElement;
 
     constructor(
         private router: Router,
@@ -30,15 +31,36 @@ export class AppComponent implements OnInit, AfterViewInit {
         private navService: NavService,
         private tabService: TabService,
     ) {
-        this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
+        
+        this.documentBody = document.querySelector('body');
 
+        //this.gatewayService.currentUser.subscribe(x => this.currentUser = x);
+        this.gatewayService.currentUser.subscribe(x => {
+          this.currentUser = x;
+        });
     }
 
     ngOnInit() {
+
+      this.gatewayService.currentUser.subscribe(x => {
+        x && this.createCompanyContext(x.company);
+      });
+      
+      this.gatewayService.companyChanged.subscribe(company => {
+        company && this.createCompanyContext(company);
+      })
 
     }
 
     ngAfterViewInit() {
       this.navService.appDrawer = this.appDrawer;
+
     }
+
+    createCompanyContext = (company:any) => {
+      if (company && company.companyIdent) {
+        this.documentBody.className = 'company-' + company.companyIdent.trim().toLowerCase() + '-context';
+      }
+    }
+
 }
