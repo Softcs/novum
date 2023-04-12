@@ -18,7 +18,6 @@
           <div class="data-table" fxFlex>
             <ag-grid-angular
               #sitSetDataSource
-              style="width: 100%; height: 100%;"
               class="ag-theme-balham"
               [rowClassRules]="rowClassRules"
             >
@@ -29,9 +28,11 @@
 
       <div fxFlex=40 fxLayout="column" class="content">
 
-        
-        <!-- <simple-calendar>
-        </simple-calendar> -->
+        <sit-data-set-container  ident="sitAttendanceList4User" ngClass="flex-container-column">
+          <simple-calendar #sitSetDataSource>
+          </simple-calendar>
+        </sit-data-set-container>
+
 
         <div class="sit-grid-title">Akceptacja wniosków urlopowych</div>
         <sit-data-set-container ident="sitFilterVac" >
