@@ -26,8 +26,13 @@
           </div>
         </sit-data-set-container>
       </div>
-      
+
       <div fxFlex=40 fxLayout="column" class="content">
+
+        
+        <!-- <simple-calendar>
+        </simple-calendar> -->
+
         <div class="sit-grid-title">Akceptacja wniosków urlopowych</div>
         <sit-data-set-container ident="sitFilterVac" >
           <div class="sit-filter-bar" fxLayout="row">
@@ -38,7 +43,6 @@
           <div class="data-table" fxFlex>
             <ag-grid-angular
               #sitSetDataSource
-              style="width: 100%; height: 100%;"
               class="ag-theme-balham"
               [rowHeight]="60"
             >
