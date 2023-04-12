@@ -271,6 +271,7 @@ import { SitProducts4pubContributorsEditComponent } from '@app/containers/dictio
 import { SitAnalysisPublishigPlanComponent } from '@app/containers/dictionaries/sit-analysis-publishig-plan/sit-analysis-publishig-plan.component';
 import { SitB2cContributorsEditComponent } from '@app/containers/dictionaries/sit-b2c-config/actions/sit-b2c-contributors-edit/sit-b2c-contributors-edit.component';
 import { SitProductSetIsB2cComponent } from '@app/containers/dictionaries/sit-products/actions/sit-product-set-is-b2c/sit-product-set-is-b2c.component';
+import { SimpleCalendarComponent } from '@app/components/controls/simple-calendar/simple-calendar.component';
 
 
 @Injectable({ providedIn: 'root' })
@@ -550,6 +551,7 @@ export class FactoryService {
         sitAnalysisPublishigPlan: SitAnalysisPublishigPlanComponent,
         sitB2cContributorsEdit: SitB2cContributorsEditComponent,
         sitProductSetIsB2c: SitProductSetIsB2cComponent,
+        SimpleCalendar: SimpleCalendarComponent,
     };
 
     public GetFactory(ident: string) {
