@@ -9,11 +9,6 @@ $messagebox-background-color: #ffb66b;//#ffb3b3;// #ffffb3;
 $toolbar-color: #63666A;
 $toolbar-text-color: white;
 
-// jc
-$app-menu-background-color: #073763;
-$app-menu-color: #fff;
-// jc
-
 $sidenav-background-color: #47494d;
 $sidenav-item-active:#47494d;
 $sidenav-font-color: #d0d1d2;
@@ -37,15 +32,6 @@ $tab-header-selected-color: #839bb1;// rgb(212, 212, 212); //kolor aktywnej zak≈
 $tab-font-color: black;
 $tab-ink-bar-color: #042347;
 
-// jc
-// https://sass-lang.com/documentation/interpolation
-// https://sass-lang.com/documentation/style-rules/declarations#custom-properties
-:root {
-  --background-color: #{$background-color};
-  --content-background-color: #{$content-background-color};
-  --messagebox-background-color: #{$messagebox-background-color};
-}
-// jc
 
 
 $mat-myapp-primary: (
@@ -118,3 +104,40 @@ $primary: mat.define-palette($mat-myapp-primary);
 $accent: mat.define-palette($mat-myapp-accent);
 $theme: mat.define-light-theme($primary, $accent);
 @include mat.all-component-themes($theme);
+
+// jc
+$app-menu-background-color: #073763;
+$app-menu-color: #fff;
+// jc
+
+
+// jc
+// https://sass-lang.com/documentation/interpolation
+// https://sass-lang.com/documentation/style-rules/declarations#custom-properties
+:root {
+  --background-color: #{$background-color};
+  --content-background-color: #{$content-background-color};
+  --messagebox-background-color: #{$messagebox-background-color};
+  --app-menu-background-color: #{$app-menu-background-color};
+  --app-menu-color: #{$app-menu-color};
+
+  --red-color: #f00;
+  --violet-color: violet;
+  --orange-color: orange;
+  --darkred-color: rgb(153, 0, 0);
+  --green-color: rgb(20, 152, 46);
+  --blue-color: rgb(11, 23, 255);
+  --black-color: #000;
+  --def-color: #666;
+  --lightgrey-color: #aaa;
+  --darkgrey-color: #444;
+}
+
+// dla kontekstu firmy/bazy nadpisujemy zmienne:
+.company-main-context {
+  --darkred-color: rgb(200, 50, 50);
+  --green-color: #0f6;
+  --blue-color: #09f;
+}
+
+// jc

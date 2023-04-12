@@ -1,4 +1,4 @@
-@import "./../../theme";
+// @import "./../../theme";
 
 // html {
 //   // height: 100%;
@@ -354,10 +354,17 @@ button:focus {
   color: red !important;
 }
 
-.sit-row-active {
-  //background-color: magenta !important;
-  background-color: rgb(253, 227, 179)!important//#cce6ff !important;
+
+.ag-row {
+  &.sit-row-active {
+    background-color: rgb(253, 227, 179);
+  }
 }
+// back old
+// .sit-row-active {
+//   //background-color: magenta !important;
+//   background-color: rgb(253, 227, 179)!important//#cce6ff !important;
+// }
 
 .sit-grid-title {
   font-size: small;
@@ -436,16 +443,17 @@ div.cover{
 }
 
 
-.dayoff {
-  background-color: lightgray!important;
-}
-.today {
-  font-weight: bold;
-  background-color: rgb(243, 227, 85)!important;
-}
-.present {
-  background-color: rgb(203, 252, 203)!important;
-}
+// przeniesione do sit-pulpit
+// .dayoff {
+//   background-color: lightgray!important;
+// }
+// .today {
+//   font-weight: bold;
+//   background-color: rgb(243, 227, 85)!important;
+// }
+// .present {
+//   background-color: rgb(203, 252, 203)!important;
+// }
 
 .hidden {
   display: none!important;

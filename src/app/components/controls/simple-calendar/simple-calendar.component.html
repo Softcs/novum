@@ -1,0 +1,17 @@
+<hr/>
+<p>simple-calendar works!</p>
+<p>disiaj(toUTCString): {{now.toUTCString()}}</p>
+<p>disiaj (toLocaleString): {{now.toLocaleString()}}</p>
+<p>json: {{now | json}}</p>
+<p>składowe(Y-M-D): {{year}} - {{month}} - {{day}}</p>
+<p>miesiąc ma dni: {{daysInMonth}}</p>
+<p>firstMonthDay: {{firstMonthDay | json}} - {{firstMonthDay}};</p>
+<hr/>
+<p>dzisiaj jest Day: {{now.getDay() | json}}</p>
+<p>dzisiaj jest UTCDay: {{now.getUTCDay() | json}}</p>
+<p>dzisiaj dzien[en]: {{now.toLocaleString('en-us', {  weekday: 'long' })}}</p>
+<p>dzisiaj dzien[pl]: {{now.toLocaleString('pl-pl', {  weekday: 'long' })}}</p>
+<hr/>
+
+
+

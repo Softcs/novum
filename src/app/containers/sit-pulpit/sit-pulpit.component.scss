@@ -1,10 +1,26 @@
-@import "../../../theme";
+.sit-pulpit-component-container {
+
+    .dayoff {
+        background-color: lightgray ;
+    }
+    .today {
+        font-weight: bold;
+        background-color: rgb(243, 227, 85) ;
+    }
+    .present {
+        background-color: rgb(203, 252, 203) ;
+    }
 
 
-.sit-pulpit-bottom-bar {
-    background-color: $app-menu-background-color;
-    color: $app-menu-color;
-    text-align: right;
-    padding-right: 5px;
+    .sit-pulpit-bottom-bar {
+        background-color: var(--app-menu-background-color);
+        color: var(--app-menu-color);
+        text-align: right;
+        padding-right: 5px;
+    }
+
+
+
 }
+
 

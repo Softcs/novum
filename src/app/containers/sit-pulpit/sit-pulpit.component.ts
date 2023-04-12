@@ -1,5 +1,5 @@
 ﻿import { formatDate } from '@angular/common';
-import { Component, Inject, LOCALE_ID } from '@angular/core';
+import { Component, Inject, LOCALE_ID, ViewEncapsulation } from '@angular/core';
 import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-dict-base.component';
 import { sitGlobalConfig } from '@app/_consts/sit-global-config';
 import { User } from '@app/_models';
@@ -12,11 +12,12 @@ import { environment } from '../../../environments/environment';
   selector: 'app-pulpit',
   templateUrl: 'sit-pulpit.component.html',
   styleUrls: ['sit-pulpit.component.scss'],
+  encapsulation : ViewEncapsulation.None,
   host: {class: 'router-flex sit-pulpit-component-container'}
 })
 export class SitPulpitComponent  extends SitDictBaseComponent {
   appVersion = environment.appVersion;
-  rowClassRules;
+  rowClassRules: any;
 
   constructor(
     protected gatewayService: GatewayService,
