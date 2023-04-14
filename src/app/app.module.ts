@@ -380,6 +380,7 @@ import { SitAnalysisPublishigPlanComponent } from './containers/dictionaries/sit
 import { SitB2cContributorsEditComponent } from './containers/dictionaries/sit-b2c-config/actions/sit-b2c-contributors-edit/sit-b2c-contributors-edit.component';
 import { SitProductSetIsB2cComponent } from './containers/dictionaries/sit-products/actions/sit-product-set-is-b2c/sit-product-set-is-b2c.component';
 import { SimpleCalendarComponent } from './components/controls/simple-calendar/simple-calendar.component';
+import { SitOfficeDocDimensionsImportFromFileComponent } from './containers/dictionaries/sit-office-doc-headers/actions/sit-office-doc-dimensions-import-from-file/sit-office-doc-dimensions-import-from-file.component';
 
 @NgModule({
     imports: [
@@ -743,6 +744,7 @@ import { SimpleCalendarComponent } from './components/controls/simple-calendar/s
         SitB2cContributorsEditComponent,
         SitProductSetIsB2cComponent,
         SimpleCalendarComponent,
+        SitOfficeDocDimensionsImportFromFileComponent,
 
     ],
     providers: [
