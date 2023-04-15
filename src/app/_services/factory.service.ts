@@ -273,6 +273,7 @@ import { SitB2cContributorsEditComponent } from '@app/containers/dictionaries/si
 import { SitProductSetIsB2cComponent } from '@app/containers/dictionaries/sit-products/actions/sit-product-set-is-b2c/sit-product-set-is-b2c.component';
 import { SimpleCalendarComponent } from '@app/components/controls/simple-calendar/simple-calendar.component';
 import { SitOfficeDocDimensionsImportFromFileComponent } from '@app/containers/dictionaries/sit-office-doc-headers/actions/sit-office-doc-dimensions-import-from-file/sit-office-doc-dimensions-import-from-file.component';
+import { SitOfficeDocDimensionsCopyFromDocComponent } from '@app/containers/dictionaries/sit-office-doc-headers/actions/sit-office-doc-dimensions-copy-from-doc/sit-office-doc-dimensions-copy-from-doc.component';
 
 
 @Injectable({ providedIn: 'root' })
@@ -554,6 +555,7 @@ export class FactoryService {
         sitProductSetIsB2c: SitProductSetIsB2cComponent,
         SimpleCalendar: SimpleCalendarComponent,
         sitOfficeDocDimensionsImportFromFile: SitOfficeDocDimensionsImportFromFileComponent,
+        sitOfficeDocDimensionsCopyFromDoc: SitOfficeDocDimensionsCopyFromDocComponent,
     };
 
     public GetFactory(ident: string) {
