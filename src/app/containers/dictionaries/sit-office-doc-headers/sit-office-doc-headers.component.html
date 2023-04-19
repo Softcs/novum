@@ -17,12 +17,8 @@
                   [buttons]="[{'caption':'Wyst.','value': '0', 'checked':true},{'caption':'Rej.','value': '1'}]"
                 ></sit-data-radio>
                 <sit-data-checkboxlist #sitControl field="groupStatusMain" label="Status" [refreshOnChange]="false" layout="1"></sit-data-checkboxlist>
-
-                <!-- <sit-data-checkbox #sitControl field="ED" label="Edycja" labelPosition="after" checked="true" [refreshOnChange]="true" style="color: rgb(0,0,0);" ></sit-data-checkbox>
-                <sit-data-checkbox #sitControl field="DZ" label="Dziennik" labelPosition="after" checked="true" [refreshOnChange]="true" style="color: lime;" ></sit-data-checkbox>
-                <sit-data-checkbox #sitControl field="FK" label="Zaksięgowane" labelPosition="after" checked="true" [refreshOnChange]="true" style="color: green;" ></sit-data-checkbox> -->
-
                 <sit-refresh-button tooltip="Odśwież"></sit-refresh-button>
+                <sit-data-checkbox #sitControl field="MyApproval" label="Do mojej akcept." labelPosition="after" [refreshOnChange]="true"></sit-data-checkbox>
               </sit-data-set-container>
 
               <sit-data-set-container  ident="sitOfficeDocHeaders" showActionsToolbar="true" ngClass="flex-container-column">

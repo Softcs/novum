@@ -14,7 +14,7 @@
           [buttons]="[{'caption':'Akceptuj','value': '1', 'checked':true},{'caption':'Odrzuć','value':'-1'}]"
         ></sit-data-radio>
       </div>
-      <div ngClass="flex-container-row" *ngIf="showEmployeesList()">
+      <div ngClass="flex-container-row" [class.hidden] = "!showEmployeesList()"> 
         <sit-data-input type="text" #sitControl field="EmployeeName" label="Przekaż do akceptacji" appearance="outline" fxFlex
           [lookupDisplayFields] = "['EmployeeName']"></sit-data-input>
       </div>
