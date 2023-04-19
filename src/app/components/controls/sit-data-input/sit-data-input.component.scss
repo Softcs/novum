@@ -4,6 +4,16 @@ $input-height: 40px;
   display: flex;
   flex-direction: row;
 
+  .invalid-tooltip {
+    display: block;
+    top: 85%;
+    left: -0.7em;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+    z-index: 10;
+    border-radius: 0 .375rem .375rem .375rem;
+    font-size: 1em;
+  }
+
   // input:invalid {
   //   color: #f00;
   // }

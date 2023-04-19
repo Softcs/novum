@@ -7,6 +7,7 @@ import { MatSelect } from '@angular/material/select';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { OnCFService } from '@app/_services/oncf.service';
+import { DomPortal } from '@angular/cdk/portal';
 
 @Component({
   selector: 'sit-data-input',
@@ -49,6 +50,7 @@ export class SitDataInputComponent extends SitDataBaseComponent {
 
   lookupSubscriber: Subscription;
   lookupTimeout: any;
+  fieldTextError: any = {};
 
   get lookupRows() {
     return this._lookupRows.asObservable();
@@ -125,6 +127,17 @@ export class SitDataInputComponent extends SitDataBaseComponent {
   }
 
 
+  public setValue(value: any) {
+
+    super.setValue(value);
+
+    this.fieldTextError.DocumentNumber_Err = this.dataSetWrapper.activeRow?.DocumentNumber_Err;
+
+    // if (this.dataSetWrapper?.activeRow[this.field + '_Err']) {
+    //   this.setIsValidField(false);
+    // }
+
+  }
 
 
   onBlurLookupTimeout: any;

@@ -103,6 +103,10 @@
     {{getValidationMessage()}}
   </mat-hint>
 
+  <!-- <div *ngIf="fieldTextError?." class="invalid-tooltip">
+    {{fieldTextError}}
+  </div> -->
+
   <div *ngIf="hasLookup" [ngClass]="{'hasLookup': hasLookup, 'loading': lookupIsLoading}" fxLayoutAlign="center center" >
     <span
       ngClass="material-icons lookupDropDawn"
@@ -113,8 +117,12 @@
     </span>
     <div *ngIf="lookupIsLoading" ngClass="spinner-border text-muted"></div>
   </div>
-    
+
+  <div class="invalid-tooltip" *ngIf="fieldTextError[field + '_Err']">{{fieldTextError[field + '_Err']}}</div>
+  <!-- <div>{{field}}</div> -->
+
 </mat-form-field>
+
 
 <sit-refresh-button *ngIf="showRefreshButton" tooltip="Odśwież"></sit-refresh-button>
 
