@@ -1,9 +1,44 @@
+.sit-side-menu-component {
 
+  button:focus {
+    outline: none;
+  }
+  
+  .menu-button{
+    text-align: left;
+  }
 
-button:focus {
-  outline: none;
+  .sit-menu-list-item {
+    display: block;
+    // outline: none;
+    background-color: #35383c; 
+  
+    .mat-list-item {
+      color: var(--sidenav-font-color);
+    
+      .routeIcon {
+        margin-right: 10px;
+      }
+    
+      &.active {
+        background-color: var(--sidenav-item-active);
+        color: var(--sidenav-font-color);
+      }
+      &:hover,
+      &:focus {
+        background-color: var(--sidenav-hover-color);
+      }
+    
+    }
+    
+  }
+
 }
 
-.menu-button{
-  text-align: left;
-}
+// button:focus {
+//   outline: none;
+// }
+
+// .menu-button{
+//   text-align: left;
+// }
