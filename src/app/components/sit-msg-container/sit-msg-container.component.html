@@ -1,0 +1,44 @@
+<!-- <p>sit-msg-container works!</p> -->
+
+<div class="sit-msg-box sit-msg-left" fxLayout="column">
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+      <div class="error-header"><b>Błąd !</b></div>
+      <div><mat-icon class="gray-icon" aria-hidden="false" aria-label="Close">close</mat-icon></div>
+    </div>
+    <mat-divider></mat-divider>
+    <div>
+      
+        <div fxLayout="row" >
+        <div style="width: 30px; padding-top:3px;"><mat-icon class="gray-icon" matListIcon >close</mat-icon></div>
+        <div class="sit-msg-error">
+            sit-msg-container works!!!
+        </div>
+      </div>
+      
+      <div fxLayout="row" >
+        <div style="width: 30px; padding-top:3px;"><mat-icon class="gray-icon" matListIcon >close</mat-icon></div>
+        <div class="sit-msg-error">
+            sit-msg-container works 2 !!!
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+<!-- <div class="sit-msg-container">
+    <div class="sit-msg-box sit-msg-left" fxLayout="column">
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="error-header"><b>Błąd !</b></div>
+        <div><mat-icon class="gray-icon" aria-hidden="false" aria-label="Close" (click)="clearErrors()">close</mat-icon></div>
+      </div>
+      <mat-divider></mat-divider>
+      <div>
+        <div *ngFor="let error of errors" fxLayout="row" >
+          <div style="width: 30px; padding-top:3px;"><mat-icon *ngIf="errors?.length > 1" class="gray-icon" matListIcon (click)="closeError(error)">close</mat-icon></div>
+          <div class="sit-msg-error">{{error.message}}</div>
+        </div>
+      </div>
+    </div>
+  </div> -->

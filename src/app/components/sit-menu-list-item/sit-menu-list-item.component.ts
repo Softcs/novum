@@ -1,5 +1,5 @@
 import { NavItem } from '@app/_models/nav-item';
-import { Component, HostBinding, Input, OnInit} from '@angular/core';
+import { Component, HostBinding, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import { Router } from '@angular/router';
 import { NavService } from '../../_services/nav.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
@@ -12,6 +12,7 @@ import { FactoryService } from '@app/_services/factory.service';
   host: {class: 'sit-menu-list-item'},
   templateUrl: './sit-menu-list-item.component.html',
   styleUrls: ['./sit-menu-list-item.component.scss'],
+  encapsulation : ViewEncapsulation.None,
   animations: [
     trigger('indicatorRotate', [
       state('collapsed', style({transform: 'rotate(0deg)'})),

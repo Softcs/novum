@@ -13,9 +13,10 @@ import { TabService } from '@app/_services/tab.service';
 
 @Component({
   selector: 'sit-side-menu',
-  host: {class: 'sit-side-menu'},
   templateUrl: './sit-side-menu.component.html',
-  styleUrls: ['./sit-side-menu.component.scss']
+  styleUrls: ['./sit-side-menu.component.scss'],
+  host: {class: 'sit-side-menu-component'},
+  encapsulation : ViewEncapsulation.None,
 })
 export class SitSideMenuComponent implements OnInit {
   @ViewChild('appDrawer') appDrawer: ElementRef;

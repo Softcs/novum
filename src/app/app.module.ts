@@ -382,6 +382,7 @@ import { SitProductSetIsB2cComponent } from './containers/dictionaries/sit-produ
 import { SimpleCalendarComponent } from './components/controls/simple-calendar/simple-calendar.component';
 import { SitOfficeDocDimensionsImportFromFileComponent } from './containers/dictionaries/sit-office-doc-headers/actions/sit-office-doc-dimensions-import-from-file/sit-office-doc-dimensions-import-from-file.component';
 import { SitOfficeDocDimensionsCopyFromDocComponent } from './containers/dictionaries/sit-office-doc-headers/actions/sit-office-doc-dimensions-copy-from-doc/sit-office-doc-dimensions-copy-from-doc.component';
+import { SitMsgContainerComponent } from './components/sit-msg-container/sit-msg-container.component';
 
 @NgModule({
     imports: [
@@ -747,6 +748,7 @@ import { SitOfficeDocDimensionsCopyFromDocComponent } from './containers/diction
         SimpleCalendarComponent,
         SitOfficeDocDimensionsImportFromFileComponent,
         SitOfficeDocDimensionsCopyFromDocComponent,
+        SitMsgContainerComponent,
 
     ],
     providers: [

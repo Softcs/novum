@@ -20,10 +20,16 @@
         <div fxLayout="row">
           <!-- <sit-data-input #sitControl type="date" field="SalesDate" label="Data sprzedaży" appearance="outline" fxFlex="25"></sit-data-input> -->
         </div>
+
+        <div fxLayout="row">
+          <sit-data-input #sitControl field="DocumentNumber" label="Numer dokumentu" required appearance="outline" fxFlex></sit-data-input>
+        </div>
+
         <div fxLayout="row">
           <sit-data-input #sitControl field="CustName" label="Kontrahent" required appearance="outline" fxFlex></sit-data-input>
           <sit-data-checkbox *ngIf="this.isInsert" #sitControl field="CustomerInsert" label="Nowy"></sit-data-checkbox>
         </div>
+
         <div fxLayout="column" [class.hidden]="hideNewCustomer()">
           <div fxLayout="row">
             <sit-data-input #sitControl field="VATId" label="NIP" required appearance="outline"></sit-data-input>
@@ -56,9 +62,9 @@
           <sit-data-input #sitControl field="BankAccountNumber" label="Nr rachunku bankowego" appearance="outline" fxFlex></sit-data-input>
           <sit-data-input #sitControl field="Swift" label="SWIFT" appearance="outline" fxFlex="30"></sit-data-input>
         </div>
-        <div fxLayout="row">
+        <!-- <div fxLayout="row">
           <sit-data-input #sitControl field="DocumentNumber" label="Numer dokumentu" required appearance="outline" fxFlex></sit-data-input>
-        </div>
+        </div> -->
         <div fxLayout="row">
           <sit-data-input #sitControl field="OfficeDocDescription" label="Opis dokumentu" required appearance="outline" fxFlex></sit-data-input>
         </div>

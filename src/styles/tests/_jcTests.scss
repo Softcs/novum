@@ -5,6 +5,8 @@ body {
   max-width: 1920px;
   display: flex;
   flex-direction: column;
+  margin: auto;
+  background-color: var(--content-background-color);
 }
 
 .app-component-container, 
@@ -111,6 +113,18 @@ mat-toolbar-multiple-rows,
   }
   
 }
+
+.home-tab-content-container {
+  // .mat-tab-body-wrapper {
+  //   z-index: 0;
+  //   border: 10px solid aqua;
+  // }
+
+  .sit-msg-container {
+    border: 10px solid red;
+  }
+}
+
 
 .home-tab-content-container {
 

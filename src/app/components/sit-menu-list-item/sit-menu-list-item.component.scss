@@ -1,34 +1,75 @@
-@import '../../../theme';
 
-:host {
-
-  &.sit-menu-list-item {
-    display: block;
-    // outline: none;
-    background-color: #35383c;
+.sit-menu-list-item {
+  .mat-list-item {
+    font-family: inherit;
   }
 }
 
 
-.mat-list-item {
-  color: $sidenav-font-color;
 
-  .routeIcon {
-    margin-right: 10px;
-  }
 
-  &.active {
-    background-color: $sidenav-item-active;
-    color: $sidenav-font-color;
-  }
-  &:hover,
-  &:focus {
 
-    background-color: $sidenav-hover-color;
+// .sit-menu-list-item {
+//   display: block;
+//   // outline: none;
+//   background-color: #35383c; 
 
-    // >.mat-list-item:not(.expanded) {
-    //   background-color: $sidenav-hover-color;
-    // }
-  }
+//   .mat-list-item {
+//     color: var(--sidenav-font-color);
+  
+//     .routeIcon {
+//       margin-right: 10px;
+//     }
+  
+//     &.active {
+//       background-color: var(--sidenav-item-active);
+//       color: var(--sidenav-font-color);
+//     }
+//     &:hover,
+//     &:focus {
+//       background-color: var(--sidenav-hover-color);
+//     }
+  
+//   }
+  
+// }
 
-}
+
+// @import '../../../theme';
+
+// :host {
+
+//   &.sit-menu-list-item {
+//     display: block;
+//     // outline: none;
+//     background-color: #35383c;
+//   }
+// }
+
+
+// .mat-list-item {
+//   // color: $sidenav-font-color;
+//   color: var(--sidenav-font-color);
+
+//   .routeIcon {
+//     margin-right: 10px;
+//   }
+
+//   &.active {
+//     // background-color: $sidenav-item-active;
+//     // color: $sidenav-font-color;
+//     background-color: var(--sidenav-item-active);
+//     color: var(--sidenav-font-color);
+//   }
+//   &:hover,
+//   &:focus {
+
+//     // background-color: $sidenav-hover-color;
+//     background-color: var(--sidenav-hover-color);
+
+//     // >.mat-list-item:not(.expanded) {
+//     //   background-color: $sidenav-hover-color;
+//     // }
+//   }
+
+// }
