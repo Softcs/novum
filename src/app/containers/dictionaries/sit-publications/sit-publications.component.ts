@@ -48,11 +48,12 @@ export class SitPublicationsComponent extends SitDictBaseComponent {
       { headerName: 'GUID', field: 'sitPublicationsG', width: 100, defaultVisibility: false },  
       { headerName: 'Publikacja', field: 'PublicationIdent', filter: 'agTextColumnFilter', width: 350 },
       { headerName: 'Tytuł', field: 'Title', filter: 'agTextColumnFilter', width: 350 },
-      { headerName: 'Status', field: 'StatusValueName', filter: 'agTextColumnFilter', width: 67, 
+      { headerName: 'Status', field: 'StatusValueName', filter: 'agTextColumnFilter', width: 67, suppressMenu: true,
         cellRenderer: (params:any) => (params.data.StatusValueIdent ? '<span title="' + params.data.StatusValueName + '">' + params.data.StatusValueIdent + '</span>' : ''),
         cellClass: (params:any) => [(params.data.StatusValueIdent ? params.data.StatusValueIdent : '')],
       },
-      { headerName: 'Imprint', field: 'Imprint', filter: 'agTextColumnFilter', width: 150 },
+      { headerName: 'Imprint', field: 'Imprint', tooltipField: 'Imprint', filter: 'agTextColumnFilter', width: 150 },
+      { headerName: 'Menedżer', field: 'ManagerName', tooltipField: 'ManagerName', filter: 'agTextColumnFilter', width: 150 },
     ];
 
     this.gridColumnsDefinition["sitPublicationsProducts"] = [
