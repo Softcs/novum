@@ -22,10 +22,6 @@
         </div>
 
         <div fxLayout="row">
-          <sit-data-input #sitControl field="DocumentNumber" label="Numer dokumentu" required appearance="outline" fxFlex></sit-data-input>
-        </div>
-
-        <div fxLayout="row">
           <sit-data-input #sitControl field="CustName" label="Kontrahent" required appearance="outline" fxFlex></sit-data-input>
           <sit-data-checkbox *ngIf="this.isInsert" #sitControl field="CustomerInsert" label="Nowy"></sit-data-checkbox>
         </div>
@@ -49,7 +45,11 @@
           </div>
         </div>
 
-        <mat-divider style="margin-bottom: 1em; margin-top: .5em;"></mat-divider>
+        <!-- <mat-divider style="margin-bottom: 1em; margin-top: .5em;"></mat-divider> -->
+
+        <div fxLayout="row">
+          <sit-data-input #sitControl field="DocumentNumber" label="Numer dokumentu" required appearance="outline" fxFlex></sit-data-input>
+        </div>
         
         <div fxLayout="row">
           <sit-data-input #sitControl type="date" field="DocumentDate" label="Data wystawienia" required appearance="outline" fxFlex="25"></sit-data-input>
