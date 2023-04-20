@@ -18,7 +18,7 @@
           <div class="data-table" fxFlex>
             <ag-grid-angular
               #sitSetDataSource
-              class="ag-theme-balham"
+              class="ag-theme-balham agenda-style"
               [rowClassRules]="rowClassRules"
             >
             </ag-grid-angular>
@@ -28,10 +28,11 @@
 
       <div fxFlex=40 fxLayout="column" class="content">
 
-        <sit-data-set-container  ident="sitAttendanceList4User" ngClass="flex-container-column">
-          <simple-calendar #sitSetDataSource>
-          </simple-calendar>
-        </sit-data-set-container>
+        <!-- <div class="sit-grid-title">Testowe linki</div>
+        <div class="testowy-link-container">
+          <sit-menu-list-item [item]="{caption: 'Publikacje', kind: 'app', link: 'sitPublications'}"></sit-menu-list-item>
+          <sit-menu-list-item [item]="{caption: 'Kancelaria', kind: 'app', link: 'sitOfficeDocHeaders'}"></sit-menu-list-item>
+        </div> -->
 
 
         <div class="sit-grid-title">Akceptacja wniosków urlopowych</div>
@@ -50,6 +51,13 @@
             </ag-grid-angular>
           </div>
         </sit-data-set-container>
+
+        <!-- <sit-data-set-container  ident="sitAttendanceList4User" ngClass="flex-container-column" style="margin-top: .5em;">
+          <div class="sit-grid-title">Testy kalendarza</div>
+          <simple-calendar #sitSetDataSource>
+          </simple-calendar>
+        </sit-data-set-container> -->
+
       </div>
       
       <div fxFlex fxLayout="column" class="content">
