@@ -24,6 +24,67 @@
     flex-grow: 1;
   }
 
+  .prod-base-group {
+
+    &::before,
+    &::after {
+      // content: '\2700';
+      // border: 1px solid rgba(0,0,0,0);
+      // display: inline-block;
+      // height: 1.2rem;
+      // line-height: 0.9em;
+      // width: 1.2rem;
+      // padding: 0.1rem;
+      // font-size: 0.8rem;
+
+      content: "";
+      line-height: 0;
+      font-size: 1.2rem;
+    }
+
+    &.group_no_1 {
+      color:var(--red-color);
+      &::before {
+        content: "\233a";
+      }
+    }
+    &.group_no_2 {
+      color:var(--blue-color);
+      &::before {
+        content: "\2339";
+      }
+    }
+    &.group_no_3 {
+      color:var(--green-color);
+      &::before {
+        content: "\233b";
+      }
+    }
+    &.group_no_4 {
+      color:var(--violet-color);
+      &::before {
+        content: "\233d";
+      }
+    }
+    &.group_no_5 {
+      color:var(--darkred-color);
+      &::before {
+        content: "\25e7";
+      }
+    }
+
+// dalej: 2341,...,2344, 2347, 2348, 234c, 25a3, 25e7
+
+    &.prod-group-master {
+      &::after {
+        // border: 1px solid;
+        // content: "\3b1";
+        content: "\2474";
+      }
+    }
+
+  }
+
 
 }
 

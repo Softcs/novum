@@ -109,7 +109,28 @@ export class SitPublicationsComponent extends SitDictBaseComponent {
         // flex: 1,
         floatingFilter: false,
         suppressMenu: true,
-        cellRenderer: (params:any) => (params.data.StatusValueIdent_Main ? '<span title="' + params.data.StatusValueName_Main + '">' + params.data.StatusValueIdent_Main + '</span>' : ''),
+        //cellRenderer: (params:any) => (params.data.StatusValueIdent_Main ? '<span title="' + params.data.StatusValueName_Main + '">' + params.data.StatusValueIdent_Main + '</span>' : ''),
+        cellRenderer: (params:any) => {
+
+// console.log('params.data: ', params.data);
+
+          let groupClass = [
+            'prod-base-group', 
+            'group_no_' + params.data.BaseGroup,
+            (params.data.sitProductsId_Master ? null : 'prod-group-master')
+          ];
+
+          let dataArr = [
+            (params.data.StatusValueIdent_Main ? '<span title="' + params.data.StatusValueName_Main + '">' + params.data.StatusValueIdent_Main + '</span>' : null),
+            (params.data.BaseGroup ? '<span class="' + groupClass.filter(Boolean).join(' ') + '"></span>' : null),
+
+          ];
+
+          return dataArr.filter(Boolean).join('<br/>');
+
+
+          // return params.data.StatusValueIdent_Main ? '<span title="' + params.data.StatusValueName_Main + '">' + params.data.StatusValueIdent_Main + '</span>' : '';
+        },
         cellClass: (params:any) => [(params.data.StatusValueIdent_Main ? params.data.StatusValueIdent_Main : ''), 'bold'],
         // cellStyle: function(params) {
         //   if (params.value === 'W przygotowaniu') { return { color: 'violet', 'font-weight': 600 }; }
