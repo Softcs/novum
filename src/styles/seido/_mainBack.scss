@@ -357,7 +357,8 @@ button:focus {
 
 .ag-row {
   &.sit-row-active {
-    background-color: rgba(253, 227, 179, .9);
+    // background-color: rgba(253, 227, 179, .9);
+    background-color: rgba(253, 227, 179, .7);
   }
 }
 // back old
@@ -446,14 +447,15 @@ div.cover{
 // przeniesione do sit-pulpit
 .agenda-style {
   .dayoff {
-    background-color: rgba(0,0,0,0.1);
+    background-color: rgba(0,0,0, .05);
   }
   .today {
     font-weight: bold;
     background-color: rgba(243, 227, 85, .8);
   }
   .present {
-    background-color: rgb(203, 252, 203);
+    // background-color: rgb(203, 252, 203);
+    background-color: rgba(203, 252, 203, 0.6);
   }
 }
 // .dayoff {
