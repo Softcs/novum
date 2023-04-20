@@ -1,22 +1,42 @@
 .sit-pulpit-component-container {
 
-    .dayoff {
-        background-color: lightgray ;
-    }
-    .today {
-        font-weight: bold;
-        background-color: rgb(243, 227, 85) ;
-    }
-    .present {
-        background-color: rgb(203, 252, 203) ;
-    }
-
 
     .sit-pulpit-bottom-bar {
         background-color: var(--app-menu-background-color);
         color: var(--app-menu-color);
         text-align: right;
         padding-right: 5px;
+    }
+
+    .testowy-link-container {
+        border: 2px solid red;
+        border-width: 1px 0;
+        padding: .2em 0;
+        margin-bottom: .5em;
+
+        .sit-menu-list-item {
+            display: inline-block;
+            background-color: inherit;
+            color: inherit;
+
+            .mat-list-item {
+                color: inherit;
+                font-family: inherit;
+                margin: auto;
+                margin-right: .5em;
+                text-decoration: underline dotted;
+
+                &:hover {
+                    background-color: inherit;
+                    text-decoration-style: wavy;
+                }
+
+                .mat-icon {
+                    display: none;
+                }
+            }
+
+          }
     }
 
 
