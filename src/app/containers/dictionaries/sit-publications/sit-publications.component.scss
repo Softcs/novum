@@ -37,40 +37,43 @@
       // padding: 0.1rem;
       // font-size: 0.8rem;
 
-      content: "";
+      // content: "";
       line-height: 0;
       font-size: 1.2rem;
+    }
+    &::before {
+      content: "\2339";
     }
 
     &.group_no_1 {
       color:var(--red-color);
-      &::before {
-        content: "\233a";
-      }
+      // &::before {
+      //   content: "\233a";
+      // }
     }
     &.group_no_2 {
       color:var(--blue-color);
-      &::before {
-        content: "\2339";
-      }
+      // &::before {
+      //   content: "\2339";
+      // }
     }
     &.group_no_3 {
       color:var(--green-color);
-      &::before {
-        content: "\233b";
-      }
+      // &::before {
+      //   content: "\233b";
+      // }
     }
     &.group_no_4 {
       color:var(--violet-color);
-      &::before {
-        content: "\233d";
-      }
+      // &::before {
+      //   content: "\233d";
+      // }
     }
     &.group_no_5 {
       color:var(--darkred-color);
-      &::before {
-        content: "\25e7";
-      }
+      // &::before {
+      //   content: "\25e7";
+      // }
     }
 
 // dalej: 2341,...,2344, 2347, 2348, 234c, 25a3, 25e7
@@ -81,6 +84,9 @@
         // content: "\3b1";
         content: "\2474";
       }
+      // &::before {
+      //   font-size: 1.4rem;
+      // }
     }
 
   }
