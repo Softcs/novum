@@ -357,7 +357,7 @@ button:focus {
 
 .ag-row {
   &.sit-row-active {
-    background-color: rgb(253, 227, 179);
+    background-color: rgba(253, 227, 179, .9);
   }
 }
 // back old
@@ -444,15 +444,27 @@ div.cover{
 
 
 // przeniesione do sit-pulpit
+.agenda-style {
+  .dayoff {
+    background-color: rgba(0,0,0,0.1);
+  }
+  .today {
+    font-weight: bold;
+    background-color: rgba(243, 227, 85, .8);
+  }
+  .present {
+    background-color: rgb(203, 252, 203);
+  }
+}
 // .dayoff {
-//   background-color: lightgray!important;
+//   background-color: #e9e9e9 !important;
 // }
 // .today {
 //   font-weight: bold;
-//   background-color: rgb(243, 227, 85)!important;
+//   background-color: rgb(243, 227, 85) !important;
 // }
 // .present {
-//   background-color: rgb(203, 252, 203)!important;
+//   background-color: rgb(203, 252, 203) !important;
 // }
 
 .hidden {
