@@ -38,16 +38,10 @@ export class SitWmsProductsComponent extends SitDictBaseComponent {
       { headerName: 'Aktywny', field: 'IsActive', filter: 'agSetColumnFilter', width: 80, renderType: 'checkbox', suppressMenu: true, sortable: true, resizable: true },
       { headerName: 'Status',
         children: [
-          { headerName: 'Produktu', field: 'StatusValueName_Main', filter: 'agSetColumnFilter', width: 100, floatingFilter: false, sortable: true, resizable: true,
-            cellStyle: function(params) {
-              if (params.value === 'Zapowiedź') { return { color: 'orange', 'font-weight': 600 }; }
-              else if (params.value === 'Nowość') { return { color: 'rgb(153, 0, 0)', 'font-weight': 600 }; }
-              else if (params.value === 'Aktywna') { return { color: 'rgb(20, 152, 46)', 'font-weight': 600 }; }
-              else if (params.value === 'Wyprzedaż') { return { color: 'rgb(11, 23, 255)', 'font-weight': 600 }; }
-              else if (params.value === 'Wycofana') { return { color: 'black', 'font-weight': 600 }; }
-              else { return null; }
-            }
-          },     
+          { headerName: 'Prod', field: 'StatusValueName_Main', filter: 'agTextColumnFilter', width: 67, suppressMenu: true, sortable: true,
+            cellRenderer: (params:any) => (params.data.StatusValueIdent_Main ? '<span title="' + params.data.StatusValueName_Main + '">' + params.data.StatusValueIdent_Main + '</span>' : ''),
+            cellClass: (params:any) => [(params.data.StatusValueIdent_Main ? params.data.StatusValueIdent_Main : '')],
+          },
           { headerName: 'WMS', field: 'StatusValueName_WMS', filter: 'agSetColumnFilter', width: 100, floatingFilter: false, sortable: true, resizable: true,
             cellStyle: function(params) {
               if (params.value === 'Do wysłania') { return { color: 'green', 'font-weight': 600 }; }

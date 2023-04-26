@@ -30,17 +30,10 @@ export class SitProductsComponent extends SitDictBaseComponent {
       { headerName: 'Ze stanem', field: 'ForStock', filter: 'agSetColumnFilter', width: 80, renderType: 'checkbox', suppressMenu: true, defaultVisibility: false },
       { headerName: 'Partie', field: 'UseBatch', filter: 'agSetColumnFilter', width: 80, renderType: 'checkbox', suppressMenu: true, defaultVisibility: false },
       { headerName: 'Status sprz.', field: 'SaleStatus', tooltipField: 'SaleStatusDescription', width: 80, suppressMenu: true},
-      { headerName: 'Status', field: 'StatusValueName_Main', filter: 'agSetColumnFilter', width: 100, floatingFilter: false, 
-        cellStyle: function(params) {
-          if (params.value === 'W przygotowaniu') { return { color: 'violet', 'font-weight': 600 }; }
-          else if (params.value === 'Zapowiedź') { return { color: 'orange', 'font-weight': 600 }; }
-          else if (params.value === 'Nowość') { return { color: 'rgb(153, 0, 0)', 'font-weight': 600 }; }
-          else if (params.value === 'Aktywna') { return { color: 'rgb(20, 152, 46)', 'font-weight': 600 }; }
-          else if (params.value === 'Wyprzedaż') { return { color: 'rgb(11, 23, 255)', 'font-weight': 600 }; }
-          else if (params.value === 'Wycofana') { return { color: 'black', 'font-weight': 600 }; }          
-          else { return null; }
-        }
-      },       
+      { headerName: 'Status', field: 'StatusValueName', filter: 'agTextColumnFilter', width: 67, suppressMenu: true,
+        cellRenderer: (params:any) => (params.data.StatusValueIdent ? '<span title="' + params.data.StatusValueName + '">' + params.data.StatusValueIdent + '</span>' : ''),
+        cellClass: (params:any) => [(params.data.StatusValueIdent ? params.data.StatusValueIdent : '')],
+      },
     ];
 
     this.gridColumnsDefinition["sitProductSaleStatusIntervals"] = [
