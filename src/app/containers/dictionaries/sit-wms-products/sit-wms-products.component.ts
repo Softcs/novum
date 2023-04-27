@@ -1,11 +1,12 @@
-import { Component, Inject, LOCALE_ID } from '@angular/core';
+import { Component, Inject, LOCALE_ID, ViewEncapsulation } from '@angular/core';
 import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-dict-base.component';
 
 @Component({
   selector: 'app-sit-wms-products',
   templateUrl: './sit-wms-products.component.html',
   styleUrls: ['./sit-wms-products.component.scss'],
-  host: {class: 'router-flex'}
+  encapsulation : ViewEncapsulation.None,
+  host: {class: 'router-flex sit-wms-products-component'}
 })
 export class SitWmsProductsComponent extends SitDictBaseComponent {
 
