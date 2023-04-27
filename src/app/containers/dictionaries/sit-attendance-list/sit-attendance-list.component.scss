@@ -1,3 +1,14 @@
-.ag-header-cell-label {
-  justify-content: center!important;
+.sit-attendance-list-component {
+
+  .ag-header-cell-label {
+    justify-content: center!important;
+  }
+
+  .ag-theme-balham .ag-ltr .ag-cell {
+    border-right-color: rgba(var(--ag-row-border-color-rgb), .7);
+    border-right-style: dashed;
+  }
+
 }
+
+

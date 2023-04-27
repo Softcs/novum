@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation} from '@angular/core';
 import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-dict-base.component';
 import { DataSetWrapper } from '@app/_models';
 
@@ -6,7 +6,8 @@ import { DataSetWrapper } from '@app/_models';
   selector: 'app-sit-attendance-list',
   templateUrl: './sit-attendance-list.component.html',
   styleUrls: ['./sit-attendance-list.component.scss'],
-  host: {class: 'router-flex'}
+  encapsulation : ViewEncapsulation.None,
+  host: {class: 'router-flex sit-attendance-list-component'}
 })
 export class SitAttendanceListComponent extends SitDictBaseComponent {
   gridApi;
