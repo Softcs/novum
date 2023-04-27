@@ -121,6 +121,9 @@ $app-menu-color: #fff;
   --app-menu-background-color: #{$app-menu-background-color};
   --app-menu-color: #{$app-menu-color};
 
+  --ag-row-border-color-rgb: 217, 220, 222;
+  --ag-row-border-color: rgb(var(--ag-row-border-color-rgb));
+
   --sidenav-background-color: #{$sidenav-background-color};
   --sidenav-item-active: #{$sidenav-item-active};
   --sidenav-font-color: #{$sidenav-font-color};

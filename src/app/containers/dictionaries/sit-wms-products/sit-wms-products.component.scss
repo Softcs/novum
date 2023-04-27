@@ -1,8 +1,17 @@
+.sit-wms-products-component {
 
-img {
-    -webkit-box-shadow: 7px 7px 6px -2px rgba(0,0,0,0.59);
-    -moz-box-shadow: 7px 7px 6px -2px rgba(0,0,0,0.59);
-    box-shadow: 7px 7px 6px -2px rgba(0,0,0,0.59);
+  img {
+    // -webkit-box-shadow: 7px 7px 6px -2px rgba(0,0,0,0.59);
+    // -moz-box-shadow: 7px 7px 6px -2px rgba(0,0,0,0.59);
+    // box-shadow: 7px 7px 6px -2px rgba(0,0,0,0.59);
+
+    // box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, .39);
+    box-shadow: 1px 1px 6px 2px rgba(0, 0, 0, .39);
+    max-width: 95%;
+    display: flex;
+    margin: auto;
+    border-radius: 3px;
+    min-width: 250px;
   }
   
   #wrapper{
@@ -18,4 +27,7 @@ img {
   #tab-group mat-tab-body {
     flex-grow: 1;
   }
+
+}
+
   
