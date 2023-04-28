@@ -8,22 +8,7 @@
 
 <div *ngIf="checkBoxList.length" ngClass="checkbox-list-content">
 
-    <div class="swich-all position-top mat-toolbar mat-accent">
-        <div class="all" (click)="onSwitch($event, 'all')" title="zaznacz każdy">
-            <mat-icon aria-hidden="false">fact_check</mat-icon>
-        </div>
-        <div class="none" (click)="onSwitch($event, 'none')" title="wyłącz wszystkie">
-            <mat-icon aria-hidden="false">disabled_by_default</mat-icon>
-        </div>
-    </div>
-
-    
-    <ng-container 
-        [ngTemplateOutlet]="chkElementList"
-        [ngTemplateOutletContext]="{chkList: getCheckBoxList}"
-    ></ng-container>    
-
-    <!-- <div class="swich-all mat-toolbar mat-accent">
+    <!-- <div class="swich-all position-top mat-toolbar mat-accent">
         <div class="all" (click)="onSwitch($event, 'all')" title="zaznacz każdy">
             <mat-icon aria-hidden="false">fact_check</mat-icon>
         </div>
@@ -31,6 +16,22 @@
             <mat-icon aria-hidden="false">disabled_by_default</mat-icon>
         </div>
     </div> -->
+
+    
+    <ng-container 
+        [ngTemplateOutlet]="chkElementList"
+        [ngTemplateOutletContext]="{chkList: getCheckBoxList}"
+    ></ng-container>    
+
+    <div class="swich-all">
+        <div class="all" (click)="onSwitch($event, 'all')" title="zaznacz każdy">
+            <!-- <mat-icon aria-hidden="false">fact_check</mat-icon> -->
+            <mat-icon aria-hidden="false">check_box</mat-icon>
+        </div>
+        <div class="none" (click)="onSwitch($event, 'none')" title="wyłącz wszystkie">
+            <mat-icon aria-hidden="false">disabled_by_default</mat-icon>
+        </div>
+    </div>
 </div>
 
 
