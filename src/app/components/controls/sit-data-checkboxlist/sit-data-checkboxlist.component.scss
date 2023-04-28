@@ -11,10 +11,7 @@
     margin-left: 2px;
     padding-left: 3px;
     padding-right: 3px;
-
-    font-family: Roboto, "Helvetica Neue", sans-serif;
     line-height: normal;
-    // line-height: 1.8em;
 
     display: flex;
     // flex: 0 1 .01px;
@@ -28,8 +25,6 @@
       align-items: normal;
       flex-flow: column nowrap;
       line-height: 28px;
-      // font-size: 15px;
-      // font-family: Roboto, "Helvetica Neue", sans-serif;
 
       .checkbox-list-label {
         padding: 2px 11px;
@@ -59,7 +54,8 @@
         border-radius: 3px 3px 5px 5px;
 
         .checkbox-list-el {
-          // border: 1px solid #777;
+          margin-left: 4px;
+          margin-right: 4px;
 
           * {
             cursor: pointer;
@@ -70,11 +66,76 @@
             margin: 1px 0;
             padding: 0 5px;
             border-radius: 2px;
-            // border: 1px solid #ccc;
 
             &:hover {
               background-color: rgba(181, 195, 208, 0.4);
             }
+          }
+        }
+
+        .swich-all {
+          // w.1
+          // display: flex;
+          // flex-flow: row nowrap;
+          // line-height: 1.5em;
+          // margin: 0.6em .15em 0.12em;
+          // font-size: 1rem;
+
+          // w.2
+          display: flex;
+          flex-flow: row nowrap;
+          line-height: 1.5em;
+          margin: .6em 0 0;
+          font-size: .9rem;
+          padding: 0.3em;
+
+          &.position-top {
+            margin: 0 0 .45em;
+            justify-content: end;
+          }
+
+
+          div {
+            // w.1
+            // display: flex;
+            // flex: 0 0 50%;
+            // justify-content: center;
+            // cursor: pointer;
+            // border: 1px solid rgba(0,0,0, 0.07);
+            // background-color: rgba(0, 0, 0, 0.05);
+
+            display: flex;
+            flex: 0 0 auto;
+            justify-content: center;
+            cursor: pointer;
+            //border: 1px solid rgba(0, 0, 0, 0.07);
+            border: 1px solid rgba(0, 0, 0, 0.12);
+            // background-color: rgba(0, 0, 0, 0.05);
+            padding: .3em .4em;
+            margin-right: 0.3em;
+            border-radius: 5px;
+            color: rgb(7, 55, 99);
+
+            mat-icon {
+              font-size: 1.5em;
+              height: 1em;
+              width:  1em;
+            }
+
+            &:hover {
+              // border: 1px solid rgba(0, 0, 0, 0.25);
+              border: 1px solid rgba(7, 55, 99, .3);
+              // background-color: rgba(0, 0, 0, 0.09);
+              background-color: rgba(0, 0, 0, 0.03);
+              box-shadow: var(--button-hover-shadow);
+            }
+
+            // &.all {
+            //   border-radius: 3px 0 0 3px;
+            // }
+            // &.none {
+            //   border-radius: 0 3px 3px 0;
+            // }
           }
         }
 
@@ -84,8 +145,8 @@
       &:active {
         .checkbox-list-content{
           height: auto;
-          padding: 4px;
-          // box-shadow: 2px 4px 7px 3px rgba(0,0,0, .6);
+          // padding: 4px 0 0 0;
+          padding: 0 0 5px 0;
           box-shadow: 2px 4px 7px 3px rgba(0,0,0, .3);
         }
       }
@@ -135,6 +196,7 @@
   // }
 
   .checkbox-list-label {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
     white-space: nowrap;
     margin-right: 3px;
     &::after {
@@ -152,11 +214,12 @@
 
 
     .checkbox-list-el {
-      margin-right: 1px;
+      font-family: Roboto, "Helvetica Neue", sans-serif;
       display: flex;
       align-content: center;
       align-items: center;
       flex-flow: row nowrap;
+      margin-right: 1px;
   
       &.label-position-before {
         label {

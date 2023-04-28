@@ -72,7 +72,8 @@
       }
       &:hover {
         // border-color: rgba(150,0,0, 0.3) !important;
-        border-color: rgba(7, 55, 99, 0.3) !important;
+        border-color: rgba(7, 55, 99, 0.3);
+        box-shadow: var(--button-hover-shadow);
       }
     }
     
