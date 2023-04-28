@@ -8,6 +8,7 @@ import { AG_GRID_LOCALE_PL } from 'src/assets/locale_grid_pl';
 import { DataSetWrapper } from '@app/_models';
 import { GetContextMenuItemsParams, MenuItemDef } from 'ag-grid-community';
 import { param } from 'jquery';
+import { DomPortal } from '@angular/cdk/portal';
 
 @Injectable({
   providedIn: 'root'
@@ -284,11 +285,18 @@ export class GridService {
     }
 
     var agrRow = {};
+
+// console.log('agrRow: ', agrRow);
+
     agrColumns.forEach(c  => agrRow[c.colDef.field] = 0);
     rows.reduce((acc, row) => {
-      agrColumns.forEach(c  => agrRow[c.colDef.field] += row[c.colDef.field]);
-    },0);
+      // agrColumns.forEach(c  => agrRow[c.colDef.field] += row[c.colDef.field]);
+      // agrColumns.forEach(c  => agrRow[c.colDef.field] = ((agrRow[c.colDef.field]*100000)/100000 + row[c.colDef.field]).toFixed(6) );
+      agrColumns.forEach(c  => agrRow[c.colDef.field] = (((agrRow[c.colDef.field]*100000)/100000 + row[c.colDef.field]).toFixed(6)*1000000)/1000000 );
+    }, 0);
+    
     gridApi.setPinnedBottomRowData([agrRow]);
+  
   }
 
   private getContextMenuItems(params: GetContextMenuItemsParams, dataSetWrapper: DataSetWrapper, gridOptions): (string | MenuItemDef)[] {
