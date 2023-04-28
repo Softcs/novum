@@ -92,6 +92,23 @@ export class SitDataCheckboxlistComponent extends SitDataBaseComponent implement
 
   }
 
+  onSwitch(event: any, type: string) {
+
+    const updatedValue = loMap(this.checkBoxList, chkItem => {
+      chkItem.value = (type === 'all') ? '1' : '0';
+      return chkItem;
+    });
+    
+// console.log('updatedValue: ', updatedValue);
+    
+    this.dataSetWrapper.setFieldValue(this.field, JSON.stringify(updatedValue), null, false);
+    
+    if (this.refreshOnChange) {
+      this.dataSetWrapper.RefreshChildren();
+    }
+    
+  }
+
   private checkParseValue = (value: any) => {
     try {
       return JSON.parse(value);
