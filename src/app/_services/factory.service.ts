@@ -274,6 +274,10 @@ import { SitProductSetIsB2cComponent } from '@app/containers/dictionaries/sit-pr
 import { SimpleCalendarComponent } from '@app/components/controls/simple-calendar/simple-calendar.component';
 import { SitOfficeDocDimensionsImportFromFileComponent } from '@app/containers/dictionaries/sit-office-doc-headers/actions/sit-office-doc-dimensions-import-from-file/sit-office-doc-dimensions-import-from-file.component';
 import { SitOfficeDocDimensionsCopyFromDocComponent } from '@app/containers/dictionaries/sit-office-doc-headers/actions/sit-office-doc-dimensions-copy-from-doc/sit-office-doc-dimensions-copy-from-doc.component';
+import { SitPalletsBalanceComponent } from '@app/containers/dictionaries/sit-pallets-balance/sit-pallets-balance.component';
+import { SitPalletsBalanceDocumentInsComponent } from '@app/containers/dictionaries/sit-pallets-balance/actions/sit-pallets-balance-document-ins/sit-pallets-balance-document-ins.component';
+import { SitCustomersDocumentsImportsEditComponent } from '@app/containers/dictionaries/sit-customers/actions/sit-customers-documents-imports-edit/sit-customers-documents-imports-edit.component';
+import { SitPalletsEvidenceAddComponent } from '@app/containers/dictionaries/sit-wms-docs/actions/sit-pallets-evidence-add/sit-pallets-evidence-add.component';
 
 
 @Injectable({ providedIn: 'root' })
@@ -556,6 +560,10 @@ export class FactoryService {
         SimpleCalendar: SimpleCalendarComponent,
         sitOfficeDocDimensionsImportFromFile: SitOfficeDocDimensionsImportFromFileComponent,
         sitOfficeDocDimensionsCopyFromDoc: SitOfficeDocDimensionsCopyFromDocComponent,
+        sitPalletsBalance: SitPalletsBalanceComponent,
+        sitPalletsBalanceDocumentIns: SitPalletsBalanceDocumentInsComponent,
+        sitCustomersDocumentsImportsEdit: SitCustomersDocumentsImportsEditComponent,
+        sitPalletsEvidenceAdd: SitPalletsEvidenceAddComponent,
     };
 
     public GetFactory(ident: string) {

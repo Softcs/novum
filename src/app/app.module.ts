@@ -383,6 +383,10 @@ import { SimpleCalendarComponent } from './components/controls/simple-calendar/s
 import { SitOfficeDocDimensionsImportFromFileComponent } from './containers/dictionaries/sit-office-doc-headers/actions/sit-office-doc-dimensions-import-from-file/sit-office-doc-dimensions-import-from-file.component';
 import { SitOfficeDocDimensionsCopyFromDocComponent } from './containers/dictionaries/sit-office-doc-headers/actions/sit-office-doc-dimensions-copy-from-doc/sit-office-doc-dimensions-copy-from-doc.component';
 import { SitMsgContainerComponent } from './components/sit-msg-container/sit-msg-container.component';
+import { SitPalletsBalanceComponent } from './containers/dictionaries/sit-pallets-balance/sit-pallets-balance.component';
+import { SitPalletsBalanceDocumentInsComponent } from './containers/dictionaries/sit-pallets-balance/actions/sit-pallets-balance-document-ins/sit-pallets-balance-document-ins.component';
+import { SitCustomersDocumentsImportsEditComponent } from './containers/dictionaries/sit-customers/actions/sit-customers-documents-imports-edit/sit-customers-documents-imports-edit.component';
+import { SitPalletsEvidenceAddComponent } from './containers/dictionaries/sit-wms-docs/actions/sit-pallets-evidence-add/sit-pallets-evidence-add.component';
 
 @NgModule({
     imports: [
@@ -749,6 +753,10 @@ import { SitMsgContainerComponent } from './components/sit-msg-container/sit-msg
         SitOfficeDocDimensionsImportFromFileComponent,
         SitOfficeDocDimensionsCopyFromDocComponent,
         SitMsgContainerComponent,
+        SitPalletsBalanceComponent,
+        SitPalletsBalanceDocumentInsComponent,
+        SitCustomersDocumentsImportsEditComponent,
+        SitPalletsEvidenceAddComponent,
 
     ],
     providers: [
