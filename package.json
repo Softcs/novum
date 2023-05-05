@@ -41,7 +41,7 @@
     "jquery": "^3.6.0",
     "js-sha512": "^0.8.0",
     "material-design-icons": "^3.0.1",
-    "ng2-pdfjs-viewer": "^6.0.2",
+    "ng2-pdfjs-viewer": "^13.2.2",
     "ngx-barcode": "^0.3.0",
     "ngx-json-viewer": "^3.0.2",
     "npm": "^6.14.17",
