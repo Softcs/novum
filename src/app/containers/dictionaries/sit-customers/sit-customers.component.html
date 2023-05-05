@@ -214,6 +214,17 @@
                         </div>
                       </sit-data-set-container>
                     </mat-tab>
+                    <mat-tab label="Import dokumentów">
+                      <sit-data-set-container ident="sitCustomersDocumentsImports" [showActionsToolbar]="true" #sitDataSetContainer fxFill fxLayout="column">
+                        <div class="data-table" fxFlex>
+                          <ag-grid-angular
+                          #sitSetDataSource
+                          class="ag-theme-balham sit-grid-fill"
+                          >
+                          </ag-grid-angular>
+                        </div>
+                      </sit-data-set-container>
+                    </mat-tab>
                     <mat-tab label="Produkty">
                       <div fxLayout="column" fxFill class="content">
                         <sit-data-set-container ident="sitCustomerB2BProductsConfig" [showActionsToolbar]="true" #sitDataSetContainer fxFlex="20" fxLayout="column">

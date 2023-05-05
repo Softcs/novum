@@ -85,6 +85,13 @@ export class SitCustomersComponent extends SitDictBaseComponent {
       { headerName: 'Ukryta kopia do', field: 'BlindCopyRecipients', filter: 'agTextColumnFilter', width: 200 },
     ];
 
+    this.gridColumnsDefinition["sitCustomersDocumentsImports"] = [
+      { headerName: 'ID', field: 'sitCustomersDocumentsImportsId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, defaultVisibility: false },
+      { headerName: 'GUID', field: 'sitCustomersDocumentsImportsG', width: 100, defaultVisibility: false },
+      { headerName: 'Dokument', field: 'DocumentIdent', width: 100 },
+      { headerName: 'Aktywny', field: 'IsActive', width: 80, renderType: 'checkbox', suppressMenu: true, cellClass: "grid-cell-centered"},
+    ];
+
     this.gridColumnsDefinition["sitCustomerB2BProductsConfig"] = [
       { headerName: 'ID', field: 'sitCustomerB2BProductsConfigId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, defaultVisibility: false },
       { headerName: 'GUID', field: 'sitCustomerB2BProductsConfigG', width: 100, defaultVisibility: false },
