@@ -42,6 +42,7 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
         cellStyle: function(params) {
           if (params.value === 'ED') { return { 'background-color': 'rgb(236, 236, 236)','font-weight': 700 }; }
           else if (params.value === 'DZ') { return { 'background-color': 'lime', color: 'white', 'font-weight': 700 }; }
+          else if (params.value === 'AC') { return { 'background-color': 'yellow', 'font-weight': 700 }; }
           else if (params.value === 'FK') { return { 'background-color': 'green',color: 'white', 'font-weight': 700 }; }
           else { return null; }
         }
@@ -52,6 +53,7 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
       { headerName: 'Typ', field: 'OfficeDocIdent', tooltipField: 'OfficeDocName', filter: 'agSetColumnFilter', floatingFilter: false, suppressMenu: true, width: 50},
       { headerName: 'Kontrahent', field: 'CustName', tooltipField: 'CustName', filter: 'agTextColumnFilter', floatingFilter: false},
       { headerName: 'Nr dok.', field: 'DocumentNumber', tooltipField: 'DocumentNumber', filter: 'agTextColumnFilter', floatingFilter: false, suppressMenu: true, width: 120 },
+      { headerName: 'Akc.', headerTooltip: 'W akceptacji - dni', field: 'InAcceptance', tooltipField: 'AccEmployeeName', filter: 'agTextColumnFilter', floatingFilter: false, suppressMenu: true, width: 50 },
       { headerName: 'Wal.', field: 'CurrencyIdent', tooltipField: 'CurrencyIdent', filter: 'agTextColumnFilter', width: 50,  suppressMenu: true,
         cellStyle: function(params) { return (params.data["CurrencyIdent"] === 'PLN' ? {} : {'background-color': 'rgb(219, 247, 255)'}) }
       },
