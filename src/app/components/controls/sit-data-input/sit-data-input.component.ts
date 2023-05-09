@@ -87,12 +87,14 @@ export class SitDataInputComponent extends SitDataBaseComponent {
     if (this.type === 'number' && this.digitsInfo) {
       this.numberFormatedType = true;
 
-      let patternLastGroupTmp = (this.digitsInfo.slice(-1) === '0') ? "\\d+" : "\\d+(?:[.]\\d{" + this.digitsInfo.slice(-1) + "})";
-      //this.numberFormatedTypeRegexClear = new RegExp("\\d+(?:[.]\\d{" + this.digitsInfo.slice(-1) + "})", 'g');
+      // let patternLastGroupTmp = (this.digitsInfo.slice(-1) === '0') ? "\\d+" : "\\d+(?:[.]\\d{" + this.digitsInfo.slice(-1) + "})";
+      // //this.numberFormatedTypeRegexClear = new RegExp("\\d+(?:[.]\\d{" + this.digitsInfo.slice(-1) + "})", 'g');
+      // this.numberFormatedTypeRegexClear = new RegExp(patternLastGroupTmp, 'g');
+      let patternLastGroupTmp = (this.digitsInfo.slice(-1) === '0') ? "[-]?\\d+" : "[-]?\\d+(?:[.]\\d{" + this.digitsInfo.slice(-1) + "})";
       this.numberFormatedTypeRegexClear = new RegExp(patternLastGroupTmp, 'g');
 
       let patternLastGroupTmp2 = (this.digitsInfo.slice(-1) === '0') ? '0' : '1,' + this.digitsInfo.slice(-1);
-      this.numberFormatedTypeRegexFieldPattern = "\\d+(?:[.,]\\d{" + patternLastGroupTmp2 + "})?";
+      this.numberFormatedTypeRegexFieldPattern = "[-]?\\d+(?:[.,]\\d{" + patternLastGroupTmp2 + "})?";
     }
 
   }
@@ -253,7 +255,7 @@ export class SitDataInputComponent extends SitDataBaseComponent {
 
     if (this.numberFormatedType) {
 
-      __valTempLocal = this.getValue().replace(/[^0-9.,]+/, '').replace(/(\.|,)+/g, '.');
+      __valTempLocal = this.getValue().replace(/[^0-9.,-]+/, '').replace(/(\.|,)+/g, '.');
 
       if (__valTempLocal.slice(0) === '.') {
         __valTempLocal = '0' + __valTempLocal;
@@ -263,6 +265,12 @@ export class SitDataInputComponent extends SitDataBaseComponent {
       __valTempLocal = val_3 && val_3[0] ? val_3[0] : __valTempLocal;
 
       this._renderer.setProperty(this.inputElement.nativeElement, 'value', __valTempLocal);
+
+      if (__valTempLocal < 0) {
+        this._renderer.addClass(this.inputElement.nativeElement, 'negative-value');
+      } else {
+        this._renderer.removeClass(this.inputElement.nativeElement, 'negative-value');
+      }
 
     }
 

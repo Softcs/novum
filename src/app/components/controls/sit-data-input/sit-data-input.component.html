@@ -68,7 +68,7 @@
 
   <p 
     *ngIf="numberFormatedType" 
-    ngClass="number-formated-type-view"
+    [ngClass]="{'number-formated-type-view':true, 'negative-value': numberValueToFormatedView < 0 }"
     [attr.data-formatInfo]="digitsInfo"
   >
     {{ numberValueToFormatedView | number:digitsInfo:'pl-PL'}}
