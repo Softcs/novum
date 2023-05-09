@@ -204,6 +204,7 @@
       }
     }
   },
+  "defaultProject": "Novum",
   "cli": {
     "analytics": "25a78edd-a339-4994-8eda-9cb46d24de7f"
   }

@@ -1,7 +1,7 @@
 ﻿import { SitChangeCompanyComponent } from './../../containers/sit-change-company/sit-change-company.component';
 import { Component, OnInit, Output, HostListener, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { GatewayService } from '@app/_services';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
@@ -16,7 +16,7 @@ import { environment } from '../../../environments/environment';
   host: {class: 'router-flex'}
 })
 export class LoginComponent implements OnInit {
-    loginForm: UntypedFormGroup;
+    loginForm: FormGroup;
     loading = false;
     submitted = false;
     returnUrl: string;
@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
     currentApplicationVersion = environment.appVersion;
 
     constructor(
-        private formBuilder: UntypedFormBuilder,
+        private formBuilder: FormBuilder,
         private route: ActivatedRoute,
         private router: Router,
         private gatewayService: GatewayService,
