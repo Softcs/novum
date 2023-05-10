@@ -12,7 +12,14 @@ export class OnCFService {
 
     }
 
-    valueChange(fieldName: string, fieldValue, dataSetWrapper: DataSetWrapper) {
+    valueChange(fieldName: string, fieldValue: any, dataSetWrapper: DataSetWrapper) {
+
+// console.error(' - - - - - OnCFService valueChange START - - - - - ');
+// console.log('OnCFService valueChange: fieldName: ', fieldName);
+// console.log('OnCFService valueChange: fieldValue: ', fieldValue);
+// console.error(' - - - - - OnCFService valueChange START - - - - - ');
+
+
         if (!dataSetWrapper || !dataSetWrapper.hasOnCF || !dataSetWrapper.onCFFields[fieldName]) {
             return;
         }        
