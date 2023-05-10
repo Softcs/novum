@@ -276,14 +276,13 @@ export class SitDataInputComponent extends SitDataBaseComponent {
 
     let localVal: any = __valTempLocal ? __valTempLocal : this.getValue();
 
-    this.setIsValidField(this.getValid());
+    // this.setIsValidField(this.getValid());
+    this.setIsValidField(localVal);
 
     // jc end --------------------
-
-
-
-    // super.onKeyup(this.getValue());
+   
     super.onKeyup(localVal);
+    // super.onKeyup(this.getValue());
 
     if (!this.hasLookup) { 
       return; 
