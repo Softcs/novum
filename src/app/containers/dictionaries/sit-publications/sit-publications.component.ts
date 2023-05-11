@@ -83,8 +83,9 @@ export class SitPublicationsComponent extends SitDictBaseComponent {
           ];
 
           return dataArr.filter(Boolean).join('<br/>');
-        }
+        },
 
+        cellStyle: {'line-height': '1.6em', 'padding-top': '.3em'}
       },
 
       // { headerName: 'Identfikator', field: 'ProductIdent', width: 130},
@@ -99,7 +100,17 @@ export class SitPublicationsComponent extends SitDictBaseComponent {
         resizable: true,
         // autoHeight: true,
         wrapText: true,
-        cellRenderer: (params:any) => (params.data.ProductName ? '<span title="' + params.data.ProductName + '">' + params.data.ProductName + '</span>' : '')
+        // cellRenderer: (params:any) => (params.data.ProductName ? '<span title="' + params.data.ProductName + '">' + params.data.ProductName + '</span>' : '')
+        cellRenderer: (params:any) => {
+
+          let dataArr = [
+            (params.data.ProductName ? '<span title="' + params.data.ProductName + '">' + params.data.ProductName + '</span>' : null),
+            (params.data.FormOfReleaseDesc ? '<span title="' + params.data.FormOfReleaseDesc + '" style="color: gray">' + params.data.FormOfReleaseDesc + '</span>' : ''),
+          ];
+
+          return dataArr.filter(Boolean).join('<br/>');
+        },
+        cellStyle: {'line-height': '1.6em', 'padding-top': '.3em'}
       },
 
 
@@ -144,8 +155,9 @@ export class SitPublicationsComponent extends SitDictBaseComponent {
         // }
       },
       { headerName: 'B2C', field: 'IsB2C', filter: 'agSetColumnFilter', maxWidth: 50, renderType: 'checkbox', suppressMenu: true
-        , cellClass: "grid-cell-centered"
-        // , defaultVisibility: false 
+        , cellClass: "grid-cell-centered",
+        cellStyle: {'padding-top': '1.4em'}
+
       },
     ];
 
