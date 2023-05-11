@@ -273,28 +273,37 @@ export class GridService {
     });
   }
 
-  public refreshSum(gridApi, rows) {
+  public refreshSum(gridApi, rows: any) {
+
     if (!gridApi || !gridApi.gridOptionsWrapper || !gridApi.gridOptionsWrapper.gridOptions) {
       return;
     }
 
-    var columns =    gridApi.gridOptionsWrapper.gridOptions.columnApi.getAllColumns();
-    var agrColumns = columns.filter( c => c.colDef.agr);
+    const columns =    gridApi.gridOptionsWrapper.gridOptions.columnApi.getAllColumns();
+    const agrColumns = columns.filter( (c:any) => c.colDef.agr);
+
+    const agrRow = {};
+
+    if (gridApi.getPinnedBottomRow(0)?.data && (!rows || !rows.length)) {
+      Object.keys(gridApi.getPinnedBottomRow(0).data).forEach((c: any) => agrRow[c] = null);
+      gridApi.setPinnedBottomRowData([agrRow]);
+      return;
+    }
+
     if (!agrColumns || agrColumns.length == 0 || !rows || rows.length == 0) {
       return;
     }
 
-    var agrRow = {};
+    // var agrRow = {};
 
-// console.log('agrRow: ', agrRow);
+    agrColumns.forEach((c: any) => agrRow[c.colDef.field] = 0);
 
-    agrColumns.forEach(c  => agrRow[c.colDef.field] = 0);
-    rows.reduce((acc, row) => {
+    rows.reduce((acc: any, row: any) => {
       // agrColumns.forEach(c  => agrRow[c.colDef.field] += row[c.colDef.field]);
       // agrColumns.forEach(c  => agrRow[c.colDef.field] = ((agrRow[c.colDef.field]*100000)/100000 + row[c.colDef.field]).toFixed(6) );
-      agrColumns.forEach(c  => agrRow[c.colDef.field] = (((agrRow[c.colDef.field]*100000)/100000 + row[c.colDef.field]).toFixed(6)*1000000)/1000000 );
+      agrColumns.forEach((c: any)  => agrRow[c.colDef.field] = (((agrRow[c.colDef.field]*100000)/100000 + row[c.colDef.field]).toFixed(6)*1000000)/1000000 );
     }, 0);
-    
+
     gridApi.setPinnedBottomRowData([agrRow]);
   
   }
