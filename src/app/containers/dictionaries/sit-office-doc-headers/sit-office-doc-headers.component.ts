@@ -123,100 +123,100 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
       },
       { headerName: 'Typ transakcji', field: 'TransactionTypeIdent', tooltipField: 'TransactionTypeDesc', filter: 'agTextColumnFilter', floatingFilter: false, width: 130,
         cellRenderer: function(params) {
-          var ident;
-          var desc;
-          ident = params.data["TransactionTypeIdent"] ? params.data["TransactionTypeIdent"] : '';
-          desc = params.data["TransactionTypeDesc"] ? params.data["TransactionTypeDesc"] : '';
+          // var ident;
+          // var desc;
+          const ident = params.data["TransactionTypeIdent"] ? params.data["TransactionTypeIdent"] : '';
+          const desc = params.data["TransactionTypeDesc"] ? params.data["TransactionTypeDesc"] : '';
           return '<b>' + ident + '</b><br>' + desc
         },
         cellStyle: {'line-height': '1.2em', 'padding-top': '.3em'}
       },
       { headerName: 'Dział', field: 'CompanyDepartmentIdent', tooltipField: 'CompanyDepartmentDesc', filter: 'agTextColumnFilter', floatingFilter: false, width: 130,
         cellRenderer: function(params) {
-          var ident;
-          var desc;
-          ident = params.data["CompanyDepartmentIdent"] ? params.data["CompanyDepartmentIdent"] : '';
-          desc = params.data["CompanyDepartmentDesc"] ? params.data["CompanyDepartmentDesc"] : '';
+          // var ident;
+          // var desc;
+          const ident = params.data["CompanyDepartmentIdent"] ? params.data["CompanyDepartmentIdent"] : '';
+          const desc = params.data["CompanyDepartmentDesc"] ? params.data["CompanyDepartmentDesc"] : '';
           return '<b>' + ident + '</b><br>' + desc
         },
         cellStyle: {'line-height': '1.2em', 'padding-top': '.3em'}
       },
       { headerName: 'Projekt', field: 'ProjectIdent', tooltipField: 'ProjectName', filter: 'agTextColumnFilter', floatingFilter: false, width: 130,
         cellRenderer: function(params) {
-          var ident;
-          var desc;
-          ident = params.data["ProjectIdent"] ? params.data["ProjectIdent"] : '';
-          desc = params.data["ProjectName"] ? params.data["ProjectName"] : '';
+          // var ident;
+          // var desc;
+          const ident = params.data["ProjectIdent"] ? params.data["ProjectIdent"] : '';
+          const desc = params.data["ProjectName"] ? params.data["ProjectName"] : '';
           return '<b>' + ident + '</b><br>' + desc
         },
         cellStyle: {'line-height': '1.2em', 'padding-top': '.3em'}
       },
       { headerName: 'Kanał dystr.', field: 'DistributionChannelIdent', tooltipField: 'DistributionChannelDesc', filter: 'agTextColumnFilter', floatingFilter: false, width: 130,
         cellRenderer: function(params) {
-          var ident;
-          var desc;
-          ident = params.data["DistributionChannelIdent"] ? params.data["DistributionChannelIdent"] : '';
-          desc = params.data["DistributionChannelDesc"] ? params.data["DistributionChannelDesc"] : '';
+          // var ident;
+          // var desc;
+          const ident = params.data["DistributionChannelIdent"] ? params.data["DistributionChannelIdent"] : '';
+          const desc = params.data["DistributionChannelDesc"] ? params.data["DistributionChannelDesc"] : '';
           return '<b>' + ident + '</b><br>' + desc
         },
         cellStyle: {'line-height': '1.2em', 'padding-top': '.3em'}
       },
       { headerName: 'Typ produktu', field: 'ProductsTypeIdent', tooltipField: 'ProductsTypeDesc', filter: 'agTextColumnFilter', floatingFilter: false, width: 130,
         cellRenderer: function(params) {
-          var ident;
-          var desc;
-          ident = params.data["ProductsTypeIdent"] ? params.data["ProductsTypeIdent"] : '';
-          desc = params.data["ProductsTypeDesc"] ? params.data["ProductsTypeDesc"] : '';
+          // var ident;
+          // var desc;
+          const ident = params.data["ProductsTypeIdent"] ? params.data["ProductsTypeIdent"] : '';
+          const desc = params.data["ProductsTypeDesc"] ? params.data["ProductsTypeDesc"] : '';
           return '<b>' + ident + '</b><br>' + desc
         },
         cellStyle: {'line-height': '1.2em', 'padding-top': '.3em'}
       },
       { headerName: 'Rodzaj kosztu', field: 'CostTypeIdent', tooltipField: 'CostTypeDesc', filter: 'agTextColumnFilter', floatingFilter: false, width: 130,
         cellRenderer: function(params) {
-          var ident;
-          var desc;
-          ident = params.data["CostTypeIdent"] ? params.data["CostTypeIdent"] : '';
-          desc = params.data["CostTypeDesc"] ? params.data["CostTypeDesc"] : '';
+          // var ident;
+          // var desc;
+          const ident = params.data["CostTypeIdent"] ? params.data["CostTypeIdent"] : '';
+          const desc = params.data["CostTypeDesc"] ? params.data["CostTypeDesc"] : '';
           return '<b>' + ident + '</b><br>' + desc
         },
         cellStyle: {'line-height': '1.2em', 'padding-top': '.3em'}
       },
       { headerName: 'Pojazd', field: 'VehicleIdent', tooltipField: 'VehicleDesc', filter: 'agTextColumnFilter', floatingFilter: false, width: 130,
         cellRenderer: function(params) {
-          var ident;
-          var desc;
-          ident = params.data["VehicleIdent"] ? params.data["VehicleIdent"] : '';
-          desc = params.data["VehicleDesc"] ? params.data["VehicleDesc"] : '';
+          // var ident;
+          // var desc;
+          const ident = params.data["VehicleIdent"] ? params.data["VehicleIdent"] : '';
+          const desc = params.data["VehicleDesc"] ? params.data["VehicleDesc"] : '';
           return '<b>' + ident + '</b><br>' + desc
         },
         cellStyle: {'line-height': '1.2em', 'padding-top': '.3em'}
       },
       { headerName: 'Klient', field: 'CustIdent', tooltipField: 'CustName', filter: 'agTextColumnFilter', floatingFilter: false, width: 130,
         cellRenderer: function(params) {
-          var ident;
-          var desc;
-          ident = params.data["CustIdent"] ? params.data["CustIdent"] : '';
-          desc = params.data["CustName"] ? params.data["CustName"] : '';
+          // var ident;
+          // var desc;
+          const ident = params.data["CustIdent"] ? params.data["CustIdent"] : '';
+          const desc = params.data["CustName"] ? params.data["CustName"] : '';
           return '<b>' + ident + '</b><br>' + desc
         },
         cellStyle: {'line-height': '1.2em', 'padding-top': '.3em'}
       },      
       { headerName: 'SV', headerTooltip: 'Stawka VAT (O - odliczane, N - nieodliczane, S - struktura)', field: 'VATRatesIdent', width: 50, suppressMenu: true, 
         cellRenderer: function(params) {
-          var ident;
-          var desc;
-          ident = params.data["VATRatesIdent"] ? params.data["VATRatesIdent"] : '';
-          desc = params.data["VATdeductionIdent"] ? params.data["VATdeductionIdent"] : '';
+          // var ident;
+          // var desc;
+          let ident = params.data["VATRatesIdent"] ? params.data["VATRatesIdent"] : '';
+          let desc = params.data["VATdeductionIdent"] ? params.data["VATdeductionIdent"] : '';
           return ident + '<br>' + desc
         },
         cellStyle: {'line-height': '1.2em', 'padding-top': '.3em', 'text-align': 'right'}
       },
       { headerName: 'Klasyfikacja/Rodzaj', field: 'VATClassificationIdent', tooltipField: 'VATClassificationIdent', width: 130, suppressMenu: true, 
         cellRenderer: function(params) {
-          var ident;
-          var desc;
-          ident = params.data["VATClassificationIdent"] ? params.data["VATClassificationIdent"] : '';
-          desc = params.data["VATCostTypeIdent"] ? params.data["VATCostTypeIdent"] : '';
+          // var ident;
+          // var desc;
+          let ident = params.data["VATClassificationIdent"] ? params.data["VATClassificationIdent"] : '';
+          let desc = params.data["VATCostTypeIdent"] ? params.data["VATCostTypeIdent"] : '';
           return '<span style="color: dimgray;"><b>K:</b></span> '+ident 
             + '<br><span style="color: dimgray;"><b>R:</b></span> ' + desc
         },
@@ -224,10 +224,10 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
       },
       { headerName: 'Proc. szczególna', headerTooltip: 'Procedura szczególna VAT i podatkowa', field: 'VATSpecialTypesIdent', tooltipField: 'VATSpecialTypesIdent', width: 130, suppressMenu: true, 
         cellRenderer: function(params) {
-          var ident;
-          var desc;
-          ident = params.data["VATSpecialTypesIdent"] ? params.data["VATSpecialTypesIdent"] : '';
-          desc = params.data["TaxSpecialTypesIdent"] ? params.data["TaxSpecialTypesIdent"] : '';
+          // var ident;
+          // var desc;
+          let ident = params.data["VATSpecialTypesIdent"] ? params.data["VATSpecialTypesIdent"] : '';
+          let desc = params.data["TaxSpecialTypesIdent"] ? params.data["TaxSpecialTypesIdent"] : '';
           return '<span style="color: dimgray;"><b></b></span> ' + ident + 
           '<br><span style="color: dimgray;"><b></b></span> ' + desc
         },
@@ -249,10 +249,10 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
       },
       { headerName: 'Ilość', field: 'Quantity', filter: 'agTextColumnFilter', floatingFilter: false, width: 80, agr: "sum",
         cellRenderer: function(params) {
-          var ident;
-          var desc;
-          ident = params.data["Quantity"] ? params.data["Quantity"] : '';
-          desc = params.data["UnitName"] ? params.data["UnitName"] : '';
+          // var ident;
+          // var desc;
+          const ident = params.data["Quantity"] ? params.data["Quantity"] : '';
+          const desc = params.data["UnitName"] ? params.data["UnitName"] : '';
           return ident + '<br>' + desc
         },
         cellStyle: {'line-height': '1.2em', 'padding-top': '.3em', 'text-align': 'right'}
@@ -417,7 +417,12 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
   }
 
   refreshAfter(dataSourceManager) {
+
     this.dataSourceResponseWrapper = dataSourceManager?.getDateSourceWrapper("sitOfficeDocHeaders");
+
+    if (!this.dataSourceResponseWrapper.activeRow) {
+      return;
+    }
 
     this.qrvalue = this.dataSourceResponseWrapper.activeRow['QRvalue'];
 
