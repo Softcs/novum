@@ -65,8 +65,8 @@ export class SitDataBaseComponent implements ControlValueAccessor, AfterViewInit
   }
 
   onChange(value: any) {
-    this._onChange(value);    
-    this.dataSetWrapper.setFieldValue(this.field, this.getValue(), null, false);    
+    this._onChange(value);
+    this.dataSetWrapper.setFieldValue(this.field, this.getValue(), null, false);
   }
 
   onKeyup(value: any) {
