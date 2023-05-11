@@ -1,6 +1,6 @@
 {
   "name": "Novum",
-  "version": "2.1.316",
+  "version": "2.1.322",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --open",
@@ -22,7 +22,7 @@
     "@angular/flex-layout": "^13.0.0-beta.38",
     "@angular/forms": "^13.3.10",
     "@angular/localize": "^13.3.10",
-    "@angular/material": "^13.3.8",
+    "@angular/material": "^13.3.9",
     "@angular/platform-browser": "^13.3.10",
     "@angular/platform-browser-dynamic": "^13.3.10",
     "@angular/router": "^13.3.10",
@@ -43,7 +43,7 @@
     "material-design-icons": "^3.0.1",
     "ng2-pdfjs-viewer": "^13.2.2",
     "ngx-barcode": "^0.3.0",
-    "ngx-json-viewer": "^3.1.0",
+    "ngx-json-viewer": "^3.0.2",
     "npm": "^6.14.17",
     "rxjs": "^7.5.5",
     "tslib": "^2.4.0",
