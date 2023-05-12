@@ -44,6 +44,7 @@ export class SitPalletsBalanceComponent extends SitDictBaseComponent {
       { headerName: 'Opis dokumentu', field: 'DocumentDescription', width: 250, },
       { headerName: 'Ilość dok.', field: 'Quantity', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80, defaultVisibility: false  },
       { headerName: 'Ilość', field: 'QuantitySign', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80, agr: 'sum'  },
+      { headerName: 'Dokumenty źródłowe', field: 'DocumentNumber_Source', width: 250, }
     ];
 
     this.gridColumnsDefinition["sitPalletsBalanceStocks"] = [
@@ -74,6 +75,7 @@ export class SitPalletsBalanceComponent extends SitDictBaseComponent {
       { headerName: 'Produkt', field: 'ProductIdent', width: 100, },
       { headerName: 'Ilość dok.', field: 'Quantity', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80, defaultVisibility: false  },
       { headerName: 'Ilość', field: 'QuantitySign', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80, agr: 'sum' },
+      { headerName: 'Dokumenty źródłowe', field: 'DocumentNumber_Source', width: 250, },
     ];
 
   };

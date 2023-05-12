@@ -1,75 +1,75 @@
 <sit-dict-container ident="sitPalletsBalance" #sitDictcontainer ngClass="flex-container-column">
-    <div ngClass="content flex-container-column">
-      <mat-tab-group id="tab-group" animationDuration="0ms">
-        <mat-tab label="Ewidencja">      
-          <as-split #sitSpliter direction="horizontal">
-            <as-split-area [size]="45">
-              <as-split #sitSpliter direction="vertical">
-                <as-split-area [size]="80" fxLayout="column">
-                  <div class="sit-grid-title">Salda kontrahentów</div>
-                  <sit-data-set-container ident="sitPalletsBalanceFilter" fxLayout="row">
-                    <sit-data-input #sitControl field="search" label="Filtruj" placeholder="Kontrahent" appearance="outline" style="width: 300px;" [showRefreshButton]="true"></sit-data-input>
-                  </sit-data-set-container>
-                  <sit-data-set-container ident="sitPalletsBalance" [showActionsToolbar]="true" ngClass="flex-container-column">
-                    <ag-grid-angular 
-                      #sitSetDataSource 
-                      class="ag-theme-balham">
-                    </ag-grid-angular>
-                  </sit-data-set-container>    
-                </as-split-area>
-                <as-split-area [size]="20" fxLayout="column">
-                  <div class="sit-grid-title">Stan magazynowy</div>
-                  <sit-data-set-container ident="sitPalletsBalanceStocks" [showActionsToolbar]="false" ngClass="flex-container-column">
-                    <ag-grid-angular 
-                      #sitSetDataSource 
-                      class="ag-theme-balham">
-                    </ag-grid-angular>
-                  </sit-data-set-container>    
-                </as-split-area>
-              </as-split>
-            </as-split-area>
-            <as-split-area [size]="55" ngClass="flex-container-column">
-              <as-split #sitSpliter direction="vertical">
-                <as-split-area [size]="75" fxLayout="column">
-                  <div class="sit-grid-title">Obroty w dniach</div>
-                  <sit-data-set-container ident="sitPalletsBalance4CustomersFilter" fxLayout="row">
-                    <sit-data-input #sitControl field="dateFrom" type="date" label="Od" appearance="outline" style="width: 130px;"></sit-data-input>
-                    <sit-data-input #sitControl field="dateTo" type="date" label="Do" appearance="outline" style="width: 195px;" [showRefreshButton]="true" ></sit-data-input>
-                    <sit-data-checkbox #sitControl field="withBalanceOnly" label="tylko bilans" labelPosition="after" checked="true" [refreshOnChange]="true" ></sit-data-checkbox>
-                  </sit-data-set-container>
-                  <sit-data-set-container ident="sitPalletsBalance4Customers" [showActionsToolbar]="false" ngClass="flex-container-column">
-                    <ag-grid-angular 
-                      #sitSetDataSource 
-                      class="ag-theme-balham">
-                    </ag-grid-angular>
-                  </sit-data-set-container>
-                </as-split-area>
-                <as-split-area [size]="25" fxLayout="column">
-                  <div class="sit-grid-title">Pozycje dokumentów</div>
-                  <sit-data-set-container ident="sitPalletsBalance4CustomersDocsPos" [showActionsToolbar]="true" ngClass="flex-container-column">
-                    <ag-grid-angular 
-                      #sitSetDataSource 
-                      class="ag-theme-balham">
-                    </ag-grid-angular>
-                  </sit-data-set-container>    
-                </as-split-area>
-              </as-split>
-            </as-split-area>
-          </as-split>
-        </mat-tab>
-        <mat-tab label="Obroty">
-          <sit-data-set-container ident="sitPalletsBalanceTurnoverFilter" fxLayout="row">
-            <sit-data-input #sitControl field="searchCustomer" label="Filtruj" placeholder="Kontrahent" appearance="outline" style="width: 300px;" [showRefreshButton]="true"></sit-data-input>
-            <sit-data-input #sitControl field="dateFrom" type="date" label="Od" appearance="outline" style="width: 130px;"></sit-data-input>
-            <sit-data-input #sitControl field="dateTo" type="date" label="Do" appearance="outline" style="width: 195px;" [showRefreshButton]="true" ></sit-data-input>
-          </sit-data-set-container>
-          <sit-data-set-container ident="sitPalletsBalanceTurnover" [showActionsToolbar]="false" ngClass="flex-container-column">
-            <ag-grid-angular 
-              #sitSetDataSource 
-              class="ag-theme-balham">
-            </ag-grid-angular>
-          </sit-data-set-container>
-        </mat-tab>
-      </mat-tab-group>
-    </div>
-  </sit-dict-container>            
+  <div ngClass="content flex-container-column">
+    <mat-tab-group id="tab-group" animationDuration="0ms">
+      <mat-tab label="Ewidencja">      
+        <as-split #sitSpliter direction="horizontal">
+          <as-split-area [size]="45">
+            <as-split #sitSpliter direction="vertical">
+              <as-split-area [size]="80" fxLayout="column">
+                <div class="sit-grid-title">Salda kontrahentów</div>
+                <sit-data-set-container ident="sitPalletsBalanceFilter" fxLayout="row">
+                  <sit-data-input #sitControl field="search" label="Filtruj" placeholder="Kontrahent" appearance="outline" style="width: 300px;" [showRefreshButton]="true"></sit-data-input>
+                </sit-data-set-container>
+                <sit-data-set-container ident="sitPalletsBalance" [showActionsToolbar]="true" ngClass="flex-container-column">
+                  <ag-grid-angular 
+                    #sitSetDataSource 
+                    class="ag-theme-balham">
+                  </ag-grid-angular>
+                </sit-data-set-container>    
+              </as-split-area>
+              <as-split-area [size]="20" fxLayout="column">
+                <div class="sit-grid-title">Stan magazynowy</div>
+                <sit-data-set-container ident="sitPalletsBalanceStocks" [showActionsToolbar]="false" ngClass="flex-container-column">
+                  <ag-grid-angular 
+                    #sitSetDataSource 
+                    class="ag-theme-balham">
+                  </ag-grid-angular>
+                </sit-data-set-container>    
+              </as-split-area>
+            </as-split>
+          </as-split-area>
+          <as-split-area [size]="55" ngClass="flex-container-column">
+            <as-split #sitSpliter direction="vertical">
+              <as-split-area [size]="75" fxLayout="column">
+                <div class="sit-grid-title">Obroty w dniach</div>
+                <sit-data-set-container ident="sitPalletsBalance4CustomersFilter" fxLayout="row">
+                  <sit-data-input #sitControl field="dateFrom" type="date" label="Od" appearance="outline" style="width: 130px;"></sit-data-input>
+                  <sit-data-input #sitControl field="dateTo" type="date" label="Do" appearance="outline" style="width: 195px;" [showRefreshButton]="true" ></sit-data-input>
+                  <sit-data-checkbox #sitControl field="withBalanceOnly" label="tylko bilans" labelPosition="after" checked="true" [refreshOnChange]="true" ></sit-data-checkbox>
+                </sit-data-set-container>
+                <sit-data-set-container ident="sitPalletsBalance4Customers" [showActionsToolbar]="false" ngClass="flex-container-column">
+                  <ag-grid-angular 
+                    #sitSetDataSource 
+                    class="ag-theme-balham">
+                  </ag-grid-angular>
+                </sit-data-set-container>
+              </as-split-area>
+              <as-split-area [size]="25" fxLayout="column">
+                <div class="sit-grid-title">Pozycje dokumentów</div>
+                <sit-data-set-container ident="sitPalletsBalance4CustomersDocsPos" [showActionsToolbar]="true" ngClass="flex-container-column">
+                  <ag-grid-angular 
+                    #sitSetDataSource 
+                    class="ag-theme-balham">
+                  </ag-grid-angular>
+                </sit-data-set-container>    
+              </as-split-area>
+            </as-split>
+          </as-split-area>
+        </as-split>
+      </mat-tab>
+      <mat-tab label="Obroty">
+        <sit-data-set-container ident="sitPalletsBalanceTurnoverFilter" fxLayout="row">
+          <sit-data-input #sitControl field="searchCustomer" label="Filtruj" placeholder="Kontrahent" appearance="outline" style="width: 300px;" [showRefreshButton]="true"></sit-data-input>
+          <sit-data-input #sitControl field="dateFrom" type="date" label="Od" appearance="outline" style="width: 130px;"></sit-data-input>
+          <sit-data-input #sitControl field="dateTo" type="date" label="Do" appearance="outline" style="width: 195px;" [showRefreshButton]="true" ></sit-data-input>
+        </sit-data-set-container>
+        <sit-data-set-container ident="sitPalletsBalanceTurnover" [showActionsToolbar]="false" ngClass="flex-container-column">
+          <ag-grid-angular 
+            #sitSetDataSource 
+            class="ag-theme-balham">
+          </ag-grid-angular>
+        </sit-data-set-container>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</sit-dict-container>            
