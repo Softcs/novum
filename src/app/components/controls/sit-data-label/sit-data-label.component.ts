@@ -31,6 +31,7 @@ export class SitDataLabelComponent extends SitDataBaseComponent {
   @Input() valueStyle: any = null;
   @Input() labelStyle: any = null;
   @Input() field: string = '';
+  @Input() labelHint = null;
   // @Input() ngClass: string = '';
 
 

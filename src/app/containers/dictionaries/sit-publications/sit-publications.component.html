@@ -97,7 +97,7 @@
 
                           <sit-simple-container ngClass="flex-container-column mr-05" fxFlex="40">
                             <sit-data-label #sitControl field="PremiereDate" label="Data premiery" ></sit-data-label>
-                            <sit-data-label #sitControl field="RegisterDate" label="Data wydania" ></sit-data-label>
+                            <sit-data-label #sitControl field="RegisterDate" label="Data wydania" labelHint="Planowana data wydania z ostatniego projektu"></sit-data-label>
                             <sit-data-label #sitControl field="FormOfReleaseDesc" label="Forma wydania" ></sit-data-label>
                             <sit-data-label #sitControl field="EAN" label="EAN"></sit-data-label>
                             <sit-data-label #sitControl field="ISBN" label="ISBN"></sit-data-label>
@@ -106,16 +106,16 @@
                           </sit-simple-container>
 
                           <div ngClass="flex-container-row">
-                            <sit-simple-container ngClass="flex-container-column mr-05" title="Format" fxFlex="50">
-                              <sit-data-label #sitControl field="FormatBase" label="Podstawa" labelWidth="8em" ></sit-data-label>
-                              <sit-data-label #sitControl field="FormatHeight" label="Wysokość" labelWidth="8em" ></sit-data-label>
-                              <sit-data-label #sitControl field="NumberOfPages" label="Ilość stron" labelWidth="8em" ></sit-data-label>
-                              <sit-data-label #sitControl field="BindingSpineThickness" label="Grubość grzbietu" labelWidth="8em" ></sit-data-label>
-                              <!-- <sit-data-label #sitControl field="BindingType" label="Typ oprawy" labelWidth="8em" ></sit-data-label> -->
-                            </sit-simple-container>
-                            <sit-simple-container ngClass="flex-container-column" title="Wnętrze" fxFlex="50">
+                            <sit-simple-container ngClass="flex-container-column mr-05" title="Wnętrze" fxFlex="50">
                               <sit-data-label #sitControl field="InsideFormatBase" label="Podstawa" labelWidth="8em" ></sit-data-label>
                               <sit-data-label #sitControl field="InsideFormatHeight" label="Wysokość" labelWidth="8em" ></sit-data-label>
+                              <sit-data-label #sitControl field="NumberOfPages" label="Ilość stron" labelWidth="8em" ></sit-data-label>
+                            </sit-simple-container>
+                            <sit-simple-container ngClass="flex-container-column" title="Oprawa" fxFlex="50">
+                              <sit-data-label #sitControl field="FormatBase" label="Podstawa" labelWidth="8em" ></sit-data-label>
+                              <sit-data-label #sitControl field="FormatHeight" label="Wysokość" labelWidth="8em" ></sit-data-label>
+                              <sit-data-label #sitControl field="BindingSpineThickness" label="Grubość grzbietu" labelWidth="8em" ></sit-data-label>
+                              <!-- <sit-data-label #sitControl field="BindingType" label="Typ oprawy" labelWidth="8em" ></sit-data-label> -->
                             </sit-simple-container>
                           </div>                        
                         </div>
