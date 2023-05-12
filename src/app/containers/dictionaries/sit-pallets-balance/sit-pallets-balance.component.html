@@ -8,7 +8,8 @@
               <as-split-area [size]="80" fxLayout="column">
                 <div class="sit-grid-title">Salda kontrahentów</div>
                 <sit-data-set-container ident="sitPalletsBalanceFilter" fxLayout="row">
-                  <sit-data-input #sitControl field="search" label="Filtruj" placeholder="Kontrahent" appearance="outline" style="width: 300px;" [showRefreshButton]="true"></sit-data-input>
+                  <sit-data-input #sitControl field="search" label="Filtruj" placeholder="Kontrahent" appearance="outline" style="width: 300px;" ></sit-data-input>
+                  <sit-data-input #sitControl field="overdueAfterDays" type="number" label="Przeterminowane po" placeholder="" appearance="outline" style="width: 200px;" [showRefreshButton]="true"></sit-data-input>
                 </sit-data-set-container>
                 <sit-data-set-container ident="sitPalletsBalance" [showActionsToolbar]="true" ngClass="flex-container-column">
                   <ag-grid-angular 
@@ -35,7 +36,7 @@
                 <sit-data-set-container ident="sitPalletsBalance4CustomersFilter" fxLayout="row">
                   <sit-data-input #sitControl field="dateFrom" type="date" label="Od" appearance="outline" style="width: 130px;"></sit-data-input>
                   <sit-data-input #sitControl field="dateTo" type="date" label="Do" appearance="outline" style="width: 195px;" [showRefreshButton]="true" ></sit-data-input>
-                  <sit-data-checkbox #sitControl field="withBalanceOnly" label="tylko bilans" labelPosition="after" checked="true" [refreshOnChange]="true" ></sit-data-checkbox>
+                  <sit-data-checkbox #sitControl field="withBalanceOnly" label="Tylko nierozliczone" labelPosition="after" checked="true" [refreshOnChange]="true" ></sit-data-checkbox>
                 </sit-data-set-container>
                 <sit-data-set-container ident="sitPalletsBalance4Customers" [showActionsToolbar]="false" ngClass="flex-container-column">
                   <ag-grid-angular 
@@ -59,7 +60,7 @@
       </mat-tab>
       <mat-tab label="Obroty">
         <sit-data-set-container ident="sitPalletsBalanceTurnoverFilter" fxLayout="row">
-          <sit-data-input #sitControl field="searchCustomer" label="Filtruj" placeholder="Kontrahent" appearance="outline" style="width: 300px;" [showRefreshButton]="true"></sit-data-input>
+          <sit-data-input #sitControl field="searchCustomer" label="Filtruj" placeholder="Kontrahent" appearance="outline" style="width: 300px;" ></sit-data-input>
           <sit-data-input #sitControl field="dateFrom" type="date" label="Od" appearance="outline" style="width: 130px;"></sit-data-input>
           <sit-data-input #sitControl field="dateTo" type="date" label="Do" appearance="outline" style="width: 195px;" [showRefreshButton]="true" ></sit-data-input>
         </sit-data-set-container>
