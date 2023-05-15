@@ -11,7 +11,7 @@
       </div>
       <div ngClass="flex-container-row">
         <sit-data-radio #sitControl field="AcceptanceMode" type="row" 
-          [buttons]="[{'caption':'Akceptuj','value': '1', 'checked':true},{'caption':'Odrzuć','value':'-1'}]"
+          [buttons]="[{'caption':'Akceptuj','value': '1', 'checked':true},{'caption':'Odrzuć','value':'-1'},{'caption':'Przekaż','value':'2'}]"
         ></sit-data-radio>
       </div>
       <div ngClass="flex-container-row" [class.hidden] = "!showEmployeesList()"> 
