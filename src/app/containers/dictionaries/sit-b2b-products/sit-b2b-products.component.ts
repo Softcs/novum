@@ -26,14 +26,21 @@ export class SitB2bProductsComponent extends SitDictBaseComponent {
       { headerName: 'Stan', field: 'QuantityString', filter: 'agTextColumnFilter', width: 80 },
       { headerName: 'Cena netto', field: 'NetPrice', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80, renderType: 'number' },
       { headerName: 'Cena brutto', field: 'GrossPrice', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80, renderType: 'number' },
-      { headerName: 'Status', field: 'ValueName_Main', filter: 'agSetColumnFilter', width: 100, floatingFilter: false, 
-        cellStyle: function(params) {
-          if (params.value === 'Zapowiedź') { return { color: 'orange', 'font-weight': 600 }; }
-          else if (params.value === 'Nowość') { return { color: 'rgb(153, 0, 0)', 'font-weight': 600 }; }
-          else if (params.value === 'Aktywna') { return { color: 'rgb(20, 152, 46)', 'font-weight': 600 }; }
-          else if (params.value === 'Wyprzedaż') { return { color: 'rgb(11, 23, 255)', 'font-weight': 600 }; }
-          else { return null; }
-        }
+      { 
+        //headerName: 'Status', field: 'ValueName_Main', filter: 'agSetColumnFilter', width: 100, floatingFilter: false, 
+        headerName: 'Status', field: 'ValueName_Main', filter: 'agSetColumnFilter', width: 67, floatingFilter: false, 
+        suppressMenu: true,
+        cellRenderer: (params:any) => {
+          return (params.data.ValueIdent_Main ? '<span title="' + params.data.ValueName_Main + '">' + params.data.ValueIdent_Main + '</span>' : '')
+        },
+        cellClass: (params:any) => [(params.data.ValueIdent_Main ? params.data.ValueIdent_Main : '')],
+        // cellStyle: function(params) {
+        //   if (params.value === 'Zapowiedź') { return { color: 'orange', 'font-weight': 600 }; }
+        //   else if (params.value === 'Nowość') { return { color: 'rgb(153, 0, 0)', 'font-weight': 600 }; }
+        //   else if (params.value === 'Aktywna') { return { color: 'rgb(20, 152, 46)', 'font-weight': 600 }; }
+        //   else if (params.value === 'Wyprzedaż') { return { color: 'rgb(11, 23, 255)', 'font-weight': 600 }; }
+        //   else { return null; }
+        // }
       },      
     ];
 
