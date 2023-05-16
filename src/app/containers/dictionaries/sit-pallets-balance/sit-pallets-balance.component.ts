@@ -5,7 +5,7 @@ import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-di
   selector: 'app-sit-pallets-balance',
   templateUrl: './sit-pallets-balance.component.html',
   styleUrls: ['./sit-pallets-balance.component.scss'],
-  host: {class: 'router-flex sit-pallets-balance.component'},
+  host: {class: 'router-flex sit-pallets-balance-component'},
   encapsulation : ViewEncapsulation.None,
 })
 export class SitPalletsBalanceComponent extends SitDictBaseComponent {

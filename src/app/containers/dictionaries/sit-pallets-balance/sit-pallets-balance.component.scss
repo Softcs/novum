@@ -1,18 +1,22 @@
-#wrapper{
-    min-height: 100%;
-    height: 100%;
-    box-sizing: border-box;/*new*/
-    //background-color: rgba(255, 255, 255, 0.733);
-}
+.sit-pallets-balance-component {
 
-#tab-group{
-    height: 100%;
-}
+    #wrapper{
+        min-height: 100%;
+        height: 100%;
+        box-sizing: border-box;/*new*/
+        //background-color: rgba(255, 255, 255, 0.733);
+    }
+    
+    #tab-group{
+        height: 100%;
+    }
+    
+    #tab-group mat-tab-body {
+        flex-grow: 1;
+    }
+    
+    sit-data-textarea{
+        margin-bottom: 10px;
+    }
 
-#tab-group mat-tab-body {
-    flex-grow: 1;
-}
-
-sit-data-textarea{
-    margin-bottom: 10px;
 }
