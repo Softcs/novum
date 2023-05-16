@@ -27,10 +27,16 @@ export class GridService {
   }
 
   private formatColumn(column: any, locale: string) {
+    
     var renderFormat = column["renderFormat"];
 
+    
     if (column.renderType == "checkbox") {
-      column["cellRenderer"] = function(params) {
+
+      column["cellRenderer"] = function(params: any) {
+
+        if (!params.data[column.field]) return null;
+
         var input = document.createElement("input");
             input.type = "checkbox";
             input.checked = params.value;
@@ -40,7 +46,15 @@ export class GridService {
             });
         return input;
       }
+
     }
+
+
+    if (column.renderType == "status") {
+      column["cellRenderer"] = (params:any) => (params.data.StatusValueIdent ? '<span title="' + params.data.StatusValueName + '">' + params.data.StatusValueIdent + '</span>' : '');
+      column["cellClass"] = (params:any) => [(params.data.StatusValueIdent ? params.data.StatusValueIdent : '')];
+    }
+
 
     if (column.renderType == "date") {
       if (!renderFormat) {
@@ -57,8 +71,12 @@ export class GridService {
         renderFormat = '1.2-2';
       }
 
-      column["cellRenderer"] = function(params) {
+      column["cellRenderer"] = function(params: any) {
+        
+        if (!params.data[column.field]) return null;
+
         return params.value === null ? null : formatNumber(params.value, locale, renderFormat).replace(/[,]/g,' ');
+
       }
     }
 
@@ -67,7 +85,8 @@ export class GridService {
         renderFormat = '1.2-2';
       }
 
-      column["cellRenderer"] = function(params) {
+      column["cellRenderer"] = function(params: any) {
+        if (!params.data[column.field]) return null;
         return params.value === null ? null : formatNumber(params.value, locale, renderFormat).replace(/[,]/g,' ') + '%';
       }
     }
@@ -295,6 +314,9 @@ export class GridService {
     }
 
     // var agrRow = {};
+
+// console.log('agrColumns: ', agrColumns);
+// console.log('gridApi.getPinnedBottomRow(0)?.data: ', gridApi.getPinnedBottomRow(0)?.data);
 
     agrColumns.forEach((c: any) => agrRow[c.colDef.field] = 0);
 
