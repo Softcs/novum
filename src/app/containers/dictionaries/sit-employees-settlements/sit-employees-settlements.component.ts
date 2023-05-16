@@ -7,7 +7,7 @@ import { DataSetWrapper } from '@app/_models';
   selector: 'sit-employees-settlements',
   templateUrl: './sit-employees-settlements.component.html',
   styleUrls: ['./sit-employees-settlements.component.scss'],
-  host: {class: 'router-flex'}
+  host: {class: 'router-flex sit-employees-settlements-component'}
 })
 export class SitEmployeesSettlementsComponent extends SitDictBaseComponent {
 
