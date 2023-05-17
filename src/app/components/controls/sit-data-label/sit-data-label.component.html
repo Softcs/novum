@@ -1,5 +1,5 @@
 <!-- <div ngClass="flex-container-row"> -->
-  <div *ngIf="label && !labelWidth" [ngClass]="['sit-data-label-name']" title={{label}} [ngStyle]="labelStyle">
+  <div *ngIf="label && !labelWidth" [ngClass]="['sit-data-label-name']" title="{{labelHint ?? label}}" [ngStyle]="labelStyle">
     {{label}}
   </div>
   <div *ngIf="label && labelWidth" fxFlex={{labelWidth}} [ngClass]="['sit-data-label-name']" title={{label}} [ngStyle]="labelStyle">

@@ -3,13 +3,19 @@
   >
   <sit-data-set-container ident="sitPalletsEvidenceAdd">
     <div class="sit-proc-params-content" fxLayout="column" style="width: 600px;">
+      <div ngClass="flex-container-row mb-05">
+        <sit-data-label #sitControl field="BalanceDesc" label=""></sit-data-label>
+      </div>       
+      <div ngClass="flex-container-row mb-05">
+        <sit-data-label #sitControl field="CustName" label=""></sit-data-label>
+      </div>       
       <div ngClass="flex-container-row">
         <sit-data-input type="text" #sitControl type="date" field="DocumentDate" label="Data" appearance="outline" style="width: 120px"></sit-data-input>
-      </div>
-      <div ngClass="flex-container-row">
         <sit-data-input type="number" #sitControl field="Quantity" label="Ilość" appearance="outline" digitsInfo="1.0-0" style="width: 100px"></sit-data-input>
         <sit-data-input type="text" #sitControl field="ProductIdent" label="Produkt" appearance="outline" style="width: 200px"></sit-data-input>      
       </div>
+      <!-- <div ngClass="flex-container-row"> -->
+      <!-- </div> -->
       <div ngClass="flex-container-row">
         <sit-data-input type="text" #sitControl field="DocumentDescription" label="Opis dokumentu" appearance="outline" fxFlex></sit-data-input>
       </div>

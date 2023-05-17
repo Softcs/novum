@@ -14,8 +14,8 @@ export class SitPublicationsComponent extends SitDictBaseComponent {
   groupDefaultExpanded: any;
   getDataPath: any;
   autoGroupColumnDef: any;
-  imgPrvHeight: string = '55';
-  publicationsProductsGridRowHeight: any = 60;
+  imgPrvHeight: string = '60';
+  publicationsProductsGridRowHeight: any = 65;
 
 
   public getImageUrlPrv(data:any) {
@@ -71,9 +71,10 @@ export class SitPublicationsComponent extends SitDictBaseComponent {
         // resizable: true,
         // autoHeight: true,
         // wrapText: true,
+        suppressMenu: true,
         cellRenderer: (params:any) => this.getImageUrlPrv(params.data),
-        // suppressMenu: true
-      },
+        cellStyle: {'padding':'8px 0px 0px 0px', 'align-items':'center','display':'flex','justify-content': 'center','vertical-align': 'middle'}
+     },
       
       { headerName: 'EAN/Ident', 
         field: 'ProductIdent', 
