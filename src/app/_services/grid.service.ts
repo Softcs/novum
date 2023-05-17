@@ -35,7 +35,7 @@ export class GridService {
 
       column["cellRenderer"] = function(params: any) {
 
-        if (!params.data[column.field]) return null;
+        if (params.data && (params.data[column.field] === undefined)) return null;
 
         var input = document.createElement("input");
             input.type = "checkbox";
@@ -72,8 +72,8 @@ export class GridService {
       }
 
       column["cellRenderer"] = function(params: any) {
-        
-        if (!params.data[column.field]) return null;
+
+        if (params.data && (params.data[column.field] === undefined)) return null;
 
         return params.value === null ? null : formatNumber(params.value, locale, renderFormat).replace(/[,]/g,' ');
 
@@ -86,8 +86,11 @@ export class GridService {
       }
 
       column["cellRenderer"] = function(params: any) {
-        if (!params.data[column.field]) return null;
+
+        if (params.data && (params.data[column.field] === undefined)) return null;
+        
         return params.value === null ? null : formatNumber(params.value, locale, renderFormat).replace(/[,]/g,' ') + '%';
+
       }
     }
 
