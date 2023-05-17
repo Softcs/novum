@@ -15,10 +15,10 @@ export class SitPalletsBalanceComponent extends SitDictBaseComponent {
       { headerName: 'Kontrahent', field: 'CustIdent', width: 100, suppressMenu: true, },
       { headerName: 'Nazwa', field: 'CustName', sortable: true, filter: 'agTextColumnFilter', width: 200},
       { headerName: 'Produkt', field: 'ProductIdent', width: 100, },
-      { headerName: 'Bilans', field: 'BalanceSum', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 120,
+      { headerName: 'Bilans', field: 'BalanceSum', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 120, agr: 'sum',
         renderType: "number", renderFormat: '1.0-0', headerTooltip: 'Bilans: liczba dodania - nasze palety u kontrahenta, ujemna - palety kontrahenta u nas.'
       },
-      { headerName: 'Bilans przeterm.', field: 'OverdueBalanceSum', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 120,
+      { headerName: 'Bilans przeterm.', field: 'OverdueBalanceSum', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 120, agr: 'sum',
       renderType: "number", renderFormat: '1.0-0',
         cellStyle: function(params) {
           if (params.value != 0) { return { color: 'red' }; }
