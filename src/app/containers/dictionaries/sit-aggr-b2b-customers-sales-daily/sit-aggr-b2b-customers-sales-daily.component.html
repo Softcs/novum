@@ -29,7 +29,8 @@
             <sit-data-radio #sitControl field="topsSearchPeriodType" type="row" label="okres"
               [buttons]="[{'caption':'tydzień','value': '1', 'checked':true},{'caption':'miesiąc','value': '2'}]"></sit-data-radio>
             <sit-data-input #sitControl field="topsSearchPeriodQuantity" label="Liczba okresów" appearance="outline" style="width: 100px;"></sit-data-input>
-            <sit-data-input #sitControl field="topsSearchDateStart" type="date" label="Koniec okresu" appearance="outline" style="width: 195px;" [showRefreshButton]="true" ></sit-data-input>
+            <sit-data-input #sitControl field="topsSearchDateStart" type="date" label="Koniec okresu" appearance="outline" style="width: 130px;" ></sit-data-input>
+            <sit-data-input #sitControl field="topsSearchAuthor" label="Autor" appearance="outline" style="width: 250px;" [showRefreshButton]="true"></sit-data-input>
           </div>
         </sit-data-set-container>
         <sit-data-set-container ident="sitAggrB2BCustomersSalesDailyTops" [showActionsToolbar]="true" fxFlex fxLayout="column">

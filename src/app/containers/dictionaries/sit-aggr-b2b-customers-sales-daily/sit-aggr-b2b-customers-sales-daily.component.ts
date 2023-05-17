@@ -57,12 +57,12 @@ export class SitAggrB2bCustomersSalesDailyComponent extends SitDictBaseComponent
     ];
 
     this.gridColumnsDefinition["sitAggrB2BCustomersSalesDailyTops"] = [
-      { headerName: 'Kontrahent', field: 'CustIdent', filter: 'agTextColumnFilter', width: 300,
-        rowGroup: true, enableRowGroup: true, enablePivot: true },
-      { headerName: 'Produkt', field: 'ProductIdent', filter: 'agTextColumnFilter', width: 300,
-        rowGroup: true, enableRowGroup: true, enablePivot: true },      
+      { headerName: 'Kontrahent', field: 'CustName', filter: 'agTextColumnFilter', width: 300,
+        enablePivot: true, enableRowGroup: true, rowGroup: true, },
+      { headerName: 'Produkt', field: 'ProductIdentTitle', filter: 'agTextColumnFilter', width: 300,
+        enablePivot: true, enableRowGroup: true, rowGroup: true, },      
       { headerName: 'Okres', field: 'Period4Order', filter: 'agTextColumnFilter', width: 100,
-        pivot: true, enablePivot: true, sort: 'desc' },  
+        pivot: true },  
       { headerName: 'Ilość', field: 'Quantity', filter: 'agTextColumnFilter', width: 120, renderType: "number", type: 'numericColumn', 
         aggFunc: 'sum', enableValue: true },
     ];
