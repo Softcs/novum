@@ -32,7 +32,8 @@ export class SitAggrB2bCustomersSalesDailyComponent extends SitDictBaseComponent
       this.autoGroupColumnDef = { 
         minWidth: 400, 
         pinned: 'left',
-        sort: 'asc'
+        sort: 'asc',
+        sortable: true
       };
       this.pivotRowTotals = 'after';
       this.pivotColumnGroupTotals = 'before';
@@ -59,7 +60,7 @@ export class SitAggrB2bCustomersSalesDailyComponent extends SitDictBaseComponent
     this.gridColumnsDefinition["sitAggrB2BCustomersSalesDailyTops"] = [
       { headerName: 'Kontrahent', field: 'CustName', filter: 'agTextColumnFilter', width: 300,
         enablePivot: true, enableRowGroup: true, rowGroup: true, },
-      { headerName: 'Produkt', field: 'ProductIdentTitle', filter: 'agTextColumnFilter', width: 300,
+      { headerName: 'Produkt', field: 'ProductName', filter: 'agTextColumnFilter', width: 300,
         enablePivot: true, enableRowGroup: true, rowGroup: true, },      
       { headerName: 'Okres', field: 'Period4Order', filter: 'agTextColumnFilter', width: 100,
         pivot: true },  
