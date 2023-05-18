@@ -23,6 +23,7 @@ export class SitCustomersComponent extends SitDictBaseComponent {
     ];
 
     this.gridColumnsDefinition["sitHRDepartments4Cust"] =  [
+      { headerName: 'ID', field: '__Identity__', width: 80, defaultVisibility: false},
       { headerName: 'Identyfikator', field: 'HRDepartmentIdent', width: 150 },
       { headerName: 'Nazwa', field: 'HRDepartmentName', width: 200 },
       { headerName: 'Proc.przel.UOP', headerTooltip: 'Procedura przeliczająca UOP', field: 'HRBatches4InvoicingIdent', width: 200 },
@@ -33,6 +34,7 @@ export class SitCustomersComponent extends SitDictBaseComponent {
       { headerName: 'Składnik', field: 'PayrollComponentName', width: 110, sort: 'asc',suppressMenu: true, },
       { headerName: 'Rodzaj', field: 'MarkupKindName', tooltipField: 'MarkupKindName', width: 100,suppressMenu: true },
       { headerName: 'Opis prac', field: 'WorkDesc', tooltipField: 'WorkDesc', filter: 'agTextColumnFilter', suppressMenu: true, width: 100,},
+      { headerName: 'Cudz.', headerTooltip: 'Dla cudzoziemców', field: 'Foreigner', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 80, renderType: "checkbox"},
       { headerName: 'Próg', field: 'Threshold', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 100, sort: 'asc',suppressMenu: true},
       { headerName: 'Wartość', field: 'Value', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true,
         renderType: "number", renderFormat: '1.2-2'}, // domyslny format 1.2-2 - mozna przeciazyc przez np. renderFormat: 1.2-2"
@@ -41,8 +43,17 @@ export class SitCustomersComponent extends SitDictBaseComponent {
       { headerName: 'PPK', headerTooltip:'Zawsze licz PPK', field: 'AlwaysCalcPPK', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 80, renderType: "checkbox"},
       { headerName: 'Bez ZUS', field: 'ZUS', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 80, renderType: "checkbox"},
       { headerName: 'Rekr. klienta', field: 'CustRecr', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 100, renderType: "checkbox"},
-      { headerName: 'Nie dodawaj premii do netto', headerTooltip:'Nie dodawaj premii do netto', field: 'NoBonusInCustNet', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 100, renderType: "checkbox"},
-      { headerName: 'Nie dodawaj PPK do netto', headerTooltip:'Nie dodawaj PPK do netto', field: 'NoPPKInCustNet', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 100, renderType: "checkbox"},
+      { headerName: 'Nie dol. premii do netto', headerTooltip:'Nie diliczaj premii do netto', field: 'NoBonusInCustNet', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 100, renderType: "checkbox"},
+      { headerName: 'Nie dol. PPK do netto', headerTooltip:'Nie doliczaj PPK do netto', field: 'NoPPKInCustNet', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 100, renderType: "checkbox"},
+      { headerName: 'Dol. w naturze do netto ', headerTooltip:'Doliczaj w naturze do netto', field: 'InKindInCustNet', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 100, renderType: "checkbox"},
+      { headerName: 'Ośw.i zezw.', field: 'AdditionCust01', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true,},
+      { headerName: 'Odzież rob.', field: 'AdditionCust02', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true,},
+      { headerName: 'Bad.lek.', field: 'AdditionCust03', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true,},
+      { headerName: 'BHP.', field: 'AdditionCust04', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true,},
+      { headerName: 'Trans.', field: 'AdditionCust05', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true,},
+      { headerName: 'Pos.', field: 'AdditionCust06', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true,},
+      { headerName: 'Zakw.', field: 'AdditionCust07', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true,},
+      { headerName: 'Inne', field: 'AdditionCustOther', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true,},
     ];
 
     this.gridColumnsDefinition["sitCostCenter4Cust"] = [
