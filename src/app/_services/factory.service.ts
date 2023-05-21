@@ -278,6 +278,7 @@ import { SitPalletsBalanceComponent } from '@app/containers/dictionaries/sit-pal
 import { SitPalletsBalanceDocumentInsComponent } from '@app/containers/dictionaries/sit-pallets-balance/actions/sit-pallets-balance-document-ins/sit-pallets-balance-document-ins.component';
 import { SitCustomersDocumentsImportsEditComponent } from '@app/containers/dictionaries/sit-customers/actions/sit-customers-documents-imports-edit/sit-customers-documents-imports-edit.component';
 import { SitPalletsEvidenceAddComponent } from '@app/containers/dictionaries/sit-wms-docs/actions/sit-pallets-evidence-add/sit-pallets-evidence-add.component';
+import { SitAnalysisProductsProfitabilityComponent } from '@app/containers/dictionaries/sit-analysis-products-profitability/sit-analysis-products-profitability.component';
 
 
 @Injectable({ providedIn: 'root' })
@@ -564,6 +565,7 @@ export class FactoryService {
         sitPalletsBalanceDocumentIns: SitPalletsBalanceDocumentInsComponent,
         sitCustomersDocumentsImportsEdit: SitCustomersDocumentsImportsEditComponent,
         sitPalletsEvidenceAdd: SitPalletsEvidenceAddComponent,
+        sitAnalysisProductsProfitability: SitAnalysisProductsProfitabilityComponent,
     };
 
     public GetFactory(ident: string) {

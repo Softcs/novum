@@ -1,0 +1,44 @@
+<sit-dict-container ident="sitAnalysisProductsProfitability" #sitDictcontainer ngClass="flex-container-column">
+  <div ngClass="content flex-container-column">
+    <mat-tab-group id="tab-group" animationDuration="0ms">
+      <mat-tab label="W grupach">      
+        <sit-data-set-container ident="sitProductsProfitabilityFilter" fxLayout="row">
+          <sit-data-input #sitControl field="searchPublication" label="Publikacja" placeholder="" appearance="outline" style="width: 300px;" ></sit-data-input>
+          <sit-data-input #sitControl field="searchAuthor" label="Autor" placeholder="" appearance="outline" style="width: 300px;" ></sit-data-input>
+          <sit-data-input #sitControl field="searchManager" label="Manager" placeholder="" appearance="outline" style="width: 340px;" [showRefreshButton]="true" ></sit-data-input>
+        </sit-data-set-container>
+        <sit-data-set-container ident="sitProductsProfitability" [showActionsToolbar]="false" ngClass="flex-container-column">
+          <ag-grid-angular 
+            #sitSetDataSource 
+            class="ag-theme-balham"
+            [defaultColDef]="defaultColDef"
+            [autoGroupColumnDef]="autoGroupColumnDef"
+            [rowGroupPanelShow]="rowGroupPanelShow"
+          >
+          </ag-grid-angular>
+        </sit-data-set-container>
+      </mat-tab>
+      <mat-tab label="W zakresie dat">
+        <sit-data-set-container ident="sitProductsProfitabilityInPeriodFilter" fxLayout="row">
+          <sit-data-input #sitControl field="search" label="Filtruj" placeholder="Tytuł, EAN" appearance="outline" style="width: 300px;" ></sit-data-input>
+          <sit-data-input #sitControl field="releaseDateFrom" type="date" label="Data od" appearance="outline" style="width: 130px;"></sit-data-input>
+          <sit-data-input #sitControl field="releaseDateTo" type="date" label="Data do" appearance="outline" style="width: 130px;" ></sit-data-input>
+          <sit-data-input #sitControl field="daysFromRelease" type="number" label="Liczba dni" placeholder="" appearance="outline" style="width: 80px;"></sit-data-input>
+          <sit-data-checkbox #sitControl field="useReleaseDate" label="Wg daty wyd." labelPosition="after" checked="true" [refreshOnChange]="true" ></sit-data-checkbox>
+          <sit-data-checkbox #sitControl field="showPremiereOnly" label="Tylko premiery" labelPosition="after" checked="true" [refreshOnChange]="true" ></sit-data-checkbox>
+          <sit-data-checkbox #sitControl field="showByROITotal" label="ROI" labelPosition="after" checked="true" [refreshOnChange]="true" ></sit-data-checkbox>
+          <sit-data-input #sitControl field="ROITotalGreaterEqualThan" type="number" label="ROI wg koszt całk >=" placeholder="" appearance="outline" style="width: 110px;"></sit-data-input>
+          <sit-data-input #sitControl field="ROITotalLessEqualThan" type="number" label="ROI wg koszt całk &lt;=" placeholder="" appearance="outline" style="width: 175px;" [showRefreshButton]="true"></sit-data-input>
+        </sit-data-set-container>
+        <sit-data-set-container ident="sitProductsProfitabilityInPeriod" [showActionsToolbar]="false" ngClass="flex-container-column">
+          <ag-grid-angular 
+            #sitSetDataSource 
+            class="ag-theme-balham"
+            [rowHeight]="80"
+          >
+          </ag-grid-angular>
+        </sit-data-set-container>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</sit-dict-container>            

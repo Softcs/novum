@@ -387,6 +387,7 @@ import { SitPalletsBalanceComponent } from './containers/dictionaries/sit-pallet
 import { SitPalletsBalanceDocumentInsComponent } from './containers/dictionaries/sit-pallets-balance/actions/sit-pallets-balance-document-ins/sit-pallets-balance-document-ins.component';
 import { SitCustomersDocumentsImportsEditComponent } from './containers/dictionaries/sit-customers/actions/sit-customers-documents-imports-edit/sit-customers-documents-imports-edit.component';
 import { SitPalletsEvidenceAddComponent } from './containers/dictionaries/sit-wms-docs/actions/sit-pallets-evidence-add/sit-pallets-evidence-add.component';
+import { SitAnalysisProductsProfitabilityComponent } from './containers/dictionaries/sit-analysis-products-profitability/sit-analysis-products-profitability.component';
 
 @NgModule({
     imports: [
@@ -757,6 +758,7 @@ import { SitPalletsEvidenceAddComponent } from './containers/dictionaries/sit-wm
         SitPalletsBalanceDocumentInsComponent,
         SitCustomersDocumentsImportsEditComponent,
         SitPalletsEvidenceAddComponent,
+        SitAnalysisProductsProfitabilityComponent,
 
     ],
     providers: [
