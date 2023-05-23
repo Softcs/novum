@@ -39,13 +39,13 @@ export class SitAnalysisProductsProfitabilityComponent extends SitDictBaseCompon
       this.rowGroupPanelShow = 'always';
     };
 
-    public getImageUrlPrv(data:any) {
-      if (!data || !data.sitImagesG_prv || !data.FileName_prv) {
-        return '<img height="' + this.imgPrvHeight + '" class="img-for-grid-mini" src="' + this.urlService.getImageUrl("noimage", "noimage_s.jpg") + '" title="grafika: ' + data.ProductName + '" alt="grafika dla: ' + data.ProductName + '"/>';
-      }
-      return '<img height="' + this.imgPrvHeight + '" class="img-for-grid-mini" src="' + this.urlService.getImageUrl(data.sitImagesG_prv, data.FileName_prv) + '" title="grafika: ' + data.ProductName + '" alt="grafika dla: ' + data.ProductName + '"/>';
-    }    
-  
+  public getImageUrlPrv(data:any) {
+    if (!data || !data.sitImagesG_prv || !data.FileName_prv) {
+      return '<img height="' + this.imgPrvHeight + '" class="img-for-grid-mini" src="' + this.urlService.getImageUrl("noimage", "noimage_s.jpg") + '" title="grafika: ' + data.ProductName + '" alt="grafika dla: ' + data.ProductName + '"/>';
+    }
+    return '<img height="' + this.imgPrvHeight + '" class="img-for-grid-mini" src="' + this.urlService.getImageUrl(data.sitImagesG_prv, data.FileName_prv) + '" title="grafika: ' + data.ProductName + '" alt="grafika dla: ' + data.ProductName + '"/>';
+  };
+
   public prepareColumnsDefinitnion() {
     var locale = this.locale;
     this.gridColumnsDefinition["sitProductsProfitability"] = [
@@ -115,7 +115,7 @@ export class SitAnalysisProductsProfitabilityComponent extends SitDictBaseCompon
           return '<span style="color: dimgray;">Nakład</span> <span style="display:inline-block;width:60px;">' + formatNumber(params.data["Circulation"], locale,'1.0-0').replace(/[,]/g,' ') +'</span><br>'
               + '<span style="color: dimgray;">Przyjęcia</span> <span style="display:inline-block;width:60px;">' + formatNumber(params.data["ReceiveQuantity"], locale,'1.0-0').replace(/[,]/g,' ') +'</span><br>'
               + '<span style="color: dimgray;">Stan</span> <span style="display:inline-block;width:60px;">' + formatNumber(params.data["StocksQuantity"], locale,'1.0-0').replace(/[,]/g,' ') +'</span><br>'
-              + '<span style="color: dimgray;">% sprzedaży</span> <span style="display:inline-block;width:60px;">' + formatNumber(params.data["SoldCirculationPercent"], locale,'1.2-2').replace(/[,]/g,' ') +'</span><br>'
+              + '<span style="color: dimgray;">% sprzedaży</span> <span style="display:inline-block;width:60px;">' + formatNumber(params.data["SoldReceivePercent"], locale,'1.2-2').replace(/[,]/g,' ') +'</span><br>'
           },
         cellStyle: {'line-height': '1.5em', 'padding-top': '.3em'}   
       },
@@ -195,5 +195,25 @@ export class SitAnalysisProductsProfitabilityComponent extends SitDictBaseCompon
 
     ]
 
+  }
+
+  hideSummary(){
+    if (!this.dictContainer?.activeRow('sitProductsProfitabilityInPeriodFilter')) { return }
+    else return(this.dictContainer?.activeRow('sitProductsProfitabilityInPeriodFilter').showSummary == 1 ? false : true);
+  }
+
+  hideROIFilter(){
+    if (!this.dictContainer?.activeRow('sitProductsProfitabilityInPeriodFilter')) { return }
+    else return(this.dictContainer?.activeRow('sitProductsProfitabilityInPeriodFilter').showByROITotal == 1 ? false : true);
+  }
+
+  hidePremiereOnlyFilter(){
+    if (!this.dictContainer?.activeRow('sitProductsProfitabilityInPeriodFilter')) { return }
+    else return(this.dictContainer?.activeRow('sitProductsProfitabilityInPeriodFilter').useReleaseDate == 1 ? false : true);
+  }  
+  
+  hideDaysFromReleaseFilter(){
+    if (!this.dictContainer?.activeRow('sitProductsProfitabilityInPeriodFilter')) { return }
+    else return(this.dictContainer?.activeRow('sitProductsProfitabilityInPeriodFilter').useReleaseDate == 0 ? false : true);
   }
 }

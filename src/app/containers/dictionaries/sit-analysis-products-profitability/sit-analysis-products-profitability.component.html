@@ -23,12 +23,22 @@
           <sit-data-input #sitControl field="search" label="Filtruj" placeholder="Tytuł, EAN" appearance="outline" style="width: 300px;" ></sit-data-input>
           <sit-data-input #sitControl field="releaseDateFrom" type="date" label="Data od" appearance="outline" style="width: 130px;"></sit-data-input>
           <sit-data-input #sitControl field="releaseDateTo" type="date" label="Data do" appearance="outline" style="width: 130px;" ></sit-data-input>
-          <sit-data-input #sitControl field="daysFromRelease" type="number" label="Liczba dni" placeholder="" appearance="outline" style="width: 80px;"></sit-data-input>
           <sit-data-checkbox #sitControl field="useReleaseDate" label="Wg daty wyd." labelPosition="after" checked="true" [refreshOnChange]="true" ></sit-data-checkbox>
-          <sit-data-checkbox #sitControl field="showPremiereOnly" label="Tylko premiery" labelPosition="after" checked="true" [refreshOnChange]="true" ></sit-data-checkbox>
-          <sit-data-checkbox #sitControl field="showByROITotal" label="ROI" labelPosition="after" checked="true" [refreshOnChange]="true" ></sit-data-checkbox>
-          <sit-data-input #sitControl field="ROITotalGreaterEqualThan" type="number" label="ROI wg koszt całk >=" placeholder="" appearance="outline" style="width: 110px;"></sit-data-input>
-          <sit-data-input #sitControl field="ROITotalLessEqualThan" type="number" label="ROI wg koszt całk &lt;=" placeholder="" appearance="outline" style="width: 175px;" [showRefreshButton]="true"></sit-data-input>
+          <sit-data-input #sitControl field="daysFromRelease" type="number" label="Liczba dni" placeholder="" appearance="outline" style="width: 80px;"
+            [class.hidden]="hideDaysFromReleaseFilter()"
+          ></sit-data-input>
+          <sit-data-checkbox #sitControl field="showPremiereOnly" label="Tylko premiery" labelPosition="after" checked="true" [refreshOnChange]="true"
+            [class.hidden]="hidePremiereOnlyFilter()"
+          ></sit-data-checkbox>
+          <sit-data-checkbox #sitControl field="showByROITotal" label="ROI" labelPosition="after" checked="true" [refreshOnChange]="true"></sit-data-checkbox>
+          <sit-data-input #sitControl field="ROITotalGreaterEqualThan" type="number" label="ROI wg koszt całk >=" placeholder="" appearance="outline" 
+            style="width: 110px;" [class.hidden]="hideROIFilter()"
+          ></sit-data-input>
+          <sit-data-input #sitControl field="ROITotalLessEqualThan" type="number" label="ROI wg koszt całk &lt;=" placeholder="" appearance="outline" 
+            style="width: 110px;" [class.hidden]="hideROIFilter()"
+          ></sit-data-input>
+          <sit-refresh-button></sit-refresh-button>
+          <sit-data-checkbox #sitControl field="showSummary" label="Pokaż podsumowanie" labelPosition="after" checked="true" ></sit-data-checkbox>
         </sit-data-set-container>
         <sit-data-set-container ident="sitProductsProfitabilityInPeriod" [showActionsToolbar]="false" ngClass="flex-container-column">
           <ag-grid-angular 
@@ -38,6 +48,37 @@
           >
           </ag-grid-angular>
         </sit-data-set-container>
+        <sit-data-set-container  ident="sitProductsProfitabilityInPeriodSum" ngClass="flex-container-column" [class.hidden]="hideSummary()">
+          <sit-simple-container ngClass="flex-container-row mb-05" >
+            <div ngClass="flex-container-column">
+              <sit-data-label #sitControl field="ReceiveQuantity" label="Ilość przyjęta"></sit-data-label>
+              <sit-data-label #sitControl field="SaleQuantity" label="Ilość sprzedana"></sit-data-label>
+              <sit-data-label #sitControl field="SoldReceivePercent" label="% sprzedaży"></sit-data-label>
+            </div>
+            <div ngClass="flex-container-column">
+              <sit-data-label #sitControl field="UnsoldQuantity" label="Ilość niesprzedana"></sit-data-label>
+              <sit-data-label #sitControl field="StocksQuantity" label="Stan"></sit-data-label>
+            </div>            
+            <div ngClass="flex-container-column">
+              <sit-data-label #sitControl field="RealizedCost" label="Koszty realizowane"></sit-data-label>
+              <sit-data-label #sitControl field="RealizedTotal" label="Koszty całkowite"></sit-data-label>
+              <sit-data-label #sitControl field="TotalRealizedCostDiff" label="Różnica"></sit-data-label>
+              <sit-data-label #sitControl field="SaleNetAmount" label="Sprzedaż"></sit-data-label>
+            </div>
+            <div ngClass="flex-container-column">
+              <sit-data-label #sitControl field="" label="Wg kosztów realizowanych"></sit-data-label>
+              <sit-data-label #sitControl field="Margin01Real" label="Przebitka"></sit-data-label>
+              <sit-data-label #sitControl field="ROIReal" label="ROI"></sit-data-label>
+              <sit-data-label #sitControl field="IncomAfterSalesReal" label="Wynik na inw."></sit-data-label>
+            </div>
+            <div ngClass="flex-container-column">
+              <sit-data-label #sitControl field="" label="Wg kosztów całkowitych"></sit-data-label>
+              <sit-data-label #sitControl field="Margin01Total" label="Przebitka"></sit-data-label>
+              <sit-data-label #sitControl field="ROITotal" label="ROI"></sit-data-label>
+              <sit-data-label #sitControl field="IncomAfterSalesTotal" label="Wynik na inw."></sit-data-label>
+            </div>
+          </sit-simple-container>
+        </sit-data-set-container>        
       </mat-tab>
     </mat-tab-group>
   </div>
