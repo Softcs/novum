@@ -168,6 +168,7 @@ export class SitCustomersComponent extends SitDictBaseComponent {
       { headerName: 'ZUS dod.', field: 'ZUSAddRate',headerTooltip:'Dodatkowy ZUS', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
       { headerName: 'PFRON', field: 'PFRONRate', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
       { headerName: 'PPK', field: 'PPKRate', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
+      { headerName: 'Wyr.br.', field: 'EqualPayRate', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
       { headerName: 'Posi.bez VAT', headerTooltip:'Posiłki bez VAT', field: 'MealsNoVAT', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 70, renderType: "checkbox"},
       { headerName: '% VAT`', field: 'MealsVATRate', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 60,suppressMenu: true},
     ];    
