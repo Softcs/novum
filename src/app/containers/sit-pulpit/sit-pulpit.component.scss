@@ -8,36 +8,75 @@
         padding-right: 5px;
     }
 
-    .testowy-link-container {
-        border: 2px solid red;
-        border-width: 1px 0;
-        padding: .2em 0;
-        margin-bottom: .5em;
+    .sit-dashboard-messages {
+        // border: 3px solid green;
+        flex: 0 0 min-content;
+        // margin-bottom: .5em;
+        padding-bottom: .5em;
 
-        .sit-menu-list-item {
-            display: inline-block;
-            background-color: inherit;
-            color: inherit;
+        .tasks-count {
+            display: flex;
+            flex: auto;
+            align-items: center;
+            justify-content: center;
 
-            .mat-list-item {
-                color: inherit;
-                font-family: inherit;
-                margin: auto;
-                margin-right: .5em;
-                text-decoration: underline dotted;
-
-                &:hover {
-                    background-color: inherit;
-                    text-decoration-style: wavy;
-                }
-
-                .mat-icon {
-                    display: none;
-                }
+            span{
+                font-size: 1.3em;
+                font-weight: 600;
             }
+        }
 
-          }
+        .ag-root-wrapper-body.ag-layout-normal {
+            // border: 3px solid #ccc;
+            flex: 0 1 min-content;
+        }
+
+        // ag-grid-angular {
+        //     // border: 3px solid red;
+
+        //     .ag-root-wrapper.ag-layout-normal {
+        //         // border: 3px solid blue;
+
+        //         .ag-root-wrapper-body.ag-layout-normal {
+        //             // border: 3px solid #ccc;
+        //             flex: 0 1 min-content;
+        //         }
+
+        //     }
+        // }
+        //.ag-root-wrapper-body.ag-layout-normal
     }
+
+    // .testowy-link-container {
+    //     border: 2px solid red;
+    //     border-width: 1px 0;
+    //     padding: .2em 0;
+    //     margin-bottom: .5em;
+
+    //     .sit-menu-list-item {
+    //         display: inline-block;
+    //         background-color: inherit;
+    //         color: inherit;
+
+    //         .mat-list-item {
+    //             color: inherit;
+    //             font-family: inherit;
+    //             margin: auto;
+    //             margin-right: .5em;
+    //             text-decoration: underline dotted;
+
+    //             &:hover {
+    //                 background-color: inherit;
+    //                 text-decoration-style: wavy;
+    //             }
+
+    //             .mat-icon {
+    //                 display: none;
+    //             }
+    //         }
+
+    //       }
+    // }
 
 
 

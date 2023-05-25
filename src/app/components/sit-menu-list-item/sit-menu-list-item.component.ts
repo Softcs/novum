@@ -26,7 +26,7 @@ import { FactoryService } from '@app/_services/factory.service';
 export class SitMenuListItemComponent {
   expanded: boolean;
   //@HostBinding('attr.aria-expanded') ariaExpanded = this.expanded;
-  @Input() item: NavItem;
+  @Input('item') item: NavItem;
   @Input() depth: number;
 
   constructor(
@@ -38,12 +38,14 @@ export class SitMenuListItemComponent {
     if (this.depth === undefined) {
       this.depth = 0;
     }
+
   }
 
+//   ngOnInit() {
+// console.log('item: ', this.item);
+//   }
+
   onItemSelected(item: NavItem) {
-
-// console.log('item: ', item);
-
 
     let createNew = true;
     if ((!item.children || !item.children.length) && item.kind == "app") {

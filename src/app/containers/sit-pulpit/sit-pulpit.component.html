@@ -28,10 +28,22 @@
 
       <div fxFlex=40 fxLayout="column" class="content">
 
+        <div class="sit-grid-title">Zadania</div>
+        <sit-data-set-container  ident="sitDashboardMessages" ngClass="flex-container-column sit-dashboard-messages">
+            <sit-refresh-button tooltip="Odśwież"></sit-refresh-button>
+            <ag-grid-angular
+              #sitSetDataSource
+              class="ag-theme-balham"
+              [rowHeight]="60"
+              [frameworkComponents]="frameworkComponents"
+            >
+            </ag-grid-angular>
+        </sit-data-set-container>
+
         <!-- <div class="sit-grid-title">Testowe linki</div>
         <div class="testowy-link-container">
-          <sit-menu-list-item [item]="{caption: 'Publikacje', kind: 'app', link: 'sitPublications'}"></sit-menu-list-item>
-          <sit-menu-list-item [item]="{caption: 'Kancelaria', kind: 'app', link: 'sitOfficeDocHeaders'}"></sit-menu-list-item>
+          <sit-link-internal [item]="{caption: 'Publikacje', kind: 'app', link: 'sitPublications'}"></sit-link-internal>
+          <sit-link-internal [item]="{caption: 'Kancelaria', kind: 'app', link: sitOfficeDocHeaders }"></sit-link-internal>
         </div> -->
 
 

@@ -1,6 +1,7 @@
 ﻿<!-- <div class="container-cols container-main"> -->
 <div class="flex-container-column container-main">
 
+  <!-- <sit-msg></sit-msg> -->
 
   <sit-navbar
     [appDrawerParent]="appDrawer"
@@ -10,7 +11,7 @@
   </sit-navbar>
 
 
-<!-- mat-drawer-container jest wyłącznie pojemnikiem dla <mat-drawer #appDrawer> (wysuwanego menu) + reszty kontetntu -->
+  <!-- mat-drawer-container jest wyłącznie pojemnikiem dla <mat-drawer #appDrawer> (wysuwanego menu) + reszty kontetntu -->
 
   <!-- <mat-drawer-container autosize class="container-cols"> -->
   <!-- fxFlex = flex-basis: 1e-9px; = https://stackoverflow.com/questions/49238319/flex-layout-what-does-flex-basis-1e-09px-mean -->
@@ -36,7 +37,7 @@
 
 
 
-<!-- element router-outlet jest natywnie "otacznany" <mat-drawer-content> więc dodaję jawnie w celu panowania np w postaci dodania class -->
+    <!-- element router-outlet jest natywnie "otacznany" <mat-drawer-content> więc dodaję jawnie w celu panowania np w postaci dodania class -->
 
     <mat-drawer-content ngClass="container-content-main flex-container-column" fxFlex="auto" fxLayout="column">
       <router-outlet></router-outlet>

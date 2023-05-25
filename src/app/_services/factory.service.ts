@@ -278,7 +278,12 @@ import { SitPalletsBalanceComponent } from '@app/containers/dictionaries/sit-pal
 import { SitPalletsBalanceDocumentInsComponent } from '@app/containers/dictionaries/sit-pallets-balance/actions/sit-pallets-balance-document-ins/sit-pallets-balance-document-ins.component';
 import { SitCustomersDocumentsImportsEditComponent } from '@app/containers/dictionaries/sit-customers/actions/sit-customers-documents-imports-edit/sit-customers-documents-imports-edit.component';
 import { SitPalletsEvidenceAddComponent } from '@app/containers/dictionaries/sit-wms-docs/actions/sit-pallets-evidence-add/sit-pallets-evidence-add.component';
+
 import { SitAnalysisProductsProfitabilityComponent } from '@app/containers/dictionaries/sit-analysis-products-profitability/sit-analysis-products-profitability.component';
+import { SitLinkInternalComponent } from '@app/components/sit-link-internal/sit-link-internal.component';
+import { SitAgridLinkComponent }           from '@app/components/ag-grid/sit-agrid-link/sit-agrid-link.component';
+import { SitAgridPulpitReminderComponent } from '@app/components/ag-grid/sit-agrid-pulpit-reminder/sit-agrid-pulpit-reminder.component';
+
 
 
 @Injectable({ providedIn: 'root' })
@@ -566,6 +571,9 @@ export class FactoryService {
         sitCustomersDocumentsImportsEdit: SitCustomersDocumentsImportsEditComponent,
         sitPalletsEvidenceAdd: SitPalletsEvidenceAddComponent,
         sitAnalysisProductsProfitability: SitAnalysisProductsProfitabilityComponent,
+        SitLinkInternal: SitLinkInternalComponent,
+        SitAgridLink: SitAgridLinkComponent,
+        SitAgridPulpitReminder: SitAgridPulpitReminderComponent,
     };
 
     public GetFactory(ident: string) {
