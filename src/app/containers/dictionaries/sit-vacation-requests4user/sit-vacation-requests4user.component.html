@@ -8,7 +8,8 @@
               <sit-data-input #sitControl field="Search" label="wyszukaj" appearance="outline" style="width: 300px;"></sit-data-input>
               <sit-data-input #sitControl field="searchDateFrom" type="date" label="Od" appearance="outline" style="width: 130px;"></sit-data-input>
               <sit-data-input #sitControl field="searchDateTo" type="date" label="Do" appearance="outline" style="width: 195px;" [showRefreshButton]="true" ></sit-data-input>
-              <sit-data-checkbox #sitControl [refreshOnChange]="true" label="Pokaż wnioski podwładnych" id="ShowSubordinates" field="ShowSubordinates" widht="100px"></sit-data-checkbox>
+              <sit-data-checkbox #sitControl [refreshOnChange]="true" label="Pokaż wnioski podwładnych" id="showSubordinates" field="showSubordinates" widht="100px"></sit-data-checkbox>
+              <sit-data-checkbox #sitControl [refreshOnChange]="true" label="Do mojej akcept." id="myApproval" field="myApproval" widht="100px"></sit-data-checkbox>
             </div>
           </sit-data-set-container>
           <sit-data-set-container ident="sitVacationRequests4User" [showActionsToolbar]="true" fxLayout="column" fxFlex>

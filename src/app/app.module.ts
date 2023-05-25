@@ -387,6 +387,7 @@ import { SitPalletsBalanceComponent } from './containers/dictionaries/sit-pallet
 import { SitPalletsBalanceDocumentInsComponent } from './containers/dictionaries/sit-pallets-balance/actions/sit-pallets-balance-document-ins/sit-pallets-balance-document-ins.component';
 import { SitCustomersDocumentsImportsEditComponent } from './containers/dictionaries/sit-customers/actions/sit-customers-documents-imports-edit/sit-customers-documents-imports-edit.component';
 import { SitPalletsEvidenceAddComponent } from './containers/dictionaries/sit-wms-docs/actions/sit-pallets-evidence-add/sit-pallets-evidence-add.component';
+import { SitAnalysisProductsProfitabilityComponent } from './containers/dictionaries/sit-analysis-products-profitability/sit-analysis-products-profitability.component';
 import { SitLinkInternalComponent } from './components/sit-link-internal/sit-link-internal.component';
 import { SitAgridLinkComponent }           from './components/ag-grid/sit-agrid-link/sit-agrid-link.component';
 import { SitAgridPulpitReminderComponent } from './components/ag-grid/sit-agrid-pulpit-reminder/sit-agrid-pulpit-reminder.component';
@@ -760,6 +761,7 @@ import { SitAgridPulpitReminderComponent } from './components/ag-grid/sit-agrid-
         SitPalletsBalanceDocumentInsComponent,
         SitCustomersDocumentsImportsEditComponent,
         SitPalletsEvidenceAddComponent,
+        SitAnalysisProductsProfitabilityComponent,
         SitAgridLinkComponent,
         SitLinkInternalComponent,
         SitAgridPulpitReminderComponent,
