@@ -8,6 +8,11 @@ import { GridService } from '@app/_services/grid.service';
 import { UrlService } from '@app/_services/url.service';
 import { environment } from '../../../environments/environment';
 
+import { SitAgridLinkComponent } from '../../components/ag-grid/sit-agrid-link/sit-agrid-link.component';
+import { SitAgridPulpitReminderComponent } from '@app/components/ag-grid/sit-agrid-pulpit-reminder/sit-agrid-pulpit-reminder.component';
+
+
+
 @Component({
   selector: 'app-pulpit',
   templateUrl: 'sit-pulpit.component.html',
@@ -18,6 +23,8 @@ import { environment } from '../../../environments/environment';
 export class SitPulpitComponent  extends SitDictBaseComponent {
   appVersion = environment.appVersion;
   rowClassRules: any;
+  frameworkComponents: any;
+  sitOfficeDocHeaders = 'sitOfficeDocHeaders';
 
   constructor(
     protected gatewayService: GatewayService,
@@ -34,6 +41,11 @@ export class SitPulpitComponent  extends SitDictBaseComponent {
   public prepareColumnsDefinitnion() {
     var locale = this.locale;
 
+    this.frameworkComponents = {
+      // messageComponent: SitAgridLinkComponent,
+      reminderComponent: SitAgridPulpitReminderComponent,
+    };
+
     this.rowClassRules = {
       'workday': 'data.DayOff === 0',
       'dayoff': 'data.DayOff === 1',
@@ -48,6 +60,24 @@ export class SitPulpitComponent  extends SitDictBaseComponent {
       { headerName: 'Powód nieob.', field: 'AbsenceName', suppressMenu: true, flex: 1 },
     ],
 
+    
+    this.gridColumnsDefinition["sitDashboardMessages"] = [
+      {field: 'MessageGroup', headerName: 'Dział', suppressMenu: true, flex: 2},
+      {field: 'Message', headerName: 'Akcja', suppressMenu: true, flex: 3,
+        wrapText: true,
+        autoHeight: true,
+        cellRenderer: 'reminderComponent',
+        // cellRendererParams: {
+        //   test: 'zażółć gęślą jaźń',
+        // }
+      },
+      {field: 'Count', headerName: 'Ile', suppressMenu: true, width: 40,  
+        cellRenderer: (params: any) => params.data.Count,
+        cellClass: 'tasks-count'
+      },
+      // {field: 'DictionaryIdent', headerName: 'DictionaryIdent', suppressMenu: true, width: 80, defaultVisibility: false  },
+    ],
+
     this.gridColumnsDefinition["sitVacationRequests4Accept"] = [
       { headerName: 'Pracownik', field: 'EmployeeName', tooltipField: 'EmployeeName', filter: 'agTextColumnFilter', width: 170,
         cellRenderer: function(params) {
@@ -57,7 +87,7 @@ export class SitPulpitComponent  extends SitDictBaseComponent {
       },
       { headerName: 'Rodzaj urlopu', field: 'AbsenceName', tooltipField: 'AbsenceName', filter: 'agTextColumnFilter', width: 200 },
       { headerName: 'Okres', field: 'DateFrom', width: 100,
-        cellRenderer: function(params) {
+        cellRenderer: (params: any) => {
           return ('<span>' + formatDate(params.value, 'yyyy-MM-dd', locale) + '</span>'
             + '<br><span>' + formatDate(params.data["DateTo"], 'yyyy-MM-dd', locale) + '</span>')
         }
