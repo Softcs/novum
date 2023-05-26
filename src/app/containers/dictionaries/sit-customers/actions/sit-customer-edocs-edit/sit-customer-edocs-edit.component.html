@@ -2,8 +2,9 @@
   [(actionExecuteData)]="actionExecuteData"
   >
   <sit-data-set-container ident="sitCustomerEDocsEdit">
-    <div class="sit-proc-params-content" fxLayout="column" style="width: 350px;height: 400px;">
+    <div class="sit-proc-params-content" fxLayout="column" style="width: 500px;height: 400px;">
       <div fxLayout="row">
+        <sit-data-checkbox #sitControl field="IsActive" label="Aktywny" fxFlex="25"></sit-data-checkbox>
         <sit-data-input #sitControl type="text" field="DocumentIdent" label="Dokument" appearance="outline" 
           [lookupDisplayFields] = "['DocumentIdent','DocumentName']"
         ></sit-data-input>
@@ -12,9 +13,14 @@
         ></sit-data-input>
       </div>
       <div fxLayout="row">
-        <sit-data-checkbox #sitControl field="IsActive" label="Aktywny" fxFlex="30"></sit-data-checkbox>
-        <sit-data-checkbox #sitControl field="SendXml" label="Dołącz Xml" fxFlex="30"></sit-data-checkbox>
-        <sit-data-checkbox #sitControl field="SendPDFReport" label="Dołącz PDF" fxFlex="30"></sit-data-checkbox>
+        <sit-data-checkbox #sitControl field="SendPDFReport" label="Dołącz PDF" fxFlex="25"></sit-data-checkbox>
+      </div>
+      <div fxLayout="row">
+        <sit-data-checkbox #sitControl field="SendXml" label="Dołącz xml" fxFlex="25"></sit-data-checkbox>
+        <sit-data-checkbox #sitControl field="XmlFileAddDeclaration" label="Dodaj deklaracje xml" ></sit-data-checkbox>
+        <sit-data-input #sitControl type="text" field="XmlFileCodePage" label="Kodowanie" appearance="outline" 
+          [lookupDisplayFields] = "['CodePage']"
+        ></sit-data-input>
       </div>
       <sit-data-input #sitControl type="text" field="Recipients" label="Odbiorca" appearance="outline" ></sit-data-input>
       <sit-data-input #sitControl type="text" field="CopyRecipients" label="Kopia do" appearance="outline" ></sit-data-input>
