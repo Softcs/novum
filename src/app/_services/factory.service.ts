@@ -283,6 +283,7 @@ import { SitAnalysisProductsProfitabilityComponent } from '@app/containers/dicti
 import { SitLinkInternalComponent } from '@app/components/sit-link-internal/sit-link-internal.component';
 import { SitAgridLinkComponent }           from '@app/components/ag-grid/sit-agrid-link/sit-agrid-link.component';
 import { SitAgridPulpitReminderComponent } from '@app/components/ag-grid/sit-agrid-pulpit-reminder/sit-agrid-pulpit-reminder.component';
+import { SitPayrollsEditComponent } from '@app/containers/dictionaries/sit-payrolls/actions/sit-payrolls-edit/sit-payrolls-edit.component';
 
 
 
@@ -574,6 +575,7 @@ export class FactoryService {
         SitLinkInternal: SitLinkInternalComponent,
         SitAgridLink: SitAgridLinkComponent,
         SitAgridPulpitReminder: SitAgridPulpitReminderComponent,
+        sitPayrollsEdit: SitPayrollsEditComponent
     };
 
     public GetFactory(ident: string) {
