@@ -287,7 +287,8 @@ export class GridService {
     gridApi.forEachNode( (rowNode) => {
       
       // const rowValue = rowNode.data[fieldName];
-      const rowValue = rowNode.data?.fieldName;
+      const rowValue = rowNode.data && rowNode.data[fieldName];
+      // const rowValue = rowNode.data?.fieldName;
       
       if (this.stringUtils.compareStrings(rowValue, fieldValue) || this.stringUtils.compareStrings(rowValue, prevValue)) {
         rowNode.setData(rowNode.data);
