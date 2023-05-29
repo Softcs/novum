@@ -564,7 +564,7 @@ export class FactoryService {
         sitAnalysisPublishigPlan: SitAnalysisPublishigPlanComponent,
         sitB2cContributorsEdit: SitB2cContributorsEditComponent,
         sitProductSetIsB2c: SitProductSetIsB2cComponent,
-        SimpleCalendar: SimpleCalendarComponent,
+        simpleCalendar: SimpleCalendarComponent,
         sitOfficeDocDimensionsImportFromFile: SitOfficeDocDimensionsImportFromFileComponent,
         sitOfficeDocDimensionsCopyFromDoc: SitOfficeDocDimensionsCopyFromDocComponent,
         sitPalletsBalance: SitPalletsBalanceComponent,
@@ -572,9 +572,9 @@ export class FactoryService {
         sitCustomersDocumentsImportsEdit: SitCustomersDocumentsImportsEditComponent,
         sitPalletsEvidenceAdd: SitPalletsEvidenceAddComponent,
         sitAnalysisProductsProfitability: SitAnalysisProductsProfitabilityComponent,
-        SitLinkInternal: SitLinkInternalComponent,
-        SitAgridLink: SitAgridLinkComponent,
-        SitAgridPulpitReminder: SitAgridPulpitReminderComponent,
+        sitLinkInternal: SitLinkInternalComponent,
+        sitAgridLink: SitAgridLinkComponent,
+        sitAgridPulpitReminder: SitAgridPulpitReminderComponent,
         sitPayrollsEdit: SitPayrollsEditComponent
     };
 
