@@ -17,6 +17,8 @@ export class SitAnalysisProductsProfitabilityComponent extends SitDictBaseCompon
   public defaultColDef;
   public autoGroupColumnDef;
   public rowGroupPanelShow;
+  public suppressAggFuncInHeader;
+  public groupIncludeTotalFooter
   imgPrvHeight: string = '60';
 
   constructor(
@@ -28,7 +30,7 @@ export class SitAnalysisProductsProfitabilityComponent extends SitDictBaseCompon
       this.defaultColDef = {
         sortable: true,
         flex: 1,
-        minWidth: 150,
+        minWidth: 100,
       };
       this.autoGroupColumnDef = { 
         sortable: true,
@@ -37,6 +39,8 @@ export class SitAnalysisProductsProfitabilityComponent extends SitDictBaseCompon
         minWidth: 200,
       };
       this.rowGroupPanelShow = 'always';
+      this.suppressAggFuncInHeader = 'true';
+      this.groupIncludeTotalFooter = 'true';
     };
 
   public getImageUrlPrv(data:any) {
@@ -52,68 +56,120 @@ export class SitAnalysisProductsProfitabilityComponent extends SitDictBaseCompon
       { headerName: 'Publikacja', field: 'PublicationIdent', width: 200, tooltipField: 'PublicationIdent',
         enableRowGroup: true, rowGroup: true, hide: true},
       { headerName: 'Autor', field: 'Author', width: 200, tooltipField: 'Author',
-        enableRowGroup: true},
+        enableRowGroup: true, hide: true},
       { headerName: 'Manager', field: 'ManagerName', width: 200, tooltipField: 'ManagerName',
-        enableRowGroup: true},
+        enableRowGroup: true, hide: true},
 
       { headerName: 'Tytuł', field: 'Title', width: 200, tooltipField: 'Title', defaultVisibility: false},
       { headerName: 'Produkt', field: 'ProductName', width: 200, tooltipField: 'ProductName', defaultVisibility: false},
       { headerName: 'EAN', field: 'EAN', width: 100, defaultVisibility: false},
 
-      { headerName: 'Koszt szac.', field: 'EstimatedCost', width: 100, type: 'numericColumn', renderType:'number', suppressMenu: true,
+      { headerName: 'Sprz. ilość', field: 'SaleQuantity', width: 80, type: 'numericColumn', renderType:'number', suppressMenu: true, defaultVisibility: false,
         aggFunc: 'sum' },
-      { headerName: 'Koszt plan.', field: 'PlannedCost', width: 100, type: 'numericColumn', renderType:'number', suppressMenu: true,
-        aggFunc: 'sum' },
-      { headerName: 'Koszt real.', field: 'RealizedCost', width: 100, type: 'numericColumn', renderType:'number', suppressMenu: true,
-        aggFunc: 'sum' },
-      { headerName: 'Koszt całk.', field: 'TotalCost', width: 100, type: 'numericColumn', renderType:'number', suppressMenu: true,
+      { headerName: 'Sprz. netto', field: 'SaleNetAmount', width: 80, type: 'numericColumn', renderType:'number', suppressMenu: true,
         aggFunc: 'sum' },
 
-      { headerName: 'Sprz. Ilość', field: 'SaleQuantity', width: 100, type: 'numericColumn', renderType:'number', suppressMenu: true,
-        aggFunc: 'sum' },
-      { headerName: 'Sprz. netto', field: 'SaleNetAmount', width: 100, type: 'numericColumn', renderType:'number', suppressMenu: true,
-        aggFunc: 'sum' },
-
-      { headerName: 'Plan. przebitka', field: 'Margin01Plan', width: 100, type: 'numericColumn', renderType:'number', suppressMenu: true, },
-      
-      { headerName: 'Plan. ROI', field: 'ROIPlan', width: 100, type: 'numericColumn', renderType:'number', suppressMenu: true },
-      { headerName: 'Plan. wynik', field: 'IncomAfterSalesPlan', width: 100, type: 'numericColumn', renderType:'number', suppressMenu: true },
-
-      { headerName: 'Real. przebitka', field: 'Margin01Real', width: 100, type: 'numericColumn', renderType:'number', suppressMenu: true },
-
-      { headerName: 'Real. ROI', field: 'ROIReal', width: 100, type: 'numericColumn', renderType:'number', suppressMenu: true },
-      { headerName: 'Real. wynik', field: 'IncomAfterSalesReal', width: 100, type: 'numericColumn', renderType:'number', suppressMenu: true },
-
-      //{ headerName: 'Całk. przebitka', field: 'Margin01Total', width: 100, type: 'numericColumn', renderType:'number', suppressMenu: true },
-
-      { headerName: 'Całk. Przebitka', field: 'Margin01Total', width: 100, type: 'numericColumn', renderType:'number', suppressMenu: true, 
-        valueGetter: (params: any) => {
-
-
-          const saleNetAmount = params.getValue('SaleNetAmount') || 0;
-          const totalCost = params.getValue('TotalCost') || 0;
-
-// if(params.node.key === ' Ilustrowany słownik angielsko-polski (Jacek Lang)') 
-// {
-//   console.log('params: ', params);
-//   // console.log('node.aggData: ', params.node.aggData);
-// }
-
-          return totalCost > 0 && saleNetAmount/totalCost;
-        }
+      { headerName: 'Całkowite',
+        children: [  
+          { headerName: 'Wynik', field: 'IncomAfterSalesTotal', width: 100, type: 'numericColumn', renderType:'number', suppressMenu: true,
+            valueGetter: (params: any) => {
+              const saleNetAmount = params.getValue('SaleNetAmount') || 0;
+              const totalCost = params.getValue('TotalCost') || 0;
+              return saleNetAmount-totalCost;
+            },
+            cellStyle: function(params) { return {backgroundColor: '#ffe6e6'} },
+          },
+          { headerName: 'Koszt', field: 'TotalCost', type: 'numericColumn', renderType:'number', suppressMenu: true,
+            aggFunc: 'sum',
+            cellStyle: function(params) { return {backgroundColor: '#ffe6e6'} },
+          },
+          { headerName: 'Przebitka', field: 'Margin01Total', width: 100, type: 'numericColumn', renderType:'number', suppressMenu: true, 
+            valueGetter: (params: any) => {
+              const saleNetAmount = params.getValue('SaleNetAmount') || 0;
+              const totalCost = params.getValue('TotalCost') || 0;
+              return totalCost != 0 && saleNetAmount/totalCost;
+            },
+            cellStyle: function(params) { return {backgroundColor: '#ffe6e6'} },
+          },
+          { headerName: 'ROI', field: 'ROITotal', width: 100, type: 'numericColumn', renderType:'number', suppressMenu: true, 
+            valueGetter: (params: any) => {
+              const saleNetAmount = params.getValue('SaleNetAmount') || 0;
+              const totalCost = params.getValue('TotalCost') || 0;
+              return totalCost != 0 && (saleNetAmount-totalCost)/totalCost;
+            },
+            cellStyle: function(params) { return {backgroundColor: '#ffe6e6'} },
+          },
+        ]
       },
 
-      // { headerName: 'Całk. ROI-0', field: 'ROITotal', width: 100, type: 'numericColumn', renderType:'number', suppressMenu: true },
-      { headerName: 'Całk. ROI', field: 'ROITotal', width: 100, type: 'numericColumn', renderType:'number', suppressMenu: true, 
-        valueGetter: (params: any) => {
-          const saleNetAmount = params.getValue('SaleNetAmount') || 0;
-          const totalCost = params.getValue('TotalCost') || 0;
-          return totalCost > 0 && (saleNetAmount-totalCost)/totalCost;
-        }
+      { headerName: 'Realizowane',
+        children: [ 
+          { headerName: 'Wynik', field: 'IncomAfterSalesReal', width: 100, type: 'numericColumn', renderType:'number', suppressMenu: true,
+            valueGetter: (params: any) => {
+              const saleNetAmount = params.getValue('SaleNetAmount') || 0;
+              const realizedCost = params.getValue('RealizedCost') || 0;
+              return saleNetAmount-realizedCost;
+            },
+            cellStyle: function(params) { return {backgroundColor: '#cce6ff'} },   
+          },
+          { headerName: 'Koszt', field: 'RealizedCost', type: 'numericColumn', renderType:'number', suppressMenu: true,
+            aggFunc: 'sum',
+            cellStyle: function(params) { return {backgroundColor: '#cce6ff'} }, 
+          },
+          { headerName: 'Przebitka', field: 'Margin01Real', width: 100, type: 'numericColumn', renderType:'number', suppressMenu: true,
+            valueGetter: (params: any) => {
+              const saleNetAmount = params.getValue('SaleNetAmount') || 0;
+              const realizedCost = params.getValue('RealizedCost') || 0;
+              return realizedCost != 0 && saleNetAmount/realizedCost;
+            },
+            cellStyle: function(params) { return {backgroundColor: '#cce6ff'} },
+          },
+          { headerName: 'ROI', field: 'ROIReal', width: 100, type: 'numericColumn', renderType:'number', suppressMenu: true,
+            valueGetter: (params: any) => {
+              const saleNetAmount = params.getValue('SaleNetAmount') || 0;
+              const realizedCost = params.getValue('RealizedCost') || 0;
+              return realizedCost != 0 && (saleNetAmount-realizedCost)/realizedCost;
+            },
+            cellStyle: function(params) { return {backgroundColor: '#cce6ff'} },
+          },
+        ]
       },
 
-      { headerName: 'Całk. wynik', field: 'IncomAfterSalesTotal', width: 100, type: 'numericColumn', renderType:'number', suppressMenu: true },
+      { headerName: 'Planowane',
+        children: [ 
+          { headerName: 'Wynik', field: 'IncomAfterSalesPlan', width: 100, type: 'numericColumn', renderType:'number', suppressMenu: true,
+            valueGetter: (params: any) => {
+              const saleNetAmount = params.getValue('SaleNetAmount') || 0;
+              const plannedCost = params.getValue('PlannedCost') || 0;
+              return saleNetAmount-plannedCost;
+            },
+            cellStyle: function(params) { return {backgroundColor: '#d6f5d6'} },
+          },
+          { headerName: 'Koszt', field: 'PlannedCost', type: 'numericColumn', renderType:'number', suppressMenu: true,
+            aggFunc: 'sum',
+            cellStyle: function(params) { return {backgroundColor: '#d6f5d6'} },
+          },
+          { headerName: 'Przebitka', field: 'Margin01Plan', width: 100, type: 'numericColumn', renderType:'number', suppressMenu: true, 
+            valueGetter: (params: any) => {
+              const saleNetAmount = params.getValue('SaleNetAmount') || 0;
+              const plannedCost = params.getValue('PlannedCost') || 0;
+              return plannedCost != 0 && saleNetAmount/plannedCost;
+            },
+            cellStyle: function(params) { return {backgroundColor: '#d6f5d6'} },
+          },
+          { headerName: 'ROI', field: 'ROIPlan', width: 100, type: 'numericColumn', renderType:'number', suppressMenu: true,
+            valueGetter: (params: any) => {
+              const saleNetAmount = params.getValue('SaleNetAmount') || 0;
+              const plannedCost = params.getValue('PlannedCost') || 0;
+              return plannedCost != 0 && (saleNetAmount-plannedCost)/plannedCost;
+            },
+            cellStyle: function(params) { return {backgroundColor: '#d6f5d6'} },
+          },
+        ]
+      },
 
+      { headerName: 'Koszt szac.', field: 'EstimatedCost', type: 'numericColumn', renderType:'number', suppressMenu: true,
+        aggFunc: 'sum', defaultVisibility: false },
     ]
 
     this.gridColumnsDefinition["sitProductsProfitabilityInPeriod"] = [

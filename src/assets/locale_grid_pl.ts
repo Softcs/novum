@@ -55,14 +55,14 @@ export const AG_GRID_LOCALE_PL = {
     // columns tool panel
     pivotMode: 'Pivot Mode',
     groups: 'Row Groups',
-    rowGroupColumnsEmptyMessage: 'Drag here to set row groups',
+    rowGroupColumnsEmptyMessage: 'Przeciągnij tutaj by dodać do grupowania',
     values: 'Values',
     valueColumnsEmptyMessage: 'Drag here to aggregate',
     pivots: 'Column Labels',
     pivotColumnsEmptyMessage: 'Drag here to set column labels',
 
     // Header of the Default Group Column
-    group: 'Group',
+    group: 'Grupa',
 
     // Other
     loadingOoo: 'Ładowanie...',
@@ -117,7 +117,7 @@ export const AG_GRID_LOCALE_PL = {
     previousPage: 'Poprzednia strona',
 
     // Pivoting
-    pivotColumnGroupTotals: 'Total',
+    pivotColumnGroupTotals: 'Razem',
 
     // Enterprise Menu (Charts)
     pivotChartAndPivotMode: 'Pivot Chart & Pivot Mode',
