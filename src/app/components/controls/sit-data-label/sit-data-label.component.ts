@@ -7,8 +7,8 @@ import { formatDate, formatNumber } from '@angular/common';
 /**
  * params:
  * - labelWidth: string, default='', np: labelWidth="8em" 
- * - type: string; text | number | number4, default='text', np: label="number" 
- * - label: string; default='', np: labelWidth="Cena"
+ * - type: string; text | number | number0 | number4, default='text', np: label="number" 
+ * - label: string; default='', np: label="Cena"
  * - valueStyle: any = {}; np: [valueStyle]="{'font-weight': '600'}"
  * - labelStyle: any = {}; np: [valueStyle]="{'font-weight': '600'}"
  * - field: string = ''; np: field="CollectionName" 
@@ -53,6 +53,7 @@ export class SitDataLabelComponent extends SitDataBaseComponent {
   public setValue(value: any) {
 
     if (this.type =='number')  { this.value = formatNumber(value, this.locale, '1.2-2').replace(/[,]/g,' ') }
+    else if (this.type =='number0')  { this.value = formatNumber(value, this.locale, '1.0-0').replace(/[,]/g,' ') }
     else if (this.type =='number4')  { this.value = formatNumber(value, this.locale, '1.4-4').replace(/[,]/g,' ') }
     else { this.value = value }
     
