@@ -46,8 +46,10 @@ export class SitPayrollsComponent extends SitDictBaseComponent {
           return '<span style="color: dimgray;">Listy:</span> <span style="display:inline-block;width:70px;">' + formatDate(params.data["Date"], 'yyyy-MM-dd', locale) +'</span><br>'
                + '<span style="color: dimgray;">Wypłaty:</span> <span style="display:inline-block;width:70px;">' + formatDate(params.data["PaymentDate"], 'yyyy-MM-dd', locale) +'</span><br>'
                + '<span style="color: dimgray;">Okres:</span> <span style="display:inline-block;width:70px;">' + formatDate(params.data["DateFrom"], 'yyyy-MM-dd', locale) +'</span><br>'
-               + '<span style="color: dimgray;"></span> <span style="display:inline-block;width:70px;">' + formatDate(params.data["DateTo"], 'yyyy-MM-dd', locale) +'</span>'
-        }
+               + '<span style="color: dimgray;"></span> <span style="display:inline-block;width:70px;">' + formatDate(params.data["DateTo"], 'yyyy-MM-dd', locale) +'</span><br>'
+               + '<span style="color: dimgray;">Księg.:</span> <span style="display:inline-block;width:70px;">' + formatDate(params.data["AccountingDate"], 'yyyy-MM-dd', locale) +'</span><br>'
+        },
+        cellStyle: {'line-height': '1.7em', 'padding-top': '.3em'}
       },
       { headerName: 'Wynagrodzenie', field: 'Gross', filter: 'agTextColumnFilter', width: 160,
         type: 'rightAligned',

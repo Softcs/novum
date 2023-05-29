@@ -283,6 +283,7 @@ import { SitAnalysisProductsProfitabilityComponent } from '@app/containers/dicti
 import { SitLinkInternalComponent } from '@app/components/sit-link-internal/sit-link-internal.component';
 import { SitAgridLinkComponent }           from '@app/components/ag-grid/sit-agrid-link/sit-agrid-link.component';
 import { SitAgridPulpitReminderComponent } from '@app/components/ag-grid/sit-agrid-pulpit-reminder/sit-agrid-pulpit-reminder.component';
+import { SitPayrollsEditComponent } from '@app/containers/dictionaries/sit-payrolls/actions/sit-payrolls-edit/sit-payrolls-edit.component';
 
 
 
@@ -563,7 +564,7 @@ export class FactoryService {
         sitAnalysisPublishigPlan: SitAnalysisPublishigPlanComponent,
         sitB2cContributorsEdit: SitB2cContributorsEditComponent,
         sitProductSetIsB2c: SitProductSetIsB2cComponent,
-        SimpleCalendar: SimpleCalendarComponent,
+        simpleCalendar: SimpleCalendarComponent,
         sitOfficeDocDimensionsImportFromFile: SitOfficeDocDimensionsImportFromFileComponent,
         sitOfficeDocDimensionsCopyFromDoc: SitOfficeDocDimensionsCopyFromDocComponent,
         sitPalletsBalance: SitPalletsBalanceComponent,
@@ -571,9 +572,10 @@ export class FactoryService {
         sitCustomersDocumentsImportsEdit: SitCustomersDocumentsImportsEditComponent,
         sitPalletsEvidenceAdd: SitPalletsEvidenceAddComponent,
         sitAnalysisProductsProfitability: SitAnalysisProductsProfitabilityComponent,
-        SitLinkInternal: SitLinkInternalComponent,
-        SitAgridLink: SitAgridLinkComponent,
-        SitAgridPulpitReminder: SitAgridPulpitReminderComponent,
+        sitLinkInternal: SitLinkInternalComponent,
+        sitAgridLink: SitAgridLinkComponent,
+        sitAgridPulpitReminder: SitAgridPulpitReminderComponent,
+        sitPayrollsEdit: SitPayrollsEditComponent
     };
 
     public GetFactory(ident: string) {
