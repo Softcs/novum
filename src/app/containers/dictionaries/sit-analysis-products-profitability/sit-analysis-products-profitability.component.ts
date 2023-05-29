@@ -74,16 +74,44 @@ export class SitAnalysisProductsProfitabilityComponent extends SitDictBaseCompon
       { headerName: 'Sprz. netto', field: 'SaleNetAmount', width: 100, type: 'numericColumn', renderType:'number', suppressMenu: true,
         aggFunc: 'sum' },
 
-      { headerName: 'Plan. przebitka', field: 'Margin01Plan', width: 100, type: 'numericColumn', renderType:'number', suppressMenu: true },
+      { headerName: 'Plan. przebitka', field: 'Margin01Plan', width: 100, type: 'numericColumn', renderType:'number', suppressMenu: true, },
+      
       { headerName: 'Plan. ROI', field: 'ROIPlan', width: 100, type: 'numericColumn', renderType:'number', suppressMenu: true },
       { headerName: 'Plan. wynik', field: 'IncomAfterSalesPlan', width: 100, type: 'numericColumn', renderType:'number', suppressMenu: true },
 
       { headerName: 'Real. przebitka', field: 'Margin01Real', width: 100, type: 'numericColumn', renderType:'number', suppressMenu: true },
+
       { headerName: 'Real. ROI', field: 'ROIReal', width: 100, type: 'numericColumn', renderType:'number', suppressMenu: true },
       { headerName: 'Real. wynik', field: 'IncomAfterSalesReal', width: 100, type: 'numericColumn', renderType:'number', suppressMenu: true },
 
-      { headerName: 'Całk. przebitka', field: 'Margin01Total', width: 100, type: 'numericColumn', renderType:'number', suppressMenu: true },
-      { headerName: 'Całk. ROI', field: 'ROITotal', width: 100, type: 'numericColumn', renderType:'number', suppressMenu: true },
+      //{ headerName: 'Całk. przebitka', field: 'Margin01Total', width: 100, type: 'numericColumn', renderType:'number', suppressMenu: true },
+
+      { headerName: 'Całk. Przebitka', field: 'Margin01Total', width: 100, type: 'numericColumn', renderType:'number', suppressMenu: true, 
+        valueGetter: (params: any) => {
+
+
+          const saleNetAmount = params.getValue('SaleNetAmount') || 0;
+          const totalCost = params.getValue('TotalCost') || 0;
+
+// if(params.node.key === ' Ilustrowany słownik angielsko-polski (Jacek Lang)') 
+// {
+//   console.log('params: ', params);
+//   // console.log('node.aggData: ', params.node.aggData);
+// }
+
+          return totalCost > 0 && saleNetAmount/totalCost;
+        }
+      },
+
+      // { headerName: 'Całk. ROI-0', field: 'ROITotal', width: 100, type: 'numericColumn', renderType:'number', suppressMenu: true },
+      { headerName: 'Całk. ROI', field: 'ROITotal', width: 100, type: 'numericColumn', renderType:'number', suppressMenu: true, 
+        valueGetter: (params: any) => {
+          const saleNetAmount = params.getValue('SaleNetAmount') || 0;
+          const totalCost = params.getValue('TotalCost') || 0;
+          return totalCost > 0 && (saleNetAmount-totalCost)/totalCost;
+        }
+      },
+
       { headerName: 'Całk. wynik', field: 'IncomAfterSalesTotal', width: 100, type: 'numericColumn', renderType:'number', suppressMenu: true },
 
     ]

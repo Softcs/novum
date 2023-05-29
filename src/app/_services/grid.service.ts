@@ -75,10 +75,11 @@ export class GridService {
 
         if (params.data && (params.data[column.field] === undefined)) return null;
 
-        return params.value === null ? null : formatNumber(params.value, locale, renderFormat).replace(/[,]/g,' ');
+        return params.value === null || params.value === undefined ? null : formatNumber(params.value, locale, renderFormat).replace(/[,]/g,' ');
 
       }
     }
+
 
     if (column.renderType == "percent") {
       if (!renderFormat) {
@@ -282,8 +283,12 @@ export class GridService {
     const fieldName = dataSetContainer.getFieldId(dataSetContainer.ident);
     const fieldValue = dataSetContainer.activeRow[fieldName];
     const prevValue = prevRow ? prevRow[fieldName] : null;
+    
     gridApi.forEachNode( (rowNode) => {
-      const rowValue = rowNode.data[fieldName];
+      
+      // const rowValue = rowNode.data[fieldName];
+      const rowValue = rowNode.data?.fieldName;
+      
       if (this.stringUtils.compareStrings(rowValue, fieldValue) || this.stringUtils.compareStrings(rowValue, prevValue)) {
         rowNode.setData(rowNode.data);
         limit--;
@@ -293,6 +298,7 @@ export class GridService {
         return false;
       }
     });
+
   }
 
   public refreshSum(gridApi, rows: any) {
