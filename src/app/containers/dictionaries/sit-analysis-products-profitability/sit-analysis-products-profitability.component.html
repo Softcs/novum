@@ -48,34 +48,34 @@
           >
           </ag-grid-angular>
         </sit-data-set-container>
-        <sit-data-set-container  ident="sitProductsProfitabilityInPeriodSum" ngClass="flex-container-column" [class.hidden]="hideSummary()">
+        <sit-data-set-container  ident="sitProductsProfitabilityInPeriodSum" ngClass="flex-container-column sitProductsProfitabilityInPeriodSum" [class.hidden]="hideSummary()">
           <sit-simple-container ngClass="flex-container-row mb-05" >
             <div ngClass="flex-container-column">
-              <sit-data-label #sitControl field="ReceiveQuantity" label="Ilość przyjęta"></sit-data-label>
-              <sit-data-label #sitControl field="SaleQuantity" label="Ilość sprzedana"></sit-data-label>
-              <sit-data-label #sitControl field="SoldReceivePercent" label="% sprzedaży"></sit-data-label>
+              <sit-data-label #sitControl field="ReceiveQuantity" label="Ilość przyjęta" type="number0"></sit-data-label>
+              <sit-data-label #sitControl field="SaleQuantity" label="Ilość sprzedana" type="number0"></sit-data-label>
+              <sit-data-label #sitControl field="SoldReceivePercent" label="% sprzedaży" type="number"></sit-data-label>
             </div>
             <div ngClass="flex-container-column">
-              <sit-data-label #sitControl field="UnsoldQuantity" label="Ilość niesprzedana"></sit-data-label>
-              <sit-data-label #sitControl field="StocksQuantity" label="Stan"></sit-data-label>
+              <sit-data-label #sitControl field="UnsoldQuantity" label="Ilość niesprzedana" type="number0"></sit-data-label>
+              <sit-data-label #sitControl field="StocksQuantity" label="Stan" type="number0"></sit-data-label>
             </div>            
             <div ngClass="flex-container-column">
-              <sit-data-label #sitControl field="RealizedCost" label="Koszty realizowane"></sit-data-label>
-              <sit-data-label #sitControl field="RealizedTotal" label="Koszty całkowite"></sit-data-label>
-              <sit-data-label #sitControl field="TotalRealizedCostDiff" label="Różnica"></sit-data-label>
-              <sit-data-label #sitControl field="SaleNetAmount" label="Sprzedaż"></sit-data-label>
+              <sit-data-label #sitControl field="RealizedCost" label="Koszty realizowane" type="number"></sit-data-label>
+              <sit-data-label #sitControl field="RealizedTotal" label="Koszty całkowite" type="number"></sit-data-label>
+              <sit-data-label #sitControl field="TotalRealizedCostDiff" label="Różnica" type="number"></sit-data-label>
+              <sit-data-label #sitControl field="SaleNetAmount" label="Sprzedaż" type="number"></sit-data-label>
             </div>
             <div ngClass="flex-container-column">
               <sit-data-label #sitControl field="" label="Wg kosztów realizowanych"></sit-data-label>
               <sit-data-label #sitControl field="Margin01Real" label="Przebitka"></sit-data-label>
               <sit-data-label #sitControl field="ROIReal" label="ROI"></sit-data-label>
-              <sit-data-label #sitControl field="IncomAfterSalesReal" label="Wynik na inw."></sit-data-label>
+              <sit-data-label #sitControl field="IncomAfterSalesReal" label="Wynik na inw." type="number0"></sit-data-label>
             </div>
             <div ngClass="flex-container-column">
               <sit-data-label #sitControl field="" label="Wg kosztów całkowitych"></sit-data-label>
               <sit-data-label #sitControl field="Margin01Total" label="Przebitka"></sit-data-label>
               <sit-data-label #sitControl field="ROITotal" label="ROI"></sit-data-label>
-              <sit-data-label #sitControl field="IncomAfterSalesTotal" label="Wynik na inw."></sit-data-label>
+              <sit-data-label #sitControl field="IncomAfterSalesTotal" label="Wynik na inw." type="number0"></sit-data-label>
             </div>
           </sit-simple-container>
         </sit-data-set-container>        
