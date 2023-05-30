@@ -130,7 +130,7 @@ $app-menu-color: #fff;
   --sidenav-hover-color: #{$sidenav-hover-color};
 
 
-  --red-color: #f00;
+  --red-color: #e00;
   --violet-color: violet;
   --orange-color: orange;
   --darkred-color: rgb(153, 0, 0);
@@ -146,10 +146,11 @@ $app-menu-color: #fff;
 }
 
 // dla kontekstu firmy/bazy nadpisujemy zmienne:
-.company-main-context {
-  --darkred-color: rgb(200, 50, 50);
-  --green-color: #0f6;
-  --blue-color: #09f;
-}
+// PRZYKLAD:
+// .company-main-context {
+//   --darkred-color: rgb(200, 50, 50);
+//   --green-color: #0f6;
+//   --blue-color: #09f;
+// }
 
 // jc

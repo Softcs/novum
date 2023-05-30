@@ -1,0 +1,63 @@
+<sit-dict-container ident="sitItelCashFlow" #sitDictcontainer ngClass="flex-container-column">
+  <div ngClass="content flex-container-column">
+    <as-split #sitSpliter direction="vertical">
+      <as-split-area [size]="40">
+
+        <sit-data-set-container ident="sitFilter" ngClass="flex-container-row sit-filter-bar">
+          <sit-data-input #sitControl field="Year" type="number" label="Rok" placeholder="" appearance="outline" style="width: 80px;"></sit-data-input>
+          <sit-data-input #sitControl field="Month" type="number"  label="Miesiąc" placeholder="" appearance="outline" style="width: 120px;" showRefreshButton="true"></sit-data-input>
+        </sit-data-set-container>
+
+        <sit-data-set-container ident="sitItelCashFlow"  ngClass="flex-container-column">
+          <ag-grid-angular
+            #sitSetDataSource
+            class="ag-theme-balham"
+          >
+          </ag-grid-angular>
+        </sit-data-set-container>    
+
+      </as-split-area>
+      
+      <as-split-area [size]="60">
+        <mat-tab-group id="tab-group" animationDuration="0ms">
+
+          <mat-tab label="Przychody" ngClass="flex-container-column">   
+
+            <sit-data-set-container ident="sitFilterSales" ngClass="flex-container-row sit-filter-bar">
+              <sit-data-input #sitControl field="Search" label="Filtruj" placeholder="Kontrahent, nr faktury" showRefreshButton="true" appearance="outline" style="width: 300px;"></sit-data-input>
+            </sit-data-set-container>
+    
+            <sit-data-set-container ident="sitItelCashFlowSales"  ngClass="flex-container-column">
+              <ag-grid-angular
+                #sitSetDataSource
+                class="ag-theme-balham"
+              >
+              </ag-grid-angular>
+            </sit-data-set-container>    
+    
+          </mat-tab>
+
+          <mat-tab label="Koszty" ngClass="flex-container-column">
+
+            <sit-data-set-container ident="sitFilterCosts" ngClass="flex-container-row sit-filter-bar">
+              <sit-data-input #sitControl field="Search" label="Filtruj" placeholder="Kontrahent, nr faktury" showRefreshButton="true" appearance="outline" style="width: 300px;"></sit-data-input>
+            </sit-data-set-container>
+
+            <sit-data-set-container ident="sitItelCashFlowCosts"  ngClass="flex-container-column">
+              <ag-grid-angular
+                #sitSetDataSource
+                class="ag-theme-balham"
+              >
+              </ag-grid-angular>
+            </sit-data-set-container>    
+
+          </mat-tab>
+      
+        </mat-tab-group>
+      
+      </as-split-area>    
+    
+    </as-split>
+
+   </div>
+</sit-dict-container>

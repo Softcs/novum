@@ -47,7 +47,8 @@ export class SitLinkInternalComponent implements OnInit {
 
     switch (this.item.kind) {
       case 'app':
-          this.itemLink = '#' + this.item.link;
+          // this.itemLink = '#' + this.item.link;
+          this.itemLink = '';
         break;
       case 'http':
         this.itemLink = this.item.link;
@@ -59,6 +60,8 @@ export class SitLinkInternalComponent implements OnInit {
 
   onItemSelected(item: Item) 
   {
+
+// console.log('item: ', item);
 
     let createNew = true;
     

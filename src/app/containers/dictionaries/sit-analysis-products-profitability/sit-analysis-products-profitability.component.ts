@@ -56,7 +56,7 @@ export class SitAnalysisProductsProfitabilityComponent extends SitDictBaseCompon
 
   public prepareColumnsDefinitnion() {
 
-    const cellMediumWidthMin: number = 93;
+    const cellMediumWidthMin: number = 100;
 
     var locale = this.locale;
 
@@ -136,15 +136,20 @@ export class SitAnalysisProductsProfitabilityComponent extends SitDictBaseCompon
             // cellStyle: function(params) { return {backgroundColor: '#ffe6e6'} },
             minWidth: cellMediumWidthMin,
             maxWidth: 130,
-            cellClass: (params: any) => {
+            cellClassRules: {
+              'value-positive': (params: any) => params?.value > 0,
+              'value-negative': (params: any) => params?.value < 0,
+              'bcg-calkowite': () => true,
+            },
+            // cellClass: (params: any) => {
               
-              return [
-                'bcg-calkowite',
-                'ag-right-aligned-cell',
-                params?.value > 0 ? 'value-positive' : 'value-negative',
-              ];
+            //   return [
+            //     'bcg-calkowite',
+            //     'ag-right-aligned-cell',
+            //     params?.value > 0 ? 'value-positive' : 'value-negative',
+            //   ];
 
-            }
+            // }
           },
           { headerName: 'Przebitka', field: 'Margin01Total', type: 'numericColumn', renderType:'number', suppressMenu: true, 
             valueGetter: (params: any) => {
@@ -155,15 +160,20 @@ export class SitAnalysisProductsProfitabilityComponent extends SitDictBaseCompon
             // cellStyle: function(params) { return {backgroundColor: '#ffe6e6'} },
             minWidth: 70,
             maxWidth: 90,
-            cellClass: (params: any) => {
+            cellClassRules: {
+              'value-positive': (params: any) => params?.value > 0,
+              'value-negative': (params: any) => params?.value < 0,
+              'bcg-calkowite': () => true,
+            },
+            // cellClass: (params: any) => {
               
-              return [
-                'bcg-calkowite',
-                'ag-right-aligned-cell',
-                params?.value > 0 ? 'value-positive' : 'value-negative',
-              ];
+            //   return [
+            //     'bcg-calkowite',
+            //     'ag-right-aligned-cell',
+            //     params?.value > 0 ? 'value-positive' : 'value-negative',
+            //   ];
 
-            }
+            // }
           },
           { headerName: 'ROI', field: 'ROITotal', type: 'numericColumn', renderType:'number', suppressMenu: true, 
             valueGetter: (params: any) => {
@@ -174,15 +184,20 @@ export class SitAnalysisProductsProfitabilityComponent extends SitDictBaseCompon
             // cellStyle: function(params) { return {backgroundColor: '#ffe6e6'} },
             minWidth: 60,
             maxWidth: 90,
-            cellClass: (params: any) => {
+            cellClassRules: {
+              'value-positive': (params: any) => params?.value > 0,
+              'value-negative': (params: any) => params?.value < 0,
+              'bcg-calkowite': () => true,
+            },
+            // cellClass: (params: any) => {
               
-              return [
-                'bcg-calkowite',
-                'ag-right-aligned-cell',
-                params?.value > 0 ? 'value-positive' : 'value-negative',
-              ];
+            //   return [
+            //     'bcg-calkowite',
+            //     'ag-right-aligned-cell',
+            //     params?.value > 0 ? 'value-positive' : 'value-negative',
+            //   ];
 
-            }
+            // }
           },
         ]
       },
@@ -198,30 +213,40 @@ export class SitAnalysisProductsProfitabilityComponent extends SitDictBaseCompon
             // cellStyle: function(params) { return {backgroundColor: '#cce6ff'} },
             minWidth: cellMediumWidthMin,
             maxWidth: 130,
-            cellClass: (params: any) => {
+            cellClassRules: {
+              'value-positive': (params: any) => params?.value > 0,
+              'value-negative': (params: any) => params?.value < 0,
+              'bcg-realizowane': () => true,
+            },
+            // cellClass: (params: any) => {
               
-              return [
-                'bcg-realizowane',
-                'ag-right-aligned-cell',
-                params?.value > 0 ? 'value-positive' : 'value-negative',
-              ];
+            //   return [
+            //     'bcg-realizowane',
+            //     'ag-right-aligned-cell',
+            //     params?.value > 0 ? 'value-positive' : 'value-negative',
+            //   ];
 
-            }
+            // }
           },
           { headerName: 'Koszt', field: 'RealizedCost', type: 'numericColumn', renderType:'number', suppressMenu: true,
             aggFunc: 'sum',
             // cellStyle: function(params) { return {backgroundColor: '#cce6ff'} }, 
             minWidth: cellMediumWidthMin,
             maxWidth: 130,
-            cellClass: (params: any) => {
+            cellClassRules: {
+              'value-positive': (params: any) => params?.value > 0,
+              'value-negative': (params: any) => params?.value < 0,
+              'bcg-realizowane': () => true,
+            },
+            // cellClass: (params: any) => {
               
-              return [
-                'bcg-realizowane',
-                'ag-right-aligned-cell',
-                params?.value > 0 ? 'value-positive' : 'value-negative',
-              ];
+            //   return [
+            //     'bcg-realizowane',
+            //     'ag-right-aligned-cell',
+            //     params?.value > 0 ? 'value-positive' : 'value-negative',
+            //   ];
 
-            }
+            // }
           },
           { headerName: 'Przebitka', field: 'Margin01Real', type: 'numericColumn', renderType:'number', suppressMenu: true,
             valueGetter: (params: any) => {
@@ -232,15 +257,20 @@ export class SitAnalysisProductsProfitabilityComponent extends SitDictBaseCompon
             // cellStyle: function(params) { return {backgroundColor: '#cce6ff'} },
             minWidth: 70,
             maxWidth: 90,
-            cellClass: (params: any) => {
+            cellClassRules: {
+              'value-positive': (params: any) => params?.value > 1,
+              'value-negative': (params: any) => params?.value < 1,
+              'bcg-realizowane': () => true,
+            },
+            // cellClass: (params: any) => {
               
-              return [
-                'bcg-realizowane',
-                'ag-right-aligned-cell',
-                params?.value > 1 ? 'value-positive' : 'value-negative',
-              ];
+            //   return [
+            //     'bcg-realizowane',
+            //     'ag-right-aligned-cell',
+            //     params?.value > 1 ? 'value-positive' : 'value-negative',
+            //   ];
 
-            }
+            // }
           },
           { headerName: 'ROI', field: 'ROIReal', type: 'numericColumn', renderType:'number', suppressMenu: true,
             valueGetter: (params: any) => {
@@ -251,15 +281,20 @@ export class SitAnalysisProductsProfitabilityComponent extends SitDictBaseCompon
             // cellStyle: function(params) { return {backgroundColor: '#cce6ff'} },
             minWidth: 60,
             maxWidth: 90,
-            cellClass: (params: any) => {
+            cellClassRules: {
+              'value-positive': (params: any) => params?.value > 1,
+              'value-negative': (params: any) => params?.value < 1,
+              'bcg-realizowane': () => true,
+            },
+            // cellClass: (params: any) => {
               
-              return [
-                'bcg-realizowane',
-                'ag-right-aligned-cell',
-                params?.value > 1 ? 'value-positive' : 'value-negative',
-              ];
+            //   return [
+            //     'bcg-realizowane',
+            //     'ag-right-aligned-cell',
+            //     params?.value > 1 ? 'value-positive' : 'value-negative',
+            //   ];
 
-            }
+            // }
           },
         ]
       },
@@ -275,30 +310,40 @@ export class SitAnalysisProductsProfitabilityComponent extends SitDictBaseCompon
             // cellStyle: function(params) { return {backgroundColor: '#d6f5d6'} },
             minWidth: cellMediumWidthMin,
             maxWidth: 130,
-            cellClass: (params: any) => {
+            cellClassRules: {
+              'value-positive': (params: any) => params?.value > 0,
+              'value-negative': (params: any) => params?.value < 0,
+              'bcg-planowane': () => true,
+            },
+            // cellClass: (params: any) => {
               
-              return [
-                'bcg-planowane',
-                'ag-right-aligned-cell',
-                params?.value > 0 ? 'value-positive' : 'value-negative',
-              ];
+            //   return [
+            //     'bcg-planowane',
+            //     'ag-right-aligned-cell',
+            //     params?.value > 0 ? 'value-positive' : 'value-negative',
+            //   ];
 
-            }
+            // }
           },
           { headerName: 'Koszt', field: 'PlannedCost', type: 'numericColumn', renderType:'number', suppressMenu: true,
             aggFunc: 'sum',
             // cellStyle: function(params) { return {backgroundColor: '#d6f5d6'} },
             minWidth: cellMediumWidthMin,
             maxWidth: 130,
-            cellClass: (params: any) => {
+            cellClassRules: {
+              'value-positive': (params: any) => params?.value > 0,
+              'value-negative': (params: any) => params?.value < 0,
+              'bcg-planowane': () => true,
+            },
+            // cellClass: (params: any) => {
               
-              return [
-                'bcg-planowane',
-                'ag-right-aligned-cell',
-                params?.value > 0 ? 'value-positive' : 'value-negative',
-              ];
+            //   return [
+            //     'bcg-planowane',
+            //     'ag-right-aligned-cell',
+            //     params?.value > 0 ? 'value-positive' : 'value-negative',
+            //   ];
 
-            }
+            // }
           },
           { headerName: 'Przebitka', field: 'Margin01Plan', type: 'numericColumn', renderType:'number', suppressMenu: true, 
             valueGetter: (params: any) => {
@@ -309,16 +354,21 @@ export class SitAnalysisProductsProfitabilityComponent extends SitDictBaseCompon
             // cellStyle: function(params) { return {backgroundColor: '#d6f5d6'} },
             minWidth: 70,
             maxWidth: 90,
-            cellClass: (params: any) => {
+            cellClassRules: {
+              'value-positive': (params: any) => params?.value > 1,
+              'value-negative': (params: any) => params?.value < 1,
+              'bcg-planowane': () => true,
+            },
+            // cellClass: (params: any) => {
               
-              return [
-                // 'cell-narrow',
-                'bcg-planowane',
-                'ag-right-aligned-cell',
-                params?.value > 1 ? 'value-positive' : 'value-negative',
-              ];
+            //   return [
+            //     // 'cell-narrow',
+            //     'bcg-planowane',
+            //     'ag-right-aligned-cell',
+            //     params?.value > 1 ? 'value-positive' : 'value-negative',
+            //   ];
 
-            }
+            // }
           },
           { headerName: 'ROI', field: 'ROIPlan', type: 'numericColumn', renderType:'number', suppressMenu: true,
             valueGetter: (params: any) => {
@@ -329,16 +379,21 @@ export class SitAnalysisProductsProfitabilityComponent extends SitDictBaseCompon
             // cellStyle: function(params) { return {backgroundColor: '#d6f5d6'} },
             minWidth: 60,
             maxWidth: 90,
-            cellClass: (params: any) => {
+            cellClassRules: {
+              'value-positive': (params: any) => params?.value > 1,
+              'value-negative': (params: any) => params?.value < 1,
+              'bcg-planowane': () => true,
+            },
+            // cellClass: (params: any) => {
               
-              return [
-                // 'cell-narrow',
-                'bcg-planowane',
-                'ag-right-aligned-cell',
-                params?.value > 1 ? 'value-positive' : 'value-negative',
-              ];
+            //   return [
+            //     // 'cell-narrow',
+            //     'bcg-planowane',
+            //     'ag-right-aligned-cell',
+            //     params?.value > 1 ? 'value-positive' : 'value-negative',
+            //   ];
 
-            }
+            // }
           },
         ]
       },
