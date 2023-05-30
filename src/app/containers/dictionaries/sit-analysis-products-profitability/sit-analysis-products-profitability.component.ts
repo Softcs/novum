@@ -54,7 +54,7 @@ export class SitAnalysisProductsProfitabilityComponent extends SitDictBaseCompon
     var locale = this.locale;
     this.gridColumnsDefinition["sitProductsProfitability"] = [
       { headerName: 'Publikacja', field: 'PublicationIdent', width: 200, tooltipField: 'PublicationIdent',
-        enableRowGroup: true, rowGroup: true, hide: true},
+        enableRowGroup: true, rowGroup: true, hide: true, },
       { headerName: 'Autor', field: 'Author', width: 200, tooltipField: 'Author',
         enableRowGroup: true, hide: true},
       { headerName: 'Manager', field: 'ManagerName', width: 200, tooltipField: 'ManagerName',
