@@ -20,10 +20,8 @@ export class SitAgridPulpitReminderComponent {
   {
     this.params = params;
     this.cellValue = this.getValueToDisplay(params);
-
-    //this.linkParams = {caption: 'przejdź»', kind: 'app', link: this.params?.data?.DictionaryIdent, tabName: this.params?.data?.DictionaryName};
-    //this.linkParams = {caption: 'zrób', kind: 'app', link: this.params?.data?.DictionaryIdent, tabName: this.params?.data?.DictionaryName};
-    this.linkParams = {caption: 'Aktualizuj ' + this.params?.data?.Message.toLowerCase()  , kind: 'app', link: this.params?.data?.DictionaryIdent, tabName: this.params?.data?.DictionaryName};
+    // this.linkParams = {caption: 'Aktualizuj ' + this.params?.data?.Message.toLowerCase()  , kind: 'app', link: this.params?.data?.DictionaryIdent, tabName: this.params?.data?.DictionaryName};
+    this.linkParams = {caption: this.params?.data?.Message , kind: 'app', link: this.params?.data?.DictionaryIdent, tabName: this.params?.data?.DictionaryName};
   }
 
   refresh(params: ICellRendererParams): boolean {

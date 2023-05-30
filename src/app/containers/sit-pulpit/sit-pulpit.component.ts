@@ -8,7 +8,7 @@ import { GridService } from '@app/_services/grid.service';
 import { UrlService } from '@app/_services/url.service';
 import { environment } from '../../../environments/environment';
 
-import { SitAgridLinkComponent } from '../../components/ag-grid/sit-agrid-link/sit-agrid-link.component';
+// import { SitAgridLinkComponent } from '../../components/ag-grid/sit-agrid-link/sit-agrid-link.component';
 import { SitAgridPulpitReminderComponent } from '@app/components/ag-grid/sit-agrid-pulpit-reminder/sit-agrid-pulpit-reminder.component';
 
 

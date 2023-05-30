@@ -1,5 +1,6 @@
 .sit-link-internal-component {
-    a {
+    .link-item-internal {
+        cursor: pointer;
         text-decoration: underline dotted;
         // font-size: 1.2em;
         &:hover {
