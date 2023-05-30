@@ -19,6 +19,31 @@
         margin-bottom: 10px;
     }
 
+    .cell-narrow {
+        min-width: 70px;
+        max-width: 90px;
+    }
+
+    .bcg-calkowite {
+        // background-color: #ffe6e6;
+        background-color: rgba(255, 230, 230, 0.4);
+    }
+    .bcg-realizowane {
+        // background-color: rgb(204, 230, 255);
+        background-color: rgba(204, 230, 255, .4);
+    }
+    .bcg-planowane {
+        // background-color: rgb(214, 245, 214);
+        background-color: rgba(214, 245, 214, .4);
+    }
+
+    .value-positive {
+        color: var(--green-color);
+    }
+    .value-negative {
+        color: var(--red-color);
+    }
+
     .sitProductsProfitabilityInPeriodSum {
         flex-grow: 0;
         padding: .5em .6em 0;

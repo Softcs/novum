@@ -14,12 +14,13 @@ import { formatDate } from '@angular/common';
   encapsulation : ViewEncapsulation.None
 })
 export class SitAnalysisProductsProfitabilityComponent extends SitDictBaseComponent {
-  public defaultColDef;
-  public autoGroupColumnDef;
-  public rowGroupPanelShow;
-  public suppressAggFuncInHeader;
-  public groupIncludeTotalFooter
+  public defaultColDef: any;
+  public autoGroupColumnDef: any;
+  public rowGroupPanelShow: any;
+  public suppressAggFuncInHeader: any;
+  public groupIncludeTotalFooter: any;
   imgPrvHeight: string = '60';
+  // cellMediumWidthMin: number = 95;
 
   constructor(
     protected gatewayService: GatewayService,
@@ -30,13 +31,16 @@ export class SitAnalysisProductsProfitabilityComponent extends SitDictBaseCompon
       this.defaultColDef = {
         sortable: true,
         flex: 1,
-        minWidth: 100,
+        // minWidth: 100,
+        resizable: true,
       };
       this.autoGroupColumnDef = { 
         sortable: true,
         sort: 'asc',
         resizable: true,
         minWidth: 200,
+        // suppressSizeToFit: true,
+        flex: 3,
       };
       this.rowGroupPanelShow = 'always';
       this.suppressAggFuncInHeader = 'true';
@@ -51,119 +55,290 @@ export class SitAnalysisProductsProfitabilityComponent extends SitDictBaseCompon
   };
 
   public prepareColumnsDefinitnion() {
-    var locale = this.locale;
-    this.gridColumnsDefinition["sitProductsProfitability"] = [
-      { headerName: 'Publikacja', field: 'PublicationIdent', width: 200, tooltipField: 'PublicationIdent',
-        enableRowGroup: true, rowGroup: true, hide: true},
-      { headerName: 'Autor', field: 'Author', width: 200, tooltipField: 'Author',
-        enableRowGroup: true, hide: true},
-      { headerName: 'Manager', field: 'ManagerName', width: 200, tooltipField: 'ManagerName',
-        enableRowGroup: true, hide: true},
 
-      { headerName: 'Tytuł', field: 'Title', width: 200, tooltipField: 'Title', defaultVisibility: false},
+    const cellMediumWidthMin: number = 93;
+
+    var locale = this.locale;
+
+    this.gridColumnsDefinition["sitProductsProfitability"] = [
+      { headerName: 'Publikacja', field: 'PublicationIdent', 
+        minWidth: 200, 
+        // resizable: false,
+        // flex: 'auto', 
+        // suppressSizeToFit: true,
+        tooltipField: 'PublicationIdent',
+        enableRowGroup: true, rowGroup: true, hide: true
+      },
+      { headerName: 'Autor', field: 'Author', tooltipField: 'Author',
+        enableRowGroup: true, hide: true,
+        minWidth: 150,
+        maxWidth: 200,
+      },
+      { headerName: 'Manager', field: 'ManagerName', tooltipField: 'ManagerName',
+        enableRowGroup: true, hide: true,
+        minWidth: 150,
+        maxWidth: 200,
+      },
+
+      { headerName: 'Tytuł', field: 'Title', minWidth: 200, tooltipField: 'Title', defaultVisibility: false},
       { headerName: 'Produkt', field: 'ProductName', width: 200, tooltipField: 'ProductName', defaultVisibility: false},
       { headerName: 'EAN', field: 'EAN', width: 100, defaultVisibility: false},
 
-      { headerName: 'Sprz. ilość', field: 'SaleQuantity', width: 80, type: 'numericColumn', renderType:'number', suppressMenu: true, defaultVisibility: false,
-        aggFunc: 'sum' },
-      { headerName: 'Sprz. netto', field: 'SaleNetAmount', width: 80, type: 'numericColumn', renderType:'number', suppressMenu: true,
-        aggFunc: 'sum' },
+      { headerName: 'Sprz. ilość', field: 'SaleQuantity', type: 'numericColumn', renderType:'number', suppressMenu: true, defaultVisibility: false,
+        aggFunc: 'sum',
+        minWidth: cellMediumWidthMin,
+        maxWidth: 100, 
+      },
+      { headerName: 'Sprz. netto', field: 'SaleNetAmount', type: 'numericColumn', renderType:'number', suppressMenu: true,
+        aggFunc: 'sum',
+        minWidth: cellMediumWidthMin,
+        maxWidth: 130, 
+      },
 
-      { headerName: 'Całkowite',
+      { headerName: 'Całkowite', 
+        minWidth: 10,
         children: [  
-          { headerName: 'Wynik', field: 'IncomAfterSalesTotal', width: 100, type: 'numericColumn', renderType:'number', suppressMenu: true,
+          { headerName: 'Wynik', field: 'IncomAfterSalesTotal', type: 'numericColumn', renderType:'number', suppressMenu: true,
             valueGetter: (params: any) => {
               const saleNetAmount = params.getValue('SaleNetAmount') || 0;
               const totalCost = params.getValue('TotalCost') || 0;
               return saleNetAmount-totalCost;
             },
-            cellStyle: function(params) { return {backgroundColor: '#ffe6e6'} },
+            // cellStyle: (params: any) => { 
+            //   return {backgroundColor: '#ffe6e6'} 
+            // },
+            minWidth: cellMediumWidthMin,
+            maxWidth: 130,
+            cellClassRules: {
+              'value-positive': (params: any) => params?.value > 0,
+              'value-negative': (params: any) => params?.value < 0,
+              'bcg-calkowite': () => true,
+              // 'ag-right-aligned-cell': () => true,
+            },
+//             cellClass: (params: any) => {
+
+// // if (params.node.key === ' Ilustrowany słownik angielsko-polski (Jacek Lang)') 
+// // {
+// // console.log('params: ', params);
+// // console.log('params.value: ', params.value);
+// // }
+
+//               return [
+//                 // 'bcg-calkowite',
+//                 'ag-right-aligned-cell',
+//                 // params?.value > 0 ? 'value-positive' : 'value-negative',
+//               ];
+
+//             }
           },
           { headerName: 'Koszt', field: 'TotalCost', type: 'numericColumn', renderType:'number', suppressMenu: true,
             aggFunc: 'sum',
-            cellStyle: function(params) { return {backgroundColor: '#ffe6e6'} },
+            // cellStyle: function(params) { return {backgroundColor: '#ffe6e6'} },
+            minWidth: cellMediumWidthMin,
+            maxWidth: 130,
+            cellClass: (params: any) => {
+              
+              return [
+                'bcg-calkowite',
+                'ag-right-aligned-cell',
+                params?.value > 0 ? 'value-positive' : 'value-negative',
+              ];
+
+            }
           },
-          { headerName: 'Przebitka', field: 'Margin01Total', width: 100, type: 'numericColumn', renderType:'number', suppressMenu: true, 
+          { headerName: 'Przebitka', field: 'Margin01Total', type: 'numericColumn', renderType:'number', suppressMenu: true, 
             valueGetter: (params: any) => {
               const saleNetAmount = params.getValue('SaleNetAmount') || 0;
               const totalCost = params.getValue('TotalCost') || 0;
               return totalCost != 0 && saleNetAmount/totalCost;
             },
-            cellStyle: function(params) { return {backgroundColor: '#ffe6e6'} },
+            // cellStyle: function(params) { return {backgroundColor: '#ffe6e6'} },
+            minWidth: 70,
+            maxWidth: 90,
+            cellClass: (params: any) => {
+              
+              return [
+                'bcg-calkowite',
+                'ag-right-aligned-cell',
+                params?.value > 0 ? 'value-positive' : 'value-negative',
+              ];
+
+            }
           },
-          { headerName: 'ROI', field: 'ROITotal', width: 100, type: 'numericColumn', renderType:'number', suppressMenu: true, 
+          { headerName: 'ROI', field: 'ROITotal', type: 'numericColumn', renderType:'number', suppressMenu: true, 
             valueGetter: (params: any) => {
               const saleNetAmount = params.getValue('SaleNetAmount') || 0;
               const totalCost = params.getValue('TotalCost') || 0;
               return totalCost != 0 && (saleNetAmount-totalCost)/totalCost;
             },
-            cellStyle: function(params) { return {backgroundColor: '#ffe6e6'} },
+            // cellStyle: function(params) { return {backgroundColor: '#ffe6e6'} },
+            minWidth: 60,
+            maxWidth: 90,
+            cellClass: (params: any) => {
+              
+              return [
+                'bcg-calkowite',
+                'ag-right-aligned-cell',
+                params?.value > 0 ? 'value-positive' : 'value-negative',
+              ];
+
+            }
           },
         ]
       },
 
       { headerName: 'Realizowane',
         children: [ 
-          { headerName: 'Wynik', field: 'IncomAfterSalesReal', width: 100, type: 'numericColumn', renderType:'number', suppressMenu: true,
+          { headerName: 'Wynik', field: 'IncomAfterSalesReal', type: 'numericColumn', renderType:'number', suppressMenu: true,
             valueGetter: (params: any) => {
               const saleNetAmount = params.getValue('SaleNetAmount') || 0;
               const realizedCost = params.getValue('RealizedCost') || 0;
               return saleNetAmount-realizedCost;
             },
-            cellStyle: function(params) { return {backgroundColor: '#cce6ff'} },   
+            // cellStyle: function(params) { return {backgroundColor: '#cce6ff'} },
+            minWidth: cellMediumWidthMin,
+            maxWidth: 130,
+            cellClass: (params: any) => {
+              
+              return [
+                'bcg-realizowane',
+                'ag-right-aligned-cell',
+                params?.value > 0 ? 'value-positive' : 'value-negative',
+              ];
+
+            }
           },
           { headerName: 'Koszt', field: 'RealizedCost', type: 'numericColumn', renderType:'number', suppressMenu: true,
             aggFunc: 'sum',
-            cellStyle: function(params) { return {backgroundColor: '#cce6ff'} }, 
+            // cellStyle: function(params) { return {backgroundColor: '#cce6ff'} }, 
+            minWidth: cellMediumWidthMin,
+            maxWidth: 130,
+            cellClass: (params: any) => {
+              
+              return [
+                'bcg-realizowane',
+                'ag-right-aligned-cell',
+                params?.value > 0 ? 'value-positive' : 'value-negative',
+              ];
+
+            }
           },
-          { headerName: 'Przebitka', field: 'Margin01Real', width: 100, type: 'numericColumn', renderType:'number', suppressMenu: true,
+          { headerName: 'Przebitka', field: 'Margin01Real', type: 'numericColumn', renderType:'number', suppressMenu: true,
             valueGetter: (params: any) => {
               const saleNetAmount = params.getValue('SaleNetAmount') || 0;
               const realizedCost = params.getValue('RealizedCost') || 0;
               return realizedCost != 0 && saleNetAmount/realizedCost;
             },
-            cellStyle: function(params) { return {backgroundColor: '#cce6ff'} },
+            // cellStyle: function(params) { return {backgroundColor: '#cce6ff'} },
+            minWidth: 70,
+            maxWidth: 90,
+            cellClass: (params: any) => {
+              
+              return [
+                'bcg-realizowane',
+                'ag-right-aligned-cell',
+                params?.value > 1 ? 'value-positive' : 'value-negative',
+              ];
+
+            }
           },
-          { headerName: 'ROI', field: 'ROIReal', width: 100, type: 'numericColumn', renderType:'number', suppressMenu: true,
+          { headerName: 'ROI', field: 'ROIReal', type: 'numericColumn', renderType:'number', suppressMenu: true,
             valueGetter: (params: any) => {
               const saleNetAmount = params.getValue('SaleNetAmount') || 0;
               const realizedCost = params.getValue('RealizedCost') || 0;
               return realizedCost != 0 && (saleNetAmount-realizedCost)/realizedCost;
             },
-            cellStyle: function(params) { return {backgroundColor: '#cce6ff'} },
+            // cellStyle: function(params) { return {backgroundColor: '#cce6ff'} },
+            minWidth: 60,
+            maxWidth: 90,
+            cellClass: (params: any) => {
+              
+              return [
+                'bcg-realizowane',
+                'ag-right-aligned-cell',
+                params?.value > 1 ? 'value-positive' : 'value-negative',
+              ];
+
+            }
           },
         ]
       },
 
       { headerName: 'Planowane',
         children: [ 
-          { headerName: 'Wynik', field: 'IncomAfterSalesPlan', width: 100, type: 'numericColumn', renderType:'number', suppressMenu: true,
+          { headerName: 'Wynik', field: 'IncomAfterSalesPlan', type: 'numericColumn', renderType:'number', suppressMenu: true,
             valueGetter: (params: any) => {
               const saleNetAmount = params.getValue('SaleNetAmount') || 0;
               const plannedCost = params.getValue('PlannedCost') || 0;
               return saleNetAmount-plannedCost;
             },
-            cellStyle: function(params) { return {backgroundColor: '#d6f5d6'} },
+            // cellStyle: function(params) { return {backgroundColor: '#d6f5d6'} },
+            minWidth: cellMediumWidthMin,
+            maxWidth: 130,
+            cellClass: (params: any) => {
+              
+              return [
+                'bcg-planowane',
+                'ag-right-aligned-cell',
+                params?.value > 0 ? 'value-positive' : 'value-negative',
+              ];
+
+            }
           },
           { headerName: 'Koszt', field: 'PlannedCost', type: 'numericColumn', renderType:'number', suppressMenu: true,
             aggFunc: 'sum',
-            cellStyle: function(params) { return {backgroundColor: '#d6f5d6'} },
+            // cellStyle: function(params) { return {backgroundColor: '#d6f5d6'} },
+            minWidth: cellMediumWidthMin,
+            maxWidth: 130,
+            cellClass: (params: any) => {
+              
+              return [
+                'bcg-planowane',
+                'ag-right-aligned-cell',
+                params?.value > 0 ? 'value-positive' : 'value-negative',
+              ];
+
+            }
           },
-          { headerName: 'Przebitka', field: 'Margin01Plan', width: 100, type: 'numericColumn', renderType:'number', suppressMenu: true, 
+          { headerName: 'Przebitka', field: 'Margin01Plan', type: 'numericColumn', renderType:'number', suppressMenu: true, 
             valueGetter: (params: any) => {
               const saleNetAmount = params.getValue('SaleNetAmount') || 0;
               const plannedCost = params.getValue('PlannedCost') || 0;
               return plannedCost != 0 && saleNetAmount/plannedCost;
             },
-            cellStyle: function(params) { return {backgroundColor: '#d6f5d6'} },
+            // cellStyle: function(params) { return {backgroundColor: '#d6f5d6'} },
+            minWidth: 70,
+            maxWidth: 90,
+            cellClass: (params: any) => {
+              
+              return [
+                // 'cell-narrow',
+                'bcg-planowane',
+                'ag-right-aligned-cell',
+                params?.value > 1 ? 'value-positive' : 'value-negative',
+              ];
+
+            }
           },
-          { headerName: 'ROI', field: 'ROIPlan', width: 100, type: 'numericColumn', renderType:'number', suppressMenu: true,
+          { headerName: 'ROI', field: 'ROIPlan', type: 'numericColumn', renderType:'number', suppressMenu: true,
             valueGetter: (params: any) => {
               const saleNetAmount = params.getValue('SaleNetAmount') || 0;
               const plannedCost = params.getValue('PlannedCost') || 0;
               return plannedCost != 0 && (saleNetAmount-plannedCost)/plannedCost;
             },
-            cellStyle: function(params) { return {backgroundColor: '#d6f5d6'} },
+            // cellStyle: function(params) { return {backgroundColor: '#d6f5d6'} },
+            minWidth: 60,
+            maxWidth: 90,
+            cellClass: (params: any) => {
+              
+              return [
+                // 'cell-narrow',
+                'bcg-planowane',
+                'ag-right-aligned-cell',
+                params?.value > 1 ? 'value-positive' : 'value-negative',
+              ];
+
+            }
           },
         ]
       },
