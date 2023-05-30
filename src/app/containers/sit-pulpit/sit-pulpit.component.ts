@@ -63,6 +63,10 @@ export class SitPulpitComponent  extends SitDictBaseComponent {
     
     this.gridColumnsDefinition["sitDashboardMessages"] = [
       {field: 'MessageGroup', headerName: 'Dział', suppressMenu: true, flex: 2},
+      {field: 'Count', headerName: 'Ile', suppressMenu: true, width: 40,  
+        cellRenderer: (params: any) => params.data.Count,
+        cellClass: 'tasks-count'
+      },
       {field: 'Message', headerName: 'Akcja', suppressMenu: true, flex: 3,
         wrapText: true,
         autoHeight: true,
@@ -71,10 +75,7 @@ export class SitPulpitComponent  extends SitDictBaseComponent {
         //   test: 'zażółć gęślą jaźń',
         // }
       },
-      {field: 'Count', headerName: 'Ile', suppressMenu: true, width: 40,  
-        cellRenderer: (params: any) => params.data.Count,
-        cellClass: 'tasks-count'
-      },
+
       // {field: 'DictionaryIdent', headerName: 'DictionaryIdent', suppressMenu: true, width: 80, defaultVisibility: false  },
     ],
 
