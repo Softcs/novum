@@ -9,7 +9,7 @@
       <div ngClass="flex-container-row mb-05">
         <sit-data-label #sitControl field="AcceptanceStepName_To" label="Następny poziom akceptacji"></sit-data-label>
       </div>
-      <div ngClass="flex-container-row">
+      <div ngClass="flex-container-row" [class.hidden] = "!showAcceptanceMode()">
         <sit-data-radio #sitControl field="AcceptanceMode" type="row" 
           [buttons]="[{'caption':'Akceptuj','value': '1', 'checked':true},{'caption':'Odrzuć','value':'-1'},{'caption':'Przekaż','value':'2'}]"
         ></sit-data-radio>
