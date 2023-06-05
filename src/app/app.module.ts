@@ -376,7 +376,7 @@ import { SitContributorAlternativeNamesEditComponent } from './containers/dictio
 import { SitContributorRolesEditComponent } from './containers/dictionaries/sit-publications-params-def/actions/sit-contributor-roles-edit/sit-contributor-roles-edit.component';
 import { SitPublicationContributorsEditComponent } from './containers/dictionaries/sit-publications/actions/sit-publication-contributors-edit/sit-publication-contributors-edit.component';
 import { SitProducts4pubContributorsEditComponent } from './containers/dictionaries/sit-publications/actions/sit-products4pub-contributors-edit/sit-products4pub-contributors-edit.component';
-import { SitAnalysisPublishigPlanComponent } from './containers/dictionaries/sit-analysis-publishig-plan/sit-analysis-publishig-plan.component';
+import { SitAnalysisPublishingPlanComponent } from './containers/dictionaries/sit-analysis-publishing-plan/sit-analysis-publishing-plan.component';
 import { SitB2cContributorsEditComponent } from './containers/dictionaries/sit-b2c-config/actions/sit-b2c-contributors-edit/sit-b2c-contributors-edit.component';
 import { SitProductSetIsB2cComponent } from './containers/dictionaries/sit-products/actions/sit-product-set-is-b2c/sit-product-set-is-b2c.component';
 import { SimpleCalendarComponent } from './components/controls/simple-calendar/simple-calendar.component';
@@ -752,7 +752,7 @@ import { SitItelCashFlowComponent } from './containers/dictionaries/sit-itel-cas
         SitContributorRolesEditComponent,
         SitPublicationContributorsEditComponent,
         SitProducts4pubContributorsEditComponent,
-        SitAnalysisPublishigPlanComponent,
+        SitAnalysisPublishingPlanComponent,
         SitB2cContributorsEditComponent,
         SitProductSetIsB2cComponent,
         SimpleCalendarComponent,

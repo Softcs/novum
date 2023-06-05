@@ -268,7 +268,7 @@ import { SitContributorAlternativeNamesEditComponent } from '@app/containers/dic
 import { SitContributorRolesEditComponent } from '@app/containers/dictionaries/sit-publications-params-def/actions/sit-contributor-roles-edit/sit-contributor-roles-edit.component';
 import { SitPublicationContributorsEditComponent } from '@app/containers/dictionaries/sit-publications/actions/sit-publication-contributors-edit/sit-publication-contributors-edit.component';
 import { SitProducts4pubContributorsEditComponent } from '@app/containers/dictionaries/sit-publications/actions/sit-products4pub-contributors-edit/sit-products4pub-contributors-edit.component';
-import { SitAnalysisPublishigPlanComponent } from '@app/containers/dictionaries/sit-analysis-publishig-plan/sit-analysis-publishig-plan.component';
+import { SitAnalysisPublishingPlanComponent } from '@app/containers/dictionaries/sit-analysis-publishing-plan/sit-analysis-publishing-plan.component';
 import { SitB2cContributorsEditComponent } from '@app/containers/dictionaries/sit-b2c-config/actions/sit-b2c-contributors-edit/sit-b2c-contributors-edit.component';
 import { SitProductSetIsB2cComponent } from '@app/containers/dictionaries/sit-products/actions/sit-product-set-is-b2c/sit-product-set-is-b2c.component';
 import { SimpleCalendarComponent } from '@app/components/controls/simple-calendar/simple-calendar.component';
@@ -562,7 +562,7 @@ export class FactoryService {
         sitContributorRolesEdit: SitContributorRolesEditComponent,
         sitPublicationContributorsEdit: SitPublicationContributorsEditComponent,
         sitProducts4pubContributorsEdit: SitProducts4pubContributorsEditComponent,
-        sitAnalysisPublishigPlan: SitAnalysisPublishigPlanComponent,
+        sitAnalysisPublishingPlan: SitAnalysisPublishingPlanComponent,
         sitB2cContributorsEdit: SitB2cContributorsEditComponent,
         sitProductSetIsB2c: SitProductSetIsB2cComponent,
         simpleCalendar: SimpleCalendarComponent,

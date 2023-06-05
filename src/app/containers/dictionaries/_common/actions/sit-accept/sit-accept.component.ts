@@ -12,4 +12,8 @@ export class SitAcceptComponent extends SitActionParamsForm{
     return(!this.activeRow  || this.activeRow.ShowEmployeesList == 0 ? false : true);
   }
 
+  showAcceptanceMode(){
+    return(!this.activeRow  || this.activeRow.ShowAcceptanceMode == 0 ? false : true);
+  }  
+
 }
