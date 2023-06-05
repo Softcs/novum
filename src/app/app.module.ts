@@ -392,6 +392,7 @@ import { SitLinkInternalComponent } from './components/sit-link-internal/sit-lin
 import { SitAgridLinkComponent }           from './components/ag-grid/sit-agrid-link/sit-agrid-link.component';
 import { SitAgridPulpitReminderComponent } from './components/ag-grid/sit-agrid-pulpit-reminder/sit-agrid-pulpit-reminder.component';
 import { SitPayrollsEditComponent } from './containers/dictionaries/sit-payrolls/actions/sit-payrolls-edit/sit-payrolls-edit.component';
+import { SitItelCashFlowComponent } from './containers/dictionaries/sit-itel-cash-flow/sit-itel-cash-flow.component';
 
 @NgModule({
     imports: [
@@ -767,6 +768,7 @@ import { SitPayrollsEditComponent } from './containers/dictionaries/sit-payrolls
         SitLinkInternalComponent,
         SitAgridPulpitReminderComponent,
         SitPayrollsEditComponent,
+        SitItelCashFlowComponent,
 
     ],
     providers: [
