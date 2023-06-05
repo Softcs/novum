@@ -33,7 +33,8 @@
           </as-split-area>
 
           <as-split-area [size]="60">
-            <mat-tab-group id="tab-group" animationDuration="0ms">
+            <!-- <mat-tab-group id="tab-group" animationDuration="0ms"> -->
+              <mat-tab-group id="sit-office-doc-headers-tab-group-1" animationDuration="0ms">
 
               <mat-tab label="Info">
                 <!-- sit-data-labels-standard-container - zmienia zachowanie wysokości elementów -->
@@ -170,15 +171,18 @@
           </as-split-area>
         </as-split>
       </as-split-area>
-      <as-split-area [size]="45" ngClass="flex-container-column">
+      <as-split-area [size]="45" ngClass="flex-container-column group-last-area">
        
-        <mat-tab-group id="tab-group" animationDuration="0ms">
-          <mat-tab label="Skan">
+        <!-- <mat-tab-group id="tab-group" animationDuration="0ms" ngClass="group-last"> -->
+        <mat-tab-group id="sit-office-doc-headers-tab-group-2" animationDuration="0ms" ngClass="group-last-container">
+          
+          <mat-tab label="Skan"  ngClass="pdf-viewer-container">
             <sit-data-set-container  ident="sitAttachments" ngClass="flex-container-column">
               <sit-pdf-viewer #sitControl reportType="att" field="FileName" ngClass="from-sit-office-doc-headers-component-html">
               </sit-pdf-viewer>
             </sit-data-set-container>
           </mat-tab>
+
           <mat-tab label="Księgowanie">
 
             <sit-data-set-container ident="sitAccountingHeaders4OfficeDoc" ngClass="flex-container-column sit-data-set-container-ksiegowanie">

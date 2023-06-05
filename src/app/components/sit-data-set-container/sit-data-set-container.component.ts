@@ -99,9 +99,11 @@ export class SitDataSetContainerComponent implements AfterViewInit{
 
   public setErrors(errors: any[]) {
     this.errors = errors;
+    
     if (this.errors) {
-      console.log('Errors', this.errors);
+console.log('Errors', this.errors);
     }
+
   }
 
   public getFieldId(ident: string = null) {
