@@ -1,6 +1,23 @@
 
 .sit-office-doc-headers-component {
 
+    // odslania komunikaty - start
+
+    // ustawiamy wszystkie z-index wyżej: 2 (mat default=1)
+    .mat-tab-body.mat-tab-body-active {
+        z-index: 2;
+    }
+
+    // dla grupy zaslaniajacej wymuszamy obnizenie: 1
+    .group-last-container 
+    {
+        .mat-tab-body.mat-tab-body-active {
+            z-index: 1;
+        }
+    }
+    // odslania komunikaty - end
+
+
     .head-container {
         .sit-data-label-component {
             flex-grow: 0;
