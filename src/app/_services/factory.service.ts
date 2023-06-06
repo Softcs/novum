@@ -285,6 +285,7 @@ import { SitAgridLinkComponent }           from '@app/components/ag-grid/sit-agr
 import { SitAgridPulpitReminderComponent } from '@app/components/ag-grid/sit-agrid-pulpit-reminder/sit-agrid-pulpit-reminder.component';
 import { SitPayrollsEditComponent } from '@app/containers/dictionaries/sit-payrolls/actions/sit-payrolls-edit/sit-payrolls-edit.component';
 import { SitItelCashFlowComponent } from '@app/containers/dictionaries/sit-itel-cash-flow/sit-itel-cash-flow.component';
+import { SitSandboxComponent } from '@app/containers/dictionaries/sit-sandbox/sit-sandbox.component';
 
 
 
@@ -578,6 +579,7 @@ export class FactoryService {
         sitAgridPulpitReminder: SitAgridPulpitReminderComponent,
         sitPayrollsEdit: SitPayrollsEditComponent,
         sitItelCashFlow: SitItelCashFlowComponent,
+        sitSandbox: SitSandboxComponent,
     };
 
     public GetFactory(ident: string) {
