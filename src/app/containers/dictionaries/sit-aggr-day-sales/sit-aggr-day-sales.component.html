@@ -21,6 +21,13 @@
             #sitSetDataSource
             style="width: 100%; height: 100%;"
             class="ag-theme-balham"
+            [pivotMode]="true"
+            [sideBar]="true"
+            [suppressAggFuncInHeader]="true"
+            [defaultColDef]="defaultColDef"
+            [autoGroupColumnDef]="autoGroupColumnDef"
+            [pivotRowTotals]="pivotRowTotals"
+            [groupIncludeTotalFooter]="true"
           >
           </ag-grid-angular>
         </div>
