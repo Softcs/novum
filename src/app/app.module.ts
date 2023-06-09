@@ -394,6 +394,7 @@ import { SitAgridPulpitReminderComponent } from './components/ag-grid/sit-agrid-
 import { SitPayrollsEditComponent } from './containers/dictionaries/sit-payrolls/actions/sit-payrolls-edit/sit-payrolls-edit.component';
 import { SitItelCashFlowComponent } from './containers/dictionaries/sit-itel-cash-flow/sit-itel-cash-flow.component';
 import { SitSandboxComponent } from './containers/dictionaries/sit-sandbox/sit-sandbox.component';
+import { SitPubSettlementsByAgeComponent } from './containers/dictionaries/sit-pub-settlements-by-age/sit-pub-settlements-by-age.component';
 
 @NgModule({
     imports: [
@@ -771,6 +772,7 @@ import { SitSandboxComponent } from './containers/dictionaries/sit-sandbox/sit-s
         SitPayrollsEditComponent,
         SitItelCashFlowComponent,
         SitSandboxComponent,
+        SitPubSettlementsByAgeComponent,
 
     ],
     providers: [
