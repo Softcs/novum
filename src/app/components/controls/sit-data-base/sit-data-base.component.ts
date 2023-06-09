@@ -17,7 +17,7 @@ export class SitDataBaseComponent implements ControlValueAccessor, AfterViewInit
   @Input() field = '';
   @Input() id: string = null;
   @Input() readonly = false;
-  
+
   @ViewChild('inputElement') private _inputElement: ElementRef;
 
   get dataSetWrapper(): DataSetWrapper {
@@ -37,14 +37,14 @@ export class SitDataBaseComponent implements ControlValueAccessor, AfterViewInit
     this.afterSetDataSetWrapper();
   }
 
-  constructor(    
+  constructor(
     protected _renderer: Renderer2
   ) {
-    
-  }  
+
+  }
 
   ngAfterViewInit(): void {
-    
+
   }
 
   get inputElement(): ElementRef {
@@ -86,6 +86,10 @@ export class SitDataBaseComponent implements ControlValueAccessor, AfterViewInit
 
   public setValue(value: any) {
     this.value = value;
+  }
+
+  public IsNewValue(value: string) {
+    return value == this.getValue();
   }
 
   public activeRowChanged(row, self) {
