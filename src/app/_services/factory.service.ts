@@ -287,6 +287,7 @@ import { SitPayrollsEditComponent } from '@app/containers/dictionaries/sit-payro
 import { SitItelCashFlowComponent } from '@app/containers/dictionaries/sit-itel-cash-flow/sit-itel-cash-flow.component';
 import { SitSandboxComponent } from '@app/containers/dictionaries/sit-sandbox/sit-sandbox.component';
 import { SitPubSettlementsByAgeComponent } from '@app/containers/dictionaries/sit-pub-settlements-by-age/sit-pub-settlements-by-age.component';
+import { SitPubCashFlowComponent } from '@app/containers/dictionaries/sit-pub-cash-flow/sit-pub-cash-flow.component';
 
 
 
@@ -581,7 +582,8 @@ export class FactoryService {
         sitPayrollsEdit: SitPayrollsEditComponent,
         sitItelCashFlow: SitItelCashFlowComponent,
         sitSandbox: SitSandboxComponent,
-        sitPubSettlementsByAge: SitPubSettlementsByAgeComponent
+        sitPubSettlementsByAge: SitPubSettlementsByAgeComponent,
+        sitPubCashFlow: SitPubCashFlowComponent,
     };
 
     public GetFactory(ident: string) {

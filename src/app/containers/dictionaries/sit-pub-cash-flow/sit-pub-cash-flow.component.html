@@ -1,0 +1,28 @@
+<sit-dict-container #sitDictcontainer ident="sitPubCashFlow" fxFill>
+    <div fxLayout="column" fxFill>
+      <div fxLayout="column" fxFill class="content">
+        <sit-data-set-container ident="sitCashFlowFilter" fxLayout="row">
+          <div class="sit-filter-bar" fxLayout="row">
+            <sit-data-input #sitControl field="customer" label="Kontrahent" appearance="outline" style="width: 200px;"></sit-data-input>
+            <sit-data-input #sitControl field="dateFrom" type="date" label="Data od" appearance="outline" style="width: 140px;"></sit-data-input>
+            <sit-data-input #sitControl field="dateTo" type="date" label="Data do" appearance="outline" style="width: 200px;" showRefreshButton="true"></sit-data-input>
+          </div>
+        </sit-data-set-container>
+        <sit-data-set-container ident="sitCashFlow" [showActionsToolbar]="false" ngClass="flex-container-column">
+          <div class="data-table" fxFlex>
+            <ag-grid-angular
+              #sitSetDataSource
+              class="ag-theme-balham"
+              [defaultColDef]="defaultColDef"
+              [autoGroupColumnDef]="autoGroupColumnDef"
+              [rowGroupPanelShow]="rowGroupPanelShow"
+              [suppressAggFuncInHeader]="suppressAggFuncInHeader"
+              [groupIncludeTotalFooter]="groupIncludeTotalFooter"              
+            >
+            </ag-grid-angular>
+          </div>
+        </sit-data-set-container>
+      </div>
+    </div>
+  </sit-dict-container>
+  

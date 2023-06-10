@@ -395,6 +395,7 @@ import { SitPayrollsEditComponent } from './containers/dictionaries/sit-payrolls
 import { SitItelCashFlowComponent } from './containers/dictionaries/sit-itel-cash-flow/sit-itel-cash-flow.component';
 import { SitSandboxComponent } from './containers/dictionaries/sit-sandbox/sit-sandbox.component';
 import { SitPubSettlementsByAgeComponent } from './containers/dictionaries/sit-pub-settlements-by-age/sit-pub-settlements-by-age.component';
+import { SitPubCashFlowComponent } from './containers/dictionaries/sit-pub-cash-flow/sit-pub-cash-flow.component';
 
 @NgModule({
     imports: [
@@ -773,6 +774,7 @@ import { SitPubSettlementsByAgeComponent } from './containers/dictionaries/sit-p
         SitItelCashFlowComponent,
         SitSandboxComponent,
         SitPubSettlementsByAgeComponent,
+        SitPubCashFlowComponent,
 
     ],
     providers: [
