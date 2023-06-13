@@ -288,6 +288,7 @@ import { SitItelCashFlowComponent } from '@app/containers/dictionaries/sit-itel-
 import { SitSandboxComponent } from '@app/containers/dictionaries/sit-sandbox/sit-sandbox.component';
 import { SitPubSettlementsByAgeComponent } from '@app/containers/dictionaries/sit-pub-settlements-by-age/sit-pub-settlements-by-age.component';
 import { SitPubCashFlowComponent } from '@app/containers/dictionaries/sit-pub-cash-flow/sit-pub-cash-flow.component';
+import { SitBudgetsComponent } from '@app/containers/dictionaries/sit-budgets/sit-budgets.component';
 
 
 
@@ -584,6 +585,7 @@ export class FactoryService {
         sitSandbox: SitSandboxComponent,
         sitPubSettlementsByAge: SitPubSettlementsByAgeComponent,
         sitPubCashFlow: SitPubCashFlowComponent,
+        sitBudgets: SitBudgetsComponent,
     };
 
     public GetFactory(ident: string) {
