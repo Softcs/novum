@@ -13,7 +13,7 @@ import { environment } from '../../../environments/environment';
 @Component({
   templateUrl: 'login.component.html',
   styleUrls: ['login.component.scss'],
-  host: {class: 'router-flex'}
+  host: {class: 'router-flex login-component user-auths-component'}
 })
 export class LoginComponent implements OnInit {
     loginForm: FormGroup;
