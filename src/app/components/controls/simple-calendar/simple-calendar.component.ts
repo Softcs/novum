@@ -35,13 +35,13 @@ export class SimpleCalendarComponent extends SitDataBaseComponent implements OnI
   ngOnInit(): void {
 
     // dataSetWrapper
-console.log('dataSetWrapper: ', this.dataSetWrapper);
-console.log('this: ', this);
+// console.log('dataSetWrapper: ', this.dataSetWrapper);
+// console.log('this: ', this);
   }
 
   public afterSetDataSetWrapper() {
     
-console.log('dataSetWrapper: ', this.dataSetWrapper);
+// console.log('dataSetWrapper: ', this.dataSetWrapper);
 
   }
 
