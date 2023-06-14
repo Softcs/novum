@@ -20,7 +20,7 @@ export class SitBudgetsComponent extends SitDictBaseComponent {
       minWidth: 200,
       cellRendererParams: { suppressCount: true },
     };
-    this.groupDefaultExpanded = 0;
+    this.groupDefaultExpanded = -1;
 
     this.getDataPath = function (data) {
       return data.dataPath;
@@ -28,6 +28,8 @@ export class SitBudgetsComponent extends SitDictBaseComponent {
 
     this.gridColumnsDefinition["sitBudgets"] = [
       { headerName: 'Rok', field: 'FiscalYear', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, defaultVisibility: false},
+      { headerName: 'ID', field: 'sitBudgetsId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 80, defaultVisibility: false},
+      { headerName: 'GUID', field: 'sitBudgetsG', width: 100, defaultVisibility: false},
       // { headerName: 'Pozycja', field: 'BudgetItem', width: 100},
       { headerName: 'Opis', field: 'BudgetItemDesc', width: 200},
       { headerName: '1 Plan', field: 'P01Plan', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: 100, },
