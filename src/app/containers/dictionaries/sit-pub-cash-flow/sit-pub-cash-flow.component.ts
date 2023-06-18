@@ -59,7 +59,13 @@ export class SitPubCashFlowComponent extends SitDictBaseComponent {
       },
       { headerName: 'Kontrahent', field: 'CustIdent', filter: 'agTextColumnFilter', minWidth: 100, maxWidth: 150, },
       { headerName: 'Nazwa kontrahenta', field: 'CustName', filter: 'agTextColumnFilter', width: 100, },
-      { headerName: 'Realizacja', field: 'DepositAmount', type: 'numericColumn', renderType:'number', suppressMenu: true, width: 100,
+      { headerName: 'Spływ', field: 'DepositAmount', type: 'numericColumn', renderType:'number', suppressMenu: true, width: 100,
+        aggFunc: 'sum' },
+      { headerName: 'Sprzedaż', field: 'SaleAmount', type: 'numericColumn', renderType:'number', suppressMenu: true, width: 100,
+        aggFunc: 'sum' },
+      { headerName: 'Korekty', field: 'CorrectionAmount', type: 'numericColumn', renderType:'number', suppressMenu: true, width: 100,
+        aggFunc: 'sum' },
+      { headerName: 'Zwroty', field: 'ReturnAmount', type: 'numericColumn', renderType:'number', suppressMenu: true, width: 100,
         aggFunc: 'sum' },
     ];
   }
