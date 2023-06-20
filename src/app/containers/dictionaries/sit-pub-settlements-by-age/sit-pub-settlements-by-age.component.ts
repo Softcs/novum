@@ -12,14 +12,11 @@ export class SitPubSettlementsByAgeComponent extends SitDictBaseComponent {
 
   public prepareColumnsDefinitnion() {
     this.gridColumnsDefinition["sitSettlementsByAge"] = [
-      { headerName: 'Grupa', field: 'CustomersGroupIdent', filter: 'agTextColumnFilter', width: 100 },
-      { headerName: 'Nazwa grupy', field: 'CustomersGroupName', filter: 'agTextColumnFilter', width: 200 ,defaultVisibility: false},
-      { headerName: 'Handlowiec', field: 'AccountManager', filter: 'agTextColumnFilter', width: 200 ,defaultVisibility: false},
       { headerName: 'Ident.', field: 'CustIdent', filter: 'agTextColumnFilter', width: 100,
         cellClass: ['font11','textFormat'] 
       },
       { headerName: 'Nazwa', field: 'CustName', tooltipField: 'CustName', filter: 'agTextColumnFilter', width: 200 },
-      { headerName: 'Nierozl.', field: 'SumAll', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, renderType: 'number', agr: "sum",
+      { headerName: 'Nierozl.', field: 'SumAll', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, renderType: 'number', agr: "sum", sort: "desc",
         cellClass: ['font11','numberFormat2Dec']
       },
       { headerName: 'Nieozn.', field: 'NoPaymentDate', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, renderType: 'number', agr: "sum",
@@ -58,6 +55,9 @@ export class SitPubSettlementsByAgeComponent extends SitDictBaseComponent {
       { headerName: 'Wpłaty', field: 'DepositAmount', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, renderType: 'number', agr: "sum",
         cellClass: ['font11','numberFormat2Dec']
       },
+      { headerName: 'Grupa', field: 'CustomersGroupIdent', filter: 'agTextColumnFilter', width: 100,defaultVisibility: false },
+      { headerName: 'Nazwa grupy', field: 'CustomersGroupName', filter: 'agTextColumnFilter', width: 200 },
+      { headerName: 'Handlowiec', field: 'AccountManager', filter: 'agTextColumnFilter', width: 200 },
     ];
     
   }
