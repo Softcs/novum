@@ -231,17 +231,19 @@ export class SitPayrollsComponent extends SitDictBaseComponent {
     { headerName: 'GUID', field: 'sitPayrollsCalcAccountingG', filter: 'agTextColumnFilter', defaultVisibility: false },
     { headerName: 'Lp', field: 'PosId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 60, sort: 'asc', suppressMenu: true },
     { headerName: 'Konto', field: 'Account', tooltipField: 'AccountDesc', filter: 'agTextColumnFilter', width: 150 },
-    { headerName: 'Kwota WN', field: 'CAmount', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, agr: 'sum',
-      cellRenderer: function(params) {
-        return params.value === null ? null : formatNumber(params.value, locale,'1.2-2').replace(/[,]/g,' ')
-      }
-    },
-    { headerName: 'Kwota MA', field: 'DAmount', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, agr: 'sum',
-      cellRenderer: function(params) {
-        return params.value === null ? null : formatNumber(params.value, locale,'1.2-2').replace(/[,]/g,' ')
-      },
-    },
+    { headerName: 'Kwota WN', field: 'CAmount', type: 'numericColumn', renderType:'number', filter: 'agNumberColumnFilter', width: 100, agr: 'sum'},
+    { headerName: 'Kwota MA', field: 'DAmount', type: 'numericColumn', renderType:'number', filter: 'agNumberColumnFilter', width: 100, agr: 'sum'},
     { headerName: 'Opis', field: 'PosDesc', filter: 'agTextColumnFilter', width: 250 },
+    { headerName: 'Wymiary', field: 'DimOk', width: 80, suppressMenu: true,
+      cellRenderer: (params:any) => {
+        if (params.data.DimOk === 1) return '&#10003;'
+        else if (params.data.DimOk === 0) return '&#10071;'
+      },
+      cellStyle: function(params) {
+        if (params.data.DimOk === 1) return {'text-align': 'center', color: 'green'}
+        else if (params.data.DimOk === 0) return {'text-align': 'center'}
+      },
+    }
   ];
 
   this.gridColumnsDefinition['sitPayrollsAccounting'] = [
