@@ -4,10 +4,7 @@ import { MatFormFieldAppearance  } from '@angular/material/form-field';
 import { SitRefreshButtonComponent } from '../sit-refresh-button/sit-refresh-button.component';
 import { LookupService } from '@app/_services/lookup.service';
 import { MatSelect } from '@angular/material/select';
-import { BehaviorSubject, Observable, Subscription } from 'rxjs';
-import { filter } from 'rxjs/operators';
-import { OnCFService } from '@app/_services/oncf.service';
-import { DomPortal } from '@angular/cdk/portal';
+import { BehaviorSubject, Subscription } from 'rxjs';
 
 @Component({
   selector: 'sit-data-input',
@@ -37,7 +34,6 @@ export class SitDataInputComponent extends SitDataBaseComponent {
   @Input() refreshOnChange: boolean;
   @Input() lookupDisplayFields: string[] = null;
   @Input() digitsInfo: string;
-  //@Input() digitsInfo: string = '1.0-0';
   @Input() required: boolean;
 
 
@@ -58,7 +54,6 @@ export class SitDataInputComponent extends SitDataBaseComponent {
 
   constructor(
     renderer: Renderer2,
-    oncfService: OnCFService,
     private lookupService: LookupService,
     private ngZone: NgZone) {
       super(renderer);
@@ -80,41 +75,26 @@ export class SitDataInputComponent extends SitDataBaseComponent {
   get numberValueToFormatedView(): any {
     return isNaN(parseFloat(this.value)) ? null : this.value;
   }
-  
+
+  get isDate(): boolean {
+    return this.type == "date";
+  }
+
+  get canInvokeOnChange(): boolean {
+    return !this.isDate;
+  }
 
   ngOnInit() {
-    
     if (this.type === 'number' && this.digitsInfo) {
       this.numberFormatedType = true;
 
-      // let patternLastGroupTmp = (this.digitsInfo.slice(-1) === '0') ? "\\d+" : "\\d+(?:[.]\\d{" + this.digitsInfo.slice(-1) + "})";
-      // //this.numberFormatedTypeRegexClear = new RegExp("\\d+(?:[.]\\d{" + this.digitsInfo.slice(-1) + "})", 'g');
-      // this.numberFormatedTypeRegexClear = new RegExp(patternLastGroupTmp, 'g');
       let patternLastGroupTmp = (this.digitsInfo.slice(-1) === '0') ? "[-]?\\d+" : "[-]?\\d+(?:[.]\\d{" + this.digitsInfo.slice(-1) + "})";
       this.numberFormatedTypeRegexClear = new RegExp(patternLastGroupTmp, 'g');
 
       let patternLastGroupTmp2 = (this.digitsInfo.slice(-1) === '0') ? '0' : '1,' + this.digitsInfo.slice(-1);
       this.numberFormatedTypeRegexFieldPattern = "[-]?\\d+(?:[.,]\\d{" + patternLastGroupTmp2 + "})?";
     }
-
   }
-
-  
-//   ngAfterViewInit() {
-
-//     if ('datetime-local' === this.type) {
-
-//       this._renderer.setProperty(this.inputElement.nativeElement, 'step', 1);
-
-// // console.log('this.type: ', this.type);
-// console.log('this.getValue: ', this.getValue());
-// console.log('this.inputElement.nativeElement: ', this.inputElement.nativeElement);
-// // console.log('this.inputElement.nativeElement.​​​validity: ', this.inputElement.nativeElement.​​​validity);
-// console.log(' - - - - - - - - - - - - - - - ');
-
-//     }
-
-//   }
 
   public getValid(): boolean {
     return this.inputElement.nativeElement.​​​validity.valid;
@@ -128,39 +108,36 @@ export class SitDataInputComponent extends SitDataBaseComponent {
     this.isValidField = value;
   }
 
-
   public setValue(value: any) {
-
     super.setValue(value);
 
     this.fieldTextError.DocumentNumber_Err = this.dataSetWrapper.activeRow?.DocumentNumber_Err;
-
-    // if (this.dataSetWrapper?.activeRow[this.field + '_Err']) {
-    //   this.setIsValidField(false);
-    // }
-
   }
-
 
   onBlurLookupTimeout: any;
 
   onBlur(event: any) {
     super.onBlur(event);
+    if(!this.canInvokeOnChange) {
+      super.onChange(this.getValue());
+    }
 
-    if (!this.hasLookup) { 
+    if (!this.hasLookup) {
       this.setIsValidField(this.getValid());
-      return; 
+      return;
     }
 
     clearTimeout(this.onBlurLookupTimeout);
     this.onBlurLookupTimeout = setTimeout(() => {
       this.setIsValidField(this.getValid());
     }, 500);
-
   }
 
   onChange(event: any) {
-    super.onChange(this.getValue());
+    if (this.canInvokeOnChange) {
+      super.onChange(this.getValue());
+    }
+
     this._onFilterKeyEnter(event);
   }
 
@@ -189,8 +166,10 @@ export class SitDataInputComponent extends SitDataBaseComponent {
   }
 
   _onFilterKeyEnter(event: any) {
-    super.onChange(this.getValue());
     if (this.refreshOnChange) {
+      if (!this.canInvokeOnChange) {
+        super.onChange(this.getValue());
+      }
       this.dataSetWrapper.RefreshChildren();
     }
   }
@@ -280,17 +259,16 @@ export class SitDataInputComponent extends SitDataBaseComponent {
     this.setIsValidField(localVal);
 
     // jc end --------------------
-   
+
     super.onKeyup(localVal);
     // super.onKeyup(this.getValue());
 
-    if (!this.hasLookup) { 
-      return; 
+    if (!this.hasLookup) {
+      return;
     }
 
     clearTimeout(this.lookupTimeout);
     this.lookupTimeout = setTimeout(() => {
-      // super.onChange(this.getValue());
       super.onChange(localVal);
       this.onLookupOpen();
     }, 500);
@@ -298,6 +276,10 @@ export class SitDataInputComponent extends SitDataBaseComponent {
   //#endregion lookup
 
   onKeyupEnter(event: any) {
+    if(!this.canInvokeOnChange) {
+      return;
+    }
+
     super.onChange(this.getValue());
     this.dataSetWrapper.RefreshChildren();
   }
