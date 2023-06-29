@@ -25,28 +25,28 @@ export class SitPubSettlementsByAgeComponent extends SitDictBaseComponent {
       { headerName: 'Przed term.', field: 'BeforePaymentDate', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, renderType: 'number', agr: "sum",
         cellClass: ['font11','numberFormat2Dec']
       },
-      { headerName: 'P01', field: 'pr01', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, renderType: 'number', agr: "sum",
+      { headerName: '1-14', field: 'pr01', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, renderType: 'number', agr: "sum",
         cellClass: ['font11','numberFormat2Dec']
       },
-      { headerName: 'P02', field: 'pr02', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, renderType: 'number', agr: "sum",
+      { headerName: '15-30', field: 'pr02', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, renderType: 'number', agr: "sum",
         cellClass: ['font11','numberFormat2Dec']
       },
-      { headerName: 'P03', field: 'pr03', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, renderType: 'number', agr: "sum",
+      { headerName: '31-45', field: 'pr03', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, renderType: 'number', agr: "sum",
         cellClass: ['font11','numberFormat2Dec']
       },
-      { headerName: 'P04', field: 'pr04', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, renderType: 'number', agr: "sum",
+      { headerName: '46-60', field: 'pr04', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, renderType: 'number', agr: "sum",
         cellClass: ['font11','numberFormat2Dec']
       },
-      { headerName: 'P05', field: 'pr05', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, renderType: 'number', agr: "sum",
+      { headerName: '61-90', field: 'pr05', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, renderType: 'number', agr: "sum",
         cellClass: ['font11','numberFormat2Dec']
       },
-      { headerName: 'P06', field: 'pr06', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, renderType: 'number', agr: "sum",
+      { headerName: '91-180', field: 'pr06', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, renderType: 'number', agr: "sum",
         cellClass: ['font11','numberFormat2Dec']
       },
-      { headerName: 'P07', field: 'pr07', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, renderType: 'number', agr: "sum",
+      { headerName: '181-360', field: 'pr07', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, renderType: 'number', agr: "sum",
         cellClass: ['font11','numberFormat2Dec']
       },
-      { headerName: 'P08', field: 'pr08', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, renderType: 'number', agr: "sum",
+      { headerName: '>360', field: 'pr08', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, renderType: 'number', agr: "sum",
         cellClass: ['font11','numberFormat2Dec']
       },
       { headerName: 'Po term.', field: 'AfterPaymentDate', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 100, renderType: 'number', agr: "sum",

@@ -4,6 +4,7 @@
         <sit-data-set-container ident="sitCashFlowFilter" fxLayout="row">
           <div class="sit-filter-bar" fxLayout="row">
             <sit-data-input #sitControl field="customer" label="Kontrahent" appearance="outline" style="width: 200px;"></sit-data-input>
+            <sit-data-checkbox #sitControl field="notZeroOnly" label="Bez zerowych" labelPosition="after" checked="true"></sit-data-checkbox>
             <sit-data-input #sitControl field="dateFrom" type="date" label="Data od" appearance="outline" style="width: 140px;"></sit-data-input>
             <sit-data-input #sitControl field="dateTo" type="date" label="Data do" appearance="outline" style="width: 200px;" showRefreshButton="true"></sit-data-input>
           </div>

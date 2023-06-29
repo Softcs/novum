@@ -45,7 +45,7 @@ export class SitPubCashFlowComponent extends SitDictBaseComponent {
 
   public prepareColumnsDefinitnion() {
     this.gridColumnsDefinition["sitCashFlow"] = [
-      { headerName: 'Handlowiec', field: 'AccountManager', filter: 'agTextColumnFilter', width: 200,
+      { headerName: 'Handlowiec', field: 'AccountManager_Payer', filter: 'agTextColumnFilter', width: 200,
         enableRowGroup: true, rowGroup: true, hide: true
       },
       { headerName: 'Grupa', field: 'CustomersGroupIdent', filter: 'agTextColumnFilter', width: 100, defaultVisibility: false,
@@ -57,8 +57,8 @@ export class SitPubCashFlowComponent extends SitDictBaseComponent {
       { headerName: 'Płatnik', field: 'AddGroupIdent', filter: 'agTextColumnFilter', width: 100,
         enableRowGroup: true, rowGroup: true, hide: true
       },
-      { headerName: 'Kontrahent', field: 'CustIdent', filter: 'agTextColumnFilter', minWidth: 100, maxWidth: 150, },
-      { headerName: 'Nazwa kontrahenta', field: 'CustName', filter: 'agTextColumnFilter', width: 100, },
+      { headerName: 'Kontrahent', field: 'CustIdent_Payer', filter: 'agTextColumnFilter', minWidth: 100, maxWidth: 150, },
+      { headerName: 'Nazwa kontrahenta', field: 'CustName_Payer', filter: 'agTextColumnFilter', width: 100, },
       { headerName: 'Spływ', field: 'DepositAmount', type: 'numericColumn', renderType:'number', suppressMenu: true, width: 100,
         aggFunc: 'sum' },
       { headerName: 'Sprzedaż', field: 'SaleAmount', type: 'numericColumn', renderType:'number', suppressMenu: true, width: 100,
