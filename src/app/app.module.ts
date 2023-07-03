@@ -398,6 +398,7 @@ import { SitPubSettlementsByAgeComponent } from './containers/dictionaries/sit-p
 import { SitPubCashFlowComponent } from './containers/dictionaries/sit-pub-cash-flow/sit-pub-cash-flow.component';
 import { SitBudgetsComponent } from './containers/dictionaries/sit-budgets/sit-budgets.component';
 import { SitBudgetsEditComponent } from './containers/dictionaries/sit-budgets/actions/sit-budgets-edit/sit-budgets-edit.component';
+import { SitHRParams4InvoicingTabEditComponent } from './containers/dictionaries/sit-customers/actions/sit-hrparams4-invoicing-tab-edit/sit-hrparams4-invoicing-tab-edit.component';
 
 @NgModule({
     imports: [
@@ -779,6 +780,7 @@ import { SitBudgetsEditComponent } from './containers/dictionaries/sit-budgets/a
         SitPubCashFlowComponent,
         SitBudgetsComponent,
         SitBudgetsEditComponent,
+        SitHRParams4InvoicingTabEditComponent,
 
     ],
     providers: [
