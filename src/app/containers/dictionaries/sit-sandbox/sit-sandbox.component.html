@@ -1,1 +1,41 @@
-<p>sit-sandbox works!</p>
+
+<sit-dict-container ident="sitOfficeDocHeaders" #sitDictcontainer ngClass="flex-container-column" (refreshAfter)="refreshAfter($event)">
+    <p>sit-sandbox works! nadrzedne</p>
+
+
+
+    <div ngClass="content flex-container-column">
+
+        <as-split #sitSpliter direction="horizontal">
+
+            <as-split-area [size]="55">
+                <as-split #sitSpliter direction="vertical">
+    
+                  <as-split-area [size]="45" fxLayout="column">
+   
+                  <sit-data-set-container  ident="sitSandbox" showActionsToolbar="true" ngClass="flex-container-column">
+                    <ag-grid-angular 
+                      #sitSetDataSource 
+                      class="ag-theme-balham">
+                    </ag-grid-angular>
+                  </sit-data-set-container>
+    
+              </as-split-area>
+    
+              <as-split-area [size]="60">
+                <p>Area</p>
+              </as-split-area>
+
+            </as-split>
+
+        </as-split-area>
+          
+          <as-split-area [size]="45" ngClass="flex-container-column group-last-area">
+          </as-split-area>
+
+        </as-split>
+      </div>
+
+
+
+</sit-dict-container>
