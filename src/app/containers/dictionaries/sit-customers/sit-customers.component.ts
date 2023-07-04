@@ -26,6 +26,7 @@ export class SitCustomersComponent extends SitDictBaseComponent {
       { headerName: 'ID', field: '__Identity__', width: 80, defaultVisibility: false},
       { headerName: 'Identyfikator', field: 'HRDepartmentIdent', width: 150 },
       { headerName: 'Nazwa', field: 'HRDepartmentName', width: 200 },
+      { headerName: 'Wal.rozl.',headerTooltip:'Waluta rozliczenia z klientem', field: 'CurrencyIdent', width: 80,suppressMenu: true },
       { headerName: 'Proc.przel.UOP', headerTooltip: 'Procedura przeliczająca UOP', field: 'HRBatches4InvoicingIdent', width: 200 },
     ];
 
@@ -173,6 +174,11 @@ export class SitCustomersComponent extends SitDictBaseComponent {
       { headerName: 'Wyr.br.', field: 'EqualPayRate', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80,suppressMenu: true},
       { headerName: 'Posi.bez VAT', headerTooltip:'Posiłki bez VAT', field: 'MealsNoVAT', filter: 'agSetColumnFilter', cellClass: "grid-cell-centered", suppressMenu: true, width: 70, renderType: "checkbox"},
       { headerName: '% VAT`', field: 'MealsVATRate', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 60,suppressMenu: true},
+    ];
+
+    this.gridColumnsDefinition["sitHRParams4InvoicingTab"] = [
+      { headerName: 'St. prac.', field: 'Rate', headerTooltip:'Stawka pracownika',filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80, renderType: 'number', renderFormat: '1.2-2',suppressMenu: true},
+      { headerName: 'St. kli.', field: 'CustRate',headerTooltip:'Stawka klienta', filter: 'agNumberColumnFilter', type: 'numericColumn', width: 80, renderType: 'number', renderFormat: '1.2-2',suppressMenu: true},
     ];    
   }
 }

@@ -294,6 +294,8 @@ import { SitPaymentsComponent } from '@app/containers/dictionaries/sit-payments/
 import { SitPaymentsAddToBankTransferComponent } from '@app/containers/dictionaries/sit-payments/actions/sit-payments-add-to-bank-transfer/sit-payments-add-to-bank-transfer.component';
 import { SitBankTransferHeadersEditComponent } from '@app/containers/dictionaries/sit-payments/actions/sit-bank-transfer-headers-edit/sit-bank-transfer-headers-edit.component';
 import { SitBankTransferPositionsEditComponent } from '@app/containers/dictionaries/sit-payments/actions/sit-bank-transfer-positions-edit/sit-bank-transfer-positions-edit.component';
+import { SitHRParams4InvoicingTabEditComponent } from '@app/containers/dictionaries/sit-customers/actions/sit-hrparams4-invoicing-tab-edit/sit-hrparams4-invoicing-tab-edit.component';
+import { SitPasswordRecoveryComponent } from '@app/containers/sit-password-recovery/sit-password-recovery.component';
 
 
 
@@ -596,6 +598,8 @@ export class FactoryService {
         sitPaymentsAddToBankTransfer: SitPaymentsAddToBankTransferComponent,
         sitBankTransferHeadersEdit: SitBankTransferHeadersEditComponent,
         sitBankTransferPositionsEdit: SitBankTransferPositionsEditComponent,
+        sitHRParams4InvoicingTabEdit: SitHRParams4InvoicingTabEditComponent,
+        sitPasswordRecoveryComponent: SitPasswordRecoveryComponent,
     };
 
     public GetFactory(ident: string) {

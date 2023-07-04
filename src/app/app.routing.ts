@@ -22,11 +22,14 @@ import { SitProductsComponent } from './containers/dictionaries/sit-products';
 import { SitDocumentsComponent } from './containers/dictionaries/sit-documents';
 import { SitWmsDocsComponent } from './containers/dictionaries/sit-wms-docs';
 import { SitParamsComponent } from './containers/dictionaries/sit-params';
+import { SitPasswordRecoveryComponent } from '@app/containers/sit-password-recovery/sit-password-recovery.component';
+
 
 const routes: Routes = [
     { path: '', component: HomeComponent, canActivate: [AuthGuard], data: {title: 'Home'} },
     { path: 'sitPulpit', component: SitPulpitComponent, canActivate: [AuthGuard], data: {title: 'Pulpit'} },
     { path: 'login', component: LoginComponent, data: {title: 'Logowanie'} },
+    { path: 'password-recovery', component: SitPasswordRecoveryComponent, data: {title: 'Odzyskiwanie hasła'} },
     { path: 'login_pub', component: LoginComponent, data: {title: 'Logowanie'} },
     { path: 'test', component: testDict, canActivate: [AuthGuard] },
     { path: 'sitMenu', component: SitMenuComponent, canActivate: [AuthGuard], data: {title: 'Definicja Menu'}},

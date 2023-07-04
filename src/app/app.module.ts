@@ -402,6 +402,8 @@ import { SitPaymentsComponent } from './containers/dictionaries/sit-payments/sit
 import { SitPaymentsAddToBankTransferComponent } from './containers/dictionaries/sit-payments/actions/sit-payments-add-to-bank-transfer/sit-payments-add-to-bank-transfer.component';
 import { SitBankTransferHeadersEditComponent } from './containers/dictionaries/sit-payments/actions/sit-bank-transfer-headers-edit/sit-bank-transfer-headers-edit.component';
 import { SitBankTransferPositionsEditComponent } from './containers/dictionaries/sit-payments/actions/sit-bank-transfer-positions-edit/sit-bank-transfer-positions-edit.component';
+import { SitHRParams4InvoicingTabEditComponent } from './containers/dictionaries/sit-customers/actions/sit-hrparams4-invoicing-tab-edit/sit-hrparams4-invoicing-tab-edit.component';
+import { SitPasswordRecoveryComponent } from './containers/sit-password-recovery/sit-password-recovery.component';
 
 @NgModule({
     imports: [
@@ -787,6 +789,8 @@ import { SitBankTransferPositionsEditComponent } from './containers/dictionaries
         SitPaymentsAddToBankTransferComponent,
         SitBankTransferHeadersEditComponent,
         SitBankTransferPositionsEditComponent,
+        SitHRParams4InvoicingTabEditComponent,
+        SitPasswordRecoveryComponent,
 
     ],
     providers: [

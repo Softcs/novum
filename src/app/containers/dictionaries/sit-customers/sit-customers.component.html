@@ -127,15 +127,30 @@
                           <mat-tab label="Fakturowanie UZ">
                             <div fxLayout="column" fxFill>
                               <div class="sit-grid-title">Parametry wyliczania faktur APT</div>
-                              <sit-data-set-container ident="sitHRParams4Invoicing" showActionsToolbar="true" #sitDataSetContainer fxFlex fxLayout="column">
-                                <div class="data-table" fxFlex>
-                                  <ag-grid-angular
-                                    #sitSetDataSource
-                                    class="ag-theme-balham sit-grid-fill"
-                                  >
-                                  </ag-grid-angular>
-                                </div>
-                              </sit-data-set-container>
+                              
+                              <as-split #sitSpliter direction="horizontal">
+  
+                                <as-split-area [size]="80">
+                                  <sit-data-set-container ident="sitHRParams4Invoicing" showActionsToolbar="true" #sitDataSetContainer fxFlex fxLayout="column">
+                                    <div class="data-table" fxFlex>
+                                      <ag-grid-angular
+                                        #sitSetDataSource
+                                        class="ag-theme-balham sit-grid-fill"
+                                      >
+                                      </ag-grid-angular>
+                                    </div>
+                                  </sit-data-set-container>
+                                </as-split-area>
+                                <as-split-area [size]="20">
+                                  <sit-data-set-container ident="sitHRParams4InvoicingTab" showActionsToolbar="true" #sitDataSetContainer ngClass="flex-container-column">
+                                    <ag-grid-angular
+                                      #sitSetDataSource
+                                      class="ag-theme-balham sit-grid-fill"
+                                    >
+                                    </ag-grid-angular>
+                                  </sit-data-set-container>
+                                </as-split-area>
+                              </as-split>
                             </div>
                           </mat-tab>
                           <mat-tab label="Dodatki UZ">

@@ -1,20 +1,27 @@
-<sit-proc-params
-  [(actionExecuteData)]="actionExecuteData"
-  >
-  <sit-data-set-container ident="sitEmployeesSettlementsEdit">
-    <div class="sit-proc-params-content" fxLayout="column">
-      <div fxLayout="column">
-        <sit-data-input type="text" #sitControl field="CustomerCostCenterIdent" label="MPK" appearance="outline" fxFlex></sit-data-input>
-        <sit-data-input type="number" #sitControl field="AdditionCust01" label="Oświadczenia i zezwolenia na pracę" digitsInfo="1.2-2" appearance="outline" fxFlex></sit-data-input>
-        <sit-data-input type="number" #sitControl field="AdditionCust02" label="Odzież robocza" appearance="outline" digitsInfo="1.2-2" fxFlex></sit-data-input>
-        <sit-data-input type="number" #sitControl field="AdditionCust03" label="Badania lekarskie" appearance="outline" digitsInfo="1.2-2" fxFlex></sit-data-input>
-        <sit-data-input type="number" #sitControl field="AdditionCust04" label="Szkolenia BHP i inne" appearance="outline" digitsInfo="1.2-2" fxFlex></sit-data-input>
-        <sit-data-input type="number" #sitControl field="AdditionCust05" label="Transport" appearance="outline" fxFlex></sit-data-input>
-        <sit-data-input type="number" #sitControl field="AdditionCust06" label="Posiłki regeneracyjne i karty lunch" digitsInfo="1.2-2" appearance="outline" fxFlex></sit-data-input>
-        <sit-data-input type="number" #sitControl field="AdditionCust07" label="Zakwaterowanie" appearance="outline" digitsInfo="1.2-2" fxFlex></sit-data-input>
-        <sit-data-input type="number" #sitControl field="AdditionCustOther" label="Inne dod. koszty" appearance="outline" digitsInfo="1.2-2" fxFlex></sit-data-input>
-        <sit-data-input type="number" #sitControl field="Discount" label="Rabat" digitsInfo="1.2-2" appearance="outline" fxFlex></sit-data-input>
-      </div>
+<sit-proc-params [(actionExecuteData)]="actionExecuteData" >
+
+  <sit-data-set-container ident="sitEmployeesSettlementsEdit" ngClass="flex-container-row sit-proc-params-content sitEmployeesSettlementsEdit"> 
+    <div ngClass="flex-container-column mr-05">
+      <sit-data-input type="text" #sitControl field="CustomerCostCenterIdent" label="MPK" appearance="outline"></sit-data-input>
+      <sit-data-input type="number" #sitControl field="AdditionCust01" label="Oświadczenia i zezwolenia na pracę" digitsInfo="1.2-2" appearance="outline"></sit-data-input>
+      <sit-data-input type="number" #sitControl field="AdditionCust02" label="Odzież robocza" appearance="outline" digitsInfo="1.2-2"></sit-data-input>
+      <sit-data-input type="number" #sitControl field="AdditionCust03" label="Badania lekarskie" appearance="outline" digitsInfo="1.2-2"></sit-data-input>
+      <sit-data-input type="number" #sitControl field="AdditionCust04" label="Szkolenia BHP i inne" appearance="outline" digitsInfo="1.2-2"></sit-data-input>
+      <sit-data-input type="number" #sitControl field="AdditionCust05" label="Transport" appearance="outline"></sit-data-input>
+      <sit-data-input type="number" #sitControl field="AdditionCust06" label="Posiłki regeneracyjne i karty lunch" digitsInfo="1.2-2" appearance="outline"></sit-data-input>
+      <sit-data-input type="number" #sitControl field="AdditionCust07" label="Zakwaterowanie" appearance="outline" digitsInfo="1.2-2"></sit-data-input>
+      <sit-data-input type="number" #sitControl field="AdditionCustOther" label="Inne dod. koszty" appearance="outline" digitsInfo="1.2-2"></sit-data-input>
+      <sit-data-input type="number" #sitControl field="Discount" label="Rabat" digitsInfo="1.2-2" appearance="outline"></sit-data-input>
+      
     </div>
+    
+    <div ngClass="flex-container-column">
+      <sit-data-input type="number" #sitControl field="MarkupBase" label="Koszty klient - Zasadnicze" digitsInfo="1.2-2" appearance="outline" 
+      matTooltip="Kwotę podajemy tylko dla klientów, którzy mają procedurę indywidualną naliczania, która nie przelicza automatycznie tej kwoty."
+      matTooltipPosition="right"
+      matTooltipHideDelay="100"></sit-data-input>
+    
+    </div>
+
   </sit-data-set-container>
 </sit-proc-params>
