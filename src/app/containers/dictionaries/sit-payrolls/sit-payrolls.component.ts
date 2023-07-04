@@ -237,11 +237,11 @@ export class SitPayrollsComponent extends SitDictBaseComponent {
     { headerName: 'Wymiary', field: 'DimOk', width: 80, suppressMenu: true,
       cellRenderer: (params:any) => {
         if (params.data.DimOk === 1) return '&#10003;'
-        else if (params.data.DimOk === 0) return '&#10071;'
+        else if (params.data.DimOk === 0) return '!'
       },
       cellStyle: function(params) {
         if (params.data.DimOk === 1) return {'text-align': 'center', color: 'green'}
-        else if (params.data.DimOk === 0) return {'text-align': 'center'}
+        else if (params.data.DeliveryFailed === 1) return {'text-align': 'center', color: 'red', 'weight': '20'}
       },
     }
   ];
