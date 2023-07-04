@@ -286,6 +286,11 @@ import { SitAgridPulpitReminderComponent } from '@app/components/ag-grid/sit-agr
 import { SitPayrollsEditComponent } from '@app/containers/dictionaries/sit-payrolls/actions/sit-payrolls-edit/sit-payrolls-edit.component';
 import { SitItelCashFlowComponent } from '@app/containers/dictionaries/sit-itel-cash-flow/sit-itel-cash-flow.component';
 import { SitSandboxComponent } from '@app/containers/dictionaries/sit-sandbox/sit-sandbox.component';
+import { SitPubSettlementsByAgeComponent } from '@app/containers/dictionaries/sit-pub-settlements-by-age/sit-pub-settlements-by-age.component';
+import { SitPubCashFlowComponent } from '@app/containers/dictionaries/sit-pub-cash-flow/sit-pub-cash-flow.component';
+import { SitBudgetsComponent } from '@app/containers/dictionaries/sit-budgets/sit-budgets.component';
+import { SitBudgetsEditComponent } from '@app/containers/dictionaries/sit-budgets/actions/sit-budgets-edit/sit-budgets-edit.component';
+import { SitHRParams4InvoicingTabEditComponent } from '@app/containers/dictionaries/sit-customers/actions/sit-hrparams4-invoicing-tab-edit/sit-hrparams4-invoicing-tab-edit.component';
 import { SitPasswordRecoveryComponent } from '@app/containers/sit-password-recovery/sit-password-recovery.component';
 
 
@@ -581,6 +586,11 @@ export class FactoryService {
         sitPayrollsEdit: SitPayrollsEditComponent,
         sitItelCashFlow: SitItelCashFlowComponent,
         sitSandbox: SitSandboxComponent,
+        sitPubSettlementsByAge: SitPubSettlementsByAgeComponent,
+        sitPubCashFlow: SitPubCashFlowComponent,
+        sitBudgets: SitBudgetsComponent,
+        sitBudgetsEdit: SitBudgetsEditComponent,
+        sitHRParams4InvoicingTabEdit: SitHRParams4InvoicingTabEditComponent,
         sitPasswordRecoveryComponent: SitPasswordRecoveryComponent,
     };
 

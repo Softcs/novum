@@ -7,6 +7,7 @@
               <sit-data-input #sitControl field="search" label="Filtruj" placeholder="Nr przesyłki, odbiorca, nr dokumentu, id dokumentu" appearance="outline" style="width: 300px;"></sit-data-input>
               <sit-data-input #sitControl field="dateFrom" type="date" label="Od" appearance="outline" style="width: 130px;"></sit-data-input>
               <sit-data-input #sitControl field="dateTo" type="date" label="Do" appearance="outline" style="width: 195px;" showRefreshButton="true"></sit-data-input>
+              <sit-data-checkbox #sitControl [refreshOnChange]="true" label="Tylko nieudane dostarczenia" id="failedOnly" field="failedOnly" widht="100px"></sit-data-checkbox>
             </div>
           </sit-data-set-container>
           <sit-data-set-container ident="sitCourierShipments" showActionsToolbar="true" fxLayout="column" fxFlex>

@@ -1,0 +1,64 @@
+<sit-dict-container #sitDictcontainer ident="sitPubCashFlow" fxFill>
+  <mat-tab-group id="tab-group" animationDuration="0ms">
+    <mat-tab label="W okresie"> 
+      <div fxLayout="column" fxFill>
+        <div fxLayout="column" fxFill class="content">
+          <sit-data-set-container ident="sitCashFlowFilter" fxLayout="row">
+            <div class="sit-filter-bar" fxLayout="row">
+              <sit-data-input #sitControl field="customer" label="Kontrahent" appearance="outline" style="width: 200px;"></sit-data-input>
+              <sit-data-checkbox #sitControl field="notZeroOnly" label="Bez zerowych" labelPosition="after" checked="true"></sit-data-checkbox>
+              <sit-data-input #sitControl field="dateFrom" type="date" label="Data od" appearance="outline" style="width: 140px;"></sit-data-input>
+              <sit-data-input #sitControl field="dateTo" type="date" label="Data do" appearance="outline" style="width: 200px;" showRefreshButton="true"></sit-data-input>
+            </div>
+          </sit-data-set-container>
+          <sit-data-set-container ident="sitCashFlow" [showActionsToolbar]="false" ngClass="flex-container-column">
+            <div class="data-table" fxFlex>
+              <ag-grid-angular
+                #sitSetDataSource
+                class="ag-theme-balham"
+                [defaultColDef]="defaultColDef"
+                [autoGroupColumnDef]="autoGroupColumnDef"
+                [rowGroupPanelShow]="rowGroupPanelShow"
+                [suppressAggFuncInHeader]="suppressAggFuncInHeader"
+                [groupIncludeTotalFooter]="groupIncludeTotalFooter"              
+              >
+              </ag-grid-angular>
+            </div>
+          </sit-data-set-container>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Tabela przestawna">
+      <div fxLayout="column" fxFill>
+        <div fxLayout="column" fxFill class="content">
+          <sit-data-set-container ident="sitCashFlowPivotFilter" fxLayout="row">
+            <div class="sit-filter-bar" fxLayout="row">
+              <sit-data-input #sitControl field="pivotCustomer" label="Kontrahent" appearance="outline" style="width: 200px;"></sit-data-input>
+              <sit-data-checkbox #sitControl field="pivotNotZeroOnly" label="Bez zerowych" labelPosition="after" checked="true"></sit-data-checkbox>
+              <sit-data-input #sitControl field="pivotDateFrom" type="date" label="Data od" appearance="outline" style="width: 140px;"></sit-data-input>
+              <sit-data-input #sitControl field="pivotDateTo" type="date" label="Data do" appearance="outline" style="width: 200px;" showRefreshButton="true"></sit-data-input>
+            </div>
+          </sit-data-set-container>
+          <sit-data-set-container ident="sitCashFlowPivot" [showActionsToolbar]="false" ngClass="flex-container-column">
+            <div class="data-table" fxFlex>
+              <ag-grid-angular
+                #sitSetDataSource
+                style="width: 100%; height: 100%;"
+                class="ag-theme-balham"
+                [pivotMode]="true"
+                [sideBar]="true"
+                [suppressAggFuncInHeader]="true"
+                [defaultColDef]="pivotDefaultColDef"
+                [autoGroupColumnDef]="pivotAutoGroupColumnDef"
+                [pivotRowTotals]="pivotRowTotals"
+                [groupIncludeTotalFooter]="true"            
+              >
+              </ag-grid-angular>
+            </div>
+          </sit-data-set-container>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</sit-dict-container>
+  

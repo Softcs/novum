@@ -1,0 +1,27 @@
+<sit-proc-params
+  [(actionExecuteData)]="actionExecuteData"
+  >
+  <sit-data-set-container ident="sitBudgetsEdit" fxLayout="column">
+    <div class="sit-proc-params-content" fxLayout="column" style="width: 300px; height: 400px;">
+      <sit-data-label #sitControl field="BudgetItemDesc" label="Pozycja" style="flex: 0 0 0" ngClass="mb-05"></sit-data-label>
+      <div fxLayout="row">
+        <div fxLayout="column" fxFlex="50" ngClass="mr-05">
+          <sit-data-input #sitControl type="number" field="P01Plan" label="Plan 1" appearance="outline" fxFlex></sit-data-input>
+          <sit-data-input #sitControl type="number" field="P02Plan" label="Plan 2" appearance="outline" fxFlex></sit-data-input>
+          <sit-data-input #sitControl type="number" field="P03Plan" label="Plan 3" appearance="outline" fxFlex></sit-data-input>
+          <sit-data-input #sitControl type="number" field="P04Plan" label="Plan 4" appearance="outline" fxFlex></sit-data-input>
+          <sit-data-input #sitControl type="number" field="P05Plan" label="Plan 5" appearance="outline" fxFlex></sit-data-input>
+          <sit-data-input #sitControl type="number" field="P06Plan" label="Plan 6" appearance="outline" fxFlex></sit-data-input>
+        </div>
+        <div fxLayout="column" fxFlex>
+          <sit-data-input #sitControl type="number" field="P07Plan" label="Plan 7" appearance="outline" fxFlex></sit-data-input>
+          <sit-data-input #sitControl type="number" field="P08Plan" label="Plan 8" appearance="outline" fxFlex></sit-data-input>
+          <sit-data-input #sitControl type="number" field="P09Plan" label="Plan 9" appearance="outline" fxFlex></sit-data-input>
+          <sit-data-input #sitControl type="number" field="P10Plan" label="Plan 10" appearance="outline" fxFlex></sit-data-input>
+          <sit-data-input #sitControl type="number" field="P11Plan" label="Plan 11" appearance="outline" fxFlex></sit-data-input>
+          <sit-data-input #sitControl type="number" field="P12Plan" label="Plan 12" appearance="outline" fxFlex></sit-data-input>
+        </div>
+      </div>
+    </div>
+  </sit-data-set-container>
+</sit-proc-params>

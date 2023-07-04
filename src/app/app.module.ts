@@ -394,6 +394,11 @@ import { SitAgridPulpitReminderComponent } from './components/ag-grid/sit-agrid-
 import { SitPayrollsEditComponent } from './containers/dictionaries/sit-payrolls/actions/sit-payrolls-edit/sit-payrolls-edit.component';
 import { SitItelCashFlowComponent } from './containers/dictionaries/sit-itel-cash-flow/sit-itel-cash-flow.component';
 import { SitSandboxComponent } from './containers/dictionaries/sit-sandbox/sit-sandbox.component';
+import { SitPubSettlementsByAgeComponent } from './containers/dictionaries/sit-pub-settlements-by-age/sit-pub-settlements-by-age.component';
+import { SitPubCashFlowComponent } from './containers/dictionaries/sit-pub-cash-flow/sit-pub-cash-flow.component';
+import { SitBudgetsComponent } from './containers/dictionaries/sit-budgets/sit-budgets.component';
+import { SitBudgetsEditComponent } from './containers/dictionaries/sit-budgets/actions/sit-budgets-edit/sit-budgets-edit.component';
+import { SitHRParams4InvoicingTabEditComponent } from './containers/dictionaries/sit-customers/actions/sit-hrparams4-invoicing-tab-edit/sit-hrparams4-invoicing-tab-edit.component';
 import { SitPasswordRecoveryComponent } from './containers/sit-password-recovery/sit-password-recovery.component';
 
 @NgModule({
@@ -772,6 +777,11 @@ import { SitPasswordRecoveryComponent } from './containers/sit-password-recovery
         SitPayrollsEditComponent,
         SitItelCashFlowComponent,
         SitSandboxComponent,
+        SitPubSettlementsByAgeComponent,
+        SitPubCashFlowComponent,
+        SitBudgetsComponent,
+        SitBudgetsEditComponent,
+        SitHRParams4InvoicingTabEditComponent,
         SitPasswordRecoveryComponent,
 
     ],

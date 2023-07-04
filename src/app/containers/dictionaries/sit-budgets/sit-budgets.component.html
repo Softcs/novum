@@ -1,0 +1,23 @@
+<sit-dict-container ident="sitBudgets" #sitDictcontainer ngClass="flex-container-column">
+
+  <div ngClass="content flex-container-column">
+    <sit-data-set-container ident="sitFilter" ngClass="flex-container-row sit-filter-bar">
+      <sit-data-input #sitControl field="FiscalYear" type="number" label="Rok" placeholder="" appearance="outline" style="width: 80px;"></sit-data-input>
+      <sit-data-input #sitControl field="CompanyDepartmentIdent" label="Dział" placeholder="" appearance="outline" style="width: 250px;" showRefreshButton="true"></sit-data-input>
+    </sit-data-set-container>
+
+    <sit-data-set-container ident="sitBudgets" showActionsToolbar="true" ngClass="flex-container-column">
+      <ag-grid-angular
+        #sitSetDataSource
+        class="ag-theme-balham"
+        [treeData]="true"
+        [getDataPath]="getDataPath"
+        [autoGroupColumnDef]="autoGroupColumnDef"
+        [groupDefaultExpanded]="groupDefaultExpanded"
+  
+      >
+      </ag-grid-angular>
+    </sit-data-set-container>    
+
+  </div>
+</sit-dict-container>

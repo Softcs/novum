@@ -20,6 +20,17 @@ export class SitCourierShipmentsComponent extends SitDictBaseComponent {
       { headerName: 'Odbiorca', field: 'ReceiverName', width: 300},
       { headerName: 'Status', field: 'ShipmentStatusDesc', width: 150},
       { headerName: 'Odebrana przez', field: 'ReceivedBy', width: 200},
+      { headerName: 'Próba dost.', field: 'DeliveryFailed', width: 100, suppressMenu: true,
+        cellRenderer: (params:any) => {
+//          if (params.data.DeliveryFailed === 1) return '&#10071;'
+          if (params.data.DeliveryFailed === 0) return '&#10003;'
+          else if (params.data.DeliveryFailed === 1) return '&#10071;'
+        },
+        cellStyle: function(params) {
+          if (params.data.DeliveryFailed === 0) return {'text-align': 'center', color: 'green'}
+          else if (params.data.DeliveryFailed === 1) return {'text-align': 'center'}
+        },
+      }      
     ];
     this.gridColumnsDefinition["sitCourierDocumentsInShipment"] = [
       { headerName: 'Id', field: 'sitCourierDocumentsInShipmentId',width: 90, defaultVisibility: false},
