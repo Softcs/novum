@@ -6,7 +6,7 @@
       <sit-data-input *ngIf="this.isInsert" #sitControl field="HRDepartmentIdent" label="Dział" appearance="outline"
         [lookupDisplayFields] = "['HRDepartmentIdent', 'HRDepartmentName']">
       </sit-data-input>
-      <sit-data-label *ngIf="!this.isInsert"  #sitControl field="HRDepartmentIdent" label="Dział"></sit-data-label>
+      <sit-data-label *ngIf="!this.isInsert"  #sitControl field="HRDepartmentIdent" label="Dział" ngClass="HRDepartmentIdent"></sit-data-label>
       <sit-data-input #sitControl field="HRBatches4InvoicingIdent" label="Procedura przeliczająca UOP" appearance="outline"></sit-data-input>
       <sit-data-input #sitControl field="CurrencyIdent" label="Waluta rozliczenia z klientem" appearance="outline"></sit-data-input>
     </div>
