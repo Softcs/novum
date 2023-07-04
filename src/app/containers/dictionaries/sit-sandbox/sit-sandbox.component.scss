@@ -1,0 +1,44 @@
+.sit-sandbox-component {
+
+    > * {
+        border: 10px dotted green;
+    }
+
+    .sit-dict-container {
+        border: 10px dotted var(--violet-color);
+    }
+
+    ag-grid-angular {
+        border: 4px dashed var(--darkred-color);
+    }
+
+    .main-area-container {
+        border: 6px dotted var(--red-color);
+
+        .area-1, 
+        .area-2 {
+            border: 4px dotted var(--blue-color);
+        }
+
+        .inner-area-container {
+            border: 4px dashed var(--orange-color);
+        }
+
+        .area-1-1, 
+        .area-1-2 {
+            border: 3px dotted var(--blue-color);
+        }
+    }
+
+    as-split-area{
+
+        > div {
+            background-color: rgba(0,0,0, .12);
+            border: 1px solid var(--blue-color);
+
+            flex: 1 1 auto;
+            margin: 0.1em;
+            padding: 0.5em;
+        }
+    }
+}
