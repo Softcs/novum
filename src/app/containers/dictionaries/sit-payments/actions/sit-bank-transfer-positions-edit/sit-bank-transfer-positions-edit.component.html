@@ -1,1 +1,10 @@
-<p>sit-bank-transfer-positions-edit works!</p>
+<sit-proc-params [(actionExecuteData)]="actionExecuteData">
+  <sit-data-set-container ident="sitBankTransferPositionsEdit">
+    <div class="sit-proc-params-content" fxLayout="column" style="width: 600px;">
+      <div ngClass="flex-container-row">
+        <sit-data-input #sitControl field="Gross" label="Brutto" required type="number" digitsInfo="1.2-2" appearance="outline" fxFlex></sit-data-input>
+        <sit-data-input #sitControl field="VAT" label="Vat" required type="number" digitsInfo="1.2-2" appearance="outline" fxFlex></sit-data-input>
+      </div>
+    </div>
+  </sit-data-set-container>
+</sit-proc-params>
