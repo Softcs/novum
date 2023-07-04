@@ -1,0 +1,21 @@
+<sit-proc-params [(actionExecuteData)]="actionExecuteData">
+  <sit-data-set-container ident="sitPaymentsAddToBankTransfer">
+    <div class="sit-proc-params-content" fxLayout="column" style="width: 600px;">
+      <div ngClass="flex-container-row">
+        <sit-data-checkbox #sitControl field="GenBankTransfer" label="Generuj nową paczkę"></sit-data-checkbox>
+        <sit-data-input type="text" #sitControl field="BankTransferNumber" label="Numer paczki" required appearance="outline" style="width: 200px"></sit-data-input>
+      </div>
+      <div ngClass="flex-container-row">
+        <sit-data-input #sitControl type="date" field="BankTransferDate" label="Data wystawienia" required appearance="outline" fxFlex="25"></sit-data-input>
+        <sit-data-input #sitControl type="date" field="BankTransferPaymentDate" label="Data wykonania" required appearance="outline" fxFlex="25"></sit-data-input>
+      </div>
+      <div ngClass="flex-container-row">
+        <sit-data-input type="text" #sitControl field="BankAccount" label="Konto bankowe" appearance="outline" style="width: 300px"></sit-data-input>
+        <sit-data-input type="text" #sitControl field="CurrencyIdent" label="Waluta" appearance="outline" style="width: 100px"></sit-data-input>      
+      </div>
+      <div ngClass="flex-container-row">
+        <sit-data-input type="text" #sitControl field="Description" label="Opis" appearance="outline" style="width: 300px"></sit-data-input>
+      </div>
+    </div>
+  </sit-data-set-container>
+</sit-proc-params>
