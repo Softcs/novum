@@ -1,14 +1,14 @@
 <sit-proc-params
   [(actionExecuteData)]="actionExecuteData"
   >
-  <sit-data-set-container ident="sitHRDepartments4CustEdit">
-    <div class="sit-proc-params-content" fxLayout="column">
-      <div fxLayout="column">
-        <sit-data-input *ngIf="this.isInsert" type="text" #sitControl field="HRDepartmentIdent" label="Dział" appearance="outline" fxFlex
-          [lookupDisplayFields] = "['HRDepartmentIdent', 'HRDepartmentName']">
-        </sit-data-input>
-        <sit-data-input type="text" #sitControl field="HRBatches4InvoicingIdent" label="Procedura przeliczająca UOP" appearance="outline" fxFlex></sit-data-input>
-      </div>
+  <sit-data-set-container ident="sitHRDepartments4CustEdit" ngClass="flex-container-row sit-proc-params-content sitHRDepartments4CustEdit">
+    <div ngClass="flex-container-column">
+      <sit-data-input *ngIf="this.isInsert" #sitControl field="HRDepartmentIdent" label="Dział" appearance="outline"
+        [lookupDisplayFields] = "['HRDepartmentIdent', 'HRDepartmentName']">
+      </sit-data-input>
+      <sit-data-label *ngIf="!this.isInsert"  #sitControl field="HRDepartmentIdent" label="Dział"></sit-data-label>
+      <sit-data-input #sitControl field="HRBatches4InvoicingIdent" label="Procedura przeliczająca UOP" appearance="outline"></sit-data-input>
+      <sit-data-input #sitControl field="CurrencyIdent" label="Waluta rozliczenia z klientem" appearance="outline"></sit-data-input>
     </div>
   </sit-data-set-container>
 </sit-proc-params>

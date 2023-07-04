@@ -26,6 +26,7 @@ export class SitCustomersComponent extends SitDictBaseComponent {
       { headerName: 'ID', field: '__Identity__', width: 80, defaultVisibility: false},
       { headerName: 'Identyfikator', field: 'HRDepartmentIdent', width: 150 },
       { headerName: 'Nazwa', field: 'HRDepartmentName', width: 200 },
+      { headerName: 'Wal.rozl.',headerTooltip:'Waluta rozliczenia z klientem', field: 'CurrencyIdent', width: 80,suppressMenu: true },
       { headerName: 'Proc.przel.UOP', headerTooltip: 'Procedura przeliczająca UOP', field: 'HRBatches4InvoicingIdent', width: 200 },
     ];
 
