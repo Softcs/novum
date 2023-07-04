@@ -291,6 +291,7 @@ import { SitPubCashFlowComponent } from '@app/containers/dictionaries/sit-pub-ca
 import { SitBudgetsComponent } from '@app/containers/dictionaries/sit-budgets/sit-budgets.component';
 import { SitBudgetsEditComponent } from '@app/containers/dictionaries/sit-budgets/actions/sit-budgets-edit/sit-budgets-edit.component';
 import { SitHRParams4InvoicingTabEditComponent } from '@app/containers/dictionaries/sit-customers/actions/sit-hrparams4-invoicing-tab-edit/sit-hrparams4-invoicing-tab-edit.component';
+import { SitPasswordRecoveryComponent } from '@app/containers/sit-password-recovery/sit-password-recovery.component';
 
 
 
@@ -590,6 +591,7 @@ export class FactoryService {
         sitBudgets: SitBudgetsComponent,
         sitBudgetsEdit: SitBudgetsEditComponent,
         sitHRParams4InvoicingTabEdit: SitHRParams4InvoicingTabEditComponent,
+        sitPasswordRecoveryComponent: SitPasswordRecoveryComponent,
     };
 
     public GetFactory(ident: string) {
