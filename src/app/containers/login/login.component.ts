@@ -82,7 +82,7 @@ export class LoginComponent implements OnInit {
         const password = this.f.password.value;
         const oprLogin = this.gatewayService.login(userName, password, null);
 
-console.log('oprLogin: ', oprLogin);
+// console.log('oprLogin: ', oprLogin);
 // return;
 
 
