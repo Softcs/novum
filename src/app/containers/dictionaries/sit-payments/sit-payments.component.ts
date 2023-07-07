@@ -65,6 +65,7 @@ export class SitPaymentsComponent extends SitDictBaseComponent {
       { headerName: 'Konto bankowe', field: 'BankAccount', filter: 'agTextColumnFilter', width: 210, defaultVisibility: true },
       { headerName: 'Wal.', field: 'CurrencyIdent', tooltipField: 'CurrencyIdent', filter: 'agTextColumnFilter', width: 50,  suppressMenu: true, },
       { headerName: 'Opis paczki', field: 'Description', filter: 'agTextColumnFilter', width: 300, defaultVisibility: true },
+      { headerName: 'Status', field: 'StatusValueName', filter: 'agTextColumnFilter', renderType: 'status', width: 67,  suppressMenu: true, defaultVisibility: true, },      
     ];
 
     this.gridColumnsDefinition["sitBankTransferPositions"] = [

@@ -1,9 +1,9 @@
 <sit-proc-params [(actionExecuteData)]="actionExecuteData">
   <sit-data-set-container ident="sitBankTransferHeadersEdit">
     <div class="sit-proc-params-content" fxLayout="column" style="width: 600px;">
-      <div ngClass="flex-container-row">
+      <!-- <div ngClass="flex-container-row">
         <sit-data-input type="text" #sitControl field="BankTransferNumber" label="Numer paczki" required appearance="outline" style="width: 200px"></sit-data-input>
-      </div>
+      </div> -->
       <div ngClass="flex-container-row">
         <sit-data-input #sitControl type="date" field="BankTransferDate" label="Data wystawienia" required appearance="outline" fxFlex="25"></sit-data-input>
         <sit-data-input #sitControl type="date" field="BankTransferPaymentDate" label="Data wykonania" required appearance="outline" fxFlex="25"></sit-data-input>
