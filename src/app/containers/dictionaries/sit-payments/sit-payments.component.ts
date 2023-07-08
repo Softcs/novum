@@ -62,7 +62,7 @@ export class SitPaymentsComponent extends SitDictBaseComponent {
       { headerName: 'Data paczki', field: 'BankTransferDate', width: 120, renderType: 'date', suppressMenu: true },
       { headerName: 'Data płatności', field: 'BankTransferPaymentDate', width: 120, renderType: 'date', suppressMenu: true },
       { headerName: 'Numer paczki', field: 'BankTransferNumber', filter: 'agTextColumnFilter', width: 150, defaultVisibility: true },
-      { headerName: 'Konto bankowe', field: 'BankAccount', filter: 'agTextColumnFilter', width: 210, defaultVisibility: true },
+      { headerName: 'Konto bankowe', field: 'BankAccount', filter: 'agTextColumnFilter', width: 240, defaultVisibility: true },
       { headerName: 'Wal.', field: 'CurrencyIdent', tooltipField: 'CurrencyIdent', filter: 'agTextColumnFilter', width: 50,  suppressMenu: true, },
       { headerName: 'Opis paczki', field: 'Description', filter: 'agTextColumnFilter', width: 300, defaultVisibility: true },
       { headerName: 'Status', field: 'StatusValueName', filter: 'agTextColumnFilter', renderType: 'status', width: 67,  suppressMenu: true, defaultVisibility: true, },      
