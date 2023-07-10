@@ -398,6 +398,10 @@ import { SitPubSettlementsByAgeComponent } from './containers/dictionaries/sit-p
 import { SitPubCashFlowComponent } from './containers/dictionaries/sit-pub-cash-flow/sit-pub-cash-flow.component';
 import { SitBudgetsComponent } from './containers/dictionaries/sit-budgets/sit-budgets.component';
 import { SitBudgetsEditComponent } from './containers/dictionaries/sit-budgets/actions/sit-budgets-edit/sit-budgets-edit.component';
+import { SitPaymentsComponent } from './containers/dictionaries/sit-payments/sit-payments.component';
+import { SitPaymentsAddToBankTransferComponent } from './containers/dictionaries/sit-payments/actions/sit-payments-add-to-bank-transfer/sit-payments-add-to-bank-transfer.component';
+import { SitBankTransferHeadersEditComponent } from './containers/dictionaries/sit-payments/actions/sit-bank-transfer-headers-edit/sit-bank-transfer-headers-edit.component';
+import { SitBankTransferPositionsEditComponent } from './containers/dictionaries/sit-payments/actions/sit-bank-transfer-positions-edit/sit-bank-transfer-positions-edit.component';
 import { SitHRParams4InvoicingTabEditComponent } from './containers/dictionaries/sit-customers/actions/sit-hrparams4-invoicing-tab-edit/sit-hrparams4-invoicing-tab-edit.component';
 import { SitPasswordRecoveryComponent } from './containers/sit-password-recovery/sit-password-recovery.component';
 
@@ -781,6 +785,10 @@ import { SitPasswordRecoveryComponent } from './containers/sit-password-recovery
         SitPubCashFlowComponent,
         SitBudgetsComponent,
         SitBudgetsEditComponent,
+        SitPaymentsComponent,
+        SitPaymentsAddToBankTransferComponent,
+        SitBankTransferHeadersEditComponent,
+        SitBankTransferPositionsEditComponent,
         SitHRParams4InvoicingTabEditComponent,
         SitPasswordRecoveryComponent,
 
