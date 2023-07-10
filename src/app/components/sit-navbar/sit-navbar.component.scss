@@ -1,5 +1,5 @@
 // jc
-@import "./../../../theme";
+//@import "./../../../theme";
 
 // :host(.sit-navbar-component) {
 //   border: 2px solid green;
@@ -14,8 +14,8 @@
   // flex-direction: row;
   align-items: center;
   justify-content: center;
-  background-color: $app-menu-background-color;
-  color: $app-menu-color;
+  background-color: var(--app-menu-background-color);
+  color: var(--app-menu-color);
 
   // height: 38px;
   margin-bottom: 4px;

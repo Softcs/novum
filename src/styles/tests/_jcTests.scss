@@ -25,50 +25,50 @@ body {
 
 // ------- global flex -------
 
-// .container-main {
-//   height: 100%;
+// .novum-main-body-container {
+
+  .mat-drawer-content>div>div {
+    display: flex;
+    // flex: 1 1 1e-9px;
+    flex: 1 1 1vh;
+    border: 10px dotted red;
+  }
+
+
+  as-split,
+  as-split-area,
+  ag-grid-angular,
+  .data-table,
+  .mat-tab-group,
+  .container-cols, 
+  .sit-pdf-viewer-component
+  {
+    display: flex;
+    flex-direction: column;
+    // flex: 1 1 auto;
+    flex: 1 1 0.01px;
+    max-height: 100%;
+  }
+
+
+  .flex-container-column,
+  .flex-container-row {
+    display: flex;
+    flex: 1 1 0.01px;
+    // border: 3px dotted green;
+    max-height: 100%;
+  }
+  
+  .flex-container-column {
+    flex-direction: column;
+  }
+  .flex-container-row {
+    flex-direction: row;
+  }
+  
 // }
 
 
-
-.mat-drawer-content>div>div {
-  display: flex;
-  // flex: 1 1 1e-9px;
-  flex: 1 1 1vh;
-}
-
-
-as-split,
-as-split-area,
-ag-grid-angular,
-.data-table,
-.mat-tab-group,
-.container-cols, 
-.sit-pdf-viewer-component
-{
-  display: flex;
-  flex-direction: column;
-  // flex: 1 1 auto;
-  flex: 1 1 0.01px;
-  max-height: 100%;
-}
-
-
-.flex-container-column,
-.flex-container-row {
-  display: flex;
-  // flex: 1 1 auto;
-  flex: 1 1 0.01px;
-  // border: 3px solid green;
-  max-height: 100%;
-}
-
-.flex-container-column {
-  flex-direction: column;
-}
-.flex-container-row {
-  flex-direction: row;
-}
 
 // ------- global flex -------
 

@@ -5,6 +5,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   selector: 'sit-dialog-action-progress',
   templateUrl: './sit-dialog-action-progress.component.html',
   styleUrls: ['./sit-dialog-action-progress.component.scss']
+  , host: {class: 'sit-dialog-container-multicomponent sit-dialog-action-progress-component flex-container-column'}
 })
 export class SitDialogActionProgressComponent implements OnInit {
 

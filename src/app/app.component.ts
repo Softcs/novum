@@ -1,5 +1,5 @@
 ﻿import { NavService } from './_services/nav.service';
-import { Component, ViewChild, ElementRef, OnInit, AfterViewInit} from '@angular/core';
+import { Component, ViewChild, ElementRef, OnInit, AfterViewInit, ViewEncapsulation} from '@angular/core';
 import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 import { GatewayService } from './_services';
 import { User } from './_models';
@@ -15,6 +15,7 @@ LicenseManager.setLicenseKey("CompanyName=SEIDO IT SP Z O O,LicensedApplication=
   selector: 'app',
   templateUrl: 'app.component.html',
   styleUrls: ['./app.component.scss'],
+  encapsulation : ViewEncapsulation.None,
   host: {class: 'app-component-container flex-container-column'},
 })
 export class AppComponent implements OnInit, AfterViewInit {
@@ -24,6 +25,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     tabs = new Array<Tab>();
     activeTabIndex = 0;
     documentBody: HTMLElement;
+    bodyMainClass: string = 'novum-main-body-container';
 
     constructor(
         private router: Router,
@@ -59,7 +61,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     createCompanyContext = (company:any) => {
       if (company && company.companyIdent) {
-        this.documentBody.className = 'company-' + company.companyIdent.trim().toLowerCase() + '-context';
+        this.documentBody.className = this.bodyMainClass + ' company-' + company.companyIdent.trim().toLowerCase() + '-context';
       }
     }
 
