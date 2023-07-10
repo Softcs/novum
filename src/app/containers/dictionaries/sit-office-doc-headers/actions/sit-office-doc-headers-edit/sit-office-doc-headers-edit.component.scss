@@ -1,0 +1,37 @@
+.sit-office-doc-headers-edit-component{
+  .sit-office-doc-headers-edit{
+    display: flex;
+    width: 1500px;
+    height: 700px;
+  }
+
+  .flex-container-row {
+    align-items: stretch;
+  }
+
+  .cust-name {
+    flex: 1 1 auto;
+  }
+  
+
+  .file-upload{
+    display: flex;
+    flex-direction: row;
+    .file-button{
+      flex: 0;
+      margin-top: 3px;
+    }
+  }
+
+  .file-upload > * {
+    flex: 1 1 auto;
+  }
+
+  .info-column{
+    display: flex;
+    flex-direction: column;
+    flex: auto;
+    max-height: 100%;
+    max-width: 30%;
+  }
+}

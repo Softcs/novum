@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { SitActionParamsForm } from '@app/_interfaces/sitActionParamsForm';
 
 @Component({
   selector: 'app-sit-office-doc-headers-edit',
   templateUrl: './sit-office-doc-headers-edit.component.html',
   styleUrls: ['./sit-office-doc-headers-edit.component.scss'],
-  host: {class: 'sit-office-doc-headers-edit-component'}
+  host: {class: 'sit-office-doc-headers-edit-component'},
+  encapsulation : ViewEncapsulation.None,
 })
 export class SitOfficeDocHeadersEditComponent extends SitActionParamsForm{
 

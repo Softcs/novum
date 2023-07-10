@@ -3,37 +3,28 @@
   
   >
   <!-- style="border:3px solid red;" -->
-  <sit-data-set-container ident="sitOfficeDocHeadersEdit"  fxLayout="column">
-    <div class="sit-proc-params-content" fxLayout="row" style="width: 1500px; height: 700px;">
-    <!-- <div class="sit-proc-params-content" fxLayout="row"> -->
-      <div fxLayout="column" fxFlex="30" ngClass="mr-05">
-        <div fxLayout="row" fxLayoutAlign="start center" *ngIf="this.isInsert" ngClas="mb-05">
-          <sit-files-button #sitSimpleButton fieldIdent="sitAttachmentsG" fieldFileNames="FileName" style="margin-bottom: 5px;"></sit-files-button >
-          <sit-data-input #sitControl field="FileName" label="Nazwa pliku" appearance="outline" style="width: 500px;"></sit-data-input>
-        </div>
-        <div fxLayout="row">
-          <sit-data-input #sitControl type="date" field="RegDate" label="Data rejestracji" required appearance="outline" fxFlex="33"></sit-data-input>
-          <sit-data-input #sitControl field="OfficeDocName" label="Rodzaj dowodu" required  [lookupDisplayFields] = "['OfficeDocName']" appearance="outline" fxFlex></sit-data-input>
-          <!-- <sit-data-label #sitControl field="OfficeDocName" appearance="outline" fxFlex="40"></sit-data-label> -->
-        </div>
-        <mat-divider style="margin-bottom: .8em; margin-top: .5em;"></mat-divider>
-        <div fxLayout="row">
-          <!-- <sit-data-input #sitControl type="date" field="SalesDate" label="Data sprzedaży" appearance="outline" fxFlex="25"></sit-data-input> -->
+  <sit-data-set-container ident="sitOfficeDocHeadersEdit" ngClass="sit-office-doc-headers-edit">
+    <div ngClass="flex-container-row sit-proc-params-content" >
+      <div ngClass="info-column mr-05">
+        <div *ngIf="this.isInsert" ngClass="file-upload mb-05">
+          <sit-files-button #sitSimpleButton fieldIdent="sitAttachmentsG" fieldFileNames="FileName" ngClass="file-button"></sit-files-button >
+          <sit-data-input #sitControl field="FileName" label="Nazwa pliku" appearance="outline"></sit-data-input>
         </div>
 
-        <div fxLayout="row">
-          <sit-data-input #sitControl field="CustName" label="Kontrahent" required appearance="outline" fxFlex></sit-data-input>
+        <div ngClass="flex-container-row">
+          <sit-data-input #sitControl field="CustName" label="Kontrahent" required appearance="outline" ngClass="cust-name"></sit-data-input>
           <sit-data-checkbox *ngIf="this.isInsert" #sitControl field="CustomerInsert" label="Nowy"></sit-data-checkbox>
         </div>
 
-        <div fxLayout="column" [class.hidden]="hideNewCustomer()">
+        <div fxLayout="column" [class.hidden]="hideNewCustomer()" ngClass="mb-05">
           <div fxLayout="row">
             <sit-data-input #sitControl field="VATId" label="NIP" required appearance="outline"></sit-data-input>
             <sit-proc-button #sitAction actionIdent="importFromGUS" buttonType="mat-raised-button" style="margin-bottom: 4px; margin-right: 4px;"></sit-proc-button>
             <sit-data-input #sitControl field="REGON" label="REGON" appearance="outline"></sit-data-input>
             <sit-data-input #sitControl field="KRS" label="KRS" appearance="outline"></sit-data-input>
           </div>
-          <sit-data-input #sitControl field="CustIdent" label="Identyfikator" required appearance="outline" fxFlex></sit-data-input>
+          <sit-data-label #sitControl field="CustName" label="Nazwa" label=" " ngClass="mb-05"></sit-data-label>
+          <sit-data-input #sitControl field="CustIdent" label="Identyfikator (skrót)" required appearance="outline" fxFlex></sit-data-input>
           <div fxLayout="row">
             <sit-data-input #sitControl field="Street" label="Ulica" appearance="outline" fxFlex></sit-data-input>
             <sit-data-input #sitControl field="HouseNum" label="Numer" appearance="outline" fxFlex="30"></sit-data-input>
@@ -45,10 +36,18 @@
           </div>
         </div>
 
-        <!-- <mat-divider style="margin-bottom: 1em; margin-top: .5em;"></mat-divider> -->
+        <div fxLayout="row">
+          <sit-data-input #sitControl type="date" field="RegDate" label="Data rejestracji" required appearance="outline" fxFlex="33"></sit-data-input>
+          <sit-data-input #sitControl field="OfficeDocName" label="Rodzaj dowodu" required  [lookupDisplayFields] = "['OfficeDocName']" appearance="outline" fxFlex></sit-data-input>
+        </div>
 
         <div fxLayout="row">
           <sit-data-input #sitControl field="DocumentNumber" label="Numer dokumentu" required appearance="outline" fxFlex></sit-data-input>
+          <sit-data-checkbox #sitControl field="IsSplitPayment" label="PP"
+            matTooltip="Podzielona płatność"
+            matTooltipPosition="right"
+            matTooltipHideDelay="100" 
+          ></sit-data-checkbox>
         </div>
         
         <div fxLayout="row">
@@ -87,7 +86,7 @@
           <sit-data-input #sitControl field="EmployeeName" label="Zapłacone przez pracownika" appearance="outline" fxFlex></sit-data-input>
         </div>
       </div>
-      <div fxLayout="column" fxFlex>
+      <div *ngIf="this.isInsert" fxLayout="column">
         <sit-pdf-viewer #sitControl reportType="att" field="FileName" ngClass="from-sit-office-doc-headers-component-html">
         </sit-pdf-viewer>
       </div>
