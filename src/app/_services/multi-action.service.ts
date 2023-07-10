@@ -58,7 +58,7 @@ export class MultiActionService {
     if (rowIndex == 0) {
       selectedRows = this.applyVisibility(selectedRows, visibility, this.dataSetWrapper);
 
-      this.showProgressDialog(this.actionDefinition.tooltip, selectedRows, (cancelResult) => {
+      this.showProgressDialog(this.actionDefinition.tooltip, selectedRows, (cancelResult: any) => {
         this.cancelInvoke = true;
       });
     } else {
@@ -97,12 +97,14 @@ export class MultiActionService {
                            dataSetResponseWrapper: DataSetWrapper,
                            closeOKCallBack: Function,
                            closeFailedCallBack: Function,
-                           width: string = '450px',
-                           height: string = '180px',
+                          //  width: string = '450px',
+                          //  height: string = '180px',
                            panelClass: string = 'sit-selected-rows-confirmation') {
     var rows = this.applyVisibility(selectedRows, visibility, dataSetResponseWrapper);
     const dialogRef = this.dialog.open(SitDialogConfirmSeletedRowsComponent, {
-      width: width, height: height, panelClass: panelClass,
+      // width: width, 
+      // height: height, 
+      panelClass: panelClass,
       data: {
         rowsCount: rows.length,
         caption: caption,
