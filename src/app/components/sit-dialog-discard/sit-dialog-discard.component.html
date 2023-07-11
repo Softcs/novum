@@ -1,8 +1,18 @@
-<div fxFlexFill fxLayout="column" fxLayoutAlign="center center" class="sit-dialog">
-<div mat-dialog-content>Czy porzucić zmiany?</div>
-<p></p>
+<div mat-dialog-content>
+  <div>Czy porzucić zmiany?</div>
+</div>
 <div mat-dialog-actions>
   <button mat-raised-button color="primary" [mat-dialog-close]="true">Tak</button>
   <button mat-raised-button color="primary" (click)="onNoClick()">Nie</button>
 </div>
-</div>
+
+
+<!-- <div fxFlexFill fxLayout="column" fxLayoutAlign="center center" class="sit-dialog"> -->
+<!-- <div class="sit-dialog flex-container-column">
+  <div mat-dialog-content>Czy porzucić zmiany?</div>
+  <p></p>
+  <div mat-dialog-actions>
+    <button mat-raised-button color="primary" [mat-dialog-close]="true">Tak</button>
+    <button mat-raised-button color="primary" (click)="onNoClick()">Nie</button>
+  </div>
+</div> -->

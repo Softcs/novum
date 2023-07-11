@@ -1,8 +1,21 @@
-<div fxFlexFill fxLayout="column" fxLayoutAlign="center center" class="sit-dialog">
-  <div mat-dialog-content>Czy chcesz wykonać <br><b>{{data.caption}}</b><br>dla <b>{{data.rowsCount}}</b> rekordów?</div>
+
+<div mat-dialog-content>
+  <div>Czy chcesz wykonać <br/><b>{{data.caption}}</b> dla <b>{{data.rowsCount}}</b> rekordów?</div>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary" [mat-dialog-close]="true">Tak</button>
+  <button mat-raised-button color="primary" (click)="onNoClick()">Nie</button>
+</div>
+
+
+
+
+<!-- <div class="sit-dialog flex-container-column"> -->
+  <!-- fxFlexFill fxLayout="column" fxLayoutAlign="center center" -->
+  <!-- <div mat-dialog-content>Czy chcesz wykonać <br><b>{{data.caption}}</b><br>dla <b>{{data.rowsCount}}</b> rekordów?</div>
   <p></p>
   <div mat-dialog-actions>
     <button mat-raised-button color="primary" [mat-dialog-close]="true">Tak</button>
     <button mat-raised-button color="primary" (click)="onNoClick()">Nie</button>
-  </div>
-</div>
+  </div> -->
+<!-- </div> -->
