@@ -2,10 +2,14 @@
   <sit-data-set-container ident="sitBankTransferPositionsEdit">
     <div class="sit-proc-params-content" fxLayout="column" style="width: 600px;">
       <div ngClass="flex-container-row">
-        <sit-data-input #sitControl type="text" field="CustomerInfo" label="Kontrahent" required appearance="outline" fxFlex="65"></sit-data-input>
+        <sit-data-input #sitControl type="text" field="CustomerName" label="Kontrahent" required appearance="outline" fxFlex="65"></sit-data-input>
         <sit-data-input #sitControl type="text" field="InvoiceNumber" label="Numer faktury" required appearance="outline" fxFlex="35"
           [lookupDisplayFields] = "['DocumentNumber', 'CustName']">
         ></sit-data-input>
+      </div>
+      <div ngClass="flex-container-row">
+        <sit-data-input #sitControl type="text" field="CustomerStreetAndHouseNum" label="Ulica i numer" appearance="outline" fxFlex="65"></sit-data-input>
+        <sit-data-input #sitControl type="text" field="CustomerPostCodeAndCity" label="Kod pocztowi i miasto" appearance="outline" fxFlex="65"></sit-data-input>
       </div>
       <div ngClass="flex-container-row">
         <sit-data-input #sitControl type="text" field="CustomerID" label="Id kontrahenta" required appearance="outline" fxFlex="30"></sit-data-input>

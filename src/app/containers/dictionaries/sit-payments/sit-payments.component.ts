@@ -72,25 +72,40 @@ export class SitPaymentsComponent extends SitDictBaseComponent {
       { headerName: 'Id', field: 'sitBankTransferPositionsId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 50, defaultVisibility: false },
       { headerName: 'GUID', field: 'sitBankTransferPositionsG', width: 100, defaultVisibility: false },
       { headerName: 'Lp', field: 'OrdNumber', type: 'numericColumn', sortable: true, resizable: true, suppressMenu: true, width: 50 },
-      { headerName: 'Kontrahent', field: 'CustomerInfo', filter: 'agTextColumnFilter', width: 150, defaultVisibility: true },
-      { headerName: 'ID kontrahenta', field: 'CustomerID', filter: 'agTextColumnFilter', width: 150, defaultVisibility: true },
-      { headerName: 'Konto bankowe', field: 'CustomerBankAccount', filter: 'agTextColumnFilter', width: 210, defaultVisibility: true },
+      { headerName: 'Kontrahent',
+        children: [      
+          { headerName: 'Nazwa', field: 'CustomerName', filter: 'agTextColumnFilter', width: 150, defaultVisibility: true },
+          { headerName: 'Identyfikator', field: 'CustomerID', filter: 'agTextColumnFilter', width: 120, defaultVisibility: true },
+          { headerName: 'Ulica i numer', field: 'CustomerStreetAndHouseNum', filter: 'agTextColumnFilter', width: 130, defaultVisibility: true },
+          { headerName: 'Kod pocztowy, miasto', field: 'CustomerPostCodeAndCity', filter: 'agTextColumnFilter', width: 130, defaultVisibility: true },
+          { headerName: 'Konto bankowe', field: 'CustomerBankAccount', filter: 'agTextColumnFilter', width: 210, defaultVisibility: true },
+        ]
+      },        
       { headerName: 'Opis pozycji', field: 'PositionDescription', filter: 'agTextColumnFilter', width: 300, defaultVisibility: true },
-      { headerName: 'Nr faktury', field: 'InvoiceNumber', filter: 'agTextColumnFilter', width: 150, defaultVisibility: true },
-      { headerName: 'Brutto faktury', field: 'GrossCurrency', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: 120, 
-        suppressMenu: true, defaultVisibility: true},
-      { headerName: 'VAT faktury', field: 'VATCurrency', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: 120, suppressMenu: true, 
-        defaultVisibility: true},
-      { headerName: 'Brutto', field: 'Gross', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: 120, 
-        suppressMenu: true, defaultVisibility: true},
-      { headerName: 'VAT', field: 'VAT', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: 120, suppressMenu: true, 
-        defaultVisibility: true},
-      { headerName: 'Data płatności', field: 'PaymentDate', width: 120, renderType: 'date', suppressMenu: true },
+      { headerName: 'Dokument',
+        children: [      
+          { headerName: 'Numer', field: 'InvoiceNumber', filter: 'agTextColumnFilter', width: 120, defaultVisibility: true },
+          { headerName: 'Brutto', field: 'GrossCurrency', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: 100, 
+            suppressMenu: true, defaultVisibility: true},
+          { headerName: 'VAT', field: 'VATCurrency', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: 100, suppressMenu: true, 
+            defaultVisibility: true},
+        ]
+      },
+      { headerName: 'Do zapłaty',
+        children: [             
+        { headerName: 'Brutto', field: 'Gross', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: 100, 
+          suppressMenu: true, defaultVisibility: true, cellStyle: function(params) { return {backgroundColor: '#d6f5d6'} },
+          cellClass: ['font12','greenBackground','numberFormatInt'], },
+        { headerName: 'VAT', field: 'VAT', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: 100, suppressMenu: true, 
+          defaultVisibility: true, cellStyle: function(params) { return {backgroundColor: '#d6f5d6'} },
+          cellClass: ['font12','greenBackground','numberFormatInt'], },
+        ]
+      },
+      { headerName: 'Data wyk.', field: 'PaymentDate', width: 100, renderType: 'date', suppressMenu: true },
       { headerName: 'Split payment', field: 'IsSplitPayment', filter: 'agSetColumnFilter', maxWidth: 90, renderType: 'checkbox', suppressMenu: true,
         cellClass: "grid-cell-centered", defaultVisibility: true },   
       { headerName: 'Auto', field: 'IsAuto', filter: 'agSetColumnFilter', maxWidth: 90, renderType: 'checkbox', suppressMenu: true,
         cellClass: "grid-cell-centered", defaultVisibility: false },   
-
     ];
 
   }
