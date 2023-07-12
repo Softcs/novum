@@ -4,7 +4,8 @@ import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 @Component({
   selector: 'app-sit-dialog-confirm-del',
   templateUrl: './sit-dialog-confirm-del.component.html',
-  styleUrls: ['./sit-dialog-confirm-del.component.scss']
+  styleUrls: ['./sit-dialog-confirm-del.component.scss'],
+  host: {class: 'sit-dialog-container-multicomponent sit-dialog-confirm-del-component flex-container-column'}
 })
 export class SitDialogConfirmDelComponent {
 

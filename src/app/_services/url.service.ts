@@ -47,6 +47,20 @@ export class UrlService {
         + par;
   }
 
+  getSecureRepFileNameUrl( dictGuid: string, rt: string, rg: string, params: any, fileName: string,){
+    let par = new URLSearchParams(params).toString();
+    if (!dictGuid) { return };
+    return environment.apiUrl
+        + '/service/show/security/report/'
+        + this.currentUser.company.companyGUID + '/'
+        + this.currentUser.token +'/'
+        + dictGuid +'/'
+        + fileName +'?'
+        + 'rg=' + rg + '&'
+        + 'rt=' + rt + '&'
+        + par;
+  }  
+
   getAnonymousRepUrl( guid: string ){
     return `${environment.apiUrl}/service/show/anonymous/report/${this.currentUser.company.companyGUID}/${guid}`;
   }
