@@ -1,4 +1,4 @@
-import { Component, ViewChild, Renderer2, Input, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, Renderer2, Input, AfterViewInit, Output, EventEmitter } from '@angular/core';
 import { SitDataBaseComponent } from '../sit-data-base/sit-data-base.component';
 import { environment } from '@environments/environment';
 import { User } from '@app/_models';
@@ -13,7 +13,7 @@ import { basename } from 'path';
   host: {class: 'sit-pdf-viewer-component'}
 })
 export class SitPdfViewerComponent extends SitDataBaseComponent implements AfterViewInit {
-  @ViewChild('pdfViewer') pdfViewer;
+  @ViewChild('pdfViewer') pdfViewer: any;
 
   @Input() dictGuid: string;
   @Input() reportType: string;
@@ -24,6 +24,7 @@ export class SitPdfViewerComponent extends SitDataBaseComponent implements After
   currentUser: User;
   companyGUID: string;
   showPDF = true;
+  @Output() showPDFChange = new EventEmitter();
 
   constructor(
       renderer: Renderer2,
@@ -53,6 +54,7 @@ export class SitPdfViewerComponent extends SitDataBaseComponent implements After
       var attachG = this.dataSetWrapper.getFieldValue('sitAttachmentsG');
       if (attachG == null) {
         this.showPDF = false;
+        this.showPDFChange.emit(this.showPDF);
         return;
       }
       this.pdfSrc = this.urlService.getAttachmentUrl(attachG, this.downloadFileName)
@@ -79,6 +81,9 @@ export class SitPdfViewerComponent extends SitDataBaseComponent implements After
     if (this.dataSetWrapper.getFieldValue(this.showField) === 0 || !this.pdfSrc || !this.downloadFileName) {
       this.showPDF = false;
     };
+
+    this.showPDFChange.emit(this.showPDF);
+
     if (this.pdfSrc !== this.pdfViewer.pdfSrc || this.showPDF === true) {
       this.pdfViewer.pdfSrc = encodeURIComponent(this.pdfSrc);
       this.pdfViewer.downloadFileName = this.downloadFileName;

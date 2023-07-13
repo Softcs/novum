@@ -1,11 +1,10 @@
-<div ngClass="flex-container-column">
-  <div *ngIf="!showPDF" fxLayoutAlign="space-around center" fxFill><h5>Brak podglądu!</h5></div>
-  <ng2-pdfjs-viewer [hidden]="!showPDF"
-    fxFlex
-    #pdfViewer
-    [openFile]="false"
-    [pdfSrc]="pdfSrc"
-    downloadFileName="downloadFileName"
-  >
-  </ng2-pdfjs-viewer>
-</div>
+<div *ngIf="!showPDF" ngClass="flex-container-column pdf-viewer-no-content"><h5>Brak podglądu!</h5></div>
+<ng2-pdfjs-viewer [hidden]="!showPDF"
+  ngClass="flex-container-column ng2-pdfjs-viewer"
+  #pdfViewer
+  [openFile]="false"
+  [pdfSrc]="pdfSrc"
+  downloadFileName="downloadFileName"
+>
+</ng2-pdfjs-viewer>
+
