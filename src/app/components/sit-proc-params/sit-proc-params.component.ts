@@ -14,7 +14,7 @@ import { MultiActionService } from '@app/_services/multi-action.service';
   selector: 'sit-proc-params',
   templateUrl: './sit-proc-params.component.html',
   styleUrls: ['./sit-proc-params.component.scss'],
-  host: {class: 'router-flex'}
+  host: {class: 'router-flex sit-proc-params-component'}
 })
 export class SitProcParamsComponent implements AfterViewInit {
   @ContentChildren(SitDataSetContainerComponent, { descendants: true })
