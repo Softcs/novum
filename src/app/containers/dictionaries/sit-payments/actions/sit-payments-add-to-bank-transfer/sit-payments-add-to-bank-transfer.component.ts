@@ -10,4 +10,8 @@ import { SitActionParamsForm } from '@app/_interfaces/sitActionParamsForm';
 })
 export class SitPaymentsAddToBankTransferComponent extends SitActionParamsForm  {
 
+  showBankTransferNumber(){
+    return(!this.activeRow  || this.activeRow.GenBankTransfer == 1 ? false : true);
+  }
+
 }

@@ -29,6 +29,7 @@
         <as-split #sitSpliter direction="vertical">
           <as-split-area [size]="35" fxLayout="column">
             <sit-data-set-container ident="sitBankTransferHeadersFilter" ngClass="flex-container-row sit-filter-bar">
+              <sit-data-input #sitControl field="searchInPositions" label="Szukaj w pozycjach" placeholder="Kontrahent, nr dokumentu" appearance="outline" style="width: 250px;" [showRefreshButton]="false"></sit-data-input>
               <sit-data-input #sitControl field="dateFrom" type="date" label="Od" appearance="outline" style="width: 130px;"></sit-data-input>
               <sit-data-input #sitControl field="dateTo" type="date" label="Do" appearance="outline" style="width: 190px;" [showRefreshButton]="true" ></sit-data-input>
             </sit-data-set-container>

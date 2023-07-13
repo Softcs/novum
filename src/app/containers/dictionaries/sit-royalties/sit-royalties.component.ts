@@ -112,7 +112,11 @@ export class SitRoyaltiesComponent extends SitDictBaseComponent {
   getPrintoutEng() {
     //generuje wydruk w nowej zakładce
     const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitRoyaltiesHeaders');
-    var url = this.urlService.getSecureRepUrl('DFCE133B-62D1-263D-9AE3-DCC06502804D', 'dict', '3FA2A044-9B08-A882-B6FE-DE1562BE0296', dataSourceResponseWrapper.activeRow);
+    var url = this.urlService.getSecureRepFileNameUrl(
+        'DFCE133B-62D1-263D-9AE3-DCC06502804D', 
+        'dict', '3FA2A044-9B08-A882-B6FE-DE1562BE0296', 
+        dataSourceResponseWrapper.activeRow, 
+        dataSourceResponseWrapper.activeRow.ReportFileName);
     window.open(url, '','height=700, width=1400, left=100,top=100');
 
   }
