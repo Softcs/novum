@@ -1,5 +1,35 @@
-.in-progress-bar {
-    width: 100%;
-    text-align: end;
-    padding-right: 10px;
-}
+// :host {
+//     background-color: var(--edit-form-background-color);
+//     // border: 10px dashed green;
+// }
+
+// .in-progress-bar {
+//     width: 100%;
+//     text-align: end;
+//     // padding-right: 10px;
+// }
+
+
+.sit-proc-params-bottom-bar {
+    // border: 2px solid blue;
+    background-color: #9daebe;
+    padding: 0.8em;
+    align-items: center;
+
+    > * {
+        &:nth-child(1) {
+            margin-right: 0.8em;
+            
+            .spinner-border {
+                margin-right: .7em;
+            }
+        }
+        &:nth-child(2) {
+            margin-right: 0.8em;
+        }
+        &:nth-child(3) {
+            flex: auto;
+            text-align: end;
+        }
+    }
+  }

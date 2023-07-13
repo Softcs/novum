@@ -1,37 +1,127 @@
 .sit-office-doc-headers-edit-component{
-  .sit-office-doc-headers-edit{
-    display: flex;
-    width: 1500px;
-    height: 700px;
+
+  // border: 5px dotted blue;
+
+  // .proc-params-sodh-edit {
+  //   border: 5px dotted var(--violet-color);
+  // }
+
+  .sit-office-doc-headers-edit-container {
+
+    // border: 5px dashed red;
+
+    // display: flex;
+    // width: 1500px;
+    // height: 700px;
+
+    > * {
+      // border: 2px dotted green;
+      flex: auto;
+
+      &.form-container {
+        // border-color: #f60;
+        min-width: 30em;
+        max-width: 34em;
+        padding: .5em .5em;
+        min-height: 67vh;
+
+
+        > * {
+          // border: 1px dotted green;
+          flex: 0 0 max-content;
+        }
+
+        // .new-customer-container {
+        //   border: 5px dotted #6f0;
+        //   > * {
+        //     border: 3px dotted green;
+        //   }
+        // }
+
+        sit-data-input {
+          flex:auto;
+        }
+
+        .file-upload{
+          align-items: first baseline;
+      
+          > * {
+            flex: auto;
+          }
+      
+          .file-button{
+            flex: 0;
+          }
+        }
+
+        [actionIdent="importFromGUS"] {
+          margin-bottom: 7px;
+          margin-right: .5em;
+        }
+
+        [field="Street"] {
+          flex:auto;
+        }
+        [field="HouseNum"] {
+          flex:0 1 8em;
+        }
+    
+        [field="CountrySymbol"] {
+          flex:0 1 4.5em;
+        }
+        [field="PostCode"] {
+          flex:0 1 5em;
+        }
+        [field="City"] {
+          flex:auto;
+        }
+    
+        [field="RegDate"] {
+          flex:0 1 10em;
+        }
+        [field="OfficeDocName"] {
+          flex: auto;
+        }
+        
+      }
+      
+      &.pdf-viewer-container {
+        // min-width: 33em;
+        // flex: auto;
+        margin-left: .5em;
+        min-width: 40em;
+      }
+
+    }
+
+
+
+
+
+
   }
 
-  .flex-container-row {
-    align-items: stretch;
-  }
 
-  .cust-name {
-    flex: 1 1 auto;
-  }
+
+  // .flex-container-row {
+  //   align-items: stretch;
+  // }
+
+  // .cust-name {
+  //   flex: 1 1 auto;
+  // }
   
 
-  .file-upload{
-    display: flex;
-    flex-direction: row;
-    .file-button{
-      flex: 0;
-      margin-top: 3px;
-    }
-  }
 
-  .file-upload > * {
-    flex: 1 1 auto;
-  }
 
-  .info-column{
-    display: flex;
-    flex-direction: column;
-    flex: auto;
-    max-height: 100%;
-    max-width: 30%;
-  }
+
+
+  // .info-column{
+  //   display: flex;
+  //   flex-direction: column;
+  //   flex: auto;
+  //   max-height: 100%;
+  //   max-width: 30%;
+  // }
+
 }
