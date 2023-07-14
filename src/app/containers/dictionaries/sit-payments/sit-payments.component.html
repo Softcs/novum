@@ -5,9 +5,12 @@
         <div fxLayout="column" fxFill class="content">
           <sit-data-set-container ident="sitPaymentsFilter" fxLayout="row">
             <div class="sit-filter-bar" fxLayout="row">
-              <sit-data-input #sitControl field="searchCustomers" label="Kontrahent" placeholder="" appearance="outline" style="width: 250px;" [showRefreshButton]="false"></sit-data-input>
-              <sit-data-input #sitControl field="searchDocuments" label="Dokument" placeholder="" appearance="outline" style="width: 250px;" [showRefreshButton]="false"></sit-data-input>
-              <sit-data-checkbox #sitControl field="showAll" label="Pokaż wszystkie" labelPosition="after" checked="true"></sit-data-checkbox>
+              <sit-data-input #sitControl field="searchCustomers" label="Kontrahent" placeholder="" appearance="outline" style="width: 200px;" [showRefreshButton]="false"></sit-data-input>
+              <sit-data-input #sitControl field="searchDocuments" label="Dokument" placeholder="" appearance="outline" style="width: 200px;" [showRefreshButton]="false"></sit-data-input>
+              <sit-data-radio #sitControl field="showType" type="row" label="Pokaż dokumenty"
+                [buttons]="[{'caption':'wg terminu płatności','value': '0', 'checked':true},{'caption':'przeterminowane','value': '1'},
+                {'caption':'wszystkie do zapłacenia','value': '2'},{'caption':'wszystkie wg daty płat.','value': '10'}]" showRefreshButton='true'
+              ></sit-data-radio>
               <sit-data-input #sitControl field="paymentDateFrom" type="date" label="Data płatności od" appearance="outline" style="width: 130px;"></sit-data-input>
               <sit-data-input #sitControl field="paymentDateTo" type="date" label="Data płatności do" appearance="outline" style="width: 190px;" [showRefreshButton]="true"></sit-data-input>
             </div>
@@ -28,17 +31,36 @@
       <div fxLayout="column" fxFill>
         <as-split #sitSpliter direction="vertical">
           <as-split-area [size]="35" fxLayout="column">
-            <sit-data-set-container ident="sitBankTransferHeadersFilter" ngClass="flex-container-row sit-filter-bar">
-              <sit-data-input #sitControl field="searchInPositions" label="Szukaj w pozycjach" placeholder="Kontrahent, nr dokumentu" appearance="outline" style="width: 250px;" [showRefreshButton]="false"></sit-data-input>
-              <sit-data-input #sitControl field="dateFrom" type="date" label="Od" appearance="outline" style="width: 130px;"></sit-data-input>
-              <sit-data-input #sitControl field="dateTo" type="date" label="Do" appearance="outline" style="width: 190px;" [showRefreshButton]="true" ></sit-data-input>
-            </sit-data-set-container>
-            <sit-data-set-container ident="sitBankTransferHeaders" showActionsToolbar="true" ngClass="flex-container-column">
-              <ag-grid-angular 
-                #sitSetDataSource 
-                class="ag-theme-balham">
-              </ag-grid-angular>
-            </sit-data-set-container>
+            <as-split #sitSpliter direction="horizontal">
+              <as-split-area [size]="60">
+                <sit-data-set-container ident="sitBankTransferHeadersFilter" ngClass="flex-container-row sit-filter-bar">
+                  <sit-data-input #sitControl field="searchInPositions" label="Szukaj w pozycjach" placeholder="Kontrahent, nr dokumentu" appearance="outline" style="width: 250px;" [showRefreshButton]="false"></sit-data-input>
+                  <sit-data-input #sitControl field="dateFrom" type="date" label="Od" appearance="outline" style="width: 130px;"></sit-data-input>
+                  <sit-data-input #sitControl field="dateTo" type="date" label="Do" appearance="outline" style="width: 190px;" [showRefreshButton]="true" ></sit-data-input>
+                </sit-data-set-container>
+                <sit-data-set-container ident="sitBankTransferHeaders" showActionsToolbar="true" ngClass="flex-container-column">
+                  <ag-grid-angular 
+                    #sitSetDataSource 
+                    class="ag-theme-balham">
+                  </ag-grid-angular>
+                </sit-data-set-container>                
+              </as-split-area>
+              <as-split-area [size]="40">
+                <div fxLayout="column" fxFill>      
+                  <div class="sit-grid-title">Załączniki</div>
+                  <button mat-stroked-button color="primary" (click)="getAttachment()" style="width: 120px;"><mat-icon>attach_file</mat-icon>Załącznik</button>
+                  <sit-data-set-container  ident="sitAttachments" [showActionsToolbar]="true" fxFlex fxLayout="column">
+                    <div class="data-table" fxFlex>
+                      <ag-grid-angular
+                        #sitSetDataSource
+                        class="ag-theme-balham"
+                      >
+                      </ag-grid-angular>
+                    </div>
+                  </sit-data-set-container>
+                </div>              
+              </as-split-area>
+            </as-split>
           </as-split-area>
           <as-split-area [size]="65" fxLayout="column">
             <sit-data-set-container ident="sitBankTransferPositions" showActionsToolbar="true" ngClass="flex-container-column">

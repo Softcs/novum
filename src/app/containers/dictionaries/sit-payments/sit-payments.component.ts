@@ -1,5 +1,7 @@
 import { Component, ViewEncapsulation, Inject, LOCALE_ID } from '@angular/core';
 import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-dict-base.component';
+import { UrlService } from '@app/_services/url.service';
+import { DataSetWrapper } from '@app/_models';
 
 @Component({
   selector: 'app-sit-payments',
@@ -9,6 +11,8 @@ import { SitDictBaseComponent } from '@app/containers/_base/sit-dict-base/sit-di
   host: {class: 'router-flex sit-payments-component'}
 })
 export class SitPaymentsComponent extends SitDictBaseComponent {
+
+  selectedTabIndex: number=0;
 
   public prepareColumnsDefinitnion() {
     this.gridColumnsDefinition["sitPayments"] = [
@@ -53,7 +57,7 @@ export class SitPaymentsComponent extends SitDictBaseComponent {
         ]
       },
       { headerName: 'Opis dokumentu', field: 'OfficeDocDescription', filter: 'agTextColumnFilter', width: 300, defaultVisibility: true },
-      { headerName: 'Status', field: 'StatusValueName', filter: 'agTextColumnFilter', renderType: 'status', width: 67,  suppressMenu: true, defaultVisibility: false, },      
+      { headerName: 'Status', field: 'StatusValueName', filter: 'agTextColumnFilter', renderType: 'status', width: 67,  suppressMenu: true, defaultVisibility: true, },      
     ];
   
     this.gridColumnsDefinition["sitBankTransferHeaders"] = [
@@ -66,6 +70,15 @@ export class SitPaymentsComponent extends SitDictBaseComponent {
       { headerName: 'Wal.', field: 'CurrencyIdent', tooltipField: 'CurrencyIdent', filter: 'agTextColumnFilter', width: 50,  suppressMenu: true, },
       { headerName: 'Opis paczki', field: 'Description', filter: 'agTextColumnFilter', width: 300, defaultVisibility: true },
       { headerName: 'Status', field: 'StatusValueName', filter: 'agTextColumnFilter', renderType: 'status', width: 67,  suppressMenu: true, defaultVisibility: true, },      
+    ];
+
+    this.gridColumnsDefinition["sitAttachments"] = [
+      { headerName: 'Id', field: 'sitAttachmentsId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 50, defaultVisibility: false },
+      { headerName: 'GUID', field: 'sitAttachmentsG', width: 100, defaultVisibility: false },
+      { headerName: 'ParentId', field: 'ParentId', defaultVisibility: false},
+      { headerName: 'Data dodania', field: 'InsertDate', width: 120, renderType: 'date', renderFormat: "yyyy-MM-dd HH:mm:ss" },
+      { headerName: 'Nazwa pliku', field: 'FileName', width: 250 },
+      { headerName: 'Opis', field: 'AttachmentDesc', width: 250 }
     ];
 
     this.gridColumnsDefinition["sitBankTransferPositions"] = [
@@ -107,6 +120,14 @@ export class SitPaymentsComponent extends SitDictBaseComponent {
       { headerName: 'Auto', field: 'IsAuto', filter: 'agSetColumnFilter', maxWidth: 90, renderType: 'checkbox', suppressMenu: true,
         cellClass: "grid-cell-centered", defaultVisibility: false },   
     ];
+
+  }
+
+  getAttachment() {
+    const dataSourceResponseWrapper: DataSetWrapper = this.dictContainer.DataSetManager.getDateSourceWrapper('sitAttachments');
+    const url = this.urlService.getAttachmentDownLoadUrl(dataSourceResponseWrapper.activeRow.sitAttachmentsG, dataSourceResponseWrapper.activeRow.FileName);
+    
+    window.open(url, '_blank');
 
   }
 }

@@ -13,6 +13,9 @@
       <div ngClass="flex-container-row">
         <sit-data-input #sitControl type="date" field="BankTransferDate" label="Data wystawienia" required appearance="outline" fxFlex="25"></sit-data-input>
         <sit-data-input #sitControl type="date" field="BankTransferPaymentDate" label="Data wykonania" required appearance="outline" fxFlex="25"></sit-data-input>
+        <sit-data-radio #sitControl field="DatePaymentType" type="row" label="Data wykoania dla pozycji"
+          [buttons]="[{'caption':'data wykonania paczki','value': '1','checked':true},{'caption':'data płatności dokumentu','value':'2'}]"
+        ></sit-data-radio>
       </div>
       <div ngClass="flex-container-row">
         <sit-data-input type="text" #sitControl field="BankAccount" label="Konto bankowe" appearance="outline" style="width: 300px"></sit-data-input>
