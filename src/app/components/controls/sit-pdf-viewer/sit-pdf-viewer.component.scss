@@ -1,3 +1,10 @@
 :host {
     overflow: hidden;
 }
+
+.pdf-viewer-no-content {
+    place-content: center space-around;
+    align-items: center;
+    min-height: 100%;
+    min-width: 100%;
+}

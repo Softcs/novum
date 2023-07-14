@@ -113,9 +113,12 @@ $theme: mat.define-light-theme($primary, $accent);
 :root {
   --background-color: #{$background-color};
   --content-background-color: #{$content-background-color};
+
+  --edit-form-background-color: #{$edit-form-background-color};
+
   --messagebox-background-color: #{$messagebox-background-color};
   --app-menu-background-color: #073763;
-  --app-menu-color: #{#fff};
+  --app-menu-color: #fff;
 
   --ag-row-border-color-rgb: 217, 220, 222;
   --ag-row-border-color: rgb(var(--ag-row-border-color-rgb));

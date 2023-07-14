@@ -6,7 +6,8 @@ import { SitActionParamsForm } from '@app/_interfaces/sitActionParamsForm';
 @Component({
   selector: 'sit-proc-expander-item-body',
   templateUrl: './sit-proc-expander-item-body.component.html',
-  styleUrls: ['./sit-proc-expander-item-body.component.scss']
+  styleUrls: ['./sit-proc-expander-item-body.component.scss'],
+  host: { 'class': 'sit-proc-expander-item-body-component flex-container-column' }
 })
 export class SitProcExpanderItemBodyComponent implements OnInit, AfterViewInit {
   @Input() componentFactoryIdent: string;

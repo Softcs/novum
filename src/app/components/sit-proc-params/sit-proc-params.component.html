@@ -1,5 +1,26 @@
-<sit-data-set-container ident="{{dictIdent}}">
-  <div fxLayout="column">
+<sit-data-set-container ident="{{dictIdent}}" ngClass="flex-container-column">
+
+    <ng-content></ng-content>
+
+    <div class="sit-proc-params-bottom-bar flex-container-row">
+      <div>
+        <button [disabled]="executing || saveDisabled" mat-raised-button color="primary" (click)="executeActionClickEvent()">
+          <span *ngIf="executing" class="spinner-border spinner-border-sm"></span>
+          Zapisz
+        </button>
+      </div>
+      <div>
+        <button mat-raised-button color="primary" (click)="discard()" >Anuluj</button>
+      </div>
+      <div class="in-progress-bar">            
+        <span *ngIf="operationInProgress" class="spinner-border spinner-border-sm operationInProgress"></span>
+      </div>
+    </div>
+
+
+
+
+  <!-- <div fxLayout="column">
     <div fxFlex>
       <ng-content></ng-content>
     </div>    
@@ -19,6 +40,6 @@
           </div>
       </div>
     </div>
-  </div>
+  </div> -->
 </sit-data-set-container>
 
