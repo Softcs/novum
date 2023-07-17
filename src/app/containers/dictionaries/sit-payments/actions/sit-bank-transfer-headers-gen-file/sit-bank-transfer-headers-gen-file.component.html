@@ -1,0 +1,12 @@
+<sit-proc-params [(actionExecuteData)]="actionExecuteData">
+    <sit-data-set-container ident="sitBankTransferHeadersGenFile">
+      <div class="sit-proc-params-content" fxLayout="column" style="width: 400px;">
+        <div ngClass="flex-container-row">
+          <sit-data-radio #sitControl field="SaveType" type="column" label="Format pliku"
+            [buttons]="[{'caption':'UTF8','value': '1', 'checked':true},{'caption':'Windows-1250','value': '2'},
+            {'caption':'ISO-8859-2','value': '3'},{'caption':'CP852','value': '4'}]" showRefreshButton='true'
+          ></sit-data-radio>
+        </div>
+      </div>
+    </sit-data-set-container>
+  </sit-proc-params>
