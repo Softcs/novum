@@ -69,7 +69,12 @@ export class UrlService {
     return `${environment.apiUrl}/service/temporary/generate/${this.currentUser.token}/${this.currentUser.connection}?download=1&identity=${activeRow['__Identity__']}`;
   }
 
-  getImportTemplateUrl(templateFileName:  string, templateFullFileName: string): string {
+  getImportTemplateUrl(templateFileName: string, templateFullFileName: string): string {
     return `${environment.apiUrl}/service/attachments/get/${this.currentUser.token}/${this.currentUser.connection}/importTemplates/download/${templateFileName}/${templateFullFileName ? templateFullFileName : "noFileName"}`;
   }
+
+  getAttachmentDownLoadUrl(fileName: string, fullFileName: string): string {
+    return `${environment.apiUrl}/service/attachments/get/${this.currentUser.token}/${this.currentUser.connection}/attachments/download/${fileName}/${fullFileName ? fullFileName : "noFileName"}`;
+  }
+
 }
