@@ -297,6 +297,7 @@ import { SitBankTransferPositionsEditComponent } from '@app/containers/dictionar
 import { SitHRParams4InvoicingTabEditComponent } from '@app/containers/dictionaries/sit-customers/actions/sit-hrparams4-invoicing-tab-edit/sit-hrparams4-invoicing-tab-edit.component';
 import { SitPasswordRecoveryComponent } from '@app/containers/sit-password-recovery/sit-password-recovery.component';
 import { SitBankTransferHeadersGenFileComponent } from '@app/containers/dictionaries/sit-payments/actions/sit-bank-transfer-headers-gen-file/sit-bank-transfer-headers-gen-file.component';
+import { SitOfficeDocPositionsEditComponent } from '@app/containers/dictionaries/sit-office-doc-headers/actions/sit-office-doc-positions-edit/sit-office-doc-positions-edit.component';
 
 
 
@@ -602,6 +603,7 @@ export class FactoryService {
         sitHRParams4InvoicingTabEdit: SitHRParams4InvoicingTabEditComponent,
         sitPasswordRecoveryComponent: SitPasswordRecoveryComponent,
         sitBankTransferHeadersGenFile: SitBankTransferHeadersGenFileComponent,
+        sitOfficeDocPositionsEdit: SitOfficeDocPositionsEditComponent,
     };
 
     public GetFactory(ident: string) {
