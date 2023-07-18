@@ -1,0 +1,53 @@
+.sit-office-doc-positions-edit-component{
+
+  // border: 5px dotted blue;
+
+
+
+  .sit-office-doc-positions-edit-container {
+
+    //border: 5px dashed red;
+
+    > * {
+      //border: 2px dotted green;
+      flex: auto;
+
+      &.form-container {
+        // border-color: #f60;
+        min-width: 30em;
+        max-width: 34em;
+        padding: .5em .5em;
+        min-height: 67vh;
+
+        > * {
+          //border: 1px dotted green;
+          flex: 0 0 max-content;
+        }
+
+
+        sit-data-input {
+          flex:auto;
+        }
+
+        [field="Quantity"] {
+          flex:0 1 8em;
+        }
+    
+        [field="Price"] {
+          flex:0 1 8em;
+        }
+
+        [field="UnitIdent"] {
+          flex:auto;
+        }
+
+        [field="VATRatesIdent"] {
+          flex:auto;
+        }
+    
+      }
+      
+    }
+
+  }
+}
