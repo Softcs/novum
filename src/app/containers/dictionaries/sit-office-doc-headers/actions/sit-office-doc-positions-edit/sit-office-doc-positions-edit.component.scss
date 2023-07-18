@@ -15,9 +15,9 @@
       &.form-container {
         // border-color: #f60;
         min-width: 30em;
-        max-width: 34em;
+        max-width: 30em;
         padding: .5em .5em;
-        min-height: 67vh;
+        min-height: 50vh;
 
         > * {
           //border: 1px dotted green;
@@ -26,23 +26,23 @@
 
 
         sit-data-input {
-          flex:auto;
+          flex: 1 1 auto;
         }
 
         [field="Quantity"] {
-          flex:0 1 8em;
+          flex: 0 0 7em;
         }
     
         [field="Price"] {
-          flex:0 1 8em;
+          flex: 0 0 7em;
         }
 
         [field="UnitIdent"] {
-          flex:auto;
+          flex: 0 0 7em;
         }
 
         [field="VATRatesIdent"] {
-          flex:auto;
+          flex: 1 1 auto;
         }
     
       }
