@@ -135,6 +135,16 @@
                 </sit-data-set-container>
               </mat-tab>
 
+              <mat-tab label="Pozycje">
+                <sit-data-set-container ident="sitOfficeDocPositions" showActionsToolbar="true" ngClass="flex-container-column">
+                    <ag-grid-angular
+                      #sitSetDataSource
+                      class="ag-theme-balham"
+                    >
+                  </ag-grid-angular>
+                </sit-data-set-container>
+              </mat-tab>
+              
               <mat-tab label="Stopka VAT">
                 <sit-data-set-container ident="sitOfficeDocVATFooters" showActionsToolbar="true" ngClass="flex-container-column">
                   <ag-grid-angular
