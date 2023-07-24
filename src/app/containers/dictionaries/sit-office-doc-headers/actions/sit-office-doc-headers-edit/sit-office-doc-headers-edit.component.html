@@ -7,7 +7,8 @@
     
     <!-- <div ngClass="flex-container-row sit-proc-params-content" > -->
 
-      <div ngClass="info-column form-container flex-container-column">
+      <sit-actions-form-container ngClass="flex-container-column">
+      <!-- <div ngClass="info-column form-container flex-container-column"> -->
 
         <div *ngIf="this.isInsert" ngClass="file-upload flex-container-row">
           <sit-files-button #sitSimpleButton fieldIdent="sitAttachmentsG" fieldFileNames="FileName" ngClass="file-button"></sit-files-button >
@@ -91,7 +92,9 @@
         <div ngClass="flex-container-row">
           <sit-data-input #sitControl field="EmployeeName" label="Zapłacone przez pracownika" appearance="outline" fxFlex></sit-data-input>
         </div>
-      </div>
+
+      <!-- </div> -->
+      </sit-actions-form-container>
 
       
         <!-- *ngIf="showPDF" -->

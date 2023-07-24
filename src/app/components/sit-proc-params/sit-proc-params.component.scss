@@ -10,6 +10,26 @@
 // }
 
 
+.spinner-container {
+    flex: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 30em;
+    max-width: 34em;
+    min-height: 10em;
+  
+    .spinner {
+      width: 6em;
+      height: 6em;
+      flex: 0 0 auto;
+      color: var(--sidenav-font-color);
+      border-width: 2.3em;
+    }
+
+  }
+
+
 .sit-proc-params-bottom-bar {
     // border: 2px solid blue;
     background-color: #9daebe;
