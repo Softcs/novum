@@ -1,13 +1,20 @@
-<sit-proc-params [(actionExecuteData)]="actionExecuteData" ngClass="flex-container-column">
-  <sit-data-set-container ident="sitOfficeDocDimensionsEdit" ngClass="sit-proc-params-content" style="width: 600px; height: 650px;">
-    <div fxLayout="column" fxFill>
-      <sit-data-label #sitControl field="PosId" label="Pozycja" style="flex: 0 0 0" ngClass="mb-05"></sit-data-label>
-      <div fxLayout="row">
-        <div fxFlex="50">
+<sit-proc-params 
+  [(actionExecuteData)]="actionExecuteData" 
+  ngClass="flex-container-column proc-params-sodd-edit"
+>
+  <sit-data-set-container ident="sitOfficeDocDimensionsEdit" ngClass="sit-office-edit-container flex-container-column">
+
+    <sit-actions-form-container ngClass="flex-container-column">
+
+      <sit-data-label #sitControl field="PosId" label="Pozycja" ngClass="mb-05"></sit-data-label>
+      
+      <div ngClass="flex-container-row container-1">
+        
+        <div ngClass="col-1">
           <sit-data-input #sitControl type="number" field="Perc" label="Procent" digitsInfo="1.0-4" appearance="outline"></sit-data-input>
-          <div fxLayout="row">
-            <sit-data-input #sitControl type="number" field="NetCurrency" label="Netto w walucie" digitsInfo="1.2-2" appearance="outline" style="width: 50%"></sit-data-input>
-            <sit-data-input #sitControl type="number" field="Net" label="Netto w PLN" digitsInfo="1.2-2" appearance="outline" style="width: 50%"></sit-data-input>
+          <div ngClass="flex-container-row">
+            <sit-data-input #sitControl type="number" field="NetCurrency" label="Netto w walucie" digitsInfo="1.2-2" appearance="outline" ></sit-data-input>
+            <sit-data-input #sitControl type="number" field="Net" label="Netto w PLN" digitsInfo="1.2-2" appearance="outline" ></sit-data-input>
           </div>
           <sit-data-input #sitControl field="TransactionTypeDesc4Lookup" label="Typ transakcji" appearance="outline"></sit-data-input>
           <sit-data-input #sitControl [class.hidden]="!(this.activeRow?.UseCompanyDepartments == 1)" field="CompanyDepartmentDesc4Lookup" label="Dział" appearance="outline"></sit-data-input>
@@ -17,12 +24,15 @@
           <sit-data-input #sitControl [class.hidden]="!(this.activeRow?.UseCostTypes == 1)" field="CostTypeDesc4Lookup" label="Rodzaj kosztu" appearance="outline"></sit-data-input>
           <sit-data-input #sitControl [class.hidden]="!(this.activeRow?.UseVehicles == 1)" field="VehicleDesc4Lookup" label="Pojazd" appearance="outline"></sit-data-input>
           <sit-data-input #sitControl [class.hidden]="!(this.activeRow?.UseVehicles == 1)" field="CustName" label="Klient" appearance="outline"></sit-data-input>
-          <div fxLayout="row">
-            <sit-data-input #sitControl field="Quantity" label="Ilość" appearance="outline" style="width: 50%"></sit-data-input>
-            <sit-data-input #sitControl field="UnitIdent" label="JM" appearance="outline" style="width: 50%"></sit-data-input>
+          <div ngClass="flex-container-row">
+            <sit-data-input #sitControl field="Quantity" label="Ilość" appearance="outline" ></sit-data-input>
+            <sit-data-input #sitControl field="UnitIdent" label="JM" appearance="outline" ></sit-data-input>
           </div>
         </div>
-        <div fxFlex>
+
+        <div ngClass="col-divider"></div>
+
+        <div ngClass="col-2">
           <sit-data-input #sitControl field="VATRatesIdent" label="Stawka VAT" appearance="outline" [lookupDisplayFields] = "['VATRatesIdent', 'VATRatesDescription']"></sit-data-input>
           <sit-data-radio #sitControl field="VATdeduction" type="row" 
             [buttons]="[{'caption':'Odliczane','value': '1', 'checked':true},{'caption':'Nieodliczane','value':'0'},{'caption':'Struktura','value':'2'}]"
@@ -32,8 +42,12 @@
           <sit-data-input #sitControl field="VATSpecialTypesIdent" label="Szególny VAT" appearance="outline"></sit-data-input>
           <sit-data-input #sitControl field="TaxSpecialTypesIdent" label="Szególny podatek" appearance="outline"></sit-data-input>
         </div>
+
       </div>
+      
       <sit-data-input #sitControl field="PosDesc" label="Opis" appearance="outline"></sit-data-input>
-    </div>
+
+    </sit-actions-form-container>
+
   </sit-data-set-container>
 </sit-proc-params>

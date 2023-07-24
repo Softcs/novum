@@ -39,7 +39,8 @@
                     }
                 }
                 .expander-body {
-                    border: 1px solid var(--app-menu-background-color);
+                    // border: 1px solid var(--app-menu-background-color);
+                    border: 1px solid rgba(0,0,0,0.3);
                     box-shadow: var(--button-hover-shadow);
                     background-color: var(--edit-form-background-color);
                     border-radius: 0 5px 5px;

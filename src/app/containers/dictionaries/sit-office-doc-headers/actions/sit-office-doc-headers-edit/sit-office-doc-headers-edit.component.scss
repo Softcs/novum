@@ -1,29 +1,14 @@
 .sit-office-doc-headers-edit-component{
-
   // border: 5px dotted blue;
 
-  // .proc-params-sodh-edit {
-  //   border: 5px dotted var(--violet-color);
-  // }
-
   .sit-office-doc-headers-edit-container {
-
     // border: 5px dashed red;
-
-    // display: flex;
-    // width: 1500px;
-    // height: 700px;
 
     > * {
       // border: 2px dotted green;
       flex: auto;
 
-      &.form-container {
-        // border-color: #f60;
-        min-width: 30em;
-        max-width: 34em;
-        padding: .5em .5em;
-        min-height: 67vh;
+      &.sit-actions-form-container-component {
 
 
         > * {
@@ -100,19 +85,6 @@
 
 
   }
-
-
-
-  // .flex-container-row {
-  //   align-items: stretch;
-  // }
-
-  // .cust-name {
-  //   flex: 1 1 auto;
-  // }
-  
-
-
 
 
 

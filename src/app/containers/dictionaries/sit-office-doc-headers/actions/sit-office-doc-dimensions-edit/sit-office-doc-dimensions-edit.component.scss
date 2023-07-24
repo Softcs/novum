@@ -1,0 +1,50 @@
+.sit-office-doc-dimensions-edit-component {
+    // border: 5px dotted blue;
+
+    .proc-params-sodd-edit {
+        // border: 5px dotted var(--violet-color);
+
+        .sit-office-edit-container {
+            // border: 5px dashed red;
+            flex: auto;
+
+            .sit-actions-form-container-component {
+                flex: auto;
+                max-width: none;
+
+                sit-data-label {
+                    flex: initial;
+                 }
+    
+                .container-1 {
+                    > div {
+                        display: flex;
+                        flex-direction: column;
+
+                        &.col-divider {
+                            max-width: .5em;
+                            min-width: .5em;
+                        }
+
+                        > * {
+                            display: flex;
+                            flex: initial;
+                            align-items: center;
+                            min-height: 2.8em;
+                            max-height: 2.8em;
+                        }
+                    }
+                    .flex-container-row {
+                        > * {
+                            flex: auto;
+                        }
+                    }
+                }
+
+            }
+
+
+        }
+    }
+
+}
