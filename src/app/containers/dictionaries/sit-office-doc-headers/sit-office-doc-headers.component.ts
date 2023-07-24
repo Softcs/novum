@@ -76,6 +76,24 @@ export class SitOfficeDocHeadersComponent extends SitDictBaseComponent {
 
     ];
 
+    this.gridColumnsDefinition["sitOfficeDocPositions"] = [
+      { headerName: 'Id', field: 'sitOfficeDocPositionsId',width: 90, defaultVisibility: false },
+      { headerName: 'GUID', field: 'sitOfficeDocPositionsG',width: 150, defaultVisibility: false },
+      { headerName: 'sitOfficeDocHeadersId', field: 'sitOfficeDocHeadersId', defaultVisibility: false},
+      { headerName: 'Lp.', field: 'OrdNumber', filter: 'agNumberColumnFilter', type: 'rightAligned' , width: 50, suppressMenu: true,},
+      { headerName: 'Opis', field: 'PositionDescription', width: 250 },
+      { headerName: 'Ilość', field: 'Quantity', filter: 'agTextColumnFilter', floatingFilter: false, width: 80,},
+      { headerName: 'Cena', field: 'Price', filter: 'agTextColumnFilter', floatingFilter: false, width: 80, },
+      { headerName: 'Netto w wal.', field: 'NetCurrency', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: 100, suppressMenu: true, agr: "sum",
+        cellStyle: {'background-color': 'rgb(219, 247, 255)'},
+        cellClass: 'grid-cell-center-right'
+      },
+      { headerName: 'Netto PLN', field: 'Net', filter: 'agNumberColumnFilter', type: 'numericColumn', renderType:'number', width: 100, suppressMenu: true, agr: "sum",
+        cellClass: 'grid-cell-center-right'
+      },
+
+    ]; 
+
     this.gridColumnsDefinition["sitAttachments"] = [
       { headerName: 'ParentId', field: 'ParentId', defaultVisibility: false},
       { headerName: 'sitAttachmentsG', field: 'sitAttachmentsG', defaultVisibility: false},

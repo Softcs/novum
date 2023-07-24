@@ -32,7 +32,10 @@
       </div>
       <sit-data-input type="text" #sitControl field="Content" label="Zawartość" appearance="outline"></sit-data-input>
       <sit-data-input type="text" #sitControl field="Comment" label="Uwagi" appearance="outline"></sit-data-input>
-      <sit-data-checkbox #sitControl field="ReturnOnDelivery" label="Zwrot dokumentów (ROD)"></sit-data-checkbox>
+      <div fxLayout="row">
+        <sit-data-checkbox #sitControl field="ReturnOnDelivery" label="Zwrot dokumentów (ROD)"></sit-data-checkbox>
+        <sit-data-checkbox #sitControl field="PredeliveryInformation" label="Informacja przed doręczeniem (PDI)"></sit-data-checkbox>
+      </div>
     </div>
   </sit-data-set-container>
 </sit-proc-params>

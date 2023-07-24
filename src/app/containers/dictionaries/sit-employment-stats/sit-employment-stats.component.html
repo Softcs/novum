@@ -1,0 +1,16 @@
+<sit-dict-container ident="sitEmploymentStats" #sitDictcontainer ngClass="flex-container-column content">
+  <sit-data-set-container ident="sitFilter" ngClass="flex-container-row sit-filter-bar">
+    <sit-data-input #sitControl field="Year" type="number" label="Rok" placeholder="" appearance="outline" style="width: 65px;"></sit-data-input>
+    <sit-data-input #sitControl field="Month" type="number" label="Miesiąc" placeholder="" appearance="outline" style="width: 120px;" showRefreshButton="true"></sit-data-input>
+  </sit-data-set-container>
+
+  <sit-data-set-container  ident="sitEmploymentStats" showActionsToolbar="true" ngClass="flex-container-column">
+
+    <ag-grid-angular 
+      #sitSetDataSource 
+      class="ag-theme-balham">
+    </ag-grid-angular>
+  
+  </sit-data-set-container>
+
+</sit-dict-container>
