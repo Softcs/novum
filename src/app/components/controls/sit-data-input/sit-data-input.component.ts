@@ -37,7 +37,8 @@ export class SitDataInputComponent extends SitDataBaseComponent {
   @Input() required: boolean;
 
 
-  hasLookup: boolean;
+  // hasLookup: boolean;
+  hasLookup: boolean = false;
   lookupIsLoading = false;
   id: string;
 

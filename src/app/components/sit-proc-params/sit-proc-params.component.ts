@@ -8,6 +8,7 @@ import { GatewayService } from '@app/_services';
 import { ActionExecuteData } from '@app/_models/actionExecuteData';
 import { OnCFService } from '@app/_services/oncf.service';
 import { MultiActionService } from '@app/_services/multi-action.service';
+import { DomPortal } from '@angular/cdk/portal';
 
 
 @Component({
@@ -16,7 +17,9 @@ import { MultiActionService } from '@app/_services/multi-action.service';
   styleUrls: ['./sit-proc-params.component.scss'],
   host: {class: 'router-flex sit-proc-params-component'}
 })
-export class SitProcParamsComponent implements AfterViewInit {
+//export class SitProcParamsComponent implements AfterViewInit 
+export class SitProcParamsComponent
+{
   @ContentChildren(SitDataSetContainerComponent, { descendants: true })
   dataSetContainers !: QueryList<SitDataSetContainerComponent>;
 
@@ -37,7 +40,7 @@ export class SitProcParamsComponent implements AfterViewInit {
 
   public dataSetManager: DataSetManager;
 
-  constructor(
+  constructor (
     gatewayService: GatewayService,
     private tabService: TabService,
     public dialog: MatDialog,
