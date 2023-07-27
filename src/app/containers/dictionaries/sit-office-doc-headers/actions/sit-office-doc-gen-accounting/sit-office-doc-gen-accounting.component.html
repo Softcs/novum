@@ -1,19 +1,23 @@
 <sit-proc-params [(actionExecuteData)]="actionExecuteData" ngClass="flex-container-column">
-  <sit-data-set-container ident="sitOfficeDocGenAccounting" ngClass="flex-container-column sit-proc-params-content" style="width: 300px;">
+  <!-- <sit-data-set-container ident="sitOfficeDocGenAccounting" ngClass="flex-container-column sit-proc-params-content"> -->
+  <sit-data-set-container ident="sitOfficeDocGenAccounting" ngClass="flex-container-column">
+
+    <sit-actions-form-container ngClass="flex-container-column">
+      
+      <div ngClass="flex-container-row">
+        <sit-data-input #sitControl field="AccountingDocName4Lookup" label="Rodzaj dowodu" appearance="outline" 
+        [lookupDisplayFields] = "['AccountingDocIdent', 'AccountingDocName']"></sit-data-input>
+      </div>
   
-    <div ngClass="flex-container-row">
-      <sit-data-input #sitControl field="AccountingDocName4Lookup" label="Rodzaj dowodu" appearance="outline" style="width: 100%;"
-      [lookupDisplayFields] = "['AccountingDocIdent', 'AccountingDocName']"></sit-data-input>
-    </div>
+      <div ngClass="flex-container-row">
+        <sit-data-input #sitControl field="AccountingSchemaDesc4Lookup" label="Schemat księgowy" appearance="outline" 
+        [lookupDisplayFields] = "['AccountingSchemaIdent', 'AccountingSchemaDesc']"></sit-data-input>
+      </div>
+  
+      <sit-data-input #sitControl field="AccountingDate" label="Data dowodu" type="date" appearance="outline" ></sit-data-input>
+      <sit-data-input #sitControl field="AccountingHeaderDesc" label="Opis dowodu" appearance="outline" ></sit-data-input>
 
-    <div ngClass="flex-container-row">
-      <sit-data-input #sitControl field="AccountingSchemaDesc4Lookup" label="Schemat księgowy" appearance="outline" style="width: 100%;"
-      [lookupDisplayFields] = "['AccountingSchemaIdent', 'AccountingSchemaDesc']"></sit-data-input>
-    </div>
-
-    <sit-data-input #sitControl field="AccountingDate" label="Data dowodu" type="date" appearance="outline" style="width: 100%;"></sit-data-input>
-    <sit-data-input #sitControl field="AccountingHeaderDesc" label="Opis dowodu" appearance="outline" style="width: 100%;"></sit-data-input>
-
-
+    </sit-actions-form-container>
+  
   </sit-data-set-container>
 </sit-proc-params>

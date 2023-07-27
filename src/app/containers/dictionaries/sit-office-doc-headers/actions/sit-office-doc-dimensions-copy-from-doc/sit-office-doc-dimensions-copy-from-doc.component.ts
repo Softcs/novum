@@ -5,7 +5,7 @@ import { SitActionParamsForm } from '@app/_interfaces/sitActionParamsForm';
   selector: 'app-sit-office-doc-dimensions-copy-from-doc',
   templateUrl: './sit-office-doc-dimensions-copy-from-doc.component.html',
   styleUrls: ['./sit-office-doc-dimensions-copy-from-doc.component.scss'],
-  host: {class: 'sit-office-doc-dimensions-copy-from-doc.component'},
+  host: {class: 'sit-office-doc-dimensions-copy-from-doc-component flex-container-column'},
   encapsulation : ViewEncapsulation.None,   
 })
 export class SitOfficeDocDimensionsCopyFromDocComponent extends SitActionParamsForm{

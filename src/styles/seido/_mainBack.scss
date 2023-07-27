@@ -549,3 +549,22 @@ div.cover{
 //   //filter: drop-shadow(5px 5px 5px #222222);
 //   // opacity: .5;
 // }
+
+
+.file-upload-controls-container {
+  align-items: first baseline;
+  display: flex;
+  flex-direction: row;
+  flex: 0 0 max-content;
+  align-items: first baseline;
+
+  > * {
+    flex: auto;
+  }
+
+  sit-files-button,
+  .file-button{
+    flex: 0;
+  }
+}
+

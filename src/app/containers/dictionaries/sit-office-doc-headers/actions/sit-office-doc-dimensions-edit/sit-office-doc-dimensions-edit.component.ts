@@ -8,11 +8,4 @@ import { SitActionParamsForm } from '@app/_interfaces/sitActionParamsForm';
   host: {class: 'sit-office-doc-dimensions-edit-component flex-container-column'},
   encapsulation : ViewEncapsulation.None,
 })
-export class SitOfficeDocDimensionsEditComponent extends SitActionParamsForm{
-
-//   ngOnInit(): void {
-// console.log('actionExecuteData.activeRow.Net', this.actionExecuteData.activeRow.Net);
-// console.log('actionExecuteData', this.actionExecuteData);
-//   }
-
-}
+export class SitOfficeDocDimensionsEditComponent extends SitActionParamsForm{}

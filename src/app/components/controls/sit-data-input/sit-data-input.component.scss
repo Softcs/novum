@@ -3,6 +3,7 @@ $input-height: 40px;
 .sit-data-input-component {
   display: flex;
   flex-direction: row;
+  // flex: 1 1 0;
 
   .invalid-tooltip {
     display: block;

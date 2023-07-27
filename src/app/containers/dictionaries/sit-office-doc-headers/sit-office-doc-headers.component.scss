@@ -1,6 +1,19 @@
-
 .sit-office-doc-headers-component {
 
+    .sit-filter-bar {
+
+        [field="search"],
+        [field="Customer"] {
+            // max-width: 150px;
+            // width: 150px;
+            max-width: 9.5em;
+        }
+        [field="DateFrom"],
+        [field="DateTo"] {
+            // width: 130px;
+            flex: 0 0 7.5em;
+        }
+    }
 
     // sit-pdf-viewer {
     //     border: 10px solid green;

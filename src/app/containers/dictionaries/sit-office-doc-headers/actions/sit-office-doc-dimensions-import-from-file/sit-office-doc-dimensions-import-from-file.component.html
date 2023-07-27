@@ -1,18 +1,28 @@
 <sit-proc-params
   [(actionExecuteData)]="actionExecuteData"
-  >
-  <sit-data-set-container ident="sitOfficeDocDimensionsImportFromFile">
-    <div class="sit-proc-params-content" fxLayout="column">
-      <div fxLayout="row">
-        <button mat-stroked-button color="primary" (click)="getTemplate()" style="width: 220px;"><mat-icon>attach_file</mat-icon>Pobierz wzorzec importu</button>
+  ngClass="flex-container-column"
+>
+  <sit-data-set-container ident="sitOfficeDocDimensionsImportFromFile" ngClass="flex-container-column">
+    
+    <sit-actions-form-container ngClass="flex-container-column">
+      
+      <!-- <div  ngClass="flex-container-row cont-1">
+        <button mat-stroked-button color="primary" (click)="getTemplate()"><mat-icon>attach_file</mat-icon>Pobierz wzorzec importu</button>
         <sit-data-checkbox #sitControl field="DelExistingRows" label="Usuń istniejące wiersze przed importem"></sit-data-checkbox>
-      </div>
-      <sit-data-radio #sitControl field="FirstColType" type="row" label="Pierwsza kolumna pliku zawiera:" fxFlex
+      </div> -->
+
+      <button class="pobierz-wzorzec-importu" mat-stroked-button color="primary" (click)="getTemplate()"><mat-icon>attach_file</mat-icon>Pobierz wzorzec importu</button>
+
+      <sit-data-checkbox #sitControl field="DelExistingRows" label="Usuń istniejące wiersze przed importem"></sit-data-checkbox>
+      
+      <sit-data-radio #sitControl field="FirstColType" type="row" label="Pierwsza kolumna pliku zawiera:" 
       [buttons]="[{'caption':'kwotę','value': '0', 'checked':true},{'caption':'procent','value':'1'}]"></sit-data-radio>
-      <div fxLayout="row">
+
+      <div ngClass="file-upload-controls-container">
         <sit-files-button #sitSimpleButton fieldIdent="sitImportsG" fieldFileNames="FileName" pathIdent="PathIdent"></sit-files-button >
-        <sit-data-input #sitControl type="text" field="FileName" label="Nazwa pliku" appearance="outline" style="width: 500px;"></sit-data-input>
+        <sit-data-input #sitControl type="text" field="FileName" label="Nazwa pliku" appearance="outline"></sit-data-input>
       </div>
-    </div>
+    </sit-actions-form-container>
+
   </sit-data-set-container>
 </sit-proc-params>

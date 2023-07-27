@@ -50,22 +50,32 @@ export class SitPdfViewerComponent extends SitDataBaseComponent implements After
 
     // załączniki
     if (this.reportType === 'att') {
+
       this.downloadFileName = this.dataSetWrapper.getFieldValue('FileName');
+      if (!this.downloadFileName) {
+        this.showPDF = false;
+        this.showPDFChange.emit(this.showPDF);
+        return;
+      }
+
       var attachG = this.dataSetWrapper.getFieldValue('sitAttachmentsG');
       if (attachG == null) {
         this.showPDF = false;
         this.showPDFChange.emit(this.showPDF);
         return;
       }
-      this.pdfSrc = this.urlService.getAttachmentUrl(attachG, this.downloadFileName)
+
+      this.pdfSrc = this.urlService.getAttachmentUrl(attachG, this.downloadFileName);
       return;
     }
+
     // dowody
     if (this.reportType === 'doc') {
       this.pdfSrc = this.urlService.getSecureRepUrl(this.dataSetWrapper.getFieldValue(this.field),'doc','00000000-0000-0000-0000-000000000000','')
       this.downloadFileName = this.dataSetWrapper.getFieldValue(this.field);
       return;
     }
+    
     // słowniki
     if (this.reportType === 'dict') {
       let params = { [this.field] : this.dataSetWrapper.getFieldValue(this.field) }
