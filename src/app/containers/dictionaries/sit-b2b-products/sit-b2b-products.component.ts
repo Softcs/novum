@@ -15,33 +15,34 @@ export class SitB2bProductsComponent extends SitDictBaseComponent {
   public prepareColumnsDefinitnion() {
     this.gridColumnsDefinition["sitB2BProducts"] = [
       { headerName: 'Id', field: 'sitProductsId', type: 'numericColumn', filter: 'agNumberColumnFilter', width: 50, defaultVisibility: false },
-      { headerName: 'GUID', field: 'sitProductsG', width: 100, defaultVisibility: false },      
-      { headerName: 'Identyfikator', field: 'ProductIdent', filter: 'agTextColumnFilter', width: 130, defaultVisibility: false },
-      { headerName: 'Wydawnictwo', field: 'GroupIdent', filter: 'agTextColumnFilter', width: 80 },
-      { headerName: 'EAN', field: 'EAN', filter: 'agTextColumnFilter', width: 120 },
-      { headerName: 'St. VAT', field: 'VATRatesIdent', filter: 'agTextColumnFilter', width: 80 },
-      { headerName: 'Tytuł', field: 'ProductName', tooltipField: 'ProductName', filter: 'agTextColumnFilter', width: 300 },
-      { headerName: 'Autor', field: 'Author', tooltipField: 'Author', filter: 'agTextColumnFilter', width: 200 },
-      { headerName: 'Forma', field: 'FormOfReleaseDesc', tooltipField: 'Author', filter: 'agTextColumnFilter', width: 150 },
-      { headerName: 'Stan', field: 'QuantityString', filter: 'agTextColumnFilter', width: 80 },
-      { headerName: 'Cena netto', field: 'NetPrice', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80, renderType: 'number' },
-      { headerName: 'Cena brutto', field: 'GrossPrice', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80, renderType: 'number' },
+      { headerName: 'GUID', field: 'sitProductsG', width: 100, defaultVisibility: false },
       { 
-        //headerName: 'Status', field: 'ValueName_Main', filter: 'agSetColumnFilter', width: 100, floatingFilter: false, 
         headerName: 'Status', field: 'ValueName_Main', filter: 'agSetColumnFilter', width: 67, floatingFilter: false, 
         suppressMenu: true,
         cellRenderer: (params:any) => {
           return (params.data.ValueIdent_Main ? '<span title="' + params.data.ValueName_Main + '">' + params.data.ValueIdent_Main + '</span>' : '')
         },
         cellClass: (params:any) => [(params.data.ValueIdent_Main ? params.data.ValueIdent_Main : '')],
-        // cellStyle: function(params) {
-        //   if (params.value === 'Zapowiedź') { return { color: 'orange', 'font-weight': 600 }; }
-        //   else if (params.value === 'Nowość') { return { color: 'rgb(153, 0, 0)', 'font-weight': 600 }; }
-        //   else if (params.value === 'Aktywna') { return { color: 'rgb(20, 152, 46)', 'font-weight': 600 }; }
-        //   else if (params.value === 'Wyprzedaż') { return { color: 'rgb(11, 23, 255)', 'font-weight': 600 }; }
-        //   else { return null; }
-        // }
       },      
+      { headerName: 'Identyfikator', field: 'ProductIdent', filter: 'agTextColumnFilter', width: 130, defaultVisibility: false },
+      { headerName: 'Nazwa', field: 'ProductName', tooltipField: 'ProductName', filter: 'agTextColumnFilter', width: 300, defaultVisibility: false },
+      { headerName: 'Wydawnictwo', field: 'ProductsTypeDesc', filter: 'agTextColumnFilter', width: 80, suppressMenu: true },
+      { headerName: 'Data premiery', field: 'PremiereDate', width: 100, renderType: 'date', suppressMenu: true },
+      { headerName: 'Data wydania', field: 'RegisterDate', width: 100, renderType: 'date', suppressMenu: true, defaultVisibility: false  },
+      { headerName: 'EAN', field: 'EAN', filter: 'agTextColumnFilter', width: 120 },
+      { headerName: 'ISBN', field: 'ISBN', filter: 'agTextColumnFilter', width: 120, defaultVisibility: false },
+      { headerName: 'PKWIU', field: 'PKWIU', filter: 'agTextColumnFilter', width: 120, defaultVisibility: false },
+      { headerName: 'St. VAT', field: 'VATRatesIdent', filter: 'agTextColumnFilter', width: 80, defaultVisibility: false  },
+      { headerName: 'Tytuł', field: 'Title', tooltipField: 'ProductName', filter: 'agTextColumnFilter', width: 300 },
+      { headerName: 'Autor', field: 'Author', tooltipField: 'Author', filter: 'agTextColumnFilter', width: 200 },
+      { headerName: 'Forma', field: 'FormOfReleaseDesc', tooltipField: 'Author', filter: 'agTextColumnFilter', width: 150 },
+      { headerName: 'Ilość stron', field: 'NumberOfPages', width: 90, suppressMenu: true, defaultVisibility: false},
+      { headerName: 'Podst.', field: 'FormatBase', suppressMenu: true, type: 'numericColumn', width: 90, defaultVisibility: false},
+      { headerName: 'Wys.', field: 'FormatHeight', suppressMenu: true, type: 'numericColumn', width: 90, defaultVisibility: false},
+      { headerName: 'Stan', field: 'QuantityString', filter: 'agTextColumnFilter', width: 80 },
+      { headerName: 'Cena netto', field: 'NetPrice', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80, renderType: 'number' },
+      { headerName: 'Cena brutto', field: 'GrossPrice', filter: 'agTextColumnFilter', type: 'numericColumn', suppressMenu: true, width: 80, renderType: 'number' },
+      { headerName: 'Opis na WWW', field: 'MarketingDesc4WWW', tooltipField: 'ProductName', filter: 'agTextColumnFilter', width: 300, defaultVisibility: false },     
     ];
 
   }
