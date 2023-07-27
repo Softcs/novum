@@ -9,10 +9,16 @@
               <sit-data-input #sitControl field="searchDocuments" label="Dokument" placeholder="" appearance="outline" style="width: 200px;" [showRefreshButton]="false"></sit-data-input>
               <sit-data-radio #sitControl field="showType" type="row" label="Pokaż dokumenty"
                 [buttons]="[{'caption':'wg terminu płatności','value': '0', 'checked':true},{'caption':'przeterminowane','value': '1'},
-                {'caption':'wszystkie do zapłacenia','value': '2'},{'caption':'wszystkie wg daty płat.','value': '10'}]" showRefreshButton='true'
+                {'caption':'wszystkie do zapłacenia','value': '2'},{'caption':'wszystkie do daty','value': '3'},
+                {'caption':'wszystkie wg daty płat.','value': '10'}]" showRefreshButton='true'
               ></sit-data-radio>
-              <sit-data-input #sitControl field="paymentDateFrom" type="date" label="Data płatności od" appearance="outline" style="width: 130px;"></sit-data-input>
-              <sit-data-input #sitControl field="paymentDateTo" type="date" label="Data płatności do" appearance="outline" style="width: 190px;" [showRefreshButton]="true"></sit-data-input>
+              <div [class.hidden] = "!showPaymentDateFrom()"> 
+                <sit-data-input #sitControl field="paymentDateFrom" type="date" label="Data płatności od" appearance="outline" style="width: 130px;"></sit-data-input>
+              </div>
+              <div [class.hidden] = "!showPaymentDateTo()"> 
+                <sit-data-input #sitControl field="paymentDateTo" type="date" label="Data płatności do" appearance="outline" style="width: 130px;" ></sit-data-input>
+              </div>
+              <sit-refresh-button tooltip="Odśwież"></sit-refresh-button>
             </div>
           </sit-data-set-container>
           <sit-data-set-container  ident="sitPayments" showActionsToolbar="true" fxFill fxLayout="column">

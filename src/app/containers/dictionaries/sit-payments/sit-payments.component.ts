@@ -13,6 +13,7 @@ import { DataSetWrapper } from '@app/_models';
 export class SitPaymentsComponent extends SitDictBaseComponent {
 
   selectedTabIndex: number=0;
+  dataSourceResponseWrapper: DataSetWrapper;
 
   public prepareColumnsDefinitnion() {
     this.gridColumnsDefinition["sitPayments"] = [
@@ -130,4 +131,15 @@ export class SitPaymentsComponent extends SitDictBaseComponent {
     window.open(url, '_blank');
 
   }
+
+  showPaymentDateFrom(){
+    if (!this.dictContainer?.activeRow('sitPaymentsFilter')) { return }
+    else return( this.dictContainer?.activeRow('sitPaymentsFilter').showPaymentDateFrom == 0 ? false : true );
+  }
+
+  showPaymentDateTo(){
+    if (!this.dictContainer?.activeRow('sitPaymentsFilter')) { return }
+    else return( this.dictContainer?.activeRow('sitPaymentsFilter').showPaymentDateTo == 0 ? false : true );
+  }
+
 }
