@@ -2,8 +2,19 @@
     // border: 10px dotted gray;
     min-width: 30em;
     max-width: 34em;
-    padding: .5em .5em;
-    min-height: 65vh;
+    padding: .91em .91em;
+    // min-height: 65vh;
+    flex: auto;
+    min-height: fit-content;
     max-height: 70vh;
     overflow-y: auto;
+
+    > * {
+      // border: 5px dotted red;
+      flex: 0 0 max-content;
+    }
+
+    sit-data-input {
+      flex: 1 1 0;
+    }
 }
