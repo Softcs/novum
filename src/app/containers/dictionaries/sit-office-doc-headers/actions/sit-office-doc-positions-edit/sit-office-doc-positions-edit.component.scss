@@ -1,53 +1,38 @@
 .sit-office-doc-positions-edit-component{
-
-  // border: 5px dotted blue;
-
-
-
   .sit-office-doc-positions-edit-container {
+    flex: auto;
 
-    //border: 5px dashed red;
+    .sit-actions-form-container-component {
+      max-width: 31em;
 
-    > * {
-      //border: 2px dotted green;
-      flex: auto;
+      > * {
 
-      &.form-container {
-        // border-color: #f60;
-        min-width: 30em;
-        max-width: 30em;
-        padding: .5em .5em;
-        min-height: 50vh;
 
-        > * {
-          //border: 1px dotted green;
-          flex: 0 0 max-content;
+        &[field="OrdNumber"],
+        &[field="CurrencyIdent"] {
+          margin-bottom: .5em;
         }
 
-
-        sit-data-input {
-          flex: 1 1 auto;
-        }
-
-        [field="Quantity"] {
-          flex: 0 0 7em;
-        }
-    
-        [field="Price"] {
-          flex: 0 0 7em;
-        }
-
-        [field="UnitIdent"] {
-          flex: 0 0 7em;
-        }
-
-        [field="VATRatesIdent"] {
-          flex: 1 1 auto;
-        }
-    
       }
-      
-    }
 
+
+      [field="Quantity"] {
+        flex: 0 0 6em;
+      }
+  
+      // [field="Price"] {
+      //   flex: 0 0 7em;
+      // }
+
+      [field="UnitIdent"] {
+        flex: 0 0 6em;
+      }
+
+      [field="VATRatesIdent"] {
+        flex: 0 0 6em;
+      }
+  
+    }
+      
   }
 }

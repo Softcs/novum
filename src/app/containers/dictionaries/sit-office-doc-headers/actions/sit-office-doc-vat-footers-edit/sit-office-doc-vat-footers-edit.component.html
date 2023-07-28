@@ -1,18 +1,16 @@
 <sit-proc-params
   [(actionExecuteData)]="actionExecuteData"
-  
-  >
-  <sit-data-set-container ident="sitOfficeDocVATFootersEdit"  fxLayout="column">
-    <div ngClass="sit-proc-params-content" fxLayout="column" style="width: 800; height: 500px;">
-      <div ngClass="flex-container-column">
-        <sit-data-input #sitControl field="VATRatesIdent" label="Stawka VAT" appearance="outline"></sit-data-input>
-        <sit-data-input #sitControl type="number" field="NetCurrency" label="Netto" digitsInfo="1.2-2" appearance="outline"></sit-data-input>
-        <sit-data-input #sitControl type="number" field="VATCurrency" label="VAT" digitsInfo="1.2-2" appearance="outline"></sit-data-input>
-        <sit-data-input #sitControl type="number" field="GrossCurrency" label="Brutto" digitsInfo="1.2-2" appearance="outline"></sit-data-input>
-        <sit-data-input #sitControl type="number" field="Net" label="Netto PLN" digitsInfo="1.2-2" appearance="outline"></sit-data-input>
-        <sit-data-input #sitControl type="number" field="VAT" label="VAT PLN" digitsInfo="1.2-2" appearance="outline"></sit-data-input>
-        <sit-data-input #sitControl type="number" field="Gross" label="Brutto PLN" digitsInfo="1.2-2" appearance="outline"></sit-data-input>
-      </div>
-    </div>    
+  ngClass="flex-container-column"
+>
+  <sit-data-set-container ident="sitOfficeDocVATFootersEdit" ngClass="flex-container-column">
+    <sit-actions-form-container ngClass="flex-container-column">
+      <sit-data-input #sitControl field="VATRatesIdent" label="Stawka VAT" appearance="outline"></sit-data-input>
+      <sit-data-input #sitControl type="number" field="NetCurrency" label="Netto" digitsInfo="1.2-2" appearance="outline"></sit-data-input>
+      <sit-data-input #sitControl type="number" field="VATCurrency" label="VAT" digitsInfo="1.2-2" appearance="outline"></sit-data-input>
+      <sit-data-input #sitControl type="number" field="GrossCurrency" label="Brutto" digitsInfo="1.2-2" appearance="outline"></sit-data-input>
+      <sit-data-input #sitControl type="number" field="Net" label="Netto PLN" digitsInfo="1.2-2" appearance="outline"></sit-data-input>
+      <sit-data-input #sitControl type="number" field="VAT" label="VAT PLN" digitsInfo="1.2-2" appearance="outline"></sit-data-input>
+      <sit-data-input #sitControl type="number" field="Gross" label="Brutto PLN" digitsInfo="1.2-2" appearance="outline"></sit-data-input>
+    </sit-actions-form-container>
   </sit-data-set-container>
 </sit-proc-params>

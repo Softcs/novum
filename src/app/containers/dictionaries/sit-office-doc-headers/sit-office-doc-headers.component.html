@@ -4,15 +4,15 @@
       <as-split-area [size]="55">
         <as-split #sitSpliter direction="vertical">
 
-          <as-split-area [size]="45" fxLayout="column">
+          <as-split-area [size]="45" ngClass="flex-container-column">
 
               <!-- kombinacja: flex-container-row sit-filter-bar zwraca: flex:0 0 0; -->
               <sit-data-set-container ident="sitFilter" ngClass="flex-container-row sit-filter-bar">
 
-                <sit-data-input #sitControl field="Customer" label="Kontrahent" placeholder="" appearance="outline" style="width: 150px;"></sit-data-input>
-                <sit-data-input #sitControl field="search" label="Filtruj" placeholder="numer, opis, pracownik" appearance="outline" style="width: 150px;"></sit-data-input>
-                <sit-data-input #sitControl field="DateFrom" type="date" label="Od" appearance="outline" style="width: 130px;"></sit-data-input>
-                <sit-data-input #sitControl field="DateTo" type="date" label="Do" appearance="outline" style="width: 130px;" ></sit-data-input>
+                <sit-data-input #sitControl field="Customer" label="Kontrahent" placeholder="" appearance="outline"></sit-data-input>
+                <sit-data-input #sitControl field="search" label="Filtruj" placeholder="numer, opis, pracownik" appearance="outline"></sit-data-input>
+                <sit-data-input #sitControl field="DateFrom" type="date" label="Od" appearance="outline"></sit-data-input>
+                <sit-data-input #sitControl field="DateTo" type="date" label="Do" appearance="outline"></sit-data-input>
                 <sit-data-radio #sitControl field="dateKind" type="row" label="Wg daty" [refreshOnChange]="false"
                   [buttons]="[{'caption':'Wyst.','value': '0', 'checked':true},{'caption':'Rej.','value': '1'}]"
                 ></sit-data-radio>
@@ -156,19 +156,17 @@
               </mat-tab>
 
               <mat-tab label="Załączniki">
-                <sit-data-set-container  ident="sitAttachments" showActionsToolbar="true" fxFlex fxLayout="column">
-                  <div class="data-table" fxFlex>
-                    <ag-grid-angular
-                      #sitSetDataSource
-                      class="ag-theme-balham"
-                    >
-                    </ag-grid-angular>
-                  </div>
+                <sit-data-set-container  ident="sitAttachments" showActionsToolbar="true" ngClass="flex-container-column">
+                  <ag-grid-angular
+                    #sitSetDataSource
+                    class="ag-theme-balham"
+                  >
+                  </ag-grid-angular>
                 </sit-data-set-container>
               </mat-tab>
 
               <mat-tab label="Historia akceptacji">
-                <sit-data-set-container ident="sitAcceptances" [showActionsToolbar]="false" fxFill fxLayout="column">
+                <sit-data-set-container ident="sitAcceptances" [showActionsToolbar]="false"  ngClass="flex-container-column">
                   <ag-grid-angular
                         #sitSetDataSource
                         class="ag-theme-balham"

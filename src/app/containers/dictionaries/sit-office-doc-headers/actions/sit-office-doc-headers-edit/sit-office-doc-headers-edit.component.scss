@@ -6,15 +6,12 @@
 
     > * {
       // border: 2px dotted green;
-      flex: auto;
+      flex: 0 0 auto;
 
       &.sit-actions-form-container-component {
-
-
-        > * {
-          // border: 1px dotted green;
-          flex: 0 0 max-content;
-        }
+        max-width: 33em;
+        max-height: 79vh;
+        min-height: 70vh;
 
         // .new-customer-container {
         //   border: 5px dotted #6f0;
@@ -23,30 +20,14 @@
         //   }
         // }
 
-        sit-data-input {
-          flex:auto;
-        }
-
-        .file-upload{
-          align-items: first baseline;
-      
-          > * {
-            flex: auto;
-          }
-      
-          .file-button{
-            flex: 0;
-          }
-        }
-
         [actionIdent="importFromGUS"] {
           margin-bottom: 7px;
           margin-right: .5em;
         }
 
-        [field="Street"] {
-          flex:auto;
-        }
+        // [field="Street"] {
+        //   flex:auto;
+        // }
         [field="HouseNum"] {
           flex:0 1 8em;
         }
@@ -55,17 +36,41 @@
           flex:0 1 4.5em;
         }
         [field="PostCode"] {
-          flex:0 1 5em;
+          flex:0 0 5em;
         }
-        [field="City"] {
-          flex:auto;
-        }
+
+        // [field="City"] {
+        //   flex:auto;
+        // }
     
-        [field="RegDate"] {
-          flex:0 1 10em;
+        [field="DocumentDate"],
+        [field="SalesDate"],
+        [field="PaymentDate"],
+        [field="RegDate"],
+        [field="ExRateDate"]  
+        {
+          flex: 0 0 7.5em;
         }
-        [field="OfficeDocName"] {
-          flex: auto;
+
+        // [field="OfficeDocName"] {
+        //   flex: auto;
+        // }
+
+
+        [field="PaymentTypeIdent"] {
+          // flex: 0 0 20%;
+          flex: 0 0 5em;
+        }
+        // [field="PaymentDays"] {
+        //   flex: 0 0 3em;
+        // }
+
+        [field="Swift"] {
+          flex: 0 0 9em;
+        }
+
+        [field="CurrencyIdent"] {
+          flex: 0 0 6em;
         }
         
       }
@@ -73,8 +78,8 @@
       &.pdf-viewer-container {
         // min-width: 33em;
         // flex: auto;
-        margin-left: .5em;
-        min-width: 40em;
+        margin-left: .2em;
+        min-width: var(--pdf-viewer-form-container-min-widh);
       }
 
     }

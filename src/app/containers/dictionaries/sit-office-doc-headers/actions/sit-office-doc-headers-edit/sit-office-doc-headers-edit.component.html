@@ -2,15 +2,12 @@
   [(actionExecuteData)]="actionExecuteData"
   ngClass="proc-params-sodh-edit flex-container-column"
   >
-  <!-- style="border:3px solid red;" -->
+
   <sit-data-set-container ident="sitOfficeDocHeadersEdit" ngClass="sit-office-doc-headers-edit-container flex-container-row">
     
-    <!-- <div ngClass="flex-container-row sit-proc-params-content" > -->
-
       <sit-actions-form-container ngClass="flex-container-column">
-      <!-- <div ngClass="info-column form-container flex-container-column"> -->
 
-        <div *ngIf="this.isInsert" ngClass="file-upload flex-container-row">
+        <div *ngIf="this.isInsert" ngClass="file-upload-controls-container">
           <sit-files-button #sitSimpleButton fieldIdent="sitAttachmentsG" fieldFileNames="FileName" ngClass="file-button"></sit-files-button >
           <sit-data-input #sitControl field="FileName" label="Nazwa pliku" appearance="outline"></sit-data-input>
         </div>
@@ -24,7 +21,6 @@
 
           <div ngClass="flex-container-row">
             <sit-data-input #sitControl field="VATId" label="NIP" required appearance="outline"></sit-data-input>
-            <!-- <sit-proc-button #sitAction actionIdent="importFromGUS" buttonType="mat-raised-button" style="margin-bottom: 4px; margin-right: 4px;"></sit-proc-button> -->
             <sit-proc-button #sitAction actionIdent="importFromGUS" buttonType="mat-raised-button"></sit-proc-button>
             <sit-data-input #sitControl field="REGON" label="REGON" appearance="outline"></sit-data-input>
             <sit-data-input #sitControl field="KRS" label="KRS" appearance="outline"></sit-data-input>
@@ -58,52 +54,51 @@
         </div>
         
         <div ngClass="flex-container-row">
-          <sit-data-input #sitControl type="date" field="DocumentDate" label="Data wystawienia" required appearance="outline" fxFlex="25"></sit-data-input>
-          <sit-data-input #sitControl type="date" field="SalesDate" label="Data sprzedaży" required appearance="outline" fxFlex="25"></sit-data-input>
-          <sit-data-input #sitControl field="PaymentTypeIdent" label="RP" required appearance="outline" [lookupDisplayFields] = "['PaymentTypeDesc']" fxFlex="20"></sit-data-input>
-          <sit-data-input #sitControl type="number" field="PaymentDays" label="Dni" digitsInfo="1.0-0" required appearance="outline" fxFlex></sit-data-input>
-          <sit-data-input #sitControl type="date" field="PaymentDate" label="Data płatności" required appearance="outline" fxFlex="25"></sit-data-input>
+          <sit-data-input #sitControl type="date" field="DocumentDate" label="Data wystawienia" required appearance="outline"></sit-data-input>
+          <sit-data-input #sitControl type="date" field="SalesDate" label="Data sprzedaży" required appearance="outline"></sit-data-input>
+          <sit-data-input #sitControl field="PaymentTypeIdent" label="RP" required appearance="outline" [lookupDisplayFields] = "['PaymentTypeDesc']"></sit-data-input>
+          <sit-data-input #sitControl type="number" field="PaymentDays" label="Dni" digitsInfo="1.0-0" required appearance="outline"></sit-data-input>
+          <sit-data-input #sitControl type="date" field="PaymentDate" label="Data płatności" required appearance="outline"></sit-data-input>
         </div>
+        
         <div [class.hidden]="!bankNoReq()" ngClass="flex-container-row">
-          <sit-data-input #sitControl field="BankAccountNumber" label="Nr rachunku bankowego" appearance="outline" fxFlex></sit-data-input>
-          <sit-data-input #sitControl field="Swift" label="SWIFT" appearance="outline" fxFlex="30"></sit-data-input>
+          <sit-data-input #sitControl field="BankAccountNumber" label="Nr rachunku bankowego" appearance="outline"></sit-data-input>
+          <sit-data-input #sitControl field="Swift" label="SWIFT" appearance="outline"></sit-data-input>
         </div>
-        <!-- <div fxLayout="row">
-          <sit-data-input #sitControl field="DocumentNumber" label="Numer dokumentu" required appearance="outline" fxFlex></sit-data-input>
+        
+        <!-- <div ngClass="flex-container-row">
+          <sit-data-input #sitControl field="DocumentNumber" label="Numer dokumentu" required appearance="outline"></sit-data-input>
         </div> -->
+        
         <div ngClass="flex-container-row">
-          <sit-data-input #sitControl field="OfficeDocDescription" label="Opis dokumentu" required appearance="outline" fxFlex></sit-data-input>
+          <sit-data-input #sitControl field="OfficeDocDescription" label="Opis dokumentu" required appearance="outline"></sit-data-input>
         </div>
         <div ngClass="flex-container-row">
-          <sit-data-input #sitControl field="CurrencyIdent" label="Waluta" required appearance="outline" fxFlex="20"></sit-data-input>
-          <sit-data-input #sitControl *ngIf="isCurrency()" type="date" field="ExRateDate" label="Kurs z dnia" appearance="outline" fxFlex="33"></sit-data-input>
-          <sit-data-input #sitControl *ngIf="isCurrency()" type="number" field="ExRate" label="Kurs waluty" digitsInfo="1.0-4" appearance="outline" fxFlex></sit-data-input>
+          <sit-data-input #sitControl field="CurrencyIdent" label="Waluta" required appearance="outline"></sit-data-input>
+          <sit-data-input #sitControl *ngIf="isCurrency()" type="date" field="ExRateDate" label="Kurs z dnia" appearance="outline"></sit-data-input>
+          <sit-data-input #sitControl *ngIf="isCurrency()" type="number" field="ExRate" label="Kurs waluty" digitsInfo="1.0-4" appearance="outline"></sit-data-input>
         </div>
         <div ngClass="flex-container-row">
-          <sit-data-input #sitControl field="NetCurrency" label="Netto" required type="number" digitsInfo="1.2-2" placeholder="Netto" appearance="outline" fxFlex></sit-data-input>
-          <sit-data-input #sitControl field="VATCurrency" label="Vat" required type="number" digitsInfo="1.2-2" appearance="outline" fxFlex></sit-data-input>
-          <sit-data-input #sitControl field="GrossCurrency" label="Brutto" required type="number" digitsInfo="1.2-2" appearance="outline" fxFlex></sit-data-input>
+          <sit-data-input #sitControl field="NetCurrency" label="Netto" required type="number" digitsInfo="1.2-2" placeholder="Netto" appearance="outline"></sit-data-input>
+          <sit-data-input #sitControl field="VATCurrency" label="Vat" required type="number" digitsInfo="1.2-2" appearance="outline"></sit-data-input>
+          <sit-data-input #sitControl field="GrossCurrency" label="Brutto" required type="number" digitsInfo="1.2-2" appearance="outline"></sit-data-input>
         </div>
         <div *ngIf="isCurrency()" ngClass="flex-container-row">
-          <sit-data-input #sitControl type="number" field="Net" label="Netto PLN" required type="number" digitsInfo="1.2-2" appearance="outline" fxFlex></sit-data-input>
-          <sit-data-input #sitControl type="number" field="VAT" label="Vat PLN" required type="number" digitsInfo="1.2-2" appearance="outline" fxFlex></sit-data-input>
-          <sit-data-input #sitControl type="number" field="Gross" label="Brutto PLN" required type="number" digitsInfo="1.2-2" appearance="outline" fxFlex></sit-data-input>
+          <sit-data-input #sitControl type="number" field="Net" label="Netto PLN" required type="number" digitsInfo="1.2-2" appearance="outline"></sit-data-input>
+          <sit-data-input #sitControl type="number" field="VAT" label="Vat PLN" required type="number" digitsInfo="1.2-2" appearance="outline"></sit-data-input>
+          <sit-data-input #sitControl type="number" field="Gross" label="Brutto PLN" required type="number" digitsInfo="1.2-2" appearance="outline"></sit-data-input>
         </div>
         <div ngClass="flex-container-row">
-          <sit-data-input #sitControl field="EmployeeName" label="Zapłacone przez pracownika" appearance="outline" fxFlex></sit-data-input>
+          <sit-data-input #sitControl field="EmployeeName" label="Zapłacone przez pracownika" appearance="outline"></sit-data-input>
         </div>
 
-      <!-- </div> -->
       </sit-actions-form-container>
 
-      
-        <!-- *ngIf="showPDF" -->
-      <div *ngIf="this.isInsert" [class.flex-container-column]="showPDF" ngClass="display-none pdf-viewer-container"> 
+      <div *ngIf="this.isInsert" [class.flex-container-column]="showPDF" [class.display-none]="!showPDF" ngClass="pdf-viewer-container"> 
         <sit-pdf-viewer (showPDFChange)="showPDFChangeView($event)" #sitControl reportType="att" field="FileName" ngClass="from-sit-office-doc-headers-edit-component-html">
         </sit-pdf-viewer>
       </div>
 
-    <!-- </div> -->
 
   </sit-data-set-container>
 </sit-proc-params>

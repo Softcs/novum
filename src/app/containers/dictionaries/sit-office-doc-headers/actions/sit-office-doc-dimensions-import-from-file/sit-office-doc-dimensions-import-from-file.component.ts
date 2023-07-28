@@ -6,7 +6,7 @@ import { UrlService } from '@app/_services/url.service';
   selector: 'app-sit-office-doc-dimensions-import-from-file',
   templateUrl: './sit-office-doc-dimensions-import-from-file.component.html',
   styleUrls: ['./sit-office-doc-dimensions-import-from-file.component.scss'],
-  host: {class: 'sit-office-doc-dimensions-import-from-file.component'},
+  host: {class: 'sit-office-doc-dimensions-import-from-file-component flex-container-column'},
   encapsulation : ViewEncapsulation.None,  
 })
 export class SitOfficeDocDimensionsImportFromFileComponent extends SitActionParamsForm{
