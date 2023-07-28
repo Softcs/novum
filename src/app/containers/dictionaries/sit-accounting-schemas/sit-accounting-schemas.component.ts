@@ -16,8 +16,14 @@ export class SitAccountingSchemasComponent extends SitDictBaseComponent {
       { headerName: 'GUID', field: 'sitAccountingSchemasG',width: 150, defaultVisibility: false },
       { headerName: 'Identyfikator', field: 'AccountingSchemaIdent', width: 120,},
       { headerName: 'Nazwa', field: 'AccountingSchemaDesc', width: 300, },
-    
     ];
-  }
 
+    this.gridColumnsDefinition["sitAccountingSchemaAccountingDocTypes"] = [
+      { headerName: 'Id', field: 'sitAccountingSchemaAccountingDocTypesId',width: 90, defaultVisibility: false },
+      { headerName: 'GUID', field: 'sitAccountingSchemaAccountingDocTypesG',width: 150, defaultVisibility: false },
+      { headerName: 'Identyfikator', field: 'AccountingDocIdent', width: 120,},
+      { headerName: 'Nazwa', field: 'AccountingDocName', width: 300, },
+    ];
+    
+  }
 }

@@ -1,0 +1,11 @@
+<sit-proc-params
+   [(actionExecuteData)]="actionExecuteData"
+  >
+  <sit-data-set-container ident="sitAccountingSchemaAccountingDocTypesEdit">
+    <div class="sit-proc-params-content" fxLayout="column" style="width: 300px;height: 300px;">
+      <sit-data-input #sitControl field="AccountingDocName" label="Identyfikator" appearance="outline" 
+        [lookupDisplayFields] = "['AccountingDocIdent', 'AccountingDocName']"
+      ></sit-data-input>
+    </div>
+  </sit-data-set-container>
+</sit-proc-params>

@@ -408,6 +408,7 @@ import { SitBankTransferHeadersGenFileComponent } from './containers/dictionarie
 import { SitOfficeDocPositionsEditComponent } from './containers/dictionaries/sit-office-doc-headers/actions/sit-office-doc-positions-edit/sit-office-doc-positions-edit.component';
 import { SitEmploymentStatsComponent } from './containers/dictionaries/sit-employment-stats/sit-employment-stats.component';
 import { SitActionsFormContainerComponent } from './components/controls/sit-actions-form-container/sit-actions-form-container.component';
+import { SitAccountingSchemaAccountingDocTypesEditComponent } from './containers/dictionaries/sit-accounting-schemas/actions/sit-accounting-schema-accounting-doc-types-edit/sit-accounting-schema-accounting-doc-types-edit.component';
 
 @NgModule({
     imports: [
@@ -799,6 +800,7 @@ import { SitActionsFormContainerComponent } from './components/controls/sit-acti
         SitOfficeDocPositionsEditComponent,
         SitEmploymentStatsComponent,
         SitActionsFormContainerComponent,
+        SitAccountingSchemaAccountingDocTypesEditComponent,
 
     ],
     providers: [
